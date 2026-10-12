@@ -1,0 +1,1149 @@
+{
+ "catalog": {
+  "uuid": "63b0299c-369c-552f-a63e-ed3c81885a9f",
+  "metadata": {
+   "title": "Rego Policy Libraries — ferpa (FERPA — Family Educational Rights and Privacy Act)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "ferpa"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "ferpa-ferpa_main",
+    "class": "rego-module",
+    "title": "FERPA — Family Educational Rights and Privacy Act",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ferpa.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/ferpa/ferpa_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ferpa-FERPA-99.7",
+      "title": "Annual notification of FERPA rights not provided to parents / eligible students",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.7_stmt",
+        "name": "statement",
+        "prose": "Annual notification of FERPA rights not provided to parents / eligible students"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.7-a-2-i",
+      "title": "Annual notification does not state the right to inspect and review education records",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.7(a)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.7(a)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.7-a-2-i_stmt",
+        "name": "statement",
+        "prose": "Annual notification does not state the right to inspect and review education records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.7-a-2-ii",
+      "title": "Annual notification does not state the right to seek amendment of records believed inaccurate or misleading",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.7(a)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.7(a)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.7-a-2-ii_stmt",
+        "name": "statement",
+        "prose": "Annual notification does not state the right to seek amendment of records believed inaccurate or misleading"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.7-a-2-iii",
+      "title": "Annual notification does not state the conditions under which records are disclosed with and without consent",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.7(a)(2)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.7(a)(2)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.7-a-2-iii_stmt",
+        "name": "statement",
+        "prose": "Annual notification does not state the conditions under which records are disclosed with and without consent"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.7-a-2-iv",
+      "title": "Annual notification does not state the right to file a complaint with the U.S. Department of Education",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.7(a)(2)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.7(a)(2)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.7-a-2-iv_stmt",
+        "name": "statement",
+        "prose": "Annual notification does not state the right to file a complaint with the U.S. Department of Education"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.10",
+      "title": "No documented process for parents / eligible students to inspect and review education records",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.10_stmt",
+        "name": "statement",
+        "prose": "No documented process for parents / eligible students to inspect and review education records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.10-b",
+      "title": "Access requests not fulfilled within the required 45 days of the request",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.10(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.10(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.10-b_stmt",
+        "name": "statement",
+        "prose": "Access requests not fulfilled within the required 45 days of the request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.20",
+      "title": "No documented procedure to request amendment of inaccurate or misleading records",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.20_stmt",
+        "name": "statement",
+        "prose": "No documented procedure to request amendment of inaccurate or misleading records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-ferpa.main-1",
+      "title": "FERPA §99.21–99.22: Hearing opportunity on amendment denial not provided or does not meet minimum requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "ferpa.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ferpa.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-ferpa.main-1_stmt",
+        "name": "statement",
+        "prose": "FERPA §99.21–99.22: Hearing opportunity on amendment denial not provided or does not meet minimum requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.21-b-2",
+      "title": "Right to place a statement of disagreement in the record after an unsuccessful amendment hearing not provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.21(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.21(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.21-b-2_stmt",
+        "name": "statement",
+        "prose": "Right to place a statement of disagreement in the record after an unsuccessful amendment hearing not provided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.30-a",
+      "title": "Signed and dated written consent not obtained before disclosing personally identifiable information from education records (outside §99.31 exceptions)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.30(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.30(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.30-a_stmt",
+        "name": "statement",
+        "prose": "Signed and dated written consent not obtained before disclosing personally identifiable information from education records (outside §99.31 exceptions)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.30-b",
+      "title": "Consent instrument does not specify the records disclosed, the purpose, and the party or class of parties receiving them",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.30(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.30(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.30-b_stmt",
+        "name": "statement",
+        "prose": "Consent instrument does not specify the records disclosed, the purpose, and the party or class of parties receiving them"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.30",
+      "title": "Executed consent records not retained as evidence of authorized disclosure",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.30_stmt",
+        "name": "statement",
+        "prose": "Executed consent records not retained as evidence of authorized disclosure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.31-a-1-99.7-a-3-iii",
+      "title": "Criteria for who is a school official with legitimate educational interest not specified in the annual notification",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.31(a)(1) / §99.7(a)(3)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.31(a)(1) / §99.7(a)(3)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.31-a-1-99.7-a-3-iii_stmt",
+        "name": "statement",
+        "prose": "Criteria for who is a school official with legitimate educational interest not specified in the annual notification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.31-a-1-ii",
+      "title": "Reasonable methods (physical, technological, or administrative access controls) not used to limit school-official access to records in which they have a legitimate educational interest",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.31(a)(1)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.31(a)(1)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.31-a-1-ii_stmt",
+        "name": "statement",
+        "prose": "Reasonable methods (physical, technological, or administrative access controls) not used to limit school-official access to records in which they have a legitimate educational interest"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.31-a-1-i-B",
+      "title": "Contractors / consultants / volunteers acting as school officials not under the institution's direct control with respect to use and maintenance of education records",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.31(a)(1)(i)(B)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.31(a)(1)(i)(B)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.31-a-1-i-B_stmt",
+        "name": "statement",
+        "prose": "Contractors / consultants / volunteers acting as school officials not under the institution's direct control with respect to use and maintenance of education records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.31-a-2-99.34",
+      "title": "Disclosures to schools of intended enrollment made without the required annual-notice statement or reasonable attempt to notify",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.31(a)(2) / §99.34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.31(a)(2) / §99.34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.31-a-2-99.34_stmt",
+        "name": "statement",
+        "prose": "Disclosures to schools of intended enrollment made without the required annual-notice statement or reasonable attempt to notify"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.35-a-3",
+      "title": "Audit/evaluation disclosures to authorized representatives not governed by the required written agreement (designation, purpose, PII scope, destruction terms)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.35(a)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.35(a)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.35-a-3_stmt",
+        "name": "statement",
+        "prose": "Audit/evaluation disclosures to authorized representatives not governed by the required written agreement (designation, purpose, PII scope, destruction terms)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.35-b-2",
+      "title": "PII disclosed for audit/evaluation not destroyed when no longer needed for the stated purpose",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.35(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.35(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.35-b-2_stmt",
+        "name": "statement",
+        "prose": "PII disclosed for audit/evaluation not destroyed when no longer needed for the stated purpose"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.31-a-6-iii-C",
+      "title": "Disclosures for studies not governed by the required written agreement (purpose/scope/duration, use limits, destruction)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.31(a)(6)(iii)(C)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.31(a)(6)(iii)(C)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.31-a-6-iii-C_stmt",
+        "name": "statement",
+        "prose": "Disclosures for studies not governed by the required written agreement (purpose/scope/duration, use limits, destruction)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.31-a-9-ii",
+      "title": "No reasonable effort to notify the parent / eligible student before complying with a subpoena or judicial order (where notification is not prohibited)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.31(a)(9)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.31(a)(9)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.31-a-9-ii_stmt",
+        "name": "statement",
+        "prose": "No reasonable effort to notify the parent / eligible student before complying with a subpoena or judicial order (where notification is not prohibited)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.36-99.32-a-5",
+      "title": "Health-or-safety-emergency disclosures made without recording the articulable and significant threat and the parties who received the information",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.36 / §99.32(a)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.36 / §99.32(a)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.36-99.32-a-5_stmt",
+        "name": "statement",
+        "prose": "Health-or-safety-emergency disclosures made without recording the articulable and significant threat and the parties who received the information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.37-a-1",
+      "title": "Public notice of the types of PII designated as directory information not given",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.37(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.37(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.37-a-1_stmt",
+        "name": "statement",
+        "prose": "Public notice of the types of PII designated as directory information not given"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.37-a-2-3",
+      "title": "Parents / eligible students not given the right and a reasonable period to refuse directory-information designation",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.37(a)(2)-(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.37(a)(2)-(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.37-a-2-3_stmt",
+        "name": "statement",
+        "prose": "Parents / eligible students not given the right and a reasonable period to refuse directory-information designation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.37",
+      "title": "Directory-information opt-outs not honored in actual disclosures",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.37_stmt",
+        "name": "statement",
+        "prose": "Directory-information opt-outs not honored in actual disclosures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.32-a-1",
+      "title": "Record of each request for and disclosure of PII from education records (parties and legitimate interests) not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.32(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.32(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.32-a-1_stmt",
+        "name": "statement",
+        "prose": "Record of each request for and disclosure of PII from education records (parties and legitimate interests) not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.32-a-2",
+      "title": "Disclosure record not retained as long as the education record it documents",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.32(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.32(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.32-a-2_stmt",
+        "name": "statement",
+        "prose": "Disclosure record not retained as long as the education record it documents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.32-b",
+      "title": "Authorized redisclosures (parties and legitimate interests) not recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.32(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.32(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.32-b_stmt",
+        "name": "statement",
+        "prose": "Authorized redisclosures (parties and legitimate interests) not recorded"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.33-d",
+      "title": "Recipients not informed that PII may be used only for the disclosed purpose and not redisclosed except as permitted",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.33(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.33(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.33-d_stmt",
+        "name": "statement",
+        "prose": "Recipients not informed that PII may be used only for the disclosed purpose and not redisclosed except as permitted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.33-e",
+      "title": "No process to address improper redisclosure by a third party (including the five-year access bar the Department may impose)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.33(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.33(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.33-e_stmt",
+        "name": "statement",
+        "prose": "No process to address improper redisclosure by a third party (including the five-year access bar the Department may impose)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.5",
+      "title": "Transfer of FERPA rights to the student at age 18 or postsecondary enrollment not recognized in procedures and notices",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.5_stmt",
+        "name": "statement",
+        "prose": "Transfer of FERPA rights to the student at age 18 or postsecondary enrollment not recognized in procedures and notices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ferpa-FERPA-99.8",
+      "title": "Law-enforcement-unit records not maintained separately from education records (commingling brings them under FERPA and defeats the exemption)",
+      "props": [
+       {
+        "name": "label",
+        "value": "FERPA §99.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FERPA §99.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ferpa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ferpa-FERPA-99.8_stmt",
+        "name": "statement",
+        "prose": "Law-enforcement-unit records not maintained separately from education records (commingling brings them under FERPA and defeats the exemption)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "f1f7ac28-3a2a-58a2-948c-8c9ba719cbd2",
+     "title": "FERPA — Family Educational Rights and Privacy Act",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ferpa.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/privacy/ferpa/ferpa_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

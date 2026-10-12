@@ -1,0 +1,326 @@
+{
+ "catalog": {
+  "uuid": "7323167c-d6df-5538-a36e-0b1079c23c9d",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_aap (AAP job policy — what variables may enter automation)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_aap"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_aap-extra_vars_control",
+    "class": "rego-module",
+    "title": "AAP job policy — what variables may enter automation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.aap.policy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/aap/extra_vars_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_aap-value_patterns",
+      "title": "Implemented by a Rego rule in enforcement/aap/extra_vars_control.rego (package aac.aap.policy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "value_patterns"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "value_patterns"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e298db0-930b-568a-a2d2-8889142f08cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-value_patterns_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/aap/extra_vars_control.rego (package aac.aap.policy); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   },
+   {
+    "id": "enforcement_aap-owner_scope",
+    "class": "rego-module",
+    "title": "AAP job policy — who may automate what",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.aap.policy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/aap/owner_scope.rego"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_aap-bindings",
+      "title": "Implemented by a Rego rule in enforcement/aap/owner_scope.rego (package aac.aap.policy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "bindings"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bindings"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6fd1f34-6b5c-557f-8883-8230f506d5fc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-bindings_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/aap/owner_scope.rego (package aac.aap.policy); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_aap-team_bindings",
+      "title": "Implemented by a Rego rule in enforcement/aap/owner_scope.rego (package aac.aap.policy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "team_bindings"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "team_bindings"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6fd1f34-6b5c-557f-8883-8230f506d5fc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-team_bindings_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/aap/owner_scope.rego (package aac.aap.policy); see the rule body."
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "enforcement_aap-required_labels",
+    "class": "rego-module",
+    "title": "AAP job policy — label-driven gating",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.aap.policy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/aap/required_labels.rego"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_aap-required_for_inventories",
+      "title": "Implemented by a Rego rule in enforcement/aap/required_labels.rego (package aac.aap.policy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "required_for_inventories"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "required_for_inventories"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#68b66b54-0ab9-5f17-ba8a-77f539317ad9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-required_for_inventories_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/aap/required_labels.rego (package aac.aap.policy); see the rule body."
+       }
+      ]
+     },
+     {
+      "id": "enforcement_aap-pattern_requirements",
+      "title": "Implemented by a Rego rule in enforcement/aap/required_labels.rego (package aac.aap.policy); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "pattern_requirements"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pattern_requirements"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#68b66b54-0ab9-5f17-ba8a-77f539317ad9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-pattern_requirements_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/aap/required_labels.rego (package aac.aap.policy); see the rule body."
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "0e298db0-930b-568a-a2d2-8889142f08cf",
+     "title": "AAP job policy — what variables may enter automation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/aap/extra_vars_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d6fd1f34-6b5c-557f-8883-8230f506d5fc",
+     "title": "AAP job policy — who may automate what",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/aap/owner_scope.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "68b66b54-0ab9-5f17-ba8a-77f539317ad9",
+     "title": "AAP job policy — label-driven gating",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.aap.policy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/aap/required_labels.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

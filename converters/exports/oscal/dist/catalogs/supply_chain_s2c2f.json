@@ -1,0 +1,126 @@
+{
+ "catalog": {
+  "uuid": "67978fe8-3f8c-5406-b79d-cf7d1154c7b6",
+  "metadata": {
+   "title": "Rego Policy Libraries — supply_chain_s2c2f (OpenSSF Secure Supply Chain Consumption Framework (S2C2F) mapped onto the)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "supply_chain_s2c2f"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "supply_chain_s2c2f-s2c2f",
+    "class": "rego-module",
+    "title": "OpenSSF Secure Supply Chain Consumption Framework (S2C2F) mapped onto the",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "supply_chain.s2c2f"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/supply_chain/s2c2f/s2c2f.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "supply_chain_s2c2f-framework",
+      "title": "OpenSSF S2C2F (consumption)",
+      "props": [
+       {
+        "name": "label",
+        "value": "framework"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "framework"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.s2c2f"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81c7b2b0-a596-5bff-a91a-0e25f0b787fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_s2c2f-framework_stmt",
+        "name": "statement",
+        "prose": "OpenSSF S2C2F (consumption)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "81c7b2b0-a596-5bff-a91a-0e25f0b787fa",
+     "title": "OpenSSF Secure Supply Chain Consumption Framework (S2C2F) mapped onto the",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "supply_chain.s2c2f"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/supply_chain/s2c2f/s2c2f.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

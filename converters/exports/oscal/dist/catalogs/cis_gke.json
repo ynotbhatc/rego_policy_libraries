@@ -1,0 +1,1413 @@
+{
+ "catalog": {
+  "uuid": "13a59eff-bdce-55d1-bd86-223fa255438d",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_gke (CIS Google GKE (Google Kubernetes Engine) Benchmark v1.9.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_gke"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_gke-cis_gke_validation",
+    "class": "rego-module",
+    "title": "CIS Google GKE (Google Kubernetes Engine) Benchmark v1.9.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_gke.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/gke/cis_gke_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_gke-CIS-GKE-3.1.1",
+      "title": "kubeconfig file permissions are more permissive than 644",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-3.1.1_stmt",
+        "name": "statement",
+        "prose": "kubeconfig file permissions are more permissive than 644"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-3.1.2",
+      "title": "kubelet kubeconfig file is not owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-3.1.2_stmt",
+        "name": "statement",
+        "prose": "kubelet kubeconfig file is not owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-3.1.3",
+      "title": "kubelet configuration file permissions are more permissive than 644",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-3.1.3_stmt",
+        "name": "statement",
+        "prose": "kubelet configuration file permissions are more permissive than 644"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-3.1.4",
+      "title": "kubelet configuration file is not owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-3.1.4_stmt",
+        "name": "statement",
+        "prose": "kubelet configuration file is not owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.1",
+      "title": "cluster-admin role is bound beyond where it is required",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.1_stmt",
+        "name": "statement",
+        "prose": "cluster-admin role is bound beyond where it is required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.2",
+      "title": "Access to secrets is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Access to secrets is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.3",
+      "title": "Wildcards are used in Roles or ClusterRoles",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Wildcards are used in Roles or ClusterRoles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.4",
+      "title": "Default service accounts are actively used",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.4_stmt",
+        "name": "statement",
+        "prose": "Default service accounts are actively used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.5",
+      "title": "Service account tokens are mounted in pods that do not need them",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.5_stmt",
+        "name": "statement",
+        "prose": "Service account tokens are mounted in pods that do not need them"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.6",
+      "title": "The system:masters group is in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.6_stmt",
+        "name": "statement",
+        "prose": "The system:masters group is in use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.7",
+      "title": "bind, impersonate, or escalate permissions are granted beyond what is required",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.7_stmt",
+        "name": "statement",
+        "prose": "bind, impersonate, or escalate permissions are granted beyond what is required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.8",
+      "title": "Role or ClusterRole bindings to system:anonymous exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.8_stmt",
+        "name": "statement",
+        "prose": "Role or ClusterRole bindings to system:anonymous exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.1.10",
+      "title": "Non-default bindings to system:authenticated exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.1.10_stmt",
+        "name": "statement",
+        "prose": "Non-default bindings to system:authenticated exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.2.1",
+      "title": "Pod Security Standard Baseline profile (or stricter) is not enforced for all namespaces",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Pod Security Standard Baseline profile (or stricter) is not enforced for all namespaces"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.3.1",
+      "title": "The CNI plugin in use does not support network policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.3.1_stmt",
+        "name": "statement",
+        "prose": "The CNI plugin in use does not support network policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.3.2",
+      "title": "One or more namespaces have no NetworkPolicy defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.3.2_stmt",
+        "name": "statement",
+        "prose": "One or more namespaces have no NetworkPolicy defined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.4.1",
+      "title": "Secrets are exposed as environment variables rather than mounted as files",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.4.1_stmt",
+        "name": "statement",
+        "prose": "Secrets are exposed as environment variables rather than mounted as files"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.4.2",
+      "title": "External secret storage has not been evaluated or adopted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.4.2_stmt",
+        "name": "statement",
+        "prose": "External secret storage has not been evaluated or adopted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.5.1",
+      "title": "Image provenance is not configured via ImagePolicyWebhook admission control",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.5.1_stmt",
+        "name": "statement",
+        "prose": "Image provenance is not configured via ImagePolicyWebhook admission control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.6.1",
+      "title": "Namespaces are not used to create administrative boundaries between resources",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.6.1_stmt",
+        "name": "statement",
+        "prose": "Namespaces are not used to create administrative boundaries between resources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.6.2",
+      "title": "Seccomp profile RuntimeDefault is not set in pod definitions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.6.2_stmt",
+        "name": "statement",
+        "prose": "Seccomp profile RuntimeDefault is not set in pod definitions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.6.3",
+      "title": "Security Context is not applied to pods and containers",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.6.3_stmt",
+        "name": "statement",
+        "prose": "Security Context is not applied to pods and containers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-4.6.4",
+      "title": "Workloads are deployed in the default namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 4.6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 4.6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-4.6.4_stmt",
+        "name": "statement",
+        "prose": "Workloads are deployed in the default namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.1.1",
+      "title": "Image vulnerability scanning is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Image vulnerability scanning is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.1.2",
+      "title": "User access to container image repositories is not minimized",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.1.2_stmt",
+        "name": "statement",
+        "prose": "User access to container image repositories is not minimized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.1.3",
+      "title": "Cluster access to container image repositories is not limited to read-only",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.1.3_stmt",
+        "name": "statement",
+        "prose": "Cluster access to container image repositories is not limited to read-only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.1.4",
+      "title": "Container images are not limited to trusted/approved sources",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.1.4_stmt",
+        "name": "statement",
+        "prose": "Container images are not limited to trusted/approved sources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.2.2",
+      "title": "Dedicated GCP service accounts with Workload Identity are not in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Dedicated GCP service accounts with Workload Identity are not in use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.3.1",
+      "title": "Kubernetes secrets are not encrypted with Cloud KMS keys (application-layer encryption)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Kubernetes secrets are not encrypted with Cloud KMS keys (application-layer encryption)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.5.1",
+      "title": "Node images are not Container-Optimized OS (cos_containerd)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.5.1_stmt",
+        "name": "statement",
+        "prose": "Node images are not Container-Optimized OS (cos_containerd)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.6.3",
+      "title": "Control Plane Authorized Networks is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.6.3_stmt",
+        "name": "statement",
+        "prose": "Control Plane Authorized Networks is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.6.4",
+      "title": "Private endpoint is not enabled with public access disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.6.4_stmt",
+        "name": "statement",
+        "prose": "Private endpoint is not enabled with public access disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.6.5",
+      "title": "Cluster nodes are not private (nodes have public reachability)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.6.5_stmt",
+        "name": "statement",
+        "prose": "Cluster nodes are not private (nodes have public reachability)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.6.7",
+      "title": "Google-managed SSL certificates are not in use for HTTPS load balancing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.6.7_stmt",
+        "name": "statement",
+        "prose": "Google-managed SSL certificates are not in use for HTTPS load balancing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.7.1",
+      "title": "Cloud Logging and Cloud Monitoring are not enabled for the cluster",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.7.1_stmt",
+        "name": "statement",
+        "prose": "Cloud Logging and Cloud Monitoring are not enabled for the cluster"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.8.1",
+      "title": "Client-certificate authentication is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.8.1_stmt",
+        "name": "statement",
+        "prose": "Client-certificate authentication is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.8.2",
+      "title": "Kubernetes RBAC users are not managed with Google Groups for Workspace",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.8.2_stmt",
+        "name": "statement",
+        "prose": "Kubernetes RBAC users are not managed with Google Groups for Workspace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.8.3",
+      "title": "Legacy Authorization (ABAC) is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.8.3_stmt",
+        "name": "statement",
+        "prose": "Legacy Authorization (ABAC) is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.10.1",
+      "title": "The Kubernetes Web UI (Dashboard) is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.10.1_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Web UI (Dashboard) is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gke-CIS-GKE-5.10.3",
+      "title": "GKE Sandbox has not been evaluated or adopted for untrusted workloads",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS GKE 5.10.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS GKE 5.10.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gke.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gke-CIS-GKE-5.10.3_stmt",
+        "name": "statement",
+        "prose": "GKE Sandbox has not been evaluated or adopted for untrusted workloads"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "e9f91314-1291-5fc6-b29c-d737ac0d70f7",
+     "title": "CIS Google GKE (Google Kubernetes Engine) Benchmark v1.9.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_gke.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/gke/cis_gke_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

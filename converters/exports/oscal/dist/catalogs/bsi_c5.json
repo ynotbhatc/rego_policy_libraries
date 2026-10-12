@@ -1,0 +1,3323 @@
+{
+ "catalog": {
+  "uuid": "b2cac403-61bf-57e7-a767-d9517b6eebdd",
+  "metadata": {
+   "title": "Rego Policy Libraries — bsi_c5 (BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "bsi_c5"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "bsi_c5-asset_management",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.asset_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/asset_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-AM-1",
+      "title": "An inventory of all assets supporting the cloud service is maintained and kept current",
+      "props": [
+       {
+        "name": "label",
+        "value": "AM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.asset_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efb4a633-6f9b-5c91-a95f-9c1c757fc348",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-AM-1_stmt",
+        "name": "statement",
+        "prose": "An inventory of all assets supporting the cloud service is maintained and kept current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-AM-2",
+      "title": "Every asset has a designated owner and documented acceptable-use rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "AM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.asset_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efb4a633-6f9b-5c91-a95f-9c1c757fc348",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-AM-2_stmt",
+        "name": "statement",
+        "prose": "Every asset has a designated owner and documented acceptable-use rules"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-AM-3",
+      "title": "Information is classified and labelled according to a defined scheme",
+      "props": [
+       {
+        "name": "label",
+        "value": "AM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.asset_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efb4a633-6f9b-5c91-a95f-9c1c757fc348",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-AM-3_stmt",
+        "name": "statement",
+        "prose": "Information is classified and labelled according to a defined scheme"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-AM-4",
+      "title": "Assets and media are securely wiped or destroyed on return, reuse, or disposal",
+      "props": [
+       {
+        "name": "label",
+        "value": "AM-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AM-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.asset_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efb4a633-6f9b-5c91-a95f-9c1c757fc348",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-AM-4_stmt",
+        "name": "statement",
+        "prose": "Assets and media are securely wiped or destroyed on return, reuse, or disposal"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.asset_management-1",
+      "title": "BSI C5 [Asset Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.asset_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.asset_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.asset_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#efb4a633-6f9b-5c91-a95f-9c1c757fc348",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.asset_management-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Asset Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-business_continuity",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.business_continuity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/business_continuity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-BCM-1",
+      "title": "Business continuity and disaster recovery plans for the cloud service are based on a business impact analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "BCM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "BCM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.business_continuity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#110c7a8c-c063-5251-844e-87fca959e073",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-BCM-1_stmt",
+        "name": "statement",
+        "prose": "Business continuity and disaster recovery plans for the cloud service are based on a business impact analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-BCM-2",
+      "title": "Continuity plans are exercised at regular intervals and updated from the results",
+      "props": [
+       {
+        "name": "label",
+        "value": "BCM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "BCM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.business_continuity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#110c7a8c-c063-5251-844e-87fca959e073",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-BCM-2_stmt",
+        "name": "statement",
+        "prose": "Continuity plans are exercised at regular intervals and updated from the results"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.business_continuity-1",
+      "title": "BSI C5 [Business Continuity Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.business_continuity#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.business_continuity#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.business_continuity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#110c7a8c-c063-5251-844e-87fca959e073",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.business_continuity-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Business Continuity Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-communication_security",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.communication_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/communication_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-COS-1",
+      "title": "Networks are segmented to separate tenants from each other and management traffic from service traffic",
+      "props": [
+       {
+        "name": "label",
+        "value": "COS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.communication_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#613e228b-8425-5384-bc97-5806c9de39cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-COS-1_stmt",
+        "name": "statement",
+        "prose": "Networks are segmented to separate tenants from each other and management traffic from service traffic"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-COS-2",
+      "title": "Perimeter protections (firewalls, intrusion detection) defend the service's network boundaries",
+      "props": [
+       {
+        "name": "label",
+        "value": "COS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.communication_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#613e228b-8425-5384-bc97-5806c9de39cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-COS-2_stmt",
+        "name": "statement",
+        "prose": "Perimeter protections (firewalls, intrusion detection) defend the service's network boundaries"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-COS-3",
+      "title": "Network topology and data flows of the cloud service are documented and kept current",
+      "props": [
+       {
+        "name": "label",
+        "value": "COS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.communication_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#613e228b-8425-5384-bc97-5806c9de39cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-COS-3_stmt",
+        "name": "statement",
+        "prose": "Network topology and data flows of the cloud service are documented and kept current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.communication_security-1",
+      "title": "BSI C5 [Communication Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.communication_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.communication_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.communication_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#613e228b-8425-5384-bc97-5806c9de39cb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.communication_security-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Communication Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-compliance_audit",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.compliance_audit"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/compliance_audit.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-COM-1",
+      "title": "Applicable legal, regulatory, and contractual requirements for the service are identified and kept current",
+      "props": [
+       {
+        "name": "label",
+        "value": "COM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.compliance_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b07f928-a961-5669-822e-48dbf08972af",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-COM-1_stmt",
+        "name": "statement",
+        "prose": "Applicable legal, regulatory, and contractual requirements for the service are identified and kept current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-COM-2",
+      "title": "Independent audits or attestations of the cloud service are performed at regular intervals",
+      "props": [
+       {
+        "name": "label",
+        "value": "COM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.compliance_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b07f928-a961-5669-822e-48dbf08972af",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-COM-2_stmt",
+        "name": "statement",
+        "prose": "Independent audits or attestations of the cloud service are performed at regular intervals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-COM-3",
+      "title": "Internal audits verify the effectiveness of the ISMS for the cloud service",
+      "props": [
+       {
+        "name": "label",
+        "value": "COM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.compliance_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b07f928-a961-5669-822e-48dbf08972af",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-COM-3_stmt",
+        "name": "statement",
+        "prose": "Internal audits verify the effectiveness of the ISMS for the cloud service"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.compliance_audit-1",
+      "title": "BSI C5 [Compliance] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.compliance_audit#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.compliance_audit#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.compliance_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b07f928-a961-5669-822e-48dbf08972af",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.compliance_audit-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Compliance] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-cryptography",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.cryptography"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/cryptography.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-CRY-1",
+      "title": "Cryptographic policies mandate state-of-the-art algorithms and protocols for the cloud service",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRY-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRY-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7303d9b-6e34-53f3-b83c-e72a7e228720",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-CRY-1_stmt",
+        "name": "statement",
+        "prose": "Cryptographic policies mandate state-of-the-art algorithms and protocols for the cloud service"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-CRY-2",
+      "title": "Customer data is encrypted in transit over public networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRY-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRY-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7303d9b-6e34-53f3-b83c-e72a7e228720",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-CRY-2_stmt",
+        "name": "statement",
+        "prose": "Customer data is encrypted in transit over public networks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-CRY-3",
+      "title": "Customer data is encrypted at rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRY-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRY-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7303d9b-6e34-53f3-b83c-e72a7e228720",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-CRY-3_stmt",
+        "name": "statement",
+        "prose": "Customer data is encrypted at rest"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-CRY-4",
+      "title": "Key management covers the full lifecycle and protects keys from unauthorized use, including by provider personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRY-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRY-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7303d9b-6e34-53f3-b83c-e72a7e228720",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-CRY-4_stmt",
+        "name": "statement",
+        "prose": "Key management covers the full lifecycle and protects keys from unauthorized use, including by provider personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.cryptography-1",
+      "title": "BSI C5 [Cryptography and Key Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.cryptography#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.cryptography#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7303d9b-6e34-53f3-b83c-e72a7e228720",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.cryptography-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Cryptography and Key Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-government_inquiries",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.government_inquiries"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/government_inquiries.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-INQ-1",
+      "title": "A defined process, including legal review, governs every government request for customer data",
+      "props": [
+       {
+        "name": "label",
+        "value": "INQ-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "INQ-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.government_inquiries"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a07af70e-9731-5862-bd02-26f075f22d79",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-INQ-1_stmt",
+        "name": "statement",
+        "prose": "A defined process, including legal review, governs every government request for customer data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-INQ-2",
+      "title": "Affected customers are informed of investigation requests wherever legally permitted",
+      "props": [
+       {
+        "name": "label",
+        "value": "INQ-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "INQ-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.government_inquiries"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a07af70e-9731-5862-bd02-26f075f22d79",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-INQ-2_stmt",
+        "name": "statement",
+        "prose": "Affected customers are informed of investigation requests wherever legally permitted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-INQ-3",
+      "title": "Disclosure is limited to the legally required minimum, and applicable jurisdictions are transparent to customers",
+      "props": [
+       {
+        "name": "label",
+        "value": "INQ-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "INQ-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.government_inquiries"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a07af70e-9731-5862-bd02-26f075f22d79",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-INQ-3_stmt",
+        "name": "statement",
+        "prose": "Disclosure is limited to the legally required minimum, and applicable jurisdictions are transparent to customers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.government_inquiries-1",
+      "title": "BSI C5 [Dealing with Investigation Requests from Government Agencies] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.government_inquiries#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.government_inquiries#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.government_inquiries"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a07af70e-9731-5862-bd02-26f075f22d79",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.government_inquiries-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Dealing with Investigation Requests from Government Agencies] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-identity_access_management",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.identity_access_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/identity_access_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-IDM-1",
+      "title": "Access is provisioned through a formal process on least-privilege and need-to-know principles",
+      "props": [
+       {
+        "name": "label",
+        "value": "IDM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IDM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.identity_access_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-IDM-1_stmt",
+        "name": "statement",
+        "prose": "Access is provisioned through a formal process on least-privilege and need-to-know principles"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-IDM-2",
+      "title": "Every user has a unique identifier; shared accounts are prohibited or strictly controlled and attributable",
+      "props": [
+       {
+        "name": "label",
+        "value": "IDM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IDM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.identity_access_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-IDM-2_stmt",
+        "name": "statement",
+        "prose": "Every user has a unique identifier; shared accounts are prohibited or strictly controlled and attributable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-IDM-3",
+      "title": "Privileged access is restricted, separately managed, and its use monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "IDM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IDM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.identity_access_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-IDM-3_stmt",
+        "name": "statement",
+        "prose": "Privileged access is restricted, separately managed, and its use monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-IDM-4",
+      "title": "Access rights are reviewed at regular intervals and revoked without undue delay on role change or departure",
+      "props": [
+       {
+        "name": "label",
+        "value": "IDM-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IDM-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.identity_access_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-IDM-4_stmt",
+        "name": "statement",
+        "prose": "Access rights are reviewed at regular intervals and revoked without undue delay on role change or departure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-IDM-5",
+      "title": "Strong (multi-factor) authentication protects administrative and remote access to the service infrastructure",
+      "props": [
+       {
+        "name": "label",
+        "value": "IDM-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IDM-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.identity_access_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-IDM-5_stmt",
+        "name": "statement",
+        "prose": "Strong (multi-factor) authentication protects administrative and remote access to the service infrastructure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.identity_access_management-1",
+      "title": "BSI C5 [Identity and Access Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.identity_access_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.identity_access_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.identity_access_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.identity_access_management-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Identity and Access Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-incident_management",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.incident_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/incident_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-SIM-1",
+      "title": "A security incident management process defines roles, classification, and escalation",
+      "props": [
+       {
+        "name": "label",
+        "value": "SIM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SIM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.incident_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb664ec6-ac5d-5e17-a276-60162f2b5c80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SIM-1_stmt",
+        "name": "statement",
+        "prose": "A security incident management process defines roles, classification, and escalation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-SIM-2",
+      "title": "Customers are informed without undue delay of incidents affecting their data or service",
+      "props": [
+       {
+        "name": "label",
+        "value": "SIM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SIM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.incident_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb664ec6-ac5d-5e17-a276-60162f2b5c80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SIM-2_stmt",
+        "name": "statement",
+        "prose": "Customers are informed without undue delay of incidents affecting their data or service"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-SIM-3",
+      "title": "Incident evidence is preserved and lessons learned feed back into safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "SIM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SIM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.incident_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb664ec6-ac5d-5e17-a276-60162f2b5c80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SIM-3_stmt",
+        "name": "statement",
+        "prose": "Incident evidence is preserved and lessons learned feed back into safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.incident_management-1",
+      "title": "BSI C5 [Security Incident Management] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.incident_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.incident_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.incident_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb664ec6-ac5d-5e17-a276-60162f2b5c80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.incident_management-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Security Incident Management] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-operations",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.operations"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/operations.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-OPS-1",
+      "title": "Operating procedures are documented and changes to them are controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "OPS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OPS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OPS-1_stmt",
+        "name": "statement",
+        "prose": "Operating procedures are documented and changes to them are controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OPS-2",
+      "title": "Capacity is monitored and forecast so that agreed service levels are sustained",
+      "props": [
+       {
+        "name": "label",
+        "value": "OPS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OPS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OPS-2_stmt",
+        "name": "statement",
+        "prose": "Capacity is monitored and forecast so that agreed service levels are sustained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OPS-3",
+      "title": "Systems supporting the cloud service run current malware protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "OPS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OPS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OPS-3_stmt",
+        "name": "statement",
+        "prose": "Systems supporting the cloud service run current malware protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OPS-4",
+      "title": "Data backups are performed, protected against unauthorized access, and restore-tested regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "OPS-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OPS-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OPS-4_stmt",
+        "name": "statement",
+        "prose": "Data backups are performed, protected against unauthorized access, and restore-tested regularly"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OPS-5",
+      "title": "Security-relevant events are logged; logs are protected against tampering and analysed centrally",
+      "props": [
+       {
+        "name": "label",
+        "value": "OPS-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OPS-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OPS-5_stmt",
+        "name": "statement",
+        "prose": "Security-relevant events are logged; logs are protected against tampering and analysed centrally"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OPS-6",
+      "title": "Vulnerabilities are identified (including by penetration tests), assessed, and remediated within defined timeframes",
+      "props": [
+       {
+        "name": "label",
+        "value": "OPS-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OPS-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OPS-6_stmt",
+        "name": "statement",
+        "prose": "Vulnerabilities are identified (including by penetration tests), assessed, and remediated within defined timeframes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.operations-1",
+      "title": "BSI C5 [Operations] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.operations#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.operations#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.operations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#15c2d868-7227-5b88-bba6-568c05885c83",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.operations-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Operations] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-organisation_information_security",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.organisation_information_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/organisation_information_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-OIS-1",
+      "title": "An ISMS with defined responsibilities for provision of the cloud service is established and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "OIS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OIS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.organisation_information_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6afae5b-350d-51bd-9fdb-876ee79fc786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OIS-1_stmt",
+        "name": "statement",
+        "prose": "An ISMS with defined responsibilities for provision of the cloud service is established and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OIS-2",
+      "title": "Security roles and responsibilities are assigned, with segregation of conflicting duties enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "OIS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OIS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.organisation_information_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6afae5b-350d-51bd-9fdb-876ee79fc786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OIS-2_stmt",
+        "name": "statement",
+        "prose": "Security roles and responsibilities are assigned, with segregation of conflicting duties enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OIS-3",
+      "title": "A risk management process identifies, assesses, and treats cloud-specific risks on a defined cadence",
+      "props": [
+       {
+        "name": "label",
+        "value": "OIS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OIS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.organisation_information_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6afae5b-350d-51bd-9fdb-876ee79fc786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OIS-3_stmt",
+        "name": "statement",
+        "prose": "A risk management process identifies, assesses, and treats cloud-specific risks on a defined cadence"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-OIS-4",
+      "title": "Contact with relevant authorities and special-interest groups is maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "OIS-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OIS-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.organisation_information_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6afae5b-350d-51bd-9fdb-876ee79fc786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-OIS-4_stmt",
+        "name": "statement",
+        "prose": "Contact with relevant authorities and special-interest groups is maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.organisation_information_security-1",
+      "title": "BSI C5 [Organisation of Information Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.organisation_information_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.organisation_information_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.organisation_information_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d6afae5b-350d-51bd-9fdb-876ee79fc786",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.organisation_information_security-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Organisation of Information Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-personnel",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.personnel"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/personnel.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-HR-1",
+      "title": "Background verification of employees is performed before access, proportional to the data classification handled",
+      "props": [
+       {
+        "name": "label",
+        "value": "HR-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HR-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.personnel"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0546792a-dfb1-5ea4-80fd-d734373e66d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-HR-1_stmt",
+        "name": "statement",
+        "prose": "Background verification of employees is performed before access, proportional to the data classification handled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-HR-2",
+      "title": "Employment terms include security and confidentiality obligations that survive termination",
+      "props": [
+       {
+        "name": "label",
+        "value": "HR-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HR-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.personnel"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0546792a-dfb1-5ea4-80fd-d734373e66d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-HR-2_stmt",
+        "name": "statement",
+        "prose": "Employment terms include security and confidentiality obligations that survive termination"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-HR-3",
+      "title": "Security awareness training is completed at onboarding and refreshed regularly for all personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "HR-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HR-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.personnel"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0546792a-dfb1-5ea4-80fd-d734373e66d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-HR-3_stmt",
+        "name": "statement",
+        "prose": "Security awareness training is completed at onboarding and refreshed regularly for all personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-HR-4",
+      "title": "A disciplinary process addresses violations of security policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "HR-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HR-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.personnel"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0546792a-dfb1-5ea4-80fd-d734373e66d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-HR-4_stmt",
+        "name": "statement",
+        "prose": "A disciplinary process addresses violations of security policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-HR-5",
+      "title": "Offboarding revokes all access and recovers assets in a defined, timely procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "HR-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HR-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.personnel"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0546792a-dfb1-5ea4-80fd-d734373e66d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-HR-5_stmt",
+        "name": "statement",
+        "prose": "Offboarding revokes all access and recovers assets in a defined, timely procedure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.personnel-1",
+      "title": "BSI C5 [Personnel] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.personnel#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.personnel#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.personnel"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0546792a-dfb1-5ea4-80fd-d734373e66d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.personnel-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Personnel] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-physical_security",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.physical_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/physical_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-PS-1",
+      "title": "Data centre perimeters and security zones restrict physical access to authorized persons, with entries logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.physical_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#201f3575-62d9-5b3a-9439-4cee89a80012",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PS-1_stmt",
+        "name": "statement",
+        "prose": "Data centre perimeters and security zones restrict physical access to authorized persons, with entries logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-PS-2",
+      "title": "Protection against environmental threats — fire, water, temperature, power disruption — is implemented and tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.physical_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#201f3575-62d9-5b3a-9439-4cee89a80012",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PS-2_stmt",
+        "name": "statement",
+        "prose": "Protection against environmental threats — fire, water, temperature, power disruption — is implemented and tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-PS-3",
+      "title": "Redundant power and telecommunication supplies match the availability commitments of the service",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.physical_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#201f3575-62d9-5b3a-9439-4cee89a80012",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PS-3_stmt",
+        "name": "statement",
+        "prose": "Redundant power and telecommunication supplies match the availability commitments of the service"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-PS-4",
+      "title": "Equipment is securely sited and maintained per manufacturer and security requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "PS-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PS-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.physical_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#201f3575-62d9-5b3a-9439-4cee89a80012",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PS-4_stmt",
+        "name": "statement",
+        "prose": "Equipment is securely sited and maintained per manufacturer and security requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.physical_security-1",
+      "title": "BSI C5 [Physical Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.physical_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.physical_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.physical_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#201f3575-62d9-5b3a-9439-4cee89a80012",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.physical_security-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Physical Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-portability_interoperability",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.portability_interoperability"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/portability_interoperability.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-PI-1",
+      "title": "Documented interfaces and formats let customers export their data (portability)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.portability_interoperability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a114bae-0352-59f9-86d7-a388aa96d308",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PI-1_stmt",
+        "name": "statement",
+        "prose": "Documented interfaces and formats let customers export their data (portability)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-PI-2",
+      "title": "Customer data is securely deleted at contract end, with the deletion confirmed to the customer",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.portability_interoperability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a114bae-0352-59f9-86d7-a388aa96d308",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PI-2_stmt",
+        "name": "statement",
+        "prose": "Customer data is securely deleted at contract end, with the deletion confirmed to the customer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.portability_interoperability-1",
+      "title": "BSI C5 [Portability and Interoperability] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.portability_interoperability#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.portability_interoperability#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.portability_interoperability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a114bae-0352-59f9-86d7-a388aa96d308",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.portability_interoperability-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Portability and Interoperability] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-product_security",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.product_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/product_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-PSS-1",
+      "title": "Security features and configuration guidance for the service, including the shared-responsibility split, are documented for customers",
+      "props": [
+       {
+        "name": "label",
+        "value": "PSS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PSS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.product_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#adcce163-b4d7-5647-af70-daacc72473c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PSS-1_stmt",
+        "name": "statement",
+        "prose": "Security features and configuration guidance for the service, including the shared-responsibility split, are documented for customers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-PSS-2",
+      "title": "Customer-facing interfaces and APIs are secured and tested against known attack classes",
+      "props": [
+       {
+        "name": "label",
+        "value": "PSS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PSS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.product_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#adcce163-b4d7-5647-af70-daacc72473c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PSS-2_stmt",
+        "name": "statement",
+        "prose": "Customer-facing interfaces and APIs are secured and tested against known attack classes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-PSS-3",
+      "title": "A vulnerability disclosure process covers the product, and errors are handled without exposing sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "PSS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PSS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.product_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#adcce163-b4d7-5647-af70-daacc72473c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-PSS-3_stmt",
+        "name": "statement",
+        "prose": "A vulnerability disclosure process covers the product, and errors are handled without exposing sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.product_security-1",
+      "title": "BSI C5 [Product Safety and Security] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.product_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.product_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.product_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#adcce163-b4d7-5647-af70-daacc72473c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.product_security-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Product Safety and Security] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-security_policies",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.security_policies"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/security_policies.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-SP-1",
+      "title": "Security policies and instructions are documented, approved by management, and communicated to all personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "SP-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SP-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.security_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#238d6186-3110-5451-b43c-e95eef37e105",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SP-1_stmt",
+        "name": "statement",
+        "prose": "Security policies and instructions are documented, approved by management, and communicated to all personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-SP-2",
+      "title": "Policies are reviewed at planned intervals and after significant changes to the service or threat landscape",
+      "props": [
+       {
+        "name": "label",
+        "value": "SP-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SP-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.security_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#238d6186-3110-5451-b43c-e95eef37e105",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SP-2_stmt",
+        "name": "statement",
+        "prose": "Policies are reviewed at planned intervals and after significant changes to the service or threat landscape"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-SP-3",
+      "title": "Exceptions to policies are documented, risk-assessed, approved, and time-limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "SP-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SP-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.security_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#238d6186-3110-5451-b43c-e95eef37e105",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SP-3_stmt",
+        "name": "statement",
+        "prose": "Exceptions to policies are documented, risk-assessed, approved, and time-limited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.security_policies-1",
+      "title": "BSI C5 [Security Policies and Instructions] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.security_policies#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.security_policies#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.security_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#238d6186-3110-5451-b43c-e95eef37e105",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.security_policies-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Security Policies and Instructions] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-supplier_control",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.supplier_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/supplier_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-SSO-1",
+      "title": "Security requirements for suppliers and subprocessors are contractually enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "SSO-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SSO-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.supplier_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00b1675c-722d-5a8e-8272-52f6af48cd14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SSO-1_stmt",
+        "name": "statement",
+        "prose": "Security requirements for suppliers and subprocessors are contractually enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-SSO-2",
+      "title": "Subprocessors involved in the service are identified, disclosed, and monitored for compliance",
+      "props": [
+       {
+        "name": "label",
+        "value": "SSO-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SSO-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.supplier_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00b1675c-722d-5a8e-8272-52f6af48cd14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SSO-2_stmt",
+        "name": "statement",
+        "prose": "Subprocessors involved in the service are identified, disclosed, and monitored for compliance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-SSO-3",
+      "title": "Supply-chain risks are assessed at regular intervals and on changes of supplier",
+      "props": [
+       {
+        "name": "label",
+        "value": "SSO-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SSO-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.supplier_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00b1675c-722d-5a8e-8272-52f6af48cd14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-SSO-3_stmt",
+        "name": "statement",
+        "prose": "Supply-chain risks are assessed at regular intervals and on changes of supplier"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.supplier_control-1",
+      "title": "BSI C5 [Control and Monitoring of Service Providers and Suppliers] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.supplier_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.supplier_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.supplier_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#00b1675c-722d-5a8e-8272-52f6af48cd14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.supplier_control-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Control and Monitoring of Service Providers and Suppliers] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "bsi_c5-system_development",
+    "class": "rego-module",
+    "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "bsi_c5.system_development"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/bsi_c5/system_development.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "bsi_c5-DEV-1",
+      "title": "A secure development policy embeds security requirements throughout the lifecycle of the cloud service",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.system_development"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee57ee8e-366f-59d3-a18a-91da74df712d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-DEV-1_stmt",
+        "name": "statement",
+        "prose": "A secure development policy embeds security requirements throughout the lifecycle of the cloud service"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-DEV-2",
+      "title": "Development, test, and production environments are separated",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.system_development"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee57ee8e-366f-59d3-a18a-91da74df712d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-DEV-2_stmt",
+        "name": "statement",
+        "prose": "Development, test, and production environments are separated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-DEV-3",
+      "title": "Changes are tested and approved before deployment to production",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.system_development"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee57ee8e-366f-59d3-a18a-91da74df712d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-DEV-3_stmt",
+        "name": "statement",
+        "prose": "Changes are tested and approved before deployment to production"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-DEV-4",
+      "title": "The cloud service undergoes security testing (including code analysis and penetration testing) before and after major changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.system_development"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee57ee8e-366f-59d3-a18a-91da74df712d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-DEV-4_stmt",
+        "name": "statement",
+        "prose": "The cloud service undergoes security testing (including code analysis and penetration testing) before and after major changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "bsi_c5-bsi_c5.system_development-1",
+      "title": "BSI C5 [Procurement, Development and Modification of Information Systems] %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "bsi_c5.system_development#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "bsi_c5.system_development#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "bsi_c5.system_development"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ee57ee8e-366f-59d3-a18a-91da74df712d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "bsi_c5-bsi_c5.system_development-1_stmt",
+        "name": "statement",
+        "prose": "BSI C5 [Procurement, Development and Modification of Information Systems] %s: %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "efb4a633-6f9b-5c91-a95f-9c1c757fc348",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.asset_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/asset_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "110c7a8c-c063-5251-844e-87fca959e073",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.business_continuity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/business_continuity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "613e228b-8425-5384-bc97-5806c9de39cb",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.communication_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/communication_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0b07f928-a961-5669-822e-48dbf08972af",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.compliance_audit"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/compliance_audit.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b7303d9b-6e34-53f3-b83c-e72a7e228720",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.cryptography"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/cryptography.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a07af70e-9731-5862-bd02-26f075f22d79",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.government_inquiries"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/government_inquiries.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "976dcdf3-2ccd-5cf6-8baa-4b0047f739ce",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.identity_access_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/identity_access_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fb664ec6-ac5d-5e17-a276-60162f2b5c80",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.incident_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/incident_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "15c2d868-7227-5b88-bba6-568c05885c83",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.operations"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/operations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d6afae5b-350d-51bd-9fdb-876ee79fc786",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.organisation_information_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/organisation_information_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0546792a-dfb1-5ea4-80fd-d734373e66d6",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.personnel"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/personnel.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "201f3575-62d9-5b3a-9439-4cee89a80012",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.physical_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/physical_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9a114bae-0352-59f9-86d7-a388aa96d308",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.portability_interoperability"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/portability_interoperability.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "adcce163-b4d7-5647-af70-daacc72473c9",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.product_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/product_security.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "238d6186-3110-5451-b43c-e95eef37e105",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.security_policies"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/security_policies.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "00b1675c-722d-5a8e-8272-52f6af48cd14",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.supplier_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/supplier_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ee57ee8e-366f-59d3-a18a-91da74df712d",
+     "title": "BSI C5:2020 (Cloud Computing Compliance Criteria Catalogue) — criteria",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "bsi_c5.system_development"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/bsi_c5/system_development.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

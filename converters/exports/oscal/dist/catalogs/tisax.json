@@ -1,0 +1,1753 @@
+{
+ "catalog": {
+  "uuid": "f5f8add9-fbd7-5899-b05b-b9c4ab1de45a",
+  "metadata": {
+   "title": "Rego Policy Libraries — tisax (TISAX — Trusted Information Security Assessment Exchange)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "tisax"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "tisax-tisax_main",
+    "class": "rego-module",
+    "title": "TISAX — Trusted Information Security Assessment Exchange",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tisax.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/tisax/tisax_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.1.1",
+      "title": "Information Security Management System (ISMS) not established and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.1.1_stmt",
+        "name": "statement",
+        "prose": "Information Security Management System (ISMS) not established and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.1.2",
+      "title": "ISMS scope not formally defined to include automotive customer information",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.1.2_stmt",
+        "name": "statement",
+        "prose": "ISMS scope not formally defined to include automotive customer information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.2.1",
+      "title": "Information security policy not documented and approved by top management",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.2.1_stmt",
+        "name": "statement",
+        "prose": "Information security policy not documented and approved by top management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.2.2",
+      "title": "Information security policies not reviewed at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.2.2_stmt",
+        "name": "statement",
+        "prose": "Information security policies not reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.3.1",
+      "title": "Information security risk assessment not conducted for automotive customer data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.3.1_stmt",
+        "name": "statement",
+        "prose": "Information security risk assessment not conducted for automotive customer data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.3.2",
+      "title": "Risk treatment plan not documented with accepted residual risks",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.3.2_stmt",
+        "name": "statement",
+        "prose": "Risk treatment plan not documented with accepted residual risks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.4.1",
+      "title": "Internal ISMS audits not conducted at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.4.1_stmt",
+        "name": "statement",
+        "prose": "Internal ISMS audits not conducted at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.4.2",
+      "title": "Management review of ISMS not conducted at defined intervals",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.4.2_stmt",
+        "name": "statement",
+        "prose": "Management review of ISMS not conducted at defined intervals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-1.5.1",
+      "title": "Continual improvement process not established for the ISMS",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-1.5.1_stmt",
+        "name": "statement",
+        "prose": "Continual improvement process not established for the ISMS"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-2.1.1",
+      "title": "Responsible person for information security not designated (CISO or equivalent)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Responsible person for information security not designated (CISO or equivalent)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-2.1.2",
+      "title": "Information security roles and responsibilities not defined and communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Information security roles and responsibilities not defined and communicated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-2.2.1",
+      "title": "Confidentiality agreements not signed by personnel handling OEM sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Confidentiality agreements not signed by personnel handling OEM sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-2.2.2",
+      "title": "Security screening and onboarding process not established for new employees with sensitive access",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Security screening and onboarding process not established for new employees with sensitive access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-2.2.3",
+      "title": "Offboarding process not established — access rights not revoked upon termination",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-2.2.3_stmt",
+        "name": "statement",
+        "prose": "Offboarding process not established — access rights not revoked upon termination"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-2.3.1",
+      "title": "Annual security awareness training not provided to all personnel handling OEM data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-2.3.1_stmt",
+        "name": "statement",
+        "prose": "Annual security awareness training not provided to all personnel handling OEM data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-3.1.1",
+      "title": "Asset inventory not maintained for information assets containing OEM sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-3.1.1_stmt",
+        "name": "statement",
+        "prose": "Asset inventory not maintained for information assets containing OEM sensitive data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-3.1.2",
+      "title": "Information classification scheme not established (e.g., confidential, internal, public)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Information classification scheme not established (e.g., confidential, internal, public)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-3.1.3",
+      "title": "OEM-provided information not classified according to OEM classification requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-3.1.3_stmt",
+        "name": "statement",
+        "prose": "OEM-provided information not classified according to OEM classification requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-3.2.1",
+      "title": "Removable media containing OEM sensitive data not securely handled and controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Removable media containing OEM sensitive data not securely handled and controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-3.2.2",
+      "title": "Secure data destruction process not established for media containing OEM sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Secure data destruction process not established for media containing OEM sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-4.1.1",
+      "title": "Physical security zones for OEM sensitive information not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-4.1.1_stmt",
+        "name": "statement",
+        "prose": "Physical security zones for OEM sensitive information not defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-4.1.2",
+      "title": "Physical access controls not implemented for areas containing OEM sensitive systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Physical access controls not implemented for areas containing OEM sensitive systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-4.1.3",
+      "title": "Visitor access to secured areas not logged and escorted",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Visitor access to secured areas not logged and escorted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-4.2.1",
+      "title": "Clear desk and clear screen policy not established for OEM sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Clear desk and clear screen policy not established for OEM sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.1.1",
+      "title": "Network not segmented to separate OEM sensitive systems from general IT",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Network not segmented to separate OEM sensitive systems from general IT"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.1.2",
+      "title": "OEM sensitive data not encrypted at rest on storage systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.1.2_stmt",
+        "name": "statement",
+        "prose": "OEM sensitive data not encrypted at rest on storage systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.1.3",
+      "title": "OEM sensitive data not encrypted in transit (TLS 1.2+ required)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.1.3_stmt",
+        "name": "statement",
+        "prose": "OEM sensitive data not encrypted in transit (TLS 1.2+ required)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.2.1",
+      "title": "Regular vulnerability scanning not performed on systems processing OEM data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Regular vulnerability scanning not performed on systems processing OEM data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.2.2",
+      "title": "Timely patching of systems processing OEM sensitive data not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Timely patching of systems processing OEM sensitive data not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.3.1",
+      "title": "Malware protection not deployed on all systems processing OEM data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Malware protection not deployed on all systems processing OEM data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.4.1",
+      "title": "Backup procedures for OEM data not established and regularly tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.4.1_stmt",
+        "name": "statement",
+        "prose": "Backup procedures for OEM data not established and regularly tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.5.1",
+      "title": "Formal change management process not established for systems processing OEM data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.5.1_stmt",
+        "name": "statement",
+        "prose": "Formal change management process not established for systems processing OEM data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-5.6.1",
+      "title": "Penetration testing not conducted to verify security of OEM data systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 5.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 5.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-5.6.1_stmt",
+        "name": "statement",
+        "prose": "Penetration testing not conducted to verify security of OEM data systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-6.1.1",
+      "title": "Least privilege not enforced for access to OEM sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-6.1.1_stmt",
+        "name": "statement",
+        "prose": "Least privilege not enforced for access to OEM sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-6.1.2",
+      "title": "Access to OEM sensitive data not restricted on need-to-know basis",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Access to OEM sensitive data not restricted on need-to-know basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-6.2.1",
+      "title": "Strong authentication not enforced for access to OEM sensitive systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-6.2.1_stmt",
+        "name": "statement",
+        "prose": "Strong authentication not enforced for access to OEM sensitive systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-6.2.2",
+      "title": "Privileged access to OEM data systems not managed through formal process",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-6.2.2_stmt",
+        "name": "statement",
+        "prose": "Privileged access to OEM data systems not managed through formal process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-6.3.1",
+      "title": "MFA not enforced for remote access to systems containing OEM data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 6.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 6.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-6.3.1_stmt",
+        "name": "statement",
+        "prose": "MFA not enforced for remote access to systems containing OEM data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-6.4.1",
+      "title": "Periodic review of access rights to OEM sensitive data not conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 6.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 6.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-6.4.1_stmt",
+        "name": "statement",
+        "prose": "Periodic review of access rights to OEM sensitive data not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-7.1.1",
+      "title": "Security evaluation not performed for third parties accessing OEM sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-7.1.1_stmt",
+        "name": "statement",
+        "prose": "Security evaluation not performed for third parties accessing OEM sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-7.1.2",
+      "title": "Security requirements not included in contracts with third parties handling OEM data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 7.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 7.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-7.1.2_stmt",
+        "name": "statement",
+        "prose": "Security requirements not included in contracts with third parties handling OEM data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-7.1.3",
+      "title": "Subcontractors handling OEM data not required to meet TISAX or equivalent security standard",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 7.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 7.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-7.1.3_stmt",
+        "name": "statement",
+        "prose": "Subcontractors handling OEM data not required to meet TISAX or equivalent security standard"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-7.2.1",
+      "title": "Security assessment not performed before storing OEM sensitive data in cloud environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Security assessment not performed before storing OEM sensitive data in cloud environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-8.1.1",
+      "title": "Information security incident management plan not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 8.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 8.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-8.1.1_stmt",
+        "name": "statement",
+        "prose": "Information security incident management plan not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-8.1.2",
+      "title": "Process not established to notify OEM customers of security incidents affecting their data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 8.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 8.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-8.1.2_stmt",
+        "name": "statement",
+        "prose": "Process not established to notify OEM customers of security incidents affecting their data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-8.1.3",
+      "title": "Incident management plan not periodically tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 8.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 8.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-8.1.3_stmt",
+        "name": "statement",
+        "prose": "Incident management plan not periodically tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-9.1.1",
+      "title": "Legal, regulatory, and contractual information security requirements not identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 9.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 9.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-9.1.1_stmt",
+        "name": "statement",
+        "prose": "Legal, regulatory, and contractual information security requirements not identified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-9.1.2",
+      "title": "OEM-specific information security contractual requirements not fully implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 9.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 9.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-9.1.2_stmt",
+        "name": "statement",
+        "prose": "OEM-specific information security contractual requirements not fully implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-VDA-ISA-9.2.1",
+      "title": "Audit trail not maintained for access to and processing of OEM sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX VDA ISA 9.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX VDA ISA 9.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-VDA-ISA-9.2.1_stmt",
+        "name": "statement",
+        "prose": "Audit trail not maintained for access to and processing of OEM sensitive data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-TISAX-PD-AL2",
+      "title": "Prototype handling procedures not documented — physical protection of pre-series vehicles not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "TISAX PD AL2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TISAX PD AL2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-TISAX-PD-AL2_stmt",
+        "name": "statement",
+        "prose": "Prototype handling procedures not documented — physical protection of pre-series vehicles not defined"
+       },
+       {
+        "id": "tisax-TISAX-PD-AL2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Photography and recording controls not established for prototype/test vehicle environments"
+       },
+       {
+        "id": "tisax-TISAX-PD-AL2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Secure transport procedures not established for prototypes and test vehicles"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "58b2e4ce-749b-53b7-a6a0-d5c491dd7063",
+     "title": "TISAX — Trusted Information Security Assessment Exchange",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tisax.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/tisax/tisax_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

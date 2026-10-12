@@ -1,0 +1,1083 @@
+{
+ "catalog": {
+  "uuid": "b19c0402-33e0-50a5-baa2-4a87ea1e7972",
+  "metadata": {
+   "title": "Rego Policy Libraries — owasp_llm (OWASP Top 10 for LLM Applications — 2026 edition (OWASP GenAI)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "owasp_llm"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "owasp_llm-owasp_llm_main",
+    "class": "rego-module",
+    "title": "OWASP Top 10 for LLM Applications — 2026 edition (OWASP GenAI",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "owasp_llm.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/owasp_llm/owasp_llm_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "owasp_llm-owasp_llm.main-1",
+      "title": "OWASP LLM01:2026 (Prompt Injection): authorization is checked on every request including tool/resource access, independent of model output — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-1_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM01:2026 (Prompt Injection): authorization is checked on every request including tool/resource access, independent of model output — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-2",
+      "title": "OWASP LLM01:2026 (Prompt Injection): model behavior is constrained with system-level instructions plus input/output filtering on untrusted content — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-2_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM01:2026 (Prompt Injection): model behavior is constrained with system-level instructions plus input/output filtering on untrusted content — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-3",
+      "title": "OWASP LLM01:2026 (Prompt Injection): human approval is required for high-impact actions reachable from model-processed untrusted input — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-3_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM01:2026 (Prompt Injection): human approval is required for high-impact actions reachable from model-processed untrusted input — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-4",
+      "title": "OWASP LLM02:2026 (Sensitive Information Disclosure): data sanitization/masking is applied before training and before context insertion — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-4_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM02:2026 (Sensitive Information Disclosure): data sanitization/masking is applied before training and before context insertion — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-5",
+      "title": "OWASP LLM02:2026 (Sensitive Information Disclosure): per-user access control is enforced in retrieval — identity and entitlement verified before documents enter context — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-5_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM02:2026 (Sensitive Information Disclosure): per-user access control is enforced in retrieval — identity and entitlement verified before documents enter context — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-6",
+      "title": "OWASP LLM02:2026 (Sensitive Information Disclosure): no secrets live in prompts/hidden context, and outputs are scanned for sensitive-data leakage — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-6_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM02:2026 (Sensitive Information Disclosure): no secrets live in prompts/hidden context, and outputs are scanned for sensitive-data leakage — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-7",
+      "title": "OWASP LLM03:2026 (Excessive Agency): only tools required for the task are exposed, with narrowest-scope functions — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-7_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM03:2026 (Excessive Agency): only tools required for the task are exposed, with narrowest-scope functions — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-8",
+      "title": "OWASP LLM03:2026 (Excessive Agency): downstream permissions are scoped to least privilege per agent identity — no shared super-credentials — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-8_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM03:2026 (Excessive Agency): downstream permissions are scoped to least privilege per agent identity — no shared super-credentials — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-9",
+      "title": "OWASP LLM03:2026 (Excessive Agency): a human-in-the-loop approval gate covers consequential actions (write/delete/payment/send) — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-9_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM03:2026 (Excessive Agency): a human-in-the-loop approval gate covers consequential actions (write/delete/payment/send) — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-10",
+      "title": "OWASP LLM04:2026 (Supply Chain): integrity/signatures of models, datasets and adapters are verified before use and versions are pinned — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-10_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM04:2026 (Supply Chain): integrity/signatures of models, datasets and adapters are verified before use and versions are pinned — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-11",
+      "title": "OWASP LLM04:2026 (Supply Chain): an AI Bill of Materials covering models, datasets and libraries is maintained — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-11_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM04:2026 (Supply Chain): an AI Bill of Materials covering models, datasets and libraries is maintained — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-12",
+      "title": "OWASP LLM04:2026 (Supply Chain): models and dependencies come only from vetted registries, with serving dependencies vulnerability-scanned — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-12_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM04:2026 (Supply Chain): models and dependencies come only from vetted registries, with serving dependencies vulnerability-scanned — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-13",
+      "title": "OWASP LLM05:2026 (Data and Model Poisoning): training/fine-tuning data provenance is tracked, validated and sanitized before ingestion — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-13_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM05:2026 (Data and Model Poisoning): training/fine-tuning data provenance is tracked, validated and sanitized before ingestion — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-14",
+      "title": "OWASP LLM05:2026 (Data and Model Poisoning): write access to stores that shape model behavior (training sets, vector DBs, memory) is restricted — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-14_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM05:2026 (Data and Model Poisoning): write access to stores that shape model behavior (training sets, vector DBs, memory) is restricted — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-15",
+      "title": "OWASP LLM05:2026 (Data and Model Poisoning): models are red-team evaluated / canary-tested for anomalous behavior before release — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-15_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM05:2026 (Data and Model Poisoning): models are red-team evaluated / canary-tested for anomalous behavior before release — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-16",
+      "title": "OWASP LLM06:2026 (Unbounded Consumption): rate limits and quotas are enforced per user/key with input-size and context-length caps — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-16_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM06:2026 (Unbounded Consumption): rate limits and quotas are enforced per user/key with input-size and context-length caps — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-17",
+      "title": "OWASP LLM06:2026 (Unbounded Consumption): cumulative resource use is metered across whole workflows (cascaded model/tool calls) with hard stops — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-17_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM06:2026 (Unbounded Consumption): cumulative resource use is metered across whole workflows (cascaded model/tool calls) with hard stops — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-18",
+      "title": "OWASP LLM06:2026 (Unbounded Consumption): budget alerts and circuit breakers cover inference spend, with timeouts on long generations — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-18_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM06:2026 (Unbounded Consumption): budget alerts and circuit breakers cover inference spend, with timeouts on long generations — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-19",
+      "title": "OWASP LLM07:2026 (Misinformation): high-stakes outputs are grounded via retrieval with source attribution — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-19_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM07:2026 (Misinformation): high-stakes outputs are grounded via retrieval with source attribution — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-20",
+      "title": "OWASP LLM07:2026 (Misinformation): model output is never validated by the same model; human review covers critical domains — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-20_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM07:2026 (Misinformation): model output is never validated by the same model; human review covers critical domains — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-21",
+      "title": "OWASP LLM07:2026 (Misinformation): model limitations are communicated to users and hallucination rates are monitored in evals — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-21_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM07:2026 (Misinformation): model limitations are communicated to users and hallucination rates are monitored in evals — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-22",
+      "title": "OWASP LLM08:2026 (Hidden Context Exposure): no secrets, credentials or role definitions live in system prompts, tool schemas or other model-visible context — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-22_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM08:2026 (Hidden Context Exposure): no secrets, credentials or role definitions live in system prompts, tool schemas or other model-visible context — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-23",
+      "title": "OWASP LLM08:2026 (Hidden Context Exposure): security controls are enforced outside the model — not dependent on hidden instructions staying hidden — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-23_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM08:2026 (Hidden Context Exposure): security controls are enforced outside the model — not dependent on hidden instructions staying hidden — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-24",
+      "title": "OWASP LLM08:2026 (Hidden Context Exposure): sensitive configuration is separated from model context — all model-visible context is treated as extractable — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-24_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM08:2026 (Hidden Context Exposure): sensitive configuration is separated from model context — all model-visible context is treated as extractable — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-25",
+      "title": "OWASP LLM09:2026 (Vector and Embedding Weaknesses): authorization is enforced at retrieval time (per-document ACLs in the vector store) — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-25_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM09:2026 (Vector and Embedding Weaknesses): authorization is enforced at retrieval time (per-document ACLs in the vector store) — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-26",
+      "title": "OWASP LLM09:2026 (Vector and Embedding Weaknesses): vector databases are partitioned/tenant-isolated with document provenance validated — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-26_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM09:2026 (Vector and Embedding Weaknesses): vector databases are partitioned/tenant-isolated with document provenance validated — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-27",
+      "title": "OWASP LLM09:2026 (Vector and Embedding Weaknesses): embedding inversion and cross-tenant leakage are monitored; knowledge-base mutations audited — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-27_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM09:2026 (Vector and Embedding Weaknesses): embedding inversion and cross-tenant leakage are monitored; knowledge-base mutations audited — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-28",
+      "title": "OWASP LLM10:2026 (Improper Output Handling): model output is treated as untrusted input with context-appropriate encoding per destination (HTML, SQL, shell) — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-28_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM10:2026 (Improper Output Handling): model output is treated as untrusted input with context-appropriate encoding per destination (HTML, SQL, shell) — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-29",
+      "title": "OWASP LLM10:2026 (Improper Output Handling): deterministic (non-LLM) validation sits between model output and downstream executors — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-29_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM10:2026 (Improper Output Handling): deterministic (non-LLM) validation sits between model output and downstream executors — not in place"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_llm-owasp_llm.main-30",
+      "title": "OWASP LLM10:2026 (Improper Output Handling): model-generated code or queries are parameterized/sandboxed before execution — not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_llm.main#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_llm.main#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_llm.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_llm-owasp_llm.main-30_stmt",
+        "name": "statement",
+        "prose": "OWASP LLM10:2026 (Improper Output Handling): model-generated code or queries are parameterized/sandboxed before execution — not in place"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "3c22be47-23bd-53cd-bcc4-1d1d4d117158",
+     "title": "OWASP Top 10 for LLM Applications — 2026 edition (OWASP GenAI",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "owasp_llm.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/owasp_llm/owasp_llm_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

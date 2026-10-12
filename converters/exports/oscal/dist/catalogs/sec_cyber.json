@@ -1,0 +1,432 @@
+{
+ "catalog": {
+  "uuid": "0bb9afc2-1670-537d-98f5-234c67d8d59c",
+  "metadata": {
+   "title": "Rego Policy Libraries — sec_cyber (SEC Cybersecurity Disclosure Rules)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "sec_cyber"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "sec_cyber-sec_cyber_main",
+    "class": "rego-module",
+    "title": "SEC Cybersecurity Disclosure Rules",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sec_cyber.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/sec_cyber/sec_cyber_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-229.106",
+      "title": "No documented process to determine materiality of cybersecurity incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule §229.106"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule §229.106"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106_stmt",
+        "name": "statement",
+        "prose": "No documented process to determine materiality of cybersecurity incidents"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity incident register not maintained for materiality review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05",
+      "title": "Materiality determination not made without unreasonable delay after discovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule Item 1.05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule Item 1.05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05_stmt",
+        "name": "statement",
+        "prose": "Materiality determination not made without unreasonable delay after discovery"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05_obj.1",
+        "name": "assessment-objective",
+        "prose": "Material cybersecurity incident disclosure not filed on Form 8-K within 4 business days"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05-a",
+      "title": "Form 8-K does not describe nature, scope, and timing of incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule Item 1.05(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule Item 1.05(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05-a_stmt",
+        "name": "statement",
+        "prose": "Form 8-K does not describe nature, scope, and timing of incident"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05-a_obj.1",
+        "name": "assessment-objective",
+        "prose": "Form 8-K does not describe material impact on registrant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05-c",
+      "title": "No process to request disclosure delay when national security exception applies",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule Item 1.05(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule Item 1.05(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-Item-1.05-c_stmt",
+        "name": "statement",
+        "prose": "No process to request disclosure delay when national security exception applies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1",
+      "title": "Cybersecurity risk management strategy not documented for 10-K disclosure",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule §229.106(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule §229.106(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity risk management strategy not documented for 10-K disclosure"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity risk management not integrated with overall enterprise risk management"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Third-party cybersecurity risk assessment process not established and disclosed"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Formal cybersecurity risk management program not established"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_obj.4",
+        "name": "assessment-objective",
+        "prose": "No recognized cybersecurity framework (NIST CSF, ISO 27001, etc.) adopted"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_obj.5",
+        "name": "assessment-objective",
+        "prose": "Regular cybersecurity risk assessments not conducted"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-1_obj.6",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity incident response plan not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-2",
+      "title": "Material cybersecurity risks and their potential impact not identified and disclosed",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule §229.106(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule §229.106(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-2_stmt",
+        "name": "statement",
+        "prose": "Material cybersecurity risks and their potential impact not identified and disclosed"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-b-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Prior material incidents not disclosed with description of impact on operations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-1",
+      "title": "Board-level committee or full board responsibility for cybersecurity oversight not assigned",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule §229.106(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule §229.106(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-1_stmt",
+        "name": "statement",
+        "prose": "Board-level committee or full board responsibility for cybersecurity oversight not assigned"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Board not informed of cybersecurity risks at required frequency"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Board cybersecurity oversight process not disclosed in annual report"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-2",
+      "title": "Management roles responsible for cybersecurity not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "SEC Cyber Rule §229.106(c)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SEC Cyber Rule §229.106(c)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sec_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01822064-7891-59e9-9a69-4b85c774b863",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-2_stmt",
+        "name": "statement",
+        "prose": "Management roles responsible for cybersecurity not defined"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Management lacks cybersecurity expertise or access to expertise"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Management reporting process to board on cybersecurity risks not established"
+       },
+       {
+        "id": "sec_cyber-SEC-Cyber-Rule-229.106-c-2_obj.3",
+        "name": "assessment-objective",
+        "prose": "No CISO or equivalent role with cybersecurity responsibility designated"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "01822064-7891-59e9-9a69-4b85c774b863",
+     "title": "SEC Cybersecurity Disclosure Rules",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sec_cyber.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/sec_cyber/sec_cyber_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

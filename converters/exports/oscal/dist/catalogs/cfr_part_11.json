@@ -1,0 +1,1479 @@
+{
+ "catalog": {
+  "uuid": "2867f7e8-c054-555b-8478-7a599a0eefea",
+  "metadata": {
+   "title": "Rego Policy Libraries — cfr_part_11 (FDA 21 CFR Part 11 — Electronic Records; Electronic Signatures)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cfr_part_11"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cfr_part_11-cfr_part_11_main",
+    "class": "rego-module",
+    "title": "FDA 21 CFR Part 11 — Electronic Records; Electronic Signatures",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cfr_part_11.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regulatory/cfr_part_11/cfr_part_11_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cfr_part_11-cfr_part_11.main-1",
+      "title": "21 CFR 11.10(a): System not validated to ensure accuracy, reliability, consistent intended performance, and ability to discern invalid/altered records",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-1_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(a): System not validated to ensure accuracy, reliability, consistent intended performance, and ability to discern invalid/altered records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-2",
+      "title": "21 CFR 11.10(a): Installation Qualification (IQ), Operational Qualification (OQ), Performance Qualification (PQ) not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-2_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(a): Installation Qualification (IQ), Operational Qualification (OQ), Performance Qualification (PQ) not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-3",
+      "title": "21 CFR 11.10(a): System not revalidated after significant changes affecting electronic records or signatures",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-3_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(a): System not revalidated after significant changes affecting electronic records or signatures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-4",
+      "title": "21 CFR 11.10(b): System cannot produce accurate and complete copies of records in human readable form",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-4_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(b): System cannot produce accurate and complete copies of records in human readable form"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-5",
+      "title": "21 CFR 11.10(b): System cannot produce accurate electronic copies of records for authorized agency inspection",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-5_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(b): System cannot produce accurate electronic copies of records for authorized agency inspection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-6",
+      "title": "21 CFR 11.10(c): Electronic records not protected to enable their accurate and ready retrieval throughout record retention period",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-6_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(c): Electronic records not protected to enable their accurate and ready retrieval throughout record retention period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-7",
+      "title": "21 CFR 11.10(c): Electronic records not regularly backed up with tested restoration procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-7_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(c): Electronic records not regularly backed up with tested restoration procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-8",
+      "title": "21 CFR 11.10(d): System access not limited to authorized individuals",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-8_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(d): System access not limited to authorized individuals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-9",
+      "title": "21 CFR 11.10(d): Unique user IDs not enforced — shared accounts not acceptable for 21 CFR Part 11",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-9_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(d): Unique user IDs not enforced — shared accounts not acceptable for 21 CFR Part 11"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-10",
+      "title": "21 CFR 11.10(e): Audit trails not computer-generated (no manual audit trail entries permitted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-10_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(e): Audit trails not computer-generated (no manual audit trail entries permitted)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-11",
+      "title": "21 CFR 11.10(e): Audit trail timestamps not accurate and synchronized to authoritative time source",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-11_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(e): Audit trail timestamps not accurate and synchronized to authoritative time source"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-12",
+      "title": "21 CFR 11.10(e): Audit trail does not record date/time, operator ID, and nature of record changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-12_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(e): Audit trail does not record date/time, operator ID, and nature of record changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-13",
+      "title": "21 CFR 11.10(e): Audit trail records not protected against modification or deletion by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-13_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(e): Audit trail records not protected against modification or deletion by users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-14",
+      "title": "21 CFR 11.10(e): Audit trail not retained for at least as long as the records it covers, and available for agency review",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-14_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(e): Audit trail not retained for at least as long as the records it covers, and available for agency review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-15",
+      "title": "21 CFR 11.10(f): System checks not in place to enforce permitted sequencing of steps and events where required",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-15_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(f): System checks not in place to enforce permitted sequencing of steps and events where required"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-16",
+      "title": "21 CFR 11.10(g): System does not check authority to sign, access system, or perform operations at time of attempted action",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-16_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(g): System does not check authority to sign, access system, or perform operations at time of attempted action"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-17",
+      "title": "21 CFR 11.10(h): Device checks not used to determine validity of source of data input or operational instruction",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-17_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(h): Device checks not used to determine validity of source of data input or operational instruction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-18",
+      "title": "21 CFR 11.10(i): Personnel not trained and qualified on the use of the electronic records/signatures system",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-18_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(i): Personnel not trained and qualified on the use of the electronic records/signatures system"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-19",
+      "title": "21 CFR 11.10(i): Training records for electronic records system use not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-19_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(i): Training records for electronic records system use not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-20",
+      "title": "21 CFR 11.10(j): Written policies holding individuals accountable for actions initiated under their electronic signatures not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-20_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(j): Written policies holding individuals accountable for actions initiated under their electronic signatures not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-21",
+      "title": "21 CFR 11.10(k)(1): Controls not established for distribution of, access to, and use of system documentation",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-21_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(k)(1): Controls not established for distribution of, access to, and use of system documentation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-22",
+      "title": "21 CFR 11.10(k)(2): Revision and change control procedures not established for system documentation",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-22_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.10(k)(2): Revision and change control procedures not established for system documentation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-23",
+      "title": "21 CFR 11.30: Electronic records transmitted over open networks not encrypted to ensure authenticity and integrity",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-23_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.30: Electronic records transmitted over open networks not encrypted to ensure authenticity and integrity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-24",
+      "title": "21 CFR 11.30: Digital signatures or equivalent controls not used to ensure record authenticity on open systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-24_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.30: Digital signatures or equivalent controls not used to ensure record authenticity on open systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-25",
+      "title": "21 CFR 11.50(a)(1): Electronic signature does not include the printed name of the signer",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-25_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.50(a)(1): Electronic signature does not include the printed name of the signer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-26",
+      "title": "21 CFR 11.50(a)(2): Electronic signature does not include the date and time of signing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-26_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.50(a)(2): Electronic signature does not include the date and time of signing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-27",
+      "title": "21 CFR 11.50(a)(3): Electronic signature does not indicate the meaning of the signature (review, approval, responsibility)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-27_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.50(a)(3): Electronic signature does not indicate the meaning of the signature (review, approval, responsibility)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-28",
+      "title": "21 CFR 11.50(b): Electronic signature manifestation not included in human readable form of signed records",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-28_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.50(b): Electronic signature manifestation not included in human readable form of signed records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-29",
+      "title": "21 CFR 11.70: Electronic signatures not cryptographically or procedurally linked to their respective records",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-29_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.70: Electronic signatures not cryptographically or procedurally linked to their respective records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-30",
+      "title": "21 CFR 11.70: Signed records not tamper-evident — signature cannot be copied/transferred to falsify records",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-30_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.70: Signed records not tamper-evident — signature cannot be copied/transferred to falsify records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-31",
+      "title": "21 CFR 11.100(a): Electronic signatures not proven unique to one individual and not reused or reassigned",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-31_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.100(a): Electronic signatures not proven unique to one individual and not reused or reassigned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-32",
+      "title": "21 CFR 11.100(b): Identity not verified before electronic signature privileges assigned",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-32_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.100(b): Identity not verified before electronic signature privileges assigned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-33",
+      "title": "21 CFR 11.100(c): Certification to FDA that electronic signatures are intended to be equivalent to handwritten signatures not filed",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-33_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.100(c): Certification to FDA that electronic signatures are intended to be equivalent to handwritten signatures not filed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-34",
+      "title": "21 CFR 11.200(a)(1): Non-biometric electronic signatures do not use at least two distinct identification components (e.g., ID code + password)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-34_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.200(a)(1): Non-biometric electronic signatures do not use at least two distinct identification components (e.g., ID code + password)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-35",
+      "title": "21 CFR 11.200(a)(2): Executing multiple signings in one session does not require all components at first signing and at least one component thereafter",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-35_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.200(a)(2): Executing multiple signings in one session does not require all components at first signing and at least one component thereafter"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-36",
+      "title": "21 CFR 11.200(a)(3): Executing signatures not during a single continuous session requires use of all signature components",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-36_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.200(a)(3): Executing signatures not during a single continuous session requires use of all signature components"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-37",
+      "title": "21 CFR 11.200(b): Biometric electronic signatures not designed to ensure they cannot be used by anyone other than the genuine owner",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-37_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.200(b): Biometric electronic signatures not designed to ensure they cannot be used by anyone other than the genuine owner"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-38",
+      "title": "21 CFR 11.300(a): Identification code/password combinations not maintained to ensure uniqueness",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#38"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#38"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-38_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.300(a): Identification code/password combinations not maintained to ensure uniqueness"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-39",
+      "title": "21 CFR 11.300(b): Identification codes or passwords not periodically checked, recalled, or revised",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-39_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.300(b): Identification codes or passwords not periodically checked, recalled, or revised"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-40",
+      "title": "21 CFR 11.300(c): Controls not in place to detect unauthorized use of passwords or identification codes",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#40"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#40"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-40_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.300(c): Controls not in place to detect unauthorized use of passwords or identification codes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-41",
+      "title": "21 CFR 11.300(d): Device loss management procedures not established (for token/card-based systems)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#41"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#41"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-41_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.300(d): Device loss management procedures not established (for token/card-based systems)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cfr_part_11-cfr_part_11.main-42",
+      "title": "21 CFR 11.300(e): Transaction safeguards not used to prevent unauthorized use of passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "cfr_part_11.main#42"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cfr_part_11.main#42"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cfr_part_11.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#603d49bb-a6c4-56ef-b645-67881d2ef31e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cfr_part_11-cfr_part_11.main-42_stmt",
+        "name": "statement",
+        "prose": "21 CFR 11.300(e): Transaction safeguards not used to prevent unauthorized use of passwords"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "603d49bb-a6c4-56ef-b645-67881d2ef31e",
+     "title": "FDA 21 CFR Part 11 — Electronic Records; Electronic Signatures",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cfr_part_11.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regulatory/cfr_part_11/cfr_part_11_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

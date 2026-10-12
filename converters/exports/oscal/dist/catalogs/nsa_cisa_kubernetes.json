@@ -1,0 +1,448 @@
+{
+ "catalog": {
+  "uuid": "3445edc7-c3c4-538b-9d99-c0c4e873e98d",
+  "metadata": {
+   "title": "Rego Policy Libraries — nsa_cisa_kubernetes (NSA/CISA Kubernetes Hardening Guidance v1.2 (August 2022))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nsa_cisa_kubernetes"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nsa_cisa_kubernetes-nsa_cisa_k8s_validation",
+    "class": "rego-module",
+    "title": "NSA/CISA Kubernetes Hardening Guidance v1.2 (August 2022)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nsa_cisa_k8s.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/nsa_cisa/kubernetes/nsa_cisa_k8s_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security",
+      "title": "Containers are not built/forced to run as non-root users",
+      "props": [
+       {
+        "name": "label",
+        "value": "NSA-K8S 1 (Pod security)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NSA-K8S 1 (Pod security)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nsa_cisa_k8s.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad152331-bded-5d9a-80d8-e7beac142a70",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_stmt",
+        "name": "statement",
+        "prose": "Containers are not built/forced to run as non-root users"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.1",
+        "name": "assessment-objective",
+        "prose": "Containers do not run with immutable (read-only) root filesystems where possible"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.2",
+        "name": "assessment-objective",
+        "prose": "Container images are not scanned for vulnerabilities or misconfigurations throughout the build workflow"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.3",
+        "name": "assessment-objective",
+        "prose": "Privileged containers are not prevented by a technical control"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.4",
+        "name": "assessment-objective",
+        "prose": "Breakout-prone features (hostPID, hostIPC, hostNetwork) are not denied"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.5",
+        "name": "assessment-objective",
+        "prose": "hostPath volume mounts are not denied"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.6",
+        "name": "assessment-objective",
+        "prose": "Containers executing as root or allowing elevation to root are not rejected"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.7",
+        "name": "assessment-objective",
+        "prose": "Kernel-level hardening (SELinux, AppArmor, seccomp) is not applied to workloads"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.8",
+        "name": "assessment-objective",
+        "prose": "Pod Security Admission (baseline or stricter) is not enforced cluster-wide"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.9",
+        "name": "assessment-objective",
+        "prose": "Deployments are not restricted to trusted image registries"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.10",
+        "name": "assessment-objective",
+        "prose": "Only digitally signed images are not enforced via admission control"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-1-Pod-security_obj.11",
+        "name": "assessment-objective",
+        "prose": "automountServiceAccountToken is not set to false for Pods that do not need API access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network",
+      "title": "Access to control plane nodes is not locked down with a firewall and RBAC",
+      "props": [
+       {
+        "name": "label",
+        "value": "NSA-K8S 2 (Network)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NSA-K8S 2 (Network)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nsa_cisa_k8s.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad152331-bded-5d9a-80d8-e7beac142a70",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_stmt",
+        "name": "statement",
+        "prose": "Access to control plane nodes is not locked down with a firewall and RBAC"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.1",
+        "name": "assessment-objective",
+        "prose": "Control plane components and worker nodes do not use separate networks"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.2",
+        "name": "assessment-objective",
+        "prose": "Access to the etcd server is not further limited (dedicated node, firewall restricted to API servers)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.3",
+        "name": "assessment-objective",
+        "prose": "Control plane components do not use authenticated, TLS-encrypted communications"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.4",
+        "name": "assessment-objective",
+        "prose": "etcd is not encrypted at rest"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.5",
+        "name": "assessment-objective",
+        "prose": "etcd does not use a separate TLS certificate (and trusts more than the API server certificates)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.6",
+        "name": "assessment-objective",
+        "prose": "Namespaces are not used to partition resources (or user Pods run in kube-system/kube-public)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.7",
+        "name": "assessment-objective",
+        "prose": "Network policies isolating resources are not defined (CNI must support the NetworkPolicy API)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.8",
+        "name": "assessment-objective",
+        "prose": "No explicit default-deny (ingress and egress) network policy exists"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.9",
+        "name": "assessment-objective",
+        "prose": "LimitRange / ResourceQuota / PID limits are not enforced to prevent resource exhaustion"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.10",
+        "name": "assessment-objective",
+        "prose": "Credentials are kept in configuration files, or Kubernetes Secrets are not encrypted with a strong method (they are not encrypted by default)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.11",
+        "name": "assessment-objective",
+        "prose": "The API server (port 6443) is exposed to the internet or untrusted networks"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.12",
+        "name": "assessment-objective",
+        "prose": "Cluster traffic is not encrypted with TLS 1.2 or 1.3 throughout"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-2-Network_obj.13",
+        "name": "assessment-objective",
+        "prose": "Pods can reach the cloud instance metadata service (privilege-escalation vector)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ",
+      "title": "API server anonymous authentication is not disabled (--anonymous-auth=false)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NSA-K8S 3 (AuthN/AuthZ)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NSA-K8S 3 (AuthN/AuthZ)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nsa_cisa_k8s.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad152331-bded-5d9a-80d8-e7beac142a70",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ_stmt",
+        "name": "statement",
+        "prose": "API server anonymous authentication is not disabled (--anonymous-auth=false)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ_obj.1",
+        "name": "assessment-objective",
+        "prose": "Strong user authentication is not implemented (or weak methods like static password files are in use)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ_obj.2",
+        "name": "assessment-objective",
+        "prose": "RBAC is not enabled (--authorization-mode=RBAC), or AlwaysAllow is in effect"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ_obj.3",
+        "name": "assessment-objective",
+        "prose": "RBAC policies with unique least-privilege roles per users, administrators, developers, service accounts, and infrastructure team are not in place"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ_obj.4",
+        "name": "assessment-objective",
+        "prose": "Anonymous access to the kubelet service is not disabled"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-3-AuthN-AuthZ_obj.5",
+        "name": "assessment-objective",
+        "prose": "Kubelet client TLS authentication is not enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging",
+      "title": "Kubernetes audit logging is not enabled (it is disabled by default)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NSA-K8S 4 (Logging)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NSA-K8S 4 (Logging)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nsa_cisa_k8s.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad152331-bded-5d9a-80d8-e7beac142a70",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_stmt",
+        "name": "statement",
+        "prose": "Kubernetes audit logging is not enabled (it is disabled by default)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_obj.1",
+        "name": "assessment-objective",
+        "prose": "No audit policy is configured (security-critical events at RequestResponse; requests involving Secrets reduced to Metadata level)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_obj.2",
+        "name": "assessment-objective",
+        "prose": "Logs are not persisted to survive node, Pod, or container failure"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_obj.3",
+        "name": "assessment-objective",
+        "prose": "Logs are not aggregated external to the cluster (TLS 1.2/1.3 in transit, append-only forwarder access)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_obj.4",
+        "name": "assessment-objective",
+        "prose": "No log monitoring and alerting system (SIEM or equivalent) is tailored to the cluster"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_obj.5",
+        "name": "assessment-objective",
+        "prose": "Pod behavioral baselines (network, requests, resource consumption) are not established at creation for anomaly detection"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-4-Logging_obj.6",
+        "name": "assessment-objective",
+        "prose": "RBAC policy configuration is not periodically reviewed (and on personnel changes)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "nsa_cisa_kubernetes-NSA-K8S-5-Upgrading",
+      "title": "Security patches and updates are not promptly applied (Kubernetes, hosts, hypervisors, plugins, CI/CD elements)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NSA-K8S 5 (Upgrading)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NSA-K8S 5 (Upgrading)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nsa_cisa_k8s.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad152331-bded-5d9a-80d8-e7beac142a70",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-5-Upgrading_stmt",
+        "name": "statement",
+        "prose": "Security patches and updates are not promptly applied (Kubernetes, hosts, hypervisors, plugins, CI/CD elements)"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-5-Upgrading_obj.1",
+        "name": "assessment-objective",
+        "prose": "Periodic vulnerability scans and penetration tests are not performed"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-5-Upgrading_obj.2",
+        "name": "assessment-objective",
+        "prose": "Unused components are not uninstalled and deleted from the environment"
+       },
+       {
+        "id": "nsa_cisa_kubernetes-NSA-K8S-5-Upgrading_obj.3",
+        "name": "assessment-objective",
+        "prose": "CIS benchmarks for Kubernetes and system components are not adhered to / periodically verified"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "ad152331-bded-5d9a-80d8-e7beac142a70",
+     "title": "NSA/CISA Kubernetes Hardening Guidance v1.2 (August 2022)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nsa_cisa_k8s.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/nsa_cisa/kubernetes/nsa_cisa_k8s_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

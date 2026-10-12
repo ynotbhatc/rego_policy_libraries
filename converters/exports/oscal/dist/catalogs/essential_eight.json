@@ -1,0 +1,3812 @@
+{
+ "catalog": {
+  "uuid": "f4674aac-e116-5d79-bdb2-fa9a215720e4",
+  "metadata": {
+   "title": "Rego Policy Libraries — essential_eight (ACSC Essential Eight Maturity Model (Nov 2023) — Application Control)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "essential_eight"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "essential_eight-application_control",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Application Control",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.application_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/application_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-AC-ML1-1",
+      "title": "Application control is implemented on workstations",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML1-1_stmt",
+        "name": "statement",
+        "prose": "Application control is implemented on workstations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML1-2",
+      "title": "Application control restricts execution of executables, software libraries, scripts, installers, compiled HTML, HTML applications and control panel applets to an approved set on workstations",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML1-2_stmt",
+        "name": "statement",
+        "prose": "Application control restricts execution of executables, software libraries, scripts, installers, compiled HTML, HTML applications and control panel applets to an approved set on workstations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML2-1",
+      "title": "Application control is implemented on workstations and internet-facing servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML2-1_stmt",
+        "name": "statement",
+        "prose": "Application control is implemented on workstations and internet-facing servers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML2-2",
+      "title": "Microsoft's recommended application blocklist is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Microsoft's recommended application blocklist is implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML2-3",
+      "title": "Application control rulesets are validated on an annual or more frequent basis",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML2-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML2-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML2-3_stmt",
+        "name": "statement",
+        "prose": "Application control rulesets are validated on an annual or more frequent basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML2-4",
+      "title": "Allowed and blocked execution events are centrally logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML2-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML2-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML2-4_stmt",
+        "name": "statement",
+        "prose": "Allowed and blocked execution events are centrally logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML3-1",
+      "title": "Application control is implemented on workstations and servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML3-1_stmt",
+        "name": "statement",
+        "prose": "Application control is implemented on workstations and servers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML3-2",
+      "title": "Application control restricts execution of drivers to an approved set",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Application control restricts execution of drivers to an approved set"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML3-3",
+      "title": "Microsoft's recommended driver blocklist is implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML3-3_stmt",
+        "name": "statement",
+        "prose": "Microsoft's recommended driver blocklist is implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML3-4",
+      "title": "Event logs are protected from unauthorised modification and deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML3-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML3-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML3-4_stmt",
+        "name": "statement",
+        "prose": "Event logs are protected from unauthorised modification and deletion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-AC-ML3-5",
+      "title": "Event logs are monitored for signs of compromise and actioned when detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC-ML3-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC-ML3-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-AC-ML3-5_stmt",
+        "name": "statement",
+        "prose": "Event logs are monitored for signs of compromise and actioned when detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.application_control-1",
+      "title": "Essential Eight [Application Control] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.application_control#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.application_control#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.application_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#285afff4-7e1c-5292-9808-e9d96f03c09c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.application_control-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Application Control] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-multi_factor_authentication",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Multi-Factor Authentication",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.multi_factor_authentication"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/multi_factor_authentication.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-MFA-ML1-1",
+      "title": "Multi-factor authentication is used to authenticate users to their organisation's internet-facing services",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML1-1_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is used to authenticate users to their organisation's internet-facing services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML1-2",
+      "title": "Multi-factor authentication is used to authenticate users to third-party internet-facing services that process, store or communicate their organisation's sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML1-2_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is used to authenticate users to third-party internet-facing services that process, store or communicate their organisation's sensitive data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML1-3",
+      "title": "Multi-factor authentication (where available) is used to authenticate users to third-party internet-facing services that process, store or communicate their organisation's non-sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML1-3_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication (where available) is used to authenticate users to third-party internet-facing services that process, store or communicate their organisation's non-sensitive data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML1-4",
+      "title": "Multi-factor authentication uses either something users have and something users know, or something users have that is unlocked by something users know or are",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML1-4_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication uses either something users have and something users know, or something users have that is unlocked by something users know or are"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML2-1",
+      "title": "Multi-factor authentication is used to authenticate users to their organisation's internet-facing services (all users, not only where feasible)",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML2-1_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is used to authenticate users to their organisation's internet-facing services (all users, not only where feasible)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML2-2",
+      "title": "Multi-factor authentication is used to authenticate privileged users of systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is used to authenticate privileged users of systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML2-3",
+      "title": "Multi-factor authentication events are logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML2-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML2-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML2-3_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication events are logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML3-1",
+      "title": "Multi-factor authentication is used to authenticate users to their organisation's online services and to authenticate users of systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML3-1_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is used to authenticate users to their organisation's online services and to authenticate users of systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML3-2",
+      "title": "Multi-factor authentication is verifier impersonation resistant (phishing-resistant)",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication is verifier impersonation resistant (phishing-resistant)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-MFA-ML3-3",
+      "title": "Multi-factor authentication event logs are protected from unauthorised modification and deletion, and monitored for signs of compromise",
+      "props": [
+       {
+        "name": "label",
+        "value": "MFA-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MFA-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-MFA-ML3-3_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication event logs are protected from unauthorised modification and deletion, and monitored for signs of compromise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.multi_factor_authentication-1",
+      "title": "Essential Eight [Multi-Factor Authentication] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.multi_factor_authentication#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.multi_factor_authentication#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.multi_factor_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#886558e6-7cb0-566c-a2ff-37a2f460ef80",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.multi_factor_authentication-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Multi-Factor Authentication] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-office_macros",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Configure Microsoft Office Macro Settings",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.office_macros"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/office_macros.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-OM-ML1-1",
+      "title": "Microsoft Office macros are disabled for users that do not have a demonstrated business requirement",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML1-1_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macros are disabled for users that do not have a demonstrated business requirement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML1-2",
+      "title": "Microsoft Office macros in files originating from the internet are blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML1-2_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macros in files originating from the internet are blocked"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML1-3",
+      "title": "Microsoft Office macro antivirus scanning is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML1-3_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macro antivirus scanning is enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML1-4",
+      "title": "Microsoft Office macro security settings cannot be changed by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML1-4_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macro security settings cannot be changed by users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML2-1",
+      "title": "Microsoft Office macros are blocked from making Win32 API calls",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML2-1_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macros are blocked from making Win32 API calls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML2-2",
+      "title": "Allowed and blocked Microsoft Office macro execution events are logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Allowed and blocked Microsoft Office macro execution events are logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML3-1",
+      "title": "Microsoft Office macros are only allowed to execute in documents from Trusted Locations with limited write access, or if digitally signed by a trusted publisher",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML3-1_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macros are only allowed to execute in documents from Trusted Locations with limited write access, or if digitally signed by a trusted publisher"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML3-2",
+      "title": "Microsoft Office's list of trusted publishers is validated on an annual or more frequent basis",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office's list of trusted publishers is validated on an annual or more frequent basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML3-3",
+      "title": "Microsoft Office macros digitally signed by an untrusted publisher cannot be enabled via the Message Bar or Backstage View",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML3-3_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macros digitally signed by an untrusted publisher cannot be enabled via the Message Bar or Backstage View"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-OM-ML3-4",
+      "title": "Microsoft Office macros digitally signed by signatures other than V3 signatures cannot be enabled via the Message Bar or Backstage View",
+      "props": [
+       {
+        "name": "label",
+        "value": "OM-ML3-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OM-ML3-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-OM-ML3-4_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office macros digitally signed by signatures other than V3 signatures cannot be enabled via the Message Bar or Backstage View"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.office_macros-1",
+      "title": "Essential Eight [Configure Microsoft Office Macro Settings] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.office_macros#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.office_macros#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.office_macros"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03f37c47-9b00-523e-b65d-936d0180d934",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.office_macros-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Configure Microsoft Office Macro Settings] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-patch_applications",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Patch Applications",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.patch_applications"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/patch_applications.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-PA-ML1-1",
+      "title": "An automated asset discovery method is used at least fortnightly to support vulnerability scanning",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-1_stmt",
+        "name": "statement",
+        "prose": "An automated asset discovery method is used at least fortnightly to support vulnerability scanning"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML1-2",
+      "title": "A vulnerability scanner with an up-to-date vulnerability database is used for scanning activities",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-2_stmt",
+        "name": "statement",
+        "prose": "A vulnerability scanner with an up-to-date vulnerability database is used for scanning activities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML1-3",
+      "title": "The scanner is used at least daily to identify missing patches for internet-facing services",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-3_stmt",
+        "name": "statement",
+        "prose": "The scanner is used at least daily to identify missing patches for internet-facing services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML1-4",
+      "title": "The scanner is used at least weekly for office productivity suites, web browsers/extensions, email clients, PDF software and security products",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-4_stmt",
+        "name": "statement",
+        "prose": "The scanner is used at least weekly for office productivity suites, web browsers/extensions, email clients, PDF software and security products"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML1-5",
+      "title": "Patches for internet-facing services are applied within 2 weeks, or 48 hours if an exploit exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-5_stmt",
+        "name": "statement",
+        "prose": "Patches for internet-facing services are applied within 2 weeks, or 48 hours if an exploit exists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML1-6",
+      "title": "Patches for office productivity, browsers, email, PDF and security products are applied within 2 weeks of release",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-6_stmt",
+        "name": "statement",
+        "prose": "Patches for office productivity, browsers, email, PDF and security products are applied within 2 weeks of release"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML1-7",
+      "title": "Applications no longer supported by vendors are removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML1-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML1-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML1-7_stmt",
+        "name": "statement",
+        "prose": "Applications no longer supported by vendors are removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML2-1",
+      "title": "The scanner is used at least fortnightly to identify missing patches for other applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML2-1_stmt",
+        "name": "statement",
+        "prose": "The scanner is used at least fortnightly to identify missing patches for other applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML2-2",
+      "title": "Patches for internet-facing services are applied within 48 hours if an exploit exists, otherwise within 2 weeks",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Patches for internet-facing services are applied within 48 hours if an exploit exists, otherwise within 2 weeks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML2-3",
+      "title": "Patches for other applications are applied within 1 month of release",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML2-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML2-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML2-3_stmt",
+        "name": "statement",
+        "prose": "Patches for other applications are applied within 1 month of release"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML3-1",
+      "title": "The scanner is used at least weekly to identify missing patches for other applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML3-1_stmt",
+        "name": "statement",
+        "prose": "The scanner is used at least weekly to identify missing patches for other applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML3-2",
+      "title": "Patches for office productivity, browsers, email, PDF and security products are applied within 48 hours if an exploit exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Patches for office productivity, browsers, email, PDF and security products are applied within 48 hours if an exploit exists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-PA-ML3-3",
+      "title": "Patches for other applications are applied within 48 hours if an exploit exists, otherwise within 1 month",
+      "props": [
+       {
+        "name": "label",
+        "value": "PA-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PA-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-PA-ML3-3_stmt",
+        "name": "statement",
+        "prose": "Patches for other applications are applied within 48 hours if an exploit exists, otherwise within 1 month"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.patch_applications-1",
+      "title": "Essential Eight [Patch Applications] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.patch_applications#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.patch_applications#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_applications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e271450-864e-5e31-bddd-e06d63749152",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.patch_applications-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Patch Applications] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-patch_operating_systems",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (November 2023) — Patch Operating Systems",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.patch_operating_systems"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/patch_operating_systems.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-POS-ML1-1",
+      "title": "An automated method of asset discovery is used at least fortnightly to support detection of assets for subsequent vulnerability scanning activities",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-1_stmt",
+        "name": "statement",
+        "prose": "An automated method of asset discovery is used at least fortnightly to support detection of assets for subsequent vulnerability scanning activities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML1-2",
+      "title": "A vulnerability scanner with an up-to-date vulnerability database is used for vulnerability scanning activities",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-2_stmt",
+        "name": "statement",
+        "prose": "A vulnerability scanner with an up-to-date vulnerability database is used for vulnerability scanning activities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML1-3",
+      "title": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in operating systems of internet-facing services",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-3_stmt",
+        "name": "statement",
+        "prose": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in operating systems of internet-facing services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML1-4",
+      "title": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in operating systems of workstations, servers and network devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-4_stmt",
+        "name": "statement",
+        "prose": "A vulnerability scanner is used at least fortnightly to identify missing patches or updates for vulnerabilities in operating systems of workstations, servers and network devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML1-5",
+      "title": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of internet-facing services are applied within two weeks of release, or within 48 hours if an exploit exists",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-5_stmt",
+        "name": "statement",
+        "prose": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of internet-facing services are applied within two weeks of release, or within 48 hours if an exploit exists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML1-6",
+      "title": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, servers and network devices are applied within one month of release",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-6_stmt",
+        "name": "statement",
+        "prose": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, servers and network devices are applied within one month of release"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML1-7",
+      "title": "Operating systems that are no longer supported by vendors are replaced",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML1-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML1-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML1-7_stmt",
+        "name": "statement",
+        "prose": "Operating systems that are no longer supported by vendors are replaced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML2-1",
+      "title": "A vulnerability scanner is used at least weekly to identify missing patches or updates for vulnerabilities in operating systems of workstations, servers and network devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML2-1_stmt",
+        "name": "statement",
+        "prose": "A vulnerability scanner is used at least weekly to identify missing patches or updates for vulnerabilities in operating systems of workstations, servers and network devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML2-2",
+      "title": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, servers and network devices are applied within two weeks of release, or within 48 hours if an exp",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, servers and network devices are applied within two weeks of release, or within 48 hours if an exploit exists"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML3-1",
+      "title": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in operating systems of workstations, servers and network devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML3-1_stmt",
+        "name": "statement",
+        "prose": "A vulnerability scanner is used at least daily to identify missing patches or updates for vulnerabilities in operating systems of workstations, servers and network devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML3-2",
+      "title": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, servers and network devices are applied within 48 hours of release if an exploit exists, otherwis",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Patches, updates or other vendor mitigations for vulnerabilities in operating systems of workstations, servers and network devices are applied within 48 hours of release if an exploit exists, otherwise within two weeks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-POS-ML3-3",
+      "title": "The latest release, or the previous release, of operating systems are used",
+      "props": [
+       {
+        "name": "label",
+        "value": "POS-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "POS-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-POS-ML3-3_stmt",
+        "name": "statement",
+        "prose": "The latest release, or the previous release, of operating systems are used"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.patch_operating_systems-1",
+      "title": "Essential Eight [Patch Operating Systems] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.patch_operating_systems#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.patch_operating_systems#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.patch_operating_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#df6e64ad-3ffa-5444-91d0-a65200c59727",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.patch_operating_systems-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Patch Operating Systems] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-regular_backups",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Regular Backups",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.regular_backups"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/regular_backups.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-RB-ML1-1",
+      "title": "Backups of data, applications and settings are performed and retained with a frequency and retention timeframe in accordance with business criticality and business continuity requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML1-1_stmt",
+        "name": "statement",
+        "prose": "Backups of data, applications and settings are performed and retained with a frequency and retention timeframe in accordance with business criticality and business continuity requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML1-2",
+      "title": "Backups of data, applications and settings are synchronised to enable restoration to a common point in time",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML1-2_stmt",
+        "name": "statement",
+        "prose": "Backups of data, applications and settings are synchronised to enable restoration to a common point in time"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML1-3",
+      "title": "Backups of data, applications and settings are retained in a secure and resilient manner",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML1-3_stmt",
+        "name": "statement",
+        "prose": "Backups of data, applications and settings are retained in a secure and resilient manner"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML1-4",
+      "title": "Unprivileged accounts cannot access backups belonging to other accounts, nor their own backups (except where required to perform their duties)",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML1-4_stmt",
+        "name": "statement",
+        "prose": "Unprivileged accounts cannot access backups belonging to other accounts, nor their own backups (except where required to perform their duties)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML2-1",
+      "title": "Unprivileged accounts are prevented from modifying and deleting backups during their retention period",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML2-1_stmt",
+        "name": "statement",
+        "prose": "Unprivileged accounts are prevented from modifying and deleting backups during their retention period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML2-2",
+      "title": "Restoration of data, applications and settings from backups to a common point in time is tested as part of disaster recovery exercises",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Restoration of data, applications and settings from backups to a common point in time is tested as part of disaster recovery exercises"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML3-1",
+      "title": "Privileged accounts (excluding backup administrators) cannot access backups belonging to other accounts, nor their own backups",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML3-1_stmt",
+        "name": "statement",
+        "prose": "Privileged accounts (excluding backup administrators) cannot access backups belonging to other accounts, nor their own backups"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RB-ML3-2",
+      "title": "Privileged accounts (excluding backup administrators) are prevented from modifying and deleting backups during their retention period",
+      "props": [
+       {
+        "name": "label",
+        "value": "RB-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RB-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RB-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Privileged accounts (excluding backup administrators) are prevented from modifying and deleting backups during their retention period"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.regular_backups-1",
+      "title": "Essential Eight [Regular Backups] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.regular_backups#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.regular_backups#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.regular_backups"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.regular_backups-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Regular Backups] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-restrict_admin_privileges",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (November 2023) — Restrict Administrative Privileges",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.restrict_admin_privileges"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/restrict_admin_privileges.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-RAP-ML1-1",
+      "title": "Requests for privileged access to systems and applications are validated when first requested",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML1-1_stmt",
+        "name": "statement",
+        "prose": "Requests for privileged access to systems and applications are validated when first requested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML1-2",
+      "title": "Privileged accounts (excluding privileged service accounts) are prevented from accessing the internet, email and web services",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML1-2_stmt",
+        "name": "statement",
+        "prose": "Privileged accounts (excluding privileged service accounts) are prevented from accessing the internet, email and web services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML1-3",
+      "title": "Privileged users use separate privileged and unprivileged operating environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML1-3_stmt",
+        "name": "statement",
+        "prose": "Privileged users use separate privileged and unprivileged operating environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML1-4",
+      "title": "Privileged operating environments are not virtualised within unprivileged operating environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML1-4_stmt",
+        "name": "statement",
+        "prose": "Privileged operating environments are not virtualised within unprivileged operating environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML1-5",
+      "title": "Unprivileged accounts cannot logon to privileged operating environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML1-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML1-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML1-5_stmt",
+        "name": "statement",
+        "prose": "Unprivileged accounts cannot logon to privileged operating environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-1",
+      "title": "Privileged access to systems and applications is automatically disabled after 12 months unless revalidated",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-1_stmt",
+        "name": "statement",
+        "prose": "Privileged access to systems and applications is automatically disabled after 12 months unless revalidated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-2",
+      "title": "Privileged access to systems and applications is automatically disabled after 45 days of inactivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Privileged access to systems and applications is automatically disabled after 45 days of inactivity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-3",
+      "title": "Privileged access to systems and applications is limited to only what is required for users and services to undertake their duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-3_stmt",
+        "name": "statement",
+        "prose": "Privileged access to systems and applications is limited to only what is required for users and services to undertake their duties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-4",
+      "title": "Administrative activities are conducted through jump servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-4_stmt",
+        "name": "statement",
+        "prose": "Administrative activities are conducted through jump servers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-5",
+      "title": "Credentials for local administrator accounts and service accounts are long, unique, unpredictable and managed",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-5_stmt",
+        "name": "statement",
+        "prose": "Credentials for local administrator accounts and service accounts are long, unique, unpredictable and managed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-6",
+      "title": "Privileged access events are centrally logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-6_stmt",
+        "name": "statement",
+        "prose": "Privileged access events are centrally logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML2-7",
+      "title": "Privileged account and group management events are centrally logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML2-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML2-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML2-7_stmt",
+        "name": "statement",
+        "prose": "Privileged account and group management events are centrally logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML3-1",
+      "title": "Just-in-time administration is used for administering systems and applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML3-1_stmt",
+        "name": "statement",
+        "prose": "Just-in-time administration is used for administering systems and applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML3-2",
+      "title": "Windows Defender Credential Guard and Windows Defender Remote Credential Guard are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML3-2_stmt",
+        "name": "statement",
+        "prose": "Windows Defender Credential Guard and Windows Defender Remote Credential Guard are enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML3-3",
+      "title": "Local Administrator Password Solution (or equivalent) manages local administrator account credentials",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML3-3_stmt",
+        "name": "statement",
+        "prose": "Local Administrator Password Solution (or equivalent) manages local administrator account credentials"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-RAP-ML3-4",
+      "title": "Privileged access event logs are protected from unauthorised modification and deletion, monitored for signs of compromise, and actioned when detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "RAP-ML3-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RAP-ML3-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-RAP-ML3-4_stmt",
+        "name": "statement",
+        "prose": "Privileged access event logs are protected from unauthorised modification and deletion, monitored for signs of compromise, and actioned when detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.restrict_admin_privileges-1",
+      "title": "Essential Eight [Restrict Administrative Privileges] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.restrict_admin_privileges#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.restrict_admin_privileges#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.restrict_admin_privileges"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09ce46a1-505a-5d54-bbce-3769efeec1bf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.restrict_admin_privileges-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [Restrict Administrative Privileges] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "essential_eight-user_application_hardening",
+    "class": "rego-module",
+    "title": "ACSC Essential Eight Maturity Model (Nov 2023) — User Application Hardening",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "essential_eight.user_application_hardening"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/regional/essential_eight/user_application_hardening.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "essential_eight-UAH-ML1-1",
+      "title": "Web browsers do not process Java from the internet",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML1-1_stmt",
+        "name": "statement",
+        "prose": "Web browsers do not process Java from the internet"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML1-2",
+      "title": "Web browsers do not process web advertisements from the internet",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML1-2_stmt",
+        "name": "statement",
+        "prose": "Web browsers do not process web advertisements from the internet"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML1-3",
+      "title": "Internet Explorer 11 does not process content from the internet",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML1-3_stmt",
+        "name": "statement",
+        "prose": "Internet Explorer 11 does not process content from the internet"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML1-4",
+      "title": "Web browser security settings cannot be changed by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML1-4_stmt",
+        "name": "statement",
+        "prose": "Web browser security settings cannot be changed by users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-1",
+      "title": "Microsoft Office is blocked from creating child processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-1_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office is blocked from creating child processes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-2",
+      "title": "Microsoft Office is blocked from creating executable content",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-2_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office is blocked from creating executable content"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-3",
+      "title": "Microsoft Office is blocked from injecting code into other processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-3_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office is blocked from injecting code into other processes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-4",
+      "title": "Microsoft Office is configured to prevent activation of OLE packages",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-4_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office is configured to prevent activation of OLE packages"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-5",
+      "title": "Microsoft Office security settings cannot be changed by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-5_stmt",
+        "name": "statement",
+        "prose": "Microsoft Office security settings cannot be changed by users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-6",
+      "title": "PDF software is blocked from creating child processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-6_stmt",
+        "name": "statement",
+        "prose": "PDF software is blocked from creating child processes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML2-7",
+      "title": "PDF software security settings cannot be changed by users",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML2-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML2-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML2-7_stmt",
+        "name": "statement",
+        "prose": "PDF software security settings cannot be changed by users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML3-1",
+      "title": "Internet Explorer 11 is disabled or removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML3-1_stmt",
+        "name": "statement",
+        "prose": "Internet Explorer 11 is disabled or removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML3-2",
+      "title": ".NET Framework 3.5 (includes .NET 2.0 and 3.0) is disabled or removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML3-2_stmt",
+        "name": "statement",
+        "prose": ".NET Framework 3.5 (includes .NET 2.0 and 3.0) is disabled or removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML3-3",
+      "title": "Windows PowerShell 2.0 is disabled or removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML3-3_stmt",
+        "name": "statement",
+        "prose": "Windows PowerShell 2.0 is disabled or removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML3-4",
+      "title": "PowerShell is configured to use Constrained Language Mode",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML3-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML3-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML3-4_stmt",
+        "name": "statement",
+        "prose": "PowerShell is configured to use Constrained Language Mode"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-UAH-ML3-5",
+      "title": "Command line process creation events are logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "UAH-ML3-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UAH-ML3-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-UAH-ML3-5_stmt",
+        "name": "statement",
+        "prose": "Command line process creation events are logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "essential_eight-essential_eight.user_application_hardening-1",
+      "title": "Essential Eight [User Application Hardening] %s (ML%d): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "essential_eight.user_application_hardening#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "essential_eight.user_application_hardening#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "essential_eight.user_application_hardening"
+       }
+      ],
+      "links": [
+       {
+        "href": "#430c2ced-f34d-5dd2-9109-a9e6903253a5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "essential_eight-essential_eight.user_application_hardening-1_stmt",
+        "name": "statement",
+        "prose": "Essential Eight [User Application Hardening] %s (ML%d): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "285afff4-7e1c-5292-9808-e9d96f03c09c",
+     "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Application Control",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.application_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/application_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "886558e6-7cb0-566c-a2ff-37a2f460ef80",
+     "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Multi-Factor Authentication",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.multi_factor_authentication"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/multi_factor_authentication.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "03f37c47-9b00-523e-b65d-936d0180d934",
+     "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Configure Microsoft Office Macro Settings",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.office_macros"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/office_macros.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "6e271450-864e-5e31-bddd-e06d63749152",
+     "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Patch Applications",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.patch_applications"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/patch_applications.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "df6e64ad-3ffa-5444-91d0-a65200c59727",
+     "title": "ACSC Essential Eight Maturity Model (November 2023) — Patch Operating Systems",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.patch_operating_systems"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/patch_operating_systems.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d0b84057-86eb-508f-8412-2f8bbef8d6d4",
+     "title": "ACSC Essential Eight Maturity Model (Nov 2023) — Regular Backups",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.regular_backups"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/regular_backups.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "09ce46a1-505a-5d54-bbce-3769efeec1bf",
+     "title": "ACSC Essential Eight Maturity Model (November 2023) — Restrict Administrative Privileges",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.restrict_admin_privileges"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/restrict_admin_privileges.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "430c2ced-f34d-5dd2-9109-a9e6903253a5",
+     "title": "ACSC Essential Eight Maturity Model (Nov 2023) — User Application Hardening",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "essential_eight.user_application_hardening"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/regional/essential_eight/user_application_hardening.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

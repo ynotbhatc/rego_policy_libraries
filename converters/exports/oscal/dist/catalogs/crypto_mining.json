@@ -1,0 +1,245 @@
+{
+ "catalog": {
+  "uuid": "a16638d3-e2af-5553-aeab-9e507dafb8c4",
+  "metadata": {
+   "title": "Rego Policy Libraries — crypto_mining (Crypto Miner Detection Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "crypto_mining"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "crypto_mining-crypto_miner_detection",
+    "class": "rego-module",
+    "title": "Crypto Miner Detection Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security.crypto_miner_detection"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "threat_detection/crypto_mining/crypto_miner_detection.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "threat-detection"
+     }
+    ],
+    "controls": [
+     {
+      "id": "crypto_mining-CRITICAL",
+      "title": "Crypto miner process detected - %s (PID: %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRITICAL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRITICAL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "security.crypto_miner_detection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51d82ab0-18f0-5875-a06f-833f74eb4f0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "crypto_mining-CRITICAL_stmt",
+        "name": "statement",
+        "prose": "Crypto miner process detected - %s (PID: %v)"
+       },
+       {
+        "id": "crypto_mining-CRITICAL_obj.1",
+        "name": "assessment-objective",
+        "prose": "Connection to mining pool detected - %s:%v"
+       },
+       {
+        "id": "crypto_mining-CRITICAL_obj.2",
+        "name": "assessment-objective",
+        "prose": "Crypto miner systemd service detected - %s"
+       }
+      ],
+      "class": "threat-detection"
+     },
+     {
+      "id": "crypto_mining-HIGH",
+      "title": "Crypto miner package installed - %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "HIGH"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HIGH"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "security.crypto_miner_detection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51d82ab0-18f0-5875-a06f-833f74eb4f0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "crypto_mining-HIGH_stmt",
+        "name": "statement",
+        "prose": "Crypto miner package installed - %s"
+       },
+       {
+        "id": "crypto_mining-HIGH_obj.1",
+        "name": "assessment-objective",
+        "prose": "Crypto miner cron job detected - %s"
+       }
+      ],
+      "class": "threat-detection"
+     },
+     {
+      "id": "crypto_mining-MEDIUM",
+      "title": "Suspicious connection on mining port - %s:%v",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEDIUM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEDIUM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "security.crypto_miner_detection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51d82ab0-18f0-5875-a06f-833f74eb4f0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "crypto_mining-MEDIUM_stmt",
+        "name": "statement",
+        "prose": "Suspicious connection on mining port - %s:%v"
+       },
+       {
+        "id": "crypto_mining-MEDIUM_obj.1",
+        "name": "assessment-objective",
+        "prose": "Crypto miner configuration file detected - %s"
+       }
+      ],
+      "class": "threat-detection"
+     },
+     {
+      "id": "crypto_mining-findings",
+      "title": "Implemented by a Rego rule in threat_detection/crypto_mining/crypto_miner_detection.rego (package security.crypto_miner_detection); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "findings"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "findings"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "security.crypto_miner_detection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#51d82ab0-18f0-5875-a06f-833f74eb4f0e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "crypto_mining-findings_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in threat_detection/crypto_mining/crypto_miner_detection.rego (package security.crypto_miner_detection); see the rule body."
+       }
+      ],
+      "class": "threat-detection"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "51d82ab0-18f0-5875-a06f-833f74eb4f0e",
+     "title": "Crypto Miner Detection Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "security.crypto_miner_detection"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/threat_detection/crypto_mining/crypto_miner_detection.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

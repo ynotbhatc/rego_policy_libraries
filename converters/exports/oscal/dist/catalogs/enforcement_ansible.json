@@ -1,0 +1,408 @@
+{
+ "catalog": {
+  "uuid": "f6adfd94-bff8-5301-a9e6-95d139348e7e",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_ansible (AAC repository hygiene — policy the delivery layer is gated by)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_ansible"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_ansible-repo_hygiene",
+    "class": "rego-module",
+    "title": "AAC repository hygiene — policy the delivery layer is gated by",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aac.repo.hygiene"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/ansible/repo_hygiene.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_ansible-AAC-ANS-001",
+      "title": "%s: task '%s' sets loop_var at task level — it belongs under loop_control, and Ansible refuses the play as written",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-ANS-001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-ANS-001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#80eff301-b558-5b33-adf9-b3d6da5af04e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-AAC-ANS-001_stmt",
+        "name": "statement",
+        "prose": "%s: task '%s' sets loop_var at task level — it belongs under loop_control, and Ansible refuses the play as written"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-AAC-ANS-002",
+      "title": "%s: play %d has an empty name",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-ANS-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-ANS-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#80eff301-b558-5b33-adf9-b3d6da5af04e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-AAC-ANS-002_stmt",
+        "name": "statement",
+        "prose": "%s: play %d has an empty name"
+       },
+       {
+        "id": "enforcement_ansible-AAC-ANS-002_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s: play %d has no name"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-AAC-ANS-003",
+      "title": "%s: lab address %s at %v — resolve through site_config (opa_*_url, pg_host, grafana_url, aac_host)",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-ANS-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-ANS-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#80eff301-b558-5b33-adf9-b3d6da5af04e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-AAC-ANS-003_stmt",
+        "name": "statement",
+        "prose": "%s: lab address %s at %v — resolve through site_config (opa_*_url, pg_host, grafana_url, aac_host)"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-AAC-ANS-004",
+      "title": "%s: task '%s' writes to compliance_results without naming a framework — evidence that cannot say which standard it is for is not evidence",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-ANS-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-ANS-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#80eff301-b558-5b33-adf9-b3d6da5af04e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-AAC-ANS-004_stmt",
+        "name": "statement",
+        "prose": "%s: task '%s' writes to compliance_results without naming a framework — evidence that cannot say which standard it is for is not evidence"
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   },
+   {
+    "id": "enforcement_ansible-sentinel_ansible",
+    "class": "rego-module",
+    "title": "Sentinel-equivalent policy for Ansible playbooks",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sentinel.ansible"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/ansible/sentinel_ansible.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_ansible-SENTINEL-ANS-001",
+      "title": "Play [%v] has no 'name' field — all plays must be named for auditability",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-ANS-001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-ANS-001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.ansible"
+       }
+      ],
+      "links": [
+       {
+        "href": "#737b3ca2-2536-5ffe-8534-b666e2ab194b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-001_stmt",
+        "name": "statement",
+        "prose": "Play [%v] has no 'name' field — all plays must be named for auditability"
+       },
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-001_obj.1",
+        "name": "assessment-objective",
+        "prose": "Play '%v' has an empty 'name' field"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-SENTINEL-ANS-002",
+      "title": "Play '%v' targets all hosts — use an explicit group or limit in production",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-ANS-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-ANS-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.ansible"
+       }
+      ],
+      "links": [
+       {
+        "href": "#737b3ca2-2536-5ffe-8534-b666e2ab194b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-002_stmt",
+        "name": "statement",
+        "prose": "Play '%v' targets all hosts — use an explicit group or limit in production"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-SENTINEL-ANS-003",
+      "title": "Play '%v' has potential hardcoded secret in var '%v' — use Ansible Vault",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-ANS-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-ANS-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.ansible"
+       }
+      ],
+      "links": [
+       {
+        "href": "#737b3ca2-2536-5ffe-8534-b666e2ab194b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-003_stmt",
+        "name": "statement",
+        "prose": "Play '%v' has potential hardcoded secret in var '%v' — use Ansible Vault"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-SENTINEL-ANS-004",
+      "title": "Task '%v' in play '%v' has no tags — tags required for selective execution and audit",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-ANS-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-ANS-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.ansible"
+       }
+      ],
+      "links": [
+       {
+        "href": "#737b3ca2-2536-5ffe-8534-b666e2ab194b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-SENTINEL-ANS-004_stmt",
+        "name": "statement",
+        "prose": "Task '%v' in play '%v' has no tags — tags required for selective execution and audit"
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "80eff301-b558-5b33-adf9-b3d6da5af04e",
+     "title": "AAC repository hygiene — policy the delivery layer is gated by",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aac.repo.hygiene"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/ansible/repo_hygiene.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "737b3ca2-2536-5ffe-8534-b666e2ab194b",
+     "title": "Sentinel-equivalent policy for Ansible playbooks",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sentinel.ansible"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/ansible/sentinel_ansible.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

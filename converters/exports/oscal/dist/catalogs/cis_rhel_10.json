@@ -1,0 +1,390 @@
+{
+ "catalog": {
+  "uuid": "fa23b1f3-08af-5b3a-b52e-a163b7aa774a",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_rhel_10 (CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_rhel_10"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_rhel_10-cis_rhel_10",
+    "class": "rego-module",
+    "title": "CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.rhel_10"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/rhel_10/cis_rhel_10.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_rhel_10-sections",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "sections"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "sections"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-sections_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-initial_setup",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "initial_setup"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "initial_setup"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-initial_setup_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-services",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-services_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-network",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "network"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "network"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-network_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-access_auth",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "access_auth"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "access_auth"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-access_auth_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-system_maintenance",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "system_maintenance"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "system_maintenance"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-system_maintenance_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-container_security",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "container_security"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "container_security"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-container_security_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-systemd_security",
+      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "systemd_security"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "systemd_security"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7369bf2b-e17f-5bfc-a539-47698b5308d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-systemd_security_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7369bf2b-e17f-5bfc-a539-47698b5308d2",
+     "title": "CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.rhel_10"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/rhel_10/cis_rhel_10.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

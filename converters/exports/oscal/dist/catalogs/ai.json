@@ -1,0 +1,365 @@
+{
+ "catalog": {
+  "uuid": "8a0f8cb9-945d-57ad-a9c9-6d868bde033b",
+  "metadata": {
+   "title": "Rego Policy Libraries — ai (AI Governance - Master Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "ai"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "ai-ai_governance_complete",
+    "class": "rego-module",
+    "title": "AI Governance - Master Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ai_governance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/ai/ai_governance_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ai-ai_system",
+      "title": "Implemented by a Rego rule in governance/ai/ai_governance_complete.rego (package ai_governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ai_system"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ai_system"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b084bd8c-c903-5493-9037-67e271027533",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-ai_system_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/ai_governance_complete.rego (package ai_governance); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-context",
+      "title": "Implemented by a Rego rule in governance/ai/ai_governance_complete.rego (package ai_governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "context"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "context"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b084bd8c-c903-5493-9037-67e271027533",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-context_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/ai_governance_complete.rego (package ai_governance); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "ai-authorization",
+    "class": "rego-module",
+    "title": "AI Governance - Authorization Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ai_governance.authorization"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/ai/authorization.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ai-read_only",
+      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "read_only"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "read_only"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.authorization"
+       }
+      ],
+      "links": [
+       {
+        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-read_only_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-low",
+      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "low"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "low"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.authorization"
+       }
+      ],
+      "links": [
+       {
+        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-low_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-medium",
+      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "medium"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "medium"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.authorization"
+       }
+      ],
+      "links": [
+       {
+        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-medium_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-high",
+      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "high"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "high"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.authorization"
+       }
+      ],
+      "links": [
+       {
+        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-high_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "ai-critical",
+      "title": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "critical"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "critical"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ai_governance.authorization"
+       }
+      ],
+      "links": [
+       {
+        "href": "#331de310-198f-538d-a484-64031feeac68",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ai-critical_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/ai/authorization.rego (package ai_governance.authorization); see the rule body."
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "b084bd8c-c903-5493-9037-67e271027533",
+     "title": "AI Governance - Master Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ai_governance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/ai/ai_governance_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "331de310-198f-538d-a484-64031feeac68",
+     "title": "AI Governance - Authorization Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ai_governance.authorization"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/ai/authorization.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

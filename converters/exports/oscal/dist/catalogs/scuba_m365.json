@@ -1,0 +1,3771 @@
+{
+ "catalog": {
+  "uuid": "176a129d-78e8-55be-9af2-6b454f7517cc",
+  "metadata": {
+   "title": "Rego Policy Libraries — scuba_m365 (CISA SCuBA — Secure Configuration Baseline for Microsoft Entra ID (AAD))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "scuba_m365"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "scuba_m365-aad_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for Microsoft Entra ID (AAD)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.aad"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/aad_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.1.1v1-SHALL",
+      "title": "Legacy authentication is not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.1.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.1.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.1.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Legacy authentication is not blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.2.1v1-SHALL",
+      "title": "Users detected as high risk are not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.2.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.2.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.2.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Users detected as high risk are not blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.2.2v1-SHOULD",
+      "title": "No administrator notification is sent when high-risk users are detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.2.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.2.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.2.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "No administrator notification is sent when high-risk users are detected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.2.3v1-SHALL",
+      "title": "Sign-ins detected as high risk are not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.2.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.2.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.2.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Sign-ins detected as high risk are not blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.1v1-SHALL",
+      "title": "Phishing-resistant MFA is not enforced for all users",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Phishing-resistant MFA is not enforced for all users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.2v2-SHALL",
+      "title": "MFA is not enforced for all users",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.2v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.2v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.2v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "MFA is not enforced for all users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.3v2-SHALL",
+      "title": "Microsoft Authenticator is enabled but not configured to show login context information",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.3v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.3v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.3v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "Microsoft Authenticator is enabled but not configured to show login context information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.4v1-SHALL",
+      "title": "Authentication Methods Manage Migration is not set to Migration Complete",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.4v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.4v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.4v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Authentication Methods Manage Migration is not set to Migration Complete"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.5v2-SHALL",
+      "title": "SMS, Voice Call, or Email OTP authentication methods are not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.5v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.5v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.5v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "SMS, Voice Call, or Email OTP authentication methods are not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.6v1-SHALL",
+      "title": "Phishing-resistant MFA is not required for highly privileged roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.6v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.6v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.6v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Phishing-resistant MFA is not required for highly privileged roles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.7v1-SHOULD",
+      "title": "Managed devices are not required for authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.7v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.7v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.7v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Managed devices are not required for authentication"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.8v1-SHOULD",
+      "title": "Managed devices are not required to register MFA",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.8v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.8v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.8v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Managed devices are not required to register MFA"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.3.9v1-SHOULD",
+      "title": "Device code authentication flow is not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.3.9v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.3.9v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.3.9v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Device code authentication flow is not blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.4.1v1-SHALL",
+      "title": "Security logs are not sent to the security operations center for monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.4.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.4.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.4.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Security logs are not sent to the security operations center for monitoring"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.5.1v1-SHALL",
+      "title": "Non-administrators are allowed to register applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.5.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.5.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.5.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Non-administrators are allowed to register applications"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.5.2v1-SHALL",
+      "title": "User consent to applications is not restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.5.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.5.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.5.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "User consent to applications is not restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.5.3v1-SHALL",
+      "title": "Admin consent workflow for applications is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.5.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.5.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.5.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Admin consent workflow for applications is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.5.5v1-SHOULD",
+      "title": "Application password (client secret) addition is not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.5.5v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.5.5v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.5.5v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Application password (client secret) addition is not blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.5.6v1-SHOULD",
+      "title": "Application password lifetime is not restricted to 180 days or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.5.6v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.5.6v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.5.6v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Application password lifetime is not restricted to 180 days or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.5.7v1-SHOULD",
+      "title": "Application certificate lifetime is not restricted to 365 days or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.5.7v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.5.7v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.5.7v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Application certificate lifetime is not restricted to 365 days or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.6.1v1-SHALL",
+      "title": "User password expiration is enabled (passwords SHALL NOT expire)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.6.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.6.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.6.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "User password expiration is enabled (passwords SHALL NOT expire)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.1v1-SHALL",
+      "title": "Global Administrator role is not provisioned to a minimum of two and maximum of eight users",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Global Administrator role is not provisioned to a minimum of two and maximum of eight users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.2v1-SHALL",
+      "title": "Privileged users are not provisioned with finer-grained roles instead of Global Administrator",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Privileged users are not provisioned with finer-grained roles instead of Global Administrator"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.3v1-SHALL",
+      "title": "Privileged users are not provisioned cloud-only accounts separate from on-premises/federated identities",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Privileged users are not provisioned cloud-only accounts separate from on-premises/federated identities"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.4v1-SHALL",
+      "title": "Permanent active role assignments exist for highly privileged roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.4v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.4v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.4v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Permanent active role assignments exist for highly privileged roles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.5v1-SHALL",
+      "title": "Highly privileged role provisioning occurs outside of a PAM system",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.5v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.5v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.5v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Highly privileged role provisioning occurs outside of a PAM system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.6v1-SHALL",
+      "title": "Global Administrator role activation does not require approval",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.6v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.6v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.6v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Global Administrator role activation does not require approval"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.7v1-SHALL",
+      "title": "Eligible and active highly privileged role assignments do not trigger an alert",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.7v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.7v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.7v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Eligible and active highly privileged role assignments do not trigger an alert"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.8v1-SHALL",
+      "title": "Global Administrator role activation does not trigger an alert",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.8v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.8v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.8v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Global Administrator role activation does not trigger an alert"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.7.9v1-SHOULD",
+      "title": "Activation of other highly privileged roles does not trigger an alert",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.7.9v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.7.9v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.7.9v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Activation of other highly privileged roles does not trigger an alert"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.8.1v1-SHOULD",
+      "title": "Guest users do not have limited or restricted access to directory objects",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.8.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.8.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.8.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Guest users do not have limited or restricted access to directory objects"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.8.2v1-SHOULD",
+      "title": "Guest invitations are not restricted to users with the Guest Inviter role",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.8.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.8.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.8.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Guest invitations are not restricted to users with the Guest Inviter role"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.8.3v1-SHOULD",
+      "title": "Guest invites are not restricted to authorized external domains",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.8.3v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.8.3v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.8.3v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Guest invites are not restricted to authorized external domains"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.AAD.9.1v1-SHALL",
+      "title": "Risky AI agents are not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.AAD.9.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.AAD.9.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.aad"
+       }
+      ],
+      "links": [
+       {
+        "href": "#24192832-6e98-548c-8151-c54f44e63483",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.AAD.9.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Risky AI agents are not blocked"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "scuba_m365-defender_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for Microsoft Defender for",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.defender"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/defender_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.1.1v1-SHALL",
+      "title": "Standard and strict preset security policies are not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.1.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.1.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.1.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Standard and strict preset security policies are not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.1.2v1-SHALL",
+      "title": "Not all users are covered by Exchange Online Protection in a preset security policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.1.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.1.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.1.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Not all users are covered by Exchange Online Protection in a preset security policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.1.3v1-SHALL",
+      "title": "Not all users are covered by Defender for Office 365 protection in a preset security policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.1.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.1.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.1.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Not all users are covered by Defender for Office 365 protection in a preset security policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.1.4v1-SHALL",
+      "title": "Sensitive accounts are not in Exchange Online Protection under the strict preset policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.1.4v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.1.4v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.1.4v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Sensitive accounts are not in Exchange Online Protection under the strict preset policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.1.5v1-SHALL",
+      "title": "Sensitive accounts are not in Defender for Office 365 protection under the strict preset policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.1.5v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.1.5v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.1.5v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Sensitive accounts are not in Defender for Office 365 protection under the strict preset policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.2.1v1-SHOULD",
+      "title": "User impersonation protection is not enabled for sensitive accounts in the preset policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.2.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.2.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.2.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "User impersonation protection is not enabled for sensitive accounts in the preset policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.2.2v1-SHOULD",
+      "title": "Domain impersonation protection is not enabled for agency-owned domains in the preset policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.2.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.2.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.2.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Domain impersonation protection is not enabled for agency-owned domains in the preset policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.2.3v1-SHOULD",
+      "title": "Domain impersonation protection is not configured for key suppliers and partners",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.2.3v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.2.3v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.2.3v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Domain impersonation protection is not configured for key suppliers and partners"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.3.1v1-SHOULD",
+      "title": "Safe Attachments is not enabled for SharePoint, OneDrive, and Microsoft Teams",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.3.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.3.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.3.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Safe Attachments is not enabled for SharePoint, OneDrive, and Microsoft Teams"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.4.1v2-SHALL",
+      "title": "No custom DLP policy protects PII/sensitive information (at minimum credit card numbers and U.S. TINs/SSNs)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.4.1v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.4.1v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.4.1v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "No custom DLP policy protects PII/sensitive information (at minimum credit card numbers and U.S. TINs/SSNs)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.4.2v1-SHOULD",
+      "title": "Custom DLP policy is not applied to Exchange, OneDrive, SharePoint, Teams chat, and Devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.4.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.4.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.4.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Custom DLP policy is not applied to Exchange, OneDrive, SharePoint, Teams chat, and Devices"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.4.3v1-SHOULD",
+      "title": "Custom DLP policy action is not set to block sharing sensitive information with everyone",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.4.3v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.4.3v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.4.3v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Custom DLP policy action is not set to block sharing sensitive information with everyone"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.4.4v1-SHOULD",
+      "title": "User notifications on sensitive-information handling are not enabled in the custom DLP policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.4.4v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.4.4v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.4.4v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "User notifications on sensitive-information handling are not enabled in the custom DLP policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.4.5v1-SHOULD",
+      "title": "No list of apps restricted from accessing DLP-protected files is defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.4.5v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.4.5v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.4.5v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "No list of apps restricted from accessing DLP-protected files is defined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.4.6v1-SHOULD",
+      "title": "Custom DLP policy does not block restricted apps and unwanted Bluetooth applications from sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.4.6v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.4.6v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.4.6v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Custom DLP policy does not block restricted apps and unwanted Bluetooth applications from sensitive information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.5.1v1-SHALL",
+      "title": "Alerts required by the Exchange Online baseline are not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.5.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.5.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.5.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Alerts required by the Exchange Online baseline are not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.5.2v1-SHOULD",
+      "title": "Alerts are not sent to a monitored address or SIEM",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.5.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.5.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.5.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Alerts are not sent to a monitored address or SIEM"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.6.1v1-SHALL",
+      "title": "Unified audit logging is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.6.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.6.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.6.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Unified audit logging is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.DEFENDER.6.3v1-SHALL",
+      "title": "Audit logs are not retained for the minimum duration required by OMB M-21-31",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.DEFENDER.6.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.DEFENDER.6.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.defender"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0134a42-ae59-5173-8b22-6faccb753890",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.DEFENDER.6.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Audit logs are not retained for the minimum duration required by OMB M-21-31"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "scuba_m365-exo_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for Exchange Online — 12",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.exo"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/exo_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.1.1v2-SHALL",
+      "title": "Automatic forwarding to external domains is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.1.1v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.1.1v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.1.1v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "Automatic forwarding to external domains is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.2.2v3-SHALL",
+      "title": "An SPF policy failing all non-approved senders is not published for every domain",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.2.2v3 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.2.2v3 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.2.2v3-SHALL_stmt",
+        "name": "statement",
+        "prose": "An SPF policy failing all non-approved senders is not published for every domain"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.3.1v1-SHOULD",
+      "title": "DKIM is not enabled for all domains",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.3.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.3.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.3.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "DKIM is not enabled for all domains"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.4.1v1-SHALL",
+      "title": "A DMARC policy is not published for every second-level domain",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.4.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.4.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.4.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "A DMARC policy is not published for every second-level domain"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.4.2v1-SHALL",
+      "title": "DMARC message rejection option is not p=reject",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.4.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.4.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.4.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "DMARC message rejection option is not p=reject"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.4.3v1-SHALL",
+      "title": "DMARC aggregate-report contacts do not include reports@dmarc.cyber.dhs.gov",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.4.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.4.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.4.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "DMARC aggregate-report contacts do not include reports@dmarc.cyber.dhs.gov"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.4.4v1-SHOULD",
+      "title": "No agency point of contact is included for DMARC aggregate and failure reports",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.4.4v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.4.4v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.4.4v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "No agency point of contact is included for DMARC aggregate and failure reports"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.5.1v1-SHALL",
+      "title": "SMTP AUTH is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.5.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.5.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.5.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "SMTP AUTH is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.6.1v1-SHALL",
+      "title": "Contact folders are shared with all domains",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.6.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.6.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.6.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Contact folders are shared with all domains"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.6.2v1-SHALL",
+      "title": "Calendar details are shared with all domains",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.6.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.6.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.6.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Calendar details are shared with all domains"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.7.1v1-SHALL",
+      "title": "External sender warnings are not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.7.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.7.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.7.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "External sender warnings are not implemented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.EXO.13.1v1-SHALL",
+      "title": "Mailbox auditing is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.EXO.13.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.EXO.13.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.exo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1df485d4-1c89-5e9f-b91c-e955b758a970",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.EXO.13.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Mailbox auditing is not enabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "scuba_m365-powerbi_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for Power BI — 8 policies",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.powerbi"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/powerbi_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.1.1v1-SHOULD",
+      "title": "Publish to Web is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.1.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.1.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.1.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Publish to Web is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.2.1v1-SHOULD",
+      "title": "Guest user access to the Power BI tenant is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.2.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.2.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.2.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Guest user access to the Power BI tenant is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.3.1v1-SHOULD",
+      "title": "'Invite external users to your organization' is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.3.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.3.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.3.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "'Invite external users to your organization' is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.4.1v1-SHOULD",
+      "title": "Service principals with API access are not restricted to specific security groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.4.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.4.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.4.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Service principals with API access are not restricted to specific security groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.4.2v1-SHOULD",
+      "title": "Service principals creating and using profiles are not restricted to specific security groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.4.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.4.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.4.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Service principals creating and using profiles are not restricted to specific security groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.5.1v1-SHOULD",
+      "title": "ResourceKey-based authentication is not blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.5.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.5.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.5.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "ResourceKey-based authentication is not blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.6.1v1-SHOULD",
+      "title": "Python and R visual interactions are not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.6.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.6.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.6.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Python and R visual interactions are not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERBI.7.1v1-SHOULD",
+      "title": "Sensitivity labels are not enabled for Power BI sensitive data",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERBI.7.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERBI.7.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerbi"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9665f02f-6d5c-5589-aa54-adee35516dbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERBI.7.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Sensitivity labels are not enabled for Power BI sensitive data"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "scuba_m365-powerplatform_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for Power Platform — 9",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.powerplatform"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/powerplatform_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.1.1v1-SHALL",
+      "title": "Creation of production and sandbox environments is not restricted to admins",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.1.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.1.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.1.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Creation of production and sandbox environments is not restricted to admins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.1.2v1-SHALL",
+      "title": "Creation of trial environments is not restricted to admins",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.1.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.1.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.1.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Creation of trial environments is not restricted to admins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.2.1v1-SHALL",
+      "title": "No DLP policy restricts connector access in the default environment",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.2.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.2.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.2.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "No DLP policy restricts connector access in the default environment"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.2.2v1-SHOULD",
+      "title": "Non-default environments are not covered by at least one DLP policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.2.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.2.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.2.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Non-default environments are not covered by at least one DLP policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.3.1v1-SHALL",
+      "title": "Power Platform tenant isolation is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.3.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.3.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.3.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Power Platform tenant isolation is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.3.2v1-SHOULD",
+      "title": "No inbound/outbound cross-tenant connection allowlist is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.3.2v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.3.2v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.3.2v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "No inbound/outbound cross-tenant connection allowlist is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.4.1v1-SHALL",
+      "title": "Content Security Policy is not enforced for model-driven and canvas Power Apps",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.4.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.4.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.4.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Content Security Policy is not enforced for model-driven and canvas Power Apps"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.5.1v1-SHOULD",
+      "title": "Creation of Power Pages sites is not restricted to admins",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.5.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.5.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.5.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Creation of Power Pages sites is not restricted to admins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.6.1v1-SHOULD",
+      "title": "The Power Apps 'Share with Everyone' capability is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.POWERPLATFORM.6.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.POWERPLATFORM.6.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.powerplatform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.POWERPLATFORM.6.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "The Power Apps 'Share with Everyone' capability is not disabled"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "scuba_m365-sharepoint_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for SharePoint Online and",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.sharepoint"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/sharepoint_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.1.1v1-SHALL",
+      "title": "SharePoint external sharing is not limited to 'Existing guests' or 'Only people in your organization'",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.1.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.1.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.1.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "SharePoint external sharing is not limited to 'Existing guests' or 'Only people in your organization'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.1.2v1-SHALL",
+      "title": "OneDrive external sharing is not limited to 'Existing guests' or 'Only people in your organization'",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.1.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.1.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.1.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "OneDrive external sharing is not limited to 'Existing guests' or 'Only people in your organization'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.1.3v1-SHALL",
+      "title": "External sharing is not restricted to approved external domains and/or security groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.1.3v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.1.3v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.1.3v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "External sharing is not restricted to approved external domains and/or security groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.2.1v1-SHALL",
+      "title": "File and folder default sharing scope is not 'Specific people'",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.2.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.2.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.2.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "File and folder default sharing scope is not 'Specific people'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.2.2v1-SHALL",
+      "title": "File and folder default sharing permission is not view-only",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.2.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.2.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.2.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "File and folder default sharing permission is not view-only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.3.1v1-SHALL",
+      "title": "Anyone-link expiration is not set to 30 days or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.3.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.3.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.3.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Anyone-link expiration is not set to 30 days or less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.3.2v1-SHALL",
+      "title": "Anyone-link file and folder permissions are not restricted to view-only",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.3.2v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.3.2v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.3.2v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Anyone-link file and folder permissions are not restricted to view-only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.SHAREPOINT.3.3v2-SHALL",
+      "title": "Verification-code reauthentication is not set to 30 days or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.SHAREPOINT.3.3v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.SHAREPOINT.3.3v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.SHAREPOINT.3.3v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "Verification-code reauthentication is not set to 30 days or less"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "scuba_m365-teams_validation",
+    "class": "rego-module",
+    "title": "CISA SCuBA — Secure Configuration Baseline for Microsoft Teams — 14",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "scuba_m365.teams"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/scuba/m365/teams_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.1v1-SHOULD",
+      "title": "External meeting participants can request control of shared desktops or windows",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.1v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.1v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.1v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "External meeting participants can request control of shared desktops or windows"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.2v2-SHALL",
+      "title": "Anonymous users can start meetings",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.2v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.2v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.2v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "Anonymous users can start meetings"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.3v1-SHOULD",
+      "title": "Anonymous users and dial-in callers are admitted automatically instead of via lobby",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.3v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.3v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.3v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Anonymous users and dial-in callers are admitted automatically instead of via lobby"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.4v1-SHOULD",
+      "title": "Internal users are not admitted automatically",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.4v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.4v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.4v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Internal users are not admitted automatically"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.5v1-SHOULD",
+      "title": "Dial-in users can bypass the lobby",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.5v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.5v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.5v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Dial-in users can bypass the lobby"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.6v1-SHOULD",
+      "title": "Meeting recording is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.6v1 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.6v1 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.6v1-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Meeting recording is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.1.7v2-SHOULD",
+      "title": "'Record an event' is set to Always record",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.1.7v2 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.1.7v2 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.1.7v2-SHOULD_stmt",
+        "name": "statement",
+        "prose": "'Record an event' is set to Always record"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.2.1v2-SHALL",
+      "title": "External access is not restricted to a per-domain allowlist",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.2.1v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.2.1v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.2.1v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "External access is not restricted to a per-domain allowlist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.2.2v2-SHALL",
+      "title": "Unmanaged users can initiate contact with internal users",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.2.2v2 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.2.2v2 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.2.2v2-SHALL_stmt",
+        "name": "statement",
+        "prose": "Unmanaged users can initiate contact with internal users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.2.3v2-SHOULD",
+      "title": "Internal users can initiate contact with unmanaged users",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.2.3v2 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.2.3v2 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.2.3v2-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Internal users can initiate contact with unmanaged users"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.4.1v1-SHALL",
+      "title": "Teams email integration is not disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.4.1v1 (SHALL)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.4.1v1 (SHALL)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.4.1v1-SHALL_stmt",
+        "name": "statement",
+        "prose": "Teams email integration is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.5.1v2-SHOULD",
+      "title": "Installation of Microsoft apps is not limited to those approved by the agency",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.5.1v2 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.5.1v2 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.5.1v2-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Installation of Microsoft apps is not limited to those approved by the agency"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.5.2v2-SHOULD",
+      "title": "Installation of third-party apps is not limited to those approved by the agency",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.5.2v2 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.5.2v2 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.5.2v2-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Installation of third-party apps is not limited to those approved by the agency"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "scuba_m365-SCuBA-MS.TEAMS.5.3v2-SHOULD",
+      "title": "Installation of custom apps is not limited to those approved by the agency",
+      "props": [
+       {
+        "name": "label",
+        "value": "SCuBA MS.TEAMS.5.3v2 (SHOULD)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SCuBA MS.TEAMS.5.3v2 (SHOULD)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "scuba_m365.teams"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "scuba_m365-SCuBA-MS.TEAMS.5.3v2-SHOULD_stmt",
+        "name": "statement",
+        "prose": "Installation of custom apps is not limited to those approved by the agency"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "24192832-6e98-548c-8151-c54f44e63483",
+     "title": "CISA SCuBA — Secure Configuration Baseline for Microsoft Entra ID (AAD)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.aad"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/aad_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f0134a42-ae59-5173-8b22-6faccb753890",
+     "title": "CISA SCuBA — Secure Configuration Baseline for Microsoft Defender for",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.defender"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/defender_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "1df485d4-1c89-5e9f-b91c-e955b758a970",
+     "title": "CISA SCuBA — Secure Configuration Baseline for Exchange Online — 12",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.exo"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/exo_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9665f02f-6d5c-5589-aa54-adee35516dbc",
+     "title": "CISA SCuBA — Secure Configuration Baseline for Power BI — 8 policies",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.powerbi"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/powerbi_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d4021806-1dbc-51fb-97f9-cf7a215a2f25",
+     "title": "CISA SCuBA — Secure Configuration Baseline for Power Platform — 9",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.powerplatform"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/powerplatform_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "37cc3cd1-89bd-5b10-ab7d-7191ec612103",
+     "title": "CISA SCuBA — Secure Configuration Baseline for SharePoint Online and",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.sharepoint"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/sharepoint_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3e213fbb-3dc4-5425-b01b-ca55bb59118c",
+     "title": "CISA SCuBA — Secure Configuration Baseline for Microsoft Teams — 14",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "scuba_m365.teams"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/scuba/m365/teams_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

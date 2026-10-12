@@ -1,0 +1,667 @@
+{
+ "catalog": {
+  "uuid": "696b59b7-65ab-52d1-9979-2919ab7a4771",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_terraform (Sentinel-equivalent policy for Terraform plans)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_terraform"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_terraform-sentinel_terraform",
+    "class": "rego-module",
+    "title": "Sentinel-equivalent policy for Terraform plans",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "sentinel.terraform"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/terraform/sentinel_terraform.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_terraform-SENTINEL-TF-001",
+      "title": "Resource '%v' (%v) is missing required tag '%v'",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-TF-001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-TF-001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.terraform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3f514a70-6fbb-5371-90c9-964b6d6a605f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-001_stmt",
+        "name": "statement",
+        "prose": "Resource '%v' (%v) is missing required tag '%v'"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-SENTINEL-TF-002",
+      "title": "Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-TF-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-TF-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.terraform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3f514a70-6fbb-5371-90c9-964b6d6a605f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-002_stmt",
+        "name": "statement",
+        "prose": "Security group '%v' exposes sensitive port %v to 0.0.0.0/0"
+       },
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-002_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security group rule '%v' exposes sensitive port %v to 0.0.0.0/0"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-SENTINEL-TF-003",
+      "title": "Resource '%v' uses unapproved region '%v' (allowed: %v)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SENTINEL-TF-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SENTINEL-TF-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sentinel.terraform"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3f514a70-6fbb-5371-90c9-964b6d6a605f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-SENTINEL-TF-003_stmt",
+        "name": "statement",
+        "prose": "Resource '%v' uses unapproved region '%v' (allowed: %v)"
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   },
+   {
+    "id": "enforcement_terraform-terraform_plan_validation",
+    "class": "rego-module",
+    "title": "Terraform plan enforcement — pre-apply gate against a Terraform plan",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement.terraform.plan"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/terraform/terraform_plan_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-1",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-2",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-3",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-4",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-5",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-6",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-7",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-8",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-9",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-10",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-11",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-12",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-12_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_terraform-enforcement.terraform.plan-13",
+      "title": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "enforcement.terraform.plan#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "enforcement.terraform.plan#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement.terraform.plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad0234ca-f416-5941-a9ca-c3add4e0b147",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_terraform-enforcement.terraform.plan-13_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in enforcement/terraform/terraform_plan_validation.rego (package enforcement.terraform.plan); see the rule body."
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "3f514a70-6fbb-5371-90c9-964b6d6a605f",
+     "title": "Sentinel-equivalent policy for Terraform plans",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "sentinel.terraform"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/terraform/sentinel_terraform.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ad0234ca-f416-5941-a9ca-c3add4e0b147",
+     "title": "Terraform plan enforcement — pre-apply gate against a Terraform plan",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "enforcement.terraform.plan"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/enforcement/terraform/terraform_plan_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

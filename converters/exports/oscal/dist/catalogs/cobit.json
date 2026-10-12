@@ -1,0 +1,687 @@
+{
+ "catalog": {
+  "uuid": "b35e1851-e68c-5a3e-a61f-2d2e4fdc511c",
+  "metadata": {
+   "title": "Rego Policy Libraries — cobit (COBIT 2019 — Governance and Management of Enterprise I&T (ISACA))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cobit"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cobit-cobit_main",
+    "class": "rego-module",
+    "title": "COBIT 2019 — Governance and Management of Enterprise I&T (ISACA)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cobit.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/cobit/cobit_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cobit-COBIT-EDM01",
+      "title": "Governance framework for enterprise I&T not established and maintained by the governing body",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT EDM01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT EDM01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-EDM01_stmt",
+        "name": "statement",
+        "prose": "Governance framework for enterprise I&T not established and maintained by the governing body"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-EDM02",
+      "title": "Benefits delivery from I&T investments not evaluated, directed, and monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT EDM02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT EDM02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-EDM02_stmt",
+        "name": "statement",
+        "prose": "Benefits delivery from I&T investments not evaluated, directed, and monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-EDM03",
+      "title": "I&T risk appetite not defined and risk optimization not overseen by the governing body",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT EDM03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT EDM03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-EDM03_stmt",
+        "name": "statement",
+        "prose": "I&T risk appetite not defined and risk optimization not overseen by the governing body"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-EDM04",
+      "title": "I&T resource optimization (people, process, technology) not overseen",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT EDM04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT EDM04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-EDM04_stmt",
+        "name": "statement",
+        "prose": "I&T resource optimization (people, process, technology) not overseen"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-EDM05",
+      "title": "Stakeholder engagement and transparent I&T reporting not directed and monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT EDM05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT EDM05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-EDM05_stmt",
+        "name": "statement",
+        "prose": "Stakeholder engagement and transparent I&T reporting not directed and monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-APO02",
+      "title": "I&T strategy aligned to enterprise goals not documented and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT APO02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT APO02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-APO02_stmt",
+        "name": "statement",
+        "prose": "I&T strategy aligned to enterprise goals not documented and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-APO03",
+      "title": "Enterprise architecture not managed",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT APO03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT APO03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-APO03_stmt",
+        "name": "statement",
+        "prose": "Enterprise architecture not managed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-APO12",
+      "title": "I&T risk management process not operated (identify, assess, respond, monitor)",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT APO12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT APO12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-APO12_stmt",
+        "name": "statement",
+        "prose": "I&T risk management process not operated (identify, assess, respond, monitor)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-APO13",
+      "title": "Information security management system not defined and operated (see ISO 27001 module for ISMS technical depth)",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT APO13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT APO13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-APO13_stmt",
+        "name": "statement",
+        "prose": "Information security management system not defined and operated (see ISO 27001 module for ISMS technical depth)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-APO10",
+      "title": "Vendor/third-party service management not operated",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT APO10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT APO10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-APO10_stmt",
+        "name": "statement",
+        "prose": "Vendor/third-party service management not operated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-BAI06",
+      "title": "I&T change management process not operated",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT BAI06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT BAI06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-BAI06_stmt",
+        "name": "statement",
+        "prose": "I&T change management process not operated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-BAI10",
+      "title": "Configuration management (asset/CI baseline and tracking) not operated",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT BAI10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT BAI10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-BAI10_stmt",
+        "name": "statement",
+        "prose": "Configuration management (asset/CI baseline and tracking) not operated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-DSS01",
+      "title": "I&T operations management not performed to defined procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT DSS01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT DSS01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-DSS01_stmt",
+        "name": "statement",
+        "prose": "I&T operations management not performed to defined procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-DSS02",
+      "title": "Service request and incident management process not operated",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT DSS02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT DSS02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-DSS02_stmt",
+        "name": "statement",
+        "prose": "Service request and incident management process not operated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-DSS05",
+      "title": "Security services not delivered and monitored (see NIST CSF / CIS modules for the technical assessment behind this objective)",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT DSS05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT DSS05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-DSS05_stmt",
+        "name": "statement",
+        "prose": "Security services not delivered and monitored (see NIST CSF / CIS modules for the technical assessment behind this objective)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-MEA01",
+      "title": "Performance and conformance monitoring of I&T not operated",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT MEA01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT MEA01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-MEA01_stmt",
+        "name": "statement",
+        "prose": "Performance and conformance monitoring of I&T not operated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-MEA02",
+      "title": "System of internal control not monitored and assessed",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT MEA02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT MEA02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-MEA02_stmt",
+        "name": "statement",
+        "prose": "System of internal control not monitored and assessed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cobit-COBIT-MEA03",
+      "title": "Compliance with external requirements not evaluated (regulatory watch, mapping, attestation)",
+      "props": [
+       {
+        "name": "label",
+        "value": "COBIT MEA03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "COBIT MEA03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cobit.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc85bc61-7c06-5323-8a85-a81c287c2efe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cobit-COBIT-MEA03_stmt",
+        "name": "statement",
+        "prose": "Compliance with external requirements not evaluated (regulatory watch, mapping, attestation)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "cc85bc61-7c06-5323-8a85-a81c287c2efe",
+     "title": "COBIT 2019 — Governance and Management of Enterprise I&T (ISACA)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cobit.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/cobit/cobit_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

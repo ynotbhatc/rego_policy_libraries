@@ -1,0 +1,2908 @@
+{
+ "catalog": {
+  "uuid": "f304b035-420e-57b7-b169-3d51cd9e0a8f",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_ubuntu_22_04 (CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_ubuntu_22_04"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_ubuntu_22_04-apparmor_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.apparmor"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/apparmor_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-section",
+      "title": "1.6 Mandatory Access Controls (AppArmor)",
+      "props": [
+       {
+        "name": "label",
+        "value": "section"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "section"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.apparmor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d343eace-4f38-51b5-aee3-750406abe0c4",
+        "rel": "implementation"
+       },
+       {
+        "href": "#6e5ac928-d600-5694-8722-28776507a366",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d469f66c-58e8-5f89-9179-cd55f44baf88",
+        "rel": "implementation"
+       },
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       },
+       {
+        "href": "#64dd3d68-bb89-5cb0-b0ac-e83b1990b0d1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#53047469-30a6-53d7-b3ac-6b35a8c47c52",
+        "rel": "implementation"
+       },
+       {
+        "href": "#9fb9c63d-2bad-5285-915c-ae748915ec24",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67aefcf1-3d6b-59d6-8911-65c1bddec2c6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#e44331ba-43ed-5903-a925-bb57981dec47",
+        "rel": "implementation"
+       },
+       {
+        "href": "#3f0dad63-cf5c-5557-8db6-0c1a942721b6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       },
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-section_stmt",
+        "name": "statement",
+        "prose": "1.6 Mandatory Access Controls (AppArmor)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.1",
+        "name": "assessment-objective",
+        "prose": "4.1 Configure System Accounting (auditd)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.2",
+        "name": "assessment-objective",
+        "prose": "1.3-1.5 Boot Security and Process Hardening"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.3",
+        "name": "assessment-objective",
+        "prose": "5.1 Configure time-based job schedulers"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.4",
+        "name": "assessment-objective",
+        "prose": "6.1 System File Permissions"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.5",
+        "name": "assessment-objective",
+        "prose": "1.2-1.8 Initial System Setup"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.6",
+        "name": "assessment-objective",
+        "prose": "4.2 Logging Configuration"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.7",
+        "name": "assessment-objective",
+        "prose": "3.1-3.3 Network Configuration"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.8",
+        "name": "assessment-objective",
+        "prose": "5.4-5.5 PAM and Password Policies"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.9",
+        "name": "assessment-objective",
+        "prose": "2.1-2.3 Service Configuration"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.10",
+        "name": "assessment-objective",
+        "prose": "5.2 Configure SSH Server"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.11",
+        "name": "assessment-objective",
+        "prose": "5.3 Configure Sudo"
+       },
+       {
+        "id": "cis_ubuntu_22_04-section_obj.12",
+        "name": "assessment-objective",
+        "prose": "6.2 User and Group Settings"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-benchmark",
+      "title": "CIS Ubuntu 22.04 v3.0.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "benchmark"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "benchmark"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.apparmor"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d343eace-4f38-51b5-aee3-750406abe0c4",
+        "rel": "implementation"
+       },
+       {
+        "href": "#6e5ac928-d600-5694-8722-28776507a366",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d469f66c-58e8-5f89-9179-cd55f44baf88",
+        "rel": "implementation"
+       },
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       },
+       {
+        "href": "#64dd3d68-bb89-5cb0-b0ac-e83b1990b0d1",
+        "rel": "implementation"
+       },
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#53047469-30a6-53d7-b3ac-6b35a8c47c52",
+        "rel": "implementation"
+       },
+       {
+        "href": "#9fb9c63d-2bad-5285-915c-ae748915ec24",
+        "rel": "implementation"
+       },
+       {
+        "href": "#67aefcf1-3d6b-59d6-8911-65c1bddec2c6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#e44331ba-43ed-5903-a925-bb57981dec47",
+        "rel": "implementation"
+       },
+       {
+        "href": "#3f0dad63-cf5c-5557-8db6-0c1a942721b6",
+        "rel": "implementation"
+       },
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       },
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-benchmark_stmt",
+        "name": "statement",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.1",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.2",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.3",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.4",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.5",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.6",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.7",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.8",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.9",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.10",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.11",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       },
+       {
+        "id": "cis_ubuntu_22_04-benchmark_obj.12",
+        "name": "assessment-objective",
+        "prose": "CIS Ubuntu 22.04 v3.0.0"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-cis_ubuntu_22_04_complete",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark - Complete Compliance Assessment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/cis_ubuntu_22_04_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-assessment_metadata",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/cis_ubuntu_22_04_complete.rego (package cis_ubuntu_22_04); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "assessment_metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "assessment_metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37fccc00-546b-5536-a4c5-d6c42f6bb284",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-assessment_metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/cis_ubuntu_22_04_complete.rego (package cis_ubuntu_22_04); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-system_info",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/cis_ubuntu_22_04_complete.rego (package cis_ubuntu_22_04); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "system_info"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "system_info"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37fccc00-546b-5536-a4c5-d6c42f6bb284",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-system_info_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/cis_ubuntu_22_04_complete.rego (package cis_ubuntu_22_04); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-cron_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.cron"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/cron_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.1",
+      "title": "cron daemon (cron) is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.1_stmt",
+        "name": "statement",
+        "prose": "cron daemon (cron) is not enabled"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "cron daemon (cron) is not running"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.2",
+      "title": "/etc/crontab has mode %s, should be 0600",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.2_stmt",
+        "name": "statement",
+        "prose": "/etc/crontab has mode %s, should be 0600"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab group is %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.3",
+      "title": "/etc/cron.hourly has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.3_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.hourly owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.4",
+      "title": "/etc/cron.daily has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.4_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.daily has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.daily owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.5",
+      "title": "/etc/cron.weekly has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.5_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.weekly owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.6",
+      "title": "/etc/cron.monthly has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.6_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.monthly owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.7",
+      "title": "/etc/cron.d has mode %s, should be 0700",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.7_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.d has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.d owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.8",
+      "title": "/etc/cron.deny exists - should be removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.8_stmt",
+        "name": "statement",
+        "prose": "/etc/cron.deny exists - should be removed"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.allow does not exist - should be created"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.allow has mode %s, should be 0600"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.1.9",
+      "title": "/etc/at.deny exists - should be removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.cron"
+       }
+      ],
+      "links": [
+       {
+        "href": "#01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.9_stmt",
+        "name": "statement",
+        "prose": "/etc/at.deny exists - should be removed"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/at.allow does not exist - should be created"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/at.allow has mode %s, should be 0600"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-file_permissions_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.1: System File Permissions",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.file_permissions"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/file_permissions_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-security_risks",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/file_permissions_validation.rego (package cis_ubuntu_22_04.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_risks"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_risks"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#64dd3d68-bb89-5cb0-b0ac-e83b1990b0d1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-security_risks_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/file_permissions_validation.rego (package cis_ubuntu_22_04.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-initial_setup_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.initial_setup"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/initial_setup_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.2.1",
+      "title": "No apt package repositories are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.2.1_stmt",
+        "name": "statement",
+        "prose": "No apt package repositories are enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.2.2",
+      "title": "No GPG keys configured for apt package verification",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.2.2_stmt",
+        "name": "statement",
+        "prose": "No GPG keys configured for apt package verification"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.3.1",
+      "title": "AIDE is not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.3.1_stmt",
+        "name": "statement",
+        "prose": "AIDE is not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.3.2",
+      "title": "AIDE is not configured to run on a schedule (cron job missing)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.3.2_stmt",
+        "name": "statement",
+        "prose": "AIDE is not configured to run on a schedule (cron job missing)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.4.1",
+      "title": "GRUB boot loader password is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.4.1_stmt",
+        "name": "statement",
+        "prose": "GRUB boot loader password is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.4.2",
+      "title": "GRUB configuration file has mode %s, should be 0400 or 0600",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.4.2_stmt",
+        "name": "statement",
+        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "GRUB configuration file is not owned by root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.5.1",
+      "title": "Core dumps are not restricted (hard limit should be 0)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5.1_stmt",
+        "name": "statement",
+        "prose": "Core dumps are not restricted (hard limit should be 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.5.2",
+      "title": "Address Space Layout Randomization (ASLR) is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5.2_stmt",
+        "name": "statement",
+        "prose": "Address Space Layout Randomization (ASLR) is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.5.3",
+      "title": "prelink is installed (disables ASLR effectiveness)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5.3_stmt",
+        "name": "statement",
+        "prose": "prelink is installed (disables ASLR effectiveness)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.5.4",
+      "title": "ptrace scope is not restricted (kernel.yama.ptrace_scope should be >= 1)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5.4_stmt",
+        "name": "statement",
+        "prose": "ptrace scope is not restricted (kernel.yama.ptrace_scope should be >= 1)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7.1",
+      "title": "/etc/motd has mode %s, should be 0644",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.1_stmt",
+        "name": "statement",
+        "prose": "/etc/motd has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/motd contains sensitive system information"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/motd does not exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7.2",
+      "title": "/etc/issue does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.2_stmt",
+        "name": "statement",
+        "prose": "/etc/issue does not exist"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/issue has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/issue contains sensitive system information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7.3",
+      "title": "/etc/issue.net does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.3_stmt",
+        "name": "statement",
+        "prose": "/etc/issue.net does not exist"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/issue.net has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/issue.net contains sensitive system information"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7.4",
+      "title": "/etc/motd owned by %s, should be root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.4_stmt",
+        "name": "statement",
+        "prose": "/etc/motd owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7.5",
+      "title": "/etc/issue owned by %s, should be root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.5_stmt",
+        "name": "statement",
+        "prose": "/etc/issue owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7.6",
+      "title": "/etc/issue.net owned by %s, should be root",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7.6_stmt",
+        "name": "statement",
+        "prose": "/etc/issue.net owned by %s, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.8.1",
+      "title": "GNOME Display Manager (GDM) installed on server without GUI requirement",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.8.1_stmt",
+        "name": "statement",
+        "prose": "GNOME Display Manager (GDM) installed on server without GUI requirement"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.8.2",
+      "title": "GDM login banner is not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.8.2_stmt",
+        "name": "statement",
+        "prose": "GDM login banner is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.8.3",
+      "title": "GDM automatic screen lock is not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.8.3_stmt",
+        "name": "statement",
+        "prose": "GDM automatic screen lock is not enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.8.4",
+      "title": "GDM idle delay is %d seconds, should be 900 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.8.4_stmt",
+        "name": "statement",
+        "prose": "GDM idle delay is %d seconds, should be 900 or less"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-logging_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.logging"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/logging_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-rsyslog",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/logging_validation.rego (package cis_ubuntu_22_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "rsyslog"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "rsyslog"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#53047469-30a6-53d7-b3ac-6b35a8c47c52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-rsyslog_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/logging_validation.rego (package cis_ubuntu_22_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-journald",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/logging_validation.rego (package cis_ubuntu_22_04.logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "journald"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "journald"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#53047469-30a6-53d7-b3ac-6b35a8c47c52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-journald_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/logging_validation.rego (package cis_ubuntu_22_04.logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-network_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.network"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/network_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-firewall",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/network_validation.rego (package cis_ubuntu_22_04.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "firewall"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "firewall"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9fb9c63d-2bad-5285-915c-ae748915ec24",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-firewall_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_22_04/network_validation.rego (package cis_ubuntu_22_04.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-sudo_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.sudo"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/sudo_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.1",
+      "title": "sudo is not installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.1_stmt",
+        "name": "statement",
+        "prose": "sudo is not installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.2",
+      "title": "sudo is not configured to use pty (Defaults use_pty not found)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.2_stmt",
+        "name": "statement",
+        "prose": "sudo is not configured to use pty (Defaults use_pty not found)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.3",
+      "title": "sudo log file is not configured (Defaults logfile not found)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.3_stmt",
+        "name": "statement",
+        "prose": "sudo log file is not configured (Defaults logfile not found)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.4",
+      "title": "NOPASSWD found in sudoers: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.4_stmt",
+        "name": "statement",
+        "prose": "NOPASSWD found in sudoers: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.5",
+      "title": "!authenticate found in sudoers: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.5_stmt",
+        "name": "statement",
+        "prose": "!authenticate found in sudoers: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.6",
+      "title": "sudo timestamp_timeout is %d minutes, should be 15 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.6_stmt",
+        "name": "statement",
+        "prose": "sudo timestamp_timeout is %d minutes, should be 15 or less"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "sudo timestamp_timeout is negative (0 is recommended for high security)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.7",
+      "title": "su command is not restricted (pam_wheel.so not configured)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.7_stmt",
+        "name": "statement",
+        "prose": "su command is not restricted (pam_wheel.so not configured)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "su is restricted to group '%s' - verify this is the correct privileged group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.3.8",
+      "title": "/etc/sudoers is world-readable",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.sudo"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.8_stmt",
+        "name": "statement",
+        "prose": "/etc/sudoers is world-readable"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.3.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/sudoers has mode %s, should be 0440"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_ubuntu_22_04-user_group_validation",
+    "class": "rego-module",
+    "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_ubuntu_22_04.user_group"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/ubuntu_22_04/user_group_validation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.1",
+      "title": "User %s in /etc/passwd does not use shadowed passwords",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.1_stmt",
+        "name": "statement",
+        "prose": "User %s in /etc/passwd does not use shadowed passwords"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.2",
+      "title": "User %s has an empty password field in /etc/shadow",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.2_stmt",
+        "name": "statement",
+        "prose": "User %s has an empty password field in /etc/shadow"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.3",
+      "title": "Group %s from /etc/passwd does not exist in /etc/group",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.3_stmt",
+        "name": "statement",
+        "prose": "Group %s from /etc/passwd does not exist in /etc/group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.4",
+      "title": "Duplicate UID %s found for users: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.4_stmt",
+        "name": "statement",
+        "prose": "Duplicate UID %s found for users: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.5",
+      "title": "Duplicate GID %s found for groups: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.5_stmt",
+        "name": "statement",
+        "prose": "Duplicate GID %s found for groups: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.6",
+      "title": "Duplicate username %s found %d times",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.6_stmt",
+        "name": "statement",
+        "prose": "Duplicate username %s found %d times"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.7",
+      "title": "Duplicate group name %s found %d times",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.7_stmt",
+        "name": "statement",
+        "prose": "Duplicate group name %s found %d times"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.8",
+      "title": "Root PATH contains empty directory (::)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.8_stmt",
+        "name": "statement",
+        "prose": "Root PATH contains empty directory (::)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Root PATH starts with colon"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Root PATH ends with colon"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.8_obj.3",
+        "name": "assessment-objective",
+        "prose": "Root PATH contains current directory (.)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.8_obj.4",
+        "name": "assessment-objective",
+        "prose": "Root PATH contains world-writable directory: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.9",
+      "title": "Account %s has UID 0 - only root should have UID 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.9_stmt",
+        "name": "statement",
+        "prose": "Account %s has UID 0 - only root should have UID 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.10",
+      "title": "User %s home directory does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.10_stmt",
+        "name": "statement",
+        "prose": "User %s home directory does not exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.11",
+      "title": "User %s does not own their home directory %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.11_stmt",
+        "name": "statement",
+        "prose": "User %s does not own their home directory %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.12",
+      "title": "User %s home directory %s has permissions %s (should be 750 or more restrictive)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.12_stmt",
+        "name": "statement",
+        "prose": "User %s home directory %s has permissions %s (should be 750 or more restrictive)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.13",
+      "title": "User %s has .netrc file: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.13_stmt",
+        "name": "statement",
+        "prose": "User %s has .netrc file: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.14",
+      "title": "User %s has .forward file: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.14_stmt",
+        "name": "statement",
+        "prose": "User %s has .forward file: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.15",
+      "title": "User %s has .rhosts file: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.15_stmt",
+        "name": "statement",
+        "prose": "User %s has .rhosts file: %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2.16",
+      "title": "User %s has group/world writable dot file: %s (mode: %s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2.16_stmt",
+        "name": "statement",
+        "prose": "User %s has group/world writable dot file: %s (mode: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-6.2",
+      "title": "Legacy '+' entry found in /etc/passwd",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36f9cc86-2440-542b-a587-21393356afcc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2_stmt",
+        "name": "statement",
+        "prose": "Legacy '+' entry found in /etc/passwd"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/shadow"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/group"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "d343eace-4f38-51b5-aee3-750406abe0c4",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.apparmor"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/apparmor_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "6e5ac928-d600-5694-8722-28776507a366",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.auditd"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/auditd_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d469f66c-58e8-5f89-9179-cd55f44baf88",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.boot_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/boot_security_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "37fccc00-546b-5536-a4c5-d6c42f6bb284",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark - Complete Compliance Assessment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/cis_ubuntu_22_04_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "01a2d39b-8a9c-5125-befd-d50d0bf5bf45",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.cron"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/cron_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "64dd3d68-bb89-5cb0-b0ac-e83b1990b0d1",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.1: System File Permissions",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.file_permissions"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/file_permissions_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "bb1c0eb7-3cb9-55b1-8b9e-c3bd80df6dd6",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.initial_setup"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/initial_setup_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "53047469-30a6-53d7-b3ac-6b35a8c47c52",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.logging"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/logging_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9fb9c63d-2bad-5285-915c-ae748915ec24",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.network"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/network_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "67aefcf1-3d6b-59d6-8911-65c1bddec2c6",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 5.4-5.5: PAM and Password Policies",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.pam"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/pam_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e44331ba-43ed-5903-a925-bb57981dec47",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/services_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3f0dad63-cf5c-5557-8db6-0c1a942721b6",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.2: Configure SSH Server",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.ssh"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/ssh_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3e79724a-dc32-5b0f-9c15-b8d3306fef98",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.sudo"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/sudo_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "36f9cc86-2440-542b-a587-21393356afcc",
+     "title": "CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_ubuntu_22_04.user_group"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/ubuntu_22_04/user_group_validation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

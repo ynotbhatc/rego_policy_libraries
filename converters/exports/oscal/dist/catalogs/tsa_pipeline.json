@@ -1,0 +1,4251 @@
+{
+ "catalog": {
+  "uuid": "7867322c-9925-53d2-aa94-34458c253de2",
+  "metadata": {
+   "title": "Rego Policy Libraries — tsa_pipeline (TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "tsa_pipeline"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "tsa_pipeline-sd01_cybersecurity_coordinator",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd01_coordinator"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd01_cybersecurity_coordinator.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.a",
+      "title": "No primary Cybersecurity Coordinator designated — Owner/Operators must designate and use a primary Cybersecurity Coordinator at the corporate level",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.a_stmt",
+        "name": "statement",
+        "prose": "No primary Cybersecurity Coordinator designated — Owner/Operators must designate and use a primary Cybersecurity Coordinator at the corporate level"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.a_obj.1",
+        "name": "assessment-objective",
+        "prose": "No alternate Cybersecurity Coordinator designated — at least one alternate is required at the corporate level"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.a_obj.2",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity Coordinator '%s' is not designated at the corporate level"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.b",
+      "title": "Neither the Cybersecurity Coordinator nor any alternate is a U.S. citizen eligible for a security clearance",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.b_stmt",
+        "name": "statement",
+        "prose": "Neither the Cybersecurity Coordinator nor any alternate is a U.S. citizen eligible for a security clearance"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.c.i",
+      "title": "A non-U.S. citizen is designated as a Cybersecurity Coordinator, but the U.S. citizen Coordinator is not established as the primary contact for cyber-related intelligence information restricted to U.S",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.c.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.c.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.c.i_stmt",
+        "name": "statement",
+        "prose": "A non-U.S. citizen is designated as a Cybersecurity Coordinator, but the U.S. citizen Coordinator is not established as the primary contact for cyber-related intelligence information restricted to U.S. persons"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.c.ii",
+      "title": "Cybersecurity Coordinator '%s' is a non-U.S. citizen but is not a current member of NEXUS, Global Entry, or another TSA-determined comparable security threat assessment program",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.c.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.c.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.c.ii_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Coordinator '%s' is a non-U.S. citizen but is not a current member of NEXUS, Global Entry, or another TSA-determined comparable security threat assessment program"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.c.iii",
+      "title": "No established and implemented procedures ensuring U.S.-person-restricted information is not shared with, or maintained on any system accessible by, a non-U.S. person",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.c.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.c.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.c.iii_stmt",
+        "name": "statement",
+        "prose": "No established and implemented procedures ensuring U.S.-person-restricted information is not shared with, or maintained on any system accessible by, a non-U.S. person"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.d",
+      "title": "Cybersecurity Coordinator information not provided in writing to TSA (SurfOps-SD@tsa.dhs.gov) — names, titles, phone numbers, and email addresses are required for all primary and alternate Coordinator",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.d_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Coordinator information not provided in writing to TSA (SurfOps-SD@tsa.dhs.gov) — names, titles, phone numbers, and email addresses are required for all primary and alternate Coordinators"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.d_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity Coordinator '%s' is missing required submission field '%s'"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.d_obj.2",
+        "name": "assessment-objective",
+        "prose": "Non-U.S. citizen Cybersecurity Coordinator '%s' has no NEXUS PASS ID (Known Traveler Number) or other applicable program number on file with TSA"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.e",
+      "title": "Cybersecurity Coordinator information on file with TSA is not current",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.1.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.e_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Coordinator information on file with TSA is not current"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.1.e_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity Coordinator information change is %d days old — updates must be provided to TSA within 7 days of the commencement of new operations or a change in any required information"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.a",
+      "title": "Cybersecurity Coordinator is not established as the primary contact for cybersecurity-related activities and communications with TSA and CISA",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.a_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Coordinator is not established as the primary contact for cybersecurity-related activities and communications with TSA and CISA"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.b",
+      "title": "Cybersecurity Coordinator and alternate(s) are not accessible to TSA and CISA 24 hours a day, seven days a week, including when the U.S. Government is closed",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.b_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Coordinator and alternate(s) are not accessible to TSA and CISA 24 hours a day, seven days a week, including when the U.S. Government is closed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.c",
+      "title": "No documented process for the Cybersecurity Coordinator to coordinate cyber and related security practices and procedures internally",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.c_stmt",
+        "name": "statement",
+        "prose": "No documented process for the Cybersecurity Coordinator to coordinate cyber and related security practices and procedures internally"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.d",
+      "title": "Cybersecurity Coordinator has no established working relationship with appropriate law enforcement and emergency response agencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.B.2.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_coordinator"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ceef7a2-bf3e-5212-bed8-579877b44065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.B.2.d_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Coordinator has no established working relationship with appropriate law enforcement and emergency response agencies"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd01_incident_reporting",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd01_reporting"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd01_incident_reporting.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-II.C.5.a",
+      "title": "Name of the reporting individual and contact information",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.a_stmt",
+        "name": "statement",
+        "prose": "Name of the reporting individual and contact information"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.b",
+      "title": "The affected pipeline(s) and/or facilities, including identifying information and location",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.b_stmt",
+        "name": "statement",
+        "prose": "The affected pipeline(s) and/or facilities, including identifying information and location"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.c",
+      "title": "Description of the threat, incident, or activity (earliest known date of compromise, date of detection, who was notified, observed indicators, known threat information)",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.c_stmt",
+        "name": "statement",
+        "prose": "Description of the threat, incident, or activity (earliest known date of compromise, date of detection, who was notified, observed indicators, known threat information)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.d",
+      "title": "Description of the incident's impact or potential impact on Information or Operational Technology systems and operations",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.d_stmt",
+        "name": "statement",
+        "prose": "Description of the incident's impact or potential impact on Information or Operational Technology systems and operations"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.e",
+      "title": "Description of all responses planned or under consideration",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.e_stmt",
+        "name": "statement",
+        "prose": "Description of all responses planned or under consideration"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-II.C.5.f",
+      "title": "Any additional relevant information",
+      "props": [
+       {
+        "name": "label",
+        "value": "II.C.5.f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "II.C.5.f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-II.C.5.f_stmt",
+        "name": "statement",
+        "prose": "Any additional relevant information"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C",
+      "title": "No documented procedure for reporting cybersecurity incidents to CISA for systems the Owner/Operator has responsibility to operate and/or maintain",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.C"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.C"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C_stmt",
+        "name": "statement",
+        "prose": "No documented procedure for reporting cybersecurity incidents to CISA for systems the Owner/Operator has responsibility to operate and/or maintain"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd01_reporting-1",
+      "title": "TSA SD Pipeline-2021-01G %s — this incident category is not covered by the Owner/Operator's CISA reporting procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd01_reporting#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd01_reporting#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd01_reporting-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-01G %s — this incident category is not covered by the Owner/Operator's CISA reporting procedure"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.3",
+      "title": "Cybersecurity incident '%s' was never reported to CISA — reporting is mandatory for all incidents described in Section II.C.2",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.C.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.C.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.3_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity incident '%s' was never reported to CISA — reporting is mandatory for all incidents described in Section II.C.2"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity incident '%s' was reported to CISA %v hours after identification — reports must be made as soon as practicable but no later than 72 hours"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.4",
+      "title": "Reports are not made to CISA Central using CISA's Incident Reporting System (https://www.cisa.gov/report) or by calling (844) 729-2472",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.C.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.C.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.4_stmt",
+        "name": "statement",
+        "prose": "Reports are not made to CISA Central using CISA's Incident Reporting System (https://www.cisa.gov/report) or by calling (844) 729-2472"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd01_reporting-2",
+      "title": "TSA SD Pipeline-2021-01G %s — this element is not included in the Owner/Operator's CISA report content",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd01_reporting#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd01_reporting#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd01_reporting-2_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-01G %s — this element is not included in the Owner/Operator's CISA report content"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.a",
+      "title": "Report for incident '%s' does not explicitly specify that the information is being reported to satisfy the reporting requirements in this Security Directive",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.C.5.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.C.5.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.a_stmt",
+        "name": "statement",
+        "prose": "Report for incident '%s' does not explicitly specify that the information is being reported to satisfy the reporting requirements in this Security Directive"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f",
+      "title": "No procedure to submit an initial report within the required timeframe and provide supplemental information within 24 hours of it becoming available",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.C.5.f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.C.5.f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_reporting"
+       }
+      ],
+      "links": [
+       {
+        "href": "#08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f_stmt",
+        "name": "statement",
+        "prose": "No procedure to submit an initial report within the required timeframe and provide supplemental information within 24 hours of it becoming available"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.C.5.f_obj.1",
+        "name": "assessment-objective",
+        "prose": "Supplemental information for incident '%s' was provided %v hours after becoming available — it must be provided within 24 hours"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd01_vulnerability_assessment",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd01_vulnerability_assessment"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd01_vulnerability_assessment.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1",
+      "title": "Section 7 of TSA's 2018 Pipeline Security Guidelines (with Change 1, April 2021) has not been reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.D.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.D.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_vulnerability_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1_stmt",
+        "name": "statement",
+        "prose": "Section 7 of TSA's 2018 Pipeline Security Guidelines (with Change 1, April 2021) has not been reviewed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.a",
+      "title": "No assessment of whether current practices and activities addressing cyber risks to Information and Operational Technology systems align with the Pipeline Security Guidelines",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.D.1.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.D.1.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_vulnerability_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.a_stmt",
+        "name": "statement",
+        "prose": "No assessment of whether current practices and activities addressing cyber risks to Information and Operational Technology systems align with the Pipeline Security Guidelines"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.b",
+      "title": "Gaps between current practices and the Pipeline Security Guidelines have not been identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.D.1.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.D.1.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_vulnerability_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.b_stmt",
+        "name": "statement",
+        "prose": "Gaps between current practices and the Pipeline Security Guidelines have not been identified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.c",
+      "title": "Remediation measures to fill identified gaps have not been identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.D.1.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.D.1.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_vulnerability_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.c_stmt",
+        "name": "statement",
+        "prose": "Remediation measures to fill identified gaps have not been identified"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.1.c_obj.1",
+        "name": "assessment-objective",
+        "prose": "No timeline defined for implementing the identified remediation measures"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.2",
+      "title": "The assessment and gap identification were not completed using the form provided by TSA (TSA Form 1604, Pipeline Cybersecurity Self-Assessment)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.D.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.D.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_vulnerability_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.2_stmt",
+        "name": "statement",
+        "prose": "The assessment and gap identification were not completed using the form provided by TSA (TSA Form 1604, Pipeline Cybersecurity Self-Assessment)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.3",
+      "title": "The completed vulnerability assessment form and remediation plan have not been submitted to TSA (SurfOps-SD@tsa.dhs.gov)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-01G II.D.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-01G II.D.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd01_vulnerability_assessment"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.3_stmt",
+        "name": "statement",
+        "prose": "The completed vulnerability assessment form and remediation plan have not been submitted to TSA (SurfOps-SD@tsa.dhs.gov)"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-01G-II.D.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "The vulnerability assessment and remediation plan are not transmitted using methods appropriate to protect Sensitive Security Information under 49 CFR part 1520"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_access_control",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_access_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C",
+      "title": "No documented access control measures to secure and prevent unauthorized access to Critical Cyber Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C_stmt",
+        "name": "statement",
+        "prose": "No documented access control measures to secure and prevent unauthorized access to Critical Cyber Systems"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C_obj.1",
+        "name": "assessment-objective",
+        "prose": "Access control measures do not cover both local and remote access to Critical Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1",
+      "title": "No identification and authentication policies and procedures designed to prevent unauthorized access to Critical Cyber Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1_stmt",
+        "name": "statement",
+        "prose": "No identification and authentication policies and procedures designed to prevent unauthorized access to Critical Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1.a",
+      "title": "No schedule defined for memorized secret authenticator resets",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.1.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.1.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1.a_stmt",
+        "name": "statement",
+        "prose": "No schedule defined for memorized secret authenticator resets"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1.b",
+      "title": "Critical Cyber System component '%s' is exempt from the password reset schedule but has no documented and defined mitigation measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.1.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.1.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1.b_stmt",
+        "name": "statement",
+        "prose": "Critical Cyber System component '%s' is exempt from the password reset schedule but has no documented and defined mitigation measures"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.1.b_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical Cyber System component '%s' is exempt from the password reset schedule but has no timeframe to complete its mitigations"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.2",
+      "title": "Multi-factor authentication — or other logical and physical security controls supplementing password authentication to provide commensurate risk mitigation — is not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.2_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication — or other logical and physical security controls supplementing password authentication to provide commensurate risk mitigation — is not implemented"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Multi-factor authentication is not applied to industrial control workstations in control rooms regulated under 49 CFR parts 192 or 195, and the compensating controls used to manage access are not specified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.3",
+      "title": "No policies and procedures to manage access rights based on the principle of least privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.3_stmt",
+        "name": "statement",
+        "prose": "No policies and procedures to manage access rights based on the principle of least privilege"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "No policies and procedures to manage access rights based on the principle of separation of duties"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Least privilege and separation of duties are declared not technically feasible, but the policies and procedures do not describe the compensating controls the Owner/Operator will apply"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4",
+      "title": "No enforced standards limiting the availability and use of shared accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4_stmt",
+        "name": "statement",
+        "prose": "No enforced standards limiting the availability and use of shared accounts"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Shared account '%s' is not critical for operations — shared accounts must be limited to those critical for operations, and then only if absolutely necessary"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4.a",
+      "title": "Access to shared account '%s' is not limited through account management that uses the principles of least privilege and separation of duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.4.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.4.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4.a_stmt",
+        "name": "statement",
+        "prose": "Access to shared account '%s' is not limited through account management that uses the principles of least privilege and separation of duties"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4.b",
+      "title": "Shared account '%s' has no process ensuring individuals who no longer need access do not retain knowledge of the password",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.4.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.4.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.4.b_stmt",
+        "name": "statement",
+        "prose": "Shared account '%s' has no process ensuring individuals who no longer need access do not retain knowledge of the password"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.5",
+      "title": "No schedule for review of existing domain trust relationships to ensure their necessity",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.C.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.C.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a89d4184-5a08-5e89-90da-ed73a9cf417d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.5_stmt",
+        "name": "statement",
+        "prose": "No schedule for review of existing domain trust relationships to ensure their necessity"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.C.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "No policies to manage domain trusts"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_assessment_plan",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_assessment_plan"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_assessment_plan.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.1",
+      "title": "No Cybersecurity Assessment Plan developed for proactively assessing and auditing cybersecurity measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.1_stmt",
+        "name": "statement",
+        "prose": "No Cybersecurity Assessment Plan developed for proactively assessing and auditing cybersecurity measures"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Assessment Plan does not proactively assess Critical Cyber Systems to ascertain the effectiveness of cybersecurity measures and to identify and resolve device, network, and/or system vulnerabilities"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.a",
+      "title": "The Cybersecurity Assessment Plan does not assess the effectiveness of the Owner/Operator's TSA-approved Cybersecurity Implementation Plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.a_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Assessment Plan does not assess the effectiveness of the Owner/Operator's TSA-approved Cybersecurity Implementation Plan"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.b",
+      "title": "No cybersecurity architecture design review — one is required at least once every two years",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.b_stmt",
+        "name": "statement",
+        "prose": "No cybersecurity architecture design review — one is required at least once every two years"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.b_obj.1",
+        "name": "assessment-objective",
+        "prose": "The last cybersecurity architecture design review was %v months ago — a review is required at least once every two years (24 months)"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.b_obj.2",
+        "name": "assessment-objective",
+        "prose": "The cybersecurity architecture design review does not include verification and validation of network traffic"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.b_obj.3",
+        "name": "assessment-objective",
+        "prose": "The cybersecurity architecture design review does not include system log review and analysis to identify vulnerabilities related to network design, configuration, and inter-connectivity to internal and external systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.c",
+      "title": "The Cybersecurity Assessment Plan does not incorporate penetration testing of Information Technology systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.c_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Assessment Plan does not incorporate penetration testing of Information Technology systems"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.c_obj.1",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Assessment Plan does not incorporate 'red' or 'purple' team (adversarial perspective) testing"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.d",
+      "title": "No schedule for assessing and auditing the specific cybersecurity measures and actions required by III.G.2.a through III.G.2.c",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.d_stmt",
+        "name": "statement",
+        "prose": "No schedule for assessing and auditing the specific cybersecurity measures and actions required by III.G.2.a through III.G.2.c"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.d_obj.1",
+        "name": "assessment-objective",
+        "prose": "The assessment schedule covers %v percent of the policies, procedures, measures, and capabilities in the TSA-approved Cybersecurity Implementation Plan each year — at least one-third must be assessed annually"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.d_obj.2",
+        "name": "assessment-objective",
+        "prose": "The assessment schedule reaches %v percent coverage over a three-year period — 100 percent must be assessed over any three-year period"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.e",
+      "title": "The Cybersecurity Assessment Plan annual report of assessment results has not been submitted to TSA",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.e_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Assessment Plan annual report of assessment results has not been submitted to TSA"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.e.i",
+      "title": "The annual report does not indicate which assessment method(s) were used in the previous 12 months to determine whether the policies, procedures, and capabilities described in the Cybersecurity Implem",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.e.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.e.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.e.i_stmt",
+        "name": "statement",
+        "prose": "The annual report does not indicate which assessment method(s) were used in the previous 12 months to determine whether the policies, procedures, and capabilities described in the Cybersecurity Implementation Plan are effective"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.e.ii",
+      "title": "The annual report does not include the results of the individual assessments conducted in the previous 12 months",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.e.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.2.e.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.2.e.ii_stmt",
+        "name": "statement",
+        "prose": "The annual report does not include the results of the individual assessments conducted in the previous 12 months"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.4",
+      "title": "The Cybersecurity Assessment Plan report was submitted %v months from the date of TSA's approval of the most recent Assessment Plan — it must be submitted no later than 12 months",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.4_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Assessment Plan report was submitted %v months from the date of TSA's approval of the most recent Assessment Plan — it must be submitted no later than 12 months"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.3",
+      "title": "The Cybersecurity Assessment Plan has not been submitted to TSA for approval — submission is required on an annual basis",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.G.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.G.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_assessment_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c65ceb75-7625-5232-acf5-c5aea5752a26",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.3_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Assessment Plan has not been submitted to TSA for approval — submission is required on an annual basis"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.G.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Assessment Plan was submitted %v months from the date of TSA's approval of the previous Plan — it must be submitted no later than 12 months"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_continuous_monitoring",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_continuous_monitoring"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_continuous_monitoring.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D",
+      "title": "No continuous monitoring and detection policies and procedures designed to prevent, detect, and respond to cybersecurity threats and anomalies affecting Critical Cyber Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.D"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.D"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_continuous_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D_stmt",
+        "name": "statement",
+        "prose": "No continuous monitoring and detection policies and procedures designed to prevent, detect, and respond to cybersecurity threats and anomalies affecting Critical Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_continuous_monitoring-1",
+      "title": "TSA SD Pipeline-2021-02G %s — capability not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_continuous_monitoring#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_continuous_monitoring#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_continuous_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_continuous_monitoring-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s — capability not implemented"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_continuous_monitoring-2",
+      "title": "TSA SD Pipeline-2021-02G %s — procedure not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_continuous_monitoring#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_continuous_monitoring#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_continuous_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_continuous_monitoring-2_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s — procedure not established"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.3.a",
+      "title": "Logging policies do not require continuous collection and analyzing of data for potential intrusions and anomalous behavior",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.D.3.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.D.3.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_continuous_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.3.a_stmt",
+        "name": "statement",
+        "prose": "Logging policies do not require continuous collection and analyzing of data for potential intrusions and anomalous behavior"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.3.b",
+      "title": "Logging policies do not ensure data is maintained for sufficient periods to allow for effective investigation of cybersecurity incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.D.3.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.D.3.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_continuous_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.3.b_stmt",
+        "name": "statement",
+        "prose": "Logging policies do not ensure data is maintained for sufficient periods to allow for effective investigation of cybersecurity incidents"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.4",
+      "title": "No mitigation measures or manual controls to ensure industrial control systems can be isolated when a cybersecurity incident in the Information Technology system creates risk to the safety and reliabi",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.D.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.D.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_continuous_monitoring"
+       }
+      ],
+      "links": [
+       {
+        "href": "#646b4220-2f5e-5cd8-81fa-cf22f203337e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.4_stmt",
+        "name": "statement",
+        "prose": "No mitigation measures or manual controls to ensure industrial control systems can be isolated when a cybersecurity incident in the Information Technology system creates risk to the safety and reliability of the Operational Technology system"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.D.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Manual controls for isolating industrial control systems are not documented"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_critical_cyber_systems",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G — \\\"Pipeline Cybersecurity Mitigation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_critical_cyber_systems"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_critical_cyber_systems.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A",
+      "title": "Critical Cyber Systems have not been identified as defined in Section VII of the Security Directive",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.A"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.A"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A_stmt",
+        "name": "statement",
+        "prose": "Critical Cyber Systems have not been identified as defined in Section VII of the Security Directive"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A_obj.1",
+        "name": "assessment-objective",
+        "prose": "No Critical Cyber Systems are enumerated, and no written determination of 'no Critical Cyber Systems' has been declared under Section II.A.5"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A_obj.2",
+        "name": "assessment-objective",
+        "prose": "The methodology and rationale used to identify Critical Cyber Systems are not documented — TSA may require this information if it disagrees with the Owner/Operator's determination"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A_obj.3",
+        "name": "assessment-objective",
+        "prose": "Critical Cyber System '%s' is identified but is not included in the Cybersecurity Implementation Plan"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A-see-VII.C",
+      "title": "Business services were not evaluated for inclusion as Critical Cyber Systems — the definition includes business services that, if compromised or exploited, could result in operational disruption",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.A (see VII.C)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.A (see VII.C)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.A-see-VII.C_stmt",
+        "name": "statement",
+        "prose": "Business services were not evaluated for inclusion as Critical Cyber Systems — the definition includes business services that, if compromised or exploited, could result in operational disruption"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5",
+      "title": "The Owner/Operator determined it has no Critical Cyber Systems but has not notified TSA in writing",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G II.A.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G II.A.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_stmt",
+        "name": "statement",
+        "prose": "The Owner/Operator determined it has no Critical Cyber Systems but has not notified TSA in writing"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "A 'no Critical Cyber Systems' determination must be notified to TSA in writing within 60 days of the Security Directive's effective date — %d days have elapsed"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "The Owner/Operator's method of operations changed but Critical Cyber Systems were not re-evaluated"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "TSA must be notified within 60 days of a change in method of operations to determine the compliance schedule — %d days have elapsed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.3",
+      "title": "Security measures are delegated to or shared with Managed Security Service Provider '%s' without the Owner/Operator documenting that it retains sole responsibility for compliance with its TSA-approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G II.A.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G II.A.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.3_stmt",
+        "name": "statement",
+        "prose": "Security measures are delegated to or shared with Managed Security Service Provider '%s' without the Owner/Operator documenting that it retains sole responsibility for compliance with its TSA-approved Cybersecurity Implementation Plan"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.4",
+      "title": "Authorized Representative '%s' has no documented acknowledgement of liability — both the Owner/Operator and the Authorized Representative are liable for non-compliance",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G II.A.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G II.A.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_critical_cyber_systems"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.A.4_stmt",
+        "name": "statement",
+        "prose": "Authorized Representative '%s' has no documented acknowledgement of liability — both the Owner/Operator and the Authorized Representative are liable for non-compliance"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_implementation_plan",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_implementation_plan"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_implementation_plan.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.1",
+      "title": "No Cybersecurity Implementation Plan — all covered Owner/Operators must submit one for TSA approval",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G II.B.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G II.B.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.1_stmt",
+        "name": "statement",
+        "prose": "No Cybersecurity Implementation Plan — all covered Owner/Operators must submit one for TSA approval"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Implementation Plan does not provide the information required by Sections III.A through III.E of the Security Directive"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Implementation Plan does not describe in detail the Owner/Operator's defense-in-depth plan for meeting the requirements in Sections III.A through III.E"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Implementation Plan's defense-in-depth description omits physical security controls"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Implementation Plan's defense-in-depth description omits logical security controls"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.2",
+      "title": "The Cybersecurity Implementation Plan has not been approved by TSA",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G II.B.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G II.B.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.2_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Implementation Plan has not been approved by TSA"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Not all measures in the TSA-approved Cybersecurity Implementation Plan are implemented and maintained"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-II.B.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "The schedule stipulated in the TSA-approved Cybersecurity Implementation Plan is not being met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.A",
+      "title": "Ownership or control of the operation changed after approval, but no request to amend the Cybersecurity Implementation Plan has been submitted",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G VI.A"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G VI.A"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.A_stmt",
+        "name": "statement",
+        "prose": "Ownership or control of the operation changed after approval, but no request to amend the Cybersecurity Implementation Plan has been submitted"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.B.1",
+      "title": "A policy, procedure, or measure in the Cybersecurity Implementation Plan was determined ineffective based on the audits and assessments required under Section III.G, but no amendment has been requeste",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G VI.B.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G VI.B.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.B.1_stmt",
+        "name": "statement",
+        "prose": "A policy, procedure, or measure in the Cybersecurity Implementation Plan was determined ineffective based on the audits and assessments required under Section III.G, but no amendment has been requested"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.B.2",
+      "title": "New or additional capabilities for meeting the Security Directive's requirements were identified or obtained but not previously approved by TSA, and no amendment has been requested",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G VI.B.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G VI.B.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.B.2_stmt",
+        "name": "statement",
+        "prose": "New or additional capabilities for meeting the Security Directive's requirements were identified or obtained but not previously approved by TSA, and no amendment has been requested"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.C",
+      "title": "Change '%s' is intended to be in effect for %v days, making it a permanent change requiring a Cybersecurity Implementation Plan amendment — none has been filed",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G VI.C"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G VI.C"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.C_stmt",
+        "name": "statement",
+        "prose": "Change '%s' is intended to be in effect for %v days, making it a permanent change requiring a Cybersecurity Implementation Plan amendment — none has been filed"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.D",
+      "title": "The amendment request for permanent change '%s' is %v days past the change taking effect — it must be filed with TSA no later than 50 calendar days",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G VI.D"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G VI.D"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.D_stmt",
+        "name": "statement",
+        "prose": "The amendment request for permanent change '%s' is %v days past the change taking effect — it must be filed with TSA no later than 50 calendar days"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.F",
+      "title": "A petition for reconsideration of the denied amendment '%s' was not filed within 30 calendar days of receiving the denial (%v days elapsed) — see 49 CFR 1570.119",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G VI.F"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G VI.F"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_implementation_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ccb210-33c8-5812-8f78-f537f9b0a97b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-VI.F_stmt",
+        "name": "statement",
+        "prose": "A petition for reconsideration of the denied amendment '%s' was not filed within 30 calendar days of receiving the denial (%v days elapsed) — see 49 CFR 1570.119"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_incident_response_plan",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_incident_response_plan"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_incident_response_plan.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1",
+      "title": "No Cybersecurity Incident Response Plan for the Critical Cyber Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1_stmt",
+        "name": "statement",
+        "prose": "No Cybersecurity Incident Response Plan for the Critical Cyber Systems"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Incident Response Plan is not up to date"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Incident Response Plan does not cover the Owner/Operator's Critical Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.a",
+      "title": "The Cybersecurity Incident Response Plan provides no specific measures for prompt containment of an infected server or device",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.a_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Incident Response Plan provides no specific measures for prompt containment of an infected server or device"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.i",
+      "title": "No measures for segregating (removing from the network) infected devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.i_stmt",
+        "name": "statement",
+        "prose": "No measures for segregating (removing from the network) infected devices"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.ii",
+      "title": "No measures for segregating other devices that shared a network with the infected device(s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.ii_stmt",
+        "name": "statement",
+        "prose": "No measures for segregating other devices that shared a network with the infected device(s)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.iii",
+      "title": "No measures for preserving volatile memory by collecting a forensic memory image of affected device(s) before powering off or moving them",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.iii_stmt",
+        "name": "statement",
+        "prose": "No measures for preserving volatile memory by collecting a forensic memory image of affected device(s) before powering off or moving them"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.iv",
+      "title": "No measures for isolating and securing all infected and potentially infected devices, including clearly labeling equipment affected by malicious code",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.iv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.b.iv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.b.iv_stmt",
+        "name": "statement",
+        "prose": "No measures for isolating and securing all infected and potentially infected devices, including clearly labeling equipment affected by malicious code"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.c",
+      "title": "No measures to secure backups as part of ensuring the security and integrity of backed-up data",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.c_stmt",
+        "name": "statement",
+        "prose": "No measures to secure backups as part of ensuring the security and integrity of backed-up data"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.c_obj.1",
+        "name": "assessment-objective",
+        "prose": "Backup data is not stored separate from the system"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.c_obj.2",
+        "name": "assessment-objective",
+        "prose": "No procedures to ensure backup data is free of known malicious code both when the backup is made and when it is tested for restoral"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.d",
+      "title": "No established capability and governance for isolating the Information and Operational Technology systems in the event of a cybersecurity incident that results, or could result, in operational disrupt",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.d_stmt",
+        "name": "statement",
+        "prose": "No established capability and governance for isolating the Information and Operational Technology systems in the event of a cybersecurity incident that results, or could result, in operational disruption"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e",
+      "title": "No exercise conducted to test the effectiveness of the Cybersecurity Incident Response Plan procedures and personnel — exercises are required no less than annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e_stmt",
+        "name": "statement",
+        "prose": "No exercise conducted to test the effectiveness of the Cybersecurity Incident Response Plan procedures and personnel — exercises are required no less than annually"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e_obj.1",
+        "name": "assessment-objective",
+        "prose": "The last Cybersecurity Incident Response Plan exercise was %v months ago — exercises must be conducted no less than annually"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e.i",
+      "title": "Annual exercises tested %v of the objectives required by III.F.1.a through III.F.1.d — at least two objectives must be tested no less than annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.e.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.e.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e.i_stmt",
+        "name": "statement",
+        "prose": "Annual exercises tested %v of the objectives required by III.F.1.a through III.F.1.d — at least two objectives must be tested no less than annually"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e.ii",
+      "title": "The employees identified by position in Section III.F.2 did not participate in the exercises as active participants",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.e.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.1.e.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.1.e.ii_stmt",
+        "name": "statement",
+        "prose": "The employees identified by position in Section III.F.2 did not participate in the exercises as active participants"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.2",
+      "title": "The Cybersecurity Incident Response Plan does not identify who, by position, is responsible for implementing its specific measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.F.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.F.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_incident_response_plan"
+       }
+      ],
+      "links": [
+       {
+        "href": "#500c1c0c-21f4-5bcc-b444-3ef796732295",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.2_stmt",
+        "name": "statement",
+        "prose": "The Cybersecurity Incident Response Plan does not identify who, by position, is responsible for implementing its specific measures"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.F.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "The Cybersecurity Incident Response Plan does not identify the resources necessary to implement its measures"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_network_segmentation",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_network_segmentation"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_network_segmentation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B",
+      "title": "No documented network segmentation policies and controls designed to prevent operational disruption to the Operational Technology system if the Information Technology system is compromised, or vice ve",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B_stmt",
+        "name": "statement",
+        "prose": "No documented network segmentation policies and controls designed to prevent operational disruption to the Operational Technology system if the Information Technology system is compromised, or vice versa"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.a",
+      "title": "No list and description of Information Technology and Operational Technology system interdependencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B.1.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B.1.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.a_stmt",
+        "name": "statement",
+        "prose": "No list and description of Information Technology and Operational Technology system interdependencies"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.b",
+      "title": "No list and description of all external connections to the Operational Technology system",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B.1.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B.1.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.b_stmt",
+        "name": "statement",
+        "prose": "No list and description of all external connections to the Operational Technology system"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.b_obj.1",
+        "name": "assessment-objective",
+        "prose": "External connection to the Operational Technology system '%s' is listed but not described"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.c",
+      "title": "No list and description of zone boundaries, including how Information Technology and Operational Technology systems are defined and organized into logical zones",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B.1.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B.1.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.c_stmt",
+        "name": "statement",
+        "prose": "No list and description of zone boundaries, including how Information Technology and Operational Technology systems are defined and organized into logical zones"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.1.c_obj.1",
+        "name": "assessment-objective",
+        "prose": "Logical zones are not organized on the basis of '%s' — zones must be based on criticality, consequence, and operational necessity"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2",
+      "title": "No identification or description of measures for securing and defending zone boundaries",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2_stmt",
+        "name": "statement",
+        "prose": "No identification or description of measures for securing and defending zone boundaries"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Zone boundary '%s' has no described security controls for securing and defending the boundary"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2.a",
+      "title": "Zone boundary '%s' has no security control to prevent unauthorized communications between zones",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B.2.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B.2.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2.a_stmt",
+        "name": "statement",
+        "prose": "Zone boundary '%s' has no security control to prevent unauthorized communications between zones"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2.b",
+      "title": "Operational Technology system services traverse the Information Technology system without the Operational Technology system content being encrypted while in transit",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.B.2.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.B.2.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_network_segmentation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b4e3e50-65e2-5443-935b-8757f17bb499",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.B.2.b_stmt",
+        "name": "statement",
+        "prose": "Operational Technology system services traverse the Information Technology system without the Operational Technology system content being encrypted while in transit"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_patch_management",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_patch_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_patch_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.1",
+      "title": "No patch management strategy ensuring all critical security patches and updates on Critical Cyber Systems are current",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.E.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.E.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_patch_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.1_stmt",
+        "name": "statement",
+        "prose": "No patch management strategy ensuring all critical security patches and updates on Critical Cyber Systems are current"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Critical security patches and updates on Critical Cyber Systems are not current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E",
+      "title": "The patch management strategy does not cover %s on Critical Cyber Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_patch_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E_stmt",
+        "name": "statement",
+        "prose": "The patch management strategy does not cover %s on Critical Cyber Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.2.a",
+      "title": "The patch management strategy defines no risk methodology for categorizing patches and updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.E.2.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.E.2.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_patch_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.2.a_stmt",
+        "name": "statement",
+        "prose": "The patch management strategy defines no risk methodology for categorizing patches and updates"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.2.a_obj.1",
+        "name": "assessment-objective",
+        "prose": "The patch management strategy defines no risk methodology for determining the criticality of patches and updates"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.2.a_obj.2",
+        "name": "assessment-objective",
+        "prose": "The patch management strategy defines no implementation timeline based on patch categorization and criticality"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.2.b",
+      "title": "The patch management strategy does not prioritize all security patches and updates on CISA's Known Exploited Vulnerabilities Catalog",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.E.2.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.E.2.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_patch_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.2.b_stmt",
+        "name": "statement",
+        "prose": "The patch management strategy does not prioritize all security patches and updates on CISA's Known Exploited Vulnerabilities Catalog"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.3",
+      "title": "Operational Technology system '%s' is exempted from patching without a documented justification that patching would cause a severe degradation of operational capability to meet business critical funct",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G III.E.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G III.E.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_patch_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e8482f6d-143c-5e5f-a1cf-731adc221b27",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.3_stmt",
+        "name": "statement",
+        "prose": "Operational Technology system '%s' is exempted from patching without a documented justification that patching would cause a severe degradation of operational capability to meet business critical functions"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Operational Technology system '%s' cannot be patched, but the strategy includes no description of additional mitigations addressing the risk created by not installing the patch or update"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-III.E.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Operational Technology system '%s' cannot be patched, but the strategy includes no timeline for the additional mitigations"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "tsa_pipeline-sd02_records",
+    "class": "rego-module",
+    "title": "TSA Security Directive Pipeline-2021-02G",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "tsa_pipeline.sd02_records"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/tsa_pipeline/sd02_records.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.A",
+      "title": "Previously developed plans, assessments, tests, or evaluations are relied upon to meet this Security Directive's requirements, but no index of the records and their location is maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.A"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.A"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.A_stmt",
+        "name": "statement",
+        "prose": "Previously developed plans, assessments, tests, or evaluations are relied upon to meet this Security Directive's requirements, but no index of the records and their location is maintained"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.A_obj.1",
+        "name": "assessment-objective",
+        "prose": "The index of previously developed materials is not organized in the same sequence as the requirements in this Security Directive"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.A_obj.2",
+        "name": "assessment-objective",
+        "prose": "Previously developed materials are not explicitly incorporated by reference into the Cybersecurity Implementation Plan"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.B.1",
+      "title": "Plans and reports required by this Security Directive are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.B.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.B.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.B.1_stmt",
+        "name": "statement",
+        "prose": "Plans and reports required by this Security Directive are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.B.2",
+      "title": "Audit, testing, or assessment results are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.B.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.B.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.B.2_stmt",
+        "name": "statement",
+        "prose": "Audit, testing, or assessment results are not stored and transmitted consistent with the Sensitive Security Information requirements in 49 CFR part 1520"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.1",
+      "title": "Records necessary to establish compliance are not made available to TSA upon request for inspection and/or copying",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.C.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.C.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.1_stmt",
+        "name": "statement",
+        "prose": "Records necessary to establish compliance are not made available to TSA upon request for inspection and/or copying"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-tsa_pipeline.sd02_records-1",
+      "title": "TSA SD Pipeline-2021-02G %s — this record type cannot be produced for TSA inspection",
+      "props": [
+       {
+        "name": "label",
+        "value": "tsa_pipeline.sd02_records#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "tsa_pipeline.sd02_records#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-tsa_pipeline.sd02_records-1_stmt",
+        "name": "statement",
+        "prose": "TSA SD Pipeline-2021-02G %s — this record type cannot be produced for TSA inspection"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.i",
+      "title": "Log files providing a snapshot of activity on and between Information and Operational Technology systems cannot be produced",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.i_stmt",
+        "name": "statement",
+        "prose": "Log files providing a snapshot of activity on and between Information and Operational Technology systems cannot be produced"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.ii",
+      "title": "No capability to produce a capture of network traffic (packet capture) as identified and directed by TSA",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.ii_stmt",
+        "name": "statement",
+        "prose": "No capability to produce a capture of network traffic (packet capture) as identified and directed by TSA"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.ii_obj.1",
+        "name": "assessment-objective",
+        "prose": "Packet capture is configured for a %v-hour period — captures produced for TSA must not exceed a period of twenty-four hours"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.iii",
+      "title": "'East-West Traffic' of Operational Technology systems, sites, and environments within the scope of this Security Directive cannot be produced",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.iii_stmt",
+        "name": "statement",
+        "prose": "'East-West Traffic' of Operational Technology systems, sites, and environments within the scope of this Security Directive cannot be produced"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.iv",
+      "title": "'North-South Traffic' between Information and Operational Technology systems, and the perimeter boundaries between them, cannot be produced",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.iv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G IV.C.2.e.iv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-IV.C.2.e.iv_stmt",
+        "name": "statement",
+        "prose": "'North-South Traffic' between Information and Operational Technology systems, and the perimeter boundaries between them, cannot be produced"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-V.A.1",
+      "title": "Written confirmation of receipt of this Security Directive was not immediately provided to TSA (SurfOps-SD@tsa.dhs.gov)",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G V.A.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G V.A.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-V.A.1_stmt",
+        "name": "statement",
+        "prose": "Written confirmation of receipt of this Security Directive was not immediately provided to TSA (SurfOps-SD@tsa.dhs.gov)"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-V.A.2",
+      "title": "The information and measures in this Security Directive were not immediately disseminated to corporate senior management and security management representatives",
+      "props": [
+       {
+        "name": "label",
+        "value": "TSA SD Pipeline-2021-02G V.A.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "TSA SD Pipeline-2021-02G V.A.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tsa_pipeline.sd02_records"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-V.A.2_stmt",
+        "name": "statement",
+        "prose": "The information and measures in this Security Directive were not immediately disseminated to corporate senior management and security management representatives"
+       },
+       {
+        "id": "tsa_pipeline-TSA-SD-Pipeline-2021-02G-V.A.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "The applicable security measures were not provided to the direct employees and authorized representatives responsible for implementing them"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1ceef7a2-bf3e-5212-bed8-579877b44065",
+     "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd01_coordinator"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_cybersecurity_coordinator.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "08c68e89-c55e-53ae-aef4-2bbc122ce5e4",
+     "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd01_reporting"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_incident_reporting.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "71c62ed3-fca4-5b6a-b6c7-0723b43590ae",
+     "title": "TSA Security Directive Pipeline-2021-01G — \\\"Enhancing Pipeline Cybersecurity\\",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd01_vulnerability_assessment"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd01_vulnerability_assessment.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a89d4184-5a08-5e89-90da-ed73a9cf417d",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_access_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c65ceb75-7625-5232-acf5-c5aea5752a26",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_assessment_plan"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_assessment_plan.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "646b4220-2f5e-5cd8-81fa-cf22f203337e",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_continuous_monitoring"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_continuous_monitoring.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "aeda7f3d-0d43-51c5-ba06-7dc86202d667",
+     "title": "TSA Security Directive Pipeline-2021-02G — \\\"Pipeline Cybersecurity Mitigation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_critical_cyber_systems"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_critical_cyber_systems.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "57ccb210-33c8-5812-8f78-f537f9b0a97b",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_implementation_plan"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_implementation_plan.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "500c1c0c-21f4-5bcc-b444-3ef796732295",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_incident_response_plan"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_incident_response_plan.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7b4e3e50-65e2-5443-935b-8757f17bb499",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_network_segmentation"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_network_segmentation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e8482f6d-143c-5e5f-a1cf-731adc221b27",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_patch_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_patch_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b24c3f8b-b9d1-55bf-a076-b218319a0c58",
+     "title": "TSA Security Directive Pipeline-2021-02G",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "tsa_pipeline.sd02_records"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/tsa_pipeline/sd02_records.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

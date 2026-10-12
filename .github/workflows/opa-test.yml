@@ -88,7 +88,9 @@ jobs:
       - name: Converters — build wasm and run the round-trip test (skips without a wasm engine)
         run: |
           make wasm
-          make check-converters
+          python3 -m pip install -q jsonschema
+          make check-converters 2>&1 | tee /tmp/cc.log
+          ! grep -q '^SKIP schema validation' /tmp/cc.log
 
       - name: Syntax check — benchmarks
         run: |

@@ -1,0 +1,3383 @@
+{
+ "catalog": {
+  "uuid": "3abbb69e-7b14-5458-a198-f028efaf7671",
+  "metadata": {
+   "title": "Rego Policy Libraries — zero_trust (CISA Zero Trust Maturity Model (ZTMM) v2.0 — Applications & Workloads pillar)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "zero_trust"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "zero_trust-applications_workloads",
+    "class": "rego-module",
+    "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Applications & Workloads pillar",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.applications_workloads"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/applications_workloads.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-APP-1",
+      "title": "Application access requires authenticated, authorized identity",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-1_stmt",
+        "name": "statement",
+        "prose": "Application access requires authenticated, authorized identity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-2",
+      "title": "Application access is authorized per-request from contextual/risk signals",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-2_stmt",
+        "name": "statement",
+        "prose": "Application access is authorized per-request from contextual/risk signals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-3",
+      "title": "All applications are exposed behind an identity-aware proxy, not on the open network",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-3_stmt",
+        "name": "statement",
+        "prose": "All applications are exposed behind an identity-aware proxy, not on the open network"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-4",
+      "title": "Applications are internet-accessible only through brokered zero-trust access with continuous authorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-4_stmt",
+        "name": "statement",
+        "prose": "Applications are internet-accessible only through brokered zero-trust access with continuous authorization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-5",
+      "title": "Applications sit behind WAF / runtime threat protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-5_stmt",
+        "name": "statement",
+        "prose": "Applications sit behind WAF / runtime threat protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-6",
+      "title": "Application threat protections are integrated with enterprise threat intelligence and telemetry",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-6_stmt",
+        "name": "statement",
+        "prose": "Application threat protections are integrated with enterprise threat intelligence and telemetry"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-7",
+      "title": "Static application security testing (SAST) runs in the CI pipeline",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-7_stmt",
+        "name": "statement",
+        "prose": "Static application security testing (SAST) runs in the CI pipeline"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-8",
+      "title": "Dynamic application security testing (DAST) runs against pre-production builds",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-8_stmt",
+        "name": "statement",
+        "prose": "Dynamic application security testing (DAST) runs against pre-production builds"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-9",
+      "title": "Application artifacts are built from version-controlled, immutable CI/CD pipelines",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-9_stmt",
+        "name": "statement",
+        "prose": "Application artifacts are built from version-controlled, immutable CI/CD pipelines"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-10",
+      "title": "Deployment artifacts are cryptographically signed and provenance-verified before release",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-10_stmt",
+        "name": "statement",
+        "prose": "Deployment artifacts are cryptographically signed and provenance-verified before release"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-11",
+      "title": "Workloads authenticate to each other with short-lived, cryptographic service identities",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-11_stmt",
+        "name": "statement",
+        "prose": "Workloads authenticate to each other with short-lived, cryptographic service identities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-APP-12",
+      "title": "Application authorization policy is centrally managed and continuously evaluated as code",
+      "props": [
+       {
+        "name": "label",
+        "value": "APP-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "APP-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-APP-12_stmt",
+        "name": "statement",
+        "prose": "Application authorization policy is centrally managed and continuously evaluated as code"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.applications_workloads-1",
+      "title": "Zero Trust [Applications & Workloads] %s (%s / %s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.applications_workloads#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.applications_workloads#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.applications_workloads"
+       }
+      ],
+      "links": [
+       {
+        "href": "#85300fb7-faa9-5635-a5c2-605291393cd2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.applications_workloads-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Applications & Workloads] %s (%s / %s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-automation_orchestration",
+    "class": "rego-module",
+    "title": "ZTMM v2.0 — Automation & Orchestration cross-cutting capability. AAC",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.automation_orchestration"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/automation_orchestration.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-AUT-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-AUT-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-AUT-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-AUT-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-AUT-5",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-AUT-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-AUT-7",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AUT-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AUT-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-AUT-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/automation_orchestration.rego (package zero_trust.automation_orchestration); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.automation_orchestration-1",
+      "title": "Zero Trust [Automation & Orchestration] %s (%s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.automation_orchestration#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.automation_orchestration#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.automation_orchestration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.automation_orchestration-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Automation & Orchestration] %s (%s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-data",
+    "class": "rego-module",
+    "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Data pillar",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.data"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/data.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-DATA-1",
+      "title": "A data inventory is maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-1_stmt",
+        "name": "statement",
+        "prose": "A data inventory is maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-2",
+      "title": "Data inventory is automated and continuously discovered",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-2_stmt",
+        "name": "statement",
+        "prose": "Data inventory is automated and continuously discovered"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-3",
+      "title": "Data is categorized and labeled by sensitivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-3_stmt",
+        "name": "statement",
+        "prose": "Data is categorized and labeled by sensitivity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-4",
+      "title": "Data is automatically tagged/classified at creation",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-4_stmt",
+        "name": "statement",
+        "prose": "Data is automatically tagged/classified at creation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-5",
+      "title": "Critical data is backed up with verified recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-5_stmt",
+        "name": "statement",
+        "prose": "Critical data is backed up with verified recovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-6",
+      "title": "Data availability uses redundant, geographically distributed stores",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-6_stmt",
+        "name": "statement",
+        "prose": "Data availability uses redundant, geographically distributed stores"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-7",
+      "title": "Access decisions use data category plus identity",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-7_stmt",
+        "name": "statement",
+        "prose": "Access decisions use data category plus identity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-8",
+      "title": "Access is dynamically authorized per-request from real-time risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-8_stmt",
+        "name": "statement",
+        "prose": "Access is dynamically authorized per-request from real-time risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-9",
+      "title": "Data is encrypted at rest and in transit",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-9_stmt",
+        "name": "statement",
+        "prose": "Data is encrypted at rest and in transit"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-10",
+      "title": "Encryption keys are centrally managed with automated rotation",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-10_stmt",
+        "name": "statement",
+        "prose": "Encryption keys are centrally managed with automated rotation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-11",
+      "title": "Data Loss Prevention (DLP) is enforced and monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-11_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention (DLP) is enforced and monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DATA-12",
+      "title": "Data lifecycle and retention policies are documented and enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "DATA-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DATA-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DATA-12_stmt",
+        "name": "statement",
+        "prose": "Data lifecycle and retention policies are documented and enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.data-1",
+      "title": "Zero Trust [Data] %s (%s / %s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.data#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.data#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.data"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7407660e-6972-5efe-8537-b3d7692b5ecb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.data-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Data] %s (%s / %s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-devices",
+    "class": "rego-module",
+    "title": "ZTMM v2.0 — Devices pillar. AAC assessment mapping; each criterion tagged with its maturity stage",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.devices"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/devices.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-DEV-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-5",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-7",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-8",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-9",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-9_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-10",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-DEV-11",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "DEV-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DEV-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-DEV-11_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/devices.rego (package zero_trust.devices); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.devices-1",
+      "title": "Zero Trust [Devices] %s (%s / %s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.devices#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.devices#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.devices"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.devices-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Devices] %s (%s / %s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-governance",
+    "class": "rego-module",
+    "title": "ZTMM v2.0 — Governance cross-cutting capability. AAC assessment mapping; each",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.governance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/governance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-GOV-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-5",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-7",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-GOV-8",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOV-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOV-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-GOV-8_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/governance.rego (package zero_trust.governance); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.governance-1",
+      "title": "Zero Trust [Governance] %s (%s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.governance#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.governance#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#07238a69-f7b8-5743-a643-0c120fb22cd8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.governance-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Governance] %s (%s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-identity",
+    "class": "rego-module",
+    "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Identity pillar",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.identity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/identity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-ID-1",
+      "title": "MFA is enforced for all users",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-1_stmt",
+        "name": "statement",
+        "prose": "MFA is enforced for all users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-2",
+      "title": "Phishing-resistant MFA (FIDO2/PIV) is required",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-2_stmt",
+        "name": "statement",
+        "prose": "Phishing-resistant MFA (FIDO2/PIV) is required"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-3",
+      "title": "Continuous / passwordless authentication is used across the enterprise",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-3_stmt",
+        "name": "statement",
+        "prose": "Continuous / passwordless authentication is used across the enterprise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-4",
+      "title": "Identity stores are consolidated and centrally managed",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-4_stmt",
+        "name": "statement",
+        "prose": "Identity stores are consolidated and centrally managed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-5",
+      "title": "Self-hosted and cloud identity stores are integrated and federated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-5_stmt",
+        "name": "statement",
+        "prose": "Self-hosted and cloud identity stores are integrated and federated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-6",
+      "title": "Identity risk is assessed using manual, point-in-time signals",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-6_stmt",
+        "name": "statement",
+        "prose": "Identity risk is assessed using manual, point-in-time signals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-7",
+      "title": "Continuous identity risk scoring feeds access decisions",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-7_stmt",
+        "name": "statement",
+        "prose": "Continuous identity risk scoring feeds access decisions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-8",
+      "title": "Least-privilege access is enforced with just-in-time / just-enough privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-8_stmt",
+        "name": "statement",
+        "prose": "Least-privilege access is enforced with just-in-time / just-enough privilege"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-9",
+      "title": "Access is dynamically authorized per-session from real-time risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-9_stmt",
+        "name": "statement",
+        "prose": "Access is dynamically authorized per-session from real-time risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-10",
+      "title": "Authentication and access events are centrally logged and analyzed",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-10_stmt",
+        "name": "statement",
+        "prose": "Authentication and access events are centrally logged and analyzed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-11",
+      "title": "Identity lifecycle (provisioning/deprovisioning) is automated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-11_stmt",
+        "name": "statement",
+        "prose": "Identity lifecycle (provisioning/deprovisioning) is automated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-ID-12",
+      "title": "Identity policies are documented and periodically reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-ID-12_stmt",
+        "name": "statement",
+        "prose": "Identity policies are documented and periodically reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.identity-1",
+      "title": "Zero Trust [Identity] %s (%s / %s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.identity#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.identity#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.identity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c99b895-2564-5198-9e4f-ab2f044073f1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.identity-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Identity] %s (%s / %s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-networks",
+    "class": "rego-module",
+    "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Networks pillar",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.networks"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/networks.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-NET-1",
+      "title": "Macro-segmentation separates major network zones",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-1_stmt",
+        "name": "statement",
+        "prose": "Macro-segmentation separates major network zones"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-2",
+      "title": "Micro-segmentation isolates individual workloads and applications",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-2_stmt",
+        "name": "statement",
+        "prose": "Micro-segmentation isolates individual workloads and applications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-3",
+      "title": "Fully distributed ingress/egress micro-perimeters are dynamically defined per-workload",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-3_stmt",
+        "name": "statement",
+        "prose": "Fully distributed ingress/egress micro-perimeters are dynamically defined per-workload"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-4",
+      "title": "Traffic is managed by static, manually maintained rules and policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-4_stmt",
+        "name": "statement",
+        "prose": "Traffic is managed by static, manually maintained rules and policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-5",
+      "title": "Application-aware traffic policies are dynamically enforced from risk signals",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-5_stmt",
+        "name": "statement",
+        "prose": "Application-aware traffic policies are dynamically enforced from risk signals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-6",
+      "title": "Traffic management is fully automated and adapts in real time to changing needs",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-6_stmt",
+        "name": "statement",
+        "prose": "Traffic management is fully automated and adapts in real time to changing needs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-7",
+      "title": "Encryption is applied to external and known-sensitive traffic",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-7_stmt",
+        "name": "statement",
+        "prose": "Encryption is applied to external and known-sensitive traffic"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-8",
+      "title": "All internal and external traffic is encrypted wherever technically supported",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-8_stmt",
+        "name": "statement",
+        "prose": "All internal and external traffic is encrypted wherever technically supported"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-9",
+      "title": "Encryption keys are centrally managed and rotated with continuous enforcement",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-9_stmt",
+        "name": "statement",
+        "prose": "Encryption keys are centrally managed and rotated with continuous enforcement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-10",
+      "title": "Network resilience and failover are tested against expected demand",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-10_stmt",
+        "name": "statement",
+        "prose": "Network resilience and failover are tested against expected demand"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-11",
+      "title": "Network resilience dynamically adjusts to demand and adverse conditions across the enterprise",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-11_stmt",
+        "name": "statement",
+        "prose": "Network resilience dynamically adjusts to demand and adverse conditions across the enterprise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-12",
+      "title": "Network traffic and flow telemetry are centrally collected and analyzed",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-12_stmt",
+        "name": "statement",
+        "prose": "Network traffic and flow telemetry are centrally collected and analyzed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-13",
+      "title": "Network and segmentation policy changes are automated through orchestration",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-13_stmt",
+        "name": "statement",
+        "prose": "Network and segmentation policy changes are automated through orchestration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-NET-14",
+      "title": "Network security policies are documented and periodically reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "NET-14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NET-14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-NET-14_stmt",
+        "name": "statement",
+        "prose": "Network security policies are documented and periodically reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.networks-1",
+      "title": "Zero Trust [Networks] %s (%s / %s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.networks#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.networks#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.networks"
+       }
+      ],
+      "links": [
+       {
+        "href": "#958f6d6a-40cd-51b1-9818-4832e531e5c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.networks-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Networks] %s (%s / %s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "zero_trust-visibility_analytics",
+    "class": "rego-module",
+    "title": "ZTMM v2.0 — Visibility & Analytics cross-cutting capability. AAC assessment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "zero_trust.visibility_analytics"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/zero_trust/visibility_analytics.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "zero_trust-VIS-1",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-VIS-2",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-VIS-3",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-VIS-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-VIS-5",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-VIS-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-6_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-VIS-7",
+      "title": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "VIS-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "VIS-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-VIS-7_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/zero_trust/visibility_analytics.rego (package zero_trust.visibility_analytics); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "zero_trust-zero_trust.visibility_analytics-1",
+      "title": "Zero Trust [Visibility & Analytics] %s (%s): %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "zero_trust.visibility_analytics#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "zero_trust.visibility_analytics#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "zero_trust.visibility_analytics"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3da52548-8100-5941-a243-b7fabe60de66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "zero_trust-zero_trust.visibility_analytics-1_stmt",
+        "name": "statement",
+        "prose": "Zero Trust [Visibility & Analytics] %s (%s): %s — not met"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "85300fb7-faa9-5635-a5c2-605291393cd2",
+     "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Applications & Workloads pillar",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.applications_workloads"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/applications_workloads.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "6b1d8f6f-4800-5f7e-b0f2-0c1d0b3dd398",
+     "title": "ZTMM v2.0 — Automation & Orchestration cross-cutting capability. AAC",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.automation_orchestration"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/automation_orchestration.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7407660e-6972-5efe-8537-b3d7692b5ecb",
+     "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Data pillar",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.data"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/data.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e83d2b86-29b8-51a6-b559-93acf13ef1e4",
+     "title": "ZTMM v2.0 — Devices pillar. AAC assessment mapping; each criterion tagged with its maturity stage",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.devices"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/devices.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "07238a69-f7b8-5743-a643-0c120fb22cd8",
+     "title": "ZTMM v2.0 — Governance cross-cutting capability. AAC assessment mapping; each",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.governance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/governance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "2c99b895-2564-5198-9e4f-ab2f044073f1",
+     "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Identity pillar",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.identity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/identity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "958f6d6a-40cd-51b1-9818-4832e531e5c8",
+     "title": "CISA Zero Trust Maturity Model (ZTMM) v2.0 — Networks pillar",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.networks"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/networks.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3da52548-8100-5941-a243-b7fabe60de66",
+     "title": "ZTMM v2.0 — Visibility & Analytics cross-cutting capability. AAC assessment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "zero_trust.visibility_analytics"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/zero_trust/visibility_analytics.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

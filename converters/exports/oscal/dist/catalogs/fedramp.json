@@ -1,0 +1,470 @@
+{
+ "catalog": {
+  "uuid": "8d47da73-5e1f-50fb-92f5-e75d3632565e",
+  "metadata": {
+   "title": "Rego Policy Libraries — fedramp (FedRAMP — Federal Risk and Authorization Management Program)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "fedramp"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "fedramp-fedramp_main",
+    "class": "rego-module",
+    "title": "FedRAMP — Federal Risk and Authorization Management Program",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "fedramp"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/fedramp/fedramp_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "fedramp-standard",
+      "title": "FedRAMP",
+      "props": [
+       {
+        "name": "label",
+        "value": "standard"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "standard"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-standard_stmt",
+        "name": "statement",
+        "prose": "FedRAMP"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-areas",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "areas"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "areas"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-areas_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-authorization",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "authorization"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "authorization"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-authorization_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-authorization_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-cryptography",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cryptography"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cryptography"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-cryptography_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-cryptography_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-data_residency",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_residency"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_residency"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-data_residency_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-data_residency_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-personnel_security",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "personnel_security"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "personnel_security"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-personnel_security_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-personnel_security_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-continuous_monitoring",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "continuous_monitoring"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "continuous_monitoring"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-continuous_monitoring_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-continuous_monitoring_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-third_party_assessment",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "third_party_assessment"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "third_party_assessment"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-third_party_assessment_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-third_party_assessment_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-supply_chain",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d686264-9309-5192-a11d-081224c163b8",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84d78745-0b85-55d1-afe6-11f4464dbba4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-supply_chain_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-supply_chain_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "9d686264-9309-5192-a11d-081224c163b8",
+     "title": "FedRAMP — Federal Risk and Authorization Management Program",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "fedramp"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/fedramp/fedramp_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "84d78745-0b85-55d1-afe6-11f4464dbba4",
+     "title": "FedRAMP main adapter — exposes the standard contract",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "fedramp.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/fedramp/fedramp_main_adapter.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

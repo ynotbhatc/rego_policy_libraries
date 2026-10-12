@@ -5,6 +5,13 @@
 # The METADATA block for package mas_trm.main lives in mas_trm_main.rego.
 # Ids are the Guidelines' paragraph numbers; text is a one-line paraphrase of
 # the paragraph's "should". Source: mas.gov.sg, TRM Guidelines 18 January 2021.
+# METADATA
+# title: "MAS TRM Guidelines (2021) — Annex A control tables"
+# custom:
+#   class: compliance
+#   framework: mas_trm
+#   source: mas
+#   domains: [financial, singapore]
 package mas_trm.main
 
 import rego.v1

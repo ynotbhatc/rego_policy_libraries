@@ -1,0 +1,159 @@
+{
+ "catalog": {
+  "uuid": "66e89aab-a9fd-54a5-9da7-ef5e60e731fb",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_ubuntu_20_04 (DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_ubuntu_20_04"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_ubuntu_20_04-stig_ubuntu_20_04_complete",
+    "class": "rego-module",
+    "title": "DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.ubuntu_20_04"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_ubuntu_20_04-assessment_metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "assessment_metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "assessment_metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_20_04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fcdf8492-91f4-5da9-b40d-0ac8083fe14d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_20_04-assessment_metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_20_04-compliance_summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "compliance_summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "compliance_summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_20_04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fcdf8492-91f4-5da9-b40d-0ac8083fe14d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_20_04-compliance_summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "fcdf8492-91f4-5da9-b40d-0ac8083fe14d",
+     "title": "DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.ubuntu_20_04"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

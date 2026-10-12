@@ -1,0 +1,3169 @@
+{
+ "catalog": {
+  "uuid": "51abcf8d-50a5-5b1f-bed1-01d6088ea4b6",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_cybersecurity_framework_2_0 (NIST Cybersecurity Framework 2.0 — DETECT (DE) function)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_cybersecurity_framework_2_0"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_cybersecurity_framework_2_0-detect",
+    "class": "rego-module",
+    "title": "NIST Cybersecurity Framework 2.0 — DETECT (DE) function",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.csf.detect"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/cybersecurity_framework_2.0/detect/detect.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-01",
+      "title": "Baseline of network operations and expected data flows not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.AE-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.AE-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-01_stmt",
+        "name": "statement",
+        "prose": "Baseline of network operations and expected data flows not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-02",
+      "title": "Detected events not analyzed to understand attack targets/methods",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.AE-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.AE-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-02_stmt",
+        "name": "statement",
+        "prose": "Detected events not analyzed to understand attack targets/methods"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-03",
+      "title": "Event data not aggregated and correlated from multiple sources",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.AE-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.AE-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-03_stmt",
+        "name": "statement",
+        "prose": "Event data not aggregated and correlated from multiple sources"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-04",
+      "title": "Impact of events not determined",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.AE-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.AE-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-04_stmt",
+        "name": "statement",
+        "prose": "Impact of events not determined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-05",
+      "title": "Incident alert thresholds not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.AE-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.AE-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.AE-05_stmt",
+        "name": "statement",
+        "prose": "Incident alert thresholds not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-01",
+      "title": "Network not monitored to detect potential cybersecurity events",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-01_stmt",
+        "name": "statement",
+        "prose": "Network not monitored to detect potential cybersecurity events"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-02",
+      "title": "Physical environment not monitored for unauthorized access",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-02_stmt",
+        "name": "statement",
+        "prose": "Physical environment not monitored for unauthorized access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-03",
+      "title": "Personnel activity not monitored for anomalous behavior",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-03_stmt",
+        "name": "statement",
+        "prose": "Personnel activity not monitored for anomalous behavior"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-04",
+      "title": "Malicious code not detected via continuous scanning",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-04_stmt",
+        "name": "statement",
+        "prose": "Malicious code not detected via continuous scanning"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-05",
+      "title": "Unauthorized mobile code not detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-05_stmt",
+        "name": "statement",
+        "prose": "Unauthorized mobile code not detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-06",
+      "title": "External service provider activity not monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-06_stmt",
+        "name": "statement",
+        "prose": "External service provider activity not monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-07",
+      "title": "Monitoring for unauthorized personnel/connections/devices/software not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-07"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-07"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-07_stmt",
+        "name": "statement",
+        "prose": "Monitoring for unauthorized personnel/connections/devices/software not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-08",
+      "title": "Vulnerability scans not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.CM-08"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.CM-08"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.CM-08_stmt",
+        "name": "statement",
+        "prose": "Vulnerability scans not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-01",
+      "title": "Roles and responsibilities for detection not well-defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.DP-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.DP-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-01_stmt",
+        "name": "statement",
+        "prose": "Roles and responsibilities for detection not well-defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-02",
+      "title": "Detection activities don't comply with all applicable requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.DP-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.DP-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-02_stmt",
+        "name": "statement",
+        "prose": "Detection activities don't comply with all applicable requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-03",
+      "title": "Detection processes not tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.DP-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.DP-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-03_stmt",
+        "name": "statement",
+        "prose": "Detection processes not tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-04",
+      "title": "Event detection information not communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.DP-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.DP-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-04_stmt",
+        "name": "statement",
+        "prose": "Event detection information not communicated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-05",
+      "title": "Detection processes not continuously improved",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF DE.DP-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF DE.DP-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.detect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9b6d240-4072-5aff-8743-083c4571029f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-DE.DP-05_stmt",
+        "name": "statement",
+        "prose": "Detection processes not continuously improved"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_cybersecurity_framework_2_0-governance",
+    "class": "rego-module",
+    "title": "NIST Cybersecurity Framework 2.0 - GOVERN Function",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.csf.govern"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/cybersecurity_framework_2.0/govern/governance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-01",
+      "title": "Organizational cybersecurity strategy not documented/approved/reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.OC-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.OC-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-01_stmt",
+        "name": "statement",
+        "prose": "Organizational cybersecurity strategy not documented/approved/reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-02",
+      "title": "Cybersecurity governance structure lacks defined roles or accountability",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.OC-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.OC-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-02_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity governance structure lacks defined roles or accountability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-03",
+      "title": "Cybersecurity policy not established/current/communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.OC-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.OC-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-03_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity policy not established/current/communicated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-04",
+      "title": "Cybersecurity roles/responsibilities not documented or assigned",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.OC-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.OC-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-04_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity roles/responsibilities not documented or assigned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-05",
+      "title": "Supply chain risk management program not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.OC-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.OC-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.OC-05_stmt",
+        "name": "statement",
+        "prose": "Supply chain risk management program not in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-01",
+      "title": "Risk management strategy not documented with tolerance/appetite",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.RM-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.RM-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-01_stmt",
+        "name": "statement",
+        "prose": "Risk management strategy not documented with tolerance/appetite"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-02",
+      "title": "Risk analysis, prioritization, and response plans missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.RM-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.RM-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-02_stmt",
+        "name": "statement",
+        "prose": "Risk analysis, prioritization, and response plans missing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-03",
+      "title": "Risk mitigation actions not prioritized with timelines",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.RM-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.RM-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-03_stmt",
+        "name": "statement",
+        "prose": "Risk mitigation actions not prioritized with timelines"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-04",
+      "title": "Strategic direction not linked to risk management decisions",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.RM-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.RM-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-04_stmt",
+        "name": "statement",
+        "prose": "Strategic direction not linked to risk management decisions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-06",
+      "title": "Standardized risk calculation methodology missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.RM-06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.RM-06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.RM-06_stmt",
+        "name": "statement",
+        "prose": "Standardized risk calculation methodology missing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.SC-01",
+      "title": "Supply chain cybersecurity policy not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.SC-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.SC-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.SC-01_stmt",
+        "name": "statement",
+        "prose": "Supply chain cybersecurity policy not maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.SC-04",
+      "title": "Suppliers not assessed prior to establishing relationships",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.SC-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.SC-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.SC-04_stmt",
+        "name": "statement",
+        "prose": "Suppliers not assessed prior to establishing relationships"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.SC-05",
+      "title": "Suppliers not continuously assessed during relationships",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.SC-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.SC-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.SC-05_stmt",
+        "name": "statement",
+        "prose": "Suppliers not continuously assessed during relationships"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.PO-01",
+      "title": "Cybersecurity policy maintenance process missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.PO-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.PO-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.PO-01_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity policy maintenance process missing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-GV.PO-02",
+      "title": "Procedures to implement cybersecurity policy not maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF GV.PO-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF GV.PO-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.govern"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f316791a-0e07-5be6-9804-467aa351ffab",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-GV.PO-02_stmt",
+        "name": "statement",
+        "prose": "Procedures to implement cybersecurity policy not maintained"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_cybersecurity_framework_2_0-identify",
+    "class": "rego-module",
+    "title": "NIST Cybersecurity Framework 2.0 — IDENTIFY (ID) function",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.csf.identify"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/cybersecurity_framework_2.0/identify/identify.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-01",
+      "title": "Physical devices and systems not inventoried",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.AM-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.AM-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-01_stmt",
+        "name": "statement",
+        "prose": "Physical devices and systems not inventoried"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-02",
+      "title": "Software platforms and applications not inventoried",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.AM-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.AM-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-02_stmt",
+        "name": "statement",
+        "prose": "Software platforms and applications not inventoried"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-03",
+      "title": "Organizational communication and data flows not mapped",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.AM-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.AM-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-03_stmt",
+        "name": "statement",
+        "prose": "Organizational communication and data flows not mapped"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-04",
+      "title": "External information systems not cataloged",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.AM-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.AM-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-04_stmt",
+        "name": "statement",
+        "prose": "External information systems not cataloged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-05",
+      "title": "Resources not prioritized based on classification/criticality",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.AM-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.AM-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.AM-05_stmt",
+        "name": "statement",
+        "prose": "Resources not prioritized based on classification/criticality"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.BE-01",
+      "title": "Organization's role in the supply chain not identified/communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.BE-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.BE-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.BE-01_stmt",
+        "name": "statement",
+        "prose": "Organization's role in the supply chain not identified/communicated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.BE-02",
+      "title": "Role in critical infrastructure / sector not identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.BE-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.BE-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.BE-02_stmt",
+        "name": "statement",
+        "prose": "Role in critical infrastructure / sector not identified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.BE-03",
+      "title": "Priorities for organizational mission/objectives/activities not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.BE-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.BE-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.BE-03_stmt",
+        "name": "statement",
+        "prose": "Priorities for organizational mission/objectives/activities not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-01",
+      "title": "Asset vulnerabilities not identified and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RA-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RA-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-01_stmt",
+        "name": "statement",
+        "prose": "Asset vulnerabilities not identified and documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-02",
+      "title": "Cyber threat intelligence not received from information-sharing forums",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RA-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RA-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-02_stmt",
+        "name": "statement",
+        "prose": "Cyber threat intelligence not received from information-sharing forums"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-03",
+      "title": "Internal and external threats not identified or documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RA-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RA-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-03_stmt",
+        "name": "statement",
+        "prose": "Internal and external threats not identified or documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-04",
+      "title": "Potential business impacts and likelihoods not identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RA-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RA-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-04_stmt",
+        "name": "statement",
+        "prose": "Potential business impacts and likelihoods not identified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-05",
+      "title": "Threats/vulnerabilities/likelihoods/impacts not used to determine risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RA-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RA-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RA-05_stmt",
+        "name": "statement",
+        "prose": "Threats/vulnerabilities/likelihoods/impacts not used to determine risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RM-01",
+      "title": "Risk management processes not established/managed/agreed-to",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RM-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RM-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RM-01_stmt",
+        "name": "statement",
+        "prose": "Risk management processes not established/managed/agreed-to"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.RM-02",
+      "title": "Organizational risk tolerance not determined or clearly expressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.RM-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.RM-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.RM-02_stmt",
+        "name": "statement",
+        "prose": "Organizational risk tolerance not determined or clearly expressed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.SC-01",
+      "title": "Cyber supply chain risk management processes not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.SC-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.SC-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.SC-01_stmt",
+        "name": "statement",
+        "prose": "Cyber supply chain risk management processes not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-ID.SC-02",
+      "title": "Suppliers and third-party partners not identified/prioritized/assessed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF ID.SC-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF ID.SC-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.identify"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac729733-afff-5874-a3c7-66fdff632346",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-ID.SC-02_stmt",
+        "name": "statement",
+        "prose": "Suppliers and third-party partners not identified/prioritized/assessed"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_cybersecurity_framework_2_0-access_control",
+    "class": "rego-module",
+    "title": "NIST Cybersecurity Framework 2.0 - PROTECT Function",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.csf.protect"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/cybersecurity_framework_2.0/protect/access_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-01",
+      "title": "Identities and credentials not managed for authorized users/devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-01_stmt",
+        "name": "statement",
+        "prose": "Identities and credentials not managed for authorized users/devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-02",
+      "title": "Physical access to assets not managed/protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-02_stmt",
+        "name": "statement",
+        "prose": "Physical access to assets not managed/protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-03",
+      "title": "Remote access not managed (VPN, MFA, encryption)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-03_stmt",
+        "name": "statement",
+        "prose": "Remote access not managed (VPN, MFA, encryption)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-04",
+      "title": "Access permissions/least privilege/SoD not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-04_stmt",
+        "name": "statement",
+        "prose": "Access permissions/least privilege/SoD not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-05",
+      "title": "Network integrity (segmentation, isolation) not protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-05_stmt",
+        "name": "statement",
+        "prose": "Network integrity (segmentation, isolation) not protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-06",
+      "title": "Identities not proofed/bound to credentials",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-06_stmt",
+        "name": "statement",
+        "prose": "Identities not proofed/bound to credentials"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-07",
+      "title": "Authentication mechanisms not strength-aligned with risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AC-07"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AC-07"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AC-07_stmt",
+        "name": "statement",
+        "prose": "Authentication mechanisms not strength-aligned with risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.AT-01",
+      "title": "All users not trained on cybersecurity awareness",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.AT-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.AT-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.AT-01_stmt",
+        "name": "statement",
+        "prose": "All users not trained on cybersecurity awareness"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-01",
+      "title": "Data at rest not protected (encryption, access control)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.DS-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.DS-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-01_stmt",
+        "name": "statement",
+        "prose": "Data at rest not protected (encryption, access control)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-02",
+      "title": "Data in transit not protected (TLS, VPN, encrypted channels)",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.DS-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.DS-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-02_stmt",
+        "name": "statement",
+        "prose": "Data in transit not protected (TLS, VPN, encrypted channels)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-03",
+      "title": "Assets not formally managed through removal/transfer/disposition",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.DS-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.DS-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-03_stmt",
+        "name": "statement",
+        "prose": "Assets not formally managed through removal/transfer/disposition"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-05",
+      "title": "Data-leak protections not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.DS-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.DS-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-05_stmt",
+        "name": "statement",
+        "prose": "Data-leak protections not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-06",
+      "title": "Integrity-checking mechanisms not used on software/firmware/data",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.DS-06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.DS-06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.DS-06_stmt",
+        "name": "statement",
+        "prose": "Integrity-checking mechanisms not used on software/firmware/data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.IP-01",
+      "title": "Baseline configuration not created/maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.IP-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.IP-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.IP-01_stmt",
+        "name": "statement",
+        "prose": "Baseline configuration not created/maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-PR.IP-04",
+      "title": "Backups not conducted, maintained, and tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF PR.IP-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF PR.IP-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.protect"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84e01443-b7f1-5c44-8328-eb72f176da9f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-PR.IP-04_stmt",
+        "name": "statement",
+        "prose": "Backups not conducted, maintained, and tested"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_cybersecurity_framework_2_0-recover",
+    "class": "rego-module",
+    "title": "NIST Cybersecurity Framework 2.0 — RECOVER (RC) function",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.csf.recover"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/cybersecurity_framework_2.0/recover/recover.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RC.RP-01",
+      "title": "Recovery plan not executed during or after a cybersecurity incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RC.RP-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RC.RP-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.recover"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f1aa0ab-e760-5a42-9d06-324d925134ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RC.RP-01_stmt",
+        "name": "statement",
+        "prose": "Recovery plan not executed during or after a cybersecurity incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RC.IM-01",
+      "title": "Recovery plans don't incorporate lessons learned",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RC.IM-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RC.IM-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.recover"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f1aa0ab-e760-5a42-9d06-324d925134ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RC.IM-01_stmt",
+        "name": "statement",
+        "prose": "Recovery plans don't incorporate lessons learned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RC.IM-02",
+      "title": "Recovery strategies not updated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RC.IM-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RC.IM-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.recover"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f1aa0ab-e760-5a42-9d06-324d925134ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RC.IM-02_stmt",
+        "name": "statement",
+        "prose": "Recovery strategies not updated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RC.CO-01",
+      "title": "Public relations not managed during recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RC.CO-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RC.CO-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.recover"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f1aa0ab-e760-5a42-9d06-324d925134ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RC.CO-01_stmt",
+        "name": "statement",
+        "prose": "Public relations not managed during recovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RC.CO-02",
+      "title": "Reputation repair after an event not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RC.CO-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RC.CO-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.recover"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f1aa0ab-e760-5a42-9d06-324d925134ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RC.CO-02_stmt",
+        "name": "statement",
+        "prose": "Reputation repair after an event not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RC.CO-03",
+      "title": "Recovery activities not communicated to internal stakeholders and leadership",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RC.CO-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RC.CO-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.recover"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f1aa0ab-e760-5a42-9d06-324d925134ce",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RC.CO-03_stmt",
+        "name": "statement",
+        "prose": "Recovery activities not communicated to internal stakeholders and leadership"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_cybersecurity_framework_2_0-respond",
+    "class": "rego-module",
+    "title": "NIST Cybersecurity Framework 2.0 — RESPOND (RS) function",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.csf.respond"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/cybersecurity_framework_2.0/respond/respond.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.RP-01",
+      "title": "Response plan not executed during or after an incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.RP-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.RP-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.RP-01_stmt",
+        "name": "statement",
+        "prose": "Response plan not executed during or after an incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-01",
+      "title": "Personnel don't know their roles when a response is needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.CO-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.CO-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-01_stmt",
+        "name": "statement",
+        "prose": "Personnel don't know their roles when a response is needed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-02",
+      "title": "Incidents not reported consistent with established criteria",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.CO-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.CO-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-02_stmt",
+        "name": "statement",
+        "prose": "Incidents not reported consistent with established criteria"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-03",
+      "title": "Response information not shared with internal stakeholders",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.CO-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.CO-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-03_stmt",
+        "name": "statement",
+        "prose": "Response information not shared with internal stakeholders"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-04",
+      "title": "Coordination with external stakeholders not aligned with plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.CO-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.CO-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-04_stmt",
+        "name": "statement",
+        "prose": "Coordination with external stakeholders not aligned with plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-05",
+      "title": "Voluntary information sharing with external stakeholders not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.CO-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.CO-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.CO-05_stmt",
+        "name": "statement",
+        "prose": "Voluntary information sharing with external stakeholders not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-01",
+      "title": "Notifications from detection systems not investigated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.AN-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.AN-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-01_stmt",
+        "name": "statement",
+        "prose": "Notifications from detection systems not investigated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-02",
+      "title": "Impact of incident not understood",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.AN-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.AN-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-02_stmt",
+        "name": "statement",
+        "prose": "Impact of incident not understood"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-03",
+      "title": "Forensics not performed during/after incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.AN-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.AN-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-03_stmt",
+        "name": "statement",
+        "prose": "Forensics not performed during/after incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-04",
+      "title": "Incidents not categorized consistent with response plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.AN-04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.AN-04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-04_stmt",
+        "name": "statement",
+        "prose": "Incidents not categorized consistent with response plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-05",
+      "title": "Vulnerability disclosures from internal/external sources not addressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.AN-05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.AN-05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.AN-05_stmt",
+        "name": "statement",
+        "prose": "Vulnerability disclosures from internal/external sources not addressed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.MI-01",
+      "title": "Incidents not contained",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.MI-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.MI-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.MI-01_stmt",
+        "name": "statement",
+        "prose": "Incidents not contained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.MI-02",
+      "title": "Incidents not mitigated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.MI-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.MI-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.MI-02_stmt",
+        "name": "statement",
+        "prose": "Incidents not mitigated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.MI-03",
+      "title": "Newly identified vulnerabilities not mitigated or accepted as residual risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.MI-03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.MI-03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.MI-03_stmt",
+        "name": "statement",
+        "prose": "Newly identified vulnerabilities not mitigated or accepted as residual risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.IM-01",
+      "title": "Response plans don't incorporate lessons learned",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.IM-01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.IM-01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.IM-01_stmt",
+        "name": "statement",
+        "prose": "Response plans don't incorporate lessons learned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_cybersecurity_framework_2_0-CSF-RS.IM-02",
+      "title": "Response strategies not updated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CSF RS.IM-02"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CSF RS.IM-02"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.csf.respond"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ac6597ff-14a0-5f37-94d1-bf49ff556160",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_cybersecurity_framework_2_0-CSF-RS.IM-02_stmt",
+        "name": "statement",
+        "prose": "Response strategies not updated"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "b9b6d240-4072-5aff-8743-083c4571029f",
+     "title": "NIST Cybersecurity Framework 2.0 — DETECT (DE) function",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.csf.detect"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/cybersecurity_framework_2.0/detect/detect.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f316791a-0e07-5be6-9804-467aa351ffab",
+     "title": "NIST Cybersecurity Framework 2.0 - GOVERN Function",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.csf.govern"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/cybersecurity_framework_2.0/govern/governance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ac729733-afff-5874-a3c7-66fdff632346",
+     "title": "NIST Cybersecurity Framework 2.0 — IDENTIFY (ID) function",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.csf.identify"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/cybersecurity_framework_2.0/identify/identify.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "84e01443-b7f1-5c44-8328-eb72f176da9f",
+     "title": "NIST Cybersecurity Framework 2.0 - PROTECT Function",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.csf.protect"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/cybersecurity_framework_2.0/protect/access_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8f1aa0ab-e760-5a42-9d06-324d925134ce",
+     "title": "NIST Cybersecurity Framework 2.0 — RECOVER (RC) function",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.csf.recover"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/cybersecurity_framework_2.0/recover/recover.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "ac6597ff-14a0-5f37-94d1-bf49ff556160",
+     "title": "NIST Cybersecurity Framework 2.0 — RESPOND (RS) function",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.csf.respond"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/cybersecurity_framework_2.0/respond/respond.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

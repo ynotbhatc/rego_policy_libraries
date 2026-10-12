@@ -1,0 +1,2371 @@
+{
+ "catalog": {
+  "uuid": "dc61adce-dd83-51d9-8e6b-8f36f7faa661",
+  "metadata": {
+   "title": "Rego Policy Libraries — eu_ai_act (Eu Ai Act Governance)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "eu_ai_act"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "eu_ai_act-eu_ai_act_governance",
+    "class": "rego-module",
+    "title": "Eu Ai Act Governance",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "eu_ai_act.governance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/eu_ai_act/eu_ai_act_governance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "eu_ai_act-Article-26.1",
+      "title": "High-risk AI system not used in accordance with provider's instructions for use; deployers must follow intended purpose and usage conditions",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 26.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 26.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-26.1_stmt",
+        "name": "statement",
+        "prose": "High-risk AI system not used in accordance with provider's instructions for use; deployers must follow intended purpose and usage conditions"
+       },
+       {
+        "id": "eu_ai_act-Article-26.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Human oversight not assigned to competent natural persons with the authority, competence, and resources to perform effective oversight"
+       },
+       {
+        "id": "eu_ai_act-Article-26.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Persons assigned to human oversight not provided with adequate training, instructions, and authority to identify and address anomalies"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-26.9-Article-27",
+      "title": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI system in public or private sector context",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 26.9 / Article 27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 26.9 / Article 27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-26.9-Article-27_stmt",
+        "name": "statement",
+        "prose": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI system in public or private sector context"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-26.8",
+      "title": "Deployer's use of Annex III high-risk AI system not registered in the EU database for high-risk AI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 26.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 26.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-26.8_stmt",
+        "name": "statement",
+        "prose": "Deployer's use of Annex III high-risk AI system not registered in the EU database for high-risk AI systems"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-26",
+      "title": "Data breach and serious incident reporting procedures not established for the deployed high-risk AI system",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-26_stmt",
+        "name": "statement",
+        "prose": "Data breach and serious incident reporting procedures not established for the deployed high-risk AI system"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-26.5",
+      "title": "Deployer has not verified that input data is relevant and sufficiently representative for the intended purpose of the high-risk AI system",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 26.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 26.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-26.5_stmt",
+        "name": "statement",
+        "prose": "Deployer has not verified that input data is relevant and sufficiently representative for the intended purpose of the high-risk AI system"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-27",
+      "title": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI in contexts affecting natural persons' rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-27_stmt",
+        "name": "statement",
+        "prose": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI in contexts affecting natural persons' rights"
+       },
+       {
+        "id": "eu_ai_act-Article-27_obj.1",
+        "name": "assessment-objective",
+        "prose": "FRIA completed but affected fundamental rights (dignity, non-discrimination, privacy, fair trial, etc.) not specifically identified and assessed"
+       },
+       {
+        "id": "eu_ai_act-Article-27_obj.2",
+        "name": "assessment-objective",
+        "prose": "Process for notifying affected persons about the high-risk AI deployment and their rights not established as part of the FRIA"
+       },
+       {
+        "id": "eu_ai_act-Article-27_obj.3",
+        "name": "assessment-objective",
+        "prose": "FRIA results not available to competent authorities upon request; assessments must be retained and accessible for regulatory review"
+       },
+       {
+        "id": "eu_ai_act-Article-27_obj.4",
+        "name": "assessment-objective",
+        "prose": "FRIA did not result in identification of risk mitigation measures for identified fundamental rights impacts"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-28",
+      "title": "Deployer has substantially modified a high-risk AI system but has not assumed full provider obligations; substantial modification triggers all Article 16 and 17 requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-28_stmt",
+        "name": "statement",
+        "prose": "Deployer has substantially modified a high-risk AI system but has not assumed full provider obligations; substantial modification triggers all Article 16 and 17 requirements"
+       },
+       {
+        "id": "eu_ai_act-Article-28_obj.1",
+        "name": "assessment-objective",
+        "prose": "Deployer has placed high-risk AI system on market under own name or trademark without assuming provider obligations; this constitutes acting as a provider"
+       },
+       {
+        "id": "eu_ai_act-Article-28_obj.2",
+        "name": "assessment-objective",
+        "prose": "Deployer acting as provider has not conducted a new conformity assessment after substantially modifying the high-risk AI system"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-72",
+      "title": "Post-market monitoring plan not established; providers of high-risk AI must actively collect and analyze performance data after deployment",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 72"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 72"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-72_stmt",
+        "name": "statement",
+        "prose": "Post-market monitoring plan not established; providers of high-risk AI must actively collect and analyze performance data after deployment"
+       },
+       {
+        "id": "eu_ai_act-Article-72_obj.1",
+        "name": "assessment-objective",
+        "prose": "Post-market monitoring plan does not address required elements specified in Annex VII of the EU AI Act"
+       },
+       {
+        "id": "eu_ai_act-Article-72_obj.2",
+        "name": "assessment-objective",
+        "prose": "Serious incidents involving the high-risk AI system not reported to national competent authority without undue delay upon discovery"
+       },
+       {
+        "id": "eu_ai_act-Article-72_obj.3",
+        "name": "assessment-objective",
+        "prose": "Near-miss events (incidents that did not cause harm but could have) not tracked and analyzed as part of post-market monitoring"
+       },
+       {
+        "id": "eu_ai_act-Article-72_obj.4",
+        "name": "assessment-objective",
+        "prose": "Performance metrics required by the post-market monitoring plan not systematically collected from deployed high-risk AI systems"
+       },
+       {
+        "id": "eu_ai_act-Article-72_obj.5",
+        "name": "assessment-objective",
+        "prose": "Corrective actions not taken when post-market monitoring data indicates the AI system no longer meets applicable requirements"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-77",
+      "title": "Data Protection Authority (DPA) not granted access to documentation, logs, and conformity assessment records for fundamental rights oversight",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 77"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 77"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-77_stmt",
+        "name": "statement",
+        "prose": "Data Protection Authority (DPA) not granted access to documentation, logs, and conformity assessment records for fundamental rights oversight"
+       },
+       {
+        "id": "eu_ai_act-Article-77_obj.1",
+        "name": "assessment-objective",
+        "prose": "Equality body not granted access to documentation required for fundamental rights review of high-risk AI systems under their oversight mandate"
+       },
+       {
+        "id": "eu_ai_act-Article-77_obj.2",
+        "name": "assessment-objective",
+        "prose": "No cooperation procedure established with fundamental rights bodies; providers and deployers must have a process for responding to access requests from these bodies"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-78",
+      "title": "Trade secrets and commercially sensitive information not protected during conformity assessment processes and authority reviews",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 78"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 78"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.governance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#45f36538-6ee4-5e2c-8821-1368830edb86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-78_stmt",
+        "name": "statement",
+        "prose": "Trade secrets and commercially sensitive information not protected during conformity assessment processes and authority reviews"
+       },
+       {
+        "id": "eu_ai_act-Article-78_obj.1",
+        "name": "assessment-objective",
+        "prose": "National competent authorities have not established binding confidentiality obligations for personnel handling commercially sensitive AI system information"
+       },
+       {
+        "id": "eu_ai_act-Article-78_obj.2",
+        "name": "assessment-objective",
+        "prose": "Confidentiality obligations for information disclosed during conformity assessments and market surveillance activities not documented in agreements or procedures"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "eu_ai_act-eu_ai_act_gpai",
+    "class": "rego-module",
+    "title": "Eu Ai Act Gpai",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "eu_ai_act.gpai"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/eu_ai_act/eu_ai_act_gpai.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "eu_ai_act-Article-53.1",
+      "title": "Technical documentation for the GPAI model not drawn up and maintained in accordance with Annex XI requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 53.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 53.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-53.1_stmt",
+        "name": "statement",
+        "prose": "Technical documentation for the GPAI model not drawn up and maintained in accordance with Annex XI requirements"
+       },
+       {
+        "id": "eu_ai_act-Article-53.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "GPAI model technical documentation not kept up to date following material changes to the model or its capabilities"
+       },
+       {
+        "id": "eu_ai_act-Article-53.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Information and documentation not provided to downstream providers intending to integrate the GPAI model into their AI systems"
+       },
+       {
+        "id": "eu_ai_act-Article-53.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Documentation provided to downstream providers does not adequately describe the model's capabilities, limitations, and conditions of use"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-53.1-c",
+      "title": "Copyright compliance policy not established; GPAI model providers must implement a policy to respect copyright law in training data",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 53.1(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 53.1(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-53.1-c_stmt",
+        "name": "statement",
+        "prose": "Copyright compliance policy not established; GPAI model providers must implement a policy to respect copyright law in training data"
+       },
+       {
+        "id": "eu_ai_act-Article-53.1-c_obj.1",
+        "name": "assessment-objective",
+        "prose": "Copyright compliance policy not made publicly available; transparency about training data copyright practices is required"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-53.1-d",
+      "title": "Summary of training data used to develop the GPAI model not published and made publicly available",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 53.1(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 53.1(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-53.1-d_stmt",
+        "name": "statement",
+        "prose": "Summary of training data used to develop the GPAI model not published and made publicly available"
+       },
+       {
+        "id": "eu_ai_act-Article-53.1-d_obj.1",
+        "name": "assessment-objective",
+        "prose": "Published summary of training data is not sufficiently detailed to enable understanding of the model's capabilities and limitations"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-53",
+      "title": "No model card or equivalent technical summary document available describing intended use cases, known limitations, and evaluation results",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 53"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 53"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-53_stmt",
+        "name": "statement",
+        "prose": "No model card or equivalent technical summary document available describing intended use cases, known limitations, and evaluation results"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-54",
+      "title": "GPAI model provider established outside the EU has not designated an authorized representative established in the EU",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 54"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 54"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-54_stmt",
+        "name": "statement",
+        "prose": "GPAI model provider established outside the EU has not designated an authorized representative established in the EU"
+       },
+       {
+        "id": "eu_ai_act-Article-54_obj.1",
+        "name": "assessment-objective",
+        "prose": "Designated EU authorized representative does not hold a full mandate to act on behalf of the provider and be held responsible for obligations"
+       },
+       {
+        "id": "eu_ai_act-Article-54_obj.2",
+        "name": "assessment-objective",
+        "prose": "Authorized representative not registered with the relevant national competent authority in the EU member state of establishment"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-55.1",
+      "title": "GPAI model with training computation exceeding 10^25 FLOPs not notified to the AI Office within two weeks of classification",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 55.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 55.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-55.1_stmt",
+        "name": "statement",
+        "prose": "GPAI model with training computation exceeding 10^25 FLOPs not notified to the AI Office within two weeks of classification"
+       },
+       {
+        "id": "eu_ai_act-Article-55.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Notification to AI Office for systemic-risk GPAI model not submitted within the two-week deadline after reaching the 10^25 FLOPs threshold"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-55.1-a",
+      "title": "Model evaluation including adversarial testing not conducted for GPAI model with systemic risk; standardized protocols must be followed",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 55.1(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 55.1(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-55.1-a_stmt",
+        "name": "statement",
+        "prose": "Model evaluation including adversarial testing not conducted for GPAI model with systemic risk; standardized protocols must be followed"
+       },
+       {
+        "id": "eu_ai_act-Article-55.1-a_obj.1",
+        "name": "assessment-objective",
+        "prose": "Adversarial testing not performed on systemic-risk GPAI model to assess and mitigate systemic risks including critical infrastructure harms"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-55.1-b",
+      "title": "Serious incident reporting procedure not established for systemic-risk GPAI model; incidents must be reported to the AI Office without undue delay",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 55.1(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 55.1(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-55.1-b_stmt",
+        "name": "statement",
+        "prose": "Serious incident reporting procedure not established for systemic-risk GPAI model; incidents must be reported to the AI Office without undue delay"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-55.1-c",
+      "title": "Cybersecurity measures not implemented or not proportionate to the systemic risks posed by the GPAI model",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 55.1(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 55.1(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-55.1-c_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity measures not implemented or not proportionate to the systemic risks posed by the GPAI model"
+       },
+       {
+        "id": "eu_ai_act-Article-55.1-c_obj.1",
+        "name": "assessment-objective",
+        "prose": "Physical and logical access controls to protect model weights, parameters, and infrastructure not implemented for systemic-risk GPAI model"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-55.1-d",
+      "title": "Energy efficiency reporting not provided to the European Commission for systemic-risk GPAI model; power consumption data must be disclosed",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 55.1(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 55.1(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-55.1-d_stmt",
+        "name": "statement",
+        "prose": "Energy efficiency reporting not provided to the European Commission for systemic-risk GPAI model; power consumption data must be disclosed"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-55",
+      "title": "Systemic risk mitigation measures not documented; providers of systemic-risk GPAI models must maintain records of identified risks and mitigation actions",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 55"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 55"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-55_stmt",
+        "name": "statement",
+        "prose": "Systemic risk mitigation measures not documented; providers of systemic-risk GPAI models must maintain records of identified risks and mitigation actions"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-56",
+      "title": "GPAI model provider has not adhered to a relevant code of practice or demonstrated equivalent compliance through alternative means accepted by the AI Office",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 56"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 56"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8c3a94fb-3849-5ecc-a262-8483610d3be5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-56_stmt",
+        "name": "statement",
+        "prose": "GPAI model provider has not adhered to a relevant code of practice or demonstrated equivalent compliance through alternative means accepted by the AI Office"
+       },
+       {
+        "id": "eu_ai_act-Article-56_obj.1",
+        "name": "assessment-objective",
+        "prose": "Equivalent compliance with GPAI code of practice claimed but technical and organizational measures demonstrating equivalence are not documented"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "eu_ai_act-eu_ai_act_high_risk",
+    "class": "rego-module",
+    "title": "Eu Ai Act High Risk",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "eu_ai_act.high_risk"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/eu_ai_act/eu_ai_act_high_risk.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "eu_ai_act-Article-9",
+      "title": "Continuous risk management system not established for this high-risk AI system as required throughout the entire lifecycle",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-9_stmt",
+        "name": "statement",
+        "prose": "Continuous risk management system not established for this high-risk AI system as required throughout the entire lifecycle"
+       },
+       {
+        "id": "eu_ai_act-Article-9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Risk management system not documented; written records of risk identification, estimation, and evaluation measures are required"
+       },
+       {
+        "id": "eu_ai_act-Article-9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Known and reasonably foreseeable risks to health, safety, or fundamental rights have not been identified and estimated"
+       },
+       {
+        "id": "eu_ai_act-Article-9_obj.3",
+        "name": "assessment-objective",
+        "prose": "Risk evaluation not conducted against testing data representative of the intended purpose and conditions of use"
+       },
+       {
+        "id": "eu_ai_act-Article-9_obj.4",
+        "name": "assessment-objective",
+        "prose": "Residual risks after risk mitigation measures have not been communicated to deployers in instructions for use"
+       },
+       {
+        "id": "eu_ai_act-Article-9_obj.5",
+        "name": "assessment-objective",
+        "prose": "Risk management system not updated based on post-market monitoring data; continuous lifecycle review is required"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-10",
+      "title": "Data governance practices not established for training datasets used to develop the high-risk AI system",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-10_stmt",
+        "name": "statement",
+        "prose": "Data governance practices not established for training datasets used to develop the high-risk AI system"
+       },
+       {
+        "id": "eu_ai_act-Article-10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Data governance practices not established for validation datasets; separate validation from training data is required"
+       },
+       {
+        "id": "eu_ai_act-Article-10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Data governance practices not established for test datasets used to evaluate system performance"
+       },
+       {
+        "id": "eu_ai_act-Article-10_obj.3",
+        "name": "assessment-objective",
+        "prose": "Training, validation, and test datasets not examined for possible biases that could lead to discriminatory outcomes"
+       },
+       {
+        "id": "eu_ai_act-Article-10_obj.4",
+        "name": "assessment-objective",
+        "prose": "Data provenance and lineage not documented; origin, collection method, and transformations of datasets must be recorded"
+       },
+       {
+        "id": "eu_ai_act-Article-10_obj.5",
+        "name": "assessment-objective",
+        "prose": "Personal data in training or evaluation datasets processed without GDPR-compliant data protection practices"
+       },
+       {
+        "id": "eu_ai_act-Article-10_obj.6",
+        "name": "assessment-objective",
+        "prose": "Datasets not verified to be sufficiently adequate, representative, and free of errors for the intended purpose of the AI system"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-11",
+      "title": "Technical documentation (per Annex IV) not prepared before the high-risk AI system was placed on the market or put into service",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-11_stmt",
+        "name": "statement",
+        "prose": "Technical documentation (per Annex IV) not prepared before the high-risk AI system was placed on the market or put into service"
+       },
+       {
+        "id": "eu_ai_act-Article-11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Technical documentation not kept up to date following material changes to the AI system or its intended purpose"
+       },
+       {
+        "id": "eu_ai_act-Article-11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Technical documentation does not contain all required elements specified in Annex IV of the EU AI Act"
+       },
+       {
+        "id": "eu_ai_act-Article-11_obj.3",
+        "name": "assessment-objective",
+        "prose": "Technical documentation not available or accessible to national competent authorities upon request"
+       },
+       {
+        "id": "eu_ai_act-Article-11_obj.4",
+        "name": "assessment-objective",
+        "prose": "Technical documentation does not describe general design specifications, choices made, and assumptions relied upon"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-12",
+      "title": "Automatic logging of events during system operation not enabled; high-risk AI systems must generate logs throughout their operational lifetime",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-12_stmt",
+        "name": "statement",
+        "prose": "Automatic logging of events during system operation not enabled; high-risk AI systems must generate logs throughout their operational lifetime"
+       },
+       {
+        "id": "eu_ai_act-Article-12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Log retention period does not meet requirements; logs must be retained for an appropriate period aligned with legal obligations"
+       },
+       {
+        "id": "eu_ai_act-Article-12_obj.2",
+        "name": "assessment-objective",
+        "prose": "Biometric identification system logs not retained for the duration required for law enforcement use cases"
+       },
+       {
+        "id": "eu_ai_act-Article-12_obj.3",
+        "name": "assessment-objective",
+        "prose": "Logs do not enable post-hoc verification and monitoring of system performance by competent authorities"
+       },
+       {
+        "id": "eu_ai_act-Article-12_obj.4",
+        "name": "assessment-objective",
+        "prose": "Event types captured in logs are insufficient relative to the level of risk and the intended purpose of the system"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-13",
+      "title": "Instructions for use not provided to deployers; high-risk AI systems must be accompanied by adequate instructions in accessible language",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-13_stmt",
+        "name": "statement",
+        "prose": "Instructions for use not provided to deployers; high-risk AI systems must be accompanied by adequate instructions in accessible language"
+       },
+       {
+        "id": "eu_ai_act-Article-13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Intended purpose of the AI system not disclosed in instructions for use"
+       },
+       {
+        "id": "eu_ai_act-Article-13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Level of accuracy, robustness, and cybersecurity performance not disclosed in instructions for use"
+       },
+       {
+        "id": "eu_ai_act-Article-13_obj.3",
+        "name": "assessment-objective",
+        "prose": "Known and foreseeable risks to health, safety, and fundamental rights not disclosed to deployers"
+       },
+       {
+        "id": "eu_ai_act-Article-13_obj.4",
+        "name": "assessment-objective",
+        "prose": "Human oversight measures not described in instructions for use; deployers must be informed of required oversight responsibilities"
+       },
+       {
+        "id": "eu_ai_act-Article-13_obj.5",
+        "name": "assessment-objective",
+        "prose": "Technical capabilities and limitations of the AI system not disclosed, including circumstances where reliability may be compromised"
+       },
+       {
+        "id": "eu_ai_act-Article-13_obj.6",
+        "name": "assessment-objective",
+        "prose": "Residual risks not communicated to deployers in instructions for use"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-14",
+      "title": "Human oversight measures neither built into the system design nor specified for deployer implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-14_stmt",
+        "name": "statement",
+        "prose": "Human oversight measures neither built into the system design nor specified for deployer implementation"
+       },
+       {
+        "id": "eu_ai_act-Article-14_obj.1",
+        "name": "assessment-objective",
+        "prose": "System not designed to enable effective monitoring by natural persons during the period of use"
+       },
+       {
+        "id": "eu_ai_act-Article-14_obj.2",
+        "name": "assessment-objective",
+        "prose": "No capability provided to halt or interrupt system operation; deployers must be able to stop the system using a stop button or equivalent procedure"
+       },
+       {
+        "id": "eu_ai_act-Article-14_obj.3",
+        "name": "assessment-objective",
+        "prose": "Deployers cannot disregard or override system outputs; capability to intervene in system operation is required"
+       },
+       {
+        "id": "eu_ai_act-Article-14_obj.4",
+        "name": "assessment-objective",
+        "prose": "No documented measures to prevent automation bias or over-reliance on AI system outputs by deployer staff"
+       },
+       {
+        "id": "eu_ai_act-Article-14_obj.5",
+        "name": "assessment-objective",
+        "prose": "Natural persons responsible for human oversight not identified and assigned appropriate competence, authority, and resources"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-15",
+      "title": "Accuracy levels for the high-risk AI system not specified and validated against representative datasets",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-15_stmt",
+        "name": "statement",
+        "prose": "Accuracy levels for the high-risk AI system not specified and validated against representative datasets"
+       },
+       {
+        "id": "eu_ai_act-Article-15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Robustness of the AI system against errors, faults, and inconsistencies not demonstrated through appropriate testing"
+       },
+       {
+        "id": "eu_ai_act-Article-15_obj.2",
+        "name": "assessment-objective",
+        "prose": "Resilience against hostile third-party attempts to alter system use, outputs, or performance not demonstrated"
+       },
+       {
+        "id": "eu_ai_act-Article-15_obj.3",
+        "name": "assessment-objective",
+        "prose": "Technical redundancy solutions not implemented for safety-critical high-risk AI system; backup or fail-safe mechanisms are required"
+       },
+       {
+        "id": "eu_ai_act-Article-15_obj.4",
+        "name": "assessment-objective",
+        "prose": "Cybersecurity measures not implemented to protect the AI system against unauthorized access, tampering, and data poisoning"
+       },
+       {
+        "id": "eu_ai_act-Article-15_obj.5",
+        "name": "assessment-objective",
+        "prose": "Performance metrics including accuracy and robustness not disclosed in technical documentation or instructions for use"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-16",
+      "title": "Conformity assessment not completed before placing the high-risk AI system on the EU market or putting it into service",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-16_stmt",
+        "name": "statement",
+        "prose": "Conformity assessment not completed before placing the high-risk AI system on the EU market or putting it into service"
+       },
+       {
+        "id": "eu_ai_act-Article-16_obj.1",
+        "name": "assessment-objective",
+        "prose": "CE marking not affixed; high-risk AI systems must bear CE marking indicating conformity with the EU AI Act"
+       },
+       {
+        "id": "eu_ai_act-Article-16_obj.2",
+        "name": "assessment-objective",
+        "prose": "EU Declaration of Conformity not drawn up; providers must declare that the high-risk AI system meets all applicable requirements"
+       },
+       {
+        "id": "eu_ai_act-Article-16_obj.3",
+        "name": "assessment-objective",
+        "prose": "High-risk AI system (Annex III use case) not registered in the EU database for high-risk AI systems before market placement"
+       },
+       {
+        "id": "eu_ai_act-Article-16_obj.4",
+        "name": "assessment-objective",
+        "prose": "Post-market monitoring system not established; providers must actively collect and analyze data on system performance after deployment"
+       },
+       {
+        "id": "eu_ai_act-Article-16_obj.5",
+        "name": "assessment-objective",
+        "prose": "Serious incident reporting procedure not established; providers must report serious incidents to national competent authorities"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-17",
+      "title": "Quality management system not established; providers of high-risk AI systems must implement a documented QMS covering all provider obligations",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.high_risk"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3fade9b0-40cf-5299-be50-90c465519b4b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-17_stmt",
+        "name": "statement",
+        "prose": "Quality management system not established; providers of high-risk AI systems must implement a documented QMS covering all provider obligations"
+       },
+       {
+        "id": "eu_ai_act-Article-17_obj.1",
+        "name": "assessment-objective",
+        "prose": "Written policies and procedures for regulatory compliance not established as part of the quality management system"
+       },
+       {
+        "id": "eu_ai_act-Article-17_obj.2",
+        "name": "assessment-objective",
+        "prose": "Resource management procedures (technical, human, computational) not documented in the quality management system"
+       },
+       {
+        "id": "eu_ai_act-Article-17_obj.3",
+        "name": "assessment-objective",
+        "prose": "Competence, awareness, and training procedures for personnel involved in AI system development not established"
+       },
+       {
+        "id": "eu_ai_act-Article-17_obj.4",
+        "name": "assessment-objective",
+        "prose": "Design and development control procedures not established, including design reviews, verification, and validation activities"
+       },
+       {
+        "id": "eu_ai_act-Article-17_obj.5",
+        "name": "assessment-objective",
+        "prose": "Corrective action procedures for non-conformities and incidents not established in the quality management system"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "eu_ai_act-eu_ai_act_prohibited",
+    "class": "rego-module",
+    "title": "EU AI Act Article 5 prohibited practices — Reg. (EU) 2024/1689 as",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "eu_ai_act.prohibited"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/eu_ai_act/eu_ai_act_prohibited.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "eu_ai_act-Article-5.1-a",
+      "title": "AI system employs subliminal techniques beyond a person's consciousness to materially distort behavior in a manner causing or likely to cause significant harm",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-a_stmt",
+        "name": "statement",
+        "prose": "AI system employs subliminal techniques beyond a person's consciousness to materially distort behavior in a manner causing or likely to cause significant harm"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-a_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI system exploits psychological weaknesses or biases of persons in a manner causing or likely to cause significant harm"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-a_obj.2",
+        "name": "assessment-objective",
+        "prose": "AI system exploits cognitive biases to manipulate behavior in ways that impair free and informed decision-making"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-b",
+      "title": "AI system exploits vulnerabilities due to age of a specific group in a manner causing or likely to cause significant harm",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-b_stmt",
+        "name": "statement",
+        "prose": "AI system exploits vulnerabilities due to age of a specific group in a manner causing or likely to cause significant harm"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI system exploits vulnerabilities due to disability of a specific group in a manner causing or likely to cause significant harm"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-b_obj.2",
+        "name": "assessment-objective",
+        "prose": "AI system exploits vulnerabilities due to social or economic situation of a specific group causing or likely to cause significant harm"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-b_obj.3",
+        "name": "assessment-objective",
+        "prose": "AI system causes harmful distortion of behavior of persons belonging to vulnerable groups without adequate safeguards"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-c",
+      "title": "Public authority AI system evaluates or classifies persons based on social behavior or personal characteristics leading to detrimental or unfavorable treatment",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-c_stmt",
+        "name": "statement",
+        "prose": "Public authority AI system evaluates or classifies persons based on social behavior or personal characteristics leading to detrimental or unfavorable treatment"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-c_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI system causes unjustified or disproportionate treatment of persons in social contexts unrelated to the context in which the data was generated"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-c_obj.2",
+        "name": "assessment-objective",
+        "prose": "AI system by public authority causes disproportionate detrimental treatment compared to the gravity of the social behavior assessed"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-d",
+      "title": "Real-time remote biometric identification system deployed in publicly accessible spaces by law enforcement without applicable exception",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-d_stmt",
+        "name": "statement",
+        "prose": "Real-time remote biometric identification system deployed in publicly accessible spaces by law enforcement without applicable exception"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-d_obj.1",
+        "name": "assessment-objective",
+        "prose": "Real-time remote biometric identification deployed under exception without required prior judicial or independent body authorization"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-d_obj.2",
+        "name": "assessment-objective",
+        "prose": "Real-time remote biometric identification under exception not limited to specific criminal offenses listed in Annex II"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-d_obj.3",
+        "name": "assessment-objective",
+        "prose": "Real-time remote biometric identification deployment is not geographically and temporally limited as required for authorized exceptions"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-e",
+      "title": "AI system categorizes individuals by race inferred from biometric data without meeting strict law enforcement conditions",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-e_stmt",
+        "name": "statement",
+        "prose": "AI system categorizes individuals by race inferred from biometric data without meeting strict law enforcement conditions"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-e_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI system categorizes individuals by political opinion inferred from biometric data without meeting strict law enforcement conditions"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-e_obj.2",
+        "name": "assessment-objective",
+        "prose": "AI system categorizes individuals by religion or philosophical belief inferred from biometric data without meeting strict law enforcement conditions"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-e_obj.3",
+        "name": "assessment-objective",
+        "prose": "AI system categorizes individuals by trade union membership inferred from biometric data without meeting strict law enforcement conditions"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-e_obj.4",
+        "name": "assessment-objective",
+        "prose": "AI system categorizes individuals by sexual orientation or gender identity inferred from biometric data without meeting strict law enforcement conditions"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-f",
+      "title": "Emotion recognition system used in workplace context without documented medical or safety purpose exception",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-f_stmt",
+        "name": "statement",
+        "prose": "Emotion recognition system used in workplace context without documented medical or safety purpose exception"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-f_obj.1",
+        "name": "assessment-objective",
+        "prose": "Emotion recognition system used in educational institution without documented medical or safety purpose exception"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-f_obj.2",
+        "name": "assessment-objective",
+        "prose": "Emotion recognition exception (medical or safety) claimed but not formally documented as required"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-g",
+      "title": "Facial recognition database created or expanded through untargeted scraping of facial images from internet or CCTV footage",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-g_stmt",
+        "name": "statement",
+        "prose": "Facial recognition database created or expanded through untargeted scraping of facial images from internet or CCTV footage"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-g_obj.1",
+        "name": "assessment-objective",
+        "prose": "Facial recognition database creation via scraping lacks documented legal basis and targeted scope justification"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5.1-h",
+      "title": "AI system assesses risk of criminal offense by individual persons based solely on profiling without objective factual basis relating to that person",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5.1(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5.1(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5.1-h_stmt",
+        "name": "statement",
+        "prose": "AI system assesses risk of criminal offense by individual persons based solely on profiling without objective factual basis relating to that person"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-h_obj.1",
+        "name": "assessment-objective",
+        "prose": "Predictive policing system uses only group-level characteristics or statistical profiling without individual objective factual basis"
+       },
+       {
+        "id": "eu_ai_act-Article-5.1-h_obj.2",
+        "name": "assessment-objective",
+        "prose": "Predictive policing system produces crime risk assessments for individuals without meaningful human review before any enforcement action"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-eu_ai_act.prohibited-1",
+      "title": "Article 5(1)(ba) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate realistic intimate imagery of identifiable persons without consent, and lacks effective technical safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "eu_ai_act.prohibited#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eu_ai_act.prohibited#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-eu_ai_act.prohibited-1_stmt",
+        "name": "statement",
+        "prose": "Article 5(1)(ba) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate realistic intimate imagery of identifiable persons without consent, and lacks effective technical safeguards that reliably prevent such outputs"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5-1-ba-Reg.-2026-1744",
+      "title": "AI system has generated or manipulated realistic intimate imagery of an identifiable person without that person's consent",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5(1)(ba) (Reg. 2026/1744)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5(1)(ba) (Reg. 2026/1744)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5-1-ba-Reg.-2026-1744_stmt",
+        "name": "statement",
+        "prose": "AI system has generated or manipulated realistic intimate imagery of an identifiable person without that person's consent"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-eu_ai_act.prohibited-2",
+      "title": "Article 5(1)(bb) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate child sexual abuse material, and lacks effective technical safeguards that reliably prevent such outputs",
+      "props": [
+       {
+        "name": "label",
+        "value": "eu_ai_act.prohibited#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eu_ai_act.prohibited#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-eu_ai_act.prohibited-2_stmt",
+        "name": "statement",
+        "prose": "Article 5(1)(bb) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate child sexual abuse material, and lacks effective technical safeguards that reliably prevent such outputs"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-5-1-bb-Reg.-2026-1744",
+      "title": "AI system has generated or manipulated child sexual abuse material",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 5(1)(bb) (Reg. 2026/1744)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 5(1)(bb) (Reg. 2026/1744)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fd117818-bbd2-54e6-b314-da0e267f3a84",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-5-1-bb-Reg.-2026-1744_stmt",
+        "name": "statement",
+        "prose": "AI system has generated or manipulated child sexual abuse material"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   },
+   {
+    "id": "eu_ai_act-eu_ai_act_transparency",
+    "class": "rego-module",
+    "title": "Eu Ai Act Transparency",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "eu_ai_act.transparency"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/eu_ai_act/eu_ai_act_transparency.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "eu_ai_act-Article-50.1",
+      "title": "Chatbot or conversational AI system does not inform users they are interacting with an AI and not a human at the start of each interaction",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 50.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 50.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d463ee6b-c8dc-533d-8a99-e5baf1488347",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-50.1_stmt",
+        "name": "statement",
+        "prose": "Chatbot or conversational AI system does not inform users they are interacting with an AI and not a human at the start of each interaction"
+       },
+       {
+        "id": "eu_ai_act-Article-50.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI interaction disclosure not provided at the start of the interaction; disclosure must occur before the user becomes engaged in the conversation"
+       },
+       {
+        "id": "eu_ai_act-Article-50.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "'Obvious AI context' exception claimed for chatbot disclosure exemption but not formally documented with justification"
+       },
+       {
+        "id": "eu_ai_act-Article-50.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "AI system actively impersonates a natural person in a way that could deceive users about the AI nature of the interaction"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-50.2",
+      "title": "Persons exposed to emotion recognition system not notified of the system's operation and the fact that they are subject to it",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 50.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 50.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d463ee6b-c8dc-533d-8a99-e5baf1488347",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-50.2_stmt",
+        "name": "statement",
+        "prose": "Persons exposed to emotion recognition system not notified of the system's operation and the fact that they are subject to it"
+       },
+       {
+        "id": "eu_ai_act-Article-50.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Emotion recognition system processes personal data without compliance with applicable data protection requirements including GDPR"
+       },
+       {
+        "id": "eu_ai_act-Article-50.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "GDPR consent not obtained from individuals before processing their biometric or emotional state data"
+       },
+       {
+        "id": "eu_ai_act-Article-50.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Persons subject to biometric categorization system not notified of the categorization and its basis"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-50.3",
+      "title": "AI-generated or AI-manipulated image not labeled as artificially generated or manipulated; machine-readable disclosure is required",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 50.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 50.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d463ee6b-c8dc-533d-8a99-e5baf1488347",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-50.3_stmt",
+        "name": "statement",
+        "prose": "AI-generated or AI-manipulated image not labeled as artificially generated or manipulated; machine-readable disclosure is required"
+       },
+       {
+        "id": "eu_ai_act-Article-50.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI-generated or AI-manipulated audio content not labeled as artificially generated or manipulated"
+       },
+       {
+        "id": "eu_ai_act-Article-50.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "AI-generated or AI-manipulated video content not labeled as artificially generated or manipulated"
+       },
+       {
+        "id": "eu_ai_act-Article-50.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "AI-generated content disclosure not embedded as machine-readable metadata; technical labeling in content format is required in addition to human-visible labeling"
+       },
+       {
+        "id": "eu_ai_act-Article-50.3_obj.4",
+        "name": "assessment-objective",
+        "prose": "Legitimate purpose exception (satire, art, clearly fictional) for deep fake disclosure claimed but not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-50.4",
+      "title": "AI-generated text on matters of public interest not labeled as AI-generated; labeling is required unless human editorial responsibility has been assumed",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 50.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 50.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d463ee6b-c8dc-533d-8a99-e5baf1488347",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-50.4_stmt",
+        "name": "statement",
+        "prose": "AI-generated text on matters of public interest not labeled as AI-generated; labeling is required unless human editorial responsibility has been assumed"
+       },
+       {
+        "id": "eu_ai_act-Article-50.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Human editorial responsibility exception claimed for AI-generated public interest text but editorial review process is not documented"
+       },
+       {
+        "id": "eu_ai_act-Article-50.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Format of AI-generated text disclosure does not meet requirements; disclosure must be clear, prominent, and distinguishable from the content"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-50.5",
+      "title": "High-risk AI system not registered in the EU database for AI systems as required before deployment",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 50.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 50.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d463ee6b-c8dc-533d-8a99-e5baf1488347",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-50.5_stmt",
+        "name": "statement",
+        "prose": "High-risk AI system not registered in the EU database for AI systems as required before deployment"
+       },
+       {
+        "id": "eu_ai_act-Article-50.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Deployer of emotion recognition system has not informed affected persons of the system's deployment and use"
+       },
+       {
+        "id": "eu_ai_act-Article-50.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Information about emotion recognition system not provided to affected persons before their exposure to the system"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "45f36538-6ee4-5e2c-8821-1368830edb86",
+     "title": "Eu Ai Act Governance",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "eu_ai_act.governance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/eu_ai_act/eu_ai_act_governance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8c3a94fb-3849-5ecc-a262-8483610d3be5",
+     "title": "Eu Ai Act Gpai",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "eu_ai_act.gpai"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/eu_ai_act/eu_ai_act_gpai.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "3fade9b0-40cf-5299-be50-90c465519b4b",
+     "title": "Eu Ai Act High Risk",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "eu_ai_act.high_risk"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/eu_ai_act/eu_ai_act_high_risk.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fd117818-bbd2-54e6-b314-da0e267f3a84",
+     "title": "EU AI Act Article 5 prohibited practices — Reg. (EU) 2024/1689 as",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "eu_ai_act.prohibited"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/eu_ai_act/eu_ai_act_prohibited.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d463ee6b-c8dc-533d-8a99-e5baf1488347",
+     "title": "Eu Ai Act Transparency",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "eu_ai_act.transparency"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/eu_ai_act/eu_ai_act_transparency.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

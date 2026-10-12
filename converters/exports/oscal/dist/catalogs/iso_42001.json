@@ -1,0 +1,1347 @@
+{
+ "catalog": {
+  "uuid": "8be6a0cf-11fe-52ce-944c-f1ed37b49800",
+  "metadata": {
+   "title": "Rego Policy Libraries — iso_42001 (ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "iso_42001"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "iso_42001-iso_42001_main",
+    "class": "rego-module",
+    "title": "ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iso_42001.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/iso_42001/iso_42001_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iso_42001-ISO-42001-4.1",
+      "title": "Internal and external issues relevant to the AIMS not determined (including the organization's role as AI provider, deployer, or user)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-4.1_stmt",
+        "name": "statement",
+        "prose": "Internal and external issues relevant to the AIMS not determined (including the organization's role as AI provider, deployer, or user)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-4.2",
+      "title": "Interested parties and their requirements relevant to the AIMS not identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-4.2_stmt",
+        "name": "statement",
+        "prose": "Interested parties and their requirements relevant to the AIMS not identified"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-4.3",
+      "title": "Scope of the AI management system not determined and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-4.3_stmt",
+        "name": "statement",
+        "prose": "Scope of the AI management system not determined and documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-5.1",
+      "title": "Top management leadership and commitment to the AIMS not demonstrated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-5.1_stmt",
+        "name": "statement",
+        "prose": "Top management leadership and commitment to the AIMS not demonstrated"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-5.2-A.2.2",
+      "title": "AI policy not established, documented, and communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 5.2 / A.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 5.2 / A.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-5.2-A.2.2_stmt",
+        "name": "statement",
+        "prose": "AI policy not established, documented, and communicated"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-5.3-A.3.2",
+      "title": "AI roles, responsibilities, and authorities not assigned and communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 5.3 / A.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 5.3 / A.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-5.3-A.3.2_stmt",
+        "name": "statement",
+        "prose": "AI roles, responsibilities, and authorities not assigned and communicated"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-6.1.2",
+      "title": "AI risk assessment process not established (criteria, identification, analysis, evaluation)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-6.1.2_stmt",
+        "name": "statement",
+        "prose": "AI risk assessment process not established (criteria, identification, analysis, evaluation)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-6.1.4-A.5",
+      "title": "AI system impact assessment process not established — impacts on individuals, groups, and society",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 6.1.4 / A.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 6.1.4 / A.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-6.1.4-A.5_stmt",
+        "name": "statement",
+        "prose": "AI system impact assessment process not established — impacts on individuals, groups, and society"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-6.1.3",
+      "title": "AI risk treatment plan not produced with controls selected against Annex A",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 6.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 6.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-6.1.3_stmt",
+        "name": "statement",
+        "prose": "AI risk treatment plan not produced with controls selected against Annex A"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-6.2",
+      "title": "Measurable AI objectives not established with plans to achieve them",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-6.2_stmt",
+        "name": "statement",
+        "prose": "Measurable AI objectives not established with plans to achieve them"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-7.1-A.4",
+      "title": "Resources for the AIMS not determined (data, tooling, computing, human resources documented per A.4.2-A.4.6)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 7.1 / A.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 7.1 / A.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-7.1-A.4_stmt",
+        "name": "statement",
+        "prose": "Resources for the AIMS not determined (data, tooling, computing, human resources documented per A.4.2-A.4.6)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-7.2",
+      "title": "Competence of persons doing AIMS work not ensured or evidenced",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-7.2_stmt",
+        "name": "statement",
+        "prose": "Competence of persons doing AIMS work not ensured or evidenced"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-7.3",
+      "title": "Personnel not made aware of the AI policy and their AIMS contribution",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-7.3_stmt",
+        "name": "statement",
+        "prose": "Personnel not made aware of the AI policy and their AIMS contribution"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-7.5",
+      "title": "Documented information required by the AIMS not created, updated, and controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-7.5_stmt",
+        "name": "statement",
+        "prose": "Documented information required by the AIMS not created, updated, and controlled"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-8.1",
+      "title": "Operational planning and control of AIMS processes not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-8.1_stmt",
+        "name": "statement",
+        "prose": "Operational planning and control of AIMS processes not implemented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-8.2",
+      "title": "AI risk assessments not performed at planned intervals and on significant change",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-8.2_stmt",
+        "name": "statement",
+        "prose": "AI risk assessments not performed at planned intervals and on significant change"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-8.4",
+      "title": "AI system impact assessments not performed per the 6.1.4 process",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-8.4_stmt",
+        "name": "statement",
+        "prose": "AI system impact assessments not performed per the 6.1.4 process"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-9.1",
+      "title": "AIMS performance not monitored, measured, analyzed, and evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-9.1_stmt",
+        "name": "statement",
+        "prose": "AIMS performance not monitored, measured, analyzed, and evaluated"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-9.2",
+      "title": "Internal audit program for the AIMS not conducted at planned intervals",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-9.2_stmt",
+        "name": "statement",
+        "prose": "Internal audit program for the AIMS not conducted at planned intervals"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-9.3",
+      "title": "Management review of the AIMS not performed at planned intervals",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-9.3_stmt",
+        "name": "statement",
+        "prose": "Management review of the AIMS not performed at planned intervals"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-10.2",
+      "title": "Nonconformities not reacted to with corrective action and effectiveness review",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 10.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 10.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-10.2_stmt",
+        "name": "statement",
+        "prose": "Nonconformities not reacted to with corrective action and effectiveness review"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.3.3",
+      "title": "Process for reporting concerns about the organization's role in AI systems not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.3.3_stmt",
+        "name": "statement",
+        "prose": "Process for reporting concerns about the organization's role in AI systems not established"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.4.2",
+      "title": "Resources for each AI system life-cycle stage (data, tooling, system, computing, human) not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.4.2_stmt",
+        "name": "statement",
+        "prose": "Resources for each AI system life-cycle stage (data, tooling, system, computing, human) not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.1.2",
+      "title": "Objectives for responsible development of AI systems not identified and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.1.2_stmt",
+        "name": "statement",
+        "prose": "Objectives for responsible development of AI systems not identified and documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.2.2",
+      "title": "AI system requirements and specifications not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.2.2_stmt",
+        "name": "statement",
+        "prose": "AI system requirements and specifications not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.2.4",
+      "title": "Verification and validation measures for AI systems not defined and applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.2.4_stmt",
+        "name": "statement",
+        "prose": "Verification and validation measures for AI systems not defined and applied"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.2.5",
+      "title": "AI system deployment plan (requirements met before deployment) not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.2.5_stmt",
+        "name": "statement",
+        "prose": "AI system deployment plan (requirements met before deployment) not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.2.6",
+      "title": "AI system operation and monitoring (performance, drift, failures) not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.2.6_stmt",
+        "name": "statement",
+        "prose": "AI system operation and monitoring (performance, drift, failures) not implemented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.2.7",
+      "title": "Technical documentation for each AI system not maintained for interested parties",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.2.7_stmt",
+        "name": "statement",
+        "prose": "Technical documentation for each AI system not maintained for interested parties"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.6.2.8",
+      "title": "Event logs of AI system behavior not recorded and retained",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.6.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.6.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.6.2.8_stmt",
+        "name": "statement",
+        "prose": "Event logs of AI system behavior not recorded and retained"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.7.2",
+      "title": "Data management process for AI system data (privacy, security, transparency implications) not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.7.2_stmt",
+        "name": "statement",
+        "prose": "Data management process for AI system data (privacy, security, transparency implications) not defined"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.7.5",
+      "title": "Provenance of data used in AI systems not recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.7.5_stmt",
+        "name": "statement",
+        "prose": "Provenance of data used in AI systems not recorded"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.7.4",
+      "title": "Data quality requirements and criteria for AI system data not defined and measured",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.7.4_stmt",
+        "name": "statement",
+        "prose": "Data quality requirements and criteria for AI system data not defined and measured"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.8.2",
+      "title": "Information enabling users to understand and use AI systems appropriately not provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.8.2_stmt",
+        "name": "statement",
+        "prose": "Information enabling users to understand and use AI systems appropriately not provided"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.8.4",
+      "title": "Process for reporting AI system incidents to interested parties not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.8.4_stmt",
+        "name": "statement",
+        "prose": "Process for reporting AI system incidents to interested parties not established"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.9.2-A.9.3",
+      "title": "Objectives and processes for responsible use of AI systems (intended-use alignment) not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.9.2/A.9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.9.2/A.9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.9.2-A.9.3_stmt",
+        "name": "statement",
+        "prose": "Objectives and processes for responsible use of AI systems (intended-use alignment) not documented"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.10.2",
+      "title": "Responsibilities between the organization and third parties (suppliers, partners, customers) in the AI life cycle not allocated",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.10.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.10.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.10.2_stmt",
+        "name": "statement",
+        "prose": "Responsibilities between the organization and third parties (suppliers, partners, customers) in the AI life cycle not allocated"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "iso_42001-ISO-42001-A.10.3",
+      "title": "Process to ensure supplier services align with the organization's responsible-AI approach not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO 42001 A.10.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO 42001 A.10.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso_42001.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#921d2233-ebee-5b37-8366-ba932b9f56b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso_42001-ISO-42001-A.10.3_stmt",
+        "name": "statement",
+        "prose": "Process to ensure supplier services align with the organization's responsible-AI approach not established"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "921d2233-ebee-5b37-8366-ba932b9f56b2",
+     "title": "ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iso_42001.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/governance/iso_42001/iso_42001_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

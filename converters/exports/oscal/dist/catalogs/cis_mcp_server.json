@@ -1,0 +1,2088 @@
+{
+ "catalog": {
+  "uuid": "d0624317-4d8f-59c5-9f22-f55c7ec53e01",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_mcp_server (CIS MCP Server Benchmark v1.0.0 — Section 3: Authentication and Authorization)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_mcp_server"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_mcp_server-authn_authz",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 3: Authentication and Authorization",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.authn_authz"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/authn_authz.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-3.1.1",
+      "title": "stdio server credentials are sourced from the environment or OS credential store",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.1.1_stmt",
+        "name": "statement",
+        "prose": "stdio server credentials are sourced from the environment or OS credential store"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.1.2",
+      "title": "OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.1.2_stmt",
+        "name": "statement",
+        "prose": "OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.2.1",
+      "title": "Per-tool authorization policies are enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.2.1_stmt",
+        "name": "statement",
+        "prose": "Per-tool authorization policies are enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.2.2",
+      "title": "Token passthrough to downstream APIs is forbidden",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.2.2_stmt",
+        "name": "statement",
+        "prose": "Token passthrough to downstream APIs is forbidden"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.2.3",
+      "title": "Server-provided tool annotations are not relied upon for authorization or human-in-the-loop gating",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.2.3_stmt",
+        "name": "statement",
+        "prose": "Server-provided tool annotations are not relied upon for authorization or human-in-the-loop gating"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.3.1",
+      "title": "OAuth tokens are audience-bound to the MCP server using Resource Indicators",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.3.1_stmt",
+        "name": "statement",
+        "prose": "OAuth tokens are audience-bound to the MCP server using Resource Indicators"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.3.2",
+      "title": "OAuth discovery metadata is served over TLS and validated against the approved list",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.3.2_stmt",
+        "name": "statement",
+        "prose": "OAuth discovery metadata is served over TLS and validated against the approved list"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.3.3",
+      "title": "Shared downstream service account identities are prohibited across tools and servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.3.3_stmt",
+        "name": "statement",
+        "prose": "Shared downstream service account identities are prohibited across tools and servers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.3.4",
+      "title": "OAuth scopes are minimized and elevated progressively",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.3.4_stmt",
+        "name": "statement",
+        "prose": "OAuth scopes are minimized and elevated progressively"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-3.3.5",
+      "title": "Confused-deputy safeguards are applied for static OAuth client IDs",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-3.3.5_stmt",
+        "name": "statement",
+        "prose": "Confused-deputy safeguards are applied for static OAuth client IDs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.authn_authz-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.authn_authz#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.authn_authz#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1f109e60-bf85-5a8e-9244-b86c9e94b492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.authn_authz-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-client_host_config",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 4: Client (Host) Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.client_host_config"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/client_host_config.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-4.1.1",
+      "title": "Tool invocation requires per-tool consent or a pre-approved allowlist",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.1.1_stmt",
+        "name": "statement",
+        "prose": "Tool invocation requires per-tool consent or a pre-approved allowlist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.1.2",
+      "title": "Server definitions are project-scoped",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Server definitions are project-scoped"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.1.3",
+      "title": "Elicitation responses require consent and are redacted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Elicitation responses require consent and are redacted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.1.4",
+      "title": "Sampling requests require consent and are redacted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.1.4_stmt",
+        "name": "statement",
+        "prose": "Sampling requests require consent and are redacted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.1.5",
+      "title": "Human denial of tool invocations is honored and recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.1.5_stmt",
+        "name": "statement",
+        "prose": "Human denial of tool invocations is honored and recorded"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.2.1",
+      "title": "Filesystem scope available to servers is restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Filesystem scope available to servers is restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.2.2",
+      "title": "The stdio subprocess environment is restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.2.2_stmt",
+        "name": "statement",
+        "prose": "The stdio subprocess environment is restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.2.3",
+      "title": "Untrusted Resource URIs are not dereferenced directly by the host",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.2.3_stmt",
+        "name": "statement",
+        "prose": "Untrusted Resource URIs are not dereferenced directly by the host"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.3.1",
+      "title": "MCP Apps are sandboxed with a Content Security Policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.3.1_stmt",
+        "name": "statement",
+        "prose": "MCP Apps are sandboxed with a Content Security Policy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-4.3.2",
+      "title": "MCP Apps permissions are constrained and their activity logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-4.3.2_stmt",
+        "name": "statement",
+        "prose": "MCP Apps permissions are constrained and their activity logged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.client_host_config-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.client_host_config#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.client_host_config#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a39928a9-2ad5-5f99-9886-d7d350116313",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.client_host_config-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-governance_versioning",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 1: Governance and Versioning",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.governance_versioning"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/governance_versioning.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-1.1",
+      "title": "Served protocol revisions are pinned and malformed version assertions are rejected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#346d0004-c258-5bc0-913c-7c4321b658e6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-1.1_stmt",
+        "name": "statement",
+        "prose": "Served protocol revisions are pinned and malformed version assertions are rejected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-1.2",
+      "title": "Advertised capability configuration matches the recorded baseline",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#346d0004-c258-5bc0-913c-7c4321b658e6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-1.2_stmt",
+        "name": "statement",
+        "prose": "Advertised capability configuration matches the recorded baseline"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-1.3",
+      "title": "A capability advertised beyond the baseline is denied until re-approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#346d0004-c258-5bc0-913c-7c4321b658e6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-1.3_stmt",
+        "name": "statement",
+        "prose": "A capability advertised beyond the baseline is denied until re-approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-1.4",
+      "title": "Server name and version match the recorded identity",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#346d0004-c258-5bc0-913c-7c4321b658e6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-1.4_stmt",
+        "name": "statement",
+        "prose": "Server name and version match the recorded identity"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.governance_versioning-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.governance_versioning#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.governance_versioning#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#346d0004-c258-5bc0-913c-7c4321b658e6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.governance_versioning-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-observability_audit",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 7: Observability and Audit",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.observability_audit"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/observability_audit.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-7.1.1",
+      "title": "Lifecycle and invocation metadata is recorded to a central audit log",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-7.1.1_stmt",
+        "name": "statement",
+        "prose": "Lifecycle and invocation metadata is recorded to a central audit log"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-7.1.2",
+      "title": "Non-null JSON-RPC request IDs are enforced and included in audit logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-7.1.2_stmt",
+        "name": "statement",
+        "prose": "Non-null JSON-RPC request IDs are enforced and included in audit logs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-7.1.3",
+      "title": "Audit records carry accurate, monotonic timestamps",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-7.1.3_stmt",
+        "name": "statement",
+        "prose": "Audit records carry accurate, monotonic timestamps"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-7.2.1",
+      "title": "Alerts are generated on audience and issuer validation failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Alerts are generated on audience and issuer validation failures"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-7.2.2",
+      "title": "Cancellation and progress notifications are monitored for behavioral anomalies",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-7.2.2_stmt",
+        "name": "statement",
+        "prose": "Cancellation and progress notifications are monitored for behavioral anomalies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.observability_audit-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.observability_audit#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.observability_audit#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.observability_audit-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-resource_limits_caching",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 10: Resource Limits and Caching",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.resource_limits_caching"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/resource_limits_caching.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-10.1",
+      "title": "Static resources are cached with freshness limits; per-user data is never shared-cached",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.resource_limits_caching"
+       }
+      ],
+      "links": [
+       {
+        "href": "#276abf74-1c95-5e07-b09b-a058364d1c10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-10.1_stmt",
+        "name": "statement",
+        "prose": "Static resources are cached with freshness limits; per-user data is never shared-cached"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-10.2",
+      "title": "Request/response body size limits, token budgets, and per-principal quotas are enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.resource_limits_caching"
+       }
+      ],
+      "links": [
+       {
+        "href": "#276abf74-1c95-5e07-b09b-a058364d1c10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-10.2_stmt",
+        "name": "statement",
+        "prose": "Request/response body size limits, token budgets, and per-principal quotas are enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.resource_limits_caching#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.resource_limits_caching#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.resource_limits_caching"
+       }
+      ],
+      "links": [
+       {
+        "href": "#276abf74-1c95-5e07-b09b-a058364d1c10",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-server_config",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 5: Server Configuration",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.server_config"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/server_config.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-5.1.1",
+      "title": "Tool schemas and argument types are validated",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Tool schemas and argument types are validated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.1.2",
+      "title": "Resource templates declare explicit URI patterns and MIME types",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Resource templates declare explicit URI patterns and MIME types"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.1.3",
+      "title": "Prompt templates declare and validate their arguments",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.1.3_stmt",
+        "name": "statement",
+        "prose": "Prompt templates declare and validate their arguments"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.2.1",
+      "title": "listChanged notifications are rate limited",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.2.1_stmt",
+        "name": "statement",
+        "prose": "listChanged notifications are rate limited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.2.2",
+      "title": "Sessions are not used as authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Sessions are not used as authentication"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.2.3",
+      "title": "Legacy Streamable HTTP session and stream resumption surfaces are disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.2.3_stmt",
+        "name": "statement",
+        "prose": "Legacy Streamable HTTP session and stream resumption surfaces are disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.3.1",
+      "title": "Logs are separated from protocol output in stdio mode",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Logs are separated from protocol output in stdio mode"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.4.1",
+      "title": "Path traversal and arbitrary filesystem access are prevented",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.4.1_stmt",
+        "name": "statement",
+        "prose": "Path traversal and arbitrary filesystem access are prevented"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.5.1",
+      "title": "Task authorization is enforced across identities",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.5.1_stmt",
+        "name": "statement",
+        "prose": "Task authorization is enforced across identities"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-5.6.1",
+      "title": "Idempotency keys are required for side-effecting tools",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-5.6.1_stmt",
+        "name": "statement",
+        "prose": "Idempotency keys are required for side-effecting tools"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.server_config-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.server_config#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.server_config#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.server_config-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-transport_connectivity",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 2: Transport and Connectivity",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.transport_connectivity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/transport_connectivity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-2.1",
+      "title": "stdio transport is preferred for local, single-user servers over network transports",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4f9137f-f042-5256-a35f-db3acff1dc66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-2.1_stmt",
+        "name": "statement",
+        "prose": "stdio transport is preferred for local, single-user servers over network transports"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-2.2",
+      "title": "TLS is required: plaintext refused, obsolete TLS versions refused, certificate valid",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4f9137f-f042-5256-a35f-db3acff1dc66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-2.2_stmt",
+        "name": "statement",
+        "prose": "TLS is required: plaintext refused, obsolete TLS versions refused, certificate valid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-2.3",
+      "title": "Authentication is enforced before a streamed (SSE) response is established, including through proxies",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4f9137f-f042-5256-a35f-db3acff1dc66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-2.3_stmt",
+        "name": "statement",
+        "prose": "Authentication is enforced before a streamed (SSE) response is established, including through proxies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-2.4",
+      "title": "Required request metadata headers are present and consistent with the body",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4f9137f-f042-5256-a35f-db3acff1dc66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-2.4_stmt",
+        "name": "statement",
+        "prose": "Required request metadata headers are present and consistent with the body"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-2.5",
+      "title": "The Origin header is validated on all requests; hostile origins are refused",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4f9137f-f042-5256-a35f-db3acff1dc66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-2.5_stmt",
+        "name": "statement",
+        "prose": "The Origin header is validated on all requests; hostile origins are refused"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-1",
+      "title": "CIS MCP %s: %s — not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.transport_connectivity#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.transport_connectivity#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4f9137f-f042-5256-a35f-db3acff1dc66",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not met"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1f109e60-bf85-5a8e-9244-b86c9e94b492",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 3: Authentication and Authorization",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.authn_authz"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/authn_authz.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a39928a9-2ad5-5f99-9886-d7d350116313",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 4: Client (Host) Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.client_host_config"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/client_host_config.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "346d0004-c258-5bc0-913c-7c4321b658e6",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 1: Governance and Versioning",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.governance_versioning"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/governance_versioning.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "796374cc-1d9f-5f78-aeb0-d4cf087633d3",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 7: Observability and Audit",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.observability_audit"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/observability_audit.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "276abf74-1c95-5e07-b09b-a058364d1c10",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 10: Resource Limits and Caching",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.resource_limits_caching"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/resource_limits_caching.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d9b1ff72-eb9b-527b-bf6a-9c3382286a6a",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 5: Server Configuration",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.server_config"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/server_config.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c4f9137f-f042-5256-a35f-db3acff1dc66",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 2: Transport and Connectivity",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.transport_connectivity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/benchmarks/cis/mcp_server/transport_connectivity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

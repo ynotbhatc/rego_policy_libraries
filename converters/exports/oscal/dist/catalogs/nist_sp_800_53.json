@@ -1,0 +1,3314 @@
+{
+ "catalog": {
+  "uuid": "b09ee1b7-ca99-5664-9324-8795c18a979e",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_sp_800_53 (NIST SP 800-53 Rev 5 - Access Control (AC) Family)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_sp_800_53"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_sp_800_53-ac_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 - Access Control (AC) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.access_control"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-AC-1",
+      "title": "Access control policy/procedures not documented, disseminated, or reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-1_stmt",
+        "name": "statement",
+        "prose": "Access control policy/procedures not documented, disseminated, or reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-2",
+      "title": "Account management lacks automated tooling, approval, reviews, or timely removal",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-2_stmt",
+        "name": "statement",
+        "prose": "Account management lacks automated tooling, approval, reviews, or timely removal"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-3",
+      "title": "Access enforcement does not implement MAC, DAC, and RBAC",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-3_stmt",
+        "name": "statement",
+        "prose": "Access enforcement does not implement MAC, DAC, and RBAC"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-4",
+      "title": "Information flow enforcement lacks security labels or automated flow control",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-4_stmt",
+        "name": "statement",
+        "prose": "Information flow enforcement lacks security labels or automated flow control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-5",
+      "title": "Separation of duties not implemented for critical functions",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-5_stmt",
+        "name": "statement",
+        "prose": "Separation of duties not implemented for critical functions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-6",
+      "title": "Least privilege not enforced for privileged or non-privileged access",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-6_stmt",
+        "name": "statement",
+        "prose": "Least privilege not enforced for privileged or non-privileged access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-7",
+      "title": "Logon attempts not lockout-controlled (max 5 attempts, 15-min lockout)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-7_stmt",
+        "name": "statement",
+        "prose": "Logon attempts not lockout-controlled (max 5 attempts, 15-min lockout)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-8",
+      "title": "System use notification banner/acknowledgment/consent missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-8_stmt",
+        "name": "statement",
+        "prose": "System use notification banner/acknowledgment/consent missing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-9",
+      "title": "Previous logon notification not displayed to users",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-9_stmt",
+        "name": "statement",
+        "prose": "Previous logon notification not displayed to users"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-10",
+      "title": "Concurrent session limits not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-10_stmt",
+        "name": "statement",
+        "prose": "Concurrent session limits not configured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-11",
+      "title": "Session lock missing (inactivity timeout ≤15 min + pattern hiding required)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-11_stmt",
+        "name": "statement",
+        "prose": "Session lock missing (inactivity timeout ≤15 min + pattern hiding required)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-12",
+      "title": "Session termination (automatic/user-initiated/admin) not supported",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-12_stmt",
+        "name": "statement",
+        "prose": "Session termination (automatic/user-initiated/admin) not supported"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-14",
+      "title": "Permitted unauthenticated actions exceed approved list",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-14_stmt",
+        "name": "statement",
+        "prose": "Permitted unauthenticated actions exceed approved list"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-17",
+      "title": "Remote access not authorized/encrypted/monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-17_stmt",
+        "name": "statement",
+        "prose": "Remote access not authorized/encrypted/monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-18",
+      "title": "Wireless access not authorized/encrypted/monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-18_stmt",
+        "name": "statement",
+        "prose": "Wireless access not authorized/encrypted/monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-19",
+      "title": "Mobile device access control missing usage restrictions or config requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-19_stmt",
+        "name": "statement",
+        "prose": "Mobile device access control missing usage restrictions or config requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-20",
+      "title": "External system use not authorized or governed by user agreements",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-20_stmt",
+        "name": "statement",
+        "prose": "External system use not authorized or governed by user agreements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-22",
+      "title": "Publicly accessible content lacks review/removal process",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90a073f1-a1df-563c-953a-a83e7386b0c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-22_stmt",
+        "name": "statement",
+        "prose": "Publicly accessible content lacks review/removal process"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_sp_800_53-au_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 — Audit and Accountability (AU) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.audit_accountability"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-AU-1",
+      "title": "Audit and accountability policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-1_stmt",
+        "name": "statement",
+        "prose": "Audit and accountability policy not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-2",
+      "title": "Auditable events not identified or logging not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-2_stmt",
+        "name": "statement",
+        "prose": "Auditable events not identified or logging not enabled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-3",
+      "title": "Audit record content lacks who/what/when/where/source/outcome",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-3_stmt",
+        "name": "statement",
+        "prose": "Audit record content lacks who/what/when/where/source/outcome"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-4",
+      "title": "Audit record storage capacity insufficient for required retention",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-4_stmt",
+        "name": "statement",
+        "prose": "Audit record storage capacity insufficient for required retention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-5",
+      "title": "Audit logging failure does not alert appropriate personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-5_stmt",
+        "name": "statement",
+        "prose": "Audit logging failure does not alert appropriate personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-6",
+      "title": "Audit records not regularly reviewed or analyzed",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-6_stmt",
+        "name": "statement",
+        "prose": "Audit records not regularly reviewed or analyzed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-7",
+      "title": "Audit record reduction/report-generation tooling unavailable",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-7_stmt",
+        "name": "statement",
+        "prose": "Audit record reduction/report-generation tooling unavailable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-8",
+      "title": "Audit record time stamps not synchronized to authoritative source",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-8_stmt",
+        "name": "statement",
+        "prose": "Audit record time stamps not synchronized to authoritative source"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-9",
+      "title": "Audit records not protected against unauthorized modification/deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-9_stmt",
+        "name": "statement",
+        "prose": "Audit records not protected against unauthorized modification/deletion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-10",
+      "title": "Non-repudiation of actions by individuals not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-10_stmt",
+        "name": "statement",
+        "prose": "Non-repudiation of actions by individuals not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-11",
+      "title": "Audit record retention %d days is below 365-day minimum",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-11_stmt",
+        "name": "statement",
+        "prose": "Audit record retention %d days is below 365-day minimum"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-12",
+      "title": "Audit record generation does not capture all required events",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f2083b8c-77bd-5408-bbce-c2036463aff8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-12_stmt",
+        "name": "statement",
+        "prose": "Audit record generation does not capture all required events"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_sp_800_53-cm_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 — Configuration Management (CM) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.configuration_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/configuration_management/cm_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-CM-1",
+      "title": "Configuration management policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-1_stmt",
+        "name": "statement",
+        "prose": "Configuration management policy not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-2",
+      "title": "Baseline configuration not established or maintained for the system",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-2_stmt",
+        "name": "statement",
+        "prose": "Baseline configuration not established or maintained for the system"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-3",
+      "title": "Configuration change control process not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-3_stmt",
+        "name": "statement",
+        "prose": "Configuration change control process not in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-4",
+      "title": "Security impact analysis not performed before changes are deployed",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-4_stmt",
+        "name": "statement",
+        "prose": "Security impact analysis not performed before changes are deployed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-5",
+      "title": "Access restrictions for change are not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-5_stmt",
+        "name": "statement",
+        "prose": "Access restrictions for change are not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-6",
+      "title": "Mandatory configuration settings not documented or applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-6_stmt",
+        "name": "statement",
+        "prose": "Mandatory configuration settings not documented or applied"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-7",
+      "title": "Least functionality (disable unused services/ports) not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-7_stmt",
+        "name": "statement",
+        "prose": "Least functionality (disable unused services/ports) not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-8",
+      "title": "System component inventory not maintained or accurate",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-8_stmt",
+        "name": "statement",
+        "prose": "System component inventory not maintained or accurate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-9",
+      "title": "Configuration management plan not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-9_stmt",
+        "name": "statement",
+        "prose": "Configuration management plan not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-10",
+      "title": "Software usage restrictions (licensing/copy controls) not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-10_stmt",
+        "name": "statement",
+        "prose": "Software usage restrictions (licensing/copy controls) not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-CM-11",
+      "title": "User-installed software is not restricted by policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CM-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CM-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-CM-11_stmt",
+        "name": "statement",
+        "prose": "User-installed software is not restricted by policy"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_sp_800_53-ia_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 — Identification and Authentication (IA) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.identification_authentication"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/identification_authentication/ia_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-IA-1",
+      "title": "Identification and authentication policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-1_stmt",
+        "name": "statement",
+        "prose": "Identification and authentication policy not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-2",
+      "title": "Organizational users not uniquely identified and authenticated",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-2_stmt",
+        "name": "statement",
+        "prose": "Organizational users not uniquely identified and authenticated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-2-1",
+      "title": "Multi-factor authentication not required for privileged accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-2(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-2(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-2-1_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication not required for privileged accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-2-2",
+      "title": "Multi-factor authentication not required for non-privileged accounts",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-2(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-2(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-2-2_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication not required for non-privileged accounts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-3",
+      "title": "Device identification and authentication not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-3_stmt",
+        "name": "statement",
+        "prose": "Device identification and authentication not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-4",
+      "title": "Identifier management does not assign unique IDs per user",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-4_stmt",
+        "name": "statement",
+        "prose": "Identifier management does not assign unique IDs per user"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-5",
+      "title": "Authenticator management lacks complexity/lifetime enforcement",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-5_stmt",
+        "name": "statement",
+        "prose": "Authenticator management lacks complexity/lifetime enforcement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-5-1",
+      "title": "Authenticators not protected in transit",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-5(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-5(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-5-1_stmt",
+        "name": "statement",
+        "prose": "Authenticators not protected in transit"
+       },
+       {
+        "id": "nist_sp_800_53-NIST-IA-5-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Stored authenticators not cryptographically protected at rest"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-6",
+      "title": "Authenticator feedback (e.g., password entry) is not obscured",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-6_stmt",
+        "name": "statement",
+        "prose": "Authenticator feedback (e.g., password entry) is not obscured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-7",
+      "title": "Cryptographic module authentication not FIPS-validated",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-7_stmt",
+        "name": "statement",
+        "prose": "Cryptographic module authentication not FIPS-validated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IA-8",
+      "title": "Non-organizational users not uniquely identified and authenticated",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IA-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IA-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.identification_authentication"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IA-8_stmt",
+        "name": "statement",
+        "prose": "Non-organizational users not uniquely identified and authenticated"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_sp_800_53-ir_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 — Incident Response (IR) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.incident_response"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-IR-1",
+      "title": "Incident response policy and procedures not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-1_stmt",
+        "name": "statement",
+        "prose": "Incident response policy and procedures not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-2",
+      "title": "Incident response training not completed within the last year",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-2_stmt",
+        "name": "statement",
+        "prose": "Incident response training not completed within the last year"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-3",
+      "title": "Incident response plan not tested/exercised within the last year",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-3_stmt",
+        "name": "statement",
+        "prose": "Incident response plan not tested/exercised within the last year"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-4",
+      "title": "Incident handling process (preparation/detection/analysis/containment/eradication/recovery) not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-4_stmt",
+        "name": "statement",
+        "prose": "Incident handling process (preparation/detection/analysis/containment/eradication/recovery) not defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-5",
+      "title": "Continuous incident monitoring not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-5_stmt",
+        "name": "statement",
+        "prose": "Continuous incident monitoring not in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-6",
+      "title": "Incident reporting to internal/external parties not timely",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-6_stmt",
+        "name": "statement",
+        "prose": "Incident reporting to internal/external parties not timely"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-7",
+      "title": "Incident response assistance/coordination resources not available",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-7_stmt",
+        "name": "statement",
+        "prose": "Incident response assistance/coordination resources not available"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-8",
+      "title": "Documented incident response plan does not exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-8_stmt",
+        "name": "statement",
+        "prose": "Documented incident response plan does not exist"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-9",
+      "title": "Information spillage response process not defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-9_stmt",
+        "name": "statement",
+        "prose": "Information spillage response process not defined"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_sp_800_53-sc_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 — System and Communications Protection (SC) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.system_communications"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-SC-1",
+      "title": "System and communications protection policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-1_stmt",
+        "name": "statement",
+        "prose": "System and communications protection policy not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-2",
+      "title": "User functionality is not separated from system management functionality",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-2_stmt",
+        "name": "statement",
+        "prose": "User functionality is not separated from system management functionality"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-3",
+      "title": "Security functions not isolated from non-security functions",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-3_stmt",
+        "name": "statement",
+        "prose": "Security functions not isolated from non-security functions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-5",
+      "title": "Denial-of-service protections not in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-5_stmt",
+        "name": "statement",
+        "prose": "Denial-of-service protections not in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-7",
+      "title": "System boundary protection not deployed at managed interfaces",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-7_stmt",
+        "name": "statement",
+        "prose": "System boundary protection not deployed at managed interfaces"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-8",
+      "title": "Transmission confidentiality not protected via cryptographic mechanisms",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-8_stmt",
+        "name": "statement",
+        "prose": "Transmission confidentiality not protected via cryptographic mechanisms"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-8-1",
+      "title": "Transmission integrity not protected via cryptographic mechanisms",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-8(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-8(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-8-1_stmt",
+        "name": "statement",
+        "prose": "Transmission integrity not protected via cryptographic mechanisms"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-10",
+      "title": "Network session disconnect timeout not configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-10_stmt",
+        "name": "statement",
+        "prose": "Network session disconnect timeout not configured"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-12",
+      "title": "Cryptographic key management process not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-12_stmt",
+        "name": "statement",
+        "prose": "Cryptographic key management process not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-13",
+      "title": "Cryptographic mechanisms not FIPS-validated",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-13_stmt",
+        "name": "statement",
+        "prose": "Cryptographic mechanisms not FIPS-validated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-15",
+      "title": "Collaborative computing devices (mic/camera) not disabled when unused",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-15_stmt",
+        "name": "statement",
+        "prose": "Collaborative computing devices (mic/camera) not disabled when unused"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-17",
+      "title": "Public key certificates not issued/managed by authorized PKI",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-17_stmt",
+        "name": "statement",
+        "prose": "Public key certificates not issued/managed by authorized PKI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-18",
+      "title": "Mobile code controls (allow/deny lists) not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-18_stmt",
+        "name": "statement",
+        "prose": "Mobile code controls (allow/deny lists) not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-19",
+      "title": "VoIP usage restrictions and implementation guidance not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-19_stmt",
+        "name": "statement",
+        "prose": "VoIP usage restrictions and implementation guidance not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-20-21",
+      "title": "Secure name/address resolution (DNSSEC) not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-20/21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-20/21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-20-21_stmt",
+        "name": "statement",
+        "prose": "Secure name/address resolution (DNSSEC) not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-23",
+      "title": "Session authenticity not protected (session ID randomness, timeouts)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-23_stmt",
+        "name": "statement",
+        "prose": "Session authenticity not protected (session ID randomness, timeouts)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-28",
+      "title": "Information at rest not protected via encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78867ad7-318c-599a-a0b8-bb4dd718382b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-28_stmt",
+        "name": "statement",
+        "prose": "Information at rest not protected via encryption"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "nist_sp_800_53-si_controls",
+    "class": "rego-module",
+    "title": "NIST SP 800-53 Rev 5 — System and Information Integrity (SI) Family",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_53.system_information_integrity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_53-NIST-SI-1",
+      "title": "System and information integrity policy not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-1_stmt",
+        "name": "statement",
+        "prose": "System and information integrity policy not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-2",
+      "title": "Flaw remediation (patching) not performed within defined timeframes",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-2_stmt",
+        "name": "statement",
+        "prose": "Flaw remediation (patching) not performed within defined timeframes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-3",
+      "title": "Malicious code protection (antivirus/EDR) not deployed at entry/exit points",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-3_stmt",
+        "name": "statement",
+        "prose": "Malicious code protection (antivirus/EDR) not deployed at entry/exit points"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-4",
+      "title": "System monitoring (IDS/IPS, log review) not continuous",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-4_stmt",
+        "name": "statement",
+        "prose": "System monitoring (IDS/IPS, log review) not continuous"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-5",
+      "title": "Security alerts/advisories not received and acted upon",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-5_stmt",
+        "name": "statement",
+        "prose": "Security alerts/advisories not received and acted upon"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-6",
+      "title": "Security function verification not periodically tested",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-6_stmt",
+        "name": "statement",
+        "prose": "Security function verification not periodically tested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-7",
+      "title": "Software and firmware integrity not verified before execution",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-7_stmt",
+        "name": "statement",
+        "prose": "Software and firmware integrity not verified before execution"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-8",
+      "title": "Spam protection not enabled at gateways or endpoints",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-8_stmt",
+        "name": "statement",
+        "prose": "Spam protection not enabled at gateways or endpoints"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-10",
+      "title": "Information input validation not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-10_stmt",
+        "name": "statement",
+        "prose": "Information input validation not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-11",
+      "title": "Error handling discloses sensitive information",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-11_stmt",
+        "name": "statement",
+        "prose": "Error handling discloses sensitive information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-12",
+      "title": "Information management/retention policies not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-12_stmt",
+        "name": "statement",
+        "prose": "Information management/retention policies not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-16",
+      "title": "Memory protection (ASLR, DEP, NX) not enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c735e72-d42e-5c77-bd08-7c061dd55516",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-16_stmt",
+        "name": "statement",
+        "prose": "Memory protection (ASLR, DEP, NX) not enabled"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "90a073f1-a1df-563c-953a-a83e7386b0c8",
+     "title": "NIST SP 800-53 Rev 5 - Access Control (AC) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.access_control"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f2083b8c-77bd-5408-bbce-c2036463aff8",
+     "title": "NIST SP 800-53 Rev 5 — Audit and Accountability (AU) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.audit_accountability"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "95cea762-6cbd-5d3b-a3fa-51c49e688a64",
+     "title": "NIST SP 800-53 Rev 5 — Configuration Management (CM) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.configuration_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/configuration_management/cm_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b9f9268c-28f0-5c81-9638-760a8a52e6a1",
+     "title": "NIST SP 800-53 Rev 5 — Identification and Authentication (IA) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.identification_authentication"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/identification_authentication/ia_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "73e8e596-6d39-5f99-8a5b-a5e5011b5fee",
+     "title": "NIST SP 800-53 Rev 5 — Incident Response (IR) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.incident_response"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "78867ad7-318c-599a-a0b8-bb4dd718382b",
+     "title": "NIST SP 800-53 Rev 5 — System and Communications Protection (SC) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.system_communications"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5c735e72-d42e-5c77-bd08-7c061dd55516",
+     "title": "NIST SP 800-53 Rev 5 — System and Information Integrity (SI) Family",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_53.system_information_integrity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

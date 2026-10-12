@@ -25,7 +25,13 @@ jobs:
           curl -sL -o opa "https://github.com/open-policy-agent/opa/releases/download/${OPA_VERSION}/opa_linux_amd64"
           chmod +x opa && sudo mv opa /usr/local/bin/opa && opa version
       - name: "Build"
-        run: make wasm
+        run: |
+          python3 -m pip install -q jsonschema
+          make wasm
+          make oscal
+          bash converters/exports/oscal/test/roundtrip.sh | tee /tmp/oscal.log
+          ! grep -q "^SKIP" /tmp/oscal.log
+          (cd converters/exports/oscal && tar -czf "$GITHUB_WORKSPACE/oscal-catalogs.tar.gz" dist/catalogs out/all.json)
       - name: "Round-trip test (must not skip here)"
         run: |
           out="$(bash converters/packaging/wasm/test/roundtrip.sh)"; echo "$out"
@@ -44,4 +50,4 @@ jobs:
           python3 converters/packaging/gatekeeper/build.py >/dev/null && (cd converters/packaging/gatekeeper/out && tar -czf ../../../../gatekeeper-templates.tar.gz templates constraints)
           python3 converters/packaging/kubewarden/build.py >/dev/null && (cd converters/packaging/kubewarden/out && tar -czf ../../../../kubewarden-policies.tar.gz .)
           python3 converters/packaging/terraform_platforms/build.py >/dev/null && (cd converters/packaging/terraform_platforms/out && tar -czf ../../../../terraform-cloud-policy-set.tar.gz policy-set)
-          gh release upload "${GITHUB_REF_NAME}" gatekeeper-templates.tar.gz kubewarden-policies.tar.gz terraform-cloud-policy-set.tar.gz --clobber --repo "${GITHUB_REPOSITORY}"
+          gh release upload "${GITHUB_REF_NAME}" gatekeeper-templates.tar.gz kubewarden-policies.tar.gz terraform-cloud-policy-set.tar.gz oscal-catalogs.tar.gz --clobber --repo "${GITHUB_REPOSITORY}"

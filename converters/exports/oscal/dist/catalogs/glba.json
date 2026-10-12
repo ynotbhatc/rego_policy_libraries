@@ -1,0 +1,1215 @@
+{
+ "catalog": {
+  "uuid": "a8e12ac9-babd-59fa-a81e-12af52654d4b",
+  "metadata": {
+   "title": "Rego Policy Libraries — glba (Gramm-Leach-Bliley Act — FTC Safeguards Rule, 16 CFR Part 314)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "glba"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "glba-glba_main",
+    "class": "rego-module",
+    "title": "Gramm-Leach-Bliley Act — FTC Safeguards Rule, 16 CFR Part 314",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "glba.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/glba/glba_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "glba-glba.main-1",
+      "title": "16 CFR 314.4(a): Qualified Individual not designated to oversee, implement, and enforce the information security program",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-1_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(a): Qualified Individual not designated to oversee, implement, and enforce the information security program"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-2",
+      "title": "16 CFR 314.4(b)(1): Written risk assessment not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-2_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(b)(1): Written risk assessment not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-3",
+      "title": "16 CFR 314.4(b)(1): Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-3_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(b)(1): Risk assessment lacks documented criteria for evaluating and categorizing security risks and threats"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-4",
+      "title": "16 CFR 314.4(b)(2): Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-4_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(b)(2): Risk assessment not periodically re-performed to reexamine reasonably foreseeable risks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-5",
+      "title": "16 CFR 314.4(c)(1): Access controls do not authenticate users before permitting access to customer information",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-5_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(1): Access controls do not authenticate users before permitting access to customer information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-6",
+      "title": "16 CFR 314.4(c)(1): Access to customer information not limited to what is needed to perform duties and functions",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-6_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(1): Access to customer information not limited to what is needed to perform duties and functions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-7",
+      "title": "16 CFR 314.4(c)(1): Access permissions to customer information not periodically reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-7_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(1): Access permissions to customer information not periodically reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-8",
+      "title": "16 CFR 314.4(c)(2): Customer information not identified and its location not inventoried",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-8_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(2): Customer information not identified and its location not inventoried"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-9",
+      "title": "16 CFR 314.4(c)(2): Systems, devices, platforms, and personnel handling customer information not inventoried",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-9_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(2): Systems, devices, platforms, and personnel handling customer information not inventoried"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-10",
+      "title": "16 CFR 314.4(c)(3): Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-10_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(3): Customer information not encrypted in transit over external networks, and no Qualified-Individual-approved compensating controls documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-11",
+      "title": "16 CFR 314.4(c)(3): Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-11_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(3): Customer information not encrypted at rest, and no Qualified-Individual-approved compensating controls documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-12",
+      "title": "16 CFR 314.4(c)(4): Secure development practices not adopted for in-house applications handling customer information",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-12_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(4): Secure development practices not adopted for in-house applications handling customer information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-13",
+      "title": "16 CFR 314.4(c)(4): Security of externally developed applications handling customer information not assessed",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-13_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(4): Security of externally developed applications handling customer information not assessed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-14",
+      "title": "16 CFR 314.4(c)(5): MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-14_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(5): MFA not implemented for individuals accessing information systems, and no reasonably equivalent control approved in writing by the Qualified Individual"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-15",
+      "title": "16 CFR 314.4(c)(6): Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-15_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(6): Customer information not securely disposed of within two years of last use, and continued retention not justified by business need or legal requirement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-16",
+      "title": "16 CFR 314.4(c)(6): Data retention policy not periodically reviewed to minimize unnecessary retention of customer information",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-16_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(6): Data retention policy not periodically reviewed to minimize unnecessary retention of customer information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-17",
+      "title": "16 CFR 314.4(c)(7): Change management procedures not adopted for the information system",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-17_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(7): Change management procedures not adopted for the information system"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-18",
+      "title": "16 CFR 314.4(c)(8): Activity of authorized users not monitored and logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-18_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(8): Activity of authorized users not monitored and logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-19",
+      "title": "16 CFR 314.4(c)(8): Unauthorized access to, use of, or tampering with customer information not detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-19_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(c)(8): Unauthorized access to, use of, or tampering with customer information not detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-20",
+      "title": "16 CFR 314.4(d)(2)(i): Neither continuous monitoring nor annual penetration testing is in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-20_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(d)(2)(i): Neither continuous monitoring nor annual penetration testing is in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-21",
+      "title": "16 CFR 314.4(d)(2)(ii): Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-21_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(d)(2)(ii): Neither continuous monitoring nor semi-annual vulnerability assessments (including after material changes) are in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-22",
+      "title": "16 CFR 314.4(e)(1): Security awareness training not provided to personnel",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-22_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(e)(1): Security awareness training not provided to personnel"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-23",
+      "title": "16 CFR 314.4(e)(2): Qualified information security personnel not employed or engaged",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-23_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(e)(2): Qualified information security personnel not employed or engaged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-24",
+      "title": "16 CFR 314.4(e)(4): Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-24_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(e)(4): Key information security personnel not verified to maintain current knowledge of changing threats and countermeasures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-25",
+      "title": "16 CFR 314.4(f)(1): Service providers not selected based on ability to maintain appropriate safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-25_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(f)(1): Service providers not selected based on ability to maintain appropriate safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-26",
+      "title": "16 CFR 314.4(f)(2): Service provider contracts do not require implementation and maintenance of safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-26_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(f)(2): Service provider contracts do not require implementation and maintenance of safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-27",
+      "title": "16 CFR 314.4(f)(3): Service providers not periodically assessed based on the risk they present",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-27_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(f)(3): Service providers not periodically assessed based on the risk they present"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-28",
+      "title": "16 CFR 314.4(g): Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-28_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(g): Information security program not evaluated and adjusted in light of testing results, operational changes, and circumstances with material impact"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-29",
+      "title": "16 CFR 314.4(h): Written incident response plan not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-29_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(h): Written incident response plan not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-30",
+      "title": "16 CFR 314.4(h)(3): Roles, responsibilities, and levels of decision-making authority not defined in incident response plan",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-30_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(h)(3): Roles, responsibilities, and levels of decision-making authority not defined in incident response plan"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-31",
+      "title": "16 CFR 314.4(h)(7): Incident response plan lacks process for evaluation and revision following a security event",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-31_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(h)(7): Incident response plan lacks process for evaluation and revision following a security event"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-32",
+      "title": "16 CFR 314.4(i): Qualified Individual has not reported in writing to the board (or equivalent) at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-32_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(i): Qualified Individual has not reported in writing to the board (or equivalent) at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-33",
+      "title": "16 CFR 314.4(i)(1)-(2): Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-33_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.4(i)(1)-(2): Annual board report does not cover overall program status, risk assessment, testing results, and security events with management responses"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "glba-glba.main-34",
+      "title": "16 CFR 314.5: Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers",
+      "props": [
+       {
+        "name": "label",
+        "value": "glba.main#34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "glba.main#34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "glba.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5f1483df-28dc-5281-9b4d-defc0ffac85c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "glba-glba.main-34_stmt",
+        "name": "statement",
+        "prose": "16 CFR 314.5: Process not established to notify the FTC within 30 days of discovering a security breach involving unencrypted customer information of 500 or more consumers"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "5f1483df-28dc-5281-9b4d-defc0ffac85c",
+     "title": "Gramm-Leach-Bliley Act — FTC Safeguards Rule, 16 CFR Part 314",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "glba.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/financial/glba/glba_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

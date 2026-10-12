@@ -1,0 +1,5383 @@
+{
+ "catalog": {
+  "uuid": "391697d2-3581-59df-b018-a3654813fff8",
+  "metadata": {
+   "title": "Rego Policy Libraries — iec_62443 (IEC 62443-3-3 FR 1 — Identification and Authentication Control (IAC))",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "iec_62443"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "iec_62443-fr1_identification_authentication",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 1 — Identification and Authentication Control (IAC)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr1"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr1_identification_authentication.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-SR-1.1-IAC",
+      "title": "ICS system '%v' does not enforce unique user identification. Every human user must have a unique identifier.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.1 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.1 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.1-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not enforce unique user identification. Every human user must have a unique identifier."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-1",
+      "title": "IEC 62443 SR 1.1 RE 1 SL%v (IAC): ICS system '%v' does not enforce multi-factor authentication. MFA is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.1 RE 1 SL%v (IAC): ICS system '%v' does not enforce multi-factor authentication. MFA is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-2",
+      "title": "IEC 62443 SR 1.1 RE 2 SL%v (IAC): Hardware token-based authentication is not implemented. Required at Security Level 3+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.1 RE 2 SL%v (IAC): Hardware token-based authentication is not implemented. Required at Security Level 3+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.2-IAC",
+      "title": "ICS system '%v' does not authenticate software processes or devices. Device-to-device authentication is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.2 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.2 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.2-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not authenticate software processes or devices. Device-to-device authentication is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-3",
+      "title": "IEC 62443 SR 1.2 RE 1 SL%v (IAC): ICS system '%v' devices do not have unique identifiers. All IACS devices must have unique IDs at SL 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.2 RE 1 SL%v (IAC): ICS system '%v' devices do not have unique identifiers. All IACS devices must have unique IDs at SL 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.3-IAC",
+      "title": "No centralized account management. IACS accounts must be centrally managed, reviewed, and deprovisioned promptly.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.3 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.3 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.3-IAC_stmt",
+        "name": "statement",
+        "prose": "No centralized account management. IACS accounts must be centrally managed, reviewed, and deprovisioned promptly."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.3-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' has no periodic account review process. Accounts must be reviewed regularly for continued business need."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-4",
+      "title": "IEC 62443 SR 1.3 RE 1 SL%v (IAC): No unified account management policy across all IACS components. Required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.3 RE 1 SL%v (IAC): No unified account management policy across all IACS components. Required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.4-IAC",
+      "title": "ICS system '%v' uses unchanged default credentials. Default identifiers are a critical vulnerability — change all defaults before deployment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.4 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.4 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.4-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' uses unchanged default credentials. Default identifiers are a critical vulnerability — change all defaults before deployment."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.4-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS does not prevent identifier reuse for a defined period. Deactivated identifiers must not be reassigned for at least 90 days."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.5-IAC",
+      "title": "ICS system '%v' has no authenticator lifecycle management. Passwords, keys, and tokens must have defined issuance, rotation, and revocation policies.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.5 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.5 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.5-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no authenticator lifecycle management. Passwords, keys, and tokens must have defined issuance, rotation, and revocation policies."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.5-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "Authenticators are not distributed via secure channels. Initial credentials must be delivered through a secure out-of-band mechanism."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.6-IAC",
+      "title": "ICS system '%v' has unencrypted wireless access. All wireless connections to IACS must use strong authentication and encryption.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.6 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.6 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.6-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has unencrypted wireless access. All wireless connections to IACS must use strong authentication and encryption."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.6-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' wireless access lacks authentication. Mutual authentication is required for all IACS wireless connections."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.6-IAC_obj.2",
+        "name": "assessment-objective",
+        "prose": "No wireless access policy for IACS. A documented policy defining allowed wireless use is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.7-IAC",
+      "title": "ICS system '%v' has minimum password length of %v characters. Minimum 8 characters required (12+ recommended for SL 2+).",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.7 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.7 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.7-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has minimum password length of %v characters. Minimum 8 characters required (12+ recommended for SL 2+)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.7-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not enforce password complexity. Passwords must include uppercase, lowercase, digits, and special characters."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-5",
+      "title": "IEC 62443 SR 1.7 RE 1 SL%v (IAC): ICS system '%v' has minimum password length of %v. Minimum 12 characters required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.7 RE 1 SL%v (IAC): ICS system '%v' has minimum password length of %v. Minimum 12 characters required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-6",
+      "title": "IEC 62443 SR 1.8 SL%v (IAC): PKI/certificate-based authentication is not implemented. Required at Security Level 3+ for strong identity assurance.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.8 SL%v (IAC): PKI/certificate-based authentication is not implemented. Required at Security Level 3+ for strong identity assurance."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.8-IAC",
+      "title": "Certificate revocation checking (CRL/OCSP) is not implemented. Revoked certificates must be detected and rejected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.8 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.8 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.8-IAC_stmt",
+        "name": "statement",
+        "prose": "Certificate revocation checking (CRL/OCSP) is not implemented. Revoked certificates must be detected and rejected."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.9-IAC",
+      "title": "Public key authentication uses weak cryptographic algorithms. Use RSA 2048+, ECDSA 256+, or equivalent strength algorithms.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.9 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.9 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.9-IAC_stmt",
+        "name": "statement",
+        "prose": "Public key authentication uses weak cryptographic algorithms. Use RSA 2048+, ECDSA 256+, or equivalent strength algorithms."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.10-IAC",
+      "title": "ICS system '%v' displays authenticator feedback in plaintext. Authentication information (passwords, tokens) must be obscured during entry.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.10 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.10 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.10-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' displays authenticator feedback in plaintext. Authentication information (passwords, tokens) must be obscured during entry."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.11-IAC",
+      "title": "ICS system '%v' allows %v failed login attempts before lockout. Threshold must be 10 or fewer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.11 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.11 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.11-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' allows %v failed login attempts before lockout. Threshold must be 10 or fewer."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.11-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' has no account lockout policy. Account lockout after failed attempts is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-7",
+      "title": "IEC 62443 SR 1.11 RE 1 SL%v (IAC): ICS system '%v' allows %v failed login attempts. Threshold must be 5 or fewer at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-7_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.11 RE 1 SL%v (IAC): ICS system '%v' allows %v failed login attempts. Threshold must be 5 or fewer at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.12-IAC",
+      "title": "ICS system '%v' does not display a system use notification. A warning banner indicating authorized use only must be displayed before login.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.12 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.12 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.12-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not display a system use notification. A warning banner indicating authorized use only must be displayed before login."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-1.13-IAC",
+      "title": "ICS system '%v' has uncontrolled remote access. Remote access via untrusted networks must use VPN, jump host, or equivalent controls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 1.13 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 1.13 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-1.13-IAC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has uncontrolled remote access. Remote access via untrusted networks must use VPN, jump host, or equivalent controls."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr1-8",
+      "title": "IEC 62443 SR 1.13 RE 1 SL%v (IAC): ICS system '%v' remote access does not enforce MFA. Multi-factor authentication is required for all remote IACS access at SL 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr1#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr1#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr1-8_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 1.13 RE 1 SL%v (IAC): ICS system '%v' remote access does not enforce MFA. Multi-factor authentication is required for all remote IACS access at SL 2+."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-fr2_use_control",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 2 — Use Control (UC)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-SR-2.1-UC",
+      "title": "ICS system '%v' does not enforce least privilege. Users must only have the access rights required to perform their authorized functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.1 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.1 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.1-UC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not enforce least privilege. Users must only have the access rights required to perform their authorized functions."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.1-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "Privileged access is not audited. All privileged actions on IACS must generate an audit record."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-1",
+      "title": "IEC 62443 SR 2.1 RE 1 SL%v (UC): Role-based access control (RBAC) is not implemented. Separate authorization roles are required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.1 RE 1 SL%v (UC): Role-based access control (RBAC) is not implemented. Separate authorization roles are required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-2",
+      "title": "IEC 62443 SR 2.1 RE 2 SL%v (UC): No dual-approval mechanism for high-impact IACS actions. Required at Security Level 3+ for critical system changes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.1 RE 2 SL%v (UC): No dual-approval mechanism for high-impact IACS actions. Required at Security Level 3+ for critical system changes."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.2-UC",
+      "title": "Wireless use on ICS system '%v' is not explicitly authorized. All wireless connections must be documented and approved.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.2 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.2 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.2-UC_stmt",
+        "name": "statement",
+        "prose": "Wireless use on ICS system '%v' is not explicitly authorized. All wireless connections must be documented and approved."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.2-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "Wireless connections on ICS system '%v' are not monitored. Wireless activity must be continuously monitored for unauthorized access."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.3-UC",
+      "title": "ICS system '%v' has no portable/mobile device use policy. USB drives, laptops, and tablets connecting to IACS must be governed by a formal policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.3 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.3 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.3-UC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no portable/mobile device use policy. USB drives, laptops, and tablets connecting to IACS must be governed by a formal policy."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.3-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not control removable media. Removable media must be scanned for malware before use and restricted to authorized devices."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-3",
+      "title": "IEC 62443 SR 2.3 RE 1 SL%v (UC): Portable device authorizations are not centrally managed. Centralized control is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.3 RE 1 SL%v (UC): Portable device authorizations are not centrally managed. Centralized control is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.4-UC",
+      "title": "ICS system '%v' does not control mobile code execution. Scripts, active content, and macros must be restricted to explicitly authorized code.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.4 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.4 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.4-UC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not control mobile code execution. Scripts, active content, and macros must be restricted to explicitly authorized code."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-4",
+      "title": "IEC 62443 SR 2.4 RE 1 SL%v (UC): ICS system '%v' has neither application whitelisting nor malware protection. One of these is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.4 RE 1 SL%v (UC): ICS system '%v' has neither application whitelisting nor malware protection. One of these is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.5-UC",
+      "title": "ICS system '%v' session lock timeout is %v minutes. Maximum inactivity timeout before lock must be 30 minutes or less.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.5 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.5 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.5-UC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' session lock timeout is %v minutes. Maximum inactivity timeout before lock must be 30 minutes or less."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.5-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not enforce session locking. Automatic session lock after inactivity is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-5",
+      "title": "IEC 62443 SR 2.5 RE 1 SL%v (UC): ICS system '%v' session lock timeout is %v minutes. Maximum 15 minutes is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.5 RE 1 SL%v (UC): ICS system '%v' session lock timeout is %v minutes. Maximum 15 minutes is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.6-UC",
+      "title": "ICS system '%v' does not support remote session termination. Authorized users must be able to terminate remote sessions at any time.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.6 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.6 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.6-UC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not support remote session termination. Authorized users must be able to terminate remote sessions at any time."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-6",
+      "title": "IEC 62443 SR 2.7 SL%v (UC): ICS system '%v' has no concurrent session limit. Limiting concurrent sessions reduces the risk of session hijacking.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.7 SL%v (UC): ICS system '%v' has no concurrent session limit. Limiting concurrent sessions reduces the risk of session hijacking."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-7",
+      "title": "IEC 62443 SR 2.7 RE 1 SL%v (UC): ICS system '%v' allows up to %v concurrent sessions. Strict session limits (≤3) are recommended at Security Level 3+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-7_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.7 RE 1 SL%v (UC): ICS system '%v' allows up to %v concurrent sessions. Strict session limits (≤3) are recommended at Security Level 3+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.8-UC",
+      "title": "ICS system '%v' does not have audit logging enabled. Security-relevant events must be logged: login attempts, privilege use, configuration changes, and errors.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.8 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.8 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.8-UC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not have audit logging enabled. Security-relevant events must be logged: login attempts, privilege use, configuration changes, and errors."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.8-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' audit logs are missing required fields. Logs must include: event type, timestamp, source identity, outcome, and affected resource."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-8",
+      "title": "IEC 62443 SR 2.8 RE 1 SL%v (UC): Audit logs are not centrally collected. Centralized log aggregation is required at Security Level 2+ to enable correlation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-8_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.8 RE 1 SL%v (UC): Audit logs are not centrally collected. Centralized log aggregation is required at Security Level 2+ to enable correlation."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.9-UC",
+      "title": "Audit log storage capacity is insufficient. The system must allocate sufficient storage and alert when approaching capacity limits.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.9 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.9 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.9-UC_stmt",
+        "name": "statement",
+        "prose": "Audit log storage capacity is insufficient. The system must allocate sufficient storage and alert when approaching capacity limits."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.9-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS audit logs are retained for only %v days. Minimum 90-day retention is required (1 year recommended for regulatory compliance)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.10-UC",
+      "title": "No alerting for audit processing failures. The system must alert personnel when audit subsystem failures occur (storage full, process crash, etc.).",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.10 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.10 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.10-UC_stmt",
+        "name": "statement",
+        "prose": "No alerting for audit processing failures. The system must alert personnel when audit subsystem failures occur (storage full, process crash, etc.)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.10-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "No defined response procedure for audit processing failures. A documented response procedure is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.11-UC",
+      "title": "IACS timestamps are not synchronized. All systems must use a reliable time source (NTP/PTP) to ensure audit record integrity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.11 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.11 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.11-UC_stmt",
+        "name": "statement",
+        "prose": "IACS timestamps are not synchronized. All systems must use a reliable time source (NTP/PTP) to ensure audit record integrity."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.11-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not have NTP configured. Accurate timestamps are required for audit trail integrity and incident correlation."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr2-9",
+      "title": "IEC 62443 SR 2.12 SL%v (UC): ICS system '%v' does not provide non-repudiation. Cryptographic signing or equivalent mechanism is required at Security Level 2+ for critical actions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8b73ecb4-8cc1-5504-9884-f8e18254a085",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-9_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.12 SL%v (UC): ICS system '%v' does not provide non-repudiation. Cryptographic signing or equivalent mechanism is required at Security Level 2+ for critical actions."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-fr3_system_integrity",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 3 — System Integrity (SI)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr3"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr3_system_integrity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-SR-3.1-SI",
+      "title": "ICS system '%v' does not protect communication integrity. IACS communications must use mechanisms (checksums, MACs, digital signatures) to detect unauthorized modification.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.1 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.1 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.1-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not protect communication integrity. IACS communications must use mechanisms (checksums, MACs, digital signatures) to detect unauthorized modification."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-1",
+      "title": "IEC 62443 SR 3.1 RE 1 SL%v (SI): ICS system '%v' does not use cryptographic mechanisms for communication integrity. HMAC or digital signatures are required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.1 RE 1 SL%v (SI): ICS system '%v' does not use cryptographic mechanisms for communication integrity. HMAC or digital signatures are required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-2",
+      "title": "IEC 62443 SR 3.2 SL%v (SI): ICS system '%v' has neither malware protection nor application whitelisting. One of these controls is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.2 SL%v (SI): ICS system '%v' has neither malware protection nor application whitelisting. One of these controls is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.2-SI",
+      "title": "ICS system '%v' malware definitions are not current. Malware signatures must be updated at least weekly, or more frequently if the system is Internet-connected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.2 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.2 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.2-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' malware definitions are not current. Malware signatures must be updated at least weekly, or more frequently if the system is Internet-connected."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-3",
+      "title": "IEC 62443 SR 3.2 RE 1 SL%v (SI): Malware protection is not deployed at all IACS network entry points. Boundary-level malware scanning is required at Security Level 3+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.2 RE 1 SL%v (SI): Malware protection is not deployed at all IACS network entry points. Boundary-level malware scanning is required at Security Level 3+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.3-SI",
+      "title": "ICS system '%v' has no security function verification process. Security controls must be periodically tested to confirm they operate as intended.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.3 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.3 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.3-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no security function verification process. Security controls must be periodically tested to confirm they operate as intended."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-4",
+      "title": "IEC 62443 SR 3.3 RE 1 SL%v (SI): No documented schedule for security function verification. A formal testing schedule is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.3 RE 1 SL%v (SI): No documented schedule for security function verification. A formal testing schedule is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.4-SI",
+      "title": "ICS system '%v' does not verify software integrity. File integrity monitoring or hash verification must be implemented to detect unauthorized changes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.4 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.4 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.4-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not verify software integrity. File integrity monitoring or hash verification must be implemented to detect unauthorized changes."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.4-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not verify firmware integrity. Firmware must be verified against known-good hashes before and after updates."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.4-SI_obj.2",
+        "name": "assessment-objective",
+        "prose": "No patch management process documented. Security patches for IACS components must be evaluated and applied through a controlled process."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.4-SI_obj.3",
+        "name": "assessment-objective",
+        "prose": "Critical IACS patches are delayed up to %v days. Critical security patches must be evaluated within 30 days and applied within 90 days."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-5",
+      "title": "IEC 62443 SR 3.4 RE 1 SL%v (SI): ICS system '%v' lacks automated integrity checking. Automated file integrity monitoring is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.4 RE 1 SL%v (SI): ICS system '%v' lacks automated integrity checking. Automated file integrity monitoring is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.5-SI",
+      "title": "ICS system '%v' does not validate inputs. All external inputs (HMI, APIs, data feeds) must be validated to prevent injection attacks and unexpected behavior.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.5 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.5 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.5-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not validate inputs. All external inputs (HMI, APIs, data feeds) must be validated to prevent injection attacks and unexpected behavior."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.6-SI",
+      "title": "ICS system '%v' does not enforce output range checking. Control outputs must remain within safe operational bounds even under error or attack conditions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.6 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.6 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.6-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not enforce output range checking. Control outputs must remain within safe operational bounds even under error or attack conditions."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.7-SI",
+      "title": "ICS system '%v' does not implement secure error handling. Errors must not expose sensitive information and must fail to a known safe state.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.7 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.7 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.7-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not implement secure error handling. Errors must not expose sensitive information and must fail to a known safe state."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.7-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' error messages expose sensitive system information. Error messages must be sanitized before display to operators."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.8-SI",
+      "title": "ICS system '%v' does not protect session integrity. Session tokens must be cryptographically protected against hijacking and replay attacks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.8 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.8 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.8-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not protect session integrity. Session tokens must be cryptographically protected against hijacking and replay attacks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-6",
+      "title": "IEC 62443 SR 3.8 RE 1 SL%v (SI): ICS system '%v' does not invalidate sessions when privileges change. Sessions must be re-established after any privilege modification.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.8 RE 1 SL%v (SI): ICS system '%v' does not invalidate sessions when privileges change. Sessions must be re-established after any privilege modification."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-3.9-SI",
+      "title": "ICS system '%v' audit logs are not tamper-protected. Audit records must be write-protected and access-controlled to preserve their evidential value.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 3.9 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 3.9 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-3.9-SI_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' audit logs are not tamper-protected. Audit records must be write-protected and access-controlled to preserve their evidential value."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.9-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS audit log access is not controlled. Only authorized personnel should be able to read audit logs; no one should be able to modify or delete them."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr3-7",
+      "title": "IEC 62443 SR 3.9 RE 1 SL%v (SI): Audit logs are not forwarded to an immutable store. Write-once log forwarding (SIEM, syslog-ng with WORM storage) is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr3#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr3#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#874909eb-60c8-56b8-8b1c-40617d57a896",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr3-7_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 3.9 RE 1 SL%v (SI): Audit logs are not forwarded to an immutable store. Write-once log forwarding (SIEM, syslog-ng with WORM storage) is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-fr4_data_confidentiality",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 4 — Data Confidentiality (DC)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr4"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr4_data_confidentiality.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-iec_62443.fr4-1",
+      "title": "IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' transmits sensitive data without encryption. All sensitive IACS communications must be encrypted in transit at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr4#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr4#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr4-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' transmits sensitive data without encryption. All sensitive IACS communications must be encrypted in transit at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr4-2",
+      "title": "IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' does not protect data at rest. Configuration databases, historian data, and operational data must be encrypted or access-controlled at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr4#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr4#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr4-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' does not protect data at rest. Configuration databases, historian data, and operational data must be encrypted or access-controlled at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr4-3",
+      "title": "IEC 62443 SR 4.1 RE 1 SL%v (DC): ICS system '%v' does not encrypt all communications in transit. At Security Level 3+, all IACS data in transit must be encrypted regardless of sensitivity classificati",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr4#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr4#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr4-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 4.1 RE 1 SL%v (DC): ICS system '%v' does not encrypt all communications in transit. At Security Level 3+, all IACS data in transit must be encrypted regardless of sensitivity classification."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-4.1-DC",
+      "title": "ICS system '%v' uses outdated TLS version. TLS 1.2 minimum is required; TLS 1.3 is recommended for IACS communications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 4.1 (DC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 4.1 (DC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-4.1-DC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' uses outdated TLS version. TLS 1.2 minimum is required; TLS 1.3 is recommended for IACS communications."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-4.2-DC",
+      "title": "ICS system '%v' has no media sanitization procedure. Storage media must be securely sanitized before reuse or disposal to prevent residual data leakage.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 4.2 (DC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 4.2 (DC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-4.2-DC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no media sanitization procedure. Storage media must be securely sanitized before reuse or disposal to prevent residual data leakage."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.2-DC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not clear sensitive data from memory on deallocation. Cryptographic keys, passwords, and process data must be zeroed before memory is released."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr4-4",
+      "title": "IEC 62443 SR 4.2 RE 1 SL%v (DC): ICS system '%v' has no secure deletion capability. Overwrite or cryptographic erasure of sensitive data must be available at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr4#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr4#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr4-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 4.2 RE 1 SL%v (DC): ICS system '%v' has no secure deletion capability. Overwrite or cryptographic erasure of sensitive data must be available at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-4.3-DC",
+      "title": "ICS system '%v' does not use approved cryptographic algorithms. Cryptography must be based on vetted algorithms (AES-128+, SHA-256+, RSA-2048+, or NIST-approved equivalents).",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 4.3 (DC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 4.3 (DC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-4.3-DC_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not use approved cryptographic algorithms. Cryptography must be based on vetted algorithms (AES-128+, SHA-256+, RSA-2048+, or NIST-approved equivalents)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.3-DC_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' has no cryptographic key management. Keys must have defined generation, distribution, storage, rotation, and revocation procedures."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.3-DC_obj.2",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' has no key rotation policy. Cryptographic keys must be rotated on a defined schedule and immediately upon suspected compromise."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.3-DC_obj.3",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' uses deprecated cryptographic ciphers (DES, 3DES, RC4, MD5). These must be replaced with currently approved algorithms."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr4-5",
+      "title": "IEC 62443 SR 4.3 RE 1 SL%v (DC): ICS system '%v' cryptographic modules are not FIPS 140-2 validated. FIPS 140-2 Level 2+ is required for cryptographic implementations at Security Level 3+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr4#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr4#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr4-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 4.3 RE 1 SL%v (DC): ICS system '%v' cryptographic modules are not FIPS 140-2 validated. FIPS 140-2 Level 2+ is required for cryptographic implementations at Security Level 3+."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-fr5_restricted_data_flow",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 5 — Restricted Data Flow (RDF)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr5"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr5_restricted_data_flow.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-SR-5.1-RDF",
+      "title": "No network zones defined. IEC 62443 requires the IACS to be segmented into security zones with clearly defined boundaries.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 5.1 (RDF)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 5.1 (RDF)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-5.1-RDF_stmt",
+        "name": "statement",
+        "prose": "No network zones defined. IEC 62443 requires the IACS to be segmented into security zones with clearly defined boundaries."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.1-RDF_obj.1",
+        "name": "assessment-objective",
+        "prose": "IT and OT networks are not segmented. Industrial control systems must be isolated from corporate IT networks to prevent lateral movement."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.1-RDF_obj.2",
+        "name": "assessment-objective",
+        "prose": "Network inventory is not documented. A complete inventory of all IACS network assets and their zone assignments is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.1-RDF_obj.3",
+        "name": "assessment-objective",
+        "prose": "ICS systems have direct Internet connectivity. IACS must never be directly accessible from the Internet — air-gap or multi-layer DMZ is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-1",
+      "title": "IEC 62443 SR 5.1 RE 1 SL%v (RDF): Insufficient zone segmentation. At Security Level 2+, at minimum three distinct zones are required: corporate IT, DMZ, and OT/ICS control.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 5.1 RE 1 SL%v (RDF): Insufficient zone segmentation. At Security Level 2+, at minimum three distinct zones are required: corporate IT, DMZ, and OT/ICS control."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-5.2-RDF",
+      "title": "Zone '%v' does not have a defined security level. Every zone must have an assigned Security Level (SL) target and capability documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 5.2 (RDF)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 5.2 (RDF)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-5.2-RDF_stmt",
+        "name": "statement",
+        "prose": "Zone '%v' does not have a defined security level. Every zone must have an assigned Security Level (SL) target and capability documented."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.2-RDF_obj.1",
+        "name": "assessment-objective",
+        "prose": "Conduit between zones '%v' and '%v' has no firewall or DMZ. Every zone boundary must be protected by a firewall or equivalent boundary control."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.2-RDF_obj.2",
+        "name": "assessment-objective",
+        "prose": "Conduit between zones '%v' and '%v' does not filter traffic. Only explicitly authorized traffic flows must be permitted across zone boundaries."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.2-RDF_obj.3",
+        "name": "assessment-objective",
+        "prose": "No DMZ is implemented between corporate IT and OT networks. A DMZ with controlled ingress/egress is required to isolate IACS from external networks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-2",
+      "title": "IEC 62443 SR 5.2 RE 1 SL%v (RDF): The IT/OT boundary between corporate and ICS control zones lacks a unidirectional gateway (data diode). Required at Security Level 3+ for critical infrastructure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 5.2 RE 1 SL%v (RDF): The IT/OT boundary between corporate and ICS control zones lacks a unidirectional gateway (data diode). Required at Security Level 3+ for critical infrastructure."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-3",
+      "title": "IEC 62443 SR 5.2 RE 2 SL%v (RDF): Conduit between zones '%v' and '%v' is not encrypted. All inter-zone IACS communications must be encrypted at Security Level 3+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 5.2 RE 2 SL%v (RDF): Conduit between zones '%v' and '%v' is not encrypted. All inter-zone IACS communications must be encrypted at Security Level 3+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-5.3-RDF",
+      "title": "Zone '%v' (SL %v) permits unrestricted general-purpose communications (email, instant messaging). These must be restricted or prohibited within high-security IACS zones.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 5.3 (RDF)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 5.3 (RDF)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-5.3-RDF_stmt",
+        "name": "statement",
+        "prose": "Zone '%v' (SL %v) permits unrestricted general-purpose communications (email, instant messaging). These must be restricted or prohibited within high-security IACS zones."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-4",
+      "title": "IEC 62443 SR 5.3 SL%v (RDF): No policy governing general-purpose communications within IACS zones. Permitted communication types must be explicitly defined and restricted.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 5.3 SL%v (RDF): No policy governing general-purpose communications within IACS zones. Permitted communication types must be explicitly defined and restricted."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-5.4-RDF",
+      "title": "ICS system '%v' does not partition IACS applications from general-purpose applications. Business applications must not run on the same platform as control applications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 5.4 (RDF)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 5.4 (RDF)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-5.4-RDF_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not partition IACS applications from general-purpose applications. Business applications must not run on the same platform as control applications."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-5",
+      "title": "IEC 62443 SR 5.4 RE 1 SL%v (RDF): ICS system '%v' uses a shared platform without virtualization isolation. Hypervisor-based isolation is required when IACS and non-IACS workloads share hardware at SL ",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 5.4 RE 1 SL%v (RDF): ICS system '%v' uses a shared platform without virtualization isolation. Hypervisor-based isolation is required when IACS and non-IACS workloads share hardware at SL 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr5-6",
+      "title": "IEC 62443 SR 5.4 RE 2 SL%v (RDF): High-criticality ICS system '%v' does not run on dedicated hardware. Physical hardware separation from non-IACS workloads is required for high-criticality systems at ",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr5#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr5#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr5-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 5.4 RE 2 SL%v (RDF): High-criticality ICS system '%v' does not run on dedicated hardware. Physical hardware separation from non-IACS workloads is required for high-criticality systems at SL 3+."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-fr6_timely_response",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 6 — Timely Response to Events (TRE)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr6"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr6_timely_response.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-SR-6.1-TRE",
+      "title": "IACS audit log access is not controlled. Logs must be accessible to authorized security and operations personnel while protected against unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 6.1 (TRE)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 6.1 (TRE)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-6.1-TRE_stmt",
+        "name": "statement",
+        "prose": "IACS audit log access is not controlled. Logs must be accessible to authorized security and operations personnel while protected against unauthorized access."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-6.1-TRE_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS audit logs are retained for only %v days. Minimum 90-day retention is required to support incident investigations (1 year recommended for regulatory environments)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-6.1-TRE_obj.2",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' does not have audit logging enabled. Security event logs are required to enable timely detection and response."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-6.1-TRE_obj.3",
+        "name": "assessment-objective",
+        "prose": "No ICS-specific incident response plan. OT/ICS incidents require specialized response procedures distinct from IT IR plans — a documented plan is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-1",
+      "title": "IEC 62443 SR 6.1 RE 1 SL%v (TRE): Audit logs are not centrally collected. Centralized log management with correlation capability is required at Security Level 2+ for timely incident detection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.1 RE 1 SL%v (TRE): Audit logs are not centrally collected. Centralized log management with correlation capability is required at Security Level 2+ for timely incident detection."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-2",
+      "title": "IEC 62443 SR 6.1 RE 1 SL%v (TRE): No automated security alerting configured. Automated detection and alerting on security events is required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.1 RE 1 SL%v (TRE): No automated security alerting configured. Automated detection and alerting on security events is required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-6.2-TRE",
+      "title": "No security event monitoring for IACS. Real-time or near-real-time monitoring of the IACS is required to enable timely response to incidents.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 6.2 (TRE)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 6.2 (TRE)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-6.2-TRE_stmt",
+        "name": "statement",
+        "prose": "No security event monitoring for IACS. Real-time or near-real-time monitoring of the IACS is required to enable timely response to incidents."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-6.2-TRE_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS security monitoring is not continuous (24/7). Continuous monitoring is required — gaps in monitoring create windows of undetected intrusion."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-3",
+      "title": "IEC 62443 SR 6.2 RE 1 SL%v (TRE): Mean time to detect IACS security incidents is %v hours. Target is less than 24 hours at Security Level 2+; real-time detection recommended.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.2 RE 1 SL%v (TRE): Mean time to detect IACS security incidents is %v hours. Target is less than 24 hours at Security Level 2+; real-time detection recommended."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-4",
+      "title": "IEC 62443 SR 6.2 RE 1 SL%v (TRE): Mean time to respond to IACS security incidents is %v hours. Target is less than 4 hours at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.2 RE 1 SL%v (TRE): Mean time to respond to IACS security incidents is %v hours. Target is less than 4 hours at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-5",
+      "title": "IEC 62443 SR 6.2 RE 2 SL%v (TRE): No ICS-specific Security Operations Center (SOC) capability. At Security Level 3+, OT-aware monitoring personnel or an OT-SOC is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.2 RE 2 SL%v (TRE): No ICS-specific Security Operations Center (SOC) capability. At Security Level 3+, OT-aware monitoring personnel or an OT-SOC is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-6",
+      "title": "IEC 62443 SR 6.2 RE 3 SL%v (TRE): Threat intelligence is not integrated into IACS monitoring. ICS-CERT/CISA advisories and sector-specific threat feeds must be operationalized at Security Level 3+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.2 RE 3 SL%v (TRE): Threat intelligence is not integrated into IACS monitoring. ICS-CERT/CISA advisories and sector-specific threat feeds must be operationalized at Security Level 3+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr6-7",
+      "title": "IEC 62443 SR 6.2 RE 4 SL%v (TRE): No anomaly-based detection for IACS. Behavioral anomaly detection is required at Security Level 4 to detect sophisticated, previously unseen attacks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr6#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr6#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9cce864d-5ffd-5613-902d-de962a303013",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr6-7_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 6.2 RE 4 SL%v (TRE): No anomaly-based detection for IACS. Behavioral anomaly detection is required at Security Level 4 to detect sophisticated, previously unseen attacks."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-fr7_resource_availability",
+    "class": "rego-module",
+    "title": "IEC 62443-3-3 FR 7 — Resource Availability (RA)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.fr7"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/fr7_resource_availability.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-SR-7.1-RA",
+      "title": "No DoS protection for IACS network. Industrial control systems must be protected against denial-of-service attacks that could disrupt critical operations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.1 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.1 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.1-RA_stmt",
+        "name": "statement",
+        "prose": "No DoS protection for IACS network. Industrial control systems must be protected against denial-of-service attacks that could disrupt critical operations."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.1-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' has no rate limiting. Rate limiting on communication interfaces prevents resource exhaustion from DoS attacks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-1",
+      "title": "IEC 62443 SR 7.1 RE 1 SL%v (RA): No active DoS traffic management implemented. Intrusion prevention, traffic shaping, or equivalent controls are required at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.1 RE 1 SL%v (RA): No active DoS traffic management implemented. Intrusion prevention, traffic shaping, or equivalent controls are required at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-2",
+      "title": "IEC 62443 SR 7.1 RE 2 SL%v (RA): No redundant network paths for critical IACS communications. Network redundancy is required at Security Level 3+ to maintain availability under partial failure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-2_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.1 RE 2 SL%v (RA): No redundant network paths for critical IACS communications. Network redundancy is required at Security Level 3+ to maintain availability under partial failure."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.2-RA",
+      "title": "ICS system '%v' does not monitor resource usage. CPU, memory, disk, and network resource utilization must be monitored with alerts for degraded capacity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.2 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.2 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.2-RA_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' does not monitor resource usage. CPU, memory, disk, and network resource utilization must be monitored with alerts for degraded capacity."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-3",
+      "title": "IEC 62443 SR 7.2 RE 1 SL%v (RA): ICS system '%v' has no resource limits configured. Resource quotas must be enforced to prevent a single process or user from exhausting system resources.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-3_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.2 RE 1 SL%v (RA): ICS system '%v' has no resource limits configured. Resource quotas must be enforced to prevent a single process or user from exhausting system resources."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.3-RA",
+      "title": "ICS system '%v' has no backup configured. Regular backups of IACS configuration, logic, and data are required for recovery.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.3 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.3 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.3-RA_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no backup configured. Regular backups of IACS configuration, logic, and data are required for recovery."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.3-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS backups are performed every %v days. Backups must be performed at least weekly; daily backups are recommended for critical systems."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.3-RA_obj.2",
+        "name": "assessment-objective",
+        "prose": "IACS backups are not stored offsite. Offsite or geographically separated backup storage is required to survive a site-level disaster."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.3-RA_obj.3",
+        "name": "assessment-objective",
+        "prose": "IACS backup restoration has not been tested. Backups must be periodically tested for recoverability — an untested backup is not a reliable backup."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-4",
+      "title": "IEC 62443 SR 7.3 RE 1 SL%v (RA): IACS backups are not encrypted at rest. Backup media containing IACS configuration and data must be encrypted at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-4_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.3 RE 1 SL%v (RA): IACS backups are not encrypted at rest. Backup media containing IACS configuration and data must be encrypted at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.4-RA",
+      "title": "ICS system '%v' has no documented recovery procedure. A step-by-step recovery procedure enabling restoration to a known secure state is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.4 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.4 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.4-RA_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no documented recovery procedure. A step-by-step recovery procedure enabling restoration to a known secure state is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.4-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "High-criticality ICS system '%v' has an RTO of %v hours. Critical IACS systems must achieve recovery within 24 hours; 4 hours or less is recommended."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.4-RA_obj.2",
+        "name": "assessment-objective",
+        "prose": "No rollback capability for IACS updates/patches. The ability to revert to a previous known-good state is required for all IACS changes."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-5",
+      "title": "IEC 62443 SR 7.4 RE 1 SL%v (RA): IACS recovery plan has not been tested. At Security Level 2+, recovery procedures must be exercised at least annually.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-5_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.4 RE 1 SL%v (RA): IACS recovery plan has not been tested. At Security Level 2+, recovery procedures must be exercised at least annually."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.5-RA",
+      "title": "High-criticality ICS system '%v' has no emergency power backup (UPS/generator). Uninterrupted power is required for critical industrial control systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.5 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.5 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.5-RA_stmt",
+        "name": "statement",
+        "prose": "High-criticality ICS system '%v' has no emergency power backup (UPS/generator). Uninterrupted power is required for critical industrial control systems."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.5-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' emergency power backup has not been tested. UPS/generator systems must be tested at least semi-annually to verify runtime and automatic switchover."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-6",
+      "title": "IEC 62443 SR 7.5 SL%v (RA): ICS system '%v' has no emergency power backup. Emergency power capability is required at Security Level 2+ for all IACS components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-6_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.5 SL%v (RA): ICS system '%v' has no emergency power backup. Emergency power capability is required at Security Level 2+ for all IACS components."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.6-RA",
+      "title": "ICS system '%v' has no documented configuration baseline. A hardened baseline configuration must be documented and enforced.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.6 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.6 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.6-RA_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has no documented configuration baseline. A hardened baseline configuration must be documented and enforced."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-7",
+      "title": "IEC 62443 SR 7.6 RE 1 SL%v (RA): No configuration change management process. All changes to IACS network and security configurations must go through a formal change control process.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-7_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.6 RE 1 SL%v (RA): No configuration change management process. All changes to IACS network and security configurations must go through a formal change control process."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.7-RA",
+      "title": "ICS system '%v' has unnecessary services enabled. Disable all services, protocols, and ports not required for IACS operation to reduce the attack surface.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.7 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.7 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.7-RA_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' has unnecessary services enabled. Disable all services, protocols, and ports not required for IACS operation to reduce the attack surface."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.7-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' OS has not been hardened. Remove unnecessary OS components, disable unused features, and apply a hardening standard (CIS benchmark or equivalent)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-8",
+      "title": "IEC 62443 SR 7.7 RE 1 SL%v (RA): No periodic review of IACS enabled functionality. Enabled services, protocols, and functions must be reviewed at least annually at Security Level 2+.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-8_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.7 RE 1 SL%v (RA): No periodic review of IACS enabled functionality. Enabled services, protocols, and functions must be reviewed at least annually at Security Level 2+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-7.8-RA",
+      "title": "ICS system '%v' is not documented in the IACS component inventory. Every IACS component must be inventoried with hardware, software, firmware versions, and network information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 7.8 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 7.8 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-7.8-RA_stmt",
+        "name": "statement",
+        "prose": "ICS system '%v' is not documented in the IACS component inventory. Every IACS component must be inventoried with hardware, software, firmware versions, and network information."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.8-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "Network inventory is not documented. A complete, up-to-date asset inventory of all IACS network components is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.8-RA_obj.2",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' is running an outdated OS version. Inventory data must be current and unsupported OS versions must be remediated or documented as accepted risk."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.fr7-9",
+      "title": "IEC 62443 SR 7.8 RE 1 SL%v (RA): No automated asset discovery for IACS. Automated inventory discovery or network scanning tools are required at Security Level 2+ to detect unauthorized devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr7#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr7#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr7-9_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 7.8 RE 1 SL%v (RA): No automated asset discovery for IACS. Automated inventory discovery or network scanning tools are required at Security Level 2+ to detect unauthorized devices."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-iec_62443_main",
+    "class": "rego-module",
+    "title": "IEC 62443 — Industrial Automation and Control Systems (IACS) Security",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443_main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-standard",
+      "title": "IEC 62443",
+      "props": [
+       {
+        "name": "label",
+        "value": "standard"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "standard"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-standard_stmt",
+        "name": "statement",
+        "prose": "IEC 62443"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-full_title",
+      "title": "Security for Industrial Automation and Control Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "full_title"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "full_title"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-full_title_stmt",
+        "name": "statement",
+        "prose": "Security for Industrial Automation and Control Systems"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-part3_3_foundational_requirements",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "part3_3_foundational_requirements"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "part3_3_foundational_requirements"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-part3_3_foundational_requirements_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR1_identification_authentication",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR1_identification_authentication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR1_identification_authentication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR1_identification_authentication_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR2_use_control",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR2_use_control"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR2_use_control"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR2_use_control_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR3_system_integrity",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR3_system_integrity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR3_system_integrity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR3_system_integrity_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR4_data_confidentiality",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR4_data_confidentiality"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR4_data_confidentiality"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR4_data_confidentiality_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR5_restricted_data_flow",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR5_restricted_data_flow"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR5_restricted_data_flow"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR5_restricted_data_flow_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR6_timely_response",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR6_timely_response"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR6_timely_response"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR6_timely_response_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-FR7_resource_availability",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "FR7_resource_availability"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FR7_resource_availability"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-FR7_resource_availability_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-part2_management_requirements",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "part2_management_requirements"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "part2_management_requirements"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-part2_management_requirements_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-part2_1_security_management",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "part2_1_security_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "part2_1_security_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-part2_1_security_management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-part2_3_patch_management",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "part2_3_patch_management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "part2_3_patch_management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-part2_3_patch_management_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-part2_4_service_provider",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "part2_4_service_provider"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "part2_4_service_provider"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-part2_4_service_provider_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-part3_2_risk_assessment",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "part3_2_risk_assessment"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "part3_2_risk_assessment"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443_main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47579c25-6cd5-5495-b0dc-9df99295ddb7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-part3_2_risk_assessment_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego (package iec_62443_main); see the rule body."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-part2_patch_management",
+    "class": "rego-module",
+    "title": "IEC 62443-2-3 — Patch Management in the IACS Environment",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.part2_3"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/part2_patch_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-2-3",
+      "title": "No patch management process documented for IACS. A formal process for identifying, evaluating, testing, and applying security patches is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0a43718e-2ff1-57e2-8d4d-cd9239746ea0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-3_stmt",
+        "name": "statement",
+        "prose": "No patch management process documented for IACS. A formal process for identifying, evaluating, testing, and applying security patches is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "No vendor security notification subscriptions. Subscribe to ICS-CERT, vendor security advisories, and sector-specific vulnerability feeds to receive timely patch notifications."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Patch status is not tracked for IACS components. Maintain a current patch inventory for all IACS hardware and software components."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Patch status for ICS system '%v' is not documented. Every IACS component must have a documented patch status, including exceptions and compensating controls for unpatched vulnerabilities."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.4",
+        "name": "assessment-objective",
+        "prose": "IACS patches are not tested before production deployment. Patches must be evaluated in an isolated test environment that mirrors the production IACS before deployment — untested patches can cause operational failures."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.5",
+        "name": "assessment-objective",
+        "prose": "No dedicated patch testing environment for IACS. A test environment replicating the production IACS is required for safe patch qualification."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.6",
+        "name": "assessment-objective",
+        "prose": "Critical IACS patches are delayed up to %v days. Critical security patches must be deployed within 90 days; within 30 days for actively exploited vulnerabilities."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.7",
+        "name": "assessment-objective",
+        "prose": "No documented patch deployment schedule. A maintenance window schedule for IACS patches must be established that balances security and operational continuity."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.8",
+        "name": "assessment-objective",
+        "prose": "Patch management is not integrated with change management. All IACS patches must go through the formal change management process to maintain configuration control."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.9",
+        "name": "assessment-objective",
+        "prose": "No emergency patch procedure defined. A documented emergency patch procedure for critical/zero-day vulnerabilities is required for timely response."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.10",
+        "name": "assessment-objective",
+        "prose": "No rollback capability for IACS patches. The ability to revert to a pre-patch state is required in case a patch causes operational issues."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.11",
+        "name": "assessment-objective",
+        "prose": "No compensating controls defined for unpatched IACS vulnerabilities. When patching is not immediately feasible, compensating controls (network isolation, additional monitoring, vendor mitigations) must be documented and implemented."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.12",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' is running an outdated OS version. Unsupported or unpatched operating systems represent unacceptable risk in an IACS environment."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.13",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' firmware is not current. Outdated firmware may contain unmitigated vulnerabilities — apply vendor-recommended firmware updates following the patch testing process."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-part2_security_management",
+    "class": "rego-module",
+    "title": "IEC 62443-2-1 — Security Management System (CSMS)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.part2_1"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/part2_security_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-2-1-CSMS",
+      "title": "No documented Cyber Security Management System. A CSMS addressing people, process, and technology controls for the IACS is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-1 (CSMS)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-1 (CSMS)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#18c17a4b-e195-57e9-92bc-61ad042db2dc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_stmt",
+        "name": "statement",
+        "prose": "No documented Cyber Security Management System. A CSMS addressing people, process, and technology controls for the IACS is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.1",
+        "name": "assessment-objective",
+        "prose": "IACS cybersecurity policy has not been approved by senior management. Management authorization and ownership of the security policy is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.2",
+        "name": "assessment-objective",
+        "prose": "IACS security policy is reviewed every %v months. Policy must be reviewed at least annually and after any significant incident or organizational change."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.3",
+        "name": "assessment-objective",
+        "prose": "Security roles and responsibilities are not defined. Ownership of each security control, including an IACS Security Manager role, must be assigned."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.4",
+        "name": "assessment-objective",
+        "prose": "No IACS risk management process. A formal process for identifying, assessing, and treating cybersecurity risks to the IACS is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.5",
+        "name": "assessment-objective",
+        "prose": "No IACS cybersecurity risk assessment has been conducted. A risk assessment is the foundation for all security decisions."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.6",
+        "name": "assessment-objective",
+        "prose": "IACS risk assessment is reviewed every %v months. Risk assessments must be reviewed at least every 24 months or after significant system changes."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.7",
+        "name": "assessment-objective",
+        "prose": "IACS asset inventory is incomplete. A complete asset inventory is a prerequisite for risk assessment and security program effectiveness."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.8",
+        "name": "assessment-objective",
+        "prose": "No threat modeling performed for IACS. Threat modeling (identifying realistic threat actors and attack vectors) must inform risk treatment decisions."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.9",
+        "name": "assessment-objective",
+        "prose": "No consequence analysis performed. Impact analysis of cyber incidents on safety, operations, environment, and business continuity is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.10",
+        "name": "assessment-objective",
+        "prose": "No security awareness training for IACS personnel. All employees with IACS access must receive role-appropriate cybersecurity training."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.11",
+        "name": "assessment-objective",
+        "prose": "IACS security training is conducted every %v months. Training must be conducted at least annually."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.12",
+        "name": "assessment-objective",
+        "prose": "No IACS incident response capability. A documented ICS-specific incident response plan with trained personnel and clear escalation paths is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.13",
+        "name": "assessment-objective",
+        "prose": "No supply chain security program for IACS. Security requirements must extend to OT vendors, integrators, and managed service providers with IACS access."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.14",
+        "name": "assessment-objective",
+        "prose": "Security requirements are not imposed on third parties. All vendors and contractors with IACS access must meet defined security requirements (ref: IEC 62443-2-4)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.15",
+        "name": "assessment-objective",
+        "prose": "No security metrics tracked. The CSMS must define and track key performance indicators (KPIs) for measuring security effectiveness."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.16",
+        "name": "assessment-objective",
+        "prose": "No CSMS audit conducted. The CSMS must be periodically audited against the defined objectives and requirements."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.17",
+        "name": "assessment-objective",
+        "prose": "CSMS audits are conducted every %v months. Audits must be conducted at least every 24 months."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-part2_service_provider",
+    "class": "rego-module",
+    "title": "IEC 62443-2-4 — Security Program Requirements for IACS Service Providers",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.part2_4"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/part2_service_provider.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.01",
+      "title": "IACS service provider has no documented security program. A formal security management program addressing all IEC 62443-2-4 requirements is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.01_stmt",
+        "name": "statement",
+        "prose": "IACS service provider has no documented security program. A formal security management program addressing all IEC 62443-2-4 requirements is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.01_obj.1",
+        "name": "assessment-objective",
+        "prose": "No vulnerability disclosure process. The service provider must have a defined process for disclosing and responding to vulnerabilities in supplied IACS products or services."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.03",
+      "title": "No background checks for IACS field personnel. Personnel with physical or logical access to customer IACS must undergo appropriate background screening.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.03"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.03"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.03_stmt",
+        "name": "statement",
+        "prose": "No background checks for IACS field personnel. Personnel with physical or logical access to customer IACS must undergo appropriate background screening."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.03_obj.1",
+        "name": "assessment-objective",
+        "prose": "No security training for IACS field staff. Personnel performing IACS integration, installation, or maintenance must be trained on relevant cybersecurity practices."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.04",
+      "title": "Customer IACS security requirements have not been reviewed. The service provider must formally review and acknowledge customer security requirements before commencing work.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.04"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.04"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.04_stmt",
+        "name": "statement",
+        "prose": "Customer IACS security requirements have not been reviewed. The service provider must formally review and acknowledge customer security requirements before commencing work."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.04_obj.1",
+        "name": "assessment-objective",
+        "prose": "No security measures during installation/commissioning. The service provider must implement appropriate security controls during IACS installation to prevent introduction of vulnerabilities."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.10",
+      "title": "Security documentation has not been provided to the customer. Service providers must deliver security documentation (hardening guides, default credentials list, known vulnerabilities) for all supplied",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.10_stmt",
+        "name": "statement",
+        "prose": "Security documentation has not been provided to the customer. Service providers must deliver security documentation (hardening guides, default credentials list, known vulnerabilities) for all supplied IACS components."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.05",
+      "title": "Remote access to customer IACS is not security-controlled. All service provider remote access must go through customer-approved, auditable channels (VPN/jump host) with explicit session authorization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.05"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.05"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.05_stmt",
+        "name": "statement",
+        "prose": "Remote access to customer IACS is not security-controlled. All service provider remote access must go through customer-approved, auditable channels (VPN/jump host) with explicit session authorization."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.05_obj.1",
+        "name": "assessment-objective",
+        "prose": "MFA is not enforced for service provider remote access. Multi-factor authentication is required for all remote IACS access by service providers."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.05_obj.2",
+        "name": "assessment-objective",
+        "prose": "Remote service provider sessions are not audit logged. All remote access sessions must be logged and the logs made available to the asset owner."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.06",
+      "title": "No policy for temporary connections to IACS. Laptops, diagnostic tools, and temporary devices connected to IACS must be controlled by a formal policy requiring malware scanning, configuration hardenin",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.06"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.06"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.06_stmt",
+        "name": "statement",
+        "prose": "No policy for temporary connections to IACS. Laptops, diagnostic tools, and temporary devices connected to IACS must be controlled by a formal policy requiring malware scanning, configuration hardening, and session logging."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.06_obj.1",
+        "name": "assessment-objective",
+        "prose": "No portable tool security policy. Service provider laptops and diagnostic tools used on IACS must be hardened, maintained, and free of unauthorized software."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.06-SP.08",
+      "title": "Service provider portable tools lack malware protection. All tools connected to customer IACS must have current malware protection to prevent introduction of malicious code.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.06/SP.08"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.06/SP.08"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.06-SP.08_stmt",
+        "name": "statement",
+        "prose": "Service provider portable tools lack malware protection. All tools connected to customer IACS must have current malware protection to prevent introduction of malicious code."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.07",
+      "title": "No patch qualification process for supplied IACS systems. Service providers must qualify and communicate security patches for all IACS products they supply or maintain.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.07"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.07"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.07_stmt",
+        "name": "statement",
+        "prose": "No patch qualification process for supplied IACS systems. Service providers must qualify and communicate security patches for all IACS products they supply or maintain."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-2-4-SP.09",
+      "title": "No security event notification capability. Service providers must notify asset owners of security events that may affect their IACS within defined timeframes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-2-4 SP.09"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-2-4 SP.09"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part2_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.09_stmt",
+        "name": "statement",
+        "prose": "No security event notification capability. Service providers must notify asset owners of security events that may affect their IACS within defined timeframes."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.09_obj.1",
+        "name": "assessment-objective",
+        "prose": "Security event notification SLA is %v hours. Service providers must notify asset owners of critical security events within 24 hours; immediately for active incidents."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   },
+   {
+    "id": "iec_62443-part3_risk_assessment",
+    "class": "rego-module",
+    "title": "IEC 62443-3-2 — Security Risk Assessment for System Design",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "iec_62443.part3_2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/iec_62443/part3_risk_assessment.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "iec_62443-IEC-62443-3-2-ZCR-1",
+      "title": "No cybersecurity risk assessment has been conducted. A formal risk assessment is the foundation for all IEC 62443 security decisions and must precede system design or security level assignment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-3-2 ZCR 1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-3-2 ZCR 1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-1_stmt",
+        "name": "statement",
+        "prose": "No cybersecurity risk assessment has been conducted. A formal risk assessment is the foundation for all IEC 62443 security decisions and must precede system design or security level assignment."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Asset inventory is incomplete. A complete inventory of all IACS assets (hardware, software, firmware, communication paths) is a prerequisite for risk assessment."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-1_obj.2",
+        "name": "assessment-objective",
+        "prose": "No threat modeling performed. Threat modeling (identifying threat actors, threat vectors, and attack scenarios) is required to understand the IACS threat landscape."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-1_obj.3",
+        "name": "assessment-objective",
+        "prose": "No consequence analysis performed. The impact of potential cyber incidents on safety, operations, environment, financial, and reputation must be analyzed."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-1_obj.4",
+        "name": "assessment-objective",
+        "prose": "No vulnerability assessment performed. Identify vulnerabilities in IACS components through analysis of known CVEs, configuration weaknesses, and architectural gaps."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-1_obj.5",
+        "name": "assessment-objective",
+        "prose": "IACS cybersecurity risks have not been formally identified and documented. Risk register with likelihood, consequence, and risk rating is required."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-3-2-ZCR-2",
+      "title": "Zones and conduits have not been formally defined. Partitioning the IACS into security zones and defining conduits between zones is a core IEC 62443 architectural requirement.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-3-2 ZCR 2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-3-2 ZCR 2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-2_stmt",
+        "name": "statement",
+        "prose": "Zones and conduits have not been formally defined. Partitioning the IACS into security zones and defining conduits between zones is a core IEC 62443 architectural requirement."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "No security zones defined. The IACS must be divided into security zones based on criticality, function, and required security level."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Zone '%v' has no documented risk assessment. Each zone must have a zone-specific risk assessment driving its target security level assignment."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-3-2-ZCR-3",
+      "title": "Target security levels (SL-T) have not been assigned per zone. Each zone must have a SL-T derived from the risk assessment results (SL 1–4).",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-3-2 ZCR 3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-3-2 ZCR 3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-3_stmt",
+        "name": "statement",
+        "prose": "Target security levels (SL-T) have not been assigned per zone. Each zone must have a SL-T derived from the risk assessment results (SL 1–4)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Zone '%v' does not have a defined security level. All zones must have an explicit SL-T (1–4) based on the zone risk assessment."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-3_obj.2",
+        "name": "assessment-objective",
+        "prose": "High-criticality zone '%v' has Security Level %v. High-criticality IACS zones should have SL-T of at least 2 (SL 3 or 4 recommended for BES and safety-critical systems)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-3-2-ZCR-4",
+      "title": "High-level security requirements (HLSRs) have not been derived from the risk assessment. HLSRs form the basis for selecting and implementing specific security controls (mapped to IEC 62443-3-3 SRs).",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-3-2 ZCR 4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-3-2 ZCR 4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-4_stmt",
+        "name": "statement",
+        "prose": "High-level security requirements (HLSRs) have not been derived from the risk assessment. HLSRs form the basis for selecting and implementing specific security controls (mapped to IEC 62443-3-3 SRs)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-3-2-ZCR-5",
+      "title": "Residual risk after security control implementation has not been formally evaluated and accepted. Senior management must accept documented residual risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-3-2 ZCR 5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-3-2 ZCR 5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-5_stmt",
+        "name": "statement",
+        "prose": "Residual risk after security control implementation has not been formally evaluated and accepted. Senior management must accept documented residual risk."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-3-2",
+      "title": "Risk assessment review cycle is %v months. IACS risk assessments must be reviewed at least every 24 months and after significant changes (new systems, topology changes, incident).",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443-3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443-3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-3-2_stmt",
+        "name": "statement",
+        "prose": "Risk assessment review cycle is %v months. IACS risk assessments must be reviewed at least every 24 months and after significant changes (new systems, topology changes, incident)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-iec_62443.part3_2-1",
+      "title": "IEC 62443-3-2 (SL%v): Risk assessment has not been reviewed by an independent third party. At Security Level 3+, an independent review by a qualified ICS security assessor is strongly recommended.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.part3_2#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.part3_2#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.part3_2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e819c7ae-9f64-5144-bbb3-1ff38135125d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.part3_2-1_stmt",
+        "name": "statement",
+        "prose": "IEC 62443-3-2 (SL%v): Risk assessment has not been reviewed by an independent third party. At Security Level 3+, an independent review by a qualified ICS security assessor is strongly recommended."
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "f45a670b-1bb8-5c8b-bdcf-e634e9ceaf25",
+     "title": "IEC 62443-3-3 FR 1 — Identification and Authentication Control (IAC)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr1"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr1_identification_authentication.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8b73ecb4-8cc1-5504-9884-f8e18254a085",
+     "title": "IEC 62443-3-3 FR 2 — Use Control (UC)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "874909eb-60c8-56b8-8b1c-40617d57a896",
+     "title": "IEC 62443-3-3 FR 3 — System Integrity (SI)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr3"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr3_system_integrity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "04a71e01-80e1-5791-bd3b-a0cdb47a3cd7",
+     "title": "IEC 62443-3-3 FR 4 — Data Confidentiality (DC)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr4"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr4_data_confidentiality.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "70f9109f-f23a-5a22-9c3e-8a3a656b2b04",
+     "title": "IEC 62443-3-3 FR 5 — Restricted Data Flow (RDF)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr5"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr5_restricted_data_flow.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "9cce864d-5ffd-5613-902d-de962a303013",
+     "title": "IEC 62443-3-3 FR 6 — Timely Response to Events (TRE)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr6"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr6_timely_response.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e9cbc53e-06fe-5c48-a983-42bdff448fd0",
+     "title": "IEC 62443-3-3 FR 7 — Resource Availability (RA)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.fr7"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/fr7_resource_availability.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "47579c25-6cd5-5495-b0dc-9df99295ddb7",
+     "title": "IEC 62443 — Industrial Automation and Control Systems (IACS) Security",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443_main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/iec_62443_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0a43718e-2ff1-57e2-8d4d-cd9239746ea0",
+     "title": "IEC 62443-2-3 — Patch Management in the IACS Environment",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.part2_3"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/part2_patch_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "18c17a4b-e195-57e9-92bc-61ad042db2dc",
+     "title": "IEC 62443-2-1 — Security Management System (CSMS)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.part2_1"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/part2_security_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "30a4b2aa-85ac-531f-b8aa-5fb69edff29c",
+     "title": "IEC 62443-2-4 — Security Program Requirements for IACS Service Providers",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.part2_4"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/part2_service_provider.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e819c7ae-9f64-5144-bbb3-1ff38135125d",
+     "title": "IEC 62443-3-2 — Security Risk Assessment for System Design",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "iec_62443.part3_2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/critical_infrastructure/iec_62443/part3_risk_assessment.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

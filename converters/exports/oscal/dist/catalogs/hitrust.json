@@ -1,0 +1,2172 @@
+{
+ "catalog": {
+  "uuid": "8e7962e6-1c3d-5294-aef3-68c327937b9f",
+  "metadata": {
+   "title": "Rego Policy Libraries — hitrust (HITRUST Common Security Framework (CSF) v11.3.0)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.2.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "hitrust"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "hitrust-hitrust_main",
+    "class": "rego-module",
+    "title": "HITRUST Common Security Framework (CSF) v11.3.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "hitrust.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/hitrust/hitrust_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "hitrust-HITRUST-CSF-00.a",
+      "title": "Information Security Management System (ISMS) not formally established",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 00.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 00.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-00.a_stmt",
+        "name": "statement",
+        "prose": "Information Security Management System (ISMS) not formally established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-00.b",
+      "title": "Information security policies not approved by senior management",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 00.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 00.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-00.b_stmt",
+        "name": "statement",
+        "prose": "Information security policies not approved by senior management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-00.c",
+      "title": "Information security policies not reviewed at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 00.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 00.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-00.c_stmt",
+        "name": "statement",
+        "prose": "Information security policies not reviewed at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.a",
+      "title": "Access control policy not established, documented, and implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.a_stmt",
+        "name": "statement",
+        "prose": "Access control policy not established, documented, and implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.b",
+      "title": "Formal user access registration and de-registration process not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.b_stmt",
+        "name": "statement",
+        "prose": "Formal user access registration and de-registration process not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.c",
+      "title": "Privileged access rights not managed through formal authorization process",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.c_stmt",
+        "name": "statement",
+        "prose": "Privileged access rights not managed through formal authorization process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.d",
+      "title": "Strong password/authentication policy not enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.d_stmt",
+        "name": "statement",
+        "prose": "Strong password/authentication policy not enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.e",
+      "title": "Multi-factor authentication not enforced for critical system access",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.e_stmt",
+        "name": "statement",
+        "prose": "Multi-factor authentication not enforced for critical system access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.f",
+      "title": "Periodic review of user access rights not conducted (at minimum annually)",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.f_stmt",
+        "name": "statement",
+        "prose": "Periodic review of user access rights not conducted (at minimum annually)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-01.g",
+      "title": "Access rights not promptly revoked upon termination or role change",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 01.g"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 01.g"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-01.g_stmt",
+        "name": "statement",
+        "prose": "Access rights not promptly revoked upon termination or role change"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-02.a",
+      "title": "Pre-employment background checks not performed for personnel with PHI access",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 02.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 02.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-02.a_stmt",
+        "name": "statement",
+        "prose": "Pre-employment background checks not performed for personnel with PHI access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-02.b",
+      "title": "Confidentiality/non-disclosure agreements not signed by employees with PHI access",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 02.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 02.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-02.b_stmt",
+        "name": "statement",
+        "prose": "Confidentiality/non-disclosure agreements not signed by employees with PHI access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-02.c",
+      "title": "Sanction policy for workforce members who fail to comply with security policies not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 02.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 02.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-02.c_stmt",
+        "name": "statement",
+        "prose": "Sanction policy for workforce members who fail to comply with security policies not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-03.a",
+      "title": "Formal risk assessment not conducted",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 03.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 03.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-03.a_stmt",
+        "name": "statement",
+        "prose": "Formal risk assessment not conducted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-03.b",
+      "title": "Risk assessment does not include PHI confidentiality, integrity, and availability",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 03.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 03.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-03.b_stmt",
+        "name": "statement",
+        "prose": "Risk assessment does not include PHI confidentiality, integrity, and availability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-03.c",
+      "title": "Risk treatment plan not documented with accepted residual risks",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 03.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 03.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-03.c_stmt",
+        "name": "statement",
+        "prose": "Risk treatment plan not documented with accepted residual risks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-03.d",
+      "title": "Risk assessment not reviewed and updated periodically or after significant changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 03.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 03.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-03.d_stmt",
+        "name": "statement",
+        "prose": "Risk assessment not reviewed and updated periodically or after significant changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-04.a",
+      "title": "PHI-specific security policies and procedures not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 04.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 04.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-04.a_stmt",
+        "name": "statement",
+        "prose": "PHI-specific security policies and procedures not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-04.b",
+      "title": "Security policies not disseminated to all relevant workforce members",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 04.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 04.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-04.b_stmt",
+        "name": "statement",
+        "prose": "Security policies not disseminated to all relevant workforce members"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-06.a",
+      "title": "HIPAA Privacy Rule compliance policies not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 06.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 06.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-06.a_stmt",
+        "name": "statement",
+        "prose": "HIPAA Privacy Rule compliance policies not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-06.b",
+      "title": "HIPAA Security Rule compliance policies not implemented",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 06.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 06.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-06.b_stmt",
+        "name": "statement",
+        "prose": "HIPAA Security Rule compliance policies not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-06.c",
+      "title": "HIPAA Breach Notification Rule compliance plan not established",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 06.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 06.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-06.c_stmt",
+        "name": "statement",
+        "prose": "HIPAA Breach Notification Rule compliance plan not established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-06.d",
+      "title": "Periodic compliance review not conducted to identify legal/regulatory changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 06.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 06.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-06.d_stmt",
+        "name": "statement",
+        "prose": "Periodic compliance review not conducted to identify legal/regulatory changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-07.a",
+      "title": "Asset inventory not maintained for systems and media containing PHI",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 07.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 07.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-07.a_stmt",
+        "name": "statement",
+        "prose": "Asset inventory not maintained for systems and media containing PHI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-07.b",
+      "title": "PHI assets not classified and labeled according to sensitivity",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 07.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 07.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-07.b_stmt",
+        "name": "statement",
+        "prose": "PHI assets not classified and labeled according to sensitivity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-07.c",
+      "title": "Secure media sanitization procedures not established for PHI disposal",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 07.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 07.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-07.c_stmt",
+        "name": "statement",
+        "prose": "Secure media sanitization procedures not established for PHI disposal"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-08.a",
+      "title": "Physical access to facilities containing PHI systems not controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 08.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 08.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-08.a_stmt",
+        "name": "statement",
+        "prose": "Physical access to facilities containing PHI systems not controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-08.b",
+      "title": "Equipment containing PHI not secured against physical threats",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 08.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 08.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-08.b_stmt",
+        "name": "statement",
+        "prose": "Equipment containing PHI not secured against physical threats"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-08.c",
+      "title": "Visitor access to secure areas not logged and controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 08.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 08.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-08.c_stmt",
+        "name": "statement",
+        "prose": "Visitor access to secure areas not logged and controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-09.a",
+      "title": "Formal change management process not established for PHI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 09.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 09.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-09.a_stmt",
+        "name": "statement",
+        "prose": "Formal change management process not established for PHI systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-09.b",
+      "title": "Malware protection not deployed on all systems processing PHI",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 09.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 09.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-09.b_stmt",
+        "name": "statement",
+        "prose": "Malware protection not deployed on all systems processing PHI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-09.c",
+      "title": "PHI not backed up with tested recovery procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 09.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 09.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-09.c_stmt",
+        "name": "statement",
+        "prose": "PHI not backed up with tested recovery procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-09.d",
+      "title": "Regular vulnerability scanning not performed on systems processing PHI",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 09.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 09.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-09.d_stmt",
+        "name": "statement",
+        "prose": "Regular vulnerability scanning not performed on systems processing PHI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-09.e",
+      "title": "Timely patch management process not established for PHI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 09.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 09.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-09.e_stmt",
+        "name": "statement",
+        "prose": "Timely patch management process not established for PHI systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-09.f",
+      "title": "Network monitoring not implemented to detect anomalous activity involving PHI",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 09.f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 09.f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-09.f_stmt",
+        "name": "statement",
+        "prose": "Network monitoring not implemented to detect anomalous activity involving PHI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-10.a",
+      "title": "Security requirements not included in information system development/acquisition",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 10.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 10.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-10.a_stmt",
+        "name": "statement",
+        "prose": "Security requirements not included in information system development/acquisition"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-10.b",
+      "title": "Security testing not performed before PHI systems are placed into production",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 10.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 10.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-10.b_stmt",
+        "name": "statement",
+        "prose": "Security testing not performed before PHI systems are placed into production"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-10.c",
+      "title": "PHI used in development or test environments — must use de-identified data",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 10.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 10.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-10.c_stmt",
+        "name": "statement",
+        "prose": "PHI used in development or test environments — must use de-identified data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-11.a",
+      "title": "Access to PHI not restricted to minimum necessary for job function",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 11.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 11.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-11.a_stmt",
+        "name": "statement",
+        "prose": "Access to PHI not restricted to minimum necessary for job function"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-11.b",
+      "title": "Remote access to PHI systems not controlled and monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 11.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 11.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-11.b_stmt",
+        "name": "statement",
+        "prose": "Remote access to PHI systems not controlled and monitored"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-11.c",
+      "title": "Wireless access transmitting PHI not properly secured and encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 11.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 11.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-11.c_stmt",
+        "name": "statement",
+        "prose": "Wireless access transmitting PHI not properly secured and encrypted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-12.a",
+      "title": "All access to PHI (create, read, update, delete) not logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 12.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 12.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-12.a_stmt",
+        "name": "statement",
+        "prose": "All access to PHI (create, read, update, delete) not logged"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-12.b",
+      "title": "Audit logs not protected from unauthorized modification or deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 12.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 12.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-12.b_stmt",
+        "name": "statement",
+        "prose": "Audit logs not protected from unauthorized modification or deletion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-12.c",
+      "title": "Audit logs for PHI not retained for minimum 6 years (HIPAA requirement)",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 12.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 12.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-12.c_stmt",
+        "name": "statement",
+        "prose": "Audit logs for PHI not retained for minimum 6 years (HIPAA requirement)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-12.d",
+      "title": "Audit logs not reviewed regularly for suspicious activity",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 12.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 12.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-12.d_stmt",
+        "name": "statement",
+        "prose": "Audit logs not reviewed regularly for suspicious activity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-13.a",
+      "title": "Annual HIPAA security and privacy training not provided to all workforce members",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 13.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 13.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-13.a_stmt",
+        "name": "statement",
+        "prose": "Annual HIPAA security and privacy training not provided to all workforce members"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-13.b",
+      "title": "PHI handling procedures not included in security awareness training",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 13.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 13.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-13.b_stmt",
+        "name": "statement",
+        "prose": "PHI handling procedures not included in security awareness training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-13.c",
+      "title": "Security training completion not tracked for all workforce members",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 13.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 13.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-13.c_stmt",
+        "name": "statement",
+        "prose": "Security training completion not tracked for all workforce members"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-14.a",
+      "title": "Business Associate Agreements (BAA) not executed with all vendors accessing PHI",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 14.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 14.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-14.a_stmt",
+        "name": "statement",
+        "prose": "Business Associate Agreements (BAA) not executed with all vendors accessing PHI"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-14.b",
+      "title": "Security evaluation of third parties with PHI access not performed",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 14.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 14.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-14.b_stmt",
+        "name": "statement",
+        "prose": "Security evaluation of third parties with PHI access not performed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-14.c",
+      "title": "Contracts with PHI-handling vendors do not include security requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 14.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 14.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-14.c_stmt",
+        "name": "statement",
+        "prose": "Contracts with PHI-handling vendors do not include security requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-15.a",
+      "title": "Security incident response plan not documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 15.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 15.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-15.a_stmt",
+        "name": "statement",
+        "prose": "Security incident response plan not documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-15.b",
+      "title": "PHI breach response procedures not established (including HIPAA notification timelines)",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 15.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 15.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-15.b_stmt",
+        "name": "statement",
+        "prose": "PHI breach response procedures not established (including HIPAA notification timelines)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-15.c",
+      "title": "Incident response plan not tested at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 15.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 15.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-15.c_stmt",
+        "name": "statement",
+        "prose": "Incident response plan not tested at least annually"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-15.d",
+      "title": "Process not established to report breaches affecting 500+ individuals to HHS within 60 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 15.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 15.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-15.d_stmt",
+        "name": "statement",
+        "prose": "Process not established to report breaches affecting 500+ individuals to HHS within 60 days"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-16.a",
+      "title": "Business continuity plan not documented for critical PHI systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 16.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 16.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-16.a_stmt",
+        "name": "statement",
+        "prose": "Business continuity plan not documented for critical PHI systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-16.b",
+      "title": "Disaster recovery plan not established for PHI system restoration",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 16.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 16.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-16.b_stmt",
+        "name": "statement",
+        "prose": "Disaster recovery plan not established for PHI system restoration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-16.c",
+      "title": "Business continuity/disaster recovery plan not tested periodically",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 16.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 16.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-16.c_stmt",
+        "name": "statement",
+        "prose": "Business continuity/disaster recovery plan not tested periodically"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-17.a",
+      "title": "PHI not encrypted at rest on storage systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 17.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 17.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-17.a_stmt",
+        "name": "statement",
+        "prose": "PHI not encrypted at rest on storage systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-17.b",
+      "title": "PHI not encrypted in transit over networks (TLS 1.2+ required)",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 17.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 17.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-17.b_stmt",
+        "name": "statement",
+        "prose": "PHI not encrypted in transit over networks (TLS 1.2+ required)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-18.a",
+      "title": "Notice of Privacy Practices not provided to patients",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 18.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 18.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-18.a_stmt",
+        "name": "statement",
+        "prose": "Notice of Privacy Practices not provided to patients"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-18.b",
+      "title": "Minimum necessary standard not enforced for PHI access and disclosure",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 18.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 18.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-18.b_stmt",
+        "name": "statement",
+        "prose": "Minimum necessary standard not enforced for PHI access and disclosure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "hitrust-HITRUST-CSF-18.c",
+      "title": "Process not established to honor patient rights (access, amendment, accounting of disclosures)",
+      "props": [
+       {
+        "name": "label",
+        "value": "HITRUST CSF 18.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "HITRUST CSF 18.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hitrust.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hitrust-HITRUST-CSF-18.c_stmt",
+        "name": "statement",
+        "prose": "Process not established to honor patient rights (access, amendment, accounting of disclosures)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "f93e95a0-f9dd-5860-b4bc-60d8155f4a06",
+     "title": "HITRUST Common Security Framework (CSF) v11.3.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "hitrust.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.2.0/frameworks/management/hitrust/hitrust_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
