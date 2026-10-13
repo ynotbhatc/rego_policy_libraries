@@ -8,6 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Security — Kubernetes admission registry allowlist anchored on the host
+
+- `kubernetes.admission.from_approved_registry` matched `startswith(image, registry)`, so an image from
+  `quay.io.evil.example/...` satisfied the `quay.io` entry. The match is now anchored on the host component
+  (`registry + "/"`, a trailing slash in the policy's own list is tolerated). Images with no registry prefix
+  are still admitted as cluster-local, as documented in the module. Regression tests in
+  `enforcement/kubernetes/tests/test_registry_allowlist.rego`; the Gatekeeper `k8saacadmission` template is
+  rebuilt from the module.
+
 ### Changed — CIS GCP lives in one directory; the guard reads bare `compliant` rules
 
 - `cis_gcp_main.rego` (57 checks, `cis_gcp.main`) moves from the legacy `benchmarks/cis/cloud/gcp/` tree to
