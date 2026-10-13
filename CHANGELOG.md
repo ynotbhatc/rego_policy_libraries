@@ -23,9 +23,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `compliant` with a `false` default; CMMC's `compliant` gains the default it lacked; GEISA VEE's "not required"
   answer now needs a discovery response to say so. The test generator now asserts fail-closed for them
   (`docs/TEST_GENERATION.md`: undefined reports 1, unguarded fail-open 6; suite 3514 tests).
-- **Strict mode is clean and enforced.** 31 `opa check --strict` errors fixed (unused imports, arguments,
-  assignments; FinOps `is_past_date` now compares the date instead of `year < 2025`), and CI runs strict on every
-  tree except `enforcement/git`, pending its owner.
+- **Strict mode is clean.** 31 `opa check --strict` errors fixed (unused imports, arguments, assignments; FinOps
+  `is_past_date` now compares the date instead of `year < 2025`); every tree except `enforcement/git` (pending its
+  owner) passes `opa check --strict`. The CI step that enforces it follows in its own PR.
 - Control-level checks: 13,758 → 13,771 (the fail-closed notices are cited checks).
 
 
