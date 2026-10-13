@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # converters/exports/_lib/findings.py -> repo root
 sys.path.insert(0, str(ROOT / "scripts"))
 from inventory_controls import inventory, _split  # noqa: E402
+from rego_ast import ID_KEYS, TEXT_KEYS  # noqa: E402
 
 REPO = "https://github.com/ynotbhatc/rego_policy_libraries"
 TOKEN_BAD = re.compile(r"[^A-Za-z0-9._-]+")
@@ -50,6 +51,7 @@ class Finding:
     package: str
     report_path: str
     compliant: bool | None
+    severity: str | None = None   # the module's own severity for this finding, when it states one
 
 
 @dataclass
@@ -132,6 +134,34 @@ def load_reports(paths):
             yield from found
 
 
+OBJ_ID_KEYS = ID_KEYS + ("vuln_id",)
+OBJ_TEXT_KEYS = ("rule_title",) + TEXT_KEYS + ("msg", "message", "violation", "fix_text")
+
+
+def finding_text(m):
+    """A violation as one line of text. Strings pass through. Object findings — the STIG modules emit
+    {vuln_id, stig_id, severity, rule_title, status, ...} — become "<id>: <title>", so the same prefix rule
+    that maps "CIS 1.3.1: ..." maps "OL09-00-002413: ..." to its catalog control. Anything else is dumped as
+    JSON, never dropped."""
+    if isinstance(m, str):
+        return m
+    if isinstance(m, dict):
+        cid = next((str(m[k]).strip() for k in OBJ_ID_KEYS if isinstance(m.get(k), (str, int)) and str(m[k]).strip()), None)
+        txt = next((m[k].strip() for k in OBJ_TEXT_KEYS if isinstance(m.get(k), str) and m[k].strip()), None)
+        if cid and txt:
+            return f"{cid}: {txt}"
+        if cid:
+            return f"{cid}: {json.dumps(m, ensure_ascii=False)}"
+        if txt:
+            return txt
+    return json.dumps(m, ensure_ascii=False)
+
+
+def finding_severity(m):
+    """The finding's own severity when the module states one (STIG: "CAT I"/"CAT II"/"CAT III"; others: high/medium/low)."""
+    return str(m["severity"]).strip() if isinstance(m, dict) and isinstance(m.get("severity"), str) and m["severity"].strip() else None
+
+
 def findings(paths, ix=None):
     ix = ix or Index.build()
     out = []
@@ -140,6 +170,6 @@ def findings(paths, ix=None):
         viol = rep["violations"]
         msgs = list(viol.values()) if isinstance(viol, dict) else list(viol)
         for m in msgs:
-            text = m if isinstance(m, str) else json.dumps(m, ensure_ascii=False)
-            out.append(Finding(ix.rule_for(pkg, text), text, pkg, rpath, rep.get("compliant", rep.get("overall_compliant"))))
+            text = finding_text(m)
+            out.append(Finding(ix.rule_for(pkg, text), text, pkg, rpath, rep.get("compliant", rep.get("overall_compliant")), finding_severity(m)))
     return out

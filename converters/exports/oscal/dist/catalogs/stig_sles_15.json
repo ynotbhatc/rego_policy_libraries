@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "5596dd2e-b31d-514a-8f42-b58448a2224d",
+  "uuid": "21ff87ac-8ae8-5fa1-ac9b-e7232b8dcfa8",
   "metadata": {
    "title": "Rego Policy Libraries — stig_sles_15 (DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_sles_15-SLES-15-010000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must be a vendor-supported release.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_sles_15-SLES-15-010000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must be a vendor-supported release."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must not have the vsftpd package installed if not required for operational support.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_sles_15-SLES-15-010030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must not have the vsftpd package installed if not required for operational support."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010035",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must have the crypto-policies package installed.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_sles_15-SLES-15-010035_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must have the crypto-policies package installed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010045",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must implement a FIPS 140-3-compliant systemwide cryptographic policy.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_sles_15-SLES-15-010045_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must implement a FIPS 140-3-compliant systemwide cryptographic policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010046",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "SUSE operating system cryptographic policy must not be overridden.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_sles_15-SLES-15-010046_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "SUSE operating system cryptographic policy must not be overridden."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must implement DOD-approved encryption to protect the confidentiality of SSH remote connections.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_sles_15-SLES-15-010160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must implement DOD-approved encryption to protect the confidentiality of SSH remote connections."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must not have the telnet-server package installed.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_sles_15-SLES-15-010180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must not have the telnet-server package installed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "SUSE operating systems with a basic input/output system (BIOS) must require authentication upon booting into single-user and maintenance modes.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_sles_15-SLES-15-010190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "SUSE operating systems with a basic input/output system (BIOS) must require authentication upon booting into single-user and maintenance modes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "SUSE operating systems with Unified Extensible Firmware Interface (UEFI) implemented must require authentication upon booting into single-user mode and maintenance.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_sles_15-SLES-15-010200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "SUSE operating systems with Unified Extensible Firmware Interface (UEFI) implemented must require authentication upon booting into single-user mode and maintenance."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services as defined in the Ports, Protocols, and Services Management (PPSM) Category",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_sles_15-SLES-15-010220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services as defined in the Ports, Protocols, and Services Management (PPSM) Category Assignments List (C"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of S",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_sles_15-SLES-15-010270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connection"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010280",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system SSH daemon must be configured with a timeout interval.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_sles_15-SLES-15-010280_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system SSH daemon must be configured with a timeout interval."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "All SUSE operating system persistent disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure or modification of all information that requires at-rest protection.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -489,14 +489,14 @@
        {
         "id": "stig_sles_15-SLES-15-010330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "All SUSE operating system persistent disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure or modification of all information that requires at-rest protection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010430",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system tool zypper must have gpgcheck enabled.",
       "props": [
        {
         "name": "label",
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -522,14 +522,14 @@
        {
         "id": "stig_sles_15-SLES-15-010430_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system tool zypper must have gpgcheck enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010450",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must reauthenticate users when changing authenticators, roles, or escalating privileges.",
       "props": [
        {
         "name": "label",
@@ -547,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -555,14 +555,14 @@
        {
         "id": "stig_sles_15-SLES-15-010450_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must reauthenticate users when changing authenticators, roles, or escalating privileges."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010510",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "FIPS 140-2 mode must be enabled on the SUSE operating system.",
       "props": [
        {
         "name": "label",
@@ -580,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -588,14 +588,14 @@
        {
         "id": "stig_sles_15-SLES-15-010510_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "FIPS 140-2 mode must be enabled on the SUSE operating system."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-010530",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "All networked SUSE operating systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for tra",
       "props": [
        {
         "name": "label",
@@ -613,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -621,14 +621,14 @@
        {
         "id": "stig_sles_15-SLES-15-010530_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "All networked SUSE operating systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-020100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system root account must be the only account with unrestricted access to the system.",
       "props": [
        {
         "name": "label",
@@ -646,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -654,14 +654,14 @@
        {
         "id": "stig_sles_15-SLES-15-020100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system root account must be the only account with unrestricted access to the system."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-020181",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must not have accounts configured with blank or null passwords.",
       "props": [
        {
         "name": "label",
@@ -679,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -687,14 +687,14 @@
        {
         "id": "stig_sles_15-SLES-15-020181_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must not have accounts configured with blank or null passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-020300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must not be configured to allow blank or null passwords.",
       "props": [
        {
         "name": "label",
@@ -712,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -720,14 +720,14 @@
        {
         "id": "stig_sles_15-SLES-15-020300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must not be configured to allow blank or null passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "There must be no .shosts files on the SUSE operating system.",
       "props": [
        {
         "name": "label",
@@ -745,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -753,14 +753,14 @@
        {
         "id": "stig_sles_15-SLES-15-040020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "There must be no .shosts files on the SUSE operating system."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "There must be no shosts.equiv files on the SUSE operating system.",
       "props": [
        {
         "name": "label",
@@ -778,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -786,14 +786,14 @@
        {
         "id": "stig_sles_15-SLES-15-040030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "There must be no shosts.equiv files on the SUSE operating system."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must disable the x86 Ctrl-Alt-Delete key sequence.",
       "props": [
        {
         "name": "label",
@@ -811,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -819,14 +819,14 @@
        {
         "id": "stig_sles_15-SLES-15-040060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must disable the x86 Ctrl-Alt-Delete key sequence."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040061",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must disable the x86 Ctrl-Alt-Delete key sequence for Graphical User Interfaces.",
       "props": [
        {
         "name": "label",
@@ -844,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -852,14 +852,14 @@
        {
         "id": "stig_sles_15-SLES-15-040061_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must disable the x86 Ctrl-Alt-Delete key sequence for Graphical User Interfaces."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040062",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must disable the systemd Ctrl-Alt-Delete burst key sequence.",
       "props": [
        {
         "name": "label",
@@ -877,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -885,14 +885,14 @@
        {
         "id": "stig_sles_15-SLES-15-040062_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must disable the systemd Ctrl-Alt-Delete burst key sequence."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040430",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must not allow unattended or automatic logon via the graphical user interface (GUI).",
       "props": [
        {
         "name": "label",
@@ -910,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -918,14 +918,14 @@
        {
         "id": "stig_sles_15-SLES-15-040430_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must not allow unattended or automatic logon via the graphical user interface (GUI)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_sles_15-SLES-15-040440",
-      "title": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body.",
+      "title": "The SUSE operating system must not allow unattended or automatic logon via SSH.",
       "props": [
        {
         "name": "label",
@@ -943,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#b562efde-b9e3-53ac-b972-c18e1a547f7b",
+        "href": "#704f59d3-5fb9-5504-8050-6b0427077363",
         "rel": "implementation"
        }
       ],
@@ -951,7 +951,7 @@
        {
         "id": "stig_sles_15-SLES-15-040440_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/sles_15/core.rego (package stig.sles_15.core); see the rule body."
+        "prose": "The SUSE operating system must not allow unattended or automatic logon via SSH."
        }
       ],
       "class": "security"
@@ -1000,7 +1000,7 @@
       ],
       "links": [
        {
-        "href": "#07d925ef-f913-53b3-bdfc-ab487471b2f6",
+        "href": "#9844365a-1368-5576-8a84-1231ba222faf",
         "rel": "implementation"
        }
       ],
@@ -1033,7 +1033,7 @@
       ],
       "links": [
        {
-        "href": "#07d925ef-f913-53b3-bdfc-ab487471b2f6",
+        "href": "#9844365a-1368-5576-8a84-1231ba222faf",
         "rel": "implementation"
        }
       ],
@@ -1052,7 +1052,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "b562efde-b9e3-53ac-b972-c18e1a547f7b",
+     "uuid": "704f59d3-5fb9-5504-8050-6b0427077363",
      "title": "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
      "props": [
       {
@@ -1063,13 +1063,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/sles_15/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/sles_15/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "07d925ef-f913-53b3-bdfc-ab487471b2f6",
+     "uuid": "9844365a-1368-5576-8a84-1231ba222faf",
      "title": "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -1080,7 +1080,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/sles_15/stig_sles_15_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/sles_15/stig_sles_15_complete.rego",
        "media-type": "text/plain"
       }
      ]

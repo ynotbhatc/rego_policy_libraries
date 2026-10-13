@@ -166,7 +166,7 @@ def first_message(rule):
 # ---------------------------------------------------------------------------------------------
 SET_SUFFIXES = ("_violations", "_findings", "_deny", "_failures")
 ID_KEYS = ("stig_id", "control_id", "id", "control", "practice", "requirement", "rule_id", "recommendation", "standard", "article", "section")
-TEXT_KEYS = ("text", "title", "desc", "description", "finding", "name", "req", "requirement_text", "summary")
+TEXT_KEYS = ("text", "title", "rule_title", "desc", "description", "finding", "name", "req", "requirement_text", "summary")
 CHECKMAP_SKIP = {"compliant", "violations", "achievement", "status", "summary", "report", "total", "score", "level",
                  "findings", "passed", "failed", "percentage", "compliance_percentage", "details", "input", "data"}
 # report plumbing never counts as a check, whatever object it sits in

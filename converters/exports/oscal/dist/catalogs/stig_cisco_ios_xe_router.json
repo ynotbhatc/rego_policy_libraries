@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "f4f50c61-475a-57bf-9ce5-5636e51e10cc",
+  "uuid": "fd470df1-bc4c-59af-835e-0cbd2983080f",
   "metadata": {
    "title": "Rego Policy Libraries — stig_cisco_ios_xe_router (DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-000470",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to prohibit the use of all unnecessary and nonsecure functions and services.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-000470_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to prohibit the use of all unnecessary and nonsecure functions and services."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-000550",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to enforce a minimum 15-character password length.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-000550_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to enforce a minimum 15-character password length."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-000620",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must only store cryptographic representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-000620_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must only store cryptographic representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-000720",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to terminate all network connections associated with device management after five minutes of inactivity.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-000720_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to terminate all network connections associated with device management after five minutes of inactivity."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-001200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of remote maintenance sessions.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-001200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of remote maintenance sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-001210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-001210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-001370",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-001370_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to use at least two authentication servers for the purpose of authenticating users prior to granting administrative access."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-001410",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to back up the configuration when changes occur.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-001410_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to back up the configuration when changes occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-001450",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be configured to send log data to at least two syslog servers for the purpose of forwarding alerts to the administrators and the information system security officer (ISSO).",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-001450_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be configured to send log data to at least two syslog servers for the purpose of forwarding alerts to the administrators and the information system security officer (ISSO)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_cisco_ios_xe_router-CISC-ND-001470",
-      "title": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body.",
+      "title": "The Cisco router must be running an IOS release that is currently supported by Cisco Systems.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#f5e1e99d-86a8-541e-aca6-890d3d151595",
+        "href": "#1be36965-e0da-5f36-828b-23bc23b1584c",
         "rel": "implementation"
        }
       ],
@@ -390,7 +390,7 @@
        {
         "id": "stig_cisco_ios_xe_router-CISC-ND-001470_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/cisco_ios_xe_router/core.rego (package stig.cisco_ios_xe_router.core); see the rule body."
+        "prose": "The Cisco router must be running an IOS release that is currently supported by Cisco Systems."
        }
       ],
       "class": "security"
@@ -439,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#5f0985a4-3196-5fa4-8c81-00919c11e9de",
+        "href": "#d2a212bb-2de3-5586-a824-fe849053c087",
         "rel": "implementation"
        }
       ],
@@ -472,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#5f0985a4-3196-5fa4-8c81-00919c11e9de",
+        "href": "#d2a212bb-2de3-5586-a824-fe849053c087",
         "rel": "implementation"
        }
       ],
@@ -491,7 +491,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "f5e1e99d-86a8-541e-aca6-890d3d151595",
+     "uuid": "1be36965-e0da-5f36-828b-23bc23b1584c",
      "title": "DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide",
      "props": [
       {
@@ -502,13 +502,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/cisco_ios_xe_router/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/cisco_ios_xe_router/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "5f0985a4-3196-5fa4-8c81-00919c11e9de",
+     "uuid": "d2a212bb-2de3-5586-a824-fe849053c087",
      "title": "DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -519,7 +519,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/cisco_ios_xe_router/stig_cisco_ios_xe_router_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/cisco_ios_xe_router/stig_cisco_ios_xe_router_complete.rego",
        "media-type": "text/plain"
       }
      ]

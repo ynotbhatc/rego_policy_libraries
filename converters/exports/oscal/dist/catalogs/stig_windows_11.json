@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "80a8426d-4044-51f2-a913-07e46d9721bb",
+  "uuid": "e54cd2d3-0887-5abf-b20f-ec60141e5e6b",
   "metadata": {
    "title": "Rego Policy Libraries — stig_windows_11 (DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_windows_11-WN11-CC-000005",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Camera access from the lock screen must be disabled.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000005_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Camera access from the lock screen must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The display of slide shows on the lock screen must be disabled.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The display of slide shows on the lock screen must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "IPv6 source routing must be configured to highest protection.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "IPv6 source routing must be configured to highest protection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000025",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The system must be configured to prevent IP source routing.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000025_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The system must be configured to prevent IP source routing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The system must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF) generated routes.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The system must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF) generated routes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000035",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The system must be configured to ignore NetBIOS name release requests except from WINS servers.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000035_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The system must be configured to ignore NetBIOS name release requests except from WINS servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000038",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "WDigest Authentication must be disabled.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000038_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "WDigest Authentication must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Insecure logons to an SMB server must be disabled.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Insecure logons to an SMB server must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000044",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Internet connection sharing must be disabled.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000044_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Internet connection sharing must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Hardened UNC Paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Hardened UNC Paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Connections to non-domain networks when connected to a domain authenticated network must be blocked.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Connections to non-domain networks when connected to a domain authenticated network must be blocked."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000066",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Command line data must be included in process creation events.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000066_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Command line data must be included in process creation events."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000068",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Windows 11 must be configured to enable Remote host allows delegation of non-exportable credentials.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -489,14 +489,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000068_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Windows 11 must be configured to enable Remote host allows delegation of non-exportable credentials."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Virtualization-Based Security (VBS) must be enabled on Windows 11 with the platform security level configured to Secure Boot or Secure Boot with DMA Protection.",
       "props": [
        {
         "name": "label",
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -522,14 +522,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Virtualization-Based Security (VBS) must be enabled on Windows 11 with the platform security level configured to Secure Boot or Secure Boot with DMA Protection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000075",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Credential Guard must be running on Windows 11 systems.",
       "props": [
        {
         "name": "label",
@@ -547,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -555,14 +555,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000075_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Credential Guard must be running on Windows 11 systems."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Virtualization-based protection of code integrity must be enabled.",
       "props": [
        {
         "name": "label",
@@ -580,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -588,14 +588,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Virtualization-based protection of code integrity must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Group Policy objects must be reprocessed even if they have not changed.",
       "props": [
        {
         "name": "label",
@@ -613,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -621,14 +621,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Group Policy objects must be reprocessed even if they have not changed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Downloading print driver packages over HTTP must be prevented.",
       "props": [
        {
         "name": "label",
@@ -646,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -654,14 +654,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Downloading print driver packages over HTTP must be prevented."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000105",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Web publishing and online ordering wizards must be prevented from downloading a list of providers.",
       "props": [
        {
         "name": "label",
@@ -679,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -687,14 +687,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000105_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Web publishing and online ordering wizards must be prevented from downloading a list of providers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Printing over HTTP must be prevented.",
       "props": [
        {
         "name": "label",
@@ -712,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -720,14 +720,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Printing over HTTP must be prevented."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000120",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The network selection user interface (UI) must not be displayed on the logon screen.",
       "props": [
        {
         "name": "label",
@@ -745,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -753,14 +753,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000120_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The network selection user interface (UI) must not be displayed on the logon screen."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000130",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Local users on domain-joined computers must not be enumerated.",
       "props": [
        {
         "name": "label",
@@ -778,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -786,14 +786,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000130_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Local users on domain-joined computers must not be enumerated."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000145",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Users must be prompted for a password on resume from sleep (on battery).",
       "props": [
        {
         "name": "label",
@@ -811,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -819,14 +819,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000145_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Users must be prompted for a password on resume from sleep (on battery)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The user must be prompted for a password on resume from sleep (plugged in).",
       "props": [
        {
         "name": "label",
@@ -844,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -852,14 +852,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The user must be prompted for a password on resume from sleep (plugged in)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000155",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Solicited Remote Assistance must not be allowed.",
       "props": [
        {
         "name": "label",
@@ -877,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -885,14 +885,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000155_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Solicited Remote Assistance must not be allowed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000165",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Unauthenticated RPC clients must be restricted from connecting to the RPC server.",
       "props": [
        {
         "name": "label",
@@ -910,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -918,14 +918,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000165_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Unauthenticated RPC clients must be restricted from connecting to the RPC server."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The setting to allow Microsoft accounts to be optional for modern style apps must be enabled.",
       "props": [
        {
         "name": "label",
@@ -943,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -951,14 +951,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The setting to allow Microsoft accounts to be optional for modern style apps must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000175",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft.",
       "props": [
        {
         "name": "label",
@@ -976,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -984,14 +984,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000175_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Autoplay must be turned off for non-volume devices.",
       "props": [
        {
         "name": "label",
@@ -1009,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1017,14 +1017,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Autoplay must be turned off for non-volume devices."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000185",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The default autorun behavior must be configured to prevent autorun commands.",
       "props": [
        {
         "name": "label",
@@ -1042,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1050,14 +1050,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000185_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The default autorun behavior must be configured to prevent autorun commands."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Autoplay must be disabled for all drives.",
       "props": [
        {
         "name": "label",
@@ -1075,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1083,14 +1083,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Autoplay must be disabled for all drives."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Administrator accounts must not be enumerated during elevation.",
       "props": [
        {
         "name": "label",
@@ -1108,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1116,14 +1116,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Administrator accounts must not be enumerated during elevation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000204",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Enhanced diagnostic data must be limited to the minimum required to support Windows Analytics.",
       "props": [
        {
         "name": "label",
@@ -1141,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1149,14 +1149,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000204_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Enhanced diagnostic data must be limited to the minimum required to support Windows Analytics."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Microsoft Defender SmartScreen for Explorer must be enabled.",
       "props": [
        {
         "name": "label",
@@ -1174,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1182,14 +1182,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Microsoft Defender SmartScreen for Explorer must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "File Explorer heap termination on corruption must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1207,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1215,14 +1215,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "File Explorer heap termination on corruption must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000255",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The use of a hardware security device with Windows Hello for Business must be enabled.",
       "props": [
        {
         "name": "label",
@@ -1240,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1248,14 +1248,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000255_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The use of a hardware security device with Windows Hello for Business must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Passwords must not be saved in the Remote Desktop Client.",
       "props": [
        {
         "name": "label",
@@ -1273,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1281,14 +1281,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Passwords must not be saved in the Remote Desktop Client."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000275",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Local drives must be prevented from sharing with Remote Desktop Session Hosts.",
       "props": [
        {
         "name": "label",
@@ -1306,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1314,14 +1314,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000275_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Local drives must be prevented from sharing with Remote Desktop Session Hosts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000280",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Remote Desktop Services must always prompt a client for passwords upon connection.",
       "props": [
        {
         "name": "label",
@@ -1339,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1347,14 +1347,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000280_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Remote Desktop Services must always prompt a client for passwords upon connection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000285",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Remote Desktop Session Host must require secure RPC communications.",
       "props": [
        {
         "name": "label",
@@ -1372,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1380,14 +1380,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000285_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Remote Desktop Session Host must require secure RPC communications."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000290",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Remote Desktop Services must be configured with the client connection encryption set to the required level.",
       "props": [
        {
         "name": "label",
@@ -1405,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1413,14 +1413,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000290_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Remote Desktop Services must be configured with the client connection encryption set to the required level."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000295",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Attachments must be prevented from being downloaded from RSS feeds.",
       "props": [
        {
         "name": "label",
@@ -1438,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1446,14 +1446,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000295_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Attachments must be prevented from being downloaded from RSS feeds."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000310",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Users must be prevented from changing installation options.",
       "props": [
        {
         "name": "label",
@@ -1471,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1479,14 +1479,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000310_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Users must be prevented from changing installation options."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000315",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Installer feature \"Always install with elevated privileges\" must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1504,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1512,14 +1512,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000315_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Installer feature \"Always install with elevated privileges\" must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000325",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Automatically signing in the last interactive user after a system-initiated restart must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1537,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1545,14 +1545,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000325_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Automatically signing in the last interactive user after a system-initiated restart must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000326",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "PowerShell script block logging must be enabled on Windows 11.",
       "props": [
        {
         "name": "label",
@@ -1570,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1578,14 +1578,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000326_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "PowerShell script block logging must be enabled on Windows 11."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000327",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "PowerShell Transcription must be enabled on Windows 11.",
       "props": [
        {
         "name": "label",
@@ -1603,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1611,14 +1611,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000327_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "PowerShell Transcription must be enabled on Windows 11."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Remote Management (WinRM) client must not use Basic authentication.",
       "props": [
        {
         "name": "label",
@@ -1636,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1644,14 +1644,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Remote Management (WinRM) client must not use Basic authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000335",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Remote Management (WinRM) client must not allow unencrypted traffic.",
       "props": [
        {
         "name": "label",
@@ -1669,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1677,14 +1677,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000335_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Remote Management (WinRM) client must not allow unencrypted traffic."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000345",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Remote Management (WinRM) service must not use Basic authentication.",
       "props": [
        {
         "name": "label",
@@ -1702,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1710,14 +1710,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000345_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Remote Management (WinRM) service must not use Basic authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000350",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Remote Management (WinRM) service must not allow unencrypted traffic.",
       "props": [
        {
         "name": "label",
@@ -1735,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1743,14 +1743,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000350_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Remote Management (WinRM) service must not allow unencrypted traffic."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000355",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Remote Management (WinRM) service must not store RunAs credentials.",
       "props": [
        {
         "name": "label",
@@ -1768,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1776,14 +1776,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000355_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Remote Management (WinRM) service must not store RunAs credentials."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000360",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "The Windows Remote Management (WinRM) client must not use Digest authentication.",
       "props": [
        {
         "name": "label",
@@ -1801,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1809,14 +1809,14 @@
        {
         "id": "stig_windows_11-WN11-CC-000360_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "The Windows Remote Management (WinRM) client must not use Digest authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-CC-000390",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body.",
+      "title": "Windows 11 must be configured to prevent users from receiving suggestions for third-party or additional applications.",
       "props": [
        {
         "name": "label",
@@ -1834,7 +1834,7 @@
       ],
       "links": [
        {
-        "href": "#7315d8b5-f1cf-5712-979a-1a3f71e89588",
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
         "rel": "implementation"
        }
       ],
@@ -1842,7 +1842,7 @@
        {
         "id": "stig_windows_11-WN11-CC-000390_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_cc.rego (package stig.windows_11.registry_cc); see the rule body."
+        "prose": "Windows 11 must be configured to prevent users from receiving suggestions for third-party or additional applications."
        }
       ],
       "class": "security"
@@ -1873,7 +1873,7 @@
     "controls": [
      {
       "id": "stig_windows_11-WN11-00-000032",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Windows 11 systems must use a BitLocker PIN with a minimum length of six digits for pre-boot authentication.",
       "props": [
        {
         "name": "label",
@@ -1891,7 +1891,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -1899,14 +1899,14 @@
        {
         "id": "stig_windows_11-WN11-00-000032_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Windows 11 systems must use a BitLocker PIN with a minimum length of six digits for pre-boot authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-00-000126",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Windows 11 systems must block consumer account user authentication.",
       "props": [
        {
         "name": "label",
@@ -1924,7 +1924,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -1932,14 +1932,14 @@
        {
         "id": "stig_windows_11-WN11-00-000126_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Windows 11 systems must block consumer account user authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-00-000150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Structured Exception Handling Overwrite Protection (SEHOP) must be enabled.",
       "props": [
        {
         "name": "label",
@@ -1957,7 +1957,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -1965,14 +1965,14 @@
        {
         "id": "stig_windows_11-WN11-00-000150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Structured Exception Handling Overwrite Protection (SEHOP) must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-00-000165",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB server.",
       "props": [
        {
         "name": "label",
@@ -1990,7 +1990,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -1998,14 +1998,14 @@
        {
         "id": "stig_windows_11-WN11-00-000165_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB server."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-00-000170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB client.",
       "props": [
        {
         "name": "label",
@@ -2023,7 +2023,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2031,14 +2031,14 @@
        {
         "id": "stig_windows_11-WN11-00-000170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB client."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-00-000210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Bluetooth must be turned off unless approved by the organization.",
       "props": [
        {
         "name": "label",
@@ -2056,7 +2056,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2064,14 +2064,14 @@
        {
         "id": "stig_windows_11-WN11-00-000210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Bluetooth must be turned off unless approved by the organization."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-AU-000500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "The Application event log size must be configured to 32768 KB or greater.",
       "props": [
        {
         "name": "label",
@@ -2089,7 +2089,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2097,14 +2097,14 @@
        {
         "id": "stig_windows_11-WN11-AU-000500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "The Application event log size must be configured to 32768 KB or greater."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-AU-000505",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "The security event log size must be configured to a value that holds at least one week's worth of audit records.",
       "props": [
        {
         "name": "label",
@@ -2122,7 +2122,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2130,14 +2130,14 @@
        {
         "id": "stig_windows_11-WN11-AU-000505_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "The security event log size must be configured to a value that holds at least one week's worth of audit records."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-AU-000510",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "The System event log size must be configured to 32768 KB or greater.",
       "props": [
        {
         "name": "label",
@@ -2155,7 +2155,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2163,14 +2163,14 @@
        {
         "id": "stig_windows_11-WN11-AU-000510_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "The System event log size must be configured to 32768 KB or greater."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-EP-000310",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Windows 11 Kernel (Direct Memory Access) DMA Protection must be enabled.",
       "props": [
        {
         "name": "label",
@@ -2188,7 +2188,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2196,14 +2196,14 @@
        {
         "id": "stig_windows_11-WN11-EP-000310_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Windows 11 Kernel (Direct Memory Access) DMA Protection must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-UC-000015",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Toast notifications to the lock screen must be turned off.",
       "props": [
        {
         "name": "label",
@@ -2221,7 +2221,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2229,14 +2229,14 @@
        {
         "id": "stig_windows_11-WN11-UC-000015_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Toast notifications to the lock screen must be turned off."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-UC-000020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body.",
+      "title": "Zone information must be preserved when saving attachments.",
       "props": [
        {
         "name": "label",
@@ -2254,7 +2254,7 @@
       ],
       "links": [
        {
-        "href": "#59f75b87-f128-5bbb-aaa2-59694ef8425a",
+        "href": "#4b481a59-b290-5b3b-a7e8-5932c48be594",
         "rel": "implementation"
        }
       ],
@@ -2262,7 +2262,7 @@
        {
         "id": "stig_windows_11-WN11-UC-000020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_other.rego (package stig.windows_11.registry_other); see the rule body."
+        "prose": "Zone information must be preserved when saving attachments."
        }
       ],
       "class": "security"
@@ -2293,7 +2293,7 @@
     "controls": [
      {
       "id": "stig_windows_11-WN11-SO-000015",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Local accounts with blank passwords must be restricted to prevent access from the network.",
       "props": [
        {
         "name": "label",
@@ -2311,7 +2311,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2319,14 +2319,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000015_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Local accounts with blank passwords must be restricted to prevent access from the network."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Audit policy using subcategories must be enabled.",
       "props": [
        {
         "name": "label",
@@ -2344,7 +2344,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2352,14 +2352,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Audit policy using subcategories must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000035",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Outgoing secure channel traffic must be encrypted or signed.",
       "props": [
        {
         "name": "label",
@@ -2377,7 +2377,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2385,14 +2385,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000035_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Outgoing secure channel traffic must be encrypted or signed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Outgoing secure channel traffic must be encrypted.",
       "props": [
        {
         "name": "label",
@@ -2410,7 +2410,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2418,14 +2418,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Outgoing secure channel traffic must be encrypted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000045",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Outgoing secure channel traffic must be signed.",
       "props": [
        {
         "name": "label",
@@ -2443,7 +2443,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2451,14 +2451,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000045_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Outgoing secure channel traffic must be signed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The computer account password must not be prevented from being reset.",
       "props": [
        {
         "name": "label",
@@ -2476,7 +2476,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2484,14 +2484,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The computer account password must not be prevented from being reset."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000055",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The maximum age for machine account passwords must be configured to 30 days or less.",
       "props": [
        {
         "name": "label",
@@ -2509,7 +2509,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2517,14 +2517,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000055_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The maximum age for machine account passwords must be configured to 30 days or less."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The system must be configured to require a strong session key.",
       "props": [
        {
         "name": "label",
@@ -2542,7 +2542,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2550,14 +2550,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The system must be configured to require a strong session key."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The machine inactivity limit must be set to 15 minutes, locking the system with the screensaver.",
       "props": [
        {
         "name": "label",
@@ -2575,7 +2575,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2583,14 +2583,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The machine inactivity limit must be set to 15 minutes, locking the system with the screensaver."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000075",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The required legal notice must be configured to display before console logon.",
       "props": [
        {
         "name": "label",
@@ -2608,7 +2608,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2616,14 +2616,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000075_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The required legal notice must be configured to display before console logon."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The Windows message title for the legal notice must be configured.",
       "props": [
        {
         "name": "label",
@@ -2641,7 +2641,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2649,14 +2649,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The Windows message title for the legal notice must be configured."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000085",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Caching of logon credentials must be limited.",
       "props": [
        {
         "name": "label",
@@ -2674,7 +2674,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2682,14 +2682,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000085_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Caching of logon credentials must be limited."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000095",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The Smart Card removal option must be configured to Force Logoff or Lock Workstation.",
       "props": [
        {
         "name": "label",
@@ -2707,7 +2707,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2715,14 +2715,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000095_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The Smart Card removal option must be configured to Force Logoff or Lock Workstation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The Windows SMB client must be configured to always perform SMB packet signing.",
       "props": [
        {
         "name": "label",
@@ -2740,7 +2740,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2748,14 +2748,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The Windows SMB client must be configured to always perform SMB packet signing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Unencrypted passwords must not be sent to third-party SMB Servers.",
       "props": [
        {
         "name": "label",
@@ -2773,7 +2773,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2781,14 +2781,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Unencrypted passwords must not be sent to third-party SMB Servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000120",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The Windows SMB server must be configured to always perform SMB packet signing.",
       "props": [
        {
         "name": "label",
@@ -2806,7 +2806,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2814,14 +2814,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000120_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The Windows SMB server must be configured to always perform SMB packet signing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000145",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Anonymous enumeration of SAM accounts must not be allowed.",
       "props": [
        {
         "name": "label",
@@ -2839,7 +2839,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2847,14 +2847,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000145_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Anonymous enumeration of SAM accounts must not be allowed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Anonymous enumeration of shares must be restricted.",
       "props": [
        {
         "name": "label",
@@ -2872,7 +2872,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2880,14 +2880,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Anonymous enumeration of shares must be restricted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The system must be configured to prevent anonymous users from having the same rights as the Everyone group.",
       "props": [
        {
         "name": "label",
@@ -2905,7 +2905,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2913,14 +2913,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The system must be configured to prevent anonymous users from having the same rights as the Everyone group."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000165",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Anonymous access to Named Pipes and Shares must be restricted.",
       "props": [
        {
         "name": "label",
@@ -2938,7 +2938,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2946,14 +2946,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000165_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Anonymous access to Named Pipes and Shares must be restricted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000167",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Remote calls to the Security Account Manager (SAM) must be restricted to Administrators.",
       "props": [
        {
         "name": "label",
@@ -2971,7 +2971,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -2979,14 +2979,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000167_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Remote calls to the Security Account Manager (SAM) must be restricted to Administrators."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "NTLM must be prevented from falling back to a Null session.",
       "props": [
        {
         "name": "label",
@@ -3004,7 +3004,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3012,14 +3012,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "NTLM must be prevented from falling back to a Null session."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000185",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "PKU2U authentication using online identities must be prevented.",
       "props": [
        {
         "name": "label",
@@ -3037,7 +3037,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3045,14 +3045,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000185_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "PKU2U authentication using online identities must be prevented."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites.",
       "props": [
        {
         "name": "label",
@@ -3070,7 +3070,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3078,14 +3078,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000195",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The system must be configured to prevent the storage of the LAN Manager hash of passwords.",
       "props": [
        {
         "name": "label",
@@ -3103,7 +3103,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3111,14 +3111,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000195_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The system must be configured to prevent the storage of the LAN Manager hash of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000205",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The LanMan authentication level must be set to send NTLMv2 response only, and to refuse LM and NTLM.",
       "props": [
        {
         "name": "label",
@@ -3136,7 +3136,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3144,14 +3144,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000205_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The LanMan authentication level must be set to send NTLMv2 response only, and to refuse LM and NTLM."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The system must be configured to the required LDAP client signing level.",
       "props": [
        {
         "name": "label",
@@ -3169,7 +3169,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3177,14 +3177,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The system must be configured to the required LDAP client signing level."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000215",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The system must be configured to meet the minimum session security requirement for NTLM SSP based clients.",
       "props": [
        {
         "name": "label",
@@ -3202,7 +3202,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3210,14 +3210,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000215_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The system must be configured to meet the minimum session security requirement for NTLM SSP based clients."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The system must be configured to meet the minimum session security requirement for NTLM SSP based servers.",
       "props": [
        {
         "name": "label",
@@ -3235,7 +3235,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3243,14 +3243,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The system must be configured to meet the minimum session security requirement for NTLM SSP based servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "The default permissions of global system objects must be increased.",
       "props": [
        {
         "name": "label",
@@ -3268,7 +3268,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3276,14 +3276,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "The default permissions of global system objects must be increased."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000245",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "User Account Control approval mode for the built-in Administrator must be enabled.",
       "props": [
        {
         "name": "label",
@@ -3301,7 +3301,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3309,14 +3309,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000245_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "User Account Control approval mode for the built-in Administrator must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000255",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "User Account Control must automatically deny elevation requests for standard users.",
       "props": [
        {
         "name": "label",
@@ -3334,7 +3334,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3342,14 +3342,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000255_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "User Account Control must automatically deny elevation requests for standard users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000260",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "User Account Control must be configured to detect application installations and prompt for elevation.",
       "props": [
        {
         "name": "label",
@@ -3367,7 +3367,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3375,14 +3375,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000260_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "User Account Control must be configured to detect application installations and prompt for elevation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000265",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "User Account Control must only elevate UIAccess applications that are installed in secure locations.",
       "props": [
        {
         "name": "label",
@@ -3400,7 +3400,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3408,14 +3408,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000265_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "User Account Control must only elevate UIAccess applications that are installed in secure locations."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "User Account Control must run all administrators in Admin Approval Mode, enabling UAC.",
       "props": [
        {
         "name": "label",
@@ -3433,7 +3433,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3441,14 +3441,14 @@
        {
         "id": "stig_windows_11-WN11-SO-000270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "User Account Control must run all administrators in Admin Approval Mode, enabling UAC."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_11-WN11-SO-000275",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body.",
+      "title": "User Account Control must virtualize file and registry write failures to per-user locations.",
       "props": [
        {
         "name": "label",
@@ -3466,7 +3466,7 @@
       ],
       "links": [
        {
-        "href": "#83c34283-3912-593a-a374-c91e6c2b83b4",
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
         "rel": "implementation"
        }
       ],
@@ -3474,7 +3474,7 @@
        {
         "id": "stig_windows_11-WN11-SO-000275_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_11/registry_so.rego (package stig.windows_11.registry_so); see the rule body."
+        "prose": "User Account Control must virtualize file and registry write failures to per-user locations."
        }
       ],
       "class": "security"
@@ -3523,7 +3523,7 @@
       ],
       "links": [
        {
-        "href": "#6a67fc10-4030-52e1-91d2-34416569bec2",
+        "href": "#87d9b4b8-98a0-5313-b3b6-ff4e8a4cfd22",
         "rel": "implementation"
        }
       ],
@@ -3556,7 +3556,7 @@
       ],
       "links": [
        {
-        "href": "#6a67fc10-4030-52e1-91d2-34416569bec2",
+        "href": "#87d9b4b8-98a0-5313-b3b6-ff4e8a4cfd22",
         "rel": "implementation"
        }
       ],
@@ -3575,7 +3575,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "7315d8b5-f1cf-5712-979a-1a3f71e89588",
+     "uuid": "bbdc07cc-0106-5010-a34d-a89497360307",
      "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
      "props": [
       {
@@ -3586,13 +3586,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_11/registry_cc.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_11/registry_cc.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "59f75b87-f128-5bbb-aaa2-59694ef8425a",
+     "uuid": "4b481a59-b290-5b3b-a7e8-5932c48be594",
      "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
      "props": [
       {
@@ -3603,13 +3603,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_11/registry_other.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_11/registry_other.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "83c34283-3912-593a-a374-c91e6c2b83b4",
+     "uuid": "71176679-82fa-59f0-b07a-4af8d1b5b9cf",
      "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide",
      "props": [
       {
@@ -3620,13 +3620,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_11/registry_so.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_11/registry_so.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "6a67fc10-4030-52e1-91d2-34416569bec2",
+     "uuid": "87d9b4b8-98a0-5313-b3b6-ff4e8a4cfd22",
      "title": "DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -3637,7 +3637,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_11/stig_windows_11_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_11/stig_windows_11_complete.rego",
        "media-type": "text/plain"
       }
      ]

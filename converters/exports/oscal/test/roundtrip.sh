@@ -56,7 +56,8 @@ python3 "$HERE/build_component.py" --out "$TMP" --catalogs "$TMP/catalogs" >/dev
 echo '{}' > "$TMP/empty.json"
 opa eval -f json -d "$ROOT/benchmarks/cis/rhel_9" -i "$TMP/empty.json" 'data.cis_rhel9.main.compliance_report' > "$TMP/cis.json"
 opa eval -f json -d "$ROOT/frameworks/privacy/ccpa" -i "$TMP/empty.json" 'data.ccpa' > "$TMP/ccpa.json"
-python3 "$HERE/build_assessment_results.py" "$TMP/cis.json" "$TMP/ccpa.json" -o "$TMP/assessment-results.json" --time 2026-10-12T00:00:00Z --subject roundtrip --catalogs "$TMP/catalogs" >/dev/null
+opa eval -f json -d "$ROOT/benchmarks/stig/oracle_database_19c" -i "$TMP/empty.json" 'data.stig.oracle_database_19c.main.compliance_report' > "$TMP/stig.json"
+python3 "$HERE/build_assessment_results.py" "$TMP/cis.json" "$TMP/ccpa.json" "$TMP/stig.json" -o "$TMP/assessment-results.json" --time 2026-10-12T00:00:00Z --subject roundtrip --catalogs "$TMP/catalogs" >/dev/null
 python3 - "$TMP" <<'PY'
 import sys, json, pathlib
 tmp = pathlib.Path(sys.argv[1])
@@ -82,6 +83,8 @@ for f in res["findings"]:
         assert f["target"]["target-id"] in parts, f["target"]["target-id"]
 mapped = sum(1 for f in res["findings"] if f["target"]["type"] == "objective-id")
 assert mapped / len(res["findings"]) >= 0.6, f"only {mapped}/{len(res['findings'])} findings target a catalog statement"
+stig = [f for f in res["findings"] if f["target"]["target-id"] == "stig_oracle_database_19c-O19C-00-009200_stmt"]
+assert stig and stig[0]["target"]["type"] == "objective-id" and "REMOTE_OS_ROLES" in stig[0]["description"], "STIG object finding did not target its catalog statement"
 reviewed = sum(len(s.get("include-controls", [])) for s in res["reviewed-controls"]["control-selections"])
 assert reviewed >= mapped
 print(f"PASS roundtrip: component-definition {len(reqs)} implemented-requirements == catalogs; assessment-results {len(res['findings'])} findings ({mapped} on catalog statements), {reviewed} reviewed controls")

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "aa0ccdd3-e4b3-5395-a40d-f36964da00bd",
+  "uuid": "a34e9d3e-820e-55ed-b3a5-7b177eeb18b3",
   "metadata": {
    "title": "Rego Policy Libraries — stig_openshift_4 (DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_openshift_4-CNTR-OS-000010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must use TLS 1.2 or greater for secure container image transport from trusted sources.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must use TLS 1.2 or greater for secure container image transport from trusted sources."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must use a centralized user management solution to support account management functions.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must use a centralized user management solution to support account management functions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift role-based access controls (RBAC) must be enforced.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift role-based access controls (RBAC) must be enforced."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "Red Hat Enterprise Linux CoreOS (RHCOS) must initiate session audits at system startup.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "Red Hat Enterprise Linux CoreOS (RHCOS) must initiate session audits at system startup."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000320",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must prevent unauthorized changes to logon UIDs.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000320_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must prevent unauthorized changes to logon UIDs."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must disable root and terminate network connections.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must disable root and terminate network connections."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000460",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must use FIPS validated LDAP or OpenIDConnect.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000460_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must use FIPS validated LDAP or OpenIDConnect."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000510",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must protect authenticity of communications sessions with the use of FIPS-validated 140-2 or 140-3 validated cryptography.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000510_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must protect authenticity of communications sessions with the use of FIPS-validated 140-2 or 140-3 validated cryptography."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000560",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must prevent unauthorized and unintended information transfer via shared system resources and enable page poisoning.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000560_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must prevent unauthorized and unintended information transfer via shared system resources and enable page poisoning."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000660",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "Container images instantiated by OpenShift must execute using least privileges.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000660_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "Container images instantiated by OpenShift must execute using least privileges."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000720",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must enforce access restrictions and support auditing of the enforcement actions.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000720_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must enforce access restrictions and support auditing of the enforcement actions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000860",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "Red Hat Enterprise Linux CoreOS (RHCOS) must implement nonexecutable data to protect its memory from unauthorized code execution.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000860_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "Red Hat Enterprise Linux CoreOS (RHCOS) must implement nonexecutable data to protect its memory from unauthorized code execution."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-000930",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "OpenShift must generate audit records when successful/unsuccessful attempts to modify privileges occur.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -489,14 +489,14 @@
        {
         "id": "stig_openshift_4-CNTR-OS-000930_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "OpenShift must generate audit records when successful/unsuccessful attempts to modify privileges occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_openshift_4-CNTR-OS-001010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body.",
+      "title": "Red Hat Enterprise Linux CoreOS (RHCOS) must disable SSHD service.",
       "props": [
        {
         "name": "label",
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#2a700e08-f3d1-52ca-a256-26c30df34866",
+        "href": "#1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
         "rel": "implementation"
        }
       ],
@@ -522,7 +522,7 @@
        {
         "id": "stig_openshift_4-CNTR-OS-001010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/openshift_4/core.rego (package stig.openshift_4.core); see the rule body."
+        "prose": "Red Hat Enterprise Linux CoreOS (RHCOS) must disable SSHD service."
        }
       ],
       "class": "security"
@@ -571,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#ede5aed0-0802-5d82-b222-9bee715d7965",
+        "href": "#8b73cbbb-6c75-5bec-b153-07884b2d5550",
         "rel": "implementation"
        }
       ],
@@ -604,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#ede5aed0-0802-5d82-b222-9bee715d7965",
+        "href": "#8b73cbbb-6c75-5bec-b153-07884b2d5550",
         "rel": "implementation"
        }
       ],
@@ -623,7 +623,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "2a700e08-f3d1-52ca-a256-26c30df34866",
+     "uuid": "1ad2a8a7-2f1e-5054-85f1-c9b0696c2c7c",
      "title": "DISA STIG — Red Hat OpenShift Container Platform 4.x Security Technical Implementation Guide",
      "props": [
       {
@@ -634,13 +634,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/openshift_4/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/openshift_4/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ede5aed0-0802-5d82-b222-9bee715d7965",
+     "uuid": "8b73cbbb-6c75-5bec-b153-07884b2d5550",
      "title": "V2R6 | Release: 6 Benchmark Date: 01 Jul 2026",
      "props": [
       {
@@ -651,7 +651,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/openshift_4/stig_openshift_4_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/openshift_4/stig_openshift_4_complete.rego",
        "media-type": "text/plain"
       }
      ]

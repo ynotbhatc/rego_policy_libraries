@@ -49,7 +49,8 @@ def build(paths, all_rules=False):
                         "message": {"text": f.message},
                         "locations": [{"logicalLocations": [{"name": f.package, "kind": "module", "fullyQualifiedName": f"data.{f.package}"}]}],
                         "partialFingerprints": {"control/v1": f.rule.id},
-                        "properties": {"framework": f.rule.framework, "control": f.rule.label, "mapped": f.rule.mapped, "report": f.report_path}})
+                        "properties": {k: v for k, v in {"framework": f.rule.framework, "control": f.rule.label, "mapped": f.rule.mapped,
+                                                          "report": f.report_path, "severity": f.severity}.items() if v is not None}})
     reports = sorted({f.report_path for f in fs})
     return {"$schema": "https://json.schemastore.org/sarif-2.1.0.json", "version": "2.1.0",
             "runs": [{"tool": {"driver": {"name": "Rego Policy Libraries", "semanticVersion": v, "version": v, "informationUri": REPO,
