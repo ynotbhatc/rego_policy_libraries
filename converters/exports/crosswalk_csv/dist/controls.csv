@@ -1045,63 +1045,63 @@ cis_cloud,cis.azure.iam#21,cis_cloud-cis.azure.iam-21,users cannot create office
 cis_cloud,cis.azure.iam#22,cis_cloud-cis.azure.iam-22,users cannot create security groups,security,cis,cloud azure,cis.azure.iam,benchmarks/cis/cloud/azure/01_identity_access_management/azure_iam.rego
 cis_cloud,cis.azure.iam#23,cis_cloud-cis.azure.iam-23,users cannot create tenants,security,cis,cloud azure,cis.azure.iam,benchmarks/cis/cloud/azure/01_identity_access_management/azure_iam.rego
 cis_cloud,cis.azure.iam#24,cis_cloud-cis.azure.iam-24,users register apps disabled,security,cis,cloud azure,cis.azure.iam,benchmarks/cis/cloud/azure/01_identity_access_management/azure_iam.rego
-cis_cloud,CIS GCP 1.1,cis_cloud-CIS-GCP-1.1,Corporate login credentials not enforced — personal Gmail accounts should not have project access,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.2,cis_cloud-CIS-GCP-1.2,MFA not enforced for all non-service account users,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.3,cis_cloud-CIS-GCP-1.3,Security key (phishing-resistant MFA) not enforced for admin accounts,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.4,cis_cloud-CIS-GCP-1.4,One or more service accounts have admin/owner roles — violates least privilege,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.5,cis_cloud-CIS-GCP-1.5,User-managed service account keys exist — prefer Google-managed keys,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.6,cis_cloud-CIS-GCP-1.6,Service account keys not rotated within 90 days,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.7,cis_cloud-CIS-GCP-1.7,Same user can create and use service accounts — separation of duties not enforced,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.8,cis_cloud-CIS-GCP-1.8,Cloud KMS cryptokeys accessible by allUsers or allAuthenticatedUsers,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.9,cis_cloud-CIS-GCP-1.9,Cloud KMS keys not configured for automatic rotation within 90 days,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.10,cis_cloud-CIS-GCP-1.10,KMS encryption keys not protected against accidental deletion,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 1.11,cis_cloud-CIS-GCP-1.11,Workload Identity not used — service account key files in workloads is insecure,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.1,cis_cloud-CIS-GCP-2.1,Cloud Audit Logs Data Access logging not enabled for all services,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.2,cis_cloud-CIS-GCP-2.2,Log sink not configured to export all log entries to a long-term storage destination,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.3,cis_cloud-CIS-GCP-2.3,Log bucket lock (retention policy) not enabled to prevent log tampering,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.4,cis_cloud-CIS-GCP-2.4,No metric filter/alert for project ownership assignment or changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.5,cis_cloud-CIS-GCP-2.5,No metric filter/alert for audit configuration changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.6,cis_cloud-CIS-GCP-2.6,"No metric filter/alert for custom IAM role creation, modification, or deletion",security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.7,cis_cloud-CIS-GCP-2.7,No metric filter/alert for VPC network changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.8,cis_cloud-CIS-GCP-2.8,No metric filter/alert for VPC network route changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.9,cis_cloud-CIS-GCP-2.9,No metric filter/alert for VPC firewall rule changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.10,cis_cloud-CIS-GCP-2.10,No metric filter/alert for Cloud Storage bucket IAM permission changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 2.11,cis_cloud-CIS-GCP-2.11,No metric filter/alert for Cloud SQL instance configuration changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.1,cis_cloud-CIS-GCP-3.1,Default network exists in the project — delete default network and use custom VPCs,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.2,cis_cloud-CIS-GCP-3.2,Legacy network exists in project — migrate to VPC networks,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.3,cis_cloud-CIS-GCP-3.3,DNSSEC not enabled for Cloud DNS managed zones,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.4,cis_cloud-CIS-GCP-3.4,RSASHA1 algorithm used for DNSSEC key-signing key — use stronger algorithm,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.5,cis_cloud-CIS-GCP-3.5,RSASHA1 algorithm used for DNSSEC zone-signing key — use stronger algorithm,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.6,cis_cloud-CIS-GCP-3.6,Firewall rule allows SSH (port 22) from 0.0.0.0/0 or ::/0,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.7,cis_cloud-CIS-GCP-3.7,Firewall rule allows RDP (port 3389) from 0.0.0.0/0 or ::/0,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.8,cis_cloud-CIS-GCP-3.8,VPC Flow Logs not enabled on all subnets,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 3.9,cis_cloud-CIS-GCP-3.9,Load balancer SSL policy permits weak cipher suites or deprecated TLS versions,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.1,cis_cloud-CIS-GCP-4.1,VM instances use default service account with full API access scope,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.2,cis_cloud-CIS-GCP-4.2,VM instances using default service account — create dedicated per-workload service accounts,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.3,cis_cloud-CIS-GCP-4.3,Serial port access enabled on one or more VM instances — disable except for debugging,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.4,cis_cloud-CIS-GCP-4.4,Compute instances have public IP addresses — use Cloud NAT or IAP for external connectivity,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.5,cis_cloud-CIS-GCP-4.5,Confidential Computing (memory encryption) not enabled on sensitive workload VMs,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.6,cis_cloud-CIS-GCP-4.6,"Shielded VM (Secure Boot, vTPM, Integrity Monitoring) not enabled on instances",security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 4.7,cis_cloud-CIS-GCP-4.7,OS Login not enabled — centralized SSH key management via IAM not enforced,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 5.1,cis_cloud-CIS-GCP-5.1,Cloud Storage bucket accessible by allUsers or allAuthenticatedUsers,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 5.2,cis_cloud-CIS-GCP-5.2,Uniform bucket-level access not enabled — object-level ACLs create inconsistent controls,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 5.3,cis_cloud-CIS-GCP-5.3,Access logging not enabled on Cloud Storage buckets containing sensitive data,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 6.1,cis_cloud-CIS-GCP-6.1,Cloud SQL database instance does not require SSL for all connections,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 6.2,cis_cloud-CIS-GCP-6.2,Cloud SQL authorized network allows 0.0.0.0/0 — restrict to known IPs,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 6.3,cis_cloud-CIS-GCP-6.3,Cloud SQL instances use public IP — configure private IP connectivity,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 6.4,cis_cloud-CIS-GCP-6.4,Automated backups not enabled on Cloud SQL instances,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 6.5,cis_cloud-CIS-GCP-6.5,"Cloud SQL database flags set to insecure values (e.g., local_infile=on, log_checkpoints=off)",security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 7.1,cis_cloud-CIS-GCP-7.1,BigQuery dataset accessible by allUsers or allAuthenticatedUsers,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 7.2,cis_cloud-CIS-GCP-7.2,BigQuery tables with sensitive data not encrypted with Customer Managed Encryption Keys,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.1,cis_cloud-CIS-GCP-8.1,Cloud Logging (Stackdriver) not enabled on GKE clusters,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.2,cis_cloud-CIS-GCP-8.2,Cloud Monitoring (Stackdriver) not enabled on GKE clusters,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.3,cis_cloud-CIS-GCP-8.3,Legacy Authorization (ABAC) not disabled on GKE cluster — use RBAC,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.4,cis_cloud-CIS-GCP-8.4,Master Authorized Networks not enabled — GKE control plane accessible from any IP,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.5,cis_cloud-CIS-GCP-8.5,GKE cluster resource labels not configured for cost attribution and governance,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.6,cis_cloud-CIS-GCP-8.6,Automatic node repair not enabled on GKE node pools,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.7,cis_cloud-CIS-GCP-8.7,Automatic node upgrades not enabled on GKE node pools,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.8,cis_cloud-CIS-GCP-8.8,GKE node pools not using Container-Optimized OS (COS) image,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
-cis_cloud,CIS GCP 8.9,cis_cloud-CIS-GCP-8.9,Workload Identity not enabled on GKE cluster — pods using node service account instead,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/cloud/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.1,cis_cloud-CIS-GCP-1.1,Corporate login credentials not enforced — personal Gmail accounts should not have project access,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.2,cis_cloud-CIS-GCP-1.2,MFA not enforced for all non-service account users,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.3,cis_cloud-CIS-GCP-1.3,Security key (phishing-resistant MFA) not enforced for admin accounts,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.4,cis_cloud-CIS-GCP-1.4,One or more service accounts have admin/owner roles — violates least privilege,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.5,cis_cloud-CIS-GCP-1.5,User-managed service account keys exist — prefer Google-managed keys,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.6,cis_cloud-CIS-GCP-1.6,Service account keys not rotated within 90 days,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.7,cis_cloud-CIS-GCP-1.7,Same user can create and use service accounts — separation of duties not enforced,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.8,cis_cloud-CIS-GCP-1.8,Cloud KMS cryptokeys accessible by allUsers or allAuthenticatedUsers,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.9,cis_cloud-CIS-GCP-1.9,Cloud KMS keys not configured for automatic rotation within 90 days,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.10,cis_cloud-CIS-GCP-1.10,KMS encryption keys not protected against accidental deletion,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 1.11,cis_cloud-CIS-GCP-1.11,Workload Identity not used — service account key files in workloads is insecure,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.1,cis_cloud-CIS-GCP-2.1,Cloud Audit Logs Data Access logging not enabled for all services,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.2,cis_cloud-CIS-GCP-2.2,Log sink not configured to export all log entries to a long-term storage destination,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.3,cis_cloud-CIS-GCP-2.3,Log bucket lock (retention policy) not enabled to prevent log tampering,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.4,cis_cloud-CIS-GCP-2.4,No metric filter/alert for project ownership assignment or changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.5,cis_cloud-CIS-GCP-2.5,No metric filter/alert for audit configuration changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.6,cis_cloud-CIS-GCP-2.6,"No metric filter/alert for custom IAM role creation, modification, or deletion",security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.7,cis_cloud-CIS-GCP-2.7,No metric filter/alert for VPC network changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.8,cis_cloud-CIS-GCP-2.8,No metric filter/alert for VPC network route changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.9,cis_cloud-CIS-GCP-2.9,No metric filter/alert for VPC firewall rule changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.10,cis_cloud-CIS-GCP-2.10,No metric filter/alert for Cloud Storage bucket IAM permission changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 2.11,cis_cloud-CIS-GCP-2.11,No metric filter/alert for Cloud SQL instance configuration changes,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.1,cis_cloud-CIS-GCP-3.1,Default network exists in the project — delete default network and use custom VPCs,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.2,cis_cloud-CIS-GCP-3.2,Legacy network exists in project — migrate to VPC networks,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.3,cis_cloud-CIS-GCP-3.3,DNSSEC not enabled for Cloud DNS managed zones,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.4,cis_cloud-CIS-GCP-3.4,RSASHA1 algorithm used for DNSSEC key-signing key — use stronger algorithm,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.5,cis_cloud-CIS-GCP-3.5,RSASHA1 algorithm used for DNSSEC zone-signing key — use stronger algorithm,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.6,cis_cloud-CIS-GCP-3.6,Firewall rule allows SSH (port 22) from 0.0.0.0/0 or ::/0,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.7,cis_cloud-CIS-GCP-3.7,Firewall rule allows RDP (port 3389) from 0.0.0.0/0 or ::/0,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.8,cis_cloud-CIS-GCP-3.8,VPC Flow Logs not enabled on all subnets,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 3.9,cis_cloud-CIS-GCP-3.9,Load balancer SSL policy permits weak cipher suites or deprecated TLS versions,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.1,cis_cloud-CIS-GCP-4.1,VM instances use default service account with full API access scope,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.2,cis_cloud-CIS-GCP-4.2,VM instances using default service account — create dedicated per-workload service accounts,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.3,cis_cloud-CIS-GCP-4.3,Serial port access enabled on one or more VM instances — disable except for debugging,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.4,cis_cloud-CIS-GCP-4.4,Compute instances have public IP addresses — use Cloud NAT or IAP for external connectivity,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.5,cis_cloud-CIS-GCP-4.5,Confidential Computing (memory encryption) not enabled on sensitive workload VMs,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.6,cis_cloud-CIS-GCP-4.6,"Shielded VM (Secure Boot, vTPM, Integrity Monitoring) not enabled on instances",security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 4.7,cis_cloud-CIS-GCP-4.7,OS Login not enabled — centralized SSH key management via IAM not enforced,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 5.1,cis_cloud-CIS-GCP-5.1,Cloud Storage bucket accessible by allUsers or allAuthenticatedUsers,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 5.2,cis_cloud-CIS-GCP-5.2,Uniform bucket-level access not enabled — object-level ACLs create inconsistent controls,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 5.3,cis_cloud-CIS-GCP-5.3,Access logging not enabled on Cloud Storage buckets containing sensitive data,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 6.1,cis_cloud-CIS-GCP-6.1,Cloud SQL database instance does not require SSL for all connections,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 6.2,cis_cloud-CIS-GCP-6.2,Cloud SQL authorized network allows 0.0.0.0/0 — restrict to known IPs,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 6.3,cis_cloud-CIS-GCP-6.3,Cloud SQL instances use public IP — configure private IP connectivity,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 6.4,cis_cloud-CIS-GCP-6.4,Automated backups not enabled on Cloud SQL instances,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 6.5,cis_cloud-CIS-GCP-6.5,"Cloud SQL database flags set to insecure values (e.g., local_infile=on, log_checkpoints=off)",security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 7.1,cis_cloud-CIS-GCP-7.1,BigQuery dataset accessible by allUsers or allAuthenticatedUsers,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 7.2,cis_cloud-CIS-GCP-7.2,BigQuery tables with sensitive data not encrypted with Customer Managed Encryption Keys,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.1,cis_cloud-CIS-GCP-8.1,Cloud Logging (Stackdriver) not enabled on GKE clusters,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.2,cis_cloud-CIS-GCP-8.2,Cloud Monitoring (Stackdriver) not enabled on GKE clusters,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.3,cis_cloud-CIS-GCP-8.3,Legacy Authorization (ABAC) not disabled on GKE cluster — use RBAC,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.4,cis_cloud-CIS-GCP-8.4,Master Authorized Networks not enabled — GKE control plane accessible from any IP,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.5,cis_cloud-CIS-GCP-8.5,GKE cluster resource labels not configured for cost attribution and governance,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.6,cis_cloud-CIS-GCP-8.6,Automatic node repair not enabled on GKE node pools,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.7,cis_cloud-CIS-GCP-8.7,Automatic node upgrades not enabled on GKE node pools,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.8,cis_cloud-CIS-GCP-8.8,GKE node pools not using Container-Optimized OS (COS) image,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
+cis_cloud,CIS GCP 8.9,cis_cloud-CIS-GCP-8.9,Workload Identity not enabled on GKE cluster — pods using node service account instead,security,cis,cloud gcp,cis_gcp.main,benchmarks/cis/gcp/cis_gcp_main.rego
 cis_containers,cis.docker.host#1,cis_containers-cis.docker.host-1,containerd auditing,security,cis,container,cis.docker.host,benchmarks/cis/containers/01_host_configuration/host_config.rego
 cis_containers,cis.docker.host#2,cis_containers-cis.docker.host-2,daemon json auditing,security,cis,container,cis.docker.host,benchmarks/cis/containers/01_host_configuration/host_config.rego
 cis_containers,cis.docker.host#3,cis_containers-cis.docker.host-3,default docker auditing,security,cis,container,cis.docker.host,benchmarks/cis/containers/01_host_configuration/host_config.rego

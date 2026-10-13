@@ -8,6 +8,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — CIS GCP lives in one directory; the guard reads bare `compliant` rules
+
+- `cis_gcp_main.rego` (57 checks, `cis_gcp.main`) moves from the legacy `benchmarks/cis/cloud/gcp/` tree to
+  `benchmarks/cis/gcp/`, next to the foundations and Level 2 modules it belongs with, mirroring the AWS and Azure
+  layout. Its smoke test moves with it; package, endpoint and count are unchanged. `benchmarks/cis/gcp` now
+  reads as one benchmark (3 modules, 109 checks) and `cis_gcp_foundations` is judged as a section of it rather
+  than as a sparse module on its own.
+- `cis_gcp_foundations` fails closed: `default compliant := false` and `input.iam_users` as a precondition, the
+  pattern the other array-style modules received in 2.3.5.
+- The coverage stamper read `compliant` only from a report object, so a module with a bare `compliant` rule
+  and no report was scored on its `violations` count alone. It now falls back to the bare rule. Effect on
+  the scan: `cis_gcp_foundations` and the Amazon Linux 2023 user/group section (caught by its orchestrator,
+  whose bare `compliant` is false on empty input) leave the unguarded list, which goes from 11 to 9. The nine
+  that remain report `compliant` true, or nothing, on empty input with no orchestrator above them, and are
+  the next fail-closed work item: nginx, OpenShift, the RHEL 9 legacy PAM module, m365 exchange, m365 v7
+  complete, ESXi, vCenter, GEISA api, crypto-miner detection. (`docs/TEST_GENERATION.md` reported zero
+  because its fail-closed test is only generated for modules with a report object.)
+- `COVERAGE.md` regenerated: 732 of 740 policy files have tests (it still said 235 from before the generated
+  suite). OSCAL and crosswalk dists rebuilt for the new path.
+- Makefile: the generator targets are declared `.PHONY`; `make crosswalk` was a no-op because the `crosswalk/`
+  policy directory satisfied the target.
+
 ## [2.3.6] - 2026-10-12
 
 ### Changed — citations read from every message shape; the last six fail-open modules

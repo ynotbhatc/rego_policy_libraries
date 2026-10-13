@@ -12,7 +12,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: none
+#     guard: orchestrator
 #     as_of: v2.3.6
 package cis_amazon_linux_2023.user_group
 

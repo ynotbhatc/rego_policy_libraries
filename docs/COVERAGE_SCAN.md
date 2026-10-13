@@ -14,11 +14,11 @@
 |---|---|
 | full | 45 |
 | partial | 4 |
-| sparse | 16 |
+| sparse | 15 |
 | stub | 1 |
-| sized | 437 |
-| section | 106 |
-| orchestrator | 90 |
+| sized | 436 |
+| section | 107 |
+| orchestrator | 91 |
 | overlay | 11 |
 | gate | 23 |
 | unrecognised | 7 |
@@ -67,6 +67,7 @@
 | `benchmarks/cis/apache` | 1 | 142 | 142 (1) | 1/1 |
 | `frameworks/financial/dora` | 3 | 115 | 91 (1) | 3/3 |
 | `frameworks/federal/cjis` | 14 | 111 | — (0) | 14/14 |
+| `benchmarks/cis/gcp` | 3 | 109 | — (0) | 3/3 |
 | `frameworks/financial/bnm_rmit` | 1 | 107 | — (0) | 1/1 |
 | `benchmarks/stig/windows_server_2022` | 5 | 106 | — (0) | 5/5 |
 | `benchmarks/scuba/m365` | 8 | 104 | — (0) | 8/8 |
@@ -74,7 +75,6 @@
 | `frameworks/regional/essential_eight` | 9 | 104 | — (0) | 9/9 |
 | `benchmarks/cis/nginx` | 1 | 97 | — (0) | 1/1 |
 | `benchmarks/stig/windows_server_2025` | 5 | 97 | — (0) | 5/5 |
-| `benchmarks/cis/cloud` | 3 | 95 | — (0) | 3/3 |
 | `frameworks/financial/sox` | 4 | 95 | — (0) | 4/4 |
 | `frameworks/federal/zero_trust` | 9 | 91 | — (0) | 9/9 |
 | `benchmarks/cis/web_servers` | 3 | 90 | — (0) | 3/3 |
@@ -96,7 +96,6 @@
 | `frameworks/regional/cert_in` | 1 | 54 | — (0) | 1/1 |
 | `benchmarks/cis/azure` | 3 | 53 | — (0) | 3/3 |
 | `benchmarks/cis/mcp_server` | 8 | 53 | — (0) | 8/8 |
-| `benchmarks/cis/gcp` | 2 | 52 | — (0) | 2/2 |
 | `frameworks/management/tisax` | 1 | 52 | 51 (1) | 1/1 |
 | `frameworks/regional/meti_csm` | 1 | 52 | — (0) | 1/1 |
 | `frameworks/federal/fedramp_20x` | 1 | 50 | — (0) | 1/1 |
@@ -112,6 +111,7 @@
 | `frameworks/regulatory/cfr_part_11` | 1 | 42 | 43 (1) | 1/1 |
 | `frameworks/federal/fedramp` | 2 | 41 | — (0) | 2/2 |
 | `benchmarks/cis/gke` | 1 | 40 | 40 (1) | 1/1 |
+| `benchmarks/cis/cloud` | 2 | 38 | — (0) | 2/2 |
 | `governance/iso_42001` | 1 | 38 | 38 (1) | 1/1 |
 | `benchmarks/cis/containers` | 2 | 37 | — (0) | 2/2 |
 | `frameworks/compliance/nis2` | 1 | 35 | 34 (1) | 1/1 |
@@ -188,7 +188,7 @@ The module says how many controls the standard has; the parser finds fewer. Thes
 | `frameworks/federal/nist/sp_800_171/nist_800_171_main.rego` | 110 | 88 | directory | 22 | partial |
 | `frameworks/federal/nist/cybersecurity_framework_2.0/nist_csf_main.rego` | 106 | 87 | directory | 19 | partial |
 
-## Sparse and stub modules without a declared total (17)
+## Sparse and stub modules without a declared total (16)
 
 Small by size; whether that is a gap depends on the standard, which these modules do not declare. Declaring `total_controls` in the report literal moves them into the table above.
 
@@ -201,7 +201,6 @@ Small by size; whether that is a gap depends on the standard, which these module
 | `governance/geisa/geisa_vee.rego` | 3 | 0 | yes |
 | `benchmarks/cis/network_devices/arista/cis_arista_eos.rego` | 4 | 4 | yes |
 | `benchmarks/cis/os/linux/redhat/cis_policy.rego` | 4 | 4 | yes |
-| `benchmarks/cis/gcp/cis_gcp_foundations.rego` | 7 | 7 | yes |
 | `benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego` | 7 | 7 | yes |
 | `benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego` | 7 | 7 | yes |
 | `benchmarks/stig/windows_10/stig_windows_10_complete.rego` | 7 | 7 | yes |
@@ -224,14 +223,12 @@ Zero checks found, not an orchestrator. Either the module expresses checks in a 
 - `frameworks/management/corporate/environment_controls.rego`
 - `governance/geisa/geisa_compliance.rego`
 
-## Fail-closed guard (567 self, 24 by orchestrator, 11 none, 138 n/a)
+## Fail-closed guard (568 self, 25 by orchestrator, 9 none, 138 n/a)
 
 Measured by evaluating the whole tree on empty input. `self`: the module's own report is not compliant on empty input. `orchestrator`: the module is silent on empty input, but an orchestrator in its tree that references it is fail-closed, so the gap is caught one level up (by design for sectioned benchmarks). `none`: silent on empty input and nothing above it catches that — **these are fail-open**, the work queue for the library's fail-closed rule.
 
-### Fail-open modules, no guard (11)
+### Fail-open modules, no guard (9)
 
-- `benchmarks/cis/amazon_linux_2023/user_group_validation.rego`
-- `benchmarks/cis/gcp/cis_gcp_foundations.rego`
 - `benchmarks/cis/nginx/cis_nginx_1_20.rego`
 - `benchmarks/cis/openshift/cis_openshift_4.rego`
 - `benchmarks/cis/os/linux/rhel_9_legacy/modules/pam_validation.rego`
