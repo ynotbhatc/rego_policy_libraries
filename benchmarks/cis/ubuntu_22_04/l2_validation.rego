@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_ubuntu_2204.l2
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 - Level 2 Additional Controls

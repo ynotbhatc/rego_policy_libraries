@@ -1,0 +1,4125 @@
+{
+ "catalog": {
+  "uuid": "323d8e3b-1ba0-514d-96b9-99f9598db225",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_oracle_linux_9 (DISA STIG for Oracle Linux 9 - Account and Authentication Module)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_oracle_linux_9"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_oracle_linux_9-account_auth",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Account and Authentication Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.account_auth"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/account_auth.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001055",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001055"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001055"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001055_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-003020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-003020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-003020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-003020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001105",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001105"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001105"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001105_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001005",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001005_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001015",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001015"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001015"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001015_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001120",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001120_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001085",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001085"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001085"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001085_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002416",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002416"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002416"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002416_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-003001",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-003001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-003001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-003001_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-003006",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-003006"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-003006"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-003006_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.account_auth-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.account_auth#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.account_auth#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.account_auth-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/account_auth.rego (package stig.oracle_linux_9.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-audit_logging",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Audit Logging Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.audit_logging"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/audit_logging.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000441",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000441"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000441"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000441_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000770",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000770"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000770"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000770_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000765",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000765"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000765"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000765_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000715",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000715"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000715"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000715_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000645",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000645"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000645"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000645_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000640",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000640"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000640"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000640_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000545",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000545"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000545"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000545_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000525",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000525"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000525"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000525_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000670",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000670"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000670"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000670_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000690",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000690"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000690"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000690_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.audit_logging-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.audit_logging#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.audit_logging#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.audit_logging-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/audit_logging.rego (package stig.oracle_linux_9.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-configuration_management",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Configuration Management Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.configuration_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/configuration_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002413",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002413"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002413"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002413_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000060",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000060_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002107",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002107"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002107"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002107_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000065",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000065"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000065"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000065_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001115",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001115"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001115"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001115_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000090",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000090_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000256",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000256"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000256"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000256_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002423",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002423"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002423"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002423_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002406",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002406"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002406"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002406_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002410",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002410_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002428",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002428"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002428"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002428_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002430",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002430_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000047",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000047"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000047"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000047_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000042",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000042"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000042"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000042_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000301",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000301"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000301"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000301_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000302",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000302"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000302"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000302_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000004",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000004_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002070",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002070_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002071",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002071"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002071"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002071_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002072",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002072"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002072"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002072_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000006",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000006"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000006"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000006_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.configuration_management-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.configuration_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.configuration_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e970e40f-6523-5c63-93ac-74419cf177c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.configuration_management-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/configuration_management.rego (package stig.oracle_linux_9.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-file_permissions",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - File Permissions Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.file_permissions"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/file_permissions.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002512",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002512"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002512"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002512_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002511",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002511"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002511"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002511_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002548",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002548"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002548"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002548_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002552",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002552"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002552"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002552_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002536",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002536"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002536"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002536_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002540",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002540"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002540"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002540_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002525",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002525"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002525"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002525_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002524",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002524"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002524"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002524_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002506",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002506"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002506"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002506_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002515",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002515"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002515"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002515_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.file_permissions-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.file_permissions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.file_permissions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b04134aa-7178-56bc-9d23-b4ad923a92fa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.file_permissions-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/file_permissions.rego (package stig.oracle_linux_9.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-network",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Network Configuration Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.network"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/network.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000220",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000220_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006028",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006028"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006028"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006028_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006020",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006020_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006032",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006032"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006032"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006032_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006042",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006042"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006042"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006042_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006031",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006031"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006031"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006031_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006050",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006050_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006024",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006024"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006024"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006024_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006041",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006041"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006041"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006041_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006001",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006001_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000046",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000046"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000046"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000046_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006004",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006004_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.network-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0b7252e0-855c-59f8-90b1-8935a9beb1da",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.network-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-pki_crypto",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - PKI and Cryptography Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.pki_crypto"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/pki_crypto.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000241",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000241"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000241"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d25db37-bf89-5f82-89b2-3f9496fae517",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000241_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000242",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000242"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000242"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d25db37-bf89-5f82-89b2-3f9496fae517",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000242_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000930",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000930"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000930"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d25db37-bf89-5f82-89b2-3f9496fae517",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000930_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000925",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000925"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000925"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d25db37-bf89-5f82-89b2-3f9496fae517",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000925_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000910",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000910"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000910"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d25db37-bf89-5f82-89b2-3f9496fae517",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000910_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.pki_crypto-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.pki_crypto#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.pki_crypto#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8d25db37-bf89-5f82-89b2-3f9496fae517",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.pki_crypto-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/pki_crypto.rego (package stig.oracle_linux_9.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-services",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Services Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.services"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/services.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000135",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000135"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000135"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0281b78b-9580-555c-bd2e-17a008e7c2e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000135_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000130",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0281b78b-9580-555c-bd2e-17a008e7c2e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000130_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000110",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0281b78b-9580-555c-bd2e-17a008e7c2e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000110_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000125",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000125"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000125"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0281b78b-9580-555c-bd2e-17a008e7c2e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000125_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0281b78b-9580-555c-bd2e-17a008e7c2e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.services-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.services#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.services#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0281b78b-9580-555c-bd2e-17a008e7c2e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.services-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/services.rego (package stig.oracle_linux_9.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-software_integrity",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Software Integrity Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.software_integrity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/software_integrity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000498",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000498"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000498"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0fbf5d9-5bd9-570a-8c4b-94f4ce6361d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000498_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002407",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002407"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002407"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0fbf5d9-5bd9-570a-8c4b-94f4ce6361d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002407_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000350",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0fbf5d9-5bd9-570a-8c4b-94f4ce6361d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000350_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000351",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000351"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000351"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0fbf5d9-5bd9-570a-8c4b-94f4ce6361d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000351_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.software_integrity-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.software_integrity#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.software_integrity#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f0fbf5d9-5bd9-570a-8c4b-94f4ce6361d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.software_integrity-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/software_integrity.rego (package stig.oracle_linux_9.software_integrity); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-ssh_config",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - SSH Configuration Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9.ssh_config"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/ssh_config.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000255",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000255"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000255"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000255_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002343",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002343"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002343"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002343_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002344",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002344"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002344"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002344_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002345",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002345"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002345"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002345_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000251",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000251"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000251"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000251_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002357",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002357"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002357"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002357_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002347",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002347"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002347"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002347_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002346",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002346"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002346"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002346_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002351",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002351"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002351"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002351_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002348",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002348"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002348"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002348_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002349",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002349"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002349"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002349_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002352",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002352"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002352"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002352_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9.ssh_config-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9.ssh_config#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9.ssh_config#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9.ssh_config-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/ssh_config.rego (package stig.oracle_linux_9.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_linux_9-stig_oracle_linux_9_complete",
+    "class": "rego-module",
+    "title": "DISA STIG for Oracle Linux 9 - Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_linux_9"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-2",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-3",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-4",
+      "title": "not a finding",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-4_stmt",
+        "name": "statement",
+        "prose": "not a finding"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-5",
+      "title": "not applicable",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-5_stmt",
+        "name": "statement",
+        "prose": "not applicable"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-6",
+      "title": "not reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-6_stmt",
+        "name": "statement",
+        "prose": "not reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-stig.oracle_linux_9-7",
+      "title": "open",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.oracle_linux_9#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.oracle_linux_9#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-stig.oracle_linux_9-7_stmt",
+        "name": "statement",
+        "prose": "open"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego (package stig.oracle_linux_9); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c9c9f46b-5fa3-5a2f-8361-7bb6a70a6836",
+     "title": "DISA STIG for Oracle Linux 9 - Account and Authentication Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.account_auth"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/account_auth.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fb9157e2-c441-54e8-85c9-b9bc9b37cecf",
+     "title": "DISA STIG for Oracle Linux 9 - Audit Logging Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.audit_logging"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/audit_logging.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e970e40f-6523-5c63-93ac-74419cf177c2",
+     "title": "DISA STIG for Oracle Linux 9 - Configuration Management Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.configuration_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/configuration_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b04134aa-7178-56bc-9d23-b4ad923a92fa",
+     "title": "DISA STIG for Oracle Linux 9 - File Permissions Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.file_permissions"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/file_permissions.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0b7252e0-855c-59f8-90b1-8935a9beb1da",
+     "title": "DISA STIG for Oracle Linux 9 - Network Configuration Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.network"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/network.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8d25db37-bf89-5f82-89b2-3f9496fae517",
+     "title": "DISA STIG for Oracle Linux 9 - PKI and Cryptography Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.pki_crypto"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/pki_crypto.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0281b78b-9580-555c-bd2e-17a008e7c2e9",
+     "title": "DISA STIG for Oracle Linux 9 - Services Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/services.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f0fbf5d9-5bd9-570a-8c4b-94f4ce6361d5",
+     "title": "DISA STIG for Oracle Linux 9 - Software Integrity Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.software_integrity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/software_integrity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8a0f4e05-61d3-5a0a-acc9-05e9a4549495",
+     "title": "DISA STIG for Oracle Linux 9 - SSH Configuration Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9.ssh_config"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/ssh_config.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a1d681dd-b62c-5855-86b3-3dbc3f9ddd19",
+     "title": "DISA STIG for Oracle Linux 9 - Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_linux_9"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

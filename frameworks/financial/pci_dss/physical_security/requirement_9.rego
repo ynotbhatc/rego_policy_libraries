@@ -15,7 +15,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package pci_dss.physical_security.requirement_9
 
 import rego.v1

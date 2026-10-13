@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package stig.apache_2_4_unix.main
 
 import data.stig.apache_2_4_unix

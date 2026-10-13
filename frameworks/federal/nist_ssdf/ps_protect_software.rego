@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package nist_ssdf.ps
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Protect the Software (PS)

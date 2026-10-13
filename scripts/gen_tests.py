@@ -33,7 +33,8 @@ def gen(rel, pkg, names):
         L += [f"test_{stem}_report_wellformed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tis_object(report)", "\tcount(report) > 0", "}", "",
               f"test_{stem}_fail_closed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tnot object.get(report, \"compliant\", false) == true", "}", ""]
     elif "compliant" in names:
-        L += [f"test_{stem}_fail_closed_on_empty_input if {{", f"\tc := object.get(data.{pkg}, \"compliant\", false) with input as {{}}", "\tnot c == true", "}", ""]
+        # `not <ref>` is true when the ref is undefined or false; object.get on a package object trips the type checker
+        L += [f"test_{stem}_fail_closed_on_empty_input if {{", f"\tnot data.{pkg}.compliant with input as {{}}", "}", ""]
     if "violations" in names:
         L += [f"test_{stem}_violations_on_empty_input if {{", f"\tv := data.{pkg}.violations with input as {{}}", "\tcount(v) > 0", "}", ""]
     return "\n".join(L)
@@ -41,7 +42,7 @@ def gen(rel, pkg, names):
 
 def run_tests(paths):
     """opa test on the given dirs; returns (passed, failed set of test names, error text)"""
-    out = subprocess.run(["opa", "test", ".", "--ignore", ".github", "--ignore", "converters"], cwd=ROOT, capture_output=True, text=True)
+    out = subprocess.run(["opa", "test", ".", "--ignore", ".github", "--ignore", "converters", "--ignore", "tools"], cwd=ROOT, capture_output=True, text=True)
     text = out.stdout + out.stderr
     # keep the package: sibling platforms reuse rule names (test_ssh_validation_...), so a failure must be
     # attributed to the one file whose package it belongs to

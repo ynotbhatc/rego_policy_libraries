@@ -26,6 +26,21 @@ content — tooling that regenerates it from DISA's own XCCDF data.
    you didn't change — the ID gate cannot catch a rule whose meaning moved.
    This caught three rounds of drift during the 2026-09-03 build.
 
+## Scripts added 2026-10-13
+
+- `parse_xccdf.py <key>=<Manual-xccdf.xml> …` — the parse loop as a script: writes
+  `catalogs/<key>.json` (benchmark, version, release date, rules with full check
+  text and CCI idents). Catalogs are gitignored; regenerate from the compilation.
+- `gen_oracle_linux.py` — derives `oracle_linux_9` from the RHEL 9 modules and
+  `oracle_linux_8` from those, by DISA rule title (never by the library's own
+  stig_id — see the RHEL 9 id defect in `benchmarks/stig/README.md`). Every
+  fuzzy pair is printed; reviewed overrides and refusals live in `PLATFORMS`.
+- `gen_oracle_db.py` — Oracle Database 19c and MySQL 8.0, every rule in the
+  catalog (query-backed facts or named attestations). Aborts if a catalog rule
+  has no logic entry or a logic entry has no catalog rule.
+- `gen_crosswalk.py <U_CCI_List.xml> <key> …` — stig_id → CCI → 800-53 Rev 5
+  join for the given catalogs, merged into `crosswalk/stig_800_53/data.json`.
+
 ## Lessons encoded
 
 - Platforms leave the library (Win 10, Server 2016/2019, Ubuntu 20.04 in

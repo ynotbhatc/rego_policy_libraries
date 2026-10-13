@@ -12,3 +12,6 @@ converters/**/out/
 # python bytecode from the scripts/ tools
 __pycache__/
 *.pyc
+
+# DISA XCCDF-derived catalogs (regenerate with tools/stig_generators/parse_xccdf.py)
+tools/stig_generators/catalogs/

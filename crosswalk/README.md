@@ -5,8 +5,8 @@ control is **assessed once and reported against every standard that inherits
 it**. See `docs/CONTROL_CORRELATION_PATTERN.md` for the measured pattern this
 implements.
 
-- `stig_800_53/data.json` — `stig_id → [800-53 control]` for 15 STIG
-  platforms (loads at `data.crosswalk.stig_800_53`). Provenance in `.meta`.
+- `stig_800_53/data.json` — `stig_id → [800-53 control]` for 17 STIG
+  platforms (3,787 rules) (loads at `data.crosswalk.stig_800_53`). Provenance in `.meta`.
 - `correlation.rego` (`package crosswalk.correlation`) — given
   `input.findings` (any stig aggregator's finding list), emits
   `control_status[<800-53>] = "satisfied" | "gap"` (absent = not evaluated)

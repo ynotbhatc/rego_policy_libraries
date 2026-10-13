@@ -29,7 +29,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package enforcement.terraform.plan
 
 import rego.v1

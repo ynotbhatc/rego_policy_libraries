@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_rhel8.services
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration

@@ -8,6 +8,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.4.0] - 2026-10-13
+
+### Added — DISA STIGs for the Oracle platforms (October 2026 library)
+
+- `benchmarks/stig/oracle_linux_9` (OL09 V1R7, 93 rules), `oracle_linux_8` (OL08 V2R10, 68 rules),
+  `oracle_database_19c` (O19C V1R6, all 96 rules), `oracle_mysql_8` (MYS8 V2R3, all 100 rules). The Linux
+  modules are derived from the RHEL 9 modules by DISA rule title with reviewed overrides; the database modules
+  read the value DISA's check queries where there is one and carry a named attestation where the check is a
+  review. Each platform has the fail-closed `main` alias, a green-fixture test that closes every finding, and
+  a probe test that opens one. All four join the 800-53 spine (3,787 STIG rules mapped, was 2,767).
+- Count 13,778 → **14,175** control-level checks; 768 policy files (was 740); suite 3,645 tests.
+- `tools/stig_generators/parse_xccdf.py`, `gen_oracle_linux.py`, `gen_oracle_db.py`, `gen_crosswalk.py`.
+- **Found on the way:** the RHEL 9 STIG modules' ids disagree with the current catalog for 108 of 143 findings
+  (the title beside the logic names a different rule than the id). Documented in `benchmarks/stig/README.md`;
+  re-stamping by title is the next STIG item. The October 2026 library no longer ships RHEL 8, WebLogic 12c or
+  Oracle HTTP Server (RHEL 10 V1R3 appears); noted, not yet acted on.
+
 ## [2.3.7] - 2026-10-13
 
 ### Fixed — no module in the library is fail-open on empty input

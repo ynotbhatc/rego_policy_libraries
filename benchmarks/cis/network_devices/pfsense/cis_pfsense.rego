@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_pfsense
 
 # CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0

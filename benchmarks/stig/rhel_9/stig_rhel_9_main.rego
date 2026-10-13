@@ -23,7 +23,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package stig.rhel_9.main
 
 import data.stig.rhel_9
