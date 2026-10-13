@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_ubuntu_20_04.services
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 2.1.x, 2.2.x, 2.3.x: Service Configuration

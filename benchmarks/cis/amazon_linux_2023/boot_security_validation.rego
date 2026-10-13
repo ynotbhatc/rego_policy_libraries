@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_amazon_linux_2023.boot_security
 
 import rego.v1

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package governance.geisa.adm
 
 import rego.v1
@@ -57,7 +57,7 @@ _lwm2m_version_ok if {
 # ─── Violations ──────────────────────────────────────────────────────────────
 
 violations contains "ADM: lwm2m input missing or not an object" if {
-	not is_object(input.lwm2m)
+	not is_object(object.get(input, "lwm2m", null))
 }
 
 violations contains "ADM: device is not registered with LwM2M server" if {
@@ -79,7 +79,7 @@ violations contains "ADM: Object /9 (Software Management) must be registered" if
 
 violations contains "ADM: lwm2m.object9 missing or not an object" if {
 	is_object(_lwm2m)
-	not is_object(input.lwm2m.object9)
+	not is_object(object.get(input, ["lwm2m", "object9"], null))
 }
 
 violations contains sprintf("ADM: update_result must be 1 (Success), got %v", [_obj9.update_result]) if {

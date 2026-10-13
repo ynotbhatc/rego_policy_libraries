@@ -8,7 +8,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-### Security — Kubernetes admission registry allowlist anchored on the host
+## [2.3.7] - 2026-10-13
+
+### Fixed — no module in the library is fail-open on empty input
+
+- The coverage scan's unguarded list goes from 9 to **0** (`docs/COVERAGE_SCAN.md`: 577 self, 25 by
+  orchestrator, 0 none, 138 n/a). Array-style benchmarks (nginx, OpenShift, ESXi, vCenter) take their facts as a
+  precondition of `compliant`; set-style modules (RHEL 9 legacy PAM section, m365 Exchange section, crypto-miner
+  detection) raise a `FAIL-CLOSED` notice when no facts are supplied. Crypto-miner detection keeps
+  `default compliant := true` for a host whose facts show no indicator; a host with no facts at all is no longer
+  reported clean. Each module has a hand-written regression test.
+- **`not is_object(input.x)` never fired.** When `input.x` is missing, a builtin call on it is undefined and `not`
+  of an undefined call stays undefined, so the GEISA "missing or not an object" notices (adm ×2, vee, lee, api ×2)
+  were silent exactly when they mattered; `geisa_api` reported compliant on `{}`. They now test
+  `object.get(input, ..., null)`. The same shape in mas_trm, meti_csm, dcc, fedramp_20x and pqc is guarded by a
+  presence check first and means "present but wrong type", so it is left as is.
+- The stamper reads a report's own `violations` / `violation_count` when the module publishes no top-level
+  `violations` (the m365 v7 orchestrator, which deliberately carries no `compliant` key, now scores `self` on
+  its 31 empty-input violations). `scripts/gen_tests.py` emits the fail-closed test for modules with a bare
+  `compliant` rule and no report, so future generated suites measure what the scan measures.
+- Count 13,775 → **13,778** (the three new notices are checks like the eighteen added in 2.3.5).
+
+### Security — Kubernetes admission registry allowlist anchored on the host (#228)
 
 - `kubernetes.admission.from_approved_registry` matched `startswith(image, registry)`, so an image from
   `quay.io.evil.example/...` satisfied the `quay.io` entry. The match is now anchored on the host component
@@ -17,7 +38,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `enforcement/kubernetes/tests/test_registry_allowlist.rego`; the Gatekeeper `k8saacadmission` template is
   rebuilt from the module.
 
-### Changed — CIS GCP lives in one directory; the guard reads bare `compliant` rules
+### Changed — CIS GCP lives in one directory; the guard reads bare `compliant` rules (#227)
 
 - `cis_gcp_main.rego` (57 checks, `cis_gcp.main`) moves from the legacy `benchmarks/cis/cloud/gcp/` tree to
   `benchmarks/cis/gcp/`, next to the foundations and Level 2 modules it belongs with, mirroring the AWS and Azure

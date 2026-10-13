@@ -91,6 +91,10 @@ def empty_input_state(root=ROOT):
         if comp is None:
             comp = node.get("compliant")   # modules with no report object expose a bare `compliant` rule
         v = node.get("violations")
+        if not isinstance(v, (list, dict)) and isinstance(rep, dict):
+            v = rep.get("violations")   # orchestrators that only publish a report (m365 v7)
+            if not isinstance(v, (list, dict)) and isinstance(rep.get("violation_count"), int):
+                v = [None] * rep["violation_count"]
         state[pkg] = (comp, (len(v) if isinstance(v, (list, dict)) else None), isinstance(rep, dict))
     return record, state
 

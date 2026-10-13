@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_kubernetes
 
 # CIS Kubernetes Benchmark v2.0.0

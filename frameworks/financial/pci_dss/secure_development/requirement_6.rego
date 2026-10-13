@@ -15,7 +15,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package pci_dss.secure_development.requirement_6
 
 import rego.v1

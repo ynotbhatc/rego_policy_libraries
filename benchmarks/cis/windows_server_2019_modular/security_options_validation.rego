@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_windows_server_2019.security_options
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options

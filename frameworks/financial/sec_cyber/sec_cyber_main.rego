@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package sec_cyber.main
 
 import rego.v1

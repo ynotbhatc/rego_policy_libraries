@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package soc2.main
 
 import rego.v1

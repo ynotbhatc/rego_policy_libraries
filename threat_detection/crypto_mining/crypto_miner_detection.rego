@@ -10,14 +10,14 @@
 #   source: aac
 #   domains: [threat, cryptomining]
 #   coverage:
-#     checks: 16
+#     checks: 17
 #     cited: 1
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: none
-#     as_of: v2.3.6
+#     guard: self
+#     as_of: v2.3.7
 package security.crypto_miner_detection
 
 import rego.v1
@@ -207,6 +207,18 @@ violations contains msg if {
 # =============================================================================
 # COMPLIANCE STATUS
 # =============================================================================
+
+# fail-closed: a host with no facts has not been checked, so it is not reported clean
+_facts_present if { input.running_processes }
+_facts_present if { input.installed_packages }
+_facts_present if { input.network_connections }
+_facts_present if { input.systemd_services }
+_facts_present if { input.cron_jobs }
+_facts_present if { input.suspicious_files }
+
+violations contains "FAIL-CLOSED - no facts supplied (running_processes, installed_packages, network_connections, systemd_services, cron_jobs, suspicious_files); the host was NOT evaluated" if {
+    not _facts_present
+}
 
 default compliant := true
 

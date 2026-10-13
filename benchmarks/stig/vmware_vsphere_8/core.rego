@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package stig.vmware_vsphere_8.core
 
 # DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide

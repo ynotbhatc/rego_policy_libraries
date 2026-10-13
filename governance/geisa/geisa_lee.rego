@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package governance.geisa.lee
 
 import rego.v1
@@ -42,7 +42,7 @@ _recognized_runtimes := {"lxc", "docker", "podman", "containerd", "wasm", "kata"
 # ─── Violations ──────────────────────────────────────────────────────────────
 
 violations contains "LEE: container input missing or not an object" if {
-	not is_object(input.container)
+	not is_object(object.get(input, "container", null))
 }
 
 violations contains "LEE: container.runtime must be set" if {

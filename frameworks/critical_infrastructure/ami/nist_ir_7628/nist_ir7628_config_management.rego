@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package ami.nist_ir7628.config_management
 
 import rego.v1

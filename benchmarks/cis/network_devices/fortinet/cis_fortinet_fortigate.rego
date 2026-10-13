@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0

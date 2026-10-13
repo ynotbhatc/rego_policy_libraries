@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package crosswalk.framework_overlay
 
 import rego.v1

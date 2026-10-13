@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_debian_11.filesystem
 
 # CIS Debian 11 - Section 1.1 Filesystem Configuration

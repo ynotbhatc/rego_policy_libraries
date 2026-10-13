@@ -23,7 +23,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package stig.openshift_4.main
 
 import data.stig.openshift_4

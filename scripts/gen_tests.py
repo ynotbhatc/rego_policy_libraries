@@ -32,6 +32,8 @@ def gen(rel, pkg, names):
     if entry:
         L += [f"test_{stem}_report_wellformed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tis_object(report)", "\tcount(report) > 0", "}", "",
               f"test_{stem}_fail_closed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tnot object.get(report, \"compliant\", false) == true", "}", ""]
+    elif "compliant" in names:
+        L += [f"test_{stem}_fail_closed_on_empty_input if {{", f"\tc := object.get(data.{pkg}, \"compliant\", false) with input as {{}}", "\tnot c == true", "}", ""]
     if "violations" in names:
         L += [f"test_{stem}_violations_on_empty_input if {{", f"\tv := data.{pkg}.violations with input as {{}}", "\tcount(v) > 0", "}", ""]
     return "\n".join(L)

@@ -25,7 +25,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_controls_v8.main
 
 import rego.v1

@@ -26,14 +26,14 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 13
-#     cited: 6
+#     checks: 14
+#     cited: 7
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.6
+#     guard: self
+#     as_of: v2.3.7
 package cis_m365.exchange
 
 import rego.v1
@@ -141,6 +141,15 @@ violations contains v if { some v in violation_4_6_1 }
 violations contains v if { some v in violation_4_7_1 }
 violations contains v if { some v in violation_4_8_1 }
 violations contains v if { some v in violation_4_11_1 }
+
+# fail-closed: without Exchange facts the section reports a violation, never compliance
+_facts_present if { input.mailbox_audit_summary }
+_facts_present if { input.secure_score_controls }
+_facts_present if { input.verified_domains }
+
+violations contains "4: FAIL-CLOSED - facts 'input.mailbox_audit_summary' / 'input.secure_score_controls' / 'input.verified_domains' were not supplied; Exchange controls were not evaluated" if {
+	not _facts_present
+}
 
 compliant if { count(violations) == 0 }
 

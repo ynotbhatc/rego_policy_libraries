@@ -2,7 +2,7 @@
 
 **Status:** shipping (build + round-trip test; release upload via `.github/workflows/converters.yml`)
 **Kind:** packaging — the policies are compiled, not translated
-**Covers:** every `<framework>.main` orchestrator plus `kubernetes.admission` — all 13,775 control-level checks
+**Covers:** every `<framework>.main` orchestrator plus `kubernetes.admission` — all 13,778 control-level checks
 **How:** `build.py` discovers the entrypoints from the tree and runs `opa build -t wasm` once per OPA class
 (`opa-security`, `opa-compliance`, `opa-ot`) and once for everything, writing `out/<class>.tar.gz` and
 `out/manifest.json` (entrypoints, sha256, size).

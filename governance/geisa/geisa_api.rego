@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.6
+#     guard: self
+#     as_of: v2.3.7
 package governance.geisa.api
 
 import rego.v1
@@ -58,7 +58,7 @@ _expected_sub_topic := sprintf("geisa/api/platform/discovery/rsp/%s", [_app_id])
 # ─── Violations ──────────────────────────────────────────────────────────────
 
 violations contains "API: platform discovery response missing or not an object" if {
-	not is_object(input.discovery_response)
+	not is_object(object.get(input, "discovery_response", null))
 }
 
 violations contains sprintf("API: platform discovery status_code must be 1 (OK), got %v", [_discovery.status_code]) if {
@@ -94,7 +94,7 @@ violations contains sprintf("API: manifest must declare subscribe topic '%s'", [
 }
 
 violations contains "API: manifest.applicationId must be set" if {
-	not is_string(input.manifest.applicationId)
+	not is_string(object.get(input, ["manifest", "applicationId"], null))
 }
 
 violations contains "API: manifest.applicationId must be non-empty" if {
