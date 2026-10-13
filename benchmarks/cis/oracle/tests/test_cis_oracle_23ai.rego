@@ -144,3 +144,9 @@ test_every_recommendation_fires_without_facts if {
 	ids := {id | some m in v; id := split(m, ":")[0]}
 	count(ids) >= 87
 }
+
+test_grant_row_without_oracle_maintained_flag_is_a_finding if {
+	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "APP_USER", "granted_role": "DBA"}]}])
+	some m in b.violations with input as bad
+	startswith(m, "6.2.1:")
+}

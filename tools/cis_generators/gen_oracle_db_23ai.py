@@ -113,7 +113,7 @@ profiles_every_set(resource) if {
 # Privileges: the benchmark's queries list grants to grantees that are not ORACLE_MAINTAINED; a grant to a
 # grantee the organization has authorized (input.oracle.authorized_grantees) is not a finding.
 _unauthorized(g) if {
-	not g.oracle_maintained == true
+	not g.oracle_maintained   # true when the row says false or carries no flag: an unflagged grant is not Oracle's
 	not g.grantee in input.oracle.authorized_grantees
 }
 
