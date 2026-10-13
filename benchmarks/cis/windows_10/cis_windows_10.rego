@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_windows_10
 
 # CIS Microsoft Windows 10 Enterprise Benchmark v4.0.0  

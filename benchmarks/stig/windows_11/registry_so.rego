@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package stig.windows_11.registry_so
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide

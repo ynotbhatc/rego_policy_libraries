@@ -96,7 +96,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_gke.main
 
 import rego.v1

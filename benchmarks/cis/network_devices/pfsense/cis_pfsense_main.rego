@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_pfsense.main
 
 # Bridge: expose cis_pfsense under the /v1/data/<framework>/main/compliance_report

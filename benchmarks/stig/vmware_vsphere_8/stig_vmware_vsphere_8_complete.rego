@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package stig.vmware_vsphere_8
 
 # DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide — Master Aggregator

@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package pci_dss.data_protection.requirement_3
 
 import rego.v1

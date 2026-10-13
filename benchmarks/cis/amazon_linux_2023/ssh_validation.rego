@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_amazon_linux_2023.ssh
 
 # CIS Amazon Linux 2023 Section 5.2.x - SSH Server Configuration

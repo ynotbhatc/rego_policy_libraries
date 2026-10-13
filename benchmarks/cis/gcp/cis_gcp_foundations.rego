@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_gcp_foundations
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0

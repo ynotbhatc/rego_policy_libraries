@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_windows_server_2019.advanced_audit
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 17: Advanced Audit Policy Configuration

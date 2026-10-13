@@ -1,0 +1,3368 @@
+{
+ "catalog": {
+  "uuid": "884c530d-0140-5f3d-9646-2ec54080ce23",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_oracle_database_19c (DISA STIG — Oracle Database 19c Security Technical Implementation Guide)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_oracle_database_19c"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_oracle_database_19c-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Oracle Database 19c Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_database_19c.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_database_19c/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_database_19c-O19C-00-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-000200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-000200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-000300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-000300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-000500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-000500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-000800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-000800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-000800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-000800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-001000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-001000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-001000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-001000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-001700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-001700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-001700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-001700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-001800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-001800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-001800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-001800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-001900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-001900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-001900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-001900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-002000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-002000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-002000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-002000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-005600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-005600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-005600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-005600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-005700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-005700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-005700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-005700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-005800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-005800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-005800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-005800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-005900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-005900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-005900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-005900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-006000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-006000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-006000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-006000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-006600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-006600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-006600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-006600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-006900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-006900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-006900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-006900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-007300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-007300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-007300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-007300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-007400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-007400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-007400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-007400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-007700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-007700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-007700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-007700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-007900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-007900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-007900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-007900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-008700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-008700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-008700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-008700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-009900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-009900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-009900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-009900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-010800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-010800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-010800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-010800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-011900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-011900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-011900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-011900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-012900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-012900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-012900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-012900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-013900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-013900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-013900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-013900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-014600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-014600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-014600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-014600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-014700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-014700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-014700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-014700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-014800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-014800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-014800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-014800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-014900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-014900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-014900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-014900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-015200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-015200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-015200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-015200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-015300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-015300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-015300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-015300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-015400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-015400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-015400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-015400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-015500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-015500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-015500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-015500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-015600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-015600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-015600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-015600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-016000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-016000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-016000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-016000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-016100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-016100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-016100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-016100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-016700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-016700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-016700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-016700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-016800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-016800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-016800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-016800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-016900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-016900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-016900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-016900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-017100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-017100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-017100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-017100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-017400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-017400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-017400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-017400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-017600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-017600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-017600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-017600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-017700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-017700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-017700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-017700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-017900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-017900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-017900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-017900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-018000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-018000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-018000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-018000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-018100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-018100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-018100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-018100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-018300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-018300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-018300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-018300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-018400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-018400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-018400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-018400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-018600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-018600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-018600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-018600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-019800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-019800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-019800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-019800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-019900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-019900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-019900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-019900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-020400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-020400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-020400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-020400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-020500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-020500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-020500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-020500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-O19C-00-020600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "O19C-00-020600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "O19C-00-020600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0e485ccd-7238-5bf4-94b1-9140dd795395",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-O19C-00-020600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_database_19c-stig_oracle_database_19c_complete",
+    "class": "rego-module",
+    "title": "DISA STIG — Oracle Database 19c Security Technical Implementation Guide — Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_database_19c"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_database_19c-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego (package stig.oracle_database_19c); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f4b68f7-051e-59c1-b3f7-d7f73178e26c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego (package stig.oracle_database_19c); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_database_19c-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego (package stig.oracle_database_19c); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_database_19c"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4f4b68f7-051e-59c1-b3f7-d7f73178e26c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_database_19c-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego (package stig.oracle_database_19c); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "0e485ccd-7238-5bf4-94b1-9140dd795395",
+     "title": "DISA STIG — Oracle Database 19c Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_database_19c.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_database_19c/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4f4b68f7-051e-59c1-b3f7-d7f73178e26c",
+     "title": "DISA STIG — Oracle Database 19c Security Technical Implementation Guide — Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_database_19c"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

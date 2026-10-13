@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package stig.vmware_vsphere_8.main
 
 import data.stig.vmware_vsphere_8

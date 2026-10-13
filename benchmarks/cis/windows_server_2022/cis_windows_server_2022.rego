@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_windows_server_2022_legacy
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0

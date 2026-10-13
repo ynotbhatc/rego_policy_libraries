@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**732 of 740 policy files have tests (99%).** 766 test files, 8 policies still uncovered.
+**758 of 768 policy files have tests (99%).** 792 test files, 10 policies still uncovered.
 
 ## Why this file exists
 
@@ -23,8 +23,8 @@ took so two people do not write the same test.
 
 | area | policies without tests |
 |---|---|
+| `benchmarks/stig` | 4 |
 | `frameworks/federal` | 3 |
-| `benchmarks/stig` | 2 |
 | `benchmarks/cis` | 1 |
 | `frameworks/financial` | 1 |
 | `frameworks/management` | 1 |
@@ -34,6 +34,18 @@ took so two people do not write the same test.
 <details><summary><code>benchmarks/cis/rhel_8</code> — 1 file(s)</summary>
 
 - `cis_rhel8_complete.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/oracle_linux_8</code> — 1 file(s)</summary>
+
+- `stig_oracle_linux_8_complete.rego`
+
+</details>
+
+<details><summary><code>benchmarks/stig/oracle_linux_9</code> — 1 file(s)</summary>
+
+- `stig_oracle_linux_9_complete.rego`
 
 </details>
 

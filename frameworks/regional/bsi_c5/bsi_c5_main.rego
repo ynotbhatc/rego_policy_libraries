@@ -24,7 +24,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package bsi_c5.main
 
 import rego.v1

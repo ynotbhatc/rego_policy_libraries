@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package cis_ubuntu_22_04.cron
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.1: Configure time-based job schedulers

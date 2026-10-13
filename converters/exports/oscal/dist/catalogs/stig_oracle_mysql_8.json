@@ -1,0 +1,3500 @@
+{
+ "catalog": {
+  "uuid": "35e73903-b664-5e82-8df0-e0fde53153a9",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_oracle_mysql_8 (DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.0",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_oracle_mysql_8"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_oracle_mysql_8-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_mysql_8.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_mysql_8/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-000100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-000100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-000200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-000200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-000300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-000300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-000800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-000800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-000800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-000800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-001900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-001900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-001900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-001900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-002900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-002900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-002900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-002900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-003900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-003900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-003900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-003900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-004900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-004900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-004900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-004900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-005800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-005800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-005800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-005800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-006800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-006800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-006800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-006800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-007000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-007000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-007000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-007000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-007200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-007200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-007200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-007200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-007300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-007300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-007300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-007300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-007400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-007400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-007400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-007400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-007500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-007500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-007500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-007500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-007800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-007800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-007800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-007800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-008700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-008700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-008700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-008700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009200",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009200_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-009900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-009900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-009900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-009900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010400",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010400_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-010900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-010900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-010900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-010900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011700",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011700_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011800",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011800_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-011900",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-011900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-011900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-011900_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-012000",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-012000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-012000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-012000_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-012100",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-012100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-012100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-012100_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-012300",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-012300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-012300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-012300_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-012500",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-012500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-012500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-012500_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-MYS8-00-012600",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MYS8-00-012600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MYS8-00-012600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#75a9371a-de56-584c-afad-a3de408b0bc3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-MYS8-00-012600_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_oracle_mysql_8-stig_oracle_mysql_8_complete",
+    "class": "rego-module",
+    "title": "DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide — Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.oracle_mysql_8"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_oracle_mysql_8-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego (package stig.oracle_mysql_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ec1cd96-ebb0-57ed-b195-af41ed3677a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego (package stig.oracle_mysql_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_mysql_8-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego (package stig.oracle_mysql_8); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_mysql_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8ec1cd96-ebb0-57ed-b195-af41ed3677a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_mysql_8-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego (package stig.oracle_mysql_8); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "75a9371a-de56-584c-afad-a3de408b0bc3",
+     "title": "DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_mysql_8.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_mysql_8/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8ec1cd96-ebb0-57ed-b195-af41ed3677a2",
+     "title": "DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide — Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.oracle_mysql_8"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.0/benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

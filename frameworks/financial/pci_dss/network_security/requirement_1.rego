@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package pci_dss.network_security.requirement_1
 
 import rego.v1

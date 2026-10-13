@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.3.7
+#     as_of: v2.4.0
 package eu_ai_act.transparency
 
 import rego.v1
