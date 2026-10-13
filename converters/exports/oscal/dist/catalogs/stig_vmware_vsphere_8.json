@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "97820693-a5ab-5981-8ebb-ceacb112f7d7",
+  "uuid": "ff2049a9-0fec-5e9c-bc70-291f1054dbaf",
   "metadata": {
    "title": "Rego Policy Libraries — stig_vmware_vsphere_8 (DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000008",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must enable lockdown mode.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000008_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must enable lockdown mode."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000014",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host Secure Shell (SSH) daemon must use FIPS 140-2 validated cryptographic modules to protect the confidentiality of remote access sessions.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000014_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host Secure Shell (SSH) daemon must use FIPS 140-2 validated cryptographic modules to protect the confidentiality of remote access sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000035",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must enforce password complexity by configuring a password quality policy.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000035_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must enforce password complexity by configuring a password quality policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000068",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must set a timeout to automatically end idle shell sessions after fifteen minutes.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000068_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must set a timeout to automatically end idle shell sessions after fifteen minutes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000113",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must allocate audit record storage capacity to store at least one week's worth of audit records.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000113_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must allocate audit record storage capacity to store at least one week's worth of audit records."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000124",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must synchronize internal information system clocks to an authoritative time source.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000124_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must synchronize internal information system clocks to an authoritative time source."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000133",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi Image Profile and vSphere Installation Bundle (VIB) acceptance level must be verified.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000133_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi Image Profile and vSphere Installation Bundle (VIB) acceptance level must be verified."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must protect the confidentiality and integrity of transmitted information by isolating vMotion traffic.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must protect the confidentiality and integrity of transmitted information by isolating vMotion traffic."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000217",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must configure virtual switch security policies to reject Media Access Control (MAC) address changes.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000217_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must configure virtual switch security policies to reject Media Access Control (MAC) address changes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_vmware_vsphere_8-ESXI-80-000221",
-      "title": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body.",
+      "title": "The ESXi host must have all security patches and updates installed.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#aba90049-d29f-5c56-a0a8-fe1036071bb4",
+        "href": "#e3c68adf-7f40-5756-b33f-e1455f16ada0",
         "rel": "implementation"
        }
       ],
@@ -390,7 +390,7 @@
        {
         "id": "stig_vmware_vsphere_8-ESXI-80-000221_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/vmware_vsphere_8/core.rego (package stig.vmware_vsphere_8.core); see the rule body."
+        "prose": "The ESXi host must have all security patches and updates installed."
        }
       ],
       "class": "security"
@@ -439,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#f99e8e70-8daf-5242-a266-7d6cb9dedd0b",
+        "href": "#e29471dd-17d8-51ed-8fef-78659040cf45",
         "rel": "implementation"
        }
       ],
@@ -472,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#f99e8e70-8daf-5242-a266-7d6cb9dedd0b",
+        "href": "#e29471dd-17d8-51ed-8fef-78659040cf45",
         "rel": "implementation"
        }
       ],
@@ -491,7 +491,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "aba90049-d29f-5c56-a0a8-fe1036071bb4",
+     "uuid": "e3c68adf-7f40-5756-b33f-e1455f16ada0",
      "title": "DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide",
      "props": [
       {
@@ -502,13 +502,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/vmware_vsphere_8/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/vmware_vsphere_8/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f99e8e70-8daf-5242-a266-7d6cb9dedd0b",
+     "uuid": "e29471dd-17d8-51ed-8fef-78659040cf45",
      "title": "DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -519,7 +519,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/vmware_vsphere_8/stig_vmware_vsphere_8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/vmware_vsphere_8/stig_vmware_vsphere_8_complete.rego",
        "media-type": "text/plain"
       }
      ]

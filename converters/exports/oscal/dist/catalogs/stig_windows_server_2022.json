@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "62d412dd-6998-58f4-88c6-b9e7df48d5ab",
+  "uuid": "2764a688-da8b-5f85-8ee3-dcbedb187aff",
   "metadata": {
    "title": "Rego Policy Libraries — stig_windows_server_2022 (DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_windows_server_2022-WN22-CC-000010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must prevent the display of slide shows on the lock screen.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must prevent the display of slide shows on the lock screen."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must have WDigest Authentication disabled.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must have WDigest Authentication disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Internet Protocol version 6 (IPv6) source routing must be configured to the highest protection level to prevent IP source routing.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Internet Protocol version 6 (IPv6) source routing must be configured to the highest protection level to prevent IP source routing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 source routing must be configured to the highest protection level to prevent Internet Protocol (IP) source routing.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 source routing must be configured to the highest protection level to prevent Internet Protocol (IP) source routing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)-generated routes.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)-generated routes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must be configured to ignore NetBIOS name release requests except from WINS servers.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must be configured to ignore NetBIOS name release requests except from WINS servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 insecure logons to an SMB server must be disabled.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 insecure logons to an SMB server must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 hardened Universal Naming Convention (UNC) paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 hardened Universal Naming Convention (UNC) paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 command line data must be included in process creation events.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 command line data must be included in process creation events."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must be configured to enable Remote host allows delegation of nonexportable credentials.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must be configured to enable Remote host allows delegation of nonexportable credentials."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000130",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers identified as bad.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000130_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers identified as bad."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000140",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 group policy objects must be reprocessed even if they have not changed.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -489,14 +489,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000140_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 group policy objects must be reprocessed even if they have not changed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 downloading print driver packages over HTTP must be turned off.",
       "props": [
        {
         "name": "label",
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -522,14 +522,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 downloading print driver packages over HTTP must be turned off."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 printing over HTTP must be turned off.",
       "props": [
        {
         "name": "label",
@@ -547,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -555,14 +555,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 printing over HTTP must be turned off."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 network selection user interface (UI) must not be displayed on the logon screen.",
       "props": [
        {
         "name": "label",
@@ -580,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -588,14 +588,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 network selection user interface (UI) must not be displayed on the logon screen."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 users must be prompted to authenticate when the system wakes from sleep (on battery).",
       "props": [
        {
         "name": "label",
@@ -613,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -621,14 +621,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 users must be prompted to authenticate when the system wakes from sleep (on battery)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 users must be prompted to authenticate when the system wakes from sleep (plugged in).",
       "props": [
        {
         "name": "label",
@@ -646,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -654,14 +654,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 users must be prompted to authenticate when the system wakes from sleep (plugged in)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft.",
       "props": [
        {
         "name": "label",
@@ -679,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -687,14 +687,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Autoplay must be turned off for nonvolume devices.",
       "props": [
        {
         "name": "label",
@@ -712,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -720,14 +720,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Autoplay must be turned off for nonvolume devices."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 default AutoRun behavior must be configured to prevent AutoRun commands.",
       "props": [
        {
         "name": "label",
@@ -745,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -753,14 +753,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 default AutoRun behavior must be configured to prevent AutoRun commands."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000230",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 AutoPlay must be disabled for all drives.",
       "props": [
        {
         "name": "label",
@@ -778,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -786,14 +786,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000230_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 AutoPlay must be disabled for all drives."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 administrator accounts must not be enumerated during elevation.",
       "props": [
        {
         "name": "label",
@@ -811,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -819,14 +819,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 administrator accounts must not be enumerated during elevation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000250",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Diagnostic Data must be configured to send \"required diagnostic data\" or \"optional diagnostic data\".",
       "props": [
        {
         "name": "label",
@@ -844,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -852,14 +852,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000250_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Diagnostic Data must be configured to send \"required diagnostic data\" or \"optional diagnostic data\"."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000260",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Update must not obtain updates from other PCs on the internet.",
       "props": [
        {
         "name": "label",
@@ -877,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -885,14 +885,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000260_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Update must not obtain updates from other PCs on the internet."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Application event log size must be configured to 32768 KB or greater.",
       "props": [
        {
         "name": "label",
@@ -910,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -918,14 +918,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Application event log size must be configured to 32768 KB or greater."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000280",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "The Windows Server 2022 security event log size must be configured to a value that holds at least one week's worth of audit records.",
       "props": [
        {
         "name": "label",
@@ -943,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -951,14 +951,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000280_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "The Windows Server 2022 security event log size must be configured to a value that holds at least one week's worth of audit records."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000290",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 System event log size must be configured to 32768 KB or greater.",
       "props": [
        {
         "name": "label",
@@ -976,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -984,14 +984,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000290_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 System event log size must be configured to 32768 KB or greater."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Microsoft Defender antivirus SmartScreen must be enabled.",
       "props": [
        {
         "name": "label",
@@ -1009,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1017,14 +1017,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Microsoft Defender antivirus SmartScreen must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000310",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Explorer Data Execution Prevention must be enabled.",
       "props": [
        {
         "name": "label",
@@ -1042,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1050,14 +1050,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000310_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Explorer Data Execution Prevention must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000320",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Turning off File Explorer heap termination on corruption must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1075,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1083,14 +1083,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000320_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Turning off File Explorer heap termination on corruption must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 File Explorer shell protocol must run in protected mode.",
       "props": [
        {
         "name": "label",
@@ -1108,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1116,14 +1116,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 File Explorer shell protocol must run in protected mode."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000340",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must not save passwords in the Remote Desktop Client.",
       "props": [
        {
         "name": "label",
@@ -1141,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1149,14 +1149,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000340_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must not save passwords in the Remote Desktop Client."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000350",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Remote Desktop Services must prevent drive redirection.",
       "props": [
        {
         "name": "label",
@@ -1174,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1182,14 +1182,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000350_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Remote Desktop Services must prevent drive redirection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000360",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Remote Desktop Services must always prompt a client for passwords upon connection.",
       "props": [
        {
         "name": "label",
@@ -1207,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1215,14 +1215,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000360_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Remote Desktop Services must always prompt a client for passwords upon connection."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000370",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Remote Desktop Services must require secure Remote Procedure Call (RPC) communications.",
       "props": [
        {
         "name": "label",
@@ -1240,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1248,14 +1248,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000370_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Remote Desktop Services must require secure Remote Procedure Call (RPC) communications."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000380",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Remote Desktop Services must be configured with the client connection encryption set to High Level.",
       "props": [
        {
         "name": "label",
@@ -1273,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1281,14 +1281,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000380_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Remote Desktop Services must be configured with the client connection encryption set to High Level."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000390",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must prevent attachments from being downloaded from RSS feeds.",
       "props": [
        {
         "name": "label",
@@ -1306,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1314,14 +1314,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000390_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must prevent attachments from being downloaded from RSS feeds."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must disable Basic authentication for RSS feeds over HTTP.",
       "props": [
        {
         "name": "label",
@@ -1339,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1347,14 +1347,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must disable Basic authentication for RSS feeds over HTTP."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000410",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must prevent Indexing of encrypted files.",
       "props": [
        {
         "name": "label",
@@ -1372,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1380,14 +1380,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000410_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must prevent Indexing of encrypted files."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000420",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must prevent users from changing installation options.",
       "props": [
        {
         "name": "label",
@@ -1405,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1413,14 +1413,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000420_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must prevent users from changing installation options."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000430",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must disable the Windows Installer Always install with elevated privileges option.",
       "props": [
        {
         "name": "label",
@@ -1438,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1446,14 +1446,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000430_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must disable the Windows Installer Always install with elevated privileges option."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000440",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 users must be notified if a web-based program attempts to install software.",
       "props": [
        {
         "name": "label",
@@ -1471,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1479,14 +1479,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000440_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 users must be notified if a web-based program attempts to install software."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000450",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must disable automatically signing in the last interactive user after a system-initiated restart.",
       "props": [
        {
         "name": "label",
@@ -1504,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1512,14 +1512,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000450_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must disable automatically signing in the last interactive user after a system-initiated restart."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000460",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 PowerShell script block logging must be enabled.",
       "props": [
        {
         "name": "label",
@@ -1537,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1545,14 +1545,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000460_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 PowerShell script block logging must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000470",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Remote Management (WinRM) client must not use Basic authentication.",
       "props": [
        {
         "name": "label",
@@ -1570,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1578,14 +1578,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000470_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Remote Management (WinRM) client must not use Basic authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000480",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Remote Management (WinRM) client must not allow unencrypted traffic.",
       "props": [
        {
         "name": "label",
@@ -1603,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1611,14 +1611,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000480_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Remote Management (WinRM) client must not allow unencrypted traffic."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000490",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Remote Management (WinRM) client must not use Digest authentication.",
       "props": [
        {
         "name": "label",
@@ -1636,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1644,14 +1644,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000490_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Remote Management (WinRM) client must not use Digest authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Remote Management (WinRM) service must not use Basic authentication.",
       "props": [
        {
         "name": "label",
@@ -1669,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1677,14 +1677,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Remote Management (WinRM) service must not use Basic authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000510",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Remote Management (WinRM) service must not allow unencrypted traffic.",
       "props": [
        {
         "name": "label",
@@ -1702,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1710,14 +1710,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000510_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Remote Management (WinRM) service must not allow unencrypted traffic."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000520",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 Windows Remote Management (WinRM) service must not store RunAs credentials.",
       "props": [
        {
         "name": "label",
@@ -1735,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1743,14 +1743,14 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000520_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 Windows Remote Management (WinRM) service must not store RunAs credentials."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-CC-000530",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body.",
+      "title": "Windows Server 2022 must have PowerShell Transcription enabled.",
       "props": [
        {
         "name": "label",
@@ -1768,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#5a983210-21c9-5064-af13-45bde3fda34f",
+        "href": "#e2612ccd-38e9-5438-bcef-b8a759b99658",
         "rel": "implementation"
        }
       ],
@@ -1776,7 +1776,7 @@
        {
         "id": "stig_windows_server_2022-WN22-CC-000530_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_cc.rego (package stig.windows_server_2022.registry_cc); see the rule body."
+        "prose": "Windows Server 2022 must have PowerShell Transcription enabled."
        }
       ],
       "class": "security"
@@ -1807,7 +1807,7 @@
     "controls": [
      {
       "id": "stig_windows_server_2022-WN22-00-000390",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must have the Server Message Block (SMB) v1 protocol disabled on the SMB server.",
       "props": [
        {
         "name": "label",
@@ -1825,7 +1825,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -1833,14 +1833,14 @@
        {
         "id": "stig_windows_server_2022-WN22-00-000390_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must have the Server Message Block (SMB) v1 protocol disabled on the SMB server."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-00-000400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must have the Server Message Block (SMB) v1 protocol disabled on the SMB client.",
       "props": [
        {
         "name": "label",
@@ -1858,7 +1858,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -1866,14 +1866,14 @@
        {
         "id": "stig_windows_server_2022-WN22-00-000400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must have the Server Message Block (SMB) v1 protocol disabled on the SMB client."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-DC-000320",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 domain controllers must require LDAP access signing.",
       "props": [
        {
         "name": "label",
@@ -1891,7 +1891,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -1899,14 +1899,14 @@
        {
         "id": "stig_windows_server_2022-WN22-DC-000320_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 domain controllers must require LDAP access signing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-DC-000330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 domain controllers must be configured to allow reset of machine account passwords.",
       "props": [
        {
         "name": "label",
@@ -1924,7 +1924,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -1932,14 +1932,14 @@
        {
         "id": "stig_windows_server_2022-WN22-DC-000330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 domain controllers must be configured to allow reset of machine account passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-MS-000020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain-joined member servers.",
       "props": [
        {
         "name": "label",
@@ -1957,7 +1957,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -1965,14 +1965,14 @@
        {
         "id": "stig_windows_server_2022-WN22-MS-000020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain-joined member servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-MS-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 local users on domain-joined member servers must not be enumerated.",
       "props": [
        {
         "name": "label",
@@ -1990,7 +1990,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -1998,14 +1998,14 @@
        {
         "id": "stig_windows_server_2022-WN22-MS-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 local users on domain-joined member servers must not be enumerated."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-MS-000040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must restrict unauthenticated Remote Procedure Call (RPC) clients from connecting to the RPC server on domain-joined member servers and standalone or nondomain-joined systems.",
       "props": [
        {
         "name": "label",
@@ -2023,7 +2023,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -2031,14 +2031,14 @@
        {
         "id": "stig_windows_server_2022-WN22-MS-000040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must restrict unauthenticated Remote Procedure Call (RPC) clients from connecting to the RPC server on domain-joined member servers and standalone or nondomain-joined systems."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-MS-000050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must limit the caching of logon credentials to four or less on domain-joined member servers.",
       "props": [
        {
         "name": "label",
@@ -2056,7 +2056,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -2064,14 +2064,14 @@
        {
         "id": "stig_windows_server_2022-WN22-MS-000050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must limit the caching of logon credentials to four or less on domain-joined member servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-MS-000060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must restrict remote calls to the Security Account Manager (SAM) to Administrators on domain-joined member servers and standalone or nondomain-joined systems.",
       "props": [
        {
         "name": "label",
@@ -2089,7 +2089,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -2097,14 +2097,14 @@
        {
         "id": "stig_windows_server_2022-WN22-MS-000060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must restrict remote calls to the Security Account Manager (SAM) to Administrators on domain-joined member servers and standalone or nondomain-joined systems."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-MS-000140",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must be running Credential Guard on domain-joined member servers.",
       "props": [
        {
         "name": "label",
@@ -2122,7 +2122,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -2130,14 +2130,14 @@
        {
         "id": "stig_windows_server_2022-WN22-MS-000140_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must be running Credential Guard on domain-joined member servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-UC-000010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body.",
+      "title": "Windows Server 2022 must preserve zone information when saving attachments.",
       "props": [
        {
         "name": "label",
@@ -2155,7 +2155,7 @@
       ],
       "links": [
        {
-        "href": "#2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+        "href": "#38a3f076-9122-5282-a032-c50dbddad08d",
         "rel": "implementation"
        }
       ],
@@ -2163,7 +2163,7 @@
        {
         "id": "stig_windows_server_2022-WN22-UC-000010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_other.rego (package stig.windows_server_2022.registry_other); see the rule body."
+        "prose": "Windows Server 2022 must preserve zone information when saving attachments."
        }
       ],
       "class": "security"
@@ -2194,7 +2194,7 @@
     "controls": [
      {
       "id": "stig_windows_server_2022-WN22-SO-000020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must prevent local accounts with blank passwords from being used from the network.",
       "props": [
        {
         "name": "label",
@@ -2212,7 +2212,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2220,14 +2220,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must prevent local accounts with blank passwords from being used from the network."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must force audit policy subcategory settings to override audit policy category settings.",
       "props": [
        {
         "name": "label",
@@ -2245,7 +2245,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2253,14 +2253,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must force audit policy subcategory settings to override audit policy category settings."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Domain member: Digitally encrypt or sign secure channel data (always) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2278,7 +2278,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2286,14 +2286,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Domain member: Digitally encrypt or sign secure channel data (always) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Domain member: Digitally encrypt secure channel data (when possible) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2311,7 +2311,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2319,14 +2319,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Domain member: Digitally encrypt secure channel data (when possible) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Domain member: Digitally sign secure channel data (when possible) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2344,7 +2344,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2352,14 +2352,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Domain member: Digitally sign secure channel data (when possible) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 computer account password must not be prevented from being reset.",
       "props": [
        {
         "name": "label",
@@ -2377,7 +2377,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2385,14 +2385,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 computer account password must not be prevented from being reset."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 maximum age for machine account passwords must be configured to 30 days or less.",
       "props": [
        {
         "name": "label",
@@ -2410,7 +2410,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2418,14 +2418,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 maximum age for machine account passwords must be configured to 30 days or less."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must be configured to require a strong session key.",
       "props": [
        {
         "name": "label",
@@ -2443,7 +2443,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2451,14 +2451,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must be configured to require a strong session key."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000120",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 machine inactivity limit must be set to 15 minutes or less, locking the system with the screen saver.",
       "props": [
        {
         "name": "label",
@@ -2476,7 +2476,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2484,14 +2484,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000120_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 machine inactivity limit must be set to 15 minutes or less, locking the system with the screen saver."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000130",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 required legal notice must be configured to display before console logon.",
       "props": [
        {
         "name": "label",
@@ -2509,7 +2509,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2517,14 +2517,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000130_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 required legal notice must be configured to display before console logon."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000140",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 title for legal banner dialog box must be configured with the appropriate text.",
       "props": [
        {
         "name": "label",
@@ -2542,7 +2542,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2550,14 +2550,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000140_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 title for legal banner dialog box must be configured with the appropriate text."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 Smart Card removal option must be configured to Force Logoff or Lock Workstation.",
       "props": [
        {
         "name": "label",
@@ -2575,7 +2575,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2583,14 +2583,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 Smart Card removal option must be configured to Force Logoff or Lock Workstation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Microsoft network client: Digitally sign communications (always) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2608,7 +2608,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2616,14 +2616,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Microsoft network client: Digitally sign communications (always) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Microsoft network client: Digitally sign communications (if server agrees) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2641,7 +2641,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2649,14 +2649,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Microsoft network client: Digitally sign communications (if server agrees) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 unencrypted passwords must not be sent to third-party Server Message Block (SMB) servers.",
       "props": [
        {
         "name": "label",
@@ -2674,7 +2674,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2682,14 +2682,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 unencrypted passwords must not be sent to third-party Server Message Block (SMB) servers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2707,7 +2707,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2715,14 +2715,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 setting Microsoft network server: Digitally sign communications (if client agrees) must be configured to Enabled.",
       "props": [
        {
         "name": "label",
@@ -2740,7 +2740,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2748,14 +2748,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 setting Microsoft network server: Digitally sign communications (if client agrees) must be configured to Enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must not allow anonymous enumeration of Security Account Manager (SAM) accounts.",
       "props": [
        {
         "name": "label",
@@ -2773,7 +2773,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2781,14 +2781,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must not allow anonymous enumeration of Security Account Manager (SAM) accounts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000230",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must not allow anonymous enumeration of shares.",
       "props": [
        {
         "name": "label",
@@ -2806,7 +2806,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2814,14 +2814,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000230_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must not allow anonymous enumeration of shares."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must be configured to prevent anonymous users from having the same permissions as the Everyone group.",
       "props": [
        {
         "name": "label",
@@ -2839,7 +2839,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2847,14 +2847,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must be configured to prevent anonymous users from having the same permissions as the Everyone group."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000250",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must restrict anonymous access to Named Pipes and Shares.",
       "props": [
        {
         "name": "label",
@@ -2872,7 +2872,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2880,14 +2880,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000250_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must restrict anonymous access to Named Pipes and Shares."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000260",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 services using Local System that use Negotiate when reverting to NTLM authentication must use the computer identity instead of authenticating anonymously.",
       "props": [
        {
         "name": "label",
@@ -2905,7 +2905,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2913,14 +2913,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000260_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 services using Local System that use Negotiate when reverting to NTLM authentication must use the computer identity instead of authenticating anonymously."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must prevent NTLM from falling back to a Null session.",
       "props": [
        {
         "name": "label",
@@ -2938,7 +2938,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2946,14 +2946,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must prevent NTLM from falling back to a Null session."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000280",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must prevent PKU2U authentication using online identities.",
       "props": [
        {
         "name": "label",
@@ -2971,7 +2971,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -2979,14 +2979,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000280_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must prevent PKU2U authentication using online identities."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000290",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites.",
       "props": [
        {
         "name": "label",
@@ -3004,7 +3004,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3012,14 +3012,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000290_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must be configured to prevent the storage of the LAN Manager hash of passwords.",
       "props": [
        {
         "name": "label",
@@ -3037,7 +3037,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3045,14 +3045,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must be configured to prevent the storage of the LAN Manager hash of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000310",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 LAN Manager authentication level must be configured to send NTLMv2 response only and to refuse LM and NTLM.",
       "props": [
        {
         "name": "label",
@@ -3070,7 +3070,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3078,14 +3078,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000310_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 LAN Manager authentication level must be configured to send NTLMv2 response only and to refuse LM and NTLM."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000320",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must be configured to at least negotiate signing for LDAP client signing.",
       "props": [
        {
         "name": "label",
@@ -3103,7 +3103,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3111,14 +3111,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000320_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must be configured to at least negotiate signing for LDAP client signing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 session security for NTLM SSP-based clients must be configured to require NTLMv2 session security and 128-bit encryption.",
       "props": [
        {
         "name": "label",
@@ -3136,7 +3136,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3144,14 +3144,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 session security for NTLM SSP-based clients must be configured to require NTLMv2 session security and 128-bit encryption."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000340",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 session security for NTLM SSP-based servers must be configured to require NTLMv2 session security and 128-bit encryption.",
       "props": [
        {
         "name": "label",
@@ -3169,7 +3169,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3177,14 +3177,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000340_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 session security for NTLM SSP-based servers must be configured to require NTLMv2 session security and 128-bit encryption."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000350",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 users must be required to enter a password to access private keys stored on the computer.",
       "props": [
        {
         "name": "label",
@@ -3202,7 +3202,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3210,14 +3210,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000350_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 users must be required to enter a password to access private keys stored on the computer."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000360",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing.",
       "props": [
        {
         "name": "label",
@@ -3235,7 +3235,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3243,14 +3243,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000360_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000370",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 default permissions of global system objects must be strengthened.",
       "props": [
        {
         "name": "label",
@@ -3268,7 +3268,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3276,14 +3276,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000370_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 default permissions of global system objects must be strengthened."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000380",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) approval mode for the built-in Administrator must be enabled.",
       "props": [
        {
         "name": "label",
@@ -3301,7 +3301,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3309,14 +3309,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000380_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) approval mode for the built-in Administrator must be enabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000390",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 UIAccess applications must not be allowed to prompt for elevation without using the secure desktop.",
       "props": [
        {
         "name": "label",
@@ -3334,7 +3334,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3342,14 +3342,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000390_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 UIAccess applications must not be allowed to prompt for elevation without using the secure desktop."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) must, at a minimum, prompt administrators for consent on the secure desktop.",
       "props": [
        {
         "name": "label",
@@ -3367,7 +3367,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3375,14 +3375,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) must, at a minimum, prompt administrators for consent on the secure desktop."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000410",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) must automatically deny standard user requests for elevation.",
       "props": [
        {
         "name": "label",
@@ -3400,7 +3400,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3408,14 +3408,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000410_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) must automatically deny standard user requests for elevation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000420",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) must be configured to detect application installations and prompt for elevation.",
       "props": [
        {
         "name": "label",
@@ -3433,7 +3433,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3441,14 +3441,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000420_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) must be configured to detect application installations and prompt for elevation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000430",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) must only elevate UIAccess applications that are installed in secure locations.",
       "props": [
        {
         "name": "label",
@@ -3466,7 +3466,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3474,14 +3474,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000430_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) must only elevate UIAccess applications that are installed in secure locations."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000440",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) must run all administrators in Admin Approval Mode, enabling UAC.",
       "props": [
        {
         "name": "label",
@@ -3499,7 +3499,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3507,14 +3507,14 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000440_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) must run all administrators in Admin Approval Mode, enabling UAC."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_windows_server_2022-WN22-SO-000450",
-      "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body.",
+      "title": "Windows Server 2022 User Account Control (UAC) must virtualize file and registry write failures to per-user locations.",
       "props": [
        {
         "name": "label",
@@ -3532,7 +3532,7 @@
       ],
       "links": [
        {
-        "href": "#4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+        "href": "#8d53924d-7404-5f8d-b247-229cee3c37bf",
         "rel": "implementation"
        }
       ],
@@ -3540,7 +3540,7 @@
        {
         "id": "stig_windows_server_2022-WN22-SO-000450_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2022/registry_so.rego (package stig.windows_server_2022.registry_so); see the rule body."
+        "prose": "Windows Server 2022 User Account Control (UAC) must virtualize file and registry write failures to per-user locations."
        }
       ],
       "class": "security"
@@ -3589,7 +3589,7 @@
       ],
       "links": [
        {
-        "href": "#cbe5fb5a-5b93-5d77-b5ee-d5283c1ad9fd",
+        "href": "#9bec1a55-bbcf-5340-899a-e8340b37d404",
         "rel": "implementation"
        }
       ],
@@ -3622,7 +3622,7 @@
       ],
       "links": [
        {
-        "href": "#cbe5fb5a-5b93-5d77-b5ee-d5283c1ad9fd",
+        "href": "#9bec1a55-bbcf-5340-899a-e8340b37d404",
         "rel": "implementation"
        }
       ],
@@ -3641,7 +3641,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "5a983210-21c9-5064-af13-45bde3fda34f",
+     "uuid": "e2612ccd-38e9-5438-bcef-b8a759b99658",
      "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
      "props": [
       {
@@ -3652,13 +3652,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_server_2022/registry_cc.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2022/registry_cc.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "2c9a59e2-5eeb-5cae-8a19-5e91d464c7bf",
+     "uuid": "38a3f076-9122-5282-a032-c50dbddad08d",
      "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
      "props": [
       {
@@ -3669,13 +3669,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_server_2022/registry_other.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2022/registry_other.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4d6e4a2e-57e1-5c63-968e-e98ac4778bab",
+     "uuid": "8d53924d-7404-5f8d-b247-229cee3c37bf",
      "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide",
      "props": [
       {
@@ -3686,13 +3686,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_server_2022/registry_so.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2022/registry_so.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "cbe5fb5a-5b93-5d77-b5ee-d5283c1ad9fd",
+     "uuid": "9bec1a55-bbcf-5340-899a-e8340b37d404",
      "title": "DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -3703,7 +3703,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/windows_server_2022/stig_windows_server_2022_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2022/stig_windows_server_2022_complete.rego",
        "media-type": "text/plain"
       }
      ]

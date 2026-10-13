@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "9782e8ee-465a-5d05-8cdc-3bdb5bdde361",
+  "uuid": "fc220b1e-a1ee-54be-b2d4-20d85bf2b86f",
   "metadata": {
    "title": "Rego Policy Libraries — stig_postgresql_16 (DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_postgresql_16-CD16-00-000200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-000200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-000300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-000300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-002700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "The PostgreSQL software installation account must be restricted to authorized users.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-002700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "The PostgreSQL software installation account must be restricted to authorized users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-003800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "If passwords are used for authentication, PostgreSQL must store only hashed, salted representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-003800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "If passwords are used for authentication, PostgreSQL must store only hashed, salted representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-003900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-003900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "If passwords are used for authentication, PostgreSQL must transmit only encrypted representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-004100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must enforce authorized access to all PKI private keys stored/used by PostgreSQL.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-004100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must enforce authorized access to all PKI private keys stored/used by PostgreSQL."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-004400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must use NIST FIPS 140-2/140-3 validated cryptographic modules for cryptographic operations.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-004400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must use NIST FIPS 140-2/140-3 validated cryptographic modules for cryptographic operations."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-005200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must protect the confidentiality and integrity of all information at rest.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-005200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must protect the confidentiality and integrity of all information at rest."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-008300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-008300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-008500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organi",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-008500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined infor"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-009300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL products must be a version supported by the vendor.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-009300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL products must be a version supported by the vendor."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-011800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must be able to generate audit records when successful accesses to objects occur.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_postgresql_16-CD16-00-011800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must be able to generate audit records when successful accesses to objects occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_postgresql_16-CD16-00-011900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body.",
+      "title": "PostgreSQL must generate audit records when unsuccessful accesses to objects occur.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+        "href": "#c8482369-a503-5835-9c3f-95e901702a04",
         "rel": "implementation"
        }
       ],
@@ -489,7 +489,7 @@
        {
         "id": "stig_postgresql_16-CD16-00-011900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/postgresql_16/core.rego (package stig.postgresql_16.core); see the rule body."
+        "prose": "PostgreSQL must generate audit records when unsuccessful accesses to objects occur."
        }
       ],
       "class": "security"
@@ -538,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#0dd3e526-2a93-566c-bafb-05f88b52365a",
+        "href": "#3eb5d6d8-ff06-5a8c-8408-f4bffc0ad660",
         "rel": "implementation"
        }
       ],
@@ -571,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#0dd3e526-2a93-566c-bafb-05f88b52365a",
+        "href": "#3eb5d6d8-ff06-5a8c-8408-f4bffc0ad660",
         "rel": "implementation"
        }
       ],
@@ -590,7 +590,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ccdb9abf-6e48-5d85-a619-3a379f1b4519",
+     "uuid": "c8482369-a503-5835-9c3f-95e901702a04",
      "title": "DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide",
      "props": [
       {
@@ -601,13 +601,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/postgresql_16/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/postgresql_16/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0dd3e526-2a93-566c-bafb-05f88b52365a",
+     "uuid": "3eb5d6d8-ff06-5a8c-8408-f4bffc0ad660",
      "title": "DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -618,7 +618,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/postgresql_16/stig_postgresql_16_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/postgresql_16/stig_postgresql_16_complete.rego",
        "media-type": "text/plain"
       }
      ]

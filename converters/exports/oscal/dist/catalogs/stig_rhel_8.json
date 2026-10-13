@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "43176df5-b950-5d61-a795-111ba0da3295",
+  "uuid": "918f1dc2-34af-5748-b8c8-cbd4ff723fe6",
   "metadata": {
    "title": "Rego Policy Libraries — stig_rhel_8 (DISA STIG for RHEL 8 - Account and Authentication Module)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-020000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must implement multifactor authentication for access to privileged accounts",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must implement multifactor authentication for access to privileged accounts"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must lock an account after three consecutive invalid access attempts",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must lock an account after three consecutive invalid access attempts"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must store only encrypted representations of passwords",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must store only encrypted representations of passwords"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must not have accounts configured with blank or null passwords",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must not have accounts configured with blank or null passwords"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 passwords must have a minimum of 15 characters",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 passwords must have a minimum of 15 characters"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must enforce a 60-day maximum password lifetime restriction",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must enforce a 60-day maximum password lifetime restriction"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must prohibit password reuse for a minimum of five generations",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must prohibit password reuse for a minimum of five generations"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must automatically lock accounts after three unsuccessful login attempts",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must automatically lock accounts after three unsuccessful login attempts"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must disable account identifiers after 35 days of inactivity",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-020080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must disable account identifiers after 35 days of inactivity"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body.",
+      "title": "RHEL 8 must not allow duplicate UIDs",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -390,7 +390,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-020090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/account_auth.rego (package stig.rhel_8.account_auth); see the rule body."
+        "prose": "RHEL 8 must not allow duplicate UIDs"
        }
       ],
       "class": "security"
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
         "rel": "implementation"
        }
       ],
@@ -454,7 +454,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-030000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must have the auditd service started",
       "props": [
        {
         "name": "label",
@@ -472,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -480,14 +480,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must have the auditd service started"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 audit logs must not automatically be overwritten",
       "props": [
        {
         "name": "label",
@@ -505,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -513,14 +513,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 audit logs must not automatically be overwritten"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must audit all uses of the execve syscall (b64)",
       "props": [
        {
         "name": "label",
@@ -538,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -546,14 +546,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must audit all uses of the execve syscall (b64)"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must audit all uses of the chown syscall",
       "props": [
        {
         "name": "label",
@@ -571,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -579,14 +579,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must audit all uses of the chown syscall"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must audit all uses of the chmod syscall",
       "props": [
        {
         "name": "label",
@@ -604,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -612,14 +612,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must audit all uses of the chmod syscall"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must generate audit records for sudoers file changes",
       "props": [
        {
         "name": "label",
@@ -637,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -645,14 +645,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must generate audit records for sudoers file changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must audit changes to /etc/passwd",
       "props": [
        {
         "name": "label",
@@ -670,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -678,14 +678,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must audit changes to /etc/passwd"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 must audit the sudo command",
       "props": [
        {
         "name": "label",
@@ -703,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -711,14 +711,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 must audit the sudo command"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 audit configuration must be made immutable",
       "props": [
        {
         "name": "label",
@@ -736,7 +736,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -744,14 +744,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-030080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 audit configuration must be made immutable"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-030090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body.",
+      "title": "RHEL 8 audit system must notify SA when audit storage is approaching capacity",
       "props": [
        {
         "name": "label",
@@ -769,7 +769,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -777,7 +777,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-030090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/audit_logging.rego (package stig.rhel_8.audit_logging); see the rule body."
+        "prose": "RHEL 8 audit system must notify SA when audit storage is approaching capacity"
        }
       ],
       "class": "security"
@@ -802,7 +802,7 @@
       ],
       "links": [
        {
-        "href": "#d99c905d-649f-5669-b311-cc8986520c27",
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
         "rel": "implementation"
        }
       ],
@@ -841,7 +841,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-010000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must enable SELinux in enforcing mode",
       "props": [
        {
         "name": "label",
@@ -859,7 +859,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -867,14 +867,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must enable SELinux in enforcing mode"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must implement the SELinux targeted policy",
       "props": [
        {
         "name": "label",
@@ -892,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -900,14 +900,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must implement the SELinux targeted policy"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "All RHEL 8 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure",
       "props": [
        {
         "name": "label",
@@ -925,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -933,14 +933,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "All RHEL 8 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must require authentication upon booting into single-user and maintenance modes",
       "props": [
        {
         "name": "label",
@@ -958,7 +958,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -966,14 +966,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must require authentication upon booting into single-user and maintenance modes"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must disable the x86 Ctrl-Alt-Delete key sequence",
       "props": [
        {
         "name": "label",
@@ -991,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -999,14 +999,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must disable the x86 Ctrl-Alt-Delete key sequence"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must have the DoD Root CA certificates installed as a trusted CA",
       "props": [
        {
         "name": "label",
@@ -1024,7 +1024,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1032,14 +1032,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must have the DoD Root CA certificates installed as a trusted CA"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must ensure system-wide crypto policy is not set to legacy",
       "props": [
        {
         "name": "label",
@@ -1057,7 +1057,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1065,14 +1065,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must ensure system-wide crypto policy is not set to legacy"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting access",
       "props": [
        {
         "name": "label",
@@ -1090,7 +1090,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1098,14 +1098,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting access"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must implement address space layout randomization (ASLR)",
       "props": [
        {
         "name": "label",
@@ -1123,7 +1123,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1131,14 +1131,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must implement address space layout randomization (ASLR)"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must restrict access to the kernel message buffer",
       "props": [
        {
         "name": "label",
@@ -1156,7 +1156,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1164,14 +1164,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must restrict access to the kernel message buffer"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must disable the USB mass storage kernel module",
       "props": [
        {
         "name": "label",
@@ -1189,7 +1189,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1197,14 +1197,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must disable the USB mass storage kernel module"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must use a file integrity tool",
       "props": [
        {
         "name": "label",
@@ -1222,7 +1222,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1230,14 +1230,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must use a file integrity tool"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010120",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must routinely check the baseline configuration for unauthorized changes",
       "props": [
        {
         "name": "label",
@@ -1255,7 +1255,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1263,14 +1263,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010120_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must routinely check the baseline configuration for unauthorized changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010130",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must use a separate file system for /tmp",
       "props": [
        {
         "name": "label",
@@ -1288,7 +1288,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1296,14 +1296,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010130_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must use a separate file system for /tmp"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010140",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must use a separate file system for /var/log",
       "props": [
        {
         "name": "label",
@@ -1321,7 +1321,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1329,14 +1329,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010140_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must use a separate file system for /var/log"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body.",
+      "title": "RHEL 8 must use a separate file system for /var/log/audit",
       "props": [
        {
         "name": "label",
@@ -1354,7 +1354,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1362,7 +1362,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-010150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/configuration_management.rego (package stig.rhel_8.configuration_management); see the rule body."
+        "prose": "RHEL 8 must use a separate file system for /var/log/audit"
        }
       ],
       "class": "security"
@@ -1387,7 +1387,7 @@
       ],
       "links": [
        {
-        "href": "#c944b06c-849b-5446-acd5-3deb9539878f",
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
         "rel": "implementation"
        }
       ],
@@ -1426,7 +1426,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-010200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 must have no world-writable files",
       "props": [
        {
         "name": "label",
@@ -1444,7 +1444,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1452,14 +1452,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 must have no world-writable files"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 must have no files not owned by a valid user",
       "props": [
        {
         "name": "label",
@@ -1477,7 +1477,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1485,14 +1485,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 must have no files not owned by a valid user"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 /etc/passwd must have mode 0644 or less",
       "props": [
        {
         "name": "label",
@@ -1510,7 +1510,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1518,14 +1518,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 /etc/passwd must have mode 0644 or less"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010230",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 /etc/shadow must have mode 0000",
       "props": [
        {
         "name": "label",
@@ -1543,7 +1543,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1551,14 +1551,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010230_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 /etc/shadow must have mode 0000"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 /etc/group must have mode 0644 or less",
       "props": [
        {
         "name": "label",
@@ -1576,7 +1576,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1584,14 +1584,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 /etc/group must have mode 0644 or less"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010250",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 must have no unauthorized SUID/SGID executables",
       "props": [
        {
         "name": "label",
@@ -1609,7 +1609,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1617,14 +1617,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010250_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 must have no unauthorized SUID/SGID executables"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010260",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 library files must have mode 0755 or less",
       "props": [
        {
         "name": "label",
@@ -1642,7 +1642,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1650,14 +1650,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010260_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 library files must have mode 0755 or less"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body.",
+      "title": "RHEL 8 home directories must have mode 0750 or less",
       "props": [
        {
         "name": "label",
@@ -1675,7 +1675,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1683,7 +1683,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-010270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/file_permissions.rego (package stig.rhel_8.file_permissions); see the rule body."
+        "prose": "RHEL 8 home directories must have mode 0750 or less"
        }
       ],
       "class": "security"
@@ -1708,7 +1708,7 @@
       ],
       "links": [
        {
-        "href": "#faa7248f-ac49-5d40-bc03-721084b3d3d9",
+        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
         "rel": "implementation"
        }
       ],
@@ -1747,7 +1747,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-040100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must have firewalld installed",
       "props": [
        {
         "name": "label",
@@ -1765,7 +1765,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1773,14 +1773,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must have firewalld installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must not enable IPv4 packet forwarding unless system is a router",
       "props": [
        {
         "name": "label",
@@ -1798,7 +1798,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1806,14 +1806,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must not enable IPv4 packet forwarding unless system is a router"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040120",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must not accept ICMP redirect messages",
       "props": [
        {
         "name": "label",
@@ -1831,7 +1831,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1839,14 +1839,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040120_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must not accept ICMP redirect messages"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040130",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must not send ICMP redirects",
       "props": [
        {
         "name": "label",
@@ -1864,7 +1864,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1872,14 +1872,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040130_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must not send ICMP redirects"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040140",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must not forward IPv4 source-routed packets",
       "props": [
        {
         "name": "label",
@@ -1897,7 +1897,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1905,14 +1905,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040140_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must not forward IPv4 source-routed packets"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must use TCP syncookies",
       "props": [
        {
         "name": "label",
@@ -1930,7 +1930,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1938,14 +1938,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must use TCP syncookies"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040155",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must disable the Bluetooth kernel module",
       "props": [
        {
         "name": "label",
@@ -1963,7 +1963,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -1971,14 +1971,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040155_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must disable the Bluetooth kernel module"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040157",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must disable wireless network adapters",
       "props": [
        {
         "name": "label",
@@ -1996,7 +1996,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -2004,14 +2004,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040157_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must disable wireless network adapters"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040158",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body.",
+      "title": "RHEL 8 must enable reverse path filtering",
       "props": [
        {
         "name": "label",
@@ -2029,7 +2029,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -2037,7 +2037,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-040158_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/network.rego (package stig.rhel_8.network); see the rule body."
+        "prose": "RHEL 8 must enable reverse path filtering"
        }
       ],
       "class": "security"
@@ -2062,7 +2062,7 @@
       ],
       "links": [
        {
-        "href": "#eab8f524-a21f-56b2-af34-a28d7652280f",
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
         "rel": "implementation"
        }
       ],
@@ -2101,7 +2101,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-040000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the telnet-server package installed",
       "props": [
        {
         "name": "label",
@@ -2119,7 +2119,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2127,14 +2127,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the telnet-server package installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the rsh-server package installed",
       "props": [
        {
         "name": "label",
@@ -2152,7 +2152,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2160,14 +2160,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the rsh-server package installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the ypserv package installed",
       "props": [
        {
         "name": "label",
@@ -2185,7 +2185,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2193,14 +2193,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the ypserv package installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the tftp-server package installed",
       "props": [
        {
         "name": "label",
@@ -2218,7 +2218,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2226,14 +2226,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the tftp-server package installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must disable the autofs service",
       "props": [
        {
         "name": "label",
@@ -2251,7 +2251,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2259,14 +2259,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must disable the autofs service"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040050",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the xinetd package installed",
       "props": [
        {
         "name": "label",
@@ -2284,7 +2284,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2292,14 +2292,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040050_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the xinetd package installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must disable the Bluetooth service",
       "props": [
        {
         "name": "label",
@@ -2317,7 +2317,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2325,14 +2325,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must disable the Bluetooth service"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040070",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the net-snmp package installed unless required",
       "props": [
        {
         "name": "label",
@@ -2350,7 +2350,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2358,14 +2358,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040070_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the net-snmp package installed unless required"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must not have the nfs-utils package installed unless required",
       "props": [
        {
         "name": "label",
@@ -2383,7 +2383,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2391,14 +2391,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must not have the nfs-utils package installed unless required"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body.",
+      "title": "RHEL 8 must disable the avahi-daemon service",
       "props": [
        {
         "name": "label",
@@ -2416,7 +2416,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2424,7 +2424,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-040090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/services.rego (package stig.rhel_8.services); see the rule body."
+        "prose": "RHEL 8 must disable the avahi-daemon service"
        }
       ],
       "class": "security"
@@ -2449,7 +2449,7 @@
       ],
       "links": [
        {
-        "href": "#14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
         "rel": "implementation"
        }
       ],
@@ -2488,7 +2488,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-040160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must not permit direct logons to the root account using remote access via SSH",
       "props": [
        {
         "name": "label",
@@ -2506,7 +2506,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2514,14 +2514,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must not permit direct logons to the root account using remote access via SSH"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must implement DoD-approved encryption in the OpenSSH client",
       "props": [
        {
         "name": "label",
@@ -2539,7 +2539,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2547,14 +2547,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must implement DoD-approved encryption in the OpenSSH client"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must not allow blank or null passwords",
       "props": [
        {
         "name": "label",
@@ -2572,7 +2572,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2580,14 +2580,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must not allow blank or null passwords"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must limit the number of SSH login attempts",
       "props": [
        {
         "name": "label",
@@ -2605,7 +2605,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2613,14 +2613,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must limit the number of SSH login attempts"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 SSH client alive interval must be configured",
       "props": [
        {
         "name": "label",
@@ -2638,7 +2638,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2646,14 +2646,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 SSH client alive interval must be configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040210",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 SSH server must be configured to use only MACs employing FIPS-validated algorithms",
       "props": [
        {
         "name": "label",
@@ -2671,7 +2671,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2679,14 +2679,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040210_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 SSH server must be configured to use only MACs employing FIPS-validated algorithms"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 SSH daemon must not allow rhosts-based authentication",
       "props": [
        {
         "name": "label",
@@ -2704,7 +2704,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2712,14 +2712,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 SSH daemon must not allow rhosts-based authentication"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040230",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must not allow host-based authentication via SSH",
       "props": [
        {
         "name": "label",
@@ -2737,7 +2737,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2745,14 +2745,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040230_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must not allow host-based authentication via SSH"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must enable PAM for SSH",
       "props": [
        {
         "name": "label",
@@ -2770,7 +2770,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2778,14 +2778,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-040240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must enable PAM for SSH"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040250",
-      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body.",
+      "title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before SSH access",
       "props": [
        {
         "name": "label",
@@ -2803,7 +2803,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2811,7 +2811,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-040250_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_8/ssh_config.rego (package stig.rhel_8.ssh_config); see the rule body."
+        "prose": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before SSH access"
        }
       ],
       "class": "security"
@@ -2836,7 +2836,7 @@
       ],
       "links": [
        {
-        "href": "#b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
         "rel": "implementation"
        }
       ],
@@ -2893,7 +2893,7 @@
       ],
       "links": [
        {
-        "href": "#a36764ee-3586-5f0b-9f27-959bbce89a2d",
+        "href": "#12726711-24bb-5790-be8c-8c4c38816a9b",
         "rel": "implementation"
        }
       ],
@@ -2926,7 +2926,7 @@
       ],
       "links": [
        {
-        "href": "#a36764ee-3586-5f0b-9f27-959bbce89a2d",
+        "href": "#12726711-24bb-5790-be8c-8c4c38816a9b",
         "rel": "implementation"
        }
       ],
@@ -2959,7 +2959,7 @@
       ],
       "links": [
        {
-        "href": "#a36764ee-3586-5f0b-9f27-959bbce89a2d",
+        "href": "#12726711-24bb-5790-be8c-8c4c38816a9b",
         "rel": "implementation"
        }
       ],
@@ -2978,7 +2978,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "c3e55bcf-55fd-539d-82ee-7a9fb81f820f",
+     "uuid": "d9ae4e04-208b-572a-b89c-904fdfd24cdf",
      "title": "DISA STIG for RHEL 8 - Account and Authentication Module",
      "props": [
       {
@@ -2989,13 +2989,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/account_auth.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/account_auth.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d99c905d-649f-5669-b311-cc8986520c27",
+     "uuid": "03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
      "title": "DISA STIG for RHEL 8 - Audit Logging Module",
      "props": [
       {
@@ -3006,13 +3006,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/audit_logging.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/audit_logging.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c944b06c-849b-5446-acd5-3deb9539878f",
+     "uuid": "f45e83b7-7549-58f7-956f-45d86e822c5a",
      "title": "DISA STIG for RHEL 8 - Configuration Management Module",
      "props": [
       {
@@ -3023,13 +3023,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "faa7248f-ac49-5d40-bc03-721084b3d3d9",
+     "uuid": "bd0d770a-31ad-5f86-9946-058f77676fb7",
      "title": "DISA STIG for RHEL 8 - File Permissions Module",
      "props": [
       {
@@ -3040,13 +3040,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/file_permissions.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/file_permissions.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "eab8f524-a21f-56b2-af34-a28d7652280f",
+     "uuid": "5da5e347-e349-5433-a9b4-3c9bdaf6934d",
      "title": "DISA STIG for RHEL 8 - Network Configuration Module",
      "props": [
       {
@@ -3057,13 +3057,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/network.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/network.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "14f73f39-f9b6-5ff1-a6a1-f9af7db62317",
+     "uuid": "68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
      "title": "DISA STIG for RHEL 8 - Services Module",
      "props": [
       {
@@ -3074,13 +3074,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/services.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/services.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b84efc86-6c62-5f6e-820f-6ddb12bd6ccd",
+     "uuid": "80d5af92-46cf-500b-a94d-8193c6df3148",
      "title": "DISA STIG for RHEL 8 - SSH Configuration Module",
      "props": [
       {
@@ -3091,13 +3091,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/ssh_config.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/ssh_config.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "a36764ee-3586-5f0b-9f27-959bbce89a2d",
+     "uuid": "12726711-24bb-5790-be8c-8c4c38816a9b",
      "title": "DISA STIG for RHEL 8 - Master Aggregator",
      "props": [
       {
@@ -3108,7 +3108,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/rhel_8/stig_rhel8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_8/stig_rhel8_complete.rego",
        "media-type": "text/plain"
       }
      ]

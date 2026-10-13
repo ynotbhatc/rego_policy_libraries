@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "5a395861-bd75-5aab-8c23-30d7cdfb4852",
+  "uuid": "ff48d514-dd44-549f-b3a9-17054b9db3dc",
   "metadata": {
    "title": "Rego Policy Libraries — stig_apache_2_4_unix (DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server must use cryptography to protect the integrity of remote sessions.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server must use cryptography to protect the integrity of remote sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000180",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server log files must only be accessible by privileged users.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000180_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server log files must only be accessible by privileged users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000230",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "Expansion modules must be fully reviewed, tested, and signed before they can exist on a production Apache web server.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000230_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "Expansion modules must be fully reviewed, tested, and signed before they can exist on a production Apache web server."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000270",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server must provide install options to exclude the installation of documentation, sample code, example applications, and tutorials.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000270_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server must provide install options to exclude the installation of documentation, sample code, example applications, and tutorials."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000310",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server must allow the mappings to unused and vulnerable scripts to be removed.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000310_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server must allow the mappings to unused and vulnerable scripts to be removed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000440",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "Apache web server application directories, libraries, and configuration files must only be accessible to privileged users.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000440_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "Apache web server application directories, libraries, and configuration files must only be accessible to privileged users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000520",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server must generate a session ID using as much of the character set as possible to reduce the risk of brute force.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000520_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server must generate a session ID using as much of the character set as possible to reduce the risk of brute force."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000650",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server must set an inactive timeout for sessions.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000650_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server must set an inactive timeout for sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000940",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The account used to run the Apache web server must not have a valid login shell and password defined.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000940_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The account used to run the Apache web server must not have a valid login shell and password defined."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_apache_2_4_unix-AS24-U1-000960",
-      "title": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body.",
+      "title": "The Apache web server software must be a vendor-supported version.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#296dccaa-3b41-5c6e-939b-cfd35a17648a",
+        "href": "#839b5573-8576-5b82-b128-278b441d970c",
         "rel": "implementation"
        }
       ],
@@ -390,7 +390,7 @@
        {
         "id": "stig_apache_2_4_unix-AS24-U1-000960_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/apache_2_4_unix/core.rego (package stig.apache_2_4_unix.core); see the rule body."
+        "prose": "The Apache web server software must be a vendor-supported version."
        }
       ],
       "class": "security"
@@ -439,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#dc5d6cfd-28cf-54d0-b9f1-c401dd0f83e0",
+        "href": "#d7399b06-e2cc-5f65-ad28-af73891d342c",
         "rel": "implementation"
        }
       ],
@@ -472,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#dc5d6cfd-28cf-54d0-b9f1-c401dd0f83e0",
+        "href": "#d7399b06-e2cc-5f65-ad28-af73891d342c",
         "rel": "implementation"
        }
       ],
@@ -491,7 +491,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "296dccaa-3b41-5c6e-939b-cfd35a17648a",
+     "uuid": "839b5573-8576-5b82-b128-278b441d970c",
      "title": "DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide",
      "props": [
       {
@@ -502,13 +502,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/apache_2_4_unix/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/apache_2_4_unix/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "dc5d6cfd-28cf-54d0-b9f1-c401dd0f83e0",
+     "uuid": "d7399b06-e2cc-5f65-ad28-af73891d342c",
      "title": "DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -519,7 +519,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/apache_2_4_unix/stig_apache_2_4_unix_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/apache_2_4_unix/stig_apache_2_4_unix_complete.rego",
        "media-type": "text/plain"
       }
      ]

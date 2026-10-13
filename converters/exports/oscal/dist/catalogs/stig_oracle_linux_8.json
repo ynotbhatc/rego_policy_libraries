@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "a0690eba-a380-5218-9e92-d9710151b0de",
+  "uuid": "579f2027-a549-5f7d-b749-5ee495497d5b",
   "metadata": {
    "title": "Rego Policy Libraries — stig_oracle_linux_8 (DISA STIG for Oracle Linux 8 - Account and Authentication Module)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-020330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 must not allow accounts configured with blank or null passwords.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 must not allow accounts configured with blank or null passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 must encrypt all stored passwords with a FIPS 140-2 approved cryptographic hashing algorithm.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 must encrypt all stored passwords with a FIPS 140-2 approved cryptographic hashing algorithm."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020011",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020011_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020230",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 passwords must have a minimum of 15 characters.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020230_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 passwords must have a minimum of 15 characters."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 passwords for new users or password changes must have a 24 hours/one day minimum password lifetime restriction in \"/etc/login.defs\".",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 passwords for new users or password changes must have a 24 hours/one day minimum password lifetime restriction in \"/etc/login.defs\"."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020013",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020013_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 duplicate User IDs (UIDs) must not exist for interactive users.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 duplicate User IDs (UIDs) must not exist for interactive users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 must enforce password complexity by requiring that at least one uppercase character be used.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 must enforce password complexity by requiring that at least one uppercase character be used."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020120",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 must enforce password complexity by requiring that at least one lowercase character be used.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020120_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 must enforce password complexity by requiring that at least one lowercase character be used."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020130",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "OL 8 must enforce password complexity by requiring that at least one numeric character be used.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020130_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "OL 8 must enforce password complexity by requiring that at least one numeric character be used."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020280",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body.",
+      "title": "All OL 8 passwords must contain at least one special character.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -423,7 +423,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020280_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/account_auth.rego (package stig.oracle_linux_8.account_auth); see the rule body."
+        "prose": "All OL 8 passwords must contain at least one special character."
        }
       ],
       "class": "security"
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#ed0365da-acde-54ea-b05a-3ef79f62fae8",
+        "href": "#391fc421-8778-579f-8f37-c60f34abf4a1",
         "rel": "implementation"
        }
       ],
@@ -487,7 +487,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-030060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "The OL 8 audit system must take appropriate action when the audit storage volume is full.",
       "props": [
        {
         "name": "label",
@@ -505,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -513,14 +513,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "The OL 8 audit system must take appropriate action when the audit storage volume is full."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030480",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "OL 8 must generate audit records for any use of the \"chown\", \"fchown\", \"fchownat\", and \"lchown\" system calls.",
       "props": [
        {
         "name": "label",
@@ -538,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -546,14 +546,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030480_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "OL 8 must generate audit records for any use of the \"chown\", \"fchown\", \"fchownat\", and \"lchown\" system calls."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030490",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "OL 8 must generate audit records for any use of the \"chmod\", \"fchmod\", and \"fchmodat\" system calls.",
       "props": [
        {
         "name": "label",
@@ -571,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -579,14 +579,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030490_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "OL 8 must generate audit records for any use of the \"chmod\", \"fchmod\", and \"fchmodat\" system calls."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "The OL 8 audit system must be configured to audit any use of the \"setxattr\", \"fsetxattr\", \"lsetxattr\", \"removexattr\", \"fremovexattr\", and \"lremovexattr\" system calls.",
       "props": [
        {
         "name": "label",
@@ -604,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -612,14 +612,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "The OL 8 audit system must be configured to audit any use of the \"setxattr\", \"fsetxattr\", \"lsetxattr\", \"removexattr\", \"fremovexattr\", and \"lremovexattr\" system calls."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030171",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "OL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/sudoers\".",
       "props": [
        {
         "name": "label",
@@ -637,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -645,14 +645,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030171_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "OL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/sudoers\"."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030150",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "OL 8 must generate audit records for all account creation events that affect \"/etc/passwd\".",
       "props": [
        {
         "name": "label",
@@ -670,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -678,14 +678,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030150_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "OL 8 must generate audit records for all account creation events that affect \"/etc/passwd\"."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030550",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "OL 8 must generate audit records for any use of the \"sudo\" command.",
       "props": [
        {
         "name": "label",
@@ -703,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -711,14 +711,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030550_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "OL 8 must generate audit records for any use of the \"sudo\" command."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-030360",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body.",
+      "title": "OL 8 must generate audit records for any use of the \"init_module\" and \"finit_module\" system calls.",
       "props": [
        {
         "name": "label",
@@ -736,7 +736,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -744,7 +744,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-030360_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/audit_logging.rego (package stig.oracle_linux_8.audit_logging); see the rule body."
+        "prose": "OL 8 must generate audit records for any use of the \"init_module\" and \"finit_module\" system calls."
        }
       ],
       "class": "security"
@@ -769,7 +769,7 @@
       ],
       "links": [
        {
-        "href": "#f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+        "href": "#8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
         "rel": "implementation"
        }
       ],
@@ -808,7 +808,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-040170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "The x86 Ctrl-Alt-Delete key sequence must be disabled on OL 8.",
       "props": [
        {
         "name": "label",
@@ -826,7 +826,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -834,14 +834,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "The x86 Ctrl-Alt-Delete key sequence must be disabled on OL 8."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040171",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "The x86 Ctrl-Alt-Delete key sequence in OL 8 must be disabled if a graphical user interface is installed.",
       "props": [
        {
         "name": "label",
@@ -859,7 +859,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -867,14 +867,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040171_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "The x86 Ctrl-Alt-Delete key sequence in OL 8 must be disabled if a graphical user interface is installed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010170",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must use a Linux Security Module configured to enforce limits on system services.",
       "props": [
        {
         "name": "label",
@@ -892,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -900,14 +900,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010170_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must use a Linux Security Module configured to enforce limits on system services."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010450",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must enable the SELinux targeted policy.",
       "props": [
        {
         "name": "label",
@@ -925,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -933,14 +933,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010450_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must enable the SELinux targeted policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010060",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
       "props": [
        {
         "name": "label",
@@ -958,7 +958,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -966,14 +966,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010060_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via an SSH logon.",
       "props": [
        {
         "name": "label",
@@ -991,7 +991,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -999,14 +999,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via an SSH logon."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010430",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
       "props": [
        {
         "name": "label",
@@ -1024,7 +1024,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1032,14 +1032,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010430_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040282",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must restrict the use of \"ptrace\" to descendant processes.",
       "props": [
        {
         "name": "label",
@@ -1057,7 +1057,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1065,14 +1065,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040282_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must restrict the use of \"ptrace\" to descendant processes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010372",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must prevent the loading of a new kernel for later execution.",
       "props": [
        {
         "name": "label",
@@ -1090,7 +1090,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1098,14 +1098,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010372_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must prevent the loading of a new kernel for later execution."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040286",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must enable hardening for the Berkeley Packet Filter Just-in-time compiler.",
       "props": [
        {
         "name": "label",
@@ -1123,7 +1123,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1131,14 +1131,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040286_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must enable hardening for the Berkeley Packet Filter Just-in-time compiler."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040080",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must be configured to disable the ability to use USB mass storage devices.",
       "props": [
        {
         "name": "label",
@@ -1156,7 +1156,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1164,14 +1164,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040080_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must be configured to disable the ability to use USB mass storage devices."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010360",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "The OL 8 file integrity tool must notify the system administrator (SA) when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organ",
       "props": [
        {
         "name": "label",
@@ -1189,7 +1189,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1197,14 +1197,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010360_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "The OL 8 file integrity tool must notify the system administrator (SA) when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organizationally defined frequency."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010543",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must use a separate file system for \"/tmp\".",
       "props": [
        {
         "name": "label",
@@ -1222,7 +1222,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1230,14 +1230,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010543_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must use a separate file system for \"/tmp\"."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010570",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must prevent files with the setuid and setgid bit set from being executed on file systems that contain user home directories.",
       "props": [
        {
         "name": "label",
@@ -1255,7 +1255,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1263,14 +1263,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010570_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must prevent files with the setuid and setgid bit set from being executed on file systems that contain user home directories."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010590",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 file systems that contain user home directories must not execute binary files.",
       "props": [
        {
         "name": "label",
@@ -1288,7 +1288,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1296,14 +1296,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010590_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 file systems that contain user home directories must not execute binary files."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010375",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must restrict access to the kernel message buffer.",
       "props": [
        {
         "name": "label",
@@ -1321,7 +1321,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1329,14 +1329,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010375_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must restrict access to the kernel message buffer."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040026",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must disable IEEE 1394 (FireWire) Support.",
       "props": [
        {
         "name": "label",
@@ -1354,7 +1354,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1362,14 +1362,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040026_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must disable IEEE 1394 (FireWire) Support."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010541",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body.",
+      "title": "OL 8 must use a separate file system for \"/var/log\".",
       "props": [
        {
         "name": "label",
@@ -1387,7 +1387,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1395,7 +1395,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010541_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/configuration_management.rego (package stig.oracle_linux_8.configuration_management); see the rule body."
+        "prose": "OL 8 must use a separate file system for \"/var/log\"."
        }
       ],
       "class": "security"
@@ -1420,7 +1420,7 @@
       ],
       "links": [
        {
-        "href": "#7f8c64c9-0943-5399-94ea-c22be5a72048",
+        "href": "#95a93161-ef14-547d-9031-912f0d84e58f",
         "rel": "implementation"
        }
       ],
@@ -1459,7 +1459,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-010780",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body.",
+      "title": "All OL 8 files and directories must have a valid owner.",
       "props": [
        {
         "name": "label",
@@ -1477,7 +1477,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1485,14 +1485,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010780_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body."
+        "prose": "All OL 8 files and directories must have a valid owner."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010790",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body.",
+      "title": "All OL 8 files and directories must have a valid group owner.",
       "props": [
        {
         "name": "label",
@@ -1510,7 +1510,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1518,14 +1518,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010790_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body."
+        "prose": "All OL 8 files and directories must have a valid group owner."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body.",
+      "title": "OL 8 library files must have mode 755 or less permissive.",
       "props": [
        {
         "name": "label",
@@ -1543,7 +1543,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1551,14 +1551,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body."
+        "prose": "OL 8 library files must have mode 755 or less permissive."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010340",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body.",
+      "title": "OL 8 library files must be owned by root.",
       "props": [
        {
         "name": "label",
@@ -1576,7 +1576,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1584,14 +1584,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010340_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body."
+        "prose": "OL 8 library files must be owned by root."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body.",
+      "title": "OL 8 system commands must have mode 755 or less permissive.",
       "props": [
        {
         "name": "label",
@@ -1609,7 +1609,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1617,14 +1617,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body."
+        "prose": "OL 8 system commands must have mode 755 or less permissive."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010730",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body.",
+      "title": "All OL 8 local interactive user home directories must have mode \"0750\" or less permissive.",
       "props": [
        {
         "name": "label",
@@ -1642,7 +1642,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1650,7 +1650,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010730_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/file_permissions.rego (package stig.oracle_linux_8.file_permissions); see the rule body."
+        "prose": "All OL 8 local interactive user home directories must have mode \"0750\" or less permissive."
        }
       ],
       "class": "security"
@@ -1675,7 +1675,7 @@
       ],
       "links": [
        {
-        "href": "#db1a8adc-0b6a-5511-aa97-3647b35535b8",
+        "href": "#63f00176-53c3-546b-83da-899f51980bd8",
         "rel": "implementation"
        }
       ],
@@ -1714,7 +1714,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-040259",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 must not enable IPv4 packet forwarding unless the system is a router.",
       "props": [
        {
         "name": "label",
@@ -1732,7 +1732,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1740,14 +1740,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040259_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 must not enable IPv4 packet forwarding unless the system is a router."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040279",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 must ignore IPv4 Internet Control Message Protocol (ICMP) redirect messages.",
       "props": [
        {
         "name": "label",
@@ -1765,7 +1765,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1773,14 +1773,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040279_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 must ignore IPv4 Internet Control Message Protocol (ICMP) redirect messages."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040220",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 must not send Internet Control Message Protocol (ICMP) redirects.",
       "props": [
        {
         "name": "label",
@@ -1798,7 +1798,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1806,14 +1806,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040220_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 must not send Internet Control Message Protocol (ICMP) redirects."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040240",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 must not forward IPv6 source-routed packets.",
       "props": [
        {
         "name": "label",
@@ -1831,7 +1831,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1839,14 +1839,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040240_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 must not forward IPv6 source-routed packets."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040285",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 must use reverse path filtering on all IPv4 interfaces.",
       "props": [
        {
         "name": "label",
@@ -1864,7 +1864,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1872,14 +1872,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040285_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 must use reverse path filtering on all IPv4 interfaces."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040280",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages.",
       "props": [
        {
         "name": "label",
@@ -1897,7 +1897,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1905,14 +1905,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040280_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040110",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 wireless network adapters must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1930,7 +1930,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1938,14 +1938,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040110_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 wireless network adapters must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040111",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 Bluetooth must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1963,7 +1963,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -1971,14 +1971,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040111_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 Bluetooth must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040330",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body.",
+      "title": "OL 8 network interfaces must not be in promiscuous mode.",
       "props": [
        {
         "name": "label",
@@ -1996,7 +1996,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -2004,7 +2004,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040330_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/network.rego (package stig.oracle_linux_8.network); see the rule body."
+        "prose": "OL 8 network interfaces must not be in promiscuous mode."
        }
       ],
       "class": "security"
@@ -2029,7 +2029,7 @@
       ],
       "links": [
        {
-        "href": "#59b54afb-c2af-5ebb-8545-bab49d182de5",
+        "href": "#3bc162ad-d679-535d-8b77-0924ca7171ab",
         "rel": "implementation"
        }
       ],
@@ -2068,7 +2068,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-010183",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/pki_crypto.rego (package stig.oracle_linux_8.pki_crypto); see the rule body.",
+      "title": "OL 8 cryptographic policy must not be overridden.",
       "props": [
        {
         "name": "label",
@@ -2086,7 +2086,7 @@
       ],
       "links": [
        {
-        "href": "#d7338d5b-d8ed-5637-b99c-bcec4dc24318",
+        "href": "#a2419227-5889-57a9-98b0-441f3ebee48e",
         "rel": "implementation"
        }
       ],
@@ -2094,14 +2094,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010183_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/pki_crypto.rego (package stig.oracle_linux_8.pki_crypto); see the rule body."
+        "prose": "OL 8 cryptographic policy must not be overridden."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/pki_crypto.rego (package stig.oracle_linux_8.pki_crypto); see the rule body.",
+      "title": "OL 8 must implement certificate status checking for multifactor authentication.",
       "props": [
        {
         "name": "label",
@@ -2119,7 +2119,7 @@
       ],
       "links": [
        {
-        "href": "#d7338d5b-d8ed-5637-b99c-bcec4dc24318",
+        "href": "#a2419227-5889-57a9-98b0-441f3ebee48e",
         "rel": "implementation"
        }
       ],
@@ -2127,14 +2127,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/pki_crypto.rego (package stig.oracle_linux_8.pki_crypto); see the rule body."
+        "prose": "OL 8 must implement certificate status checking for multifactor authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020090",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/pki_crypto.rego (package stig.oracle_linux_8.pki_crypto); see the rule body.",
+      "title": "OL 8 must map the authenticated identity to the user or group account for PKI-based authentication.",
       "props": [
        {
         "name": "label",
@@ -2152,7 +2152,7 @@
       ],
       "links": [
        {
-        "href": "#d7338d5b-d8ed-5637-b99c-bcec4dc24318",
+        "href": "#a2419227-5889-57a9-98b0-441f3ebee48e",
         "rel": "implementation"
        }
       ],
@@ -2160,7 +2160,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020090_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/pki_crypto.rego (package stig.oracle_linux_8.pki_crypto); see the rule body."
+        "prose": "OL 8 must map the authenticated identity to the user or group account for PKI-based authentication."
        }
       ],
       "class": "security"
@@ -2185,7 +2185,7 @@
       ],
       "links": [
        {
-        "href": "#d7338d5b-d8ed-5637-b99c-bcec4dc24318",
+        "href": "#a2419227-5889-57a9-98b0-441f3ebee48e",
         "rel": "implementation"
        }
       ],
@@ -2224,7 +2224,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-040190",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/services.rego (package stig.oracle_linux_8.services); see the rule body.",
+      "title": "The Trivial File Transfer Protocol (TFTP) server package must not be installed if not required for OL 8 operational support.",
       "props": [
        {
         "name": "label",
@@ -2242,7 +2242,7 @@
       ],
       "links": [
        {
-        "href": "#ce68ff03-8bbc-55c9-aea5-6984612d0b6c",
+        "href": "#9e30482b-85e7-50f1-b2d7-48ffa1ba2288",
         "rel": "implementation"
        }
       ],
@@ -2250,14 +2250,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040190_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/services.rego (package stig.oracle_linux_8.services); see the rule body."
+        "prose": "The Trivial File Transfer Protocol (TFTP) server package must not be installed if not required for OL 8 operational support."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/services.rego (package stig.oracle_linux_8.services); see the rule body.",
+      "title": "OL 8 must not have the telnet-server package installed.",
       "props": [
        {
         "name": "label",
@@ -2275,7 +2275,7 @@
       ],
       "links": [
        {
-        "href": "#ce68ff03-8bbc-55c9-aea5-6984612d0b6c",
+        "href": "#9e30482b-85e7-50f1-b2d7-48ffa1ba2288",
         "rel": "implementation"
        }
       ],
@@ -2283,14 +2283,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/services.rego (package stig.oracle_linux_8.services); see the rule body."
+        "prose": "OL 8 must not have the telnet-server package installed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040002",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/services.rego (package stig.oracle_linux_8.services); see the rule body.",
+      "title": "OL 8 must not have the sendmail package installed.",
       "props": [
        {
         "name": "label",
@@ -2308,7 +2308,7 @@
       ],
       "links": [
        {
-        "href": "#ce68ff03-8bbc-55c9-aea5-6984612d0b6c",
+        "href": "#9e30482b-85e7-50f1-b2d7-48ffa1ba2288",
         "rel": "implementation"
        }
       ],
@@ -2316,7 +2316,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040002_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/services.rego (package stig.oracle_linux_8.services); see the rule body."
+        "prose": "OL 8 must not have the sendmail package installed."
        }
       ],
       "class": "security"
@@ -2341,7 +2341,7 @@
       ],
       "links": [
        {
-        "href": "#ce68ff03-8bbc-55c9-aea5-6984612d0b6c",
+        "href": "#9e30482b-85e7-50f1-b2d7-48ffa1ba2288",
         "rel": "implementation"
        }
       ],
@@ -2380,7 +2380,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-010561",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/software_integrity.rego (package stig.oracle_linux_8.software_integrity); see the rule body.",
+      "title": "OL 8 must have the rsyslog service enabled and active.",
       "props": [
        {
         "name": "label",
@@ -2398,7 +2398,7 @@
       ],
       "links": [
        {
-        "href": "#ae0e116d-d66b-5463-876e-84b14d6f8ef9",
+        "href": "#1bbd6400-a608-5335-96db-206196d74876",
         "rel": "implementation"
        }
       ],
@@ -2406,14 +2406,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010561_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/software_integrity.rego (package stig.oracle_linux_8.software_integrity); see the rule body."
+        "prose": "OL 8 must have the rsyslog service enabled and active."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010376",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/software_integrity.rego (package stig.oracle_linux_8.software_integrity); see the rule body.",
+      "title": "OL 8 must prevent kernel profiling by nonprivileged users.",
       "props": [
        {
         "name": "label",
@@ -2431,7 +2431,7 @@
       ],
       "links": [
        {
-        "href": "#ae0e116d-d66b-5463-876e-84b14d6f8ef9",
+        "href": "#1bbd6400-a608-5335-96db-206196d74876",
         "rel": "implementation"
        }
       ],
@@ -2439,7 +2439,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010376_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/software_integrity.rego (package stig.oracle_linux_8.software_integrity); see the rule body."
+        "prose": "OL 8 must prevent kernel profiling by nonprivileged users."
        }
       ],
       "class": "security"
@@ -2464,7 +2464,7 @@
       ],
       "links": [
        {
-        "href": "#ae0e116d-d66b-5463-876e-84b14d6f8ef9",
+        "href": "#1bbd6400-a608-5335-96db-206196d74876",
         "rel": "implementation"
        }
       ],
@@ -2503,7 +2503,7 @@
     "controls": [
      {
       "id": "stig_oracle_linux_8-OL08-00-010290",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "The OL 8 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connect",
       "props": [
        {
         "name": "label",
@@ -2521,7 +2521,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2529,14 +2529,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010290_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "The OL 8 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010550",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "OL 8 must not permit direct logons to the root account using remote access via SSH.",
       "props": [
        {
         "name": "label",
@@ -2554,7 +2554,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2562,14 +2562,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010550_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "OL 8 must not permit direct logons to the root account using remote access via SSH."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-040160",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "All OL 8 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission.",
       "props": [
        {
         "name": "label",
@@ -2587,7 +2587,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2595,14 +2595,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-040160_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "All OL 8 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010201",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "OL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
       "props": [
        {
         "name": "label",
@@ -2620,7 +2620,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2628,14 +2628,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010201_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "OL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "OL 8 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
       "props": [
        {
         "name": "label",
@@ -2653,7 +2653,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2661,14 +2661,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "OL 8 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "The OL 8 SSH daemon must perform strict mode checking of home directory configuration files.",
       "props": [
        {
         "name": "label",
@@ -2686,7 +2686,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2694,14 +2694,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "The OL 8 SSH daemon must perform strict mode checking of home directory configuration files."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-010520",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "The OL 8 SSH daemon must not allow authentication using known host's authentication.",
       "props": [
        {
         "name": "label",
@@ -2719,7 +2719,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2727,14 +2727,14 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-010520_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "The OL 8 SSH daemon must not allow authentication using known host's authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_linux_8-OL08-00-020350",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body.",
+      "title": "OL 8 must display the date and time of the last successful account logon upon an SSH logon.",
       "props": [
        {
         "name": "label",
@@ -2752,7 +2752,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2760,7 +2760,7 @@
        {
         "id": "stig_oracle_linux_8-OL08-00-020350_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_8/ssh_config.rego (package stig.oracle_linux_8.ssh_config); see the rule body."
+        "prose": "OL 8 must display the date and time of the last successful account logon upon an SSH logon."
        }
       ],
       "class": "security"
@@ -2785,7 +2785,7 @@
       ],
       "links": [
        {
-        "href": "#277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+        "href": "#a41b4f86-a66a-5b7c-946a-78938f9fc924",
         "rel": "implementation"
        }
       ],
@@ -2842,7 +2842,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -2875,7 +2875,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -2908,7 +2908,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -2941,7 +2941,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -2974,7 +2974,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -3007,7 +3007,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -3040,7 +3040,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -3073,7 +3073,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -3106,7 +3106,7 @@
       ],
       "links": [
        {
-        "href": "#82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+        "href": "#b0ff8054-7f2c-51f4-a332-64a540824445",
         "rel": "implementation"
        }
       ],
@@ -3125,7 +3125,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ed0365da-acde-54ea-b05a-3ef79f62fae8",
+     "uuid": "391fc421-8778-579f-8f37-c60f34abf4a1",
      "title": "DISA STIG for Oracle Linux 8 - Account and Authentication Module",
      "props": [
       {
@@ -3136,13 +3136,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/account_auth.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/account_auth.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f769ed25-dcb3-509c-8414-7f7862b5ff4d",
+     "uuid": "8c1d92b8-fb88-5e39-b84a-f3693d39d02e",
      "title": "DISA STIG for Oracle Linux 8 - Audit Logging Module",
      "props": [
       {
@@ -3153,13 +3153,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/audit_logging.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/audit_logging.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7f8c64c9-0943-5399-94ea-c22be5a72048",
+     "uuid": "95a93161-ef14-547d-9031-912f0d84e58f",
      "title": "DISA STIG for Oracle Linux 8 - Configuration Management Module",
      "props": [
       {
@@ -3170,13 +3170,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/configuration_management.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/configuration_management.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "db1a8adc-0b6a-5511-aa97-3647b35535b8",
+     "uuid": "63f00176-53c3-546b-83da-899f51980bd8",
      "title": "DISA STIG for Oracle Linux 8 - File Permissions Module",
      "props": [
       {
@@ -3187,13 +3187,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/file_permissions.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/file_permissions.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "59b54afb-c2af-5ebb-8545-bab49d182de5",
+     "uuid": "3bc162ad-d679-535d-8b77-0924ca7171ab",
      "title": "DISA STIG for Oracle Linux 8 - Network Configuration Module",
      "props": [
       {
@@ -3204,13 +3204,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/network.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/network.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d7338d5b-d8ed-5637-b99c-bcec4dc24318",
+     "uuid": "a2419227-5889-57a9-98b0-441f3ebee48e",
      "title": "DISA STIG for Oracle Linux 8 - PKI and Cryptography Module",
      "props": [
       {
@@ -3221,13 +3221,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/pki_crypto.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/pki_crypto.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ce68ff03-8bbc-55c9-aea5-6984612d0b6c",
+     "uuid": "9e30482b-85e7-50f1-b2d7-48ffa1ba2288",
      "title": "DISA STIG for Oracle Linux 8 - Services Module",
      "props": [
       {
@@ -3238,13 +3238,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/services.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/services.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ae0e116d-d66b-5463-876e-84b14d6f8ef9",
+     "uuid": "1bbd6400-a608-5335-96db-206196d74876",
      "title": "DISA STIG for Oracle Linux 8 - Software Integrity Module",
      "props": [
       {
@@ -3255,13 +3255,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/software_integrity.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/software_integrity.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "277322b2-b3d7-5a9a-856c-34f7b8f9a84d",
+     "uuid": "a41b4f86-a66a-5b7c-946a-78938f9fc924",
      "title": "DISA STIG for Oracle Linux 8 - SSH Configuration Module",
      "props": [
       {
@@ -3272,13 +3272,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/ssh_config.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/ssh_config.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "82ea5906-4fcd-56d3-9ae8-e5e13af648cf",
+     "uuid": "b0ff8054-7f2c-51f4-a332-64a540824445",
      "title": "DISA STIG for Oracle Linux 8 - Master Aggregator",
      "props": [
       {
@@ -3289,7 +3289,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego",
        "media-type": "text/plain"
       }
      ]

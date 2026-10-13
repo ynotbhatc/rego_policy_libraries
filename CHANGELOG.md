@@ -8,6 +8,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.4.2] - 2026-10-13
+
+### Fixed — exports map object-shaped findings to their controls
+
+- `converters/exports/_lib/findings.py`: a violation that is an object (every STIG module emits
+  `{vuln_id, stig_id, severity, rule_title, status}`) is rendered as `<id>: <title>` before the control lookup,
+  so SARIF results, OSCAL assessment findings and OCSF events for the 23 STIG platforms now name the catalog
+  control (`stig_oracle_linux_9-OL09-00-002413`) instead of `<framework>-unmapped` with a JSON blob as the
+  message. Oracle Linux 9 on empty input: 77 of 78 results mapped; the one unmapped is the fail-closed notice.
+- SARIF results carry the finding's own severity (`properties.severity`: `CAT I` / `CAT II` / `CAT III`) when the
+  module states one.
+- `scripts/rego_ast.py`: `rule_title` is a text key, so the OSCAL catalog statement of a STIG control is the DISA
+  rule title (was "Implemented by a Rego rule in … see the rule body"). 23 STIG catalogs regenerated; control ids,
+  uuids and counts unchanged (14,318).
+- The SARIF and OSCAL round-trip tests evaluate a STIG module and assert the mapping, the severity and the title.
+
 ## [2.4.1] - 2026-10-13
 
 ### Added — CIS Oracle Cloud Infrastructure Foundations v3.1 and CIS Oracle Database 23ai

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "4c1e5aea-202f-52a6-a84c-461be8add860",
+  "uuid": "7fba89bc-44a2-5f5c-8da2-a4e11e5d68ef",
   "metadata": {
    "title": "Rego Policy Libraries — stig_ubuntu_20_04 (DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_ubuntu_20_04-UBTU-20-PK-000010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "title": "Ubuntu 20.04 LTS must have the DoD Root CA certificates installed",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_ubuntu_20_04-UBTU-20-PK-000010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+        "prose": "Ubuntu 20.04 LTS must have the DoD Root CA certificates installed"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ubuntu_20_04-UBTU-20-SO-000030",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "title": "The built-in guest account must be disabled",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_ubuntu_20_04-UBTU-20-SO-000030_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+        "prose": "The built-in guest account must be disabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ubuntu_20_04-UBTU-20-00-000020",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "title": "The Ubuntu 20.04 LTS system must use an antivirus program",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_ubuntu_20_04-UBTU-20-00-000020_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+        "prose": "The Ubuntu 20.04 LTS system must use an antivirus program"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ubuntu_20_04-UBTU-20-AC-000010",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "title": "Password history must be configured to 24 or more passwords",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_ubuntu_20_04-UBTU-20-AC-000010_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+        "prose": "Password history must be configured to 24 or more passwords"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ubuntu_20_04-UBTU-20-AC-000040",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body.",
+      "title": "Minimum password length must be configured to 14 characters or more",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -225,7 +225,7 @@
        {
         "id": "stig_ubuntu_20_04-UBTU-20-AC-000040_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego (package stig.ubuntu_20_04); see the rule body."
+        "prose": "Minimum password length must be configured to 14 characters or more"
        }
       ],
       "class": "security"
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+        "href": "#007c0332-9066-5d50-9478-40660ffe2226",
         "rel": "implementation"
        }
       ],
@@ -302,7 +302,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "8e2e9764-3688-5dc6-aedf-68f7f306ff4b",
+     "uuid": "007c0332-9066-5d50-9478-40660ffe2226",
      "title": "DISA STIG for Ubuntu 20.04 LTS - Simplified Complete Assessment",
      "props": [
       {
@@ -313,7 +313,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/ubuntu_20_04/stig_ubuntu_20_04_complete.rego",
        "media-type": "text/plain"
       }
      ]

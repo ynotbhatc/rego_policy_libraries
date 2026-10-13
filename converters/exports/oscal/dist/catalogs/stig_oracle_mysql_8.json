@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "7a0f823d-d9f3-569e-9901-90a584d73ae6",
+  "uuid": "f8caf855-ed84-56d2-945b-18c1d891bb23",
   "metadata": {
    "title": "Rego Policy Libraries — stig_oracle_mysql_8 (DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_oracle_mysql_8-MYS8-00-000100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "MySQL Database Server 8.0 must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-000100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "MySQL Database Server 8.0 must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-000200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "MySQL Database Server 8.0 must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-000200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "MySQL Database Server 8.0 must limit the number of concurrent sessions to an organization-defined number per user for all accounts and/or account types."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-000300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "MySQL Database Server 8.0 must produce audit records containing sufficient information to establish what type of events occurred.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-000300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "MySQL Database Server 8.0 must produce audit records containing sufficient information to establish what type of events occurred."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-000800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must include additional, more detailed, organizationally defined information in the audit records for audit events identified by type, location, or subject.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-000800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must include additional, more detailed, organizationally defined information in the audit records for audit events identified by type, location, or subject."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The audit information produced by the MySQL Database Server 8.0 must be protected from unauthorized read access.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The audit information produced by the MySQL Database Server 8.0 must be protected from unauthorized read access."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The audit information produced by the MySQL Database Server 8.0 must be protected from unauthorized modification.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The audit information produced by the MySQL Database Server 8.0 must be protected from unauthorized modification."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The audit information produced by the MySQL Database Server 8.0 must be protected from unauthorized deletion.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The audit information produced by the MySQL Database Server 8.0 must be protected from unauthorized deletion."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must protect against a user falsely repudiating having performed organization-defined actions.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must protect against a user falsely repudiating having performed organization-defined actions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be configured to provide audit record generation capability for DoW-defined auditable events within all database components.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be configured to provide audit record generation capability for DoW-defined auditable events within all database components."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must allow only the Information System Security Manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must allow only the Information System Security Manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be able to generate audit records when privileges/permissions are retrieved.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be able to generate audit records when privileges/permissions are retrieved."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-001900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be able to generate audit records when unsuccessful attempts to retrieve privileges/permissions occur.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-001900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be able to generate audit records when unsuccessful attempts to retrieve privileges/permissions occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be able to generate audit records when security objects are accessed.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -489,14 +489,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be able to generate audit records when security objects are accessed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to access security objects occur.",
       "props": [
        {
         "name": "label",
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -522,14 +522,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to access security objects occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when categories of information (e.g., classification levels/security levels) are accessed.",
       "props": [
        {
         "name": "label",
@@ -547,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -555,14 +555,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when categories of information (e.g., classification levels/security levels) are accessed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to access categories of information (e.g., classification levels/security levels) occur.",
       "props": [
        {
         "name": "label",
@@ -580,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -588,14 +588,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to access categories of information (e.g., classification levels/security levels) occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when privileges/permissions are added.",
       "props": [
        {
         "name": "label",
@@ -613,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -621,14 +621,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when privileges/permissions are added."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to add privileges/permissions occur.",
       "props": [
        {
         "name": "label",
@@ -646,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -654,14 +654,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to add privileges/permissions occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when privileges/permissions are modified.",
       "props": [
        {
         "name": "label",
@@ -679,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -687,14 +687,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when privileges/permissions are modified."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to modify privileges/permissions occur.",
       "props": [
        {
         "name": "label",
@@ -712,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -720,14 +720,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to modify privileges/permissions occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when security objects are modified.",
       "props": [
        {
         "name": "label",
@@ -745,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -753,14 +753,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when security objects are modified."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-002900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to modify security objects occur.",
       "props": [
        {
         "name": "label",
@@ -778,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -786,14 +786,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-002900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to modify security objects occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when categories of information (e.g., classification levels/security levels) are modified.",
       "props": [
        {
         "name": "label",
@@ -811,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -819,14 +819,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when categories of information (e.g., classification levels/security levels) are modified."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to modify categories of information (e.g., classification levels/security levels) occur.",
       "props": [
        {
         "name": "label",
@@ -844,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -852,14 +852,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to modify categories of information (e.g., classification levels/security levels) occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when privileges/permissions are deleted.",
       "props": [
        {
         "name": "label",
@@ -877,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -885,14 +885,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when privileges/permissions are deleted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to delete privileges/permissions occur.",
       "props": [
        {
         "name": "label",
@@ -910,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -918,14 +918,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to delete privileges/permissions occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when security objects are deleted.",
       "props": [
        {
         "name": "label",
@@ -943,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -951,14 +951,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when security objects are deleted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to delete security objects occur.",
       "props": [
        {
         "name": "label",
@@ -976,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -984,14 +984,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to delete security objects occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when categories of information (e.g., classification levels/security levels) are deleted.",
       "props": [
        {
         "name": "label",
@@ -1009,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1017,14 +1017,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when categories of information (e.g., classification levels/security levels) are deleted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to delete categories of information (e.g., classification levels/security levels) occur.",
       "props": [
        {
         "name": "label",
@@ -1042,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1050,14 +1050,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to delete categories of information (e.g., classification levels/security levels) occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when successful logons or connections occur.",
       "props": [
        {
         "name": "label",
@@ -1075,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1083,14 +1083,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when successful logons or connections occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-003900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful logons or connection attempts occur.",
       "props": [
        {
         "name": "label",
@@ -1108,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1116,14 +1116,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-003900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful logons or connection attempts occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records for all privileged activities or other system-level access.",
       "props": [
        {
         "name": "label",
@@ -1141,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1149,14 +1149,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records for all privileged activities or other system-level access."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur.",
       "props": [
        {
         "name": "label",
@@ -1174,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1182,14 +1182,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records showing starting and ending time for user access to the database(s).",
       "props": [
        {
         "name": "label",
@@ -1207,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1215,14 +1215,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records showing starting and ending time for user access to the database(s)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when concurrent logons/connections by the same user from different workstations.",
       "props": [
        {
         "name": "label",
@@ -1240,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1248,14 +1248,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when concurrent logons/connections by the same user from different workstations."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be able to generate audit records when successful accesses to objects occur.",
       "props": [
        {
         "name": "label",
@@ -1273,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1281,14 +1281,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be able to generate audit records when successful accesses to objects occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records when unsuccessful accesses to objects occur.",
       "props": [
        {
         "name": "label",
@@ -1306,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1314,14 +1314,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records when unsuccessful accesses to objects occur."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must generate audit records for all direct access to the database(s).",
       "props": [
        {
         "name": "label",
@@ -1339,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1347,14 +1347,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must generate audit records for all direct access to the database(s)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation.",
       "props": [
        {
         "name": "label",
@@ -1372,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1380,14 +1380,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0, when utilizing PKI-based authentication, must validate certificates by performing RFC 5280-compliant certification path validation."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must enforce authorized access to all PKI private keys stored/utilized by the MySQL Database Server 8.0.",
       "props": [
        {
         "name": "label",
@@ -1405,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1413,14 +1413,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must enforce authorized access to all PKI private keys stored/utilized by the MySQL Database Server 8.0."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-004900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must map the PKI-authenticated identity to an associated user account.",
       "props": [
        {
         "name": "label",
@@ -1438,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1446,14 +1446,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-004900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must map the PKI-authenticated identity to an associated user account."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "If Database Management System (DBMS) authentication using passwords is employed, the DBMS must enforce the DoW standards for password complexity and lifetime.",
       "props": [
        {
         "name": "label",
@@ -1471,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1479,14 +1479,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "If Database Management System (DBMS) authentication using passwords is employed, the DBMS must enforce the DoW standards for password complexity and lifetime."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "If passwords are used for authentication, the MySQL Database Server 8.0 must store only hashed, salted representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -1504,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1512,14 +1512,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "If passwords are used for authentication, the MySQL Database Server 8.0 must store only hashed, salted representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "If passwords are used for authentication, the MySQL Database Server 8.0 must transmit only encrypted representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -1537,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1545,14 +1545,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "If passwords are used for authentication, the MySQL Database Server 8.0 must transmit only encrypted representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individual",
       "props": [
        {
         "name": "label",
@@ -1570,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1578,14 +1578,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
       "props": [
        {
         "name": "label",
@@ -1603,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1611,14 +1611,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configurat",
       "props": [
        {
         "name": "label",
@@ -1636,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1644,14 +1644,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DT"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Default demonstration and sample databases, database objects, and applications must be removed.",
       "props": [
        {
         "name": "label",
@@ -1669,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1677,14 +1677,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Default demonstration and sample databases, database objects, and applications must be removed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Unused database components, MySQL Database Server 8.0 software, and database objects must be removed.",
       "props": [
        {
         "name": "label",
@@ -1702,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1710,14 +1710,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Unused database components, MySQL Database Server 8.0 software, and database objects must be removed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-005800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Unused database components which are integrated in the MySQL Database Server 8.0 and cannot be uninstalled must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1735,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1743,14 +1743,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-005800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Unused database components which are integrated in the MySQL Database Server 8.0 and cannot be uninstalled must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability asse",
       "props": [
        {
         "name": "label",
@@ -1768,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1776,14 +1776,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users).",
       "props": [
        {
         "name": "label",
@@ -1801,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1809,14 +1809,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must use NIST FIPS 140-2 or 140-3 validated cryptographic modules for cryptographic operations.",
       "props": [
        {
         "name": "label",
@@ -1834,7 +1834,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1842,14 +1842,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must use NIST FIPS 140-2 or 140-3 validated cryptographic modules for cryptographic operations."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must uniquely identify and authenticate non-organizational users (or processes acting on behalf of non-organizational users).",
       "props": [
        {
         "name": "label",
@@ -1867,7 +1867,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1875,14 +1875,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must uniquely identify and authenticate non-organizational users (or processes acting on behalf of non-organizational users)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must separate user functionality (including user interface services) from database management functionality.",
       "props": [
        {
         "name": "label",
@@ -1900,7 +1900,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1908,14 +1908,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must separate user functionality (including user interface services) from database management functionality."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must isolate security functions from non-security functions.",
       "props": [
        {
         "name": "label",
@@ -1933,7 +1933,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1941,14 +1941,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must isolate security functions from non-security functions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy.",
       "props": [
        {
         "name": "label",
@@ -1966,7 +1966,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -1974,14 +1974,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-006800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Access to database files must be limited to relevant processes and to authorized, administrative users.",
       "props": [
        {
         "name": "label",
@@ -1999,7 +1999,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2007,14 +2007,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-006800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Access to database files must be limited to relevant processes and to authorized, administrative users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-007000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must maintain the authenticity of communications sessions by guarding against man-in-the-middle attacks that guess at Session ID values.",
       "props": [
        {
         "name": "label",
@@ -2032,7 +2032,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2040,14 +2040,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-007000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must maintain the authenticity of communications sessions by guarding against man-in-the-middle attacks that guess at Session ID values."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-007200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must protect the confidentiality and integrity of all information at rest.",
       "props": [
        {
         "name": "label",
@@ -2065,7 +2065,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2073,14 +2073,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-007200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must protect the confidentiality and integrity of all information at rest."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-007300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must check the validity of all data inputs except those specifically identified by the organization.",
       "props": [
        {
         "name": "label",
@@ -2098,7 +2098,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2106,14 +2106,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-007300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must check the validity of all data inputs except those specifically identified by the organization."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-007400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 and associated applications must reserve the use of dynamic code execution for situations that require it.",
       "props": [
        {
         "name": "label",
@@ -2131,7 +2131,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2139,14 +2139,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-007400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 and associated applications must reserve the use of dynamic code execution for situations that require it."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-007500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 and associated applications, when making use of dynamic code execution, must scan input data for invalid values that may indicate a code injection attack.",
       "props": [
        {
         "name": "label",
@@ -2164,7 +2164,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2172,14 +2172,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-007500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 and associated applications, when making use of dynamic code execution, must scan input data for invalid values that may indicate a code injection attack."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-007800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must initiate session auditing upon startup.",
       "props": [
        {
         "name": "label",
@@ -2197,7 +2197,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2205,14 +2205,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-007800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must initiate session auditing upon startup."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must protect its audit features from unauthorized access.",
       "props": [
        {
         "name": "label",
@@ -2230,7 +2230,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2238,14 +2238,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must protect its audit features from unauthorized access."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must protect its audit configuration from unauthorized modification.",
       "props": [
        {
         "name": "label",
@@ -2263,7 +2263,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2271,14 +2271,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must protect its audit configuration from unauthorized modification."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must protect its audit features from unauthorized removal.",
       "props": [
        {
         "name": "label",
@@ -2296,7 +2296,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2304,14 +2304,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must protect its audit features from unauthorized removal."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must limit privileges to change software modules, to include stored procedures, functions and triggers, and links to software external to the MySQL Database Server 8.0.",
       "props": [
        {
         "name": "label",
@@ -2329,7 +2329,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2337,14 +2337,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must limit privileges to change software modules, to include stored procedures, functions and triggers, and links to software external to the MySQL Database Server 8.0."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 software installation account must be restricted to authorized users.",
       "props": [
        {
         "name": "label",
@@ -2362,7 +2362,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2370,14 +2370,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 software installation account must be restricted to authorized users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Database software, including MySQL Database Server 8.0 configuration files, must be stored in dedicated directories, or DASD pools (remove), separate from the host OS and other applications.",
       "props": [
        {
         "name": "label",
@@ -2395,7 +2395,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2403,14 +2403,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Database software, including MySQL Database Server 8.0 configuration files, must be stored in dedicated directories, or DASD pools (remove), separate from the host OS and other applications."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-008700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (stored procedures, functions, triggers, links to sof",
       "props": [
        {
         "name": "label",
@@ -2428,7 +2428,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2436,14 +2436,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-008700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (stored procedures, functions, triggers, links to software external to th"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must disable network functions, ports, protocols, and services deemed by the organization to be nonsecure, in accord with the Ports, Protocols, and Services Management (P",
       "props": [
        {
         "name": "label",
@@ -2461,7 +2461,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2469,14 +2469,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must disable network functions, ports, protocols, and services deemed by the organization to be nonsecure, in accord with the Ports, Protocols, and Services Management (PPSM) guidance."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must prohibit user installation of logic modules (stored procedures, functions, triggers, views, etc.) without explicit privileged status.",
       "props": [
        {
         "name": "label",
@@ -2494,7 +2494,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2502,14 +2502,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must prohibit user installation of logic modules (stored procedures, functions, triggers, views, etc.) without explicit privileged status."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must enforce access restrictions associated with changes to the configuration of the MySQL Database Server 8.0 or database(s).",
       "props": [
        {
         "name": "label",
@@ -2527,7 +2527,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2535,14 +2535,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must enforce access restrictions associated with changes to the configuration of the MySQL Database Server 8.0 or database(s)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must produce audit records of its enforcement of access restrictions associated with changes to the configuration of the MySQL Database Server 8.0 or database(s).",
       "props": [
        {
         "name": "label",
@@ -2560,7 +2560,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2568,14 +2568,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must produce audit records of its enforcement of access restrictions associated with changes to the configuration of the MySQL Database Server 8.0 or database(s)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
       "props": [
        {
         "name": "label",
@@ -2593,7 +2593,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2601,14 +2601,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facilit",
       "props": [
        {
         "name": "label",
@@ -2626,7 +2626,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2634,14 +2634,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75 percent of maximum audit record storage capacity.",
       "props": [
        {
         "name": "label",
@@ -2659,7 +2659,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2667,14 +2667,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75 percent of maximum audit record storage capacity."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-009900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must provide an immediate real-time alert to appropriate support staff of all audit log failures.",
       "props": [
        {
         "name": "label",
@@ -2692,7 +2692,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2700,14 +2700,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-009900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must provide an immediate real-time alert to appropriate support staff of all audit log failures."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must prohibit the use of cached authenticators after an organization-defined time period.",
       "props": [
        {
         "name": "label",
@@ -2725,7 +2725,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2733,14 +2733,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must prohibit the use of cached authenticators after an organization-defined time period."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must require users to reauthenticate when organization-defined circumstances or situations require reauthentication.",
       "props": [
        {
         "name": "label",
@@ -2758,7 +2758,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2766,14 +2766,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must require users to reauthenticate when organization-defined circumstances or situations require reauthentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must enforce discretionary access control policies, as defined by the data owner, over defined subjects and objects.",
       "props": [
        {
         "name": "label",
@@ -2791,7 +2791,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2799,14 +2799,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must enforce discretionary access control policies, as defined by the data owner, over defined subjects and objects."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Execution of software modules (to include stored procedures, functions, and triggers) with elevated privileges must be restricted to necessary cases only.",
       "props": [
        {
         "name": "label",
@@ -2824,7 +2824,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2832,14 +2832,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Execution of software modules (to include stored procedures, functions, and triggers) with elevated privileges must be restricted to necessary cases only."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must prevent non-privileged users from executing privileged functions, to include disabling, circumventing, or altering implemented security safeguards/countermeasures.",
       "props": [
        {
         "name": "label",
@@ -2857,7 +2857,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2865,14 +2865,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must prevent non-privileged users from executing privileged functions, to include disabling, circumventing, or altering implemented security safeguards/countermeasures."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must associate organization-defined types of security labels having organization-defined security label values with information in storage.",
       "props": [
        {
         "name": "label",
@@ -2890,7 +2890,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2898,14 +2898,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must associate organization-defined types of security labels having organization-defined security label values with information in storage."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-010900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must associate organization-defined types of security labels having organization-defined security label values with information in process.",
       "props": [
        {
         "name": "label",
@@ -2923,7 +2923,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2931,14 +2931,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-010900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must associate organization-defined types of security labels having organization-defined security label values with information in process."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must associate organization-defined types of security labels having organization-defined security label values with information in transmission.",
       "props": [
        {
         "name": "label",
@@ -2956,7 +2956,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2964,14 +2964,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must associate organization-defined types of security labels having organization-defined security label values with information in transmission."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect.",
       "props": [
        {
         "name": "label",
@@ -2989,7 +2989,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -2997,14 +2997,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must maintain the confidentiality and integrity of information during preparation for transmission.",
       "props": [
        {
         "name": "label",
@@ -3022,7 +3022,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3030,14 +3030,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must maintain the confidentiality and integrity of information during preparation for transmission."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements.",
       "props": [
        {
         "name": "label",
@@ -3055,7 +3055,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3063,14 +3063,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must implement NIST FIPS 140-2 or 140-3 validated cryptographic modules to provision digital signatures.",
       "props": [
        {
         "name": "label",
@@ -3088,7 +3088,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3096,14 +3096,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must implement NIST FIPS 140-2 or 140-3 validated cryptographic modules to provision digital signatures."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must implement NIST FIPS 140-2 or 140-3 validated cryptographic modules to generate and validate cryptographic hashes.",
       "props": [
        {
         "name": "label",
@@ -3121,7 +3121,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3129,14 +3129,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must implement NIST FIPS 140-2 or 140-3 validated cryptographic modules to generate and validate cryptographic hashes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must implement NIST FIPS 140-2 or 140-3 validated cryptographic modules to protect unclassified information requiring confidentiality and cryptographic protection, in acc",
       "props": [
        {
         "name": "label",
@@ -3154,7 +3154,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3162,14 +3162,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must implement NIST FIPS 140-2 or 140-3 validated cryptographic modules to protect unclassified information requiring confidentiality and cryptographic protection, in accordance with the dat"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-011900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must only accept end entity certificates issued by DoW PKI or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions.",
       "props": [
        {
         "name": "label",
@@ -3187,7 +3187,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3195,14 +3195,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-011900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must only accept end entity certificates issued by DoW PKI or DoW-approved PKI Certification Authorities (CAs) for the establishment of all encrypted sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-012000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified inf",
       "props": [
        {
         "name": "label",
@@ -3220,7 +3220,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3228,14 +3228,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-012000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organiz"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-012100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "The MySQL Database Server 8.0 must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system comp",
       "props": [
        {
         "name": "label",
@@ -3253,7 +3253,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3261,14 +3261,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-012100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "The MySQL Database Server 8.0 must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-012300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "Security-relevant software updates to the MySQL Database Server 8.0 must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
       "props": [
        {
         "name": "label",
@@ -3286,7 +3286,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3294,14 +3294,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-012300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "Security-relevant software updates to the MySQL Database Server 8.0 must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-012500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "When invalid inputs are received, the MySQL Database Server 8.0 must behave in a predictable and documented manner that reflects organizational and system objectives.",
       "props": [
        {
         "name": "label",
@@ -3319,7 +3319,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3327,14 +3327,14 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-012500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "When invalid inputs are received, the MySQL Database Server 8.0 must behave in a predictable and documented manner that reflects organizational and system objectives."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_mysql_8-MYS8-00-012600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body.",
+      "title": "MySQL database products must be a version supported by the vendor.",
       "props": [
        {
         "name": "label",
@@ -3352,7 +3352,7 @@
       ],
       "links": [
        {
-        "href": "#a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+        "href": "#8c76b428-f4f2-58c4-9493-cff99dbc6bed",
         "rel": "implementation"
        }
       ],
@@ -3360,7 +3360,7 @@
        {
         "id": "stig_oracle_mysql_8-MYS8-00-012600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_mysql_8/core.rego (package stig.oracle_mysql_8.core); see the rule body."
+        "prose": "MySQL database products must be a version supported by the vendor."
        }
       ],
       "class": "security"
@@ -3409,7 +3409,7 @@
       ],
       "links": [
        {
-        "href": "#910a1131-d6a6-5f7c-8b96-5a65d612c100",
+        "href": "#e5773819-1847-5714-bef1-34136498c4d6",
         "rel": "implementation"
        }
       ],
@@ -3442,7 +3442,7 @@
       ],
       "links": [
        {
-        "href": "#910a1131-d6a6-5f7c-8b96-5a65d612c100",
+        "href": "#e5773819-1847-5714-bef1-34136498c4d6",
         "rel": "implementation"
        }
       ],
@@ -3461,7 +3461,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "a4fd374d-edd8-5f56-aae3-a00cf8d0dd74",
+     "uuid": "8c76b428-f4f2-58c4-9493-cff99dbc6bed",
      "title": "DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide",
      "props": [
       {
@@ -3472,13 +3472,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_mysql_8/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_mysql_8/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "910a1131-d6a6-5f7c-8b96-5a65d612c100",
+     "uuid": "e5773819-1847-5714-bef1-34136498c4d6",
      "title": "DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -3489,7 +3489,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_mysql_8/stig_oracle_mysql_8_complete.rego",
        "media-type": "text/plain"
       }
      ]

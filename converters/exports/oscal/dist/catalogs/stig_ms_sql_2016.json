@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "a5acc33e-e5ec-55bf-87da-28e5f3780283",
+  "uuid": "0a3e5d25-7fa6-52d5-9587-326b73f2f028",
   "metadata": {
    "title": "Rego Policy Libraries — stig_ms_sql_2016 (DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_ms_sql_2016-SQL6-D0-003700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "SQL Server must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-003700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "SQL Server must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-003900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "SQL Server must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-003900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "SQL Server must enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-006700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "SQL Server software installation account must be restricted to authorized users.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-006700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "SQL Server software installation account must be restricted to authorized users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-007900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "If DBMS authentication using passwords is employed, SQL Server must enforce the DOD standards for password complexity and lifetime.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-007900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "If DBMS authentication using passwords is employed, SQL Server must enforce the DOD standards for password complexity and lifetime."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-008200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "If passwords are used for authentication, SQL Server must transmit only encrypted representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-008200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "If passwords are used for authentication, SQL Server must transmit only encrypted representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-008300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "Confidentiality of information during transmission is controlled through the use of an approved TLS version.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-008300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "Confidentiality of information during transmission is controlled through the use of an approved TLS version."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-008400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "SQL Server must enforce authorized access to all PKI private keys stored/utilized by SQL Server.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-008400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "SQL Server must enforce authorized access to all PKI private keys stored/utilized by SQL Server."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-008700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "SQL Server must use NIST FIPS 140-2/140-3-validated cryptographic operations for encryption, hashing, and signing.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-008700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "SQL Server must use NIST FIPS 140-2/140-3-validated cryptographic operations for encryption, hashing, and signing."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-009500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "SQL Server must protect the confidentiality and integrity of all information at rest.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-009500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "SQL Server must protect the confidentiality and integrity of all information at rest."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-016200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "The SQL Server default account [sa] must be disabled.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-016200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "The SQL Server default account [sa] must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-018100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "When using command-line tools such as SQLCMD in a mixed-mode authentication environment, users must use a logon method that does not expose the password.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-018100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "When using command-line tools such as SQLCMD in a mixed-mode authentication environment, users must use a logon method that does not expose the password."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-018200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "Applications must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-018200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "Applications must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_ms_sql_2016-SQL6-D0-018300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body.",
+      "title": "Microsoft SQL Server products must be a version supported by the vendor.",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+        "href": "#d06f4c5d-5532-5812-9647-9ccad2dac07a",
         "rel": "implementation"
        }
       ],
@@ -489,7 +489,7 @@
        {
         "id": "stig_ms_sql_2016-SQL6-D0-018300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/ms_sql_2016/core.rego (package stig.ms_sql_2016.core); see the rule body."
+        "prose": "Microsoft SQL Server products must be a version supported by the vendor."
        }
       ],
       "class": "security"
@@ -538,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#09128c77-9192-5b4f-9340-921d623dcb72",
+        "href": "#faf54524-90a8-546b-814e-c86c93cd185f",
         "rel": "implementation"
        }
       ],
@@ -571,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#09128c77-9192-5b4f-9340-921d623dcb72",
+        "href": "#faf54524-90a8-546b-814e-c86c93cd185f",
         "rel": "implementation"
        }
       ],
@@ -590,7 +590,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "90e90ca4-685f-5be7-bb18-e4bc7a4683bb",
+     "uuid": "d06f4c5d-5532-5812-9647-9ccad2dac07a",
      "title": "DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide",
      "props": [
       {
@@ -601,13 +601,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/ms_sql_2016/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/ms_sql_2016/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "09128c77-9192-5b4f-9340-921d623dcb72",
+     "uuid": "faf54524-90a8-546b-814e-c86c93cd185f",
      "title": "DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -618,7 +618,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/ms_sql_2016/stig_ms_sql_2016_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/ms_sql_2016/stig_ms_sql_2016_complete.rego",
        "media-type": "text/plain"
       }
      ]

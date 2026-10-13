@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "f7aee326-13f3-5c4c-9edb-7ed913fb3e34",
+  "uuid": "f6d1c873-8e97-51a0-a7cf-6383178a4f3a",
   "metadata": {
    "title": "Rego Policy Libraries — stig_oracle_database_19c (DISA STIG — Oracle Database 19c Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
-   "version": "2.4.1",
+   "version": "2.4.2",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "stig_oracle_database_19c-O19C-00-000100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must limit the number of concurrent sessions for each system account to an organization-defined number of sessions.",
       "props": [
        {
         "name": "label",
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -93,14 +93,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-000100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must limit the number of concurrent sessions for each system account to an organization-defined number of sessions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-000200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must protect against or limit the effects of organization-defined types of denial-of-service (DoS) attacks.",
       "props": [
        {
         "name": "label",
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -126,14 +126,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-000200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must protect against or limit the effects of organization-defined types of denial-of-service (DoS) attacks."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-000300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect.",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -159,14 +159,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-000300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-000500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must associate organization-defined types of security labels having organization-defined security label values with information in storage.",
       "props": [
        {
         "name": "label",
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -192,14 +192,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-000500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must associate organization-defined types of security labels having organization-defined security label values with information in storage."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-000800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
       "props": [
        {
         "name": "label",
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -225,14 +225,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-000800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-001000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must enforce approved authorizations for logical access to the system in accordance with applicable policy.",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-001000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must enforce approved authorizations for logical access to the system in accordance with applicable policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-001700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must protect against an individual who uses a shared account falsely denying having performed a particular action.",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -291,14 +291,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-001700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must protect against an individual who uses a shared account falsely denying having performed a particular action."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-001800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must provide audit record generation capability for organization-defined auditable events within the database.",
       "props": [
        {
         "name": "label",
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -324,14 +324,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-001800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must provide audit record generation capability for organization-defined auditable events within the database."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-001900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must allow designated organizational personnel to select which auditable events are to be audited by the database.",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -357,14 +357,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-001900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must allow designated organizational personnel to select which auditable events are to be audited by the database."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-002000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must generate audit records for the DoW-selected list of auditable events, when successfully accessed, added, modified, or deleted, to the extent such information is available.",
       "props": [
        {
         "name": "label",
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -390,14 +390,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-002000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must generate audit records for the DoW-selected list of auditable events, when successfully accessed, added, modified, or deleted, to the extent such information is available."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-005600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must include organization-defined additional, more detailed information in the audit records for audit events identified by type, location, or subject.",
       "props": [
        {
         "name": "label",
@@ -415,7 +415,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -423,14 +423,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-005600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must include organization-defined additional, more detailed information in the audit records for audit events identified by type, location, or subject."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-005700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
       "props": [
        {
         "name": "label",
@@ -448,7 +448,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -456,14 +456,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-005700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-005800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must off-load audit data to a separate log management facility; this must be continuous and in near-real-time for systems with a network connection to the storage facility, and weekly ",
       "props": [
        {
         "name": "label",
@@ -481,7 +481,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -489,14 +489,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-005800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must off-load audit data to a separate log management facility; this must be continuous and in near-real-time for systems with a network connection to the storage facility, and weekly or more often for st"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-005900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle Database, or the logging or alerting mechanism the application uses, must provide a warning when allocated audit record storage volume record storage volume reaches 75 percent of maximum au",
       "props": [
        {
         "name": "label",
@@ -514,7 +514,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -522,14 +522,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-005900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle Database, or the logging or alerting mechanism the application uses, must provide a warning when allocated audit record storage volume record storage volume reaches 75 percent of maximum audit record storage c"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-006000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must provide an immediate real-time alert to appropriate support staff of all audit log failures.",
       "props": [
        {
         "name": "label",
@@ -547,7 +547,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -555,14 +555,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-006000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must provide an immediate real-time alert to appropriate support staff of all audit log failures."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-006600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The audit information produced by the Oracle Database must be protected from unauthorized access, modification, or deletion.",
       "props": [
        {
         "name": "label",
@@ -580,7 +580,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -588,14 +588,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-006600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The audit information produced by the Oracle Database must be protected from unauthorized access, modification, or deletion."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-006900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The system must protect audit tools from unauthorized access, modification, or deletion.",
       "props": [
        {
         "name": "label",
@@ -613,7 +613,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -621,14 +621,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-006900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The system must protect audit tools from unauthorized access, modification, or deletion."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-007300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must support enforcement of logical access restrictions associated with changes to the database management system (DBMS) configuration and to the database itself.",
       "props": [
        {
         "name": "label",
@@ -646,7 +646,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -654,14 +654,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-007300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must support enforcement of logical access restrictions associated with changes to the database management system (DBMS) configuration and to the database itself."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-007400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database products must be a version supported by the vendor.",
       "props": [
        {
         "name": "label",
@@ -679,7 +679,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -687,14 +687,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-007400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database products must be a version supported by the vendor."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-007700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Database software, applications, and configuration files must be monitored to discover unauthorized changes.",
       "props": [
        {
         "name": "label",
@@ -712,7 +712,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -720,14 +720,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-007700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Database software, applications, and configuration files must be monitored to discover unauthorized changes."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-007900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The OS must limit privileges to change the database management system (DBMS) software resident within software libraries (including privileged programs).",
       "props": [
        {
         "name": "label",
@@ -745,7 +745,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -753,14 +753,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-007900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The OS must limit privileges to change the database management system (DBMS) software resident within software libraries (including privileged programs)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle Database software installation account must be restricted to authorized users.",
       "props": [
        {
         "name": "label",
@@ -778,7 +778,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -786,14 +786,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle Database software installation account must be restricted to authorized users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Database software directories, including database management system (DBMS) configuration files, must be stored in dedicated directories, or DASD pools, separate from the host OS and other applications",
       "props": [
        {
         "name": "label",
@@ -811,7 +811,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -819,14 +819,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Database software directories, including database management system (DBMS) configuration files, must be stored in dedicated directories, or DASD pools, separate from the host OS and other applications."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Database objects must be owned by accounts authorized for ownership.",
       "props": [
        {
         "name": "label",
@@ -844,7 +844,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -852,14 +852,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Database objects must be owned by accounts authorized for ownership."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (stored procedures, functions, triggers, links to sof",
       "props": [
        {
         "name": "label",
@@ -877,7 +877,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -885,14 +885,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (stored procedures, functions, triggers, links to software external to th"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CT",
       "props": [
        {
         "name": "label",
@@ -910,7 +910,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -918,14 +918,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must be configured in accordance with the security configuration settings based on DoW security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle instance names must not contain Oracle version numbers.",
       "props": [
        {
         "name": "label",
@@ -943,7 +943,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -951,14 +951,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle instance names must not contain Oracle version numbers."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-008700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Fixed user and PUBLIC Database links must be authorized for use.",
       "props": [
        {
         "name": "label",
@@ -976,7 +976,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -984,14 +984,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-008700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Fixed user and PUBLIC Database links must be authorized for use."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle WITH GRANT OPTION privilege must be limited when granted to nondatabase administrator (DBA) or nonapplication administrator user accounts.",
       "props": [
        {
         "name": "label",
@@ -1009,7 +1009,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1017,14 +1017,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle WITH GRANT OPTION privilege must be limited when granted to nondatabase administrator (DBA) or nonapplication administrator user accounts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle REMOTE_OS_ROLES parameter must be set to FALSE.",
       "props": [
        {
         "name": "label",
@@ -1042,7 +1042,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1050,14 +1050,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle REMOTE_OS_ROLES parameter must be set to FALSE."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle SQL92_SECURITY parameter must be set to TRUE.",
       "props": [
        {
         "name": "label",
@@ -1075,7 +1075,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1083,14 +1083,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle SQL92_SECURITY parameter must be set to TRUE."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle password file ownership and permissions should be limited and the REMOTE_LOGIN_PASSWORDFILE parameter must be set to EXCLUSIVE or NONE.",
       "props": [
        {
         "name": "label",
@@ -1108,7 +1108,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1116,14 +1116,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle password file ownership and permissions should be limited and the REMOTE_LOGIN_PASSWORDFILE parameter must be set to EXCLUSIVE or NONE."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "System privileges granted using the WITH ADMIN OPTION must not be granted to unauthorized user accounts.",
       "props": [
        {
         "name": "label",
@@ -1141,7 +1141,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1149,14 +1149,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "System privileges granted using the WITH ADMIN OPTION must not be granted to unauthorized user accounts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "System Privileges must not be granted to PUBLIC.",
       "props": [
        {
         "name": "label",
@@ -1174,7 +1174,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1182,14 +1182,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "System Privileges must not be granted to PUBLIC."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle roles granted using the WITH ADMIN OPTION must not be granted to unauthorized accounts.",
       "props": [
        {
         "name": "label",
@@ -1207,7 +1207,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1215,14 +1215,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle roles granted using the WITH ADMIN OPTION must not be granted to unauthorized accounts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Object permissions granted to PUBLIC must be restricted.",
       "props": [
        {
         "name": "label",
@@ -1240,7 +1240,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1248,14 +1248,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Object permissions granted to PUBLIC must be restricted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-009900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle Listener must be configured to require administration authentication.",
       "props": [
        {
         "name": "label",
@@ -1273,7 +1273,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1281,14 +1281,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-009900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle Listener must be configured to require administration authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Application role permissions must not be assigned to the Oracle PUBLIC role.",
       "props": [
        {
         "name": "label",
@@ -1306,7 +1306,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1314,14 +1314,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Application role permissions must not be assigned to the Oracle PUBLIC role."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle application administration roles must be disabled if not required and authorized.",
       "props": [
        {
         "name": "label",
@@ -1339,7 +1339,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1347,14 +1347,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle application administration roles must be disabled if not required and authorized."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The directories assigned to the LOG_ARCHIVE_DEST* parameters must be protected from unauthorized access.",
       "props": [
        {
         "name": "label",
@@ -1372,7 +1372,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1380,14 +1380,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The directories assigned to the LOG_ARCHIVE_DEST* parameters must be protected from unauthorized access."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle _TRACE_FILES_PUBLIC parameter if present must be set to FALSE.",
       "props": [
        {
         "name": "label",
@@ -1405,7 +1405,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1413,14 +1413,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle _TRACE_FILES_PUBLIC parameter if present must be set to FALSE."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database production application and data directories must be protected from developers on shared production/development database management system (DBMS) host systems.",
       "props": [
        {
         "name": "label",
@@ -1438,7 +1438,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1446,14 +1446,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database production application and data directories must be protected from developers on shared production/development database management system (DBMS) host systems."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Use of the Oracle Database installation account must be logged.",
       "props": [
        {
         "name": "label",
@@ -1471,7 +1471,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1479,14 +1479,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Use of the Oracle Database installation account must be logged."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-010800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The Oracle Database data files, transaction logs and audit files must be stored in dedicated directories or disk partitions separate from software or other application files.",
       "props": [
        {
         "name": "label",
@@ -1504,7 +1504,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1512,14 +1512,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-010800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The Oracle Database data files, transaction logs and audit files must be stored in dedicated directories or disk partitions separate from software or other application files."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Network access to Oracle Database must be restricted to authorized personnel.",
       "props": [
        {
         "name": "label",
@@ -1537,7 +1537,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1545,14 +1545,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Network access to Oracle Database must be restricted to authorized personnel."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Changes to configuration options must be audited.",
       "props": [
        {
         "name": "label",
@@ -1570,7 +1570,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1578,14 +1578,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Changes to configuration options must be audited."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The /diag subdirectory under the directory assigned to the DIAGNOSTIC_DEST parameter must be protected from unauthorized access.",
       "props": [
        {
         "name": "label",
@@ -1603,7 +1603,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1611,14 +1611,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The /diag subdirectory under the directory assigned to the DIAGNOSTIC_DEST parameter must be protected from unauthorized access."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Remote administration must be disabled for the Oracle connection manager.",
       "props": [
        {
         "name": "label",
@@ -1636,7 +1636,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1644,14 +1644,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Remote administration must be disabled for the Oracle connection manager."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Network client connections must be restricted to supported versions.",
       "props": [
        {
         "name": "label",
@@ -1669,7 +1669,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1677,14 +1677,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Network client connections must be restricted to supported versions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Database administrator (DBA) OS accounts must be granted only those host system privileges necessary for the administration of the Oracle Database.",
       "props": [
        {
         "name": "label",
@@ -1702,7 +1702,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1710,14 +1710,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Database administrator (DBA) OS accounts must be granted only those host system privileges necessary for the administration of the Oracle Database."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-011900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database default accounts must be assigned custom passwords.",
       "props": [
        {
         "name": "label",
@@ -1735,7 +1735,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1743,14 +1743,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-011900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database default accounts must be assigned custom passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must provide a mechanism to automatically identify accounts designated as temporary or emergency accounts.",
       "props": [
        {
         "name": "label",
@@ -1768,7 +1768,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1776,14 +1776,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must provide a mechanism to automatically identify accounts designated as temporary or emergency accounts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must provide a mechanism to automatically remove or disable temporary user accounts after 72 hours.",
       "props": [
        {
         "name": "label",
@@ -1801,7 +1801,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1809,14 +1809,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must provide a mechanism to automatically remove or disable temporary user accounts after 72 hours."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must be protected from unauthorized access by developers on shared production/development host systems.",
       "props": [
        {
         "name": "label",
@@ -1834,7 +1834,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1842,14 +1842,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must be protected from unauthorized access by developers on shared production/development host systems."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must verify account lockouts persist until reset by an administrator.",
       "props": [
        {
         "name": "label",
@@ -1867,7 +1867,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1875,14 +1875,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must verify account lockouts persist until reset by an administrator."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must set the maximum number of consecutive invalid logon attempts to three.",
       "props": [
        {
         "name": "label",
@@ -1900,7 +1900,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1908,14 +1908,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must set the maximum number of consecutive invalid logon attempts to three."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must disable user accounts after 35 days of inactivity.",
       "props": [
        {
         "name": "label",
@@ -1933,7 +1933,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1941,14 +1941,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must disable user accounts after 35 days of inactivity."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-012900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database default demonstration and sample databases, database objects, and applications must be removed.",
       "props": [
        {
         "name": "label",
@@ -1966,7 +1966,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -1974,14 +1974,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-012900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database default demonstration and sample databases, database objects, and applications must be removed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Unused database components, database management system (DBMS) software, and database objects must be removed.",
       "props": [
        {
         "name": "label",
@@ -1999,7 +1999,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2007,14 +2007,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Unused database components, database management system (DBMS) software, and database objects must be removed."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Unused database components that are integrated in the database management system (DBMS) and cannot be uninstalled must be disabled.",
       "props": [
        {
         "name": "label",
@@ -2032,7 +2032,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2040,14 +2040,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Unused database components that are integrated in the database management system (DBMS) and cannot be uninstalled must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "OS accounts used to run external procedures called by Oracle Database must have limited privileges.",
       "props": [
        {
         "name": "label",
@@ -2065,7 +2065,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2073,14 +2073,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "OS accounts used to run external procedures called by Oracle Database must have limited privileges."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Use of external executables must be authorized.",
       "props": [
        {
         "name": "label",
@@ -2098,7 +2098,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2106,14 +2106,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Use of external executables must be authorized."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Access to external executables must be disabled or restricted.",
       "props": [
        {
         "name": "label",
@@ -2131,7 +2131,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2139,14 +2139,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Access to external executables must be disabled or restricted."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the Ports, Protocols, and Services Management Cat",
       "props": [
        {
         "name": "label",
@@ -2164,7 +2164,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2172,14 +2172,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the Ports, Protocols, and Services Management Category Assurance List"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must ensure users are authenticated with an individual authenticator prior to using a shared authenticator.",
       "props": [
        {
         "name": "label",
@@ -2197,7 +2197,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2205,14 +2205,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must ensure users are authenticated with an individual authenticator prior to using a shared authenticator."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users).",
       "props": [
        {
         "name": "label",
@@ -2230,7 +2230,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2238,14 +2238,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-013900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must enforce the DoW standards for password complexity.",
       "props": [
        {
         "name": "label",
@@ -2263,7 +2263,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2271,14 +2271,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-013900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must enforce the DoW standards for password complexity."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-014600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Procedures for establishing temporary passwords that meet DoW password requirements for new accounts must be defined, documented, and implemented.",
       "props": [
        {
         "name": "label",
@@ -2296,7 +2296,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2304,14 +2304,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-014600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Procedures for establishing temporary passwords that meet DoW password requirements for new accounts must be defined, documented, and implemented."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-014700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must enforce password maximum lifetime restrictions.",
       "props": [
        {
         "name": "label",
@@ -2329,7 +2329,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2337,14 +2337,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-014700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must enforce password maximum lifetime restrictions."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-014800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must, for password-based authentication, store passwords using an approved salted key derivation function, preferably using a keyed hash.",
       "props": [
        {
         "name": "label",
@@ -2362,7 +2362,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2370,14 +2370,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-014800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must, for password-based authentication, store passwords using an approved salted key derivation function, preferably using a keyed hash."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-014900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "If passwords are used for authentication, the Oracle Database must transmit only encrypted representations of passwords.",
       "props": [
        {
         "name": "label",
@@ -2395,7 +2395,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2403,14 +2403,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-014900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "If passwords are used for authentication, the Oracle Database must transmit only encrypted representations of passwords."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-015200",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database, when using public key infrastructure (PKI)-based authentication, must enforce authorized access to the corresponding private key.",
       "props": [
        {
         "name": "label",
@@ -2428,7 +2428,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2436,14 +2436,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-015200_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database, when using public key infrastructure (PKI)-based authentication, must enforce authorized access to the corresponding private key."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-015300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must map the authenticated identity to the user account using public key infrastructure (PKI)-based authentication.",
       "props": [
        {
         "name": "label",
@@ -2461,7 +2461,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2469,14 +2469,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-015300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must map the authenticated identity to the user account using public key infrastructure (PKI)-based authentication."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-015400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "When using command-line tools such as Oracle SQL*Plus, which can accept a plain-text password, users must use an alternative logon method that does not expose the password.",
       "props": [
        {
         "name": "label",
@@ -2494,7 +2494,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2502,14 +2502,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-015400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "When using command-line tools such as Oracle SQL*Plus, which can accept a plain-text password, users must use an alternative logon method that does not expose the password."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-015500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must use NIST-validated FIPS 140-2/140-3 compliant cryptography for authentication mechanisms.",
       "props": [
        {
         "name": "label",
@@ -2527,7 +2527,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2535,14 +2535,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-015500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must use NIST-validated FIPS 140-2/140-3 compliant cryptography for authentication mechanisms."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-015600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must uniquely identify and authenticate nonorganizational users (or processes acting on behalf of nonorganizational users).",
       "props": [
        {
         "name": "label",
@@ -2560,7 +2560,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2568,14 +2568,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-015600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must uniquely identify and authenticate nonorganizational users (or processes acting on behalf of nonorganizational users)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-016000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must implement NIST FIPS 140-2/140-3 validated cryptographic modules to protect unclassified information requiring confidentiality and cryptographic protection, in accordance with the ",
       "props": [
        {
         "name": "label",
@@ -2593,7 +2593,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2601,14 +2601,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-016000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must implement NIST FIPS 140-2/140-3 validated cryptographic modules to protect unclassified information requiring confidentiality and cryptographic protection, in accordance with the data owner's require"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-016100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must separate user functionality (including user interface services) from database management functionality.",
       "props": [
        {
         "name": "label",
@@ -2626,7 +2626,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2634,14 +2634,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-016100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must separate user functionality (including user interface services) from database management functionality."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-016700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must preserve any organization-defined system state information in the event of a system failure.",
       "props": [
        {
         "name": "label",
@@ -2659,7 +2659,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2667,14 +2667,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-016700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must preserve any organization-defined system state information in the event of a system failure."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-016800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must take steps to protect data at rest and ensure confidentiality and integrity of application data.",
       "props": [
        {
         "name": "label",
@@ -2692,7 +2692,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2700,14 +2700,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-016800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must take steps to protect data at rest and ensure confidentiality and integrity of application data."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-016900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on o",
       "props": [
        {
         "name": "label",
@@ -2725,7 +2725,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2733,14 +2733,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-016900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined "
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-017100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must isolate security functions from nonsecurity functions by means of separate security domains.",
       "props": [
        {
         "name": "label",
@@ -2758,7 +2758,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2766,14 +2766,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-017100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must isolate security functions from nonsecurity functions by means of separate security domains."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-017400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy.",
       "props": [
        {
         "name": "label",
@@ -2791,7 +2791,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2799,14 +2799,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-017400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database contents must be protected from unauthorized and unintended information transfer by enforcement of a data-transfer policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-017600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Access to Oracle Database files must be limited to relevant processes and to authorized, administrative users.",
       "props": [
        {
         "name": "label",
@@ -2824,7 +2824,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2832,14 +2832,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-017600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Access to Oracle Database files must be limited to relevant processes and to authorized, administrative users."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-017700",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must employ cryptographic mechanisms preventing the unauthorized disclosure of information during transmission unless the transmitted data is otherwise protected by alternative physica",
       "props": [
        {
         "name": "label",
@@ -2857,7 +2857,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2865,14 +2865,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-017700_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must employ cryptographic mechanisms preventing the unauthorized disclosure of information during transmission unless the transmitted data is otherwise protected by alternative physical measures."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-017900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must check the validity of data inputs.",
       "props": [
        {
         "name": "label",
@@ -2890,7 +2890,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2898,14 +2898,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-017900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must check the validity of data inputs."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-018000",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The database management system (DBMS) and associated applications must reserve the use of dynamic code execution for situations that require it.",
       "props": [
        {
         "name": "label",
@@ -2923,7 +2923,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2931,14 +2931,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-018000_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The database management system (DBMS) and associated applications must reserve the use of dynamic code execution for situations that require it."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-018100",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "The database management system (DBMS) and associated applications, when making use of dynamic code execution, must take steps against invalid values that may be used in a SQL injection attack, therefo",
       "props": [
        {
         "name": "label",
@@ -2956,7 +2956,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2964,14 +2964,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-018100_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "The database management system (DBMS) and associated applications, when making use of dynamic code execution, must take steps against invalid values that may be used in a SQL injection attack, therefore resulting in step"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-018300",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must only generate error messages that provide information necessary for corrective actions without revealing organization-defined sensitive or potentially harmful information in error",
       "props": [
        {
         "name": "label",
@@ -2989,7 +2989,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -2997,14 +2997,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-018300_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must only generate error messages that provide information necessary for corrective actions without revealing organization-defined sensitive or potentially harmful information in error logs and administra"
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-018400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must restrict error messages so only authorized personnel may view them.",
       "props": [
        {
         "name": "label",
@@ -3022,7 +3022,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3030,14 +3030,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-018400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must restrict error messages so only authorized personnel may view them."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-018600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database software must be evaluated and patched against newly found vulnerabilities.",
       "props": [
        {
         "name": "label",
@@ -3055,7 +3055,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3063,14 +3063,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-018600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database software must be evaluated and patched against newly found vulnerabilities."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-019800",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must, for password-based authentication, verify that when users create or update passwords, the passwords are not found on the list of commonly used, expected, or compromised passwords",
       "props": [
        {
         "name": "label",
@@ -3088,7 +3088,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3096,14 +3096,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-019800_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must, for password-based authentication, verify that when users create or update passwords, the passwords are not found on the list of commonly used, expected, or compromised passwords in IA-5 (1) (a)."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-019900",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must, for password-based authentication, require immediate selection of a new password upon account recovery.",
       "props": [
        {
         "name": "label",
@@ -3121,7 +3121,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3129,14 +3129,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-019900_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must, for password-based authentication, require immediate selection of a new password upon account recovery."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-020400",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "Oracle Database must include only approved trust anchors in trust stores or certificate stores managed by the organization.",
       "props": [
        {
         "name": "label",
@@ -3154,7 +3154,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3162,14 +3162,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-020400_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "Oracle Database must include only approved trust anchors in trust stores or certificate stores managed by the organization."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-020500",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "A minimum of three Oracle Control Files must be created and each stored on a separate physical and logical device.",
       "props": [
        {
         "name": "label",
@@ -3187,7 +3187,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3195,14 +3195,14 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-020500_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "A minimum of three Oracle Control Files must be created and each stored on a separate physical and logical device."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_oracle_database_19c-O19C-00-020600",
-      "title": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body.",
+      "title": "A minimum of three Oracle redo log groups/files must be defined and configured to be stored on separate, archived physical disks or archived directories on a RAID device. In addition, each Oracle redo",
       "props": [
        {
         "name": "label",
@@ -3220,7 +3220,7 @@
       ],
       "links": [
        {
-        "href": "#7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+        "href": "#828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
         "rel": "implementation"
        }
       ],
@@ -3228,7 +3228,7 @@
        {
         "id": "stig_oracle_database_19c-O19C-00-020600_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/stig/oracle_database_19c/core.rego (package stig.oracle_database_19c.core); see the rule body."
+        "prose": "A minimum of three Oracle redo log groups/files must be defined and configured to be stored on separate, archived physical disks or archived directories on a RAID device. In addition, each Oracle redo log group must have"
        }
       ],
       "class": "security"
@@ -3277,7 +3277,7 @@
       ],
       "links": [
        {
-        "href": "#acac1b20-8a0e-56e6-a07b-b958ea06094e",
+        "href": "#146be617-375c-511c-99c5-33ce64c776fa",
         "rel": "implementation"
        }
       ],
@@ -3310,7 +3310,7 @@
       ],
       "links": [
        {
-        "href": "#acac1b20-8a0e-56e6-a07b-b958ea06094e",
+        "href": "#146be617-375c-511c-99c5-33ce64c776fa",
         "rel": "implementation"
        }
       ],
@@ -3329,7 +3329,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "7d0bb3f5-3e62-5873-8c22-cbcaab5f1394",
+     "uuid": "828a9fb5-456c-5d9b-8b2a-0b3204d2d42c",
      "title": "DISA STIG — Oracle Database 19c Security Technical Implementation Guide",
      "props": [
       {
@@ -3340,13 +3340,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_database_19c/core.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_database_19c/core.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "acac1b20-8a0e-56e6-a07b-b958ea06094e",
+     "uuid": "146be617-375c-511c-99c5-33ce64c776fa",
      "title": "DISA STIG — Oracle Database 19c Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
@@ -3357,7 +3357,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego",
        "media-type": "text/plain"
       }
      ]
