@@ -135,7 +135,8 @@ violations contains sprintf("Registry: Container '%s' in %s '%s' uses unapproved
 
 from_approved_registry(image) if {
 	some registry in approved_registries
-	startswith(image, registry)
+	# anchored on the host component: "quay.io" must not admit "quay.io.evil.example/..."
+	startswith(image, concat("", [trim_suffix(registry, "/"), "/"]))
 }
 
 # Allow images without registry prefix (cluster-local)
