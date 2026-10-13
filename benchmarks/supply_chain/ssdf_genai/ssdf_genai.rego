@@ -20,12 +20,11 @@
 #     tested: true
 #     entrypoint: report
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package supply_chain.ssdf_genai
 
 import rego.v1
 
-import data.supply_chain.substrate
 
 # AI contributions must be attested. If there are no AI contributions, the
 # control is vacuously satisfied.

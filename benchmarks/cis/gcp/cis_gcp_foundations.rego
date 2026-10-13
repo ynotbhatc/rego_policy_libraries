@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_gcp_foundations
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0
@@ -213,7 +213,7 @@ networking_violations := [
 
 
 
-weak_cipher_suite(profile, min_tls_version) if {
+weak_cipher_suite(profile, _) if {
     profile == "COMPATIBLE"
 }
 

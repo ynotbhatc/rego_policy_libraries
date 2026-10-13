@@ -13,10 +13,24 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_004
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default access_authorization_documented := false
+default access_authorization_reviewed := false
+default access_based_on_need_to_know := false
+default access_revoked_timely_on_termination := false
+default cyber_security_training_program := false
+default personnel_risk_assessments_current := false
+default pra_before_access_granted := false
+default security_awareness_current := false
+default security_awareness_program := false
+default shared_accounts_managed := false
+default training_completed_for_all_authorized_personnel := false
+default training_records_maintained := false
 
 # CIP-004-6: Personnel & Training
 # Requirement: Minimize the risk against compromise of BES Cyber Systems from
@@ -355,7 +369,7 @@ report := {
 		"R5_shared_accounts_managed": shared_accounts_managed,
 	},
 	"personnel_summary": {
-		"total_personnel": count(input.personnel),
+		"total_personnel": count(object.get(input, ["personnel"], [])),
 		"authorized_electronic": count([p | p := input.personnel[_]; p.access_level == "authorized_electronic_access"]),
 		"authorized_physical": count([p | p := input.personnel[_]; p.access_level == "authorized_unescorted_physical_access"]),
 	},

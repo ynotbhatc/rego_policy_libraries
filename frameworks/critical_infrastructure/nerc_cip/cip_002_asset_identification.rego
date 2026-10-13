@@ -13,10 +13,17 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_002
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default all_bes_cyber_systems_categorized := false
+default all_bes_cyber_systems_identified := false
+default annual_review_performed := false
+default categorization_criteria_documented := false
+default cip_senior_manager_approval := false
 
 # CIP-002-5.1a: BES Cyber System Categorization
 # Requirement: Identify and categorize BES Cyber Systems and their associated
@@ -32,7 +39,7 @@ import rego.v1
 
 # R1.1 - Each BES Cyber System must be identified
 all_bes_cyber_systems_identified if {
-	count(input.bes_cyber_systems) > 0
+	count(object.get(input, ["bes_cyber_systems"], [])) > 0
 	every system in input.bes_cyber_systems {
 		system.system_id
 		system.system_name
@@ -234,7 +241,7 @@ report := {
 		"R3_senior_manager_approval": cip_senior_manager_approval,
 	},
 	"systems": {
-		"total": count(input.bes_cyber_systems),
+		"total": count(object.get(input, ["bes_cyber_systems"], [])),
 		"high_impact": count([s | s := input.bes_cyber_systems[_]; s.impact_categorization == "high"]),
 		"medium_impact": count([s | s := input.bes_cyber_systems[_]; s.impact_categorization == "medium"]),
 		"low_impact": count([s | s := input.bes_cyber_systems[_]; s.impact_categorization == "low"]),

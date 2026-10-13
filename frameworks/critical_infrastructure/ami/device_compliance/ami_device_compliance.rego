@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package ami.device.compliance
 
 import rego.v1
@@ -233,6 +233,8 @@ critical_violations := [msg |
 default compliant := false
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.devices
     count(all_violations) == 0
 }
 

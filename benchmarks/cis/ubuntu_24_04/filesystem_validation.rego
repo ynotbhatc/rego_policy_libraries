@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_ubuntu_24_04.filesystem
 
 # CIS Ubuntu 24.04 - Section 1.1 Filesystem Configuration

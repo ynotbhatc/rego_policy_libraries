@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rhel9.l2
 
 # CIS RHEL 9 Benchmark v2.0.0 - Level 2 Additional Controls

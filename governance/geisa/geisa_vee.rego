@@ -6,14 +6,14 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 2
+#     checks: 3
 #     cited: 0
-#     density: stub
+#     density: sparse
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package governance.geisa.vee
 
 import rego.v1
@@ -65,7 +65,14 @@ violations contains "VEE: discovery_response.pillars.vee is true but container i
 # ─── Output ──────────────────────────────────────────────────────────────────
 
 # When VEE is not required, the pillar trivially passes.
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.container
+}
+
 compliant if {
+	# "VEE not required" is only knowable from a discovery response; without one the module cannot be evaluated
+	input.discovery_response
 	not _vee_required
 }
 

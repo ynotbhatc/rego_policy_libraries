@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_arista_eos
 
 # CIS Arista EOS Benchmark v1.2.0

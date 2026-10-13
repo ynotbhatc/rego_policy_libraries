@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package governance.geisa.api
 
 import rego.v1

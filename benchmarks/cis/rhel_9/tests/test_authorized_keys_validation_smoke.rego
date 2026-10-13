@@ -16,3 +16,12 @@ test_authorized_keys_validation_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_authorized_keys_validation_fail_closed_on_empty_input if {
+	report := data.cis_rhel9.authorized_keys.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_authorized_keys_validation_violations_on_empty_input if {
+	v := data.cis_rhel9.authorized_keys.violations with input as {}
+	count(v) > 0
+}

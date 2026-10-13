@@ -16,3 +16,12 @@ test_geisa_lee_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_geisa_lee_fail_closed_on_empty_input if {
+	report := data.governance.geisa.lee.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
+test_geisa_lee_violations_on_empty_input if {
+	v := data.governance.geisa.lee.violations with input as {}
+	count(v) > 0
+}

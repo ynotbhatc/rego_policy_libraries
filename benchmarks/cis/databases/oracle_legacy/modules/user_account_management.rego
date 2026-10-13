@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_oracle.user_account_management
 
 # CIS Oracle Database 19c Benchmark - Section 3
@@ -21,6 +21,9 @@ package cis_oracle.user_account_management
 # Validates Oracle user accounts, profiles, and authentication
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default default_profile_secure := false
 
 # =============================================================================
 # MAIN COMPLIANCE RULES
@@ -277,22 +280,22 @@ report := {
 	"total_violations": count(violations),
 	"violations": violations,
 	"account_summary": {
-		"total_accounts": count(input.all_accounts),
-		"open_accounts": count([a | some a in input.all_accounts; a.status == "OPEN"]),
-		"locked_accounts": count([a | some a in input.all_accounts; a.status == "LOCKED"]),
-		"expired_accounts": count([a | some a in input.all_accounts; a.status == "EXPIRED"]),
-		"default_accounts_open": count([a | some a in input.default_accounts; a.status == "OPEN"]),
-		"privileged_accounts": count(input.privileged_accounts),
-		"dba_users": count(input.dba_users),
-		"inactive_accounts": count([a | some a in input.inactive_accounts; a.last_login_days > 90]),
+		"total_accounts": count(object.get(input, ["all_accounts"], [])),
+		"open_accounts": count([a | some a in object.get(input, ["all_accounts"], []); a.status == "OPEN"]),
+		"locked_accounts": count([a | some a in object.get(input, ["all_accounts"], []); a.status == "LOCKED"]),
+		"expired_accounts": count([a | some a in object.get(input, ["all_accounts"], []); a.status == "EXPIRED"]),
+		"default_accounts_open": count([a | some a in object.get(input, ["default_accounts"], []); a.status == "OPEN"]),
+		"privileged_accounts": count(object.get(input, ["privileged_accounts"], [])),
+		"dba_users": count(object.get(input, ["dba_users"], [])),
+		"inactive_accounts": count([a | some a in object.get(input, ["inactive_accounts"], []); a.last_login_days > 90]),
 	},
 	"password_policy_status": {
 		"default_profile_secure": default_profile_secure,
-		"profiles_with_complexity": count([p | some p in input.password_profiles; p.PASSWORD_VERIFY_FUNCTION; p.PASSWORD_VERIFY_FUNCTION != "NULL"]),
-		"profiles_total": count(input.password_profiles),
+		"profiles_with_complexity": count([p | some p in object.get(input, ["password_profiles"], []); p.PASSWORD_VERIFY_FUNCTION; p.PASSWORD_VERIFY_FUNCTION != "NULL"]),
+		"profiles_total": count(object.get(input, ["password_profiles"], [])),
 	},
 	"risk_level": risk_level,
-	"collection_timestamp": input.collection_timestamp,
+	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 
 default_profile_secure if {
@@ -316,7 +319,7 @@ risk_level := "critical" if {
 } else := "high" if {
 	count([a | some a in input.default_accounts; a.status == "OPEN"]) > 2
 } else := "high" if {
-	count(input.public_privileges.dangerous_privileges) > 0
+	count(object.get(input, ["public_privileges", "dangerous_privileges"], [])) > 0
 } else := "medium" if {
 	count(violations) > 0
 } else := "low"

@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis.oracle_19c
 
 import rego.v1
@@ -776,9 +776,7 @@ password_grace_period_limited if {
 strong_authentication_used if {
 	auth_methods := input.oracle.authentication_methods
 	strong_methods := ["KERBEROS", "PKI", "RADIUS", "LDAP"]
-	weak_methods := ["OS", "PASSWORD"]
 	strong_auth_enabled := [method | method := auth_methods[_]; method in strong_methods]
-	weak_auth_only := [method | method := auth_methods[_]; method in weak_methods]
 	count(strong_auth_enabled) > 0
 }
 
@@ -931,7 +929,6 @@ privileges_roles_violations := [v |
 
 unnecessary_roles_dropped if {
 	roles := input.oracle.roles
-	predefined_roles := ["CONNECT", "RESOURCE", "DBA", "IMP_FULL_DATABASE", "EXP_FULL_DATABASE"]
 	unnecessary_roles := ["CONNECT", "RESOURCE"]
 	existing_unnecessary := [role | role := roles[_]; role.role_name in unnecessary_roles]
 	count(existing_unnecessary) == 0

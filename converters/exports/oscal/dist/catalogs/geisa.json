@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "bf4944c9-9dbc-5247-9007-6555deebde6a",
+  "uuid": "c4e4b9cb-b6a9-51cc-9192-731cf0f5784b",
   "metadata": {
    "title": "Rego Policy Libraries — geisa (GEISA ADM Pillar — Application/Device Management via LwM2M)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.4",
+   "version": "2.3.5",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
         "rel": "implementation"
        }
       ],
@@ -358,6 +358,39 @@
         "id": "geisa-governance.geisa.adm-9_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-10",
+      "title": "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-10_stmt",
+        "name": "statement",
+        "prose": "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "governance"
@@ -406,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -439,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -472,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -505,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -538,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -571,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -604,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -637,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -670,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#832db19b-e78a-57b6-b08e-7cecace0fb12",
+        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
         "rel": "implementation"
        }
       ],
@@ -727,7 +760,7 @@
       ],
       "links": [
        {
-        "href": "#776a6348-7477-5d47-a24a-128bc49eea35",
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
         "rel": "implementation"
        }
       ],
@@ -760,7 +793,7 @@
       ],
       "links": [
        {
-        "href": "#776a6348-7477-5d47-a24a-128bc49eea35",
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
         "rel": "implementation"
        }
       ],
@@ -793,7 +826,7 @@
       ],
       "links": [
        {
-        "href": "#776a6348-7477-5d47-a24a-128bc49eea35",
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
         "rel": "implementation"
        }
       ],
@@ -826,7 +859,7 @@
       ],
       "links": [
        {
-        "href": "#776a6348-7477-5d47-a24a-128bc49eea35",
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
         "rel": "implementation"
        }
       ],
@@ -859,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#776a6348-7477-5d47-a24a-128bc49eea35",
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
         "rel": "implementation"
        }
       ],
@@ -892,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#776a6348-7477-5d47-a24a-128bc49eea35",
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
         "rel": "implementation"
        }
       ],
@@ -901,6 +934,39 @@
         "id": "geisa-governance.geisa.lee-6_stmt",
         "name": "statement",
         "prose": "LEE: discovery_response must declare lee pillar as true"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.lee-7",
+      "title": "GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.lee#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.lee#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.lee"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.lee-7_stmt",
+        "name": "statement",
+        "prose": "GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "governance"
@@ -949,7 +1015,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -982,7 +1048,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1015,7 +1081,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1048,7 +1114,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1081,7 +1147,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1114,7 +1180,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1147,7 +1213,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1180,7 +1246,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1213,7 +1279,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1246,7 +1312,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1279,7 +1345,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1312,7 +1378,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1345,7 +1411,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1378,7 +1444,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1411,7 +1477,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1444,7 +1510,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1477,7 +1543,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1510,7 +1576,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1543,7 +1609,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1576,7 +1642,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1609,7 +1675,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1642,7 +1708,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1675,7 +1741,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1708,7 +1774,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1741,7 +1807,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1774,7 +1840,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1807,7 +1873,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1840,7 +1906,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1873,7 +1939,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1906,7 +1972,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1939,7 +2005,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -1972,7 +2038,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2005,7 +2071,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2038,7 +2104,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2071,7 +2137,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2104,7 +2170,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2137,7 +2203,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2170,7 +2236,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2203,7 +2269,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2236,7 +2302,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2269,7 +2335,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2302,7 +2368,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2335,7 +2401,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2368,7 +2434,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2401,7 +2467,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2434,7 +2500,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2467,7 +2533,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2500,7 +2566,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2533,7 +2599,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2566,7 +2632,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2599,7 +2665,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2632,7 +2698,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2665,7 +2731,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2698,7 +2764,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2731,7 +2797,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2764,7 +2830,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2797,7 +2863,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2830,7 +2896,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2863,7 +2929,7 @@
       ],
       "links": [
        {
-        "href": "#ce481039-6d51-5576-8e4a-29ecd44c4a43",
+        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
         "rel": "implementation"
        }
       ],
@@ -2920,7 +2986,7 @@
       ],
       "links": [
        {
-        "href": "#0b761bd4-706b-5344-87ab-495de652eb7b",
+        "href": "#1e2ce1c1-328e-534d-b5db-51a8a02bf859",
         "rel": "implementation"
        }
       ],
@@ -2953,7 +3019,7 @@
       ],
       "links": [
        {
-        "href": "#0b761bd4-706b-5344-87ab-495de652eb7b",
+        "href": "#1e2ce1c1-328e-534d-b5db-51a8a02bf859",
         "rel": "implementation"
        }
       ],
@@ -2965,6 +3031,39 @@
        }
       ],
       "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.vee-3",
+      "title": "GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.vee#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.vee#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.vee"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2ce1c1-328e-534d-b5db-51a8a02bf859",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.vee-3_stmt",
+        "name": "statement",
+        "prose": "GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "governance"
      }
     ]
    }
@@ -2972,7 +3071,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "283e0e0b-b020-564f-9dfc-cc765a1e9bf8",
+     "uuid": "d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
      "title": "GEISA ADM Pillar — Application/Device Management via LwM2M",
      "props": [
       {
@@ -2983,13 +3082,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.4/governance/geisa/geisa_adm.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_adm.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "832db19b-e78a-57b6-b08e-7cecace0fb12",
+     "uuid": "49d32f86-817e-5635-b013-3464886c25ca",
      "title": "GEISA API Pillar — Platform Discovery Compliance",
      "props": [
       {
@@ -3000,13 +3099,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.4/governance/geisa/geisa_api.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_api.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "776a6348-7477-5d47-a24a-128bc49eea35",
+     "uuid": "b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
      "title": "GEISA LEE Pillar — Lightweight Execution Environment",
      "props": [
       {
@@ -3017,13 +3116,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.4/governance/geisa/geisa_lee.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_lee.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ce481039-6d51-5576-8e4a-29ecd44c4a43",
+     "uuid": "c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
      "title": "GEISA Application Manifest Validator",
      "props": [
       {
@@ -3034,13 +3133,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.4/governance/geisa/geisa_manifest_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_manifest_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0b761bd4-706b-5344-87ab-495de652eb7b",
+     "uuid": "1e2ce1c1-328e-534d-b5db-51a8a02bf859",
      "title": "GEISA VEE Pillar — Virtual Execution Environment",
      "props": [
       {
@@ -3051,7 +3150,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.4/governance/geisa/geisa_vee.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_vee.rego",
        "media-type": "text/plain"
       }
      ]

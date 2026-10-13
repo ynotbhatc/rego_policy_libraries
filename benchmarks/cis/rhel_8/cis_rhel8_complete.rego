@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rhel8
 
 # CIS RHEL 8 Benchmark v4.0.0 - Complete Validation

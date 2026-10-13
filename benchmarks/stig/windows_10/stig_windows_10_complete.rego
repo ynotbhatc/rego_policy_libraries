@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package stig.windows_10
 
 # DISA STIG for windows 10 - Simplified Complete Assessment

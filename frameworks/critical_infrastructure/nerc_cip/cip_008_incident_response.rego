@@ -13,10 +13,26 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_008
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default incident_classification_process := false
+default incident_handling_processes_defined := false
+default incident_response_plan_current := false
+default incident_response_plan_documented := false
+default incident_response_roles_defined := false
+default incident_response_team_trained := false
+default incident_response_test_documented := false
+default incident_response_testing_performed := false
+default incident_triggered_plan_updates := false
+default lessons_learned_incorporated := false
+default nerc_notification_timely := false
+default nerc_reporting_process_defined := false
+default plan_communicated_to_personnel := false
+default reportable_incident_identification := false
 
 # CIP-008-6: Incident Reporting and Response Planning
 # Requirement: Maintain the ability to identify, classify, respond to, and
@@ -300,7 +316,7 @@ report := {
 		"R5_nerc_notification_timely": nerc_notification_timely,
 	},
 	"team_summary": {
-		"total_ir_team_members": count(input.incident_response_team),
+		"total_ir_team_members": count(object.get(input, ["incident_response_team"], [])),
 		"trained_members": count([m | m := input.incident_response_team[_]; m.training.completed == true]),
 	},
 	"violations": violations,

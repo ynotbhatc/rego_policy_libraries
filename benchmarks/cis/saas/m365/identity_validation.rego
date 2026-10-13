@@ -32,7 +32,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_m365.identity
 
 import rego.v1

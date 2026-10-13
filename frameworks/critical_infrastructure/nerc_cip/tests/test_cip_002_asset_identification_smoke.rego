@@ -10,6 +10,17 @@ test_cip_002_asset_identification_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_cip_002_asset_identification_report_wellformed_on_empty_input if {
+	report := data.nerc_cip.cip_002.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_cip_002_asset_identification_fail_closed_on_empty_input if {
+	report := data.nerc_cip.cip_002.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
 test_cip_002_asset_identification_violations_on_empty_input if {
 	v := data.nerc_cip.cip_002.violations with input as {}
 	count(v) > 0

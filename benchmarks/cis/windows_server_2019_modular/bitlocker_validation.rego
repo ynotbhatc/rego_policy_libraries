@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_windows_server_2019.bitlocker
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 18.10.9: BitLocker Drive Encryption
@@ -131,9 +131,9 @@ report := {
 	"fixed_drive_violations": count(fixed_drive_violations),
 	"removable_drive_violations": count(removable_drive_violations),
 	"encryption_status": {
-		"os_drive_encrypted": input.bitlocker.os_drive_encrypted,
-		"tpm_available": input.bitlocker.tpm_available,
-		"tpm_version": input.bitlocker.tpm_version,
+		"os_drive_encrypted": object.get(input, ["bitlocker", "os_drive_encrypted"], null),
+		"tpm_available": object.get(input, ["bitlocker", "tpm_available"], null),
+		"tpm_version": object.get(input, ["bitlocker", "tpm_version"], null),
 	},
 	"controls_checked": 13,
 	"section": "18.10.9 BitLocker Drive Encryption",

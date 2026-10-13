@@ -13,10 +13,28 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_007
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default default_passwords_changed := false
+default login_attempt_limiting := false
+default malicious_code_prevention_implemented := false
+default malicious_code_response_documented := false
+default password_policy_enforced := false
+default patch_tracking_process := false
+default physical_io_ports_protected := false
+default ports_and_services_minimized := false
+default ports_and_services_policy := false
+default security_event_alerting := false
+default security_event_logging_enabled := false
+default security_log_review_current := false
+default security_patch_evaluation_timely := false
+default security_patches_applied := false
+default shared_accounts_minimized := false
+default unique_authentication_credentials := false
 
 # CIP-007-6: Systems Security Management
 # Requirement: Manage system security by specifying select technical, operational,

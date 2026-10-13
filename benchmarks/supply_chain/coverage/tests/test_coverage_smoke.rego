@@ -10,3 +10,13 @@ test_coverage_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_coverage_report_wellformed_on_empty_input if {
+	report := data.supply_chain.coverage.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_coverage_fail_closed_on_empty_input if {
+	report := data.supply_chain.coverage.report with input as {}
+	not object.get(report, "compliant", false) == true
+}

@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package security.crypto_miner_detection
 
 import rego.v1

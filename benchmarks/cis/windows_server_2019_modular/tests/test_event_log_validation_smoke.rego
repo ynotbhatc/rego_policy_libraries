@@ -10,6 +10,17 @@ test_event_log_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_event_log_validation_report_wellformed_on_empty_input if {
+	report := data.cis_windows_server_2019.event_log.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_event_log_validation_fail_closed_on_empty_input if {
+	report := data.cis_windows_server_2019.event_log.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
 test_event_log_validation_violations_on_empty_input if {
 	v := data.cis_windows_server_2019.event_log.violations with input as {}
 	count(v) > 0

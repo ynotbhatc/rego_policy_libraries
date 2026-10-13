@@ -32,7 +32,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_m365_v7.main
 
 import data.cis_m365_v7.admin_center

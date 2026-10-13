@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: orchestrator
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_ubuntu_24_04.user_group
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 6.2: User and Group Settings

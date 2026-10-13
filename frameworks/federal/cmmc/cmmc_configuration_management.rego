@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 20
+#     checks: 21
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package cmmc.configuration_management
 
 import rego.v1
@@ -129,6 +129,14 @@ violations contains msg if { some msg in violation_cm_6 }
 violations contains msg if { some msg in violation_cm_7 }
 violations contains msg if { some msg in violation_cm_8 }
 violations contains msg if { some msg in violation_cm_9 }
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "CMMC CM.L2-3.4.3: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.cmmc_level
+}
+
+# fail-closed: non-empty violations (including the no-facts notice) make this false, never undefined
+default compliant := false
 
 compliant if { count(violations) == 0 }
 

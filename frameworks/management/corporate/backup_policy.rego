@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package corporate.backup
 
 import rego.v1
@@ -152,7 +152,7 @@ minimum_personal_data_retention(system) := 7 if {
     system.regulatory_requirements[_] == "SOX"
 }
 
-minimum_personal_data_retention(system) := 2 if {
+minimum_personal_data_retention(_) := 2 if {
     true  # Default minimum
 }
 
@@ -536,7 +536,7 @@ minimum_retention_for_data_types(data_types) := 2 if {
     not "operational" in data_types
 }
 
-minimum_retention_for_data_types(data_types) := 1 if {
+minimum_retention_for_data_types(_) := 1 if {
     true  # Default
 }
 

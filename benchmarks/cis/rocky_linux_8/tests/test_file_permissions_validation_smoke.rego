@@ -10,6 +10,17 @@ test_file_permissions_validation_loads_on_empty_input if {
 	is_object(m)
 }
 
+test_file_permissions_validation_report_wellformed_on_empty_input if {
+	report := data.cis_rocky_linux_8.file_permissions.report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_file_permissions_validation_fail_closed_on_empty_input if {
+	report := data.cis_rocky_linux_8.file_permissions.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+
 test_file_permissions_validation_violations_on_empty_input if {
 	v := data.cis_rocky_linux_8.file_permissions.violations with input as {}
 	count(v) > 0

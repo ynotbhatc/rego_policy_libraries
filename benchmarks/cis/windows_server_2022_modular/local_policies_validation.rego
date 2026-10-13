@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_windows_server_2022.local_policies
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 2.2: User Rights Assignment

@@ -8,6 +8,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.5] - 2026-10-12
+
+### Fixed — the fail-closed contract, module by module
+
+- **58 reports that were undefined on empty input now evaluate.** Three causes, each fixed at the source: CIS
+  section reports echoed raw `input.x.y` facts (any missing fact voided the whole report) — every echo inside a
+  report or summary literal is now `object.get(input, [...], null)`, `[]` where it is counted or iterated; NERC CIP
+  reports embedded boolean rules that were undefined rather than false — each gets `default := false`; counted
+  collections assigned from input get `default := []`. The one left is `enforcement/git/playbook_documentation.rego`,
+  a protected path for its owner.
+- **The 18 unguarded fail-open modules fail closed.** Modules with a `violations` set gain a `FAIL-CLOSED` notice
+  when the facts they key on are absent; modules that aggregate arrays make those facts a precondition of
+  `compliant` with a `false` default; CMMC's `compliant` gains the default it lacked; GEISA VEE's "not required"
+  answer now needs a discovery response to say so. The test generator now asserts fail-closed for them
+  (`docs/TEST_GENERATION.md`: undefined reports 1, unguarded fail-open 6; suite 3514 tests).
+- **Strict mode is clean.** 31 `opa check --strict` errors fixed (unused imports, arguments, assignments; FinOps
+  `is_past_date` now compares the date instead of `year < 2025`); every tree except `enforcement/git` (pending its
+  owner) passes `opa check --strict`. The CI step that enforces it follows in its own PR.
+- Control-level checks: 13,758 → 13,771 (the fail-closed notices are cited checks).
+
+
 ## [2.3.4] - 2026-10-12
 
 ### Added — a smoke test for every module, roles and a measured fail-closed guard in the coverage scan

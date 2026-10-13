@@ -13,10 +13,24 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_010
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default active_vulnerability_monitoring := false
+default authenticated_scanning_used := false
+default baseline_configurations_established := false
+default change_management_process_documented := false
+default configuration_changes_authorized := false
+default configuration_monitoring_timely := false
+default post_change_assessment := false
+default software_integrity_verification := false
+default transient_asset_config_managed := false
+default unauthorized_change_monitoring := false
+default vulnerability_assessments_performed := false
+default vulnerability_remediation_tracked := false
 
 # CIP-010-4: Configuration Change Management and Vulnerability Assessments
 # Requirement: Prevent and detect unauthorized changes to BES Cyber Systems

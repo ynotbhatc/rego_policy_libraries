@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rocky_linux_8.filesystem
 
 # CIS Rocky Linux 8 Section 1.1 - Filesystem Configuration

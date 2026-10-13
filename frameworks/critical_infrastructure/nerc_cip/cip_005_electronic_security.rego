@@ -13,10 +13,23 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package nerc_cip.cip_005
 
 import rego.v1
+
+# fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
+default access_attempt_logging := false
+default all_applicable_systems_in_esp := false
+default deny_by_default_implemented := false
+default electronic_access_points_controlled := false
+default electronic_security_perimeters_documented := false
+default esp_monitoring_enabled := false
+default remote_access_authentication_implemented := false
+default remote_access_encrypted := false
+default remote_access_monitored := false
+default remote_access_session_timeout := false
+default unused_ports_disabled := false
 
 # CIP-005-7: Electronic Security Perimeters
 # Requirement: Manage electronic access to BES Cyber Systems by specifying
@@ -299,8 +312,8 @@ report := {
 		"R3_access_logging": access_attempt_logging,
 	},
 	"esp_summary": {
-		"total_esps": count(input.electronic_security_perimeter_ids),
-		"total_eaps": count(input.electronic_access_points),
+		"total_esps": count(object.get(input, ["electronic_security_perimeter_ids"], [])),
+		"total_eaps": count(object.get(input, ["electronic_access_points"], [])),
 		"high_impact_systems": count([s | s := input.bes_cyber_systems[_]; s.impact_categorization == "high"]),
 		"medium_impact_systems": count([s | s := input.bes_cyber_systems[_]; s.impact_categorization == "medium"]),
 	},

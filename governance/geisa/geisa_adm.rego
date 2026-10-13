@@ -6,14 +6,14 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 9
+#     checks: 10
 #     cited: 0
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package governance.geisa.adm
 
 import rego.v1
@@ -104,6 +104,11 @@ violations contains sprintf("ADM: Object9 pkg_name '%s' does not match manifest 
 }
 
 # ─── Output ──────────────────────────────────────────────────────────────────
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.lwm2m
+}
 
 compliant if { count(violations) == 0 }
 

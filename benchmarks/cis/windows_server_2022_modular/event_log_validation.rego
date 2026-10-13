@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_windows_server_2022.event_log
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.9: Event Log Configuration
@@ -105,9 +105,9 @@ report := {
 	"security_log_violations": count(security_log_violations),
 	"system_log_violations": count(system_log_violations),
 	"event_log_sizes": {
-		"application_kb": input.event_log.application_max_size,
-		"security_kb": input.event_log.security_max_size,
-		"system_kb": input.event_log.system_max_size,
+		"application_kb": object.get(input, ["event_log", "application_max_size"], null),
+		"security_kb": object.get(input, ["event_log", "security_max_size"], null),
+		"system_kb": object.get(input, ["event_log", "system_max_size"], null),
 	},
 	"controls_checked": 9,
 	"section": "18.9.26 Event Log Service",

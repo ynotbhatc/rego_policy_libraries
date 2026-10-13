@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package corporate.access.control
 
 import rego.v1
@@ -148,7 +148,7 @@ role_assignments_justified if {
     count(unjustified_assignments) == 0
 }
 
-role_assignment_justified(user, role) if {
+role_assignment_justified(_, role) if {
     role.business_justification
     role.approved_by
     role.approval_date
@@ -312,11 +312,11 @@ financial_process_properly_separated(process) if {
     financial_reviewer_separation_ok(process, preparers, reviewers)
 }
 
-financial_reviewer_separation_ok(process, preparers, reviewers) if {
+financial_reviewer_separation_ok(process, _, _) if {
     process.criticality_level != "critical"
 }
 
-financial_reviewer_separation_ok(process, preparers, reviewers) if {
+financial_reviewer_separation_ok(_, preparers, reviewers) if {
     count(preparers & reviewers) == 0
 }
 
@@ -344,11 +344,11 @@ it_process_properly_separated(process) if {
     count(developers & approvers) == 0
 }
 
-it_deployment_separation_ok(process, developers, deployers) if {
+it_deployment_separation_ok(process, _, _) if {
     process.environment != "production"
 }
 
-it_deployment_separation_ok(process, developers, deployers) if {
+it_deployment_separation_ok(_, developers, deployers) if {
     count(developers & deployers) == 0
 }
 

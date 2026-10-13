@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_windows_server_2022.windows_defender
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 18.10.42: Windows Defender Antivirus
@@ -100,8 +100,8 @@ exploit_guard_violations contains msg if {
 
 exploit_guard_violations contains msg if {
 	input.windows_defender.asr_enabled
-	count(input.windows_defender.asr_rules) < 3
-	msg := sprintf("CIS 18.10.42.3.1: Only %d ASR rules are configured, expected at least 3", [count(input.windows_defender.asr_rules)])
+	count(object.get(input, ["windows_defender", "asr_rules"], [])) < 3
+	msg := sprintf("CIS 18.10.42.3.1: Only %d ASR rules are configured, expected at least 3", [count(object.get(input, ["windows_defender", "asr_rules"], []))])
 }
 
 # CIS 18.10.42.3.2: Controlled Folder Access = Enabled
@@ -164,10 +164,10 @@ report := {
 	"exploit_guard_violations": count(exploit_guard_violations),
 	"network_protection_violations": count(network_protection_violations),
 	"defender_status": {
-		"antivirus_enabled": input.windows_defender.antivirus_enabled,
-		"realtime_protection": input.windows_defender.realtime_protection_enabled,
-		"cloud_protection": input.windows_defender.cloud_protection_enabled,
-		"signature_age_days": input.windows_defender.signature_age_days,
+		"antivirus_enabled": object.get(input, ["windows_defender", "antivirus_enabled"], null),
+		"realtime_protection": object.get(input, ["windows_defender", "realtime_protection_enabled"], null),
+		"cloud_protection": object.get(input, ["windows_defender", "cloud_protection_enabled"], null),
+		"signature_age_days": object.get(input, ["windows_defender", "signature_age_days"], null),
 	},
 	"controls_checked": 18,
 	"section": "18.10.42 Windows Defender / 9 Windows Firewall",

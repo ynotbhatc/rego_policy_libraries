@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package corporate.environment.controls
 
 import rego.v1
@@ -274,7 +274,7 @@ privileged_roles := {
     "production_admin", "system_admin", "network_admin"
 }
 
-privileged_access_controls_adequate(user, env, role) if {
+privileged_access_controls_adequate(user, env, _) if {
     user_access := user.environment_access[env]
     user_access.mfa_enabled == true
     user_access.session_recording == true

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: none
-#     as_of: v2.3.4
+#     guard: self
+#     as_of: v2.3.5
 package cis_rocky_linux_9.user_group
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 6.2: User and Group Settings
@@ -21,6 +21,11 @@ package cis_rocky_linux_9.user_group
 import rego.v1
 
 default compliant := false
+
+# Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+violations contains "CIS: FAIL-CLOSED - facts 'input.user_group' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.user_group
+}
 
 compliant if {
 	count(violations) == 0

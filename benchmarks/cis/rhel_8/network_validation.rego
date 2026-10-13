@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: none
-#     as_of: v2.3.4
+#     as_of: v2.3.5
 package cis_rhel8.network
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -183,10 +183,10 @@ report := {
 	"ipv6_violations": count(ipv6_violations),
 	"network_interface_violations": count(network_interface_violations),
 	"ip_forwarding": {
-		"ipv4_forwarding": input.ip_forwarding.ipv4_forwarding,
-		"ipv6_forwarding": input.ip_forwarding.ipv6_forwarding,
+		"ipv4_forwarding": object.get(input, ["ip_forwarding", "ipv4_forwarding"], null),
+		"ipv6_forwarding": object.get(input, ["ip_forwarding", "ipv6_forwarding"], null),
 	},
-	"firewall": {"type": input.firewall.type, "active": input.firewall.active},
+	"firewall": {"type": object.get(input, ["firewall", "type"], null), "active": object.get(input, ["firewall", "active"], null)},
 	"section": "3.1-3.3 Network Configuration",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
