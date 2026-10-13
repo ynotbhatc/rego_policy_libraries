@@ -26418,7 +26418,7 @@
        {
         "uuid": "17dabc05-105c-54c4-8ab3-d79994220b2a",
         "control-id": "cis_cloud-CIS-GCP-1.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Corporate login credentials not enforced — personal Gmail accounts should not have project access",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Corporate login credentials not enforced — personal Gmail accounts should not have project access",
         "props": [
          {
           "name": "label",
@@ -26432,7 +26432,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26443,7 +26443,7 @@
        {
         "uuid": "1bdfb977-ccab-5f00-bb53-bd9b3e3c9e98",
         "control-id": "cis_cloud-CIS-GCP-1.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): MFA not enforced for all non-service account users",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): MFA not enforced for all non-service account users",
         "props": [
          {
           "name": "label",
@@ -26457,7 +26457,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26468,7 +26468,7 @@
        {
         "uuid": "bbb046dc-15de-51b9-9f1c-2117f9c42787",
         "control-id": "cis_cloud-CIS-GCP-1.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Security key (phishing-resistant MFA) not enforced for admin accounts",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Security key (phishing-resistant MFA) not enforced for admin accounts",
         "props": [
          {
           "name": "label",
@@ -26482,7 +26482,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26493,7 +26493,7 @@
        {
         "uuid": "55cf1db1-8d13-5b98-bb34-597000cbf393",
         "control-id": "cis_cloud-CIS-GCP-1.4",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): One or more service accounts have admin/owner roles — violates least privilege",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): One or more service accounts have admin/owner roles — violates least privilege",
         "props": [
          {
           "name": "label",
@@ -26507,7 +26507,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26518,7 +26518,7 @@
        {
         "uuid": "f764e46f-3514-5be6-86ba-efdee3c09cc4",
         "control-id": "cis_cloud-CIS-GCP-1.5",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): User-managed service account keys exist — prefer Google-managed keys",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): User-managed service account keys exist — prefer Google-managed keys",
         "props": [
          {
           "name": "label",
@@ -26532,7 +26532,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26543,7 +26543,7 @@
        {
         "uuid": "24f888b1-140b-5cec-8417-fa4ebf35a314",
         "control-id": "cis_cloud-CIS-GCP-1.6",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Service account keys not rotated within 90 days",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Service account keys not rotated within 90 days",
         "props": [
          {
           "name": "label",
@@ -26557,7 +26557,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26568,7 +26568,7 @@
        {
         "uuid": "1aadcb44-de94-5daf-871f-a7446000a8ea",
         "control-id": "cis_cloud-CIS-GCP-1.7",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Same user can create and use service accounts — separation of duties not enforced",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Same user can create and use service accounts — separation of duties not enforced",
         "props": [
          {
           "name": "label",
@@ -26582,7 +26582,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26593,7 +26593,7 @@
        {
         "uuid": "2651eaa7-4350-5083-8f2c-86c0c4f351d6",
         "control-id": "cis_cloud-CIS-GCP-1.8",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud KMS cryptokeys accessible by allUsers or allAuthenticatedUsers",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud KMS cryptokeys accessible by allUsers or allAuthenticatedUsers",
         "props": [
          {
           "name": "label",
@@ -26607,7 +26607,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26618,7 +26618,7 @@
        {
         "uuid": "8e8145ae-deee-5f47-ad2d-b04c72df1c45",
         "control-id": "cis_cloud-CIS-GCP-1.9",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud KMS keys not configured for automatic rotation within 90 days",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud KMS keys not configured for automatic rotation within 90 days",
         "props": [
          {
           "name": "label",
@@ -26632,7 +26632,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26643,7 +26643,7 @@
        {
         "uuid": "b87aefa6-c642-5f60-9ca9-42cb703e8c0f",
         "control-id": "cis_cloud-CIS-GCP-1.10",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): KMS encryption keys not protected against accidental deletion",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): KMS encryption keys not protected against accidental deletion",
         "props": [
          {
           "name": "label",
@@ -26657,7 +26657,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26668,7 +26668,7 @@
        {
         "uuid": "4cc9a5d8-be39-5b3c-ae9c-d8b502b2d24d",
         "control-id": "cis_cloud-CIS-GCP-1.11",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Workload Identity not used — service account key files in workloads is insecure",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Workload Identity not used — service account key files in workloads is insecure",
         "props": [
          {
           "name": "label",
@@ -26682,7 +26682,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26693,7 +26693,7 @@
        {
         "uuid": "a7457222-69ab-5f52-b9a7-672745688fa3",
         "control-id": "cis_cloud-CIS-GCP-2.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud Audit Logs Data Access logging not enabled for all services",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud Audit Logs Data Access logging not enabled for all services",
         "props": [
          {
           "name": "label",
@@ -26707,7 +26707,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26718,7 +26718,7 @@
        {
         "uuid": "246ccec5-eb24-5517-915a-27450ecc6176",
         "control-id": "cis_cloud-CIS-GCP-2.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Log sink not configured to export all log entries to a long-term storage destination",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Log sink not configured to export all log entries to a long-term storage destination",
         "props": [
          {
           "name": "label",
@@ -26732,7 +26732,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26743,7 +26743,7 @@
        {
         "uuid": "c0438510-57c3-5c80-8d49-1cc1a24f0de7",
         "control-id": "cis_cloud-CIS-GCP-2.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Log bucket lock (retention policy) not enabled to prevent log tampering",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Log bucket lock (retention policy) not enabled to prevent log tampering",
         "props": [
          {
           "name": "label",
@@ -26757,7 +26757,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26768,7 +26768,7 @@
        {
         "uuid": "0f6d0b0c-cd99-5e2c-af65-ced445058321",
         "control-id": "cis_cloud-CIS-GCP-2.4",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for project ownership assignment or changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for project ownership assignment or changes",
         "props": [
          {
           "name": "label",
@@ -26782,7 +26782,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26793,7 +26793,7 @@
        {
         "uuid": "b7960b8e-d5af-5670-82c2-3fdf23d0df03",
         "control-id": "cis_cloud-CIS-GCP-2.5",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for audit configuration changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for audit configuration changes",
         "props": [
          {
           "name": "label",
@@ -26807,7 +26807,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26818,7 +26818,7 @@
        {
         "uuid": "12ec8061-2fbd-5c53-8743-e315681090ad",
         "control-id": "cis_cloud-CIS-GCP-2.6",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for custom IAM role creation, modification, or deletion",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for custom IAM role creation, modification, or deletion",
         "props": [
          {
           "name": "label",
@@ -26832,7 +26832,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26843,7 +26843,7 @@
        {
         "uuid": "e848258d-98e2-5015-b414-241c6e10a4ae",
         "control-id": "cis_cloud-CIS-GCP-2.7",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for VPC network changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for VPC network changes",
         "props": [
          {
           "name": "label",
@@ -26857,7 +26857,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26868,7 +26868,7 @@
        {
         "uuid": "b8ccbf66-1c4f-5fa6-adb9-43ae85aeeb3a",
         "control-id": "cis_cloud-CIS-GCP-2.8",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for VPC network route changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for VPC network route changes",
         "props": [
          {
           "name": "label",
@@ -26882,7 +26882,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26893,7 +26893,7 @@
        {
         "uuid": "1c57a2d6-26b7-5c4c-8f79-9bb5841dab7f",
         "control-id": "cis_cloud-CIS-GCP-2.9",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for VPC firewall rule changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for VPC firewall rule changes",
         "props": [
          {
           "name": "label",
@@ -26907,7 +26907,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26918,7 +26918,7 @@
        {
         "uuid": "b5eb7c3d-b5cd-5919-8746-8e701cb74060",
         "control-id": "cis_cloud-CIS-GCP-2.10",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for Cloud Storage bucket IAM permission changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for Cloud Storage bucket IAM permission changes",
         "props": [
          {
           "name": "label",
@@ -26932,7 +26932,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26943,7 +26943,7 @@
        {
         "uuid": "c3b0973d-8391-5d58-ae79-e2c6f274b9cd",
         "control-id": "cis_cloud-CIS-GCP-2.11",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): No metric filter/alert for Cloud SQL instance configuration changes",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): No metric filter/alert for Cloud SQL instance configuration changes",
         "props": [
          {
           "name": "label",
@@ -26957,7 +26957,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26968,7 +26968,7 @@
        {
         "uuid": "14e61d19-5eb9-529c-97bd-80762ef972c9",
         "control-id": "cis_cloud-CIS-GCP-3.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Default network exists in the project — delete default network and use custom VPCs",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Default network exists in the project — delete default network and use custom VPCs",
         "props": [
          {
           "name": "label",
@@ -26982,7 +26982,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -26993,7 +26993,7 @@
        {
         "uuid": "ca9bccf8-2627-5485-bb29-04dc50174a09",
         "control-id": "cis_cloud-CIS-GCP-3.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Legacy network exists in project — migrate to VPC networks",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Legacy network exists in project — migrate to VPC networks",
         "props": [
          {
           "name": "label",
@@ -27007,7 +27007,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27018,7 +27018,7 @@
        {
         "uuid": "32c6ec96-9143-5e6a-b963-4d8e82e33e84",
         "control-id": "cis_cloud-CIS-GCP-3.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): DNSSEC not enabled for Cloud DNS managed zones",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): DNSSEC not enabled for Cloud DNS managed zones",
         "props": [
          {
           "name": "label",
@@ -27032,7 +27032,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27043,7 +27043,7 @@
        {
         "uuid": "faba1880-8b54-5a40-8413-f2b97b6e1838",
         "control-id": "cis_cloud-CIS-GCP-3.4",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): RSASHA1 algorithm used for DNSSEC key-signing key — use stronger algorithm",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): RSASHA1 algorithm used for DNSSEC key-signing key — use stronger algorithm",
         "props": [
          {
           "name": "label",
@@ -27057,7 +27057,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27068,7 +27068,7 @@
        {
         "uuid": "8cae301e-cfc1-510f-bab5-cf92fc59d504",
         "control-id": "cis_cloud-CIS-GCP-3.5",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): RSASHA1 algorithm used for DNSSEC zone-signing key — use stronger algorithm",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): RSASHA1 algorithm used for DNSSEC zone-signing key — use stronger algorithm",
         "props": [
          {
           "name": "label",
@@ -27082,7 +27082,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27093,7 +27093,7 @@
        {
         "uuid": "b9698417-b08c-506c-a276-d14ec9f96f29",
         "control-id": "cis_cloud-CIS-GCP-3.6",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Firewall rule allows SSH (port 22) from 0.0.0.0/0 or ::/0",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Firewall rule allows SSH (port 22) from 0.0.0.0/0 or ::/0",
         "props": [
          {
           "name": "label",
@@ -27107,7 +27107,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27118,7 +27118,7 @@
        {
         "uuid": "3868be5a-c5fb-5eba-9b69-20c346a745ea",
         "control-id": "cis_cloud-CIS-GCP-3.7",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Firewall rule allows RDP (port 3389) from 0.0.0.0/0 or ::/0",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Firewall rule allows RDP (port 3389) from 0.0.0.0/0 or ::/0",
         "props": [
          {
           "name": "label",
@@ -27132,7 +27132,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27143,7 +27143,7 @@
        {
         "uuid": "7b5854fc-d5b1-51d4-9cec-df4356053969",
         "control-id": "cis_cloud-CIS-GCP-3.8",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): VPC Flow Logs not enabled on all subnets",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): VPC Flow Logs not enabled on all subnets",
         "props": [
          {
           "name": "label",
@@ -27157,7 +27157,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27168,7 +27168,7 @@
        {
         "uuid": "fe68084c-4ebe-5a89-a223-d05dcdcf5f6c",
         "control-id": "cis_cloud-CIS-GCP-3.9",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Load balancer SSL policy permits weak cipher suites or deprecated TLS versions",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Load balancer SSL policy permits weak cipher suites or deprecated TLS versions",
         "props": [
          {
           "name": "label",
@@ -27182,7 +27182,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27193,7 +27193,7 @@
        {
         "uuid": "d7736f9c-8d6c-5af1-8a78-db33ca7f9be3",
         "control-id": "cis_cloud-CIS-GCP-4.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): VM instances use default service account with full API access scope",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): VM instances use default service account with full API access scope",
         "props": [
          {
           "name": "label",
@@ -27207,7 +27207,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27218,7 +27218,7 @@
        {
         "uuid": "3d288684-422f-545a-86d0-a1ce5f1157e0",
         "control-id": "cis_cloud-CIS-GCP-4.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): VM instances using default service account — create dedicated per-workload service accounts",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): VM instances using default service account — create dedicated per-workload service accounts",
         "props": [
          {
           "name": "label",
@@ -27232,7 +27232,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27243,7 +27243,7 @@
        {
         "uuid": "982b692e-d0ab-5d40-91c8-27fe27f3b6e1",
         "control-id": "cis_cloud-CIS-GCP-4.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Serial port access enabled on one or more VM instances — disable except for debugging",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Serial port access enabled on one or more VM instances — disable except for debugging",
         "props": [
          {
           "name": "label",
@@ -27257,7 +27257,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27268,7 +27268,7 @@
        {
         "uuid": "dff50240-212c-59d8-a218-6918bddedf41",
         "control-id": "cis_cloud-CIS-GCP-4.4",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Compute instances have public IP addresses — use Cloud NAT or IAP for external connectivity",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Compute instances have public IP addresses — use Cloud NAT or IAP for external connectivity",
         "props": [
          {
           "name": "label",
@@ -27282,7 +27282,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27293,7 +27293,7 @@
        {
         "uuid": "dd34fd24-cf8d-5428-aabd-ba4cc8213cae",
         "control-id": "cis_cloud-CIS-GCP-4.5",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Confidential Computing (memory encryption) not enabled on sensitive workload VMs",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Confidential Computing (memory encryption) not enabled on sensitive workload VMs",
         "props": [
          {
           "name": "label",
@@ -27307,7 +27307,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27318,7 +27318,7 @@
        {
         "uuid": "e8cb90af-800f-5f53-8a0c-ccc3d1546869",
         "control-id": "cis_cloud-CIS-GCP-4.6",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Shielded VM (Secure Boot, vTPM, Integrity Monitoring) not enabled on instances",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Shielded VM (Secure Boot, vTPM, Integrity Monitoring) not enabled on instances",
         "props": [
          {
           "name": "label",
@@ -27332,7 +27332,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27343,7 +27343,7 @@
        {
         "uuid": "7bf9aa46-10ee-545f-8559-85899d8d04cc",
         "control-id": "cis_cloud-CIS-GCP-4.7",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): OS Login not enabled — centralized SSH key management via IAM not enforced",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): OS Login not enabled — centralized SSH key management via IAM not enforced",
         "props": [
          {
           "name": "label",
@@ -27357,7 +27357,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27368,7 +27368,7 @@
        {
         "uuid": "a94c5c23-83a6-5774-aa69-7fca824c29ca",
         "control-id": "cis_cloud-CIS-GCP-5.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud Storage bucket accessible by allUsers or allAuthenticatedUsers",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud Storage bucket accessible by allUsers or allAuthenticatedUsers",
         "props": [
          {
           "name": "label",
@@ -27382,7 +27382,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27393,7 +27393,7 @@
        {
         "uuid": "1f376fcb-53e0-5655-9341-ec2b04f3ecf8",
         "control-id": "cis_cloud-CIS-GCP-5.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Uniform bucket-level access not enabled — object-level ACLs create inconsistent controls",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Uniform bucket-level access not enabled — object-level ACLs create inconsistent controls",
         "props": [
          {
           "name": "label",
@@ -27407,7 +27407,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27418,7 +27418,7 @@
        {
         "uuid": "c9457f6c-26ae-553b-803a-053c6cea3940",
         "control-id": "cis_cloud-CIS-GCP-5.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Access logging not enabled on Cloud Storage buckets containing sensitive data",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Access logging not enabled on Cloud Storage buckets containing sensitive data",
         "props": [
          {
           "name": "label",
@@ -27432,7 +27432,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27443,7 +27443,7 @@
        {
         "uuid": "96fdcfba-bcce-5cd3-bcb2-bb163d8828a7",
         "control-id": "cis_cloud-CIS-GCP-6.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud SQL database instance does not require SSL for all connections",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud SQL database instance does not require SSL for all connections",
         "props": [
          {
           "name": "label",
@@ -27457,7 +27457,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27468,7 +27468,7 @@
        {
         "uuid": "d7b4f282-1710-5b5d-98ab-e79f7aa81ccb",
         "control-id": "cis_cloud-CIS-GCP-6.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud SQL authorized network allows 0.0.0.0/0 — restrict to known IPs",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud SQL authorized network allows 0.0.0.0/0 — restrict to known IPs",
         "props": [
          {
           "name": "label",
@@ -27482,7 +27482,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27493,7 +27493,7 @@
        {
         "uuid": "25690589-1f86-5ae9-9c63-a4ed42e062bc",
         "control-id": "cis_cloud-CIS-GCP-6.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud SQL instances use public IP — configure private IP connectivity",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud SQL instances use public IP — configure private IP connectivity",
         "props": [
          {
           "name": "label",
@@ -27507,7 +27507,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27518,7 +27518,7 @@
        {
         "uuid": "c25a9111-5870-57dd-83cb-f497544759a1",
         "control-id": "cis_cloud-CIS-GCP-6.4",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Automated backups not enabled on Cloud SQL instances",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Automated backups not enabled on Cloud SQL instances",
         "props": [
          {
           "name": "label",
@@ -27532,7 +27532,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27543,7 +27543,7 @@
        {
         "uuid": "654e66c8-e898-51fb-a246-aa11db47abbc",
         "control-id": "cis_cloud-CIS-GCP-6.5",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud SQL database flags set to insecure values (e.g., local_infile=on, log_checkpoints=off)",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud SQL database flags set to insecure values (e.g., local_infile=on, log_checkpoints=off)",
         "props": [
          {
           "name": "label",
@@ -27557,7 +27557,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27568,7 +27568,7 @@
        {
         "uuid": "aef4e857-4c6c-5efb-bd96-d2847822c8fa",
         "control-id": "cis_cloud-CIS-GCP-7.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): BigQuery dataset accessible by allUsers or allAuthenticatedUsers",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): BigQuery dataset accessible by allUsers or allAuthenticatedUsers",
         "props": [
          {
           "name": "label",
@@ -27582,7 +27582,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27593,7 +27593,7 @@
        {
         "uuid": "797cf247-867e-5a78-ba34-e2618f386b49",
         "control-id": "cis_cloud-CIS-GCP-7.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): BigQuery tables with sensitive data not encrypted with Customer Managed Encryption Keys",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): BigQuery tables with sensitive data not encrypted with Customer Managed Encryption Keys",
         "props": [
          {
           "name": "label",
@@ -27607,7 +27607,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27618,7 +27618,7 @@
        {
         "uuid": "6a24f3db-b814-5a2c-87f6-a65a79ab0e11",
         "control-id": "cis_cloud-CIS-GCP-8.1",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud Logging (Stackdriver) not enabled on GKE clusters",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud Logging (Stackdriver) not enabled on GKE clusters",
         "props": [
          {
           "name": "label",
@@ -27632,7 +27632,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27643,7 +27643,7 @@
        {
         "uuid": "94c1096d-4ddc-546b-9296-a4d535437bc6",
         "control-id": "cis_cloud-CIS-GCP-8.2",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Cloud Monitoring (Stackdriver) not enabled on GKE clusters",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Cloud Monitoring (Stackdriver) not enabled on GKE clusters",
         "props": [
          {
           "name": "label",
@@ -27657,7 +27657,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27668,7 +27668,7 @@
        {
         "uuid": "e8bc9b23-cde8-5e5a-bb8d-42ca3430d43b",
         "control-id": "cis_cloud-CIS-GCP-8.3",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Legacy Authorization (ABAC) not disabled on GKE cluster — use RBAC",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Legacy Authorization (ABAC) not disabled on GKE cluster — use RBAC",
         "props": [
          {
           "name": "label",
@@ -27682,7 +27682,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27693,7 +27693,7 @@
        {
         "uuid": "323e0b9c-1506-558b-be2f-7e04af49a341",
         "control-id": "cis_cloud-CIS-GCP-8.4",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Master Authorized Networks not enabled — GKE control plane accessible from any IP",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Master Authorized Networks not enabled — GKE control plane accessible from any IP",
         "props": [
          {
           "name": "label",
@@ -27707,7 +27707,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27718,7 +27718,7 @@
        {
         "uuid": "6a5f031f-0b31-5ed5-b1ce-f3d739b132c6",
         "control-id": "cis_cloud-CIS-GCP-8.5",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): GKE cluster resource labels not configured for cost attribution and governance",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): GKE cluster resource labels not configured for cost attribution and governance",
         "props": [
          {
           "name": "label",
@@ -27732,7 +27732,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27743,7 +27743,7 @@
        {
         "uuid": "adcf323e-5767-5861-906c-ae4a88d8742b",
         "control-id": "cis_cloud-CIS-GCP-8.6",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Automatic node repair not enabled on GKE node pools",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Automatic node repair not enabled on GKE node pools",
         "props": [
          {
           "name": "label",
@@ -27757,7 +27757,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27768,7 +27768,7 @@
        {
         "uuid": "5cbd76d0-bcc9-5308-a142-6842e3f46d16",
         "control-id": "cis_cloud-CIS-GCP-8.7",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Automatic node upgrades not enabled on GKE node pools",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Automatic node upgrades not enabled on GKE node pools",
         "props": [
          {
           "name": "label",
@@ -27782,7 +27782,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27793,7 +27793,7 @@
        {
         "uuid": "1c855910-077f-59ba-bb8c-1decab99a53a",
         "control-id": "cis_cloud-CIS-GCP-8.8",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): GKE node pools not using Container-Optimized OS (COS) image",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): GKE node pools not using Container-Optimized OS (COS) image",
         "props": [
          {
           "name": "label",
@@ -27807,7 +27807,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",
@@ -27818,7 +27818,7 @@
        {
         "uuid": "99d8bbfa-2bad-5b06-bcc4-5dc88e78f9cf",
         "control-id": "cis_cloud-CIS-GCP-8.9",
-        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/cloud/gcp/cis_gcp_main.rego): Workload Identity not enabled on GKE cluster — pods using node service account instead",
+        "description": "Evaluated by Rego package cis_gcp.main (benchmarks/cis/gcp/cis_gcp_main.rego): Workload Identity not enabled on GKE cluster — pods using node service account instead",
         "props": [
          {
           "name": "label",
@@ -27832,7 +27832,7 @@
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/cloud/gcp/cis_gcp_main.rego"
+          "value": "benchmarks/cis/gcp/cis_gcp_main.rego"
          },
          {
           "name": "implementation-status",

@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm coverage check-coverage oscal crosswalk xccdf check-converters load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"

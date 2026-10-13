@@ -8,8 +8,8 @@
 #   coverage:
 #     checks: 57
 #     cited: 57
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

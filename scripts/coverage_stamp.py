@@ -88,6 +88,8 @@ def empty_input_state(root=ROOT):
         comp = rep.get("compliant") if isinstance(rep, dict) else None
         if comp is None and isinstance(rep, dict):
             comp = rep.get("overall_compliant")
+        if comp is None:
+            comp = node.get("compliant")   # modules with no report object expose a bare `compliant` rule
         v = node.get("violations")
         state[pkg] = (comp, (len(v) if isinstance(v, (list, dict)) else None), isinstance(rep, dict))
     return record, state

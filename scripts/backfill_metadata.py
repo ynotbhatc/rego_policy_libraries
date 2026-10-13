@@ -45,7 +45,6 @@ TABLE: dict[str, tuple[str, list[str]]] = {
     "benchmarks/cis/cloud": ("cis", ["cloud"]),
     "benchmarks/cis/cloud/aws": ("cis", ["cloud", "aws"]),
     "benchmarks/cis/cloud/azure": ("cis", ["cloud", "azure"]),
-    "benchmarks/cis/cloud/gcp": ("cis", ["cloud", "gcp"]),
     "benchmarks/cis/containers": ("cis", ["container"]),
     "benchmarks/cis/containers/kubernetes": ("cis", ["container", "kubernetes"]),
     "benchmarks/cis/databases": ("cis", ["database"]),

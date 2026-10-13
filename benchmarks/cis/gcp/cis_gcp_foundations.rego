@@ -8,11 +8,11 @@
 #   coverage:
 #     checks: 7
 #     cited: 7
-#     density: sparse
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: none
+#     guard: self
 #     as_of: v2.3.6
 package cis_gcp_foundations
 
@@ -23,8 +23,12 @@ package cis_gcp_foundations
 
 import rego.v1
 
+default compliant := false
+
 # Main compliance rule - all controls must pass
 compliant if {
+    # fail-closed: no facts, no compliance
+    input.iam_users
     count(violations) == 0
 }
 
