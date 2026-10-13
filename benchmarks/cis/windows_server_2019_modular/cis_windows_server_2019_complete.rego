@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_windows_server_2019
 
 # CIS Microsoft Windows Server 2022 Benchmark v5.0.0 - Complete Validation

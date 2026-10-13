@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: orchestrator
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_debian_11.user_group
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.2: User and Group Settings

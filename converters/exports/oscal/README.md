@@ -2,7 +2,7 @@
 
 **Status:** shipping — catalog, component-definition, assessment-results.
 **Kind:** export (Tier 1)
-**Covers:** every framework — 148 catalogs, 11,396 distinct controls (the 14,175 control-level checks collapse onto them; the same id in two modules of one framework is one control)
+**Covers:** every framework — 150 catalogs, 11,539 distinct controls (the 14,318 control-level checks collapse onto them; the same id in two modules of one framework is one control)
 **Spec:** [OSCAL 1.2.3](https://pages.nist.gov/OSCAL/), JSON; schemas vendored in `schema/`
 
 ## Use it

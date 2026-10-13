@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.apache_2_4_unix.core
 
 # DISA STIG — Apache Server 2.4 UNIX Server Security Technical Implementation Guide

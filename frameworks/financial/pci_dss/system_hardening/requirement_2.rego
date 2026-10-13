@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package pci_dss.system_hardening.requirement_2
 
 import rego.v1

@@ -1,0 +1,1908 @@
+{
+ "catalog": {
+  "uuid": "f3b2bfa9-c4d4-5a93-9bb5-b37adbe12e7b",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_oci (CIS Oracle Cloud Infrastructure Foundations Benchmark v3.1)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_oci"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_oci-cis_oci_foundations",
+    "class": "rego-module",
+    "title": "CIS Oracle Cloud Infrastructure Foundations Benchmark v3.1",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_oci.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/oci/cis_oci_foundations.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_oci-1.1",
+      "title": "Ensure service level admins are created to manage resources of particular service",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure service level admins are created to manage resources of particular service"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.2",
+      "title": "Ensure permissions on all resources are given only to the tenancy administrator group",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure permissions on all resources are given only to the tenancy administrator group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.3",
+      "title": "Ensure IAM administrators cannot update tenancy Administrators group",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM administrators cannot update tenancy Administrators group"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.4",
+      "title": "Ensure IAM password policy requires minimum length of 14 or greater",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy requires minimum length of 14 or greater"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.5",
+      "title": "Ensure IAM password policy expires passwords within 365 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy expires passwords within 365 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.6",
+      "title": "Ensure IAM password policy prevents password reuse",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure IAM password policy prevents password reuse"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.7",
+      "title": "Ensure MFA is enabled for all users with a console password (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure MFA is enabled for all users with a console password (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.8",
+      "title": "Ensure user API keys rotate within 90 days (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure user API keys rotate within 90 days (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.9",
+      "title": "Ensure user customer secret keys rotate within 90 days (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure user customer secret keys rotate within 90 days (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.10",
+      "title": "Ensure user auth tokens rotate within 90 days (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure user auth tokens rotate within 90 days (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.11",
+      "title": "Ensure user IAM Database Passwords rotate within 90 days (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure user IAM Database Passwords rotate within 90 days (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.12",
+      "title": "Ensure API keys are not created for tenancy administrator users (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure API keys are not created for tenancy administrator users (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.13",
+      "title": "Ensure all OCI IAM local user accounts have a valid and current email address (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.13_stmt",
+        "name": "statement",
+        "prose": "Ensure all OCI IAM local user accounts have a valid and current email address (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.14",
+      "title": "Ensure Instance Principal authentication is used for OCI instances, OCI Cloud Databases and OCI Functions to access OCI resources",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Instance Principal authentication is used for OCI instances, OCI Cloud Databases and OCI Functions to access OCI resources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.15",
+      "title": "Ensure storage service-level admins cannot delete resources they manage",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure storage service-level admins cannot delete resources they manage"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.16",
+      "title": "Ensure OCI IAM credentials unused for 45 days or more are disabled (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure OCI IAM credentials unused for 45 days or more are disabled (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-1.17",
+      "title": "Ensure there is only one active API Key for any single OCI IAM user (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-1.17_stmt",
+        "name": "statement",
+        "prose": "Ensure there is only one active API Key for any single OCI IAM user (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.1",
+      "title": "Ensure no security lists allow ingress from 0.0.0.0/0 to port 22",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure no security lists allow ingress from 0.0.0.0/0 to port 22"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.2",
+      "title": "Ensure no security lists allow ingress from 0.0.0.0/0 to port 3389",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure no security lists allow ingress from 0.0.0.0/0 to port 3389"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.3",
+      "title": "Ensure no network security groups allow ingress from 0.0.0.0/0 to port 22",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure no network security groups allow ingress from 0.0.0.0/0 to port 22"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.4",
+      "title": "Ensure no network security groups allow ingress from 0.0.0.0/0 to port 3389",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure no network security groups allow ingress from 0.0.0.0/0 to port 3389"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.5",
+      "title": "Ensure the default security list of every VCN restricts all traffic except ICMP (%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure the default security list of every VCN restricts all traffic except ICMP (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.6",
+      "title": "Ensure Oracle Integration Cloud (OIC) access is restricted to allowed sources",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Integration Cloud (OIC) access is restricted to allowed sources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.7",
+      "title": "Ensure Oracle Analytics Cloud (OAC) access is restricted to allowed sources or deployed within a Virtual Cloud Network",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Analytics Cloud (OAC) access is restricted to allowed sources or deployed within a Virtual Cloud Network"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-2.8",
+      "title": "Ensure Oracle Autonomous Shared Databases (ADB) access is restricted to allowed sources or deployed within a Virtual Cloud Network",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure Oracle Autonomous Shared Databases (ADB) access is restricted to allowed sources or deployed within a Virtual Cloud Network"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-3.1",
+      "title": "Ensure Compute Instance Legacy Metadata service endpoint is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Compute Instance Legacy Metadata service endpoint is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-3.2",
+      "title": "Ensure Secure Boot is enabled on Compute Instance",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Secure Boot is enabled on Compute Instance"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-3.3",
+      "title": "Ensure In-transit Encryption is enabled on Compute Instance",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure In-transit Encryption is enabled on Compute Instance"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.1",
+      "title": "Ensure default tags are used on resources",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure default tags are used on resources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.2",
+      "title": "Create at least one notification topic and subscription to receive monitoring alerts",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.2_stmt",
+        "name": "statement",
+        "prose": "Create at least one notification topic and subscription to receive monitoring alerts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.3",
+      "title": "Ensure a notification is configured for Identity Provider changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for Identity Provider changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.4",
+      "title": "Ensure a notification is configured for IdP group mapping changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for IdP group mapping changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.5",
+      "title": "Ensure a notification is configured for IAM group changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for IAM group changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.6",
+      "title": "Ensure a notification is configured for IAM policy changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for IAM policy changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.7",
+      "title": "Ensure a notification is configured for user changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for user changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.8",
+      "title": "Ensure a notification is configured for VCN changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for VCN changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.9",
+      "title": "Ensure a notification is configured for changes to route tables",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for changes to route tables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.10",
+      "title": "Ensure a notification is configured for security list changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.10_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for security list changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.11",
+      "title": "Ensure a notification is configured for network security group changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for network security group changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.12",
+      "title": "Ensure a notification is configured for changes to network gateways",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.12_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for changes to network gateways"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.13",
+      "title": "Ensure VCN flow logging is enabled for all subnets",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure VCN flow logging is enabled for all subnets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.14",
+      "title": "Ensure Cloud Guard is enabled in the root compartment of the tenancy",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.14_stmt",
+        "name": "statement",
+        "prose": "Ensure Cloud Guard is enabled in the root compartment of the tenancy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.15",
+      "title": "Ensure a notification is configured for Oracle Cloud Guard problems detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.15_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for Oracle Cloud Guard problems detected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.16",
+      "title": "Ensure customer created Customer Managed Key (CMK) is rotated at least annually",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.16_stmt",
+        "name": "statement",
+        "prose": "Ensure customer created Customer Managed Key (CMK) is rotated at least annually"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.17",
+      "title": "Ensure write level Object Storage logging is enabled for all buckets",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.17_stmt",
+        "name": "statement",
+        "prose": "Ensure write level Object Storage logging is enabled for all buckets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-4.18",
+      "title": "Ensure a notification is configured for Local OCI User Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-4.18_stmt",
+        "name": "statement",
+        "prose": "Ensure a notification is configured for Local OCI User Authentication"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-5.1.1",
+      "title": "Ensure no Object Storage buckets are publicly visible",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure no Object Storage buckets are publicly visible"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-5.1.2",
+      "title": "Ensure Object Storage Buckets are encrypted with a Customer Managed Key (CMK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Object Storage Buckets are encrypted with a Customer Managed Key (CMK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-5.1.3",
+      "title": "Ensure Versioning is Enabled for Object Storage Buckets",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-5.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Versioning is Enabled for Object Storage Buckets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-5.2.1",
+      "title": "Ensure Block Volumes are encrypted with Customer Managed Keys (CMK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Block Volumes are encrypted with Customer Managed Keys (CMK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-5.2.2",
+      "title": "Ensure boot volumes are encrypted with Customer Managed Key (CMK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure boot volumes are encrypted with Customer Managed Key (CMK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-5.3.1",
+      "title": "Ensure File Storage Systems are encrypted with Customer Managed Keys (CMK)",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure File Storage Systems are encrypted with Customer Managed Keys (CMK)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-6.1",
+      "title": "Create at least one compartment in your tenancy to store cloud resources",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-6.1_stmt",
+        "name": "statement",
+        "prose": "Create at least one compartment in your tenancy to store cloud resources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-6.2",
+      "title": "Ensure no resources are created in the root compartment",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure no resources are created in the root compartment"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oci-cis_oci.main-1",
+      "title": "CIS OCI: FAIL-CLOSED - facts 'input.oci' were not supplied; the tenancy was not evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_oci.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_oci.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oci.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#66f0172a-f1dd-5500-a5a7-33905f982d0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oci-cis_oci.main-1_stmt",
+        "name": "statement",
+        "prose": "CIS OCI: FAIL-CLOSED - facts 'input.oci' were not supplied; the tenancy was not evaluated"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "66f0172a-f1dd-5500-a5a7-33905f982d0c",
+     "title": "CIS Oracle Cloud Infrastructure Foundations Benchmark v3.1",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_oci.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/cis/oci/cis_oci_foundations.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

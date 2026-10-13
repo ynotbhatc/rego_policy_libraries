@@ -8,6 +8,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.4.1] - 2026-10-13
+
+### Added — CIS Oracle Cloud Infrastructure Foundations v3.1 and CIS Oracle Database 23ai
+
+- `benchmarks/cis/oci/cis_oci_foundations.rego` (`cis_oci.main`): all 54 recommendations of the CIS OCI Foundations
+  Benchmark v3.1 (ids and titles from the public Prowler mapping of v3.1.0; CIS lists 3.1.1 as current), each reading
+  the OCI resource the audit procedure inspects — IAM policies and users, security lists and NSGs, compute
+  instance options, Events rules and Notifications topics, Cloud Guard, KMS, Object/Block/File Storage,
+  compartments. Level 2 recommendations are marked in the report. Green-tenancy, probe and all-54-fire tests.
+- `benchmarks/cis/oracle/cis_oracle_23ai.rego` (`cis.oracle_23ai`): all 87 recommendations of the CIS Oracle
+  Database 23ai Benchmark v1.0.0, generated from the benchmark's own audit SQL by
+  `tools/cis_generators/gen_oracle_db_23ai.py` (78 Automated read the queried value or rows, 9 Manual are
+  attestations). Input contract shared with the Oracle Database 19c STIG module.
+- Count 14,175 → **14,318**; 770 policy files; suite 3,658 tests.
+- Two findings for the owner: the existing `cis_oracle_19c.rego` cites recommendation ids and titles that are not the
+  CIS 19c benchmark's (its "2.3 ADMIN_RESTRICTIONS" is the benchmark's 2.1.4, and sections 3.x–8.x are invented);
+  the 23ai generator is the template for re-stamping it from the 19c PDF. And the OCI module's Events rule
+  event-type lists are written from the benchmark text's intent; verify against a tenancy before quoting them.
+
 ## [2.4.0] - 2026-10-13
 
 ### Added — DISA STIGs for the Oracle platforms (October 2026 library)

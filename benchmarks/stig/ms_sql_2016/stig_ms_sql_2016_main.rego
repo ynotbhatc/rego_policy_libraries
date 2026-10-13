@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.ms_sql_2016.main
 
 import data.stig.ms_sql_2016

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_ubuntu_20_04.pam
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 5.4-5.5: PAM and Password Policies

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_amazon_linux_2023
 
 # CIS Amazon Linux 2023 Benchmark v2.0.0 - Complete Validation

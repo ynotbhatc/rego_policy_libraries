@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_gcp.l2
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0 - Level 2 Additional Controls

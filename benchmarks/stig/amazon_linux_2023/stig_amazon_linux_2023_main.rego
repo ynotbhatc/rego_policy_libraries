@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.amazon_linux_2023.main
 
 import data.stig.amazon_linux_2023

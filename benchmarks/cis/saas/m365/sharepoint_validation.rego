@@ -19,7 +19,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_m365.sharepoint
 
 import rego.v1

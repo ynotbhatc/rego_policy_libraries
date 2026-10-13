@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_ubuntu_22_04.initial_setup
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup

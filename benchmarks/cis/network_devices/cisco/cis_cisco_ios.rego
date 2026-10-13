@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_cisco_ios
 
 # CIS Cisco IOS Benchmark v4.1.0

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_ubuntu_24_04
 
 # CIS Ubuntu 24.04 LTS Benchmark - Complete Compliance Assessment

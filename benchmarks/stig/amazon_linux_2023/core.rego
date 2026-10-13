@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.amazon_linux_2023.core
 
 # DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide

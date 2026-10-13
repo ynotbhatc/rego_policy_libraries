@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_rocky_linux_8.network
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration

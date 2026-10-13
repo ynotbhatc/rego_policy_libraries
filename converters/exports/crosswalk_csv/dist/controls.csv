@@ -2189,6 +2189,61 @@ cis_nginx,7.3.1,cis_nginx-7.3.1,Ensure caching is configured securely,security,c
 cis_nginx,7.3.2,cis_nginx-7.3.2,Ensure proxy caching headers are appropriate,security,cis,web-server,cis_nginx_1_20,benchmarks/cis/nginx/cis_nginx_1_20.rego
 cis_nginx,7.4.1,cis_nginx-7.4.1,Ensure monitoring and health checks are enabled,security,cis,web-server,cis_nginx_1_20,benchmarks/cis/nginx/cis_nginx_1_20.rego
 cis_nginx,7.4.2,cis_nginx-7.4.2,Ensure performance metrics are collected securely,security,cis,web-server,cis_nginx_1_20,benchmarks/cis/nginx/cis_nginx_1_20.rego
+cis_oci,1.1,cis_oci-1.1,Ensure service level admins are created to manage resources of particular service,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.2,cis_oci-1.2,Ensure permissions on all resources are given only to the tenancy administrator group,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.3,cis_oci-1.3,Ensure IAM administrators cannot update tenancy Administrators group,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.4,cis_oci-1.4,Ensure IAM password policy requires minimum length of 14 or greater,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.5,cis_oci-1.5,Ensure IAM password policy expires passwords within 365 days,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.6,cis_oci-1.6,Ensure IAM password policy prevents password reuse,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.7,cis_oci-1.7,Ensure MFA is enabled for all users with a console password (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.8,cis_oci-1.8,Ensure user API keys rotate within 90 days (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.9,cis_oci-1.9,Ensure user customer secret keys rotate within 90 days (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.10,cis_oci-1.10,Ensure user auth tokens rotate within 90 days (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.11,cis_oci-1.11,Ensure user IAM Database Passwords rotate within 90 days (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.12,cis_oci-1.12,Ensure API keys are not created for tenancy administrator users (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.13,cis_oci-1.13,Ensure all OCI IAM local user accounts have a valid and current email address (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.14,cis_oci-1.14,"Ensure Instance Principal authentication is used for OCI instances, OCI Cloud Databases and OCI Functions to access OCI resources",security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.15,cis_oci-1.15,Ensure storage service-level admins cannot delete resources they manage,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.16,cis_oci-1.16,Ensure OCI IAM credentials unused for 45 days or more are disabled (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,1.17,cis_oci-1.17,Ensure there is only one active API Key for any single OCI IAM user (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.1,cis_oci-2.1,Ensure no security lists allow ingress from 0.0.0.0/0 to port 22,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.2,cis_oci-2.2,Ensure no security lists allow ingress from 0.0.0.0/0 to port 3389,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.3,cis_oci-2.3,Ensure no network security groups allow ingress from 0.0.0.0/0 to port 22,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.4,cis_oci-2.4,Ensure no network security groups allow ingress from 0.0.0.0/0 to port 3389,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.5,cis_oci-2.5,Ensure the default security list of every VCN restricts all traffic except ICMP (%s),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.6,cis_oci-2.6,Ensure Oracle Integration Cloud (OIC) access is restricted to allowed sources,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.7,cis_oci-2.7,Ensure Oracle Analytics Cloud (OAC) access is restricted to allowed sources or deployed within a Virtual Cloud Network,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,2.8,cis_oci-2.8,Ensure Oracle Autonomous Shared Databases (ADB) access is restricted to allowed sources or deployed within a Virtual Cloud Network,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,3.1,cis_oci-3.1,Ensure Compute Instance Legacy Metadata service endpoint is disabled,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,3.2,cis_oci-3.2,Ensure Secure Boot is enabled on Compute Instance,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,3.3,cis_oci-3.3,Ensure In-transit Encryption is enabled on Compute Instance,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.1,cis_oci-4.1,Ensure default tags are used on resources,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.2,cis_oci-4.2,Create at least one notification topic and subscription to receive monitoring alerts,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.3,cis_oci-4.3,Ensure a notification is configured for Identity Provider changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.4,cis_oci-4.4,Ensure a notification is configured for IdP group mapping changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.5,cis_oci-4.5,Ensure a notification is configured for IAM group changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.6,cis_oci-4.6,Ensure a notification is configured for IAM policy changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.7,cis_oci-4.7,Ensure a notification is configured for user changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.8,cis_oci-4.8,Ensure a notification is configured for VCN changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.9,cis_oci-4.9,Ensure a notification is configured for changes to route tables,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.10,cis_oci-4.10,Ensure a notification is configured for security list changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.11,cis_oci-4.11,Ensure a notification is configured for network security group changes,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.12,cis_oci-4.12,Ensure a notification is configured for changes to network gateways,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.13,cis_oci-4.13,Ensure VCN flow logging is enabled for all subnets,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.14,cis_oci-4.14,Ensure Cloud Guard is enabled in the root compartment of the tenancy,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.15,cis_oci-4.15,Ensure a notification is configured for Oracle Cloud Guard problems detected,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.16,cis_oci-4.16,Ensure customer created Customer Managed Key (CMK) is rotated at least annually,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.17,cis_oci-4.17,Ensure write level Object Storage logging is enabled for all buckets,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,4.18,cis_oci-4.18,Ensure a notification is configured for Local OCI User Authentication,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,5.1.1,cis_oci-5.1.1,Ensure no Object Storage buckets are publicly visible,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,5.1.2,cis_oci-5.1.2,Ensure Object Storage Buckets are encrypted with a Customer Managed Key (CMK),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,5.1.3,cis_oci-5.1.3,Ensure Versioning is Enabled for Object Storage Buckets,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,5.2.1,cis_oci-5.2.1,Ensure Block Volumes are encrypted with Customer Managed Keys (CMK),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,5.2.2,cis_oci-5.2.2,Ensure boot volumes are encrypted with Customer Managed Key (CMK),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,5.3.1,cis_oci-5.3.1,Ensure File Storage Systems are encrypted with Customer Managed Keys (CMK),security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,6.1,cis_oci-6.1,Create at least one compartment in your tenancy to store cloud resources,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,6.2,cis_oci-6.2,Ensure no resources are created in the root compartment,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
+cis_oci,cis_oci.main#1,cis_oci-cis_oci.main-1,CIS OCI: FAIL-CLOSED - facts 'input.oci' were not supplied; the tenancy was not evaluated,security,cis,cloud oracle,cis_oci.main,benchmarks/cis/oci/cis_oci_foundations.rego
 cis_openshift,1.1.1,cis_openshift-1.1.1,Ensure that the API server pod specification file permissions are set to 644 or more restrictive,security,cis,kubernetes openshift container,cis_openshift_4,benchmarks/cis/openshift/cis_openshift_4.rego
 cis_openshift,1.1.2,cis_openshift-1.1.2,Ensure that the API server pod specification file ownership is set to root:root,security,cis,kubernetes openshift container,cis_openshift_4,benchmarks/cis/openshift/cis_openshift_4.rego
 cis_openshift,1.1.3,cis_openshift-1.1.3,Ensure that the controller manager pod specification file permissions are set to 644 or more restrictive,security,cis,kubernetes openshift container,cis_openshift_4,benchmarks/cis/openshift/cis_openshift_4.rego
@@ -2523,6 +2578,94 @@ cis_oracle,8.7,cis_oracle-8.7,Ensure Strong Authentication Is Used for Network C
 cis_oracle,8.8,cis_oracle-8.8,Ensure Kerberos Authentication Is Configured Where Appropriate,security,cis,database oracle,cis.oracle_19c,benchmarks/cis/oracle/cis_oracle_19c.rego
 cis_oracle,8.9,cis_oracle-8.9,Ensure SSL/TLS Is Configured for Database Connections,security,cis,database oracle,cis.oracle_19c,benchmarks/cis/oracle/cis_oracle_19c.rego
 cis_oracle,8.10,cis_oracle-8.10,Ensure Network Monitoring and Intrusion Detection,security,cis,database oracle,cis.oracle_19c,benchmarks/cis/oracle/cis_oracle_19c.rego
+cis_oracle_23ai,1.1,cis_oracle_23ai-1.1,Ensure The Appropriate Version/Patches For Oracle Software Is Installed,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.1.1,cis_oracle_23ai-2.1.1,Ensure 'extproc' Is Not Present In 'listener.ora',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.1.2,cis_oracle_23ai-2.1.2,Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.1.3,cis_oracle_23ai-2.1.3,Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.1.4,cis_oracle_23ai-2.1.4,Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set.,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.1,cis_oracle_23ai-2.2.1,Ensure 'ACCEPT_MD5_CERTS' Is NOT SET,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.2,cis_oracle_23ai-2.2.2,Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.3,cis_oracle_23ai-2.2.3,Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.4,cis_oracle_23ai-2.2.4,Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.5,cis_oracle_23ai-2.2.5,Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.6,cis_oracle_23ai-2.2.6,Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.7,cis_oracle_23ai-2.2.7,Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.8,cis_oracle_23ai-2.2.8,Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.9,cis_oracle_23ai-2.2.9,Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.10,cis_oracle_23ai-2.2.10,Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.11,cis_oracle_23ai-2.2.11,Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.2.12,cis_oracle_23ai-2.2.12,Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.1,cis_oracle_23ai-2.3.1,Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.2,cis_oracle_23ai-2.3.2,Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.3,cis_oracle_23ai-2.3.3,Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.4,cis_oracle_23ai-2.3.4,Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.6,cis_oracle_23ai-2.3.6,Ensure 'OS_ROLES' Is Set To 'FALSE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.7,cis_oracle_23ai-2.3.7,Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.8,cis_oracle_23ai-2.3.8,Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.9,cis_oracle_23ai-2.3.9,"Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'",security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.10,cis_oracle_23ai-2.3.10,Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.11,cis_oracle_23ai-2.3.11,Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.12,cis_oracle_23ai-2.3.12,Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.13,cis_oracle_23ai-2.3.13,Ensure 'REMOTE_LISTENER' Is Empty,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,2.3.14,cis_oracle_23ai-2.3.14,Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.1,cis_oracle_23ai-3.1,Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.2,cis_oracle_23ai-3.2,Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.4,cis_oracle_23ai-3.4,Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.5,cis_oracle_23ai-3.5,Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.6,cis_oracle_23ai-3.6,Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.7,cis_oracle_23ai-3.7,Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,3.8,cis_oracle_23ai-3.8,Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.1,cis_oracle_23ai-4.1,Ensure All Default Passwords Are Changed,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.2,cis_oracle_23ai-4.2,Ensure No Custom 'ORACLE_MAINTAINED' Users Exist,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.4,cis_oracle_23ai-4.4,Ensure Old Password Versions Are Not Used,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.5,cis_oracle_23ai-4.5,Ensure The Latest Version of The Password File Is Used,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.6,cis_oracle_23ai-4.6,Ensure That Users In Different RAC Instances Are Identical In PW Files,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.7,cis_oracle_23ai-4.7,Ensure No Public Database Links Exist,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,4.8,cis_oracle_23ai-4.8,Ensure That Database Link Passwords Are Using The Latest Encryption,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,5.1,cis_oracle_23ai-5.1,Ensure All Auditable System Actions Commands Are Audited,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,5.2,cis_oracle_23ai-5.2,Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,5.3,cis_oracle_23ai-5.3,Ensure Critical Packages Are Audited,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,5.4,cis_oracle_23ai-5.4,Ensure All Export Activities Are Audited,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,5.5,cis_oracle_23ai-5.5,Ensure The Use Of SYS* Privileges Is Audited,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.1,cis_oracle_23ai-6.1.1,Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.2,cis_oracle_23ai-6.1.2,Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.3,cis_oracle_23ai-6.1.3,Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.4,cis_oracle_23ai-6.1.4,Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.5,cis_oracle_23ai-6.1.5,Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.6,cis_oracle_23ai-6.1.6,Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.8,cis_oracle_23ai-6.1.8,Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.9,cis_oracle_23ai-6.1.9,Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.10,cis_oracle_23ai-6.1.10,Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.1.11,cis_oracle_23ai-6.1.11,Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.1,cis_oracle_23ai-6.2.1,Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.2,cis_oracle_23ai-6.2.2,Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.3,cis_oracle_23ai-6.2.3,Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.4,cis_oracle_23ai-6.2.4,Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.5,cis_oracle_23ai-6.2.5,Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.6,cis_oracle_23ai-6.2.6,Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.7,cis_oracle_23ai-6.2.7,Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.8,cis_oracle_23ai-6.2.8,Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.9,cis_oracle_23ai-6.2.9,Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.10,cis_oracle_23ai-6.2.10,Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.11,cis_oracle_23ai-6.2.11,Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.12,cis_oracle_23ai-6.2.12,Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.13,cis_oracle_23ai-6.2.13,Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.14,cis_oracle_23ai-6.2.14,Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.15,cis_oracle_23ai-6.2.15,Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.16,cis_oracle_23ai-6.2.16,Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.17,cis_oracle_23ai-6.2.17,Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.18,cis_oracle_23ai-6.2.18,Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.19,cis_oracle_23ai-6.2.19,Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.20,cis_oracle_23ai-6.2.20,Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.21,cis_oracle_23ai-6.2.21,Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.2.22,cis_oracle_23ai-6.2.22,Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.3.1,cis_oracle_23ai-6.3.1,Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.4.1,cis_oracle_23ai-6.4.1,Ensure 'ALL' Is Revoked On 'Sensitive' Tables,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.5.1,cis_oracle_23ai-6.5.1,Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.6.1,cis_oracle_23ai-6.6.1,Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.7.1,cis_oracle_23ai-6.7.1,Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE',security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,6.8.1,cis_oracle_23ai-6.8.1,Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
+cis_oracle_23ai,CIS Oracle 23ai,cis_oracle_23ai-CIS-Oracle-23ai,FAIL-CLOSED - facts 'input.oracle' were not supplied; the database was not evaluated,security,cis,database oracle,cis.oracle_23ai,benchmarks/cis/oracle/cis_oracle_23ai.rego
 cis_os,cis.access_control#1,cis_os-cis.access_control-1,cron daily permissions,security,cis,linux,cis.access_control,benchmarks/cis/os/linux/redhat/access_control.rego
 cis_os,cis.access_control#2,cis_os-cis.access_control-2,cron enabled,security,cis,linux,cis.access_control,benchmarks/cis/os/linux/redhat/access_control.rego
 cis_os,cis.access_control#3,cis_os-cis.access_control-3,cron hourly permissions,security,cis,linux,cis.access_control,benchmarks/cis/os/linux/redhat/access_control.rego
@@ -10606,203 +10749,203 @@ stig_oracle_database_19c,O19C-00-020500,stig_oracle_database_19c-O19C-00-020500,
 stig_oracle_database_19c,O19C-00-020600,stig_oracle_database_19c-O19C-00-020600,,security,disa,database oracle,stig.oracle_database_19c.core,benchmarks/stig/oracle_database_19c/core.rego
 stig_oracle_database_19c,metadata,stig_oracle_database_19c-metadata,,security,disa,database oracle,stig.oracle_database_19c,benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego
 stig_oracle_database_19c,summary,stig_oracle_database_19c-summary,,security,disa,database oracle,stig.oracle_database_19c,benchmarks/stig/oracle_database_19c/stig_oracle_database_19c_complete.rego
-stig_oracle_linux_8,OL08-00-020330,stig_oracle_linux_8-OL08-00-020330,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-010110,stig_oracle_linux_8-OL08-00-010110,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020011,stig_oracle_linux_8-OL08-00-020011,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020230,stig_oracle_linux_8-OL08-00-020230,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020190,stig_oracle_linux_8-OL08-00-020190,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020013,stig_oracle_linux_8-OL08-00-020013,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020240,stig_oracle_linux_8-OL08-00-020240,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020110,stig_oracle_linux_8-OL08-00-020110,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020120,stig_oracle_linux_8-OL08-00-020120,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020130,stig_oracle_linux_8-OL08-00-020130,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-020280,stig_oracle_linux_8-OL08-00-020280,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,stig.oracle_linux_8.account_auth#1,stig_oracle_linux_8-stig.oracle_linux_8.account_auth-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
-stig_oracle_linux_8,OL08-00-030060,stig_oracle_linux_8-OL08-00-030060,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030480,stig_oracle_linux_8-OL08-00-030480,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030490,stig_oracle_linux_8-OL08-00-030490,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030200,stig_oracle_linux_8-OL08-00-030200,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030171,stig_oracle_linux_8-OL08-00-030171,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030150,stig_oracle_linux_8-OL08-00-030150,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030550,stig_oracle_linux_8-OL08-00-030550,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-030360,stig_oracle_linux_8-OL08-00-030360,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,stig.oracle_linux_8.audit_logging#1,stig_oracle_linux_8-stig.oracle_linux_8.audit_logging-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
-stig_oracle_linux_8,OL08-00-040170,stig_oracle_linux_8-OL08-00-040170,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-040171,stig_oracle_linux_8-OL08-00-040171,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010170,stig_oracle_linux_8-OL08-00-010170,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010450,stig_oracle_linux_8-OL08-00-010450,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010060,stig_oracle_linux_8-OL08-00-010060,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010040,stig_oracle_linux_8-OL08-00-010040,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010430,stig_oracle_linux_8-OL08-00-010430,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-040282,stig_oracle_linux_8-OL08-00-040282,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010372,stig_oracle_linux_8-OL08-00-010372,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-040286,stig_oracle_linux_8-OL08-00-040286,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-040080,stig_oracle_linux_8-OL08-00-040080,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010360,stig_oracle_linux_8-OL08-00-010360,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010543,stig_oracle_linux_8-OL08-00-010543,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010570,stig_oracle_linux_8-OL08-00-010570,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010590,stig_oracle_linux_8-OL08-00-010590,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010375,stig_oracle_linux_8-OL08-00-010375,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-040026,stig_oracle_linux_8-OL08-00-040026,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010541,stig_oracle_linux_8-OL08-00-010541,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,stig.oracle_linux_8.configuration_management#1,stig_oracle_linux_8-stig.oracle_linux_8.configuration_management-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
-stig_oracle_linux_8,OL08-00-010780,stig_oracle_linux_8-OL08-00-010780,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,OL08-00-010790,stig_oracle_linux_8-OL08-00-010790,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,OL08-00-010330,stig_oracle_linux_8-OL08-00-010330,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,OL08-00-010340,stig_oracle_linux_8-OL08-00-010340,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,OL08-00-010300,stig_oracle_linux_8-OL08-00-010300,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,OL08-00-010730,stig_oracle_linux_8-OL08-00-010730,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,stig.oracle_linux_8.file_permissions#1,stig_oracle_linux_8-stig.oracle_linux_8.file_permissions-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
-stig_oracle_linux_8,OL08-00-040259,stig_oracle_linux_8-OL08-00-040259,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040279,stig_oracle_linux_8-OL08-00-040279,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040220,stig_oracle_linux_8-OL08-00-040220,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040240,stig_oracle_linux_8-OL08-00-040240,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040285,stig_oracle_linux_8-OL08-00-040285,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040280,stig_oracle_linux_8-OL08-00-040280,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040110,stig_oracle_linux_8-OL08-00-040110,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040111,stig_oracle_linux_8-OL08-00-040111,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-040330,stig_oracle_linux_8-OL08-00-040330,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,stig.oracle_linux_8.network#1,stig_oracle_linux_8-stig.oracle_linux_8.network-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
-stig_oracle_linux_8,OL08-00-010183,stig_oracle_linux_8-OL08-00-010183,,security,disa,linux oracle_linux,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
-stig_oracle_linux_8,OL08-00-010400,stig_oracle_linux_8-OL08-00-010400,,security,disa,linux oracle_linux,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
-stig_oracle_linux_8,OL08-00-020090,stig_oracle_linux_8-OL08-00-020090,,security,disa,linux oracle_linux,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
-stig_oracle_linux_8,stig.oracle_linux_8.pki_crypto#1,stig_oracle_linux_8-stig.oracle_linux_8.pki_crypto-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
-stig_oracle_linux_8,OL08-00-040190,stig_oracle_linux_8-OL08-00-040190,,security,disa,linux oracle_linux,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
-stig_oracle_linux_8,OL08-00-040000,stig_oracle_linux_8-OL08-00-040000,,security,disa,linux oracle_linux,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
-stig_oracle_linux_8,OL08-00-040002,stig_oracle_linux_8-OL08-00-040002,,security,disa,linux oracle_linux,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
-stig_oracle_linux_8,stig.oracle_linux_8.services#1,stig_oracle_linux_8-stig.oracle_linux_8.services-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
-stig_oracle_linux_8,OL08-00-010561,stig_oracle_linux_8-OL08-00-010561,,security,disa,linux oracle_linux,stig.oracle_linux_8.software_integrity,benchmarks/stig/oracle_linux_8/software_integrity.rego
-stig_oracle_linux_8,OL08-00-010376,stig_oracle_linux_8-OL08-00-010376,,security,disa,linux oracle_linux,stig.oracle_linux_8.software_integrity,benchmarks/stig/oracle_linux_8/software_integrity.rego
-stig_oracle_linux_8,stig.oracle_linux_8.software_integrity#1,stig_oracle_linux_8-stig.oracle_linux_8.software_integrity-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.software_integrity,benchmarks/stig/oracle_linux_8/software_integrity.rego
-stig_oracle_linux_8,OL08-00-010290,stig_oracle_linux_8-OL08-00-010290,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-010550,stig_oracle_linux_8-OL08-00-010550,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-040160,stig_oracle_linux_8-OL08-00-040160,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-010201,stig_oracle_linux_8-OL08-00-010201,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-010200,stig_oracle_linux_8-OL08-00-010200,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-010500,stig_oracle_linux_8-OL08-00-010500,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-010520,stig_oracle_linux_8-OL08-00-010520,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,OL08-00-020350,stig_oracle_linux_8-OL08-00-020350,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,stig.oracle_linux_8.ssh_config#1,stig_oracle_linux_8-stig.oracle_linux_8.ssh_config-1,,security,disa,linux oracle_linux,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
-stig_oracle_linux_8,stig.oracle_linux_8#1,stig_oracle_linux_8-stig.oracle_linux_8-1,,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,stig.oracle_linux_8#2,stig_oracle_linux_8-stig.oracle_linux_8-2,,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,stig.oracle_linux_8#3,stig_oracle_linux_8-stig.oracle_linux_8-3,,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,stig.oracle_linux_8#4,stig_oracle_linux_8-stig.oracle_linux_8-4,not a finding,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,stig.oracle_linux_8#5,stig_oracle_linux_8-stig.oracle_linux_8-5,not applicable,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,stig.oracle_linux_8#6,stig_oracle_linux_8-stig.oracle_linux_8-6,not reviewed,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,stig.oracle_linux_8#7,stig_oracle_linux_8-stig.oracle_linux_8-7,open,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,metadata,stig_oracle_linux_8-metadata,,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_8,summary,stig_oracle_linux_8-summary,,security,disa,linux oracle_linux,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
-stig_oracle_linux_9,OL09-00-001055,stig_oracle_linux_9-OL09-00-001055,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-003020,stig_oracle_linux_9-OL09-00-003020,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001130,stig_oracle_linux_9-OL09-00-001130,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001105,stig_oracle_linux_9-OL09-00-001105,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001005,stig_oracle_linux_9-OL09-00-001005,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001015,stig_oracle_linux_9-OL09-00-001015,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001020,stig_oracle_linux_9-OL09-00-001020,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001120,stig_oracle_linux_9-OL09-00-001120,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-001085,stig_oracle_linux_9-OL09-00-001085,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-002416,stig_oracle_linux_9-OL09-00-002416,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-003001,stig_oracle_linux_9-OL09-00-003001,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-003006,stig_oracle_linux_9-OL09-00-003006,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,stig.oracle_linux_9.account_auth#1,stig_oracle_linux_9-stig.oracle_linux_9.account_auth-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
-stig_oracle_linux_9,OL09-00-000441,stig_oracle_linux_9-OL09-00-000441,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000770,stig_oracle_linux_9-OL09-00-000770,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000765,stig_oracle_linux_9-OL09-00-000765,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000715,stig_oracle_linux_9-OL09-00-000715,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000645,stig_oracle_linux_9-OL09-00-000645,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000640,stig_oracle_linux_9-OL09-00-000640,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000545,stig_oracle_linux_9-OL09-00-000545,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000500,stig_oracle_linux_9-OL09-00-000500,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000525,stig_oracle_linux_9-OL09-00-000525,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000670,stig_oracle_linux_9-OL09-00-000670,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-000690,stig_oracle_linux_9-OL09-00-000690,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,stig.oracle_linux_9.audit_logging#1,stig_oracle_linux_9-stig.oracle_linux_9.audit_logging-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
-stig_oracle_linux_9,OL09-00-002413,stig_oracle_linux_9-OL09-00-002413,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000070,stig_oracle_linux_9-OL09-00-000070,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000060,stig_oracle_linux_9-OL09-00-000060,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002107,stig_oracle_linux_9-OL09-00-002107,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000065,stig_oracle_linux_9-OL09-00-000065,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-001115,stig_oracle_linux_9-OL09-00-001115,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000090,stig_oracle_linux_9-OL09-00-000090,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000256,stig_oracle_linux_9-OL09-00-000256,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002423,stig_oracle_linux_9-OL09-00-002423,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002406,stig_oracle_linux_9-OL09-00-002406,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002410,stig_oracle_linux_9-OL09-00-002410,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002428,stig_oracle_linux_9-OL09-00-002428,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002430,stig_oracle_linux_9-OL09-00-002430,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000047,stig_oracle_linux_9-OL09-00-000047,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000042,stig_oracle_linux_9-OL09-00-000042,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000301,stig_oracle_linux_9-OL09-00-000301,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000302,stig_oracle_linux_9-OL09-00-000302,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000004,stig_oracle_linux_9-OL09-00-000004,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002070,stig_oracle_linux_9-OL09-00-002070,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002071,stig_oracle_linux_9-OL09-00-002071,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002072,stig_oracle_linux_9-OL09-00-002072,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-000006,stig_oracle_linux_9-OL09-00-000006,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,stig.oracle_linux_9.configuration_management#1,stig_oracle_linux_9-stig.oracle_linux_9.configuration_management-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
-stig_oracle_linux_9,OL09-00-002512,stig_oracle_linux_9-OL09-00-002512,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002511,stig_oracle_linux_9-OL09-00-002511,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002548,stig_oracle_linux_9-OL09-00-002548,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002552,stig_oracle_linux_9-OL09-00-002552,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002536,stig_oracle_linux_9-OL09-00-002536,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002540,stig_oracle_linux_9-OL09-00-002540,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002525,stig_oracle_linux_9-OL09-00-002525,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002524,stig_oracle_linux_9-OL09-00-002524,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002506,stig_oracle_linux_9-OL09-00-002506,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-002515,stig_oracle_linux_9-OL09-00-002515,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,stig.oracle_linux_9.file_permissions#1,stig_oracle_linux_9-stig.oracle_linux_9.file_permissions-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
-stig_oracle_linux_9,OL09-00-000220,stig_oracle_linux_9-OL09-00-000220,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006028,stig_oracle_linux_9-OL09-00-006028,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006020,stig_oracle_linux_9-OL09-00-006020,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006032,stig_oracle_linux_9-OL09-00-006032,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006042,stig_oracle_linux_9-OL09-00-006042,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006031,stig_oracle_linux_9-OL09-00-006031,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006050,stig_oracle_linux_9-OL09-00-006050,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006024,stig_oracle_linux_9-OL09-00-006024,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006041,stig_oracle_linux_9-OL09-00-006041,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006001,stig_oracle_linux_9-OL09-00-006001,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-000046,stig_oracle_linux_9-OL09-00-000046,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-006004,stig_oracle_linux_9-OL09-00-006004,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,stig.oracle_linux_9.network#1,stig_oracle_linux_9-stig.oracle_linux_9.network-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
-stig_oracle_linux_9,OL09-00-000241,stig_oracle_linux_9-OL09-00-000241,,security,disa,linux oracle_linux,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
-stig_oracle_linux_9,OL09-00-000242,stig_oracle_linux_9-OL09-00-000242,,security,disa,linux oracle_linux,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
-stig_oracle_linux_9,OL09-00-000930,stig_oracle_linux_9-OL09-00-000930,,security,disa,linux oracle_linux,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
-stig_oracle_linux_9,OL09-00-000925,stig_oracle_linux_9-OL09-00-000925,,security,disa,linux oracle_linux,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
-stig_oracle_linux_9,OL09-00-000910,stig_oracle_linux_9-OL09-00-000910,,security,disa,linux oracle_linux,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
-stig_oracle_linux_9,stig.oracle_linux_9.pki_crypto#1,stig_oracle_linux_9-stig.oracle_linux_9.pki_crypto-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
-stig_oracle_linux_9,OL09-00-000135,stig_oracle_linux_9-OL09-00-000135,,security,disa,linux oracle_linux,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
-stig_oracle_linux_9,OL09-00-000130,stig_oracle_linux_9-OL09-00-000130,,security,disa,linux oracle_linux,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
-stig_oracle_linux_9,OL09-00-000110,stig_oracle_linux_9-OL09-00-000110,,security,disa,linux oracle_linux,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
-stig_oracle_linux_9,OL09-00-000125,stig_oracle_linux_9-OL09-00-000125,,security,disa,linux oracle_linux,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
-stig_oracle_linux_9,OL09-00-000100,stig_oracle_linux_9-OL09-00-000100,,security,disa,linux oracle_linux,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
-stig_oracle_linux_9,stig.oracle_linux_9.services#1,stig_oracle_linux_9-stig.oracle_linux_9.services-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
-stig_oracle_linux_9,OL09-00-000498,stig_oracle_linux_9-OL09-00-000498,,security,disa,linux oracle_linux,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
-stig_oracle_linux_9,OL09-00-002407,stig_oracle_linux_9-OL09-00-002407,,security,disa,linux oracle_linux,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
-stig_oracle_linux_9,OL09-00-000350,stig_oracle_linux_9-OL09-00-000350,,security,disa,linux oracle_linux,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
-stig_oracle_linux_9,OL09-00-000351,stig_oracle_linux_9-OL09-00-000351,,security,disa,linux oracle_linux,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
-stig_oracle_linux_9,stig.oracle_linux_9.software_integrity#1,stig_oracle_linux_9-stig.oracle_linux_9.software_integrity-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
-stig_oracle_linux_9,OL09-00-000255,stig_oracle_linux_9-OL09-00-000255,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002343,stig_oracle_linux_9-OL09-00-002343,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002344,stig_oracle_linux_9-OL09-00-002344,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002345,stig_oracle_linux_9-OL09-00-002345,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-000251,stig_oracle_linux_9-OL09-00-000251,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002357,stig_oracle_linux_9-OL09-00-002357,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002347,stig_oracle_linux_9-OL09-00-002347,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002346,stig_oracle_linux_9-OL09-00-002346,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002351,stig_oracle_linux_9-OL09-00-002351,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002348,stig_oracle_linux_9-OL09-00-002348,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002349,stig_oracle_linux_9-OL09-00-002349,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,OL09-00-002352,stig_oracle_linux_9-OL09-00-002352,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,stig.oracle_linux_9.ssh_config#1,stig_oracle_linux_9-stig.oracle_linux_9.ssh_config-1,,security,disa,linux oracle_linux,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
-stig_oracle_linux_9,stig.oracle_linux_9#1,stig_oracle_linux_9-stig.oracle_linux_9-1,,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,stig.oracle_linux_9#2,stig_oracle_linux_9-stig.oracle_linux_9-2,,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,stig.oracle_linux_9#3,stig_oracle_linux_9-stig.oracle_linux_9-3,,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,stig.oracle_linux_9#4,stig_oracle_linux_9-stig.oracle_linux_9-4,not a finding,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,stig.oracle_linux_9#5,stig_oracle_linux_9-stig.oracle_linux_9-5,not applicable,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,stig.oracle_linux_9#6,stig_oracle_linux_9-stig.oracle_linux_9-6,not reviewed,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,stig.oracle_linux_9#7,stig_oracle_linux_9-stig.oracle_linux_9-7,open,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,metadata,stig_oracle_linux_9-metadata,,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
-stig_oracle_linux_9,summary,stig_oracle_linux_9-summary,,security,disa,linux oracle_linux,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_8,OL08-00-020330,stig_oracle_linux_8-OL08-00-020330,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-010110,stig_oracle_linux_8-OL08-00-010110,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020011,stig_oracle_linux_8-OL08-00-020011,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020230,stig_oracle_linux_8-OL08-00-020230,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020190,stig_oracle_linux_8-OL08-00-020190,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020013,stig_oracle_linux_8-OL08-00-020013,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020240,stig_oracle_linux_8-OL08-00-020240,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020110,stig_oracle_linux_8-OL08-00-020110,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020120,stig_oracle_linux_8-OL08-00-020120,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020130,stig_oracle_linux_8-OL08-00-020130,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-020280,stig_oracle_linux_8-OL08-00-020280,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,stig.oracle_linux_8.account_auth#1,stig_oracle_linux_8-stig.oracle_linux_8.account_auth-1,,security,disa,linux oracle,stig.oracle_linux_8.account_auth,benchmarks/stig/oracle_linux_8/account_auth.rego
+stig_oracle_linux_8,OL08-00-030060,stig_oracle_linux_8-OL08-00-030060,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030480,stig_oracle_linux_8-OL08-00-030480,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030490,stig_oracle_linux_8-OL08-00-030490,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030200,stig_oracle_linux_8-OL08-00-030200,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030171,stig_oracle_linux_8-OL08-00-030171,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030150,stig_oracle_linux_8-OL08-00-030150,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030550,stig_oracle_linux_8-OL08-00-030550,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-030360,stig_oracle_linux_8-OL08-00-030360,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,stig.oracle_linux_8.audit_logging#1,stig_oracle_linux_8-stig.oracle_linux_8.audit_logging-1,,security,disa,linux oracle,stig.oracle_linux_8.audit_logging,benchmarks/stig/oracle_linux_8/audit_logging.rego
+stig_oracle_linux_8,OL08-00-040170,stig_oracle_linux_8-OL08-00-040170,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-040171,stig_oracle_linux_8-OL08-00-040171,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010170,stig_oracle_linux_8-OL08-00-010170,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010450,stig_oracle_linux_8-OL08-00-010450,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010060,stig_oracle_linux_8-OL08-00-010060,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010040,stig_oracle_linux_8-OL08-00-010040,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010430,stig_oracle_linux_8-OL08-00-010430,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-040282,stig_oracle_linux_8-OL08-00-040282,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010372,stig_oracle_linux_8-OL08-00-010372,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-040286,stig_oracle_linux_8-OL08-00-040286,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-040080,stig_oracle_linux_8-OL08-00-040080,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010360,stig_oracle_linux_8-OL08-00-010360,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010543,stig_oracle_linux_8-OL08-00-010543,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010570,stig_oracle_linux_8-OL08-00-010570,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010590,stig_oracle_linux_8-OL08-00-010590,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010375,stig_oracle_linux_8-OL08-00-010375,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-040026,stig_oracle_linux_8-OL08-00-040026,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010541,stig_oracle_linux_8-OL08-00-010541,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,stig.oracle_linux_8.configuration_management#1,stig_oracle_linux_8-stig.oracle_linux_8.configuration_management-1,,security,disa,linux oracle,stig.oracle_linux_8.configuration_management,benchmarks/stig/oracle_linux_8/configuration_management.rego
+stig_oracle_linux_8,OL08-00-010780,stig_oracle_linux_8-OL08-00-010780,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,OL08-00-010790,stig_oracle_linux_8-OL08-00-010790,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,OL08-00-010330,stig_oracle_linux_8-OL08-00-010330,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,OL08-00-010340,stig_oracle_linux_8-OL08-00-010340,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,OL08-00-010300,stig_oracle_linux_8-OL08-00-010300,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,OL08-00-010730,stig_oracle_linux_8-OL08-00-010730,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,stig.oracle_linux_8.file_permissions#1,stig_oracle_linux_8-stig.oracle_linux_8.file_permissions-1,,security,disa,linux oracle,stig.oracle_linux_8.file_permissions,benchmarks/stig/oracle_linux_8/file_permissions.rego
+stig_oracle_linux_8,OL08-00-040259,stig_oracle_linux_8-OL08-00-040259,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040279,stig_oracle_linux_8-OL08-00-040279,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040220,stig_oracle_linux_8-OL08-00-040220,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040240,stig_oracle_linux_8-OL08-00-040240,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040285,stig_oracle_linux_8-OL08-00-040285,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040280,stig_oracle_linux_8-OL08-00-040280,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040110,stig_oracle_linux_8-OL08-00-040110,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040111,stig_oracle_linux_8-OL08-00-040111,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-040330,stig_oracle_linux_8-OL08-00-040330,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,stig.oracle_linux_8.network#1,stig_oracle_linux_8-stig.oracle_linux_8.network-1,,security,disa,linux oracle,stig.oracle_linux_8.network,benchmarks/stig/oracle_linux_8/network.rego
+stig_oracle_linux_8,OL08-00-010183,stig_oracle_linux_8-OL08-00-010183,,security,disa,linux oracle,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
+stig_oracle_linux_8,OL08-00-010400,stig_oracle_linux_8-OL08-00-010400,,security,disa,linux oracle,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
+stig_oracle_linux_8,OL08-00-020090,stig_oracle_linux_8-OL08-00-020090,,security,disa,linux oracle,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
+stig_oracle_linux_8,stig.oracle_linux_8.pki_crypto#1,stig_oracle_linux_8-stig.oracle_linux_8.pki_crypto-1,,security,disa,linux oracle,stig.oracle_linux_8.pki_crypto,benchmarks/stig/oracle_linux_8/pki_crypto.rego
+stig_oracle_linux_8,OL08-00-040190,stig_oracle_linux_8-OL08-00-040190,,security,disa,linux oracle,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
+stig_oracle_linux_8,OL08-00-040000,stig_oracle_linux_8-OL08-00-040000,,security,disa,linux oracle,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
+stig_oracle_linux_8,OL08-00-040002,stig_oracle_linux_8-OL08-00-040002,,security,disa,linux oracle,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
+stig_oracle_linux_8,stig.oracle_linux_8.services#1,stig_oracle_linux_8-stig.oracle_linux_8.services-1,,security,disa,linux oracle,stig.oracle_linux_8.services,benchmarks/stig/oracle_linux_8/services.rego
+stig_oracle_linux_8,OL08-00-010561,stig_oracle_linux_8-OL08-00-010561,,security,disa,linux oracle,stig.oracle_linux_8.software_integrity,benchmarks/stig/oracle_linux_8/software_integrity.rego
+stig_oracle_linux_8,OL08-00-010376,stig_oracle_linux_8-OL08-00-010376,,security,disa,linux oracle,stig.oracle_linux_8.software_integrity,benchmarks/stig/oracle_linux_8/software_integrity.rego
+stig_oracle_linux_8,stig.oracle_linux_8.software_integrity#1,stig_oracle_linux_8-stig.oracle_linux_8.software_integrity-1,,security,disa,linux oracle,stig.oracle_linux_8.software_integrity,benchmarks/stig/oracle_linux_8/software_integrity.rego
+stig_oracle_linux_8,OL08-00-010290,stig_oracle_linux_8-OL08-00-010290,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-010550,stig_oracle_linux_8-OL08-00-010550,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-040160,stig_oracle_linux_8-OL08-00-040160,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-010201,stig_oracle_linux_8-OL08-00-010201,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-010200,stig_oracle_linux_8-OL08-00-010200,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-010500,stig_oracle_linux_8-OL08-00-010500,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-010520,stig_oracle_linux_8-OL08-00-010520,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,OL08-00-020350,stig_oracle_linux_8-OL08-00-020350,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,stig.oracle_linux_8.ssh_config#1,stig_oracle_linux_8-stig.oracle_linux_8.ssh_config-1,,security,disa,linux oracle,stig.oracle_linux_8.ssh_config,benchmarks/stig/oracle_linux_8/ssh_config.rego
+stig_oracle_linux_8,stig.oracle_linux_8#1,stig_oracle_linux_8-stig.oracle_linux_8-1,,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,stig.oracle_linux_8#2,stig_oracle_linux_8-stig.oracle_linux_8-2,,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,stig.oracle_linux_8#3,stig_oracle_linux_8-stig.oracle_linux_8-3,,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,stig.oracle_linux_8#4,stig_oracle_linux_8-stig.oracle_linux_8-4,not a finding,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,stig.oracle_linux_8#5,stig_oracle_linux_8-stig.oracle_linux_8-5,not applicable,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,stig.oracle_linux_8#6,stig_oracle_linux_8-stig.oracle_linux_8-6,not reviewed,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,stig.oracle_linux_8#7,stig_oracle_linux_8-stig.oracle_linux_8-7,open,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,metadata,stig_oracle_linux_8-metadata,,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_8,summary,stig_oracle_linux_8-summary,,security,disa,linux oracle,stig.oracle_linux_8,benchmarks/stig/oracle_linux_8/stig_oracle_linux_8_complete.rego
+stig_oracle_linux_9,OL09-00-001055,stig_oracle_linux_9-OL09-00-001055,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-003020,stig_oracle_linux_9-OL09-00-003020,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001130,stig_oracle_linux_9-OL09-00-001130,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001105,stig_oracle_linux_9-OL09-00-001105,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001005,stig_oracle_linux_9-OL09-00-001005,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001015,stig_oracle_linux_9-OL09-00-001015,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001020,stig_oracle_linux_9-OL09-00-001020,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001120,stig_oracle_linux_9-OL09-00-001120,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-001085,stig_oracle_linux_9-OL09-00-001085,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-002416,stig_oracle_linux_9-OL09-00-002416,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-003001,stig_oracle_linux_9-OL09-00-003001,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-003006,stig_oracle_linux_9-OL09-00-003006,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,stig.oracle_linux_9.account_auth#1,stig_oracle_linux_9-stig.oracle_linux_9.account_auth-1,,security,disa,linux oracle,stig.oracle_linux_9.account_auth,benchmarks/stig/oracle_linux_9/account_auth.rego
+stig_oracle_linux_9,OL09-00-000441,stig_oracle_linux_9-OL09-00-000441,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000770,stig_oracle_linux_9-OL09-00-000770,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000765,stig_oracle_linux_9-OL09-00-000765,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000715,stig_oracle_linux_9-OL09-00-000715,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000645,stig_oracle_linux_9-OL09-00-000645,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000640,stig_oracle_linux_9-OL09-00-000640,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000545,stig_oracle_linux_9-OL09-00-000545,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000500,stig_oracle_linux_9-OL09-00-000500,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000525,stig_oracle_linux_9-OL09-00-000525,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000670,stig_oracle_linux_9-OL09-00-000670,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-000690,stig_oracle_linux_9-OL09-00-000690,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,stig.oracle_linux_9.audit_logging#1,stig_oracle_linux_9-stig.oracle_linux_9.audit_logging-1,,security,disa,linux oracle,stig.oracle_linux_9.audit_logging,benchmarks/stig/oracle_linux_9/audit_logging.rego
+stig_oracle_linux_9,OL09-00-002413,stig_oracle_linux_9-OL09-00-002413,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000070,stig_oracle_linux_9-OL09-00-000070,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000060,stig_oracle_linux_9-OL09-00-000060,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002107,stig_oracle_linux_9-OL09-00-002107,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000065,stig_oracle_linux_9-OL09-00-000065,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-001115,stig_oracle_linux_9-OL09-00-001115,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000090,stig_oracle_linux_9-OL09-00-000090,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000256,stig_oracle_linux_9-OL09-00-000256,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002423,stig_oracle_linux_9-OL09-00-002423,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002406,stig_oracle_linux_9-OL09-00-002406,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002410,stig_oracle_linux_9-OL09-00-002410,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002428,stig_oracle_linux_9-OL09-00-002428,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002430,stig_oracle_linux_9-OL09-00-002430,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000047,stig_oracle_linux_9-OL09-00-000047,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000042,stig_oracle_linux_9-OL09-00-000042,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000301,stig_oracle_linux_9-OL09-00-000301,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000302,stig_oracle_linux_9-OL09-00-000302,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000004,stig_oracle_linux_9-OL09-00-000004,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002070,stig_oracle_linux_9-OL09-00-002070,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002071,stig_oracle_linux_9-OL09-00-002071,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002072,stig_oracle_linux_9-OL09-00-002072,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-000006,stig_oracle_linux_9-OL09-00-000006,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,stig.oracle_linux_9.configuration_management#1,stig_oracle_linux_9-stig.oracle_linux_9.configuration_management-1,,security,disa,linux oracle,stig.oracle_linux_9.configuration_management,benchmarks/stig/oracle_linux_9/configuration_management.rego
+stig_oracle_linux_9,OL09-00-002512,stig_oracle_linux_9-OL09-00-002512,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002511,stig_oracle_linux_9-OL09-00-002511,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002548,stig_oracle_linux_9-OL09-00-002548,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002552,stig_oracle_linux_9-OL09-00-002552,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002536,stig_oracle_linux_9-OL09-00-002536,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002540,stig_oracle_linux_9-OL09-00-002540,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002525,stig_oracle_linux_9-OL09-00-002525,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002524,stig_oracle_linux_9-OL09-00-002524,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002506,stig_oracle_linux_9-OL09-00-002506,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-002515,stig_oracle_linux_9-OL09-00-002515,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,stig.oracle_linux_9.file_permissions#1,stig_oracle_linux_9-stig.oracle_linux_9.file_permissions-1,,security,disa,linux oracle,stig.oracle_linux_9.file_permissions,benchmarks/stig/oracle_linux_9/file_permissions.rego
+stig_oracle_linux_9,OL09-00-000220,stig_oracle_linux_9-OL09-00-000220,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006028,stig_oracle_linux_9-OL09-00-006028,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006020,stig_oracle_linux_9-OL09-00-006020,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006032,stig_oracle_linux_9-OL09-00-006032,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006042,stig_oracle_linux_9-OL09-00-006042,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006031,stig_oracle_linux_9-OL09-00-006031,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006050,stig_oracle_linux_9-OL09-00-006050,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006024,stig_oracle_linux_9-OL09-00-006024,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006041,stig_oracle_linux_9-OL09-00-006041,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006001,stig_oracle_linux_9-OL09-00-006001,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-000046,stig_oracle_linux_9-OL09-00-000046,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-006004,stig_oracle_linux_9-OL09-00-006004,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,stig.oracle_linux_9.network#1,stig_oracle_linux_9-stig.oracle_linux_9.network-1,,security,disa,linux oracle,stig.oracle_linux_9.network,benchmarks/stig/oracle_linux_9/network.rego
+stig_oracle_linux_9,OL09-00-000241,stig_oracle_linux_9-OL09-00-000241,,security,disa,linux oracle,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
+stig_oracle_linux_9,OL09-00-000242,stig_oracle_linux_9-OL09-00-000242,,security,disa,linux oracle,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
+stig_oracle_linux_9,OL09-00-000930,stig_oracle_linux_9-OL09-00-000930,,security,disa,linux oracle,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
+stig_oracle_linux_9,OL09-00-000925,stig_oracle_linux_9-OL09-00-000925,,security,disa,linux oracle,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
+stig_oracle_linux_9,OL09-00-000910,stig_oracle_linux_9-OL09-00-000910,,security,disa,linux oracle,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
+stig_oracle_linux_9,stig.oracle_linux_9.pki_crypto#1,stig_oracle_linux_9-stig.oracle_linux_9.pki_crypto-1,,security,disa,linux oracle,stig.oracle_linux_9.pki_crypto,benchmarks/stig/oracle_linux_9/pki_crypto.rego
+stig_oracle_linux_9,OL09-00-000135,stig_oracle_linux_9-OL09-00-000135,,security,disa,linux oracle,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
+stig_oracle_linux_9,OL09-00-000130,stig_oracle_linux_9-OL09-00-000130,,security,disa,linux oracle,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
+stig_oracle_linux_9,OL09-00-000110,stig_oracle_linux_9-OL09-00-000110,,security,disa,linux oracle,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
+stig_oracle_linux_9,OL09-00-000125,stig_oracle_linux_9-OL09-00-000125,,security,disa,linux oracle,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
+stig_oracle_linux_9,OL09-00-000100,stig_oracle_linux_9-OL09-00-000100,,security,disa,linux oracle,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
+stig_oracle_linux_9,stig.oracle_linux_9.services#1,stig_oracle_linux_9-stig.oracle_linux_9.services-1,,security,disa,linux oracle,stig.oracle_linux_9.services,benchmarks/stig/oracle_linux_9/services.rego
+stig_oracle_linux_9,OL09-00-000498,stig_oracle_linux_9-OL09-00-000498,,security,disa,linux oracle,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
+stig_oracle_linux_9,OL09-00-002407,stig_oracle_linux_9-OL09-00-002407,,security,disa,linux oracle,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
+stig_oracle_linux_9,OL09-00-000350,stig_oracle_linux_9-OL09-00-000350,,security,disa,linux oracle,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
+stig_oracle_linux_9,OL09-00-000351,stig_oracle_linux_9-OL09-00-000351,,security,disa,linux oracle,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
+stig_oracle_linux_9,stig.oracle_linux_9.software_integrity#1,stig_oracle_linux_9-stig.oracle_linux_9.software_integrity-1,,security,disa,linux oracle,stig.oracle_linux_9.software_integrity,benchmarks/stig/oracle_linux_9/software_integrity.rego
+stig_oracle_linux_9,OL09-00-000255,stig_oracle_linux_9-OL09-00-000255,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002343,stig_oracle_linux_9-OL09-00-002343,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002344,stig_oracle_linux_9-OL09-00-002344,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002345,stig_oracle_linux_9-OL09-00-002345,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-000251,stig_oracle_linux_9-OL09-00-000251,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002357,stig_oracle_linux_9-OL09-00-002357,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002347,stig_oracle_linux_9-OL09-00-002347,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002346,stig_oracle_linux_9-OL09-00-002346,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002351,stig_oracle_linux_9-OL09-00-002351,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002348,stig_oracle_linux_9-OL09-00-002348,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002349,stig_oracle_linux_9-OL09-00-002349,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,OL09-00-002352,stig_oracle_linux_9-OL09-00-002352,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,stig.oracle_linux_9.ssh_config#1,stig_oracle_linux_9-stig.oracle_linux_9.ssh_config-1,,security,disa,linux oracle,stig.oracle_linux_9.ssh_config,benchmarks/stig/oracle_linux_9/ssh_config.rego
+stig_oracle_linux_9,stig.oracle_linux_9#1,stig_oracle_linux_9-stig.oracle_linux_9-1,,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,stig.oracle_linux_9#2,stig_oracle_linux_9-stig.oracle_linux_9-2,,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,stig.oracle_linux_9#3,stig_oracle_linux_9-stig.oracle_linux_9-3,,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,stig.oracle_linux_9#4,stig_oracle_linux_9-stig.oracle_linux_9-4,not a finding,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,stig.oracle_linux_9#5,stig_oracle_linux_9-stig.oracle_linux_9-5,not applicable,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,stig.oracle_linux_9#6,stig_oracle_linux_9-stig.oracle_linux_9-6,not reviewed,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,stig.oracle_linux_9#7,stig_oracle_linux_9-stig.oracle_linux_9-7,open,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,metadata,stig_oracle_linux_9-metadata,,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
+stig_oracle_linux_9,summary,stig_oracle_linux_9-summary,,security,disa,linux oracle,stig.oracle_linux_9,benchmarks/stig/oracle_linux_9/stig_oracle_linux_9_complete.rego
 stig_oracle_mysql_8,MYS8-00-000100,stig_oracle_mysql_8-MYS8-00-000100,,security,disa,database mysql,stig.oracle_mysql_8.core,benchmarks/stig/oracle_mysql_8/core.rego
 stig_oracle_mysql_8,MYS8-00-000200,stig_oracle_mysql_8-MYS8-00-000200,,security,disa,database mysql,stig.oracle_mysql_8.core,benchmarks/stig/oracle_mysql_8/core.rego
 stig_oracle_mysql_8,MYS8-00-000300,stig_oracle_mysql_8-MYS8-00-000300,,security,disa,database mysql,stig.oracle_mysql_8.core,benchmarks/stig/oracle_mysql_8/core.rego

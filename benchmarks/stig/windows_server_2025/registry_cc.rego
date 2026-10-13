@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.windows_server_2025.registry_cc
 
 # DISA STIG — Microsoft Windows Server 2025 Security Technical Implementation Guide

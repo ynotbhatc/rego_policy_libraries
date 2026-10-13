@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_rhel9.auditd
 
 # CIS RHEL 9 Section 4.1.x - Configure System Accounting (auditd)

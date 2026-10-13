@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis.rhel_9
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0

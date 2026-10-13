@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cra.online_marketplace
 
 import rego.v1

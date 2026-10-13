@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_oracle.user_account_management
 
 # CIS Oracle Database 19c Benchmark - Section 3

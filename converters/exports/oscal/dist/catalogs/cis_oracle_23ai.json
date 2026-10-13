@@ -1,0 +1,2997 @@
+{
+ "catalog": {
+  "uuid": "4b00e70f-ab31-5210-a497-b2857a31b272",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_oracle_23ai (CIS Oracle Database 23ai Benchmark v1.0.0)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.1",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_oracle_23ai"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_oracle_23ai-cis_oracle_23ai",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 23ai Benchmark v1.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.oracle_23ai"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/oracle/cis_oracle_23ai.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_oracle_23ai-1.1",
+      "title": "Ensure The Appropriate Version/Patches For Oracle Software Is Installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure The Appropriate Version/Patches For Oracle Software Is Installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.1.1",
+      "title": "Ensure 'extproc' Is Not Present In 'listener.ora'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'extproc' Is Not Present In 'listener.ora'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.1.2",
+      "title": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.1.3",
+      "title": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.1.4",
+      "title": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.1",
+      "title": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.2",
+      "title": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.3",
+      "title": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.4",
+      "title": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.5",
+      "title": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.6",
+      "title": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.7",
+      "title": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.8",
+      "title": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.9",
+      "title": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.10",
+      "title": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.11",
+      "title": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.2.12",
+      "title": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.1",
+      "title": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.2",
+      "title": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.3",
+      "title": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.4",
+      "title": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.6",
+      "title": "Ensure 'OS_ROLES' Is Set To 'FALSE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'OS_ROLES' Is Set To 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.7",
+      "title": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.8",
+      "title": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.9",
+      "title": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.10",
+      "title": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.11",
+      "title": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.12",
+      "title": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.13",
+      "title": "Ensure 'REMOTE_LISTENER' Is Empty",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.13_stmt",
+        "name": "statement",
+        "prose": "Ensure 'REMOTE_LISTENER' Is Empty"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-2.3.14",
+      "title": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-2.3.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.1",
+      "title": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.2",
+      "title": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.4",
+      "title": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.5",
+      "title": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.6",
+      "title": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.7",
+      "title": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-3.8",
+      "title": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-3.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.1",
+      "title": "Ensure All Default Passwords Are Changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure All Default Passwords Are Changed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.2",
+      "title": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.4",
+      "title": "Ensure Old Password Versions Are Not Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Old Password Versions Are Not Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.5",
+      "title": "Ensure The Latest Version of The Password File Is Used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure The Latest Version of The Password File Is Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.6",
+      "title": "Ensure That Users In Different RAC Instances Are Identical In PW Files",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure That Users In Different RAC Instances Are Identical In PW Files"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.7",
+      "title": "Ensure No Public Database Links Exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure No Public Database Links Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-4.8",
+      "title": "Ensure That Database Link Passwords Are Using The Latest Encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure That Database Link Passwords Are Using The Latest Encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-5.1",
+      "title": "Ensure All Auditable System Actions Commands Are Audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure All Auditable System Actions Commands Are Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-5.2",
+      "title": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-5.3",
+      "title": "Ensure Critical Packages Are Audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Critical Packages Are Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-5.4",
+      "title": "Ensure All Export Activities Are Audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure All Export Activities Are Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-5.5",
+      "title": "Ensure The Use Of SYS* Privileges Is Audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure The Use Of SYS* Privileges Is Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.1",
+      "title": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.2",
+      "title": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.3",
+      "title": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.4",
+      "title": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.5",
+      "title": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.6",
+      "title": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.8",
+      "title": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.9",
+      "title": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.10",
+      "title": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.1.11",
+      "title": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.1",
+      "title": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.2",
+      "title": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.3",
+      "title": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.4",
+      "title": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.5",
+      "title": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.6",
+      "title": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.7",
+      "title": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.8",
+      "title": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.9",
+      "title": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.10",
+      "title": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.11",
+      "title": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.12",
+      "title": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.13",
+      "title": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.13_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.14",
+      "title": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.15",
+      "title": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.15_stmt",
+        "name": "statement",
+        "prose": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.16",
+      "title": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.16_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.17",
+      "title": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.17_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.18",
+      "title": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.18_stmt",
+        "name": "statement",
+        "prose": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.19",
+      "title": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.19_stmt",
+        "name": "statement",
+        "prose": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.20",
+      "title": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.20_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.21",
+      "title": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.21_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.2.22",
+      "title": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.2.22_stmt",
+        "name": "statement",
+        "prose": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.3.1",
+      "title": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.4.1",
+      "title": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.5.1",
+      "title": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.6.1",
+      "title": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.7.1",
+      "title": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE'",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-6.8.1",
+      "title": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-6.8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_23ai-CIS-Oracle-23ai",
+      "title": "FAIL-CLOSED - facts 'input.oracle' were not supplied; the database was not evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS Oracle 23ai"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS Oracle 23ai"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_23ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_23ai-CIS-Oracle-23ai_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.oracle' were not supplied; the database was not evaluated"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "6e2bd6b9-5bb3-5d3c-81b0-3d307cf90c43",
+     "title": "CIS Oracle Database 23ai Benchmark v1.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.oracle_23ai"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.1/benchmarks/cis/oracle/cis_oracle_23ai.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: orchestrator
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_ubuntu_20_04.ssh
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.2: Configure SSH Server
