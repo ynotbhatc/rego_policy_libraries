@@ -153,7 +153,10 @@ violations contains "CIS L2 4.1.5: sudoers changes not audited" if {
 # Section 5.2 - SSH (L2)
 # ---------------------------------------------------------------------------
 
-sshd_config := {key: lower(trim_space(value)) |
+# `sshd -T` repeats some directives (hostkey, listenaddress, acceptenv); an
+# object comprehension keyed on the directive raises eval_conflict_error on a
+# repeated key with two values. Collect pairs first, then join repeats.
+_sshd_pairs contains [key, lower(trim_space(value))] if {
 	some line in split(input.ssh.sshd_config_raw, "\n")
 	trimmed := trim_space(line)
 	not startswith(trimmed, "#")
@@ -162,6 +165,11 @@ sshd_config := {key: lower(trim_space(value)) |
 	count(parts) >= 2
 	key := lower(parts[0])
 	value := concat(" ", array.slice(parts, 1, count(parts)))
+}
+
+sshd_config := {key: value |
+	some [key, _] in _sshd_pairs
+	value := concat(",", sort([v | some [k, v] in _sshd_pairs; k == key]))
 }
 
 violations contains "CIS L2 5.2.7: AllowTcpForwarding not set to 'no'" if {

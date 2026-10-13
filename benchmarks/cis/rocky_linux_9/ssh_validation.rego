@@ -33,15 +33,23 @@ violations := array.concat(
 )
 
 # Parse sshd_config into key-value map
-sshd_config := {lower(key): value |
+# `sshd -T` repeats some directives (hostkey, listenaddress, acceptenv). An
+# object comprehension keyed on the directive raises eval_conflict_error
+# ("object keys must be unique") on the first host that has two HostKey lines,
+# which is every stock RHEL host. Collect the (key, value) pairs first, then
+# join repeated keys so every consumer still reads one string per directive.
+_sshd_pairs contains [lower(parts[0]), parts[1]] if {
 	some line in split(input.ssh.sshd_config_raw, "\n")
 	trimmed := trim_space(line)
 	not startswith(trimmed, "#")
 	trimmed != ""
 	parts := regex.split(`\s+`, trimmed)
 	count(parts) >= 2
-	key := parts[0]
-	value := parts[1]
+}
+
+sshd_config := {key: value |
+	some [key, _] in _sshd_pairs
+	value := concat(",", sort([v | some [k, v] in _sshd_pairs; k == key]))
 }
 
 # CIS 5.2.1 - SSH config file permissions
