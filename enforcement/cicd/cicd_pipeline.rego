@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cicd.pipeline
 
 # CI/CD Pipeline Security Governance

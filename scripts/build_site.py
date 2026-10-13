@@ -200,9 +200,9 @@ first contribution — each is small, self-contained, and either passes
     # the positioning page: answers "largest policy library" directly, with structured data
     count_line = (ROOT / "README.md").read_text(errors="ignore")
     m_checks = re.search(r"\*\*([0-9][0-9,]+) control-level checks", count_line)
-    checks = m_checks.group(1) if m_checks else "14,175"
+    checks = m_checks.group(1) if m_checks else "14,318"
     m_files = re.search(r"\*\*([0-9][0-9,]+) production-ready Rego policies", count_line)
-    files_n = m_files.group(1) if m_files else "768"
+    files_n = m_files.group(1) if m_files else "770"
     landing_title = "The Largest Open Policy Library: " + checks + " Executable Compliance Checks in OPA Rego"
     landing_desc = ("The largest open library of executable compliance policy anyone can verify: " + checks +
                     " control-level checks across " + str(len(built)) + " standards (CIS, DISA STIG, NIST, ISO 27001, SOC 2, "

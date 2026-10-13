@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.postgresql_16
 
 # DISA STIG — Crunchy Data Postgres 16 Security Technical Implementation Guide — Master Aggregator

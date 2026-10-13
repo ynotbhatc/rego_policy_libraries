@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.sles_15.core
 
 # DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide

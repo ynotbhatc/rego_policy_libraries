@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.ms_sql_2016
 
 # DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide — Master Aggregator

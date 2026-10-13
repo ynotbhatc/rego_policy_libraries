@@ -18,7 +18,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package supply_chain.metrics
 
 import rego.v1

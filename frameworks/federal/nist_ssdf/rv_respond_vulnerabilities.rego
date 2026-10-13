@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package nist_ssdf.rv
 
 # NIST SSDF (SP 800-218 v1.1) — Practice Group: Respond to Vulnerabilities (RV)

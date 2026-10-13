@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package supply_chain.scrm_800_161
 
 import rego.v1

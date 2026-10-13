@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_vyos
 
 # CIS VyOS Router Hardening Benchmark v1.0.0

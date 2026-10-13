@@ -57,7 +57,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package aac.repo.install_hygiene
 
 import rego.v1

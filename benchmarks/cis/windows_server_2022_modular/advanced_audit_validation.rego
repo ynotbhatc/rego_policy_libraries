@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_windows_server_2022.advanced_audit
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 17: Advanced Audit Policy Configuration

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_debian_11
 
 # CIS Debian 11 Benchmark - Complete Compliance Assessment

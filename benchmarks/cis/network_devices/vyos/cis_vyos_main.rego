@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_vyos.main
 
 # Bridge: expose cis_vyos under the /v1/data/<framework>/main/compliance_report

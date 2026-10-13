@@ -20,7 +20,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package supply_chain.ssdf_genai
 
 import rego.v1

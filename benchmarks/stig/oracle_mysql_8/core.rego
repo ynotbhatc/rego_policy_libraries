@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.oracle_mysql_8.core
 
 # DISA STIG — Oracle MySQL 8.0 Security Technical Implementation Guide

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.rhel_9.services
 
 # DISA STIG for RHEL 9 - Services Module

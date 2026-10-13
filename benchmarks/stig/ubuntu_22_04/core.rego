@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.ubuntu_22_04.core
 
 # DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide

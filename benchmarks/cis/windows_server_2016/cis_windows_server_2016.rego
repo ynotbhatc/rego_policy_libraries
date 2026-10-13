@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_windows_server_2016
 
 # CIS Microsoft Windows Server 2016 Benchmark v1.4.0

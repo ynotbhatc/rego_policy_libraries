@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_aws.l2
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0 - Level 2 Additional Controls

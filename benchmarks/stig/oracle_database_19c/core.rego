@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package stig.oracle_database_19c.core
 
 # DISA STIG — Oracle Database 19c Security Technical Implementation Guide

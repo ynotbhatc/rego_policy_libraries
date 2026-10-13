@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_windows_server_2019.account_policies
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 1: Account Policies

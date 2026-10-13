@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: orchestrator
-#     as_of: v2.4.0
+#     as_of: v2.4.1
 package cis_ubuntu_22_04.ssh
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 5.2: Configure SSH Server
