@@ -139,10 +139,10 @@ test_authorized_dba_grant_is_not_a_finding if {
 	b.compliant with input as ok
 }
 
-test_every_recommendation_fires_without_facts if {
-	v := b.violations with input as {"oracle": {}}
-	ids := {id | some m in v; id := split(m, ":")[0]}
-	count(ids) >= 87
+test_grant_row_without_oracle_maintained_flag_is_a_finding if {
+	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "APP_USER", "granted_role": "DBA"}]}])
+	some m in b.violations with input as bad
+	startswith(m, "6.2.1:")
 }
 
 test_oracle_maintained_flag_accepts_y_n_strings if {
@@ -151,4 +151,10 @@ test_oracle_maintained_flag_accepts_y_n_strings if {
 	startswith(m, "6.2.1:")
 	y := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "SYS", "granted_role": "DBA", "oracle_maintained": "Y"}]}])
 	b.compliant with input as y
+}
+
+test_every_recommendation_fires_without_facts if {
+	v := b.violations with input as {"oracle": {}}
+	ids := {id | some m in v; id := split(m, ":")[0]}
+	count(ids) >= 87
 }
