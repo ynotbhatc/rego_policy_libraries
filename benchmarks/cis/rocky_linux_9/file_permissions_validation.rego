@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_rocky_linux_9.file_permissions
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 6.1: System File Permissions

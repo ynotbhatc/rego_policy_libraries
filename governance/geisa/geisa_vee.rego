@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package governance.geisa.vee
 
 import rego.v1
@@ -59,7 +59,7 @@ violations contains "VEE: discovery_response.pillars.vee is true but container.r
 
 violations contains "VEE: discovery_response.pillars.vee is true but container input is missing" if {
 	_vee_required
-	not is_object(input.container)
+	not is_object(object.get(input, "container", null))
 }
 
 # ─── Output ──────────────────────────────────────────────────────────────────

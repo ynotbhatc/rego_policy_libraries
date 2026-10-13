@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_amazon_linux_2023.services
 
 # CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration

@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: none
-#     as_of: v2.3.6
+#     guard: self
+#     as_of: v2.3.7
 package cis_vcenter_8
 
 import rego.v1
@@ -44,6 +44,8 @@ violations := array.concat(
 )
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.vcenter
 	count(violations) == 0
 }
 

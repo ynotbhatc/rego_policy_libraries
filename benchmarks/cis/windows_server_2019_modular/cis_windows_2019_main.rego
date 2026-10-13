@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_windows_server_2019.main
 
 # Bridge: expose cis_windows_server_2019 under the /v1/data/<framework>/main/compliance_report

@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package stig.windows_11.main
 
 import data.stig.windows_11

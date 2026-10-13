@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_windows_server_2019.system_services
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 5: System Services

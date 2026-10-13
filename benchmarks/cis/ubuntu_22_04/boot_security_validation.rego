@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_ubuntu_22_04.boot_security
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening

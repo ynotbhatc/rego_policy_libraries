@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package stig.amazon_linux_2023
 
 # DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide — Master Aggregator

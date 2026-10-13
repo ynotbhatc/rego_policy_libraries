@@ -6,17 +6,26 @@
 #   source: cis
 #   domains: [linux]
 #   coverage:
-#     checks: 15
-#     cited: 15
+#     checks: 16
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: none
-#     as_of: v2.3.6
+#     guard: self
+#     as_of: v2.3.7
 package cis_rhel9.pam_validation
 
 import rego.v1
+
+# fail-closed: no facts, no result
+violations contains {
+    "control": "5.2",
+    "severity": "HIGH",
+    "message": "FAIL-CLOSED - facts 'input.pam' were not supplied; PAM controls were not evaluated",
+} if {
+    not input.pam
+}
 
 # CIS RHEL 9 Benchmark v2.0.0 - Section 5.2: PAM (Pluggable Authentication Modules)
 # Validates PAM configuration for secure authentication

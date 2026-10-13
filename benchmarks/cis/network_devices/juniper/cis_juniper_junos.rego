@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.6
+#     as_of: v2.3.7
 package cis_juniper_junos
 
 # CIS Juniper JunOS Benchmark v2.1.0
