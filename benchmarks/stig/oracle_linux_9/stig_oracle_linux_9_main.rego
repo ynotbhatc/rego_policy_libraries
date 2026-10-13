@@ -14,7 +14,7 @@
 #   class: security
 #   framework: stig_oracle_linux_9
 #   source: disa
-#   domains: [linux, oracle_linux]
+#   domains: [linux, oracle]
 #   coverage:
 #     checks: 0
 #     cited: 0

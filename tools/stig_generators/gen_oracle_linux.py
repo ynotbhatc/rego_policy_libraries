@@ -21,7 +21,7 @@ CATS = os.path.join(HERE, "catalogs")
 PLATFORMS = {
     "oracle_linux_9": {
         "src": "rhel_9", "src_prefix": "RHEL-09", "src_name": "RHEL 9", "src_ident": "rhel_09",
-        "name": "Oracle Linux 9", "ident": "ol09", "domains": "[linux, oracle_linux]",
+        "name": "Oracle Linux 9", "ident": "ol09", "domains": "[linux, oracle]",
         # Reviewed by hand against both check texts (2026-10-13): the RHEL module's own title is a paraphrase, so
         # the title match misses these; the LOGIC is the same requirement. Key = <section>:<RHEL id as written in
         # the module>. A value starting with "~" is a case-insensitive substring of the OL title that must match
@@ -67,7 +67,7 @@ PLATFORMS = {
     # generate oracle_linux_9 first, this reads its output.
     "oracle_linux_8": {
         "src": "oracle_linux_9", "src_prefix": "OL09", "src_name": "Oracle Linux 9", "src_ident": "ol09",
-        "name": "Oracle Linux 8", "ident": "ol08", "domains": "[linux, oracle_linux]",
+        "name": "Oracle Linux 8", "ident": "ol08", "domains": "[linux, oracle]",
         # reviewed against both check texts 2026-10-13; OL 8 splits several rules by OS minor version — the
         # 8.2-and-above variant is the faillock form the logic implements
         "overrides": {
