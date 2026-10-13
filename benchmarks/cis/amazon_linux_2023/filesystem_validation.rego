@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: none
-#     as_of: v2.3.5
+#     guard: self
+#     as_of: v2.3.6
 package cis_amazon_linux_2023.filesystem
 
 # CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration
@@ -29,6 +29,8 @@ import rego.v1
 default compliant := false
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.mount_options
 	count(violations) == 0
 }
 

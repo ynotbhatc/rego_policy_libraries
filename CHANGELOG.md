@@ -8,6 +8,27 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3.6] - 2026-10-12
+
+### Changed — citations read from every message shape; the last six fail-open modules
+
+- The control-id reader now sees `sprintf` built messages in a rule head (`violations contains sprintf("CIS
+  4.1.3.x: ...", [x]) if`) and object-valued violations (`v := {"standard": "CIP-002", "requirement": ...}`,
+  `{"control_id": ..., "finding": ...}`), citing them from the id the module already carries. Uncited violation
+  rules fall from 1,272 to 803 with no policy edited; cited controls rise from 8,966 to 9,354. The 803 left either
+  build their message from data at evaluation time or carry no standard reference by design (GEISA, OWASP LLM,
+  admission gates). Count: 13,775.
+- Six modules whose reports were undefined until 2.3.5 turned out to be fail-open once they evaluated (the Amazon
+  Linux filesystem and network sections, the RHEL 8 and Rocky 8 and 9 network sections, the Oracle legacy
+  user-account module). Each now carries the fail-closed notice; `docs/TEST_GENERATION.md`: undefined reports 1,
+  unguarded fail-open 0; suite 3520 tests.
+- **Declared totals from the standards' own text** (`standard_total` in the report literal, compared in control
+  ids, cited to where the number was counted): CIS Controls v8.1 **153 safeguards** — 153 of 153 cited, full;
+  NIST CSF 2.0 **106 subcategories** (NIST CSWP 29: GV 31, ID 21, PR 22, DE 11, RS 13, RC 8) — 87 cited, partial,
+  19 to write; NIST SP 800-171 **Rev 2, 110 requirements** (the numbering the module cites; Rev 3 has 97 active
+  `03.xx.yy` ids, 130 in the text with 33 withdrawn, migration pending) — 88 cited, partial. Both NIST gaps are
+  named in `KNOWN_GAPS` so CI keeps judging them; 45 of 49 declaring modules are within 10 %.
+
 ## [2.3.5] - 2026-10-12
 
 ### Fixed — the fail-closed contract, module by module

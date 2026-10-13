@@ -7,13 +7,13 @@
 #   domains: [linux, rhel]
 #   coverage:
 #     checks: 17
-#     cited: 1
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel8.file_permissions
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.1: System File Permissions

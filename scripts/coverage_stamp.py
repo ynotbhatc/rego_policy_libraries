@@ -9,7 +9,8 @@ validated by CI instead of rediscovered.
 What is stamped (custom.coverage):
   checks     control-level checks the module holds (the same rule as `make count`: scripts/rego_ast.py)
   cited      how many of those carry a citable control id (CIS 1.3.1, §7122(a)(1), RHEL-09-611010, ...)
-  expected   the total the module itself declares in its report literal (total_controls: 172), when it does
+  expected   the standard's own count when the module declares it (`standard_total`, cited to the standard's text),
+             else the total the module declares for its own table (`total_controls: 172`)
   found      what is compared with expected: the module's own checks, or (scope: directory) the sum over the
              directory when the declaring file is an orchestrator with no checks of its own
   density    full | partial | sparse | stub | orchestrator | unrecognised
@@ -38,11 +39,13 @@ sys.path.insert(0, str(HERE))
 from rego_ast import parse_tree, checks, tables, package, rule_name  # noqa: E402
 
 ORCH = re.compile(r"(_main|_complete|_simplified)\.rego$")
-TOTAL_KEYS = ("total_controls", "controls_total", "total_recommendations", "total_checks")
+TOTAL_KEYS = ("standard_total", "total_controls", "controls_total", "total_recommendations", "total_checks")  # first match wins
 # Modules legitimately below their own declared total, with the reason. Everything else below 90 % fails --check.
 KNOWN_GAPS = {
     "frameworks/privacy/iso27701/iso27701_main.rego": "ISO/IEC 27701 text is licensed; 67 of 134 controls written from public summaries",
     "benchmarks/cis/windows_11/cis_windows_11.rego": "CIS Windows 11 benchmark text is licensed; 210 of 267 recommendations implemented",
+    "frameworks/federal/nist/cybersecurity_framework_2.0/nist_csf_main.rego": "CSF 2.0 has 106 subcategories (NIST CSWP 29); 87 implemented, 19 to write — public text, no excuse, queued",
+    "frameworks/federal/nist/sp_800_171/nist_800_171_main.rego": "SP 800-171 Rev 2 numbering: 88 of 110 requirements cited; Rev 3 (97 requirements, 03.xx.yy) migration pending per the registry",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design
@@ -112,15 +115,16 @@ def scan(root=ROOT):
         n, ids, uncited = checks(ast)
         names = {rule_name(r) for r in ast.get("rules", [])}
         entry = "compliance_report" if "compliance_report" in names else ("report" if "report" in names else "none")
-        expected = None
+        expected = None; expected_key = None
         for name, trows in tables(ast):
             if name in ("compliance_report", "report"):
-                for k, v in trows:
-                    if k in TOTAL_KEYS and v["type"] == "number":
-                        expected = int(v["value"])
+                found_keys = {k: v for k, v in trows if k in TOTAL_KEYS and v["type"] == "number"}
+                for k in TOTAL_KEYS:
+                    if k in found_keys:
+                        expected = int(found_keys[k]["value"]); expected_key = k; break
         pkg = package(ast)
         record(pkg)
-        rows[rel] = {"checks": n, "cited": len(ids), "expected": expected, "found": None, "scope": None,
+        rows[rel] = {"checks": n, "cited": len(ids), "expected": expected, "found": None, "scope": None, "_expected_key": expected_key, "_ids": ids,
                      "tested": pkg in tested, "entrypoint": entry, "guard": None, "as_of": ver,
                      "_package": pkg, "_uncited": uncited, "_has_meta": "# METADATA" in (root / rel).read_text(errors="ignore")}
     # density. An orchestrator declares the whole framework's total while its controls live in sibling modules,
@@ -134,15 +138,21 @@ def scan(root=ROOT):
     def siblings(rel):
         d = rel.rsplit("/", 1)[0] + "/"
         return sum(1 for rel2 in rows if rel2.startswith(d) and rel2 != rel)
-    def subtree(rel):
+    def subtree(rel, units):
         d = rel.rsplit("/", 1)[0] + "/"
+        if units == "ids":
+            return len(set().union(*(r2["_ids"] for rel2, r2 in rows.items() if rel2.startswith(d))))
         return sum(r2["checks"] for rel2, r2 in rows.items() if rel2.startswith(d))
     for rel, r in rows.items():
         n, expected = r["checks"], r["expected"]
+        # a standard_total counts the standard's controls, so it is compared with distinct cited ids;
+        # a module's own total_controls counts its checks, so it is compared with checks
+        units = "ids" if r["_expected_key"] == "standard_total" else "checks"
+        own = len(r["_ids"]) if units == "ids" else n
         if expected and (ORCH.search(rel) or n == 0):
-            found, scope = subtree(rel), "directory"
+            found, scope = subtree(rel, units), "directory"
         else:
-            found, scope = n, "module"
+            found, scope = own, "module"
         if expected:
             ratio = found / expected
             density, basis = ("full" if ratio >= 0.9 else "partial" if ratio >= 0.5 else "sparse"), "declared-total"

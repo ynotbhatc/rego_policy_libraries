@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: none
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_vcenter_8
 
 import rego.v1

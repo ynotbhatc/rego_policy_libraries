@@ -17,12 +17,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 153
+#     found: 153
+#     scope: directory
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_controls_v8.main
 
 import rego.v1
@@ -88,6 +91,7 @@ compliant if count(all_violations) == 0
 
 compliance_report := {
 	"framework": "CIS Controls v8.1",
+	"standard_total": 153,   # CIS Controls v8.1: safeguards per control on cisecurity.org/controls/cis-controls-navigator (5+7+14+12+6+8+7+12+7+7+5+8+11+9+7+14+9+5)
 	"controls_evaluated": count(reports),
 	"total_safeguards": count(all_safeguards),
 	"violations": all_violations,

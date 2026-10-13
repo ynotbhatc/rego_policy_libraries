@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_azure
 
 # CIS Microsoft Azure Foundations Benchmark v3.0.0

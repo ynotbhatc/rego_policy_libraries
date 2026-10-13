@@ -16,3 +16,8 @@ test_network_validation_report_wellformed_on_empty_input if {
 	count(report) > 0
 }
 
+test_network_validation_fail_closed_on_empty_input if {
+	report := data.cis_rocky_linux_8.network.report with input as {}
+	not object.get(report, "compliant", false) == true
+}
+

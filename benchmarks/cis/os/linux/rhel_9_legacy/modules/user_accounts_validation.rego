@@ -7,13 +7,13 @@
 #   domains: [linux]
 #   coverage:
 #     checks: 23
-#     cited: 0
+#     cited: 23
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel9.user_accounts_validation
 
 import rego.v1

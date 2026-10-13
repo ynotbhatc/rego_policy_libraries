@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel9.network
 
 # CIS RHEL 9 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration

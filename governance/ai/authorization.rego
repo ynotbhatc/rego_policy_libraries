@@ -23,7 +23,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package ai_governance.authorization
 
 import rego.v1

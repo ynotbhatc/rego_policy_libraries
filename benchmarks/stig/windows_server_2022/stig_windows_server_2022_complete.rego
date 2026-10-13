@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package stig.windows_server_2022
 
 # DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator

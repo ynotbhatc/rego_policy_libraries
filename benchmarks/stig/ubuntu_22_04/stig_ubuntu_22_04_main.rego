@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package stig.ubuntu_22_04.main
 
 import data.stig.ubuntu_22_04

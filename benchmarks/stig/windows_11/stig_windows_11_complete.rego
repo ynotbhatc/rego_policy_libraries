@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package stig.windows_11
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "8a6a2c04-adf5-5854-ba52-5313f8f1f413",
+  "uuid": "a883e57c-3277-5370-8e96-dbb81e1ecc66",
   "metadata": {
    "title": "Rego Policy Libraries — cis_amazon_linux_2023 (CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.5",
+   "version": "2.3.6",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -156,7 +156,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -189,7 +189,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -222,7 +222,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -255,7 +255,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -293,7 +293,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -312,16 +312,16 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-1",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-4.1.3.x",
+      "title": "Missing or incomplete audit rule for: %s",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#1"
+        "value": "CIS 4.1.3.x"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#1"
+        "value": "CIS 4.1.3.x"
        },
        {
         "name": "rego-package",
@@ -331,15 +331,15 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-1_stmt",
+        "id": "cis_amazon_linux_2023-CIS-4.1.3.x_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+        "prose": "Missing or incomplete audit rule for: %s"
        }
       ],
       "class": "security"
@@ -364,7 +364,7 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
@@ -378,16 +378,16 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-2",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-4.1.4.1",
+      "title": "Audit log permissions too permissive (mode: %s, should be 0640 or less)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#2"
+        "value": "CIS 4.1.4.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#2"
+        "value": "CIS 4.1.4.1"
        },
        {
         "name": "rego-package",
@@ -397,30 +397,30 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-2_stmt",
+        "id": "cis_amazon_linux_2023-CIS-4.1.4.1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+        "prose": "Audit log permissions too permissive (mode: %s, should be 0640 or less)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-3",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-4.1.4.2",
+      "title": "Audit log not owned by root (owner: %s)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#3"
+        "value": "CIS 4.1.4.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#3"
+        "value": "CIS 4.1.4.2"
        },
        {
         "name": "rego-package",
@@ -430,30 +430,35 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-3_stmt",
+        "id": "cis_amazon_linux_2023-CIS-4.1.4.2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+        "prose": "Audit log not owned by root (owner: %s)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-4.1.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log group not root or adm (group: %s)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-4",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-4.1.4.3",
+      "title": "Audit log directory permissions too permissive (mode: %s)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#4"
+        "value": "CIS 4.1.4.3"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#4"
+        "value": "CIS 4.1.4.3"
        },
        {
         "name": "rego-package",
@@ -463,30 +468,30 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-4_stmt",
+        "id": "cis_amazon_linux_2023-CIS-4.1.4.3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+        "prose": "Audit log directory permissions too permissive (mode: %s)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-5",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-4.1.4.4",
+      "title": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#5"
+        "value": "CIS 4.1.4.4"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#5"
+        "value": "CIS 4.1.4.4"
        },
        {
         "name": "rego-package",
@@ -496,81 +501,20 @@
       ],
       "links": [
        {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+        "href": "#0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-5_stmt",
+        "id": "cis_amazon_linux_2023-CIS-4.1.4.4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-6",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#6"
+        "prose": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)"
        },
        {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-6_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-7",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.auditd#7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.auditd#7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7e14231e-37e9-5edf-ae51-d7bdbf33d163",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.auditd-7_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/auditd_validation.rego (package cis_amazon_linux_2023.auditd); see the rule body."
+        "id": "cis_amazon_linux_2023-CIS-4.1.4.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit config file %s not owned by root (owner: %s)"
        }
       ],
       "class": "security"
@@ -619,7 +563,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -652,7 +596,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -690,7 +634,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -728,7 +672,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -771,7 +715,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -804,7 +748,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -852,7 +796,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -890,7 +834,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -923,7 +867,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -961,7 +905,7 @@
       ],
       "links": [
        {
-        "href": "#6ebef6f9-d965-59c4-b841-d888d964f0ac",
+        "href": "#22ed56cd-75c7-5978-8da9-185afb3af777",
         "rel": "implementation"
        }
       ],
@@ -1028,7 +972,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1061,7 +1005,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1094,7 +1038,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1127,7 +1071,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1160,7 +1104,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1193,7 +1137,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1226,7 +1170,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1259,7 +1203,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1292,7 +1236,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1325,7 +1269,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1358,7 +1302,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1391,7 +1335,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1424,7 +1368,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1457,7 +1401,7 @@
       ],
       "links": [
        {
-        "href": "#d3b85008-2a72-59eb-b57c-555d0db97dc1",
+        "href": "#1c7d731d-328d-5b62-90c6-4304afea04ae",
         "rel": "implementation"
        }
       ],
@@ -1514,7 +1458,7 @@
       ],
       "links": [
        {
-        "href": "#560335ed-31d8-59de-bf98-da52b2618c35",
+        "href": "#425d903f-8ded-5af3-82af-dcf5493117ca",
         "rel": "implementation"
        }
       ],
@@ -1547,7 +1491,7 @@
       ],
       "links": [
        {
-        "href": "#560335ed-31d8-59de-bf98-da52b2618c35",
+        "href": "#425d903f-8ded-5af3-82af-dcf5493117ca",
         "rel": "implementation"
        }
       ],
@@ -1580,7 +1524,7 @@
       ],
       "links": [
        {
-        "href": "#560335ed-31d8-59de-bf98-da52b2618c35",
+        "href": "#425d903f-8ded-5af3-82af-dcf5493117ca",
         "rel": "implementation"
        }
       ],
@@ -1613,7 +1557,7 @@
       ],
       "links": [
        {
-        "href": "#560335ed-31d8-59de-bf98-da52b2618c35",
+        "href": "#425d903f-8ded-5af3-82af-dcf5493117ca",
         "rel": "implementation"
        }
       ],
@@ -1646,7 +1590,7 @@
       ],
       "links": [
        {
-        "href": "#560335ed-31d8-59de-bf98-da52b2618c35",
+        "href": "#425d903f-8ded-5af3-82af-dcf5493117ca",
         "rel": "implementation"
        }
       ],
@@ -1679,7 +1623,7 @@
       ],
       "links": [
        {
-        "href": "#560335ed-31d8-59de-bf98-da52b2618c35",
+        "href": "#425d903f-8ded-5af3-82af-dcf5493117ca",
         "rel": "implementation"
        }
       ],
@@ -1736,7 +1680,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -1774,7 +1718,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -1817,7 +1761,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -1855,7 +1799,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -1893,7 +1837,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -1931,7 +1875,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -1969,7 +1913,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -2007,7 +1951,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -2050,7 +1994,7 @@
       ],
       "links": [
        {
-        "href": "#c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+        "href": "#eea137f4-deeb-5ae8-8de8-231d8876b3dc",
         "rel": "implementation"
        }
       ],
@@ -2117,7 +2061,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2150,7 +2094,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2183,7 +2127,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2216,7 +2160,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2249,7 +2193,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2282,7 +2226,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2320,7 +2264,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2358,7 +2302,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2396,7 +2340,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2434,7 +2378,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2467,7 +2411,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2500,7 +2444,7 @@
       ],
       "links": [
        {
-        "href": "#b8816859-e2df-50ec-affb-e910ab05e971",
+        "href": "#6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
         "rel": "implementation"
        }
       ],
@@ -2557,7 +2501,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2590,7 +2534,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2628,7 +2572,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2661,7 +2605,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2694,7 +2638,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2727,7 +2671,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2760,7 +2704,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2793,7 +2737,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2826,7 +2770,7 @@
       ],
       "links": [
        {
-        "href": "#1ccf2819-f924-5ea3-b932-6bec5e19b683",
+        "href": "#12a32f7c-0765-593f-bf88-b7f6c2304ce8",
         "rel": "implementation"
        }
       ],
@@ -2888,7 +2832,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -2921,7 +2865,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -2959,7 +2903,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -2992,7 +2936,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3035,7 +2979,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3078,7 +3022,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3121,7 +3065,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3154,7 +3098,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3187,7 +3131,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3220,7 +3164,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3253,7 +3197,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3286,7 +3230,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3319,7 +3263,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3357,7 +3301,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3390,7 +3334,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3428,7 +3372,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3461,7 +3405,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3494,7 +3438,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3527,7 +3471,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3560,7 +3504,7 @@
       ],
       "links": [
        {
-        "href": "#c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+        "href": "#9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
         "rel": "implementation"
        }
       ],
@@ -3622,7 +3566,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3655,7 +3599,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3693,7 +3637,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3726,7 +3670,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3759,7 +3703,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3797,7 +3741,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3830,7 +3774,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3863,7 +3807,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3896,7 +3840,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3929,7 +3873,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -3967,7 +3911,7 @@
       ],
       "links": [
        {
-        "href": "#b95a0e7f-a472-53e7-b7ab-824d3e269049",
+        "href": "#7893b029-01d4-5fbc-9e36-6431ad418c6e",
         "rel": "implementation"
        }
       ],
@@ -4024,7 +3968,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4057,7 +4001,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4090,7 +4034,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4123,7 +4067,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4156,7 +4100,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4189,7 +4133,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4227,7 +4171,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4265,7 +4209,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4303,7 +4247,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4336,7 +4280,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4369,7 +4313,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4402,7 +4346,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4435,7 +4379,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4473,7 +4417,7 @@
       ],
       "links": [
        {
-        "href": "#e3ae93ff-850d-5301-ac80-1739d01f21d5",
+        "href": "#1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
         "rel": "implementation"
        }
       ],
@@ -4535,7 +4479,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4568,7 +4512,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4606,7 +4550,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4644,7 +4588,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4687,7 +4631,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4725,7 +4669,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4758,7 +4702,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4791,7 +4735,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4824,7 +4768,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4857,7 +4801,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4895,7 +4839,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4928,7 +4872,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4961,7 +4905,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -4994,7 +4938,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -5032,7 +4976,7 @@
       ],
       "links": [
        {
-        "href": "#055694c6-8552-5685-888f-bf790ead6e35",
+        "href": "#00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
         "rel": "implementation"
        }
       ],
@@ -5099,7 +5043,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5132,7 +5076,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5170,7 +5114,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5208,7 +5152,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5246,7 +5190,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5279,7 +5223,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5312,7 +5256,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5345,7 +5289,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5378,7 +5322,7 @@
       ],
       "links": [
        {
-        "href": "#3b933bfe-273f-54ff-ad56-f29faf02f937",
+        "href": "#56971338-b845-5c82-8e1f-0988b69eef54",
         "rel": "implementation"
        }
       ],
@@ -5440,7 +5384,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5483,7 +5427,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5526,7 +5470,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5569,7 +5513,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5607,7 +5551,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5640,7 +5584,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5673,7 +5617,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5706,7 +5650,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5739,7 +5683,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5772,7 +5716,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5805,7 +5749,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5838,7 +5782,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5871,7 +5815,7 @@
       ],
       "links": [
        {
-        "href": "#d52140f9-228d-58ce-b383-af711bb51a7d",
+        "href": "#8ab89176-eda8-5ccf-a110-54a9e5307192",
         "rel": "implementation"
        }
       ],
@@ -5928,7 +5872,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -5952,16 +5896,16 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-1",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.2",
+      "title": "SSH private key %s has incorrect permissions (mode: %s, should be 0600)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#1"
+        "value": "CIS 5.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#1"
+        "value": "CIS 5.2.2"
        },
        {
         "name": "rego-package",
@@ -5971,30 +5915,35 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-1_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "SSH private key %s has incorrect permissions (mode: %s, should be 0600)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH private key %s not owned by root (owner: %s)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-2",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.3",
+      "title": "SSH public key %s permissions too permissive (mode: %s)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#2"
+        "value": "CIS 5.2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#2"
+        "value": "CIS 5.2.3"
        },
        {
         "name": "rego-package",
@@ -6004,48 +5953,15 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-2_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-3",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "SSH public key %s permissions too permissive (mode: %s)"
        }
       ],
       "class": "security"
@@ -6070,7 +5986,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6108,7 +6024,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6122,41 +6038,8 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-4",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-4_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_amazon_linux_2023-CIS-5.2.6",
-      "title": "SSH MaxAuthTries not configured",
+      "title": "SSH MaxAuthTries is %v (should be 4 or less)",
       "props": [
        {
         "name": "label",
@@ -6174,7 +6057,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6182,6 +6065,11 @@
        {
         "id": "cis_amazon_linux_2023-CIS-5.2.6_stmt",
         "name": "statement",
+        "prose": "SSH MaxAuthTries is %v (should be 4 or less)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.6_obj.1",
+        "name": "assessment-objective",
         "prose": "SSH MaxAuthTries not configured"
        }
       ],
@@ -6207,7 +6095,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6245,7 +6133,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6259,41 +6147,8 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-5",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-5_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_amazon_linux_2023-CIS-5.2.9",
-      "title": "SSH PermitRootLogin not configured",
+      "title": "SSH PermitRootLogin is '%v' (should be 'no')",
       "props": [
        {
         "name": "label",
@@ -6311,7 +6166,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6319,6 +6174,11 @@
        {
         "id": "cis_amazon_linux_2023-CIS-5.2.9_stmt",
         "name": "statement",
+        "prose": "SSH PermitRootLogin is '%v' (should be 'no')"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.9_obj.1",
+        "name": "assessment-objective",
         "prose": "SSH PermitRootLogin not configured"
        }
       ],
@@ -6344,7 +6204,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6377,7 +6237,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6391,16 +6251,16 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-6",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.12",
+      "title": "Weak SSH cipher '%s' is allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#6"
+        "value": "CIS 5.2.12"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#6"
+        "value": "CIS 5.2.12"
        },
        {
         "name": "rego-package",
@@ -6410,30 +6270,30 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-6_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.12_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "Weak SSH cipher '%s' is allowed"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-7",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.13",
+      "title": "Weak SSH MAC '%s' is allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#7"
+        "value": "CIS 5.2.13"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#7"
+        "value": "CIS 5.2.13"
        },
        {
         "name": "rego-package",
@@ -6443,30 +6303,30 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-7_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.13_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "Weak SSH MAC '%s' is allowed"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-8",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.14",
+      "title": "Weak SSH KexAlgorithm '%s' is allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#8"
+        "value": "CIS 5.2.14"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#8"
+        "value": "CIS 5.2.14"
        },
        {
         "name": "rego-package",
@@ -6476,55 +6336,22 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-8_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.14_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-9",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-9_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "Weak SSH KexAlgorithm '%s' is allowed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_amazon_linux_2023-CIS-5.2.15",
-      "title": "SSH ClientAliveInterval not configured",
+      "title": "SSH ClientAliveInterval is %v seconds (should be 300 or less)",
       "props": [
        {
         "name": "label",
@@ -6542,7 +6369,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6550,22 +6377,32 @@
        {
         "id": "cis_amazon_linux_2023-CIS-5.2.15_stmt",
         "name": "statement",
+        "prose": "SSH ClientAliveInterval is %v seconds (should be 300 or less)"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.15_obj.1",
+        "name": "assessment-objective",
         "prose": "SSH ClientAliveInterval not configured"
+       },
+       {
+        "id": "cis_amazon_linux_2023-CIS-5.2.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSH ClientAliveCountMax is %v (should be 3 or less)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-10",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.16",
+      "title": "SSH LoginGraceTime is %v seconds (should be 60 or less)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#10"
+        "value": "CIS 5.2.16"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#10"
+        "value": "CIS 5.2.16"
        },
        {
         "name": "rego-package",
@@ -6575,48 +6412,15 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-10_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.16_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-11",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_amazon_linux_2023.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-11_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "SSH LoginGraceTime is %v seconds (should be 60 or less)"
        }
       ],
       "class": "security"
@@ -6641,7 +6445,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6679,7 +6483,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6717,7 +6521,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6750,7 +6554,7 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
@@ -6764,16 +6568,16 @@
       "class": "security"
      },
      {
-      "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-12",
-      "title": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body.",
+      "id": "cis_amazon_linux_2023-CIS-5.2.21",
+      "title": "SSH MaxSessions is %v (should be 10 or less)",
       "props": [
        {
         "name": "label",
-        "value": "cis_amazon_linux_2023.ssh#12"
+        "value": "CIS 5.2.21"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_amazon_linux_2023.ssh#12"
+        "value": "CIS 5.2.21"
        },
        {
         "name": "rego-package",
@@ -6783,15 +6587,15 @@
       ],
       "links": [
        {
-        "href": "#5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+        "href": "#e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_amazon_linux_2023-cis_amazon_linux_2023.ssh-12_stmt",
+        "id": "cis_amazon_linux_2023-CIS-5.2.21_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/amazon_linux_2023/ssh_validation.rego (package cis_amazon_linux_2023.ssh); see the rule body."
+        "prose": "SSH MaxSessions is %v (should be 10 or less)"
        }
       ],
       "class": "security"
@@ -6840,7 +6644,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -6873,7 +6677,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -6906,7 +6710,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -6944,7 +6748,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -6977,7 +6781,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -7010,7 +6814,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -7048,7 +6852,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -7086,7 +6890,7 @@
       ],
       "links": [
        {
-        "href": "#ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+        "href": "#0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
         "rel": "implementation"
        }
       ],
@@ -7158,7 +6962,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7191,7 +6995,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7224,7 +7028,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7257,7 +7061,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7290,7 +7094,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7323,7 +7127,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7356,7 +7160,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7389,7 +7193,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7447,7 +7251,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7480,7 +7284,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7513,7 +7317,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7546,7 +7350,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7579,7 +7383,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7612,7 +7416,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7645,7 +7449,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7678,7 +7482,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7711,7 +7515,7 @@
       ],
       "links": [
        {
-        "href": "#1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+        "href": "#d933de92-836e-5a83-a74d-656aa284ffb1",
         "rel": "implementation"
        }
       ],
@@ -7740,7 +7544,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "7e14231e-37e9-5edf-ae51-d7bdbf33d163",
+     "uuid": "0fecce7f-557b-5e5e-a7c9-ff6d4351b8bd",
      "title": "CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd)",
      "props": [
       {
@@ -7751,13 +7555,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/auditd_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/auditd_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "6ebef6f9-d965-59c4-b841-d888d964f0ac",
+     "uuid": "22ed56cd-75c7-5978-8da9-185afb3af777",
      "title": "CIS Sections 1.3, 1.4, 1.5: Boot Security, Filesystem Integrity, Process Hardening",
      "props": [
       {
@@ -7768,13 +7572,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/boot_security_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/boot_security_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d3b85008-2a72-59eb-b57c-555d0db97dc1",
+     "uuid": "1c7d731d-328d-5b62-90c6-4304afea04ae",
      "title": "CIS Amazon Linux 2023 Benchmark v2.0.0 - Complete Validation",
      "props": [
       {
@@ -7785,13 +7589,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/cis_al20239_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/cis_al20239_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "560335ed-31d8-59de-bf98-da52b2618c35",
+     "uuid": "425d903f-8ded-5af3-82af-dcf5493117ca",
      "title": "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0",
      "props": [
       {
@@ -7802,13 +7606,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/cis_amazon_linux_2023.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/cis_amazon_linux_2023.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c79b4fd5-c4bb-5a7d-a437-1759f261d609",
+     "uuid": "eea137f4-deeb-5ae8-8de8-231d8876b3dc",
      "title": "CIS Section 5.1: Configure time-based job schedulers",
      "props": [
       {
@@ -7819,13 +7623,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b8816859-e2df-50ec-affb-e910ab05e971",
+     "uuid": "6c32cf62-b28f-58a8-a022-c7a8e0c6c25a",
      "title": "CIS Amazon Linux 2023 Section 6.1.x - System File Permissions",
      "props": [
       {
@@ -7836,13 +7640,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/file_permissions_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/file_permissions_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1ccf2819-f924-5ea3-b932-6bec5e19b683",
+     "uuid": "12a32f7c-0765-593f-bf88-b7f6c2304ce8",
      "title": "CIS Amazon Linux 2023 Section 1.1.x - Filesystem Configuration",
      "props": [
       {
@@ -7853,13 +7657,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/filesystem_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/filesystem_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c281fff1-e5ea-59b9-8847-6bc22d6dfcd6",
+     "uuid": "9e7e76cc-c91f-56fb-9af6-f7c466524dc7",
      "title": "CIS Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
      "props": [
       {
@@ -7870,13 +7674,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b95a0e7f-a472-53e7-b7ab-824d3e269049",
+     "uuid": "7893b029-01d4-5fbc-9e36-6431ad418c6e",
      "title": "CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration",
      "props": [
       {
@@ -7887,13 +7691,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/logging_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/logging_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e3ae93ff-850d-5301-ac80-1739d01f21d5",
+     "uuid": "1fc3cf18-068d-57de-9a0f-cc1c789b3c71",
      "title": "CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration",
      "props": [
       {
@@ -7904,13 +7708,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/network_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/network_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "055694c6-8552-5685-888f-bf790ead6e35",
+     "uuid": "00938b7b-3ffa-5ced-b98d-dbbf42350b7d",
      "title": "CIS Section 5.4: Configure PAM",
      "props": [
       {
@@ -7921,13 +7725,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/pam_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/pam_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "3b933bfe-273f-54ff-ad56-f29faf02f937",
+     "uuid": "56971338-b845-5c82-8e1f-0988b69eef54",
      "title": "CIS Section 1.6: Mandatory Access Controls (SELinux)",
      "props": [
       {
@@ -7938,13 +7742,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/selinux_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/selinux_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "d52140f9-228d-58ce-b383-af711bb51a7d",
+     "uuid": "8ab89176-eda8-5ccf-a110-54a9e5307192",
      "title": "CIS Amazon Linux 2023 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration",
      "props": [
       {
@@ -7955,13 +7759,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/service_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/service_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "5c4e88a1-0294-58e0-8c67-b1624aab1d53",
+     "uuid": "e6a1fe8d-d5a6-56f3-bc4b-5c80dc6f098b",
      "title": "CIS Amazon Linux 2023 Section 5.2.x - SSH Server Configuration",
      "props": [
       {
@@ -7972,13 +7776,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/ssh_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/ssh_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ccdcbf7e-c316-5d7f-8d84-33751ce5badb",
+     "uuid": "0a1d3456-f86b-5fe1-b9ba-495f31613ad5",
      "title": "CIS Section 5.3: Configure privilege escalation (sudo)",
      "props": [
       {
@@ -7989,13 +7793,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1ae96c66-d28f-5058-a9c5-5b7bc39d4542",
+     "uuid": "d933de92-836e-5a83-a74d-656aa284ffb1",
      "title": "CIS Section 6.2: User and Group Settings",
      "props": [
       {
@@ -8006,7 +7810,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/amazon_linux_2023/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/amazon_linux_2023/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

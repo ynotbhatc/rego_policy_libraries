@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package stig.rhel_8.file_permissions
 
 # DISA STIG for RHEL 8 - File Permissions Module

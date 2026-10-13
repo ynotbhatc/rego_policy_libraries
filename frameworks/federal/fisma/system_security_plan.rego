@@ -6,14 +6,14 @@
 #   source: nist
 #   domains: [us-federal]
 #   coverage:
-#     checks: 0
-#     cited: 0
-#     density: unrecognised
+#     checks: 7
+#     cited: 7
+#     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package fisma.ssp
 
 import rego.v1

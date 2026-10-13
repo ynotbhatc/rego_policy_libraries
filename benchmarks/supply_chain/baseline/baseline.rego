@@ -19,7 +19,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package supply_chain.baseline
 
 import rego.v1

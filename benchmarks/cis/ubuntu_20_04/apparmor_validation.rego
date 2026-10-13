@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_ubuntu_20_04.apparmor
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 1.6: Mandatory Access Controls

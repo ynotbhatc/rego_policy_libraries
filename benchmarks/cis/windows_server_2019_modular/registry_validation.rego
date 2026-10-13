@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_windows_server_2019.registry
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 18: Administrative Templates (Registry)

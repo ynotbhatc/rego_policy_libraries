@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: orchestrator
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_ubuntu_20_04.user_group
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings

@@ -1,12 +1,12 @@
 # Test generation — what each untested module was proven to do
 
-`scripts/gen_tests.py` wrote a smoke test for every module without one and kept only the expectations each module meets. Suite: **3514 tests pass**.
+`scripts/gen_tests.py` wrote a smoke test for every module without one and kept only the expectations each module meets. Suite: **3520 tests pass**.
 
 | expectation | asserted by | not met by |
 |---|---|---|
 | module evaluates on empty input | 554 | 0 |
 | report is an object on empty input | 406 | 1 |
-| report is not compliant on empty input (fail-closed) | 373 | 34 |
+| report is not compliant on empty input (fail-closed) | 379 | 28 |
 | violations non-empty on empty input | 314 | 39 |
 
 ## Modules that report compliant on empty input
@@ -39,14 +39,8 @@ Classified by the fail-closed guard the coverage scan measures (`custom.coverage
 - `frameworks/compliance/cra/oss_steward/cra_oss_steward.rego`
 - `governance/eu_ai_act/eu_ai_act_transparency.rego`
 
-### **unguarded — fail-open; the work queue for the library's fail-closed rule** (6)
+### **unguarded — fail-open; the work queue for the library's fail-closed rule** (0)
 
-- `benchmarks/cis/amazon_linux_2023/filesystem_validation.rego`
-- `benchmarks/cis/amazon_linux_2023/network_validation.rego`
-- `benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego`
-- `benchmarks/cis/rhel_8/network_validation.rego`
-- `benchmarks/cis/rocky_linux_8/network_validation.rego`
-- `benchmarks/cis/rocky_linux_9/network_validation.rego`
 
 ### report defined and compliant on empty input while the module itself emits violations — the report's `compliant` is computed from a subset of the checks; a defect in the report literal (2)
 
@@ -90,26 +84,26 @@ Often by design (the module iterates a list that is absent); classified the same
 - `benchmarks/stig/rhel_9/services.rego`
 - `governance/eu_ai_act/eu_ai_act_transparency.rego`
 
-### guard = none (14)
+### guard = none (8)
 
-- `benchmarks/cis/amazon_linux_2023/filesystem_validation.rego`
-- `benchmarks/cis/amazon_linux_2023/network_validation.rego`
 - `benchmarks/cis/amazon_linux_2023/user_group_validation.rego`
-- `benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego`
 - `benchmarks/cis/gcp/cis_gcp_foundations.rego`
 - `benchmarks/cis/nginx/cis_nginx_1_20.rego`
 - `benchmarks/cis/openshift/cis_openshift_4.rego`
 - `benchmarks/cis/os/linux/rhel_9_legacy/modules/pam_validation.rego`
-- `benchmarks/cis/rhel_8/network_validation.rego`
-- `benchmarks/cis/rocky_linux_8/network_validation.rego`
-- `benchmarks/cis/rocky_linux_9/network_validation.rego`
 - `benchmarks/cis/vmware/esxi/cis_esxi_8.rego`
 - `benchmarks/cis/vmware/vcenter/cis_vcenter_8.rego`
 - `threat_detection/crypto_mining/crypto_miner_detection.rego`
 
-### guard = self (3)
+### guard = self (9)
 
+- `benchmarks/cis/amazon_linux_2023/filesystem_validation.rego`
+- `benchmarks/cis/amazon_linux_2023/network_validation.rego`
+- `benchmarks/cis/databases/oracle_legacy/modules/user_account_management.rego`
 - `benchmarks/cis/rhel_8/filesystem_validation.rego`
+- `benchmarks/cis/rhel_8/network_validation.rego`
+- `benchmarks/cis/rocky_linux_8/network_validation.rego`
+- `benchmarks/cis/rocky_linux_9/network_validation.rego`
 - `benchmarks/cis/windows_server_2019_modular/system_services_validation.rego`
 - `benchmarks/cis/windows_server_2022_modular/system_services_validation.rego`
 

@@ -7,13 +7,13 @@
 #   domains: [linux, amazon-linux]
 #   coverage:
 #     checks: 18
-#     cited: 8
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_amazon_linux_2023.auditd
 
 # CIS Amazon Linux 2023 Section 4.1.x - Configure System Accounting (auditd)

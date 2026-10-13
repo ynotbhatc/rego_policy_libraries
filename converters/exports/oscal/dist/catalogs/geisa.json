@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "c4e4b9cb-b6a9-51cc-9192-731cf0f5784b",
+  "uuid": "92297152-c70c-581e-b0cf-63984150e6a9",
   "metadata": {
    "title": "Rego Policy Libraries — geisa (GEISA ADM Pillar — Application/Device Management via LwM2M)",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.5",
+   "version": "2.3.6",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -133,7 +133,7 @@
      },
      {
       "id": "geisa-governance.geisa.adm-3",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "title": "ADM: LwM2M version must be >= 1.1, got '%s'",
       "props": [
        {
         "name": "label",
@@ -151,7 +151,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -159,7 +159,7 @@
        {
         "id": "geisa-governance.geisa.adm-3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+        "prose": "ADM: LwM2M version must be >= 1.1, got '%s'"
        }
       ],
       "class": "governance"
@@ -184,7 +184,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -217,7 +217,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -232,7 +232,7 @@
      },
      {
       "id": "geisa-governance.geisa.adm-6",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "title": "ADM: update_result must be 1 (Success), got %v",
       "props": [
        {
         "name": "label",
@@ -250,7 +250,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -258,14 +258,14 @@
        {
         "id": "geisa-governance.geisa.adm-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+        "prose": "ADM: update_result must be 1 (Success), got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-7",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "title": "ADM: update_state must be 4 (Installed), got %v",
       "props": [
        {
         "name": "label",
@@ -283,7 +283,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -291,7 +291,7 @@
        {
         "id": "geisa-governance.geisa.adm-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+        "prose": "ADM: update_state must be 4 (Installed), got %v"
        }
       ],
       "class": "governance"
@@ -316,7 +316,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -331,7 +331,7 @@
      },
      {
       "id": "geisa-governance.geisa.adm-9",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body.",
+      "title": "ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'",
       "props": [
        {
         "name": "label",
@@ -349,7 +349,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -357,7 +357,7 @@
        {
         "id": "geisa-governance.geisa.adm-9_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_adm.rego (package governance.geisa.adm); see the rule body."
+        "prose": "ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'"
        }
       ],
       "class": "governance"
@@ -382,7 +382,7 @@
       ],
       "links": [
        {
-        "href": "#d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+        "href": "#135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
         "rel": "implementation"
        }
       ],
@@ -439,7 +439,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -454,7 +454,7 @@
      },
      {
       "id": "geisa-governance.geisa.api-2",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body.",
+      "title": "API: platform discovery status_code must be 1 (OK), got %v",
       "props": [
        {
         "name": "label",
@@ -472,7 +472,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -480,7 +480,7 @@
        {
         "id": "geisa-governance.geisa.api-2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body."
+        "prose": "API: platform discovery status_code must be 1 (OK), got %v"
        }
       ],
       "class": "governance"
@@ -505,7 +505,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -538,7 +538,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -571,7 +571,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -586,7 +586,7 @@
      },
      {
       "id": "geisa-governance.geisa.api-6",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body.",
+      "title": "API: manifest must declare publish topic '%s'",
       "props": [
        {
         "name": "label",
@@ -604,7 +604,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -612,14 +612,14 @@
        {
         "id": "geisa-governance.geisa.api-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body."
+        "prose": "API: manifest must declare publish topic '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-7",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body.",
+      "title": "API: manifest must declare subscribe topic '%s'",
       "props": [
        {
         "name": "label",
@@ -637,7 +637,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -645,7 +645,7 @@
        {
         "id": "geisa-governance.geisa.api-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_api.rego (package governance.geisa.api); see the rule body."
+        "prose": "API: manifest must declare subscribe topic '%s'"
        }
       ],
       "class": "governance"
@@ -670,7 +670,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -703,7 +703,7 @@
       ],
       "links": [
        {
-        "href": "#49d32f86-817e-5635-b013-3464886c25ca",
+        "href": "#ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
         "rel": "implementation"
        }
       ],
@@ -760,7 +760,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -793,7 +793,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -826,7 +826,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -841,7 +841,7 @@
      },
      {
       "id": "geisa-governance.geisa.lee-4",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_lee.rego (package governance.geisa.lee); see the rule body.",
+      "title": "LEE: container.runtime '%s' is not a recognized GEISA-LEE runtime",
       "props": [
        {
         "name": "label",
@@ -859,7 +859,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -867,7 +867,7 @@
        {
         "id": "geisa-governance.geisa.lee-4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_lee.rego (package governance.geisa.lee); see the rule body."
+        "prose": "LEE: container.runtime '%s' is not a recognized GEISA-LEE runtime"
        }
       ],
       "class": "governance"
@@ -892,7 +892,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -925,7 +925,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -958,7 +958,7 @@
       ],
       "links": [
        {
-        "href": "#b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+        "href": "#b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
         "rel": "implementation"
        }
       ],
@@ -1015,7 +1015,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1048,7 +1048,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1081,7 +1081,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1114,7 +1114,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1147,7 +1147,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1162,7 +1162,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-6",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "geisa-application-manifest.signature: must be a 64-character hex string, got %d characters",
       "props": [
        {
         "name": "label",
@@ -1180,7 +1180,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1188,14 +1188,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "geisa-application-manifest.signature: must be a 64-character hex string, got %d characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-7",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest: missing required field '%s'",
       "props": [
        {
         "name": "label",
@@ -1213,7 +1213,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1221,7 +1221,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest: missing required field '%s'"
        }
       ],
       "class": "governance"
@@ -1246,7 +1246,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1279,7 +1279,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1312,7 +1312,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1345,7 +1345,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1360,7 +1360,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-12",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.app-version: '%s' does not match required version pattern (X.Y.Z)",
       "props": [
        {
         "name": "label",
@@ -1378,7 +1378,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1386,14 +1386,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-12_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.app-version: '%s' does not match required version pattern (X.Y.Z)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-13",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.manifest-version: must be '1.0.0', got '%s'",
       "props": [
        {
         "name": "label",
@@ -1411,7 +1411,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1419,7 +1419,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-13_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.manifest-version: must be '1.0.0', got '%s'"
        }
       ],
       "class": "governance"
@@ -1444,7 +1444,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1459,7 +1459,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-15",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.api-access.%s: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -1477,7 +1477,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1485,7 +1485,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-15_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.api-access.%s: must be a boolean"
        }
       ],
       "class": "governance"
@@ -1510,7 +1510,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1543,7 +1543,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1576,7 +1576,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1591,7 +1591,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-19",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.external-dependencies[%d]: must be a string",
       "props": [
        {
         "name": "label",
@@ -1609,7 +1609,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1617,7 +1617,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-19_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.external-dependencies[%d]: must be a string"
        }
       ],
       "class": "governance"
@@ -1642,7 +1642,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1675,7 +1675,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1690,7 +1690,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-22",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.compatibility.GEISA-API: '%v' is not a valid fixed version (X.Y.Z)",
       "props": [
        {
         "name": "label",
@@ -1708,7 +1708,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1716,14 +1716,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-22_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.compatibility.GEISA-API: '%v' is not a valid fixed version (X.Y.Z)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-23",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.compatibility.GEISA-LEE: '%v' must be a valid fixed version (X.Y.Z) or null",
       "props": [
        {
         "name": "label",
@@ -1741,7 +1741,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1749,14 +1749,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-23_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.compatibility.GEISA-LEE: '%v' must be a valid fixed version (X.Y.Z) or null"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-24",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.compatibility.GEISA-VEE: '%v' must be a valid fixed version (X.Y.Z) or null",
       "props": [
        {
         "name": "label",
@@ -1774,7 +1774,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1782,7 +1782,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-24_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.compatibility.GEISA-VEE: '%v' must be a valid fixed version (X.Y.Z) or null"
        }
       ],
       "class": "governance"
@@ -1807,7 +1807,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1822,7 +1822,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-26",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.compatibility.toolchain-version: '%v' is not a valid fixed version (X.Y.Z)",
       "props": [
        {
         "name": "label",
@@ -1840,7 +1840,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1848,7 +1848,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-26_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.compatibility.toolchain-version: '%v' is not a valid fixed version (X.Y.Z)"
        }
       ],
       "class": "governance"
@@ -1873,7 +1873,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1906,7 +1906,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1939,7 +1939,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -1972,7 +1972,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2005,7 +2005,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2038,7 +2038,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2071,7 +2071,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2104,7 +2104,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2137,7 +2137,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2152,7 +2152,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-36",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.default-launch-strategy.start-timeout: must be an integer 0-60, got %v",
       "props": [
        {
         "name": "label",
@@ -2170,7 +2170,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2178,14 +2178,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-36_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.default-launch-strategy.start-timeout: must be an integer 0-60, got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-37",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.default-launch-strategy.stop-timeout: must be an integer 0-60, got %v",
       "props": [
        {
         "name": "label",
@@ -2203,7 +2203,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2211,14 +2211,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-37_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.default-launch-strategy.stop-timeout: must be an integer 0-60, got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-38",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.default-launch-strategy.notify-timeout: must be an integer 0-120, got %v",
       "props": [
        {
         "name": "label",
@@ -2236,7 +2236,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2244,7 +2244,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-38_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.default-launch-strategy.notify-timeout: must be an integer 0-120, got %v"
        }
       ],
       "class": "governance"
@@ -2269,7 +2269,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2302,7 +2302,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2335,7 +2335,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2368,7 +2368,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2401,7 +2401,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2416,7 +2416,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-44",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.artifacts[%d]: missing required field '%s'",
       "props": [
        {
         "name": "label",
@@ -2434,7 +2434,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2442,14 +2442,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-44_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.artifacts[%d]: missing required field '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-45",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters",
       "props": [
        {
         "name": "label",
@@ -2467,7 +2467,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2475,14 +2475,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-45_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-46",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'",
       "props": [
        {
         "name": "label",
@@ -2500,7 +2500,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2508,14 +2508,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-46_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-47",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.artifacts[%d].image-size: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -2533,7 +2533,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2541,14 +2541,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-47_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.artifacts[%d].image-size: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-48",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.artifacts[%d].uncompressed-size: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -2566,7 +2566,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2574,14 +2574,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-48_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.artifacts[%d].uncompressed-size: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-49",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.artifacts[%d].signature: must be a 64-character hex string",
       "props": [
        {
         "name": "label",
@@ -2599,7 +2599,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2607,7 +2607,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-49_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.artifacts[%d].signature: must be a 64-character hex string"
        }
       ],
       "class": "governance"
@@ -2632,7 +2632,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2665,7 +2665,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2698,7 +2698,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2731,7 +2731,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2764,7 +2764,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2779,7 +2779,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-55",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.communication.%s: missing required field 'daily-volume'",
       "props": [
        {
         "name": "label",
@@ -2797,7 +2797,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2805,14 +2805,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-55_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.communication.%s: missing required field 'daily-volume'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-56",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.communication.%s.daily-volume: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -2830,7 +2830,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2838,14 +2838,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-56_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.communication.%s.daily-volume: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-57",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.communication.%s: must have at least one of 'inbound' or 'outbound'",
       "props": [
        {
         "name": "label",
@@ -2863,7 +2863,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2871,14 +2871,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-57_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.communication.%s: must have at least one of 'inbound' or 'outbound'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-58",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.communication.%s.inbound: '%s' does not match transport:address:port pattern",
       "props": [
        {
         "name": "label",
@@ -2896,7 +2896,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2904,14 +2904,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-58_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.communication.%s.inbound: '%s' does not match transport:address:port pattern"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-59",
-      "title": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body.",
+      "title": "manifest.communication.%s.outbound: '%s' does not match transport:address:port pattern",
       "props": [
        {
         "name": "label",
@@ -2929,7 +2929,7 @@
       ],
       "links": [
        {
-        "href": "#c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+        "href": "#85d660be-abff-58df-8193-d1ad95de0e7e",
         "rel": "implementation"
        }
       ],
@@ -2937,7 +2937,7 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-59_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in governance/geisa/geisa_manifest_validation.rego (package governance.geisa.manifest_validation); see the rule body."
+        "prose": "manifest.communication.%s.outbound: '%s' does not match transport:address:port pattern"
        }
       ],
       "class": "governance"
@@ -2986,7 +2986,7 @@
       ],
       "links": [
        {
-        "href": "#1e2ce1c1-328e-534d-b5db-51a8a02bf859",
+        "href": "#151ca023-af93-54df-bdbd-62e401e82552",
         "rel": "implementation"
        }
       ],
@@ -3019,7 +3019,7 @@
       ],
       "links": [
        {
-        "href": "#1e2ce1c1-328e-534d-b5db-51a8a02bf859",
+        "href": "#151ca023-af93-54df-bdbd-62e401e82552",
         "rel": "implementation"
        }
       ],
@@ -3052,7 +3052,7 @@
       ],
       "links": [
        {
-        "href": "#1e2ce1c1-328e-534d-b5db-51a8a02bf859",
+        "href": "#151ca023-af93-54df-bdbd-62e401e82552",
         "rel": "implementation"
        }
       ],
@@ -3071,7 +3071,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "d4c74bea-35f2-53a3-9a08-dfaf0d2e2a86",
+     "uuid": "135cfc2e-e0ec-5fc4-b847-0400b52f81b4",
      "title": "GEISA ADM Pillar — Application/Device Management via LwM2M",
      "props": [
       {
@@ -3082,13 +3082,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_adm.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/governance/geisa/geisa_adm.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "49d32f86-817e-5635-b013-3464886c25ca",
+     "uuid": "ac28156c-2c38-5c9b-aece-d4ea03b1c5f7",
      "title": "GEISA API Pillar — Platform Discovery Compliance",
      "props": [
       {
@@ -3099,13 +3099,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_api.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/governance/geisa/geisa_api.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b5ff1d29-2c3d-5be0-9c56-1249c17f1a67",
+     "uuid": "b4d39ee3-858b-55e5-9f47-19dd479f9d7c",
      "title": "GEISA LEE Pillar — Lightweight Execution Environment",
      "props": [
       {
@@ -3116,13 +3116,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_lee.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/governance/geisa/geisa_lee.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "c9acc8d3-2fd2-5cc9-bf6d-295a0e6592ca",
+     "uuid": "85d660be-abff-58df-8193-d1ad95de0e7e",
      "title": "GEISA Application Manifest Validator",
      "props": [
       {
@@ -3133,13 +3133,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_manifest_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/governance/geisa/geisa_manifest_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "1e2ce1c1-328e-534d-b5db-51a8a02bf859",
+     "uuid": "151ca023-af93-54df-bdbd-62e401e82552",
      "title": "GEISA VEE Pillar — Virtual Execution Environment",
      "props": [
       {
@@ -3150,7 +3150,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/governance/geisa/geisa_vee.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/governance/geisa/geisa_vee.rego",
        "media-type": "text/plain"
       }
      ]

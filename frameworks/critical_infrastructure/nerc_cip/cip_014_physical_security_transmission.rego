@@ -7,13 +7,13 @@
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
 #     checks: 24
-#     cited: 2
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package nerc_cip.cip_014
 
 import rego.v1
