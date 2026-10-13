@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 106
+#     found: 87
+#     scope: directory
+#     density: partial
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package nist.csf.main
 
 import rego.v1
@@ -72,6 +75,7 @@ compliance_report := {
     "version":         "2.0",
     "assessed_at":     assessed_at,
     "total_controls":  total_controls,
+    "standard_total":  106,   # NIST CSWP 29 (CSF 2.0): 106 subcategory ids counted in the text — GV 31, ID 21, PR 22, DE 11, RS 13, RC 8
     "violations":      violations,
     "violation_count": count(violations),
     "compliant":       compliant,

@@ -7,13 +7,13 @@
 #   domains: [linux, rocky]
 #   coverage:
 #     checks: 32
-#     cited: 14
+#     cited: 21
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rocky_linux_9.ssh
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 5.2: SSH Server Configuration

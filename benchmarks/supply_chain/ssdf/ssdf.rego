@@ -26,7 +26,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: n/a
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package supply_chain.ssdf
 
 import rego.v1

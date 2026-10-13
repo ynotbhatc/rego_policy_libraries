@@ -31,7 +31,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package supply_chain.substrate
 
 import rego.v1

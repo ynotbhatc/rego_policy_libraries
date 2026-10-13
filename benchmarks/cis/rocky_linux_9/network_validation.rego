@@ -7,13 +7,13 @@
 #   domains: [linux, rocky]
 #   coverage:
 #     checks: 21
-#     cited: 8
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: none
-#     as_of: v2.3.5
+#     guard: self
+#     as_of: v2.3.6
 package cis_rocky_linux_9.network
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 3.1/3.2/3.3: Network Configuration
@@ -24,6 +24,8 @@ import rego.v1
 default compliant := false
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.sysctl_parameters
 	count(violations) == 0
 }
 

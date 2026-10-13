@@ -7,13 +7,13 @@
 #   domains: [linux, rhel]
 #   coverage:
 #     checks: 11
-#     cited: 6
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel8.filesystem
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 1.1: Filesystem Configuration

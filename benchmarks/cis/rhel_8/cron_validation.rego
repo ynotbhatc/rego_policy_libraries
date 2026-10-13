@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel8.cron
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.1: Configure time-based job schedulers

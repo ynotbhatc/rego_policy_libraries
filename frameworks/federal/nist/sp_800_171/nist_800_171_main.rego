@@ -9,14 +9,14 @@
 #     checks: 0
 #     cited: 0
 #     expected: 110
-#     found: 191
+#     found: 88
 #     scope: directory
-#     density: full
+#     density: partial
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package nist_800_171.main
 
 import rego.v1
@@ -170,6 +170,8 @@ compliance_report := {
     "framework":       "NIST SP 800-171 Rev 3",
     "compliant":       overall_compliant,
     "total_controls":  110,
+    "standard_total":  110,   # SP 800-171 Rev 2 (the numbering this module cites, 3.x.y): 110 requirements. Rev 3 (May 2024)
+                              # has 97 active requirements numbered 03.xx.yy (130 ids in the text, 33 withdrawn); migration pending
     "violations":      all_violations,
     "violation_count": count(all_violations),
     "standard": "NIST SP 800-171 Rev 3 — Protecting Controlled Unclassified Information (CUI)",

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_windows_server_2022.security_options
 
 # CIS Windows Server 2022 Benchmark v5.0.0 - Section 2.3: Security Options

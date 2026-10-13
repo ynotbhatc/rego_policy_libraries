@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0

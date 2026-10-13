@@ -7,13 +7,13 @@
 #   domains: [linux, rhel]
 #   coverage:
 #     checks: 18
-#     cited: 8
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel8.auditd
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd)

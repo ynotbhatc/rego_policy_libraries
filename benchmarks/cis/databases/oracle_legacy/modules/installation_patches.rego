@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_oracle.installation_patches
 
 # CIS Oracle Database 19c Benchmark - Section 1

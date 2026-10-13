@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package soc2.infrastructure.storage
 
 import rego.v1

@@ -1,10 +1,10 @@
 {
  "catalog": {
-  "uuid": "c70e17fe-0f94-581e-9b6f-2341292a0ebc",
+  "uuid": "30d881f7-4ff8-51dd-8597-270a643d442c",
   "metadata": {
    "title": "Rego Policy Libraries — cis_rhel_9 (CIS RHEL 9 Section 4.1.x - Configure System Accounting (auditd))",
    "last-modified": "2026-10-12T00:00:00Z",
-   "version": "2.3.5",
+   "version": "2.3.6",
    "oscal-version": "1.2.3",
    "props": [
     {
@@ -85,7 +85,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -118,7 +118,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -156,7 +156,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -189,7 +189,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -222,7 +222,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -255,7 +255,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -293,7 +293,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -312,16 +312,16 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.auditd-1",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
+      "id": "cis_rhel_9-CIS-4.1.3.x",
+      "title": "Missing or incomplete audit rule for: %s",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.auditd#1"
+        "value": "CIS 4.1.3.x"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#1"
+        "value": "CIS 4.1.3.x"
        },
        {
         "name": "rego-package",
@@ -331,15 +331,15 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.auditd-1_stmt",
+        "id": "cis_rhel_9-CIS-4.1.3.x_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
+        "prose": "Missing or incomplete audit rule for: %s"
        }
       ],
       "class": "security"
@@ -364,7 +364,7 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
@@ -378,16 +378,16 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.auditd-2",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
+      "id": "cis_rhel_9-CIS-4.1.4.1",
+      "title": "Audit log permissions too permissive (mode: %s, should be 0640 or less)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.auditd#2"
+        "value": "CIS 4.1.4.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#2"
+        "value": "CIS 4.1.4.1"
        },
        {
         "name": "rego-package",
@@ -397,30 +397,30 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.auditd-2_stmt",
+        "id": "cis_rhel_9-CIS-4.1.4.1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
+        "prose": "Audit log permissions too permissive (mode: %s, should be 0640 or less)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.auditd-3",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
+      "id": "cis_rhel_9-CIS-4.1.4.2",
+      "title": "Audit log not owned by root (owner: %s)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.auditd#3"
+        "value": "CIS 4.1.4.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#3"
+        "value": "CIS 4.1.4.2"
        },
        {
         "name": "rego-package",
@@ -430,30 +430,35 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.auditd-3_stmt",
+        "id": "cis_rhel_9-CIS-4.1.4.2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
+        "prose": "Audit log not owned by root (owner: %s)"
+       },
+       {
+        "id": "cis_rhel_9-CIS-4.1.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log group not root or adm (group: %s)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.auditd-4",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
+      "id": "cis_rhel_9-CIS-4.1.4.3",
+      "title": "Audit log directory permissions too permissive (mode: %s)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.auditd#4"
+        "value": "CIS 4.1.4.3"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#4"
+        "value": "CIS 4.1.4.3"
        },
        {
         "name": "rego-package",
@@ -463,30 +468,30 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.auditd-4_stmt",
+        "id": "cis_rhel_9-CIS-4.1.4.3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
+        "prose": "Audit log directory permissions too permissive (mode: %s)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.auditd-5",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
+      "id": "cis_rhel_9-CIS-4.1.4.4",
+      "title": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.auditd#5"
+        "value": "CIS 4.1.4.4"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#5"
+        "value": "CIS 4.1.4.4"
        },
        {
         "name": "rego-package",
@@ -496,81 +501,20 @@
       ],
       "links": [
        {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
+        "href": "#6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.auditd-5_stmt",
+        "id": "cis_rhel_9-CIS-4.1.4.4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_9-cis_rhel9.auditd-6",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.auditd#6"
+        "prose": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)"
        },
        {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.auditd-6_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_9-cis_rhel9.auditd-7",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.auditd#7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.auditd#7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4d3d05f4-a395-511d-aa8b-517076c3d0da",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.auditd-7_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/auditd_validation.rego (package cis_rhel9.auditd); see the rule body."
+        "id": "cis_rhel_9-CIS-4.1.4.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit config file %s not owned by root (owner: %s)"
        }
       ],
       "class": "security"
@@ -619,7 +563,7 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        }
       ],
@@ -652,7 +596,7 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        }
       ],
@@ -685,7 +629,7 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        }
       ],
@@ -723,15 +667,15 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        },
        {
-        "href": "#11eb5456-706a-5446-a577-8ba7336a16fa",
+        "href": "#68e9453f-6928-5e1d-b472-1583dc6f9b86",
         "rel": "implementation"
        },
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -789,7 +733,7 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        }
       ],
@@ -827,7 +771,7 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        }
       ],
@@ -860,7 +804,7 @@
       ],
       "links": [
        {
-        "href": "#53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+        "href": "#148f873d-6a01-5173-aace-a4497a5a6fa6",
         "rel": "implementation"
        }
       ],
@@ -917,7 +861,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -950,7 +894,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -988,7 +932,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1026,7 +970,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1069,7 +1013,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1102,7 +1046,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1150,7 +1094,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1188,7 +1132,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1221,7 +1165,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1259,7 +1203,7 @@
       ],
       "links": [
        {
-        "href": "#cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+        "href": "#f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
         "rel": "implementation"
        }
       ],
@@ -1326,7 +1270,7 @@
       ],
       "links": [
        {
-        "href": "#11eb5456-706a-5446-a577-8ba7336a16fa",
+        "href": "#68e9453f-6928-5e1d-b472-1583dc6f9b86",
         "rel": "implementation"
        }
       ],
@@ -1369,7 +1313,7 @@
       ],
       "links": [
        {
-        "href": "#11eb5456-706a-5446-a577-8ba7336a16fa",
+        "href": "#68e9453f-6928-5e1d-b472-1583dc6f9b86",
         "rel": "implementation"
        }
       ],
@@ -1412,11 +1356,11 @@
       ],
       "links": [
        {
-        "href": "#11eb5456-706a-5446-a577-8ba7336a16fa",
+        "href": "#68e9453f-6928-5e1d-b472-1583dc6f9b86",
         "rel": "implementation"
        },
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -1478,7 +1422,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1511,7 +1455,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1544,7 +1488,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1577,7 +1521,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1610,7 +1554,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1643,7 +1587,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1676,7 +1620,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1709,7 +1653,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1742,7 +1686,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1775,7 +1719,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1808,7 +1752,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1841,7 +1785,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1874,7 +1818,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1907,7 +1851,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1940,7 +1884,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -1973,7 +1917,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -2006,7 +1950,7 @@
       ],
       "links": [
        {
-        "href": "#e52589aa-24fa-5425-a63f-689fe25cc3d4",
+        "href": "#66e4d512-1854-5576-851a-fc8474ba4684",
         "rel": "implementation"
        }
       ],
@@ -2063,7 +2007,7 @@
       ],
       "links": [
        {
-        "href": "#e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+        "href": "#d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
         "rel": "implementation"
        }
       ],
@@ -2096,7 +2040,7 @@
       ],
       "links": [
        {
-        "href": "#e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+        "href": "#d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
         "rel": "implementation"
        }
       ],
@@ -2129,7 +2073,7 @@
       ],
       "links": [
        {
-        "href": "#e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+        "href": "#d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
         "rel": "implementation"
        }
       ],
@@ -2162,7 +2106,7 @@
       ],
       "links": [
        {
-        "href": "#e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+        "href": "#d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
         "rel": "implementation"
        }
       ],
@@ -2195,7 +2139,7 @@
       ],
       "links": [
        {
-        "href": "#e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+        "href": "#d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
         "rel": "implementation"
        }
       ],
@@ -2228,7 +2172,7 @@
       ],
       "links": [
        {
-        "href": "#e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+        "href": "#d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
         "rel": "implementation"
        }
       ],
@@ -2285,7 +2229,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2323,7 +2267,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2366,7 +2310,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2404,7 +2348,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2442,7 +2386,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2480,7 +2424,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2518,7 +2462,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2556,7 +2500,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2599,7 +2543,7 @@
       ],
       "links": [
        {
-        "href": "#ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+        "href": "#4da51209-4a08-5bc9-81ba-b03630a41502",
         "rel": "implementation"
        }
       ],
@@ -2666,7 +2610,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2699,7 +2643,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2732,7 +2676,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2765,7 +2709,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2798,7 +2742,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2831,7 +2775,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2869,7 +2813,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2907,7 +2851,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2945,7 +2889,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -2983,7 +2927,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -3016,7 +2960,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -3049,7 +2993,7 @@
       ],
       "links": [
        {
-        "href": "#02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+        "href": "#edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
         "rel": "implementation"
        }
       ],
@@ -3106,7 +3050,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3139,7 +3083,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3177,7 +3121,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3210,7 +3154,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3243,7 +3187,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3276,7 +3220,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3309,7 +3253,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3342,7 +3286,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3375,7 +3319,7 @@
       ],
       "links": [
        {
-        "href": "#4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+        "href": "#7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
         "rel": "implementation"
        }
       ],
@@ -3437,7 +3381,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3470,7 +3414,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3508,7 +3452,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3541,7 +3485,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3584,7 +3528,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3627,7 +3571,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3670,7 +3614,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3703,7 +3647,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3736,7 +3680,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3769,7 +3713,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3802,7 +3746,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3835,7 +3779,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3873,7 +3817,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3906,7 +3850,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3944,7 +3888,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -3977,7 +3921,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -4010,7 +3954,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -4043,7 +3987,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -4076,7 +4020,7 @@
       ],
       "links": [
        {
-        "href": "#6c25acb9-7cfa-57cb-994e-be08984ef366",
+        "href": "#2e121281-80ca-52e3-a3f3-be1b1d632a66",
         "rel": "implementation"
        }
       ],
@@ -4138,7 +4082,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4171,7 +4115,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4204,7 +4148,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4237,7 +4181,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4270,7 +4214,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4303,7 +4247,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4336,7 +4280,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4369,7 +4313,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4402,7 +4346,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4435,7 +4379,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4468,7 +4412,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4501,7 +4445,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4534,7 +4478,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4567,7 +4511,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4600,7 +4544,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4633,7 +4577,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4666,7 +4610,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4704,7 +4648,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4737,7 +4681,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4770,7 +4714,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4803,7 +4747,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4836,7 +4780,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4869,7 +4813,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4907,7 +4851,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4940,7 +4884,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -4973,7 +4917,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5006,7 +4950,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5039,7 +4983,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5072,7 +5016,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5105,7 +5049,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5138,7 +5082,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5171,7 +5115,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5204,7 +5148,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5242,7 +5186,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5275,7 +5219,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5284,39 +5228,11 @@
         "id": "cis_rhel_9-CIS-L2-5.4.1.5_stmt",
         "name": "statement",
         "prose": "INACTIVE password lock not set (useradd -D -f 30)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_9-cis_rhel9.l2-1",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/l2_validation.rego (package cis_rhel9.l2); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.l2#1"
        },
        {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.l2#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.l2-1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/l2_validation.rego (package cis_rhel9.l2); see the rule body."
+        "id": "cis_rhel_9-CIS-L2-5.4.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "INACTIVE password lock is %v days (should be 30 or less)"
        }
       ],
       "class": "security"
@@ -5341,7 +5257,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5374,7 +5290,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5407,7 +5323,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5440,7 +5356,7 @@
       ],
       "links": [
        {
-        "href": "#f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+        "href": "#139845b5-9b77-5317-857c-2b8fcf3f88d1",
         "rel": "implementation"
        }
       ],
@@ -5497,7 +5413,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5530,7 +5446,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5568,7 +5484,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5601,7 +5517,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5634,7 +5550,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5672,7 +5588,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5705,7 +5621,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5738,7 +5654,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5771,7 +5687,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5804,7 +5720,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5842,7 +5758,7 @@
       ],
       "links": [
        {
-        "href": "#b1425e76-4768-5fee-8d33-f715a20c12cb",
+        "href": "#294e157c-d863-5887-958c-f3e31ee36fd6",
         "rel": "implementation"
        }
       ],
@@ -5899,7 +5815,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -5932,7 +5848,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -5965,7 +5881,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -5998,7 +5914,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6031,7 +5947,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6064,7 +5980,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6102,7 +6018,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6140,7 +6056,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6178,7 +6094,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6211,7 +6127,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6244,7 +6160,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6277,7 +6193,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6310,7 +6226,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6348,7 +6264,7 @@
       ],
       "links": [
        {
-        "href": "#45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+        "href": "#19cd2488-cc6c-5976-a8bb-56961602d808",
         "rel": "implementation"
        }
       ],
@@ -6410,7 +6326,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6443,7 +6359,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6481,7 +6397,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6519,7 +6435,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6562,7 +6478,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6600,7 +6516,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6633,7 +6549,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6666,7 +6582,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6699,7 +6615,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6732,7 +6648,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6770,7 +6686,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6803,7 +6719,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6836,7 +6752,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6869,7 +6785,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6907,7 +6823,7 @@
       ],
       "links": [
        {
-        "href": "#7b170d7f-206a-52f4-a186-d793190b54dc",
+        "href": "#899457f9-ec35-506b-8b57-ea42635151d0",
         "rel": "implementation"
        }
       ],
@@ -6974,7 +6890,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7007,7 +6923,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7045,7 +6961,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7083,7 +6999,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7121,7 +7037,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7154,7 +7070,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7187,7 +7103,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7220,7 +7136,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7253,7 +7169,7 @@
       ],
       "links": [
        {
-        "href": "#e11e2816-d061-5439-80aa-8a1f06bc151f",
+        "href": "#f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
         "rel": "implementation"
        }
       ],
@@ -7315,7 +7231,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7358,7 +7274,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7401,7 +7317,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7444,7 +7360,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7482,7 +7398,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7515,7 +7431,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7548,7 +7464,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7581,7 +7497,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7614,7 +7530,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7647,7 +7563,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7680,7 +7596,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7713,7 +7629,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7746,7 +7662,7 @@
       ],
       "links": [
        {
-        "href": "#0fac4834-fd61-5700-ac2f-efd25924e6ea",
+        "href": "#3f0fe260-5bba-5b2f-a976-f61007ef6318",
         "rel": "implementation"
        }
       ],
@@ -7803,7 +7719,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -7827,16 +7743,16 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-1",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.2",
+      "title": "SSH private key %s has incorrect permissions (mode: %s, should be 0600)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#1"
+        "value": "CIS 5.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#1"
+        "value": "CIS 5.2.2"
        },
        {
         "name": "rego-package",
@@ -7846,30 +7762,35 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-1_stmt",
+        "id": "cis_rhel_9-CIS-5.2.2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "SSH private key %s has incorrect permissions (mode: %s, should be 0600)"
+       },
+       {
+        "id": "cis_rhel_9-CIS-5.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH private key %s not owned by root (owner: %s)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-2",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.3",
+      "title": "SSH public key %s permissions too permissive (mode: %s)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#2"
+        "value": "CIS 5.2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#2"
+        "value": "CIS 5.2.3"
        },
        {
         "name": "rego-package",
@@ -7879,48 +7800,15 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-2_stmt",
+        "id": "cis_rhel_9-CIS-5.2.3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_9-cis_rhel9.ssh-3",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.ssh#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.ssh-3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "SSH public key %s permissions too permissive (mode: %s)"
        }
       ],
       "class": "security"
@@ -7945,7 +7833,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -7983,7 +7871,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -7997,41 +7885,8 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-4",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.ssh#4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.ssh-4_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rhel_9-CIS-5.2.6",
-      "title": "SSH MaxAuthTries not configured",
+      "title": "SSH MaxAuthTries is %v (should be 4 or less)",
       "props": [
        {
         "name": "label",
@@ -8049,7 +7904,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8057,6 +7912,11 @@
        {
         "id": "cis_rhel_9-CIS-5.2.6_stmt",
         "name": "statement",
+        "prose": "SSH MaxAuthTries is %v (should be 4 or less)"
+       },
+       {
+        "id": "cis_rhel_9-CIS-5.2.6_obj.1",
+        "name": "assessment-objective",
         "prose": "SSH MaxAuthTries not configured"
        }
       ],
@@ -8082,7 +7942,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8120,7 +7980,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8134,41 +7994,8 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-5",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.ssh#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.ssh-5_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rhel_9-CIS-5.2.9",
-      "title": "SSH PermitRootLogin not configured",
+      "title": "SSH PermitRootLogin is '%v' (should be 'no')",
       "props": [
        {
         "name": "label",
@@ -8186,7 +8013,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8194,6 +8021,11 @@
        {
         "id": "cis_rhel_9-CIS-5.2.9_stmt",
         "name": "statement",
+        "prose": "SSH PermitRootLogin is '%v' (should be 'no')"
+       },
+       {
+        "id": "cis_rhel_9-CIS-5.2.9_obj.1",
+        "name": "assessment-objective",
         "prose": "SSH PermitRootLogin not configured"
        }
       ],
@@ -8219,7 +8051,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8252,7 +8084,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8266,16 +8098,16 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-6",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.12",
+      "title": "Weak SSH cipher '%s' is allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#6"
+        "value": "CIS 5.2.12"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#6"
+        "value": "CIS 5.2.12"
        },
        {
         "name": "rego-package",
@@ -8285,30 +8117,30 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-6_stmt",
+        "id": "cis_rhel_9-CIS-5.2.12_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "Weak SSH cipher '%s' is allowed"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-7",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.13",
+      "title": "Weak SSH MAC '%s' is allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#7"
+        "value": "CIS 5.2.13"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#7"
+        "value": "CIS 5.2.13"
        },
        {
         "name": "rego-package",
@@ -8318,30 +8150,30 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-7_stmt",
+        "id": "cis_rhel_9-CIS-5.2.13_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "Weak SSH MAC '%s' is allowed"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-8",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.14",
+      "title": "Weak SSH KexAlgorithm '%s' is allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#8"
+        "value": "CIS 5.2.14"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#8"
+        "value": "CIS 5.2.14"
        },
        {
         "name": "rego-package",
@@ -8351,55 +8183,22 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-8_stmt",
+        "id": "cis_rhel_9-CIS-5.2.14_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_9-cis_rhel9.ssh-9",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.ssh#9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.ssh-9_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "Weak SSH KexAlgorithm '%s' is allowed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-CIS-5.2.15",
-      "title": "SSH ClientAliveInterval not configured",
+      "title": "SSH ClientAliveInterval is %v seconds (should be 300 or less)",
       "props": [
        {
         "name": "label",
@@ -8417,7 +8216,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8425,22 +8224,32 @@
        {
         "id": "cis_rhel_9-CIS-5.2.15_stmt",
         "name": "statement",
+        "prose": "SSH ClientAliveInterval is %v seconds (should be 300 or less)"
+       },
+       {
+        "id": "cis_rhel_9-CIS-5.2.15_obj.1",
+        "name": "assessment-objective",
         "prose": "SSH ClientAliveInterval not configured"
+       },
+       {
+        "id": "cis_rhel_9-CIS-5.2.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSH ClientAliveCountMax is %v (should be 3 or less)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-10",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.16",
+      "title": "SSH LoginGraceTime is %v seconds (should be 60 or less)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#10"
+        "value": "CIS 5.2.16"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#10"
+        "value": "CIS 5.2.16"
        },
        {
         "name": "rego-package",
@@ -8450,48 +8259,15 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-10_stmt",
+        "id": "cis_rhel_9-CIS-5.2.16_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_9-cis_rhel9.ssh-11",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel9.ssh#11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel9.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_9-cis_rhel9.ssh-11_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "SSH LoginGraceTime is %v seconds (should be 60 or less)"
        }
       ],
       "class": "security"
@@ -8516,7 +8292,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8554,7 +8330,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8592,7 +8368,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8625,7 +8401,7 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
@@ -8639,16 +8415,16 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_9-cis_rhel9.ssh-12",
-      "title": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body.",
+      "id": "cis_rhel_9-CIS-5.2.21",
+      "title": "SSH MaxSessions is %v (should be 10 or less)",
       "props": [
        {
         "name": "label",
-        "value": "cis_rhel9.ssh#12"
+        "value": "CIS 5.2.21"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_rhel9.ssh#12"
+        "value": "CIS 5.2.21"
        },
        {
         "name": "rego-package",
@@ -8658,15 +8434,15 @@
       ],
       "links": [
        {
-        "href": "#723d5c87-4882-5cfe-b145-c82437b16394",
+        "href": "#a196b2df-66dc-56d1-b425-ef4e01b753e7",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_rhel_9-cis_rhel9.ssh-12_stmt",
+        "id": "cis_rhel_9-CIS-5.2.21_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/rhel_9/ssh_validation.rego (package cis_rhel9.ssh); see the rule body."
+        "prose": "SSH MaxSessions is %v (should be 10 or less)"
        }
       ],
       "class": "security"
@@ -8715,7 +8491,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8753,7 +8529,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8786,7 +8562,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8819,7 +8595,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8867,7 +8643,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8900,7 +8676,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8933,7 +8709,7 @@
       ],
       "links": [
        {
-        "href": "#2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+        "href": "#91112c11-9aee-5723-a7f3-1b2d56b4809b",
         "rel": "implementation"
        }
       ],
@@ -8990,7 +8766,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9023,7 +8799,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9056,7 +8832,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9094,7 +8870,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9127,7 +8903,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9160,7 +8936,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9198,7 +8974,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9236,7 +9012,7 @@
       ],
       "links": [
        {
-        "href": "#2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+        "href": "#c90ccd61-f0dd-51d7-9347-2afa085e18b3",
         "rel": "implementation"
        }
       ],
@@ -9308,7 +9084,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9356,7 +9132,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9389,7 +9165,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9422,7 +9198,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9455,7 +9231,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9488,7 +9264,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9521,7 +9297,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9554,7 +9330,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9587,7 +9363,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9645,7 +9421,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9678,7 +9454,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9711,7 +9487,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9744,7 +9520,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9777,7 +9553,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9810,7 +9586,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9843,7 +9619,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9876,7 +9652,7 @@
       ],
       "links": [
        {
-        "href": "#ff5e8528-11c9-5519-a873-618eb4d2badb",
+        "href": "#2b053f66-3e27-5557-99aa-d97441bfc56b",
         "rel": "implementation"
        }
       ],
@@ -9895,7 +9671,7 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "4d3d05f4-a395-511d-aa8b-517076c3d0da",
+     "uuid": "6ec28c17-4f94-5b60-b2a6-fe5f764c3c23",
      "title": "CIS RHEL 9 Section 4.1.x - Configure System Accounting (auditd)",
      "props": [
       {
@@ -9906,13 +9682,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/auditd_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/auditd_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "53f88b8c-2fdf-556f-a2ec-786b76665c5e",
+     "uuid": "148f873d-6a01-5173-aace-a4497a5a6fa6",
      "title": "SSH Authorized Keys Validation",
      "props": [
       {
@@ -9923,13 +9699,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/authorized_keys_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/authorized_keys_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "cbed0ed1-df07-50b2-9c84-6f25674b3fc2",
+     "uuid": "f02cd2af-3e6c-5bc4-8f5a-586e93fa3f0d",
      "title": "CIS Sections 1.3, 1.4, 1.5: Boot Security, Filesystem Integrity, Process Hardening",
      "props": [
       {
@@ -9940,13 +9716,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/boot_security_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/boot_security_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "11eb5456-706a-5446-a577-8ba7336a16fa",
+     "uuid": "68e9453f-6928-5e1d-b472-1583dc6f9b86",
      "title": "System Certificate and PKI Validation",
      "props": [
       {
@@ -9957,13 +9733,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/certificate_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/certificate_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e52589aa-24fa-5425-a63f-689fe25cc3d4",
+     "uuid": "66e4d512-1854-5576-851a-fc8474ba4684",
      "title": "CIS RHEL 9 Benchmark v2.0.0 - Complete Validation",
      "props": [
       {
@@ -9974,13 +9750,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/cis_rhel9_complete.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/cis_rhel9_complete.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e617e3c1-8cdf-5be9-abbf-ba01666ac6be",
+     "uuid": "d7cf45fa-4dbe-5a8d-a85c-9444d555f04b",
      "title": "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0",
      "props": [
       {
@@ -9991,13 +9767,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/cis_rhel_9.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/cis_rhel_9.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ff8b9d1c-0b93-547c-85b4-5f9c22cdf339",
+     "uuid": "4da51209-4a08-5bc9-81ba-b03630a41502",
      "title": "CIS Section 5.1: Configure time-based job schedulers",
      "props": [
       {
@@ -10008,13 +9784,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/cron_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/cron_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "02f9c4b2-715c-5cdb-9c6f-a33e32bcdc22",
+     "uuid": "edf250c5-70b8-5245-a3f1-5eeac6c3cbf3",
      "title": "CIS RHEL 9 Section 6.1.x - System File Permissions",
      "props": [
       {
@@ -10025,13 +9801,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/file_permissions_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/file_permissions_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "4c68dde6-03b2-56b2-adc5-f4f29ec2cf63",
+     "uuid": "7ccf7db1-43b3-5d8f-a4f8-fa80cb98495e",
      "title": "CIS RHEL 9 Section 1.1.x - Filesystem Configuration",
      "props": [
       {
@@ -10042,13 +9818,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/filesystem_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/filesystem_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "6c25acb9-7cfa-57cb-994e-be08984ef366",
+     "uuid": "2e121281-80ca-52e3-a3f3-be1b1d632a66",
      "title": "CIS Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup",
      "props": [
       {
@@ -10059,13 +9835,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/initial_setup_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/initial_setup_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "f2028c10-48d0-55f5-bcf4-6c87b6c8c42a",
+     "uuid": "139845b5-9b77-5317-857c-2b8fcf3f88d1",
      "title": "CIS RHEL 9 Benchmark v2.0.0 - Level 2 Additional Controls",
      "props": [
       {
@@ -10076,13 +9852,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/l2_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/l2_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "b1425e76-4768-5fee-8d33-f715a20c12cb",
+     "uuid": "294e157c-d863-5887-958c-f3e31ee36fd6",
      "title": "CIS RHEL 9 Section 4.2.x - Logging Configuration",
      "props": [
       {
@@ -10093,13 +9869,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/logging_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/logging_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "45f0e8e0-91c4-5def-9c95-bdbfbab83bb2",
+     "uuid": "19cd2488-cc6c-5976-a8bb-56961602d808",
      "title": "CIS RHEL 9 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration",
      "props": [
       {
@@ -10110,13 +9886,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/network_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/network_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "7b170d7f-206a-52f4-a186-d793190b54dc",
+     "uuid": "899457f9-ec35-506b-8b57-ea42635151d0",
      "title": "CIS Section 5.4: Configure PAM",
      "props": [
       {
@@ -10127,13 +9903,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/pam_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/pam_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "e11e2816-d061-5439-80aa-8a1f06bc151f",
+     "uuid": "f9afa998-4dea-5905-83fe-80a0e2b8ed7a",
      "title": "CIS Section 1.6: Mandatory Access Controls (SELinux)",
      "props": [
       {
@@ -10144,13 +9920,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/selinux_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/selinux_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "0fac4834-fd61-5700-ac2f-efd25924e6ea",
+     "uuid": "3f0fe260-5bba-5b2f-a976-f61007ef6318",
      "title": "CIS RHEL 9 Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x - Service Configuration",
      "props": [
       {
@@ -10161,13 +9937,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/service_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/service_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "723d5c87-4882-5cfe-b145-c82437b16394",
+     "uuid": "a196b2df-66dc-56d1-b425-ef4e01b753e7",
      "title": "CIS RHEL 9 Section 5.2.x - SSH Server Configuration",
      "props": [
       {
@@ -10178,13 +9954,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/ssh_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/ssh_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "2bc042a6-2839-56ed-a0b2-c80a5cdc496e",
+     "uuid": "91112c11-9aee-5723-a7f3-1b2d56b4809b",
      "title": "Storage Encryption and FIPS Validation",
      "props": [
       {
@@ -10195,13 +9971,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/storage_encryption_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/storage_encryption_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "2cd5c1d5-a4bd-5dbd-af4a-4811d19af8fc",
+     "uuid": "c90ccd61-f0dd-51d7-9347-2afa085e18b3",
      "title": "CIS Section 5.3: Configure privilege escalation (sudo)",
      "props": [
       {
@@ -10212,13 +9988,13 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/sudo_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/sudo_validation.rego",
        "media-type": "text/plain"
       }
      ]
     },
     {
-     "uuid": "ff5e8528-11c9-5519-a873-618eb4d2badb",
+     "uuid": "2b053f66-3e27-5557-99aa-d97441bfc56b",
      "title": "CIS Section 6.2: User and Group Settings",
      "props": [
       {
@@ -10229,7 +10005,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.5/benchmarks/cis/rhel_9/user_group_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/benchmarks/cis/rhel_9/user_group_validation.rego",
        "media-type": "text/plain"
       }
      ]

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis.amazon_linux_2023
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0

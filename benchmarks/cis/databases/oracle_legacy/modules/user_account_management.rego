@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: none
-#     as_of: v2.3.5
+#     guard: self
+#     as_of: v2.3.6
 package cis_oracle.user_account_management
 
 # CIS Oracle Database 19c Benchmark - Section 3
@@ -32,6 +32,8 @@ default default_profile_secure := false
 default compliant := false
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.password_profiles
 	count(violations) == 0
 }
 

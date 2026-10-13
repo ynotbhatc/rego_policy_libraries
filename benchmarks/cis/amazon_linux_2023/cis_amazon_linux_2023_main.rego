@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_amazon_linux_2023.main
 
 # Bridge: expose cis_amazon_linux_2023 under the /v1/data/<framework>/main/compliance_report

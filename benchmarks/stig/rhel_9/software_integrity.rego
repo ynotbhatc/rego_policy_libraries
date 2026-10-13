@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package stig.rhel_9.software_integrity
 
 # DISA STIG for RHEL 9 - Software Integrity Module

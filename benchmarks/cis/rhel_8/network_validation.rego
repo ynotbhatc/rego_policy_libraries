@@ -7,13 +7,13 @@
 #   domains: [linux, rhel]
 #   coverage:
 #     checks: 23
-#     cited: 9
+#     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: none
-#     as_of: v2.3.5
+#     guard: self
+#     as_of: v2.3.6
 package cis_rhel8.network
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -24,6 +24,8 @@ import rego.v1
 default compliant := false
 
 compliant if {
+	# fail-closed: no facts, no compliance
+	input.sysctl_parameters
 	count(violations) == 0
 }
 

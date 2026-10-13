@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel8.pam
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts

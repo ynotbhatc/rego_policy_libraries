@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cra.conformity_assessment
 
 import rego.v1

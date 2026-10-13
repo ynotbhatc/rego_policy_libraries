@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux]
 #   coverage:
-#     checks: 17
-#     cited: 0
+#     checks: 15
+#     cited: 15
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: none
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cis_rhel9.pam_validation
 
 import rego.v1

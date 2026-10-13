@@ -7,13 +7,13 @@
 #   domains: [sovereignty, data-residency]
 #   coverage:
 #     checks: 21
-#     cited: 1
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package digital_sovereignty.breach_notification_sovereignty
 
 import rego.v1

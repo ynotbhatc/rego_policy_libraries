@@ -114,6 +114,21 @@ def count_table(name, rows):
     return obj, strs
 
 
+def _violation_object(rule):
+    """the object literal a violation rule emits: in its head (`violations contains {"control_id": ...} if`) or
+    assigned to the head variable in its body (`v := {"standard": "CIP-002", ...}`); None otherwise"""
+    key = rule["head"].get("key")
+    if key and key["type"] == "object":
+        return key
+    if key and key["type"] == "var":
+        for expr in rule.get("body", []):
+            t = expr.get("terms")
+            if isinstance(t, list) and len(t) == 3 and t[0].get("type") == "ref" and t[0]["value"][0].get("value") in ("assign", "eq") \
+                    and t[1].get("type") == "var" and t[1]["value"] == key["value"] and t[2].get("type") == "object":
+                return t[2]
+    return None
+
+
 def first_message(rule):
     """the violation message of a multi-value rule: the set element itself when it is a string literal
     (`violations contains "CIS L2 1.5: ..." if`) or an object with a string "msg" (`deny contains {"msg": "..."}`),
@@ -122,6 +137,8 @@ def first_message(rule):
     if key:
         if key["type"] == "string":
             return key["value"]
+        if key["type"] == "call" and key["value"][0].get("value", [{}])[0].get("value") == "sprintf" and key["value"][1]["type"] == "string":
+            return key["value"][1]["value"]   # `violations contains sprintf("CIS 4.1.3.x: ...", [x]) if`
         if key["type"] == "object":
             for k, v in key["value"]:
                 if k["type"] == "string" and k["value"] == "msg" and v["type"] == "string":
@@ -148,8 +165,8 @@ def first_message(rule):
 # v3: every shape the library uses to express a check, normalised to (control id | None, text, shape)
 # ---------------------------------------------------------------------------------------------
 SET_SUFFIXES = ("_violations", "_findings", "_deny", "_failures")
-ID_KEYS = ("stig_id", "control_id", "id", "control", "practice", "requirement", "rule_id", "recommendation")
-TEXT_KEYS = ("text", "title", "desc", "description", "name", "req", "requirement_text", "summary")
+ID_KEYS = ("stig_id", "control_id", "id", "control", "practice", "requirement", "rule_id", "recommendation", "standard", "article", "section")
+TEXT_KEYS = ("text", "title", "desc", "description", "finding", "name", "req", "requirement_text", "summary")
 CHECKMAP_SKIP = {"compliant", "violations", "achievement", "status", "summary", "report", "total", "score", "level",
                  "findings", "passed", "failed", "percentage", "compliance_percentage", "details", "input", "data"}
 # report plumbing never counts as a check, whatever object it sits in
@@ -265,6 +282,13 @@ def items(ast):
     for r in ast.get("rules", []):
         h = r["head"]; name = rule_name(r) or ""
         if "key" in h and (name in BODY_NAMES or name.endswith(SET_SUFFIXES) or name.startswith(("violation_", "violations_", "deny_"))):
+            obj = _violation_object(r)
+            if obj is not None:
+                cid = _id_of(obj); text = _text_of(obj) or _msg_of(obj) or ""
+                if cid is None and _msg_of(obj):
+                    cid, text = split_citation(_msg_of(obj))
+                out.append((cid, text, "set-rule"))
+                continue
             msg = first_message(r)
             cid, text = split_citation(msg) if msg else (None, "")
             out.append((cid, text or (msg or ""), "set-rule"))

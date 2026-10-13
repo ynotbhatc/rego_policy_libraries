@@ -1,0 +1,324 @@
+{
+ "catalog": {
+  "uuid": "6e043f0b-9fde-5833-8326-0b2cfb5c319b",
+  "metadata": {
+   "title": "Rego Policy Libraries — fisma (System Security Plan (SSP) Validation Policy)",
+   "last-modified": "2026-10-12T00:00:00Z",
+   "version": "2.3.6",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "fisma"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "fisma-system_security_plan",
+    "class": "rego-module",
+    "title": "System Security Plan (SSP) Validation Policy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "fisma.ssp"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/fisma/system_security_plan.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "fisma-Document-Structure",
+      "title": "Document format, version control, and approval requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "Document Structure"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Document Structure"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-Document-Structure_stmt",
+        "name": "statement",
+        "prose": "Document format, version control, and approval requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fisma-System-Identification",
+      "title": "System description, boundary definition, and ownership",
+      "props": [
+       {
+        "name": "label",
+        "value": "System Identification"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "System Identification"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-System-Identification_stmt",
+        "name": "statement",
+        "prose": "System description, boundary definition, and ownership"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fisma-System-Categorization",
+      "title": "FIPS 199 categorization and impact analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "System Categorization"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "System Categorization"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-System-Categorization_stmt",
+        "name": "statement",
+        "prose": "FIPS 199 categorization and impact analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fisma-Control-Implementation",
+      "title": "Security control implementation documentation",
+      "props": [
+       {
+        "name": "label",
+        "value": "Control Implementation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Control Implementation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-Control-Implementation_stmt",
+        "name": "statement",
+        "prose": "Security control implementation documentation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fisma-System-Environment",
+      "title": "Hardware, software, network, and data flow documentation",
+      "props": [
+       {
+        "name": "label",
+        "value": "System Environment"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "System Environment"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-System-Environment_stmt",
+        "name": "statement",
+        "prose": "Hardware, software, network, and data flow documentation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fisma-Roles-and-Responsibilities",
+      "title": "Key personnel identification and role definitions",
+      "props": [
+       {
+        "name": "label",
+        "value": "Roles and Responsibilities"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Roles and Responsibilities"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-Roles-and-Responsibilities_stmt",
+        "name": "statement",
+        "prose": "Key personnel identification and role definitions"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fisma-SSP-Maintenance",
+      "title": "Version control, review cycles, and change management",
+      "props": [
+       {
+        "name": "label",
+        "value": "SSP Maintenance"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SSP Maintenance"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fisma.ssp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fisma-SSP-Maintenance_stmt",
+        "name": "statement",
+        "prose": "Version control, review cycles, and change management"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "9ba19b96-b64f-5a90-b65b-8be94483bbbc",
+     "title": "System Security Plan (SSP) Validation Policy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "fisma.ssp"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.3.6/frameworks/federal/fisma/system_security_plan.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

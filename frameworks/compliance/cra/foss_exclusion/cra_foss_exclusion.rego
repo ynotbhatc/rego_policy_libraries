@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.3.5
+#     as_of: v2.3.6
 package cra.foss_exclusion
 
 import rego.v1
