@@ -8,6 +8,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+- `scripts/count_controls.py --check-readme` (run by CI on every PR) now also verifies the README's policy-file counts, the seven What's-in-the-box category rows (measured per directory from the same file set as the count), the DISA STIG platform count and the OSCAL catalog / control figures against `dist/catalogs/index.json`, and names each drifted number. The category rows had drifted by up to 40 files across the Phase 1 batches before #239 corrected them by hand.
+
 ### Added
 - **SCF parity, Phase 1 batch 4 (DORA RTS, UK DPA 2018, ISO 27002 numbering, CSWP 39), 644 new control-level checks (16,690):**
   - `frameworks/financial/dora/dora_rts_ict_risk.rego`: **Commission Delegated Regulation (EU) 2024/1774** (the DORA RTS on the ICT risk management framework), 308 rows from the EUR-Lex text (Title II 228, Title III simplified framework 80), one row per lettered point, gates for the simplified framework and for the duties the act addresses only to central counterparties, central securities depositories, trading venues and non-microenterprises; aggregated by `dora.main` (`total_controls` 91 → 399).
