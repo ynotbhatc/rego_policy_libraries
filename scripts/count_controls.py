@@ -57,7 +57,12 @@ if "--check-readme" in sys.argv:
 
     rels = [pathlib.Path(r).as_posix() for r in asts]
     expect("production-ready Rego policies", quote(r"\*\*([0-9,]+) production-ready Rego policies\*\*", "the policy-file count"), len(rels))
-    all_rego = sum(1 for f in root.rglob("*.rego") if ".git" not in f.parts and "node_modules" not in f.parts)
+    # tracked files only: the converter packaging builds leave ignored .rego under */out/ locally
+    try:
+        import subprocess
+        all_rego = len(subprocess.run(["git", "-C", str(root), "ls-files", "--", "*.rego"], capture_output=True, text=True, check=True).stdout.split())
+    except Exception:
+        all_rego = sum(1 for f in root.rglob("*.rego") if ".git" not in f.parts and "node_modules" not in f.parts and "out" not in f.parts)
     expect(".rego files including tests", quote(r"\(([0-9,]+) including tests", "the including-tests count"), all_rego)
 
     def under(*prefixes):
