@@ -8,6 +8,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- `docs/SCF_GAP.md`: document-by-document comparison against the Secure Controls Framework 2026.3 (234 distinct documents: 48 covered, 23 partial, 163 gap) and the six-phase plan to close it; `docs/COMPARISON.md` SCF row refreshed to 2026.3 figures.
+
 ## [2.4.2] - 2026-10-13
 
 ### Fixed — exports map object-shaped findings to their controls
