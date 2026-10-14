@@ -1,0 +1,4350 @@
+{
+ "catalog": {
+  "uuid": "229759d1-fd18-5f84-8f5c-b8531049b6e2",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_privacy_framework (NIST Privacy Framework 1.0 — 100 Core Subcategories (CPRT ids), attested)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_privacy_framework"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_privacy_framework-nist_privacy_framework_main",
+    "class": "rego-module",
+    "title": "NIST Privacy Framework 1.0 — 100 Core Subcategories (CPRT ids), attested",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist_privacy_framework.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/nist_privacy_framework/nist_privacy_framework_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_privacy_framework-csfr_adapted",
+      "title": "The Function, Category, or Subcategory aligns with the Cybersecurity Framework, but the text has been adapted for the Privacy Framework.",
+      "props": [
+       {
+        "name": "label",
+        "value": "csfr_adapted"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "csfr_adapted"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-csfr_adapted_stmt",
+        "name": "statement",
+        "prose": "The Function, Category, or Subcategory aligns with the Cybersecurity Framework, but the text has been adapted for the Privacy Framework."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-csfr_identical",
+      "title": "The Category or Subcategory is identical to the Cybersecurity Framework.",
+      "props": [
+       {
+        "name": "label",
+        "value": "csfr_identical"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "csfr_identical"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-csfr_identical_stmt",
+        "name": "statement",
+        "prose": "The Category or Subcategory is identical to the Cybersecurity Framework."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-csfr_none",
+      "title": "Elements associated with this element were not formulated directly using Cybersecurity Framework material.",
+      "props": [
+       {
+        "name": "label",
+        "value": "csfr_none"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "csfr_none"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-csfr_none_stmt",
+        "name": "statement",
+        "prose": "Elements associated with this element were not formulated directly using Cybersecurity Framework material."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM-P",
+      "title": "Develop and implement appropriate activities to enable organizations and individuals to have a reliable understanding and engage in a dialogue about how data are processed and associated privacy risks",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM-P_stmt",
+        "name": "statement",
+        "prose": "Develop and implement appropriate activities to enable organizations and individuals to have a reliable understanding and engage in a dialogue about how data are processed and associated privacy risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT-P",
+      "title": "Develop and implement appropriate activities to enable organizations or individuals to manage data with sufficient granularity to manage privacy risks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT-P_stmt",
+        "name": "statement",
+        "prose": "Develop and implement appropriate activities to enable organizations or individuals to manage data with sufficient granularity to manage privacy risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV-P",
+      "title": "Develop and implement the organizational governance structure to enable an ongoing understanding of the organization’s risk management priorities that are informed by privacy risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV-P_stmt",
+        "name": "statement",
+        "prose": "Develop and implement the organizational governance structure to enable an ongoing understanding of the organization’s risk management priorities that are informed by privacy risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID-P",
+      "title": "Develop the organizational understanding to manage privacy risk for individuals arising from data processing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID-P_stmt",
+        "name": "statement",
+        "prose": "Develop the organizational understanding to manage privacy risk for individuals arising from data processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR-P",
+      "title": "Develop and implement appropriate data processing safeguards.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR-P_stmt",
+        "name": "statement",
+        "prose": "Develop and implement appropriate data processing safeguards."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P",
+      "title": "Individuals and organizations have reliable knowledge about data processing practices and associated privacy risks, and effective mechanisms are used and maintained to increase predictability consiste",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P_stmt",
+        "name": "statement",
+        "prose": "Individuals and organizations have reliable knowledge about data processing practices and associated privacy risks, and effective mechanisms are used and maintained to increase predictability consistent with the organization’s risk strategy to protect individuals’ privacy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.PO-P",
+      "title": "Policies, processes, and procedures are maintained and used to increase transparency of the organization’s data processing practices (e.g., purpose, scope, roles and responsibilities in the data proce",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.PO-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.PO-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.PO-P_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures are maintained and used to increase transparency of the organization’s data processing practices (e.g., purpose, scope, roles and responsibilities in the data processing ecosystem, and management commitment) and associated privacy risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P",
+      "title": "Data are managed consistent with the organization’s risk strategy to protect individuals’ privacy, increase manageability, and enable the implementation of privacy principles (e.g., individual partici",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P_stmt",
+        "name": "statement",
+        "prose": "Data are managed consistent with the organization’s risk strategy to protect individuals’ privacy, increase manageability, and enable the implementation of privacy principles (e.g., individual participation, data quality, data minimization)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DP-P",
+      "title": "Data processing solutions increase disassociability consistent with the organization’s risk strategy to protect individuals’ privacy and enable implementation of privacy principles (e.g., data minimiz",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DP-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DP-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DP-P_stmt",
+        "name": "statement",
+        "prose": "Data processing solutions increase disassociability consistent with the organization’s risk strategy to protect individuals’ privacy and enable implementation of privacy principles (e.g., data minimization)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.PO-P",
+      "title": "Policies, processes, and procedures are maintained and used to manage data processing (e.g., purpose, scope, roles and responsibilities in the data processing ecosystem, and management commitment) con",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.PO-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.PO-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.PO-P_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures are maintained and used to manage data processing (e.g., purpose, scope, roles and responsibilities in the data processing ecosystem, and management commitment) consistent with the organization’s risk strategy to protect individuals’ privacy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.AT-P",
+      "title": "The organization’s workforce and third parties engaged in data processing are provided privacy awareness education and are trained to perform their privacy-related duties and responsibilities consiste",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.AT-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.AT-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.AT-P_stmt",
+        "name": "statement",
+        "prose": "The organization’s workforce and third parties engaged in data processing are provided privacy awareness education and are trained to perform their privacy-related duties and responsibilities consistent with related policies, processes, procedures, and agreements and organizational privacy values."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P",
+      "title": "The policies, processes, and procedures for ongoing review of the organization’s privacy posture are understood and inform the management of privacy risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P_stmt",
+        "name": "statement",
+        "prose": "The policies, processes, and procedures for ongoing review of the organization’s privacy posture are understood and inform the management of privacy risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P",
+      "title": "The policies, processes, and procedures to manage and monitor the organization’s regulatory, legal, risk, environmental, and operational requirements are understood and inform the management of privac",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P_stmt",
+        "name": "statement",
+        "prose": "The policies, processes, and procedures to manage and monitor the organization’s regulatory, legal, risk, environmental, and operational requirements are understood and inform the management of privacy risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.RM-P",
+      "title": "The organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.RM-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.RM-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.RM-P_stmt",
+        "name": "statement",
+        "prose": "The organization’s priorities, constraints, risk tolerances, and assumptions are established and used to support operational risk decisions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.BE-P",
+      "title": "The organization’s mission, objectives, stakeholders, and activities are understood and prioritized; this information is used to inform privacy roles, responsibilities, and risk management decisions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.BE-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.BE-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.BE-P_stmt",
+        "name": "statement",
+        "prose": "The organization’s mission, objectives, stakeholders, and activities are understood and prioritized; this information is used to inform privacy roles, responsibilities, and risk management decisions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.DE-P",
+      "title": "The organization’s priorities, constraints, risk tolerance, and assumptions are established and used to support risk decisions associated with managing privacy risk and third parties within the data p",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.DE-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.DE-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.DE-P_stmt",
+        "name": "statement",
+        "prose": "The organization’s priorities, constraints, risk tolerance, and assumptions are established and used to support risk decisions associated with managing privacy risk and third parties within the data processing ecosystem. The organization has established and implemented the processes to identify, assess, and manage privacy risks within the data processing ecosystem."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P",
+      "title": "Data processing by systems, products, or services is understood and informs the management of privacy risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P_stmt",
+        "name": "statement",
+        "prose": "Data processing by systems, products, or services is understood and informs the management of privacy risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.RA-P",
+      "title": "The organization understands the privacy risks to individuals and how such privacy risks may create follow-on impacts on organizational operations, including mission, functions, other risk management ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.RA-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.RA-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.RA-P_stmt",
+        "name": "statement",
+        "prose": "The organization understands the privacy risks to individuals and how such privacy risks may create follow-on impacts on organizational operations, including mission, functions, other risk management priorities (e.g., compliance, financial), reputation, workforce, and culture."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P",
+      "title": "Access to data and devices is limited to authorized individuals, processes, and devices, and is managed consistent with the assessed risk of unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P_stmt",
+        "name": "statement",
+        "prose": "Access to data and devices is limited to authorized individuals, processes, and devices, and is managed consistent with the assessed risk of unauthorized access."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P",
+      "title": "Data are managed consistent with the organization’s risk strategy to protect individuals’ privacy and maintain data confidentiality, integrity, and availability.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P_stmt",
+        "name": "statement",
+        "prose": "Data are managed consistent with the organization’s risk strategy to protect individuals’ privacy and maintain data confidentiality, integrity, and availability."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.MA-P",
+      "title": "System maintenance and repairs are performed consistent with policies, processes, and procedures.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.MA-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.MA-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.MA-P_stmt",
+        "name": "statement",
+        "prose": "System maintenance and repairs are performed consistent with policies, processes, and procedures."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P",
+      "title": "Security and privacy policies (e.g., purpose, scope, roles and responsibilities in the data processing ecosystem, and management commitment), processes, and procedures are maintained and used to manag",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P_stmt",
+        "name": "statement",
+        "prose": "Security and privacy policies (e.g., purpose, scope, roles and responsibilities in the data processing ecosystem, and management commitment), processes, and procedures are maintained and used to manage the protection of data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PT-P",
+      "title": "Technical security solutions are managed to ensure the security and resilience of systems/products/services and associated data, consistent with related policies, processes, procedures, and agreements",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PT-P"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PT-P"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PT-P_stmt",
+        "name": "statement",
+        "prose": "Technical security solutions are managed to ensure the security and resilience of systems/products/services and associated data, consistent with related policies, processes, procedures, and agreements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P1",
+      "title": "Mechanisms (e.g., notices, internal or public reports) for communicating data processing purposes, practices, associated privacy risks, and options for enabling individuals’ data processing preference",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P1_stmt",
+        "name": "statement",
+        "prose": "Mechanisms (e.g., notices, internal or public reports) for communicating data processing purposes, practices, associated privacy risks, and options for enabling individuals’ data processing preferences and requests are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P2",
+      "title": "Mechanisms for obtaining feedback from individuals (e.g., surveys or focus groups) about data processing and associated privacy risks are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P2_stmt",
+        "name": "statement",
+        "prose": "Mechanisms for obtaining feedback from individuals (e.g., surveys or focus groups) about data processing and associated privacy risks are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P3",
+      "title": "System/product/service design enables data processing visibility.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P3_stmt",
+        "name": "statement",
+        "prose": "System/product/service design enables data processing visibility."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P4",
+      "title": "Records of data disclosures and sharing are maintained and can be accessed for review or transmission/disclosure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P4_stmt",
+        "name": "statement",
+        "prose": "Records of data disclosures and sharing are maintained and can be accessed for review or transmission/disclosure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P5",
+      "title": "Data corrections or deletions can be communicated to individuals or organizations (e.g., data sources) in the data processing ecosystem.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P5_stmt",
+        "name": "statement",
+        "prose": "Data corrections or deletions can be communicated to individuals or organizations (e.g., data sources) in the data processing ecosystem."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P6",
+      "title": "Data provenance and lineage are maintained and can be accessed for review or transmission/disclosure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P6_stmt",
+        "name": "statement",
+        "prose": "Data provenance and lineage are maintained and can be accessed for review or transmission/disclosure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P7",
+      "title": "Impacted individuals and organizations are notified about a privacy breach or event.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P7_stmt",
+        "name": "statement",
+        "prose": "Impacted individuals and organizations are notified about a privacy breach or event."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.AW-P8",
+      "title": "Individuals are provided with mitigation mechanisms (e.g., credit monitoring, consent withdrawal, data alteration or deletion) to address impacts of problematic data actions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.AW-P8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.AW-P8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.AW-P8_stmt",
+        "name": "statement",
+        "prose": "Individuals are provided with mitigation mechanisms (e.g., credit monitoring, consent withdrawal, data alteration or deletion) to address impacts of problematic data actions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.PO-P1",
+      "title": "Transparency policies, processes, and procedures for communicating data processing purposes, practices, and associated privacy risks are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.PO-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.PO-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.PO-P1_stmt",
+        "name": "statement",
+        "prose": "Transparency policies, processes, and procedures for communicating data processing purposes, practices, and associated privacy risks are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CM.PO-P2",
+      "title": "Roles and responsibilities (e.g., public relations) for communicating data processing purposes, practices, and associated privacy risks are established.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CM.PO-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CM.PO-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CM.PO-P2_stmt",
+        "name": "statement",
+        "prose": "Roles and responsibilities (e.g., public relations) for communicating data processing purposes, practices, and associated privacy risks are established."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P1",
+      "title": "Data elements can be accessed for review.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P1_stmt",
+        "name": "statement",
+        "prose": "Data elements can be accessed for review."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P10",
+      "title": "Stakeholder privacy preferences are included in algorithmic design objectives and outputs are evaluated against these preferences.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P10_stmt",
+        "name": "statement",
+        "prose": "Stakeholder privacy preferences are included in algorithmic design objectives and outputs are evaluated against these preferences."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P2",
+      "title": "Data elements can be accessed for transmission or disclosure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P2_stmt",
+        "name": "statement",
+        "prose": "Data elements can be accessed for transmission or disclosure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P3",
+      "title": "Data elements can be accessed for alteration.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P3_stmt",
+        "name": "statement",
+        "prose": "Data elements can be accessed for alteration."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P4",
+      "title": "Data elements can be accessed for deletion.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P4_stmt",
+        "name": "statement",
+        "prose": "Data elements can be accessed for deletion."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P5",
+      "title": "Data are destroyed according to policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P5_stmt",
+        "name": "statement",
+        "prose": "Data are destroyed according to policy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P6",
+      "title": "Data are transmitted using standardized formats.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P6_stmt",
+        "name": "statement",
+        "prose": "Data are transmitted using standardized formats."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P7",
+      "title": "Mechanisms for transmitting processing permissions and related data values with data elements are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P7_stmt",
+        "name": "statement",
+        "prose": "Mechanisms for transmitting processing permissions and related data values with data elements are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P8",
+      "title": "Audit/log records are determined, documented, implemented, and reviewed in accordance with policy and incorporating the principle of data minimization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P8_stmt",
+        "name": "statement",
+        "prose": "Audit/log records are determined, documented, implemented, and reviewed in accordance with policy and incorporating the principle of data minimization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DM-P9",
+      "title": "Technical measures implemented to manage data processing are tested and assessed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DM-P9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DM-P9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DM-P9_stmt",
+        "name": "statement",
+        "prose": "Technical measures implemented to manage data processing are tested and assessed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DP-P1",
+      "title": "Data are processed to limit observability and linkability (e.g., data actions take place on local devices, privacy-preserving cryptography).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DP-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DP-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DP-P1_stmt",
+        "name": "statement",
+        "prose": "Data are processed to limit observability and linkability (e.g., data actions take place on local devices, privacy-preserving cryptography)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DP-P2",
+      "title": "Data are processed to limit the identification of individuals (e.g., de-identification privacy techniques, tokenization).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DP-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DP-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DP-P2_stmt",
+        "name": "statement",
+        "prose": "Data are processed to limit the identification of individuals (e.g., de-identification privacy techniques, tokenization)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DP-P3",
+      "title": "Data are processed to limit the formulation of inferences about individuals’ behavior or activities (e.g., data processing is decentralized, distributed architectures).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DP-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DP-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DP-P3_stmt",
+        "name": "statement",
+        "prose": "Data are processed to limit the formulation of inferences about individuals’ behavior or activities (e.g., data processing is decentralized, distributed architectures)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DP-P4",
+      "title": "System or device configurations permit selective collection or disclosure of data elements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DP-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DP-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DP-P4_stmt",
+        "name": "statement",
+        "prose": "System or device configurations permit selective collection or disclosure of data elements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.DP-P5",
+      "title": "Attribute references are substituted for attribute values.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.DP-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.DP-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.DP-P5_stmt",
+        "name": "statement",
+        "prose": "Attribute references are substituted for attribute values."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.PO-P1",
+      "title": "Policies, processes, and procedures for authorizing data processing (e.g., organizational decisions, individual consent), revoking authorizations, and maintaining authorizations are established and in",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.PO-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.PO-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.PO-P1_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures for authorizing data processing (e.g., organizational decisions, individual consent), revoking authorizations, and maintaining authorizations are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.PO-P2",
+      "title": "Policies, processes, and procedures for enabling data review, transfer, sharing or disclosure, alteration, and deletion are established and in place (e.g., to maintain data quality, manage data retent",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.PO-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.PO-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.PO-P2_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures for enabling data review, transfer, sharing or disclosure, alteration, and deletion are established and in place (e.g., to maintain data quality, manage data retention)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.PO-P3",
+      "title": "Policies, processes, and procedures for enabling individuals’ data processing preferences and requests are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.PO-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.PO-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.PO-P3_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures for enabling individuals’ data processing preferences and requests are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-CT.PO-P4",
+      "title": "A data life cycle to manage data is aligned and implemented with the system development life cycle to manage systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CT.PO-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CT.PO-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-CT.PO-P4_stmt",
+        "name": "statement",
+        "prose": "A data life cycle to manage data is aligned and implemented with the system development life cycle to manage systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.AT-P1",
+      "title": "The workforce is informed and trained on its roles and responsibilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.AT-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.AT-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.AT-P1_stmt",
+        "name": "statement",
+        "prose": "The workforce is informed and trained on its roles and responsibilities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.AT-P2",
+      "title": "Senior executives understand their roles and responsibilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.AT-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.AT-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.AT-P2_stmt",
+        "name": "statement",
+        "prose": "Senior executives understand their roles and responsibilities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.AT-P3",
+      "title": "Privacy personnel understand their roles and responsibilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.AT-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.AT-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.AT-P3_stmt",
+        "name": "statement",
+        "prose": "Privacy personnel understand their roles and responsibilities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.AT-P4",
+      "title": "Third parties (e.g., service providers, customers, partners) understand their roles and responsibilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.AT-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.AT-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.AT-P4_stmt",
+        "name": "statement",
+        "prose": "Third parties (e.g., service providers, customers, partners) understand their roles and responsibilities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P1",
+      "title": "Privacy risk is re-evaluated on an ongoing basis and as key factors, including the organization’s business environment (e.g., introduction of new technologies), governance (e.g., legal obligations, ri",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P1_stmt",
+        "name": "statement",
+        "prose": "Privacy risk is re-evaluated on an ongoing basis and as key factors, including the organization’s business environment (e.g., introduction of new technologies), governance (e.g., legal obligations, risk tolerance), data processing, and systems/products/services change."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P2",
+      "title": "Privacy values, policies, and training are reviewed and any updates are communicated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P2_stmt",
+        "name": "statement",
+        "prose": "Privacy values, policies, and training are reviewed and any updates are communicated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P3",
+      "title": "Policies, processes, and procedures for assessing compliance with legal requirements and privacy policies are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P3_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures for assessing compliance with legal requirements and privacy policies are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P4",
+      "title": "Policies, processes, and procedures for communicating progress on managing privacy risks are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P4_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures for communicating progress on managing privacy risks are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P5",
+      "title": "Policies, processes, and procedures are established and in place to receive, analyze, and respond to problematic data actions disclosed to the organization from internal and external sources (e.g., in",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P5_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures are established and in place to receive, analyze, and respond to problematic data actions disclosed to the organization from internal and external sources (e.g., internal discovery, privacy researchers, professional events)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P6",
+      "title": "Policies, processes, and procedures incorporate lessons learned from problematic data actions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P6_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures incorporate lessons learned from problematic data actions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.MT-P7",
+      "title": "Policies, processes, and procedures for receiving, tracking, and responding to complaints, concerns, and questions from individuals about organizational privacy practices are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.MT-P7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.MT-P7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.MT-P7_stmt",
+        "name": "statement",
+        "prose": "Policies, processes, and procedures for receiving, tracking, and responding to complaints, concerns, and questions from individuals about organizational privacy practices are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P1",
+      "title": "Organizational privacy values and policies (e.g., conditions on data processing such as data uses or retention periods, individuals’ prerogatives with respect to data processing) are established and c",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P1_stmt",
+        "name": "statement",
+        "prose": "Organizational privacy values and policies (e.g., conditions on data processing such as data uses or retention periods, individuals’ prerogatives with respect to data processing) are established and communicated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P2",
+      "title": "Processes to instill organizational privacy values within system/product/service development and operations are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P2_stmt",
+        "name": "statement",
+        "prose": "Processes to instill organizational privacy values within system/product/service development and operations are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P3",
+      "title": "Roles and responsibilities for the workforce are established with respect to privacy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P3_stmt",
+        "name": "statement",
+        "prose": "Roles and responsibilities for the workforce are established with respect to privacy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P4",
+      "title": "Privacy roles and responsibilities are coordinated and aligned with third-party stakeholders (e.g., service providers, customers, partners).",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P4_stmt",
+        "name": "statement",
+        "prose": "Privacy roles and responsibilities are coordinated and aligned with third-party stakeholders (e.g., service providers, customers, partners)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P5",
+      "title": "Legal, regulatory, and contractual requirements regarding privacy are understood and managed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P5_stmt",
+        "name": "statement",
+        "prose": "Legal, regulatory, and contractual requirements regarding privacy are understood and managed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.PO-P6",
+      "title": "Governance and risk management policies, processes, and procedures address privacy risks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.PO-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.PO-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.PO-P6_stmt",
+        "name": "statement",
+        "prose": "Governance and risk management policies, processes, and procedures address privacy risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.RM-P1",
+      "title": "Risk management processes are established, managed, and agreed to by organizational stakeholders.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.RM-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.RM-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.RM-P1_stmt",
+        "name": "statement",
+        "prose": "Risk management processes are established, managed, and agreed to by organizational stakeholders."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.RM-P2",
+      "title": "Organizational risk tolerance is determined and clearly expressed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.RM-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.RM-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.RM-P2_stmt",
+        "name": "statement",
+        "prose": "Organizational risk tolerance is determined and clearly expressed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-GV.RM-P3",
+      "title": "The organization’s determination of risk tolerance is informed by its role(s) in the data processing ecosystem.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GV.RM-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GV.RM-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-GV.RM-P3_stmt",
+        "name": "statement",
+        "prose": "The organization’s determination of risk tolerance is informed by its role(s) in the data processing ecosystem."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.BE-P1",
+      "title": "The organization’s role(s) in the data processing ecosystem are identified and communicated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.BE-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.BE-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.BE-P1_stmt",
+        "name": "statement",
+        "prose": "The organization’s role(s) in the data processing ecosystem are identified and communicated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.BE-P2",
+      "title": "Priorities for organizational mission, objectives, and activities are established and communicated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.BE-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.BE-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.BE-P2_stmt",
+        "name": "statement",
+        "prose": "Priorities for organizational mission, objectives, and activities are established and communicated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.BE-P3",
+      "title": "Systems/products/services that support organizational priorities are identified and key requirements communicated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.BE-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.BE-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.BE-P3_stmt",
+        "name": "statement",
+        "prose": "Systems/products/services that support organizational priorities are identified and key requirements communicated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.DE-P1",
+      "title": "Data processing ecosystem risk management policies, processes, and procedures are identified, established, assessed, managed, and agreed to by organizational stakeholders.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.DE-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.DE-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.DE-P1_stmt",
+        "name": "statement",
+        "prose": "Data processing ecosystem risk management policies, processes, and procedures are identified, established, assessed, managed, and agreed to by organizational stakeholders."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.DE-P2",
+      "title": "Data processing ecosystem parties (e.g., service providers, customers, partners, product manufacturers, application developers) are identified, prioritized, and assessed using a privacy risk assessmen",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.DE-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.DE-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.DE-P2_stmt",
+        "name": "statement",
+        "prose": "Data processing ecosystem parties (e.g., service providers, customers, partners, product manufacturers, application developers) are identified, prioritized, and assessed using a privacy risk assessment process."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.DE-P3",
+      "title": "Contracts with data processing ecosystem parties are used to implement appropriate measures designed to meet the objectives of an organization’s privacy program.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.DE-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.DE-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.DE-P3_stmt",
+        "name": "statement",
+        "prose": "Contracts with data processing ecosystem parties are used to implement appropriate measures designed to meet the objectives of an organization’s privacy program."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.DE-P4",
+      "title": "Interoperability frameworks or similar multi-party approaches are used to manage data processing ecosystem privacy risks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.DE-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.DE-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.DE-P4_stmt",
+        "name": "statement",
+        "prose": "Interoperability frameworks or similar multi-party approaches are used to manage data processing ecosystem privacy risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.DE-P5",
+      "title": "Data processing ecosystem parties are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual, interoperability framework, or other o",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.DE-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.DE-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.DE-P5_stmt",
+        "name": "statement",
+        "prose": "Data processing ecosystem parties are routinely assessed using audits, test results, or other forms of evaluations to confirm they are meeting their contractual, interoperability framework, or other obligations."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P1",
+      "title": "Systems/products/services that process data are inventoried.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P1_stmt",
+        "name": "statement",
+        "prose": "Systems/products/services that process data are inventoried."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P2",
+      "title": "Owners or operators (e.g., the organization or third parties such as service providers, partners, customers, and developers) and their roles with respect to the systems/products/services and component",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P2_stmt",
+        "name": "statement",
+        "prose": "Owners or operators (e.g., the organization or third parties such as service providers, partners, customers, and developers) and their roles with respect to the systems/products/services and components (e.g., internal or external) that process data are inventoried."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P3",
+      "title": "Categories of individuals (e.g., customers, employees or prospective employees, consumers) whose data are being processed are inventoried.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P3_stmt",
+        "name": "statement",
+        "prose": "Categories of individuals (e.g., customers, employees or prospective employees, consumers) whose data are being processed are inventoried."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P4",
+      "title": "Data actions of the systems/products/services are inventoried.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P4_stmt",
+        "name": "statement",
+        "prose": "Data actions of the systems/products/services are inventoried."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P5",
+      "title": "The purposes for the data actions are inventoried.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P5_stmt",
+        "name": "statement",
+        "prose": "The purposes for the data actions are inventoried."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P6",
+      "title": "Data elements within the data actions are inventoried.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P6_stmt",
+        "name": "statement",
+        "prose": "Data elements within the data actions are inventoried."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P7",
+      "title": "The data processing environment is identified (e.g., geographic location, internal, cloud, third parties).",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P7_stmt",
+        "name": "statement",
+        "prose": "The data processing environment is identified (e.g., geographic location, internal, cloud, third parties)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.IM-P8",
+      "title": "Data processing is mapped, illustrating the data actions and associated data elements for systems/products/services, including components; roles of the component owners/operators; and interactions of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.IM-P8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.IM-P8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.IM-P8_stmt",
+        "name": "statement",
+        "prose": "Data processing is mapped, illustrating the data actions and associated data elements for systems/products/services, including components; roles of the component owners/operators; and interactions of individuals or third parties with the systems/products/services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.RA-P1",
+      "title": "Contextual factors related to the systems/products/services and the data actions are identified (e.g., individuals’ demographics and privacy interests or perceptions, data sensitivity and/or types, vi",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.RA-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.RA-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.RA-P1_stmt",
+        "name": "statement",
+        "prose": "Contextual factors related to the systems/products/services and the data actions are identified (e.g., individuals’ demographics and privacy interests or perceptions, data sensitivity and/or types, visibility of data processing to individuals and third parties)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.RA-P2",
+      "title": "Data analytic inputs and outputs are identified and evaluated for bias.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.RA-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.RA-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.RA-P2_stmt",
+        "name": "statement",
+        "prose": "Data analytic inputs and outputs are identified and evaluated for bias."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.RA-P3",
+      "title": "Potential problematic data actions and associated problems are identified.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.RA-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.RA-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.RA-P3_stmt",
+        "name": "statement",
+        "prose": "Potential problematic data actions and associated problems are identified."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.RA-P4",
+      "title": "Problematic data actions, likelihoods, and impacts are used to determine and prioritize risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.RA-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.RA-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.RA-P4_stmt",
+        "name": "statement",
+        "prose": "Problematic data actions, likelihoods, and impacts are used to determine and prioritize risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-ID.RA-P5",
+      "title": "Risk responses are identified, prioritized, and implemented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ID.RA-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ID.RA-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-ID.RA-P5_stmt",
+        "name": "statement",
+        "prose": "Risk responses are identified, prioritized, and implemented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P1",
+      "title": "Identities and credentials are issued, managed, verified, revoked, and audited for authorized individuals, processes, and devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P1_stmt",
+        "name": "statement",
+        "prose": "Identities and credentials are issued, managed, verified, revoked, and audited for authorized individuals, processes, and devices."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P2",
+      "title": "Physical access to data and devices is managed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P2_stmt",
+        "name": "statement",
+        "prose": "Physical access to data and devices is managed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P3",
+      "title": "Remote access is managed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P3_stmt",
+        "name": "statement",
+        "prose": "Remote access is managed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P4",
+      "title": "Access permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P4_stmt",
+        "name": "statement",
+        "prose": "Access permissions and authorizations are managed, incorporating the principles of least privilege and separation of duties."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P5",
+      "title": "Network integrity is protected (e.g., network segregation, network segmentation).",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P5_stmt",
+        "name": "statement",
+        "prose": "Network integrity is protected (e.g., network segregation, network segmentation)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.AC-P6",
+      "title": "Individuals and devices are proofed and bound to credentials, and authenticated commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational ri",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.AC-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.AC-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.AC-P6_stmt",
+        "name": "statement",
+        "prose": "Individuals and devices are proofed and bound to credentials, and authenticated commensurate with the risk of the transaction (e.g., individuals’ security and privacy risks and other organizational risks)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P1",
+      "title": "Data-at-rest are protected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P1_stmt",
+        "name": "statement",
+        "prose": "Data-at-rest are protected."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P2",
+      "title": "Data-in-transit are protected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P2_stmt",
+        "name": "statement",
+        "prose": "Data-in-transit are protected."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P3",
+      "title": "Systems/products/services and associated data are formally managed throughout removal, transfers, and disposition.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P3_stmt",
+        "name": "statement",
+        "prose": "Systems/products/services and associated data are formally managed throughout removal, transfers, and disposition."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P4",
+      "title": "Adequate capacity to ensure availability is maintained.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P4_stmt",
+        "name": "statement",
+        "prose": "Adequate capacity to ensure availability is maintained."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P5",
+      "title": "Protections against data leaks are implemented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P5_stmt",
+        "name": "statement",
+        "prose": "Protections against data leaks are implemented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P6",
+      "title": "Integrity checking mechanisms are used to verify software, firmware, and information integrity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P6_stmt",
+        "name": "statement",
+        "prose": "Integrity checking mechanisms are used to verify software, firmware, and information integrity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P7",
+      "title": "The development and testing environment(s) are separate from the production environment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P7_stmt",
+        "name": "statement",
+        "prose": "The development and testing environment(s) are separate from the production environment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.DS-P8",
+      "title": "Integrity checking mechanisms are used to verify hardware integrity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.DS-P8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.DS-P8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.DS-P8_stmt",
+        "name": "statement",
+        "prose": "Integrity checking mechanisms are used to verify hardware integrity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.MA-P1",
+      "title": "Maintenance and repair of organizational assets are performed and logged, with approved and controlled tools.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.MA-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.MA-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.MA-P1_stmt",
+        "name": "statement",
+        "prose": "Maintenance and repair of organizational assets are performed and logged, with approved and controlled tools."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.MA-P2",
+      "title": "Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.MA-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.MA-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.MA-P2_stmt",
+        "name": "statement",
+        "prose": "Remote maintenance of organizational assets is approved, logged, and performed in a manner that prevents unauthorized access."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P1",
+      "title": "A baseline configuration of information technology is created and maintained incorporating security principles (e.g., concept of least functionality).",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P1_stmt",
+        "name": "statement",
+        "prose": "A baseline configuration of information technology is created and maintained incorporating security principles (e.g., concept of least functionality)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P10",
+      "title": "A vulnerability management plan is developed and implemented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P10_stmt",
+        "name": "statement",
+        "prose": "A vulnerability management plan is developed and implemented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P2",
+      "title": "Configuration change control processes are established and in place.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P2_stmt",
+        "name": "statement",
+        "prose": "Configuration change control processes are established and in place."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P3",
+      "title": "Backups of information are conducted, maintained, and tested.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P3_stmt",
+        "name": "statement",
+        "prose": "Backups of information are conducted, maintained, and tested."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P4",
+      "title": "Policy and regulations regarding the physical operating environment for organizational assets are met.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P4_stmt",
+        "name": "statement",
+        "prose": "Policy and regulations regarding the physical operating environment for organizational assets are met."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P5",
+      "title": "Protection processes are improved.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P5_stmt",
+        "name": "statement",
+        "prose": "Protection processes are improved."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P6",
+      "title": "Effectiveness of protection technologies is shared.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P6_stmt",
+        "name": "statement",
+        "prose": "Effectiveness of protection technologies is shared."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P7",
+      "title": "Response plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are established, in place, and managed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P7_stmt",
+        "name": "statement",
+        "prose": "Response plans (Incident Response and Business Continuity) and recovery plans (Incident Recovery and Disaster Recovery) are established, in place, and managed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P8",
+      "title": "Response and recovery plans are tested.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P8_stmt",
+        "name": "statement",
+        "prose": "Response and recovery plans are tested."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PO-P9",
+      "title": "Privacy procedures are included in human resources practices (e.g., deprovisioning, personnel screening).",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PO-P9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PO-P9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PO-P9_stmt",
+        "name": "statement",
+        "prose": "Privacy procedures are included in human resources practices (e.g., deprovisioning, personnel screening)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PT-P1",
+      "title": "Removable media is protected and its use restricted according to policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PT-P1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PT-P1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PT-P1_stmt",
+        "name": "statement",
+        "prose": "Removable media is protected and its use restricted according to policy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PT-P2",
+      "title": "The principle of least functionality is incorporated by configuring systems to provide only essential capabilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PT-P2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PT-P2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PT-P2_stmt",
+        "name": "statement",
+        "prose": "The principle of least functionality is incorporated by configuring systems to provide only essential capabilities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PT-P3",
+      "title": "Communications and control networks are protected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PT-P3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PT-P3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PT-P3_stmt",
+        "name": "statement",
+        "prose": "Communications and control networks are protected."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-PR.PT-P4",
+      "title": "Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PR.PT-P4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PR.PT-P4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-PR.PT-P4_stmt",
+        "name": "statement",
+        "prose": "Mechanisms (e.g., failsafe, load balancing, hot swap) are implemented to achieve resilience requirements in normal and adverse situations."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-NIST-Privacy-Framework-1.0",
+      "title": "FAIL-CLOSED - subcategories 'input.nist_privacy_framework.subcategories' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST Privacy Framework 1.0"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST Privacy Framework 1.0"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-NIST-Privacy-Framework-1.0_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - subcategories 'input.nist_privacy_framework.subcategories' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-nist_privacy_framework.main-1",
+      "title": "NIST Privacy Framework %v (%v %v): not attested achieved — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist_privacy_framework.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist_privacy_framework.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-nist_privacy_framework.main-1_stmt",
+        "name": "statement",
+        "prose": "NIST Privacy Framework %v (%v %v): not attested achieved — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_privacy_framework-nist_privacy_framework.main-2",
+      "title": "NIST Privacy Framework Input Contract: unknown subcategory id %v — ids are CPRT element identifiers such as ID.IM-P1",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist_privacy_framework.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist_privacy_framework.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_privacy_framework.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#17a31041-3f1b-564b-9651-2f49155bd360",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_privacy_framework-nist_privacy_framework.main-2_stmt",
+        "name": "statement",
+        "prose": "NIST Privacy Framework Input Contract: unknown subcategory id %v — ids are CPRT element identifiers such as ID.IM-P1"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "17a31041-3f1b-564b-9651-2f49155bd360",
+     "title": "NIST Privacy Framework 1.0 — 100 Core Subcategories (CPRT ids), attested",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist_privacy_framework.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/privacy/nist_privacy_framework/nist_privacy_framework_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

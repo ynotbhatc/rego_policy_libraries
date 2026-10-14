@@ -1,0 +1,126 @@
+{
+ "catalog": {
+  "uuid": "4c9e4ffb-c3be-566e-8c20-14f6c114d565",
+  "metadata": {
+   "title": "Rego Policy Libraries — supply_chain_scrm_800_161 (NIST SP 800-161r1 (Cybersecurity Supply Chain Risk Management) mapped onto the)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "supply_chain_scrm_800_161"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "supply_chain_scrm_800_161-scrm",
+    "class": "rego-module",
+    "title": "NIST SP 800-161r1 (Cybersecurity Supply Chain Risk Management) mapped onto the",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "supply_chain.scrm_800_161"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/supply_chain/scrm_800_161/scrm.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "supply_chain_scrm_800_161-SP-800-161r1-Appendix-B",
+      "title": "unrecognized input.scrm_800_161.level %v, must be baseline, flow_down, level_1, level_2 or level_3 (evaluated at level_3)",
+      "props": [
+       {
+        "name": "label",
+        "value": "SP 800-161r1 Appendix B"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SP 800-161r1 Appendix B"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.scrm_800_161"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e801bebb-634a-58ac-a2c9-d922e1ef6777",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "supply_chain_scrm_800_161-SP-800-161r1-Appendix-B_stmt",
+        "name": "statement",
+        "prose": "unrecognized input.scrm_800_161.level %v, must be baseline, flow_down, level_1, level_2 or level_3 (evaluated at level_3)"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "e801bebb-634a-58ac-a2c9-d922e1ef6777",
+     "title": "NIST SP 800-161r1 (Cybersecurity Supply Chain Risk Management) mapped onto the",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "supply_chain.scrm_800_161"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/supply_chain/scrm_800_161/scrm.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
