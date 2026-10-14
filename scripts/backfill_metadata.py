@@ -146,6 +146,7 @@ TABLE: dict[str, tuple[str, list[str]]] = {
     "frameworks/federal/nist/sp_800_171a": ("nist", ["us-federal", "cui", "assessment"]),
     "frameworks/federal/nist/sp_800_171_r2": ("nist", ["us-federal", "cui"]),
     "frameworks/federal/nist/sp_800_172": ("nist", ["us-federal", "cui"]),
+    "frameworks/privacy/nist_privacy_framework": ("nist", ["privacy", "us-federal"]),
     "frameworks/federal/cjis": ("fbi", ["us-federal", "justice"]),
     "frameworks/federal/cmmc": ("dod", ["us-federal", "defense"]),
     "frameworks/federal/fedramp": ("fedramp", ["us-federal", "cloud"]),

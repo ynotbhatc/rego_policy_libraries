@@ -883,6 +883,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "nist_800_82-NIST-800-82-Appendix-F",
+      "title": "unrecognized input.nist_800_82.target_impact %v, must be low, moderate or high (evaluated at high)",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST 800-82 Appendix F"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST 800-82 Appendix F"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist_800_82.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3c2da3b6-8411-50d4-9299-3fa490d523e3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_800_82-NIST-800-82-Appendix-F_stmt",
+        "name": "statement",
+        "prose": "unrecognized input.nist_800_82.target_impact %v, must be low, moderate or high (evaluated at high)"
+       }
+      ],
+      "class": "ot"
      }
     ]
    }

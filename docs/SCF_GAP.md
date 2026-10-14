@@ -1,6 +1,6 @@
 # Secure Controls Framework (SCF) coverage gap and expansion plan
 
-**Version:** v1.2
+**Version:** v1.3
 **Date:** 2026-10-13
 **Authors:** Tim Coulter (ynotbha@aisle-five.com), Claude (Anthropic)
 **Measured against:** SCF 2026.3 workbook (released 2026-09-21), `SCF 2026.3` sheet; this library at v2.4.2 plus the Phase 1 batch of 2026-10-13
@@ -18,8 +18,8 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries v2.4.2 |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 15,227 control-level checks (`make count`) |
-| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 156 framework catalogs, 130+ framework directories |
+| Controls / checks | 1,591 controls in 34 domains | 15,377 control-level checks (`make count`) |
+| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 158 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 23 STIG platforms |
 | Licence | Creative Commons BY-ND, free | open |
@@ -34,15 +34,15 @@ comparison is the distinct document.
 
 | Status | Count | Meaning |
 |---|---|---|
-| covered | 56 | a module exists for that document, same or newer edition |
+| covered | 57 | a module exists for that document, same or newer edition |
 | partial | 16 | the document is covered inside another module, or we carry an older edition |
-| gap | 162 | nothing in the library |
+| gap | 161 | nothing in the library |
 
 By region:
 
 | Region | Documents | Covered | Partial | Gap |
 |---|---|---|---|---|
-| General and international standards | 67 | 21 | 10 | 36 |
+| General and international standards | 67 | 22 | 10 | 35 |
 | United States, federal | 43 | 17 | 3 | 23 |
 | United States, state | 27 | 2 | 0 | 25 |
 | EMEA | 50 | 11 | 3 | 36 |
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our 156 catalogs and SCF's "56 covered" are different lists.
+those count toward the 237, so our 158 catalogs and SCF's "57 covered" are different lists.
 
 ## How we close it
 
@@ -75,9 +75,9 @@ Cheapest breadth: the controls exist, the document label or edition is what is m
   Simplification, ISO/IEC 27002:2022 numbering on the ISO 27001 Annex A tables, UK DPA 2018 deltas on GDPR,
   the DoD Zero Trust Reference Architecture 2.0 and Execution Roadmap on the zero-trust module, NIST CSWP 39 on PQC.
 
-Outcome: 72 of 234 covered, no partials.
+Outcome: 73 of 234 covered, no partials.
 
-### Phase 2. International standards with the widest reuse (36 gaps)
+### Phase 2. International standards with the widest reuse (35 gaps)
 
 - ISO family: 22301, 27017, 27018, 29100, 31000, 31010.
 - IEC 62443-2-1, 4-1 and 4-2 to complete the series beside 3-3; IEC TR 60601-4-5 for medical devices.
@@ -151,7 +151,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### General and international standards
 
-67 documents: 21 covered, 10 partial, 36 gap.
+67 documents: 22 covered, 10 partial, 35 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -195,9 +195,9 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | NIST \| 800-53 \| R5.2 | covered | frameworks/federal/nist/sp_800_53 (Rev 5) |
 | NIST \| 800-53B R5 (4 profiles) | covered | converters/exports/oscal/dist/profiles: the four NIST baselines as OSCAL profiles, imported from NIST's own files |
 | NIST \| SP 800-66 R2 | partial | frameworks/privacy/hipaa covers the Security Rule, not 800-66 numbering |
-| NIST \| 800-82 R3 (4 profiles) | covered | frameworks/critical_infrastructure/nist_800_82 |
+| NIST \| 800-82 R3 (4 profiles) | covered | frameworks/critical_infrastructure/nist_800_82: Appendix F OT overlay table (424 controls, Low/Moderate/High) as a profile gate |
 | NIST \| 800-160 Vol2 R1 | gap |  |
-| NIST \| 800-161 \| R1 | covered | benchmarks/supply_chain/scrm_800_161 |
+| NIST \| 800-161 \| R1 | covered | benchmarks/supply_chain/scrm_800_161: Appendix B tailoring table (297 controls; baseline, flow-down, levels 1-3) as a profile gate |
 | NIST \| 800-161 R1 (5 profiles) | partial | scrm_800_161 without the baseline/flow-down/level profiles |
 | NIST \| 800-171 \| R2 | covered | frameworks/federal/nist/sp_800_171_r2 (110 requirements from NIST CPRT) |
 | NIST \| 800-171 \| R3 | covered | frameworks/federal/nist/sp_800_171 (97 requirements, 349 statements, NIST CPRT ids) |
@@ -207,9 +207,9 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | NIST \| 800-172A R3 | covered | frameworks/federal/nist/sp_800_172 (199 determination statements) |
 | NIST \| 800-207 | covered | frameworks/federal/zero_trust |
 | NIST \| 800-218 | covered | frameworks/federal/nist_ssdf + benchmarks/supply_chain/ssdf |
-| NIST \| CSF \| 2.0 | covered | frameworks/federal/nist/cybersecurity_framework_2.0 |
+| NIST \| CSF \| 2.0 | covered | frameworks/federal/nist/cybersecurity_framework_2.0 (all 106 subcategories from NIST CPRT; 29 fact-decided, 77 attested) |
 | NIST \| CSWP 39 | partial | frameworks/federal/pqc covers readiness, not CSWP 39 numbering |
-| NIST Privacy Framework \| 1.0 | gap |  |
+| NIST Privacy Framework \| 1.0 | covered | frameworks/privacy/nist_privacy_framework (100 subcategories from NIST CPRT) |
 | OECD \| Privacy Principles | gap |  |
 | OWASP \| Top 10 \| 2025 | gap |  |
 | PCI DSS \| 4.0.1 (10 profiles) | partial | frameworks/financial/pci_dss is v4.0; 4.0.1 re-stamp needed |

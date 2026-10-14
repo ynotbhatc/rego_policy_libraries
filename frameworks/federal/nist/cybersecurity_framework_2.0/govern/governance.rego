@@ -6,283 +6,212 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 35
-#     cited: 15
-#     density: sized
-#     basis: size
+#     checks: 1
+#     cited: 1
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package nist.csf.govern
 
 import rego.v1
 
 # NIST Cybersecurity Framework 2.0 - GOVERN Function
 # Organizational cybersecurity risk management strategy, expectations, and policy
+#
+# Fact checks. Each violation below is labelled with the CSF 2.0 subcategory it decides in nist.csf.main
+# (CPRT ids, CSF_2_0_0). The checks were written against CSF 1.1; a check keeps deciding a subcategory only when
+# its id is current in CSF 2.0 and it tests that outcome, or CPRT records its 1.1 id as moved to exactly one
+# 2.0 subcategory and the check is a fair reading of that text. The other checks were removed; their lineage
+# is the `legacy` data table at the end.
 
-# GV.OC-01: Establish organizational cybersecurity strategy
-organizational_strategy_established if {
-    input.governance.cybersecurity_strategy.documented == true
-    input.governance.cybersecurity_strategy.approved_by_leadership == true
-    input.governance.cybersecurity_strategy.regularly_reviewed == true
-}
+# CSF 2.0 GV.RM-06 (fact check): A standardized method for calculating and monitoring risk
+default standardized_risk_calculation := false
 
-# GV.OC-02: Establish cybersecurity governance and oversight
-cybersecurity_governance_established if {
-    input.governance.oversight_structure.exists == true
-    input.governance.oversight_structure.defined_roles == true
-    input.governance.oversight_structure.clear_accountability == true
-}
-
-# GV.OC-03: Establish organizational cybersecurity policy
-cybersecurity_policy_established if {
-    input.governance.policies.cybersecurity_policy.exists == true
-    input.governance.policies.cybersecurity_policy.current == true
-    input.governance.policies.cybersecurity_policy.communicated == true
-}
-
-# GV.OC-04: Establish cybersecurity roles and responsibilities
-roles_responsibilities_established if {
-    input.governance.roles_responsibilities.documented == true
-    input.governance.roles_responsibilities.assigned == true
-    input.governance.roles_responsibilities.understood == true
-}
-
-# GV.OC-05: Establish cybersecurity supply chain risk management
-supply_chain_risk_management if {
-    input.governance.supply_chain.risk_management_program == true
-    input.governance.supply_chain.vendor_assessments == true
-    input.governance.supply_chain.contractual_requirements == true
-}
-
-# GV.RM-01: Establish and maintain a comprehensive risk management strategy
-risk_management_strategy if {
-    input.governance.risk_management.strategy_documented == true
-    input.governance.risk_management.risk_tolerance_defined == true
-    input.governance.risk_management.risk_appetite_communicated == true
-}
-
-# GV.RM-02: Analyze, prioritize, and respond to risk
-risk_analysis_prioritization if {
-    input.governance.risk_management.regular_risk_assessments == true
-    input.governance.risk_management.risk_prioritization_process == true
-    input.governance.risk_management.risk_response_plans == true
-}
-
-# GV.RM-03: Risk mitigation actions are prioritized
-risk_mitigation_prioritized if {
-    input.governance.risk_management.mitigation_prioritization == true
-    input.governance.risk_management.resource_allocation_aligned == true
-    input.governance.risk_management.timeline_established == true
-}
-
-# GV.RM-04: Strategic direction informs risk management decisions
-strategic_direction_informs_risk if {
-    input.governance.strategic_alignment.risk_decisions_aligned == true
-    input.governance.strategic_alignment.business_objectives_considered == true
-    input.governance.strategic_alignment.stakeholder_input_included == true
-}
-
-# GV.RM-05: Risk management activities are coordinated across the organization
-risk_coordination if {
-    input.governance.coordination.cross_functional_coordination == true
-    input.governance.coordination.information_sharing == true
-    input.governance.coordination.collaborative_decision_making == true
-}
-
-# GV.RM-06: A standardized method for calculating and monitoring risk
 standardized_risk_calculation if {
-    input.governance.risk_calculation.standardized_methodology == true
-    input.governance.risk_calculation.consistent_metrics == true
-    input.governance.risk_calculation.regular_monitoring == true
+	input.governance.risk_calculation.standardized_methodology == true
+	input.governance.risk_calculation.consistent_metrics == true
+	input.governance.risk_calculation.regular_monitoring == true
 }
 
-# GV.RM-07: Strategic decisions are informed by risk management
-strategic_decisions_risk_informed if {
-    input.governance.strategic_decisions.risk_considerations_included == true
-    input.governance.strategic_decisions.risk_appetite_considered == true
-    input.governance.strategic_decisions.documented_rationale == true
-}
+# Aggregate over the predicates above (the CSF 2.0 fact checks of this function only)
+default nist_csf_govern_compliant := false
 
-# GV.SC-01: Establish and maintain cybersecurity supply chain risk management policy
-supply_chain_policy if {
-    input.governance.supply_chain.policy_established == true
-    input.governance.supply_chain.policy_comprehensive == true
-    input.governance.supply_chain.policy_regularly_updated == true
-}
-
-# GV.SC-02: Establish and maintain supplier cybersecurity requirements
-supplier_requirements if {
-    input.governance.supply_chain.supplier_requirements_defined == true
-    input.governance.supply_chain.security_criteria_established == true
-    input.governance.supply_chain.performance_standards_set == true
-}
-
-# GV.SC-03: Cybersecurity requirements are integrated into supplier relationship management
-supplier_relationship_integration if {
-    input.governance.supply_chain.requirements_in_contracts == true
-    input.governance.supply_chain.ongoing_assessment_processes == true
-    input.governance.supply_chain.relationship_monitoring == true
-}
-
-# GV.SC-04: Suppliers are assessed prior to establishing relationships
-supplier_pre_assessment if {
-    input.governance.supply_chain.pre_contract_assessments == true
-    input.governance.supply_chain.due_diligence_processes == true
-    input.governance.supply_chain.risk_evaluation_completed == true
-}
-
-# GV.SC-05: Suppliers are assessed during relationships
-supplier_ongoing_assessment if {
-    input.governance.supply_chain.continuous_monitoring == true
-    input.governance.supply_chain.periodic_reviews == true
-    input.governance.supply_chain.performance_tracking == true
-}
-
-# GV.SC-06: Cybersecurity supply chain risk information is shared
-supply_chain_information_sharing if {
-    input.governance.supply_chain.threat_intelligence_sharing == true
-    input.governance.supply_chain.incident_communication == true
-    input.governance.supply_chain.best_practices_sharing == true
-}
-
-# GV.PO-01: Establish and maintain cybersecurity policy
-cybersecurity_policy_maintenance if {
-    input.governance.policy_management.policies_current == true
-    input.governance.policy_management.regular_reviews == true
-    input.governance.policy_management.stakeholder_involvement == true
-}
-
-# GV.PO-02: Establish and maintain procedures to implement cybersecurity policy
-cybersecurity_procedures if {
-    input.governance.procedures.implementation_procedures == true
-    input.governance.procedures.detailed_guidance == true
-    input.governance.procedures.regularly_updated == true
-}
-
-# Aggregate NIST CSF Govern function compliance
 nist_csf_govern_compliant if {
-    organizational_strategy_established
-    cybersecurity_governance_established
-    cybersecurity_policy_established
-    roles_responsibilities_established
-    supply_chain_risk_management
-    risk_management_strategy
-    risk_analysis_prioritization
-    risk_mitigation_prioritized
-    strategic_direction_informs_risk
-    risk_coordination
-    standardized_risk_calculation
-    strategic_decisions_risk_informed
-    supply_chain_policy
-    supplier_requirements
-    supplier_relationship_integration
-    supplier_pre_assessment
-    supplier_ongoing_assessment
-    supply_chain_information_sharing
-    cybersecurity_policy_maintenance
-    cybersecurity_procedures
+	standardized_risk_calculation
 }
 
-# Detailed NIST CSF Govern compliance report
+# Detailed report of the predicates above (kept for consumers; current checks only)
 nist_csf_govern_compliance := {
-    "organizational_strategy_established": organizational_strategy_established,
-    "cybersecurity_governance_established": cybersecurity_governance_established,
-    "cybersecurity_policy_established": cybersecurity_policy_established,
-    "roles_responsibilities_established": roles_responsibilities_established,
-    "supply_chain_risk_management": supply_chain_risk_management,
-    "risk_management_strategy": risk_management_strategy,
-    "risk_analysis_prioritization": risk_analysis_prioritization,
-    "risk_mitigation_prioritized": risk_mitigation_prioritized,
-    "strategic_direction_informs_risk": strategic_direction_informs_risk,
-    "risk_coordination": risk_coordination,
-    "standardized_risk_calculation": standardized_risk_calculation,
-    "strategic_decisions_risk_informed": strategic_decisions_risk_informed,
-    "supply_chain_policy": supply_chain_policy,
-    "supplier_requirements": supplier_requirements,
-    "supplier_relationship_integration": supplier_relationship_integration,
-    "supplier_pre_assessment": supplier_pre_assessment,
-    "supplier_ongoing_assessment": supplier_ongoing_assessment,
-    "supply_chain_information_sharing": supply_chain_information_sharing,
-    "cybersecurity_policy_maintenance": cybersecurity_policy_maintenance,
-    "cybersecurity_procedures": cybersecurity_procedures,
-    "overall_compliant": nist_csf_govern_compliant
+	"standardized_risk_calculation": standardized_risk_calculation,
+	"overall_compliant": nist_csf_govern_compliant,
 }
 
-# ── Violation set (for nist_csf.main orchestrator) ────────────────────────
+# ── Violation set (CSF 2.0 subcategories decided by facts; read by nist.csf.main) ──
 
 violation contains msg if {
-    not organizational_strategy_established
-    msg := "CSF GV.OC-01: Organizational cybersecurity strategy not documented/approved/reviewed"
+	not standardized_risk_calculation
+	msg := "CSF GV.RM-06: Standardized risk calculation methodology missing"
 }
 
-violation contains msg if {
-    not cybersecurity_governance_established
-    msg := "CSF GV.OC-02: Cybersecurity governance structure lacks defined roles or accountability"
-}
-
-violation contains msg if {
-    not cybersecurity_policy_established
-    msg := "CSF GV.OC-03: Cybersecurity policy not established/current/communicated"
-}
-
-violation contains msg if {
-    not roles_responsibilities_established
-    msg := "CSF GV.OC-04: Cybersecurity roles/responsibilities not documented or assigned"
-}
-
-violation contains msg if {
-    not supply_chain_risk_management
-    msg := "CSF GV.OC-05: Supply chain risk management program not in place"
-}
-
-violation contains msg if {
-    not risk_management_strategy
-    msg := "CSF GV.RM-01: Risk management strategy not documented with tolerance/appetite"
-}
-
-violation contains msg if {
-    not risk_analysis_prioritization
-    msg := "CSF GV.RM-02: Risk analysis, prioritization, and response plans missing"
-}
-
-violation contains msg if {
-    not risk_mitigation_prioritized
-    msg := "CSF GV.RM-03: Risk mitigation actions not prioritized with timelines"
-}
-
-violation contains msg if {
-    not strategic_direction_informs_risk
-    msg := "CSF GV.RM-04: Strategic direction not linked to risk management decisions"
-}
-
-violation contains msg if {
-    not standardized_risk_calculation
-    msg := "CSF GV.RM-06: Standardized risk calculation methodology missing"
-}
-
-violation contains msg if {
-    not supply_chain_policy
-    msg := "CSF GV.SC-01: Supply chain cybersecurity policy not maintained"
-}
-
-violation contains msg if {
-    not supplier_pre_assessment
-    msg := "CSF GV.SC-04: Suppliers not assessed prior to establishing relationships"
-}
-
-violation contains msg if {
-    not supplier_ongoing_assessment
-    msg := "CSF GV.SC-05: Suppliers not continuously assessed during relationships"
-}
-
-violation contains msg if {
-    not cybersecurity_policy_maintenance
-    msg := "CSF GV.PO-01: Cybersecurity policy maintenance process missing"
-}
-
-violation contains msg if {
-    not cybersecurity_procedures
-    msg := "CSF GV.PO-02: Procedures to implement cybersecurity policy not maintained"
+# Lineage of the CSF 1.1-era fact checks this module no longer evaluates (removed; data only, no rule
+# behind it, not a control). Keyed by the label the check carried. status "retired": the CSF 1.1 id is
+# withdrawn in CSF 2.0 (csf_2_0_ids = CPRT's destinations); "unmapped": the label reused a current CSF 2.0
+# id but the check tested something else or only part of it. facts_read: the input the check read. Each 2.0
+# subcategory is decided in nist.csf.main on its own basis (facts or attestation).
+legacy := {
+	"GV.OC-01": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.OC-01"],
+		"facts_read": ["input.governance.cybersecurity_strategy.documented", "input.governance.cybersecurity_strategy.approved_by_leadership", "input.governance.cybersecurity_strategy.regularly_reviewed"],
+		"legacy_message": "Organizational cybersecurity strategy not documented/approved/reviewed",
+		"reason": "CSF 2.0 GV.OC-01 reads \"The organizational mission is understood and informs cybersecurity risk management\"; this check tests a documented, leadership-approved, reviewed cybersecurity strategy, not the organizational mission",
+	},
+	"GV.OC-02": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.OC-02"],
+		"facts_read": ["input.governance.oversight_structure.exists", "input.governance.oversight_structure.defined_roles", "input.governance.oversight_structure.clear_accountability"],
+		"legacy_message": "Cybersecurity governance structure lacks defined roles or accountability",
+		"reason": "CSF 2.0 GV.OC-02 reads \"Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered\"; this check tests a governance oversight structure with defined roles and accountability, not stakeholder needs and expectations",
+	},
+	"GV.OC-03": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.OC-03"],
+		"facts_read": ["input.governance.policies.cybersecurity_policy.exists", "input.governance.policies.cybersecurity_policy.current", "input.governance.policies.cybersecurity_policy.communicated"],
+		"legacy_message": "Cybersecurity policy not established/current/communicated",
+		"reason": "CSF 2.0 GV.OC-03 reads \"Legal, regulatory, and contractual requirements regarding cybersecurity - including privacy and civil liberties obligations - are understood and managed\"; this check tests that a cybersecurity policy exists, is current and communicated, not legal, regulatory and contractual requirements",
+	},
+	"GV.OC-04": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.OC-04"],
+		"facts_read": ["input.governance.roles_responsibilities.documented", "input.governance.roles_responsibilities.assigned", "input.governance.roles_responsibilities.understood"],
+		"legacy_message": "Cybersecurity roles/responsibilities not documented or assigned",
+		"reason": "CSF 2.0 GV.OC-04 reads \"Critical objectives, capabilities, and services that external stakeholders depend on or expect from the organization are understood and communicated\"; this check tests documented and assigned cybersecurity roles, not critical objectives, capabilities and services external stakeholders depend on",
+	},
+	"GV.OC-05": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.OC-05"],
+		"facts_read": ["input.governance.supply_chain.risk_management_program", "input.governance.supply_chain.vendor_assessments", "input.governance.supply_chain.contractual_requirements"],
+		"legacy_message": "Supply chain risk management program not in place",
+		"reason": "CSF 2.0 GV.OC-05 reads \"Outcomes, capabilities, and services that the organization depends on are understood and communicated\"; this check tests a supply chain risk management program, not the outcomes, capabilities and services the organization depends on",
+	},
+	"GV.RM-01": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.RM-01"],
+		"facts_read": ["input.governance.risk_management.strategy_documented", "input.governance.risk_management.risk_tolerance_defined", "input.governance.risk_management.risk_appetite_communicated"],
+		"legacy_message": "Risk management strategy not documented with tolerance/appetite",
+		"reason": "CSF 2.0 GV.RM-01 reads \"Risk management objectives are established and agreed to by organizational stakeholders\"; this check tests a documented risk strategy with tolerance and appetite, not risk management objectives agreed by stakeholders",
+	},
+	"GV.RM-02": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.RM-02"],
+		"facts_read": ["input.governance.risk_management.regular_risk_assessments", "input.governance.risk_management.risk_prioritization_process", "input.governance.risk_management.risk_response_plans"],
+		"legacy_message": "Risk analysis, prioritization, and response plans missing",
+		"reason": "CSF 2.0 GV.RM-02 reads \"Risk appetite and risk tolerance statements are established, communicated, and maintained\"; this check tests regular risk assessments, prioritization and response plans, not risk appetite and tolerance statements",
+	},
+	"GV.RM-03": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.RM-03"],
+		"facts_read": ["input.governance.risk_management.mitigation_prioritization", "input.governance.risk_management.resource_allocation_aligned", "input.governance.risk_management.timeline_established"],
+		"legacy_message": "Risk mitigation actions not prioritized with timelines",
+		"reason": "CSF 2.0 GV.RM-03 reads \"Cybersecurity risk management activities and outcomes are included in enterprise risk management processes\"; this check tests prioritized mitigation with resources and timelines, not inclusion of cybersecurity risk in enterprise risk management",
+	},
+	"GV.RM-04": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.RM-04"],
+		"facts_read": ["input.governance.strategic_alignment.risk_decisions_aligned", "input.governance.strategic_alignment.business_objectives_considered", "input.governance.strategic_alignment.stakeholder_input_included"],
+		"legacy_message": "Strategic direction not linked to risk management decisions",
+		"reason": "CSF 2.0 GV.RM-04 reads \"Strategic direction that describes appropriate risk response options is established and communicated\"; this check tests that risk decisions align with business objectives, not established and communicated strategic direction on risk response options",
+	},
+	"GV.RM-05": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.RM-05"],
+		"facts_read": ["input.governance.coordination.cross_functional_coordination", "input.governance.coordination.information_sharing", "input.governance.coordination.collaborative_decision_making"],
+		"legacy_message": "Risk management activities are coordinated across the organization",
+		"reason": "CSF 2.0 GV.RM-05 reads \"Lines of communication across the organization are established for cybersecurity risks, including risks from suppliers and other third parties\"; this check tests cross-functional coordination and information sharing, not established lines of communication including supplier and third-party risks (never emitted a violation) The predicate never emitted a violation.",
+	},
+	"GV.RM-07": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.RM-07"],
+		"facts_read": ["input.governance.strategic_decisions.risk_considerations_included", "input.governance.strategic_decisions.risk_appetite_considered", "input.governance.strategic_decisions.documented_rationale"],
+		"legacy_message": "Strategic decisions are informed by risk management",
+		"reason": "CSF 2.0 GV.RM-07 reads \"Strategic opportunities (i.e., positive risks) are characterized and are included in organizational cybersecurity risk discussions\"; this check tests that strategic decisions consider risk, not characterization of strategic opportunities (positive risks) (never emitted a violation) The predicate never emitted a violation.",
+	},
+	"GV.PO-01": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.PO-01"],
+		"facts_read": ["input.governance.policy_management.policies_current", "input.governance.policy_management.regular_reviews", "input.governance.policy_management.stakeholder_involvement"],
+		"legacy_message": "Cybersecurity policy maintenance process missing",
+		"reason": "CSF 2.0 GV.PO-01 reads \"Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced\"; this check tests that policies are current, reviewed and involve stakeholders (closer to the GV.PO-02 text), not policy established from context and strategy and enforced",
+	},
+	"GV.PO-02": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.PO-02"],
+		"facts_read": ["input.governance.procedures.implementation_procedures", "input.governance.procedures.detailed_guidance", "input.governance.procedures.regularly_updated"],
+		"legacy_message": "Procedures to implement cybersecurity policy not maintained",
+		"reason": "CSF 2.0 GV.PO-02 reads \"Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission\"; this check tests implementation procedures, not review and update of the policy",
+	},
+	"GV.SC-01": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.SC-01"],
+		"facts_read": ["input.governance.supply_chain.policy_established", "input.governance.supply_chain.policy_comprehensive", "input.governance.supply_chain.policy_regularly_updated"],
+		"legacy_message": "Supply chain cybersecurity policy not maintained",
+		"reason": "CSF 2.0 GV.SC-01 reads \"A cybersecurity supply chain risk management program, strategy, objectives, policies, and processes are established and agreed to by organizational stakeholders\"; this check tests only the supply chain policy, not the C-SCRM program, strategy, objectives and processes or stakeholder agreement",
+	},
+	"GV.SC-02": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.SC-02"],
+		"facts_read": ["input.governance.supply_chain.supplier_requirements_defined", "input.governance.supply_chain.security_criteria_established", "input.governance.supply_chain.performance_standards_set"],
+		"legacy_message": "Establish and maintain supplier cybersecurity requirements",
+		"reason": "CSF 2.0 GV.SC-02 reads \"Cybersecurity roles and responsibilities for suppliers, customers, and partners are established, communicated, and coordinated internally and externally\"; this check tests supplier requirements and performance standards, not roles and responsibilities for suppliers, customers and partners (never emitted a violation) The predicate never emitted a violation.",
+	},
+	"GV.SC-03": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.SC-03"],
+		"facts_read": ["input.governance.supply_chain.requirements_in_contracts", "input.governance.supply_chain.ongoing_assessment_processes", "input.governance.supply_chain.relationship_monitoring"],
+		"legacy_message": "Cybersecurity requirements are integrated into supplier relationship management",
+		"reason": "CSF 2.0 GV.SC-03 reads \"Cybersecurity supply chain risk management is integrated into cybersecurity and enterprise risk management, risk assessment, and improvement processes\"; this check tests requirements in supplier contracts and relationship monitoring, not integration of C-SCRM into cybersecurity and enterprise risk management (never emitted a violation) The predicate never emitted a violation.",
+	},
+	"GV.SC-04": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.SC-04"],
+		"facts_read": ["input.governance.supply_chain.pre_contract_assessments", "input.governance.supply_chain.due_diligence_processes", "input.governance.supply_chain.risk_evaluation_completed"],
+		"legacy_message": "Suppliers not assessed prior to establishing relationships",
+		"reason": "CSF 2.0 GV.SC-04 reads \"Suppliers are known and prioritized by criticality\"; this check tests supplier assessment before a relationship, not that suppliers are known and prioritized by criticality",
+	},
+	"GV.SC-05": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.SC-05"],
+		"facts_read": ["input.governance.supply_chain.continuous_monitoring", "input.governance.supply_chain.periodic_reviews", "input.governance.supply_chain.performance_tracking"],
+		"legacy_message": "Suppliers not continuously assessed during relationships",
+		"reason": "CSF 2.0 GV.SC-05 reads \"Requirements to address cybersecurity risks in supply chains are established, prioritized, and integrated into contracts and other types of agreements with suppliers and other relevant third parties\"; this check tests ongoing supplier assessment, not requirements integrated into contracts and agreements",
+	},
+	"GV.SC-06": {
+		"csf_1_1_id": null,
+		"status": "unmapped",
+		"csf_2_0_ids": ["GV.SC-06"],
+		"facts_read": ["input.governance.supply_chain.threat_intelligence_sharing", "input.governance.supply_chain.incident_communication", "input.governance.supply_chain.best_practices_sharing"],
+		"legacy_message": "Cybersecurity supply chain risk information is shared",
+		"reason": "CSF 2.0 GV.SC-06 reads \"Planning and due diligence are performed to reduce risks before entering into formal supplier or other third-party relationships\"; this check tests supply chain information sharing, not planning and due diligence before supplier relationships (never emitted a violation) The predicate never emitted a violation.",
+	},
 }

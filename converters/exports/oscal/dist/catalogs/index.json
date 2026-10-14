@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 156,
- "controls": 12441,
+ "frameworks": 158,
+ "controls": 12590,
  "catalogs": [
   {
    "framework": "ai",
@@ -742,7 +742,7 @@
   {
    "framework": "nist_800_82",
    "file": "catalogs/nist_800_82.json",
-   "controls": 23,
+   "controls": 24,
    "modules": 1,
    "uuid": "5861e9ff-2ceb-5703-9db1-a67b8047db30"
   },
@@ -756,9 +756,16 @@
   {
    "framework": "nist_cybersecurity_framework_2_0",
    "file": "catalogs/nist_cybersecurity_framework_2_0.json",
-   "controls": 131,
-   "modules": 6,
+   "controls": 149,
+   "modules": 7,
    "uuid": "ec0f48d8-5e0b-5760-ad10-43edcb839e00"
+  },
+  {
+   "framework": "nist_privacy_framework",
+   "file": "catalogs/nist_privacy_framework.json",
+   "controls": 129,
+   "modules": 1,
+   "uuid": "229759d1-fd18-5f84-8f5c-b8531049b6e2"
   },
   {
    "framework": "nist_risk_management_framework",
@@ -1053,6 +1060,13 @@
    "controls": 1,
    "modules": 1,
    "uuid": "52137d3b-1cb0-5811-b532-cd917e0f1d0e"
+  },
+  {
+   "framework": "supply_chain_scrm_800_161",
+   "file": "catalogs/supply_chain_scrm_800_161.json",
+   "controls": 1,
+   "modules": 1,
+   "uuid": "4c9e4ffb-c3be-566e-8c20-14f6c114d565"
   },
   {
    "framework": "supply_chain_substrate",
