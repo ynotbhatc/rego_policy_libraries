@@ -1,6 +1,6 @@
 # Secure Controls Framework (SCF) coverage gap and expansion plan
 
-**Version:** v1.3
+**Version:** v1.4
 **Date:** 2026-10-13
 **Authors:** Tim Coulter (ynotbha@aisle-five.com), Claude (Anthropic)
 **Measured against:** SCF 2026.3 workbook (released 2026-09-21), `SCF 2026.3` sheet; this library at v2.4.2 plus the Phase 1 batch of 2026-10-13
@@ -18,8 +18,8 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries v2.4.2 |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 15,377 control-level checks (`make count`) |
-| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 158 framework catalogs, 130+ framework directories |
+| Controls / checks | 1,591 controls in 34 domains | 16,046 control-level checks (`make count`) |
+| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 159 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 23 STIG platforms |
 | Licence | Creative Commons BY-ND, free | open |
@@ -34,18 +34,18 @@ comparison is the distinct document.
 
 | Status | Count | Meaning |
 |---|---|---|
-| covered | 57 | a module exists for that document, same or newer edition |
-| partial | 16 | the document is covered inside another module, or we carry an older edition |
+| covered | 61 | a module exists for that document, same or newer edition |
+| partial | 12 | the document is covered inside another module, or we carry an older edition |
 | gap | 161 | nothing in the library |
 
 By region:
 
 | Region | Documents | Covered | Partial | Gap |
 |---|---|---|---|---|
-| General and international standards | 67 | 22 | 10 | 35 |
-| United States, federal | 43 | 17 | 3 | 23 |
+| General and international standards | 67 | 24 | 8 | 35 |
+| United States, federal | 43 | 18 | 2 | 23 |
 | United States, state | 27 | 2 | 0 | 25 |
-| EMEA | 50 | 11 | 3 | 36 |
+| EMEA | 50 | 12 | 2 | 36 |
 | APAC | 36 | 5 | 0 | 31 |
 | Americas | 11 | 0 | 0 | 11 |
 
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our 158 catalogs and SCF's "57 covered" are different lists.
+those count toward the 237, so our 159 catalogs and SCF's "61 covered" are different lists.
 
 ## How we close it
 
@@ -63,17 +63,19 @@ The order below weights customer demand (federal, financial, Oracle and database
 reuse (one engine that serves many documents) and effort. Each phase is a release train of its own; counts move
 the README on every merge because `make count --check-readme` enforces it.
 
-### Phase 1. Re-stamp and profile the 16 partials
+### Phase 1. Re-stamp and profile the 12 partials
 
 Cheapest breadth: the controls exist, the document label or edition is what is missing.
 
 - Edition bumps: CSA CCM 4.0 to 4.1.0, ISO/IEC 27701:2019 to 2025, PCI DSS 4.0 to 4.0.1, SWIFT CSP 2024 to 2025,
-  BSI C5:2020 to C5:2026, DORA to carry the 2024 RTS as a named module.
-- Profile gates on existing modules: nine PCI DSS SAQ profiles,
-  800-82 R3 OT overlays, 800-161 R1 baseline/flow-down/levels, the SP 800-171A Rev 2 assessment objectives.
-- Split-outs: NIST SP 800-66 R2 numbering on the HIPAA module, HIPAA Administrative
-  Simplification, ISO/IEC 27002:2022 numbering on the ISO 27001 Annex A tables, UK DPA 2018 deltas on GDPR,
-  the DoD Zero Trust Reference Architecture 2.0 and Execution Roadmap on the zero-trust module, NIST CSWP 39 on PQC.
+  DORA to carry the 2024 RTS as a named module.
+- Profile gates on existing modules: nine PCI DSS SAQ profiles, NIST SP 800-53 Rev 4 beside Rev 5.
+- Split-outs: ISO/IEC 27002:2022 numbering on the ISO 27001 Annex A tables, UK DPA 2018 deltas on GDPR,
+  the DoD Zero Trust Reference Architecture 2.0 and Execution Roadmap on the zero-trust module (source PDFs
+  refuse automated download; waiting on a copy), NIST CSWP 39 on PQC.
+- Done 2026-10-13: 800-53B and FedRAMP baselines as OSCAL profiles; 800-171 Rev 2, 800-171A (both revisions),
+  800-172/172A, DFARS 7012, EO 14028, SSDAF, CSF 2.0, 800-82 overlays, 800-161 levels, C5:2026, HIPAA
+  Administrative Simplification with 800-66 Rev 2 numbering.
 
 Outcome: 73 of 234 covered, no partials.
 
@@ -151,7 +153,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### General and international standards
 
-67 documents: 22 covered, 10 partial, 35 gap.
+67 documents: 24 covered, 8 partial, 35 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -194,14 +196,14 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | NIST \| 800-53 \| R4 | partial | Rev 5 module only |
 | NIST \| 800-53 \| R5.2 | covered | frameworks/federal/nist/sp_800_53 (Rev 5) |
 | NIST \| 800-53B R5 (4 profiles) | covered | converters/exports/oscal/dist/profiles: the four NIST baselines as OSCAL profiles, imported from NIST's own files |
-| NIST \| SP 800-66 R2 | partial | frameworks/privacy/hipaa covers the Security Rule, not 800-66 numbering |
+| NIST \| SP 800-66 R2 | covered | frameworks/privacy/hipaa: 800-66 Rev 2 section numbers on every Security Rule row |
 | NIST \| 800-82 R3 (4 profiles) | covered | frameworks/critical_infrastructure/nist_800_82: Appendix F OT overlay table (424 controls, Low/Moderate/High) as a profile gate |
 | NIST \| 800-160 Vol2 R1 | gap |  |
 | NIST \| 800-161 \| R1 | covered | benchmarks/supply_chain/scrm_800_161: Appendix B tailoring table (297 controls; baseline, flow-down, levels 1-3) as a profile gate |
 | NIST \| 800-161 R1 (5 profiles) | partial | scrm_800_161 without the baseline/flow-down/level profiles |
 | NIST \| 800-171 \| R2 | covered | frameworks/federal/nist/sp_800_171_r2 (110 requirements from NIST CPRT) |
 | NIST \| 800-171 \| R3 | covered | frameworks/federal/nist/sp_800_171 (97 requirements, 349 statements, NIST CPRT ids) |
-| NIST \| 800-171A | partial | Rev 2 requirements covered (sp_800_171_r2); the Rev 2 assessment objectives are not modelled |
+| NIST \| 800-171A | covered | frameworks/federal/nist/sp_800_171a_r2 (320 assessment objectives under the 110 Rev 2 requirements) |
 | NIST \| 800-171A \| R3 | covered | frameworks/federal/nist/sp_800_171a (422 determination statements) |
 | NIST \| 800-172 R3 | covered | frameworks/federal/nist/sp_800_172 (137 statements from NIST CPRT) |
 | NIST \| 800-172A R3 | covered | frameworks/federal/nist/sp_800_172 (199 determination statements) |
@@ -225,7 +227,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### United States, federal
 
-43 documents: 17 covered, 3 partial, 23 gap.
+43 documents: 18 covered, 2 partial, 23 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -259,8 +261,8 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | FERPA \| 2010 | covered | frameworks/privacy/ferpa |
 | FTC Act \| 1938 | gap |  |
 | GLBA CFR 314 \| 2023 | covered | frameworks/financial/glba |
-| HIPAA Security Rule \| NIST SP 800-66 R2 | covered | frameworks/privacy/hipaa |
-| HIPAA Administrative Simplification 2013 | partial | hipaa_privacy_rule + hitech cover part |
+| HIPAA Security Rule \| NIST SP 800-66 R2 | covered | frameworks/privacy/hipaa Security Rule rows carry the 800-66 Rev 2 section and key-activity numbers |
+| HIPAA Administrative Simplification 2013 | covered | frameworks/privacy/hipaa: Parts 160, 162 and 164 Subparts C/D/E keyed to CFR citations (246 rows) |
 | SOX \| 2002 | covered | frameworks/financial/sox |
 | NERC CIP \| 2024 | covered | frameworks/critical_infrastructure/nerc_cip |
 | NISPOM \| 2020 | gap |  |
@@ -309,7 +311,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### EMEA
 
-50 documents: 11 covered, 3 partial, 36 gap.
+50 documents: 12 covered, 2 partial, 36 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -318,7 +320,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | Switzerland \| FADP \| 2025 | gap |  |
 | CHE \| FINMA \| Circular 2023/1 | gap |  |
 | Germany \| BAIT \| 2017 | gap |  |
-| Germany \| C5 \| 2026 | partial | frameworks/regional/bsi_c5 is C5:2020; SCF maps 2026 |
+| Germany \| C5 \| 2026 | covered | frameworks/regional/bsi_c5 re-keyed to C5:2026 (168 criteria, 17 subject areas, BSI ids) |
 | Germany \| FDPA \| 2017 | gap |  |
 | Spain \| CCN-STIC 825 | gap |  |
 | Spain \| Royal Decree 311 \| 2022 | gap |  |

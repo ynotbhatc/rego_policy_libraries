@@ -37,7 +37,7 @@ from build import version_and_date  # noqa: E402
 from build_profiles import SOURCES, CATALOG, with_ids  # noqa: E402
 
 FAMILIES = "AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|PT|RA|SA|SC|SI|SR"  # same list as crosswalk_csv/build.py
-ID_800_53 = re.compile(rf"^(?:{FAMILIES})-\d+(\(\d+\))?$")
+ID_800_53 = re.compile(rf"^(?:{FAMILIES})-[1-9]\d*(\([1-9]\d*\))?$")  # no leading zeros: BSI C5 "PS-01" is not 800-53 PS-1
 NIST_MODULE = re.compile(rf"^NIST ((?:{FAMILIES}))-(\d+(?:/\d+)*)(?:\((\d+)\))?$")
 TOPIC_ROW = re.compile(r"^nist\.sp800_53\.[a-z_]+#\d+$")
 HEADER = ["baseline_key", "control_id", "kind", "covered", "check_count", "checks", "sources"]

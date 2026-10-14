@@ -20,3 +20,8 @@ test_hipaa_privacy_rule_fail_closed_on_empty_input if {
 	report := data.hipaa.privacy_rule.report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+test_hipaa_privacy_rule_violations_on_empty_input if {
+	v := data.hipaa.privacy_rule.violations with input as {}
+	count(v) > 0
+}

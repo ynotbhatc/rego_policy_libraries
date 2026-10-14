@@ -20,8 +20,7 @@ test_technical_fails_closed_on_empty_input if {
 
 test_technical_fails_closed_when_phi_systems_empty if {
 	# Even if every module were compliant, no declared ePHI scope must fail.
-	not sr.technical_safeguards_compliant
-		with input as {"phi_systems": []}
+	not sr.technical_safeguards_compliant with input as {"phi_systems": []}
 		with data.hipaa.access_control.compliant as true
 		with data.hipaa.audit_controls.compliant as true
 		with data.hipaa.integrity.compliant as true
@@ -36,8 +35,7 @@ test_technical_fails_closed_when_phi_systems_empty if {
 # ---------------------------------------------------------------------------
 
 test_technical_compliant_when_scope_and_modules_pass if {
-	sr.technical_safeguards_compliant
-		with input as {"phi_systems": [{"name": "ehr-db"}]}
+	sr.technical_safeguards_compliant with input as {"phi_systems": [{"name": "ehr-db"}]}
 		with data.hipaa.access_control.compliant as true
 		with data.hipaa.audit_controls.compliant as true
 		with data.hipaa.integrity.compliant as true
@@ -50,8 +48,7 @@ test_technical_compliant_when_scope_and_modules_pass if {
 # ---------------------------------------------------------------------------
 
 test_technical_fails_when_one_module_fails if {
-	not sr.technical_safeguards_compliant
-		with input as {"phi_systems": [{"name": "ehr-db"}]}
+	not sr.technical_safeguards_compliant with input as {"phi_systems": [{"name": "ehr-db"}]}
 		with data.hipaa.access_control.compliant as true
 		with data.hipaa.audit_controls.compliant as false
 		with data.hipaa.integrity.compliant as true
@@ -65,15 +62,15 @@ test_technical_fails_when_one_module_fails if {
 
 test_report_technical_uses_module_reports if {
 	report := sr.report with input as {"phi_systems": [{"name": "ehr-db"}]}
-	is_object(report.safeguards.technical.audit_controls) # module compliance_report, not a bare bool
-	report.safeguards.technical.ephi_scope_declared == true
+	is_object(report.technical_modules.audit_controls) # module compliance_report, not a bare bool
+	report.ephi_scope_declared == true
 }
 
 test_report_wellformed_on_empty_input if {
 	report := sr.report with input as {}
 	is_object(report)
 	count(report) > 0
-	report.safeguards.technical.ephi_scope_declared == false
+	report.ephi_scope_declared == false
 }
 
 # ---------------------------------------------------------------------------
@@ -151,4 +148,154 @@ _compliant_technical_input := {
 
 test_technical_compliant_with_real_input if {
 	sr.technical_safeguards_compliant with input as _compliant_technical_input
+}
+
+# ---------------------------------------------------------------------------
+# CFR-keyed Security Rule (45 CFR 164.308-164.316): ids, counts, fail-closed, attestation, facts.
+# ---------------------------------------------------------------------------
+
+_fx := data.hipaa.test_fixtures
+
+test_counts_pinned if {
+	count(sr.specifications) == 68
+	count(sr.specifications_table) == 68
+	count({id | some id, r in sr.specifications; r.status == "standard"}) == 22
+	count({id | some id, r in sr.specifications; r.status == "required"}) == 24
+	count({id | some id, r in sr.specifications; r.status == "addressable"}) == 22
+	count(sr.fact_basis) == 48
+	count(sr.technical_rows) == 12
+	count({id | some id, _ in sr.specifications; not sr.fact_basis[id]}) == 20
+	sum([count(t) | some t in sr.nist_800_66_r2_key_activities]) == 104
+}
+
+test_every_row_is_well_formed if {
+	# every implementation specification names a standard of the same section as parent
+	count({id |
+		some id, r in sr.specifications
+		r.status != "standard"
+		p := sr.specifications[r.parent]
+		p.status == "standard"
+		p.section == r.section
+	}) == 46
+	count({id | some id, r in sr.specifications; r.status == "standard"; r.parent != ""}) == 0
+	count({id | some id, r in sr.specifications; not sr.sections[r.section]}) == 0
+	count({id | some id, r in sr.specifications; not startswith(id, r.section)}) == 0
+	count({id | some id, _ in sr.fact_basis; not sr.specifications[id]}) == 0
+
+	# standards carry an 800-66r2 section that has key-activity titles, and their count matches
+	count({id |
+		some id, r in sr.specifications
+		r.status == "standard"
+		count(sr.nist_800_66_r2_key_activities[r.nist_800_66_r2[0]]) == r.key_activities
+	}) == 22
+}
+
+test_empty_input_fails_closed if {
+	r := sr.report with input as {}
+	r.compliant == false
+	some v in r.violations
+	contains(v, "FAIL-CLOSED - attestations 'input.hipaa.specifications'")
+
+	# 4 undeclared scope flags + no role + missing container + 63 rows (5 group-health-plan rows gated off)
+	r.violation_count == 69
+	r.applicable == 63
+}
+
+test_all_green_is_compliant if {
+	r := sr.report with input as _fx.full_input
+	r.compliant == true
+	r.satisfied == 68
+	r.violation_count == 0
+	sr.technical_safeguards_compliant with input as _fx.full_input
+	sr.administrative_safeguards_compliant with input as _fx.full_input
+}
+
+test_one_attestation_false_is_named if {
+	inp := object.union(_fx.full_input, {"hipaa": {"specifications": {"164.316(a)": false}}})
+	v := sr.violations with input as inp
+	count(v) == 1
+	some m in v
+	startswith(m, "HIPAA 164.316(a) Policies and procedures (standard): not attested")
+}
+
+test_string_true_is_not_an_attestation if {
+	inp := object.union(_fx.full_input, {"hipaa": {"specifications": {"164.308(a)(5)(ii)(A)": "true"}}})
+	v := sr.violations with input as inp
+	count(v) == 1
+	some m in v
+	contains(m, "164.308(a)(5)(ii)(A) Security reminders (addressable)")
+}
+
+test_unknown_id_is_a_violation if {
+	inp := object.union(_fx.full_input, {"hipaa": {"specifications": {"164.308(a)(9)": true}}})
+	v := sr.violations with input as inp
+	count(v) == 1
+	some m in v
+	contains(m, "unknown id 164.308(a)(9)")
+}
+
+test_failed_fact_is_named_under_its_citation if {
+	inp := object.union(_fx.full_input, {"hipaa": {"administrative": {"security_management": {"risk_analysis": {"frequency_months": 24}}}}})
+	v := sr.violations with input as inp
+	count(v) == 1
+	some m in v
+	startswith(m, "HIPAA 164.308(a)(1)(ii)(A) Risk analysis (required): fact check failed")
+}
+
+test_attestation_does_not_decide_a_fact_row if {
+	inp := object.union(_fx.full_input, {"hipaa": {"physical": {"workstation_security": {"ephi_access": {"restricted": false}}}}})
+	r := sr.report with input as inp
+	r.specifications["164.310(c)"].attested == true
+	r.specifications["164.310(c)"].satisfied == false
+	r.violation_count == 1
+}
+
+test_technical_finding_lands_on_the_cited_specification if {
+	inp := object.union(_fx.full_input, {"session": {"inactivity_timeout_minutes": 30}})
+	v := sr.violations with input as inp
+	count(v) == 1
+	some m in v
+	startswith(m, "HIPAA 164.312(a)(2)(iii) Automatic logoff (addressable): fact check failed")
+}
+
+test_uncited_technical_finding_lands_on_the_standard if {
+	# the access-control module cites 164.514(d) for minimum necessary; it is not a Security Rule row
+	inp := object.union(_fx.full_input, {"users": [{"username": "alice", "phi_access_level": "full"}]})
+	f := sr.technical_attribution with input as inp
+	count(f["164.312(a)(1)"]) == 1
+	count(f["164.312(a)(2)(i)"]) == 0
+}
+
+test_no_ephi_scope_fails_every_technical_row if {
+	inp := object.union(_fx.full_input, {"phi_systems": []})
+	r := sr.report with input as inp
+	count([id | some id, _ in sr.technical_rows; r.specifications[id].satisfied == false]) == 12
+}
+
+test_group_health_plan_rows_follow_the_health_plan_flag if {
+	inp := object.union(_fx.full_input, {"hipaa": {"scope": {"health_plan": false}}})
+	r := sr.report with input as inp
+	r.applicable == 63
+	r.sections["164.314"].applicable == 4
+	r.compliant == true
+}
+
+test_every_technical_finding_is_attributed_to_one_row_of_its_module if {
+	# failing input for all five modules: each module's findings, spread over its rows, are exactly its violations
+	inp := object.union(_fx.full_input, {
+		"session": {"inactivity_timeout_minutes": 30},
+		"users": [{"username": "admin", "shared_account": true, "phi_access_level": "full"}],
+		"audit_logging": {"tamper_evident": false},
+		"integrity": {"hash_algorithm": "MD5"},
+		"mfa": {"enabled_for_phi_access": false},
+		"network": {"phi_network_segmented": false},
+	})
+	f := sr.technical_attribution with input as inp
+	every m in {"access_control", "audit_controls", "integrity", "authentication", "transmission_security"} {
+		attributed := [x | some id, mod in sr.technical_rows; mod == m; some x in f[id]]
+		v := data.hipaa[m].violations with input as inp
+		count(v) > 0
+		count(attributed) == count(v)
+		{x | some x in attributed} == v
+	}
 }

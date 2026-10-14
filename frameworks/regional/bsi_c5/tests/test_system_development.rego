@@ -1,42 +1,60 @@
+# Tests for BSI C5:2026 Procurement, Development and Modification of Information Systems (DEV).
 package bsi_c5.system_development_test
 
 import rego.v1
 
-import data.bsi_c5.system_development
+import data.bsi_c5.system_development as area
 
-# Build an input that attests every requirement as true.
-all_true := {"bsi_c5": {"system_development": {"requirements": all_reqs}}} if {
-	all_reqs := {id: true | some id, _ in system_development.requirements}
+_all_true := {"bsi_c5": {"criteria": {id: true | some id, _ in area.criteria}}}
+
+test_criteria_count_pinned if {
+	count(area.criteria) == 15
 }
 
-# Empty input -> every requirement fires as a violation and the domain is not compliant.
-test_empty_input_all_fire if {
-	count(system_development.violation) == count(system_development.requirements) with input as {}
-	count(system_development.violation) > 0 with input as {}
-	not system_development.domain_compliant with input as {}
+test_subcriteria_counts_pinned if {
+	sum([count(c.basic) | some c in area.criteria]) == 32
+	sum([count(c.additional_sharpening) | some c in area.criteria]) == 0
+	sum([count(c.additional_complementing) | some c in area.criteria]) == 10
 }
 
-# Fully attested -> no violations and the domain is compliant.
+test_ids_carry_area_prefix if {
+	every id, _ in area.criteria { startswith(id, "DEV-") }
+}
+
+test_empty_input_every_criterion_fails if {
+	r := area.compliance_report with input as {}
+	r.compliant == false
+	r.violation_count == 15
+	r.criteria_satisfied == 0
+}
+
 test_all_attested_compliant if {
-	count(system_development.violation) == 0 with input as all_true
-	system_development.domain_compliant with input as all_true
+	r := area.compliance_report with input as _all_true
+	r.compliant == true
+	r.violation_count == 0
+	r.criteria_satisfied == 15
+	r.gaps == []
 }
 
-# Flip a single requirement to false -> exactly one violation naming that id.
-test_single_flip_one_violation if {
-	flipped := object.union(all_true.bsi_c5.system_development.requirements, {"DEV-2": false})
-	broken := object.union(all_true, {"bsi_c5": {"system_development": {"requirements": flipped}}})
-	count(system_development.violation) == 1 with input as broken
-	some msg in system_development.violation with input as broken
-	contains(msg, "DEV-2") with input as broken
+test_one_false_named if {
+	inp := json.patch(_all_true, [{"op": "replace", "path": "/bsi_c5/criteria/DEV-15", "value": false}])
+	r := area.compliance_report with input as inp
+	r.compliant == false
+	r.violation_count == 1
+	r.gaps == ["DEV-15"]
+	some msg in r.violations
+	contains(msg, "DEV-15")
 }
 
-# compliance_report is a populated object even on empty input.
-test_compliance_report_populated if {
-	report := system_development.compliance_report with input as {}
-	report.domain == "DEV"
-	report.area_name == "Procurement, Development and Modification of Information Systems"
-	report.requirements_evaluated == count(system_development.requirements)
-	report.violation_count == count(system_development.requirements)
-	report.compliant == false
+test_truthy_non_boolean_is_not_attested if {
+	inp := json.patch(_all_true, [{"op": "replace", "path": "/bsi_c5/criteria/DEV-01", "value": "yes"}])
+	r := area.compliance_report with input as inp
+	r.compliant == false
+	r.gaps == ["DEV-01"]
+}
+
+test_basis_is_attestation if {
+	r := area.compliance_report with input as {}
+	r.criteria["DEV-01"].basis == "attestation"
+	r.criteria["DEV-01"].satisfied == false
 }

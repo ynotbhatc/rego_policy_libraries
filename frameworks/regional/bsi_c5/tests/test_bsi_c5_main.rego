@@ -1,81 +1,160 @@
-# Tests for the BSI C5:2020 master orchestrator.
+# Tests for the BSI C5:2026 main entry point.
 package bsi_c5.main_test
 
 import rego.v1
 
 import data.bsi_c5.main
 
-_domains := {
-	"organisation_information_security": data.bsi_c5.organisation_information_security.requirements,
-	"security_policies": data.bsi_c5.security_policies.requirements,
-	"personnel": data.bsi_c5.personnel.requirements,
-	"asset_management": data.bsi_c5.asset_management.requirements,
-	"physical_security": data.bsi_c5.physical_security.requirements,
-	"operations": data.bsi_c5.operations.requirements,
-	"identity_access_management": data.bsi_c5.identity_access_management.requirements,
-	"cryptography": data.bsi_c5.cryptography.requirements,
-	"communication_security": data.bsi_c5.communication_security.requirements,
-	"portability_interoperability": data.bsi_c5.portability_interoperability.requirements,
-	"system_development": data.bsi_c5.system_development.requirements,
-	"supplier_control": data.bsi_c5.supplier_control.requirements,
-	"incident_management": data.bsi_c5.incident_management.requirements,
-	"business_continuity": data.bsi_c5.business_continuity.requirements,
-	"compliance_audit": data.bsi_c5.compliance_audit.requirements,
-	"government_inquiries": data.bsi_c5.government_inquiries.requirements,
-	"product_security": data.bsi_c5.product_security.requirements,
+_all_true := {"bsi_c5": {"criteria": {id: true | some id, _ in main.criteria}}}
+
+_fail_closed(r) if {
+	some v in r.violations
+	contains(v, "FAIL-CLOSED")
 }
 
-# Fully-attested input built from every domain's own requirement set.
-all_true := {"bsi_c5": {domain: {"requirements": {id: true | some id, _ in reqs}} |
-	some domain, reqs in _domains
-}}
-
-test_empty_input_all_gaps if {
+test_empty_input_fail_closed if {
 	r := main.compliance_report with input as {}
-	r.domains_evaluated == 17
-	count(r.criteria_domains) == 17
-	r.total_requirements > 0
-	r.violation_count == r.total_requirements
-	r.requirements_met == 0
 	r.compliant == false
+	_fail_closed(r)
+	r.criteria_satisfied == 0
+	r.violation_count == 169 # 168 unattested criteria + the FAIL-CLOSED notice
 }
 
-test_fully_attested_is_compliant if {
-	r := main.compliance_report with input as all_true
-	r.violation_count == 0
+test_non_object_container_fail_closed if {
+	r := main.compliance_report with input as {"bsi_c5": {"criteria": ["OIS-01"]}}
+	r.compliant == false
+	_fail_closed(r)
+}
+
+test_all_attested_compliant if {
+	r := main.compliance_report with input as _all_true
 	r.compliant == true
-	r.requirements_met == r.total_requirements
+	r.violation_count == 0
+	r.criteria_satisfied == 168
+	r.subject_areas_passing == 17
 }
 
-# A non-object requirements payload must not shrink total_requirements —
-# every id stays counted (as unmet) and the report stays self-consistent.
-test_malformed_attestation_keeps_totals if {
-	expected := sum([count(reqs) | some reqs in _domains])
-	malformed := {"bsi_c5": {"cryptography": {"requirements": "all attested"}}}
-	r := main.compliance_report with input as malformed
-	r.total_requirements == expected
-	r.requirements_met == 0
-	r.violation_count == expected
+test_one_false_named if {
+	inp := json.patch(_all_true, [{"op": "replace", "path": "/bsi_c5/criteria/OPS-22", "value": false}])
+	r := main.compliance_report with input as inp
 	r.compliant == false
-}
-
-# A truthy-but-not-true attestation ("yes", 1) is unmet, and the two counters
-# (requirements_met from the orchestrator, violation_count from the modules)
-# stay in agreement — pins the == true contract on both paths.
-test_truthy_attestation_not_met if {
-	truthy := json.patch(all_true, [{"op": "replace", "path": "/bsi_c5/cryptography/requirements/CRY-3", "value": "yes"}])
-	r := main.compliance_report with input as truthy
-	r.requirements_met == r.total_requirements - 1
 	r.violation_count == 1
-	r.compliant == false
+	some v in r.violations
+	contains(v, "OPS-22")
+	r.subject_areas.OPS.gaps == ["OPS-22"]
+	r.subject_areas.OPS.compliant == false
+	r.criteria["OPS-22"].satisfied == false
 }
 
-test_single_domain_gap_propagates if {
-	# fully attested, then drop one Identity and Access Management requirement
-	dropped := json.patch(all_true, [{"op": "remove", "path": "/bsi_c5/identity_access_management/requirements/IDM-5"}])
-	r := main.compliance_report with input as dropped
-	r.violation_count == 1
-	r.requirements_met == r.total_requirements - 1
+test_unknown_id_is_violation if {
+	inp := json.patch(_all_true, [{"op": "add", "path": "/bsi_c5/criteria/OIS-11", "value": true}])
+	r := main.compliance_report with input as inp
 	r.compliant == false
-	r.criteria_domains["Identity and Access Management"].compliant == false
+	r.violation_count == 1
+	some v in r.violations
+	contains(v, "unknown criterion id OIS-11")
+}
+
+test_legacy_2020_module_id_is_violation if {
+	inp := json.patch(_all_true, [{"op": "add", "path": "/bsi_c5/criteria/IDM-5", "value": true}])
+	r := main.compliance_report with input as inp
+	r.compliant == false
+	r.violation_count == 1
+	some v in r.violations
+	contains(v, "IDM-5 is a retired AAC C5:2020-module requirement id")
+	contains(v, "IAM-08")
+}
+
+test_c5_2020_idm_area_id_is_violation if {
+	inp := json.patch(_all_true, [{"op": "add", "path": "/bsi_c5/criteria/IDM-01", "value": true}])
+	r := main.compliance_report with input as inp
+	r.violation_count == 1
+	some v in r.violations
+	contains(v, "area code IDM")
+}
+
+test_general_condition_is_not_attestable if {
+	inp := json.patch(_all_true, [{"op": "add", "path": "/bsi_c5/criteria/GC-01", "value": true}])
+	r := main.compliance_report with input as inp
+	r.violation_count == 1
+	some v in r.violations
+	contains(v, "GC-01 is a General Condition")
+}
+
+test_c5_2020_input_shape_is_violation if {
+	inp := {"bsi_c5": {"criteria": _all_true.bsi_c5.criteria, "cryptography": {"requirements": {"CRY-3": true}}}}
+	r := main.compliance_report with input as inp
+	r.violation_count == 1
+	some v in r.violations
+	contains(v, "input.bsi_c5.cryptography.requirements")
+}
+
+test_criteria_count_pinned if {
+	count(main.criteria) == 168
+	r := main.compliance_report with input as {}
+	r.standard_total == 168
+	r.total_controls == 168
+	r.subject_areas_total == 17
+	r.criteria_with_additional == 79
+	r.subcriteria == {"basic": 462, "additional_sharpening": 29, "additional_complementing": 132}
+}
+
+test_per_area_counts_pinned if {
+	r := main.compliance_report with input as {}
+	counts := {code: a.criteria | some code, a in r.subject_areas}
+	counts == {
+		"OIS": 10, "SP": 3, "HR": 8, "AM": 12, "PS": 8, "OPS": 35, "IAM": 9, "CRY": 19, "COS": 8,
+		"PI": 3, "DEV": 15, "SSO": 8, "SIM": 6, "BCM": 4, "COM": 4, "INQ": 4, "PSS": 12,
+	}
+}
+
+test_one_id_per_area_resolves if {
+	sample := {
+		"OIS": "OIS-01", "SP": "SP-03", "HR": "HR-08", "AM": "AM-12", "PS": "PS-06", "OPS": "OPS-35",
+		"IAM": "IAM-07", "CRY": "CRY-19", "COS": "COS-08", "PI": "PI-02", "DEV": "DEV-15", "SSO": "SSO-08",
+		"SIM": "SIM-06", "BCM": "BCM-04", "COM": "COM-01", "INQ": "INQ-04", "PSS": "PSS-12",
+	}
+	r := main.compliance_report with input as {}
+	every code, id in sample {
+		main.criteria[id].area == code
+		r.criteria[id].basis == "attestation"
+		startswith(r.subject_areas[code].name, "5.")
+	}
+}
+
+test_basis_counts if {
+	r := main.compliance_report with input as {}
+	r.criteria_fact_evaluated == 0
+	r.criteria_attested_basis == 168
+	count([id | some id, s in r.criteria; s.basis == "attestation"]) == 168
+}
+
+test_legacy_lineage_complete if {
+	count(main.legacy) == 61
+	every id, l in main.legacy {
+		count(l.candidate_2026) > 0
+		every c in l.candidate_2026 {
+			main.criteria[c]
+		}
+		not main.criteria[id]
+	}
+	r := main.compliance_report with input as {}
+	r.legacy_c5_2020_module == {"kept": 0, "renumbered": 0, "retired": 61}
+}
+
+test_sharpening_refs_resolve if {
+	every _, c in main.criteria {
+		count(c.sharpens) == count(c.additional_sharpening)
+		every pair in c.sharpens {
+			pair[0] in c.additional_sharpening
+			pair[1] in c.basic
+		}
+		count(c.basic) > 0
+	}
+}
+
+test_effective_date if {
+	r := main.compliance_report with input as {}
+	r.effective["2027-06-01"]
+	r.source.sha256 == "b48f7ccdd6844b2a0bb5055edf5ce109dfb186b1680c49a52c5b92cb16537163"
 }

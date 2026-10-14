@@ -36,7 +36,7 @@ Placement is decided per framework (existing parents: `federal`, `financial`,
 | 4 | 2026-10-09 | **CJIS Security Policy** | US state/local justice staple; FedRAMP/FISMA present but not this | `frameworks/federal/cjis/` |
 | 5 | 2026-10-16 | **IRS Publication 1075 (FTI)** | Required for anyone handling Federal Tax Information | `frameworks/federal/irs_1075/` |
 | 6 | 2026-10-23 | **UK Cyber Essentials** (+ Plus) | Common UK baseline; NCSC CAF present but distinct | `frameworks/regional/cyber_essentials/` |
-| 7 | 2026-10-30 | **Germany BSI C5** | EU/DE sovereign-cloud attestation; sovereignty dir is generic | `frameworks/regional/bsi_c5/` |
+| 7 | done 2026-10-13 (C5:2026) | **Germany BSI C5** | EU/DE sovereign-cloud attestation; sovereignty dir is generic | `frameworks/regional/bsi_c5/` |
 | 8 | 2026-11-06 | **StateRAMP / TX-RAMP** | US state-gov cloud; FedRAMP present, state variants not | `frameworks/federal/stateramp/` |
 | 9 | 2026-11-13 | **Regional gov-cloud pack** — Japan ISMAP · Australia IRAP/ISM · Singapore MAS TRM | Regional government/finance clouds; add as demand appears | `frameworks/regional/` |
 
