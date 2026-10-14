@@ -1,0 +1,522 @@
+{
+ "catalog": {
+  "uuid": "c70d3452-eb82-5d24-819d-19f149c7dadc",
+  "metadata": {
+   "title": "Rego Policy Libraries — owasp_top10 (OWASP Top 10:2025 — ten web application security risk categories with mapped CWEs, attested)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "owasp_top10"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "owasp_top10-owasp_top10_main",
+    "class": "rego-module",
+    "title": "OWASP Top 10:2025 — ten web application security risk categories with mapped CWEs, attested",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "owasp_top10.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/owasp_top10/owasp_top10_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "owasp_top10-A01-2025",
+      "title": "Broken Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "A01:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A01:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A01-2025_stmt",
+        "name": "statement",
+        "prose": "Broken Access Control"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A02-2025",
+      "title": "Security Misconfiguration",
+      "props": [
+       {
+        "name": "label",
+        "value": "A02:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A02:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A02-2025_stmt",
+        "name": "statement",
+        "prose": "Security Misconfiguration"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A03-2025",
+      "title": "Software Supply Chain Failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "A03:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A03:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A03-2025_stmt",
+        "name": "statement",
+        "prose": "Software Supply Chain Failures"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A04-2025",
+      "title": "Cryptographic Failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "A04:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A04:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A04-2025_stmt",
+        "name": "statement",
+        "prose": "Cryptographic Failures"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A05-2025",
+      "title": "Injection",
+      "props": [
+       {
+        "name": "label",
+        "value": "A05:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A05:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A05-2025_stmt",
+        "name": "statement",
+        "prose": "Injection"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A06-2025",
+      "title": "Insecure Design",
+      "props": [
+       {
+        "name": "label",
+        "value": "A06:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A06:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A06-2025_stmt",
+        "name": "statement",
+        "prose": "Insecure Design"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A07-2025",
+      "title": "Authentication Failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "A07:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A07:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A07-2025_stmt",
+        "name": "statement",
+        "prose": "Authentication Failures"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A08-2025",
+      "title": "Software or Data Integrity Failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "A08:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A08:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A08-2025_stmt",
+        "name": "statement",
+        "prose": "Software or Data Integrity Failures"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A09-2025",
+      "title": "Security Logging & Alerting Failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "A09:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A09:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A09-2025_stmt",
+        "name": "statement",
+        "prose": "Security Logging & Alerting Failures"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-A10-2025",
+      "title": "Mishandling of Exceptional Conditions",
+      "props": [
+       {
+        "name": "label",
+        "value": "A10:2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A10:2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-A10-2025_stmt",
+        "name": "statement",
+        "prose": "Mishandling of Exceptional Conditions"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-owasp_top10.main-1",
+      "title": "OWASP Top 10:2025: FAIL-CLOSED - category attestations 'input.owasp_top10.categories' were not supplied (or are not an object); this module cannot be evaluated without them",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_top10.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_top10.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-owasp_top10.main-1_stmt",
+        "name": "statement",
+        "prose": "OWASP Top 10:2025: FAIL-CLOSED - category attestations 'input.owasp_top10.categories' were not supplied (or are not an object); this module cannot be evaluated without them"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-owasp_top10.main-2",
+      "title": "OWASP Top 10:2025 %v (%v): not attested as addressed (%v mapped CWEs)",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_top10.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_top10.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-owasp_top10.main-2_stmt",
+        "name": "statement",
+        "prose": "OWASP Top 10:2025 %v (%v): not attested as addressed (%v mapped CWEs)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "owasp_top10-owasp_top10.main-3",
+      "title": "OWASP Top 10:2025 Input Contract: unknown category id %v - ids are A01:2025 to A10:2025",
+      "props": [
+       {
+        "name": "label",
+        "value": "owasp_top10.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "owasp_top10.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "owasp_top10.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#761706e8-f91c-5f18-9dfb-36760134a9c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "owasp_top10-owasp_top10.main-3_stmt",
+        "name": "statement",
+        "prose": "OWASP Top 10:2025 Input Contract: unknown category id %v - ids are A01:2025 to A10:2025"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "761706e8-f91c-5f18-9dfb-36760134a9c2",
+     "title": "OWASP Top 10:2025 — ten web application security risk categories with mapped CWEs, attested",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "owasp_top10.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/governance/owasp_top10/owasp_top10_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

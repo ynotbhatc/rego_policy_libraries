@@ -1,6 +1,6 @@
 # Secure Controls Framework (SCF) coverage gap and expansion plan
 
-**Version:** v1.5
+**Version:** v1.6
 **Date:** 2026-10-13
 **Authors:** Tim Coulter (ynotbha@aisle-five.com), Claude (Anthropic)
 **Measured against:** SCF 2026.3 workbook (released 2026-09-21), `SCF 2026.3` sheet; this library at v2.4.2 plus the Phase 1 batch of 2026-10-13
@@ -18,8 +18,8 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries v2.4.2 |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 16,690 control-level checks (`make count`) |
-| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 160 framework catalogs, 130+ framework directories |
+| Controls / checks | 1,591 controls in 34 domains | 17,078 control-level checks (`make count`) |
+| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 164 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 23 STIG platforms |
 | Licence | Creative Commons BY-ND, free | open |
@@ -34,15 +34,15 @@ comparison is the distinct document.
 
 | Status | Count | Meaning |
 |---|---|---|
-| covered | 65 | a module exists for that document, same or newer edition |
+| covered | 71 | a module exists for that document, same or newer edition |
 | partial | 8 | the document is covered inside another module, or we carry an older edition |
-| gap | 161 | nothing in the library |
+| gap | 155 | nothing in the library |
 
 By region:
 
 | Region | Documents | Covered | Partial | Gap |
 |---|---|---|---|---|
-| General and international standards | 67 | 26 | 6 | 35 |
+| General and international standards | 67 | 32 | 6 | 29 |
 | United States, federal | 43 | 18 | 2 | 23 |
 | United States, state | 27 | 2 | 0 | 25 |
 | EMEA | 50 | 14 | 0 | 36 |
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our 160 catalogs and SCF's "65 covered" are different lists.
+those count toward the 237, so our 164 catalogs and SCF's "71 covered" are different lists.
 
 ## How we close it
 
@@ -78,9 +78,9 @@ Cheapest breadth: the controls exist, the document label or edition is what is m
   Administrative Simplification with 800-66 Rev 2 numbering, DORA RTS 2024/1774, UK DPA 2018, ISO 27002:2022
   numbering on ISO 27001, CSWP 39-upd1.
 
-Outcome: 73 of 234 covered, no partials.
+Outcome: 79 of 234 covered, no partials.
 
-### Phase 2. International standards with the widest reuse (35 gaps)
+### Phase 2. International standards with the widest reuse (29 gaps)
 
 - ISO family: 22301, 27017, 27018, 29100, 31000, 31010.
 - IEC 62443-2-1, 4-1 and 4-2 to complete the series beside 3-3; IEC TR 60601-4-5 for medical devices.
@@ -154,7 +154,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### General and international standards
 
-67 documents: 26 covered, 6 partial, 35 gap.
+67 documents: 32 covered, 6 partial, 29 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -187,19 +187,19 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | ISO \| 31000 \| 2018 | gap |  |
 | ISO \| 31010 \| 2009 | gap |  |
 | ISO \| 42001 \| 2023 | covered | governance/iso_42001 |
-| MITRE \| ATT&CK \| 16 | gap |  |
+| MITRE \| ATT&CK \| 16 | covered | crosswalk/attack_800_53 (ATT&CK 16.1 to 800-53 Rev 5 mapping, data only) |
 | MPA \| Content Security Program \| 5.3.1 | gap |  |
 | NAIC \| Insurance Data Security Model Law (MDL-668) | gap |  |
-| NIST \| AI 100-1 (AI RMF) \| 1.0 | covered | frameworks/federal/nist/ai_rmf |
-| NIST \| AI 600-1 | gap |  |
-| NIST \| 800-37 \| R2 | gap |  |
-| NIST \| 800-39 | gap |  |
+| NIST \| AI 100-1 (AI RMF) \| 1.0 | covered | frameworks/federal/nist/ai_rmf (all 72 subcategories) |
+| NIST \| AI 600-1 | covered | frameworks/federal/nist/ai_rmf/nist_ai_600_1_main.rego (212 actions) |
+| NIST \| 800-37 \| R2 | covered | frameworks/federal/nist/risk_management_framework (all 47 RMF tasks) |
+| NIST \| 800-39 | covered | frameworks/federal/nist/sp_800_39 (12 tasks) |
 | NIST \| 800-53 \| R4 | partial | Rev 5 module only |
 | NIST \| 800-53 \| R5.2 | covered | frameworks/federal/nist/sp_800_53 (Rev 5) |
 | NIST \| 800-53B R5 (4 profiles) | covered | converters/exports/oscal/dist/profiles: the four NIST baselines as OSCAL profiles, imported from NIST's own files |
 | NIST \| SP 800-66 R2 | covered | frameworks/privacy/hipaa: 800-66 Rev 2 section numbers on every Security Rule row |
 | NIST \| 800-82 R3 (4 profiles) | covered | frameworks/critical_infrastructure/nist_800_82: Appendix F OT overlay table (424 controls, Low/Moderate/High) as a profile gate |
-| NIST \| 800-160 Vol2 R1 | gap |  |
+| NIST \| 800-160 Vol2 R1 | covered | frameworks/federal/nist/sp_800_160v2 (50 approaches) |
 | NIST \| 800-161 \| R1 | covered | benchmarks/supply_chain/scrm_800_161: Appendix B tailoring table (297 controls; baseline, flow-down, levels 1-3) as a profile gate |
 | NIST \| 800-161 R1 (5 profiles) | partial | scrm_800_161 without the baseline/flow-down/level profiles |
 | NIST \| 800-171 \| R2 | covered | frameworks/federal/nist/sp_800_171_r2 (110 requirements from NIST CPRT) |
@@ -214,7 +214,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | NIST \| CSWP 39 | covered | frameworks/federal/pqc/cswp39_crypto_agility.rego: 67 practice rows from CSWP 39-upd1 (June 2026) |
 | NIST Privacy Framework \| 1.0 | covered | frameworks/privacy/nist_privacy_framework (100 subcategories from NIST CPRT) |
 | OECD \| Privacy Principles | gap |  |
-| OWASP \| Top 10 \| 2025 | gap |  |
+| OWASP \| Top 10 \| 2025 | covered | governance/owasp_top10 (10 categories, 249 CWEs) |
 | PCI DSS \| 4.0.1 (10 profiles) | partial | frameworks/financial/pci_dss is v4.0; 4.0.1 re-stamp needed |
 | SCF \| DPMP \| 2026 | gap |  |
 | Shared Assessments SIG \| 2025 | gap |  |
