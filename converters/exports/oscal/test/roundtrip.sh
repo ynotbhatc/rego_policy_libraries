@@ -68,7 +68,7 @@ for row in idx["catalogs"]:
         for c in g["controls"]:
             ids.add(c["id"]); parts.update(p["id"] for p in c["parts"])
 cd = json.loads((tmp / "component-definition.json").read_text())["component-definition"]
-reqs = [r for ci in cd["components"][0]["control-implementations"] for r in ci["implemented-requirements"]]
+reqs = [r for ci in cd["components"][0]["control-implementations"] if not any(p["name"] == "baseline" for p in ci["props"]) for r in ci["implemented-requirements"]]
 assert len(reqs) == idx["controls"] == len(ids), f"{len(reqs)} implemented-requirements vs {idx['controls']} catalog controls"
 assert {r["control-id"] for r in reqs} == ids, "implemented-requirements do not cover the catalogs exactly"
 assert len({r["uuid"] for r in reqs}) == len(reqs), "duplicate implemented-requirement uuids"
@@ -89,8 +89,107 @@ reviewed = sum(len(s.get("include-controls", [])) for s in res["reviewed-control
 assert reviewed >= mapped
 print(f"PASS roundtrip: component-definition {len(reqs)} implemented-requirements == catalogs; assessment-results {len(res['findings'])} findings ({mapped} on catalog statements), {reviewed} reviewed controls")
 PY
+# profiles: sources fetched (pinned + sha256-verified, cached), every selected control resolves in the NIST catalog
+rc=0; python3 "$HERE/build_profiles.py" --out "$TMP" >"$TMP/profiles.log" || rc=$?
+if [[ $rc -eq 3 ]]; then cat "$TMP/profiles.log"; PROFILES=skip
+elif [[ $rc -ne 0 ]]; then cat "$TMP/profiles.log"; echo "FAIL profiles: build_profiles.py exited $rc"; exit 1
+else
+PROFILES=ok
+python3 - "$HERE" "$TMP" <<'PY'
+import sys, json, pathlib
+here, tmp = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+sys.path.insert(0, str(here))
+import build_profiles as bp
+cache = bp.CACHE
+def walk(node, ids):
+    for c in node.get("controls", []):
+        ids.add(c["id"]); walk(c, ids)
+    for g in node.get("groups", []):
+        walk(g, ids)
+cat = json.loads(bp.cached_path(cache, bp.CATALOG).read_text())["catalog"]
+known = set(); walk(cat, known)
+idx = json.loads((tmp / "profiles" / "index.json").read_text())
+assert len(idx["profiles"]) == len(bp.SOURCES) == 8, f"{len(idx['profiles'])} profiles in index.json"
+total = 0
+for row in idx["profiles"]:
+    src = next(s for s in bp.SOURCES if s["key"] == row["key"])
+    prof = json.loads((tmp / row["file"]).read_text())["profile"]
+    assert len(prof["imports"]) == 1 and prof["imports"][0]["href"] == bp.CATALOG["url"], f"{row['key']}: import is not the pinned NIST catalog"
+    ids = bp.with_ids(prof)
+    missing = [i for i in ids if i not in known]
+    assert not missing, f"{row['key']}: {len(missing)} selected controls not in the NIST catalog (e.g. {missing[:3]})"
+    assert len(ids) == len(set(ids)), f"{row['key']}: duplicate selections"
+    assert len(ids) == row["controls"], f"{row['key']}: index says {row['controls']}, profile selects {len(ids)}"
+    srcdoc = json.loads(bp.cached_path(cache, src).read_text())["profile"]
+    assert ids == bp.with_ids(srcdoc), f"{row['key']}: selection differs from the source profile"
+    assert not any(k in prof for k in ("modify",)), f"{row['key']}: carries a modify section"
+    total += len(ids)
+print(f"PASS profiles: {len(idx['profiles'])} baselines, every selected control resolves in the NIST SP 800-53 Rev 5 catalog ({total} selections)")
+PY
+# baseline coverage: library checks -> NIST 800-53 ids -> covered/uncovered controls per imported baseline
+python3 "$HERE/build_baseline_coverage.py" --out "$TMP" --catalogs "$TMP/catalogs" >"$TMP/coverage.log"
+python3 "$HERE/build_component.py" --out "$TMP" --catalogs "$TMP/catalogs" >/dev/null
+python3 "$ROOT/converters/exports/crosswalk_csv/build.py" --out "$TMP/crosswalk" >/dev/null
+python3 - "$HERE" "$TMP" <<'PY'
+import sys, json, csv, pathlib, collections
+here, tmp = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
+sys.path.insert(0, str(here))
+import build_baseline_coverage as bc
+import build_profiles as bp
+rows = list(csv.DictReader((tmp / "profiles" / "coverage.csv").open()))
+summ = json.loads((tmp / "profiles" / "coverage_summary.json").read_text())
+idx = json.loads((tmp / "profiles" / "index.json").read_text())
+withids = {r["key"]: bp.with_ids(json.loads((tmp / r["file"]).read_text())["profile"]) for r in idx["profiles"]}
+labels = {f"{fw}:{lb}" for fw, lb in bc.catalog_controls(tmp / "catalogs")}
+by = collections.defaultdict(list)
+for r in rows:
+    by[r["baseline_key"]].append(r)
+assert set(by) == set(withids) == set(summ["baselines"]), "coverage baselines != profiles"
+base_only = {"stig-cci"}
+for k, rs in by.items():
+    assert [r["control_id"] for r in rs] == withids[k], f"{k}: coverage rows are not the profile's with-ids in order"
+    n = {"base": [0, 0], "enhancement": [0, 0]}
+    for r in rs:
+        assert r["kind"] == ("enhancement" if "." in r["control_id"] else "base")
+        chk = r["checks"].split(";") if r["checks"] else []
+        assert (r["covered"] == "yes") == bool(chk) and int(r["check_count"]) == len(chk) and chk == sorted(chk)
+        missing = [c for c in chk if c not in labels]
+        assert not missing, f"{k} {r['control_id']}: checks not in the catalogs: {missing[:3]}"
+        if r["kind"] == "enhancement" and r["covered"] == "yes":
+            assert set(r["sources"].split(";")) - base_only, f"{k} {r['control_id']}: enhancement covered by a base-control-only source"
+        n[r["kind"]][0] += r["covered"] == "yes"; n[r["kind"]][1] += 1
+    s = summ["baselines"][k]
+    assert (s["base"]["covered"], s["base"]["total"], s["enhancement"]["covered"], s["enhancement"]["total"]) == (*n["base"], *n["enhancement"]), f"{k}: summary != csv"
+    assert s["controls"] == len(withids[k]) == next(r["controls"] for r in idx["profiles"] if r["key"] == k)
+covered_ids = {r["control_id"] for r in rows if r["covered"] == "yes"}
+# the label-is-800-53 mapping must equal spine_800_53.csv library_controls
+spine = {}
+for r in csv.DictReader((tmp / "crosswalk" / "spine_800_53.csv").open()):
+    for c in filter(None, r["library_controls"].split(";")):
+        spine.setdefault(bc.oscal_id(r["nist_800_53"]), set()).add(c)
+mp, stats = bc.build_mapping(tmp / "catalogs")
+mine = {cid: {c for c, src in v.items() if "label-is-800-53" in src} for cid, v in mp.items()}
+mine = {cid: v for cid, v in mine.items() if v}
+assert mine == spine, f"label-is-800-53 mapping differs from spine_800_53.csv library_controls ({len(mine)} vs {len(spine)} ids)"
+assert summ["excluded_topic_rows"] == stats["excluded_topic_rows"] == 24, f"excluded topic rows: {summ['excluded_topic_rows']}"
+# component-definition: baseline control-implementations hold exactly the covered controls
+cd = json.loads((tmp / "component-definition.json").read_text())["component-definition"]
+bimpl = [ci for ci in cd["components"][0]["control-implementations"] if any(p["name"] == "baseline" for p in ci["props"])]
+assert len(bimpl) == len(summ["baselines"]) == 8
+for ci in bimpl:
+    k = next(p["value"] for p in ci["props"] if p["name"] == "baseline")
+    assert ci["source"].endswith(f"/dist/profiles/{k}.json")
+    assert len(ci["implemented-requirements"]) == summ["baselines"][k]["covered"], f"{k}: component has {len(ci['implemented-requirements'])} requirements, summary says {summ['baselines'][k]['covered']}"
+    assert {r["control-id"] for r in ci["implemented-requirements"]} <= set(withids[k])
+    for r in ci["implemented-requirements"]:
+        g = next(p["value"] for p in r["props"] if p["name"] == "granularity")
+        assert g == ("enhancement" if "." in r["control-id"] else "base-control")
+fm = summ["baselines"]["fedramp_rev5_moderate"]
+print(f"PASS baseline coverage: {len(by)} baselines; FedRAMP Moderate {fm['covered']}/{fm['controls']} controls ({fm['base']['covered']}/{fm['base']['total']} base, {fm['enhancement']['covered']}/{fm['enhancement']['total']} enhancements); label-is-800-53 == spine ({len(spine)} ids); {len(bimpl)} baseline control-implementations match; {summ['excluded_topic_rows']} topic rows excluded")
+PY
+fi
 # schema validation of every catalog + the combined one + the two documents
-out="$(python3 "$HERE/validate.py" $(ls "$TMP"/catalogs/*.json | grep -v index.json) "$TMP/all.json" "$TMP/component-definition.json" "$TMP/assessment-results.json" 2>&1 | grep -v '^ok ' || true)"
+out="$(python3 "$HERE/validate.py" $(ls "$TMP"/catalogs/*.json | grep -v index.json) "$TMP/all.json" "$TMP/component-definition.json" "$TMP/assessment-results.json" $(ls "$TMP"/profiles/*.json 2>/dev/null | grep -v index.json) 2>&1 | grep -v '^ok ' || true)"
 if [[ "$out" == *SKIP* ]]; then echo "SKIP schema validation: jsonschema not installed"; exit 0; fi
 if [[ "$out" == *FAIL* ]]; then printf '%s\n' "$out" | sed -n '1,20p'; exit 1; fi
-echo "PASS schema: every catalog, the component-definition and the assessment-results validate against OSCAL ${OSCAL_VERSION:-1.2.3}"
+echo "PASS schema: every catalog, the component-definition, the assessment-results and the profiles validate against OSCAL ${OSCAL_VERSION:-1.2.3}"

@@ -1,0 +1,85 @@
+{
+ "oscal-version": "1.2.3",
+ "profiles": [
+  {
+   "key": "fedramp_rev5_high",
+   "file": "profiles/fedramp_rev5_high.json",
+   "uuid": "c6402db9-fd66-5811-baf8-1d084365e203",
+   "title": "Rego Policy Libraries \u2014 FedRAMP Rev 5 High (imported baseline)",
+   "kind": "fedramp",
+   "controls": 410,
+   "source_url": "https://raw.githubusercontent.com/oscal-compass-lab/fedramp-automation/76d0473eafe60676d4acbd6cd76362092c389c46/dist/content/rev5/baselines/json/FedRAMP_rev5_HIGH-baseline_profile.json",
+   "source_commit": "76d0473eafe60676d4acbd6cd76362092c389c46"
+  },
+  {
+   "key": "fedramp_rev5_li_saas",
+   "file": "profiles/fedramp_rev5_li_saas.json",
+   "uuid": "5dc712d2-d091-56fb-ad1b-d60cd9259ab6",
+   "title": "Rego Policy Libraries \u2014 FedRAMP Rev 5 LI-SaaS (imported baseline)",
+   "kind": "fedramp",
+   "controls": 156,
+   "source_url": "https://raw.githubusercontent.com/oscal-compass-lab/fedramp-automation/76d0473eafe60676d4acbd6cd76362092c389c46/dist/content/rev5/baselines/json/FedRAMP_rev5_LI-SaaS-baseline_profile.json",
+   "source_commit": "76d0473eafe60676d4acbd6cd76362092c389c46"
+  },
+  {
+   "key": "fedramp_rev5_low",
+   "file": "profiles/fedramp_rev5_low.json",
+   "uuid": "789ef138-0477-55c9-90dc-5c5caccfa89d",
+   "title": "Rego Policy Libraries \u2014 FedRAMP Rev 5 Low (imported baseline)",
+   "kind": "fedramp",
+   "controls": 156,
+   "source_url": "https://raw.githubusercontent.com/oscal-compass-lab/fedramp-automation/76d0473eafe60676d4acbd6cd76362092c389c46/dist/content/rev5/baselines/json/FedRAMP_rev5_LOW-baseline_profile.json",
+   "source_commit": "76d0473eafe60676d4acbd6cd76362092c389c46"
+  },
+  {
+   "key": "fedramp_rev5_moderate",
+   "file": "profiles/fedramp_rev5_moderate.json",
+   "uuid": "af601f9f-7672-5d78-bbe6-2aba3a57f24d",
+   "title": "Rego Policy Libraries \u2014 FedRAMP Rev 5 Moderate (imported baseline)",
+   "kind": "fedramp",
+   "controls": 323,
+   "source_url": "https://raw.githubusercontent.com/oscal-compass-lab/fedramp-automation/76d0473eafe60676d4acbd6cd76362092c389c46/dist/content/rev5/baselines/json/FedRAMP_rev5_MODERATE-baseline_profile.json",
+   "source_commit": "76d0473eafe60676d4acbd6cd76362092c389c46"
+  },
+  {
+   "key": "nist_800_53_rev5_high",
+   "file": "profiles/nist_800_53_rev5_high.json",
+   "uuid": "84bb9d83-fdfc-5125-84d5-19f414dfaadb",
+   "title": "Rego Policy Libraries \u2014 NIST SP 800-53 Rev 5 High (imported baseline)",
+   "kind": "nist",
+   "controls": 370,
+   "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_HIGH-baseline_profile.json",
+   "source_commit": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+  },
+  {
+   "key": "nist_800_53_rev5_low",
+   "file": "profiles/nist_800_53_rev5_low.json",
+   "uuid": "8bc3acf3-e4a5-5b03-bd6f-686a24780d91",
+   "title": "Rego Policy Libraries \u2014 NIST SP 800-53 Rev 5 Low (imported baseline)",
+   "kind": "nist",
+   "controls": 149,
+   "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json",
+   "source_commit": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+  },
+  {
+   "key": "nist_800_53_rev5_moderate",
+   "file": "profiles/nist_800_53_rev5_moderate.json",
+   "uuid": "6f0dfb9b-14bc-512e-8552-e03188f206b3",
+   "title": "Rego Policy Libraries \u2014 NIST SP 800-53 Rev 5 Moderate (imported baseline)",
+   "kind": "nist",
+   "controls": 287,
+   "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_MODERATE-baseline_profile.json",
+   "source_commit": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+  },
+  {
+   "key": "nist_800_53_rev5_privacy",
+   "file": "profiles/nist_800_53_rev5_privacy.json",
+   "uuid": "002b6896-f97a-5399-944d-1028655b53f5",
+   "title": "Rego Policy Libraries \u2014 NIST SP 800-53 Rev 5 Privacy (imported baseline)",
+   "kind": "nist",
+   "controls": 96,
+   "source_url": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json",
+   "source_commit": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+  }
+ ]
+}

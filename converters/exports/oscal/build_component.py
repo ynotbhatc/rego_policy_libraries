@@ -2,11 +2,16 @@
 """OSCAL 1.2.3 component-definition: the library as one software component whose implemented-requirements
 point at every control in the per-framework catalogs (dist/catalogs/<framework>.json).
 
+Baseline coverage (dist/profiles/coverage.csv, build_baseline_coverage.py) adds one control-implementation per imported
+baseline (source = that dist profile's raw URL): one implemented-requirement per baseline control the library evaluates
+with at least one check (control-id = the NIST id, props library-checks / mapping-sources / granularity). Uncovered
+controls get no requirement: absence is the statement. Only emitted when the coverage set exists next to the profiles.
+
 One control-implementation per framework (source = that catalog's raw URL at the release tag), one
 implemented-requirement per control, each saying which Rego package and file evaluates it. Deterministic
 (uuid5, version and date from CHANGELOG) so `git diff dist/` in CI says whether it is stale.
 
-    python3 build_component.py [--out DIR]     # default: dist/component-definition.json
+    python3 build_component.py [--out DIR] [--catalogs DIR] [--profiles DIR]   # default: dist/component-definition.json
 """
 from __future__ import annotations
 import json, sys, pathlib, argparse, uuid
@@ -15,10 +20,12 @@ sys.path.insert(0, str(HERE))
 from build import version_and_date, u5, NS, REPO, OSCAL_VERSION  # noqa: E402
 
 RAW = f"{REPO}/raw/v{{v}}/converters/exports/oscal/dist/catalogs/{{fw}}.json"
+RAW_PROFILE = f"{REPO}/raw/v{{v}}/converters/exports/oscal/dist/profiles/{{key}}.json"
 
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default=None); ap.add_argument("--catalogs", default=None)
+    ap.add_argument("--profiles", default=None, help="dir holding coverage.csv + coverage_summary.json (default OUT/profiles)")
     a = ap.parse_args()
     version, stamp = version_and_date()
     cat_dir = pathlib.Path(a.catalogs) if a.catalogs else HERE / "dist" / "catalogs"
@@ -46,6 +53,25 @@ def main():
                       "description": f"Controls of {fw} evaluated by the Rego Policy Libraries ({len(reqs)} controls, {row['modules']} Rego modules).",
                       "props": [{"name": "framework", "ns": NS, "value": fw}],
                       "implemented-requirements": reqs})
+    from build_baseline_coverage import load_coverage  # noqa: E402
+    cov = load_coverage(pathlib.Path(a.profiles) if a.profiles else out / "profiles")
+    n_base = 0
+    if cov:
+        summary, covered = cov
+        for key, b in summary["baselines"].items():
+            reqs = [{"uuid": u5(version, "impl-req", "baseline", key, r["control_id"]), "control-id": r["control_id"],
+                     "description": f"Evaluated by {r['check_count']} library check{'s' if r['check_count'] != '1' else ''}",
+                     "props": [{"name": "library-checks", "ns": NS, "value": r["checks"]},
+                               {"name": "mapping-sources", "ns": NS, "value": r["sources"]},
+                               {"name": "granularity", "ns": NS, "value": "enhancement" if r["kind"] == "enhancement" else "base-control"}]}
+                    for r in covered[key]]
+            n_base += len(reqs)
+            impls.append({"uuid": u5(version, "control-impl", "baseline", key), "source": RAW_PROFILE.format(v=version, key=key),
+                          "description": f"{b['title']} baseline: the library evaluates {b['covered']} of {b['controls']} controls with at least one check "
+                                         f"({b['base']['covered']}/{b['base']['total']} base controls, {b['enhancement']['covered']}/{b['enhancement']['total']} enhancements). "
+                                         "Controls not listed are not evaluated.",
+                          "props": [{"name": "baseline", "ns": NS, "value": key}],
+                          "implemented-requirements": reqs})
     doc = {"component-definition": {
         "uuid": u5(version, "component-definition"),
         "metadata": {"title": "Rego Policy Libraries — component definition", "last-modified": stamp, "version": version,
@@ -65,7 +91,7 @@ def main():
     doc["component-definition"]["metadata"]["parties"] = [{"uuid": u5("party", "ynotbhatc"), "type": "organization", "name": "Rego Policy Libraries (ynotbhatc)"}]
     del doc["component-definition"]["back-matter"]
     (out / "component-definition.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
-    print(f"oscal component-definition: {len(impls)} control-implementations, {total} implemented-requirements -> {out / 'component-definition.json'}")
+    print(f"oscal component-definition: {len(impls)} control-implementations, {total} implemented-requirements (+{n_base} baseline) -> {out / 'component-definition.json'}")
     return 0
 
 

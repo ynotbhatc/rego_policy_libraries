@@ -1,0 +1,223 @@
+{
+ "profile": {
+  "uuid": "002b6896-f97a-5399-944d-1028655b53f5",
+  "metadata": {
+   "title": "Rego Policy Libraries — NIST SP 800-53 Rev 5 Privacy (imported baseline)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_800_53_rev5_privacy"
+    },
+    {
+     "name": "source-url",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json"
+    },
+    {
+     "name": "source-commit",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+    },
+    {
+     "name": "source-sha256",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "7e650c4397ad633eadeaf510baa523372849b1fa3e18207b6c6b70ed456224f9"
+    },
+    {
+     "name": "source-oscal-version",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "1.2.2"
+    },
+    {
+     "name": "source-uuid",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "fed9f8ca-dcc2-492c-8a13-f9d979973e24"
+    },
+    {
+     "name": "source-title",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Electronic (OSCAL) Version of NIST Special Publication 800-53 Revision 5.2.0 PRIVACY BASELINE"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build_profiles.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "remarks": "Control selection only. FedRAMP parameter settings and control alterations (modify / set-parameters / alters) are not carried from the source profile; this profile imports the NIST SP 800-53 Rev 5 catalog and selects the same controls."
+  },
+  "imports": [
+   {
+    "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+    "include-controls": [
+     {
+      "with-ids": [
+       "ac-1",
+       "ac-3.14",
+       "at-1",
+       "at-2",
+       "at-3",
+       "at-3.5",
+       "at-4",
+       "au-1",
+       "au-2",
+       "au-3.3",
+       "au-11",
+       "ca-1",
+       "ca-2",
+       "ca-5",
+       "ca-6",
+       "ca-7",
+       "ca-7.4",
+       "cm-1",
+       "cm-4",
+       "ir-1",
+       "ir-2",
+       "ir-2.3",
+       "ir-3",
+       "ir-4",
+       "ir-5",
+       "ir-6",
+       "ir-7",
+       "ir-8",
+       "ir-8.1",
+       "mp-1",
+       "mp-6",
+       "pe-8.3",
+       "pl-1",
+       "pl-2",
+       "pl-4",
+       "pl-4.1",
+       "pl-8",
+       "pl-9",
+       "pm-3",
+       "pm-4",
+       "pm-5.1",
+       "pm-6",
+       "pm-7",
+       "pm-8",
+       "pm-9",
+       "pm-10",
+       "pm-11",
+       "pm-13",
+       "pm-14",
+       "pm-17",
+       "pm-18",
+       "pm-19",
+       "pm-20",
+       "pm-20.1",
+       "pm-21",
+       "pm-22",
+       "pm-24",
+       "pm-25",
+       "pm-26",
+       "pm-27",
+       "pm-28",
+       "pm-31",
+       "ps-6",
+       "pt-1",
+       "pt-2",
+       "pt-3",
+       "pt-4",
+       "pt-5",
+       "pt-5.2",
+       "pt-6",
+       "pt-6.1",
+       "pt-6.2",
+       "pt-7",
+       "pt-7.1",
+       "pt-7.2",
+       "pt-8",
+       "ra-1",
+       "ra-3",
+       "ra-7",
+       "ra-8",
+       "sa-1",
+       "sa-2",
+       "sa-3",
+       "sa-4",
+       "sa-8.33",
+       "sa-9",
+       "sa-11",
+       "sc-7.24",
+       "si-1",
+       "si-12",
+       "si-12.1",
+       "si-12.2",
+       "si-12.3",
+       "si-18",
+       "si-18.4",
+       "si-19"
+      ]
+     }
+    ]
+   }
+  ],
+  "merge": {
+   "as-is": true
+  },
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "17ab1a5c-c4c5-533b-9507-042a2fbf2ae0",
+     "title": "Electronic (OSCAL) Version of NIST Special Publication 800-53 Revision 5.2.0 PRIVACY BASELINE",
+     "props": [
+      {
+       "name": "source-commit",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+      },
+      {
+       "name": "source-sha256",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "7e650c4397ad633eadeaf510baa523372849b1fa3e18207b6c6b70ed456224f9"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_PRIVACY-baseline_profile.json",
+       "media-type": "application/json"
+      }
+     ]
+    },
+    {
+     "uuid": "3e922c9d-a481-559b-af80-d04502191ce9",
+     "title": "NIST SP 800-53 Rev 5 catalog",
+     "props": [
+      {
+       "name": "source-commit",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+      },
+      {
+       "name": "source-sha256",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "01f37cf90ea99d92242c936cbfbdebcc338eef1f71454e2acac36cc56e9bc062"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+       "media-type": "application/json"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

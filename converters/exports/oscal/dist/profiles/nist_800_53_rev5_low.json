@@ -1,0 +1,276 @@
+{
+ "profile": {
+  "uuid": "8bc3acf3-e4a5-5b03-bd6f-686a24780d91",
+  "metadata": {
+   "title": "Rego Policy Libraries — NIST SP 800-53 Rev 5 Low (imported baseline)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_800_53_rev5_low"
+    },
+    {
+     "name": "source-url",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json"
+    },
+    {
+     "name": "source-commit",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+    },
+    {
+     "name": "source-sha256",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "8fd206017c8d718b44bdef612c2ff321a9fd84d97a515c8ec33c4619accbef6e"
+    },
+    {
+     "name": "source-oscal-version",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "1.2.2"
+    },
+    {
+     "name": "source-uuid",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "201765f8-6d45-4941-8789-9eef2effd7d0"
+    },
+    {
+     "name": "source-title",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Electronic (OSCAL) Version of NIST Special Publication 800-53 Revision 5.2.0 LOW IMPACT BASELINE"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build_profiles.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "remarks": "Control selection only. FedRAMP parameter settings and control alterations (modify / set-parameters / alters) are not carried from the source profile; this profile imports the NIST SP 800-53 Rev 5 catalog and selects the same controls."
+  },
+  "imports": [
+   {
+    "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+    "include-controls": [
+     {
+      "with-ids": [
+       "ac-1",
+       "ac-2",
+       "ac-3",
+       "ac-7",
+       "ac-8",
+       "ac-14",
+       "ac-17",
+       "ac-18",
+       "ac-19",
+       "ac-20",
+       "ac-22",
+       "at-1",
+       "at-2",
+       "at-2.2",
+       "at-3",
+       "at-4",
+       "au-1",
+       "au-2",
+       "au-3",
+       "au-4",
+       "au-5",
+       "au-6",
+       "au-8",
+       "au-9",
+       "au-11",
+       "au-12",
+       "ca-1",
+       "ca-2",
+       "ca-3",
+       "ca-5",
+       "ca-6",
+       "ca-7",
+       "ca-7.4",
+       "ca-9",
+       "cm-1",
+       "cm-2",
+       "cm-4",
+       "cm-5",
+       "cm-6",
+       "cm-7",
+       "cm-8",
+       "cm-10",
+       "cm-11",
+       "cp-1",
+       "cp-2",
+       "cp-3",
+       "cp-4",
+       "cp-9",
+       "cp-10",
+       "ia-1",
+       "ia-2",
+       "ia-2.1",
+       "ia-2.2",
+       "ia-2.8",
+       "ia-2.12",
+       "ia-4",
+       "ia-5",
+       "ia-5.1",
+       "ia-6",
+       "ia-7",
+       "ia-8",
+       "ia-8.1",
+       "ia-8.2",
+       "ia-8.4",
+       "ia-11",
+       "ir-1",
+       "ir-2",
+       "ir-4",
+       "ir-5",
+       "ir-6",
+       "ir-7",
+       "ir-8",
+       "ma-1",
+       "ma-2",
+       "ma-4",
+       "ma-5",
+       "mp-1",
+       "mp-2",
+       "mp-6",
+       "mp-7",
+       "pe-1",
+       "pe-2",
+       "pe-3",
+       "pe-6",
+       "pe-8",
+       "pe-12",
+       "pe-13",
+       "pe-14",
+       "pe-15",
+       "pe-16",
+       "pl-1",
+       "pl-2",
+       "pl-4",
+       "pl-4.1",
+       "pl-10",
+       "pl-11",
+       "ps-1",
+       "ps-2",
+       "ps-3",
+       "ps-4",
+       "ps-5",
+       "ps-6",
+       "ps-7",
+       "ps-8",
+       "ps-9",
+       "ra-1",
+       "ra-2",
+       "ra-3",
+       "ra-3.1",
+       "ra-5",
+       "ra-5.2",
+       "ra-5.11",
+       "ra-7",
+       "sa-1",
+       "sa-2",
+       "sa-3",
+       "sa-4",
+       "sa-4.10",
+       "sa-5",
+       "sa-8",
+       "sa-9",
+       "sa-22",
+       "sc-1",
+       "sc-5",
+       "sc-7",
+       "sc-12",
+       "sc-13",
+       "sc-15",
+       "sc-20",
+       "sc-21",
+       "sc-22",
+       "sc-39",
+       "si-1",
+       "si-2",
+       "si-3",
+       "si-4",
+       "si-5",
+       "si-12",
+       "sr-1",
+       "sr-2",
+       "sr-2.1",
+       "sr-3",
+       "sr-5",
+       "sr-8",
+       "sr-10",
+       "sr-11",
+       "sr-11.1",
+       "sr-11.2",
+       "sr-12"
+      ]
+     }
+    ]
+   }
+  ],
+  "merge": {
+   "as-is": true
+  },
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "a31b07d5-187f-5b96-aa7e-fed6c702b5ba",
+     "title": "Electronic (OSCAL) Version of NIST Special Publication 800-53 Revision 5.2.0 LOW IMPACT BASELINE",
+     "props": [
+      {
+       "name": "source-commit",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+      },
+      {
+       "name": "source-sha256",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "8fd206017c8d718b44bdef612c2ff321a9fd84d97a515c8ec33c4619accbef6e"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_LOW-baseline_profile.json",
+       "media-type": "application/json"
+      }
+     ]
+    },
+    {
+     "uuid": "3e922c9d-a481-559b-af80-d04502191ce9",
+     "title": "NIST SP 800-53 Rev 5 catalog",
+     "props": [
+      {
+       "name": "source-commit",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "78650f02ad9321bb7b817846f8fbd4f2bcd620de"
+      },
+      {
+       "name": "source-sha256",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "01f37cf90ea99d92242c936cbfbdebcc338eef1f71454e2acac36cc56e9bc062"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://raw.githubusercontent.com/usnistgov/oscal-content/78650f02ad9321bb7b817846f8fbd4f2bcd620de/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+       "media-type": "application/json"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
