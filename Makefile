@@ -47,6 +47,8 @@ wasm:
 
 oscal:
 	@python3 converters/exports/oscal/build.py
+	@python3 converters/exports/oscal/build_profiles.py
+	@python3 converters/exports/oscal/build_baseline_coverage.py
 	@python3 converters/exports/oscal/build_component.py
 
 crosswalk:
@@ -67,7 +69,7 @@ check-converters:
 	@bash converters/exports/crosswalk_csv/test/roundtrip.sh
 	@bash converters/exports/xccdf_ids/test/roundtrip.sh
 	@git diff --exit-code -- converters/packaging/gatekeeper/dist >/dev/null || { echo 'gatekeeper dist/ is stale: run build.py and commit'; exit 1; }
-	@python3 converters/exports/oscal/build.py >/dev/null && python3 converters/exports/oscal/build_component.py >/dev/null && git diff --exit-code -- converters/exports/oscal/dist >/dev/null || { echo 'oscal dist/ is stale: run make oscal and commit'; exit 1; }
+	@python3 converters/exports/oscal/build.py >/dev/null && python3 converters/exports/oscal/build_profiles.py >/dev/null && python3 converters/exports/oscal/build_baseline_coverage.py >/dev/null && python3 converters/exports/oscal/build_component.py >/dev/null && git diff --exit-code -- converters/exports/oscal/dist >/dev/null || { echo 'oscal dist/ is stale: run make oscal and commit'; exit 1; }
 	@python3 converters/exports/crosswalk_csv/build.py >/dev/null && git diff --exit-code -- converters/exports/crosswalk_csv/dist >/dev/null || { echo 'crosswalk_csv dist/ is stale: run make crosswalk and commit'; exit 1; }
 	@python3 converters/exports/xccdf_ids/build.py >/dev/null && git diff --exit-code -- converters/exports/xccdf_ids/dist >/dev/null || { echo 'xccdf_ids dist/ is stale: run make xccdf and commit'; exit 1; }
 

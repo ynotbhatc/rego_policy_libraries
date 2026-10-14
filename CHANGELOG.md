@@ -9,6 +9,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- OSCAL baseline **profiles** (`converters/exports/oscal/dist/profiles/`): NIST SP 800-53 Rev 5 Low / Moderate / High / Privacy and FedRAMP Rev 5 Low / Moderate / High / LI-SaaS as OSCAL 1.2.3 profile documents importing the pinned NIST catalog with the source baseline's control selection copied verbatim (1,947 selections); sources pinned by commit and sha256 (NIST oscal-content; FedRAMP from the OSCAL Compass mirror, the GSA repository having been removed); profile schema vendored, validated and round-tripped in CI. Closes the 800-53B row of `docs/SCF_GAP.md` (49 covered, 22 partial).
+- OSCAL **baseline coverage** (`dist/profiles/coverage.csv`, `coverage_summary.json`): for each imported baseline, which 800-53 controls at least one library check evaluates, from three authoritative mapping sources only (DISA CCI map per STIG rule, modules whose control ids are 800-53 ids, the 800-53 module's labelled checks; 24 topic rows excluded). FedRAMP Moderate: 109 of 181 base controls, 4 of 142 enhancements. The component-definition gains one control-implementation per baseline (730 implemented-requirements) with the checks and mapping source on each. README gains a "Continuous ATO" section and the fail-closed sentence on the claim line.
 - `docs/SCF_GAP.md`: document-by-document comparison against the Secure Controls Framework 2026.3 (234 distinct documents: 48 covered, 23 partial, 163 gap) and the six-phase plan to close it; `docs/COMPARISON.md` SCF row refreshed to 2026.3 figures.
 
 ## [2.4.2] - 2026-10-13

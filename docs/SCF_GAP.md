@@ -1,6 +1,6 @@
 # Secure Controls Framework (SCF) coverage gap and expansion plan
 
-**Version:** v1.0
+**Version:** v1.1
 **Date:** 2026-10-13
 **Authors:** Tim Coulter (ynotbha@aisle-five.com), Claude (Anthropic)
 **Measured against:** SCF 2026.3 workbook (released 2026-09-21), `SCF 2026.3` sheet; this library at main 798e50a7 (v2.4.2)
@@ -34,15 +34,15 @@ comparison is the distinct document.
 
 | Status | Count | Meaning |
 |---|---|---|
-| covered | 48 | a module exists for that document, same or newer edition |
-| partial | 23 | the document is covered inside another module, or we carry an older edition |
+| covered | 49 | a module exists for that document, same or newer edition |
+| partial | 22 | the document is covered inside another module, or we carry an older edition |
 | gap | 163 | nothing in the library |
 
 By region:
 
 | Region | Documents | Covered | Partial | Gap |
 |---|---|---|---|---|
-| General and international standards | 67 | 16 | 15 | 36 |
+| General and international standards | 67 | 17 | 14 | 36 |
 | United States, federal | 43 | 14 | 5 | 24 |
 | United States, state | 27 | 2 | 0 | 25 |
 | EMEA | 50 | 11 | 3 | 36 |
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our "54 tracked standards" and SCF's "48 covered" are different lists.
+those count toward the 237, so our "54 tracked standards" and SCF's "49 covered" are different lists.
 
 ## How we close it
 
@@ -63,13 +63,13 @@ The order below weights customer demand (federal, financial, Oracle and database
 reuse (one engine that serves many documents) and effort. Each phase is a release train of its own; counts move
 the README on every merge because `make count --check-readme` enforces it.
 
-### Phase 1. Re-stamp and profile the 23 partials
+### Phase 1. Re-stamp and profile the 22 partials
 
 Cheapest breadth: the controls exist, the document label or edition is what is missing.
 
 - Edition bumps: CSA CCM 4.0 to 4.1.0, ISO/IEC 27701:2019 to 2025, PCI DSS 4.0 to 4.0.1, SWIFT CSP 2024 to 2025,
   BSI C5:2020 to C5:2026, DORA to carry the 2024 RTS as a named module.
-- Profile gates on existing modules: nine PCI DSS SAQ profiles, NIST 800-53B low/moderate/high/privacy baselines,
+- Profile gates on existing modules: nine PCI DSS SAQ profiles,
   800-82 R3 OT overlays, 800-161 R1 baseline/flow-down/levels, 800-171 R2 alongside R3, 800-171A assessment
   objectives, 800-172 and 800-172A as the CMMC Level 3 enhancement set.
 - Split-outs: DFARS 252.204-7012 and EO 14028 as standalone modules that reuse the CMMC and SSDF tables, the
@@ -153,7 +153,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### General and international standards
 
-67 documents: 16 covered, 15 partial, 36 gap.
+67 documents: 17 covered, 14 partial, 36 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -195,7 +195,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | NIST | 800-39 | gap |  |
 | NIST | 800-53 | R4 | partial | Rev 5 module only |
 | NIST | 800-53 | R5.2 | covered | frameworks/federal/nist/sp_800_53 (Rev 5) |
-| NIST | 800-53B R5 (4 profiles) | partial | baselines via fedramp/fisma, not as named profiles |
+| NIST | 800-53B R5 (4 profiles) | covered | converters/exports/oscal/dist/profiles: the four NIST baselines as OSCAL profiles, imported from NIST's own files |
 | NIST | SP 800-66 R2 | partial | frameworks/privacy/hipaa covers the Security Rule, not 800-66 numbering |
 | NIST | 800-82 R3 (4 profiles) | covered | frameworks/critical_infrastructure/nist_800_82 |
 | NIST | 800-160 Vol2 R1 | gap |  |
@@ -252,7 +252,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | CJIS Security Policy | 6.0 | covered | frameworks/federal/cjis |
 | 21 CFR Part 11 | 2025 | covered | frameworks/regulatory/cfr_part_11 |
 | FFIEC ITEH | 2016 | gap |  |
-| FedRAMP R5 (4 profiles) | covered | frameworks/federal/fedramp (+ fedramp_20x, which SCF lacks) |
+| FedRAMP R5 (4 profiles) | covered | frameworks/federal/fedramp; the four Rev 5 baselines as OSCAL profiles in dist/profiles (+ fedramp_20x, which SCF lacks) |
 | 45 CFR 155.260 | gap |  |
 | IRS 1075 | 2021 | covered | frameworks/federal/irs_1075 |
 | 33 CFR | Part 101 Subpart F | gap |  |

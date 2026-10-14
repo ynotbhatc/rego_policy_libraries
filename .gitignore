@@ -15,3 +15,6 @@ __pycache__/
 
 # DISA XCCDF-derived catalogs (regenerate with tools/stig_generators/parse_xccdf.py)
 tools/stig_generators/catalogs/
+
+# OSCAL baseline-profile sources (pinned + sha256-verified on fetch; regenerate with build_profiles.py)
+converters/exports/oscal/profiles/cache/

@@ -4,7 +4,7 @@
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 >
-> **The largest open library of executable compliance policy anyone can verify — 14,318 control-level checks across 54 tracked standards — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md). Where we still trail the Secure Controls Framework on documents mapped, and the plan to close it: [docs/SCF_GAP.md](docs/SCF_GAP.md).
+> **The largest open library of executable compliance policy anyone can verify — 14,318 control-level checks across 54 tracked standards — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md). Where we still trail the Secure Controls Framework on documents mapped, and the plan to close it: [docs/SCF_GAP.md](docs/SCF_GAP.md). Every entrypoint fails closed: a framework given no facts reports non-compliant with the reason, because we treat a lack of facts as non-compliance.
 > **Compared with:** Kubescape regolibrary (304 Rego rules, Kubernetes only), Kyverno policies (180), Gatekeeper library (49), trivy-checks (563), Checkov (~1,000, IaC), KICS (1,813, IaC), Prowler (1,625 cloud checks), Steampipe AWS mod (1,361), ComplianceAsCode (2,574 OS rules), Azure Policy built-ins (5,130, Azure), Secure Controls Framework (1,534 catalogue controls, not executable). **Runs unchanged in:** OPA, Enterprise OPA, Styra DAS, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula, Snyk IaC, Terraform Cloud, Spacelift, env0, Envoy/Istio. **Exports to:** WASM for every language SDK, signed bundles, OSCAL, SARIF, OCSF, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler (see [`converters/`](converters/)).
 >
 > **Use it in CI in sixty seconds:** [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) — pull the GHCR bundle, evaluate your facts, fail the job on non-compliance; Conftest for the IaC gates.
@@ -151,6 +151,25 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 > percentage we cannot.
 
 ---
+
+## Continuous ATO, in machine-readable form
+
+Everything an authorization package needs from the policy side is generated from the Rego parse tree and the
+evaluation output, validated against the OSCAL 1.2.3 schemas in CI, and committed under
+[`converters/exports/oscal/dist/`](converters/exports/oscal/):
+
+| OSCAL object | What it holds | Where |
+|---|---|---|
+| catalog | one per framework, 150 catalogs, 11,539 controls with the Rego file that evaluates each | `dist/catalogs/` |
+| profile | NIST SP 800-53 Rev 5 Low / Moderate / High / Privacy and FedRAMP Rev 5 Low / Moderate / High / LI-SaaS, imported from NIST's and FedRAMP's own files at pinned commits | `dist/profiles/` |
+| component-definition | the library as one component: an implemented-requirement per catalog control, plus one per baseline control the library evaluates | `dist/component-definition.json` |
+| assessment-results | built from any `compliance_report` run, one finding per violation targeting the catalog statement | `build_assessment_results.py` |
+| baseline coverage | per baseline, which 800-53 controls at least one check evaluates: about 60 % of base controls in every baseline, few enhancements, with the mapping source for each | `dist/profiles/coverage.csv` |
+
+Mappings to 800-53 come only from authoritative tables (DISA's CCI map for every STIG rule, NIST's baselines, and
+modules whose control ids are 800-53 ids); nothing is mapped by hand. Not yet generated: a system security plan, a
+POA&M, and signed results. SARIF 2.1.0 and OCSF 1.9.0 exports sit beside the OSCAL ones. How it works:
+[`converters/exports/oscal/README.md`](converters/exports/oscal/README.md).
 
 ## Quick Start
 
