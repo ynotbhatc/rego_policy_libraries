@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> **783 production-ready Rego policies** (1629 including tests; **16,690 control-level checks** by `make count`, from OPA's parser; counted at main 2026-10-13) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles, **Oracle Cloud Infrastructure** and **Oracle Database 23ai** among them), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, APRA CPS 234, HKMA TM-G-1/TM-C-1 (Hong Kong), MAS TRM (Singapore), BNM RMiT (Malaysia), CERT-In Directions and DPDP Act (India), METI Cybersecurity Management Guidelines (Japan), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **783 production-ready Rego policies** (1629 including tests; **16,690 control-level checks** by `make count`, from OPA's parser; counted at main 2026-10-14) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles, **Oracle Cloud Infrastructure** and **Oracle Database 23ai** among them), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, APRA CPS 234, HKMA TM-G-1/TM-C-1 (Hong Kong), MAS TRM (Singapore), BNM RMiT (Malaysia), CERT-In Directions and DPDP Act (India), METI Cybersecurity Management Guidelines (Japan), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 >
@@ -141,11 +141,11 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 324 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 23 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
-| **Federal & K8s hardening baselines** | 10 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
-| **Regulatory Frameworks** | 328 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials**, **BSI C5:2020** |
+| **CIS Benchmarks + DISA STIGs** | 364 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 23 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **Federal & K8s hardening baselines** | 19 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
+| **Regulatory Frameworks** | 357 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials**, **BSI C5:2020** |
 | **Enforcement** | 17 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **AAP job gating**, **CI/CD pipeline gating**, **SLSA supply-chain governance** |
-| **Governance** | 21 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **ISO/IEC 42001 (AIMS)**, **OIDC token validation**, **FinOps tagging** |
+| **Governance** | 23 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **ISO/IEC 42001 (AIMS)**, **OIDC token validation**, **FinOps tagging** |
 | **Crosswalks** | 2 | STIG ↔ NIST 800-53 control mappings, framework maps |
 | **Threat Detection** | 1 | Cryptocurrency miner detection |
 
@@ -172,7 +172,7 @@ evaluation output, validated against the OSCAL 1.2.3 schemas in CI, and committe
 
 | OSCAL object | What it holds | Where |
 |---|---|---|
-| catalog | one per framework, 150 catalogs, 11,539 controls with the Rego file that evaluates each | `dist/catalogs/` |
+| catalog | one per framework, 160 catalogs, 13,887 controls with the Rego file that evaluates each | `dist/catalogs/` |
 | profile | NIST SP 800-53 Rev 5 Low / Moderate / High / Privacy and FedRAMP Rev 5 Low / Moderate / High / LI-SaaS, imported from NIST's and FedRAMP's own files at pinned commits | `dist/profiles/` |
 | component-definition | the library as one component: an implemented-requirement per catalog control, plus one per baseline control the library evaluates | `dist/component-definition.json` |
 | assessment-results | built from any `compliance_report` run, one finding per violation targeting the catalog statement | `build_assessment_results.py` |
