@@ -1,0 +1,4761 @@
+{
+ "catalog": {
+  "uuid": "39f2a9f0-9846-5703-ade8-078ae91a6759",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_sp_800_172 (NIST SP 800-172 Rev 3 — enhanced security requirements for CUI, with SP 800-172A Rev 3 determinations)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_sp_800_172"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_sp_800_172-nist_800_172_main",
+    "class": "rego-module",
+    "title": "NIST SP 800-172 Rev 3 — enhanced security requirements for CUI, with SP 800-172A Rev 3 determinations",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_172.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_172/nist_800_172_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_172-ES-03.01.01E",
+      "title": "Enforce dual authorization for [Assignment: organization-defined privileged commands and/or other organization-defined actions].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.01E_stmt",
+        "name": "statement",
+        "prose": "Enforce dual authorization for [Assignment: organization-defined privileged commands and/or other organization-defined actions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.02E",
+      "title": "Restrict the use of non-organizationally owned systems or system components to process, store, or transmit CUI using [Assignment: organization-defined restrictions].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.02E_stmt",
+        "name": "statement",
+        "prose": "Restrict the use of non-organizationally owned systems or system components to process, store, or transmit CUI using [Assignment: organization-defined restrictions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.04E",
+      "title": "Limit the number of concurrent sessions for each [Assignment: organization-defined account and/or account type] to [Assignment: organization-defined number].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.04E_stmt",
+        "name": "statement",
+        "prose": "Limit the number of concurrent sessions for each [Assignment: organization-defined account and/or account type] to [Assignment: organization-defined number]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.05E",
+      "title": "Employ automated mechanisms to monitor and control remote access methods.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.05E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.05E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.05E_stmt",
+        "name": "statement",
+        "prose": "Employ automated mechanisms to monitor and control remote access methods."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.06E",
+      "title": "Protect information about remote access mechanisms from unauthorized use and disclosure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.06E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.06E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.06E_stmt",
+        "name": "statement",
+        "prose": "Protect information about remote access mechanisms from unauthorized use and disclosure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.07E",
+      "title": "Use automated mechanisms to audit account creation, modification, enabling, disabling, and removal actions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.07E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.07E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.07E_stmt",
+        "name": "statement",
+        "prose": "Use automated mechanisms to audit account creation, modification, enabling, disabling, and removal actions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.08E-a",
+      "title": "Monitor system accounts for [Assignment: organization-defined atypical usage].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.08E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.08E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.08E-a_stmt",
+        "name": "statement",
+        "prose": "Monitor system accounts for [Assignment: organization-defined atypical usage]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.08E-b",
+      "title": "Report atypical usage of system accounts to [Assignment: organization-defined personnel or roles].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.08E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.08E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.08E-b_stmt",
+        "name": "statement",
+        "prose": "Report atypical usage of system accounts to [Assignment: organization-defined personnel or roles]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.09E-a",
+      "title": "Enforce attribute-based access control policy over defined subjects and objects.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.09E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.09E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.09E-a_stmt",
+        "name": "statement",
+        "prose": "Enforce attribute-based access control policy over defined subjects and objects."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.09E-b",
+      "title": "Control access based upon [Assignment: organization-defined attributes to assume access permissions].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.09E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.09E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.09E-b_stmt",
+        "name": "statement",
+        "prose": "Control access based upon [Assignment: organization-defined attributes to assume access permissions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.10E",
+      "title": "Use [Assignment: organization-defined security attributes] associated with [Assignment: organization-defined information, source, and destination objects] to enforce [Assignment: organization-defined ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.10E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.10E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.10E_stmt",
+        "name": "statement",
+        "prose": "Use [Assignment: organization-defined security attributes] associated with [Assignment: organization-defined information, source, and destination objects] to enforce [Assignment: organization-defined information flow control policies] as a basis for flow control decisions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.11E-a",
+      "title": "Enforce a role-based access control policy over defined subjects and objects.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.11E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.11E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.11E-a_stmt",
+        "name": "statement",
+        "prose": "Enforce a role-based access control policy over defined subjects and objects."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.11E-b",
+      "title": "Control access based upon [Assignment: organization-defined roles and users authorized to assume such roles].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.11E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.11E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.11E-b_stmt",
+        "name": "statement",
+        "prose": "Control access based upon [Assignment: organization-defined roles and users authorized to assume such roles]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.12E",
+      "title": "Separate CUI flows logically or physically using [Assignment: organization-defined mechanisms and/or techniques].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.12E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.12E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.12E_stmt",
+        "name": "statement",
+        "prose": "Separate CUI flows logically or physically using [Assignment: organization-defined mechanisms and/or techniques]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.13E",
+      "title": "Enforce information flow control based on [Assignment: organization-defined metadata].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.13E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.13E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.13E_stmt",
+        "name": "statement",
+        "prose": "Enforce information flow control based on [Assignment: organization-defined metadata]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.14E-a",
+      "title": "Enforce information flow control using [Assignment: organization-defined security policy filters] as a basis for flow control decisions for [Assignment: organization-defined information flows].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.14E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.14E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.14E-a_stmt",
+        "name": "statement",
+        "prose": "Enforce information flow control using [Assignment: organization-defined security policy filters] as a basis for flow control decisions for [Assignment: organization-defined information flows]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.14E-b",
+      "title": "[Selection (one or more): Block; Strip; Modify; Quarantine] data after a filter processing failure in accordance with [Assignment: organization-defined security policy].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.14E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.14E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.14E-b_stmt",
+        "name": "statement",
+        "prose": "[Selection (one or more): Block; Strip; Modify; Quarantine] data after a filter processing failure in accordance with [Assignment: organization-defined security policy]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.15E",
+      "title": "Use [Assignment: organization-defined data type identifiers] to validate data that is essential for information flow decisions when transferring CUI between security domains.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.15E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.15E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.15E_stmt",
+        "name": "statement",
+        "prose": "Use [Assignment: organization-defined data type identifiers] to validate data that is essential for information flow decisions when transferring CUI between security domains."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.16E",
+      "title": "Decompose CUI into [Assignment: organization-defined policy-relevant subcomponents] for submission to policy enforcement mechanisms when transferring CUI between different security domains.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.16E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.16E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.16E_stmt",
+        "name": "statement",
+        "prose": "Decompose CUI into [Assignment: organization-defined policy-relevant subcomponents] for submission to policy enforcement mechanisms when transferring CUI between different security domains."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.17E-a",
+      "title": "Examine CUI for the presence of [Assignment: organization-defined unsanctioned information] when transferring information between different security domains.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.17E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.17E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.17E-a_stmt",
+        "name": "statement",
+        "prose": "Examine CUI for the presence of [Assignment: organization-defined unsanctioned information] when transferring information between different security domains."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.01.17E-b",
+      "title": "Prohibit the transfer of the CUI defined in 03.01.17E.a in accordance with the [Assignment: organization-defined security policy].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.01.17E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.01.17E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.01.17E-b_stmt",
+        "name": "statement",
+        "prose": "Prohibit the transfer of the CUI defined in 03.01.17E.a in accordance with the [Assignment: organization-defined security policy]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.01E-a-1",
+      "title": "On the advanced persistent threat,",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.01E-a-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.01E-a-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.01E-a-1_stmt",
+        "name": "statement",
+        "prose": "On the advanced persistent threat,"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.01E-a-2",
+      "title": "On recognizing suspicious communications and anomalous behavior in systems using [Assignment: organization-defined indicators of malicious code], and",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.01E-a-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.01E-a-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.01E-a-2_stmt",
+        "name": "statement",
+        "prose": "On recognizing suspicious communications and anomalous behavior in systems using [Assignment: organization-defined indicators of malicious code], and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.01E-a-3",
+      "title": "On the cyber threat environment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.01E-a-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.01E-a-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.01E-a-3_stmt",
+        "name": "statement",
+        "prose": "On the cyber threat environment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.01E-b",
+      "title": "Update security literacy training content [Assignment: organization-defined frequency] and following [Assignment: organization-defined events].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.01E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.01E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.01E-b_stmt",
+        "name": "statement",
+        "prose": "Update security literacy training content [Assignment: organization-defined frequency] and following [Assignment: organization-defined events]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.02E",
+      "title": "Provide practical exercises in literacy training that simulate events and incidents.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.02E_stmt",
+        "name": "statement",
+        "prose": "Provide practical exercises in literacy training that simulate events and incidents."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.03E",
+      "title": "Provide feedback on organizational training results to the following personnel [Assignment: organization-defined personnel].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.03E_stmt",
+        "name": "statement",
+        "prose": "Provide feedback on organizational training results to the following personnel [Assignment: organization-defined personnel]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.02.04E",
+      "title": "Train [Assignment: organization-defined personnel or roles] to detect counterfeit system components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.02.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.02.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.02.04E_stmt",
+        "name": "statement",
+        "prose": "Train [Assignment: organization-defined personnel or roles] to detect counterfeit system components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.03.01E",
+      "title": "Store audit records in a repository that is part of a physically different system or system component than the system or component being audited.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.03.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.03.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.03.01E_stmt",
+        "name": "statement",
+        "prose": "Store audit records in a repository that is part of a physically different system or system component than the system or component being audited."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.03.02E",
+      "title": "Provide an alert within [Assignment: organization-defined real-time period] to [Assignment: organization-defined personnel, roles, and/or locations] when the following audit failure events occur: [Ass",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.03.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.03.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.03.02E_stmt",
+        "name": "statement",
+        "prose": "Provide an alert within [Assignment: organization-defined real-time period] to [Assignment: organization-defined personnel, roles, and/or locations] when the following audit failure events occur: [Assignment: organization-defined audit logging failure events requiring real-time alerts]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.03.03E",
+      "title": "Enforce dual authorization for [Selection (one or more): movement; deletion] of [Assignment: organization-defined audit information].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.03.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.03.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.03.03E_stmt",
+        "name": "statement",
+        "prose": "Enforce dual authorization for [Selection (one or more): movement; deletion] of [Assignment: organization-defined audit information]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.03.04E",
+      "title": "Integrate analysis of audit records with analysis of [Selection (one or more): vulnerability scanning information; performance data; system monitoring information; [Assignment: organization-defined da",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.03.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.03.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.03.04E_stmt",
+        "name": "statement",
+        "prose": "Integrate analysis of audit records with analysis of [Selection (one or more): vulnerability scanning information; performance data; system monitoring information; [Assignment: organization-defined data/information collected from other sources]] to further enhance the ability to identify inappropriate or unusual activity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.02E-a",
+      "title": "Detect the presence of unauthorized or misconfigured system components using [Assignment: organization-defined automated mechanisms].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.02E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.02E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.02E-a_stmt",
+        "name": "statement",
+        "prose": "Detect the presence of unauthorized or misconfigured system components using [Assignment: organization-defined automated mechanisms]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.02E-b",
+      "title": "Take the following actions when unauthorized or misconfigured components are detected: [Selection (one or more): disable network access by such components; isolate the components; notify [Assignment: ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.02E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.02E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.02E-b_stmt",
+        "name": "statement",
+        "prose": "Take the following actions when unauthorized or misconfigured components are detected: [Selection (one or more): disable network access by such components; isolate the components; notify [Assignment: organization-defined personnel or roles]]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.03E",
+      "title": "Maintain the currency, completeness, accuracy, and availability of the inventory of system components using [Assignment: organization-defined automated mechanisms].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.03E_stmt",
+        "name": "statement",
+        "prose": "Maintain the currency, completeness, accuracy, and availability of the inventory of system components using [Assignment: organization-defined automated mechanisms]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.04E",
+      "title": "Maintain the currency, completeness, accuracy, and availability of the baseline configuration of the system using [Assignment: organization-defined automated mechanisms].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.04E_stmt",
+        "name": "statement",
+        "prose": "Maintain the currency, completeness, accuracy, and availability of the baseline configuration of the system using [Assignment: organization-defined automated mechanisms]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.05E",
+      "title": "Enforce dual authorization for implementing changes to [Assignment: organization-defined system components and system-level information].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.05E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.05E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.05E_stmt",
+        "name": "statement",
+        "prose": "Enforce dual authorization for implementing changes to [Assignment: organization-defined system components and system-level information]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.06E",
+      "title": "Retain [Assignment: organization-defined number] previous versions of baseline configurations of the system to support rollback.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.06E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.06E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.06E_stmt",
+        "name": "statement",
+        "prose": "Retain [Assignment: organization-defined number] previous versions of baseline configurations of the system to support rollback."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.07E",
+      "title": "Test, validate, and document changes to the system before finalizing the implementation of the changes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.07E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.07E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.07E_stmt",
+        "name": "statement",
+        "prose": "Test, validate, and document changes to the system before finalizing the implementation of the changes."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.04.08E",
+      "title": "Provide a centralized repository for the inventory of system components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.04.08E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.04.08E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.04.08E_stmt",
+        "name": "statement",
+        "prose": "Provide a centralized repository for the inventory of system components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.01E",
+      "title": "Authenticate [Assignment: organization-defined devices and/or types of devices] before establishing a system connection using bidirectional authentication that is cryptographically based.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.01E_stmt",
+        "name": "statement",
+        "prose": "Authenticate [Assignment: organization-defined devices and/or types of devices] before establishing a system connection using bidirectional authentication that is cryptographically based."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.02E-a",
+      "title": "Employ [Assignment: organization-defined password managers] to generate and manage passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.02E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.02E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.02E-a_stmt",
+        "name": "statement",
+        "prose": "Employ [Assignment: organization-defined password managers] to generate and manage passwords."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.02E-b",
+      "title": "Protect the passwords using [Assignment: organization-defined safeguards].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.02E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.02E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.02E-b_stmt",
+        "name": "statement",
+        "prose": "Protect the passwords using [Assignment: organization-defined safeguards]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.03E",
+      "title": "Handle device identification and authentication based on attestation by [Assignment: organization-defined configuration management process].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.03E_stmt",
+        "name": "statement",
+        "prose": "Handle device identification and authentication based on attestation by [Assignment: organization-defined configuration management process]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.04E",
+      "title": "Ensure that unencrypted static authenticators are not embedded in applications or other forms of static storage.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.04E_stmt",
+        "name": "statement",
+        "prose": "Ensure that unencrypted static authenticators are not embedded in applications or other forms of static storage."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.05E",
+      "title": "Prohibit the use of cached authenticators after [Assignment: organization-defined time period].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.05E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.05E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.05E_stmt",
+        "name": "statement",
+        "prose": "Prohibit the use of cached authenticators after [Assignment: organization-defined time period]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.06E-a",
+      "title": "Identity proof users that require accounts for logical access to systems based on appropriate identity assurance level requirements as specified in applicable standards and guidelines.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.06E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.06E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.06E-a_stmt",
+        "name": "statement",
+        "prose": "Identity proof users that require accounts for logical access to systems based on appropriate identity assurance level requirements as specified in applicable standards and guidelines."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.06E-b",
+      "title": "Resolve user identities to a unique individual.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.06E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.06E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.06E-b_stmt",
+        "name": "statement",
+        "prose": "Resolve user identities to a unique individual."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.06E-c",
+      "title": "Collect, validate, and verify identity evidence.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.06E-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.06E-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.06E-c_stmt",
+        "name": "statement",
+        "prose": "Collect, validate, and verify identity evidence."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.05.07E",
+      "title": "Employ identity providers and authorization servers to manage user, device, and non-person entity identities, attributes, and access rights that support authentication and authorization decisions in a",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.05.07E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.05.07E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.05.07E_stmt",
+        "name": "statement",
+        "prose": "Employ identity providers and authorization servers to manage user, device, and non-person entity identities, attributes, and access rights that support authentication and authorization decisions in accordance with [Assignment: organization-defined identification and authentication policy] using [Assignment: organization-defined mechanisms]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.06.01E",
+      "title": "Establish and maintain a security operations center.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.06.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.06.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.06.01E_stmt",
+        "name": "statement",
+        "prose": "Establish and maintain a security operations center."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.06.02E",
+      "title": "Establish and maintain an integrated incident response team that can be deployed to any location identified by the organization in [Assignment: organization-defined time period].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.06.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.06.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.06.02E_stmt",
+        "name": "statement",
+        "prose": "Establish and maintain an integrated incident response team that can be deployed to any location identified by the organization in [Assignment: organization-defined time period]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.06.03E",
+      "title": "Analyze anomalous or suspected adversarial behavior in or related to [Assignment: organization-defined environments or resources].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.06.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.06.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.06.03E_stmt",
+        "name": "statement",
+        "prose": "Analyze anomalous or suspected adversarial behavior in or related to [Assignment: organization-defined environments or resources]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.06.04E",
+      "title": "Track incidents and collect and analyze incident information using [Assignment: organization-defined automated mechanisms].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.06.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.06.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.06.04E_stmt",
+        "name": "statement",
+        "prose": "Track incidents and collect and analyze incident information using [Assignment: organization-defined automated mechanisms]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.07.01E",
+      "title": "Inspect maintenance tools to ensure the latest software updates and patches are installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.07.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.07.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.07.01E_stmt",
+        "name": "statement",
+        "prose": "Inspect maintenance tools to ensure the latest software updates and patches are installed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.08.01E",
+      "title": "Enforce dual authorization for the sanitization of [Assignment: organization-defined system media containing CUI].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.08.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.08.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.08.01E_stmt",
+        "name": "statement",
+        "prose": "Enforce dual authorization for the sanitization of [Assignment: organization-defined system media containing CUI]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.08.02E",
+      "title": "Enforce dual authorization for the deletion or destruction of [Assignment: organization-defined system backup information].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.08.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.08.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.08.02E_stmt",
+        "name": "statement",
+        "prose": "Enforce dual authorization for the deletion or destruction of [Assignment: organization-defined system backup information]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.08.03E",
+      "title": "Test backup information [Assignment: organization-defined frequency] to verify media reliability and information integrity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.08.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.08.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.08.03E_stmt",
+        "name": "statement",
+        "prose": "Test backup information [Assignment: organization-defined frequency] to verify media reliability and information integrity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.08.04E",
+      "title": "Provide for the recovery and reconstitution of the system to a known state within [Assignment: organization-defined time period consistent with recovery time and recovery point objectives] after a dis",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.08.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.08.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.08.04E_stmt",
+        "name": "statement",
+        "prose": "Provide for the recovery and reconstitution of the system to a known state within [Assignment: organization-defined time period consistent with recovery time and recovery point objectives] after a disruption, compromise, or failure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.09.03E-a",
+      "title": "Develop and document access agreements for systems processing, storing, or transmitting CUI.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.09.03E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.09.03E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.09.03E-a_stmt",
+        "name": "statement",
+        "prose": "Develop and document access agreements for systems processing, storing, or transmitting CUI."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.09.03E-b",
+      "title": "Review and update the access agreements [Assignment: organization-defined frequency].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.09.03E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.09.03E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.09.03E-b_stmt",
+        "name": "statement",
+        "prose": "Review and update the access agreements [Assignment: organization-defined frequency]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.09.03E-c-1",
+      "title": "Sign appropriate access agreements prior to being granted access; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.09.03E-c-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.09.03E-c-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.09.03E-c-1_stmt",
+        "name": "statement",
+        "prose": "Sign appropriate access agreements prior to being granted access; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.09.03E-c-2",
+      "title": "Re-sign access agreements to maintain access to systems when access agreements have been updated or [Assignment: organization-defined frequency].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.09.03E-c-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.09.03E-c-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.09.03E-c-2_stmt",
+        "name": "statement",
+        "prose": "Re-sign access agreements to maintain access to systems when access agreements have been updated or [Assignment: organization-defined frequency]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.09.04E",
+      "title": "Verify that individuals accessing a system that processes, stores, or transmits CUI meet [Assignment: organization-defined citizenship requirements].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.09.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.09.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.09.04E_stmt",
+        "name": "statement",
+        "prose": "Verify that individuals accessing a system that processes, stores, or transmits CUI meet [Assignment: organization-defined citizenship requirements]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.10.01E",
+      "title": "Monitor physical access to the facility where the system resides using physical intrusion alarms and surveillance equipment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.10.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.10.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.10.01E_stmt",
+        "name": "statement",
+        "prose": "Monitor physical access to the facility where the system resides using physical intrusion alarms and surveillance equipment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.10.02E-a",
+      "title": "Authorize and control [Assignment: organization-defined types of system components] entering and exiting the facility.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.10.02E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.10.02E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.10.02E-a_stmt",
+        "name": "statement",
+        "prose": "Authorize and control [Assignment: organization-defined types of system components] entering and exiting the facility."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.10.02E-b",
+      "title": "Maintain records of the system components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.10.02E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.10.02E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.10.02E-b_stmt",
+        "name": "statement",
+        "prose": "Maintain records of the system components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.01E",
+      "title": "Implement a threat awareness program that includes a cross-organization information-sharing capability for threat intelligence.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.01E_stmt",
+        "name": "statement",
+        "prose": "Implement a threat awareness program that includes a cross-organization information-sharing capability for threat intelligence."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.02E-a-1",
+      "title": "Search for indicators of compromise in organizational systems and",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.02E-a-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.02E-a-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.02E-a-1_stmt",
+        "name": "statement",
+        "prose": "Search for indicators of compromise in organizational systems and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.02E-a-2",
+      "title": "Detect, track, and disrupt threats that evade existing safeguards.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.02E-a-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.02E-a-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.02E-a-2_stmt",
+        "name": "statement",
+        "prose": "Detect, track, and disrupt threats that evade existing safeguards."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.02E-b",
+      "title": "Employ the threat-hunting capability [Assignment: organization-defined frequency].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.02E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.02E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.02E-b_stmt",
+        "name": "statement",
+        "prose": "Employ the threat-hunting capability [Assignment: organization-defined frequency]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.03E",
+      "title": "Employ the following advanced automation and analytics capabilities to predict and identify risks to [Assignment: organization-defined systems or system components]: [Assignment: organization-defined ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.03E_stmt",
+        "name": "statement",
+        "prose": "Employ the following advanced automation and analytics capabilities to predict and identify risks to [Assignment: organization-defined systems or system components]: [Assignment: organization-defined advanced automation and analytics capabilities]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.08E",
+      "title": "Determine the current cyber threat environment on an ongoing basis using [Assignment: organization-defined means].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.08E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.08E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.08E_stmt",
+        "name": "statement",
+        "prose": "Determine the current cyber threat environment on an ongoing basis using [Assignment: organization-defined means]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.09E",
+      "title": "Discover, collect, and distribute to [Assignment: organization-defined personnel or roles], indicators of compromise provided by [Assignment: organization-defined sources].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.09E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.09E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.09E_stmt",
+        "name": "statement",
+        "prose": "Discover, collect, and distribute to [Assignment: organization-defined personnel or roles], indicators of compromise provided by [Assignment: organization-defined sources]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.10E",
+      "title": "Identify critical system components and functions by performing a criticality analysis for [Assignment: organization-defined systems, system components, or system services] at [Assignment: organizatio",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.10E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.10E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.10E_stmt",
+        "name": "statement",
+        "prose": "Identify critical system components and functions by performing a criticality analysis for [Assignment: organization-defined systems, system components, or system services] at [Assignment: organization-defined decision points in the system development life cycle]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.11E",
+      "title": "Determine information about the system that is discoverable and take [Assignment: organization-defined corrective actions].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.11E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.11E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.11E_stmt",
+        "name": "statement",
+        "prose": "Determine information about the system that is discoverable and take [Assignment: organization-defined corrective actions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.11.12E",
+      "title": "Employ automated mechanisms to maximize the effectiveness of sharing threat intelligence information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.11.12E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.11.12E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.11.12E_stmt",
+        "name": "statement",
+        "prose": "Employ automated mechanisms to maximize the effectiveness of sharing threat intelligence information."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.01E",
+      "title": "Conduct penetration testing [Assignment: organization-defined frequency] on [Assignment: organization-defined systems or system components].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.01E_stmt",
+        "name": "statement",
+        "prose": "Conduct penetration testing [Assignment: organization-defined frequency] on [Assignment: organization-defined systems or system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.02E",
+      "title": "Use independent assessors or assessment teams to conduct security requirement assessments.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.02E_stmt",
+        "name": "statement",
+        "prose": "Use independent assessors or assessment teams to conduct security requirement assessments."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.03E",
+      "title": "Ensure risk monitoring is an integral part of the continuous monitoring strategy that includes effectiveness monitoring, compliance monitoring, change monitoring.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.03E_stmt",
+        "name": "statement",
+        "prose": "Ensure risk monitoring is an integral part of the continuous monitoring strategy that includes effectiveness monitoring, compliance monitoring, change monitoring."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.04E-a",
+      "title": "Authorize internal connections of [Assignment: organization-defined system components or classes of components] to the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.04E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.04E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.04E-a_stmt",
+        "name": "statement",
+        "prose": "Authorize internal connections of [Assignment: organization-defined system components or classes of components] to the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.04E-b",
+      "title": "Document, for each internal connection, the interface characteristics, security requirements, and the nature of the information communicated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.04E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.04E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.04E-b_stmt",
+        "name": "statement",
+        "prose": "Document, for each internal connection, the interface characteristics, security requirements, and the nature of the information communicated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.04E-c",
+      "title": "Terminate internal system connections after [Assignment: organization-defined conditions].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.04E-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.04E-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.04E-c_stmt",
+        "name": "statement",
+        "prose": "Terminate internal system connections after [Assignment: organization-defined conditions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.12.04E-d",
+      "title": "Review [Assignment: organization-defined frequency] the continued need for each internal connection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.12.04E-d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.12.04E-d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.12.04E-d_stmt",
+        "name": "statement",
+        "prose": "Review [Assignment: organization-defined frequency] the continued need for each internal connection."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.01E",
+      "title": "Employ a diverse set of information technologies for the following system components in the implementation of the system: [Assignment: organization-defined system components].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.01E_stmt",
+        "name": "statement",
+        "prose": "Employ a diverse set of information technologies for the following system components in the implementation of the system: [Assignment: organization-defined system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.02E",
+      "title": "Employ [Assignment: organization-defined techniques] to introduce randomness into organizational operations and assets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.02E_stmt",
+        "name": "statement",
+        "prose": "Employ [Assignment: organization-defined techniques] to introduce randomness into organizational operations and assets."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.03E",
+      "title": "Employ the following concealment and misdirection techniques to mislead adversaries: [Assignment: organization-defined concealment and misdirection techniques].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.03E_stmt",
+        "name": "statement",
+        "prose": "Employ the following concealment and misdirection techniques to mislead adversaries: [Assignment: organization-defined concealment and misdirection techniques]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.04E",
+      "title": "Employ boundary protection mechanisms to isolate [Assignment: organization-defined system components].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.04E_stmt",
+        "name": "statement",
+        "prose": "Employ boundary protection mechanisms to isolate [Assignment: organization-defined system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.05E",
+      "title": "Change the location of [Assignment: organization-defined processing and/or storage] [Selection (one): [Assignment: organization-defined time frequency]; at random time intervals].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.05E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.05E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.05E_stmt",
+        "name": "statement",
+        "prose": "Change the location of [Assignment: organization-defined processing and/or storage] [Selection (one): [Assignment: organization-defined time frequency]; at random time intervals]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.06E",
+      "title": "Include within organizational systems the following platform independent applications: [Assignment: organization-defined platform-independent applications].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.06E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.06E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.06E_stmt",
+        "name": "statement",
+        "prose": "Include within organizational systems the following platform independent applications: [Assignment: organization-defined platform-independent applications]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.07E",
+      "title": "Employ virtualization techniques to support the deployment of a diversity of operating systems and applications that are changed [Assignment: organization-defined frequency].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.07E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.07E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.07E_stmt",
+        "name": "statement",
+        "prose": "Employ virtualization techniques to support the deployment of a diversity of operating systems and applications that are changed [Assignment: organization-defined frequency]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.08E",
+      "title": "Include components within organizational systems specifically designed to be the target of malicious attacks for detecting, deflecting, and analyzing such attacks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.08E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.08E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.08E_stmt",
+        "name": "statement",
+        "prose": "Include components within organizational systems specifically designed to be the target of malicious attacks for detecting, deflecting, and analyzing such attacks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.09E",
+      "title": "Isolate [Assignment: organization-defined information security tools, mechanisms, and support components] from other internal system components by implementing physically separate subnetworks with man",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.09E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.09E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.09E_stmt",
+        "name": "statement",
+        "prose": "Isolate [Assignment: organization-defined information security tools, mechanisms, and support components] from other internal system components by implementing physically separate subnetworks with managed interfaces to other components of the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.10E",
+      "title": "Implement separate network addresses to connect to systems in different security domains.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.10E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.10E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.10E_stmt",
+        "name": "statement",
+        "prose": "Implement separate network addresses to connect to systems in different security domains."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.11E",
+      "title": "Employ minimal functionality and information storage on the following system components: [Assignment: organization-defined system components].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.11E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.11E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.11E_stmt",
+        "name": "statement",
+        "prose": "Employ minimal functionality and information storage on the following system components: [Assignment: organization-defined system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.12E-a",
+      "title": "[Selection (one): Protect against; Limit] the effects of the following types of denial-of-service events: [Assignment: organization-defined types of denial-of-service events].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.12E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.12E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.12E-a_stmt",
+        "name": "statement",
+        "prose": "[Selection (one): Protect against; Limit] the effects of the following types of denial-of-service events: [Assignment: organization-defined types of denial-of-service events]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.12E-b",
+      "title": "Employ the following safeguards to prevent the denial-of-service events[Assignment: organization-defined safeguards by type of denial-of-service event].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.12E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.12E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.12E-b_stmt",
+        "name": "statement",
+        "prose": "Employ the following safeguards to prevent the denial-of-service events[Assignment: organization-defined safeguards by type of denial-of-service event]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.13E",
+      "title": "[Selection (one): Physically; Logically] disable or remove [Assignment: organization-defined connection ports or input/output devices] on the following systems or system components: [Assignment: organ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.13E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.13E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.13E_stmt",
+        "name": "statement",
+        "prose": "[Selection (one): Physically; Logically] disable or remove [Assignment: organization-defined connection ports or input/output devices] on the following systems or system components: [Assignment: organization-defined systems or system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.14E",
+      "title": "Employ a detonation chamber capability within [Assignment: organization-defined system, system component, or location].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.14E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.14E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.14E_stmt",
+        "name": "statement",
+        "prose": "Employ a detonation chamber capability within [Assignment: organization-defined system, system component, or location]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.15E",
+      "title": "Implement [Selection (one): physically; logically] separate subnetworks to isolate the following critical system components and functions: [Assignment: organization-defined critical system components ",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.15E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.15E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.15E_stmt",
+        "name": "statement",
+        "prose": "Implement [Selection (one): physically; logically] separate subnetworks to isolate the following critical system components and functions: [Assignment: organization-defined critical system components and functions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.13.16E",
+      "title": "Partition the system into [Assignment: organization-defined system components] residing in separate [Selection (one): physical; logical] domains or environments based on [Assignment: organization-defi",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.13.16E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.13.16E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.13.16E_stmt",
+        "name": "statement",
+        "prose": "Partition the system into [Assignment: organization-defined system components] residing in separate [Selection (one): physical; logical] domains or environments based on [Assignment: organization-defined circumstances for physical or logical separation of components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.01E-a",
+      "title": "Employ integrity verification tools to detect unauthorized changes to the following software, firmware, and information: [Assignment: organization-defined software, firmware, and information].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.01E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.01E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.01E-a_stmt",
+        "name": "statement",
+        "prose": "Employ integrity verification tools to detect unauthorized changes to the following software, firmware, and information: [Assignment: organization-defined software, firmware, and information]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.01E-b",
+      "title": "Take the following actions when unauthorized changes to the software, firmware, and information are detected: [Assignment: organization-defined actions].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.01E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.01E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.01E-b_stmt",
+        "name": "statement",
+        "prose": "Take the following actions when unauthorized changes to the software, firmware, and information are detected: [Assignment: organization-defined actions]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.04E",
+      "title": "Obtain software and data employed during system component and service refreshes from the following trusted sources: [Assignment: organization-defined trusted sources].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.04E_stmt",
+        "name": "statement",
+        "prose": "Obtain software and data employed during system component and service refreshes from the following trusted sources: [Assignment: organization-defined trusted sources]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.05E-a",
+      "title": "[Selection (one): Refresh [Assignment: organization-defined information] [Assignment: organization-defined frequency]; Generate [Assignment: organization-defined information] on demand].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.05E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.05E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.05E-a_stmt",
+        "name": "statement",
+        "prose": "[Selection (one): Refresh [Assignment: organization-defined information] [Assignment: organization-defined frequency]; Generate [Assignment: organization-defined information] on demand]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.05E-b",
+      "title": "Delete information when no longer needed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.05E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.05E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.05E-b_stmt",
+        "name": "statement",
+        "prose": "Delete information when no longer needed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.08E",
+      "title": "Perform an integrity check of [Assignment: organization-defined software, firmware, and information] [Selection (one or more): at startup; at [Assignment: organization-defined transitional states or s",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.08E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.08E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.08E_stmt",
+        "name": "statement",
+        "prose": "Perform an integrity check of [Assignment: organization-defined software, firmware, and information] [Selection (one or more): at startup; at [Assignment: organization-defined transitional states or security-relevant events]; [Assignment: organization-defined frequency]]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.09E",
+      "title": "Implement cryptographic mechanisms to detect unauthorized changes to software, firmware, and information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.09E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.09E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.09E_stmt",
+        "name": "statement",
+        "prose": "Implement cryptographic mechanisms to detect unauthorized changes to software, firmware, and information."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.10E",
+      "title": "Implement the following mechanisms to protect the integrity of boot firmware in [Assignment: organization-defined system components]: [Assignment: organization-defined mechanisms].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.10E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.10E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.10E_stmt",
+        "name": "statement",
+        "prose": "Implement the following mechanisms to protect the integrity of boot firmware in [Assignment: organization-defined system components]: [Assignment: organization-defined mechanisms]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.11E",
+      "title": "Incorporate the detection of the following unauthorized changes into the organizational incident response capability: [Assignment: organization-defined security-relevant changes to the system].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.11E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.11E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.11E_stmt",
+        "name": "statement",
+        "prose": "Incorporate the detection of the following unauthorized changes into the organizational incident response capability: [Assignment: organization-defined security-relevant changes to the system]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.12E",
+      "title": "Check the validity of the following information inputs: [Assignment: organization-defined information inputs to the system].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.12E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.12E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.12E_stmt",
+        "name": "statement",
+        "prose": "Check the validity of the following information inputs: [Assignment: organization-defined information inputs to the system]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.13E-a",
+      "title": "Generate error messages that provide information necessary for corrective actions without revealing information that could be exploited.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.13E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.13E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.13E-a_stmt",
+        "name": "statement",
+        "prose": "Generate error messages that provide information necessary for corrective actions without revealing information that could be exploited."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.13E-b",
+      "title": "Reveal error messages only to [Assignment: organization-defined personnel or roles].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.13E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.13E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.13E-b_stmt",
+        "name": "statement",
+        "prose": "Reveal error messages only to [Assignment: organization-defined personnel or roles]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.14E",
+      "title": "Implement the following safeguards to protect the system memory from unauthorized code execution: [Assignment: organization-defined safeguards].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.14E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.14E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.14E_stmt",
+        "name": "statement",
+        "prose": "Implement the following safeguards to protect the system memory from unauthorized code execution: [Assignment: organization-defined safeguards]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.15E-a",
+      "title": "Implement non-persistent [Assignment: organization-defined system components and services].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.15E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.15E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.15E-a_stmt",
+        "name": "statement",
+        "prose": "Implement non-persistent [Assignment: organization-defined system components and services]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.15E-b",
+      "title": "Initiate non-persistent [Assignment: organization-defined system components and services] from a known state.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.15E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.15E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.15E-b_stmt",
+        "name": "statement",
+        "prose": "Initiate non-persistent [Assignment: organization-defined system components and services] from a known state."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.15E-c",
+      "title": "Terminate non-persistent [Assignment: organization-defined system components and services] [Selection (one or more): upon end of session of use; [Assignment: organization-defined frequency]].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.15E-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.15E-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.15E-c_stmt",
+        "name": "statement",
+        "prose": "Terminate non-persistent [Assignment: organization-defined system components and services] [Selection (one or more): upon end of session of use; [Assignment: organization-defined frequency]]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.16E",
+      "title": "Embed data or capabilities in the following systems or system components to determine if CUI has been exfiltrated or improperly removed from the organization: [Assignment: organization-defined systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.16E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.16E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.16E_stmt",
+        "name": "statement",
+        "prose": "Embed data or capabilities in the following systems or system components to determine if CUI has been exfiltrated or improperly removed from the organization: [Assignment: organization-defined systems or system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.17E",
+      "title": "Alert [Assignment: organization-defined personnel or roles] when the following system-generated indications of compromise or potential compromise occur: [Assignment: organization-defined compromise in",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.17E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.17E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.17E_stmt",
+        "name": "statement",
+        "prose": "Alert [Assignment: organization-defined personnel or roles] when the following system-generated indications of compromise or potential compromise occur: [Assignment: organization-defined compromise indicators]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.18E",
+      "title": "Alert [Assignment: organization-defined personnel or roles] using [Assignment: organization-defined automated mechanisms] when the following indications of inappropriate or unusual activities with sec",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.18E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.18E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.18E_stmt",
+        "name": "statement",
+        "prose": "Alert [Assignment: organization-defined personnel or roles] using [Assignment: organization-defined automated mechanisms] when the following indications of inappropriate or unusual activities with security implications occur: [Assignment: organization-defined activities that trigger alerts]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.14.19E",
+      "title": "Employ a wireless intrusion detection system to identify rogue wireless devices and to detect attack attempts and potential compromises or breaches to the system",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.14.19E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.14.19E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.14.19E_stmt",
+        "name": "statement",
+        "prose": "Employ a wireless intrusion detection system to identify rogue wireless devices and to detect attack attempts and potential compromises or breaches to the system"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.01E-a-1",
+      "title": "Describes the security requirements and approach to be taken for protecting the confidentiality, integrity, and availability of CUI,",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.01E-a-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.01E-a-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.01E-a-1_stmt",
+        "name": "statement",
+        "prose": "Describes the security requirements and approach to be taken for protecting the confidentiality, integrity, and availability of CUI,"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.01E-a-2",
+      "title": "Describes how the architecture is integrated into and supports the enterprise architecture, and",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.01E-a-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.01E-a-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.01E-a-2_stmt",
+        "name": "statement",
+        "prose": "Describes how the architecture is integrated into and supports the enterprise architecture, and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.01E-a-3",
+      "title": "Describes any assumptions about, and dependencies on, external systems and services.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.01E-a-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.01E-a-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.01E-a-3_stmt",
+        "name": "statement",
+        "prose": "Describes any assumptions about, and dependencies on, external systems and services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.01E-b",
+      "title": "Review and update the security architecture [Assignment: organization-defined frequency] to reflect changes in the enterprise architecture.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.01E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.01E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.01E-b_stmt",
+        "name": "statement",
+        "prose": "Review and update the security architecture [Assignment: organization-defined frequency] to reflect changes in the enterprise architecture."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.01E-c",
+      "title": "Reflect planned security architecture changes in system security plans, concept of operations, criticality analysis, organizational procedures, and procurements and acquisitions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.01E-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.01E-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.01E-c_stmt",
+        "name": "statement",
+        "prose": "Reflect planned security architecture changes in system security plans, concept of operations, criticality analysis, organizational procedures, and procurements and acquisitions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.02E-a",
+      "title": "Design the security architecture for the system using a defense-in-depth approach.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.02E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.02E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.02E-a_stmt",
+        "name": "statement",
+        "prose": "Design the security architecture for the system using a defense-in-depth approach."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.02E-b",
+      "title": "Allocate [Assignment: organization-defined security requirements] to [Assignment: organization-defined architectural layers and locations].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.02E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.02E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.02E-b_stmt",
+        "name": "statement",
+        "prose": "Allocate [Assignment: organization-defined security requirements] to [Assignment: organization-defined architectural layers and locations]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.02E-c",
+      "title": "Ensure that the allocated requirements operate in a coordinated and mutually reinforcing manner.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.02E-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.02E-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.02E-c_stmt",
+        "name": "statement",
+        "prose": "Ensure that the allocated requirements operate in a coordinated and mutually reinforcing manner."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.15.03E",
+      "title": "Require that [Assignment: organization-defined safeguards] allocated to [Assignment: organization-defined locations and architectural layers] are obtained from different suppliers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.15.03E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.15.03E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.15.03E_stmt",
+        "name": "statement",
+        "prose": "Require that [Assignment: organization-defined safeguards] allocated to [Assignment: organization-defined locations and architectural layers] are obtained from different suppliers."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.16.01E",
+      "title": "Employ [Selection (one or more): design; modification; augmentation; reconfiguration] on [Assignment: organization-defined systems or system components] supporting mission-essential services or functi",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.16.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.16.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.16.01E_stmt",
+        "name": "statement",
+        "prose": "Employ [Selection (one or more): design; modification; augmentation; reconfiguration] on [Assignment: organization-defined systems or system components] supporting mission-essential services or functions to increase the trustworthiness in those systems or components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.17.01E",
+      "title": "Establish agreements and procedures with entities involved in the supply chain for the system, system component, or system service for the [Selection (one or more): notification of supply chain compro",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.17.01E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.17.01E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.17.01E_stmt",
+        "name": "statement",
+        "prose": "Establish agreements and procedures with entities involved in the supply chain for the system, system component, or system service for the [Selection (one or more): notification of supply chain compromises; results of assessments or audits; [Assignment: organization-defined information]]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.17.02E",
+      "title": "Inspect the following systems or system components [Selection (one or more): at random; [Assignment: organization-defined frequency]; upon [Assignment: organization-defined indications of need for ins",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.17.02E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.17.02E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.17.02E_stmt",
+        "name": "statement",
+        "prose": "Inspect the following systems or system components [Selection (one or more): at random; [Assignment: organization-defined frequency]; upon [Assignment: organization-defined indications of need for inspection]] to detect tampering: [Assignment: organization-defined systems or system components]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.17.03E-a",
+      "title": "Develop and implement anti-counterfeit policy and procedures that include the means to detect and prevent counterfeit components from entering the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.17.03E-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.17.03E-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.17.03E-a_stmt",
+        "name": "statement",
+        "prose": "Develop and implement anti-counterfeit policy and procedures that include the means to detect and prevent counterfeit components from entering the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.17.03E-b",
+      "title": "Report counterfeit system components to [Selection (one or more): source of counterfeit component; [Assignment: organization-defined external reporting organizations]; [Assignment: organization-define",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.17.03E-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.17.03E-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.17.03E-b_stmt",
+        "name": "statement",
+        "prose": "Report counterfeit system components to [Selection (one or more): source of counterfeit component; [Assignment: organization-defined external reporting organizations]; [Assignment: organization-defined personnel or roles]]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.17.04E",
+      "title": "Document, monitor, and maintain valid provenance of the following systems, system components, and associated CUI: [Assignment: organization-defined systems, system components, and associated CUI].",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.17.04E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.17.04E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.17.04E_stmt",
+        "name": "statement",
+        "prose": "Document, monitor, and maintain valid provenance of the following systems, system components, and associated CUI: [Assignment: organization-defined systems, system components, and associated CUI]."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-ES-03.17.05E",
+      "title": "Employ [Assignment: organization-defined safeguards] and conduct [Assignment: organization-defined analysis] to ensure the integrity of the system and system components by validating the internal comp",
+      "props": [
+       {
+        "name": "label",
+        "value": "ES-03.17.05E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ES-03.17.05E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-ES-03.17.05E_stmt",
+        "name": "statement",
+        "prose": "Employ [Assignment: organization-defined safeguards] and conduct [Assignment: organization-defined analysis] to ensure the integrity of the system and system components by validating the internal composition and provenance of critical or mission-essential technologies, products, and services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3",
+      "title": "FAIL-CLOSED - facts 'input.nist_sp_800_172' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-172 Rev 3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-172 Rev 3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.nist_sp_800_172' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-nist.sp800_172.main-1",
+      "title": "NIST SP 800-172 Rev 3 %v (%v %v, %v): %v — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_172.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_172.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-nist.sp800_172.main-1_stmt",
+        "name": "statement",
+        "prose": "NIST SP 800-172 Rev 3 %v (%v %v, %v): %v — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3-Input-Contract",
+      "title": "attestation for withdrawn requirement %v — withdrawn; see %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-172 Rev 3 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-172 Rev 3 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for withdrawn requirement %v — withdrawn; see %v"
+       },
+       {
+        "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "%v is a parent or lead-in statement — attest its leaf statements (%v)"
+       },
+       {
+        "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown statement id %v — not an enhanced security requirement statement in the CPRT export (keys look like \"ES-03.01.08E-a\")"
+       },
+       {
+        "id": "nist_sp_800_172-NIST-SP-800-172-Rev-3-Input-Contract_obj.3",
+        "name": "assessment-objective",
+        "prose": "input.nist_sp_800_172.%v must be an object of {\"<id>\": true}"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_172-NIST-SP-800-172A-Rev-3-Input-Contract",
+      "title": "unknown determination id %v — not a determination statement in the CPRT export (keys look like \"DS-A.03.01.05E[01]\")",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-172A Rev 3 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-172A Rev 3 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_172.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47bb37f5-4c59-5276-9652-29d21c0523d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_172-NIST-SP-800-172A-Rev-3-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unknown determination id %v — not a determination statement in the CPRT export (keys look like \"DS-A.03.01.05E[01]\")"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "47bb37f5-4c59-5276-9652-29d21c0523d4",
+     "title": "NIST SP 800-172 Rev 3 — enhanced security requirements for CUI, with SP 800-172A Rev 3 determinations",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_172.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/nist/sp_800_172/nist_800_172_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

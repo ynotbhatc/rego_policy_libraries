@@ -1,0 +1,951 @@
+{
+ "catalog": {
+  "uuid": "2ad930ef-3cae-5dad-a16d-132b8e34ae67",
+  "metadata": {
+   "title": "Rego Policy Libraries — cisa_ssdaf (CISA Secure Software Development Attestation Form v1.0 (OMB 1670-0052) — Section III attestations)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cisa_ssdaf"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cisa_ssdaf-cisa_ssdaf_main",
+    "class": "rego-module",
+    "title": "CISA Secure Software Development Attestation Form v1.0 (OMB 1670-0052) — Section III attestations",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cisa_ssdaf.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cisa_ssdaf/cisa_ssdaf_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cisa_ssdaf-continuous_delivery",
+      "title": "CISA SSDAF scope 3 — whether the producer delivers continuous changes to the software code (SaaS, CI/CD) must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "continuous_delivery"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "continuous_delivery"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-continuous_delivery_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF scope 3 — whether the producer delivers continuous changes to the software code (SaaS, CI/CD) must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-developed_after_2022_09_14",
+      "title": "CISA SSDAF scope 1 — whether the software was developed after September 14, 2022 must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "developed_after_2022_09_14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "developed_after_2022_09_14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-developed_after_2022_09_14_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF scope 1 — whether the software was developed after September 14, 2022 must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-major_version_change_after_2022_09_14",
+      "title": "CISA SSDAF scope 2 — whether software developed before September 14, 2022 was modified by a major version change after that date must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "major_version_change_after_2022_09_14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "major_version_change_after_2022_09_14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-major_version_change_after_2022_09_14_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF scope 2 — whether software developed before September 14, 2022 was modified by a major version change after that date must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-developed_by_federal_agency",
+      "title": "CISA SSDAF exclusion 1 — whether the software was developed by a Federal agency must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "developed_by_federal_agency"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "developed_by_federal_agency"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-developed_by_federal_agency_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF exclusion 1 — whether the software was developed by a Federal agency must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-freely_obtained_publicly_available",
+      "title": "CISA SSDAF exclusion 4 — whether the software is freely obtained and publicly available must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "freely_obtained_publicly_available"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "freely_obtained_publicly_available"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-freely_obtained_publicly_available_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF exclusion 4 — whether the software is freely obtained and publicly available must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-open_source_obtained_directly_by_agency",
+      "title": "CISA SSDAF exclusion 2 — whether the software is open source freely and directly obtained by a Federal agency must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "open_source_obtained_directly_by_agency"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "open_source_obtained_directly_by_agency"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-open_source_obtained_directly_by_agency_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF exclusion 2 — whether the software is open source freely and directly obtained by a Federal agency must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1a",
+      "title": "Separating and protecting each environment involved in developing and building software",
+      "props": [
+       {
+        "name": "label",
+        "value": "1a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1a_stmt",
+        "name": "statement",
+        "prose": "Separating and protecting each environment involved in developing and building software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1b.i",
+      "title": "Regularly logging, monitoring, and auditing trust relationships used for authorization and access to any software development and build environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "1b.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1b.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1b.i_stmt",
+        "name": "statement",
+        "prose": "Regularly logging, monitoring, and auditing trust relationships used for authorization and access to any software development and build environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1b.ii",
+      "title": "Regularly logging, monitoring, and auditing trust relationships used for authorization and access among components within each environment",
+      "props": [
+       {
+        "name": "label",
+        "value": "1b.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1b.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1b.ii_stmt",
+        "name": "statement",
+        "prose": "Regularly logging, monitoring, and auditing trust relationships used for authorization and access among components within each environment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1c",
+      "title": "Enforcing multi-factor authentication and conditional access across the environments relevant to developing and building software in a manner that minimizes security risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "1c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1c_stmt",
+        "name": "statement",
+        "prose": "Enforcing multi-factor authentication and conditional access across the environments relevant to developing and building software in a manner that minimizes security risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1d",
+      "title": "Taking consistent and reasonable steps to document, as well as minimize use or inclusion of software products that create undue risk within the environments used to develop and build software",
+      "props": [
+       {
+        "name": "label",
+        "value": "1d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1d_stmt",
+        "name": "statement",
+        "prose": "Taking consistent and reasonable steps to document, as well as minimize use or inclusion of software products that create undue risk within the environments used to develop and build software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1e",
+      "title": "Encrypting sensitive data, such as credentials, to the extent practicable and based on risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "1e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1e_stmt",
+        "name": "statement",
+        "prose": "Encrypting sensitive data, such as credentials, to the extent practicable and based on risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-1f",
+      "title": "Implementing defensive cybersecurity practices, including continuous monitoring of operations and alerts and, as necessary, responding to suspected and confirmed cyber incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "1f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-1f_stmt",
+        "name": "statement",
+        "prose": "Implementing defensive cybersecurity practices, including continuous monitoring of operations and alerts and, as necessary, responding to suspected and confirmed cyber incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-2",
+      "title": "The software producer makes a good-faith effort to maintain trusted source code supply chains by employing automated tools or comparable processes to address the security of internal code and third-pa",
+      "props": [
+       {
+        "name": "label",
+        "value": "2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-2_stmt",
+        "name": "statement",
+        "prose": "The software producer makes a good-faith effort to maintain trusted source code supply chains by employing automated tools or comparable processes to address the security of internal code and third-party components and manage related vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-3",
+      "title": "The software producer maintains provenance for internal code and third-party components incorporated into the software to the greatest extent feasible",
+      "props": [
+       {
+        "name": "label",
+        "value": "3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-3_stmt",
+        "name": "statement",
+        "prose": "The software producer maintains provenance for internal code and third-party components incorporated into the software to the greatest extent feasible"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-4",
+      "title": "The software producer employs automated tools or comparable processes that check for security vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-4_stmt",
+        "name": "statement",
+        "prose": "The software producer employs automated tools or comparable processes that check for security vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-4a",
+      "title": "The software producer operates these processes on an ongoing basis and prior to product, version, or update releases",
+      "props": [
+       {
+        "name": "label",
+        "value": "4a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-4a_stmt",
+        "name": "statement",
+        "prose": "The software producer operates these processes on an ongoing basis and prior to product, version, or update releases"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-4b",
+      "title": "The software producer has a policy or process to address discovered security vulnerabilities prior to product release",
+      "props": [
+       {
+        "name": "label",
+        "value": "4b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-4b_stmt",
+        "name": "statement",
+        "prose": "The software producer has a policy or process to address discovered security vulnerabilities prior to product release"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-4c",
+      "title": "The software producer operates a vulnerability disclosure program and accepts, reviews, and addresses disclosed software vulnerabilities in a timely fashion and according to any timelines specified in",
+      "props": [
+       {
+        "name": "label",
+        "value": "4c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-4c_stmt",
+        "name": "statement",
+        "prose": "The software producer operates a vulnerability disclosure program and accepts, reviews, and addresses disclosed software vulnerabilities in a timely fashion and according to any timelines specified in the vulnerability disclosure program or applicable policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-III.notify",
+      "title": "The software producer will notify any agency to which it has submitted this form if and when the producer ceases to make consistent use of the practices identified above in developing the software",
+      "props": [
+       {
+        "name": "label",
+        "value": "III.notify"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "III.notify"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-III.notify_stmt",
+        "name": "statement",
+        "prose": "The software producer will notify any agency to which it has submitted this form if and when the producer ceases to make consistent use of the practices identified above in developing the software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-III.signature",
+      "title": "The form is signed by the CEO of the software producer or a designee who is an employee with authority to bind the corporation, OR a FedRAMP-certified or agency-approved 3PAO assessment of conformance",
+      "props": [
+       {
+        "name": "label",
+        "value": "III.signature"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "III.signature"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-III.signature_stmt",
+        "name": "statement",
+        "prose": "The form is signed by the CEO of the software producer or a designee who is an employee with authority to bind the corporation, OR a FedRAMP-certified or agency-approved 3PAO assessment of conformance to all elements of the form is attached"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-cisa_ssdaf.main-1",
+      "title": "CISA SSDAF: FAIL-CLOSED - facts 'input.cisa_ssdaf' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_ssdaf.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_ssdaf.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-cisa_ssdaf.main-1_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF: FAIL-CLOSED - facts 'input.cisa_ssdaf' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-cisa_ssdaf.main-2",
+      "title": "%v (cisa_ssdaf.scope.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_ssdaf.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_ssdaf.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-cisa_ssdaf.main-2_stmt",
+        "name": "statement",
+        "prose": "%v (cisa_ssdaf.scope.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-cisa_ssdaf.main-3",
+      "title": "CISA SSDAF %v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_ssdaf.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_ssdaf.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-cisa_ssdaf.main-3_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF %v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-cisa_ssdaf.main-4",
+      "title": "CISA SSDAF Input Contract: attestation for unknown id %v — not an item of Section III",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_ssdaf.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_ssdaf.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-cisa_ssdaf.main-4_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF Input Contract: attestation for unknown id %v — not an item of Section III"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_ssdaf-cisa_ssdaf.main-5",
+      "title": "CISA SSDAF Input Contract: input.cisa_ssdaf.attestations must be an object of {\"<item>\": true}",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_ssdaf.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_ssdaf.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_ssdaf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6266e30e-b7d3-5da6-a46b-9880a30993b2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_ssdaf-cisa_ssdaf.main-5_stmt",
+        "name": "statement",
+        "prose": "CISA SSDAF Input Contract: input.cisa_ssdaf.attestations must be an object of {\"<item>\": true}"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "6266e30e-b7d3-5da6-a46b-9880a30993b2",
+     "title": "CISA Secure Software Development Attestation Form v1.0 (OMB 1670-0052) — Section III attestations",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cisa_ssdaf.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/cisa_ssdaf/cisa_ssdaf_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

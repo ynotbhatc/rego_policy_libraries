@@ -35,7 +35,7 @@ Ours is `make count` (`scripts/count_controls.py`), which CI reruns on every mer
 | Secure Controls Framework 2026.3 | one catalogue control | 1,591 | 270 mapping columns, 234 distinct documents ([gap plan](SCF_GAP.md)) | **no** (Excel / JSON / OSCAL) |
 | Steampipe AWS compliance mod | one SQL control | 1,361 | ~17 benchmarks | yes, AWS only |
 | Checkov | one IaC policy | ~1,000+ (vendor figure) | IaC | yes, IaC only |
-| **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **770 files, 14,318 control-level checks** | 54 tracked standards, 130+ framework directories | yes, every domain above |
+| **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **776 files, 15,227 control-level checks** | 156 framework catalogs, 130+ framework directories | yes, every domain above |
 | trivy-checks (Aqua) | one Rego check | 563 | cloud, k8s, docker | yes |
 | Kubescape regolibrary (ARMO) | one Rego rule (Kubernetes misconfiguration) | 304 rules, 290 controls | 19 frameworks, all Kubernetes (CIS K8s/EKS/AKS/GKE, NSA, MITRE, SOC 2) | yes, Kubernetes only |
 | Kyverno policies | one admission policy | 180 | Kubernetes | yes |

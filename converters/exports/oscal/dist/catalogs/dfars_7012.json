@@ -1,0 +1,1286 @@
+{
+ "catalog": {
+  "uuid": "8ef21f6d-e7df-54aa-9028-9678f93828f9",
+  "metadata": {
+   "title": "Rego Policy Libraries — dfars_7012 (DFARS 252.204-7012 (MAY 2024) — Safeguarding Covered Defense Information and Cyber Incident Reporting)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "dfars_7012"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "dfars_7012-dfars_7012_main",
+    "class": "rego-module",
+    "title": "DFARS 252.204-7012 (MAY 2024) — Safeguarding Covered Defense Information and Cyber Incident Reporting",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "dfars_7012.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/dfars_7012/dfars_7012_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "dfars_7012-contract_awarded_before_2017_10_01",
+      "title": "DFARS 252.204-7012(b)(2)(ii)(A) — whether the contract was awarded prior to October 1, 2017 must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "contract_awarded_before_2017_10_01"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "contract_awarded_before_2017_10_01"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-contract_awarded_before_2017_10_01_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(b)(2)(ii)(A) — whether the contract was awarded prior to October 1, 2017 must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-has_covered_subcontracts",
+      "title": "DFARS 252.204-7012(m) — whether any subcontract is for operationally critical support or involves covered defense information must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "has_covered_subcontracts"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "has_covered_subcontracts"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-has_covered_subcontracts_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(m) — whether any subcontract is for operationally critical support or involves covered defense information must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-has_systems_not_operated_for_government",
+      "title": "DFARS 252.204-7012(b)(2) — whether any covered contractor information system is not part of an IT service or system operated on behalf of the Government must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "has_systems_not_operated_for_government"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "has_systems_not_operated_for_government"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-has_systems_not_operated_for_government_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(b)(2) — whether any covered contractor information system is not part of an IT service or system operated on behalf of the Government must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-operates_it_on_behalf_of_government",
+      "title": "DFARS 252.204-7012(b)(1) — whether any covered contractor information system is part of an IT service or system operated on behalf of the Government must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "operates_it_on_behalf_of_government"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "operates_it_on_behalf_of_government"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-operates_it_on_behalf_of_government_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(b)(1) — whether any covered contractor information system is part of an IT service or system operated on behalf of the Government must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-relies_on_prior_dod_cio_adjudication",
+      "title": "DFARS 252.204-7012(b)(2)(ii)(C) — whether the contractor relies on a previous DoD CIO adjudication (nonapplicable or equally effective alternative) must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "relies_on_prior_dod_cio_adjudication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "relies_on_prior_dod_cio_adjudication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-relies_on_prior_dod_cio_adjudication_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(b)(2)(ii)(C) — whether the contractor relies on a previous DoD CIO adjudication (nonapplicable or equally effective alternative) must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-requests_variance_from_800_171",
+      "title": "DFARS 252.204-7012(b)(2)(ii)(B) — whether the contractor varies, or requests to vary, from any NIST SP 800-171 requirement must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "requests_variance_from_800_171"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "requests_variance_from_800_171"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-requests_variance_from_800_171_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(b)(2)(ii)(B) — whether the contractor varies, or requests to vary, from any NIST SP 800-171 requirement must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-uses_external_cloud_service_provider",
+      "title": "DFARS 252.204-7012(b)(2)(ii)(D) — whether an external cloud service provider stores, processes or transmits covered defense information must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "uses_external_cloud_service_provider"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uses_external_cloud_service_provider"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-uses_external_cloud_service_provider_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012(b)(2)(ii)(D) — whether an external cloud service provider stores, processes or transmits covered defense information must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b",
+      "title": "The Contractor shall provide adequate security on all covered contractor information systems, implementing at a minimum the protections in (b)(1)–(3)",
+      "props": [
+       {
+        "name": "label",
+        "value": "b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall provide adequate security on all covered contractor information systems, implementing at a minimum the protections in (b)(1)–(3)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.1.i",
+      "title": "Cloud computing services operated on behalf of the Government are subject to the security requirements of clause 252.239-7010, Cloud Computing Services",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.1.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.1.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.1.i_stmt",
+        "name": "statement",
+        "prose": "Cloud computing services operated on behalf of the Government are subject to the security requirements of clause 252.239-7010, Cloud Computing Services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.1.ii",
+      "title": "Any other IT service or system operated on behalf of the Government (other than cloud computing) is subject to the security requirements specified elsewhere in the contract",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.1.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.1.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.1.ii_stmt",
+        "name": "statement",
+        "prose": "Any other IT service or system operated on behalf of the Government (other than cloud computing) is subject to the security requirements specified elsewhere in the contract"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.i",
+      "title": "The covered contractor information system is subject to the security requirements in NIST SP 800-171 in effect at the time the solicitation is issued or as authorized by the Contracting Officer (asses",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.i_stmt",
+        "name": "statement",
+        "prose": "The covered contractor information system is subject to the security requirements in NIST SP 800-171 in effect at the time the solicitation is issued or as authorized by the Contracting Officer (assess with frameworks/federal/nist/sp_800_171)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.ii.A",
+      "title": "The Contractor shall implement NIST SP 800-171 as soon as practical, but not later than December 31, 2017",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.ii.A"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.ii.A"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.ii.A_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall implement NIST SP 800-171 as soon as practical, but not later than December 31, 2017"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.ii.A-notice",
+      "title": "For contracts awarded prior to October 1, 2017, the Contractor shall notify the DoD CIO within 30 days of contract award of any NIST SP 800-171 security requirements not implemented at the time of awa",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.ii.A-notice"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.ii.A-notice"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.ii.A-notice_stmt",
+        "name": "statement",
+        "prose": "For contracts awarded prior to October 1, 2017, the Contractor shall notify the DoD CIO within 30 days of contract award of any NIST SP 800-171 security requirements not implemented at the time of award"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.ii.B",
+      "title": "Requests to vary from NIST SP 800-171 are submitted in writing to the Contracting Officer for consideration by the DoD CIO; only requirements adjudicated by an authorized DoD CIO representative as non",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.ii.B"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.ii.B"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.ii.B_stmt",
+        "name": "statement",
+        "prose": "Requests to vary from NIST SP 800-171 are submitted in writing to the Contracting Officer for consideration by the DoD CIO; only requirements adjudicated by an authorized DoD CIO representative as nonapplicable or with an equally effective alternative are not implemented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.ii.C",
+      "title": "Where the DoD CIO has previously adjudicated a requirement as not applicable or an alternative as equally effective, a copy of that approval is provided to the Contracting Officer when requesting its ",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.ii.C"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.ii.C"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.ii.C_stmt",
+        "name": "statement",
+        "prose": "Where the DoD CIO has previously adjudicated a requirement as not applicable or an alternative as equally effective, a copy of that approval is provided to the Contracting Officer when requesting its recognition under this contract"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.ii.D-c-g",
+      "title": "The Contractor shall require and ensure that the cloud service provider complies with paragraphs (c) through (g) of the clause: cyber incident reporting, malicious software, media preservation and pro",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.ii.D-c-g"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.ii.D-c-g"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.ii.D-c-g_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall require and ensure that the cloud service provider complies with paragraphs (c) through (g) of the clause: cyber incident reporting, malicious software, media preservation and protection, access for forensic analysis, and cyber incident damage assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.2.ii.D-fedramp",
+      "title": "The Contractor shall require and ensure that an external cloud service provider storing, processing or transmitting covered defense information meets security requirements equivalent to those establis",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.2.ii.D-fedramp"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.2.ii.D-fedramp"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.2.ii.D-fedramp_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall require and ensure that an external cloud service provider storing, processing or transmitting covered defense information meets security requirements equivalent to those established by the Government for the FedRAMP Moderate baseline"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-b.3",
+      "title": "Other information systems security measures are applied when the Contractor reasonably determines they may be required to provide adequate security in a dynamic environment, to accommodate special cir",
+      "props": [
+       {
+        "name": "label",
+        "value": "b.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "b.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-b.3_stmt",
+        "name": "statement",
+        "prose": "Other information systems security measures are applied when the Contractor reasonably determines they may be required to provide adequate security in a dynamic environment, to accommodate special circumstances (e.g., medical devices), or for individual, isolated or temporary deficiencies based on an assessed risk or vulnerability (may be addressed in a system security plan)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-c.1.i",
+      "title": "On discovering a cyber incident affecting a covered contractor information system, the covered defense information in it, or the ability to perform operationally critical support, the Contractor condu",
+      "props": [
+       {
+        "name": "label",
+        "value": "c.1.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c.1.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-c.1.i_stmt",
+        "name": "statement",
+        "prose": "On discovering a cyber incident affecting a covered contractor information system, the covered defense information in it, or the ability to perform operationally critical support, the Contractor conducts a review for evidence of compromise of covered defense information — compromised computers, servers, specific data and user accounts — including other systems on the Contractor's networks that may have been accessed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-c.1.ii",
+      "title": "The Contractor rapidly reports cyber incidents to DoD at https://dibnet.dod.mil — \"rapidly report\" means within 72 hours of discovery of any cyber incident ((a))",
+      "props": [
+       {
+        "name": "label",
+        "value": "c.1.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c.1.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-c.1.ii_stmt",
+        "name": "statement",
+        "prose": "The Contractor rapidly reports cyber incidents to DoD at https://dibnet.dod.mil — \"rapidly report\" means within 72 hours of discovery of any cyber incident ((a))"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-c.2",
+      "title": "The cyber incident report is treated as information created by or for DoD and includes, at a minimum, the required elements at https://dibnet.dod.mil",
+      "props": [
+       {
+        "name": "label",
+        "value": "c.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-c.2_stmt",
+        "name": "statement",
+        "prose": "The cyber incident report is treated as information created by or for DoD and includes, at a minimum, the required elements at https://dibnet.dod.mil"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-c.3",
+      "title": "The Contractor or subcontractor has or acquires a DoD-approved medium assurance certificate to report cyber incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "c.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "c.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-c.3_stmt",
+        "name": "statement",
+        "prose": "The Contractor or subcontractor has or acquires a DoD-approved medium assurance certificate to report cyber incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-d",
+      "title": "Malicious software discovered and isolated in connection with a reported cyber incident is submitted to the DoD Cyber Crime Center (DC3) in accordance with DC3 or Contracting Officer instructions, and",
+      "props": [
+       {
+        "name": "label",
+        "value": "d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-d_stmt",
+        "name": "statement",
+        "prose": "Malicious software discovered and isolated in connection with a reported cyber incident is submitted to the DoD Cyber Crime Center (DC3) in accordance with DC3 or Contracting Officer instructions, and not sent to the Contracting Officer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-e",
+      "title": "Images of all known affected information systems identified under (c)(1)(i) and all relevant monitoring/packet capture data are preserved and protected for at least 90 days from submission of the cybe",
+      "props": [
+       {
+        "name": "label",
+        "value": "e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-e_stmt",
+        "name": "statement",
+        "prose": "Images of all known affected information systems identified under (c)(1)(i) and all relevant monitoring/packet capture data are preserved and protected for at least 90 days from submission of the cyber incident report"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-f",
+      "title": "Upon request by DoD, the Contractor provides DoD with access to additional information or equipment necessary to conduct a forensic analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-f_stmt",
+        "name": "statement",
+        "prose": "Upon request by DoD, the Contractor provides DoD with access to additional information or equipment necessary to conduct a forensic analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-g",
+      "title": "If DoD elects to conduct a damage assessment, the Contractor provides, on the Contracting Officer's request, all of the damage assessment information gathered in accordance with paragraph (e)",
+      "props": [
+       {
+        "name": "label",
+        "value": "g"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "g"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-g_stmt",
+        "name": "statement",
+        "prose": "If DoD elects to conduct a damage assessment, the Contractor provides, on the Contracting Officer's request, all of the damage assessment information gathered in accordance with paragraph (e)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-h",
+      "title": "To the maximum extent practicable, the Contractor identifies and marks attributional/proprietary information",
+      "props": [
+       {
+        "name": "label",
+        "value": "h"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "h"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-h_stmt",
+        "name": "statement",
+        "prose": "To the maximum extent practicable, the Contractor identifies and marks attributional/proprietary information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-k",
+      "title": "The Contractor conducts activities under the clause in accordance with applicable laws and regulations on the interception, monitoring, access, use and disclosure of electronic communications and data",
+      "props": [
+       {
+        "name": "label",
+        "value": "k"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "k"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-k_stmt",
+        "name": "statement",
+        "prose": "The Contractor conducts activities under the clause in accordance with applicable laws and regulations on the interception, monitoring, access, use and disclosure of electronic communications and data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-m.1",
+      "title": "The clause, including paragraph (m), is included without alteration (except to identify the parties) in subcontracts or similar instruments for operationally critical support or whose performance invo",
+      "props": [
+       {
+        "name": "label",
+        "value": "m.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "m.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-m.1_stmt",
+        "name": "statement",
+        "prose": "The clause, including paragraph (m), is included without alteration (except to identify the parties) in subcontracts or similar instruments for operationally critical support or whose performance involves covered defense information, including subcontracts for commercial products or commercial services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-m.1-cdi",
+      "title": "The Contractor determines whether information required for subcontractor performance retains its identity as covered defense information requiring protection under the clause, consulting the Contracti",
+      "props": [
+       {
+        "name": "label",
+        "value": "m.1-cdi"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "m.1-cdi"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-m.1-cdi_stmt",
+        "name": "statement",
+        "prose": "The Contractor determines whether information required for subcontractor performance retains its identity as covered defense information requiring protection under the clause, consulting the Contracting Officer if necessary"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-m.2.i",
+      "title": "Subcontractors are required to notify the prime Contractor (or next higher-tier subcontractor) when submitting a request to vary from a NIST SP 800-171 requirement to the Contracting Officer under (b)",
+      "props": [
+       {
+        "name": "label",
+        "value": "m.2.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "m.2.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-m.2.i_stmt",
+        "name": "statement",
+        "prose": "Subcontractors are required to notify the prime Contractor (or next higher-tier subcontractor) when submitting a request to vary from a NIST SP 800-171 requirement to the Contracting Officer under (b)(2)(ii)(B)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-m.2.ii",
+      "title": "Subcontractors are required to provide the DoD-assigned incident report number to the prime Contractor (or next higher-tier subcontractor) as soon as practicable when reporting a cyber incident to DoD",
+      "props": [
+       {
+        "name": "label",
+        "value": "m.2.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "m.2.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-m.2.ii_stmt",
+        "name": "statement",
+        "prose": "Subcontractors are required to provide the DoD-assigned incident report number to the prime Contractor (or next higher-tier subcontractor) as soon as practicable when reporting a cyber incident to DoD under (c)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-DFARS-252.204-7012",
+      "title": "FAIL-CLOSED - facts 'input.dfars_7012' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "DFARS 252.204-7012"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DFARS 252.204-7012"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-DFARS-252.204-7012_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.dfars_7012' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-dfars_7012.main-1",
+      "title": "%v (dfars_7012.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "dfars_7012.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dfars_7012.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-dfars_7012.main-1_stmt",
+        "name": "statement",
+        "prose": "%v (dfars_7012.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-dfars_7012.main-2",
+      "title": "DFARS 252.204-7012%v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "dfars_7012.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dfars_7012.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-dfars_7012.main-2_stmt",
+        "name": "statement",
+        "prose": "DFARS 252.204-7012%v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "dfars_7012-DFARS-252.204-7012-Input-Contract",
+      "title": "attestation for unknown id %v — not a contractor obligation of paragraphs (b)–(m)",
+      "props": [
+       {
+        "name": "label",
+        "value": "DFARS 252.204-7012 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "DFARS 252.204-7012 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "dfars_7012.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#175d0f23-3552-56f4-b988-39cbd51b1cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "dfars_7012-DFARS-252.204-7012-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for unknown id %v — not a contractor obligation of paragraphs (b)–(m)"
+       },
+       {
+        "id": "dfars_7012-DFARS-252.204-7012-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "input.dfars_7012.obligations must be an object of {\"<id>\": true}, ids as in obligations (e.g. \"c.1.ii\")"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "175d0f23-3552-56f4-b988-39cbd51b1cd5",
+     "title": "DFARS 252.204-7012 (MAY 2024) — Safeguarding Covered Defense Information and Cyber Incident Reporting",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "dfars_7012.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/dfars_7012/dfars_7012_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
