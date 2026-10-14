@@ -32,7 +32,7 @@ Ours is `make count` (`scripts/count_controls.py`), which CI reruns on every mer
 | ComplianceAsCode / SCAP Security Guide | one OS setting | 2,574 rules | 391 profiles, 39 products | yes, OS only |
 | KICS (Checkmarx) | one IaC query | 1,813 | 22+ IaC platforms | yes, IaC only |
 | Prowler | one cloud API check | 1,625 | 112 mapping files | yes, cloud only |
-| Secure Controls Framework | one catalogue control | 1,534 | mapped to 262 frameworks | **no** (CSV / OSCAL) |
+| Secure Controls Framework 2026.3 | one catalogue control | 1,591 | 270 mapping columns, 234 distinct documents ([gap plan](SCF_GAP.md)) | **no** (Excel / JSON / OSCAL) |
 | Steampipe AWS compliance mod | one SQL control | 1,361 | ~17 benchmarks | yes, AWS only |
 | Checkov | one IaC policy | ~1,000+ (vendor figure) | IaC | yes, IaC only |
 | **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **770 files, 14,318 control-level checks** | 54 tracked standards, 130+ framework directories | yes, every domain above |
