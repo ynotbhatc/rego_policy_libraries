@@ -20,3 +20,8 @@ test_hipaa_hitech_fail_closed_on_empty_input if {
 	report := data.hipaa.hitech.report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+test_hipaa_hitech_violations_on_empty_input if {
+	v := data.hipaa.hitech.violations with input as {}
+	count(v) > 0
+}

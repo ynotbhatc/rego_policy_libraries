@@ -1,42 +1,60 @@
+# Tests for BSI C5:2026 Organisation of Information Security (OIS).
 package bsi_c5.organisation_information_security_test
 
 import rego.v1
 
-import data.bsi_c5.organisation_information_security
+import data.bsi_c5.organisation_information_security as area
 
-# Build an input that attests every requirement as true.
-all_true := {"bsi_c5": {"organisation_information_security": {"requirements": all_reqs}}} if {
-	all_reqs := {id: true | some id, _ in organisation_information_security.requirements}
+_all_true := {"bsi_c5": {"criteria": {id: true | some id, _ in area.criteria}}}
+
+test_criteria_count_pinned if {
+	count(area.criteria) == 10
 }
 
-# Empty input -> every requirement fires as a violation and the domain is not compliant.
-test_empty_input_all_fire if {
-	count(organisation_information_security.violation) == count(organisation_information_security.requirements) with input as {}
-	count(organisation_information_security.violation) > 0 with input as {}
-	not organisation_information_security.domain_compliant with input as {}
+test_subcriteria_counts_pinned if {
+	sum([count(c.basic) | some c in area.criteria]) == 34
+	sum([count(c.additional_sharpening) | some c in area.criteria]) == 2
+	sum([count(c.additional_complementing) | some c in area.criteria]) == 5
 }
 
-# Fully attested -> no violations and the domain is compliant.
+test_ids_carry_area_prefix if {
+	every id, _ in area.criteria { startswith(id, "OIS-") }
+}
+
+test_empty_input_every_criterion_fails if {
+	r := area.compliance_report with input as {}
+	r.compliant == false
+	r.violation_count == 10
+	r.criteria_satisfied == 0
+}
+
 test_all_attested_compliant if {
-	count(organisation_information_security.violation) == 0 with input as all_true
-	organisation_information_security.domain_compliant with input as all_true
+	r := area.compliance_report with input as _all_true
+	r.compliant == true
+	r.violation_count == 0
+	r.criteria_satisfied == 10
+	r.gaps == []
 }
 
-# Flip a single requirement to false -> exactly one violation naming that id.
-test_single_flip_one_violation if {
-	flipped := object.union(all_true.bsi_c5.organisation_information_security.requirements, {"OIS-2": false})
-	broken := object.union(all_true, {"bsi_c5": {"organisation_information_security": {"requirements": flipped}}})
-	count(organisation_information_security.violation) == 1 with input as broken
-	some msg in organisation_information_security.violation with input as broken
-	contains(msg, "OIS-2") with input as broken
+test_one_false_named if {
+	inp := json.patch(_all_true, [{"op": "replace", "path": "/bsi_c5/criteria/OIS-10", "value": false}])
+	r := area.compliance_report with input as inp
+	r.compliant == false
+	r.violation_count == 1
+	r.gaps == ["OIS-10"]
+	some msg in r.violations
+	contains(msg, "OIS-10")
 }
 
-# compliance_report is a populated object even on empty input.
-test_compliance_report_populated if {
-	report := organisation_information_security.compliance_report with input as {}
-	report.domain == "OIS"
-	report.area_name == "Organisation of Information Security"
-	report.requirements_evaluated == count(organisation_information_security.requirements)
-	report.violation_count == count(organisation_information_security.requirements)
-	report.compliant == false
+test_truthy_non_boolean_is_not_attested if {
+	inp := json.patch(_all_true, [{"op": "replace", "path": "/bsi_c5/criteria/OIS-01", "value": "yes"}])
+	r := area.compliance_report with input as inp
+	r.compliant == false
+	r.gaps == ["OIS-01"]
+}
+
+test_basis_is_attestation if {
+	r := area.compliance_report with input as {}
+	r.criteria["OIS-01"].basis == "attestation"
+	r.criteria["OIS-01"].satisfied == false
 }

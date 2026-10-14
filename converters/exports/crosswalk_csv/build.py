@@ -26,7 +26,7 @@ from inventory_controls import inventory  # noqa: E402
 from _lib.findings import token          # noqa: E402
 
 FAMILIES = "AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|PT|RA|SA|SC|SI|SR"  # SP 800-53 Rev 5 families
-ID_800_53 = re.compile(rf"^(?:{FAMILIES})-\d+(\(\d+\))?$")
+ID_800_53 = re.compile(rf"^(?:{FAMILIES})-[1-9]\d*(\([1-9]\d*\))?$")  # no leading zeros: BSI C5 "PS-01" is not 800-53 PS-1
 
 
 def write(path, header, rows):
