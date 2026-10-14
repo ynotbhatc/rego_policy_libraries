@@ -1,0 +1,588 @@
+{
+ "catalog": {
+  "uuid": "5621e90a-a450-5a75-a43a-31ec7ca96d60",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_sp_800_39 (NIST SP 800-39 — Managing Information Security Risk: Organization, Mission, and Information System View)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_sp_800_39"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_sp_800_39-nist_sp800_39_main",
+    "class": "rego-module",
+    "title": "NIST SP 800-39 — Managing Information Security Risk: Organization, Mission, and Information System View",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_39.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_39/nist_sp800_39_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_39-1-1",
+      "title": "Identify assumptions that affect how risk is assessed, responded to, and monitored within the organization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-1-1_stmt",
+        "name": "statement",
+        "prose": "Identify assumptions that affect how risk is assessed, responded to, and monitored within the organization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-1-2",
+      "title": "Identify constraints on the conduct of risk assessment, risk response, and risk monitoring activities within the organization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-1-2_stmt",
+        "name": "statement",
+        "prose": "Identify constraints on the conduct of risk assessment, risk response, and risk monitoring activities within the organization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-1-3",
+      "title": "Identify the level of risk tolerance for the organization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-1-3_stmt",
+        "name": "statement",
+        "prose": "Identify the level of risk tolerance for the organization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-1-4",
+      "title": "Identify priorities and trade-offs considered by the organization in managing risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "1-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-1-4_stmt",
+        "name": "statement",
+        "prose": "Identify priorities and trade-offs considered by the organization in managing risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-2-1",
+      "title": "Identify threats to and vulnerabilities in organizational information systems and the environments in which the systems operate.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-2-1_stmt",
+        "name": "statement",
+        "prose": "Identify threats to and vulnerabilities in organizational information systems and the environments in which the systems operate."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-2-2",
+      "title": "Determine the risk to organizational operations and assets, individuals, other organizations, and the Nation if identified threats exploit identified vulnerabilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "2-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-2-2_stmt",
+        "name": "statement",
+        "prose": "Determine the risk to organizational operations and assets, individuals, other organizations, and the Nation if identified threats exploit identified vulnerabilities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-3-1",
+      "title": "Identify alternative courses of action to respond to risk determined during the risk assessment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-3-1_stmt",
+        "name": "statement",
+        "prose": "Identify alternative courses of action to respond to risk determined during the risk assessment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-3-2",
+      "title": "Evaluate alternative courses of action for responding to risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-3-2_stmt",
+        "name": "statement",
+        "prose": "Evaluate alternative courses of action for responding to risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-3-3",
+      "title": "Decide on the appropriate course of action for responding to risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-3-3_stmt",
+        "name": "statement",
+        "prose": "Decide on the appropriate course of action for responding to risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-3-4",
+      "title": "Implement the course of action selected to respond to risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-3-4_stmt",
+        "name": "statement",
+        "prose": "Implement the course of action selected to respond to risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-4-1",
+      "title": "Develop a risk monitoring strategy for the organization that includes the purpose, type, and frequency of monitoring activities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-4-1_stmt",
+        "name": "statement",
+        "prose": "Develop a risk monitoring strategy for the organization that includes the purpose, type, and frequency of monitoring activities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-4-2",
+      "title": "Monitor organizational information systems and environments of operation on an ongoing basis to verify compliance, determine effectiveness of risk response measures, and identify changes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-4-2_stmt",
+        "name": "statement",
+        "prose": "Monitor organizational information systems and environments of operation on an ongoing basis to verify compliance, determine effectiveness of risk response measures, and identify changes."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-NIST-SP-800-39",
+      "title": "FAIL-CLOSED - task attestations 'input.nist_sp_800_39.tasks' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-NIST-SP-800-39_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - task attestations 'input.nist_sp_800_39.tasks' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-nist.sp800_39.main-1",
+      "title": "NIST SP 800-39 %v (%v, %v): not attested performed — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_39.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_39.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-nist.sp800_39.main-1_stmt",
+        "name": "statement",
+        "prose": "NIST SP 800-39 %v (%v, %v): not attested performed — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_39-NIST-SP-800-39-Input-Contract",
+      "title": "unknown task id %v — ids are the printed task numbers such as 1-1, 4-2",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-39 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-39 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_39.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5a4e4889-26e3-5dc0-9046-644f7c582548",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_39-NIST-SP-800-39-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unknown task id %v — ids are the printed task numbers such as 1-1, 4-2"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "5a4e4889-26e3-5dc0-9046-644f7c582548",
+     "title": "NIST SP 800-39 — Managing Information Security Risk: Organization, Mission, and Information System View",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_39.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/nist/sp_800_39/nist_sp800_39_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

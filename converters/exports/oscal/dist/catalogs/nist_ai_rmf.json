@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "7510a368-7512-5bb5-9deb-12b734efec56",
   "metadata": {
-   "title": "Rego Policy Libraries — nist_ai_rmf (NIST AI Risk Management Framework (AI RMF 1.0))",
+   "title": "Rego Policy Libraries — nist_ai_rmf (NIST AI RMF 1.0 — fact checks labelled with the AI 100-1 Core subcategory they decide)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "nist_ai_rmf-nist_ai_rmf",
     "class": "rego-module",
-    "title": "NIST AI Risk Management Framework (AI RMF 1.0)",
+    "title": "NIST AI RMF 1.0 — fact checks labelled with the AI 100-1 Core subcategory they decide",
     "props": [
      {
       "name": "rego-package",
@@ -66,49 +66,16 @@
     ],
     "controls": [
      {
-      "id": "nist_ai_rmf-nist.ai_rmf-1",
-      "title": "NIST AI RMF GOVERN: No AI risk management policy documented. Organizations must establish policies for AI risk management.",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist.ai_rmf#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist.ai_rmf#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-nist.ai_rmf-1_stmt",
-        "name": "statement",
-        "prose": "NIST AI RMF GOVERN: No AI risk management policy documented. Organizations must establish policies for AI risk management."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.1",
+      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-2.1",
       "title": "AI governance roles and responsibilities are not defined. Designate accountability for AI risk management.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF GOVERN 1.1"
+        "value": "NIST AI RMF GOVERN 2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 1.1"
+        "value": "NIST AI RMF GOVERN 2.1"
        },
        {
         "name": "rego-package",
@@ -124,7 +91,7 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.1_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-2.1_stmt",
         "name": "statement",
         "prose": "AI governance roles and responsibilities are not defined. Designate accountability for AI risk management."
        }
@@ -132,16 +99,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.2",
+      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-1.5",
       "title": "AI risk tolerance has not been defined. Organizations must establish acceptable risk levels for AI systems.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF GOVERN 1.2"
+        "value": "NIST AI RMF MAP 1.5"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 1.2"
+        "value": "NIST AI RMF MAP 1.5"
        },
        {
         "name": "rego-package",
@@ -157,7 +124,7 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.2_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-1.5_stmt",
         "name": "statement",
         "prose": "AI risk tolerance has not been defined. Organizations must establish acceptable risk levels for AI systems."
        }
@@ -165,49 +132,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.3",
-      "title": "No policies covering the full AI lifecycle. Policies must cover design, development, deployment, evaluation, and retirement.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF GOVERN 1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.3_stmt",
-        "name": "statement",
-        "prose": "No policies covering the full AI lifecycle. Policies must cover design, development, deployment, evaluation, and retirement."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.4",
+      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-3.1",
       "title": "Team diversity has not been considered in AI development. Diverse teams reduce the risk of bias in AI systems.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF GOVERN 1.4"
+        "value": "NIST AI RMF GOVERN 3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 1.4"
+        "value": "NIST AI RMF GOVERN 3.1"
        },
        {
         "name": "rego-package",
@@ -223,7 +157,7 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.4_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-3.1_stmt",
         "name": "statement",
         "prose": "Team diversity has not been considered in AI development. Diverse teams reduce the risk of bias in AI systems."
        }
@@ -231,16 +165,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.5",
+      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-2.2",
       "title": "Organizational training on AI risk has not been conducted. Workforce must understand AI risks and responsibilities.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF GOVERN 1.5"
+        "value": "NIST AI RMF GOVERN 2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 1.5"
+        "value": "NIST AI RMF GOVERN 2.2"
        },
        {
         "name": "rego-package",
@@ -256,108 +190,9 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.5_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-2.2_stmt",
         "name": "statement",
         "prose": "Organizational training on AI risk has not been conducted. Workforce must understand AI risks and responsibilities."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.6",
-      "title": "AI risk policies are not reviewed regularly. Policies must be updated to reflect evolving AI capabilities and risks.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF GOVERN 1.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 1.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.6_stmt",
-        "name": "statement",
-        "prose": "AI risk policies are not reviewed regularly. Policies must be updated to reflect evolving AI capabilities and risks."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-6.1",
-      "title": "No accountability mechanism for AI decisions. Clear accountability is required for AI system outcomes.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF GOVERN 6.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 6.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-6.1_stmt",
-        "name": "statement",
-        "prose": "No accountability mechanism for AI decisions. Clear accountability is required for AI system outcomes."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-6.2",
-      "title": "Third-party AI risks are not assessed. Risks from AI components, models, and services obtained from third parties must be evaluated.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF GOVERN 6.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF GOVERN 6.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-6.2_stmt",
-        "name": "statement",
-        "prose": "Third-party AI risks are not assessed. Risks from AI components, models, and services obtained from third parties must be evaluated."
        }
       ],
       "class": "compliance"
@@ -396,204 +231,6 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-1.5",
-      "title": "Impacted populations have not been identified. Assess who is affected by the AI system's outputs and decisions.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MAP 1.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MAP 1.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-1.5_stmt",
-        "name": "statement",
-        "prose": "Impacted populations have not been identified. Assess who is affected by the AI system's outputs and decisions."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-1.6",
-      "title": "AI risk categories have not been identified. Categorize risks including bias, privacy, security, and accuracy.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MAP 1.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MAP 1.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-1.6_stmt",
-        "name": "statement",
-        "prose": "AI risk categories have not been identified. Categorize risks including bias, privacy, security, and accuracy."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-2.1",
-      "title": "Known failure modes are not documented. Identify and document how the AI system can fail.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MAP 2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MAP 2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-2.1_stmt",
-        "name": "statement",
-        "prose": "Known failure modes are not documented. Identify and document how the AI system can fail."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-2.2",
-      "title": "Context-specific risks have not been assessed. Evaluate risks in the specific deployment environment.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MAP 2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MAP 2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-2.2_stmt",
-        "name": "statement",
-        "prose": "Context-specific risks have not been assessed. Evaluate risks in the specific deployment environment."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-3.1",
-      "title": "Human-AI interaction risks have not been considered. Assess how humans interact with and rely on the AI system.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MAP 3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MAP 3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-3.1_stmt",
-        "name": "statement",
-        "prose": "Human-AI interaction risks have not been considered. Assess how humans interact with and rely on the AI system."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MAP-5.1",
-      "title": "Organizational risk tolerance has not been applied to AI risk prioritization. Prioritize risks based on organizational risk tolerance.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MAP 5.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MAP 5.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MAP-5.1_stmt",
-        "name": "statement",
-        "prose": "Organizational risk tolerance has not been applied to AI risk prioritization. Prioritize risks based on organizational risk tolerance."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-1.1",
       "title": "AI risk metrics are not defined. Establish quantitative and qualitative measures for AI risks.",
       "props": [
@@ -627,49 +264,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-1.3",
-      "title": "Evaluation methods have not been assessed for appropriateness. Evaluation methods must be fit for the AI use case.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MEASURE 1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-1.3_stmt",
-        "name": "statement",
-        "prose": "Evaluation methods have not been assessed for appropriateness. Evaluation methods must be fit for the AI use case."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.2",
+      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.11",
       "title": "Bias testing has not been conducted. Test for demographic biases and disparate impacts across population groups.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF MEASURE 2.2"
+        "value": "NIST AI RMF MEASURE 2.11"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 2.2"
+        "value": "NIST AI RMF MEASURE 2.11"
        },
        {
         "name": "rego-package",
@@ -685,90 +289,29 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.2_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.11_stmt",
         "name": "statement",
         "prose": "Bias testing has not been conducted. Test for demographic biases and disparate impacts across population groups."
+       },
+       {
+        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "AI system fairness has not been assessed. Evaluate and document fairness across demographic groups."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.5",
-      "title": "Adversarial testing (red-teaming) has not been conducted. Test AI system robustness against adversarial inputs.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MEASURE 2.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 2.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.5_stmt",
-        "name": "statement",
-        "prose": "Adversarial testing (red-teaming) has not been conducted. Test AI system robustness against adversarial inputs."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.6",
-      "title": "AI output uncertainty is not quantified. AI systems should communicate confidence levels and uncertainty.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MEASURE 2.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 2.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.6_stmt",
-        "name": "statement",
-        "prose": "AI output uncertainty is not quantified. AI systems should communicate confidence levels and uncertainty."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.7",
+      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.4",
       "title": "AI performance is not monitored post-deployment. Ongoing monitoring is required to detect performance degradation and drift.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF MEASURE 2.7"
+        "value": "NIST AI RMF MEASURE 2.4"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 2.7"
+        "value": "NIST AI RMF MEASURE 2.4"
        },
        {
         "name": "rego-package",
@@ -784,7 +327,7 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.7_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.4_stmt",
         "name": "statement",
         "prose": "AI performance is not monitored post-deployment. Ongoing monitoring is required to detect performance degradation and drift."
        }
@@ -825,16 +368,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.11",
+      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.9",
       "title": "AI explainability has not been assessed. Evaluate the degree to which AI decisions can be explained to affected parties.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF MEASURE 2.11"
+        "value": "NIST AI RMF MEASURE 2.9"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 2.11"
+        "value": "NIST AI RMF MEASURE 2.9"
        },
        {
         "name": "rego-package",
@@ -850,7 +393,7 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.11_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-2.9_stmt",
         "name": "statement",
         "prose": "AI explainability has not been assessed. Evaluate the degree to which AI decisions can be explained to affected parties."
        }
@@ -858,16 +401,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-4.1",
+      "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-3.1",
       "title": "Regular risk reassessments are not scheduled. AI risks must be reassessed as the system and its context evolve.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF MEASURE 4.1"
+        "value": "NIST AI RMF MEASURE 3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF MEASURE 4.1"
+        "value": "NIST AI RMF MEASURE 3.1"
        },
        {
         "name": "rego-package",
@@ -883,7 +426,7 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-4.1_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-MEASURE-3.1_stmt",
         "name": "statement",
         "prose": "Regular risk reassessments are not scheduled. AI risks must be reassessed as the system and its context evolve."
        }
@@ -891,41 +434,8 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-1.1",
-      "title": "Risk treatment plans are not documented. Document how each identified risk will be mitigated, accepted, transferred, or avoided.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MANAGE 1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MANAGE 1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-1.1_stmt",
-        "name": "statement",
-        "prose": "Risk treatment plans are not documented. Document how each identified risk will be mitigated, accepted, transferred, or avoided."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-1.3",
-      "title": "Residual risks have not been formally accepted by an authorizing authority. Formal risk acceptance is required.",
+      "title": "Risk treatment plans are not documented. Document how each identified risk will be mitigated, accepted, transferred, or avoided.",
       "props": [
        {
         "name": "label",
@@ -951,40 +461,7 @@
        {
         "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-1.3_stmt",
         "name": "statement",
-        "prose": "Residual risks have not been formally accepted by an authorizing authority. Formal risk acceptance is required."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-2.2",
-      "title": "No incident response plan for AI failures. AI-specific incidents require dedicated response procedures.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MANAGE 2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MANAGE 2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-2.2_stmt",
-        "name": "statement",
-        "prose": "No incident response plan for AI failures. AI-specific incidents require dedicated response procedures."
+        "prose": "Risk treatment plans are not documented. Document how each identified risk will be mitigated, accepted, transferred, or avoided."
        }
       ],
       "class": "compliance"
@@ -1023,82 +500,16 @@
       "class": "compliance"
      },
      {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-3.1",
-      "title": "No rollback capability for AI model changes. Ability to revert to previous model versions is required for risk management.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MANAGE 3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MANAGE 3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-3.1_stmt",
-        "name": "statement",
-        "prose": "No rollback capability for AI model changes. Ability to revert to previous model versions is required for risk management."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-4.1",
-      "title": "No mechanism for affected parties to contest AI decisions. Individuals affected by consequential AI decisions must have recourse.",
-      "props": [
-       {
-        "name": "label",
-        "value": "NIST AI RMF MANAGE 4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "NIST AI RMF MANAGE 4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-4.1_stmt",
-        "name": "statement",
-        "prose": "No mechanism for affected parties to contest AI decisions. Individuals affected by consequential AI decisions must have recourse."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-4.2",
+      "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.7",
       "title": "No AI system retirement plan. Document how the system will be safely retired and what happens to its data and models.",
       "props": [
        {
         "name": "label",
-        "value": "NIST AI RMF MANAGE 4.2"
+        "value": "NIST AI RMF GOVERN 1.7"
        },
        {
         "name": "alt-identifier",
-        "value": "NIST AI RMF MANAGE 4.2"
+        "value": "NIST AI RMF GOVERN 1.7"
        },
        {
         "name": "rego-package",
@@ -1114,342 +525,9 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-NIST-AI-RMF-MANAGE-4.2_stmt",
+        "id": "nist_ai_rmf-NIST-AI-RMF-GOVERN-1.7_stmt",
         "name": "statement",
         "prose": "No AI system retirement plan. Document how the system will be safely retired and what happens to its data and models."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-nist.ai_rmf-2",
-      "title": "NIST AI RMF (Trustworthy): AI system does not meet defined accuracy benchmarks. Accuracy requirements must be defined and met before deployment.",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist.ai_rmf#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist.ai_rmf#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-nist.ai_rmf-2_stmt",
-        "name": "statement",
-        "prose": "NIST AI RMF (Trustworthy): AI system does not meet defined accuracy benchmarks. Accuracy requirements must be defined and met before deployment."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-nist.ai_rmf-3",
-      "title": "NIST AI RMF (Trustworthy): AI system fairness has not been assessed. Evaluate and document fairness across demographic groups.",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist.ai_rmf#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist.ai_rmf#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-nist.ai_rmf-3_stmt",
-        "name": "statement",
-        "prose": "NIST AI RMF (Trustworthy): AI system fairness has not been assessed. Evaluate and document fairness across demographic groups."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-nist.ai_rmf-4",
-      "title": "NIST AI RMF (Trustworthy): No transparency documentation for AI system. Document model architecture, training data, and known limitations.",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist.ai_rmf#4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist.ai_rmf#4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-nist.ai_rmf-4_stmt",
-        "name": "statement",
-        "prose": "NIST AI RMF (Trustworthy): No transparency documentation for AI system. Document model architecture, training data, and known limitations."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-nist.ai_rmf-5",
-      "title": "NIST AI RMF (Trustworthy): AI system has not been security hardened. Protect against adversarial attacks, model theft, and data poisoning.",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist.ai_rmf#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist.ai_rmf#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-nist.ai_rmf-5_stmt",
-        "name": "statement",
-        "prose": "NIST AI RMF (Trustworthy): AI system has not been security hardened. Protect against adversarial attacks, model theft, and data poisoning."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-nist.ai_rmf-6",
-      "title": "NIST AI RMF (Trustworthy): Privacy-preserving techniques have not been applied. Consider differential privacy, federated learning, or data minimization.",
-      "props": [
-       {
-        "name": "label",
-        "value": "nist.ai_rmf#6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "nist.ai_rmf#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-nist.ai_rmf-6_stmt",
-        "name": "statement",
-        "prose": "NIST AI RMF (Trustworthy): Privacy-preserving techniques have not been applied. Consider differential privacy, federated learning, or data minimization."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-GOVERN",
-      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "GOVERN"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "GOVERN"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       },
-       {
-        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-GOVERN_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
-       },
-       {
-        "id": "nist_ai_rmf-GOVERN_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-MANAGE",
-      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "MANAGE"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "MANAGE"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       },
-       {
-        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-MANAGE_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
-       },
-       {
-        "id": "nist_ai_rmf-MANAGE_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-MAP",
-      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "MAP"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "MAP"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       },
-       {
-        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-MAP_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
-       },
-       {
-        "id": "nist_ai_rmf-MAP_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "nist_ai_rmf-MEASURE",
-      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "MEASURE"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "MEASURE"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.ai_rmf"
-       }
-      ],
-      "links": [
-       {
-        "href": "#db01f1cb-835f-5c5f-8e4a-496711df2143",
-        "rel": "implementation"
-       },
-       {
-        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nist_ai_rmf-MEASURE_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf.rego (package nist.ai_rmf); see the rule body."
-       },
-       {
-        "id": "nist_ai_rmf-MEASURE_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -1459,7 +537,7 @@
    {
     "id": "nist_ai_rmf-nist_ai_rmf_main",
     "class": "rego-module",
-    "title": "NIST AI RMF main adapter — exposes the standard contract",
+    "title": "NIST AI RMF 1.0 — 72 Core subcategories (AI 100-1 ids), facts or attestation, with the AI 600-1 GAI profile",
     "props": [
      {
       "name": "rego-package",
@@ -1479,16 +557,16 @@
     ],
     "controls": [
      {
-      "id": "nist_ai_rmf-TRUSTWORTHINESS",
-      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body.",
+      "id": "nist_ai_rmf-GOVERN-1.1",
+      "title": "Legal and regulatory requirements involving AI are understood, managed, and documented.",
       "props": [
        {
         "name": "label",
-        "value": "TRUSTWORTHINESS"
+        "value": "GOVERN 1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TRUSTWORTHINESS"
+        "value": "GOVERN 1.1"
        },
        {
         "name": "rego-package",
@@ -1504,7 +582,2548 @@
       ],
       "parts": [
        {
-        "id": "nist_ai_rmf-TRUSTWORTHINESS_stmt",
+        "id": "nist_ai_rmf-GOVERN-1.1_stmt",
+        "name": "statement",
+        "prose": "Legal and regulatory requirements involving AI are understood, managed, and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-1.2",
+      "title": "The characteristics of trustworthy AI are integrated into organizational policies, processes, procedures, and practices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-1.2_stmt",
+        "name": "statement",
+        "prose": "The characteristics of trustworthy AI are integrated into organizational policies, processes, procedures, and practices."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-1.3",
+      "title": "Processes, procedures, and practices are in place to determine the needed level of risk management activities based on the organization’s risk tolerance.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-1.3_stmt",
+        "name": "statement",
+        "prose": "Processes, procedures, and practices are in place to determine the needed level of risk management activities based on the organization’s risk tolerance."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-1.4",
+      "title": "The risk management process and its outcomes are established through transparent policies, procedures, and other controls based on organizational risk priorities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-1.4_stmt",
+        "name": "statement",
+        "prose": "The risk management process and its outcomes are established through transparent policies, procedures, and other controls based on organizational risk priorities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-1.5",
+      "title": "Ongoing monitoring and periodic review of the risk management process and its outcomes are planned and organizational roles and responsibilities clearly defined, including determining the frequency of",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-1.5_stmt",
+        "name": "statement",
+        "prose": "Ongoing monitoring and periodic review of the risk management process and its outcomes are planned and organizational roles and responsibilities clearly defined, including determining the frequency of periodic review."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-1.6",
+      "title": "Mechanisms are in place to inventory AI systems and are resourced according to organizational risk priorities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-1.6_stmt",
+        "name": "statement",
+        "prose": "Mechanisms are in place to inventory AI systems and are resourced according to organizational risk priorities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-1.7",
+      "title": "Processes and procedures are in place for decommissioning and phasing out AI systems safely and in a manner that does not increase risks or decrease the organization’s trustworthiness.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-1.7_stmt",
+        "name": "statement",
+        "prose": "Processes and procedures are in place for decommissioning and phasing out AI systems safely and in a manner that does not increase risks or decrease the organization’s trustworthiness."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-2.1",
+      "title": "Roles and responsibilities and lines of communication related to mapping, measuring, and managing AI risks are documented and are clear to individuals and teams throughout the organization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-2.1_stmt",
+        "name": "statement",
+        "prose": "Roles and responsibilities and lines of communication related to mapping, measuring, and managing AI risks are documented and are clear to individuals and teams throughout the organization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-2.2",
+      "title": "The organization’s personnel and partners receive AI risk management training to enable them to perform their duties and responsibilities consistent with related policies, procedures, and agreements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-2.2_stmt",
+        "name": "statement",
+        "prose": "The organization’s personnel and partners receive AI risk management training to enable them to perform their duties and responsibilities consistent with related policies, procedures, and agreements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-2.3",
+      "title": "Executive leadership of the organization takes responsibility for decisions about risks associated with AI system development and deployment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-2.3_stmt",
+        "name": "statement",
+        "prose": "Executive leadership of the organization takes responsibility for decisions about risks associated with AI system development and deployment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-3.1",
+      "title": "Decision-making related to mapping, measuring, and managing AI risks throughout the lifecycle is informed by a diverse team (e.g., diversity of demographics, disciplines, experience, expertise, and ba",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-3.1_stmt",
+        "name": "statement",
+        "prose": "Decision-making related to mapping, measuring, and managing AI risks throughout the lifecycle is informed by a diverse team (e.g., diversity of demographics, disciplines, experience, expertise, and backgrounds)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-3.2",
+      "title": "Policies and procedures are in place to define and differentiate roles and responsibilities for human-AI configurations and oversight of AI systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-3.2_stmt",
+        "name": "statement",
+        "prose": "Policies and procedures are in place to define and differentiate roles and responsibilities for human-AI configurations and oversight of AI systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-4.1",
+      "title": "Organizational policies and practices are in place to foster a critical thinking and safety-first mindset in the design, development, deployment, and uses of AI systems to minimize potential negative ",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-4.1_stmt",
+        "name": "statement",
+        "prose": "Organizational policies and practices are in place to foster a critical thinking and safety-first mindset in the design, development, deployment, and uses of AI systems to minimize potential negative impacts."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-4.2",
+      "title": "Organizational teams document the risks and potential impacts of the AI technology they design, develop, deploy, evaluate, and use, and they communicate about the impacts more broadly.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-4.2_stmt",
+        "name": "statement",
+        "prose": "Organizational teams document the risks and potential impacts of the AI technology they design, develop, deploy, evaluate, and use, and they communicate about the impacts more broadly."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-4.3",
+      "title": "Organizational practices are in place to enable AI testing, identification of incidents, and information sharing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-4.3_stmt",
+        "name": "statement",
+        "prose": "Organizational practices are in place to enable AI testing, identification of incidents, and information sharing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-5.1",
+      "title": "Organizational policies and practices are in place to collect, consider, prioritize, and integrate feedback from those external to the team that developed or deployed the AI system regarding the poten",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-5.1_stmt",
+        "name": "statement",
+        "prose": "Organizational policies and practices are in place to collect, consider, prioritize, and integrate feedback from those external to the team that developed or deployed the AI system regarding the potential individual and societal impacts related to AI risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-5.2",
+      "title": "Mechanisms are established to enable the team that developed or deployed AI systems to regularly incorporate adjudicated feedback from relevant AI actors into system design and implementation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-5.2_stmt",
+        "name": "statement",
+        "prose": "Mechanisms are established to enable the team that developed or deployed AI systems to regularly incorporate adjudicated feedback from relevant AI actors into system design and implementation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-6.1",
+      "title": "Policies and procedures are in place that address AI risks associated with third-party entities, including risks of infringement of a third-party’s intellectual property or other rights.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-6.1_stmt",
+        "name": "statement",
+        "prose": "Policies and procedures are in place that address AI risks associated with third-party entities, including risks of infringement of a third-party’s intellectual property or other rights."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-GOVERN-6.2",
+      "title": "Contingency processes are in place to handle failures or incidents in third-party data or AI systems deemed to be high-risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "GOVERN 6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "GOVERN 6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-GOVERN-6.2_stmt",
+        "name": "statement",
+        "prose": "Contingency processes are in place to handle failures or incidents in third-party data or AI systems deemed to be high-risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-1.1",
+      "title": "A determination is made as to whether the AI system achieves its intended purposes and stated objectives and whether its development or deployment should proceed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-1.1_stmt",
+        "name": "statement",
+        "prose": "A determination is made as to whether the AI system achieves its intended purposes and stated objectives and whether its development or deployment should proceed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-1.2",
+      "title": "Treatment of documented AI risks is prioritized based on impact, likelihood, and available resources or methods.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-1.2_stmt",
+        "name": "statement",
+        "prose": "Treatment of documented AI risks is prioritized based on impact, likelihood, and available resources or methods."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-1.3",
+      "title": "Responses to the AI risks deemed high priority, as identified by the MAP function, are developed, planned, and documented. Risk response options can include mitigating, transferring, avoiding, or acce",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-1.3_stmt",
+        "name": "statement",
+        "prose": "Responses to the AI risks deemed high priority, as identified by the MAP function, are developed, planned, and documented. Risk response options can include mitigating, transferring, avoiding, or accepting."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-1.4",
+      "title": "Negative residual risks (defined as the sum of all unmitigated risks) to both downstream acquirers of AI systems and end users are documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-1.4_stmt",
+        "name": "statement",
+        "prose": "Negative residual risks (defined as the sum of all unmitigated risks) to both downstream acquirers of AI systems and end users are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-2.1",
+      "title": "Resources required to manage AI risks are taken into account – along with viable non-AI alternative systems, approaches, or methods – to reduce the magnitude or likelihood of potential impacts.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-2.1_stmt",
+        "name": "statement",
+        "prose": "Resources required to manage AI risks are taken into account – along with viable non-AI alternative systems, approaches, or methods – to reduce the magnitude or likelihood of potential impacts."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-2.2",
+      "title": "Mechanisms are in place and applied to sustain the value of deployed AI systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-2.2_stmt",
+        "name": "statement",
+        "prose": "Mechanisms are in place and applied to sustain the value of deployed AI systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-2.3",
+      "title": "Procedures are followed to respond to and recover from a previously unknown risk when it is identified.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-2.3_stmt",
+        "name": "statement",
+        "prose": "Procedures are followed to respond to and recover from a previously unknown risk when it is identified."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-2.4",
+      "title": "Mechanisms are in place and applied, and responsibilities are assigned and understood, to supersede, disengage, or deactivate AI systems that demonstrate performance or outcomes inconsistent with inte",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-2.4_stmt",
+        "name": "statement",
+        "prose": "Mechanisms are in place and applied, and responsibilities are assigned and understood, to supersede, disengage, or deactivate AI systems that demonstrate performance or outcomes inconsistent with intended use."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-3.1",
+      "title": "AI risks and benefits from third-party resources are regularly monitored, and risk controls are applied and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-3.1_stmt",
+        "name": "statement",
+        "prose": "AI risks and benefits from third-party resources are regularly monitored, and risk controls are applied and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-3.2",
+      "title": "Pre-trained models which are used for development are monitored as part of AI system regular monitoring and maintenance.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-3.2_stmt",
+        "name": "statement",
+        "prose": "Pre-trained models which are used for development are monitored as part of AI system regular monitoring and maintenance."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-4.1",
+      "title": "Post-deployment AI system monitoring plans are implemented, including mechanisms for capturing and evaluating input from users and other relevant AI actors, appeal and override, decommissioning, incid",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-4.1_stmt",
+        "name": "statement",
+        "prose": "Post-deployment AI system monitoring plans are implemented, including mechanisms for capturing and evaluating input from users and other relevant AI actors, appeal and override, decommissioning, incident response, recovery, and change management."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-4.2",
+      "title": "Measurable activities for continual improvements are integrated into AI system updates and include regular engagement with interested parties, including relevant AI actors.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-4.2_stmt",
+        "name": "statement",
+        "prose": "Measurable activities for continual improvements are integrated into AI system updates and include regular engagement with interested parties, including relevant AI actors."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MANAGE-4.3",
+      "title": "Incidents and errors are communicated to relevant AI actors, including affected communities. Processes for tracking, responding to, and recovering from incidents and errors are followed and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "MANAGE 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MANAGE 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MANAGE-4.3_stmt",
+        "name": "statement",
+        "prose": "Incidents and errors are communicated to relevant AI actors, including affected communities. Processes for tracking, responding to, and recovering from incidents and errors are followed and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-1.1",
+      "title": "Intended purposes, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented. Considera",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-1.1_stmt",
+        "name": "statement",
+        "prose": "Intended purposes, potentially beneficial uses, context-specific laws, norms and expectations, and prospective settings in which the AI system will be deployed are understood and documented. Considerations include: the specific set or types of users along with their expectations; potential positive and negative impacts of system uses to individuals, communities, organizations, society, and the planet; assumptions and related limitations about AI system purposes, uses, and risks across the development or product AI lifecycle; and related TEVV and system metrics."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-1.2",
+      "title": "Interdisciplinary AI actors, competencies, skills, and capacities for establishing context reflect demographic diversity and broad domain and user experience expertise, and their participation is docu",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-1.2_stmt",
+        "name": "statement",
+        "prose": "Interdisciplinary AI actors, competencies, skills, and capacities for establishing context reflect demographic diversity and broad domain and user experience expertise, and their participation is documented. Opportunities for interdisciplinary collaboration are prioritized."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-1.3",
+      "title": "The organization’s mission and relevant goals for AI technology are understood and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-1.3_stmt",
+        "name": "statement",
+        "prose": "The organization’s mission and relevant goals for AI technology are understood and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-1.4",
+      "title": "The business value or context of business use has been clearly defined or – in the case of assessing existing AI systems – re-evaluated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-1.4_stmt",
+        "name": "statement",
+        "prose": "The business value or context of business use has been clearly defined or – in the case of assessing existing AI systems – re-evaluated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-1.5",
+      "title": "Organizational risk tolerances are determined and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-1.5_stmt",
+        "name": "statement",
+        "prose": "Organizational risk tolerances are determined and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-1.6",
+      "title": "System requirements (e.g., “the system shall respect the privacy of its users”) are elicited from and understood by relevant AI actors. Design decisions take socio-technical implications into account ",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-1.6_stmt",
+        "name": "statement",
+        "prose": "System requirements (e.g., “the system shall respect the privacy of its users”) are elicited from and understood by relevant AI actors. Design decisions take socio-technical implications into account to address AI risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-2.1",
+      "title": "The specific tasks and methods used to implement the tasks that the AI system will support are defined (e.g., classifiers, generative models, recommenders).",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-2.1_stmt",
+        "name": "statement",
+        "prose": "The specific tasks and methods used to implement the tasks that the AI system will support are defined (e.g., classifiers, generative models, recommenders)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-2.2",
+      "title": "Information about the AI system’s knowledge limits and how system output may be utilized and overseen by humans is documented. Documentation provides sufficient information to assist relevant AI actor",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-2.2_stmt",
+        "name": "statement",
+        "prose": "Information about the AI system’s knowledge limits and how system output may be utilized and overseen by humans is documented. Documentation provides sufficient information to assist relevant AI actors when making decisions and taking subsequent actions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-2.3",
+      "title": "Scientific integrity and TEVV considerations are identified and documented, including those related to experimental design, data collection and selection (e.g., availability, representativeness, suita",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-2.3_stmt",
+        "name": "statement",
+        "prose": "Scientific integrity and TEVV considerations are identified and documented, including those related to experimental design, data collection and selection (e.g., availability, representativeness, suitability), system trustworthiness, and construct validation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-3.1",
+      "title": "Potential benefits of intended AI system functionality and performance are examined and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-3.1_stmt",
+        "name": "statement",
+        "prose": "Potential benefits of intended AI system functionality and performance are examined and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-3.2",
+      "title": "Potential costs, including non-monetary costs, which result from expected or realized AI errors or system functionality and trustworthiness – as connected to organizational risk tolerance – are examin",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-3.2_stmt",
+        "name": "statement",
+        "prose": "Potential costs, including non-monetary costs, which result from expected or realized AI errors or system functionality and trustworthiness – as connected to organizational risk tolerance – are examined and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-3.3",
+      "title": "Targeted application scope is specified and documented based on the system’s capability, established context, and AI system categorization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-3.3_stmt",
+        "name": "statement",
+        "prose": "Targeted application scope is specified and documented based on the system’s capability, established context, and AI system categorization."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-3.4",
+      "title": "Processes for operator and practitioner proficiency with AI system performance and trustworthiness – and relevant technical standards and certifications – are defined, assessed, and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-3.4_stmt",
+        "name": "statement",
+        "prose": "Processes for operator and practitioner proficiency with AI system performance and trustworthiness – and relevant technical standards and certifications – are defined, assessed, and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-3.5",
+      "title": "Processes for human oversight are defined, assessed, and documented in accordance with organizational policies from the GOVERN function.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-3.5_stmt",
+        "name": "statement",
+        "prose": "Processes for human oversight are defined, assessed, and documented in accordance with organizational policies from the GOVERN function."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-4.1",
+      "title": "Approaches for mapping AI technology and legal risks of its components – including the use of third-party data or software – are in place, followed, and documented, as are risks of infringement of a t",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-4.1_stmt",
+        "name": "statement",
+        "prose": "Approaches for mapping AI technology and legal risks of its components – including the use of third-party data or software – are in place, followed, and documented, as are risks of infringement of a third party’s intellectual property or other rights."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-4.2",
+      "title": "Internal risk controls for components of the AI system, including third-party AI technologies, are identified and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-4.2_stmt",
+        "name": "statement",
+        "prose": "Internal risk controls for components of the AI system, including third-party AI technologies, are identified and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-5.1",
+      "title": "Likelihood and magnitude of each identified impact (both potentially beneficial and harmful) based on expected use, past uses of AI systems in similar contexts, public incident reports, feedback from ",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-5.1_stmt",
+        "name": "statement",
+        "prose": "Likelihood and magnitude of each identified impact (both potentially beneficial and harmful) based on expected use, past uses of AI systems in similar contexts, public incident reports, feedback from those external to the team that developed or deployed the AI system, or other data are identified and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MAP-5.2",
+      "title": "Practices and personnel for supporting regular engagement with relevant AI actors and integrating feedback about positive, negative, and unanticipated impacts are in place and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MAP 5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MAP 5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MAP-5.2_stmt",
+        "name": "statement",
+        "prose": "Practices and personnel for supporting regular engagement with relevant AI actors and integrating feedback about positive, negative, and unanticipated impacts are in place and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-1.1",
+      "title": "Approaches and metrics for measurement of AI risks enumerated during the MAP function are selected for implementation starting with the most significant AI risks. The risks or trustworthiness characte",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-1.1_stmt",
+        "name": "statement",
+        "prose": "Approaches and metrics for measurement of AI risks enumerated during the MAP function are selected for implementation starting with the most significant AI risks. The risks or trustworthiness characteristics that will not – or cannot – be measured are properly documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-1.2",
+      "title": "Appropriateness of AI metrics and effectiveness of existing controls are regularly assessed and updated, including reports of errors and potential impacts on affected communities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-1.2_stmt",
+        "name": "statement",
+        "prose": "Appropriateness of AI metrics and effectiveness of existing controls are regularly assessed and updated, including reports of errors and potential impacts on affected communities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-1.3",
+      "title": "Internal experts who did not serve as front-line developers for the system and/or independent assessors are involved in regular assessments and updates. Domain experts, users, AI actors external to th",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-1.3_stmt",
+        "name": "statement",
+        "prose": "Internal experts who did not serve as front-line developers for the system and/or independent assessors are involved in regular assessments and updates. Domain experts, users, AI actors external to the team that developed or deployed the AI system, and affected communities are consulted in support of assessments as necessary per organizational risk tolerance."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.1",
+      "title": "Test sets, metrics, and details about the tools used during TEVV are documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.1_stmt",
+        "name": "statement",
+        "prose": "Test sets, metrics, and details about the tools used during TEVV are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.10",
+      "title": "Privacy risk of the AI system – as identified in the MAP function – is examined and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.10_stmt",
+        "name": "statement",
+        "prose": "Privacy risk of the AI system – as identified in the MAP function – is examined and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.11",
+      "title": "Fairness and bias – as identified in the MAP function – are evaluated and results are documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.11_stmt",
+        "name": "statement",
+        "prose": "Fairness and bias – as identified in the MAP function – are evaluated and results are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.12",
+      "title": "Environmental impact and sustainability of AI model training and management activities – as identified in the MAP function – are assessed and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.12_stmt",
+        "name": "statement",
+        "prose": "Environmental impact and sustainability of AI model training and management activities – as identified in the MAP function – are assessed and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.13",
+      "title": "Effectiveness of the employed TEVV metrics and processes in the MEASURE function are evaluated and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.13_stmt",
+        "name": "statement",
+        "prose": "Effectiveness of the employed TEVV metrics and processes in the MEASURE function are evaluated and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.2",
+      "title": "Evaluations involving human subjects meet applicable requirements (including human subject protection) and are representative of the relevant population.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.2_stmt",
+        "name": "statement",
+        "prose": "Evaluations involving human subjects meet applicable requirements (including human subject protection) and are representative of the relevant population."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.3",
+      "title": "AI system performance or assurance criteria are measured qualitatively or quantitatively and demonstrated for conditions similar to deployment setting(s). Measures are documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.3_stmt",
+        "name": "statement",
+        "prose": "AI system performance or assurance criteria are measured qualitatively or quantitatively and demonstrated for conditions similar to deployment setting(s). Measures are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.4",
+      "title": "The functionality and behavior of the AI system and its components – as identified in the MAP function – are monitored when in production.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.4_stmt",
+        "name": "statement",
+        "prose": "The functionality and behavior of the AI system and its components – as identified in the MAP function – are monitored when in production."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.5",
+      "title": "The AI system to be deployed is demonstrated to be valid and reliable. Limitations of the generalizability beyond the conditions under which the technology was developed are documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.5_stmt",
+        "name": "statement",
+        "prose": "The AI system to be deployed is demonstrated to be valid and reliable. Limitations of the generalizability beyond the conditions under which the technology was developed are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.6",
+      "title": "The AI system is evaluated regularly for safety risks – as identified in the MAP function. The AI system to be deployed is demonstrated to be safe, its residual negative risk does not exceed the risk ",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.6_stmt",
+        "name": "statement",
+        "prose": "The AI system is evaluated regularly for safety risks – as identified in the MAP function. The AI system to be deployed is demonstrated to be safe, its residual negative risk does not exceed the risk tolerance, and it can fail safely, particularly if made to operate beyond its knowledge limits. Safety metrics reflect system reliability and robustness, real-time monitoring, and response times for AI system failures."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.7",
+      "title": "AI system security and resilience – as identified in the MAP function – are evaluated and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.7_stmt",
+        "name": "statement",
+        "prose": "AI system security and resilience – as identified in the MAP function – are evaluated and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.8",
+      "title": "Risks associated with transparency and accountability – as identified in the MAP function – are examined and documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.8_stmt",
+        "name": "statement",
+        "prose": "Risks associated with transparency and accountability – as identified in the MAP function – are examined and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-2.9",
+      "title": "The AI model is explained, validated, and documented, and AI system output is interpreted within its context – as identified in the MAP function – to inform responsible use and governance.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-2.9_stmt",
+        "name": "statement",
+        "prose": "The AI model is explained, validated, and documented, and AI system output is interpreted within its context – as identified in the MAP function – to inform responsible use and governance."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-3.1",
+      "title": "Approaches, personnel, and documentation are in place to regularly identify and track existing, unanticipated, and emergent AI risks based on factors such as intended and actual performance in deploye",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-3.1_stmt",
+        "name": "statement",
+        "prose": "Approaches, personnel, and documentation are in place to regularly identify and track existing, unanticipated, and emergent AI risks based on factors such as intended and actual performance in deployed contexts."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-3.2",
+      "title": "Risk tracking approaches are considered for settings where AI risks are difficult to assess using currently available measurement techniques or where metrics are not yet available.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-3.2_stmt",
+        "name": "statement",
+        "prose": "Risk tracking approaches are considered for settings where AI risks are difficult to assess using currently available measurement techniques or where metrics are not yet available."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-3.3",
+      "title": "Feedback processes for end users and impacted communities to report problems and appeal system outcomes are established and integrated into AI system evaluation metrics.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-3.3_stmt",
+        "name": "statement",
+        "prose": "Feedback processes for end users and impacted communities to report problems and appeal system outcomes are established and integrated into AI system evaluation metrics."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-4.1",
+      "title": "Measurement approaches for identifying AI risks are connected to deployment context(s) and informed through consultation with domain experts and other end users. Approaches are documented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-4.1_stmt",
+        "name": "statement",
+        "prose": "Measurement approaches for identifying AI risks are connected to deployment context(s) and informed through consultation with domain experts and other end users. Approaches are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-4.2",
+      "title": "Measurement results regarding AI system trustworthiness in deployment context(s) and across the AI lifecycle are informed by input from domain experts and relevant AI actors to validate whether the sy",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-4.2_stmt",
+        "name": "statement",
+        "prose": "Measurement results regarding AI system trustworthiness in deployment context(s) and across the AI lifecycle are informed by input from domain experts and relevant AI actors to validate whether the system is performing consistently as intended. Results are documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-MEASURE-4.3",
+      "title": "Measurable performance improvements or declines based on consultations with relevant AI actors, including affected communities, and field data about context-relevant risks and trustworthiness characte",
+      "props": [
+       {
+        "name": "label",
+        "value": "MEASURE 4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MEASURE 4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-MEASURE-4.3_stmt",
+        "name": "statement",
+        "prose": "Measurable performance improvements or declines based on consultations with relevant AI actors, including affected communities, and field data about context-relevant risks and trustworthiness characteristics are identified and documented."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-nist.ai_rmf.main-1",
+      "title": "NIST AI RMF: FAIL-CLOSED - attestations 'input.nist_ai_rmf.subcategories' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.ai_rmf.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.ai_rmf.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-nist.ai_rmf.main-1_stmt",
+        "name": "statement",
+        "prose": "NIST AI RMF: FAIL-CLOSED - attestations 'input.nist_ai_rmf.subcategories' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-nist.ai_rmf.main-2",
+      "title": "NIST AI RMF %v (%v): not attested satisfied — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.ai_rmf.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.ai_rmf.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-nist.ai_rmf.main-2_stmt",
+        "name": "statement",
+        "prose": "NIST AI RMF %v (%v): not attested satisfied — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-nist.ai_rmf.main-3",
+      "title": "NIST AI RMF %v (%v): facts not satisfied — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.ai_rmf.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.ai_rmf.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-nist.ai_rmf.main-3_stmt",
+        "name": "statement",
+        "prose": "NIST AI RMF %v (%v): facts not satisfied — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-nist.ai_rmf.main-4",
+      "title": "NIST AI RMF Module Contract: fact violation not attributed to a facts-basis subcategory — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.ai_rmf.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.ai_rmf.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-nist.ai_rmf.main-4_stmt",
+        "name": "statement",
+        "prose": "NIST AI RMF Module Contract: fact violation not attributed to a facts-basis subcategory — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-nist.ai_rmf.main-5",
+      "title": "NIST AI RMF Input Contract: unknown subcategory id %v — ids are printed as in AI 100-1, e.g. GOVERN 1.1",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.ai_rmf.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.ai_rmf.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-nist.ai_rmf.main-5_stmt",
+        "name": "statement",
+        "prose": "NIST AI RMF Input Contract: unknown subcategory id %v — ids are printed as in AI 100-1, e.g. GOVERN 1.1"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_ai_rmf-nist.ai_rmf.main-6",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.ai_rmf.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.ai_rmf.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.ai_rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#32ec7645-c4ff-5306-a723-ea5b072df95a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_ai_rmf-nist.ai_rmf.main-6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/federal/nist/ai_rmf/nist_ai_rmf_main.rego (package nist.ai_rmf.main); see the rule body."
        }
@@ -1518,7 +3137,7 @@
    "resources": [
     {
      "uuid": "db01f1cb-835f-5c5f-8e4a-496711df2143",
-     "title": "NIST AI Risk Management Framework (AI RMF 1.0)",
+     "title": "NIST AI RMF 1.0 — fact checks labelled with the AI 100-1 Core subcategory they decide",
      "props": [
       {
        "name": "rego-package",
@@ -1535,7 +3154,7 @@
     },
     {
      "uuid": "32ec7645-c4ff-5306-a723-ea5b072df95a",
-     "title": "NIST AI RMF main adapter — exposes the standard contract",
+     "title": "NIST AI RMF 1.0 — 72 Core subcategories (AI 100-1 ids), facts or attestation, with the AI 600-1 GAI profile",
      "props": [
       {
        "name": "rego-package",

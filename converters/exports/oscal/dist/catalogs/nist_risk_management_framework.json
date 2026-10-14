@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "52b55b1f-7194-569a-98ba-bbeffdc9131d",
   "metadata": {
-   "title": "Rego Policy Libraries — nist_risk_management_framework (NIST Risk Management Framework (RMF) - CATEGORIZE Step)",
+   "title": "Rego Policy Libraries — nist_risk_management_framework (NIST SP 800-37 Rev 2 Risk Management Framework — 47 Chapter 3 tasks, all seven steps, attested)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -44,19 +44,19 @@
   },
   "groups": [
    {
-    "id": "nist_risk_management_framework-system_categorization",
+    "id": "nist_risk_management_framework-nist_rmf_main",
     "class": "rego-module",
-    "title": "NIST Risk Management Framework (RMF) - CATEGORIZE Step",
+    "title": "NIST SP 800-37 Rev 2 Risk Management Framework — 47 Chapter 3 tasks, all seven steps, attested",
     "props": [
      {
       "name": "rego-package",
       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "nist.rmf.categorize"
+      "value": "nist.rmf.main"
      },
      {
       "name": "rego-file",
       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "frameworks/federal/nist/risk_management_framework/categorize/system_categorization.rego"
+      "value": "frameworks/federal/nist/risk_management_framework/nist_rmf_main.rego"
      },
      {
       "name": "class",
@@ -66,397 +66,1689 @@
     ],
     "controls": [
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-1",
-      "title": "availability properly categorized",
+      "id": "nist_risk_management_framework-A-1",
+      "title": "Select the appropriate assessor or assessment team for the type of control assessment to be conducted.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#1"
+        "value": "A-1"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#1"
+        "value": "A-1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-1_stmt",
+        "id": "nist_risk_management_framework-A-1_stmt",
         "name": "statement",
-        "prose": "availability properly categorized"
+        "prose": "Select the appropriate assessor or assessment team for the type of control assessment to be conducted."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-2",
-      "title": "categorization documentation complete",
+      "id": "nist_risk_management_framework-A-2",
+      "title": "Develop, review, and approve plans to assess implemented controls.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#2"
+        "value": "A-2"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#2"
+        "value": "A-2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-2_stmt",
+        "id": "nist_risk_management_framework-A-2_stmt",
         "name": "statement",
-        "prose": "categorization documentation complete"
+        "prose": "Develop, review, and approve plans to assess implemented controls."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-3",
-      "title": "confidentiality properly categorized",
+      "id": "nist_risk_management_framework-A-3",
+      "title": "Assess the controls in accordance with the assessment procedures described in assessment plans.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#3"
+        "value": "A-3"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#3"
+        "value": "A-3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-3_stmt",
+        "id": "nist_risk_management_framework-A-3_stmt",
         "name": "statement",
-        "prose": "confidentiality properly categorized"
+        "prose": "Assess the controls in accordance with the assessment procedures described in assessment plans."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-4",
-      "title": "external dependencies identified",
+      "id": "nist_risk_management_framework-A-4",
+      "title": "Prepare the assessment reports documenting the findings and recommendations from the control assessments.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#4"
+        "value": "A-4"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#4"
+        "value": "A-4"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-4_stmt",
+        "id": "nist_risk_management_framework-A-4_stmt",
         "name": "statement",
-        "prose": "external dependencies identified"
+        "prose": "Prepare the assessment reports documenting the findings and recommendations from the control assessments."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-5",
-      "title": "high water mark properly applied",
+      "id": "nist_risk_management_framework-A-5",
+      "title": "Conduct initial remediation actions on the controls and reassess remediated controls.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#5"
+        "value": "A-5"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#5"
+        "value": "A-5"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-5_stmt",
+        "id": "nist_risk_management_framework-A-5_stmt",
         "name": "statement",
-        "prose": "high water mark properly applied"
+        "prose": "Conduct initial remediation actions on the controls and reassess remediated controls."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-6",
-      "title": "information types identified",
+      "id": "nist_risk_management_framework-A-6",
+      "title": "Prepare the plan of action and milestones based on the findings and recommendations of the assessment reports.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#6"
+        "value": "A-6"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#6"
+        "value": "A-6"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-6_stmt",
+        "id": "nist_risk_management_framework-A-6_stmt",
         "name": "statement",
-        "prose": "information types identified"
+        "prose": "Prepare the plan of action and milestones based on the findings and recommendations of the assessment reports."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-7",
-      "title": "integrity properly categorized",
+      "id": "nist_risk_management_framework-C-1",
+      "title": "Document the characteristics of the system.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#7"
+        "value": "C-1"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#7"
+        "value": "C-1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-7_stmt",
+        "id": "nist_risk_management_framework-C-1_stmt",
         "name": "statement",
-        "prose": "integrity properly categorized"
+        "prose": "Document the characteristics of the system."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-8",
-      "title": "overall system categorization valid",
+      "id": "nist_risk_management_framework-C-2",
+      "title": "Categorize the system and document the security categorization results.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#8"
+        "value": "C-2"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#8"
+        "value": "C-2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-8_stmt",
+        "id": "nist_risk_management_framework-C-2_stmt",
         "name": "statement",
-        "prose": "overall system categorization valid"
+        "prose": "Categorize the system and document the security categorization results."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-9",
-      "title": "provisional authorization considered",
+      "id": "nist_risk_management_framework-C-3",
+      "title": "Review and approve the security categorization results and decision.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#9"
+        "value": "C-3"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#9"
+        "value": "C-3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-9_stmt",
+        "id": "nist_risk_management_framework-C-3_stmt",
         "name": "statement",
-        "prose": "provisional authorization considered"
+        "prose": "Review and approve the security categorization results and decision."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-10",
-      "title": "saiso review completed",
+      "id": "nist_risk_management_framework-I-1",
+      "title": "Implement the controls in the security and privacy plans.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#10"
+        "value": "I-1"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#10"
+        "value": "I-1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-10_stmt",
+        "id": "nist_risk_management_framework-I-1_stmt",
         "name": "statement",
-        "prose": "saiso review completed"
+        "prose": "Implement the controls in the security and privacy plans."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-11",
-      "title": "system boundary defined",
+      "id": "nist_risk_management_framework-I-2",
+      "title": "Document changes to planned control implementations based on the “as-implemented” state of controls.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#11"
+        "value": "I-2"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#11"
+        "value": "I-2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-11_stmt",
+        "id": "nist_risk_management_framework-I-2_stmt",
         "name": "statement",
-        "prose": "system boundary defined"
+        "prose": "Document changes to planned control implementations based on the “as-implemented” state of controls."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "nist_risk_management_framework-nist.rmf.categorize-12",
-      "title": "system owner responsibilities met",
+      "id": "nist_risk_management_framework-M-1",
+      "title": "Monitor the information system and its environment of operation for changes that impact the security and privacy posture of the system.",
       "props": [
        {
         "name": "label",
-        "value": "nist.rmf.categorize#12"
+        "value": "M-1"
        },
        {
         "name": "alt-identifier",
-        "value": "nist.rmf.categorize#12"
+        "value": "M-1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nist.rmf.categorize"
+        "value": "nist.rmf.main"
        }
       ],
       "links": [
        {
-        "href": "#ccbe725e-3246-5140-ab10-d1ee0290b1ef",
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nist_risk_management_framework-nist.rmf.categorize-12_stmt",
+        "id": "nist_risk_management_framework-M-1_stmt",
         "name": "statement",
-        "prose": "system owner responsibilities met"
+        "prose": "Monitor the information system and its environment of operation for changes that impact the security and privacy posture of the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-M-2",
+      "title": "Assess the controls implemented within and inherited by the system in accordance with the continuous monitoring strategy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "M-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "M-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-M-2_stmt",
+        "name": "statement",
+        "prose": "Assess the controls implemented within and inherited by the system in accordance with the continuous monitoring strategy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-M-3",
+      "title": "Respond to risk based on the results of ongoing monitoring activities, risk assessments, and outstanding items in plans of action and milestones.",
+      "props": [
+       {
+        "name": "label",
+        "value": "M-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "M-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-M-3_stmt",
+        "name": "statement",
+        "prose": "Respond to risk based on the results of ongoing monitoring activities, risk assessments, and outstanding items in plans of action and milestones."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-M-4",
+      "title": "Update plans, assessment reports, and plans of action and milestones based on the results of the continuous monitoring process.",
+      "props": [
+       {
+        "name": "label",
+        "value": "M-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "M-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-M-4_stmt",
+        "name": "statement",
+        "prose": "Update plans, assessment reports, and plans of action and milestones based on the results of the continuous monitoring process."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-M-5",
+      "title": "Report the security and privacy posture of the system to the authorizing official and other organizational officials on an ongoing basis in accordance with the organizational continuous monitoring str",
+      "props": [
+       {
+        "name": "label",
+        "value": "M-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "M-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-M-5_stmt",
+        "name": "statement",
+        "prose": "Report the security and privacy posture of the system to the authorizing official and other organizational officials on an ongoing basis in accordance with the organizational continuous monitoring strategy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-M-6",
+      "title": "Review the security and privacy posture of the system on an ongoing basis to determine whether the risk remains acceptable.",
+      "props": [
+       {
+        "name": "label",
+        "value": "M-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "M-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-M-6_stmt",
+        "name": "statement",
+        "prose": "Review the security and privacy posture of the system on an ongoing basis to determine whether the risk remains acceptable."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-M-7",
+      "title": "Implement a system disposal strategy and execute required actions when a system is removed from operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "M-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "M-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-M-7_stmt",
+        "name": "statement",
+        "prose": "Implement a system disposal strategy and execute required actions when a system is removed from operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-1",
+      "title": "Identify and assign individuals to specific roles associated with security and privacy risk management.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-1_stmt",
+        "name": "statement",
+        "prose": "Identify and assign individuals to specific roles associated with security and privacy risk management."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-10",
+      "title": "Identify assets that require protection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-10_stmt",
+        "name": "statement",
+        "prose": "Identify assets that require protection."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-11",
+      "title": "Determine the authorization boundary of the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-11_stmt",
+        "name": "statement",
+        "prose": "Determine the authorization boundary of the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-12",
+      "title": "Identify the types of information to be processed, stored, and transmitted by the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-12_stmt",
+        "name": "statement",
+        "prose": "Identify the types of information to be processed, stored, and transmitted by the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-13",
+      "title": "Identify and understand all stages of the information life cycle for each information type processed, stored, or transmitted by the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-13_stmt",
+        "name": "statement",
+        "prose": "Identify and understand all stages of the information life cycle for each information type processed, stored, or transmitted by the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-14",
+      "title": "Conduct a system-level risk assessment and update the risk assessment results on an ongoing basis.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-14_stmt",
+        "name": "statement",
+        "prose": "Conduct a system-level risk assessment and update the risk assessment results on an ongoing basis."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-15",
+      "title": "Define the security and privacy requirements for the system and the environment of operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-15_stmt",
+        "name": "statement",
+        "prose": "Define the security and privacy requirements for the system and the environment of operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-16",
+      "title": "Determine the placement of the system within the enterprise architecture.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-16_stmt",
+        "name": "statement",
+        "prose": "Determine the placement of the system within the enterprise architecture."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-17",
+      "title": "Allocate security and privacy requirements to the system and to the environment of operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-17_stmt",
+        "name": "statement",
+        "prose": "Allocate security and privacy requirements to the system and to the environment of operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-18",
+      "title": "Register the system with organizational program or management offices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-18_stmt",
+        "name": "statement",
+        "prose": "Register the system with organizational program or management offices."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-2",
+      "title": "Establish a risk management strategy for the organization that includes a determination of risk tolerance.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-2_stmt",
+        "name": "statement",
+        "prose": "Establish a risk management strategy for the organization that includes a determination of risk tolerance."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-3",
+      "title": "Assess organization-wide security and privacy risk and update the risk assessment results on an ongoing basis.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-3_stmt",
+        "name": "statement",
+        "prose": "Assess organization-wide security and privacy risk and update the risk assessment results on an ongoing basis."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-4",
+      "title": "Establish, document, and publish organizationally-tailored control baselines and/or Cybersecurity Framework Profiles.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-4_stmt",
+        "name": "statement",
+        "prose": "Establish, document, and publish organizationally-tailored control baselines and/or Cybersecurity Framework Profiles."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-5",
+      "title": "Identify, document, and publish organization-wide common controls that are available for inheritance by organizational systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-5_stmt",
+        "name": "statement",
+        "prose": "Identify, document, and publish organization-wide common controls that are available for inheritance by organizational systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-6",
+      "title": "Prioritize organizational systems with the same impact level.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-6_stmt",
+        "name": "statement",
+        "prose": "Prioritize organizational systems with the same impact level."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-7",
+      "title": "Develop and implement an organization-wide strategy for continuously monitoring control effectiveness.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-7_stmt",
+        "name": "statement",
+        "prose": "Develop and implement an organization-wide strategy for continuously monitoring control effectiveness."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-8",
+      "title": "Identify the missions, business functions, and mission/business processes that the system is intended to support.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-8_stmt",
+        "name": "statement",
+        "prose": "Identify the missions, business functions, and mission/business processes that the system is intended to support."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-P-9",
+      "title": "Identify stakeholders who have an interest in the design, development, implementation, assessment, operation, maintenance, or disposal of the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "P-9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P-9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-P-9_stmt",
+        "name": "statement",
+        "prose": "Identify stakeholders who have an interest in the design, development, implementation, assessment, operation, maintenance, or disposal of the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-R-1",
+      "title": "Assemble the authorization package and submit the package to the authorizing official for an authorization decision.",
+      "props": [
+       {
+        "name": "label",
+        "value": "R-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-R-1_stmt",
+        "name": "statement",
+        "prose": "Assemble the authorization package and submit the package to the authorizing official for an authorization decision."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-R-2",
+      "title": "Analyze and determine the risk from the operation or use of the system or the provision of common controls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "R-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-R-2_stmt",
+        "name": "statement",
+        "prose": "Analyze and determine the risk from the operation or use of the system or the provision of common controls."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-R-3",
+      "title": "Identify and implement a preferred course of action in response to the risk determined.",
+      "props": [
+       {
+        "name": "label",
+        "value": "R-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-R-3_stmt",
+        "name": "statement",
+        "prose": "Identify and implement a preferred course of action in response to the risk determined."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-R-4",
+      "title": "Determine if the risk from the operation or use of the information system or the provision or use of common controls is acceptable.",
+      "props": [
+       {
+        "name": "label",
+        "value": "R-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-R-4_stmt",
+        "name": "statement",
+        "prose": "Determine if the risk from the operation or use of the information system or the provision or use of common controls is acceptable."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-R-5",
+      "title": "Report the authorization decision and any deficiencies in controls that represent significant security or privacy risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "R-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-R-5_stmt",
+        "name": "statement",
+        "prose": "Report the authorization decision and any deficiencies in controls that represent significant security or privacy risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-S-1",
+      "title": "Select the controls for the system and the environment of operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "S-1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "S-1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-S-1_stmt",
+        "name": "statement",
+        "prose": "Select the controls for the system and the environment of operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-S-2",
+      "title": "Tailor the controls selected for the system and the environment of operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "S-2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "S-2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-S-2_stmt",
+        "name": "statement",
+        "prose": "Tailor the controls selected for the system and the environment of operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-S-3",
+      "title": "Allocate security and privacy controls to the system and to the environment of operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "S-3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "S-3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-S-3_stmt",
+        "name": "statement",
+        "prose": "Allocate security and privacy controls to the system and to the environment of operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-S-4",
+      "title": "Document the controls for the system and environment of operation in security and privacy plans.",
+      "props": [
+       {
+        "name": "label",
+        "value": "S-4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "S-4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-S-4_stmt",
+        "name": "statement",
+        "prose": "Document the controls for the system and environment of operation in security and privacy plans."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-S-5",
+      "title": "Develop and implement a system-level strategy for monitoring control effectiveness that is consistent with and supplements the organizational continuous monitoring strategy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "S-5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "S-5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-S-5_stmt",
+        "name": "statement",
+        "prose": "Develop and implement a system-level strategy for monitoring control effectiveness that is consistent with and supplements the organizational continuous monitoring strategy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-S-6",
+      "title": "Review and approve the security and privacy plans for the system and the environment of operation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "S-6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "S-6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-S-6_stmt",
+        "name": "statement",
+        "prose": "Review and approve the security and privacy plans for the system and the environment of operation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-NIST-SP-800-37-Rev-2-RMF",
+      "title": "FAIL-CLOSED - task attestations 'input.nist_rmf.tasks' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-37 Rev 2 RMF"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-37 Rev 2 RMF"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-NIST-SP-800-37-Rev-2-RMF_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - task attestations 'input.nist_rmf.tasks' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-nist.rmf.main-1",
+      "title": "NIST SP 800-37 Rev 2 RMF %v (%v, %v): not attested performed — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.rmf.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.rmf.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-nist.rmf.main-1_stmt",
+        "name": "statement",
+        "prose": "NIST SP 800-37 Rev 2 RMF %v (%v, %v): not attested performed — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-nist.rmf.main-2",
+      "title": "NIST SP 800-37 Rev 2 RMF %v: input.system_categorization supplied but legacy check nist.rmf.categorize.%v does not hold",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.rmf.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.rmf.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-nist.rmf.main-2_stmt",
+        "name": "statement",
+        "prose": "NIST SP 800-37 Rev 2 RMF %v: input.system_categorization supplied but legacy check nist.rmf.categorize.%v does not hold"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_risk_management_framework-NIST-SP-800-37-Rev-2-RMF-Input-Contract",
+      "title": "gate input.nist_rmf.%v undeclared — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-37 Rev 2 RMF Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-37 Rev 2 RMF Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.rmf.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1150cedb-49d0-551f-9b25-3c0fedd87948",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_risk_management_framework-NIST-SP-800-37-Rev-2-RMF-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "gate input.nist_rmf.%v undeclared — %v"
+       },
+       {
+        "id": "nist_risk_management_framework-NIST-SP-800-37-Rev-2-RMF-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "unknown task id %v — ids are printed task ids such as P-1, C-2, M-7"
        }
       ],
       "class": "compliance"
@@ -467,18 +1759,18 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "ccbe725e-3246-5140-ab10-d1ee0290b1ef",
-     "title": "NIST Risk Management Framework (RMF) - CATEGORIZE Step",
+     "uuid": "1150cedb-49d0-551f-9b25-3c0fedd87948",
+     "title": "NIST SP 800-37 Rev 2 Risk Management Framework — 47 Chapter 3 tasks, all seven steps, attested",
      "props": [
       {
        "name": "rego-package",
        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "nist.rmf.categorize"
+       "value": "nist.rmf.main"
       }
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/nist/risk_management_framework/categorize/system_categorization.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/nist/risk_management_framework/nist_rmf_main.rego",
        "media-type": "text/plain"
       }
      ]

@@ -1,0 +1,1862 @@
+{
+ "catalog": {
+  "uuid": "d70846b1-f568-5fe8-a824-e368be11e306",
+  "metadata": {
+   "title": "Rego Policy Libraries — nist_sp_800_160v2 (NIST SP 800-160 Vol. 2 Rev. 1 — 50 cyber resiliency implementation approaches (Table D-4), attested)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nist_sp_800_160v2"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nist_sp_800_160v2-nist_800_160v2_main",
+    "class": "rego-module",
+    "title": "NIST SP 800-160 Vol. 2 Rev. 1 — 50 cyber resiliency implementation approaches (Table D-4), attested",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nist.sp800_160v2.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/nist/sp_800_160v2/nist_800_160v2_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nist_sp_800_160v2-adaptive-response.adaptive-management",
+      "title": "Change how mechanisms are used based on changes in the operational environment as well as changes in the threat environment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "adaptive-response.adaptive-management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "adaptive-response.adaptive-management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-adaptive-response.adaptive-management_stmt",
+        "name": "statement",
+        "prose": "Change how mechanisms are used based on changes in the operational environment as well as changes in the threat environment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-adaptive-response.dynamic-reconfiguration",
+      "title": "Make changes to individual systems, system elements, components, or sets of resources to change functionality or behavior without interrupting service.",
+      "props": [
+       {
+        "name": "label",
+        "value": "adaptive-response.dynamic-reconfiguration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "adaptive-response.dynamic-reconfiguration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-adaptive-response.dynamic-reconfiguration_stmt",
+        "name": "statement",
+        "prose": "Make changes to individual systems, system elements, components, or sets of resources to change functionality or behavior without interrupting service."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-adaptive-response.dynamic-resource-allocation",
+      "title": "Change the allocation of resources to tasks or functions without terminating critical functions or processes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "adaptive-response.dynamic-resource-allocation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "adaptive-response.dynamic-resource-allocation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-adaptive-response.dynamic-resource-allocation_stmt",
+        "name": "statement",
+        "prose": "Change the allocation of resources to tasks or functions without terminating critical functions or processes."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-analytic-monitoring.forensic-and-behavioral-analysis",
+      "title": "Analyze indicators and adversary TTPs, including observed behavior, malware, and other artifacts left behind by adverse events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "analytic-monitoring.forensic-and-behavioral-analysis"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "analytic-monitoring.forensic-and-behavioral-analysis"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-analytic-monitoring.forensic-and-behavioral-analysis_stmt",
+        "name": "statement",
+        "prose": "Analyze indicators and adversary TTPs, including observed behavior, malware, and other artifacts left behind by adverse events."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-analytic-monitoring.monitoring-and-damage-assessment",
+      "title": "Monitor and analyze behavior and characteristics of components and resources to look for indicators of adversary activity or precursor conditions or indications of other threat events and to detect an",
+      "props": [
+       {
+        "name": "label",
+        "value": "analytic-monitoring.monitoring-and-damage-assessment"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "analytic-monitoring.monitoring-and-damage-assessment"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-analytic-monitoring.monitoring-and-damage-assessment_stmt",
+        "name": "statement",
+        "prose": "Monitor and analyze behavior and characteristics of components and resources to look for indicators of adversary activity or precursor conditions or indications of other threat events and to detect and assess damage from adversity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-analytic-monitoring.sensor-fusion-and-analysis",
+      "title": "Fuse and analyze monitoring data and analysis results from different information sources or at different times together with externally provided threat intelligence.",
+      "props": [
+       {
+        "name": "label",
+        "value": "analytic-monitoring.sensor-fusion-and-analysis"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "analytic-monitoring.sensor-fusion-and-analysis"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-analytic-monitoring.sensor-fusion-and-analysis_stmt",
+        "name": "statement",
+        "prose": "Fuse and analyze monitoring data and analysis results from different information sources or at different times together with externally provided threat intelligence."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-contextual-awareness.dynamic-resource-awareness",
+      "title": "Maintain current information about resources, the status of resources, and resource connectivity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "contextual-awareness.dynamic-resource-awareness"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "contextual-awareness.dynamic-resource-awareness"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-contextual-awareness.dynamic-resource-awareness_stmt",
+        "name": "statement",
+        "prose": "Maintain current information about resources, the status of resources, and resource connectivity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-contextual-awareness.dynamic-threat-awareness",
+      "title": "Maintain current information about threat actors, indicators, and potential, predicted, and observed adverse events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "contextual-awareness.dynamic-threat-awareness"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "contextual-awareness.dynamic-threat-awareness"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-contextual-awareness.dynamic-threat-awareness_stmt",
+        "name": "statement",
+        "prose": "Maintain current information about threat actors, indicators, and potential, predicted, and observed adverse events."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-contextual-awareness.mission-dependency-and-status-visualization",
+      "title": "Maintain current information about the status of missions or business functions, dependencies on resources, and the status of those resources with respect to threats.",
+      "props": [
+       {
+        "name": "label",
+        "value": "contextual-awareness.mission-dependency-and-status-visualization"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "contextual-awareness.mission-dependency-and-status-visualization"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-contextual-awareness.mission-dependency-and-status-visualization_stmt",
+        "name": "statement",
+        "prose": "Maintain current information about the status of missions or business functions, dependencies on resources, and the status of those resources with respect to threats."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-coordinated-protection.calibrated-defense-in-depth",
+      "title": "Provide complementary protective mechanisms at different architectural layers or in different locations, calibrating the strength and number of mechanisms to resource value.",
+      "props": [
+       {
+        "name": "label",
+        "value": "coordinated-protection.calibrated-defense-in-depth"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coordinated-protection.calibrated-defense-in-depth"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-coordinated-protection.calibrated-defense-in-depth_stmt",
+        "name": "statement",
+        "prose": "Provide complementary protective mechanisms at different architectural layers or in different locations, calibrating the strength and number of mechanisms to resource value."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-coordinated-protection.consistency-analysis",
+      "title": "Determine whether and how protections can be applied in a coordinated, consistent way that minimizes interference, potential cascading failures, or coverage gaps.",
+      "props": [
+       {
+        "name": "label",
+        "value": "coordinated-protection.consistency-analysis"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coordinated-protection.consistency-analysis"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-coordinated-protection.consistency-analysis_stmt",
+        "name": "statement",
+        "prose": "Determine whether and how protections can be applied in a coordinated, consistent way that minimizes interference, potential cascading failures, or coverage gaps."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-coordinated-protection.orchestration",
+      "title": "Coordinate modifications to and the ongoing behavior of mechanisms and processes at different layers, in different locations, or implemented for different aspects of trustworthiness to avoid causing c",
+      "props": [
+       {
+        "name": "label",
+        "value": "coordinated-protection.orchestration"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coordinated-protection.orchestration"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-coordinated-protection.orchestration_stmt",
+        "name": "statement",
+        "prose": "Coordinate modifications to and the ongoing behavior of mechanisms and processes at different layers, in different locations, or implemented for different aspects of trustworthiness to avoid causing cascading failures, interference, or coverage gaps."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-coordinated-protection.self-challenge",
+      "title": "Affect mission or business processes or system elements adversely in a controlled manner to validate the effectiveness of protections and enable proactive response and improvement.",
+      "props": [
+       {
+        "name": "label",
+        "value": "coordinated-protection.self-challenge"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "coordinated-protection.self-challenge"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-coordinated-protection.self-challenge_stmt",
+        "name": "statement",
+        "prose": "Affect mission or business processes or system elements adversely in a controlled manner to validate the effectiveness of protections and enable proactive response and improvement."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-deception.disinformation",
+      "title": "Provide deliberately misleading information to adversaries.",
+      "props": [
+       {
+        "name": "label",
+        "value": "deception.disinformation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "deception.disinformation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-deception.disinformation_stmt",
+        "name": "statement",
+        "prose": "Provide deliberately misleading information to adversaries."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-deception.misdirection",
+      "title": "Maintain deception resources or environments, and direct adversary activities there.",
+      "props": [
+       {
+        "name": "label",
+        "value": "deception.misdirection"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "deception.misdirection"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-deception.misdirection_stmt",
+        "name": "statement",
+        "prose": "Maintain deception resources or environments, and direct adversary activities there."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-deception.obfuscation",
+      "title": "Hide, transform, or otherwise obscure the contents, properties, or presence of information or other assets from the adversary.",
+      "props": [
+       {
+        "name": "label",
+        "value": "deception.obfuscation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "deception.obfuscation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-deception.obfuscation_stmt",
+        "name": "statement",
+        "prose": "Hide, transform, or otherwise obscure the contents, properties, or presence of information or other assets from the adversary."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-deception.tainting",
+      "title": "Embed covert capabilities in resources.",
+      "props": [
+       {
+        "name": "label",
+        "value": "deception.tainting"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "deception.tainting"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-deception.tainting_stmt",
+        "name": "statement",
+        "prose": "Embed covert capabilities in resources."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-diversity.architectural-diversity",
+      "title": "Use multiple sets of technical standards, different technologies, and different architectural patterns.",
+      "props": [
+       {
+        "name": "label",
+        "value": "diversity.architectural-diversity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "diversity.architectural-diversity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-diversity.architectural-diversity_stmt",
+        "name": "statement",
+        "prose": "Use multiple sets of technical standards, different technologies, and different architectural patterns."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-diversity.design-diversity",
+      "title": "Use different designs within a given architecture to meet the same requirements or provide equivalent functionality.",
+      "props": [
+       {
+        "name": "label",
+        "value": "diversity.design-diversity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "diversity.design-diversity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-diversity.design-diversity_stmt",
+        "name": "statement",
+        "prose": "Use different designs within a given architecture to meet the same requirements or provide equivalent functionality."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-diversity.information-diversity",
+      "title": "Provide information from different sources or transform information in different ways.",
+      "props": [
+       {
+        "name": "label",
+        "value": "diversity.information-diversity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "diversity.information-diversity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-diversity.information-diversity_stmt",
+        "name": "statement",
+        "prose": "Provide information from different sources or transform information in different ways."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-diversity.path-diversity",
+      "title": "Provide multiple independent paths for command, control, and communications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "diversity.path-diversity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "diversity.path-diversity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-diversity.path-diversity_stmt",
+        "name": "statement",
+        "prose": "Provide multiple independent paths for command, control, and communications."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-diversity.supply-chain-diversity",
+      "title": "Use multiple independent supply chains for critical components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "diversity.supply-chain-diversity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "diversity.supply-chain-diversity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-diversity.supply-chain-diversity_stmt",
+        "name": "statement",
+        "prose": "Use multiple independent supply chains for critical components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-diversity.synthetic-diversity",
+      "title": "Transform implementations of software to produce a variety of instances.",
+      "props": [
+       {
+        "name": "label",
+        "value": "diversity.synthetic-diversity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "diversity.synthetic-diversity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-diversity.synthetic-diversity_stmt",
+        "name": "statement",
+        "prose": "Transform implementations of software to produce a variety of instances."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-dynamic-positioning.asset-mobility",
+      "title": "Securely move physical resources.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dynamic-positioning.asset-mobility"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dynamic-positioning.asset-mobility"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-dynamic-positioning.asset-mobility_stmt",
+        "name": "statement",
+        "prose": "Securely move physical resources."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-dynamic-positioning.distributed-functionality",
+      "title": "Decompose a function or application into smaller functions, and distribute those functions across multiple components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dynamic-positioning.distributed-functionality"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dynamic-positioning.distributed-functionality"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-dynamic-positioning.distributed-functionality_stmt",
+        "name": "statement",
+        "prose": "Decompose a function or application into smaller functions, and distribute those functions across multiple components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-dynamic-positioning.fragmentation",
+      "title": "Partition information and distribute it across multiple components.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dynamic-positioning.fragmentation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dynamic-positioning.fragmentation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-dynamic-positioning.fragmentation_stmt",
+        "name": "statement",
+        "prose": "Partition information and distribute it across multiple components."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-dynamic-positioning.functional-relocation-of-cyber-resources",
+      "title": "Change the location of cyber resources that provide functionality or information, either by moving the assets or by transferring functional responsibility.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dynamic-positioning.functional-relocation-of-cyber-resources"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dynamic-positioning.functional-relocation-of-cyber-resources"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-dynamic-positioning.functional-relocation-of-cyber-resources_stmt",
+        "name": "statement",
+        "prose": "Change the location of cyber resources that provide functionality or information, either by moving the assets or by transferring functional responsibility."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-dynamic-positioning.functional-relocation-of-sensors",
+      "title": "Relocate sensors or reallocate responsibility for specific sensing tasks to look for indicators of adverse events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "dynamic-positioning.functional-relocation-of-sensors"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "dynamic-positioning.functional-relocation-of-sensors"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-dynamic-positioning.functional-relocation-of-sensors_stmt",
+        "name": "statement",
+        "prose": "Relocate sensors or reallocate responsibility for specific sensing tasks to look for indicators of adverse events."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-non-persistence.non-persistent-connectivity",
+      "title": "Establish connections on demand, and terminate connections when no longer needed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "non-persistence.non-persistent-connectivity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "non-persistence.non-persistent-connectivity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-non-persistence.non-persistent-connectivity_stmt",
+        "name": "statement",
+        "prose": "Establish connections on demand, and terminate connections when no longer needed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-non-persistence.non-persistent-information",
+      "title": "Refresh information periodically, or generate information on demand and delete it when no longer needed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "non-persistence.non-persistent-information"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "non-persistence.non-persistent-information"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-non-persistence.non-persistent-information_stmt",
+        "name": "statement",
+        "prose": "Refresh information periodically, or generate information on demand and delete it when no longer needed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-non-persistence.non-persistent-services",
+      "title": "Refresh services periodically, or generate services on demand and terminate services when no longer needed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "non-persistence.non-persistent-services"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "non-persistence.non-persistent-services"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-non-persistence.non-persistent-services_stmt",
+        "name": "statement",
+        "prose": "Refresh services periodically, or generate services on demand and terminate services when no longer needed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-privilege-restriction.attribute-based-usage-restriction",
+      "title": "Define, assign, maintain, and apply usage restrictions on cyber resources based on the criticality of missions or business functions and other attributes (e.g., data sensitivity).",
+      "props": [
+       {
+        "name": "label",
+        "value": "privilege-restriction.attribute-based-usage-restriction"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "privilege-restriction.attribute-based-usage-restriction"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-privilege-restriction.attribute-based-usage-restriction_stmt",
+        "name": "statement",
+        "prose": "Define, assign, maintain, and apply usage restrictions on cyber resources based on the criticality of missions or business functions and other attributes (e.g., data sensitivity)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-privilege-restriction.dynamic-privileges",
+      "title": "Elevate or decrease privileges assigned to a user, process, or service based on transient or contextual factors.",
+      "props": [
+       {
+        "name": "label",
+        "value": "privilege-restriction.dynamic-privileges"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "privilege-restriction.dynamic-privileges"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-privilege-restriction.dynamic-privileges_stmt",
+        "name": "statement",
+        "prose": "Elevate or decrease privileges assigned to a user, process, or service based on transient or contextual factors."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-privilege-restriction.trust-based-privilege-management",
+      "title": "Define, assign, and maintain privileges based on established trust criteria consistent with the principles of least privilege.",
+      "props": [
+       {
+        "name": "label",
+        "value": "privilege-restriction.trust-based-privilege-management"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "privilege-restriction.trust-based-privilege-management"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-privilege-restriction.trust-based-privilege-management_stmt",
+        "name": "statement",
+        "prose": "Define, assign, and maintain privileges based on established trust criteria consistent with the principles of least privilege."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-realignment.evolvability",
+      "title": "Provide mechanisms and structure resources to enable the system to be maintained, modified, extended, or used in new ways without increasing security or mission risk.",
+      "props": [
+       {
+        "name": "label",
+        "value": "realignment.evolvability"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "realignment.evolvability"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-realignment.evolvability_stmt",
+        "name": "statement",
+        "prose": "Provide mechanisms and structure resources to enable the system to be maintained, modified, extended, or used in new ways without increasing security or mission risk."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-realignment.offloading",
+      "title": "Offload supportive but nonessential functions to other systems or to an external provider that is better able to perform the functions securely.",
+      "props": [
+       {
+        "name": "label",
+        "value": "realignment.offloading"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "realignment.offloading"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-realignment.offloading_stmt",
+        "name": "statement",
+        "prose": "Offload supportive but nonessential functions to other systems or to an external provider that is better able to perform the functions securely."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-realignment.purposing",
+      "title": "Ensure that cyber resources are used consistently with mission or business function purposes and approved uses, thereby avoiding unnecessary sharing and complexity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "realignment.purposing"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "realignment.purposing"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-realignment.purposing_stmt",
+        "name": "statement",
+        "prose": "Ensure that cyber resources are used consistently with mission or business function purposes and approved uses, thereby avoiding unnecessary sharing and complexity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-realignment.replacement",
+      "title": "Replace low-assurance or poorly understood implementations with trustworthy implementations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "realignment.replacement"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "realignment.replacement"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-realignment.replacement_stmt",
+        "name": "statement",
+        "prose": "Replace low-assurance or poorly understood implementations with trustworthy implementations."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-realignment.restriction",
+      "title": "Remove or disable unneeded functionality or connectivity, or add mechanisms to reduce the chance of vulnerability or failure.",
+      "props": [
+       {
+        "name": "label",
+        "value": "realignment.restriction"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "realignment.restriction"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-realignment.restriction_stmt",
+        "name": "statement",
+        "prose": "Remove or disable unneeded functionality or connectivity, or add mechanisms to reduce the chance of vulnerability or failure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-realignment.specialization",
+      "title": "Uniquely augment, configure, or modify the design of critical cyber resources for missions or business functions to improve trustworthiness.",
+      "props": [
+       {
+        "name": "label",
+        "value": "realignment.specialization"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "realignment.specialization"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-realignment.specialization_stmt",
+        "name": "statement",
+        "prose": "Uniquely augment, configure, or modify the design of critical cyber resources for missions or business functions to improve trustworthiness."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-redundancy.protected-backup-and-restore",
+      "title": "Back up information and software (including configuration data and virtualized resources) in a way that protects its confidentiality, integrity, and authenticity. Enable safe and secure restoration in",
+      "props": [
+       {
+        "name": "label",
+        "value": "redundancy.protected-backup-and-restore"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "redundancy.protected-backup-and-restore"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-redundancy.protected-backup-and-restore_stmt",
+        "name": "statement",
+        "prose": "Back up information and software (including configuration data and virtualized resources) in a way that protects its confidentiality, integrity, and authenticity. Enable safe and secure restoration in case of disruption or corruption."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-redundancy.replication",
+      "title": "Duplicate hardware, information, backups, or functionality in multiple locations, and keep them synchronized.",
+      "props": [
+       {
+        "name": "label",
+        "value": "redundancy.replication"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "redundancy.replication"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-redundancy.replication_stmt",
+        "name": "statement",
+        "prose": "Duplicate hardware, information, backups, or functionality in multiple locations, and keep them synchronized."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-redundancy.surplus-capacity",
+      "title": "Maintain extra capacity for information storage, processing, or communications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "redundancy.surplus-capacity"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "redundancy.surplus-capacity"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-redundancy.surplus-capacity_stmt",
+        "name": "statement",
+        "prose": "Maintain extra capacity for information storage, processing, or communications."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-segmentation.dynamic-segmentation-and-isolation",
+      "title": "Change the configuration of enclaves or protected segments, or isolate resources while minimizing operational disruption.",
+      "props": [
+       {
+        "name": "label",
+        "value": "segmentation.dynamic-segmentation-and-isolation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "segmentation.dynamic-segmentation-and-isolation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-segmentation.dynamic-segmentation-and-isolation_stmt",
+        "name": "statement",
+        "prose": "Change the configuration of enclaves or protected segments, or isolate resources while minimizing operational disruption."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-segmentation.predefined-segmentation",
+      "title": "Define enclaves, segments, micro-segments, or other restricted types of resource sets based on criticality and trustworthiness so that they can be protected separately and, if necessary, isolated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "segmentation.predefined-segmentation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "segmentation.predefined-segmentation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-segmentation.predefined-segmentation_stmt",
+        "name": "statement",
+        "prose": "Define enclaves, segments, micro-segments, or other restricted types of resource sets based on criticality and trustworthiness so that they can be protected separately and, if necessary, isolated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-substantiated-integrity.behavior-validation",
+      "title": "Validate the behavior of a system, service, device, or individual user against defined or emergent criteria (e.g., requirements, patterns of prior usage).",
+      "props": [
+       {
+        "name": "label",
+        "value": "substantiated-integrity.behavior-validation"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "substantiated-integrity.behavior-validation"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-substantiated-integrity.behavior-validation_stmt",
+        "name": "statement",
+        "prose": "Validate the behavior of a system, service, device, or individual user against defined or emergent criteria (e.g., requirements, patterns of prior usage)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-substantiated-integrity.integrity-checks",
+      "title": "Apply and validate checks of the integrity or quality of information, components, or services to guard against surreptitious modification.",
+      "props": [
+       {
+        "name": "label",
+        "value": "substantiated-integrity.integrity-checks"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "substantiated-integrity.integrity-checks"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-substantiated-integrity.integrity-checks_stmt",
+        "name": "statement",
+        "prose": "Apply and validate checks of the integrity or quality of information, components, or services to guard against surreptitious modification."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-substantiated-integrity.provenance-tracking",
+      "title": "Identify and track the provenance of data, software, or hardware elements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "substantiated-integrity.provenance-tracking"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "substantiated-integrity.provenance-tracking"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-substantiated-integrity.provenance-tracking_stmt",
+        "name": "statement",
+        "prose": "Identify and track the provenance of data, software, or hardware elements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-unpredictability.contextual-unpredictability",
+      "title": "Change behavior or state in ways that are determined randomly or by complex functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "unpredictability.contextual-unpredictability"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "unpredictability.contextual-unpredictability"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-unpredictability.contextual-unpredictability_stmt",
+        "name": "statement",
+        "prose": "Change behavior or state in ways that are determined randomly or by complex functions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-unpredictability.temporal-unpredictability",
+      "title": "Change behavior or state at times that are determined randomly or by complex functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "unpredictability.temporal-unpredictability"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "unpredictability.temporal-unpredictability"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-unpredictability.temporal-unpredictability_stmt",
+        "name": "statement",
+        "prose": "Change behavior or state at times that are determined randomly or by complex functions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-NIST-SP-800-160v2",
+      "title": "FAIL-CLOSED - approaches 'input.nist_sp_800_160v2.approaches' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-160v2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-160v2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-NIST-SP-800-160v2_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - approaches 'input.nist_sp_800_160v2.approaches' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-nist.sp800_160v2.main-1",
+      "title": "NIST SP 800-160v2 %v (%v / %v): approach not attested implemented — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_160v2.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_160v2.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-nist.sp800_160v2.main-1_stmt",
+        "name": "statement",
+        "prose": "NIST SP 800-160v2 %v (%v / %v): approach not attested implemented — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_160v2-NIST-SP-800-160v2-Input-Contract",
+      "title": "unknown approach id %v — ids are <technique>.<approach> slugs such as adaptive-response.dynamic-reconfiguration",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SP 800-160v2 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SP 800-160v2 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_160v2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_160v2-NIST-SP-800-160v2-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unknown approach id %v — ids are <technique>.<approach> slugs such as adaptive-response.dynamic-reconfiguration"
+       },
+       {
+        "id": "nist_sp_800_160v2-NIST-SP-800-160v2-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "scope 'input.nist_sp_800_160v2.scope' must be an object"
+       },
+       {
+        "id": "nist_sp_800_160v2-NIST-SP-800-160v2-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "undeclared gate flag scope.%v — the only gate is scope.techniques_selected"
+       },
+       {
+        "id": "nist_sp_800_160v2-NIST-SP-800-160v2-Input-Contract_obj.3",
+        "name": "assessment-objective",
+        "prose": "scope.techniques_selected must be a non-empty list of technique ids; the gate is ignored and all approaches are evaluated"
+       },
+       {
+        "id": "nist_sp_800_160v2-NIST-SP-800-160v2-Input-Contract_obj.4",
+        "name": "assessment-objective",
+        "prose": "unknown technique id %v in scope.techniques_selected"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "69cdd7fb-04c3-5f7f-974a-29e93c914e22",
+     "title": "NIST SP 800-160 Vol. 2 Rev. 1 — 50 cyber resiliency implementation approaches (Table D-4), attested",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nist.sp800_160v2.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/nist/sp_800_160v2/nist_800_160v2_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -8,6 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- **SCF parity, Phase 2 batch 1 (NIST risk and AI, resilience, OWASP), 388 new control-level checks (17,078):**
+  - `frameworks/federal/nist/risk_management_framework/`: **SP 800-37 Rev 2**, all 47 RMF tasks (P-1 … M-7) with role, outputs, references and Outcomes-column CSF items as data; the 12 Categorize rules folded into C-1 … C-3 via a `legacy` table (consumer paths under `nist.rmf.categorize` unchanged); new entrypoint `nist.rmf.main`.
+  - `frameworks/federal/nist/sp_800_39/`: **SP 800-39**, the 12 numbered risk-management tasks (frame / assess / respond / monitor).
+  - `frameworks/federal/nist/ai_rmf/`: **AI RMF 1.0** completed to all 72 Core subcategories from NIST AI 100-1 (14 fact-decided, 58 attested; 22 old checks moved to `legacy`), and the **AI 600-1 Generative AI Profile** as `nist.ai_600_1.main`, 212 suggested actions on their parent subcategories with the 12 GAI risks, gated by `scope.generative_ai`.
+  - `frameworks/federal/nist/sp_800_160v2/`: **SP 800-160 Vol 2 Rev 1**, 50 cyber-resiliency implementation approaches (14 techniques), Table E-1 mapping to 265 SP 800-53 controls as data only.
+  - `governance/owasp_top10/`: **OWASP Top 10:2025**, 10 categories, 249 mapped CWEs; no OWASP prose (site licence CC BY 3.0).
+  - `crosswalk/attack_800_53/data.json`: **MITRE ATT&CK 16.1 → SP 800-53 Rev 5** from the Center for Threat-Informed Defense (Apache 2.0): 109 controls, 470 techniques, 5,264 mitigates pairs. Data only: no checks, and it does not feed the OSCAL baseline coverage.
+
 ### Changed
 - `scripts/count_controls.py --check-readme` (run by CI on every PR) now also verifies the README's policy-file counts, the seven What's-in-the-box category rows (measured per directory from the same file set as the count), the DISA STIG platform count and the OSCAL catalog / control figures against `dist/catalogs/index.json`, and names each drifted number. The category rows had drifted by up to 40 files across the Phase 1 batches before #239 corrected them by hand.
 

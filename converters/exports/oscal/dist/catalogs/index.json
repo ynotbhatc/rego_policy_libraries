@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 160,
- "controls": 13887,
+ "frameworks": 164,
+ "controls": 14272,
  "catalogs": [
   {
    "framework": "ai",
@@ -747,9 +747,16 @@
    "uuid": "5861e9ff-2ceb-5703-9db1-a67b8047db30"
   },
   {
+   "framework": "nist_ai_600_1",
+   "file": "catalogs/nist_ai_600_1.json",
+   "controls": 215,
+   "modules": 1,
+   "uuid": "c94aefaa-5eb8-58f3-ae2c-0c1b7588e387"
+  },
+  {
    "framework": "nist_ai_rmf",
    "file": "catalogs/nist_ai_rmf.json",
-   "controls": 42,
+   "controls": 92,
    "modules": 2,
    "uuid": "7510a368-7512-5bb5-9deb-12b734efec56"
   },
@@ -770,9 +777,16 @@
   {
    "framework": "nist_risk_management_framework",
    "file": "catalogs/nist_risk_management_framework.json",
-   "controls": 12,
+   "controls": 51,
    "modules": 1,
    "uuid": "52b55b1f-7194-569a-98ba-bbeffdc9131d"
+  },
+  {
+   "framework": "nist_sp_800_160v2",
+   "file": "catalogs/nist_sp_800_160v2.json",
+   "controls": 53,
+   "modules": 1,
+   "uuid": "d70846b1-f568-5fe8-a824-e368be11e306"
   },
   {
    "framework": "nist_sp_800_171",
@@ -808,6 +822,13 @@
    "controls": 141,
    "modules": 1,
    "uuid": "39f2a9f0-9846-5703-ade8-078ae91a6759"
+  },
+  {
+   "framework": "nist_sp_800_39",
+   "file": "catalogs/nist_sp_800_39.json",
+   "controls": 15,
+   "modules": 1,
+   "uuid": "5621e90a-a450-5a75-a43a-31ec7ca96d60"
   },
   {
    "framework": "nist_sp_800_53",
@@ -850,6 +871,13 @@
    "controls": 30,
    "modules": 1,
    "uuid": "ed6705fe-e73b-5691-ab31-096ca5d5af7f"
+  },
+  {
+   "framework": "owasp_top10",
+   "file": "catalogs/owasp_top10.json",
+   "controls": 13,
+   "modules": 1,
+   "uuid": "c70d3452-eb82-5d24-819d-19f149c7dadc"
   },
   {
    "framework": "pci_dss",
