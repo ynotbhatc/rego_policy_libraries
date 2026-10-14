@@ -1,0 +1,1017 @@
+{
+ "catalog": {
+  "uuid": "bc4f349b-13d7-52be-b3d9-10e8284b0375",
+  "metadata": {
+   "title": "Rego Policy Libraries — far_cyber (FAR cyber clauses 52.204-21, 52.204-25, 52.204-27 — contractor obligations, attested)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "far_cyber"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "far_cyber-far_cyber_main",
+    "class": "rego-module",
+    "title": "FAR cyber clauses 52.204-21, 52.204-25, 52.204-27 — contractor obligations, attested",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "far_cyber.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/far_cyber/far_cyber_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "far_cyber-52.204-21-b-1-i",
+      "title": "Limit information system access to authorized users, processes acting on behalf of authorized users, or devices (including other information systems).",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-i_stmt",
+        "name": "statement",
+        "prose": "Limit information system access to authorized users, processes acting on behalf of authorized users, or devices (including other information systems)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-ii",
+      "title": "Limit information system access to the types of transactions and functions that authorized users are permitted to execute.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-ii_stmt",
+        "name": "statement",
+        "prose": "Limit information system access to the types of transactions and functions that authorized users are permitted to execute."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-iii",
+      "title": "Verify and control/limit connections to and use of external information systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-iii_stmt",
+        "name": "statement",
+        "prose": "Verify and control/limit connections to and use of external information systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-iv",
+      "title": "Control information posted or processed on publicly accessible information systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-iv_stmt",
+        "name": "statement",
+        "prose": "Control information posted or processed on publicly accessible information systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-v",
+      "title": "Identify information system users, processes acting on behalf of users, or devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-v_stmt",
+        "name": "statement",
+        "prose": "Identify information system users, processes acting on behalf of users, or devices."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-vi",
+      "title": "Authenticate (or verify) the identities of those users, processes, or devices, as a prerequisite to allowing access to organizational information systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(vi)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(vi)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-vi_stmt",
+        "name": "statement",
+        "prose": "Authenticate (or verify) the identities of those users, processes, or devices, as a prerequisite to allowing access to organizational information systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-vii",
+      "title": "Sanitize or destroy information system media containing Federal Contract Information before disposal or release for reuse.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(vii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(vii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-vii_stmt",
+        "name": "statement",
+        "prose": "Sanitize or destroy information system media containing Federal Contract Information before disposal or release for reuse."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-viii",
+      "title": "Limit physical access to organizational information systems, equipment, and the respective operating environments to authorized individuals.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(viii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(viii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-viii_stmt",
+        "name": "statement",
+        "prose": "Limit physical access to organizational information systems, equipment, and the respective operating environments to authorized individuals."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-ix",
+      "title": "Escort visitors and monitor visitor activity; maintain audit logs of physical access; and control and manage physical access devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(ix)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(ix)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-ix_stmt",
+        "name": "statement",
+        "prose": "Escort visitors and monitor visitor activity; maintain audit logs of physical access; and control and manage physical access devices."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-x",
+      "title": "Monitor, control, and protect organizational communications (i.e., information transmitted or received by organizational information systems) at the external boundaries and key internal boundaries of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(x)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(x)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-x_stmt",
+        "name": "statement",
+        "prose": "Monitor, control, and protect organizational communications (i.e., information transmitted or received by organizational information systems) at the external boundaries and key internal boundaries of the information systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-xi",
+      "title": "Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(xi)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(xi)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-xi_stmt",
+        "name": "statement",
+        "prose": "Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-xii",
+      "title": "Identify, report, and correct information and information system flaws in a timely manner.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(xii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(xii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-xii_stmt",
+        "name": "statement",
+        "prose": "Identify, report, and correct information and information system flaws in a timely manner."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-xiii",
+      "title": "Provide protection from malicious code at appropriate locations within organizational information systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(xiii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(xiii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-xiii_stmt",
+        "name": "statement",
+        "prose": "Provide protection from malicious code at appropriate locations within organizational information systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-xiv",
+      "title": "Update malicious code protection mechanisms when new releases are available.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(xiv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(xiv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-xiv_stmt",
+        "name": "statement",
+        "prose": "Update malicious code protection mechanisms when new releases are available."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-b-1-xv",
+      "title": "Perform periodic scans of the information system and real-time scans of files from external sources as files are downloaded, opened, or executed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(b)(1)(xv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(b)(1)(xv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-b-1-xv_stmt",
+        "name": "statement",
+        "prose": "Perform periodic scans of the information system and real-time scans of files from external sources as files are downloaded, opened, or executed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-21-c",
+      "title": "The Contractor shall include the substance of this clause, including this paragraph (c), in subcontracts under this contract (including subcontracts for the acquisition of commercial products or comme",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-21(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-21(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-21-c_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall include the substance of this clause, including this paragraph (c), in subcontracts under this contract (including subcontracts for the acquisition of commercial products or commercial services, other than commercially available off-the-shelf items), in which the subcontractor may have Federal contract information residing in or transiting through its information system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-25-b-1",
+      "title": "The Contractor is prohibited from providing to the Government any equipment, system, or service that uses covered telecommunications equipment or services as a substantial or essential component of an",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-25(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-25(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-25-b-1_stmt",
+        "name": "statement",
+        "prose": "The Contractor is prohibited from providing to the Government any equipment, system, or service that uses covered telecommunications equipment or services as a substantial or essential component of any system, or as critical technology as part of any system, unless an exception at paragraph (c) of this clause applies or the covered telecommunication equipment or services are covered by a waiver described in FAR 4.2104."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-25-b-2",
+      "title": "This prohibition applies to the use of covered telecommunications equipment or services, regardless of whether that use is in performance of work under a Federal contract.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-25(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-25(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-25-b-2_stmt",
+        "name": "statement",
+        "prose": "This prohibition applies to the use of covered telecommunications equipment or services, regardless of whether that use is in performance of work under a Federal contract."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-25-d-1",
+      "title": "In the event the Contractor identifies covered telecommunications equipment or services used as a substantial or essential component of any system, or as critical technology as part of any system, dur",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-25(d)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-25(d)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-25-d-1_stmt",
+        "name": "statement",
+        "prose": "In the event the Contractor identifies covered telecommunications equipment or services used as a substantial or essential component of any system, or as critical technology as part of any system, during contract performance, or the Contractor is notified of such by a subcontractor at any tier or by any other source, the Contractor shall report the information in paragraph (d)(2) of this clause to the Contracting Officer, unless elsewhere in this contract are established procedures for reporting the information; in the case of the Department of Defense, the Contractor shall report to the website at https://dibnet.dod.mil. For indefinite delivery contracts, the Contractor shall report to the Contracting Officer for the indefinite delivery contract and the Contracting Officer(s) for any affected order or, in the case of the Department of Defense, identify both the indefinite delivery contract and any affected orders in the report provided at https://dibnet.dod.mil."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-25-d-2-i",
+      "title": "Within one business day from the date of such identification or notification: The contract number; the order number(s), if applicable; supplier name; supplier unique entity identifier (if known); supp",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-25(d)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-25(d)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-25-d-2-i_stmt",
+        "name": "statement",
+        "prose": "Within one business day from the date of such identification or notification: The contract number; the order number(s), if applicable; supplier name; supplier unique entity identifier (if known); supplier Commercial and Government Entity (CAGE) code (if known); brand; model number (original equipment manufacturer number, manufacturer part number, or wholesaler number); item description; and any readily available information about mitigation actions undertaken or recommended."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-25-d-2-ii",
+      "title": "Within 10 business days of submitting the information in paragraph (d)(2)(i) of this clause: Any further available information about mitigation actions undertaken or recommended. In addition, the Cont",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-25(d)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-25(d)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-25-d-2-ii_stmt",
+        "name": "statement",
+        "prose": "Within 10 business days of submitting the information in paragraph (d)(2)(i) of this clause: Any further available information about mitigation actions undertaken or recommended. In addition, the Contractor shall describe the efforts it undertook to prevent use or submission of covered telecommunications equipment or services, and any additional efforts that will be incorporated to prevent future use or submission of covered telecommunications equipment or services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-25-e",
+      "title": "The Contractor shall insert the substance of this clause, including this paragraph (e) and excluding paragraph (b)(2), in all subcontracts and other contractual instruments, including subcontracts for",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-25(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-25(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-25-e_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall insert the substance of this clause, including this paragraph (e) and excluding paragraph (b)(2), in all subcontracts and other contractual instruments, including subcontracts for the acquisition of commercial products or commercial services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-27-b",
+      "title": "The Contractor is prohibited from having or using a covered application on any information technology owned or managed by the Government, or on any information technology used or provided by the Contr",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-27(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-27(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-27-b_stmt",
+        "name": "statement",
+        "prose": "The Contractor is prohibited from having or using a covered application on any information technology owned or managed by the Government, or on any information technology used or provided by the Contractor under this contract, including equipment provided by the Contractor's employees; however, this prohibition does not apply if the Contracting Officer provides written notification to the Contractor that an exception has been granted in accordance with OMB Memorandum M-23-13."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-52.204-27-c",
+      "title": "The Contractor shall insert the substance of this clause, including this paragraph (c), in all subcontracts, including subcontracts for the acquisition of commercial products or commercial services.",
+      "props": [
+       {
+        "name": "label",
+        "value": "52.204-27(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "52.204-27(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-52.204-27-c_stmt",
+        "name": "statement",
+        "prose": "The Contractor shall insert the substance of this clause, including this paragraph (c), in all subcontracts, including subcontracts for the acquisition of commercial products or commercial services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-far_cyber.main-1",
+      "title": "FAR cyber clauses: FAIL-CLOSED - attestations 'input.far_cyber.requirements' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "far_cyber.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "far_cyber.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-far_cyber.main-1_stmt",
+        "name": "statement",
+        "prose": "FAR cyber clauses: FAIL-CLOSED - attestations 'input.far_cyber.requirements' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-far_cyber.main-2",
+      "title": "%v (far_cyber.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "far_cyber.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "far_cyber.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-far_cyber.main-2_stmt",
+        "name": "statement",
+        "prose": "%v (far_cyber.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-far_cyber.main-3",
+      "title": "FAR %v (%v): not attested — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "far_cyber.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "far_cyber.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-far_cyber.main-3_stmt",
+        "name": "statement",
+        "prose": "FAR %v (%v): not attested — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "far_cyber-far_cyber.main-4",
+      "title": "FAR cyber Input Contract: attestation for unknown id %v — ids are clause paragraphs such as 52.204-21(b)(1)(i)",
+      "props": [
+       {
+        "name": "label",
+        "value": "far_cyber.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "far_cyber.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "far_cyber.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e3374be-a8ff-54e7-866a-055761232b44",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "far_cyber-far_cyber.main-4_stmt",
+        "name": "statement",
+        "prose": "FAR cyber Input Contract: attestation for unknown id %v — ids are clause paragraphs such as 52.204-21(b)(1)(i)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "3e3374be-a8ff-54e7-866a-055761232b44",
+     "title": "FAR cyber clauses 52.204-21, 52.204-25, 52.204-27 — contractor obligations, attested",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "far_cyber.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/far_cyber/far_cyber_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

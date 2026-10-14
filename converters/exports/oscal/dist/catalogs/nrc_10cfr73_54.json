@@ -1,0 +1,1314 @@
+{
+ "catalog": {
+  "uuid": "9ea25549-368c-588d-86f3-b854ad794785",
+  "metadata": {
+   "title": "Rego Policy Libraries — nrc_10cfr73_54 (Source of truth: U.S. Government Publishing Office, Code of Federal Regulations annual edition, bulk XML)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "nrc_10cfr73_54"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "nrc_10cfr73_54-nrc_73_54_main",
+    "class": "rego-module",
+    "title": "Source of truth: U.S. Government Publishing Office, Code of Federal Regulations annual edition, bulk XML",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "nrc_73_54.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/nrc_73_54/nrc_73_54_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "nrc_10cfr73_54-73.54-a",
+      "title": "Each licensee subject to the requirements of this section shall provide high assurance that digital computer and communication systems and networks are adequately protected against cyber attacks, up t",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a_stmt",
+        "name": "statement",
+        "prose": "Each licensee subject to the requirements of this section shall provide high assurance that digital computer and communication systems and networks are adequately protected against cyber attacks, up to and including the design basis threat as described in § 73.1."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-1",
+      "title": "The licensee shall protect digital computer and communication systems and networks associated with:",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-1_stmt",
+        "name": "statement",
+        "prose": "The licensee shall protect digital computer and communication systems and networks associated with:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-1-i",
+      "title": "Safety-related and important-to-safety functions;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-1-i_stmt",
+        "name": "statement",
+        "prose": "Safety-related and important-to-safety functions;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-1-ii",
+      "title": "Security functions;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(1)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(1)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-1-ii_stmt",
+        "name": "statement",
+        "prose": "Security functions;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-1-iii",
+      "title": "Emergency preparedness functions, including offsite communications; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(1)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(1)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-1-iii_stmt",
+        "name": "statement",
+        "prose": "Emergency preparedness functions, including offsite communications; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-1-iv",
+      "title": "Support systems and equipment which, if compromised, would adversely impact safety, security, or emergency preparedness functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(1)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(1)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-1-iv_stmt",
+        "name": "statement",
+        "prose": "Support systems and equipment which, if compromised, would adversely impact safety, security, or emergency preparedness functions."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-2",
+      "title": "The licensee shall protect the systems and networks identified in paragraph (a)(1) of this section from cyber attacks that would:",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-2_stmt",
+        "name": "statement",
+        "prose": "The licensee shall protect the systems and networks identified in paragraph (a)(1) of this section from cyber attacks that would:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-2-i",
+      "title": "Adversely impact the integrity or confidentiality of data and/or software;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-2-i_stmt",
+        "name": "statement",
+        "prose": "Adversely impact the integrity or confidentiality of data and/or software;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-2-ii",
+      "title": "Deny access to systems, services, and/or data; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-2-ii_stmt",
+        "name": "statement",
+        "prose": "Deny access to systems, services, and/or data; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-a-2-iii",
+      "title": "Adversely impact the operation of systems, networks, and associated equipment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(a)(2)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(a)(2)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-a-2-iii_stmt",
+        "name": "statement",
+        "prose": "Adversely impact the operation of systems, networks, and associated equipment."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-b",
+      "title": "To accomplish this, the licensee shall:",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-b_stmt",
+        "name": "statement",
+        "prose": "To accomplish this, the licensee shall:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-b-1",
+      "title": "Analyze digital computer and communication systems and networks and identify those assets that must be protected against cyber attacks to satisfy paragraph (a) of this section,",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-b-1_stmt",
+        "name": "statement",
+        "prose": "Analyze digital computer and communication systems and networks and identify those assets that must be protected against cyber attacks to satisfy paragraph (a) of this section,"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-b-2",
+      "title": "Establish, implement, and maintain a cyber security program for the protection of the assets identified in paragraph (b)(1) of this section; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-b-2_stmt",
+        "name": "statement",
+        "prose": "Establish, implement, and maintain a cyber security program for the protection of the assets identified in paragraph (b)(1) of this section; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-b-3",
+      "title": "Incorporate the cyber security program as a component of the physical protection program.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(b)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(b)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-b-3_stmt",
+        "name": "statement",
+        "prose": "Incorporate the cyber security program as a component of the physical protection program."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-c",
+      "title": "The cyber security program must be designed to:",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-c_stmt",
+        "name": "statement",
+        "prose": "The cyber security program must be designed to:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-c-1",
+      "title": "Implement security controls to protect the assets identified by paragraph (b)(1) of this section from cyber attacks;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-c-1_stmt",
+        "name": "statement",
+        "prose": "Implement security controls to protect the assets identified by paragraph (b)(1) of this section from cyber attacks;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-c-2",
+      "title": "Apply and maintain defense-in-depth protective strategies to ensure the capability to detect, respond to, and recover from cyber attacks;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(c)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(c)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-c-2_stmt",
+        "name": "statement",
+        "prose": "Apply and maintain defense-in-depth protective strategies to ensure the capability to detect, respond to, and recover from cyber attacks;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-c-3",
+      "title": "Mitigate the adverse affects of cyber attacks; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(c)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(c)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-c-3_stmt",
+        "name": "statement",
+        "prose": "Mitigate the adverse affects of cyber attacks; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-c-4",
+      "title": "Ensure that the functions of protected assets identified by paragraph (b)(1) of this section are not adversely impacted due to cyber attacks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(c)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(c)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-c-4_stmt",
+        "name": "statement",
+        "prose": "Ensure that the functions of protected assets identified by paragraph (b)(1) of this section are not adversely impacted due to cyber attacks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-d",
+      "title": "As part of the cyber security program, the licensee shall:",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-d_stmt",
+        "name": "statement",
+        "prose": "As part of the cyber security program, the licensee shall:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-d-1",
+      "title": "Ensure that appropriate facility personnel, including contractors, are aware of cyber security requirements and receive the training necessary to perform their assigned duties and responsibilities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(d)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(d)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-d-1_stmt",
+        "name": "statement",
+        "prose": "Ensure that appropriate facility personnel, including contractors, are aware of cyber security requirements and receive the training necessary to perform their assigned duties and responsibilities."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-d-2",
+      "title": "Evaluate and manage cyber risks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(d)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(d)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-d-2_stmt",
+        "name": "statement",
+        "prose": "Evaluate and manage cyber risks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-d-3",
+      "title": "Ensure that modifications to assets, identified by paragraph (b)(1) of this section, are evaluated before implementation to ensure that the cyber security performance objectives identified in paragrap",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(d)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(d)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-d-3_stmt",
+        "name": "statement",
+        "prose": "Ensure that modifications to assets, identified by paragraph (b)(1) of this section, are evaluated before implementation to ensure that the cyber security performance objectives identified in paragraph (a)(1) of this section are maintained."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-d-4",
+      "title": "Conduct cyber security event notifications in accordance with the provisions of § 73.77.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(d)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(d)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-d-4_stmt",
+        "name": "statement",
+        "prose": "Conduct cyber security event notifications in accordance with the provisions of § 73.77."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e",
+      "title": "The licensee shall establish, implement, and maintain a cyber security plan that implements the cyber security program requirements of this section.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e_stmt",
+        "name": "statement",
+        "prose": "The licensee shall establish, implement, and maintain a cyber security plan that implements the cyber security program requirements of this section."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e-1",
+      "title": "The cyber security plan must describe how the requirements of this section will be implemented and must account for the site-specific conditions that affect implementation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e-1_stmt",
+        "name": "statement",
+        "prose": "The cyber security plan must describe how the requirements of this section will be implemented and must account for the site-specific conditions that affect implementation."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e-2",
+      "title": "The cyber security plan must include measures for incident response and recovery for cyber attacks. The cyber security plan must describe how the licensee will:",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e-2_stmt",
+        "name": "statement",
+        "prose": "The cyber security plan must include measures for incident response and recovery for cyber attacks. The cyber security plan must describe how the licensee will:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e-2-i",
+      "title": "Maintain the capability for timely detection and response to cyber attacks;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e-2-i_stmt",
+        "name": "statement",
+        "prose": "Maintain the capability for timely detection and response to cyber attacks;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e-2-ii",
+      "title": "Mitigate the consequences of cyber attacks;",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e-2-ii_stmt",
+        "name": "statement",
+        "prose": "Mitigate the consequences of cyber attacks;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e-2-iii",
+      "title": "Correct exploited vulnerabilities; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)(2)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)(2)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e-2-iii_stmt",
+        "name": "statement",
+        "prose": "Correct exploited vulnerabilities; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-e-2-iv",
+      "title": "Restore affected systems, networks, and/or equipment affected by cyber attacks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(e)(2)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(e)(2)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-e-2-iv_stmt",
+        "name": "statement",
+        "prose": "Restore affected systems, networks, and/or equipment affected by cyber attacks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-f",
+      "title": "The licensee shall develop and maintain written policies and implementing procedures to implement the cyber security plan. Policies, implementing procedures, site-specific analysis, and other supporti",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-f_stmt",
+        "name": "statement",
+        "prose": "The licensee shall develop and maintain written policies and implementing procedures to implement the cyber security plan. Policies, implementing procedures, site-specific analysis, and other supporting technical information used by the licensee need not be submitted for Commission review and approval as part of the cyber security plan but are subject to inspection by NRC staff on a periodic basis."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-g",
+      "title": "The licensee shall review the cyber security program as a component of the physical security program in accordance with the requirements of § 73.55(m), including the periodicity requirements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-g_stmt",
+        "name": "statement",
+        "prose": "The licensee shall review the cyber security program as a component of the physical security program in accordance with the requirements of § 73.55(m), including the periodicity requirements."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-73.54-h",
+      "title": "The licensee shall retain all records and supporting technical documentation required to satisfy the requirements of this section as a record until the Commission terminates the license for which the ",
+      "props": [
+       {
+        "name": "label",
+        "value": "73.54(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "73.54(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-73.54-h_stmt",
+        "name": "statement",
+        "prose": "The licensee shall retain all records and supporting technical documentation required to satisfy the requirements of this section as a record until the Commission terminates the license for which the records were developed, and shall maintain superseded portions of these records for at least three (3) years after the record is superseded, unless otherwise specified by the Commission."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-10-CFR-73.54",
+      "title": "FAIL-CLOSED - attestations 'input.nrc_73_54.paragraphs' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "10 CFR 73.54"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10 CFR 73.54"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-10-CFR-73.54_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - attestations 'input.nrc_73_54.paragraphs' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-nrc_73_54.main-1",
+      "title": "10 CFR 73.54 %v (%v): not attested — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "nrc_73_54.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nrc_73_54.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-nrc_73_54.main-1_stmt",
+        "name": "statement",
+        "prose": "10 CFR 73.54 %v (%v): not attested — %v"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nrc_10cfr73_54-10-CFR-73.54-Input-Contract",
+      "title": "unknown id %v — ids are the CFR paragraph citations carried in this module, e.g. 73.54(b)(1)",
+      "props": [
+       {
+        "name": "label",
+        "value": "10 CFR 73.54 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10 CFR 73.54 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nrc_73_54.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nrc_10cfr73_54-10-CFR-73.54-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unknown id %v — ids are the CFR paragraph citations carried in this module, e.g. 73.54(b)(1)"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "6319c2c6-4e6b-5764-8a4c-87e306cafe77",
+     "title": "Source of truth: U.S. Government Publishing Office, Code of Federal Regulations annual edition, bulk XML",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "nrc_73_54.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/critical_infrastructure/nrc_73_54/nrc_73_54_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

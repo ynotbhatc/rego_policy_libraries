@@ -1,0 +1,4025 @@
+{
+ "catalog": {
+  "uuid": "43d5777d-a8ae-568c-a00f-bae098f55c13",
+  "metadata": {
+   "title": "Rego Policy Libraries — cisa_tic3 (CISA TIC 3.0 Security Capabilities Catalog v3.3 — 116 universal and PEP security capabilities, attested)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cisa_tic3"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cisa_tic3-cisa_tic3_main",
+    "class": "rego-module",
+    "title": "CISA TIC 3.0 Security Capabilities Catalog v3.3 — 116 universal and PEP security capabilities, attested",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cisa_tic3.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/cisa_tic3/cisa_tic3_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cisa_tic3-3.PEP.DA.ACONT",
+      "title": "Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.ACONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.ACONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.ACONT_stmt",
+        "name": "statement",
+        "prose": "Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DA.DAUTE",
+      "title": "Data Access and Use Telemetry",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.DAUTE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.DAUTE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.DAUTE_stmt",
+        "name": "statement",
+        "prose": "Data Access and Use Telemetry"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DA.DINVE",
+      "title": "Data Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.DINVE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.DINVE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.DINVE_stmt",
+        "name": "statement",
+        "prose": "Data Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DA.DLABE",
+      "title": "Data Labeling",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.DLABE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.DLABE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.DLABE_stmt",
+        "name": "statement",
+        "prose": "Data Labeling"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DA.DLPRE",
+      "title": "Data Loss Prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.DLPRE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.DLPRE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.DLPRE_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DA.PDRES",
+      "title": "Protections for Data at Rest",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.PDRES"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.PDRES"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.PDRES_stmt",
+        "name": "statement",
+        "prose": "Protections for Data at Rest"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DA.PDTRA",
+      "title": "Protections for Data in Transit",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DA.PDTRA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DA.PDTRA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DA.PDTRA_stmt",
+        "name": "statement",
+        "prose": "Protections for Data in Transit"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DO.DNMON",
+      "title": "Domain Name Monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DO.DNMON"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DO.DNMON"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DO.DNMON_stmt",
+        "name": "statement",
+        "prose": "Domain Name Monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DO.DNSIN",
+      "title": "Domain Name Sinkholing",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DO.DNSIN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DO.DNSIN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DO.DNSIN_stmt",
+        "name": "statement",
+        "prose": "Domain Name Sinkholing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DO.DNVAC",
+      "title": "Domain Name Verification for Agency Clients",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DO.DNVAC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DO.DNVAC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DO.DNVAC_stmt",
+        "name": "statement",
+        "prose": "Domain Name Verification for Agency Clients"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DO.DNVAD",
+      "title": "Domain Name Validation for Agency Domains",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DO.DNVAD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DO.DNVAD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DO.DNVAD_stmt",
+        "name": "statement",
+        "prose": "Domain Name Validation for Agency Domains"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.DO.PDSER",
+      "title": "CISA's Protective DNS Service",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.DO.PDSER"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.DO.PDSER"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.DO.PDSER_stmt",
+        "name": "statement",
+        "prose": "CISA's Protective DNS Service"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.AEPRO",
+      "title": "Adaptive Email Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.AEPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.AEPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.AEPRO_stmt",
+        "name": "statement",
+        "prose": "Adaptive Email Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.APPRO",
+      "title": "Anti-phishing Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.APPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.APPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.APPRO_stmt",
+        "name": "statement",
+        "prose": "Anti-phishing Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.ARCHA",
+      "title": "Authenticated Received Chain",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.ARCHA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.ARCHA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.ARCHA_stmt",
+        "name": "statement",
+        "prose": "Authenticated Received Chain"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.ASPRO",
+      "title": "Anti-spam Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.ASPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.ASPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.ASPRO_stmt",
+        "name": "statement",
+        "prose": "Anti-spam Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.CFILT",
+      "title": "Content Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.CFILT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.CFILT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.CFILT_stmt",
+        "name": "statement",
+        "prose": "Content Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.DLPRE",
+      "title": "Data Loss Prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.DLPRE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.DLPRE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.DLPRE_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.DSOEM",
+      "title": "Domain Signatures for Outgoing Email",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.DSOEM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.DSOEM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.DSOEM_stmt",
+        "name": "statement",
+        "prose": "Domain Signatures for Outgoing Email"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.DSVIE",
+      "title": "Domain Signature Verification for Incoming Email",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.DSVIE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.DSVIE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.DSVIE_stmt",
+        "name": "statement",
+        "prose": "Domain Signature Verification for Incoming Email"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.EDRPR",
+      "title": "Email Domain Reputation Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.EDRPR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.EDRPR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.EDRPR_stmt",
+        "name": "statement",
+        "prose": "Email Domain Reputation Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.EETRA",
+      "title": "Encryption for Email Transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.EETRA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.EETRA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.EETRA_stmt",
+        "name": "statement",
+        "prose": "Encryption for Email Transmission"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.ELABE",
+      "title": "Email Labeling",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.ELABE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.ELABE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.ELABE_stmt",
+        "name": "statement",
+        "prose": "Email Labeling"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.EOEMA",
+      "title": "Encryption for Outgoing Email",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.EOEMA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.EOEMA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.EOEMA_stmt",
+        "name": "statement",
+        "prose": "Encryption for Outgoing Email"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.LCTPR",
+      "title": "Link Click-through Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.LCTPR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.LCTPR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.LCTPR_stmt",
+        "name": "statement",
+        "prose": "Link Click-through Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.MCQUE",
+      "title": "Mail Content Query",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.MCQUE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.MCQUE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.MCQUE_stmt",
+        "name": "statement",
+        "prose": "Mail Content Query"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.MFPRO",
+      "title": "Malicious File Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.MFPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.MFPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.MFPRO_stmt",
+        "name": "statement",
+        "prose": "Malicious File Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.MLPRO",
+      "title": "Malicious Link Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.MLPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.MLPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.MLPRO_stmt",
+        "name": "statement",
+        "prose": "Malicious Link Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.PDPRO",
+      "title": "Post-Delivery Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.PDPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.PDPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.PDPRO_stmt",
+        "name": "statement",
+        "prose": "Post-Delivery Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.SDENY",
+      "title": "Sender Denylisting",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.SDENY"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.SDENY"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.SDENY_stmt",
+        "name": "statement",
+        "prose": "Sender Denylisting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.UDSOE",
+      "title": "User Digital Signatures for Outgoing Email",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.UDSOE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.UDSOE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.UDSOE_stmt",
+        "name": "statement",
+        "prose": "User Digital Signatures for Outgoing Email"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EM.UTIPP",
+      "title": "User Tipping",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EM.UTIPP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EM.UTIPP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EM.UTIPP_stmt",
+        "name": "statement",
+        "prose": "User Tipping"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EN.ACONT",
+      "title": "Application Container",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EN.ACONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EN.ACONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EN.ACONT_stmt",
+        "name": "statement",
+        "prose": "Application Container"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EN.CMONI",
+      "title": "Costs Monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EN.CMONI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EN.CMONI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EN.CMONI_stmt",
+        "name": "statement",
+        "prose": "Costs Monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EN.RDACC",
+      "title": "Remote Desktop Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EN.RDACC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EN.RDACC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EN.RDACC_stmt",
+        "name": "statement",
+        "prose": "Remote Desktop Access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EN.SITDE",
+      "title": "Shadow Information Technology Detection",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EN.SITDE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EN.SITDE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EN.SITDE_stmt",
+        "name": "statement",
+        "prose": "Shadow Information Technology Detection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EN.SOARE",
+      "title": "Security Orchestration, Automation, and Response",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EN.SOARE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EN.SOARE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EN.SOARE_stmt",
+        "name": "statement",
+        "prose": "Security Orchestration, Automation, and Response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.EN.VPNET",
+      "title": "Virtual Private Network",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.EN.VPNET"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.EN.VPNET"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.EN.VPNET_stmt",
+        "name": "statement",
+        "prose": "Virtual Private Network"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.FI.AMALW",
+      "title": "Anti-malware",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.FI.AMALW"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.FI.AMALW"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.FI.AMALW_stmt",
+        "name": "statement",
+        "prose": "Anti-malware"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.FI.CDREC",
+      "title": "Content Disarm and Reconstruction",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.FI.CDREC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.FI.CDREC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.FI.CDREC_stmt",
+        "name": "statement",
+        "prose": "Content Disarm and Reconstruction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.FI.DCHAM",
+      "title": "Detonation Chamber",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.FI.DCHAM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.FI.DCHAM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.FI.DCHAM_stmt",
+        "name": "statement",
+        "prose": "Detonation Chamber"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.FI.DLPRE",
+      "title": "Data Loss Prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.FI.DLPRE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.FI.DLPRE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.FI.DLPRE_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.AAUTH",
+      "title": "Adaptive Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.AAUTH"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.AAUTH"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.AAUTH_stmt",
+        "name": "statement",
+        "prose": "Adaptive Authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.BBASE",
+      "title": "Behavioral Baselining",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.BBASE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.BBASE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.BBASE_stmt",
+        "name": "statement",
+        "prose": "Behavioral Baselining"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.CAUTH",
+      "title": "Continuous Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.CAUTH"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.CAUTH"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.CAUTH_stmt",
+        "name": "statement",
+        "prose": "Continuous Authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.EIAMA",
+      "title": "Enterprise Identity and Access Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.EIAMA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.EIAMA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.EIAMA_stmt",
+        "name": "statement",
+        "prose": "Enterprise Identity and Access Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.EINVE",
+      "title": "Entitlement Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.EINVE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.EINVE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.EINVE_stmt",
+        "name": "statement",
+        "prose": "Entitlement Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.MAUTH",
+      "title": "Multi-factor Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.MAUTH"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.MAUTH"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.MAUTH_stmt",
+        "name": "statement",
+        "prose": "Multi-factor Authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.SIDEN",
+      "title": "Service Identity",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.SIDEN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.SIDEN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.SIDEN_stmt",
+        "name": "statement",
+        "prose": "Service Identity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.ID.SMANA",
+      "title": "Secrets Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.ID.SMANA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.ID.SMANA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.ID.SMANA_stmt",
+        "name": "statement",
+        "prose": "Secrets Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.IN.AACON",
+      "title": "Adaptive Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.IN.AACON"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.IN.AACON"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.IN.AACON_stmt",
+        "name": "statement",
+        "prose": "Adaptive Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.IN.CTLMO",
+      "title": "Certificate Transparency Log Monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.IN.CTLMO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.IN.CTLMO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.IN.CTLMO_stmt",
+        "name": "statement",
+        "prose": "Certificate Transparency Log Monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.IN.DPLAT",
+      "title": "Deception Platforms",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.IN.DPLAT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.IN.DPLAT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.IN.DPLAT_stmt",
+        "name": "statement",
+        "prose": "Deception Platforms"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.IN.EDRES",
+      "title": "Endpoint Detection and Response",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.IN.EDRES"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.IN.EDRES"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.IN.EDRES_stmt",
+        "name": "statement",
+        "prose": "Endpoint Detection and Response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.IN.IDPSY",
+      "title": "Intrusion Detection and Prevention Systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.IN.IDPSY"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.IN.IDPSY"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.IN.IDPSY_stmt",
+        "name": "statement",
+        "prose": "Intrusion Detection and Prevention Systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.IN.NDRES",
+      "title": "Network Detection and Response",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.IN.NDRES"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.IN.NDRES"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.IN.NDRES_stmt",
+        "name": "statement",
+        "prose": "Network Detection and Response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.NE.ACONT",
+      "title": "Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.NE.ACONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.NE.ACONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.NE.ACONT_stmt",
+        "name": "statement",
+        "prose": "Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.NE.HCONT",
+      "title": "Host Containment",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.NE.HCONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.NE.HCONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.NE.HCONT_stmt",
+        "name": "statement",
+        "prose": "Host Containment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.NE.IADEN",
+      "title": "Internet Address Denylisting",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.NE.IADEN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.NE.IADEN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.NE.IADEN_stmt",
+        "name": "statement",
+        "prose": "Internet Address Denylisting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.NE.MICRO",
+      "title": "Micro segmentation",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.NE.MICRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.NE.MICRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.NE.MICRO_stmt",
+        "name": "statement",
+        "prose": "Micro segmentation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.NE.NSEGM",
+      "title": "Network Segmentation",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.NE.NSEGM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.NE.NSEGM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.NE.NSEGM_stmt",
+        "name": "statement",
+        "prose": "Network Segmentation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.NE.RCONT",
+      "title": "Resource Containment",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.NE.RCONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.NE.RCONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.NE.RCONT_stmt",
+        "name": "statement",
+        "prose": "Resource Containment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.RE.DDSPR",
+      "title": "Distributed Denial of Service Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.RE.DDSPR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.RE.DDSPR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.RE.DDSPR_stmt",
+        "name": "statement",
+        "prose": "Distributed Denial of Service Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.RE.EEXPS",
+      "title": "Elastic Expansion",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.RE.EEXPS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.RE.EEXPS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.RE.EEXPS_stmt",
+        "name": "statement",
+        "prose": "Elastic Expansion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.RE.RDELI",
+      "title": "Regional Delivery",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.RE.RDELI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.RE.RDELI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.RE.RDELI_stmt",
+        "name": "statement",
+        "prose": "Regional Delivery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.SE.ACMIT",
+      "title": "Active Content Mitigation",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.SE.ACMIT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.SE.ACMIT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.SE.ACMIT_stmt",
+        "name": "statement",
+        "prose": "Active Content Mitigation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.SE.ACONT",
+      "title": "Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.SE.ACONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.SE.ACONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.SE.ACONT_stmt",
+        "name": "statement",
+        "prose": "Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.SE.DLPRE",
+      "title": "Data Loss Prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.SE.DLPRE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.SE.DLPRE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.SE.DLPRE_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.SE.MCFIL",
+      "title": "Malicious Content Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.SE.MCFIL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.SE.MCFIL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.SE.MCFIL_stmt",
+        "name": "statement",
+        "prose": "Malicious Content Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.SE.PCENF",
+      "title": "Protocol Compliance Enforcement",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.SE.PCENF"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.SE.PCENF"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.SE.PCENF_stmt",
+        "name": "statement",
+        "prose": "Protocol Compliance Enforcement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.APPRO",
+      "title": "Anti-phishing Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.APPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.APPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.APPRO_stmt",
+        "name": "statement",
+        "prose": "Anti-phishing Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.CTERM",
+      "title": "Connection Termination",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.CTERM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.CTERM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.CTERM_stmt",
+        "name": "statement",
+        "prose": "Connection Termination"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.DLPRE",
+      "title": "Data Loss Prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.DLPRE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.DLPRE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.DLPRE_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.ECOMM",
+      "title": "Encrypted Communication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.ECOMM"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.ECOMM"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.ECOMM_stmt",
+        "name": "statement",
+        "prose": "Encrypted Communication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.IVERI",
+      "title": "Identity Verification",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.IVERI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.IVERI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.IVERI_stmt",
+        "name": "statement",
+        "prose": "Identity Verification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.LCTPR",
+      "title": "Link Click-through Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.LCTPR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.LCTPR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.LCTPR_stmt",
+        "name": "statement",
+        "prose": "Link Click-through Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.MFPRO",
+      "title": "Malicious File Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.MFPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.MFPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.MFPRO_stmt",
+        "name": "statement",
+        "prose": "Malicious File Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.UN.MLPRO",
+      "title": "Malicious Link Protections",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.UN.MLPRO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.UN.MLPRO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.UN.MLPRO_stmt",
+        "name": "statement",
+        "prose": "Malicious Link Protections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.ACMIT",
+      "title": "Active Content Mitigation",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.ACMIT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.ACMIT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.ACMIT_stmt",
+        "name": "statement",
+        "prose": "Active Content Mitigation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.ACONT",
+      "title": "Access Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.ACONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.ACONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.ACONT_stmt",
+        "name": "statement",
+        "prose": "Access Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.APROX",
+      "title": "Authenticated Proxy",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.APROX"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.APROX"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.APROX_stmt",
+        "name": "statement",
+        "prose": "Authenticated Proxy"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.BCONT",
+      "title": "Bandwidth Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.BCONT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.BCONT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.BCONT_stmt",
+        "name": "statement",
+        "prose": "Bandwidth Control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.BINSP",
+      "title": "Break and Inspect",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.BINSP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.BINSP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.BINSP_stmt",
+        "name": "statement",
+        "prose": "Break and Inspect"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.CDENY",
+      "title": "Certificate Denylisting",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.CDENY"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.CDENY"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.CDENY_stmt",
+        "name": "statement",
+        "prose": "Certificate Denylisting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.CFILT",
+      "title": "Content Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.CFILT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.CFILT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.CFILT_stmt",
+        "name": "statement",
+        "prose": "Content Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.DCFIL",
+      "title": "Domain Category Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.DCFIL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.DCFIL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.DCFIL_stmt",
+        "name": "statement",
+        "prose": "Domain Category Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.DLPRE",
+      "title": "Data Loss Prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.DLPRE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.DLPRE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.DLPRE_stmt",
+        "name": "statement",
+        "prose": "Data Loss Prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.DREPF",
+      "title": "Domain Reputation Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.DREPF"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.DREPF"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.DREPF_stmt",
+        "name": "statement",
+        "prose": "Domain Reputation Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.DRESF",
+      "title": "Domain Resolution Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.DRESF"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.DRESF"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.DRESF_stmt",
+        "name": "statement",
+        "prose": "Domain Resolution Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.MCFIL",
+      "title": "Malicious Content Filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.MCFIL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.MCFIL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.MCFIL_stmt",
+        "name": "statement",
+        "prose": "Malicious Content Filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.PEP.WE.PCENF",
+      "title": "Protocol Compliance Enforcement",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.PEP.WE.PCENF"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.PEP.WE.PCENF"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.PEP.WE.PCENF_stmt",
+        "name": "statement",
+        "prose": "Protocol Compliance Enforcement"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.AACCO",
+      "title": "Auditing and Accounting",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.AACCO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.AACCO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.AACCO_stmt",
+        "name": "statement",
+        "prose": "Auditing and Accounting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.BRECO",
+      "title": "Backup and Recovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.BRECO"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.BRECO"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.BRECO_stmt",
+        "name": "statement",
+        "prose": "Backup and Recovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.CLMAN",
+      "title": "Central Log Management with Analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.CLMAN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.CLMAN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.CLMAN_stmt",
+        "name": "statement",
+        "prose": "Central Log Management with Analysis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.CMANA",
+      "title": "Configuration Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.CMANA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.CMANA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.CMANA_stmt",
+        "name": "statement",
+        "prose": "Configuration Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.DTDIS",
+      "title": "Dynamic Threat Discovery",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.DTDIS"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.DTDIS"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.DTDIS_stmt",
+        "name": "statement",
+        "prose": "Dynamic Threat Discovery"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.ETINT",
+      "title": "Enterprise Threat Intelligence",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.ETINT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.ETINT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.ETINT_stmt",
+        "name": "statement",
+        "prose": "Enterprise Threat Intelligence"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.EUSSE",
+      "title": "Effective Use of Shared Services",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.EUSSE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.EUSSE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.EUSSE_stmt",
+        "name": "statement",
+        "prose": "Effective Use of Shared Services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.IDMRP",
+      "title": "Integrated Desktop, Mobile, and Remote Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.IDMRP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.IDMRP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.IDMRP_stmt",
+        "name": "statement",
+        "prose": "Integrated Desktop, Mobile, and Remote Policies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.INVENT",
+      "title": "Inventory",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.INVENT"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.INVENT"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.INVENT_stmt",
+        "name": "statement",
+        "prose": "Inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.IRPIH",
+      "title": "Incident Response Planning and Incident Handling",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.IRPIH"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.IRPIH"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.IRPIH_stmt",
+        "name": "statement",
+        "prose": "Incident Response Planning and Incident Handling"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.LPRIV",
+      "title": "Least Privilege",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.LPRIV"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.LPRIV"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.LPRIV_stmt",
+        "name": "statement",
+        "prose": "Least Privilege"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.PEPAR",
+      "title": "Policy Enforcement Parity",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.PEPAR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.PEPAR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.PEPAR_stmt",
+        "name": "statement",
+        "prose": "Policy Enforcement Parity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.PMANA",
+      "title": "Patch Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.PMANA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.PMANA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.PMANA_stmt",
+        "name": "statement",
+        "prose": "Patch Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.RESIL",
+      "title": "Resilience",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.RESIL"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.RESIL"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.RESIL_stmt",
+        "name": "statement",
+        "prose": "Resilience"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.SADMI",
+      "title": "Secure Administration",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.SADMI"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.SADMI"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.SADMI_stmt",
+        "name": "statement",
+        "prose": "Secure Administration"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.SAUTH",
+      "title": "Strong Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.SAUTH"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.SAUTH"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.SAUTH_stmt",
+        "name": "statement",
+        "prose": "Strong Authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.SAWAR",
+      "title": "Situational Awareness",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.SAWAR"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.SAWAR"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.SAWAR_stmt",
+        "name": "statement",
+        "prose": "Situational Awareness"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.TSYNC",
+      "title": "Time Synchronization",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.TSYNC"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.TSYNC"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.TSYNC_stmt",
+        "name": "statement",
+        "prose": "Time Synchronization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.UATRA",
+      "title": "User Awareness and Training",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.UATRA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.UATRA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.UATRA_stmt",
+        "name": "statement",
+        "prose": "User Awareness and Training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNI.VMANG",
+      "title": "Vulnerability Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNI.VMANG"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNI.VMANG"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNI.VMANG_stmt",
+        "name": "statement",
+        "prose": "Vulnerability Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNL.CMREP",
+      "title": "Continuous Monitoring Reporting",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNL.CMREP"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNL.CMREP"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNL.CMREP_stmt",
+        "name": "statement",
+        "prose": "Continuous Monitoring Reporting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNL.GPAUD",
+      "title": "Governance and Policy Auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNL.GPAUD"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNL.GPAUD"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNL.GPAUD_stmt",
+        "name": "statement",
+        "prose": "Governance and Policy Auditing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNL.RLMAN",
+      "title": "Resource Lifecycle Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNL.RLMAN"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNL.RLMAN"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNL.RLMAN_stmt",
+        "name": "statement",
+        "prose": "Resource Lifecycle Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNL.SCRMA",
+      "title": "Supply Chain Risk Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNL.SCRMA"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNL.SCRMA"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNL.SCRMA_stmt",
+        "name": "statement",
+        "prose": "Supply Chain Risk Management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-3.UNL.STEXE",
+      "title": "Security Test and Exercise",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.UNL.STEXE"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.UNL.STEXE"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-3.UNL.STEXE_stmt",
+        "name": "statement",
+        "prose": "Security Test and Exercise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-CISA-TIC-3.0",
+      "title": "FAIL-CLOSED - capability attestations 'input.cisa_tic3.capabilities' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA TIC 3.0"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA TIC 3.0"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-CISA-TIC-3.0_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - capability attestations 'input.cisa_tic3.capabilities' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-cisa_tic3.main-1",
+      "title": "CISA TIC 3.0 %v (%v, %v): not attested — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "cisa_tic3.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cisa_tic3.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-cisa_tic3.main-1_stmt",
+        "name": "statement",
+        "prose": "CISA TIC 3.0 %v (%v, %v): not attested — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cisa_tic3-CISA-TIC-3.0-Input-Contract",
+      "title": "unknown capability id %v — ids are the catalog's Capability Identifiers such as 3.UNI.BRECO or 3.PEP.WE.BINSP",
+      "props": [
+       {
+        "name": "label",
+        "value": "CISA TIC 3.0 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CISA TIC 3.0 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cisa_tic3.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cisa_tic3-CISA-TIC-3.0-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unknown capability id %v — ids are the catalog's Capability Identifiers such as 3.UNI.BRECO or 3.PEP.WE.BINSP"
+       },
+       {
+        "id": "cisa_tic3-CISA-TIC-3.0-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "input.cisa_tic3.pep_groups_in_scope must be an array of PEP group keys %v; got %v — every PEP group is evaluated"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "81ff9bdf-af8d-57ac-a3fc-bcfd522ab20f",
+     "title": "CISA TIC 3.0 Security Capabilities Catalog v3.3 — 116 universal and PEP security capabilities, attested",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cisa_tic3.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/cisa_tic3/cisa_tic3_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -9,6 +9,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+- **SCF parity, Phase 3 batch 1 (US federal remainder), 1,917 new control-level checks (18,995):** NISPOM 32 CFR 117 (599 rows, 18 gates), FAR 52.204-21 / -25 / -27, CISA TIC 3.0 catalog v3.3 (116 capabilities), DOE C2M2 v2.1 (356 practices, MIL gate), NRC 10 CFR 73.54 (34), USCG 33 CFR 101 Subpart F (105), CERT-RMM v1.2 (248 practices; ids, titles and own summaries under the SEI licence), CMS MARS-E 2.0 (352 controls; superseded by ARC-AMPE; 224 rows carry partial text because the catalogue renders list items as images), 45 CFR 155.260 (35), FTC Red Flags 16 CFR 681 + disposal 682 (12). Regulation text verbatim from GovInfo's CFR XML.
+- Converters: 800-53 overlay catalogs (`OVERLAY_CATALOGS`, currently CMS MARS-E) are excluded from the `label-is-800-53` mapping in the crosswalk spine and the OSCAL baseline coverage, so an overlay that restates 800-53 cannot inflate what the library is said to evaluate (FedRAMP Moderate stays 109/181 base controls).
+
+### Added
 - **SCF parity, Phase 2 batch 1 (NIST risk and AI, resilience, OWASP), 388 new control-level checks (17,078):**
   - `frameworks/federal/nist/risk_management_framework/`: **SP 800-37 Rev 2**, all 47 RMF tasks (P-1 … M-7) with role, outputs, references and Outcomes-column CSF items as data; the 12 Categorize rules folded into C-1 … C-3 via a `legacy` table (consumer paths under `nist.rmf.categorize` unchanged); new entrypoint `nist.rmf.main`.
   - `frameworks/federal/nist/sp_800_39/`: **SP 800-39**, the 12 numbered risk-management tasks (frame / assess / respond / monitor).

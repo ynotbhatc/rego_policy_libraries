@@ -27,6 +27,8 @@ from _lib.findings import token          # noqa: E402
 
 FAMILIES = "AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|PT|RA|SA|SC|SI|SR"  # SP 800-53 Rev 5 families
 ID_800_53 = re.compile(rf"^(?:{FAMILIES})-[1-9]\d*(\([1-9]\d*\))?$")  # no leading zeros: BSI C5 "PS-01" is not 800-53 PS-1
+# 800-53 overlay catalogs restate 800-53 controls under the same ids; their rows say nothing about what the library checks
+OVERLAY_CATALOGS = {"cms_mars_e"}
 
 
 def write(path, header, rows):
@@ -82,7 +84,7 @@ def main():
             spine[c]["stig"][sid.split("-")[0]].append(sid)
     for e in inv:
         for c in e["controls"]:
-            if ID_800_53.match(c["id"]):  # only ids in a real 800-53 family (CJIS "AA-1" is not one)
+            if ID_800_53.match(c["id"]) and e["framework"] not in OVERLAY_CATALOGS:  # only ids in a real 800-53 family (CJIS "AA-1" is not one)
                 spine[c["id"]]["lib"].append(f"{e['framework']}:{c['id']}")
     for cid in [k for k in spine if not ID_800_53.match(k)]:
         del spine[cid]

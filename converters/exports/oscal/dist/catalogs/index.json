@@ -1,9 +1,16 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 164,
- "controls": 14272,
+ "frameworks": 174,
+ "controls": 16187,
  "catalogs": [
+  {
+   "framework": "aca_155_260",
+   "file": "catalogs/aca_155_260.json",
+   "controls": 39,
+   "modules": 1,
+   "uuid": "9c18a0da-6ad7-5d46-9219-f4a2d8452cbb"
+  },
   {
    "framework": "ai",
    "file": "catalogs/ai.json",
@@ -40,6 +47,13 @@
    "uuid": "38c0a5e3-2675-53d1-bac3-a8d8b54f2149"
   },
   {
+   "framework": "c2m2",
+   "file": "catalogs/c2m2.json",
+   "controls": 359,
+   "modules": 1,
+   "uuid": "d72010e2-f2d3-5396-bd64-536c6e731e5a"
+  },
+  {
    "framework": "ccpa",
    "file": "catalogs/ccpa.json",
    "controls": 146,
@@ -52,6 +66,13 @@
    "controls": 54,
    "modules": 1,
    "uuid": "cce08644-c9ce-5e3a-a25a-16b7eb091ee7"
+  },
+  {
+   "framework": "cert_rmm",
+   "file": "catalogs/cert_rmm.json",
+   "controls": 251,
+   "modules": 1,
+   "uuid": "d03a1717-428f-5e04-a9b7-079c1f699e9e"
   },
   {
    "framework": "cfr_part_11",
@@ -383,6 +404,13 @@
    "uuid": "2ad930ef-3cae-5dad-a16d-132b8e34ae67"
   },
   {
+   "framework": "cisa_tic3",
+   "file": "catalogs/cisa_tic3.json",
+   "controls": 119,
+   "modules": 1,
+   "uuid": "43d5777d-a8ae-568c-a00f-bae098f55c13"
+  },
+  {
    "framework": "cjis",
    "file": "catalogs/cjis.json",
    "controls": 111,
@@ -395,6 +423,13 @@
    "controls": 153,
    "modules": 15,
    "uuid": "64a9b2fd-347c-5fad-8164-787b0dffd08c"
+  },
+  {
+   "framework": "cms_mars_e",
+   "file": "catalogs/cms_mars_e.json",
+   "controls": 355,
+   "modules": 1,
+   "uuid": "2cb0cc14-0bbf-573d-aea2-a3e11e330f16"
   },
   {
    "framework": "cobit",
@@ -572,6 +607,13 @@
    "uuid": "3cbface6-2b35-5e60-973a-3408b821abb2"
   },
   {
+   "framework": "far_cyber",
+   "file": "catalogs/far_cyber.json",
+   "controls": 28,
+   "modules": 1,
+   "uuid": "bc4f349b-13d7-52be-b3d9-10e8284b0375"
+  },
+  {
    "framework": "fedramp",
    "file": "catalogs/fedramp.json",
    "controls": 25,
@@ -605,6 +647,13 @@
    "controls": 7,
    "modules": 1,
    "uuid": "42c11626-3014-51b9-8497-d6860f3527e6"
+  },
+  {
+   "framework": "ftc_red_flags",
+   "file": "catalogs/ftc_red_flags.json",
+   "controls": 16,
+   "modules": 1,
+   "uuid": "3241ddc3-51af-50c5-ad93-549b9f1fbcd1"
   },
   {
    "framework": "gdpr",
@@ -740,6 +789,13 @@
    "uuid": "a2159466-1d98-5bf9-a602-40080577655f"
   },
   {
+   "framework": "nispom_32cfr117",
+   "file": "catalogs/nispom_32cfr117.json",
+   "controls": 603,
+   "modules": 1,
+   "uuid": "e685ae3a-20ba-50f8-bcf2-9afaed65d5f1"
+  },
+  {
    "framework": "nist_800_82",
    "file": "catalogs/nist_800_82.json",
    "controls": 24,
@@ -843,6 +899,13 @@
    "controls": 42,
    "modules": 4,
    "uuid": "1871cf1b-a8fa-54bc-ad27-ca16d038b700"
+  },
+  {
+   "framework": "nrc_10cfr73_54",
+   "file": "catalogs/nrc_10cfr73_54.json",
+   "controls": 37,
+   "modules": 1,
+   "uuid": "9ea25549-368c-588d-86f3-b854ad794785"
   },
   {
    "framework": "nsa_cisa_kubernetes",
@@ -1144,6 +1207,13 @@
    "controls": 157,
    "modules": 1,
    "uuid": "1d3566ed-f8b9-5df4-a59e-1858bcd90a58"
+  },
+  {
+   "framework": "uscg_33cfr101_subpart_f",
+   "file": "catalogs/uscg_33cfr101_subpart_f.json",
+   "controls": 108,
+   "modules": 1,
+   "uuid": "6728c713-ec80-5a7e-84f0-a35df9550ed3"
   },
   {
    "framework": "zero_trust",

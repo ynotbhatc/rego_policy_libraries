@@ -1,6 +1,6 @@
 # Secure Controls Framework (SCF) coverage gap and expansion plan
 
-**Version:** v1.6
+**Version:** v1.7
 **Date:** 2026-10-13
 **Authors:** Tim Coulter (ynotbha@aisle-five.com), Claude (Anthropic)
 **Measured against:** SCF 2026.3 workbook (released 2026-09-21), `SCF 2026.3` sheet; this library at v2.4.2 plus the Phase 1 batch of 2026-10-13
@@ -18,8 +18,8 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries v2.4.2 |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 17,078 control-level checks (`make count`) |
-| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 164 framework catalogs, 130+ framework directories |
+| Controls / checks | 1,591 controls in 34 domains | 18,995 control-level checks (`make count`) |
+| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 174 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 23 STIG platforms |
 | Licence | Creative Commons BY-ND, free | open |
@@ -34,16 +34,16 @@ comparison is the distinct document.
 
 | Status | Count | Meaning |
 |---|---|---|
-| covered | 71 | a module exists for that document, same or newer edition |
+| covered | 83 | a module exists for that document, same or newer edition |
 | partial | 8 | the document is covered inside another module, or we carry an older edition |
-| gap | 155 | nothing in the library |
+| gap | 143 | nothing in the library |
 
 By region:
 
 | Region | Documents | Covered | Partial | Gap |
 |---|---|---|---|---|
 | General and international standards | 67 | 32 | 6 | 29 |
-| United States, federal | 43 | 18 | 2 | 23 |
+| United States, federal | 43 | 30 | 2 | 11 |
 | United States, state | 27 | 2 | 0 | 25 |
 | EMEA | 50 | 14 | 0 | 36 |
 | APAC | 36 | 5 | 0 | 31 |
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our 164 catalogs and SCF's "71 covered" are different lists.
+those count toward the 237, so our 174 catalogs and SCF's "83 covered" are different lists.
 
 ## How we close it
 
@@ -78,7 +78,7 @@ Cheapest breadth: the controls exist, the document label or edition is what is m
   Administrative Simplification with 800-66 Rev 2 numbering, DORA RTS 2024/1774, UK DPA 2018, ISO 27002:2022
   numbering on ISO 27001, CSWP 39-upd1.
 
-Outcome: 79 of 234 covered, no partials.
+Outcome: 91 of 234 covered, no partials.
 
 ### Phase 2. International standards with the widest reuse (29 gaps)
 
@@ -91,9 +91,9 @@ Outcome: 79 of 234 covered, no partials.
 - Sector: ISO/SAE 21434 with UN R155 and WP.29 (automotive), UL 2900-1 and 2900-2-2, IMO maritime cyber risk,
   SPARTA 4.0 (space), CSA IoT Security Controls Framework, GovRAMP (an 800-53 baseline family: cheap after Phase 1).
 
-Outcome: 108 of 234.
+Outcome: 120 of 234.
 
-### Phase 3. United States federal remainder (23 gaps)
+### Phase 3. United States federal remainder (11 gaps)
 
 TIC 3.0, CMS MARS-E 2.0, FAR 52.204-21/25/27, FFIEC IT Examination Handbook, NISPOM, NRC 10 CFR 73.54,
 33 CFR Part 101 Subpart F, TSA rail directive 1580/82-2022-01, FTC Act Section 5, FACTA and FCRA, FIPPS,
@@ -228,37 +228,37 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### United States, federal
 
-43 documents: 18 covered, 2 partial, 23 gap.
+43 documents: 30 covered, 2 partial, 11 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
-| CMS MARS-E \| 2.0 | gap |  |
+| CMS MARS-E \| 2.0 | covered | frameworks/privacy/cms_mars_e (352 controls; superseded by ARC-AMPE, recorded) |
 | CISA \| CPG 2022 | covered | frameworks/federal/cisa_cpg (2.0, newer than SCF's 2022) |
 | DHS CISA \| SSDAF | covered | frameworks/federal/cisa_ssdaf (the form's 15 items with scope gates) |
-| DHS CISA \| TIC 3.0 | gap |  |
+| DHS CISA \| TIC 3.0 | covered | frameworks/federal/cisa_tic3 (116 capabilities, catalog v3.3) |
 | Data Privacy Framework \| 2023 | gap |  |
-| C2M2 \| 2.1 | gap |  |
+| C2M2 \| 2.1 | covered | frameworks/critical_infrastructure/c2m2 (356 practices, MIL gate) |
 | DoW BaTB IT \| 2026 | gap |  |
 | DoW BaTB OT \| 2026 | gap |  |
-| CERT RMM \| 1.2 | gap |  |
+| CERT RMM \| 1.2 | covered | frameworks/management/cert_rmm (248 specific practices, titles + own summaries) |
 | CMMC 2.0 (4 profiles) | covered | frameworks/federal/cmmc |
 | DFARS \| 252.204-7012 | covered | frameworks/federal/dfars_7012 (25 obligations from acquisition.gov) |
 | NNPI (unclass) \| 2010 | gap |  |
 | DoD Zero Trust Reference Architecture 2.0 | partial | zero_trust is CISA ZTMM + 800-207, not the DoD RA/roadmap |
 | DoD Zero Trust Execution Roadmap v1.1 | partial | zero_trust is CISA ZTMM + 800-207, not the DoD RA/roadmap |
 | EO 14028 | covered | frameworks/federal/eo_14028 (43 directive rows by role, from the Federal Register text) |
-| FAR \| 52.204-21 | gap |  |
-| FAR \| 52.204-25 | gap |  |
-| FAR \| 52.204-27 | gap |  |
+| FAR \| 52.204-21 | covered | frameworks/federal/far_cyber |
+| FAR \| 52.204-25 | covered | frameworks/federal/far_cyber |
+| FAR \| 52.204-27 | covered | frameworks/federal/far_cyber |
 | CJIS Security Policy \| 6.0 | covered | frameworks/federal/cjis |
 | 21 CFR Part 11 \| 2025 | covered | frameworks/regulatory/cfr_part_11 |
 | FFIEC ITEH \| 2016 | gap |  |
 | FedRAMP R5 (4 profiles) | covered | frameworks/federal/fedramp; the four Rev 5 baselines as OSCAL profiles in dist/profiles (+ fedramp_20x, which SCF lacks) |
-| 45 CFR 155.260 | gap |  |
+| 45 CFR 155.260 | covered | frameworks/privacy/aca_155_260 (35 rows) |
 | IRS 1075 \| 2021 | covered | frameworks/federal/irs_1075 |
-| 33 CFR \| Part 101 Subpart F | gap |  |
+| 33 CFR \| Part 101 Subpart F | covered | frameworks/critical_infrastructure/maritime_33cfr101f (105 rows) |
 | COPPA \| 2024 | covered | frameworks/privacy/coppa |
-| FACTA & FCRA \| 2023 | gap |  |
+| FACTA & FCRA \| 2023 | covered | frameworks/financial/ftc_red_flags (16 CFR 681 Red Flags + 682 disposal) |
 | FERPA \| 2010 | covered | frameworks/privacy/ferpa |
 | FTC Act \| 1938 | gap |  |
 | GLBA CFR 314 \| 2023 | covered | frameworks/financial/glba |
@@ -266,8 +266,8 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | HIPAA Administrative Simplification 2013 | covered | frameworks/privacy/hipaa: Parts 160, 162 and 164 Subparts C/D/E keyed to CFR citations (246 rows) |
 | SOX \| 2002 | covered | frameworks/financial/sox |
 | NERC CIP \| 2024 | covered | frameworks/critical_infrastructure/nerc_cip |
-| NISPOM \| 2020 | gap |  |
-| NRC 10 CFR 73.54 \| 2015 | gap |  |
+| NISPOM \| 2020 | covered | frameworks/federal/nispom (32 CFR 117, 599 rows) |
+| NRC 10 CFR 73.54 \| 2015 | covered | frameworks/critical_infrastructure/nrc_73_54 (34 rows) |
 | NSF \| RIG 2025 | gap |  |
 | FIPPS \| 1973 | gap |  |
 | SEC Cybersecurity Rule \| 2023 | covered | frameworks/financial/sec_cyber |

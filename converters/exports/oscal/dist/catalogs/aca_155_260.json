@@ -1,0 +1,1380 @@
+{
+ "catalog": {
+  "uuid": "9c18a0da-6ad7-5d46-9219-f4a2d8452cbb",
+  "metadata": {
+   "title": "Rego Policy Libraries — aca_155_260 (Source of truth: GovInfo bulk CFR XML, annual edition, Title 45 Parts 140 to 199, \"Revised as of October 1,)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "aca_155_260"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "aca_155_260-aca_155_260_main",
+    "class": "rego-module",
+    "title": "Source of truth: GovInfo bulk CFR XML, annual edition, Title 45 Parts 140 to 199, \"Revised as of October 1,",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "aca_155_260.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/aca_155_260/aca_155_260_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "aca_155_260-155.260-a-1",
+      "title": "Where the Exchange creates or collects personally identifiable information for the purposes of determining eligibility for enrollment in a qualified health plan; determining eligibility for other insu",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-1_stmt",
+        "name": "statement",
+        "prose": "Where the Exchange creates or collects personally identifiable information for the purposes of determining eligibility for enrollment in a qualified health plan; determining eligibility for other insurance affordability programs, as defined in § 155.300; or determining eligibility for exemptions from the individual shared responsibility provisions in section 5000A of the Code, the Exchange may only use or disclose such personally identifiable information to the extent such information is necessary: (i) For the Exchange to carry out the functions described in § 155.200; (ii) For the Exchange to carry out other functions not described in paragraph (a)(1)(i) of this section, which the Secretary determines to be in compliance with section 1411(g)(2)(A) of the Affordable Care Act and for which an individual provides consent for his or her information to be used or disclosed; or (iii) For the Exchange to carry out other functions not described in paragraphs (a)(1)(i) and (ii) of this section, for which an individual provides consent for his or her information to be used or disclosed, and which the Secretary determines are in compliance with section 1411(g)(2)(A) of the Affordable Care Act under the following substantive and procedural requirements:"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-1-iii-B",
+      "title": "To seek approval for a use or disclosure of personally identifiable information created or collected as described in paragraph (a)(1) of this section that is not described in paragraphs (a)(1)(i) or (",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(1)(iii)(B)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(1)(iii)(B)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-1-iii-B_stmt",
+        "name": "statement",
+        "prose": "To seek approval for a use or disclosure of personally identifiable information created or collected as described in paragraph (a)(1) of this section that is not described in paragraphs (a)(1)(i) or (ii) of this section, the Exchange must submit the following information to HHS: (1) Identity of the Exchange and appropriate contact persons; (2) Detailed description of the proposed use or disclosure, which must include, but not necessarily be limited to, a listing or description of the specific information to be used or disclosed and an identification of the persons or entities that may access or receive the information; (3) Description of how the use or disclosure will ensure the efficient operation of the Exchange consistent with section 1411(g)(2)(A) of the Affordable Care Act; and (4) Description of how the information to be used or disclosed will be protected in compliance with privacy and security standards that meet the requirements of this section or other relevant law, as applicable."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-2",
+      "title": "The Exchange may not create, collect, use, or disclose personally identifiable information unless the creation, collection, use, or disclosure is consistent with this section.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-2_stmt",
+        "name": "statement",
+        "prose": "The Exchange may not create, collect, use, or disclose personally identifiable information unless the creation, collection, use, or disclosure is consistent with this section."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-i",
+      "title": "Individuals should be provided with a simple and timely means to access and obtain their personally identifiable information in a readable form and format;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-i_stmt",
+        "name": "statement",
+        "prose": "Individuals should be provided with a simple and timely means to access and obtain their personally identifiable information in a readable form and format;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-ii",
+      "title": "Individuals should be provided with a timely means to dispute the accuracy or integrity of their personally identifiable information and to have erroneous information corrected or to have a dispute do",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-ii_stmt",
+        "name": "statement",
+        "prose": "Individuals should be provided with a timely means to dispute the accuracy or integrity of their personally identifiable information and to have erroneous information corrected or to have a dispute documented if their requests are denied;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-iii",
+      "title": "There should be openness and transparency about policies, procedures, and technologies that directly affect individuals and/or their personally identifiable information;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-iii_stmt",
+        "name": "statement",
+        "prose": "There should be openness and transparency about policies, procedures, and technologies that directly affect individuals and/or their personally identifiable information;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-iv",
+      "title": "Individuals should be provided a reasonable opportunity and capability to make informed decisions about the collection, use, and disclosure of their personally identifiable information;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-iv_stmt",
+        "name": "statement",
+        "prose": "Individuals should be provided a reasonable opportunity and capability to make informed decisions about the collection, use, and disclosure of their personally identifiable information;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-v",
+      "title": "Personally identifiable information should be created, collected, used, and/or disclosed only to the extent necessary to accomplish a specified purpose(s) and never to discriminate inappropriately;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-v_stmt",
+        "name": "statement",
+        "prose": "Personally identifiable information should be created, collected, used, and/or disclosed only to the extent necessary to accomplish a specified purpose(s) and never to discriminate inappropriately;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-vi",
+      "title": "Persons and entities should take reasonable steps to ensure that personally identifiable information is complete, accurate, and up-to-date to the extent necessary for the person's or entity's intended",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(vi)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(vi)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-vi_stmt",
+        "name": "statement",
+        "prose": "Persons and entities should take reasonable steps to ensure that personally identifiable information is complete, accurate, and up-to-date to the extent necessary for the person's or entity's intended purposes and has not been altered or destroyed in an unauthorized manner;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-vii",
+      "title": "Personally identifiable information should be protected with reasonable operational, administrative, technical, and physical safeguards to ensure its confidentiality, integrity, and availability and t",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(vii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(vii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-vii_stmt",
+        "name": "statement",
+        "prose": "Personally identifiable information should be protected with reasonable operational, administrative, technical, and physical safeguards to ensure its confidentiality, integrity, and availability and to prevent unauthorized or inappropriate access, use, or disclosure; and,"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-3-viii",
+      "title": "These principles should be implemented, and adherence assured, through appropriate monitoring and other means and methods should be in place to report and mitigate non-adherence and breaches.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(3)(viii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(3)(viii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-3-viii_stmt",
+        "name": "statement",
+        "prose": "These principles should be implemented, and adherence assured, through appropriate monitoring and other means and methods should be in place to report and mitigate non-adherence and breaches."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-4-i",
+      "title": "The confidentiality, integrity, and availability of personally identifiable information created, collected, used, and/or disclosed by the Exchange;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(4)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(4)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-4-i_stmt",
+        "name": "statement",
+        "prose": "The confidentiality, integrity, and availability of personally identifiable information created, collected, used, and/or disclosed by the Exchange;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-4-ii",
+      "title": "Personally identifiable information is only used by or disclosed to those authorized to receive or view it;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(4)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(4)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-4-ii_stmt",
+        "name": "statement",
+        "prose": "Personally identifiable information is only used by or disclosed to those authorized to receive or view it;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-4-iii",
+      "title": "Return information, as such term is defined by section 6103(b)(2) of the Code, is kept confidential under section 6103 of the Code;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(4)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(4)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-4-iii_stmt",
+        "name": "statement",
+        "prose": "Return information, as such term is defined by section 6103(b)(2) of the Code, is kept confidential under section 6103 of the Code;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-4-iv",
+      "title": "Personally identifiable information is protected against any reasonably anticipated threats or hazards to the confidentiality, integrity, and availability of such information;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(4)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(4)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-4-iv_stmt",
+        "name": "statement",
+        "prose": "Personally identifiable information is protected against any reasonably anticipated threats or hazards to the confidentiality, integrity, and availability of such information;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-4-v",
+      "title": "Personally identifiable information is protected against any reasonably anticipated uses or disclosures of such information that are not permitted or required by law; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(4)(v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(4)(v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-4-v_stmt",
+        "name": "statement",
+        "prose": "Personally identifiable information is protected against any reasonably anticipated uses or disclosures of such information that are not permitted or required by law; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-4-vi",
+      "title": "Personally identifiable information is securely destroyed or disposed of in an appropriate and reasonable manner and in accordance with retention schedules;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(4)(vi)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(4)(vi)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-4-vi_stmt",
+        "name": "statement",
+        "prose": "Personally identifiable information is securely destroyed or disposed of in an appropriate and reasonable manner and in accordance with retention schedules;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-5",
+      "title": "The Exchange must monitor, periodically assess, and update the security controls and related system risks to ensure the continued effectiveness of those controls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-5_stmt",
+        "name": "statement",
+        "prose": "The Exchange must monitor, periodically assess, and update the security controls and related system risks to ensure the continued effectiveness of those controls."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-a-6",
+      "title": "The Exchange must develop and utilize secure electronic interfaces when sharing personally identifiable information electronically.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(a)(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(a)(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-a-6_stmt",
+        "name": "statement",
+        "prose": "The Exchange must develop and utilize secure electronic interfaces when sharing personally identifiable information electronically."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-2-i",
+      "title": "A description of the functions to be performed by the non-Exchange entity;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-2-i_stmt",
+        "name": "statement",
+        "prose": "A description of the functions to be performed by the non-Exchange entity;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-2-ii",
+      "title": "A provision(s) binding the non-Exchange entity to comply with the privacy and security standards and obligations adopted in accordance with paragraph (b)(3) of this section, and specifically listing o",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-2-ii_stmt",
+        "name": "statement",
+        "prose": "A provision(s) binding the non-Exchange entity to comply with the privacy and security standards and obligations adopted in accordance with paragraph (b)(3) of this section, and specifically listing or incorporating those privacy and security standards and obligations;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-2-iii",
+      "title": "A provision requiring the non-Exchange entity to monitor, periodically assess, and update its security controls and related system risks to ensure the continued effectiveness of those controls in acco",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(2)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(2)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-2-iii_stmt",
+        "name": "statement",
+        "prose": "A provision requiring the non-Exchange entity to monitor, periodically assess, and update its security controls and related system risks to ensure the continued effectiveness of those controls in accordance with paragraph (a)(5) of this section;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-2-iv",
+      "title": "A provision requiring the non-Exchange entity to inform the Exchange of any change in its administrative, technical, or operational environments defined as material within the contract; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(2)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(2)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-2-iv_stmt",
+        "name": "statement",
+        "prose": "A provision requiring the non-Exchange entity to inform the Exchange of any change in its administrative, technical, or operational environments defined as material within the contract; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-2-v",
+      "title": "A provision that requires the non-Exchange entity to bind any downstream entities to the same privacy and security standards and obligations to which the non-Exchange entity has agreed in its contract",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(2)(v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(2)(v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-2-v_stmt",
+        "name": "statement",
+        "prose": "A provision that requires the non-Exchange entity to bind any downstream entities to the same privacy and security standards and obligations to which the non-Exchange entity has agreed in its contract or agreement with the Exchange."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-3-i",
+      "title": "Be consistent with the principles and requirements listed in paragraphs (a)(1) through (6) of this section, including being at least as protective as the standards the Exchange has established and imp",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(3)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(3)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-3-i_stmt",
+        "name": "statement",
+        "prose": "Be consistent with the principles and requirements listed in paragraphs (a)(1) through (6) of this section, including being at least as protective as the standards the Exchange has established and implemented for itself in compliance with paragraph (a)(3) of this section;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-3-ii",
+      "title": "Comply with the requirements of paragraphs (c), (d), (f), and (g) of this section; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(3)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(3)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-3-ii_stmt",
+        "name": "statement",
+        "prose": "Comply with the requirements of paragraphs (c), (d), (f), and (g) of this section; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-b-3-iii",
+      "title": "Take into specific consideration: (A) The environment in which the non-Exchange entity is operating; (B) Whether the standards are relevant and applicable to the non-Exchange entity's duties and activ",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(b)(3)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(b)(3)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-b-3-iii_stmt",
+        "name": "statement",
+        "prose": "Take into specific consideration: (A) The environment in which the non-Exchange entity is operating; (B) Whether the standards are relevant and applicable to the non-Exchange entity's duties and activities in connection with the Exchange; and (C) Any existing legal requirements to which the non-Exchange entity is bound in relation to its administrative, technical, and operational controls and practices, including but not limited to, its existing data handling and information technology processes and protocols."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-c",
+      "title": "The Exchange must ensure its workforce complies with the policies and procedures developed and implemented by the Exchange to comply with this section.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-c_stmt",
+        "name": "statement",
+        "prose": "The Exchange must ensure its workforce complies with the policies and procedures developed and implemented by the Exchange to comply with this section."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-d-1",
+      "title": "Be in writing, and available to the Secretary of HHS upon request; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(d)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(d)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-d-1_stmt",
+        "name": "statement",
+        "prose": "Be in writing, and available to the Secretary of HHS upon request; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-d-2",
+      "title": "Identify applicable law governing collection, use, and disclosure of personally identifiable information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(d)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(d)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-d-2_stmt",
+        "name": "statement",
+        "prose": "Identify applicable law governing collection, use, and disclosure of personally identifiable information."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-e-1",
+      "title": "Meet any applicable requirements described in this section;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-e-1_stmt",
+        "name": "statement",
+        "prose": "Meet any applicable requirements described in this section;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-e-2",
+      "title": "Meet any applicable requirements described in section 1413(c)(1) and (c)(2) of the Affordable Care Act;",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(e)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(e)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-e-2_stmt",
+        "name": "statement",
+        "prose": "Meet any applicable requirements described in section 1413(c)(1) and (c)(2) of the Affordable Care Act;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-e-3",
+      "title": "Be equal to or more stringent than the requirements for Medicaid programs under section 1942 of the Act; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(e)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(e)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-e-3_stmt",
+        "name": "statement",
+        "prose": "Be equal to or more stringent than the requirements for Medicaid programs under section 1942 of the Act; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-e-4",
+      "title": "For those matching agreements that meet the definition of “matching program” under 5 U.S.C. 552a(a)(8), comply with 5 U.S.C. 552a(o).",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(e)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(e)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-e-4_stmt",
+        "name": "statement",
+        "prose": "For those matching agreements that meet the definition of “matching program” under 5 U.S.C. 552a(a)(8), comply with 5 U.S.C. 552a(o)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-155.260-f",
+      "title": "Return information, as defined in section 6103(b)(2) of the Code, must be kept confidential and disclosed, used, and maintained only in accordance with section 6103 of the Code.",
+      "props": [
+       {
+        "name": "label",
+        "value": "155.260(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "155.260(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-155.260-f_stmt",
+        "name": "statement",
+        "prose": "Return information, as defined in section 6103(b)(2) of the Code, must be kept confidential and disclosed, used, and maintained only in accordance with section 6103 of the Code."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-aca_155_260.main-1",
+      "title": "ACA Exchange PII rule: FAIL-CLOSED - 45 CFR 155.260 attestations 'input.aca_155_260.obligations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "aca_155_260.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aca_155_260.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-aca_155_260.main-1_stmt",
+        "name": "statement",
+        "prose": "ACA Exchange PII rule: FAIL-CLOSED - 45 CFR 155.260 attestations 'input.aca_155_260.obligations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-aca_155_260.main-2",
+      "title": "ACA Exchange PII rule Input Contract: input.aca_155_260.exchange_or_non_exchange_entity must be declared \"exchange\" or \"non_exchange_entity\"",
+      "props": [
+       {
+        "name": "label",
+        "value": "aca_155_260.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aca_155_260.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-aca_155_260.main-2_stmt",
+        "name": "statement",
+        "prose": "ACA Exchange PII rule Input Contract: input.aca_155_260.exchange_or_non_exchange_entity must be declared \"exchange\" or \"non_exchange_entity\""
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-aca_155_260.main-3",
+      "title": "45 CFR %v (%v, %v): not attested — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "aca_155_260.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aca_155_260.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-aca_155_260.main-3_stmt",
+        "name": "statement",
+        "prose": "45 CFR %v (%v, %v): not attested — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "aca_155_260-aca_155_260.main-4",
+      "title": "ACA Exchange PII rule Input Contract: attestation for unknown id %v — ids are paragraphs such as 155.260(a)(3)(i)",
+      "props": [
+       {
+        "name": "label",
+        "value": "aca_155_260.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aca_155_260.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aca_155_260.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "aca_155_260-aca_155_260.main-4_stmt",
+        "name": "statement",
+        "prose": "ACA Exchange PII rule Input Contract: attestation for unknown id %v — ids are paragraphs such as 155.260(a)(3)(i)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "f8ec30e6-7fb8-5262-9348-7a5cb4211302",
+     "title": "Source of truth: GovInfo bulk CFR XML, annual edition, Title 45 Parts 140 to 199, \"Revised as of October 1,",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "aca_155_260.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/privacy/aca_155_260/aca_155_260_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
