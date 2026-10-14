@@ -1,0 +1,621 @@
+{
+ "catalog": {
+  "uuid": "3241ddc3-51af-50c5-ad93-549b9f1fbcd1",
+  "metadata": {
+   "title": "Rego Policy Libraries — ftc_red_flags (FTC Identity Theft Red Flags Rule (16 CFR 681.1) and Disposal Rule (16 CFR 682.3) — obligations attested)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "ftc_red_flags"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "ftc_red_flags-ftc_red_flags_main",
+    "class": "rego-module",
+    "title": "FTC Identity Theft Red Flags Rule (16 CFR 681.1) and Disposal Rule (16 CFR 682.3) — obligations attested",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ftc_red_flags.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/financial/ftc_red_flags/ftc_red_flags_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "ftc_red_flags-681.1-c",
+      "title": "Each financial institution or creditor must periodically determine whether it offers or maintains covered accounts. As a part of this determination, a financial institution or creditor must conduct a ",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-c_stmt",
+        "name": "statement",
+        "prose": "Each financial institution or creditor must periodically determine whether it offers or maintains covered accounts. As a part of this determination, a financial institution or creditor must conduct a risk assessment to determine whether it offers or maintains covered accounts described in paragraph (b)(3)(ii) of this section, taking into consideration: (1) The methods it provides to open its accounts; (2) The methods it provides to access its accounts; and (3) Its previous experiences with identity theft."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-d-1",
+      "title": "Each financial institution or creditor that offers or maintains one or more covered accounts must develop and implement a written Identity Theft Prevention Program (Program) that is designed to detect",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(d)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(d)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-d-1_stmt",
+        "name": "statement",
+        "prose": "Each financial institution or creditor that offers or maintains one or more covered accounts must develop and implement a written Identity Theft Prevention Program (Program) that is designed to detect, prevent, and mitigate identity theft in connection with the opening of a covered account or any existing covered account. The Program must be appropriate to the size and complexity of the financial institution or creditor and the nature and scope of its activities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-d-2-i",
+      "title": "Identify relevant Red Flags for the covered accounts that the financial institution or creditor offers or maintains, and incorporate those Red Flags into its Program;",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(d)(2)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(d)(2)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-d-2-i_stmt",
+        "name": "statement",
+        "prose": "Identify relevant Red Flags for the covered accounts that the financial institution or creditor offers or maintains, and incorporate those Red Flags into its Program;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-d-2-ii",
+      "title": "Detect Red Flags that have been incorporated into the Program of the financial institution or creditor;",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(d)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(d)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-d-2-ii_stmt",
+        "name": "statement",
+        "prose": "Detect Red Flags that have been incorporated into the Program of the financial institution or creditor;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-d-2-iii",
+      "title": "Respond appropriately to any Red Flags that are detected pursuant to paragraph (d)(2)(ii) of this section to prevent and mitigate identity theft; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(d)(2)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(d)(2)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-d-2-iii_stmt",
+        "name": "statement",
+        "prose": "Respond appropriately to any Red Flags that are detected pursuant to paragraph (d)(2)(ii) of this section to prevent and mitigate identity theft; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-d-2-iv",
+      "title": "Ensure the Program (including the Red Flags determined to be relevant) is updated periodically, to reflect changes in risks to customers and to the safety and soundness of the financial institution or",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(d)(2)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(d)(2)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-d-2-iv_stmt",
+        "name": "statement",
+        "prose": "Ensure the Program (including the Red Flags determined to be relevant) is updated periodically, to reflect changes in risks to customers and to the safety and soundness of the financial institution or creditor from identity theft."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-e-1",
+      "title": "Obtain approval of the initial written Program from either its board of directors or an appropriate committee of the board of directors;",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-e-1_stmt",
+        "name": "statement",
+        "prose": "Obtain approval of the initial written Program from either its board of directors or an appropriate committee of the board of directors;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-e-2",
+      "title": "Involve the board of directors, an appropriate committee thereof, or a designated employee at the level of senior management in the oversight, development, implementation and administration of the Pro",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(e)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(e)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-e-2_stmt",
+        "name": "statement",
+        "prose": "Involve the board of directors, an appropriate committee thereof, or a designated employee at the level of senior management in the oversight, development, implementation and administration of the Program;"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-e-3",
+      "title": "Train staff, as necessary, to effectively implement the Program; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(e)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(e)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-e-3_stmt",
+        "name": "statement",
+        "prose": "Train staff, as necessary, to effectively implement the Program; and"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-e-4",
+      "title": "Exercise appropriate and effective oversight of service provider arrangements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(e)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(e)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-e-4_stmt",
+        "name": "statement",
+        "prose": "Exercise appropriate and effective oversight of service provider arrangements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-681.1-f",
+      "title": "Each financial institution or creditor that is required to implement a Program must consider the guidelines in appendix A of this part and include in its Program those guidelines that are appropriate.",
+      "props": [
+       {
+        "name": "label",
+        "value": "681.1(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "681.1(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-681.1-f_stmt",
+        "name": "statement",
+        "prose": "Each financial institution or creditor that is required to implement a Program must consider the guidelines in appendix A of this part and include in its Program those guidelines that are appropriate."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-682.3-a",
+      "title": "Any person who maintains or otherwise possesses consumer information for a business purpose must properly dispose of such information by taking reasonable measures to protect against unauthorized acce",
+      "props": [
+       {
+        "name": "label",
+        "value": "682.3(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "682.3(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-682.3-a_stmt",
+        "name": "statement",
+        "prose": "Any person who maintains or otherwise possesses consumer information for a business purpose must properly dispose of such information by taking reasonable measures to protect against unauthorized access to or use of the information in connection with its disposal."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-ftc_red_flags.main-1",
+      "title": "FTC Red Flags/Disposal Rules: FAIL-CLOSED - attestations 'input.ftc_red_flags.obligations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "ftc_red_flags.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ftc_red_flags.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-ftc_red_flags.main-1_stmt",
+        "name": "statement",
+        "prose": "FTC Red Flags/Disposal Rules: FAIL-CLOSED - attestations 'input.ftc_red_flags.obligations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-ftc_red_flags.main-2",
+      "title": "%v (ftc_red_flags.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ftc_red_flags.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ftc_red_flags.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-ftc_red_flags.main-2_stmt",
+        "name": "statement",
+        "prose": "%v (ftc_red_flags.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-ftc_red_flags.main-3",
+      "title": "16 CFR %v (%v): not attested — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "ftc_red_flags.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ftc_red_flags.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-ftc_red_flags.main-3_stmt",
+        "name": "statement",
+        "prose": "16 CFR %v (%v): not attested — %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "ftc_red_flags-ftc_red_flags.main-4",
+      "title": "FTC Red Flags/Disposal Input Contract: attestation for unknown id %v — ids are paragraphs such as 681.1(d)(2)(i) or 682.3(a)",
+      "props": [
+       {
+        "name": "label",
+        "value": "ftc_red_flags.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ftc_red_flags.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "ftc_red_flags.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9079d33e-1e6f-5abc-9fc4-2716cf568911",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "ftc_red_flags-ftc_red_flags.main-4_stmt",
+        "name": "statement",
+        "prose": "FTC Red Flags/Disposal Input Contract: attestation for unknown id %v — ids are paragraphs such as 681.1(d)(2)(i) or 682.3(a)"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "9079d33e-1e6f-5abc-9fc4-2716cf568911",
+     "title": "FTC Identity Theft Red Flags Rule (16 CFR 681.1) and Disposal Rule (16 CFR 682.3) — obligations attested",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "ftc_red_flags.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/financial/ftc_red_flags/ftc_red_flags_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

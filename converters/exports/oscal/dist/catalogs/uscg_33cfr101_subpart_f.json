@@ -1,0 +1,3657 @@
+{
+ "catalog": {
+  "uuid": "6728c713-ec80-5a7e-84f0-a35df9550ed3",
+  "metadata": {
+   "title": "Rego Policy Libraries — uscg_33cfr101_subpart_f (Source of truth: U.S. Government Publishing Office, Code of Federal Regulations annual edition, bulk XML)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "uscg_33cfr101_subpart_f"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "uscg_33cfr101_subpart_f-maritime_33cfr101f_main",
+    "class": "rego-module",
+    "title": "Source of truth: U.S. Government Publishing Office, Code of Federal Regulations annual edition, bulk XML",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "maritime_33cfr101f.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/critical_infrastructure/maritime_33cfr101f/maritime_33cfr101f_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "ot"
+     }
+    ],
+    "controls": [
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-a",
+      "title": "Each owner or operator of a U.S.-flagged vessel, facility, or OCS facility is responsible for compliance with the requirements of this subpart.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-a_stmt",
+        "name": "statement",
+        "prose": "Each owner or operator of a U.S.-flagged vessel, facility, or OCS facility is responsible for compliance with the requirements of this subpart."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-1",
+      "title": "Ensure a Cybersecurity Plan is developed, approved, and maintained;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-1_stmt",
+        "name": "statement",
+        "prose": "Ensure a Cybersecurity Plan is developed, approved, and maintained;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-2",
+      "title": "Define in Section 1 of the Cybersecurity Plan the cybersecurity organizational structure and identify each person exercising cybersecurity duties and responsibilities within that structure, with the s",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-2_stmt",
+        "name": "statement",
+        "prose": "Define in Section 1 of the Cybersecurity Plan the cybersecurity organizational structure and identify each person exercising cybersecurity duties and responsibilities within that structure, with the support needed to fulfill those obligations;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-3",
+      "title": "Designate, in writing, by name and by title, a Cybersecurity Officer (CySO) who is accessible to the Coast Guard 24 hours a day, 7 days a week, and identify how the CySO can be contacted at any time;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-3_stmt",
+        "name": "statement",
+        "prose": "Designate, in writing, by name and by title, a Cybersecurity Officer (CySO) who is accessible to the Coast Guard 24 hours a day, 7 days a week, and identify how the CySO can be contacted at any time;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-4",
+      "title": "Ensure that cybersecurity exercises, audits, and inspections, as well as the Cybersecurity Assessment, are conducted as required by this part and in accordance with the Cybersecurity Plan (see § 101.6",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-4_stmt",
+        "name": "statement",
+        "prose": "Ensure that cybersecurity exercises, audits, and inspections, as well as the Cybersecurity Assessment, are conducted as required by this part and in accordance with the Cybersecurity Plan (see § 101.625(d)(1), (3), (6) and (7));"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-5",
+      "title": "Ensure that the U.S.-flagged vessel, facility, or OCS facility operates in compliance with the approved Cybersecurity Plan;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-5_stmt",
+        "name": "statement",
+        "prose": "Ensure that the U.S.-flagged vessel, facility, or OCS facility operates in compliance with the approved Cybersecurity Plan;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-6",
+      "title": "Ensure the development, approval, and execution of the Cyber Incident Response Plan; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-6_stmt",
+        "name": "statement",
+        "prose": "Ensure the development, approval, and execution of the Cyber Incident Response Plan; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.620-b-7",
+      "title": "For entities that have not reported to the Coast Guard pursuant to, or are not subject to, 33 CFR 6.16-1, ensure all reportable cyber incidents are reported to the National Response Center (NRC).",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.620(b)(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.620(b)(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.620-b-7_stmt",
+        "name": "statement",
+        "prose": "For entities that have not reported to the Coast Guard pursuant to, or are not subject to, 33 CFR 6.16-1, ensure all reportable cyber incidents are reported to the National Response Center (NRC)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-b",
+      "title": "Serving as CySO for Multiple Vessels, Facilities, or OCS Facilities. The same person may serve as the CySO for more than one U.S.-flagged vessel, facility, or OCS facility. If a person serves as the C",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-b_stmt",
+        "name": "statement",
+        "prose": "Serving as CySO for Multiple Vessels, Facilities, or OCS Facilities. The same person may serve as the CySO for more than one U.S.-flagged vessel, facility, or OCS facility. If a person serves as the CySO for more than one U.S.-flagged vessel, facility, or OCS facility, the name of each U.S.-flagged vessel, facility, or OCS facility for which that person is the CySO must be listed in the Cybersecurity Plan of each U.S.-flagged vessel, facility, or OCS facility for which that person is the CySO."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-1",
+      "title": "Ensure that the Cybersecurity Assessment is conducted as required by this part;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-1_stmt",
+        "name": "statement",
+        "prose": "Ensure that the Cybersecurity Assessment is conducted as required by this part;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-2",
+      "title": "Ensure the cybersecurity measures in the Cybersecurity Plan are developed, implemented, and operating as intended;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-2_stmt",
+        "name": "statement",
+        "prose": "Ensure the cybersecurity measures in the Cybersecurity Plan are developed, implemented, and operating as intended;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-3",
+      "title": "Ensure that an annual audit of the Cybersecurity Plan and its implementation is conducted and, if necessary, ensure that the Cybersecurity Plan is updated;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-3_stmt",
+        "name": "statement",
+        "prose": "Ensure that an annual audit of the Cybersecurity Plan and its implementation is conducted and, if necessary, ensure that the Cybersecurity Plan is updated;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-4",
+      "title": "Ensure the Cyber Incident Response Plan is executed and exercised;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-4_stmt",
+        "name": "statement",
+        "prose": "Ensure the Cyber Incident Response Plan is executed and exercised;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-5",
+      "title": "Ensure the Cybersecurity Plan is exercised in accordance with § 101.635(c);",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-5_stmt",
+        "name": "statement",
+        "prose": "Ensure the Cybersecurity Plan is exercised in accordance with § 101.635(c);"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-6",
+      "title": "Arrange for cybersecurity inspections, which may be conducted as their own inspections, or in conjunction with any scheduled Coast Guard inspection of a U.S.-flagged vessel, facility, or OCS facility;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-6_stmt",
+        "name": "statement",
+        "prose": "Arrange for cybersecurity inspections, which may be conducted as their own inspections, or in conjunction with any scheduled Coast Guard inspection of a U.S.-flagged vessel, facility, or OCS facility;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-7",
+      "title": "Ensure the prompt correction of problems identified by exercises, audits, or inspections;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-7_stmt",
+        "name": "statement",
+        "prose": "Ensure the prompt correction of problems identified by exercises, audits, or inspections;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-8",
+      "title": "Enhance the cybersecurity awareness and vigilance of personnel;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(8)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(8)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-8_stmt",
+        "name": "statement",
+        "prose": "Enhance the cybersecurity awareness and vigilance of personnel;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-9",
+      "title": "Ensure adequate cybersecurity training of personnel;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(9)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(9)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-9_stmt",
+        "name": "statement",
+        "prose": "Ensure adequate cybersecurity training of personnel;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-10",
+      "title": "Ensure all reportable cyber incidents are recorded and reported to the owner or operator;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(10)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(10)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-10_stmt",
+        "name": "statement",
+        "prose": "Ensure all reportable cyber incidents are recorded and reported to the owner or operator;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-11",
+      "title": "Ensure that records required by this part are maintained in accordance with § 101.640;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(11)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(11)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-11_stmt",
+        "name": "statement",
+        "prose": "Ensure that records required by this part are maintained in accordance with § 101.640;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-12",
+      "title": "Ensure any reports as required by this part have been prepared and submitted;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(12)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(12)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-12_stmt",
+        "name": "statement",
+        "prose": "Ensure any reports as required by this part have been prepared and submitted;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-13",
+      "title": "Ensure that the Cybersecurity Plan, as well as proposed amendments to cybersecurity measures included in the Plan, are submitted for approval to the cognizant COTP or the Officer in Charge, Marine Ins",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(13)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(13)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-13_stmt",
+        "name": "statement",
+        "prose": "Ensure that the Cybersecurity Plan, as well as proposed amendments to cybersecurity measures included in the Plan, are submitted for approval to the cognizant COTP or the Officer in Charge, Marine Inspections (OCMI) for facilities or OCS facilities, or to the Marine Safety Center (MSC) for U.S.-flagged vessels, prior to amending the Cybersecurity Plan, in accordance with § 101.630;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-14",
+      "title": "Ensure relevant security and management personnel are briefed regarding changes in cybersecurity conditions on board the U.S.-flagged vessel, facility, or OCS facility; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(14)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(14)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-14_stmt",
+        "name": "statement",
+        "prose": "Ensure relevant security and management personnel are briefed regarding changes in cybersecurity conditions on board the U.S.-flagged vessel, facility, or OCS facility; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-d-15",
+      "title": "Ensure identification and mitigation of all KEVs in critical IT or OT systems, without delay.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(d)(15)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(d)(15)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-d-15_stmt",
+        "name": "statement",
+        "prose": "Ensure identification and mitigation of all KEVs in critical IT or OT systems, without delay."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.625-e",
+      "title": "Qualifications. The CySO must have general knowledge, through training, education, or equivalent job experience, in the following:",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.625(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.625(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.625-e_stmt",
+        "name": "statement",
+        "prose": "Qualifications. The CySO must have general knowledge, through training, education, or equivalent job experience, in the following:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-a",
+      "title": "General. The CySO must develop, implement, and verify a Cybersecurity Plan for U.S.-flagged vessels, facilities, or OCS facilities. The Cybersecurity Plan must reflect all cybersecurity measures requi",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-a_stmt",
+        "name": "statement",
+        "prose": "General. The CySO must develop, implement, and verify a Cybersecurity Plan for U.S.-flagged vessels, facilities, or OCS facilities. The Cybersecurity Plan must reflect all cybersecurity measures required in this subpart, as appropriate, to mitigate risks identified during the Cybersecurity Assessment. The Plan must describe in detail how the requirements of subpart F will be met. The Cybersecurity Plan may be included in a VSP, FSP, or an OCS FSP; as an annex to the VSP, FSP, or OCS FSP; as part of an approved Alternative Security Program; or may be provided in a separate submission from the VSP, FSP, or OCS FSP."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-b",
+      "title": "Protecting sensitive security information. The Cybersecurity Plan is sensitive security information and must be protected in accordance with 49 CFR part 1520.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-b_stmt",
+        "name": "statement",
+        "prose": "Protecting sensitive security information. The Cybersecurity Plan is sensitive security information and must be protected in accordance with 49 CFR part 1520."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-c",
+      "title": "Format. The owner or operator must ensure that the Cybersecurity Plan consists of the individual sections listed in this paragraph. If the Cybersecurity Plan does not follow the order as it appears on",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-c_stmt",
+        "name": "statement",
+        "prose": "Format. The owner or operator must ensure that the Cybersecurity Plan consists of the individual sections listed in this paragraph. If the Cybersecurity Plan does not follow the order as it appears on the list, the owner or operator must ensure that the Plan contains an index identifying the location of each of the following sections:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-d",
+      "title": "Submission and approval. Each owner or operator must submit one copy of their Cybersecurity Plan for review and approval to the cognizant COTP or the OCMI for a facility or OCS facility, or to the MSC",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-d_stmt",
+        "name": "statement",
+        "prose": "Submission and approval. Each owner or operator must submit one copy of their Cybersecurity Plan for review and approval to the cognizant COTP or the OCMI for a facility or OCS facility, or to the MSC for a U.S.-flagged vessel."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-d-2",
+      "title": "Owners or operators submitting one Cybersecurity Plan to cover two or more U.S.-flagged vessels, facilities, or OCS facilities of similar operations must ensure the Plan addresses the specific cyberse",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(d)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(d)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-d-2_stmt",
+        "name": "statement",
+        "prose": "Owners or operators submitting one Cybersecurity Plan to cover two or more U.S.-flagged vessels, facilities, or OCS facilities of similar operations must ensure the Plan addresses the specific cybersecurity risks for each U.S.-flagged vessel, facility, or OCS facility."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-e-1",
+      "title": "Amendments to a Coast Guard-approved Cybersecurity Plan must be initiated by either—",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-e-1_stmt",
+        "name": "statement",
+        "prose": "Amendments to a Coast Guard-approved Cybersecurity Plan must be initiated by either—"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-e-1-ii",
+      "title": "When the COTP, OCMI, or MSC finds that the Cybersecurity Plan no longer meets the requirements in this part, the Plan will be returned to the owner or operator with a letter explaining why the Plan no",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(e)(1)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(e)(1)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-e-1-ii_stmt",
+        "name": "statement",
+        "prose": "When the COTP, OCMI, or MSC finds that the Cybersecurity Plan no longer meets the requirements in this part, the Plan will be returned to the owner or operator with a letter explaining why the Plan no longer meets the requirements and requires amendment. The owner or operator will have at least 60 days to submit its proposed amendments. Until the amendments are approved, the owner or operator must ensure temporary cybersecurity measures are implemented to the satisfaction of the Coast Guard."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-e-2",
+      "title": "Proposed amendments to the Cybersecurity Plan must be sent to the Coast Guard at least 30 days before the proposed amendment's effective date. The Coast Guard will approve or disapprove the proposed a",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(e)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(e)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-e-2_stmt",
+        "name": "statement",
+        "prose": "Proposed amendments to the Cybersecurity Plan must be sent to the Coast Guard at least 30 days before the proposed amendment's effective date. The Coast Guard will approve or disapprove the proposed amendment in accordance with this part."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-e-2-ii",
+      "title": "In such cases, the owner or operator must notify the cognizant COTP for a facility or OCS facility, or the MSC for U.S.-flagged vessels, by the most rapid means practicable as to the nature of the add",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(e)(2)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(e)(2)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-e-2-ii_stmt",
+        "name": "statement",
+        "prose": "In such cases, the owner or operator must notify the cognizant COTP for a facility or OCS facility, or the MSC for U.S.-flagged vessels, by the most rapid means practicable as to the nature of the additional measures, the circumstances that prompted these additional measures, and the period of time these additional measures are expected to be in place."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-e-3",
+      "title": "If the owner or operator has changed, the CySO must amend the Cybersecurity Plan as soon as reasonably practicable in light of the individual circumstances, but, in any case, not longer than 96 hours,",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(e)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(e)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-e-3_stmt",
+        "name": "statement",
+        "prose": "If the owner or operator has changed, the CySO must amend the Cybersecurity Plan as soon as reasonably practicable in light of the individual circumstances, but, in any case, not longer than 96 hours, to include the name and contact information of the new owner or operator and submit the affected portion of the Plan for review and approval in accordance with this part."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-e-4",
+      "title": "If the CySO has changed, the Coast Guard must be notified as soon as reasonably practicable in light of the individual circumstances, but, in any case, not longer than 96 hours, and the affected porti",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(e)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(e)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-e-4_stmt",
+        "name": "statement",
+        "prose": "If the CySO has changed, the Coast Guard must be notified as soon as reasonably practicable in light of the individual circumstances, but, in any case, not longer than 96 hours, and the affected portion of the Cybersecurity Plan must be amended and submitted to the Coast Guard for review and approval in accordance with this part as soon as reasonably practicable in light of the individual circumstances, but, in any case, not longer than 96 hours."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-f-1",
+      "title": "The CySO must ensure that an audit of the Cybersecurity Plan and its implementation is performed annually, beginning no later than 1 year from the initial date of approval. The CySO must attach a repo",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(f)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(f)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-f-1_stmt",
+        "name": "statement",
+        "prose": "The CySO must ensure that an audit of the Cybersecurity Plan and its implementation is performed annually, beginning no later than 1 year from the initial date of approval. The CySO must attach a report to the Plan certifying that the Plan meets the applicable requirements of this subpart."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-f-2",
+      "title": "In addition to the annual audit, the CySO must ensure that an audit of the Cybersecurity Plan occurs if there is a change in the owner or operator of the U.S.-flagged vessel, facility, or OCS facility",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(f)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(f)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-f-2_stmt",
+        "name": "statement",
+        "prose": "In addition to the annual audit, the CySO must ensure that an audit of the Cybersecurity Plan occurs if there is a change in the owner or operator of the U.S.-flagged vessel, facility, or OCS facility, or if there have been modifications to the cybersecurity measures, including, but not limited to, physical access, incident response procedures, security measures, or operations."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-f-4",
+      "title": "Personnel conducting internal audits of the cybersecurity measures specified in the Plan or evaluating its implementation must—",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(f)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(f)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-f-4_stmt",
+        "name": "statement",
+        "prose": "Personnel conducting internal audits of the cybersecurity measures specified in the Plan or evaluating its implementation must—"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.630-f-5",
+      "title": "If the results of an audit require amending the Cybersecurity Plan, the CySO must submit, in accordance with this part, the amendments to the Coast Guard for review and approval no later than 30 days ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.630(f)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.630(f)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.630-f-5_stmt",
+        "name": "statement",
+        "prose": "If the results of an audit require amending the Cybersecurity Plan, the CySO must submit, in accordance with this part, the amendments to the Coast Guard for review and approval no later than 30 days after completion of the audit."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-a-1",
+      "title": "Drills and exercises must be used to test the proficiency of the U.S.-flagged vessel, facility, and OCS facility personnel in assigned cybersecurity duties and the effective implementation of the VSP,",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-a-1_stmt",
+        "name": "statement",
+        "prose": "Drills and exercises must be used to test the proficiency of the U.S.-flagged vessel, facility, and OCS facility personnel in assigned cybersecurity duties and the effective implementation of the VSP, FSP, OCS FSP, and Cybersecurity Plan. The drills and exercises must enable the CySO to identify any related cybersecurity deficiencies that need to be addressed."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-b-1",
+      "title": "The CySO must ensure that cybersecurity drills are conducted at least twice each calendar year. Cybersecurity drills may be held in conjunction with other security or non-security drills, as required ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-b-1_stmt",
+        "name": "statement",
+        "prose": "The CySO must ensure that cybersecurity drills are conducted at least twice each calendar year. Cybersecurity drills may be held in conjunction with other security or non-security drills, as required by 33 CFR 104.230, 105.220, or 106.225, where appropriate."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-b-2",
+      "title": "Drills must test individual elements of the Cybersecurity Plan, including responses to cybersecurity threats and incidents. Cybersecurity drills must take into account the types of operations of the U",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-b-2_stmt",
+        "name": "statement",
+        "prose": "Drills must test individual elements of the Cybersecurity Plan, including responses to cybersecurity threats and incidents. Cybersecurity drills must take into account the types of operations of the U.S.-flagged vessel, facility, or OCS facility; changes to the U.S.-flagged vessel, facility, or OCS facility personnel; the type of vessel a facility is serving; and other relevant circumstances."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-b-3",
+      "title": "If a vessel is moored at a facility on a date a facility has planned to conduct any drills, the facility cannot require the vessel or vessel personnel to be a part of or participate in the facility's ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(b)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(b)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-b-3_stmt",
+        "name": "statement",
+        "prose": "If a vessel is moored at a facility on a date a facility has planned to conduct any drills, the facility cannot require the vessel or vessel personnel to be a part of or participate in the facility's scheduled drill."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-c-1",
+      "title": "Exercises must be conducted at least once each calendar year, with no more than 18 months between exercises.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-c-1_stmt",
+        "name": "statement",
+        "prose": "Exercises must be conducted at least once each calendar year, with no more than 18 months between exercises."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-c-4",
+      "title": "Each exercise must test communication and notification procedures and elements of coordination, resource availability, and response.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(c)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(c)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-c-4_stmt",
+        "name": "statement",
+        "prose": "Each exercise must test communication and notification procedures and elements of coordination, resource availability, and response."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-c-5",
+      "title": "Exercises are a full test of the cybersecurity program and must include the substantial and active participation of the CySO(s).",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(c)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(c)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-c-5_stmt",
+        "name": "statement",
+        "prose": "Exercises are a full test of the cybersecurity program and must include the substantial and active participation of the CySO(s)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.635-c-6",
+      "title": "If any corrective action identified during an exercise is needed, it must be addressed and documented as soon as possible.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.635(c)(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.635(c)(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.635-c-6_stmt",
+        "name": "statement",
+        "prose": "If any corrective action identified during an exercise is needed, it must be addressed and documented as soon as possible."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.640",
+      "title": "All records, reports, and other documents mentioned in this subpart must be created and maintained in accordance with 33 CFR 104.235 for U.S.-flagged vessels, 105.225 for facilities, and 106.230 for O",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.640"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.640"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.640_stmt",
+        "name": "statement",
+        "prose": "All records, reports, and other documents mentioned in this subpart must be created and maintained in accordance with 33 CFR 104.235 for U.S.-flagged vessels, 105.225 for facilities, and 106.230 for OCS facilities. At a minimum, the records must be created for the following activities: training, drills, exercises, cybersecurity threats, reportable cyber incidents, and audits of the Cybersecurity Plan."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.645-a",
+      "title": "The CySO must have a means to effectively notify owners or operators and personnel of a U.S.-flagged vessel, facility, or OCS facility of changes in cybersecurity conditions at the U.S.-flagged vessel",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.645(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.645(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.645-a_stmt",
+        "name": "statement",
+        "prose": "The CySO must have a means to effectively notify owners or operators and personnel of a U.S.-flagged vessel, facility, or OCS facility of changes in cybersecurity conditions at the U.S.-flagged vessel, facility, and OCS facility and document these means in Section 5 of the Cybersecurity Plan."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.645-b",
+      "title": "Communication systems and procedures must allow effective and continuous communications between U.S.-flagged vessel, facility, and OCS facility security personnel, vessels interfacing with a facility ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.645(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.645(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.645-b_stmt",
+        "name": "statement",
+        "prose": "Communication systems and procedures must allow effective and continuous communications between U.S.-flagged vessel, facility, and OCS facility security personnel, vessels interfacing with a facility or an OCS facility, the cognizant COTP, and national and local authorities with security responsibilities."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a",
+      "title": "Account security measures. Each owner or operator of a U.S.-flagged vessel, facility, or OCS facility must ensure, at a minimum, the following account security measures are in place and documented in ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a_stmt",
+        "name": "statement",
+        "prose": "Account security measures. Each owner or operator of a U.S.-flagged vessel, facility, or OCS facility must ensure, at a minimum, the following account security measures are in place and documented in Section 7 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-1",
+      "title": "Automatic account lockout after repeated failed login attempts must be enabled on all password-protected IT systems;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-1_stmt",
+        "name": "statement",
+        "prose": "Automatic account lockout after repeated failed login attempts must be enabled on all password-protected IT systems;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-2",
+      "title": "Default passwords must be changed before using any IT or OT systems. When changing default passwords is not feasible, appropriate compensating security controls must be implemented and documented;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-2_stmt",
+        "name": "statement",
+        "prose": "Default passwords must be changed before using any IT or OT systems. When changing default passwords is not feasible, appropriate compensating security controls must be implemented and documented;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-3",
+      "title": "A minimum password strength must be maintained on all IT and OT systems that are technically capable of password protection;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-3_stmt",
+        "name": "statement",
+        "prose": "A minimum password strength must be maintained on all IT and OT systems that are technically capable of password protection;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-4",
+      "title": "Multifactor authentication must be implemented on password-protected IT and remotely accessible OT systems. When multifactor authentication is not feasible, appropriate compensating security controls ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-4_stmt",
+        "name": "statement",
+        "prose": "Multifactor authentication must be implemented on password-protected IT and remotely accessible OT systems. When multifactor authentication is not feasible, appropriate compensating security controls must be implemented and documented;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-5",
+      "title": "The principle of least privilege must be applied to administrator or otherwise privileged accounts on both IT and OT systems;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-5_stmt",
+        "name": "statement",
+        "prose": "The principle of least privilege must be applied to administrator or otherwise privileged accounts on both IT and OT systems;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-6",
+      "title": "The owner or operator must ensure that users maintain separate credentials on critical IT and OT systems; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-6_stmt",
+        "name": "statement",
+        "prose": "The owner or operator must ensure that users maintain separate credentials on critical IT and OT systems; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-a-7",
+      "title": "The owner or operator must ensure that user credentials are removed or revoked when a user leaves the organization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(a)(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(a)(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-a-7_stmt",
+        "name": "statement",
+        "prose": "The owner or operator must ensure that user credentials are removed or revoked when a user leaves the organization."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-b",
+      "title": "Device security measures. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following device security measures are in place, addressed in Se",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-b_stmt",
+        "name": "statement",
+        "prose": "Device security measures. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following device security measures are in place, addressed in Section 6 of the Cybersecurity Plan, and made available to the Coast Guard upon request:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-b-1",
+      "title": "Develop and maintain a list of approved hardware, firmware, and software that may be installed on IT or OT systems. Any hardware, firmware, and software installed on IT and OT systems must be on the o",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(b)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(b)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-b-1_stmt",
+        "name": "statement",
+        "prose": "Develop and maintain a list of approved hardware, firmware, and software that may be installed on IT or OT systems. Any hardware, firmware, and software installed on IT and OT systems must be on the owner- or operator-approved list;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-b-2",
+      "title": "Ensure applications running executable code are disabled by default on critical IT and OT systems;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(b)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(b)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-b-2_stmt",
+        "name": "statement",
+        "prose": "Ensure applications running executable code are disabled by default on critical IT and OT systems;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-b-3",
+      "title": "Maintain an accurate inventory of network-connected systems, including designation of critical IT and OT systems; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(b)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(b)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-b-3_stmt",
+        "name": "statement",
+        "prose": "Maintain an accurate inventory of network-connected systems, including designation of critical IT and OT systems; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-b-4",
+      "title": "Develop and maintain accurate documentation identifying the network map and OT device configuration information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(b)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(b)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-b-4_stmt",
+        "name": "statement",
+        "prose": "Develop and maintain accurate documentation identifying the network map and OT device configuration information."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-c",
+      "title": "Data security measures. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following data security measures are in place and documented in Se",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(c)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(c)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-c_stmt",
+        "name": "statement",
+        "prose": "Data security measures. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following data security measures are in place and documented in Section 4 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-c-1",
+      "title": "Logs must be securely captured, stored, and protected so that they are accessible only by privileged users; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(c)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(c)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-c-1_stmt",
+        "name": "statement",
+        "prose": "Logs must be securely captured, stored, and protected so that they are accessible only by privileged users; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-c-2",
+      "title": "Effective encryption must be deployed to maintain confidentiality of sensitive data and integrity of IT and OT traffic, when technically feasible.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(c)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(c)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-c-2_stmt",
+        "name": "statement",
+        "prose": "Effective encryption must be deployed to maintain confidentiality of sensitive data and integrity of IT and OT traffic, when technically feasible."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-d",
+      "title": "Cybersecurity training for personnel. The training program to address requirements under this paragraph must be documented in Sections 2 and 4 of the Cybersecurity Plan.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(d)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(d)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-d_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity training for personnel. The training program to address requirements under this paragraph must be documented in Sections 2 and 4 of the Cybersecurity Plan."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-d-1",
+      "title": "All personnel with access to the IT or OT systems, including contractors, whether part-time, full-time, temporary, or permanent, must have cybersecurity training in the following topics:",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(d)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(d)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-d-1_stmt",
+        "name": "statement",
+        "prose": "All personnel with access to the IT or OT systems, including contractors, whether part-time, full-time, temporary, or permanent, must have cybersecurity training in the following topics:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-d-2",
+      "title": "Key personnel with access to the IT or remotely accessible OT systems, including contractors, whether part-time, full-time, temporary, or permanent, must also have cybersecurity training in the follow",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(d)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(d)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-d-2_stmt",
+        "name": "statement",
+        "prose": "Key personnel with access to the IT or remotely accessible OT systems, including contractors, whether part-time, full-time, temporary, or permanent, must also have cybersecurity training in the following additional topics:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-d-3",
+      "title": "When personnel must access IT or OT systems but are unable to receive cybersecurity training as specified in paragraphs (d)(1) and (2) of this section, they must be accompanied or monitored by a perso",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(d)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(d)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-d-3_stmt",
+        "name": "statement",
+        "prose": "When personnel must access IT or OT systems but are unable to receive cybersecurity training as specified in paragraphs (d)(1) and (2) of this section, they must be accompanied or monitored by a person who has completed the training specified in paragraphs (d)(1) and (2) of this section."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-d-4",
+      "title": "All personnel must complete the training specified in paragraphs (d)(1)(ii) through (v) of this section by January 12, 2026, and annually thereafter. Key personnel must complete the training specified",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(d)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(d)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-d-4_stmt",
+        "name": "statement",
+        "prose": "All personnel must complete the training specified in paragraphs (d)(1)(ii) through (v) of this section by January 12, 2026, and annually thereafter. Key personnel must complete the training specified in paragraph (d)(2) of this section by January 12, 2026, and annually thereafter, or more frequently as needed. Training for new personnel not in place at the time of the effective date of this rule must be completed within 5 days of gaining system access, but no later than within 30 days of hiring, and annually thereafter. Training for personnel on new IT or OT systems not in place at the time of the effective date of this rule must be completed within 5 days of system access, and annually thereafter. All personnel must complete the training specified in paragraph (d)(1)(i) within 60 days of receiving approval of the Cybersecurity Plan. The training must be documented and maintained in the owner's or operator's records in accordance with 33 CFR 104.235 for U.S.-flagged vessels, 105.225 for facilities, and 106.230 for OCS facilities."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e",
+      "title": "Risk management. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for risk management are in place and documented in Sec",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e_stmt",
+        "name": "statement",
+        "prose": "Risk management. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for risk management are in place and documented in Sections 11 and 12 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-1",
+      "title": "Cybersecurity Assessment. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure completion of a Cybersecurity Assessment that addresses each covered",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-1_stmt",
+        "name": "statement",
+        "prose": "Cybersecurity Assessment. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure completion of a Cybersecurity Assessment that addresses each covered U.S.-flagged vessel, facility, and OCS facility. A Cybersecurity Assessment must be conducted no later than July 16, 2027, and annually thereafter. However, the Cybersecurity Assessment must be conducted sooner than annually if there is a change in ownership of a U.S.-flagged vessel, facility, or OCS facility. In conducting the Cybersecurity Assessment, the owner or operator must—"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-1-i",
+      "title": "Analyze all networks to identify vulnerabilities to critical IT and OT systems and the risk posed by each digital asset;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(1)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(1)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-1-i_stmt",
+        "name": "statement",
+        "prose": "Analyze all networks to identify vulnerabilities to critical IT and OT systems and the risk posed by each digital asset;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-1-ii",
+      "title": "Validate the Cybersecurity Plan;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(1)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(1)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-1-ii_stmt",
+        "name": "statement",
+        "prose": "Validate the Cybersecurity Plan;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-1-iii",
+      "title": "Document recommendations and resolutions in the Vessel Security Assessment (VSA), Facility Security Assessment (FSA), or OCS FSA, in accordance with 33 CFR 104.305, 105.305, and 106.305;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(1)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(1)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-1-iii_stmt",
+        "name": "statement",
+        "prose": "Document recommendations and resolutions in the Vessel Security Assessment (VSA), Facility Security Assessment (FSA), or OCS FSA, in accordance with 33 CFR 104.305, 105.305, and 106.305;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-1-iv",
+      "title": "Document and ensure patching or implementing of documented compensating controls for all KEVs in critical IT or OT systems, without delay; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(1)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(1)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-1-iv_stmt",
+        "name": "statement",
+        "prose": "Document and ensure patching or implementing of documented compensating controls for all KEVs in critical IT or OT systems, without delay; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-1-v",
+      "title": "Incorporate recommendations and resolutions from paragraph (e)(1)(iii) of this section into the Cybersecurity Plan through an amendment, in accordance with § 101.630(e).",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(1)(v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(1)(v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-1-v_stmt",
+        "name": "statement",
+        "prose": "Incorporate recommendations and resolutions from paragraph (e)(1)(iii) of this section into the Cybersecurity Plan through an amendment, in accordance with § 101.630(e)."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-2",
+      "title": "Penetration testing. In conjunction with Cybersecurity Plan renewal, the owner, operator, or designated CySO must ensure that a penetration test has been completed. Following the penetration test, a l",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-2_stmt",
+        "name": "statement",
+        "prose": "Penetration testing. In conjunction with Cybersecurity Plan renewal, the owner, operator, or designated CySO must ensure that a penetration test has been completed. Following the penetration test, a letter certifying that the test was conducted, as well as all identified vulnerabilities, must be included in the VSA, FSA, or OCS FSA, in accordance with 33 CFR 104.305, 105.305, and 106.305."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3",
+      "title": "Routine system maintenance. Each owner or operator or a designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for routine system maintenance are in pla",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3_stmt",
+        "name": "statement",
+        "prose": "Routine system maintenance. Each owner or operator or a designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for routine system maintenance are in place and documented in Section 6 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3-i",
+      "title": "Ensure patching or implementation of documented compensating controls for all KEVs in critical IT or OT systems, without delay;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3-i_stmt",
+        "name": "statement",
+        "prose": "Ensure patching or implementation of documented compensating controls for all KEVs in critical IT or OT systems, without delay;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3-ii",
+      "title": "Maintain a method to receive and act on publicly submitted vulnerabilities;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)(ii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)(ii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3-ii_stmt",
+        "name": "statement",
+        "prose": "Maintain a method to receive and act on publicly submitted vulnerabilities;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3-iii",
+      "title": "Maintain a method to share threat and vulnerability information with external stakeholders;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)(iii)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)(iii)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3-iii_stmt",
+        "name": "statement",
+        "prose": "Maintain a method to share threat and vulnerability information with external stakeholders;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3-iv",
+      "title": "Ensure there are no exploitable channels directly exposed to internet-accessible systems;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)(iv)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)(iv)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3-iv_stmt",
+        "name": "statement",
+        "prose": "Ensure there are no exploitable channels directly exposed to internet-accessible systems;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3-v",
+      "title": "Ensure no OT is connected to the publicly accessible internet unless explicitly required for operation, and verify that, for any remotely accessible OT system, there is a documented justification; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)(v)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)(v)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3-v_stmt",
+        "name": "statement",
+        "prose": "Ensure no OT is connected to the publicly accessible internet unless explicitly required for operation, and verify that, for any remotely accessible OT system, there is a documented justification; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-e-3-vi",
+      "title": "Conduct vulnerability scans as specified in the Cybersecurity Plan.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(e)(3)(vi)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(e)(3)(vi)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-e-3-vi_stmt",
+        "name": "statement",
+        "prose": "Conduct vulnerability scans as specified in the Cybersecurity Plan."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-f",
+      "title": "Supply chain. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following supply-chain measures are in place and documented in Section 4 of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(f)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(f)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-f_stmt",
+        "name": "statement",
+        "prose": "Supply chain. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following supply-chain measures are in place and documented in Section 4 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-f-1",
+      "title": "Consider cybersecurity capability as criteria for evaluation to procure IT and OT systems or services;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(f)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(f)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-f-1_stmt",
+        "name": "statement",
+        "prose": "Consider cybersecurity capability as criteria for evaluation to procure IT and OT systems or services;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-f-2",
+      "title": "Establish a process through which all IT and OT vendors or service providers notify the owner or operator or designated CySO of any cybersecurity vulnerabilities or reportable cyber incidents, without",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(f)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(f)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-f-2_stmt",
+        "name": "statement",
+        "prose": "Establish a process through which all IT and OT vendors or service providers notify the owner or operator or designated CySO of any cybersecurity vulnerabilities or reportable cyber incidents, without delay; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-f-3",
+      "title": "Monitor and document all third-party remote connections to detect cyber incidents.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(f)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(f)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-f-3_stmt",
+        "name": "statement",
+        "prose": "Monitor and document all third-party remote connections to detect cyber incidents."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-g",
+      "title": "Resilience. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for resilience are in place and documented in Sections 3 an",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(g)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(g)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-g_stmt",
+        "name": "statement",
+        "prose": "Resilience. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for resilience are in place and documented in Sections 3 and 9 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-g-1",
+      "title": "For entities that have not reported to the Coast Guard pursuant to, or not subject to, 33 CFR 6.16-1, report reportable cyber incidents to the NRC without delay;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(g)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(g)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-g-1_stmt",
+        "name": "statement",
+        "prose": "For entities that have not reported to the Coast Guard pursuant to, or not subject to, 33 CFR 6.16-1, report reportable cyber incidents to the NRC without delay;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-g-2",
+      "title": "In addition to other plans mentioned in this subpart, develop, implement, maintain, and exercise the Cyber Incident Response Plan;",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(g)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(g)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-g-2_stmt",
+        "name": "statement",
+        "prose": "In addition to other plans mentioned in this subpart, develop, implement, maintain, and exercise the Cyber Incident Response Plan;"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-g-3",
+      "title": "Periodically validate the effectiveness of the Cybersecurity Plan through annual exercises, annual reviews of incident response cases, or post-cyber incident review, as determined by the owner or oper",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(g)(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(g)(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-g-3_stmt",
+        "name": "statement",
+        "prose": "Periodically validate the effectiveness of the Cybersecurity Plan through annual exercises, annual reviews of incident response cases, or post-cyber incident review, as determined by the owner or operator; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-g-4",
+      "title": "Perform backup of critical IT and OT systems, with those backups being sufficiently protected and tested frequently.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(g)(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(g)(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-g-4_stmt",
+        "name": "statement",
+        "prose": "Perform backup of critical IT and OT systems, with those backups being sufficiently protected and tested frequently."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-h",
+      "title": "Network segmentation. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for network segmentation are in place and documen",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(h)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(h)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-h_stmt",
+        "name": "statement",
+        "prose": "Network segmentation. Each owner or operator or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for network segmentation are in place and documented in Sections 7 and 8 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-h-1",
+      "title": "Implement segmentation between IT and OT networks; and",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(h)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(h)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-h-1_stmt",
+        "name": "statement",
+        "prose": "Implement segmentation between IT and OT networks; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-h-2",
+      "title": "Verify that all connections between IT and OT systems are logged and monitored for suspicious activity, breaches of security, TSIs, unauthorized access, and cyber incidents.",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(h)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(h)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-h-2_stmt",
+        "name": "statement",
+        "prose": "Verify that all connections between IT and OT systems are logged and monitored for suspicious activity, breaches of security, TSIs, unauthorized access, and cyber incidents."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-i",
+      "title": "Physical security. Each owner, operator, or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for physical security are in place and documented in ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(i)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(i)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-i_stmt",
+        "name": "statement",
+        "prose": "Physical security. Each owner, operator, or designated CySO of a U.S.-flagged vessel, facility, or OCS facility must ensure the following measures for physical security are in place and documented in Sections 7 and 8 of the Cybersecurity Plan:"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-i-1",
+      "title": "In addition to any other requirements in this part, limit physical access to OT and related IT equipment to only authorized personnel, and confirm that all HMIs and other hardware are secured, monitor",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(i)(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(i)(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-i-1_stmt",
+        "name": "statement",
+        "prose": "In addition to any other requirements in this part, limit physical access to OT and related IT equipment to only authorized personnel, and confirm that all HMIs and other hardware are secured, monitored, and logged for personnel access; and"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.650-i-2",
+      "title": "Ensure unauthorized media and hardware are not connected to IT and OT infrastructure, including blocking, disabling, or removing unused physical access ports, and establishing procedures for granting ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.650(i)(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.650(i)(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.650-i-2_stmt",
+        "name": "statement",
+        "prose": "Ensure unauthorized media and hardware are not connected to IT and OT infrastructure, including blocking, disabling, or removing unused physical access ports, and establishing procedures for granting access on a by-exception basis."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.655",
+      "title": "All Cybersecurity Plans mentioned in this subpart must be submitted to the Coast Guard for review and approval no later than July 16, 2027, according to 33 CFR 104.410 for U.S.-flagged vessels, 33 CFR",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.655"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.655"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.655_stmt",
+        "name": "statement",
+        "prose": "All Cybersecurity Plans mentioned in this subpart must be submitted to the Coast Guard for review and approval no later than July 16, 2027, according to 33 CFR 104.410 for U.S.-flagged vessels, 33 CFR 105.410 for facilities, or 33 CFR 106.410 for OCS facilities."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.660",
+      "title": "Each owner or operator must ensure that the cybersecurity portion of their Plan and penetration test results are available to the Coast Guard upon request. The Alternative Security Program provisions ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.660"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.660"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.660_stmt",
+        "name": "statement",
+        "prose": "Each owner or operator must ensure that the cybersecurity portion of their Plan and penetration test results are available to the Coast Guard upon request. The Alternative Security Program provisions apply to cybersecurity compliance documentation and are addressed in 33 CFR 104.140 for vessels, 33 CFR 105.140 for facilities, and 33 CFR 106.135 for OCS facilities."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-101.665",
+      "title": "An owner or operator, after completion of the required Cybersecurity Assessment, may seek a waiver or an equivalence determination for the requirements in subpart F using the standards and submission ",
+      "props": [
+       {
+        "name": "label",
+        "value": "101.665"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "101.665"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-101.665_stmt",
+        "name": "statement",
+        "prose": "An owner or operator, after completion of the required Cybersecurity Assessment, may seek a waiver or an equivalence determination for the requirements in subpart F using the standards and submission procedures applicable to a U.S.-flagged vessel, facility, or OCS facility as outlined in 33 CFR 101.130, 104.130, 104.135, 105.130, 105.135, 106.125, or 106.130. If an owner or operator must temporarily deviate from the requirements in this part, they must notify the cognizant COTP for facilities or OCS facilities, or the MSC for U.S.-flagged vessels, and may request temporary permission to continue to operate under the provisions as outlined in 33 CFR 104.125, 105.125, or 106.120."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-33-CFR-101-Subpart-F",
+      "title": "FAIL-CLOSED - attestations 'input.maritime_33cfr101f.obligations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "33 CFR 101 Subpart F"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "33 CFR 101 Subpart F"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-33-CFR-101-Subpart-F_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - attestations 'input.maritime_33cfr101f.obligations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-maritime_33cfr101f.main-1",
+      "title": "33 CFR 101 Subpart F %v (%v): not attested — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "maritime_33cfr101f.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "maritime_33cfr101f.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-maritime_33cfr101f.main-1_stmt",
+        "name": "statement",
+        "prose": "33 CFR 101 Subpart F %v (%v): not attested — %v"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "uscg_33cfr101_subpart_f-33-CFR-101-Subpart-F-Input-Contract",
+      "title": "unknown id %v — ids are the CFR paragraph citations carried in this module, e.g. 101.650(a)(4)",
+      "props": [
+       {
+        "name": "label",
+        "value": "33 CFR 101 Subpart F Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "33 CFR 101 Subpart F Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "maritime_33cfr101f.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4377470-d15d-53cf-9f44-350a0bc50492",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uscg_33cfr101_subpart_f-33-CFR-101-Subpart-F-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "unknown id %v — ids are the CFR paragraph citations carried in this module, e.g. 101.650(a)(4)"
+       }
+      ],
+      "class": "ot"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "b4377470-d15d-53cf-9f44-350a0bc50492",
+     "title": "Source of truth: U.S. Government Publishing Office, Code of Federal Regulations annual edition, bulk XML",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "maritime_33cfr101f.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/critical_infrastructure/maritime_33cfr101f/maritime_33cfr101f_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

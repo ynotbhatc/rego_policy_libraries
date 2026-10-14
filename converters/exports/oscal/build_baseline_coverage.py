@@ -13,6 +13,7 @@ Mapping (library check -> 800-53 control id) uses exactly three sources and noth
                       so this source never covers an enhancement.
   label-is-800-53     a library control whose label is itself an 800-53 id (`AC-2`, `AC-2(1)`, same rule and family list as
                       crosswalk_csv spine_800_53.csv `library_controls`): `AC-2` -> ac-2, `AC-2(1)` -> ac-2.1.
+                      800-53 overlay catalogs (OVERLAY_CATALOGS, e.g. CMS MARS-E) are excluded: they restate the controls.
   nist-800-53-module  our own nist_sp_800_53 module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (= sc-7 and sc-8).
                       The `nist.sp800_53.access_control#N` rows are topic rows, not attributable to a control: excluded,
                       counted in the summary as excluded_topic_rows.
@@ -38,6 +39,8 @@ from build_profiles import SOURCES, CATALOG, with_ids  # noqa: E402
 
 FAMILIES = "AC|AT|AU|CA|CM|CP|IA|IR|MA|MP|PE|PL|PM|PS|PT|RA|SA|SC|SI|SR"  # same list as crosswalk_csv/build.py
 ID_800_53 = re.compile(rf"^(?:{FAMILIES})-[1-9]\d*(\([1-9]\d*\))?$")  # no leading zeros: BSI C5 "PS-01" is not 800-53 PS-1
+# 800-53 overlay catalogs restate 800-53 controls under the same ids; their rows say nothing about what the library checks
+OVERLAY_CATALOGS = {"cms_mars_e"}
 NIST_MODULE = re.compile(rf"^NIST ((?:{FAMILIES}))-(\d+(?:/\d+)*)(?:\((\d+)\))?$")
 TOPIC_ROW = re.compile(r"^nist\.sp800_53\.[a-z_]+#\d+$")
 HEADER = ["baseline_key", "control_id", "kind", "covered", "check_count", "checks", "sources"]
@@ -82,7 +85,7 @@ def build_mapping(cat_dir):
                     mp[oscal_id(base)][check].add("stig-cci")
             else:
                 stats["stig_catalog_controls_not_in_map"] += 1
-        if ID_800_53.match(label):
+        if ID_800_53.match(label) and fw not in OVERLAY_CATALOGS:
             mp[oscal_id(label)][check].add("label-is-800-53")
             stats["label_is_800_53_controls"] += 1
         if fw == "nist_sp_800_53":
