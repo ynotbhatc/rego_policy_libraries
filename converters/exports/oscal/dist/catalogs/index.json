@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 150,
- "controls": 11539,
+ "frameworks": 156,
+ "controls": 12441,
  "catalogs": [
   {
    "framework": "ai",
@@ -376,6 +376,13 @@
    "uuid": "e600870a-aef6-5cb7-a697-96c575c2aa2a"
   },
   {
+   "framework": "cisa_ssdaf",
+   "file": "catalogs/cisa_ssdaf.json",
+   "controls": 26,
+   "modules": 1,
+   "uuid": "2ad930ef-3cae-5dad-a16d-132b8e34ae67"
+  },
+  {
    "framework": "cjis",
    "file": "catalogs/cjis.json",
    "controls": 111,
@@ -444,6 +451,13 @@
    "controls": 152,
    "modules": 1,
    "uuid": "0efdfb95-9a62-5cdf-ba54-b6c4d4c04936"
+  },
+  {
+   "framework": "dfars_7012",
+   "file": "catalogs/dfars_7012.json",
+   "controls": 36,
+   "modules": 1,
+   "uuid": "8ef21f6d-e7df-54aa-9028-9678f93828f9"
   },
   {
    "framework": "digital_sovereignty",
@@ -528,6 +542,13 @@
    "controls": 16,
    "modules": 2,
    "uuid": "6a4b2d82-8208-563e-8fa3-2cb74224399a"
+  },
+  {
+   "framework": "eo_14028",
+   "file": "catalogs/eo_14028.json",
+   "controls": 52,
+   "modules": 1,
+   "uuid": "0d071130-4993-556e-b3ab-66192aded859"
   },
   {
    "framework": "essential_eight",
@@ -749,9 +770,30 @@
   {
    "framework": "nist_sp_800_171",
    "file": "catalogs/nist_sp_800_171.json",
-   "controls": 191,
-   "modules": 14,
+   "controls": 269,
+   "modules": 15,
    "uuid": "4e395fa1-6c65-59ee-88d4-4cb13061f2fc"
+  },
+  {
+   "framework": "nist_sp_800_171_r2",
+   "file": "catalogs/nist_sp_800_171_r2.json",
+   "controls": 113,
+   "modules": 1,
+   "uuid": "68fab94e-2bac-5b67-9b31-4266a65db6d4"
+  },
+  {
+   "framework": "nist_sp_800_171a",
+   "file": "catalogs/nist_sp_800_171a.json",
+   "controls": 456,
+   "modules": 1,
+   "uuid": "08ce4b20-baa1-5b3c-a91e-585b3ca10ccb"
+  },
+  {
+   "framework": "nist_sp_800_172",
+   "file": "catalogs/nist_sp_800_172.json",
+   "controls": 141,
+   "modules": 1,
+   "uuid": "39f2a9f0-9846-5703-ade8-078ae91a6759"
   },
   {
    "framework": "nist_sp_800_53",

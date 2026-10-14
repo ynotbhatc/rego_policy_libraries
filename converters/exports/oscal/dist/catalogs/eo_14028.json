@@ -1,0 +1,1814 @@
+{
+ "catalog": {
+  "uuid": "0d071130-4993-556e-b3ab-66192aded859",
+  "metadata": {
+   "title": "Rego Policy Libraries — eo_14028 (Executive Order 14028 (May 12, 2021) — Improving the Nation's Cybersecurity: agency and supplier directives)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "eo_14028"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "eo_14028-eo_14028_main",
+    "class": "rego-module",
+    "title": "Executive Order 14028 (May 12, 2021) — Improving the Nation's Cybersecurity: agency and supplier directives",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "eo_14028.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/eo_14028/eo_14028_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "eo_14028-2.c.i",
+      "title": "service providers collect and preserve data, information, and reporting relevant to cybersecurity event prevention, detection, response, and investigation on all information systems over which they ha",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.c.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.c.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.c.i_stmt",
+        "name": "statement",
+        "prose": "service providers collect and preserve data, information, and reporting relevant to cybersecurity event prevention, detection, response, and investigation on all information systems over which they have control, including systems operated on behalf of agencies, consistent with agencies' requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-2.c.ii",
+      "title": "service providers share such data, information, and reporting, as they relate to cyber incidents or potential incidents relevant to any agency with which they have contracted, directly with such agenc",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.c.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.c.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.c.ii_stmt",
+        "name": "statement",
+        "prose": "service providers share such data, information, and reporting, as they relate to cyber incidents or potential incidents relevant to any agency with which they have contracted, directly with such agency and any other agency that the Director of OMB ... deems appropriate"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-2.c.iii",
+      "title": "service providers collaborate with Federal cybersecurity or investigative agencies in their investigations of and responses to incidents or potential incidents on Federal Information Systems, includin",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.c.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.c.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.c.iii_stmt",
+        "name": "statement",
+        "prose": "service providers collaborate with Federal cybersecurity or investigative agencies in their investigations of and responses to incidents or potential incidents on Federal Information Systems, including by implementing technical capabilities, such as monitoring networks for threats in collaboration with agencies they support, as needed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-2.c.iv",
+      "title": "service providers share cyber threat and incident information with agencies, doing so, where possible, in industry-recognized formats for incident response and remediation",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.c.iv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.c.iv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.c.iv_stmt",
+        "name": "statement",
+        "prose": "service providers share cyber threat and incident information with agencies, doing so, where possible, in industry-recognized formats for incident response and remediation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-2.f.i",
+      "title": "information and communications technology (ICT) service providers entering into contracts with agencies must promptly report to such agencies when they discover a cyber incident involving a software p",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.f.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.f.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.f.i_stmt",
+        "name": "statement",
+        "prose": "information and communications technology (ICT) service providers entering into contracts with agencies must promptly report to such agencies when they discover a cyber incident involving a software product or service provided to such agencies or involving a support system for a software product or service provided to such agencies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-2.f.ii",
+      "title": "ICT service providers must also directly report to CISA whenever they report under subsection (f)(i) of this section to Federal Civilian Executive Branch (FCEB) Agencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.f.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.f.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.f.ii_stmt",
+        "name": "statement",
+        "prose": "ICT service providers must also directly report to CISA whenever they report under subsection (f)(i) of this section to Federal Civilian Executive Branch (FCEB) Agencies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-2.k",
+      "title": "Following any updates to the FAR made by the FAR Council ..., agencies shall update their agency-specific cybersecurity requirements to remove any requirements that are duplicative of such FAR updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.k"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.k"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-2.k_stmt",
+        "name": "statement",
+        "prose": "Following any updates to the FAR made by the FAR Council ..., agencies shall update their agency-specific cybersecurity requirements to remove any requirements that are duplicative of such FAR updates"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.b.i",
+      "title": "Within 60 days of the date of this order, the head of each agency shall update existing agency plans to prioritize resources for the adoption and use of cloud technology as outlined in relevant OMB gu",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.b.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.b.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.b.i_stmt",
+        "name": "statement",
+        "prose": "Within 60 days of the date of this order, the head of each agency shall update existing agency plans to prioritize resources for the adoption and use of cloud technology as outlined in relevant OMB guidance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.b.ii",
+      "title": "Within 60 days of the date of this order, the head of each agency shall develop a plan to implement Zero Trust Architecture, which shall incorporate, as appropriate, the migration steps that NIST has ",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.b.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.b.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.b.ii_stmt",
+        "name": "statement",
+        "prose": "Within 60 days of the date of this order, the head of each agency shall develop a plan to implement Zero Trust Architecture, which shall incorporate, as appropriate, the migration steps that NIST has outlined in standards and guidance, describe any such steps that have already been completed, identify activities that will have the most immediate security impact, and include a schedule to implement them"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.b.iii",
+      "title": "Within 60 days of the date of this order, the head of each agency shall provide a report to the Director of OMB and the APNSA discussing the plans required pursuant to subsection (b)(i) and (ii)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.b.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.b.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.b.iii_stmt",
+        "name": "statement",
+        "prose": "Within 60 days of the date of this order, the head of each agency shall provide a report to the Director of OMB and the APNSA discussing the plans required pursuant to subsection (b)(i) and (ii)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.c",
+      "title": "As agencies continue to use cloud technology, they shall do so in a coordinated, deliberate way that allows the Federal Government to prevent, detect, assess, and remediate cyber incidents ... the mig",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.c_stmt",
+        "name": "statement",
+        "prose": "As agencies continue to use cloud technology, they shall do so in a coordinated, deliberate way that allows the Federal Government to prevent, detect, assess, and remediate cyber incidents ... the migration to cloud technology shall adopt Zero Trust Architecture, as practicable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.c.iv",
+      "title": "Within 90 days of the date of this order, the heads of FCEB Agencies ... shall evaluate the types and sensitivity of their respective agency's unclassified data, and shall provide to the Secretary of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.c.iv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.c.iv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.c.iv_stmt",
+        "name": "statement",
+        "prose": "Within 90 days of the date of this order, the heads of FCEB Agencies ... shall evaluate the types and sensitivity of their respective agency's unclassified data, and shall provide to the Secretary of Homeland Security through the Director of CISA and to the Director of OMB a report based on such evaluation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.d",
+      "title": "Within 180 days of the date of this order, agencies shall adopt multi-factor authentication and encryption for data at rest and in transit, to the maximum extent consistent with Federal records laws a",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.d_stmt",
+        "name": "statement",
+        "prose": "Within 180 days of the date of this order, agencies shall adopt multi-factor authentication and encryption for data at rest and in transit, to the maximum extent consistent with Federal records laws and other applicable laws"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.d.i",
+      "title": "Heads of FCEB Agencies shall provide reports to the Secretary of Homeland Security through the Director of CISA, the Director of OMB, and the APNSA on their respective agency's progress in adopting mu",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.d.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.d.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.d.i_stmt",
+        "name": "statement",
+        "prose": "Heads of FCEB Agencies shall provide reports to the Secretary of Homeland Security through the Director of CISA, the Director of OMB, and the APNSA on their respective agency's progress in adopting multifactor authentication and encryption of data at rest and in transit ... every 60 days after the date of this order until the agency has fully adopted, agency-wide, multi-factor authentication and data encryption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-3.d.iii",
+      "title": "Heads of FCEB Agencies that are unable to fully adopt multi-factor authentication and data encryption within 180 days of the date of this order shall, at the end of the 180-day period, provide a writt",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.d.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.d.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-3.d.iii_stmt",
+        "name": "statement",
+        "prose": "Heads of FCEB Agencies that are unable to fully adopt multi-factor authentication and data encryption within 180 days of the date of this order shall, at the end of the 180-day period, provide a written rationale to the Secretary of Homeland Security through the Director of CISA, the Director of OMB, and the APNSA"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.i.A",
+      "title": "secure software development environments, including ... using administratively separate build environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.i.A"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.i.A"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.i.A_stmt",
+        "name": "statement",
+        "prose": "secure software development environments, including ... using administratively separate build environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.i.B",
+      "title": "secure software development environments, including ... auditing trust relationships",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.i.B"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.i.B"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.i.B_stmt",
+        "name": "statement",
+        "prose": "secure software development environments, including ... auditing trust relationships"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.i.C",
+      "title": "secure software development environments, including ... establishing multi-factor, risk-based authentication and conditional access across the enterprise",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.i.C"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.i.C"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.i.C_stmt",
+        "name": "statement",
+        "prose": "secure software development environments, including ... establishing multi-factor, risk-based authentication and conditional access across the enterprise"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.i.D",
+      "title": "secure software development environments, including ... documenting and minimizing dependencies on enterprise products that are part of the environments used to develop, build, and edit software",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.i.D"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.i.D"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.i.D_stmt",
+        "name": "statement",
+        "prose": "secure software development environments, including ... documenting and minimizing dependencies on enterprise products that are part of the environments used to develop, build, and edit software"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.i.E",
+      "title": "secure software development environments, including ... employing encryption for data",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.i.E"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.i.E"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.i.E_stmt",
+        "name": "statement",
+        "prose": "secure software development environments, including ... employing encryption for data"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.i.F",
+      "title": "secure software development environments, including ... monitoring operations and alerts and responding to attempted and actual cyber incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.i.F"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.i.F"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.i.F_stmt",
+        "name": "statement",
+        "prose": "secure software development environments, including ... monitoring operations and alerts and responding to attempted and actual cyber incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.ii",
+      "title": "generating and, when requested by a purchaser, providing artifacts that demonstrate conformance to the processes set forth in subsection (e)(i)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.ii_stmt",
+        "name": "statement",
+        "prose": "generating and, when requested by a purchaser, providing artifacts that demonstrate conformance to the processes set forth in subsection (e)(i)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.iii",
+      "title": "employing automated tools, or comparable processes, to maintain trusted source code supply chains, thereby ensuring the integrity of the code",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.iii_stmt",
+        "name": "statement",
+        "prose": "employing automated tools, or comparable processes, to maintain trusted source code supply chains, thereby ensuring the integrity of the code"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.iv",
+      "title": "employing automated tools, or comparable processes, that check for known and potential vulnerabilities and remediate them, which shall operate regularly, or at a minimum prior to product, version, or ",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.iv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.iv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.iv_stmt",
+        "name": "statement",
+        "prose": "employing automated tools, or comparable processes, that check for known and potential vulnerabilities and remediate them, which shall operate regularly, or at a minimum prior to product, version, or update release"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.ix",
+      "title": "attesting to conformity with secure software development practices",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.ix"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.ix"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.ix_stmt",
+        "name": "statement",
+        "prose": "attesting to conformity with secure software development practices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.v",
+      "title": "providing, when requested by a purchaser, artifacts of the execution of the tools and processes described in subsection (e)(iii) and (iv), and making publicly available summary information on completi",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.v"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.v"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.v_stmt",
+        "name": "statement",
+        "prose": "providing, when requested by a purchaser, artifacts of the execution of the tools and processes described in subsection (e)(iii) and (iv), and making publicly available summary information on completion of these actions, to include a summary description of the risks assessed and mitigated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.vi",
+      "title": "maintaining accurate and up-to-date data, provenance (i.e., origin) of software code or components, and controls on internal and third-party software components, tools, and services present in softwar",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.vi"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.vi"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.vi_stmt",
+        "name": "statement",
+        "prose": "maintaining accurate and up-to-date data, provenance (i.e., origin) of software code or components, and controls on internal and third-party software components, tools, and services present in software development processes, and performing audits and enforcement of these controls on a recurring basis"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.vii",
+      "title": "providing a purchaser a Software Bill of Materials (SBOM) for each product directly or by publishing it on a public website",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.vii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.vii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.vii_stmt",
+        "name": "statement",
+        "prose": "providing a purchaser a Software Bill of Materials (SBOM) for each product directly or by publishing it on a public website"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.viii",
+      "title": "participating in a vulnerability disclosure program that includes a reporting and disclosure process",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.viii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.viii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.viii_stmt",
+        "name": "statement",
+        "prose": "participating in a vulnerability disclosure program that includes a reporting and disclosure process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.e.x",
+      "title": "ensuring and attesting, to the extent practicable, to the integrity and provenance of open source software used within any portion of a product",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.e.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.e.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.e.x_stmt",
+        "name": "statement",
+        "prose": "ensuring and attesting, to the extent practicable, to the integrity and provenance of open source software used within any portion of a product"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.j",
+      "title": "the Director of OMB ... shall take appropriate steps to require that agencies comply with such guidance [security measures for critical software under 4(i): least privilege, network segmentation, and ",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.j"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.j"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.j_stmt",
+        "name": "statement",
+        "prose": "the Director of OMB ... shall take appropriate steps to require that agencies comply with such guidance [security measures for critical software under 4(i): least privilege, network segmentation, and proper configuration]"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.k",
+      "title": "the Director of OMB ... shall take appropriate steps to require that agencies comply with such guidelines [4(e)] with respect to software procured after the date of this order",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.k"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.k"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.k_stmt",
+        "name": "statement",
+        "prose": "the Director of OMB ... shall take appropriate steps to require that agencies comply with such guidelines [4(e)] with respect to software procured after the date of this order"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.p",
+      "title": "Following the issuance of any final rule amending the FAR as described in subsection (o), agencies shall, as appropriate and consistent with applicable law, remove software products that do not meet t",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.p"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.p"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.p_stmt",
+        "name": "statement",
+        "prose": "Following the issuance of any final rule amending the FAR as described in subsection (o), agencies shall, as appropriate and consistent with applicable law, remove software products that do not meet the requirements of the amended FAR from all indefinite delivery indefinite quantity contracts; Federal Supply Schedules; Federal Government-wide Acquisition Contracts; Blanket Purchase Agreements; and Multiple Award Contracts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.q",
+      "title": "agencies employing software developed and procured prior to the date of this order (legacy software) either to comply with any requirements issued pursuant to subsection (k) or to provide a plan outli",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.q"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.q"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.q_stmt",
+        "name": "statement",
+        "prose": "agencies employing software developed and procured prior to the date of this order (legacy software) either to comply with any requirements issued pursuant to subsection (k) or to provide a plan outlining actions to remediate or meet those requirements, and ... agencies seeking renewals of software contracts, including legacy software, to comply ... unless an extension or waiver is granted in accordance with subsection (l) or (m)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-6.b.ii",
+      "title": "The playbook shall ... be used by FCEB Agencies",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.b.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.b.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-6.b.ii_stmt",
+        "name": "statement",
+        "prose": "The playbook shall ... be used by FCEB Agencies"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-6.d",
+      "title": "Agencies with cybersecurity vulnerability or incident response procedures that deviate from the playbook may use such procedures only after consulting with the Director of OMB and the APNSA and demons",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-6.d_stmt",
+        "name": "statement",
+        "prose": "Agencies with cybersecurity vulnerability or incident response procedures that deviate from the playbook may use such procedures only after consulting with the Director of OMB and the APNSA and demonstrating that these procedures meet or exceed the standards proposed in the playbook"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-7.b",
+      "title": "FCEB Agencies shall deploy an Endpoint Detection and Response (EDR) initiative to support proactive detection of cybersecurity incidents within Federal Government infrastructure, active cyber hunting,",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-7.b_stmt",
+        "name": "statement",
+        "prose": "FCEB Agencies shall deploy an Endpoint Detection and Response (EDR) initiative to support proactive detection of cybersecurity incidents within Federal Government infrastructure, active cyber hunting, containment and remediation, and incident response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-7.d",
+      "title": "the Director of OMB ... shall issue requirements for FCEB Agencies to adopt Federal Government-wide EDR approaches. Those requirements shall support a capability of the Secretary of Homeland Security,",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-7.d_stmt",
+        "name": "statement",
+        "prose": "the Director of OMB ... shall issue requirements for FCEB Agencies to adopt Federal Government-wide EDR approaches. Those requirements shall support a capability of the Secretary of Homeland Security, acting through the Director of CISA, to engage in cyber hunt, detection, and response activities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-7.f",
+      "title": "Within 75 days of the date of this order, agencies shall establish or update Memoranda of Agreement (MOA) with CISA for the Continuous Diagnostics and Mitigation Program to ensure object level data, a",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-7.f_stmt",
+        "name": "statement",
+        "prose": "Within 75 days of the date of this order, agencies shall establish or update Memoranda of Agreement (MOA) with CISA for the Continuous Diagnostics and Mitigation Program to ensure object level data, as defined in the MOA, are available and accessible to CISA, consistent with applicable law"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-8.a",
+      "title": "It is essential that agencies and their IT service providers collect and maintain such data [network and system logs on Federal Information Systems] and, when necessary to address a cyber incident on ",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-8.a_stmt",
+        "name": "statement",
+        "prose": "It is essential that agencies and their IT service providers collect and maintain such data [network and system logs on Federal Information Systems] and, when necessary to address a cyber incident on FCEB Information Systems, provide them upon request to the Secretary of Homeland Security through the Director of CISA and to the FBI, consistent with applicable law"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-8.b",
+      "title": "Logs shall be protected by cryptographic methods to ensure integrity once collected and periodically verified against the hashes throughout their retention. Data shall be retained in a manner consiste",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-8.b_stmt",
+        "name": "statement",
+        "prose": "Logs shall be protected by cryptographic methods to ensure integrity once collected and periodically verified against the hashes throughout their retention. Data shall be retained in a manner consistent with all applicable privacy laws and regulations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-8.c",
+      "title": "policies for agencies to establish requirements for logging, log retention, and log management, which shall ensure centralized access and visibility for the highest level security operations center of",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-8.c_stmt",
+        "name": "statement",
+        "prose": "policies for agencies to establish requirements for logging, log retention, and log management, which shall ensure centralized access and visibility for the highest level security operations center of each agency"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-8.e",
+      "title": "requirements to ensure that, upon request, agencies provide logs to the Secretary of Homeland Security through the Director of CISA and to the FBI, consistent with applicable law",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-8.e_stmt",
+        "name": "statement",
+        "prose": "requirements to ensure that, upon request, agencies provide logs to the Secretary of Homeland Security through the Director of CISA and to the FBI, consistent with applicable law"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.n-4.o",
+      "title": "FAR contract language requiring suppliers to comply with and attest to 4(g)-(k) — the attestation itself is 4(e)(ix) here and frameworks/federal/cisa_ssdaf",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.n-4.o"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.n-4.o"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.n-4.o_stmt",
+        "name": "statement",
+        "prose": "FAR contract language requiring suppliers to comply with and attest to 4(g)-(k) — the attestation itself is 4(e)(ix) here and frameworks/federal/cisa_ssdaf"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-4.s-4.w",
+      "title": "IoT and consumer software labeling pilots — tasked to NIST/Commerce (with the FTC); no agency or supplier obligation",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.s-4.w"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.s-4.w"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-4.s-4.w_stmt",
+        "name": "statement",
+        "prose": "IoT and consumer software labeling pilots — tasked to NIST/Commerce (with the FTC); no agency or supplier obligation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-5",
+      "title": "Cyber Safety Review Board — outside the requested scope",
+      "props": [
+       {
+        "name": "label",
+        "value": "5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-5_stmt",
+        "name": "statement",
+        "prose": "Cyber Safety Review Board — outside the requested scope"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-9",
+      "title": "National Security Systems — outside the requested scope; programs under this order do not apply to NSS until the NSM issues (9(a))",
+      "props": [
+       {
+        "name": "label",
+        "value": "9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-9_stmt",
+        "name": "statement",
+        "prose": "National Security Systems — outside the requested scope; programs under this order do not apply to NSS until the NSM issues (9(a))"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-named-officials",
+      "title": "Sentences that only task OMB, CISA, NIST, DHS, DoD, NSA, GSA or the FAR Council are not attestable by an agency or supplier and are not controls; where the duty lands on agencies or providers once the",
+      "props": [
+       {
+        "name": "label",
+        "value": "named-officials"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "named-officials"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-named-officials_stmt",
+        "name": "statement",
+        "prose": "Sentences that only task OMB, CISA, NIST, DHS, DoD, NSA, GSA or the FAR Council are not attestable by an agency or supplier and are not controls; where the duty lands on agencies or providers once the official acts, the row is kept with derived: true"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-EO-14028",
+      "title": "FAIL-CLOSED - facts 'input.eo_14028' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "EO 14028"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "EO 14028"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-EO-14028_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.eo_14028' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-eo_14028.main-1",
+      "title": "%v (eo_14028.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "eo_14028.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eo_14028.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-eo_14028.main-1_stmt",
+        "name": "statement",
+        "prose": "%v (eo_14028.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-eo_14028.main-2",
+      "title": "EO 14028 %v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "eo_14028.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eo_14028.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-eo_14028.main-2_stmt",
+        "name": "statement",
+        "prose": "EO 14028 %v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "eo_14028-EO-14028-Input-Contract",
+      "title": "attestation for unknown id %v — not an agency or supplier directive of Secs. 2, 3, 4, 6, 7, 8",
+      "props": [
+       {
+        "name": "label",
+        "value": "EO 14028 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "EO 14028 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eo_14028.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e438fae-27a7-5750-9a22-7964673eada8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eo_14028-EO-14028-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "attestation for unknown id %v — not an agency or supplier directive of Secs. 2, 3, 4, 6, 7, 8"
+       },
+       {
+        "id": "eo_14028-EO-14028-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "input.eo_14028.directives must be an object of {\"<id>\": true}, ids as in directives (e.g. \"3.d\")"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1e438fae-27a7-5750-9a22-7964673eada8",
+     "title": "Executive Order 14028 (May 12, 2021) — Improving the Nation's Cybersecurity: agency and supplier directives",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "eo_14028.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/eo_14028/eo_14028_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

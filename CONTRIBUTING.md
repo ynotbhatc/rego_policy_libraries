@@ -4,6 +4,19 @@ Thank you for contributing! This library grows by community submissions. Whether
 
 ---
 
+## Three rules CI enforces
+
+1. **Rego v1 only.** Every file carries `import rego.v1` and passes `opa check --strict`.
+2. **Fail closed.** A framework given no facts, or facts it cannot interpret, reports `compliant: false` with an
+   explicit `FAIL-CLOSED` reason. Silence is never a pass; a lack of facts is non-compliance.
+3. **Metadata is the source of the documentation.** The `# METADATA` block on every package feeds the counts,
+   the coverage scan and the OSCAL catalogs, profiles and component definition under
+   [`converters/exports/oscal/`](converters/exports/oscal/), all derived from OPA's parse of the policy tree and
+   validated against the OSCAL 1.2.3 schemas on every merge. A file without the block, or with values outside
+   `scripts/metadata_vocabulary.json`, fails `make metadata`.
+
+---
+
 ## Quick contribution guide
 
 ### 1. Adding a new framework
@@ -111,6 +124,7 @@ The CI pipeline (`.github/workflows/opa-test.yml`) runs all tests on every PR.
 - [ ] Violation messages include a control identifier
 - [ ] Tests added for new controls (or existing tests still pass)
 - [ ] PR title follows the pattern: `feat(<framework>): add <description>` or `fix(<framework>): <description>`
+- [ ] `make check-converters` passes (the OSCAL, SARIF and crosswalk exports rebuild and validate; commit the regenerated `dist/` files)
 
 ---
 
@@ -126,6 +140,25 @@ all := array.concat([a], [b], [c])
 ab   := array.concat([a], [b])
 all  := array.concat(ab, [c])
 ```
+
+---
+
+## Where help is wanted
+
+The gap we are closing is breadth. [`docs/SCF_GAP.md`](docs/SCF_GAP.md) lists every document the Secure
+Controls Framework maps, which ones this library covers, and the order we are working in; pick any row marked
+`gap` or `partial`. Three kinds of help move it fastest:
+
+- **A framework from its public text**, written the way the existing modules are (one control per obligation,
+  the document's own identifiers, fail-closed, tested). The phase order in the gap document is a suggestion,
+  not a queue.
+- **Source documents we cannot fetch.** Some rows need a licensed or login-gated document (PCI DSS SAQs,
+  CSA CCM 4.1.0, ISO/IEC 27701:2025, SWIFT CSCF). If you hold a licence that lets you contribute the control
+  list, say so in the issue.
+- **Collectors and mappings.** The library evaluates facts; it does not gather them. An Ansible or Graph API
+  collector that produces the input a module declares (for example a Microsoft 365 tenant dump for the CIS
+  M365 and SCuBA modules), or an authoritative crosswalk that maps a module's controls to NIST SP 800-53 at
+  enhancement granularity, widens what the OSCAL baseline coverage can claim.
 
 ---
 

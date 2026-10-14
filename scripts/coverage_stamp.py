@@ -45,7 +45,6 @@ KNOWN_GAPS = {
     "frameworks/privacy/iso27701/iso27701_main.rego": "ISO/IEC 27701 text is licensed; 67 of 134 controls written from public summaries",
     "benchmarks/cis/windows_11/cis_windows_11.rego": "CIS Windows 11 benchmark text is licensed; 210 of 267 recommendations implemented",
     "frameworks/federal/nist/cybersecurity_framework_2.0/nist_csf_main.rego": "CSF 2.0 has 106 subcategories (NIST CSWP 29); 87 implemented, 19 to write — public text, no excuse, queued",
-    "frameworks/federal/nist/sp_800_171/nist_800_171_main.rego": "SP 800-171 Rev 2 numbering: 88 of 110 requirements cited; Rev 3 (97 requirements, 03.xx.yy) migration pending per the registry",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design
