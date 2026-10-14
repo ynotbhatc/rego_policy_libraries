@@ -1,0 +1,5274 @@
+{
+ "catalog": {
+  "uuid": "1d3566ed-f8b9-5df4-a59e-1858bcd90a58",
+  "metadata": {
+   "title": "Rego Policy Libraries — uk_dpa_2018 (UK Data Protection Act 2018 (c. 12) — the duties the Act itself places on controllers and processors beyond)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "uk_dpa_2018"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "uk_dpa_2018-uk_dpa_2018_main",
+    "class": "rego-module",
+    "title": "UK Data Protection Act 2018 (c. 12) — the duties the Act itself places on controllers and processors beyond",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "uk_dpa_2018.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/uk_dpa_2018/uk_dpa_2018_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "uk_dpa_2018-s.10-2",
+      "title": "The processing meets the requirement in point (b), (h), (i) or (j) of Article 9(2) of the UK GDPR for authorisation by, or a basis in, the law of the United Kingdom or a part of the United Kingdom onl",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.10(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.10(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.10-2_stmt",
+        "name": "statement",
+        "prose": "The processing meets the requirement in point (b), (h), (i) or (j) of Article 9(2) of the UK GDPR for authorisation by, or a basis in, the law of the United Kingdom or a part of the United Kingdom only if it meets a condition in Part 1 of Schedule 1."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.10-3",
+      "title": "The processing meets the requirement in point (g) of Article 9(2) of the UK GDPR for a basis in the law of the United Kingdom or a part of the United Kingdom only if it meets a condition in Part 2 of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.10(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.10(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.10-3_stmt",
+        "name": "statement",
+        "prose": "The processing meets the requirement in point (g) of Article 9(2) of the UK GDPR for a basis in the law of the United Kingdom or a part of the United Kingdom only if it meets a condition in Part 2 of Schedule 1."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.10-5",
+      "title": "The processing meets the requirement in Article 10(1) of the UK GDPR for authorisation by the law of the United Kingdom or a part of the United Kingdom only if it meets a condition in Part 1, 2 or 3 o",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.10(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.10(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.10-5_stmt",
+        "name": "statement",
+        "prose": "The processing meets the requirement in Article 10(1) of the UK GDPR for authorisation by the law of the United Kingdom or a part of the United Kingdom only if it meets a condition in Part 1, 2 or 3 of Schedule 1."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.13-3",
+      "title": "Where the controller discloses personal data in pursuance of Article 15(1) to (3) of the UK GDPR, the disclosure must be accompanied by a statement informing the data subject of the data subject's rig",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.13(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.13(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.13-3_stmt",
+        "name": "statement",
+        "prose": "Where the controller discloses personal data in pursuance of Article 15(1) to (3) of the UK GDPR, the disclosure must be accompanied by a statement informing the data subject of the data subject's rights under section 159 of the Consumer Credit Act 1974 (correction of wrong information)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.1-para-5-1",
+      "title": "Except as otherwise provided, a condition in this Part of this Schedule is met only if, when the processing is carried out, the controller has an appropriate policy document in place (see paragraph 39",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.1 para 5(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.1 para 5(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.1-para-5-1_stmt",
+        "name": "statement",
+        "prose": "Except as otherwise provided, a condition in this Part of this Schedule is met only if, when the processing is carried out, the controller has an appropriate policy document in place (see paragraph 39 in Part 4 of this Schedule)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.1-para-39",
+      "title": "The controller has an appropriate policy document in place in relation to the processing of personal data in reliance on a condition described in paragraph 38 if the controller has produced a document",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.1 para 39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.1 para 39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.1-para-39_stmt",
+        "name": "statement",
+        "prose": "The controller has an appropriate policy document in place in relation to the processing of personal data in reliance on a condition described in paragraph 38 if the controller has produced a document which— (a) explains the controller's procedures for securing compliance with the principles in Article 5 of the UK GDPR (principles relating to processing of personal data) in connection with the processing of personal data in reliance on the condition in question, and (b) explains the controller's policies as regards the retention and erasure of personal data processed in reliance on the condition, giving an indication of how long such personal data is likely to be retained."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.1-para-40-1",
+      "title": "Where personal data is processed in reliance on a condition described in paragraph 38, the controller must during the relevant period— (a) retain the appropriate policy document, (b) review and (if ap",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.1 para 40(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.1 para 40(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.1-para-40-1_stmt",
+        "name": "statement",
+        "prose": "Where personal data is processed in reliance on a condition described in paragraph 38, the controller must during the relevant period— (a) retain the appropriate policy document, (b) review and (if appropriate) update it from time to time, and (c) make it available to the Commission, on request, without charge."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.1-para-41",
+      "title": "A record maintained by the controller, or the controller's representative, under Article 30 of the UK GDPR in respect of the processing of personal data in reliance on a condition described in paragra",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.1 para 41"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.1 para 41"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.1-para-41_stmt",
+        "name": "statement",
+        "prose": "A record maintained by the controller, or the controller's representative, under Article 30 of the UK GDPR in respect of the processing of personal data in reliance on a condition described in paragraph 38 must include the following information— (a) which condition is relied on, (b) how the processing satisfies Article 6 of the UK GDPR (lawfulness of processing), and (c) whether the personal data is retained and erased in accordance with the policies described in paragraph 39(b) and, if it is not, the reasons for not following those policies."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.2-para-16-3",
+      "title": "In determining whether it is reasonable to disclose the information without consent, the controller must have regard to all the relevant circumstances, including— (a) the type of information that woul",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.2 para 16(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.2 para 16(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.2-para-16-3_stmt",
+        "name": "statement",
+        "prose": "In determining whether it is reasonable to disclose the information without consent, the controller must have regard to all the relevant circumstances, including— (a) the type of information that would be disclosed, (b) any duty of confidentiality owed to the other individual, (c) any steps taken by the controller with a view to seeking the consent of the other individual, (d) whether the other individual is capable of giving consent, and (e) any express refusal of consent by the other individual."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.2-para-25-3",
+      "title": "Where a question arises as to whether the controller is obliged by Article 15 of the UK GDPR to disclose personal data, and the question arises before the day on which the exam results are announced, ",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.2 para 25(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.2 para 25(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.2-para-25-3_stmt",
+        "name": "statement",
+        "prose": "Where a question arises as to whether the controller is obliged by Article 15 of the UK GDPR to disclose personal data, and the question arises before the day on which the exam results are announced, the controller must provide the information mentioned in Article 12(3) or (4)— (a) before the end of the period of 5 months beginning when the question arises, or (b) if earlier, before the end of the period of 40 days beginning with the announcement of the results."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.2-para-26-4",
+      "title": "In determining whether publication would be in the public interest the controller must take into account the special importance of the public interest in the freedom of expression and information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.2 para 26(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.2 para 26(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.2-para-26-4_stmt",
+        "name": "statement",
+        "prose": "In determining whether publication would be in the public interest the controller must take into account the special importance of the public interest in the freedom of expression and information."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.2-para-26-5",
+      "title": "In determining whether it is reasonable to believe that publication would be in the public interest, the controller must have regard to any of the codes of practice or guidelines listed in sub-paragra",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.2 para 26(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.2 para 26(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.2-para-26-5_stmt",
+        "name": "statement",
+        "prose": "In determining whether it is reasonable to believe that publication would be in the public interest, the controller must have regard to any of the codes of practice or guidelines listed in sub-paragraph (6) that is relevant to the publication in question."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.3-para-5-2",
+      "title": "A controller who is not a health professional may not rely on sub-paragraph (1) to withhold data concerning health unless the controller has obtained an opinion from the person who appears to the cont",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.3 para 5(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.3 para 5(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.3-para-5-2_stmt",
+        "name": "statement",
+        "prose": "A controller who is not a health professional may not rely on sub-paragraph (1) to withhold data concerning health unless the controller has obtained an opinion from the person who appears to the controller to be the appropriate health professional to the effect that the serious harm test is met with respect to the data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.3-para-12-2",
+      "title": "The controller must inform the Principal Reporter of the fact that the question has arisen before the end of the period of 14 days beginning when the question arises.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.3 para 12(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.3 para 12(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.3-para-12-2_stmt",
+        "name": "statement",
+        "prose": "The controller must inform the Principal Reporter of the fact that the question has arisen before the end of the period of 14 days beginning when the question arises."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-Sch.3-para-20-2",
+      "title": "The controller must inform the Principal Reporter of the fact that the question has arisen before the end of the period of 14 days beginning when the question arises.",
+      "props": [
+       {
+        "name": "label",
+        "value": "Sch.3 para 20(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Sch.3 para 20(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-Sch.3-para-20-2_stmt",
+        "name": "statement",
+        "prose": "The controller must inform the Principal Reporter of the fact that the question has arisen before the end of the period of 14 days beginning when the question arises."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.24-7",
+      "title": "An estimate for the purposes of this section must be made in accordance with regulations under section 12(5) of the Freedom of Information Act 2000.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.24(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.24(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.24-7_stmt",
+        "name": "statement",
+        "prose": "An estimate for the purposes of this section must be made in accordance with regulations under section 12(5) of the Freedom of Information Act 2000."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.28-3",
+      "title": "Where Article 32 of the UK GDPR does not apply, the controller or the processor must implement security measures appropriate to the risks arising from the processing of the personal data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.28(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.28(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.28-3_stmt",
+        "name": "statement",
+        "prose": "Where Article 32 of the UK GDPR does not apply, the controller or the processor must implement security measures appropriate to the risks arising from the processing of the personal data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.28-4",
+      "title": "For the purposes of subsection (3), where the processing of personal data is carried out wholly or partly by automated means, the controller or the processor must, following an evaluation of the risks",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.28(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.28(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.28-4_stmt",
+        "name": "statement",
+        "prose": "For the purposes of subsection (3), where the processing of personal data is carried out wholly or partly by automated means, the controller or the processor must, following an evaluation of the risks, implement measures designed to— (a) prevent unauthorised processing or unauthorised interference with the systems used in connection with the processing, (b) ensure that it is possible to establish the precise details of any processing that takes place, (c) ensure that any systems used in connection with the processing function properly and may, in the case of interruption, be restored, and (d) ensure that stored personal data cannot be corrupted if a system used in connection with the processing malfunctions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.34-3",
+      "title": "The controller in relation to personal data is responsible for, and must be able to demonstrate, compliance with this Chapter.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.34(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.34(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.34-3_stmt",
+        "name": "statement",
+        "prose": "The controller in relation to personal data is responsible for, and must be able to demonstrate, compliance with this Chapter."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.35-1",
+      "title": "The first data protection principle is that the processing of personal data for any of the law enforcement purposes must be lawful and fair.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.35(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.35(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.35-1_stmt",
+        "name": "statement",
+        "prose": "The first data protection principle is that the processing of personal data for any of the law enforcement purposes must be lawful and fair."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.35-2",
+      "title": "The processing of personal data for any of the law enforcement purposes is lawful only if and to the extent that it is based on law and either— (a) the data subject has given consent to the processing",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.35(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.35(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.35-2_stmt",
+        "name": "statement",
+        "prose": "The processing of personal data for any of the law enforcement purposes is lawful only if and to the extent that it is based on law and either— (a) the data subject has given consent to the processing for that purpose, or (b) the processing is necessary for the performance of a task carried out for that purpose by a competent authority."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.35-3",
+      "title": "In addition, where the processing for any of the law enforcement purposes is sensitive processing, the processing is permitted only in the two cases set out in subsections (4) and (5).",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.35(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.35(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.35-3_stmt",
+        "name": "statement",
+        "prose": "In addition, where the processing for any of the law enforcement purposes is sensitive processing, the processing is permitted only in the two cases set out in subsections (4) and (5)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.36-1",
+      "title": "The second data protection principle is that— (a) the law enforcement purpose for which personal data is collected (whether from the data subject or otherwise) must be specified, explicit and legitima",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.36(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.36(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.36-1_stmt",
+        "name": "statement",
+        "prose": "The second data protection principle is that— (a) the law enforcement purpose for which personal data is collected (whether from the data subject or otherwise) must be specified, explicit and legitimate, and (b) personal data so collected must not be processed by or on behalf of a controller in a manner that is incompatible with the purpose for which the controller collected it."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.36-3",
+      "title": "Personal data collected for a law enforcement purpose may be processed for any other law enforcement purpose (whether by the controller that collected the data or by another controller) provided that—",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.36(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.36(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.36-3_stmt",
+        "name": "statement",
+        "prose": "Personal data collected for a law enforcement purpose may be processed for any other law enforcement purpose (whether by the controller that collected the data or by another controller) provided that— (a) the controller is authorised by law to process the data for the other purpose, and (b) the processing is necessary and proportionate to that other purpose."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.36-4",
+      "title": "Personal data collected for any of the law enforcement purposes may not be processed for a purpose that is not a law enforcement purpose unless the processing is authorised by law.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.36(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.36(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.36-4_stmt",
+        "name": "statement",
+        "prose": "Personal data collected for any of the law enforcement purposes may not be processed for a purpose that is not a law enforcement purpose unless the processing is authorised by law."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.37",
+      "title": "The third data protection principle is that personal data processed for any of the law enforcement purposes must be adequate, relevant and not excessive in relation to the purpose for which it is proc",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.37_stmt",
+        "name": "statement",
+        "prose": "The third data protection principle is that personal data processed for any of the law enforcement purposes must be adequate, relevant and not excessive in relation to the purpose for which it is processed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.38-1",
+      "title": "The fourth data protection principle is that— (a) personal data processed for any of the law enforcement purposes must be accurate and, where necessary, kept up to date, and (b) every reasonable step ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.38(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.38(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.38-1_stmt",
+        "name": "statement",
+        "prose": "The fourth data protection principle is that— (a) personal data processed for any of the law enforcement purposes must be accurate and, where necessary, kept up to date, and (b) every reasonable step must be taken to ensure that personal data that is inaccurate, having regard to the law enforcement purpose for which it is processed, is erased or rectified without delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.38-2",
+      "title": "In processing personal data for any of the law enforcement purposes, personal data based on facts must, so far as possible, be distinguished from personal data based on personal assessments.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.38(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.38(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.38-2_stmt",
+        "name": "statement",
+        "prose": "In processing personal data for any of the law enforcement purposes, personal data based on facts must, so far as possible, be distinguished from personal data based on personal assessments."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.38-3",
+      "title": "In processing personal data for any of the law enforcement purposes, a clear distinction must, where relevant and as far as possible, be made between personal data relating to different categories of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.38(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.38(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.38-3_stmt",
+        "name": "statement",
+        "prose": "In processing personal data for any of the law enforcement purposes, a clear distinction must, where relevant and as far as possible, be made between personal data relating to different categories of data subject, such as— (a) persons suspected of having committed or being about to commit a criminal offence; (b) persons convicted of a criminal offence; (c) persons who are or may be victims of a criminal offence; (d) witnesses or other persons with information about offences."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.38-4",
+      "title": "All reasonable steps must be taken to ensure that personal data which is inaccurate, incomplete or no longer up to date is not transmitted or made available for any of the law enforcement purposes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.38(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.38(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.38-4_stmt",
+        "name": "statement",
+        "prose": "All reasonable steps must be taken to ensure that personal data which is inaccurate, incomplete or no longer up to date is not transmitted or made available for any of the law enforcement purposes."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.38-5",
+      "title": "For that purpose— (a) the quality of personal data must be verified before it is transmitted or made available, (b) in all transmissions of personal data, the necessary information enabling the recipi",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.38(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.38(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.38-5_stmt",
+        "name": "statement",
+        "prose": "For that purpose— (a) the quality of personal data must be verified before it is transmitted or made available, (b) in all transmissions of personal data, the necessary information enabling the recipient to assess the degree of accuracy, completeness and reliability of the data and the extent to which it is up to date must be included, and (c) if, after personal data has been transmitted, it emerges that the data was incorrect or that the transmission was unlawful, the recipient must be notified without delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.39-1",
+      "title": "The fifth data protection principle is that personal data processed for any of the law enforcement purposes must be kept for no longer than is necessary for the purpose for which it is processed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.39(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.39(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.39-1_stmt",
+        "name": "statement",
+        "prose": "The fifth data protection principle is that personal data processed for any of the law enforcement purposes must be kept for no longer than is necessary for the purpose for which it is processed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.39-2",
+      "title": "Appropriate time limits must be established for the periodic review of the need for the continued storage of personal data for any of the law enforcement purposes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.39(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.39(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.39-2_stmt",
+        "name": "statement",
+        "prose": "Appropriate time limits must be established for the periodic review of the need for the continued storage of personal data for any of the law enforcement purposes."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.40",
+      "title": "The sixth data protection principle is that personal data processed for any of the law enforcement purposes must be so processed in a manner that ensures appropriate security of the personal data, usi",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.40"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.40"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.40_stmt",
+        "name": "statement",
+        "prose": "The sixth data protection principle is that personal data processed for any of the law enforcement purposes must be so processed in a manner that ensures appropriate security of the personal data, using appropriate technical or organisational measures (and, in this principle, “appropriate security” includes protection against unauthorised or unlawful processing and against accidental loss, destruction or damage)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.40A-2",
+      "title": "The controller must be able to demonstrate that the data subject consented to the processing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.40A(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.40A(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.40A-2_stmt",
+        "name": "statement",
+        "prose": "The controller must be able to demonstrate that the data subject consented to the processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.40A-3",
+      "title": "If the data subject’s consent is given in writing as part of a document which also concerns other matters, the request for consent must be made— (a) in a manner which clearly distinguishes the request",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.40A(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.40A(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.40A-3_stmt",
+        "name": "statement",
+        "prose": "If the data subject’s consent is given in writing as part of a document which also concerns other matters, the request for consent must be made— (a) in a manner which clearly distinguishes the request from the other matters, (b) in an intelligible and easily accessible form, and (c) in clear and plain language."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.40A-6",
+      "title": "Processing may only be carried out in reliance on consent if— (a) before the consent is given, the controller or processor informs the data subject of the right to withdraw it, and (b) it is as easy f",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.40A(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.40A(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.40A-6_stmt",
+        "name": "statement",
+        "prose": "Processing may only be carried out in reliance on consent if— (a) before the consent is given, the controller or processor informs the data subject of the right to withdraw it, and (b) it is as easy for the data subject to withdraw the consent as to give it."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.40A-7",
+      "title": "When assessing whether consent is freely given, account must be taken of, among other things, whether the provision of a service is conditional on consent to the processing of personal data that is no",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.40A(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.40A(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.40A-7_stmt",
+        "name": "statement",
+        "prose": "When assessing whether consent is freely given, account must be taken of, among other things, whether the provision of a service is conditional on consent to the processing of personal data that is not necessary for the provision of that service."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.41-2",
+      "title": "The processing is not permitted if— (a) it is carried out for the purposes of, or in connection with, measures or decisions with respect to a particular data subject, or (b) it is likely to cause subs",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.41(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.41(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.41-2_stmt",
+        "name": "statement",
+        "prose": "The processing is not permitted if— (a) it is carried out for the purposes of, or in connection with, measures or decisions with respect to a particular data subject, or (b) it is likely to cause substantial damage or substantial distress to a data subject."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.42-2",
+      "title": "The controller has an appropriate policy document in place in relation to the sensitive processing if the controller has produced a document which— (a) explains the controller's procedures for securin",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.42(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.42(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.42-2_stmt",
+        "name": "statement",
+        "prose": "The controller has an appropriate policy document in place in relation to the sensitive processing if the controller has produced a document which— (a) explains the controller's procedures for securing compliance with the data protection principles (see section 34(1)) in connection with sensitive processing in reliance on the consent of the data subject or (as the case may be) in reliance on the condition in question, and (b) explains the controller's policies as regards the retention and erasure of personal data processed in reliance on the consent of the data subject or (as the case may be) in reliance on the condition in question, giving an indication of how long such personal data is likely to be retained."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.42-3",
+      "title": "Where personal data is processed on the basis that an appropriate policy document is in place, the controller must during the relevant period— (a) retain the appropriate policy document, (b) review an",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.42(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.42(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.42-3_stmt",
+        "name": "statement",
+        "prose": "Where personal data is processed on the basis that an appropriate policy document is in place, the controller must during the relevant period— (a) retain the appropriate policy document, (b) review and (if appropriate) update it from time to time, and (c) make it available to the Commission, on request, without charge."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.42-4",
+      "title": "The record maintained by the controller under section 61(1) and, where the sensitive processing is carried out by a processor on behalf of the controller, the record maintained by the processor under ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.42(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.42(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.42-4_stmt",
+        "name": "statement",
+        "prose": "The record maintained by the controller under section 61(1) and, where the sensitive processing is carried out by a processor on behalf of the controller, the record maintained by the processor under section 61(3) must include the following information— (a) whether the sensitive processing is carried out in reliance on the consent of the data subject or, if not, which condition in Schedule 8 is relied on, (b) how the processing satisfies section 35 (lawfulness of processing), and (c) whether the personal data is retained and erased in accordance with the policies described in subsection (2)(b) and, if it is not, the reasons for not following those policies."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.44-1",
+      "title": "The controller must make available to data subjects the following information (whether by making the information generally available to the public or in any other way)— (a) the identity and the contac",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.44(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.44(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.44-1_stmt",
+        "name": "statement",
+        "prose": "The controller must make available to data subjects the following information (whether by making the information generally available to the public or in any other way)— (a) the identity and the contact details of the controller; (b) where applicable, the contact details of the data protection officer (see sections 69 to 71); (c) the purposes for which the controller processes personal data; (d) the existence of the rights of data subjects to request from the controller— (i) access to personal data (see section 45), (ii) rectification of personal data (see section 46), and (iii) erasure of personal data or the restriction of its processing (see section 47); (da) the existence of the right to make a complaint to the controller (see section 164A); (e) the existence of the right to lodge a complaint with the Commission (see section 165) and the contact details of the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.44-2",
+      "title": "The controller must also, in specific cases for the purpose of enabling the exercise of a data subject's rights under this Part, give the data subject the following— (a) information about the legal ba",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.44(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.44(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.44-2_stmt",
+        "name": "statement",
+        "prose": "The controller must also, in specific cases for the purpose of enabling the exercise of a data subject's rights under this Part, give the data subject the following— (a) information about the legal basis for the processing; (b) information about the period for which the personal data will be stored or, where that is not possible, about the criteria used to determine that period; (c) where applicable, information about the categories of recipients of the personal data (including recipients in third countries or international organisations); (d) such further information as is necessary to enable the exercise of the data subject's rights under this Part."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.44-5",
+      "title": "Where the provision of information to a data subject under subsection (2) is restricted under subsection (4), wholly or partly, the controller must inform the data subject in writing without undue del",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.44(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.44(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.44-5_stmt",
+        "name": "statement",
+        "prose": "Where the provision of information to a data subject under subsection (2) is restricted under subsection (4), wholly or partly, the controller must inform the data subject in writing without undue delay— (a) that the provision of information has been restricted, (b) of the reasons for the restriction, (c) of the data subject's right to make a request to the Commission under section 51, (ca) of the data subject’s right to make a complaint to the controller under section 164A, (d) of the data subject's right to lodge a complaint with the Commission under section 165, and (e) of the data subject's right to apply to a court under section 167."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.44-7",
+      "title": "The controller must— (a) record the reasons for a decision to restrict (whether wholly or partly) the provision of information to a data subject under subsection (2) in reliance on subsection (4), and",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.44(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.44(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.44-7_stmt",
+        "name": "statement",
+        "prose": "The controller must— (a) record the reasons for a decision to restrict (whether wholly or partly) the provision of information to a data subject under subsection (2) in reliance on subsection (4), and (b) if requested to do so by the Commission, make the record available to the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.45-1",
+      "title": "A data subject is entitled to obtain from the controller— (a) confirmation as to whether or not personal data concerning him or her is being processed, and (b) where that is the case, access to the pe",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.45(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.45(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.45-1_stmt",
+        "name": "statement",
+        "prose": "A data subject is entitled to obtain from the controller— (a) confirmation as to whether or not personal data concerning him or her is being processed, and (b) where that is the case, access to the personal data and the information set out in subsection (2)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.45-3",
+      "title": "Where a data subject makes a request under subsection (1), the information to which the data subject is entitled must be provided in writing — (a) without undue delay, and (b) in any event, before the",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.45(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.45(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.45-3_stmt",
+        "name": "statement",
+        "prose": "Where a data subject makes a request under subsection (1), the information to which the data subject is entitled must be provided in writing — (a) without undue delay, and (b) in any event, before the end of the applicable time period (as to which see section 54)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.45-5",
+      "title": "Where the rights of a data subject under subsection (1) are restricted under subsection (4), wholly or partly, the controller must inform the data subject in writing without undue delay and in any eve",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.45(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.45(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.45-5_stmt",
+        "name": "statement",
+        "prose": "Where the rights of a data subject under subsection (1) are restricted under subsection (4), wholly or partly, the controller must inform the data subject in writing without undue delay and in any event before the end of the applicable time period (as to which see section 54)— (a) that the rights of the data subject have been restricted, (b) of the reasons for the restriction, (c) of the data subject's right to make a request to the Commission under section 51, (ca) of the data subject’s right to make a complaint to the controller under section 164A, (d) of the data subject's right to lodge a complaint with the Commission under section 165, and (e) of the data subject's right to apply to a court under section 167."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.45-7",
+      "title": "The controller must— (a) record the reasons for a decision to restrict (whether wholly or partly) the rights of a data subject under subsection (1) in reliance on subsection (4), and (b) if requested ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.45(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.45(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.45-7_stmt",
+        "name": "statement",
+        "prose": "The controller must— (a) record the reasons for a decision to restrict (whether wholly or partly) the rights of a data subject under subsection (1) in reliance on subsection (4), and (b) if requested to do so by the Commission, make the record available to the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.45A-2",
+      "title": "A controller relying on the exemption in subsection (1) must inform the data subject in writing without undue delay of— (a) the decision to rely on the exemption, (b) the reason for the decision, (c) ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.45A(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.45A(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.45A-2_stmt",
+        "name": "statement",
+        "prose": "A controller relying on the exemption in subsection (1) must inform the data subject in writing without undue delay of— (a) the decision to rely on the exemption, (b) the reason for the decision, (c) the data subject’s right to make a request to the Commission under section 51, (ca) the data subject’s right to make a complaint to the controller under section 164A, (d) the data subject’s right to lodge a complaint with the Commission under section 165, and (e) the data subject’s right to apply to a court under section 167."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.45A-4",
+      "title": "The controller must— (a) record the reason for a decision to rely on the exemption in subsection (1), and (b) if requested to do so by the Commission, make the record available to the Commission.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.45A(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.45A(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.45A-4_stmt",
+        "name": "statement",
+        "prose": "The controller must— (a) record the reason for a decision to rely on the exemption in subsection (1), and (b) if requested to do so by the Commission, make the record available to the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.46-1",
+      "title": "The controller must, if so requested by a data subject, rectify without undue delay inaccurate personal data relating to the data subject.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.46(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.46(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.46-1_stmt",
+        "name": "statement",
+        "prose": "The controller must, if so requested by a data subject, rectify without undue delay inaccurate personal data relating to the data subject."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.46-2",
+      "title": "Where personal data is inaccurate because it is incomplete, the controller must, if so requested by a data subject, complete it.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.46(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.46(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.46-2_stmt",
+        "name": "statement",
+        "prose": "Where personal data is inaccurate because it is incomplete, the controller must, if so requested by a data subject, complete it."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.46-4",
+      "title": "Where the controller would be required to rectify personal data under this section but the personal data must be maintained for the purposes of evidence, the controller must (instead of rectifying the",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.46(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.46(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.46-4_stmt",
+        "name": "statement",
+        "prose": "Where the controller would be required to rectify personal data under this section but the personal data must be maintained for the purposes of evidence, the controller must (instead of rectifying the personal data) restrict its processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.47-1",
+      "title": "The controller must erase personal data without undue delay where— (a) the processing of the personal data would infringe section 35, 36(1) to (3), 37, 38(1), 39(1), 40, 41 or 42, or (b) the controlle",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.47(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.47(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.47-1_stmt",
+        "name": "statement",
+        "prose": "The controller must erase personal data without undue delay where— (a) the processing of the personal data would infringe section 35, 36(1) to (3), 37, 38(1), 39(1), 40, 41 or 42, or (b) the controller has a legal obligation to erase the data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.47-2",
+      "title": "Where the controller would be required to erase personal data under subsection (1) but the personal data must be maintained for the purposes of evidence, the controller must (instead of erasing the pe",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.47(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.47(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.47-2_stmt",
+        "name": "statement",
+        "prose": "Where the controller would be required to erase personal data under subsection (1) but the personal data must be maintained for the purposes of evidence, the controller must (instead of erasing the personal data) restrict its processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.47-3",
+      "title": "Where a data subject contests the accuracy of personal data (whether in making a request under this section or section 46 or in any other way), but it is not possible to ascertain whether it is accura",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.47(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.47(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.47-3_stmt",
+        "name": "statement",
+        "prose": "Where a data subject contests the accuracy of personal data (whether in making a request under this section or section 46 or in any other way), but it is not possible to ascertain whether it is accurate or not, the controller must restrict its processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-1",
+      "title": "Where a data subject requests the rectification or erasure of personal data or the restriction of its processing, the controller must inform the data subject in writing— (a) whether the request has be",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-1_stmt",
+        "name": "statement",
+        "prose": "Where a data subject requests the rectification or erasure of personal data or the restriction of its processing, the controller must inform the data subject in writing— (a) whether the request has been granted, and (b) if it has been refused— (i) of the reasons for the refusal, (ii) of the data subject's right to make a request to the Commission under section 51, (iia) of the data subject’s right to make a complaint to the controller under section 164A, (iii) of the data subject's right to lodge a complaint with the Commission under section 165, and (iv) of the data subject's right to apply to a court under section 167."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-2",
+      "title": "The controller must comply with the duty under subsection (1)— (a) without undue delay, and (b) in any event, before the end of the applicable time period (see section 54).",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-2_stmt",
+        "name": "statement",
+        "prose": "The controller must comply with the duty under subsection (1)— (a) without undue delay, and (b) in any event, before the end of the applicable time period (see section 54)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-4",
+      "title": "Where the rights of a data subject under subsection (1)(b)(i) are restricted under subsection (3), wholly or partly, the controller must inform the data subject in writing without undue delay— (a) tha",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-4_stmt",
+        "name": "statement",
+        "prose": "Where the rights of a data subject under subsection (1)(b)(i) are restricted under subsection (3), wholly or partly, the controller must inform the data subject in writing without undue delay— (a) that the rights of the data subject have been restricted, (b) of the reasons for the restriction, (ba) of the data subject’s right to make a complaint to the controller under section 164A, (c) of the data subject's right to lodge a complaint with the Commission under section 165, and (d) of the data subject's right to apply to a court under section 167."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-6",
+      "title": "The controller must— (a) record the reasons for a decision to restrict (whether wholly or partly) the provision of information to a data subject under subsection (1)(b)(i) in reliance on subsection (3",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-6_stmt",
+        "name": "statement",
+        "prose": "The controller must— (a) record the reasons for a decision to restrict (whether wholly or partly) the provision of information to a data subject under subsection (1)(b)(i) in reliance on subsection (3), and (b) if requested to do so by the Commission, make the record available to the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-7",
+      "title": "Where the controller rectifies personal data, it must notify the competent authority (if any) from which the inaccurate personal data originated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-7_stmt",
+        "name": "statement",
+        "prose": "Where the controller rectifies personal data, it must notify the competent authority (if any) from which the inaccurate personal data originated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-9",
+      "title": "Where the controller rectifies, erases or restricts the processing of personal data which has been disclosed by the controller— (a) the controller must notify the recipients, and (b) the recipients mu",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(9)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(9)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-9_stmt",
+        "name": "statement",
+        "prose": "Where the controller rectifies, erases or restricts the processing of personal data which has been disclosed by the controller— (a) the controller must notify the recipients, and (b) the recipients must similarly rectify, erase or restrict the processing of the personal data (so far as they retain responsibility for it)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.48-10",
+      "title": "Where processing is restricted in accordance with section 47(3), the controller must inform the data subject before lifting the restriction.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.48(10)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.48(10)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.48-10_stmt",
+        "name": "statement",
+        "prose": "Where processing is restricted in accordance with section 47(3), the controller must inform the data subject before lifting the restriction."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.50A-2",
+      "title": "When considering whether there is meaningful human involvement in the taking of a decision, a person must consider, among other things, the extent to which the decision is reached by means of profilin",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.50A(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.50A(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.50A-2_stmt",
+        "name": "statement",
+        "prose": "When considering whether there is meaningful human involvement in the taking of a decision, a person must consider, among other things, the extent to which the decision is reached by means of profiling."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.50B-1",
+      "title": "A significant decision based entirely or partly on sensitive processing may not be taken based solely on automated processing, unless one of the following conditions is met.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.50B(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.50B(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.50B-1_stmt",
+        "name": "statement",
+        "prose": "A significant decision based entirely or partly on sensitive processing may not be taken based solely on automated processing, unless one of the following conditions is met."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.50C-1",
+      "title": "Subject to subsection (3), where a significant decision taken by or on behalf of a controller in relation to a data subject is— (a) based entirely or partly on personal data, and (b) based solely on a",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.50C(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.50C(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.50C-1_stmt",
+        "name": "statement",
+        "prose": "Subject to subsection (3), where a significant decision taken by or on behalf of a controller in relation to a data subject is— (a) based entirely or partly on personal data, and (b) based solely on automated processing,the controller must ensure that safeguards for the data subject’s rights, freedoms and legitimate interests are in place which comply with subsection (2) and any regulations under section 50D(4)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.50C-2",
+      "title": "The safeguards must consist of or include measures which— (a) provide the data subject with information about decisions described in subsection (1) taken in relation to the data subject; (b) enable th",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.50C(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.50C(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.50C-2_stmt",
+        "name": "statement",
+        "prose": "The safeguards must consist of or include measures which— (a) provide the data subject with information about decisions described in subsection (1) taken in relation to the data subject; (b) enable the data subject to make representations about such decisions; (c) enable the data subject to obtain human intervention on the part of the controller in relation to such decisions; (d) enable the data subject to contest such decisions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.50C-5",
+      "title": "When considering whether there is meaningful human involvement in the reconsideration of a decision, a person must consider, among other things, the extent to which the conclusion reached on reconside",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.50C(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.50C(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.50C-5_stmt",
+        "name": "statement",
+        "prose": "When considering whether there is meaningful human involvement in the reconsideration of a decision, a person must consider, among other things, the extent to which the conclusion reached on reconsideration is reached by means of profiling."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.52-1",
+      "title": "The controller must take reasonable steps to ensure that any information that is required by or under this Chapter to be provided to the data subject is provided in a concise, intelligible and easily ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.52(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.52(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.52-1_stmt",
+        "name": "statement",
+        "prose": "The controller must take reasonable steps to ensure that any information that is required by or under this Chapter to be provided to the data subject is provided in a concise, intelligible and easily accessible form, using clear and plain language."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.52-3",
+      "title": "Where information is provided in response to a request made by the data subject under or by virtue of any of sections 45, 46, 47, 50C or 50D, the controller must provide the information in the same fo",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.52(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.52(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.52-3_stmt",
+        "name": "statement",
+        "prose": "Where information is provided in response to a request made by the data subject under or by virtue of any of sections 45, 46, 47, 50C or 50D, the controller must provide the information in the same form as the request where it is practicable to do so."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.52-5",
+      "title": "Subject to section 53, any information that is required by or under this Chapter to be provided to the data subject must be provided free of charge.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.52(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.52(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.52-5_stmt",
+        "name": "statement",
+        "prose": "Subject to section 53, any information that is required by or under this Chapter to be provided to the data subject must be provided free of charge."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.52-6",
+      "title": "The controller must facilitate the exercise of the rights of the data subject arising under or by virtue of sections 45 to 50D.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.52(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.52(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.52-6_stmt",
+        "name": "statement",
+        "prose": "The controller must facilitate the exercise of the rights of the data subject arising under or by virtue of sections 45 to 50D."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.53-6",
+      "title": "If, in reliance on subsection (1)(b), the controller does not take action on the request, the controller must inform the data subject of— (a) the reasons for not doing so, and (b) the data subject’s r",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.53(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.53(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.53-6_stmt",
+        "name": "statement",
+        "prose": "If, in reliance on subsection (1)(b), the controller does not take action on the request, the controller must inform the data subject of— (a) the reasons for not doing so, and (b) the data subject’s right to lodge a complaint with the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.53-7",
+      "title": "The controller must comply with subsection (6)— (a) without undue delay, and (b) in any event, before the end of the applicable time period (as to which see section 54).",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.53(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.53(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.53-7_stmt",
+        "name": "statement",
+        "prose": "The controller must comply with subsection (6)— (a) without undue delay, and (b) in any event, before the end of the applicable time period (as to which see section 54)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.54-3B",
+      "title": "A notice under subsection (3A) must— (a) be given before the end of the period of one month beginning with the relevant time, and (b) state the reasons for the delay.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.54(3B)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.54(3B)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.54-3B_stmt",
+        "name": "statement",
+        "prose": "A notice under subsection (3A) must— (a) be given before the end of the period of one month beginning with the relevant time, and (b) state the reasons for the delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.55-3",
+      "title": "Where a controller is required by any provision of this Chapter to implement appropriate technical and organisational measures, the controller must (in deciding what measures are appropriate) take int",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.55(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.55(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.55-3_stmt",
+        "name": "statement",
+        "prose": "Where a controller is required by any provision of this Chapter to implement appropriate technical and organisational measures, the controller must (in deciding what measures are appropriate) take into account— (a) the latest developments in technology, (b) the cost of implementation, (c) the nature, scope, context and purposes of processing, and (d) the risks for the rights and freedoms of individuals arising from the processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.56-1",
+      "title": "Each controller must implement appropriate technical and organisational measures to ensure, and to be able to demonstrate, that the processing of personal data complies with the requirements of this P",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.56(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.56(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.56-1_stmt",
+        "name": "statement",
+        "prose": "Each controller must implement appropriate technical and organisational measures to ensure, and to be able to demonstrate, that the processing of personal data complies with the requirements of this Part."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.56-2",
+      "title": "Where proportionate in relation to the processing, the measures implemented to comply with the duty under subsection (1) must include appropriate data protection policies.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.56(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.56(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.56-2_stmt",
+        "name": "statement",
+        "prose": "Where proportionate in relation to the processing, the measures implemented to comply with the duty under subsection (1) must include appropriate data protection policies."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.56-3",
+      "title": "The technical and organisational measures implemented under subsection (1) must be reviewed and updated where necessary.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.56(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.56(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.56-3_stmt",
+        "name": "statement",
+        "prose": "The technical and organisational measures implemented under subsection (1) must be reviewed and updated where necessary."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.57-1",
+      "title": "Each controller must implement appropriate technical and organisational measures which are designed— (a) to implement the data protection principles in an effective manner, and (b) to integrate into t",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.57(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.57(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.57-1_stmt",
+        "name": "statement",
+        "prose": "Each controller must implement appropriate technical and organisational measures which are designed— (a) to implement the data protection principles in an effective manner, and (b) to integrate into the processing itself the safeguards necessary for that purpose."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.57-3",
+      "title": "Each controller must implement appropriate technical and organisational measures for ensuring that, by default, only personal data which is necessary for each specific purpose of the processing is pro",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.57(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.57(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.57-3_stmt",
+        "name": "statement",
+        "prose": "Each controller must implement appropriate technical and organisational measures for ensuring that, by default, only personal data which is necessary for each specific purpose of the processing is processed."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.57-5",
+      "title": "In particular, the measures implemented to comply with the duty under subsection (3) must ensure that, by default, personal data is not made accessible to an indefinite number of people without an ind",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.57(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.57(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.57-5_stmt",
+        "name": "statement",
+        "prose": "In particular, the measures implemented to comply with the duty under subsection (3) must ensure that, by default, personal data is not made accessible to an indefinite number of people without an individual's intervention."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.58-2",
+      "title": "Joint controllers must, in a transparent manner, determine their respective responsibilities for compliance with this Part by means of an arrangement between them, except to the extent that those resp",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.58(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.58(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.58-2_stmt",
+        "name": "statement",
+        "prose": "Joint controllers must, in a transparent manner, determine their respective responsibilities for compliance with this Part by means of an arrangement between them, except to the extent that those responsibilities are determined under or by virtue of an enactment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.58-3",
+      "title": "The arrangement must designate the controller which is to be the contact point for data subjects.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.58(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.58(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.58-3_stmt",
+        "name": "statement",
+        "prose": "The arrangement must designate the controller which is to be the contact point for data subjects."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.59-2",
+      "title": "The controller may use only a processor who provides guarantees to implement appropriate technical and organisational measures that are sufficient to secure that the processing will— (a) meet the requ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.59(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.59(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.59-2_stmt",
+        "name": "statement",
+        "prose": "The controller may use only a processor who provides guarantees to implement appropriate technical and organisational measures that are sufficient to secure that the processing will— (a) meet the requirements of this Part, and (b) ensure the protection of the rights of the data subject."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.59-3",
+      "title": "The processor used by the controller may not engage another processor (“a sub-processor”) without the prior written authorisation of the controller, which may be specific or general.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.59(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.59(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.59-3_stmt",
+        "name": "statement",
+        "prose": "The processor used by the controller may not engage another processor (“a sub-processor”) without the prior written authorisation of the controller, which may be specific or general."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.59-4",
+      "title": "Where the controller gives a general written authorisation to a processor, the processor must inform the controller if the processor proposes to add to the number of sub-processors engaged by it or to",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.59(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.59(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.59-4_stmt",
+        "name": "statement",
+        "prose": "Where the controller gives a general written authorisation to a processor, the processor must inform the controller if the processor proposes to add to the number of sub-processors engaged by it or to replace any of them (so that the controller has the opportunity to object to the proposal)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.59-5",
+      "title": "The processing by the processor must be governed by a contract in writing between the controller and the processor setting out the following— (a) the subject-matter and duration of the processing; (b)",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.59(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.59(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.59-5_stmt",
+        "name": "statement",
+        "prose": "The processing by the processor must be governed by a contract in writing between the controller and the processor setting out the following— (a) the subject-matter and duration of the processing; (b) the nature and purpose of the processing; (c) the type of personal data and categories of data subjects involved; (d) the obligations and rights of the controller and processor."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.59-6",
+      "title": "The contract must, in particular, provide that the processor must— (a) act only on instructions from the controller, (b) ensure that the persons authorised to process personal data are subject to an a",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.59(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.59(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.59-6_stmt",
+        "name": "statement",
+        "prose": "The contract must, in particular, provide that the processor must— (a) act only on instructions from the controller, (b) ensure that the persons authorised to process personal data are subject to an appropriate duty of confidentiality, (c) assist the controller by any appropriate means to ensure compliance with the rights of the data subject under this Part, (d) at the end of the provision of services by the processor to the controller— (i) either delete or return to the controller (at the choice of the controller) the personal data to which the services relate, and (ii) delete copies of the personal data unless subject to a legal obligation to store the copies, (e) make available to the controller all information necessary to demonstrate compliance with this section, and (f) comply with the requirements of this section for engaging sub-processors."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.59-7",
+      "title": "The terms included in the contract in accordance with subsection (6)(a) must provide that the processor may transfer personal data to a third country or international organisation only if instructed b",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.59(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.59(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.59-7_stmt",
+        "name": "statement",
+        "prose": "The terms included in the contract in accordance with subsection (6)(a) must provide that the processor may transfer personal data to a third country or international organisation only if instructed by the controller to make the particular transfer."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.60",
+      "title": "A processor, and any person acting under the authority of a controller or processor, who has access to personal data may not process the data except— (a) on instructions from the controller, or (b) to",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.60"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.60"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.60_stmt",
+        "name": "statement",
+        "prose": "A processor, and any person acting under the authority of a controller or processor, who has access to personal data may not process the data except— (a) on instructions from the controller, or (b) to comply with a legal obligation."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.61-1",
+      "title": "Each controller must maintain a record of all categories of processing activities for which the controller is responsible.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.61(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.61(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.61-1_stmt",
+        "name": "statement",
+        "prose": "Each controller must maintain a record of all categories of processing activities for which the controller is responsible."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.61-2",
+      "title": "The controller's record must contain the following information— (a) the name and contact details of the controller; (b) where applicable, the name and contact details of the joint controller; (c) wher",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.61(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.61(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.61-2_stmt",
+        "name": "statement",
+        "prose": "The controller's record must contain the following information— (a) the name and contact details of the controller; (b) where applicable, the name and contact details of the joint controller; (c) where applicable, the name and contact details of the data protection officer; (d) the purposes of the processing; (e) the categories of recipients to whom personal data has been or will be disclosed (including recipients in third countries or international organisations); (f) a description of the categories of— (i) data subject, and (ii) personal data; (g) where applicable, details of the use of profiling; (h) where applicable, the categories of transfers of personal data to a third country or an international organisation; (i) an indication of the legal basis for the processing operations, including transfers, for which the personal data is intended; (j) where possible, the envisaged time limits for erasure of the different categories of personal data; (k) where possible, a general description of the technical and organisational security measures referred to in section 66."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.61-3",
+      "title": "Each processor must maintain a record of all categories of processing activities carried out on behalf of a controller.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.61(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.61(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.61-3_stmt",
+        "name": "statement",
+        "prose": "Each processor must maintain a record of all categories of processing activities carried out on behalf of a controller."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.61-4",
+      "title": "The processor's record must contain the following information— (a) the name and contact details of the processor and of any other processors engaged by the processor in accordance with section 59(3); ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.61(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.61(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.61-4_stmt",
+        "name": "statement",
+        "prose": "The processor's record must contain the following information— (a) the name and contact details of the processor and of any other processors engaged by the processor in accordance with section 59(3); (b) the name and contact details of the controller on behalf of which the processor is acting; (c) where applicable, the name and contact details of the data protection officer; (d) the categories of processing carried out on behalf of the controller; (e) where applicable, details of transfers of personal data to a third country or an international organisation where explicitly instructed to do so by the controller, including the identification of that third country or international organisation; (f) where possible, a general description of the technical and organisational security measures referred to in section 66."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.61-5",
+      "title": "The controller and the processor must make the records kept under this section available to the Commission on request.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.61(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.61(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.61-5_stmt",
+        "name": "statement",
+        "prose": "The controller and the processor must make the records kept under this section available to the Commission on request."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.62-1",
+      "title": "A controller (or, where personal data is processed on behalf of the controller by a processor, the processor) must keep logs for at least the following processing operations in automated processing sy",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.62(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.62(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.62-1_stmt",
+        "name": "statement",
+        "prose": "A controller (or, where personal data is processed on behalf of the controller by a processor, the processor) must keep logs for at least the following processing operations in automated processing systems— (a) collection; (b) alteration; (c) consultation; (d) disclosure (including transfers); (e) combination; (f) erasure."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.62-2",
+      "title": "The logs of consultation must make it possible to establish— (a) the... date and time of, the consultation, and (b) so far as possible, the identity of the person who consulted the data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.62(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.62(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.62-2_stmt",
+        "name": "statement",
+        "prose": "The logs of consultation must make it possible to establish— (a) the... date and time of, the consultation, and (b) so far as possible, the identity of the person who consulted the data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.62-3",
+      "title": "The logs of disclosure must make it possible to establish— (a) the... date and time of, the disclosure, and (b) so far as possible— (i) the identity of the person who disclosed the data, and (ii) the ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.62(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.62(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.62-3_stmt",
+        "name": "statement",
+        "prose": "The logs of disclosure must make it possible to establish— (a) the... date and time of, the disclosure, and (b) so far as possible— (i) the identity of the person who disclosed the data, and (ii) the identity of the recipients of the data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.62-4",
+      "title": "The logs kept under subsection (1) may be used only for one or more of the following purposes— (a) to verify the lawfulness of processing; (b) to assist with self-monitoring by the controller or (as t",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.62(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.62(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.62-4_stmt",
+        "name": "statement",
+        "prose": "The logs kept under subsection (1) may be used only for one or more of the following purposes— (a) to verify the lawfulness of processing; (b) to assist with self-monitoring by the controller or (as the case may be) the processor, including the conduct of internal disciplinary proceedings; (c) to ensure the integrity and security of personal data; (d) the purposes of criminal proceedings."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.62-5",
+      "title": "The controller or (as the case may be) the processor must make the logs available to the Commission on request.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.62(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.62(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.62-5_stmt",
+        "name": "statement",
+        "prose": "The controller or (as the case may be) the processor must make the logs available to the Commission on request."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.63",
+      "title": "Each controller and each processor must co-operate, on request, with the Commission in the performance of the Commission's tasks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.63"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.63"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.63_stmt",
+        "name": "statement",
+        "prose": "Each controller and each processor must co-operate, on request, with the Commission in the performance of the Commission's tasks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.64-1",
+      "title": "Where a type of processing is likely to result in a high risk to the rights and freedoms of individuals, the controller must, prior to the processing, carry out a data protection impact assessment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.64(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.64(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.64-1_stmt",
+        "name": "statement",
+        "prose": "Where a type of processing is likely to result in a high risk to the rights and freedoms of individuals, the controller must, prior to the processing, carry out a data protection impact assessment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.64-3",
+      "title": "A data protection impact assessment must include the following— (a) a general description of the envisaged processing operations; (b) an assessment of the risks to the rights and freedoms of data subj",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.64(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.64(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.64-3_stmt",
+        "name": "statement",
+        "prose": "A data protection impact assessment must include the following— (a) a general description of the envisaged processing operations; (b) an assessment of the risks to the rights and freedoms of data subjects; (c) the measures envisaged to address those risks; (d) safeguards, security measures and mechanisms to ensure the protection of personal data and to demonstrate compliance with this Part, taking into account the rights and legitimate interests of the data subjects and other persons concerned."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.64-4",
+      "title": "In deciding whether a type of processing is likely to result in a high risk to the rights and freedoms of individuals, the controller must take into account the nature, scope, context and purposes of ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.64(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.64(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.64-4_stmt",
+        "name": "statement",
+        "prose": "In deciding whether a type of processing is likely to result in a high risk to the rights and freedoms of individuals, the controller must take into account the nature, scope, context and purposes of the processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.65-2",
+      "title": "The controller must consult the Commission prior to the processing if a data protection impact assessment prepared under section 64 indicates that the processing of the data would result in a high ris",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.65(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.65(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.65-2_stmt",
+        "name": "statement",
+        "prose": "The controller must consult the Commission prior to the processing if a data protection impact assessment prepared under section 64 indicates that the processing of the data would result in a high risk to the rights and freedoms of individuals (in the absence of measures to mitigate the risk)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.65-3",
+      "title": "Where the controller is required to consult the Commission under subsection (2), the controller must give the Commission— (a) the data protection impact assessment prepared under section 64, and (b) a",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.65(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.65(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.65-3_stmt",
+        "name": "statement",
+        "prose": "Where the controller is required to consult the Commission under subsection (2), the controller must give the Commission— (a) the data protection impact assessment prepared under section 64, and (b) any other information requested by the Commission to enable the Commission to make an assessment of the compliance of the processing with the requirements of this Part."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.66-1",
+      "title": "Each controller and each processor must implement appropriate technical and organisational measures to ensure a level of security appropriate to the risks arising from the processing of personal data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.66(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.66(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.66-1_stmt",
+        "name": "statement",
+        "prose": "Each controller and each processor must implement appropriate technical and organisational measures to ensure a level of security appropriate to the risks arising from the processing of personal data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.66-2",
+      "title": "In the case of automated processing, each controller and each processor must, following an evaluation of the risks, implement measures designed to— (a) prevent unauthorised processing or unauthorised ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.66(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.66(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.66-2_stmt",
+        "name": "statement",
+        "prose": "In the case of automated processing, each controller and each processor must, following an evaluation of the risks, implement measures designed to— (a) prevent unauthorised processing or unauthorised interference with the systems used in connection with it, (b) ensure that it is possible to establish the precise details of any processing that takes place, (c) ensure that any systems used in connection with the processing function properly and may, in the case of interruption, be restored, and (d) ensure that stored personal data cannot be corrupted if a system used in connection with the processing malfunctions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.67-1",
+      "title": "If a controller becomes aware of a personal data breach in relation to personal data for which the controller is responsible, the controller must notify the breach to the Commission— (a) without undue",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.67(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.67(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.67-1_stmt",
+        "name": "statement",
+        "prose": "If a controller becomes aware of a personal data breach in relation to personal data for which the controller is responsible, the controller must notify the breach to the Commission— (a) without undue delay, and (b) where feasible, not later than 72 hours after becoming aware of it."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.67-3",
+      "title": "Where the notification to the Commission is not made within 72 hours, the notification must be accompanied by reasons for the delay.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.67(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.67(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.67-3_stmt",
+        "name": "statement",
+        "prose": "Where the notification to the Commission is not made within 72 hours, the notification must be accompanied by reasons for the delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.67-4",
+      "title": "Subject to subsection (5), the notification must include— (a) a description of the nature of the personal data breach including, where possible, the categories and approximate number of data subjects ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.67(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.67(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.67-4_stmt",
+        "name": "statement",
+        "prose": "Subject to subsection (5), the notification must include— (a) a description of the nature of the personal data breach including, where possible, the categories and approximate number of data subjects concerned and the categories and approximate number of personal data records concerned; (b) the name and contact details of the data protection officer or other contact point from whom more information can be obtained; (c) a description of the likely consequences of the personal data breach; (d) a description of the measures taken or proposed to be taken by the controller to address the personal data breach, including, where appropriate, measures to mitigate its possible adverse effects."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.67-6",
+      "title": "The controller must record the following information in relation to a personal data breach— (a) the facts relating to the breach, (b) its effects, and (c) the remedial action taken.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.67(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.67(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.67-6_stmt",
+        "name": "statement",
+        "prose": "The controller must record the following information in relation to a personal data breach— (a) the facts relating to the breach, (b) its effects, and (c) the remedial action taken."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.67-7",
+      "title": "The information mentioned in subsection (6) must be recorded in such a way as to enable the Commission to verify compliance with this section.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.67(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.67(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.67-7_stmt",
+        "name": "statement",
+        "prose": "The information mentioned in subsection (6) must be recorded in such a way as to enable the Commission to verify compliance with this section."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.67-9",
+      "title": "If a processor becomes aware of a personal data breach (in relation to personal data processed by the processor), the processor must notify the controller without undue delay.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.67(9)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.67(9)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.67-9_stmt",
+        "name": "statement",
+        "prose": "If a processor becomes aware of a personal data breach (in relation to personal data processed by the processor), the processor must notify the controller without undue delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.68-1",
+      "title": "Where a personal data breach is likely to result in a high risk to the rights and freedoms of individuals, the controller must inform the data subject of the breach without undue delay.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.68(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.68(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.68-1_stmt",
+        "name": "statement",
+        "prose": "Where a personal data breach is likely to result in a high risk to the rights and freedoms of individuals, the controller must inform the data subject of the breach without undue delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.68-2",
+      "title": "The information given to the data subject must include the following— (a) a description of the nature of the breach; (b) the name and contact details of the data protection officer or other contact po",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.68(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.68(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.68-2_stmt",
+        "name": "statement",
+        "prose": "The information given to the data subject must include the following— (a) a description of the nature of the breach; (b) the name and contact details of the data protection officer or other contact point from whom more information can be obtained; (c) a description of the likely consequences of the personal data breach; (d) a description of the measures taken or proposed to be taken by the controller to address the personal data breach, including, where appropriate, measures to mitigate its possible adverse effects."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.68-5",
+      "title": "In a case falling within subsection (3)(c) (but not within subsection (3)(a) or (b)), the information mentioned in subsection (2) must be made available to the data subject in another equally effectiv",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.68(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.68(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.68-5_stmt",
+        "name": "statement",
+        "prose": "In a case falling within subsection (3)(c) (but not within subsection (3)(a) or (b)), the information mentioned in subsection (2) must be made available to the data subject in another equally effective way, for example, by means of a public communication."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.69-1",
+      "title": "The controller must designate a data protection officer, unless the controller is a court, or other judicial authority, acting in its judicial capacity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.69(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.69(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.69-1_stmt",
+        "name": "statement",
+        "prose": "The controller must designate a data protection officer, unless the controller is a court, or other judicial authority, acting in its judicial capacity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.69-2",
+      "title": "When designating a data protection officer, the controller must have regard to the professional qualities of the proposed officer, in particular— (a) the proposed officer's expert knowledge of data pr",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.69(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.69(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.69-2_stmt",
+        "name": "statement",
+        "prose": "When designating a data protection officer, the controller must have regard to the professional qualities of the proposed officer, in particular— (a) the proposed officer's expert knowledge of data protection law and practice, and (b) the ability of the proposed officer to perform the tasks mentioned in section 71."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.69-4",
+      "title": "The controller must publish the contact details of the data protection officer and communicate these to the Commission.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.69(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.69(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.69-4_stmt",
+        "name": "statement",
+        "prose": "The controller must publish the contact details of the data protection officer and communicate these to the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.70-1",
+      "title": "The controller must ensure that the data protection officer is involved, properly and in a timely manner, in all issues which relate to the protection of personal data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.70(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.70(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.70-1_stmt",
+        "name": "statement",
+        "prose": "The controller must ensure that the data protection officer is involved, properly and in a timely manner, in all issues which relate to the protection of personal data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.70-2",
+      "title": "The controller must provide the data protection officer with the necessary resources and access to personal data and processing operations to enable the data protection officer to—",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.70(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.70(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.70-2_stmt",
+        "name": "statement",
+        "prose": "The controller must provide the data protection officer with the necessary resources and access to personal data and processing operations to enable the data protection officer to—"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.70-3",
+      "title": "The controller— (a) must ensure that the data protection officer does not receive any instructions regarding the performance of the tasks mentioned in section 71; (b) must ensure that the data protect",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.70(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.70(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.70-3_stmt",
+        "name": "statement",
+        "prose": "The controller— (a) must ensure that the data protection officer does not receive any instructions regarding the performance of the tasks mentioned in section 71; (b) must ensure that the data protection officer does not perform a task or fulfil a duty other than those mentioned in this Part where such task or duty would result in a conflict of interests; (c) must not dismiss or penalise the data protection officer for performing the tasks mentioned in section 71."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.70-5",
+      "title": "The data protection officer, in the performance of this role, must report to the highest management level of the controller.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.70(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.70(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.70-5_stmt",
+        "name": "statement",
+        "prose": "The data protection officer, in the performance of this role, must report to the highest management level of the controller."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.71-1",
+      "title": "The controller must entrust the data protection officer with at least the following tasks— (a) informing and advising the controller, any processor engaged by the controller, and any employee of the c",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.71(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.71(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.71-1_stmt",
+        "name": "statement",
+        "prose": "The controller must entrust the data protection officer with at least the following tasks— (a) informing and advising the controller, any processor engaged by the controller, and any employee of the controller who carries out processing of personal data, of that person's obligations under this Part, (b) providing advice on the carrying out of a data protection impact assessment under section 64 and monitoring compliance with that section, (c) co-operating with the Commission, (d) acting as the contact point for the Commission on issues relating to processing, including in relation to the consultation mentioned in section 65, and consulting with the Commission, where appropriate, in relation to any other matter, (e) monitoring compliance with policies of the controller in relation to the protection of personal data, and (f) monitoring compliance by the controller with this Part."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.71-3",
+      "title": "In performing the tasks set out in subsections (1) and (2), the data protection officer must have regard to the risks associated with processing operations, taking into account the nature, scope, cont",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.71(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.71(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.71-3_stmt",
+        "name": "statement",
+        "prose": "In performing the tasks set out in subsections (1) and (2), the data protection officer must have regard to the risks associated with processing operations, taking into account the nature, scope, context and purposes of processing."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.73-1",
+      "title": "The controller in relation to the transfer must secure that the transfer takes place only if— (a) the three conditions set out in subsections (2) to (4) are met,... (b) in a case where the personal da",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.73(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.73(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.73-1_stmt",
+        "name": "statement",
+        "prose": "The controller in relation to the transfer must secure that the transfer takes place only if— (a) the three conditions set out in subsections (2) to (4) are met,... (b) in a case where the personal data was originally transmitted or otherwise made available to the controller or another competent authority by a member State..., that member State, or any person based in that member State which is a competent authority for the purposes of the Law Enforcement Directive, has authorised the transfer in accordance with the law of the member State, and— (c) the transfer is carried out in accordance with the other provisions of this Part."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.73-6",
+      "title": "Where a transfer is made without the authorisation mentioned in subsection (1)(b), the authority in the member State which would have been responsible for deciding whether to authorise the transfer mu",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.73(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.73(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.73-6_stmt",
+        "name": "statement",
+        "prose": "Where a transfer is made without the authorisation mentioned in subsection (1)(b), the authority in the member State which would have been responsible for deciding whether to authorise the transfer must be informed without delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.75-2",
+      "title": "The controller must inform the Commission about the categories of data transfers that take place in reliance on subsection (1A)(b) but not in reliance on section 73(4)(aa) (transfer to processor).",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.75(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.75(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.75-2_stmt",
+        "name": "statement",
+        "prose": "The controller must inform the Commission about the categories of data transfers that take place in reliance on subsection (1A)(b) but not in reliance on section 73(4)(aa) (transfer to processor)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.75-3",
+      "title": "Where a transfer of data takes place in reliance on this section but not in reliance on section 73(4)(aa) (transfer to processor)— (a) the transfer must be documented, (b) the documentation must be pr",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.75(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.75(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.75-3_stmt",
+        "name": "statement",
+        "prose": "Where a transfer of data takes place in reliance on this section but not in reliance on section 73(4)(aa) (transfer to processor)— (a) the transfer must be documented, (b) the documentation must be provided to the Commission on request, and (c) the documentation must include, in particular— (i) the date and time of the transfer, (ii) the name of and any other pertinent information about the recipient, (iii) the justification for the transfer, and (iv) a description of the personal data transferred."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.76-2A",
+      "title": "In accordance with the third data protection principle, the amount of personal data transferred in reliance on this section must not be excessive in relation to the special purpose relied on.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.76(2A)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.76(2A)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.76-2A_stmt",
+        "name": "statement",
+        "prose": "In accordance with the third data protection principle, the amount of personal data transferred in reliance on this section must not be excessive in relation to the special purpose relied on."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.76-3",
+      "title": "Where a transfer of data takes place in reliance on this section— (a) the transfer must be documented, (b) the documentation must be provided to the Commission on request, and (c) the documentation mu",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.76(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.76(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.76-3_stmt",
+        "name": "statement",
+        "prose": "Where a transfer of data takes place in reliance on this section— (a) the transfer must be documented, (b) the documentation must be provided to the Commission on request, and (c) the documentation must include, in particular— (i) the date and time of the transfer, (ii) the name of and any other pertinent information about the recipient, (iii) the justification for the transfer, and (iv) a description of the personal data transferred."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.77-6",
+      "title": "Where personal data is transferred to a person in a third country in reliance on section 73(4)(b), the transferring controller must inform a relevant authority in that third country without undue dela",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.77(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.77(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.77-6_stmt",
+        "name": "statement",
+        "prose": "Where personal data is transferred to a person in a third country in reliance on section 73(4)(b), the transferring controller must inform a relevant authority in that third country without undue delay of the transfer, unless this would be ineffective or inappropriate."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.77-7",
+      "title": "The transferring controller must— (a) document any transfer to a recipient in a third country that takes place in reliance on section 73(4)(b), and (b) inform the Commission about the transfer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.77(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.77(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.77-7_stmt",
+        "name": "statement",
+        "prose": "The transferring controller must— (a) document any transfer to a recipient in a third country that takes place in reliance on section 73(4)(b), and (b) inform the Commission about the transfer."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.78-1",
+      "title": "... The transferring controller must make it a condition of the transfer — (a) that the personal data is not to be further transferred to a third country or international organisation without the auth",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.78(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.78(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.78-1_stmt",
+        "name": "statement",
+        "prose": "... The transferring controller must make it a condition of the transfer — (a) that the personal data is not to be further transferred to a third country or international organisation without the authorisation of the transferring controller or another competent authority (the “UK authoriser”), or (b) that— (i) the personal data is not to be so transferred without such authorisation except where subsection (1A) applies, and (ii) where a transfer is made without such authorisation, the UK authoriser must be informed without delay."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.78-2",
+      "title": "The UK authoriser may give an authorisation for the purposes of a condition described in subsection (1) only where the further transfer is necessary for a law enforcement purpose.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.78(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.78(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.78-2_stmt",
+        "name": "statement",
+        "prose": "The UK authoriser may give an authorisation for the purposes of a condition described in subsection (1) only where the further transfer is necessary for a law enforcement purpose."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.78-3",
+      "title": "In deciding whether to give the authorisation, the UK authoriser must take into account (among any other relevant factors)— (a) the seriousness of the circumstances leading to the request for authoris",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.78(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.78(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.78-3_stmt",
+        "name": "statement",
+        "prose": "In deciding whether to give the authorisation, the UK authoriser must take into account (among any other relevant factors)— (a) the seriousness of the circumstances leading to the request for authorisation, (b) the purpose for which the personal data was originally transferred, and (c) the standards for the protection of personal data that apply in the third country or international organisation to which the personal data would be transferred."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.78-4",
+      "title": "In a case where the personal data was originally transmitted or otherwise made available to the transferring controller or another competent authority by a member State..., the UK authoriser may not g",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.78(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.78(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.78-4_stmt",
+        "name": "statement",
+        "prose": "In a case where the personal data was originally transmitted or otherwise made available to the transferring controller or another competent authority by a member State..., the UK authoriser may not give an authorisation for the purposes of a condition described in subsection (1) unless that member State, or any person based in that member State which is a competent authority for the purposes of the Law Enforcement Directive, has authorised the transfer in accordance with the law of the member State."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.78-6",
+      "title": "Where a transfer is made in a case described in subsection (4) without the authorisation mentioned in that subsection (whether made with or without authorisation from the UK authoriser), the UK author",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.78(6)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.78(6)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.78-6_stmt",
+        "name": "statement",
+        "prose": "Where a transfer is made in a case described in subsection (4) without the authorisation mentioned in that subsection (whether made with or without authorisation from the UK authoriser), the UK authoriser must, without delay, inform, the authority in the member State which would have been responsible for deciding whether to authorise the transfer...."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.78-7",
+      "title": "Where a transfer takes place in reliance on section 73(4)(aa) (transfer to processor), the transferring controller must make it a condition of the transfer that the data is only to be further transfer",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.78(7)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.78(7)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.78-7_stmt",
+        "name": "statement",
+        "prose": "Where a transfer takes place in reliance on section 73(4)(aa) (transfer to processor), the transferring controller must make it a condition of the transfer that the data is only to be further transferred to a third country or international organisation where— (a) the terms of any relevant contract entered into, or authorisation given, by the transferring controller in accordance with section 59 are complied with, and (b) the further transfer satisfies the requirements in section 73(1)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.80-3",
+      "title": "The controller must consider whether, if the personal data had instead been transmitted or otherwise made available within the United Kingdom to another competent authority, processing of the data by ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.80(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.80(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.80-3_stmt",
+        "name": "statement",
+        "prose": "The controller must consider whether, if the personal data had instead been transmitted or otherwise made available within the United Kingdom to another competent authority, processing of the data by the other competent authority would have been subject to any restrictions by virtue of any enactment or rule of law."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.80-4",
+      "title": "Where that would be the case, the controller must inform the non-UK recipient that the data is transmitted or otherwise made available subject to compliance by that person with the same restrictions (",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.80(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.80(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.80-4_stmt",
+        "name": "statement",
+        "prose": "Where that would be the case, the controller must inform the non-UK recipient that the data is transmitted or otherwise made available subject to compliance by that person with the same restrictions (which must be set out in the information given to that person)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.81-1",
+      "title": "Each controller must implement effective mechanisms to encourage the reporting of an infringement of this Part.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.81(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.81(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.81-1_stmt",
+        "name": "statement",
+        "prose": "Each controller must implement effective mechanisms to encourage the reporting of an infringement of this Part."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.81-2",
+      "title": "The mechanisms implemented under subsection (1) must provide that an infringement may be reported to any of the following persons— (a) the controller; (b) the Commission.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.81(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.81(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.81-2_stmt",
+        "name": "statement",
+        "prose": "The mechanisms implemented under subsection (1) must provide that an infringement may be reported to any of the following persons— (a) the controller; (b) the Commission."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.81-3",
+      "title": "The mechanisms implemented under subsection (1) must include— (a) raising awareness of the protections provided by Part 4A of the Employment Rights Act 1996 and Part 5A of the Employment Rights (North",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.81(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.81(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.81-3_stmt",
+        "name": "statement",
+        "prose": "The mechanisms implemented under subsection (1) must include— (a) raising awareness of the protections provided by Part 4A of the Employment Rights Act 1996 and Part 5A of the Employment Rights (Northern Ireland) Order 1996 (S.I. 1996/1919 (N.I. 16)), and (b) such other protections for a person who reports an infringement of this Part as the controller considers appropriate."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.164A-2",
+      "title": "A controller must facilitate the making of complaints under this section by taking steps such as providing a complaint form which can be completed electronically and by other means.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.164A(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.164A(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.164A-2_stmt",
+        "name": "statement",
+        "prose": "A controller must facilitate the making of complaints under this section by taking steps such as providing a complaint form which can be completed electronically and by other means."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.164A-3",
+      "title": "If a controller receives a complaint under this section, the controller must acknowledge receipt of the complaint within the period of 30 days beginning when the complaint is received.",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.164A(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.164A(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.164A-3_stmt",
+        "name": "statement",
+        "prose": "If a controller receives a complaint under this section, the controller must acknowledge receipt of the complaint within the period of 30 days beginning when the complaint is received."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-s.164A-4",
+      "title": "If a controller receives a complaint under this section, the controller must without undue delay— (a) take appropriate steps to respond to the complaint, and (b) inform the complainant of the outcome ",
+      "props": [
+       {
+        "name": "label",
+        "value": "s.164A(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "s.164A(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-s.164A-4_stmt",
+        "name": "statement",
+        "prose": "If a controller receives a complaint under this section, the controller must without undue delay— (a) take appropriate steps to respond to the complaint, and (b) inform the complainant of the outcome of the complaint."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-uk_dpa_2018.main-1",
+      "title": "Data Protection Act input contract: FAIL-CLOSED — input.uk_dpa_2018 is missing or not an object; no duty can be evaluated and the controller is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "uk_dpa_2018.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uk_dpa_2018.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-uk_dpa_2018.main-1_stmt",
+        "name": "statement",
+        "prose": "Data Protection Act input contract: FAIL-CLOSED — input.uk_dpa_2018 is missing or not an object; no duty can be evaluated and the controller is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-uk_dpa_2018.main-2",
+      "title": "Data Protection Act input contract: FAIL-CLOSED — input.uk_dpa_2018.duties is missing or not an object of {\"<subsection id>\": true}",
+      "props": [
+       {
+        "name": "label",
+        "value": "uk_dpa_2018.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uk_dpa_2018.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-uk_dpa_2018.main-2_stmt",
+        "name": "statement",
+        "prose": "Data Protection Act input contract: FAIL-CLOSED — input.uk_dpa_2018.duties is missing or not an object of {\"<subsection id>\": true}"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-uk_dpa_2018.main-3",
+      "title": "Data Protection Act input contract: FAIL-CLOSED — input.uk_dpa_2018.scope is missing or not an object of declared flags",
+      "props": [
+       {
+        "name": "label",
+        "value": "uk_dpa_2018.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uk_dpa_2018.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-uk_dpa_2018.main-3_stmt",
+        "name": "statement",
+        "prose": "Data Protection Act input contract: FAIL-CLOSED — input.uk_dpa_2018.scope is missing or not an object of declared flags"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-uk_dpa_2018.main-4",
+      "title": "Data Protection Act input contract: scope flag %v undeclared — %v must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "uk_dpa_2018.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uk_dpa_2018.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-uk_dpa_2018.main-4_stmt",
+        "name": "statement",
+        "prose": "Data Protection Act input contract: scope flag %v undeclared — %v must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-uk_dpa_2018.main-5",
+      "title": "DPA %v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "uk_dpa_2018.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uk_dpa_2018.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-uk_dpa_2018.main-5_stmt",
+        "name": "statement",
+        "prose": "DPA %v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "uk_dpa_2018-uk_dpa_2018.main-6",
+      "title": "Data Protection Act input contract: attestation for unknown id %v — not a duty row of this module (ids are as the Act numbers them, e.g. s.62(1), Sch.1 para 40(1))",
+      "props": [
+       {
+        "name": "label",
+        "value": "uk_dpa_2018.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "uk_dpa_2018.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "uk_dpa_2018.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "uk_dpa_2018-uk_dpa_2018.main-6_stmt",
+        "name": "statement",
+        "prose": "Data Protection Act input contract: attestation for unknown id %v — not a duty row of this module (ids are as the Act numbers them, e.g. s.62(1), Sch.1 para 40(1))"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "e61eef89-da6e-5e46-ab69-ed23bf4b270d",
+     "title": "UK Data Protection Act 2018 (c. 12) — the duties the Act itself places on controllers and processors beyond",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "uk_dpa_2018.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/privacy/uk_dpa_2018/uk_dpa_2018_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

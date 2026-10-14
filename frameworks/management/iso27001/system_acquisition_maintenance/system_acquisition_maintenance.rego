@@ -1,5 +1,5 @@
 # METADATA
-# title: "Defaults so report/details never collapse to {} on empty input"
+# title: "ISO/IEC 27001 technical fact checks — 2013 group A.14 System acquisition, development and maintenance, re-keyed to 2022 Annex A A.5.8, A.8.25-A.8.27, A.8.29-A.8.33"
 # custom:
 #   class: compliance
 #   framework: iso27001
@@ -13,41 +13,60 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iso27001.system_acquisition_maintenance
 
 import rego.v1
 
 # Defaults so report/details never collapse to {} on empty input
 default security_requirements_defined := false
+
 default public_network_services_secure := false
+
 default transaction_protection := false
+
 default secure_development_policy := false
+
 default change_control_procedures := false
+
 default os_change_review := false
+
 default software_package_control := false
+
 default secure_engineering_principles := false
+
 default secure_development_environment := false
+
 default outsourced_development := false
+
 default security_testing := false
+
 default acceptance_testing := false
+
 default data_protection_control := false
+
 default data_generation_control := false
+
 default cicd_security := false
+
 default sca_controls := false
+
 default information_systems_security := false
+
 default security_in_development := false
+
 default compliant := false
 
-
-# ISO 27001:2022 - A.14 System Acquisition, Development and Maintenance
+# ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.14 System acquisition, development and maintenance.
+# The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check
+# decides is noted as (2022: A.x.y) and is wired in data.iso27001.fact_checks (../iso27001_policy.rego).
 # Technical controls for building security into information systems
 
 # =============================================================================
 # A.14.1 - Security Requirements of Information Systems
 # =============================================================================
 
-# A.14.1.1 - Information security requirements analysis and specification
+# A.14.1.1 - Information security requirements analysis and specification (2022: A.5.8)
 security_requirements_defined if {
 	input.system_requirements.security_requirements.documented == true
 	input.system_requirements.security_requirements.included_in_specifications == true
@@ -60,7 +79,7 @@ security_requirements_defined if {
 	input.system_requirements.categorization.risk_assessment_performed == true
 }
 
-# A.14.1.2 - Securing application services on public networks
+# A.14.1.2 - Securing application services on public networks (2022: A.8.26)
 public_network_services_secure if {
 	input.public_services.authentication.strong_auth_required == true
 	input.public_services.authentication.multi_factor_enabled == true
@@ -76,7 +95,7 @@ public_network_services_secure if {
 	input.public_services.input_validation.parameterized_queries == true
 }
 
-# A.14.1.3 - Protecting application services transactions
+# A.14.1.3 - Protecting application services transactions (2022: A.8.26)
 transaction_protection if {
 	input.transactions.integrity_verification == true
 	input.transactions.non_repudiation == true
@@ -91,7 +110,7 @@ transaction_protection if {
 # A.14.2 - Security in Development and Support Processes
 # =============================================================================
 
-# A.14.2.1 - Secure development policy
+# A.14.2.1 - Secure development policy (2022: A.8.25)
 secure_development_policy if {
 	input.development.policy.documented == true
 	input.development.policy.approved == true
@@ -106,7 +125,7 @@ secure_development_policy if {
 	input.development.policy.covers.peer_code_review == true
 }
 
-# A.14.2.2 - System change control procedures
+# A.14.2.2 - System change control procedures (2022: A.8.32)
 change_control_procedures if {
 	input.change_control.formal_process == true
 	input.change_control.documentation_required == true
@@ -122,7 +141,7 @@ change_control_procedures if {
 	input.change_control.version_control.branch_protection == true
 }
 
-# A.14.2.3 - Technical review of applications after OS changes
+# A.14.2.3 - Technical review of applications after OS changes (2022: A.8.32)
 os_change_review if {
 	input.os_change_review.procedure_defined == true
 	input.os_change_review.applications_tested_after_os_change == true
@@ -131,7 +150,7 @@ os_change_review if {
 	input.os_change_review.change_management_notified == true
 }
 
-# A.14.2.4 - Restrictions on changes to software packages
+# A.14.2.4 - Restrictions on changes to software packages (2022: A.8.32)
 software_package_control if {
 	input.software_packages.modification_restricted == true
 	input.software_packages.vendor_packages_preferred == true
@@ -140,7 +159,7 @@ software_package_control if {
 	input.software_packages.vendor_notification_when_modified == true
 }
 
-# A.14.2.5 - Secure system engineering principles
+# A.14.2.5 - Secure system engineering principles (2022: A.8.27)
 secure_engineering_principles if {
 	input.secure_engineering.threat_modeling == true
 	input.secure_engineering.security_architecture_review == true
@@ -157,7 +176,7 @@ secure_engineering_principles if {
 	input.secure_engineering.session_management_secure == true
 }
 
-# A.14.2.6 - Secure development environment
+# A.14.2.6 - Secure development environment (2022: A.8.31)
 secure_development_environment if {
 	input.dev_environment.access_restricted == true
 	input.dev_environment.separated_from_production == true
@@ -172,7 +191,7 @@ secure_development_environment if {
 	input.dev_environment.workstations.patching_current == true
 }
 
-# A.14.2.7 - Outsourced development
+# A.14.2.7 - Outsourced development (2022: A.8.30)
 outsourced_development if {
 	# If outsourcing is not used, this control is satisfied
 	not input.outsourced_development.used
@@ -187,7 +206,7 @@ outsourced_development if {
 	input.outsourced_development.ip_protection == true
 }
 
-# A.14.2.8 - System security testing
+# A.14.2.8 - System security testing (2022: A.8.29)
 security_testing if {
 	input.security_testing.policy.defined == true
 	input.security_testing.types.unit_testing == true
@@ -209,7 +228,7 @@ security_testing if {
 	input.security_testing.penetration_testing.frequency_days <= 365
 }
 
-# A.14.2.9 - System acceptance testing
+# A.14.2.9 - System acceptance testing (2022: A.8.29)
 acceptance_testing if {
 	input.acceptance_testing.criteria_defined == true
 	input.acceptance_testing.security_criteria_included == true
@@ -222,7 +241,7 @@ acceptance_testing if {
 # A.14.3 - Test Data
 # =============================================================================
 
-# A.14.3.1 - Protection of test data
+# A.14.3.1 - Protection of test data (2022: A.8.33)
 data_protection_control if {
 	# Production data should not be used in test environments
 	input.test_data.production_data_not_used_for_testing == true

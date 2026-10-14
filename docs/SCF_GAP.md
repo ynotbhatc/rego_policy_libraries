@@ -1,6 +1,6 @@
 # Secure Controls Framework (SCF) coverage gap and expansion plan
 
-**Version:** v1.4
+**Version:** v1.5
 **Date:** 2026-10-13
 **Authors:** Tim Coulter (ynotbha@aisle-five.com), Claude (Anthropic)
 **Measured against:** SCF 2026.3 workbook (released 2026-09-21), `SCF 2026.3` sheet; this library at v2.4.2 plus the Phase 1 batch of 2026-10-13
@@ -18,8 +18,8 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries v2.4.2 |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 16,046 control-level checks (`make count`) |
-| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 159 framework catalogs, 130+ framework directories |
+| Controls / checks | 1,591 controls in 34 domains | 16,690 control-level checks (`make count`) |
+| Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 160 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 23 STIG platforms |
 | Licence | Creative Commons BY-ND, free | open |
@@ -34,18 +34,18 @@ comparison is the distinct document.
 
 | Status | Count | Meaning |
 |---|---|---|
-| covered | 61 | a module exists for that document, same or newer edition |
-| partial | 12 | the document is covered inside another module, or we carry an older edition |
+| covered | 65 | a module exists for that document, same or newer edition |
+| partial | 8 | the document is covered inside another module, or we carry an older edition |
 | gap | 161 | nothing in the library |
 
 By region:
 
 | Region | Documents | Covered | Partial | Gap |
 |---|---|---|---|---|
-| General and international standards | 67 | 24 | 8 | 35 |
+| General and international standards | 67 | 26 | 6 | 35 |
 | United States, federal | 43 | 18 | 2 | 23 |
 | United States, state | 27 | 2 | 0 | 25 |
-| EMEA | 50 | 12 | 2 | 36 |
+| EMEA | 50 | 14 | 0 | 36 |
 | APAC | 36 | 5 | 0 | 31 |
 | Americas | 11 | 0 | 0 | 11 |
 
@@ -55,7 +55,7 @@ What SCF does not have and we do: every CIS Benchmark and DISA STIG, CISA SCuBA 
 Hardening, Pod Security Standards, SLSA, S2C2F, FedRAMP 20x KSI, HITRUST, FISMA, CISA ZTMM, PQC readiness,
 ISO/IEC 42005, OWASP LLM Top 10, GEISA, MCP tool-call governance, HKMA TM-G-1/TM-C-1, CERT-In Directions,
 METI Cybersecurity Management Guidelines, ITAR, NIST IR 7628 (AMI) and the digital sovereignty suite. None of
-those count toward the 237, so our 159 catalogs and SCF's "61 covered" are different lists.
+those count toward the 237, so our 160 catalogs and SCF's "65 covered" are different lists.
 
 ## How we close it
 
@@ -63,19 +63,20 @@ The order below weights customer demand (federal, financial, Oracle and database
 reuse (one engine that serves many documents) and effort. Each phase is a release train of its own; counts move
 the README on every merge because `make count --check-readme` enforces it.
 
-### Phase 1. Re-stamp and profile the 12 partials
+### Phase 1. Re-stamp and profile the 8 partials
 
 Cheapest breadth: the controls exist, the document label or edition is what is missing.
 
-- Edition bumps: CSA CCM 4.0 to 4.1.0, ISO/IEC 27701:2019 to 2025, PCI DSS 4.0 to 4.0.1, SWIFT CSP 2024 to 2025,
-  DORA to carry the 2024 RTS as a named module.
-- Profile gates on existing modules: nine PCI DSS SAQ profiles, NIST SP 800-53 Rev 4 beside Rev 5.
-- Split-outs: ISO/IEC 27002:2022 numbering on the ISO 27001 Annex A tables, UK DPA 2018 deltas on GDPR,
-  the DoD Zero Trust Reference Architecture 2.0 and Execution Roadmap on the zero-trust module (source PDFs
-  refuse automated download; waiting on a copy), NIST CSWP 39 on PQC.
-- Done 2026-10-13: 800-53B and FedRAMP baselines as OSCAL profiles; 800-171 Rev 2, 800-171A (both revisions),
+- Edition bumps: CSA CCM 4.0 to 4.1.0, ISO/IEC 27701:2019 to 2025, PCI DSS 4.0 to 4.0.1, SWIFT CSP 2024 to 2025
+  (all need a licensed or login-gated document).
+- Profile gates on existing modules: nine PCI DSS SAQ profiles, NIST SP 800-53 Rev 4 beside Rev 5 (pending the
+  decision on attested 800-53 modules).
+- Split-outs: the DoD Zero Trust Reference Architecture 2.0 and Execution Roadmap on the zero-trust module (source
+  PDFs refuse automated download; waiting on a copy).
+- Done 2026-10-13/14: 800-53B and FedRAMP baselines as OSCAL profiles; 800-171 Rev 2, 800-171A (both revisions),
   800-172/172A, DFARS 7012, EO 14028, SSDAF, CSF 2.0, 800-82 overlays, 800-161 levels, C5:2026, HIPAA
-  Administrative Simplification with 800-66 Rev 2 numbering.
+  Administrative Simplification with 800-66 Rev 2 numbering, DORA RTS 2024/1774, UK DPA 2018, ISO 27002:2022
+  numbering on ISO 27001, CSWP 39-upd1.
 
 Outcome: 73 of 234 covered, no partials.
 
@@ -153,7 +154,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### General and international standards
 
-67 documents: 24 covered, 8 partial, 35 gap.
+67 documents: 26 covered, 6 partial, 35 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -177,8 +178,8 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | IMO \| Maritime Cyber Risk Management | gap |  |
 | ISO/SAE \| 21434 \| 2021 | gap |  |
 | ISO \| 22301 \| 2019 | gap |  |
-| ISO \| 27001 \| 2022 | covered | frameworks/management/iso27001 (2022) |
-| ISO \| 27002 \| 2022 | partial | Annex A groups inside iso27001; no 27002-numbered module |
+| ISO \| 27001 \| 2022 | covered | frameworks/management/iso27001 (93 Annex A controls, 2022 numbering) |
+| ISO \| 27002 \| 2022 | covered | frameworks/management/iso27001: all 93 Annex A controls under the 2022 numbering with an iso27002 view (titles and attributes only; 35 fact-decided, 58 attested) |
 | ISO \| 27017 \| 2015 | gap |  |
 | ISO \| 27018 \| 2025 | gap |  |
 | ISO \| 27701 \| 2025 | partial | frameworks/privacy/iso27701 is 2019; SCF maps 2025 |
@@ -210,7 +211,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | NIST \| 800-207 | covered | frameworks/federal/zero_trust |
 | NIST \| 800-218 | covered | frameworks/federal/nist_ssdf + benchmarks/supply_chain/ssdf |
 | NIST \| CSF \| 2.0 | covered | frameworks/federal/nist/cybersecurity_framework_2.0 (all 106 subcategories from NIST CPRT; 29 fact-decided, 77 attested) |
-| NIST \| CSWP 39 | partial | frameworks/federal/pqc covers readiness, not CSWP 39 numbering |
+| NIST \| CSWP 39 | covered | frameworks/federal/pqc/cswp39_crypto_agility.rego: 67 practice rows from CSWP 39-upd1 (June 2026) |
 | NIST Privacy Framework \| 1.0 | covered | frameworks/privacy/nist_privacy_framework (100 subcategories from NIST CPRT) |
 | OECD \| Privacy Principles | gap |  |
 | OWASP \| Top 10 \| 2025 | gap |  |
@@ -311,7 +312,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 
 ### EMEA
 
-50 documents: 12 covered, 2 partial, 36 gap.
+50 documents: 14 covered, 0 partial, 36 gap.
 
 | SCF document | Status | Our module / note |
 |---|---|---|
@@ -328,7 +329,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | EU \| Cyber Resiliency Act \| 2024 | covered | frameworks/compliance/cra (17 modules, Annex I included) |
 | EU \| Cyber Resiliency Act Annex I \| 2024 | covered | frameworks/compliance/cra (17 modules, Annex I included) |
 | EU \| DORA \| 2023 | covered | frameworks/financial/dora |
-| EU \| DORA RTS \| 2024 | partial | dora cites the 2025 RTS; no standalone RTS module |
+| EU \| DORA RTS \| 2024 | covered | frameworks/financial/dora/dora_rts_ict_risk.rego: Delegated Regulation (EU) 2024/1774, 308 rows (Title II 228, Title III 80), simplified-framework and entity-role gates |
 | EU \| EBA \| GL/2019/04 | gap |  |
 | EU \| GDPR \| 2016 | covered | frameworks/privacy/gdpr |
 | EU \| NIS2 \| 2022 | covered | frameworks/compliance/nis2 (directive + 2024 implementing annex) |
@@ -339,7 +340,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | UK \| Cyber Essentials 3.3 | covered | frameworks/regional/cyber_essentials (Willow 2025) |
 | UK \| DEFSTAN 05-138 \| 2024 | covered | frameworks/regional/dcc (all four risk profiles) |
 | UK \| DEFSTAN 05-138 (4 profiles) | covered | frameworks/regional/dcc (all four risk profiles) |
-| UK \| DPA \| 2018 | partial | gdpr module; UK DPA 2018 deltas not modelled |
+| UK \| DPA \| 2018 | covered | frameworks/privacy/uk_dpa_2018 (151 duty rows from the legislation.gov.uk XML, point in time 2026-09-30; Part 3 gated by competent_authority) |
 | Greece \| PIRPPD \| 1997 | gap |  |
 | Hungary \| Act CXII \| 2011 | gap |  |
 | Ireland \| DPA \| 2018 | gap |  |
