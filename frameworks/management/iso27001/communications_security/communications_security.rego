@@ -1,5 +1,5 @@
 # METADATA
-# title: "Defaults so report/details never collapse to {} on empty input"
+# title: "ISO/IEC 27001 technical fact checks — 2013 group A.13 Communications security, re-keyed to 2022 Annex A A.5.14, A.6.6, A.6.7, A.8.16, A.8.20-A.8.22"
 # custom:
 #   class: compliance
 #   framework: iso27001
@@ -13,36 +13,50 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iso27001.communications_security
 
 import rego.v1
 
 # Defaults so report/details never collapse to {} on empty input
 default network_controls := false
+
 default network_services_secure := false
+
 default network_segregation := false
+
 default transfer_policies := false
+
 default transfer_agreements := false
+
 default electronic_messaging_secure := false
+
 default nda_requirements := false
+
 default remote_access_secure := false
+
 default network_monitoring := false
+
 default dns_security := false
+
 default network_management_secure := false
+
 default network_security_management := false
+
 default information_transfer := false
+
 default compliant := false
 
-
-# ISO 27001:2022 - A.13 Communications Security
+# ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.13 Communications security.
+# The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check
+# decides is noted as (2022: A.x.y) and is wired in data.iso27001.fact_checks (../iso27001_policy.rego).
 # Technical controls for protecting information in networks and information transfer
 
 # =============================================================================
 # A.13.1 - Network Security Management
 # =============================================================================
 
-# A.13.1.1 - Network controls
+# A.13.1.1 - Network controls (2022: A.8.20)
 network_controls if {
 	input.network_security.controls.firewalls_deployed == true
 	input.network_security.controls.intrusion_detection == true
@@ -52,7 +66,7 @@ network_controls if {
 	input.network_security.controls.responsibility_assigned == true
 }
 
-# A.13.1.2 - Security of network services
+# A.13.1.2 - Security of network services (2022: A.8.21)
 network_services_secure if {
 	input.network_services.security_features_identified == true
 	input.network_services.service_agreements_documented == true
@@ -65,7 +79,7 @@ network_services_secure if {
 	input.network_services.third_party.contracts_include_security == true
 }
 
-# A.13.1.3 - Segregation in networks
+# A.13.1.3 - Segregation in networks (2022: A.8.22)
 network_segregation if {
 	input.network_segregation.zones_defined == true
 	input.network_segregation.vlans_configured == true
@@ -86,7 +100,7 @@ network_segregation if {
 # A.13.2 - Information Transfer
 # =============================================================================
 
-# A.13.2.1 - Information transfer policies and procedures
+# A.13.2.1 - Information transfer policies and procedures (2022: A.5.14)
 transfer_policies if {
 	input.information_transfer.policy.documented == true
 	input.information_transfer.policy.approved == true
@@ -100,7 +114,7 @@ transfer_policies if {
 	input.information_transfer.controls.unauthorized_interception_prevented == true
 }
 
-# A.13.2.2 - Agreements on information transfer
+# A.13.2.2 - Agreements on information transfer (2022: A.5.14)
 transfer_agreements if {
 	input.information_transfer.agreements.formal_agreements_required == true
 	input.information_transfer.agreements.security_requirements_defined == true
@@ -114,7 +128,7 @@ transfer_agreements if {
 	input.information_transfer.agreements.third_party.audit_rights_reserved == true
 }
 
-# A.13.2.3 - Electronic messaging security
+# A.13.2.3 - Electronic messaging security (2022: A.5.14)
 electronic_messaging_secure if {
 	input.electronic_messaging.encryption.emails_encrypted == true
 	input.electronic_messaging.encryption.sensitive_content_protected == true
@@ -130,7 +144,7 @@ electronic_messaging_secure if {
 	input.electronic_messaging.authentication.dmarc_configured == true
 }
 
-# A.13.2.4 - Confidentiality or non-disclosure agreements
+# A.13.2.4 - Confidentiality or non-disclosure agreements (2022: A.6.6)
 nda_requirements if {
 	input.nda.required_for_staff == true
 	input.nda.required_for_contractors == true
@@ -149,7 +163,7 @@ nda_requirements if {
 # Additional Network Security Controls
 # =============================================================================
 
-# Remote access security
+# Remote access security (2022: A.6.7)
 remote_access_secure if {
 	input.remote_access.vpn.required == true
 	input.remote_access.vpn.strong_encryption == true
@@ -167,7 +181,7 @@ remote_access_secure if {
 	input.remote_access.endpoints.patch_level_verified == true
 }
 
-# Network monitoring and detection
+# Network monitoring and detection (2022: A.8.16)
 network_monitoring if {
 	input.network_monitoring.ids_ips_deployed == true
 	input.network_monitoring.traffic_analysis == true
@@ -188,7 +202,7 @@ dns_security if {
 	input.dns_security.monitoring_enabled == true
 }
 
-# Network management security
+# Network management security (2022: A.8.20)
 network_management_secure if {
 	input.network_management.out_of_band_management == true
 	input.network_management.management_vlan_separate == true

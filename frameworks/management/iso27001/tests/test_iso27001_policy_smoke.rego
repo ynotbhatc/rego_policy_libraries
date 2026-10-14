@@ -9,3 +9,14 @@ test_iso27001_policy_loads_on_empty_input if {
 	m := data.iso27001 with input as {}
 	is_object(m)
 }
+
+test_iso27001_policy_report_wellformed_on_empty_input if {
+	report := data.iso27001.compliance_report with input as {}
+	is_object(report)
+	count(report) > 0
+}
+
+test_iso27001_policy_fail_closed_on_empty_input if {
+	report := data.iso27001.compliance_report with input as {}
+	not object.get(report, "compliant", false) == true
+}

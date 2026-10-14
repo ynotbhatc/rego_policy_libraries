@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "a87c6c39-7a19-5b2d-abc6-307cc8e5d9c0",
   "metadata": {
-   "title": "Rego Policy Libraries — pqc (Post-Quantum Cryptography (PQC) Readiness — v1.0)",
+   "title": "Rego Policy Libraries — pqc (NIST CSWP 39-upd1 Crypto Agility (updated 2026-06-29) — strategies and practices)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -43,6 +43,2449 @@
    ]
   },
   "groups": [
+   {
+    "id": "pqc-cswp39_crypto_agility",
+    "class": "rego-module",
+    "title": "NIST CSWP 39-upd1 Crypto Agility (updated 2026-06-29) — strategies and practices",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "pqc.cswp39"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/federal/pqc/cswp39_crypto_agility.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "pqc-develops_cryptographic_implementations",
+      "title": "NIST CSWP 39 §§3–4, 6.1–6.3 — whether the organisation designs or implements protocols, applications, libraries, kernels, embedded or hardware cryptography must be declared true or false",
+      "props": [
+       {
+        "name": "label",
+        "value": "develops_cryptographic_implementations"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "develops_cryptographic_implementations"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-develops_cryptographic_implementations_stmt",
+        "name": "statement",
+        "prose": "NIST CSWP 39 §§3–4, 6.1–6.3 — whether the organisation designs or implements protocols, applications, libraries, kernels, embedded or hardware cryptography must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-self_manages_cloud_cryptography",
+      "title": "NIST CSWP 39 §6.4 — whether the organisation self-manages cryptography in the cloud (own HSMs or cryptographic applications in IaaS, or cloud services integrated with on-premises cryptography) must be",
+      "props": [
+       {
+        "name": "label",
+        "value": "self_manages_cloud_cryptography"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "self_manages_cloud_cryptography"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-self_manages_cloud_cryptography_stmt",
+        "name": "statement",
+        "prose": "NIST CSWP 39 §6.4 — whether the organisation self-manages cryptography in the cloud (own HSMs or cryptographic applications in IaaS, or cloud services integrated with on-premises cryptography) must be declared true or false"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3-a",
+      "title": "To achieve crypto agility, security protocol implementations should be modular so they can easily accommodate the insertion of new algorithms or cipher suites.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3-a_stmt",
+        "name": "statement",
+        "prose": "To achieve crypto agility, security protocol implementations should be modular so they can easily accommodate the insertion of new algorithms or cipher suites."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3-b",
+      "title": "Implementations should also provide a way to determine when deployed implementations have shifted from the old algorithms to more desirable ones.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3-b_stmt",
+        "name": "statement",
+        "prose": "Implementations should also provide a way to determine when deployed implementations have shifted from the old algorithms to more desirable ones."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3-c",
+      "title": "The set of mandatory-to-implement algorithms is expected to change over time, and the cipher suite negotiation mechanism needs to accommodate the identification of yet-to-be specified algorithms in th",
+      "props": [
+       {
+        "name": "label",
+        "value": "3-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3-c_stmt",
+        "name": "statement",
+        "prose": "The set of mandatory-to-implement algorithms is expected to change over time, and the cipher suite negotiation mechanism needs to accommodate the identification of yet-to-be specified algorithms in the future."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.1-a",
+      "title": "Designers are encouraged to pick one of these approaches and use it consistently throughout the protocol or family of protocols.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.1-a_stmt",
+        "name": "statement",
+        "prose": "Designers are encouraged to pick one of these approaches and use it consistently throughout the protocol or family of protocols."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.1-b",
+      "title": "To avoid these interoperability problems in the future, any aspect of the algorithm not specified by the algorithm identifiers needs to be negotiated, including the key size and other parameters.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.1-b_stmt",
+        "name": "statement",
+        "prose": "To avoid these interoperability problems in the future, any aspect of the algorithm not specified by the algorithm identifiers needs to be negotiated, including the key size and other parameters."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.2",
+      "title": "When the new algorithm is widely deployed, it should be used in lieu of the old algorithm.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.2_stmt",
+        "name": "statement",
+        "prose": "When the new algorithm is widely deployed, it should be used in lieu of the old algorithm."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.2.2-a",
+      "title": "As part of their crypto agility efforts in the transition to PQC, security protocol designers need to plan for public keys, signatures, and key-encapsulation ciphertext to be much larger than those cu",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.2.2-a_stmt",
+        "name": "statement",
+        "prose": "As part of their crypto agility efforts in the transition to PQC, security protocol designers need to plan for public keys, signatures, and key-encapsulation ciphertext to be much larger than those currently used."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.2.2-b",
+      "title": "To be safe, security protocol designers should plan for significant growth in the size of cryptographic data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.2.2-b_stmt",
+        "name": "statement",
+        "prose": "To be safe, security protocol designers should plan for significant growth in the size of cryptographic data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.2.3-a",
+      "title": "The mechanism that a security protocol uses to perform cryptographic algorithm negotiation should include integrity protection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.2.3-a_stmt",
+        "name": "statement",
+        "prose": "The mechanism that a security protocol uses to perform cryptographic algorithm negotiation should include integrity protection."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.2.3-b",
+      "title": "In this case, the integrity protection should be at least as strong as that provided by a future cipher suite, which can result in the need for several mandatory-to-implement algorithms to cover the v",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.3-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.3-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.2.3-b_stmt",
+        "name": "statement",
+        "prose": "In this case, the integrity protection should be at least as strong as that provided by a future cipher suite, which can result in the need for several mandatory-to-implement algorithms to cover the various security strength requirements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.2.4",
+      "title": "The PKI root of trust must be known to all of the relying parties to validate a certificate, and the cost of deploying a PKI root of trust is significant, so the expense associated with a transition t",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.2.4_stmt",
+        "name": "statement",
+        "prose": "The PKI root of trust must be known to all of the relying parties to validate a certificate, and the cost of deploying a PKI root of trust is significant, so the expense associated with a transition to the use of a hybrid root of trust followed by a potential second transition to using only a PQC algorithm for a root of trust must be considered."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.3-a",
+      "title": "In addition, administrators need to be aware that multiple environments are being used, track the policies, and enable the algorithms or cipher suites for each of them.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.3-a_stmt",
+        "name": "statement",
+        "prose": "In addition, administrators need to be aware that multiple environments are being used, track the policies, and enable the algorithms or cipher suites for each of them."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.3-b",
+      "title": "Security protocol designers should perform an analysis to ensure that all security goals are achieved when each of the possible key-establishment mechanisms is used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.3-b_stmt",
+        "name": "statement",
+        "prose": "Security protocol designers should perform an analysis to ensure that all security goals are achieved when each of the possible key-establishment mechanisms is used."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4",
+      "title": "When a protocol designer is specifying a cipher suite, the relative strength of each algorithm needs to be considered, and complexity in security protocols needs to be avoided.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4_stmt",
+        "name": "statement",
+        "prose": "When a protocol designer is specifying a cipher suite, the relative strength of each algorithm needs to be considered, and complexity in security protocols needs to be avoided."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.1-a",
+      "title": "When selecting or negotiating a cipher suite, the relative strength of each algorithm needs to be considered.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.1-a_stmt",
+        "name": "statement",
+        "prose": "When selecting or negotiating a cipher suite, the relative strength of each algorithm needs to be considered."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.1-b",
+      "title": "The security protections provided by each algorithm in a particular context need to be considered when making the selection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.1-b_stmt",
+        "name": "statement",
+        "prose": "The security protections provided by each algorithm in a particular context need to be considered when making the selection."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.1-c",
+      "title": "Algorithm strength needs to be considered when a security protocol is designed, implemented, deployed, and configured.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.1-c_stmt",
+        "name": "statement",
+        "prose": "Algorithm strength needs to be considered when a security protocol is designed, implemented, deployed, and configured."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.1-d",
+      "title": "Performance and security need to be balanced.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1-d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1-d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.1-d_stmt",
+        "name": "statement",
+        "prose": "Performance and security need to be balanced."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.2-a",
+      "title": "Security protocol designers need to balance agility with simplicity and anticipate changes to the supported set of cryptographic algorithms over time.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.2-a_stmt",
+        "name": "statement",
+        "prose": "Security protocol designers need to balance agility with simplicity and anticipate changes to the supported set of cryptographic algorithms over time."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.2-b",
+      "title": "Security protocol implementations should be as straightforward as possible to reduce vulnerability to attacks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.2-b_stmt",
+        "name": "statement",
+        "prose": "Security protocol implementations should be as straightforward as possible to reduce vulnerability to attacks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.2-c",
+      "title": "While support for multiple algorithms is necessary to achieve crypto agility, gratuitous options should be avoided to keep implementations from becoming unnecessary large.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.2-c_stmt",
+        "name": "statement",
+        "prose": "While support for multiple algorithms is necessary to achieve crypto agility, gratuitous options should be avoided to keep implementations from becoming unnecessary large."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.2-d",
+      "title": "Furthermore, once an algorithm is disallowed, it should be removed from the protocol to reduce complexity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2-d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2-d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.2-d_stmt",
+        "name": "statement",
+        "prose": "Furthermore, once an algorithm is disallowed, it should be removed from the protocol to reduce complexity."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-3.4.2-e",
+      "title": "Implementers should periodically review the options that are actually being used and then remove unused options to keep the attack surface as small as possible.",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2-e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2-e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-3.4.2-e_stmt",
+        "name": "statement",
+        "prose": "Implementers should periodically review the options that are actually being used and then remove unused options to keep the attack surface as small as possible."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4-a",
+      "title": "To achieve crypto agility, system designers must introduce mechanisms that simplify the replacement of cryptographic algorithms in software, libraries, hardware, firmware, and infrastructures.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4-a_stmt",
+        "name": "statement",
+        "prose": "To achieve crypto agility, system designers must introduce mechanisms that simplify the replacement of cryptographic algorithms in software, libraries, hardware, firmware, and infrastructures."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4-b",
+      "title": "Therefore, system designers must make sure that the cryptographic interface is easy to use and well-documented to reduce the risk of errors.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4-b_stmt",
+        "name": "statement",
+        "prose": "Therefore, system designers must make sure that the cryptographic interface is easy to use and well-documented to reduce the risk of errors."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4-c",
+      "title": "Additionally, clear guidance must be provided for practitioners to follow.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4-c_stmt",
+        "name": "statement",
+        "prose": "Additionally, clear guidance must be provided for practitioners to follow."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.1-a",
+      "title": "Application developers need to consider whether the API is provided via the command line interface (CLI) or by incorporating the cryptographic algorithm’s source code into the application (i.e., “comp",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.1-a_stmt",
+        "name": "statement",
+        "prose": "Application developers need to consider whether the API is provided via the command line interface (CLI) or by incorporating the cryptographic algorithm’s source code into the application (i.e., “compiling in” support)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.1-b",
+      "title": "For software libraries, it is important to facilitate efficient updates.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.1-b_stmt",
+        "name": "statement",
+        "prose": "For software libraries, it is important to facilitate efficient updates."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.1-c",
+      "title": "Some standard mechanisms must be in place to avoid security pitfalls in library updates.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.1-c_stmt",
+        "name": "statement",
+        "prose": "Some standard mechanisms must be in place to avoid security pitfalls in library updates."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.2-a",
+      "title": "To provide crypto agility in this case, the crypto API must also be accessible within the kernel.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.2-a_stmt",
+        "name": "statement",
+        "prose": "To provide crypto agility in this case, the crypto API must also be accessible within the kernel."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.2-b",
+      "title": "Where feasible, operating system designers should consider modular or updatable cryptographic components in the kernel.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.2-b_stmt",
+        "name": "statement",
+        "prose": "Where feasible, operating system designers should consider modular or updatable cryptographic components in the kernel."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.4-a",
+      "title": "To support cryptographic flexibility in this environment, the cryptographic API must be accessible to privileged code within the RTOS.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.4-a_stmt",
+        "name": "statement",
+        "prose": "To support cryptographic flexibility in this environment, the cryptographic API must be accessible to privileged code within the RTOS."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.4-b",
+      "title": "Designers should consider the need to update the cryptographic implementation together or separately from the rest of the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.4-b_stmt",
+        "name": "statement",
+        "prose": "Designers should consider the need to update the cryptographic implementation together or separately from the rest of the system."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.5-a",
+      "title": "The crypto API needs to be designed so that all points on this spectrum are accommodated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.5-a_stmt",
+        "name": "statement",
+        "prose": "The crypto API needs to be designed so that all points on this spectrum are accommodated."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-4.5-b",
+      "title": "In this case, to make sure that the platform is trustable during its lifetime, the signature schemes must be able to provide the required security during the lifetime of the device.",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-4.5-b_stmt",
+        "name": "statement",
+        "prose": "In this case, to make sure that the platform is trustable during its lifetime, the signature schemes must be able to provide the required security during the lifetime of the device."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-a",
+      "title": "Integrate crypto agility into the organization’s existing governance function to establish, communicate, and monitor the cybersecurity risk management strategy, expectations, and policies related to c",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-a_stmt",
+        "name": "statement",
+        "prose": "Integrate crypto agility into the organization’s existing governance function to establish, communicate, and monitor the cybersecurity risk management strategy, expectations, and policies related to cryptography."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-b",
+      "title": "This includes understanding cryptographic standards, regulations, and mandates and communicating these requirements to data owners, IT and development teams, business partners, and technology supply c",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-b_stmt",
+        "name": "statement",
+        "prose": "This includes understanding cryptographic standards, regulations, and mandates and communicating these requirements to data owners, IT and development teams, business partners, and technology supply chain vendors prioritized by the criticality of the data for the primary use cases."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-c",
+      "title": "Identify key stakeholders, including a responsible official to lead the effort and monitor the progress of the activities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-c_stmt",
+        "name": "statement",
+        "prose": "Identify key stakeholders, including a responsible official to lead the effort and monitor the progress of the activities."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-d",
+      "title": "Inventory the use of cryptography for data protection across the organization by adopting an assets-centric approach informed by the criticality of the data to identify the organization’s use cases an",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-d_stmt",
+        "name": "statement",
+        "prose": "Inventory the use of cryptography for data protection across the organization by adopting an assets-centric approach informed by the criticality of the data to identify the organization’s use cases and most valuable assets, such as application codes, libraries, software, hardware, firmware, user-generated content, communication protocols, enterprise services, and systems."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-e",
+      "title": "Identify gaps in enterprise management tools for managing assets, configurations, vulnerabilities, and logs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-e_stmt",
+        "name": "statement",
+        "prose": "Identify gaps in enterprise management tools for managing assets, configurations, vulnerabilities, and logs."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-f",
+      "title": "These tools should support cryptographic risk management and data protection functions by automating the identification, assessment, characterization, enforcement, and monitoring of cryptography acros",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-f"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-f"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-f_stmt",
+        "name": "statement",
+        "prose": "These tools should support cryptographic risk management and data protection functions by automating the identification, assessment, characterization, enforcement, and monitoring of cryptography across assets."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-g",
+      "title": "If necessary, enhance the tools with automated data and cryptographic discovery capabilities, including algorithms and key lengths.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-g"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-g"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-g_stmt",
+        "name": "statement",
+        "prose": "If necessary, enhance the tools with automated data and cryptographic discovery capabilities, including algorithms and key lengths."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-h",
+      "title": "Develop a prioritized list of assets to be mitigated based on the data collected in the previous steps.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-h"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-h"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-h_stmt",
+        "name": "statement",
+        "prose": "Develop a prioritized list of assets to be mitigated based on the data collected in the previous steps."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-i",
+      "title": "A cryptographic policy-informed risk assessment engine should be used to analyze this data, form an implementation strategy, and recommend actions to reduce risks.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-i_stmt",
+        "name": "statement",
+        "prose": "A cryptographic policy-informed risk assessment engine should be used to analyze this data, form an implementation strategy, and recommend actions to reduce risks."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-j",
+      "title": "Implement the strategy and actions based on the prioritized list of assets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-j"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-j"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-j_stmt",
+        "name": "statement",
+        "prose": "Implement the strategy and actions based on the prioritized list of assets."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5-k",
+      "title": "These steps are continuously repeated to mitigate evolving cryptographic risks and progressively strengthen the crypto agility posture within organizations over time.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5-k"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5-k"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5-k_stmt",
+        "name": "statement",
+        "prose": "These steps are continuously repeated to mitigate evolving cryptographic risks and progressively strengthen the crypto agility posture within organizations over time."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.1-a",
+      "title": "Any crypto agility effort must consider the effects of standards, regulations, and mandates on transition requirements for cryptographic algorithms.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.1-a_stmt",
+        "name": "statement",
+        "prose": "Any crypto agility effort must consider the effects of standards, regulations, and mandates on transition requirements for cryptographic algorithms."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.1-b",
+      "title": "From a practitioner’s perspective, certain policies, laws, and mechanisms must be established to enhance crypto agility practices, facilitate transitions, and provide proper security during the transi",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.1-b_stmt",
+        "name": "statement",
+        "prose": "From a practitioner’s perspective, certain policies, laws, and mechanisms must be established to enhance crypto agility practices, facilitate transitions, and provide proper security during the transition."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.1-c",
+      "title": "It is very important to handle assets in a secure way during a transition.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.1-c_stmt",
+        "name": "statement",
+        "prose": "It is very important to handle assets in a secure way during a transition."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.1-d",
+      "title": "For example, for the encrypted storage of data at rest, a mechanism must be established to handle encrypted user data when the encryption algorithm is to be replaced by a stronger one.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1-d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1-d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.1-d_stmt",
+        "name": "statement",
+        "prose": "For example, for the encrypted storage of data at rest, a mechanism must be established to handle encrypted user data when the encryption algorithm is to be replaced by a stronger one."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.1-e",
+      "title": "Similarly, when a digital signature algorithm must be replaced, a mechanism to handle already-signed documents using the algorithm to be replaced is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1-e"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1-e"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.1-e_stmt",
+        "name": "statement",
+        "prose": "Similarly, when a digital signature algorithm must be replaced, a mechanism to handle already-signed documents using the algorithm to be replaced is required."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.2-a",
+      "title": "The crypto agility assessment must consider cryptographic security policy establishment and enforcement for each protocol, system, and application.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.2-a_stmt",
+        "name": "statement",
+        "prose": "The crypto agility assessment must consider cryptographic security policy establishment and enforcement for each protocol, system, and application."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.2-b",
+      "title": "Each decision on deprecating a cryptographic algorithm must be synchronized among all of the stakeholders so that the security policy can be updated quickly and translated into a technology-specific, ",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.2-b_stmt",
+        "name": "statement",
+        "prose": "Each decision on deprecating a cryptographic algorithm must be synchronized among all of the stakeholders so that the security policy can be updated quickly and translated into a technology-specific, machine-consumable configuration profile that represents a crypto policy that can be deployed with automated tools."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-5.3",
+      "title": "When systems reach their end-of-life stage and their cryptographic components no longer comply with organizational cryptographic policies, the organization implements the defined mitigation strategies",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-5.3_stmt",
+        "name": "statement",
+        "prose": "When systems reach their end-of-life stage and their cryptographic components no longer comply with organizational cryptographic policies, the organization implements the defined mitigation strategies and begins the replacement process as outlined in its policy."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6",
+      "title": "To be actionable, crypto agility requirements must be specific for each implementation and application environment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6_stmt",
+        "name": "statement",
+        "prose": "To be actionable, crypto agility requirements must be specific for each implementation and application environment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.1",
+      "title": "It is important for protocol designers to consider resource demands to plan for future transitions and to distinguish intrinsic limitations from shortsighted design decisions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.1_stmt",
+        "name": "statement",
+        "prose": "It is important for protocol designers to consider resource demands to plan for future transitions and to distinguish intrinsic limitations from shortsighted design decisions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.2-a",
+      "title": "To achieve cryptographic agility, a product or system must be designed to accommodate new algorithms and parameters.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.2-a_stmt",
+        "name": "statement",
+        "prose": "To achieve cryptographic agility, a product or system must be designed to accommodate new algorithms and parameters."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.2-b",
+      "title": "The design should avoid making assumptions based on specific algorithms to ensure that buffers, memory, and storage can handle diverse cryptographic data.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.2-b_stmt",
+        "name": "statement",
+        "prose": "The design should avoid making assumptions based on specific algorithms to ensure that buffers, memory, and storage can handle diverse cryptographic data."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.2-c",
+      "title": "It should be a common practice in any protocol design to facilitate secure transition and avoid inflexible implementations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.2-c_stmt",
+        "name": "statement",
+        "prose": "It should be a common practice in any protocol design to facilitate secure transition and avoid inflexible implementations."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.2-d",
+      "title": "It is also important to include crypto agility as an evaluation perspective for project proposals, security architects, protection profiles, protocol specifications, and application designs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2-d"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2-d"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.2-d_stmt",
+        "name": "statement",
+        "prose": "It is also important to include crypto agility as an evaluation perspective for project proposals, security architects, protection profiles, protocol specifications, and application designs."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.3-a",
+      "title": "Accommodating crypto agility introduces complexity into protocols and systems that protocol designers and system architects and implementers should take into consideration.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.3-a_stmt",
+        "name": "statement",
+        "prose": "Accommodating crypto agility introduces complexity into protocols and systems that protocol designers and system architects and implementers should take into consideration."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.3-b",
+      "title": "For enterprise IT administrators, it is important to make sure that the configuration is updated to reflect current security requirements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.3-b_stmt",
+        "name": "statement",
+        "prose": "For enterprise IT administrators, it is important to make sure that the configuration is updated to reflect current security requirements."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.4",
+      "title": "In the IaaS model, customers have more control, but they are responsible for the agility of their cryptographic functions when they choose to manage their own hardware (e.g., HSMs) or cryptographic ap",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.4_stmt",
+        "name": "statement",
+        "prose": "In the IaaS model, customers have more control, but they are responsible for the agility of their cryptographic functions when they choose to manage their own hardware (e.g., HSMs) or cryptographic applications within the cloud or when integrating cloud-based applications and services that employ on-premises cryptographic services."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-6.5",
+      "title": "Instead, organizations should adapt their existing, mature risk management frameworks to include crypto agility.",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-6.5_stmt",
+        "name": "statement",
+        "prose": "Instead, organizations should adapt their existing, mature risk management frameworks to include crypto agility."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-7-a",
+      "title": "The pursuit of crypto agility capabilities involves the exploration of new technologies and management schemes, and new crypto agility requirements must be developed for each environment.",
+      "props": [
+       {
+        "name": "label",
+        "value": "7-a"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7-a"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-7-a_stmt",
+        "name": "statement",
+        "prose": "The pursuit of crypto agility capabilities involves the exploration of new technologies and management schemes, and new crypto agility requirements must be developed for each environment."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-7-b",
+      "title": "The security analysis and evaluation of protocols, systems, and applications must include mechanisms for transitions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "7-b"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7-b"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-7-b_stmt",
+        "name": "statement",
+        "prose": "The security analysis and evaluation of protocols, systems, and applications must include mechanisms for transitions."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-7-c",
+      "title": "When transition mechanisms are not available, organizations should have a plan to implement compensating controls to mitigate cryptographic vulnerabilities and evolving threats.",
+      "props": [
+       {
+        "name": "label",
+        "value": "7-c"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7-c"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-7-c_stmt",
+        "name": "statement",
+        "prose": "When transition mechanisms are not available, organizations should have a plan to implement compensating controls to mitigate cryptographic vulnerabilities and evolving threats."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-NIST-CSWP-39-Input-Contract",
+      "title": "input.pqc.cswp39 must be an object",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CSWP 39 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CSWP 39 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-NIST-CSWP-39-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "input.pqc.cswp39 must be an object"
+       },
+       {
+        "id": "pqc-NIST-CSWP-39-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "input.pqc.cswp39.practices must be an object of {\"<section id>\": true}"
+       },
+       {
+        "id": "pqc-NIST-CSWP-39-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown practice id %v — not a practice row of CSWP 39 chapters 3–7"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-NIST-CSWP-39-FAIL-CLOSED",
+      "title": "no crypto-agility practice attestations supplied (input.pqc.cswp39.practices is absent) — every applicable practice is reported unattested",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST CSWP 39 FAIL-CLOSED"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST CSWP 39 FAIL-CLOSED"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-NIST-CSWP-39-FAIL-CLOSED_stmt",
+        "name": "statement",
+        "prose": "no crypto-agility practice attestations supplied (input.pqc.cswp39.practices is absent) — every applicable practice is reported unattested"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-pqc.cswp39-1",
+      "title": "%v (pqc.cswp39.%v undeclared)",
+      "props": [
+       {
+        "name": "label",
+        "value": "pqc.cswp39#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pqc.cswp39#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-pqc.cswp39-1_stmt",
+        "name": "statement",
+        "prose": "%v (pqc.cswp39.%v undeclared)"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-pqc.cswp39-2",
+      "title": "NIST CSWP 39 §%v (%v): %v — not attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "pqc.cswp39#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pqc.cswp39#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.cswp39"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28d5e794-2e86-50ef-abf2-3f3852881974",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-pqc.cswp39-2_stmt",
+        "name": "statement",
+        "prose": "NIST CSWP 39 §%v (%v): %v — not attested"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
    {
     "id": "pqc-pqc_main",
     "class": "rego-module",
@@ -478,6 +2921,23 @@
   ],
   "back-matter": {
    "resources": [
+    {
+     "uuid": "28d5e794-2e86-50ef-abf2-3f3852881974",
+     "title": "NIST CSWP 39-upd1 Crypto Agility (updated 2026-06-29) — strategies and practices",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "pqc.cswp39"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/federal/pqc/cswp39_crypto_agility.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
     {
      "uuid": "a634261f-3585-5d96-a862-45da49d3563f",
      "title": "Post-Quantum Cryptography (PQC) Readiness — v1.0",

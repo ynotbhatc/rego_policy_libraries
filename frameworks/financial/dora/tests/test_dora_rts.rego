@@ -54,7 +54,7 @@ test_rts_messages_not_misbucketed_into_pillars if {
 		"p5": r.pillar_summary.information_sharing,
 	} {
 		every m in pv {
-			not contains(m, "RTS 2025/")
+			not contains(m, "RTS 20")
 		}
 	}
 }
@@ -63,5 +63,5 @@ test_report_rts_buckets_populated if {
 	r := main.compliance_report with input as {}
 	count(r.pillar_summary.rts_2025_532_subcontracting) == 30
 	count(r.pillar_summary.rts_2025_1190_tlpt) == 31
-	r.total_controls == 91
+	r.total_controls == 399
 }

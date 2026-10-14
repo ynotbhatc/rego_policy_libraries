@@ -1,5 +1,5 @@
 # METADATA
-# title: "Defaults so report/details never collapse to {} on empty input"
+# title: "ISO/IEC 27001 technical fact checks — 2013 group A.12 Operations security, re-keyed to 2022 Annex A A.5.37, A.8.6-A.8.8, A.8.13, A.8.15, A.8.17, A.8.19, A.8.31, A.8.32, A.8.34"
 # custom:
 #   class: compliance
 #   framework: iso27001
@@ -13,39 +13,56 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iso27001.operations_security
 
 import rego.v1
 
 # Defaults so report/details never collapse to {} on empty input
 default operating_procedures_documented := false
+
 default change_management := false
+
 default capacity_management := false
+
 default environment_separation := false
+
 default malware_protection := false
+
 default backup_management := false
+
 default event_logging := false
+
 default log_protection := false
+
 default admin_logs := false
+
 default clock_synchronization := false
+
 default software_installation_control := false
+
 default vulnerability_management := false
+
 default software_restriction := false
+
 default audit_controls := false
+
 default operational_procedures := false
+
 default logging_monitoring := false
+
 default compliant := false
 
-
-# ISO 27001:2022 - A.12 Operations Security
+# ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.12 Operations security.
+# The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check
+# decides is noted as (2022: A.x.y) and is wired in data.iso27001.fact_checks (../iso27001_policy.rego).
 # Technical controls for secure day-to-day IT operations
 
 # =============================================================================
 # A.12.1 - Operational Procedures and Responsibilities
 # =============================================================================
 
-# A.12.1.1 - Documented operating procedures
+# A.12.1.1 - Documented operating procedures (2022: A.5.37)
 operating_procedures_documented if {
 	input.operational_procedures.documented == true
 	input.operational_procedures.approved == true
@@ -61,7 +78,7 @@ operating_procedures_documented if {
 	input.operational_procedures.covers.escalation_paths == true
 }
 
-# A.12.1.2 - Change management
+# A.12.1.2 - Change management (2022: A.8.32)
 change_management if {
 	input.change_management.formal_process == true
 	input.change_management.approval_required == true
@@ -80,7 +97,7 @@ change_management if {
 	input.change_management.emergency.post_implementation_review == true
 }
 
-# A.12.1.3 - Capacity management
+# A.12.1.3 - Capacity management (2022: A.8.6)
 capacity_management if {
 	input.capacity_management.monitoring_enabled == true
 	input.capacity_management.forecasting_performed == true
@@ -95,7 +112,7 @@ capacity_management if {
 	input.capacity_management.resources.network_monitored == true
 }
 
-# A.12.1.4 - Separation of development, testing and operational environments
+# A.12.1.4 - Separation of development, testing and operational environments (2022: A.8.31)
 environment_separation if {
 	input.environments.development_separated == true
 	input.environments.testing_separated == true
@@ -109,7 +126,7 @@ environment_separation if {
 # A.12.2 - Protection from Malware
 # =============================================================================
 
-# A.12.2.1 - Controls against malware
+# A.12.2.1 - Controls against malware (2022: A.8.7)
 malware_protection if {
 	# Antivirus/antimalware
 	input.malware_protection.antivirus.deployed == true
@@ -136,7 +153,7 @@ malware_protection if {
 # A.12.3 - Backup
 # =============================================================================
 
-# A.12.3.1 - Information backup
+# A.12.3.1 - Information backup (2022: A.8.13)
 backup_management if {
 	input.backup.policy.documented == true
 	input.backup.policy.approved == true
@@ -171,7 +188,7 @@ backup_management if {
 # A.12.4 - Logging and Monitoring
 # =============================================================================
 
-# A.12.4.1 - Event logging
+# A.12.4.1 - Event logging (2022: A.8.15)
 event_logging if {
 	input.logging.events.user_activities == true
 	input.logging.events.exceptions == true
@@ -191,7 +208,7 @@ event_logging if {
 	input.logging.integrity.immutable_storage == true
 }
 
-# A.12.4.2 - Protection of log information
+# A.12.4.2 - Protection of log information (2022: A.8.15)
 log_protection if {
 	input.log_protection.access_restricted == true
 	input.log_protection.centralized_storage == true
@@ -201,7 +218,7 @@ log_protection if {
 	input.log_protection.siem_integrated == true
 }
 
-# A.12.4.3 - Administrator and operator logs
+# A.12.4.3 - Administrator and operator logs (2022: A.8.15)
 admin_logs if {
 	input.admin_logging.privileged_commands_logged == true
 	input.admin_logging.sudo_usage_logged == true
@@ -211,7 +228,7 @@ admin_logs if {
 	input.admin_logging.logs_reviewed_regularly == true
 }
 
-# A.12.4.4 - Clock synchronisation
+# A.12.4.4 - Clock synchronisation (2022: A.8.17)
 clock_synchronization if {
 	input.clock_sync.ntp_configured == true
 	input.clock_sync.authoritative_source == true
@@ -226,7 +243,7 @@ clock_synchronization if {
 # A.12.5 - Control of Operational Software
 # =============================================================================
 
-# A.12.5.1 - Installation of software on operational systems
+# A.12.5.1 - Installation of software on operational systems (2022: A.8.19)
 software_installation_control if {
 	input.software_control.installation.policy_defined == true
 	input.software_control.installation.approved_software_list == true
@@ -244,7 +261,7 @@ software_installation_control if {
 # A.12.6 - Technical Vulnerability Management
 # =============================================================================
 
-# A.12.6.1 - Management of technical vulnerabilities
+# A.12.6.1 - Management of technical vulnerabilities (2022: A.8.8)
 vulnerability_management if {
 	input.vulnerability_management.scanning.regular_scans == true
 	input.vulnerability_management.scanning.frequency_days <= 30
@@ -264,7 +281,7 @@ vulnerability_management if {
 	input.vulnerability_management.tracking.management_reporting == true
 }
 
-# A.12.6.2 - Restrictions on software installation
+# A.12.6.2 - Restrictions on software installation (2022: A.8.19)
 software_restriction if {
 	input.software_restriction.standard_builds_enforced == true
 	input.software_restriction.application_whitelisting == true
@@ -277,7 +294,7 @@ software_restriction if {
 # A.12.7 - Information Systems Audit Considerations
 # =============================================================================
 
-# A.12.7.1 - Information systems audit controls
+# A.12.7.1 - Information systems audit controls (2022: A.8.34)
 audit_controls if {
 	input.audit_controls.requirements_agreed == true
 	input.audit_controls.scope_controlled == true

@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "182fbe34-0e6e-5e33-ae7a-083aaa2f6cb2",
   "metadata": {
-   "title": "Rego Policy Libraries — iso27001 (ISO 27001:2022 - A.9 Access Control)",
+   "title": "Rego Policy Libraries — iso27001 (ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.9 Access control)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "iso27001-access_control",
     "class": "rego-module",
-    "title": "ISO 27001:2022 - A.9 Access Control",
+    "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.9 Access control",
     "props": [
      {
       "name": "rego-package",
@@ -499,7 +499,7 @@
    {
     "id": "iso27001-communications_security",
     "class": "rego-module",
-    "title": "ISO 27001:2022 - A.13 Communications Security",
+    "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.13 Communications security",
     "props": [
      {
       "name": "rego-package",
@@ -886,7 +886,7 @@
    {
     "id": "iso27001-cryptography",
     "class": "rego-module",
-    "title": "ISO 27001:2022 - A.10 Cryptography",
+    "title": "ISO/IEC 27001 technical fact checks — 2013 group A.10 Cryptography, re-keyed to 2022 Annex A A.8.24",
     "props": [
      {
       "name": "rego-package",
@@ -1405,7 +1405,7 @@
    {
     "id": "iso27001-iso27001_policy",
     "class": "rego-module",
-    "title": "ISO/IEC 27001:2022 Information Security Management System",
+    "title": "ISO/IEC 27001:2022 — Annex A (93 controls = ISO/IEC 27002:2022 clauses 5–8), fact-evaluated or attested",
     "props": [
      {
       "name": "rego-package",
@@ -1786,13 +1786,3219 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.1",
+      "title": "Policies for information security",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.1_stmt",
+        "name": "statement",
+        "prose": "Policies for information security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.10",
+      "title": "Acceptable use of information and other associated assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.10_stmt",
+        "name": "statement",
+        "prose": "Acceptable use of information and other associated assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.11",
+      "title": "Return of assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.11_stmt",
+        "name": "statement",
+        "prose": "Return of assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.12",
+      "title": "Classification of information",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.12_stmt",
+        "name": "statement",
+        "prose": "Classification of information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.13",
+      "title": "Labelling of information",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.13_stmt",
+        "name": "statement",
+        "prose": "Labelling of information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.14",
+      "title": "Information transfer",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.14_stmt",
+        "name": "statement",
+        "prose": "Information transfer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.15",
+      "title": "Access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.15_stmt",
+        "name": "statement",
+        "prose": "Access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.16",
+      "title": "Identity management",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.16_stmt",
+        "name": "statement",
+        "prose": "Identity management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.17",
+      "title": "Authentication information",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.17_stmt",
+        "name": "statement",
+        "prose": "Authentication information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.18",
+      "title": "Access rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.18_stmt",
+        "name": "statement",
+        "prose": "Access rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.19",
+      "title": "Information security in supplier relationships",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.19_stmt",
+        "name": "statement",
+        "prose": "Information security in supplier relationships"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.2",
+      "title": "Information security roles and responsibilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.2_stmt",
+        "name": "statement",
+        "prose": "Information security roles and responsibilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.20",
+      "title": "Addressing information security within supplier agreements",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.20_stmt",
+        "name": "statement",
+        "prose": "Addressing information security within supplier agreements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.21",
+      "title": "Managing information security in the ICT supply chain",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.21_stmt",
+        "name": "statement",
+        "prose": "Managing information security in the ICT supply chain"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.22",
+      "title": "Monitoring, review and change management of supplier services",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.22_stmt",
+        "name": "statement",
+        "prose": "Monitoring, review and change management of supplier services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.23",
+      "title": "Information security for use of cloud services",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.23_stmt",
+        "name": "statement",
+        "prose": "Information security for use of cloud services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.24",
+      "title": "Information security incident management planning and preparation",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.24_stmt",
+        "name": "statement",
+        "prose": "Information security incident management planning and preparation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.25",
+      "title": "Assessment and decision on information security events",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.25_stmt",
+        "name": "statement",
+        "prose": "Assessment and decision on information security events"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.26",
+      "title": "Response to information security incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.26_stmt",
+        "name": "statement",
+        "prose": "Response to information security incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.27",
+      "title": "Learning from information security incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.27_stmt",
+        "name": "statement",
+        "prose": "Learning from information security incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.28",
+      "title": "Collection of evidence",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.28_stmt",
+        "name": "statement",
+        "prose": "Collection of evidence"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.29",
+      "title": "Information security during disruption",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.29_stmt",
+        "name": "statement",
+        "prose": "Information security during disruption"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.3",
+      "title": "Segregation of duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.3_stmt",
+        "name": "statement",
+        "prose": "Segregation of duties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.30",
+      "title": "ICT readiness for business continuity",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.30_stmt",
+        "name": "statement",
+        "prose": "ICT readiness for business continuity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.31",
+      "title": "Legal, statutory, regulatory and contractual requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.31_stmt",
+        "name": "statement",
+        "prose": "Legal, statutory, regulatory and contractual requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.32",
+      "title": "Intellectual property rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.32_stmt",
+        "name": "statement",
+        "prose": "Intellectual property rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.33",
+      "title": "Protection of records",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.33_stmt",
+        "name": "statement",
+        "prose": "Protection of records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.34",
+      "title": "Privacy and protection of PII",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.34_stmt",
+        "name": "statement",
+        "prose": "Privacy and protection of PII"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.35",
+      "title": "Independent review of information security",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.35_stmt",
+        "name": "statement",
+        "prose": "Independent review of information security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.36",
+      "title": "Compliance with policies, rules and standards for information security",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.36_stmt",
+        "name": "statement",
+        "prose": "Compliance with policies, rules and standards for information security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.37",
+      "title": "Documented operating procedures",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.37_stmt",
+        "name": "statement",
+        "prose": "Documented operating procedures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.4",
+      "title": "Management responsibilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.4_stmt",
+        "name": "statement",
+        "prose": "Management responsibilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.5",
+      "title": "Contact with authorities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.5_stmt",
+        "name": "statement",
+        "prose": "Contact with authorities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.6",
+      "title": "Contact with special interest groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.6_stmt",
+        "name": "statement",
+        "prose": "Contact with special interest groups"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.7",
+      "title": "Threat intelligence",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.7_stmt",
+        "name": "statement",
+        "prose": "Threat intelligence"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.8",
+      "title": "Information security in project management",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.8_stmt",
+        "name": "statement",
+        "prose": "Information security in project management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.5.9",
+      "title": "Inventory of information and other associated assets",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.5.9_stmt",
+        "name": "statement",
+        "prose": "Inventory of information and other associated assets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.1",
+      "title": "Screening",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.1_stmt",
+        "name": "statement",
+        "prose": "Screening"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.2",
+      "title": "Terms and conditions of employment",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.2_stmt",
+        "name": "statement",
+        "prose": "Terms and conditions of employment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.3",
+      "title": "Information security awareness, education and training",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.3_stmt",
+        "name": "statement",
+        "prose": "Information security awareness, education and training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.4",
+      "title": "Disciplinary process",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.4_stmt",
+        "name": "statement",
+        "prose": "Disciplinary process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.5",
+      "title": "Responsibilities after termination or change of employment",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.5_stmt",
+        "name": "statement",
+        "prose": "Responsibilities after termination or change of employment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.6",
+      "title": "Confidentiality or non-disclosure agreements",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.6_stmt",
+        "name": "statement",
+        "prose": "Confidentiality or non-disclosure agreements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.7",
+      "title": "Remote working",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.7_stmt",
+        "name": "statement",
+        "prose": "Remote working"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.6.8",
+      "title": "Information security event reporting",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.6.8_stmt",
+        "name": "statement",
+        "prose": "Information security event reporting"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.1",
+      "title": "Physical security perimeters",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.1_stmt",
+        "name": "statement",
+        "prose": "Physical security perimeters"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.10",
+      "title": "Storage media",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.10_stmt",
+        "name": "statement",
+        "prose": "Storage media"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.11",
+      "title": "Supporting utilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.11_stmt",
+        "name": "statement",
+        "prose": "Supporting utilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.12",
+      "title": "Cabling security",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.12_stmt",
+        "name": "statement",
+        "prose": "Cabling security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.13",
+      "title": "Equipment maintenance",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.13_stmt",
+        "name": "statement",
+        "prose": "Equipment maintenance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.14",
+      "title": "Secure disposal or re-use of equipment",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.14_stmt",
+        "name": "statement",
+        "prose": "Secure disposal or re-use of equipment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.2",
+      "title": "Physical entry",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.2_stmt",
+        "name": "statement",
+        "prose": "Physical entry"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.3",
+      "title": "Securing offices, rooms and facilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.3_stmt",
+        "name": "statement",
+        "prose": "Securing offices, rooms and facilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.4",
+      "title": "Physical security monitoring",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.4_stmt",
+        "name": "statement",
+        "prose": "Physical security monitoring"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.5",
+      "title": "Protecting against physical and environmental threats",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.5_stmt",
+        "name": "statement",
+        "prose": "Protecting against physical and environmental threats"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.6",
+      "title": "Working In secure areas",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.6_stmt",
+        "name": "statement",
+        "prose": "Working In secure areas"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.7",
+      "title": "Clear desk and clear screen",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.7_stmt",
+        "name": "statement",
+        "prose": "Clear desk and clear screen"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.8",
+      "title": "Equipment siting and protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.8_stmt",
+        "name": "statement",
+        "prose": "Equipment siting and protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.7.9",
+      "title": "Security of assets off-premises",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.7.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.7.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.7.9_stmt",
+        "name": "statement",
+        "prose": "Security of assets off-premises"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.1",
+      "title": "User end point devices",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.1_stmt",
+        "name": "statement",
+        "prose": "User end point devices"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.10",
+      "title": "Information deletion",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.10_stmt",
+        "name": "statement",
+        "prose": "Information deletion"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.11",
+      "title": "Data masking",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.11_stmt",
+        "name": "statement",
+        "prose": "Data masking"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.12",
+      "title": "Data leakage prevention",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.12_stmt",
+        "name": "statement",
+        "prose": "Data leakage prevention"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.13",
+      "title": "Information backup",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.13_stmt",
+        "name": "statement",
+        "prose": "Information backup"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.14",
+      "title": "Redundancy of information processing facilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.14_stmt",
+        "name": "statement",
+        "prose": "Redundancy of information processing facilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.15",
+      "title": "Logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.15_stmt",
+        "name": "statement",
+        "prose": "Logging"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.16",
+      "title": "Monitoring activities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.16_stmt",
+        "name": "statement",
+        "prose": "Monitoring activities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.17",
+      "title": "Clock synchronization",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.17_stmt",
+        "name": "statement",
+        "prose": "Clock synchronization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.18",
+      "title": "Use of privileged utility programs",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.18_stmt",
+        "name": "statement",
+        "prose": "Use of privileged utility programs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.19",
+      "title": "Installation of software on operational systems",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.19_stmt",
+        "name": "statement",
+        "prose": "Installation of software on operational systems"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.2",
+      "title": "Privileged access rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.2_stmt",
+        "name": "statement",
+        "prose": "Privileged access rights"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.20",
+      "title": "Networks security",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.20_stmt",
+        "name": "statement",
+        "prose": "Networks security"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.21",
+      "title": "Security of network services",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.21_stmt",
+        "name": "statement",
+        "prose": "Security of network services"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.22",
+      "title": "Segregation of networks",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.22_stmt",
+        "name": "statement",
+        "prose": "Segregation of networks"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.23",
+      "title": "Web filtering",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.23_stmt",
+        "name": "statement",
+        "prose": "Web filtering"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.24",
+      "title": "Use of cryptography",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.24_stmt",
+        "name": "statement",
+        "prose": "Use of cryptography"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.25",
+      "title": "Secure development life cycle",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.25_stmt",
+        "name": "statement",
+        "prose": "Secure development life cycle"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.26",
+      "title": "Application security requirements",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.26_stmt",
+        "name": "statement",
+        "prose": "Application security requirements"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.27",
+      "title": "Secure system architecture and engineering principles",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.27_stmt",
+        "name": "statement",
+        "prose": "Secure system architecture and engineering principles"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.28",
+      "title": "Secure coding",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.28_stmt",
+        "name": "statement",
+        "prose": "Secure coding"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.29",
+      "title": "Security testing in development and acceptance",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.29_stmt",
+        "name": "statement",
+        "prose": "Security testing in development and acceptance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.3",
+      "title": "Information access restriction",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.3_stmt",
+        "name": "statement",
+        "prose": "Information access restriction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.30",
+      "title": "Outsourced development",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.30_stmt",
+        "name": "statement",
+        "prose": "Outsourced development"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.31",
+      "title": "Separation of development, test and production environments",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.31_stmt",
+        "name": "statement",
+        "prose": "Separation of development, test and production environments"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.32",
+      "title": "Change management",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.32_stmt",
+        "name": "statement",
+        "prose": "Change management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.33",
+      "title": "Test information",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.33_stmt",
+        "name": "statement",
+        "prose": "Test information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.34",
+      "title": "Protection of information systems during audit testing",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.34_stmt",
+        "name": "statement",
+        "prose": "Protection of information systems during audit testing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.4",
+      "title": "Access to source code",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.4_stmt",
+        "name": "statement",
+        "prose": "Access to source code"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.5",
+      "title": "Secure authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.5_stmt",
+        "name": "statement",
+        "prose": "Secure authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.6",
+      "title": "Capacity management",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.6_stmt",
+        "name": "statement",
+        "prose": "Capacity management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.7",
+      "title": "Protection against malware",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.7_stmt",
+        "name": "statement",
+        "prose": "Protection against malware"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.8",
+      "title": "Management of technical vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.8_stmt",
+        "name": "statement",
+        "prose": "Management of technical vulnerabilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-A.8.9",
+      "title": "Configuration management",
+      "props": [
+       {
+        "name": "label",
+        "value": "A.8.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A.8.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-A.8.9_stmt",
+        "name": "statement",
+        "prose": "Configuration management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001-6",
+      "title": "ISO/IEC 27001:2022 Annex A: FAIL-CLOSED - attestations 'input.iso27001.annex_a' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001-6_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 27001:2022 Annex A: FAIL-CLOSED - attestations 'input.iso27001.annex_a' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001-7",
+      "title": "ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001-7_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 27001:2022 %v %v (%v): not attested — input.iso27001.annex_a[\"%v\"] must be true"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001-8",
+      "title": "ISO/IEC 27001:2022 %v %v: fact check failed — data.iso27001.%v.%v%v",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001-8_stmt",
+        "name": "statement",
+        "prose": "ISO/IEC 27001:2022 %v %v: fact check failed — data.iso27001.%v.%v%v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-ISO-IEC-27001-Input-Contract",
+      "title": "%v is an ISO/IEC 27001:2013 Annex A id — the 2022 edition renumbered Annex A (A.5.1 … A.8.34); attest the 2022 control",
+      "props": [
+       {
+        "name": "label",
+        "value": "ISO/IEC 27001 Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "ISO/IEC 27001 Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37584236-0fdb-587b-abf5-d5790640930d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-ISO-IEC-27001-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "%v is an ISO/IEC 27001:2013 Annex A id — the 2022 edition renumbered Annex A (A.5.1 … A.8.34); attest the 2022 control"
+       },
+       {
+        "id": "iso27001-ISO-IEC-27001-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown Annex A control id %v — ids are ISO/IEC 27001:2022 Annex A numbers such as A.5.1 (the ISO/IEC 27002:2022 number with an \"A.\" prefix)"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
    {
     "id": "iso27001-operations_security",
     "class": "rego-module",
-    "title": "ISO 27001:2022 - A.12 Operations Security",
+    "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.12 Operations security",
     "props": [
      {
       "name": "rego-package",
@@ -2311,7 +5517,7 @@
    {
     "id": "iso27001-system_acquisition_maintenance",
     "class": "rego-module",
-    "title": "ISO 27001:2022 - A.14 System Acquisition, Development and Maintenance",
+    "title": "The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check",
     "props": [
      {
       "name": "rego-package",
@@ -2865,7 +6071,7 @@
    "resources": [
     {
      "uuid": "5ab431b8-a5f5-511e-81bf-2a146304cf6b",
-     "title": "ISO 27001:2022 - A.9 Access Control",
+     "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.9 Access control",
      "props": [
       {
        "name": "rego-package",
@@ -2882,7 +6088,7 @@
     },
     {
      "uuid": "2549f228-8169-5ad4-a869-5f5ef4da96d3",
-     "title": "ISO 27001:2022 - A.13 Communications Security",
+     "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.13 Communications security",
      "props": [
       {
        "name": "rego-package",
@@ -2899,7 +6105,7 @@
     },
     {
      "uuid": "31861824-9dc0-55d6-9b5e-30a7b00b775c",
-     "title": "ISO 27001:2022 - A.10 Cryptography",
+     "title": "ISO/IEC 27001 technical fact checks — 2013 group A.10 Cryptography, re-keyed to 2022 Annex A A.8.24",
      "props": [
       {
        "name": "rego-package",
@@ -2916,7 +6122,7 @@
     },
     {
      "uuid": "37584236-0fdb-587b-abf5-d5790640930d",
-     "title": "ISO/IEC 27001:2022 Information Security Management System",
+     "title": "ISO/IEC 27001:2022 — Annex A (93 controls = ISO/IEC 27002:2022 clauses 5–8), fact-evaluated or attested",
      "props": [
       {
        "name": "rego-package",
@@ -2933,7 +6139,7 @@
     },
     {
      "uuid": "6b3eec50-f4f8-569f-a0ec-fdd96420eedc",
-     "title": "ISO 27001:2022 - A.12 Operations Security",
+     "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.12 Operations security",
      "props": [
       {
        "name": "rego-package",
@@ -2950,7 +6156,7 @@
     },
     {
      "uuid": "0ab25de0-1ec1-55ca-be1d-b54fdafbcd0d",
-     "title": "ISO 27001:2022 - A.14 System Acquisition, Development and Maintenance",
+     "title": "The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check",
      "props": [
       {
        "name": "rego-package",

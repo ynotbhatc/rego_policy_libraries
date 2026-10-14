@@ -26,6 +26,10 @@
 #
 # Query: POST /v1/data/pqc/main/compliance_report
 #
+# The report also carries `crypto_agility_cswp39`, the NIST CSWP 39
+# crypto-agility practice view (cswp39_crypto_agility.rego, input
+# input.pqc.cswp39.*), as a separate section with its own compliant flag.
+#
 # Fail-closed: every boolean fact must be affirmatively true. Empty input
 # yields every base violation (profile-gated sections require the profile).
 #
@@ -80,15 +84,17 @@
 #   coverage:
 #     checks: 20
 #     cited: 5
-#     density: sized
-#     basis: size
+#     density: orchestrator
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package pqc.main
 
 import rego.v1
+
+import data.pqc.cswp39
 
 default compliant := false
 
@@ -360,4 +366,8 @@ compliance_report := {
 	"violations": violations,
 	"violation_count": count(violations),
 	"compliant": compliant,
+	# NIST CSWP 39 crypto-agility practices (cswp39_crypto_agility.rego):
+	# reported and counted separately — not part of this report's
+	# violations, compliant or controls_evaluated.
+	"crypto_agility_cswp39": cswp39.compliance_report,
 }

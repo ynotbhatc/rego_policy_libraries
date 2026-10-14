@@ -6,17 +6,17 @@
 #   source: eu
 #   domains: [financial, eu]
 #   coverage:
-#     checks: 54
+#     checks: 55
 #     cited: 16
-#     expected: 91
-#     found: 115
+#     expected: 399
+#     found: 429
 #     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package dora.main
 
 import rego.v1
@@ -24,9 +24,16 @@ import rego.v1
 # EU Digital Operational Resilience Act (DORA) — Regulation (EU) 2022/2554
 # Mandatory for all EU financial entities from 17 January 2025.
 #
-# Five pillars (level-1 regulation) + two level-2 RTS modules:
+# Five pillars (level-1 regulation) + three level-2 RTS modules:
+#   RTS (EU) 2024/1774 — ICT risk management framework (Title II) and simplified framework (Title III),
+#                        dora.rts_ict_risk: 308 rows (Title II 228, Title III 80), one title evaluated per
+#                        entity by input.dora.rts.simplified_framework
 #   RTS (EU) 2025/532  — ICT subcontracting (in force 2025-07-22)
 #   RTS (EU) 2025/1190 — threat-led penetration testing (applicable 2025-07-08)
+#
+# total_controls 399 = the 91 this report declared before RTS 2024/1774 was added + its 308 rows. The
+# Pillar 1 checks below cite Regulation (EU) 2022/2554 itself (Arts 5-13), not the RTS, so no row is in
+# both: RTS messages start "DORA RTS 2024/1774" and never match the "DORA Art.N:" pillar buckets.
 #
 #   Pillar 1 — ICT Risk Management (Articles 5–16)
 #   Pillar 2 — ICT-Related Incident Reporting (Articles 17–23)
@@ -231,7 +238,7 @@ compliance_report := {
 	"entity_type": entity_type,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
-	"total_controls": 91,
+	"total_controls": 399,
 	"violations": violations,
 	"violation_count": count(violations),
 	"pillar_summary": {
@@ -242,6 +249,17 @@ compliance_report := {
 		"information_sharing": pillar5_violations,
 		"rts_2025_532_subcontracting": data.dora.rts_subcontracting.violation,
 		"rts_2025_1190_tlpt": data.dora.rts_tlpt.violation,
+		"rts_2024_1774_ict_risk_management": data.dora.rts_ict_risk.violation,
+	},
+	"rts_2024_1774_ict_risk_management": {
+		"gate": data.dora.rts_ict_risk.compliance_report.gate,
+		"entity_roles": data.dora.rts_ict_risk.compliance_report.entity_roles,
+		"rows_by_title": data.dora.rts_ict_risk.compliance_report.rows_by_title,
+		"controls_evaluated": data.dora.rts_ict_risk.compliance_report.controls_evaluated,
+		"attested": data.dora.rts_ict_risk.compliance_report.attested,
+		"chapters": data.dora.rts_ict_risk.compliance_report.chapters,
+		"violation_count": data.dora.rts_ict_risk.compliance_report.violation_count,
+		"compliant": data.dora.rts_ict_risk.compliance_report.compliant,
 	},
 }
 
@@ -253,6 +271,10 @@ violations contains msg if {
 
 violations contains msg if {
 	some msg in data.dora.rts_tlpt.violation
+}
+
+violations contains msg if {
+	some msg in data.dora.rts_ict_risk.violation
 }
 
 pillar1_violations contains v if {
