@@ -58,7 +58,7 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | CIS Rocky Linux 8/9 | `benchmarks/cis/rocky_linux_*/` | Full |
 | CIS Debian 11 | `benchmarks/cis/debian_11/` | Full |
 | CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
-| CIS Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | 9 sections |
+| CIS Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | Partial: 179 recommendations cited, CIS sections 1, 2, 5, 9, 17, 18 (none yet from 19) |
 | CIS Windows 10/11 | `benchmarks/cis/windows_10/` | Full |
 | CIS Microsoft 365 Foundations v7 (SaaS) | `benchmarks/cis/saas/m365_v7/` | 9 sections: Entra, Exchange, Defender, Purview, SharePoint, Teams, Intune, Fabric, Admin Center |
 | CIS PostgreSQL | `benchmarks/cis/postgresql/` | Full |
@@ -323,7 +323,7 @@ rego_policy_libraries/
 | Debian 11 | `benchmarks/cis/debian_11/` | Full |
 | Rocky Linux 8 / 9 | `benchmarks/cis/rocky_linux_8/` | Full |
 | Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
-| Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | Modular (9 sections) |
+| Windows Server 2019/2022 | `benchmarks/cis/windows_server_2022_modular/` | Partial (179 recommendations cited) |
 | AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |

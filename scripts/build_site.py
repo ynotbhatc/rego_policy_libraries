@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate one GitHub Pages page per standard, plus sitemap.xml and robots.txt.
+"""Generate one GitHub Pages page per standard, plus sitemap.xml, robots.txt and llms.txt.
 
     python3 scripts/build_site.py
 
@@ -305,6 +305,41 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
     (ROOT / "robots.txt").write_text(
         "User-agent: *\nAllow: /\n\n" f"Sitemap: {SITE}/sitemap.xml\n")
 
+    # llms.txt (llmstxt.org): a plain-text summary for LLM crawlers. Every figure is read from the
+    # same README line count_controls.py --check-readme verifies, so it cannot drift from the tree.
+    m_cat = re.search(r"control-level checks across ([0-9]+) framework catalogs", count_line)
+    catalogs = m_cat.group(1) if m_cat else None
+    scope = f"{checks} control-level checks in {files_n} policy files"
+    if catalogs:
+        scope += f", mapped to {catalogs} framework catalogs"
+    standards = "\n".join(f"- [{n}]({SITE}/standard/{s}.html): {c} policy files"
+                          for s, n, c in sorted(built, key=lambda x: x[1]))
+    (ROOT / "llms.txt").write_text(f"""# Rego Policy Libraries
+
+> The largest open library of executable compliance policy anyone can verify: {scope}, written in
+> Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
+> entrypoint that fails closed: no facts means non-compliant, with the reason.
+
+Coverage spans CIS Benchmarks, DISA STIGs, NIST (800-53, 800-171, CSF), ISO 27001, SOC 2, PCI DSS,
+HIPAA, GDPR, CCPA, the EU AI Act, DORA, NERC-CIP, TSA pipeline directives, IEC 62443 and APAC
+financial regulators (MAS TRM, APRA CPS 234, HKMA, BNM RMiT). The control-level count is recomputed
+from OPA's parser on every pull request (`make count`); CI fails if the published figure drifts.
+
+## Start here
+
+- [How big the library is, measured]({SITE}/largest-policy-library.html): the count, the method, and every public library compared
+- [Size and coverage comparison](https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/COMPARISON.md): units, sources and dates for each figure
+- [Repository](https://github.com/ynotbhatc/rego_policy_libraries): source, tests, CHANGELOG
+- OCI bundle: `ghcr.io/ynotbhatc/rego_policy_libraries:latest`
+
+## Standards
+
+{standards}
+
+## Comparisons
+
+""" + "\n".join(f"- [{c[1]}]({SITE}/compare/{c[0]}.html)" for c in COMPETITORS) + "\n")
+
     # index of standards, for crawlers and humans
     items = "\n".join(
         f'<li><a href="{s}.html">{html.escape(n)}</a> '
@@ -323,7 +358,7 @@ how to load them. Part of the
         f"{len(built)} security and compliance standards encoded as Open Policy Agent Rego policies.",
         f"{SITE}/standard/", body, css))
 
-    print(f"built {len(built)} standard pages + index, sitemap ({len(urls)} urls), robots.txt")
+    print(f"built {len(built)} standard pages + index, sitemap ({len(urls)} urls), robots.txt, llms.txt")
     for s, n, c in sorted(built, key=lambda x: -x[2])[:10]:
         print(f"  {c:>3}  {n}")
     return 0
