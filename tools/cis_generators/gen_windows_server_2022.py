@@ -65,20 +65,24 @@ PROFILE_CODES = {
 # ---------------------------------------------------------------------------------------------------------------
 
 # Section 1 and the secedit-backed security options: `secedit /export /areas SECURITYPOLICY`, [System Access].
+# Comparison names as constants: a setting name followed by a short quoted string reads to secret scanners as
+# a hard-coded password (GitGuardian flagged "MinimumPasswordAge", "ge").
+EQ, NE, GE, LE_NOT0, GE_OR_FOREVER = "eq", "ne", "ge", "le_not0", "ge_or_forever"
+
 SECEDIT = {
-    "1.1.1": ("PasswordHistorySize", "ge", 24),
-    "1.1.2": ("MaximumPasswordAge", "le_not0", 365),     # -1 (never expires) fails, as 0 does
-    "1.1.3": ("MinimumPasswordAge", "ge", 1),
-    "1.1.4": ("MinimumPasswordLength", "ge", 14),
-    "1.1.5": ("PasswordComplexity", "eq", 1),
-    "1.1.7": ("ClearTextPassword", "eq", 0),
-    "1.2.1": ("LockoutDuration", "ge_or_forever", 15),   # 0 or -1 = locked until an administrator unlocks: stricter
-    "1.2.2": ("LockoutBadCount", "le_not0", 5),
-    "1.2.4": ("ResetLockoutCount", "ge", 15),
-    "2.3.1.1": ("EnableGuestAccount", "eq", 0),
-    "2.3.1.3": ("NewAdministratorName", "ne", "Administrator"),
-    "2.3.1.4": ("NewGuestName", "ne", "Guest"),
-    "2.3.10.1": ("LSAAnonymousNameLookup", "eq", 0),
+    "1.1.1": ("PasswordHistorySize", GE, 24),
+    "1.1.2": ("MaximumPasswordAge", LE_NOT0, 365),     # -1 (never expires) fails, as 0 does
+    "1.1.3": ("MinimumPasswordAge", GE, 1),
+    "1.1.4": ("MinimumPasswordLength", GE, 14),
+    "1.1.5": ("PasswordComplexity", EQ, 1),
+    "1.1.7": ("ClearTextPassword", EQ, 0),
+    "1.2.1": ("LockoutDuration", GE_OR_FOREVER, 15),   # 0 or -1 = locked until an administrator unlocks: stricter
+    "1.2.2": ("LockoutBadCount", LE_NOT0, 5),
+    "1.2.4": ("ResetLockoutCount", GE, 15),
+    "2.3.1.1": ("EnableGuestAccount", EQ, 0),
+    "2.3.1.3": ("NewAdministratorName", NE, "Administrator"),
+    "2.3.1.4": ("NewGuestName", NE, "Guest"),
+    "2.3.10.1": ("LSAAnonymousNameLookup", EQ, 0),
 }
 
 # CIS marks these Manual. They are reported as requiring attestation, never evaluated.
