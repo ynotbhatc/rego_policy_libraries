@@ -4,586 +4,469 @@ package cis_windows_server_2022.local_policies_test
 import rego.v1
 
 test_2_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeTrustedCredManAccessPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeTrustedCredManAccessPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeNetworkLogonRight": ["S-1-5-32-544", "S-1-5-11", "S-1-5-9", "S-1-1-0"]}}})
-	r.results["2.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeNetworkLogonRight": ["S-1-5-32-544", "S-1-5-11", "S-1-5-9", "S-1-1-0"]}}})
 }
 
 test_2_2_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeNetworkLogonRight": ["S-1-5-32-544", "S-1-5-11", "S-1-1-0"]}}})
-	r.results["2.2.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeNetworkLogonRight": ["S-1-5-32-544", "S-1-5-11", "S-1-1-0"]}}})
 }
 
 test_2_2_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeTcbPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeTcbPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeMachineAccountPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeMachineAccountPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeIncreaseQuotaPrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-1-0"]}}})
-	r.results["2.2.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeIncreaseQuotaPrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-1-0"]}}})
 }
 
 test_2_2_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeInteractiveLogonRight": ["S-1-5-32-544", "S-1-5-9", "S-1-1-0"]}}})
-	r.results["2.2.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeInteractiveLogonRight": ["S-1-5-32-544", "S-1-5-9", "S-1-1-0"]}}})
 }
 
 test_2_2_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeInteractiveLogonRight": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeInteractiveLogonRight": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeRemoteInteractiveLogonRight": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeRemoteInteractiveLogonRight": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_10_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRemoteInteractiveLogonRight": ["S-1-5-32-544", "S-1-5-32-555", "S-1-1-0"]}}})
-	r.results["2.2.10"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.10"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRemoteInteractiveLogonRight": ["S-1-5-32-544", "S-1-5-32-555", "S-1-1-0"]}}})
 }
 
 test_2_2_11_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeBackupPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.11"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.11"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeBackupPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_12_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSystemtimePrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-1-0"]}}})
-	r.results["2.2.12"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.12"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSystemtimePrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-1-0"]}}})
 }
 
 test_2_2_13_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreatePagefilePrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.13"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.13"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreatePagefilePrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_14_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreateTokenPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.14"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.14"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreateTokenPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_15_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreateGlobalPrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-5-6", "S-1-1-0"]}}})
-	r.results["2.2.15"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.15"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreateGlobalPrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-5-6", "S-1-1-0"]}}})
 }
 
 test_2_2_16_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreatePermanentPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.16"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.16"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreatePermanentPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_17_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeCreateSymbolicLinkPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.17"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.17"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeCreateSymbolicLinkPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_18_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreateSymbolicLinkPrivilege": ["S-1-5-32-544", "S-1-5-83-0", "S-1-1-0"]}}})
-	r.results["2.2.18"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.18"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeCreateSymbolicLinkPrivilege": ["S-1-5-32-544", "S-1-5-83-0", "S-1-1-0"]}}})
 }
 
 test_2_2_19_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDebugPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.19"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.19"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDebugPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_20_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeDenyNetworkLogonRight": []}}})
-	r.results["2.2.20"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.20"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeDenyNetworkLogonRight": []}}})
 }
 
 test_2_2_21_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyNetworkLogonRight": []}}})
-	r.results["2.2.21"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.21"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyNetworkLogonRight": []}}})
 }
 
 test_2_2_22_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyBatchLogonRight": []}}})
-	r.results["2.2.22"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.22"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyBatchLogonRight": []}}})
 }
 
 test_2_2_23_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyServiceLogonRight": []}}})
-	r.results["2.2.23"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.23"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyServiceLogonRight": []}}})
 }
 
 test_2_2_24_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyInteractiveLogonRight": []}}})
-	r.results["2.2.24"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.24"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyInteractiveLogonRight": []}}})
 }
 
 test_2_2_25_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeDenyRemoteInteractiveLogonRight": []}}})
-	r.results["2.2.25"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.25"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeDenyRemoteInteractiveLogonRight": []}}})
 }
 
 test_2_2_26_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyRemoteInteractiveLogonRight": ["S-1-5-32-546", "S-1-5-113", "S-1-1-0"]}}})
-	r.results["2.2.26"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.26"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyRemoteInteractiveLogonRight": ["S-1-5-32-546", "S-1-5-113", "S-1-1-0"]}}})
 }
 
 test_2_2_27_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeEnableDelegationPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.27"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.27"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeEnableDelegationPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_28_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeEnableDelegationPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.28"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.28"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeEnableDelegationPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_29_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRemoteShutdownPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.29"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.29"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRemoteShutdownPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_30_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeAuditPrivilege": ["S-1-5-19", "S-1-5-20", "S-1-1-0"]}}})
-	r.results["2.2.30"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.30"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeAuditPrivilege": ["S-1-5-19", "S-1-5-20", "S-1-1-0"]}}})
 }
 
 test_2_2_31_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeImpersonatePrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-5-6", "S-1-1-0"]}}})
-	r.results["2.2.31"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.31"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeImpersonatePrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-5-6", "S-1-1-0"]}}})
 }
 
 test_2_2_32_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeImpersonatePrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-5-6", "S-1-1-0"]}}})
-	r.results["2.2.32"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.32"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeImpersonatePrivilege": ["S-1-5-32-544", "S-1-5-19", "S-1-5-20", "S-1-5-6", "S-1-1-0"]}}})
 }
 
 test_2_2_33_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeIncreaseBasePriorityPrivilege": ["S-1-5-32-544", "S-1-5-90-0", "S-1-1-0"]}}})
-	r.results["2.2.33"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.33"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeIncreaseBasePriorityPrivilege": ["S-1-5-32-544", "S-1-5-90-0", "S-1-1-0"]}}})
 }
 
 test_2_2_34_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeLoadDriverPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.34"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.34"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeLoadDriverPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_35_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeLockMemoryPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.35"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.35"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeLockMemoryPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_36_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeBatchLogonRight": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.36"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.36"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeBatchLogonRight": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_37_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeSecurityPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.37"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.37"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeSecurityPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_38_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSecurityPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.38"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.38"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSecurityPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_39_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRelabelPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.39"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.39"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRelabelPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_40_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSystemEnvironmentPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.40"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.40"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSystemEnvironmentPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_41_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeManageVolumePrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.41"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.41"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeManageVolumePrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_42_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeProfileSingleProcessPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.42"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.42"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeProfileSingleProcessPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_43_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSystemProfilePrivilege": ["S-1-5-32-544", "S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420", "S-1-1-0"]}}})
-	r.results["2.2.43"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.43"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeSystemProfilePrivilege": ["S-1-5-32-544", "S-1-5-80-3139157870-2983391045-3678747466-658725712-1809340420", "S-1-1-0"]}}})
 }
 
 test_2_2_44_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeAssignPrimaryTokenPrivilege": ["S-1-5-19", "S-1-5-20", "S-1-1-0"]}}})
-	r.results["2.2.44"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.44"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeAssignPrimaryTokenPrivilege": ["S-1-5-19", "S-1-5-20", "S-1-1-0"]}}})
 }
 
 test_2_2_45_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRestorePrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.45"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.45"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeRestorePrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_46_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeShutdownPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.46"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.46"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeShutdownPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_2_47_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeSyncAgentPrivilege": ["S-1-1-0"]}}})
-	r.results["2.2.47"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.47"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"secedit": {"privilege_rights": {"SeSyncAgentPrivilege": ["S-1-1-0"]}}})
 }
 
 test_2_2_48_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeTakeOwnershipPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
-	r.results["2.2.48"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.2.48"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeTakeOwnershipPrivilege": ["S-1-5-32-544", "S-1-1-0"]}}})
 }
 
 test_2_3_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"EnableGuestAccount": 1}}})
-	r.results["2.3.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"EnableGuestAccount": 1}}})
 }
 
 test_2_3_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"LimitBlankPasswordUse": 2}}})
-	r.results["2.3.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"LimitBlankPasswordUse": 2}}})
 }
 
 test_2_3_1_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"NewAdministratorName": "Administrator"}}})
-	r.results["2.3.1.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.1.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"NewAdministratorName": "Administrator"}}})
 }
 
 test_2_3_1_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"NewGuestName": "Guest"}}})
-	r.results["2.3.1.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.1.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"NewGuestName": "Guest"}}})
 }
 
 test_2_3_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"SCENoApplyLegacyAuditPolicy": 2}}})
-	r.results["2.3.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"SCENoApplyLegacyAuditPolicy": 2}}})
 }
 
 test_2_3_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"CrashOnAuditFail": 1}}})
-	r.results["2.3.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"CrashOnAuditFail": 1}}})
 }
 
 test_2_3_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print\\Providers\\LanMan Print Services\\Servers": {"AddPrinterDrivers": 2}}})
-	r.results["2.3.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print\\Providers\\LanMan Print Services\\Servers": {"AddPrinterDrivers": 2}}})
 }
 
 test_2_3_5_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"SubmitControl": 1}}})
-	r.results["2.3.5.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.5.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"SubmitControl": 1}}})
 }
 
 test_2_3_5_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"VulnerableChannelAllowList": 1}}})
-	r.results["2.3.5.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.5.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"VulnerableChannelAllowList": 1}}})
 }
 
 test_2_3_5_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters": {"LdapEnforceChannelBinding": 3}}})
-	r.results["2.3.5.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.5.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters": {"LdapEnforceChannelBinding": 3}}})
 }
 
 test_2_3_5_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters": {"LDAPServerIntegrity": 3}}})
-	r.results["2.3.5.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.5.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NTDS\\Parameters": {"LDAPServerIntegrity": 3}}})
 }
 
 test_2_3_5_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"RefusePasswordChange": 1}}})
-	r.results["2.3.5.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.5.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"RefusePasswordChange": 1}}})
 }
 
 test_2_3_6_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"RequireSignOrSeal": 2}}})
-	r.results["2.3.6.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.6.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"RequireSignOrSeal": 2}}})
 }
 
 test_2_3_6_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"SealSecureChannel": 2}}})
-	r.results["2.3.6.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.6.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"SealSecureChannel": 2}}})
 }
 
 test_2_3_6_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"SignSecureChannel": 2}}})
-	r.results["2.3.6.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.6.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"SignSecureChannel": 2}}})
 }
 
 test_2_3_6_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"DisablePasswordChange": 1}}})
-	r.results["2.3.6.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.6.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"DisablePasswordChange": 1}}})
 }
 
 test_2_3_6_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"MaximumPasswordAge": 0}}})
-	r.results["2.3.6.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.6.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\System\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"MaximumPasswordAge": 0}}})
 }
 
 test_2_3_6_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"RequireStrongKey": 2}}})
-	r.results["2.3.6.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.6.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"RequireStrongKey": 2}}})
 }
 
 test_2_3_7_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DisableCAD": 1}}})
-	r.results["2.3.7.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DisableCAD": 1}}})
 }
 
 test_2_3_7_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DontDisplayLastUserName": 2}}})
-	r.results["2.3.7.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DontDisplayLastUserName": 2}}})
 }
 
 test_2_3_7_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"InactivityTimeoutSecs": 0}}})
-	r.results["2.3.7.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"InactivityTimeoutSecs": 0}}})
 }
 
 test_2_3_7_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": ""}}})
-	r.results["2.3.7.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": ""}}})
 }
 
 test_2_3_7_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeCaption": ""}}})
-	r.results["2.3.7.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeCaption": ""}}})
 }
 
 test_2_3_7_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"CachedLogonsCount": 5}}})
-	r.results["2.3.7.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"CachedLogonsCount": 5}}})
 }
 
 test_2_3_7_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"PasswordExpiryWarning": 15}}})
-	r.results["2.3.7.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"PasswordExpiryWarning": 15}}})
 }
 
 test_2_3_7_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ForceUnlockLogon": 2}}})
-	r.results["2.3.7.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ForceUnlockLogon": 2}}})
 }
 
 test_2_3_7_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ScRemoveOption": 4}}})
-	r.results["2.3.7.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.7.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"ScRemoveOption": 4}}})
 }
 
 test_2_3_8_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters": {"RequireSecuritySignature": 2}}})
-	r.results["2.3.8.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.8.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters": {"RequireSecuritySignature": 2}}})
 }
 
 test_2_3_8_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters": {"EnablePlainTextPassword": 1}}})
-	r.results["2.3.8.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.8.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanWorkstation\\Parameters": {"EnablePlainTextPassword": 1}}})
 }
 
 test_2_3_9_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"AutoDisconnect": 16}}})
-	r.results["2.3.9.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.9.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"AutoDisconnect": 16}}})
 }
 
 test_2_3_9_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"RequireSecuritySignature": 2}}})
-	r.results["2.3.9.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.9.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"RequireSecuritySignature": 2}}})
 }
 
 test_2_3_9_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"enableforcedlogoff": 2}}})
-	r.results["2.3.9.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.9.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"enableforcedlogoff": 2}}})
 }
 
 test_2_3_9_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"SMBServerNameHardeningLevel": 3}}})
-	r.results["2.3.9.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.9.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"SMBServerNameHardeningLevel": 3}}})
 }
 
 test_2_3_10_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"LSAAnonymousNameLookup": 1}}})
-	r.results["2.3.10.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"LSAAnonymousNameLookup": 1}}})
 }
 
 test_2_3_10_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"RestrictAnonymousSAM": 2}}})
-	r.results["2.3.10.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"RestrictAnonymousSAM": 2}}})
 }
 
 test_2_3_10_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"RestrictAnonymous": 2}}})
-	r.results["2.3.10.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"RestrictAnonymous": 2}}})
 }
 
 test_2_3_10_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"DisableDomainCreds": 2}}})
-	r.results["2.3.10.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"DisableDomainCreds": 2}}})
 }
 
 test_2_3_10_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"EveryoneIncludesAnonymous": 1}}})
-	r.results["2.3.10.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"EveryoneIncludesAnonymous": 1}}})
 }
 
 test_2_3_10_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"NullSessionPipes": ["BROKEN"]}}})
-	r.results["2.3.10.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"NullSessionPipes": ["BROKEN"]}}})
 }
 
 test_2_3_10_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"NullSessionPipes": 1}}})
-	r.results["2.3.10.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"NullSessionPipes": 1}}})
 }
 
 test_2_3_10_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths": {"Machine": ["BROKEN"]}}})
-	r.results["2.3.10.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedExactPaths": {"Machine": ["BROKEN"]}}})
 }
 
 test_2_3_10_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths": {"Machine": ["BROKEN"]}}})
-	r.results["2.3.10.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurePipeServers\\Winreg\\AllowedPaths": {"Machine": ["BROKEN"]}}})
 }
 
 test_2_3_10_10_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"RestrictNullSessAccess": 2}}})
-	r.results["2.3.10.10"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.10"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"RestrictNullSessAccess": 2}}})
 }
 
 test_2_3_10_11_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"restrictremotesam": "BROKEN"}}})
-	r.results["2.3.10.11"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.11"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"restrictremotesam": "BROKEN"}}})
 }
 
 test_2_3_10_12_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"NullSessionShares": 1}}})
-	r.results["2.3.10.12"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.12"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanManServer\\Parameters": {"NullSessionShares": 1}}})
 }
 
 test_2_3_10_13_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"ForceGuest": 1}}})
-	r.results["2.3.10.13"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.10.13"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"ForceGuest": 1}}})
 }
 
 test_2_3_11_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"UseMachineId": 2}}})
-	r.results["2.3.11.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"UseMachineId": 2}}})
 }
 
 test_2_3_11_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"AllowNullSessionFallback": 1}}})
-	r.results["2.3.11.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"AllowNullSessionFallback": 1}}})
 }
 
 test_2_3_11_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\pku2u": {"AllowOnlineID": 1}}})
-	r.results["2.3.11.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\pku2u": {"AllowOnlineID": 1}}})
 }
 
 test_2_3_11_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters": {"SupportedEncryptionTypes": 2147483641}}})
-	r.results["2.3.11.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Kerberos\\Parameters": {"SupportedEncryptionTypes": 2147483641}}})
 }
 
 test_2_3_11_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"NoLMHash": 2}}})
-	r.results["2.3.11.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"NoLMHash": 2}}})
 }
 
 test_2_3_11_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"LmCompatibilityLevel": 6}}})
-	r.results["2.3.11.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {"LmCompatibilityLevel": 6}}})
 }
 
 test_2_3_11_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LDAP": {"LDAPClientIntegrity": 3}}})
-	r.results["2.3.11.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LDAP": {"LDAPClientIntegrity": 3}}})
 }
 
 test_2_3_11_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"NTLMMinClientSec": 537395201}}})
-	r.results["2.3.11.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"NTLMMinClientSec": 537395201}}})
 }
 
 test_2_3_11_10_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"NTLMMinServerSec": 537395201}}})
-	r.results["2.3.11.10"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.10"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"NTLMMinServerSec": 537395201}}})
 }
 
 test_2_3_11_11_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"AuditReceivingNTLMTraffic": 3}}})
-	r.results["2.3.11.11"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.11"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"AuditReceivingNTLMTraffic": 3}}})
 }
 
 test_2_3_11_12_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"AuditNTLMInDomain": 8}}})
-	r.results["2.3.11.12"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.12"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netlogon\\Parameters": {"AuditNTLMInDomain": 8}}})
 }
 
 test_2_3_11_13_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"RestrictSendingNTLMTraffic": 3}}})
-	r.results["2.3.11.13"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.11.13"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\MSV1_0": {"RestrictSendingNTLMTraffic": 3}}})
 }
 
 test_2_3_13_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ShutdownWithoutLogon": 1}}})
-	r.results["2.3.13.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.13.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ShutdownWithoutLogon": 1}}})
 }
 
 test_2_3_15_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel": {"ObCaseInsensitive": 2}}})
-	r.results["2.3.15.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.15.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel": {"ObCaseInsensitive": 2}}})
 }
 
 test_2_3_15_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager": {"ProtectionMode": 2}}})
-	r.results["2.3.15.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.15.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager": {"ProtectionMode": 2}}})
 }
 
 test_2_3_17_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"FilterAdministratorToken": 2}}})
-	r.results["2.3.17.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"FilterAdministratorToken": 2}}})
 }
 
 test_2_3_17_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ConsentPromptBehaviorAdmin": 3}}})
-	r.results["2.3.17.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ConsentPromptBehaviorAdmin": 3}}})
 }
 
 test_2_3_17_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ConsentPromptBehaviorUser": 1}}})
-	r.results["2.3.17.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ConsentPromptBehaviorUser": 1}}})
 }
 
 test_2_3_17_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableInstallerDetection": 2}}})
-	r.results["2.3.17.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableInstallerDetection": 2}}})
 }
 
 test_2_3_17_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableSecureUIAPaths": 2}}})
-	r.results["2.3.17.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableSecureUIAPaths": 2}}})
 }
 
 test_2_3_17_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableLUA": 2}}})
-	r.results["2.3.17.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableLUA": 2}}})
 }
 
 test_2_3_17_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"PromptOnSecureDesktop": 2}}})
-	r.results["2.3.17.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"PromptOnSecureDesktop": 2}}})
 }
 
 test_2_3_17_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.local_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableVirtualization": 2}}})
-	r.results["2.3.17.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["2.3.17.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableVirtualization": 2}}})
 }
