@@ -1,0 +1,13 @@
+# Artifact Hub repository metadata (hand-maintained; build.py does not write or remove it).
+# Artifact Hub reads this file from the registered package path, so it sits next to the
+# generated package directories. Spec: https://github.com/artifacthub/hub/blob/master/docs/metadata/artifacthub-repo.yml
+#
+# After registering the repository (kind "Gatekeeper policies", path converters/packaging/gatekeeper/dist),
+# copy its ID from the Artifact Hub control panel into repositoryID to get the verified-publisher badge.
+# repositoryID: <id from the Artifact Hub control panel>
+
+# Owners can claim the repository from the Artifact Hub control panel; the email must match
+# the one used to sign in to Artifact Hub.
+owners:
+  - name: ynotbhatc
+    email: ynotbha@aisle-five.com
