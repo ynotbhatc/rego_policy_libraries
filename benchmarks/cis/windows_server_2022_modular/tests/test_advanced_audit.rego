@@ -4,171 +4,137 @@ package cis_windows_server_2022.advanced_audit_test
 import rego.v1
 
 test_17_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce923f-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce923f-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9242-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9242-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_1_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9240-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.1.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.1.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9240-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9239-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9239-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9236-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9236-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_2_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9238-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.2.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.2.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce9238-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_2_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce923a-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.2.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.2.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce923a-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_2_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9237-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.2.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.2.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9237-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_2_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9235-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.2.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.2.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9235-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_3_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9248-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.3.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.3.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9248-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_3_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce922b-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.3.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.3.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce922b-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce923b-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce923b-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_4_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce923c-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.4.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.4.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"audit_policy": {"{0cce923c-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_5_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9217-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.5.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.5.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9217-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_5_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9249-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.5.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.5.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9249-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_5_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9216-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.5.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.5.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9216-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_5_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9215-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.5.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.5.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9215-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_5_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce921c-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.5.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.5.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce921c-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_5_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce921b-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.5.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.5.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce921b-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_6_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9244-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.6.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.6.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9244-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_6_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9224-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.6.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.6.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9224-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_6_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9227-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.6.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.6.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9227-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_6_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9245-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.6.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.6.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9245-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_7_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce922f-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.7.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.7.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce922f-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_7_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9230-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.7.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.7.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9230-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_7_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9231-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.7.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.7.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9231-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_7_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9232-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.7.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.7.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9232-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_7_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9234-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.7.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.7.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9234-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_8_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9228-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.8.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.8.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9228-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_9_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9213-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.9.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.9.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9213-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_9_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9214-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.9.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.9.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9214-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_9_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9210-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.9.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.9.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9210-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_9_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9211-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.9.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.9.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9211-69ae-11d9-bed3-505054503030}": 0}})
 }
 
 test_17_9_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.advanced_audit.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9212-69ae-11d9-bed3-505054503030}": 0}})
-	r.results["17.9.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["17.9.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"audit_policy": {"{0cce9212-69ae-11d9-bed3-505054503030}": 0}})
 }

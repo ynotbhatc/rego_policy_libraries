@@ -4,51 +4,41 @@ package cis_windows_server_2022.account_policies_test
 import rego.v1
 
 test_1_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"PasswordHistorySize": 23}}})
-	r.results["1.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"PasswordHistorySize": 23}}})
 }
 
 test_1_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"MaximumPasswordAge": 0}}})
-	r.results["1.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"MaximumPasswordAge": 0}}})
 }
 
 test_1_1_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"MinimumPasswordAge": 0}}})
-	r.results["1.1.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"MinimumPasswordAge": 0}}})
 }
 
 test_1_1_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"MinimumPasswordLength": 13}}})
-	r.results["1.1.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"MinimumPasswordLength": 13}}})
 }
 
 test_1_1_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"PasswordComplexity": 2}}})
-	r.results["1.1.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"PasswordComplexity": 2}}})
 }
 
 test_1_1_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\System\\CurrentControlSet\\Control\\SAM": {"RelaxMinimumPasswordLengthLimits": 2}}})
-	r.results["1.1.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\System\\CurrentControlSet\\Control\\SAM": {"RelaxMinimumPasswordLengthLimits": 2}}})
 }
 
 test_1_1_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"ClearTextPassword": 1}}})
-	r.results["1.1.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.1.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"ClearTextPassword": 1}}})
 }
 
 test_1_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"LockoutDuration": 14}}})
-	r.results["1.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"LockoutDuration": 14}}})
 }
 
 test_1_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"LockoutBadCount": 0}}})
-	r.results["1.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"LockoutBadCount": 0}}})
 }
 
 test_1_2_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.account_policies.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"ResetLockoutCount": 14}}})
-	r.results["1.2.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["1.2.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"system_access": {"ResetLockoutCount": 14}}})
 }

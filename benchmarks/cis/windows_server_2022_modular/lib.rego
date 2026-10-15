@@ -379,7 +379,12 @@ _tables := {
 	"admin_templates_user": data.cis_windows_server_2022.admin_templates_user.controls,
 }
 
-results := {cid: status(c) | some t in _tables; some cid, c in t}
+# A partial object: looking up one id (results["2.2.1"]) evaluates that row alone, which the per-recommendation
+# tests rely on to stay fast; iterating it evaluates every row.
+results[cid] := status(c) if {
+	some t in _tables
+	c := t[cid]
+}
 
 section_reports[name] := _section_report(_sections[name], _tables[name]) if some name, _ in _tables
 

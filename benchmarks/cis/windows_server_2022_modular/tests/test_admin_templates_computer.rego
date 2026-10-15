@@ -4,1046 +4,837 @@ package cis_windows_server_2022.admin_templates_computer_test
 import rego.v1
 
 test_18_1_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization": {"NoLockScreenCamera": 2}}})
-	r.results["18.1.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.1.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization": {"NoLockScreenCamera": 2}}})
 }
 
 test_18_1_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization": {"NoLockScreenSlideshow": 2}}})
-	r.results["18.1.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.1.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization": {"NoLockScreenSlideshow": 2}}})
 }
 
 test_18_1_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization": {"AllowInputPersonalization": 1}}})
-	r.results["18.1.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.1.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization": {"AllowInputPersonalization": 1}}})
 }
 
 test_18_1_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"AllowOnlineTips": 1}}})
-	r.results["18.1.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.1.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"AllowOnlineTips": 1}}})
 }
 
 test_18_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LocalAccountTokenFilterPolicy": 1}}})
-	r.results["18.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LocalAccountTokenFilterPolicy": 1}}})
 }
 
 test_18_4_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10": {"Start": 5}}})
-	r.results["18.4.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.4.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\mrxsmb10": {"Start": 5}}})
 }
 
 test_18_4_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters": {"SMB1": 1}}})
-	r.results["18.4.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.4.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters": {"SMB1": 1}}})
 }
 
 test_18_4_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 2}, "HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 1}}})
-	r.results["18.4.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.4.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 2}, "HKLM\\SOFTWARE\\Wow6432Node\\Microsoft\\Cryptography\\Wintrust\\Config": {"EnableCertPaddingCheck": 1}}})
 }
 
 test_18_4_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel": {"DisableExceptionChainValidation": 1}}})
-	r.results["18.4.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.4.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\kernel": {"DisableExceptionChainValidation": 1}}})
 }
 
 test_18_4_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters": {"NodeType": 3}}})
-	r.results["18.4.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.4.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters": {"NodeType": 3}}})
 }
 
 test_18_5_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"AutoAdminLogon": 1}}})
-	r.results["18.5.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {"AutoAdminLogon": 1}}})
 }
 
 test_18_5_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters": {"DisableIPSourceRouting": 3}}})
-	r.results["18.5.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters": {"DisableIPSourceRouting": 3}}})
 }
 
 test_18_5_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"DisableIPSourceRouting": 3}}})
-	r.results["18.5.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"DisableIPSourceRouting": 3}}})
 }
 
 test_18_5_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"EnableICMPRedirect": 1}}})
-	r.results["18.5.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"EnableICMPRedirect": 1}}})
 }
 
 test_18_5_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"KeepAliveTime": 300001}}})
-	r.results["18.5.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"KeepAliveTime": 300001}}})
 }
 
 test_18_5_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters": {"NoNameReleaseOnDemand": 2}}})
-	r.results["18.5.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters": {"NoNameReleaseOnDemand": 2}}})
 }
 
 test_18_5_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"PerformRouterDiscovery": 1}}})
-	r.results["18.5.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"PerformRouterDiscovery": 1}}})
 }
 
 test_18_5_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager": {"SafeDllSearchMode": 2}}})
-	r.results["18.5.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager": {"SafeDllSearchMode": 2}}})
 }
 
 test_18_5_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\TCPIP6\\Parameters": {"TcpMaxDataRetransmissions": 4}}})
-	r.results["18.5.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\TCPIP6\\Parameters": {"TcpMaxDataRetransmissions": 4}}})
 }
 
 test_18_5_10_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"TcpMaxDataRetransmissions": 4}}})
-	r.results["18.5.10"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.10"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters": {"TcpMaxDataRetransmissions": 4}}})
 }
 
 test_18_5_11_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security": {"WarningLevel": 91}}})
-	r.results["18.5.11"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.5.11"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security": {"WarningLevel": 91}}})
 }
 
 test_18_6_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"EnableMDNS": 1}}})
-	r.results["18.6.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"EnableMDNS": 1}}})
 }
 
 test_18_6_4_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"EnableNetbios": 3}}})
-	r.results["18.6.4.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.4.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"EnableNetbios": 3}}})
 }
 
 test_18_6_4_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"DisableIPv6DefaultDnsServers": 2}}})
-	r.results["18.6.4.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.4.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"DisableIPv6DefaultDnsServers": 2}}})
 }
 
 test_18_6_4_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"EnableMulticast": 1}}})
-	r.results["18.6.4.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.4.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient": {"EnableMulticast": 1}}})
 }
 
 test_18_6_5_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnableFontProviders": 1}}})
-	r.results["18.6.5.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.5.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnableFontProviders": 1}}})
 }
 
 test_18_6_7_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanServer": {"MinSmb2Dialect": 786}}})
-	r.results["18.6.7.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.7.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanServer": {"MinSmb2Dialect": 786}}})
 }
 
 test_18_6_8_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation": {"AllowInsecureGuestAuth": 1}}})
-	r.results["18.6.8.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.8.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation": {"AllowInsecureGuestAuth": 1}}})
 }
 
 test_18_6_8_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation": {"RequireEncryption": 2}}})
-	r.results["18.6.8.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.8.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation": {"RequireEncryption": 2}}})
 }
 
 test_18_6_9_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LLTD": {"AllowLLTDIOOnDomain": 1, "AllowLLTDIOOnPublicNet": 0, "EnableLLTDIO": 0, "ProhibitLLTDIOOnPrivateNet": 0}}})
-	r.results["18.6.9.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.9.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LLTD": {"AllowLLTDIOOnDomain": 1, "AllowLLTDIOOnPublicNet": 0, "EnableLLTDIO": 0, "ProhibitLLTDIOOnPrivateNet": 0}}})
 }
 
 test_18_6_9_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LLTD": {"AllowRspndrOnDomain": 1, "AllowRspndrOnPublicNet": 0, "EnableRspndr": 0, "ProhibitRspndrOnPrivateNet": 0}}})
-	r.results["18.6.9.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.9.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LLTD": {"AllowRspndrOnDomain": 1, "AllowRspndrOnPublicNet": 0, "EnableRspndr": 0, "ProhibitRspndrOnPrivateNet": 0}}})
 }
 
 test_18_6_10_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Peernet": {"Disabled": 2}}})
-	r.results["18.6.10.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.10.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Peernet": {"Disabled": 2}}})
 }
 
 test_18_6_11_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections": {"NC_AllowNetBridge_NLA": 1}}})
-	r.results["18.6.11.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.11.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections": {"NC_AllowNetBridge_NLA": 1}}})
 }
 
 test_18_6_11_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections": {"NC_ShowSharedAccessUI": 1}}})
-	r.results["18.6.11.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.11.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections": {"NC_ShowSharedAccessUI": 1}}})
 }
 
 test_18_6_11_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections": {"NC_StdDomainUserSetLocation": 2}}})
-	r.results["18.6.11.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.11.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Network Connections": {"NC_StdDomainUserSetLocation": 2}}})
 }
 
 test_18_6_14_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths": {"\\\\*\\NETLOGON": "RequireMutualAuthentication=1", "\\\\*\\SYSVOL": "RequireMutualAuthentication=1, RequireIntegrity=1, RequirePrivacy=1"}}})
-	r.results["18.6.14.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.14.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths": {"\\\\*\\NETLOGON": "RequireMutualAuthentication=1", "\\\\*\\SYSVOL": "RequireMutualAuthentication=1, RequireIntegrity=1, RequirePrivacy=1"}}})
 }
 
 test_18_6_19_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\TCPIP6\\Parameters": {"DisabledComponents": 256}}})
-	r.results["18.6.19.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.19.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\TCPIP6\\Parameters": {"DisabledComponents": 256}}})
 }
 
 test_18_6_20_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WCN\\Registrars": {"EnableRegistrars": 1, "DisableUPnPRegistrar": 0, "DisableInBand802DOT11Registrar": 0, "DisableFlashConfigRegistrar": 0, "DisableWPDRegistrar": 0}}})
-	r.results["18.6.20.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.20.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WCN\\Registrars": {"EnableRegistrars": 1, "DisableUPnPRegistrar": 0, "DisableInBand802DOT11Registrar": 0, "DisableFlashConfigRegistrar": 0, "DisableWPDRegistrar": 0}}})
 }
 
 test_18_6_20_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WCN\\UI": {"DisableWcnUi": 2}}})
-	r.results["18.6.20.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.20.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WCN\\UI": {"DisableWcnUi": 2}}})
 }
 
 test_18_6_21_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy": {"fMinimizeConnections": 4}}})
-	r.results["18.6.21.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.21.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy": {"fMinimizeConnections": 4}}})
 }
 
 test_18_6_21_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy": {"fBlockNonDomain": 2}}})
-	r.results["18.6.21.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.6.21.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WcmSvc\\GroupPolicy": {"fBlockNonDomain": 2}}})
 }
 
 test_18_7_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\Printers": {"RegisterSpoolerRemoteRpcEndPoint": 3}}})
-	r.results["18.7.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\Printers": {"RegisterSpoolerRemoteRpcEndPoint": 3}}})
 }
 
 test_18_7_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"RedirectionguardPolicy": 2}}})
-	r.results["18.7.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"RedirectionguardPolicy": 2}}})
 }
 
 test_18_7_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcUseNamedPipeProtocol": 1}}})
-	r.results["18.7.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcUseNamedPipeProtocol": 1}}})
 }
 
 test_18_7_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcAuthentication": 1}}})
-	r.results["18.7.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcAuthentication": 1}}})
 }
 
 test_18_7_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcProtocols": 6}}})
-	r.results["18.7.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcProtocols": 6}}})
 }
 
 test_18_7_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"ForceKerberosForRpc": 2}}})
-	r.results["18.7.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"ForceKerberosForRpc": 2}}})
 }
 
 test_18_7_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcTcpPort": 1}}})
-	r.results["18.7.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\RPC": {"RpcTcpPort": 1}}})
 }
 
 test_18_7_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print": {"RpcAuthnLevelPrivacyEnabled": 2}}})
-	r.results["18.7.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Print": {"RpcAuthnLevelPrivacyEnabled": 2}}})
 }
 
 test_18_7_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint": {"RestrictDriverInstallationToAdministrators": 2}}})
-	r.results["18.7.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint": {"RestrictDriverInstallationToAdministrators": 2}}})
 }
 
 test_18_7_10_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"CopyFilesPolicy": 2}}})
-	r.results["18.7.10"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.10"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"CopyFilesPolicy": 2}}})
 }
 
 test_18_7_11_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint": {"NoWarningNoElevationOnInstall": 1}}})
-	r.results["18.7.11"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.11"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint": {"NoWarningNoElevationOnInstall": 1}}})
 }
 
 test_18_7_12_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint": {"UpdatePromptSettings": 1}}})
-	r.results["18.7.12"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.7.12"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\Printers\\PointAndPrint": {"UpdatePromptSettings": 1}}})
 }
 
 test_18_8_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications": {"NoCloudApplicationNotification": 2}}})
-	r.results["18.8.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.8.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications": {"NoCloudApplicationNotification": 2}}})
 }
 
 test_18_9_3_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit": {"ProcessCreationIncludeCmdLine_Enabled": 2}}})
-	r.results["18.9.3.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.3.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit": {"ProcessCreationIncludeCmdLine_Enabled": 2}}})
 }
 
 test_18_9_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\CredSSP\\Parameters": {"AllowEncryptionOracle": 1}}})
-	r.results["18.9.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\CredSSP\\Parameters": {"AllowEncryptionOracle": 1}}})
 }
 
 test_18_9_4_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation": {"AllowProtectedCreds": 2}}})
-	r.results["18.9.4.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.4.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation": {"AllowProtectedCreds": 2}}})
 }
 
 test_18_9_5_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"EnableVirtualizationBasedSecurity": 2}}})
-	r.results["18.9.5.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"EnableVirtualizationBasedSecurity": 2}}})
 }
 
 test_18_9_5_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"RequirePlatformSecurityFeatures": 4}}})
-	r.results["18.9.5.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"RequirePlatformSecurityFeatures": 4}}})
 }
 
 test_18_9_5_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"HypervisorEnforcedCodeIntegrity": 2}}})
-	r.results["18.9.5.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"HypervisorEnforcedCodeIntegrity": 2}}})
 }
 
 test_18_9_5_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"HVCIMATRequired": 2}}})
-	r.results["18.9.5.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"HVCIMATRequired": 2}}})
 }
 
 test_18_9_5_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"LsaCfgFlags": 2}}})
-	r.results["18.9.5.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"LsaCfgFlags": 2}}})
 }
 
 test_18_9_5_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"LsaCfgFlags": 1}}})
-	r.results["18.9.5.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"LsaCfgFlags": 1}}})
 }
 
 test_18_9_5_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"ConfigureSystemGuardLaunch": 2}}})
-	r.results["18.9.5.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.5.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {"ConfigureSystemGuardLaunch": 2}}})
 }
 
 test_18_9_7_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Device Metadata": {"PreventDeviceMetadataFromNetwork": 2}}})
-	r.results["18.9.7.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.7.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Device Metadata": {"PreventDeviceMetadataFromNetwork": 2}}})
 }
 
 test_18_9_13_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch": {"DriverLoadPolicy": 4}}})
-	r.results["18.9.13.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.13.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch": {"DriverLoadPolicy": 4}}})
 }
 
 test_18_9_17_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Policies": {"ClfsAuthenticationChecking": 2}}})
-	r.results["18.9.17.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.17.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Policies": {"ClfsAuthenticationChecking": 2}}})
 }
 
 test_18_9_19_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{827D319E-6EAC-11D2-A4EA-00C04F79F83A}": {"NoBackgroundPolicy": 1}}})
-	r.results["18.9.19.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.19.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{827D319E-6EAC-11D2-A4EA-00C04F79F83A}": {"NoBackgroundPolicy": 1}}})
 }
 
 test_18_9_19_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{827D319E-6EAC-11D2-A4EA-00C04F79F83A}": {"NoGPOListChanges": 1}}})
-	r.results["18.9.19.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.19.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Group Policy\\{827D319E-6EAC-11D2-A4EA-00C04F79F83A}": {"NoGPOListChanges": 1}}})
 }
 
 test_18_9_19_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnableCdp": 1}}})
-	r.results["18.9.19.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.19.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnableCdp": 1}}})
 }
 
 test_18_9_19_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DisableBkGndGroupPolicy": 1}}})
-	r.results["18.9.19.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.19.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DisableBkGndGroupPolicy": 1}}})
 }
 
 test_18_9_20_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"DisableWebPnPDownload": 2}}})
-	r.results["18.9.20.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"DisableWebPnPDownload": 2}}})
 }
 
 test_18_9_20_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\TabletPC": {"PreventHandwritingDataSharing": 2}}})
-	r.results["18.9.20.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\TabletPC": {"PreventHandwritingDataSharing": 2}}})
 }
 
 test_18_9_20_1_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\HandwritingErrorReports": {"PreventHandwritingErrorReports": 2}}})
-	r.results["18.9.20.1.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\HandwritingErrorReports": {"PreventHandwritingErrorReports": 2}}})
 }
 
 test_18_9_20_1_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Internet Connection Wizard": {"ExitOnMSICW": 2}}})
-	r.results["18.9.20.1.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Internet Connection Wizard": {"ExitOnMSICW": 2}}})
 }
 
 test_18_9_20_1_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoWebServices": 2}}})
-	r.results["18.9.20.1.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoWebServices": 2}}})
 }
 
 test_18_9_20_1_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"DisableHTTPPrinting": 2}}})
-	r.results["18.9.20.1.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Printers": {"DisableHTTPPrinting": 2}}})
 }
 
 test_18_9_20_1_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Registration Wizard Control": {"NoRegistration": 2}}})
-	r.results["18.9.20.1.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Registration Wizard Control": {"NoRegistration": 2}}})
 }
 
 test_18_9_20_1_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\SearchCompanion": {"DisableContentFileUpdates": 2}}})
-	r.results["18.9.20.1.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\SearchCompanion": {"DisableContentFileUpdates": 2}}})
 }
 
 test_18_9_20_1_9_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoOnlinePrintsWizard": 2}}})
-	r.results["18.9.20.1.9"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.9"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoOnlinePrintsWizard": 2}}})
 }
 
 test_18_9_20_1_10_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoPublishingWizard": 2}}})
-	r.results["18.9.20.1.10"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.10"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoPublishingWizard": 2}}})
 }
 
 test_18_9_20_1_11_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Messenger\\Client": {"CEIP": 3}}})
-	r.results["18.9.20.1.11"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.11"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Messenger\\Client": {"CEIP": 3}}})
 }
 
 test_18_9_20_1_12_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows": {"CEIPEnable": 1}}})
-	r.results["18.9.20.1.12"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.12"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows": {"CEIPEnable": 1}}})
 }
 
 test_18_9_20_1_13_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting": {"Disabled": 2}, "HKLM\\SOFTWARE\\Policies\\Microsoft\\PCHealth\\ErrorReporting": {"DoReport": 0}}})
-	r.results["18.9.20.1.13"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.20.1.13"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting": {"Disabled": 2}, "HKLM\\SOFTWARE\\Policies\\Microsoft\\PCHealth\\ErrorReporting": {"DoReport": 0}}})
 }
 
 test_18_9_23_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\kerberos\\parameters": {"DevicePKInitBehavior": 1, "DevicePKInitEnabled": 1}}})
-	r.results["18.9.23.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.23.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\kerberos\\parameters": {"DevicePKInitBehavior": 1, "DevicePKInitEnabled": 1}}})
 }
 
 test_18_9_24_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Kernel DMA Protection": {"DeviceEnumerationPolicy": 1}}})
-	r.results["18.9.24.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.24.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Kernel DMA Protection": {"DeviceEnumerationPolicy": 1}}})
 }
 
 test_18_9_26_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"BackupDirectory": 3}}})
-	r.results["18.9.26.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"BackupDirectory": 3}}})
 }
 
 test_18_9_26_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordExpirationProtectionEnabled": 2}}})
-	r.results["18.9.26.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordExpirationProtectionEnabled": 2}}})
 }
 
 test_18_9_26_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"ADPasswordEncryptionEnabled": 2}}})
-	r.results["18.9.26.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"ADPasswordEncryptionEnabled": 2}}})
 }
 
 test_18_9_26_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordComplexity": 5}}})
-	r.results["18.9.26.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordComplexity": 5}}})
 }
 
 test_18_9_26_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordLength": 14}}})
-	r.results["18.9.26.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordLength": 14}}})
 }
 
 test_18_9_26_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordAgeDays": 31}}})
-	r.results["18.9.26.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordAgeDays": 31}}})
 }
 
 test_18_9_26_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PostAuthenticationResetDelay": 0}}})
-	r.results["18.9.26.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PostAuthenticationResetDelay": 0}}})
 }
 
 test_18_9_26_8_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PostAuthenticationActions": 12}}})
-	r.results["18.9.26.8"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.26.8"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PostAuthenticationActions": 12}}})
 }
 
 test_18_9_27_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"AllowCustomSSPsAPs": 1}}})
-	r.results["18.9.27.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.27.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"AllowCustomSSPsAPs": 1}}})
 }
 
 test_18_9_27_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"RunAsPPL": 2}}})
-	r.results["18.9.27.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.27.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"RunAsPPL": 2}}})
 }
 
 test_18_9_28_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Control Panel\\International": {"BlockUserInputMethodsForSignIn": 2}}})
-	r.results["18.9.28.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.28.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Control Panel\\International": {"BlockUserInputMethodsForSignIn": 2}}})
 }
 
 test_18_9_29_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"BlockUserFromShowingAccountDetailsOnSignin": 2}}})
-	r.results["18.9.29.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.29.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"BlockUserFromShowingAccountDetailsOnSignin": 2}}})
 }
 
 test_18_9_29_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"DontDisplayNetworkSelectionUI": 2}}})
-	r.results["18.9.29.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.29.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"DontDisplayNetworkSelectionUI": 2}}})
 }
 
 test_18_9_29_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"DontEnumerateConnectedUsers": 2}}})
-	r.results["18.9.29.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.29.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"DontEnumerateConnectedUsers": 2}}})
 }
 
 test_18_9_29_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnumerateLocalUsers": 1}}})
-	r.results["18.9.29.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.29.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnumerateLocalUsers": 1}}})
 }
 
 test_18_9_29_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"DisableLockScreenAppNotifications": 2}}})
-	r.results["18.9.29.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.29.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"DisableLockScreenAppNotifications": 2}}})
 }
 
 test_18_9_29_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"AllowDomainPINLogon": 1}}})
-	r.results["18.9.29.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.29.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"AllowDomainPINLogon": 1}}})
 }
 
 test_18_9_33_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"AllowCrossDeviceClipboard": 1}}})
-	r.results["18.9.33.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.33.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"AllowCrossDeviceClipboard": 1}}})
 }
 
 test_18_9_33_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"UploadUserActivities": 1}}})
-	r.results["18.9.33.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.33.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"UploadUserActivities": 1}}})
 }
 
 test_18_9_35_6_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\f15576e8-98b7-4186-b944-eafa664402d9": {"DCSettingIndex": 1}}})
-	r.results["18.9.35.6.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.35.6.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\f15576e8-98b7-4186-b944-eafa664402d9": {"DCSettingIndex": 1}}})
 }
 
 test_18_9_35_6_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\f15576e8-98b7-4186-b944-eafa664402d9": {"ACSettingIndex": 1}}})
-	r.results["18.9.35.6.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.35.6.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\f15576e8-98b7-4186-b944-eafa664402d9": {"ACSettingIndex": 1}}})
 }
 
 test_18_9_35_6_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51": {"DCSettingIndex": 2}}})
-	r.results["18.9.35.6.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.35.6.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51": {"DCSettingIndex": 2}}})
 }
 
 test_18_9_35_6_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51": {"ACSettingIndex": 2}}})
-	r.results["18.9.35.6.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.35.6.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\0e796bdb-100d-47d6-a2d5-f7d2daa51f51": {"ACSettingIndex": 2}}})
 }
 
 test_18_9_37_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fAllowUnsolicited": 1}}})
-	r.results["18.9.37.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.37.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fAllowUnsolicited": 1}}})
 }
 
 test_18_9_37_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fAllowToGetHelp": 1}}})
-	r.results["18.9.37.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.37.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fAllowToGetHelp": 1}}})
 }
 
 test_18_9_38_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc": {"EnableAuthEpResolution": 2}}})
-	r.results["18.9.38.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.38.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc": {"EnableAuthEpResolution": 2}}})
 }
 
 test_18_9_38_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc": {"RestrictRemoteClients": 2}}})
-	r.results["18.9.38.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.38.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc": {"RestrictRemoteClients": 2}}})
 }
 
 test_18_9_41_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\SAM": {"SamNGCKeyROCAValidation": 3}}})
-	r.results["18.9.41.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.41.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_dc, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\SAM": {"SamNGCKeyROCAValidation": 3}}})
 }
 
 test_18_9_49_5_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScriptedDiagnosticsProvider\\Policy": {"DisableQueryRemoteServer": 1}}})
-	r.results["18.9.49.5.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.49.5.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScriptedDiagnosticsProvider\\Policy": {"DisableQueryRemoteServer": 1}}})
 }
 
 test_18_9_49_11_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WDI\\{9c5a40da-b965-4fc3-8781-88dd50a6299d}": {"ScenarioExecutionEnabled": 1}}})
-	r.results["18.9.49.11.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.49.11.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WDI\\{9c5a40da-b965-4fc3-8781-88dd50a6299d}": {"ScenarioExecutionEnabled": 1}}})
 }
 
 test_18_9_51_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo": {"DisabledByGroupPolicy": 2}}})
-	r.results["18.9.51.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.51.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo": {"DisabledByGroupPolicy": 2}}})
 }
 
 test_18_9_53_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\W32Time\\TimeProviders\\NtpClient": {"Enabled": 2}}})
-	r.results["18.9.53.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.53.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\W32Time\\TimeProviders\\NtpClient": {"Enabled": 2}}})
 }
 
 test_18_9_53_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\W32Time\\TimeProviders\\NtpServer": {"Enabled": 1}}})
-	r.results["18.9.53.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.9.53.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\W32Time\\TimeProviders\\NtpServer": {"Enabled": 1}}})
 }
 
 test_18_10_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\AppModel\\StateManager": {"AllowSharedLocalAppData": 1}}})
-	r.results["18.10.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\AppModel\\StateManager": {"AllowSharedLocalAppData": 1}}})
 }
 
 test_18_10_6_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"MSAOptional": 2}}})
-	r.results["18.10.6.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.6.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"MSAOptional": 2}}})
 }
 
 test_18_10_8_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"NoAutoplayfornonVolume": 2}}})
-	r.results["18.10.8.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.8.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"NoAutoplayfornonVolume": 2}}})
 }
 
 test_18_10_8_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoAutorun": 2}}})
-	r.results["18.10.8.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.8.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoAutorun": 2}}})
 }
 
 test_18_10_8_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoDriveTypeAutoRun": 256}}})
-	r.results["18.10.8.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.8.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"NoDriveTypeAutoRun": 256}}})
 }
 
 test_18_10_9_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Biometrics\\FacialFeatures": {"EnhancedAntiSpoofing": 2}}})
-	r.results["18.10.9.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.9.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Biometrics\\FacialFeatures": {"EnhancedAntiSpoofing": 2}}})
 }
 
 test_18_10_11_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Camera": {"AllowCamera": 1}}})
-	r.results["18.10.11.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.11.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Camera": {"AllowCamera": 1}}})
 }
 
 test_18_10_13_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent": {"DisableConsumerAccountStateContent": 2}}})
-	r.results["18.10.13.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.13.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent": {"DisableConsumerAccountStateContent": 2}}})
 }
 
 test_18_10_13_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent": {"DisableCloudOptimizedContent": 2}}})
-	r.results["18.10.13.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.13.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent": {"DisableCloudOptimizedContent": 2}}})
 }
 
 test_18_10_14_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Connect": {"RequirePinForPairing": 3}}})
-	r.results["18.10.14.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.14.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Connect": {"RequirePinForPairing": 3}}})
 }
 
 test_18_10_15_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredUI": {"DisablePasswordReveal": 2}}})
-	r.results["18.10.15.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.15.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredUI": {"DisablePasswordReveal": 2}}})
 }
 
 test_18_10_15_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\CredUI": {"EnumerateAdministrators": 1}}})
-	r.results["18.10.15.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.15.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\CredUI": {"EnumerateAdministrators": 1}}})
 }
 
 test_18_10_16_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"AllowTelemetry": 2}}})
-	r.results["18.10.16.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.16.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"AllowTelemetry": 2}}})
 }
 
 test_18_10_16_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"DisableEnterpriseAuthProxy": 2}}})
-	r.results["18.10.16.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.16.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"DisableEnterpriseAuthProxy": 2}}})
 }
 
 test_18_10_16_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"DoNotShowFeedbackNotifications": 2}}})
-	r.results["18.10.16.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.16.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"DoNotShowFeedbackNotifications": 2}}})
 }
 
 test_18_10_16_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"EnableOneSettingsAuditing": 2}}})
-	r.results["18.10.16.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.16.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"EnableOneSettingsAuditing": 2}}})
 }
 
 test_18_10_16_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"LimitDiagnosticLogCollection": 2}}})
-	r.results["18.10.16.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.16.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"LimitDiagnosticLogCollection": 2}}})
 }
 
 test_18_10_16_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"LimitDumpCollection": 2}}})
-	r.results["18.10.16.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.16.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"LimitDumpCollection": 2}}})
 }
 
 test_18_10_18_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableAppInstaller": 1}}})
-	r.results["18.10.18.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableAppInstaller": 1}}})
 }
 
 test_18_10_18_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableExperimentalFeatures": 1}}})
-	r.results["18.10.18.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableExperimentalFeatures": 1}}})
 }
 
 test_18_10_18_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableHashOverride": 1}}})
-	r.results["18.10.18.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableHashOverride": 1}}})
 }
 
 test_18_10_18_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableLocalArchiveMalwareScanOverride": 1}}})
-	r.results["18.10.18.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableLocalArchiveMalwareScanOverride": 1}}})
 }
 
 test_18_10_18_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableBypassCertificatePinningForMicrosoftStore": 1}}})
-	r.results["18.10.18.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableBypassCertificatePinningForMicrosoftStore": 1}}})
 }
 
 test_18_10_18_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableMSAppInstallerProtocol": 1}}})
-	r.results["18.10.18.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableMSAppInstallerProtocol": 1}}})
 }
 
 test_18_10_18_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableWindowsPackageManagerCommandLineInterfaces": 1}}})
-	r.results["18.10.18.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.18.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppInstaller": {"EnableWindowsPackageManagerCommandLineInterfaces": 1}}})
 }
 
 test_18_10_26_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {"Retention": 1}}})
-	r.results["18.10.26.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {"Retention": 1}}})
 }
 
 test_18_10_26_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {"MaxSize": 32767}}})
-	r.results["18.10.26.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Application": {"MaxSize": 32767}}})
 }
 
 test_18_10_26_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {"Retention": 1}}})
-	r.results["18.10.26.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {"Retention": 1}}})
 }
 
 test_18_10_26_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {"MaxSize": 196607}}})
-	r.results["18.10.26.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Security": {"MaxSize": 196607}}})
 }
 
 test_18_10_26_3_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {"Retention": 1}}})
-	r.results["18.10.26.3.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.3.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {"Retention": 1}}})
 }
 
 test_18_10_26_3_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {"MaxSize": 32767}}})
-	r.results["18.10.26.3.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.3.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\Setup": {"MaxSize": 32767}}})
 }
 
 test_18_10_26_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {"Retention": 1}}})
-	r.results["18.10.26.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {"Retention": 1}}})
 }
 
 test_18_10_26_4_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {"MaxSize": 32767}}})
-	r.results["18.10.26.4.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.26.4.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\EventLog\\System": {"MaxSize": 32767}}})
 }
 
 test_18_10_29_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"DisableMotWOnInsecurePathCopy": 1}}})
-	r.results["18.10.29.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.29.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"DisableMotWOnInsecurePathCopy": 1}}})
 }
 
 test_18_10_29_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"NoDataExecutionPrevention": 1}}})
-	r.results["18.10.29.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.29.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"NoDataExecutionPrevention": 1}}})
 }
 
 test_18_10_29_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"NoHeapTerminationOnCorruption": 1}}})
-	r.results["18.10.29.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.29.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer": {"NoHeapTerminationOnCorruption": 1}}})
 }
 
 test_18_10_29_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"PreXPSP2ShellProtocolBehavior": 1}}})
-	r.results["18.10.29.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.29.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer": {"PreXPSP2ShellProtocolBehavior": 1}}})
 }
 
 test_18_10_36_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors": {"DisableLocation": 2}}})
-	r.results["18.10.36.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.36.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors": {"DisableLocation": 2}}})
 }
 
 test_18_10_40_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Messaging": {"AllowMessageSync": 1}}})
-	r.results["18.10.40.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.40.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Messaging": {"AllowMessageSync": 1}}})
 }
 
 test_18_10_41_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\MicrosoftAccount": {"DisableUserAuth": 2}}})
-	r.results["18.10.41.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.41.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\MicrosoftAccount": {"DisableUserAuth": 2}}})
 }
 
 test_18_10_56_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\PushToInstall": {"DisablePushToInstall": 2}}})
-	r.results["18.10.56.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.56.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\PushToInstall": {"DisablePushToInstall": 2}}})
 }
 
 test_18_10_57_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"DisablePasswordSaving": 2}}})
-	r.results["18.10.57.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"DisablePasswordSaving": 2}}})
 }
 
 test_18_10_57_3_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fSingleSessionPerUser": 2}}})
-	r.results["18.10.57.3.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fSingleSessionPerUser": 2}}})
 }
 
 test_18_10_57_3_3_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"EnableUiaRedirection": 1}}})
-	r.results["18.10.57.3.3.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"EnableUiaRedirection": 1}}})
 }
 
 test_18_10_57_3_3_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableCcm": 2}}})
-	r.results["18.10.57.3.3.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableCcm": 2}}})
 }
 
 test_18_10_57_3_3_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableCdm": 2}}})
-	r.results["18.10.57.3.3.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableCdm": 2}}})
 }
 
 test_18_10_57_3_3_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableLocationRedir": 2}}})
-	r.results["18.10.57.3.3.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableLocationRedir": 2}}})
 }
 
 test_18_10_57_3_3_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableLPT": 2}}})
-	r.results["18.10.57.3.3.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableLPT": 2}}})
 }
 
 test_18_10_57_3_3_6_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisablePNPRedir": 2}}})
-	r.results["18.10.57.3.3.6"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.6"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisablePNPRedir": 2}}})
 }
 
 test_18_10_57_3_3_7_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableWebAuthn": 2}}})
-	r.results["18.10.57.3.3.7"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.3.7"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fDisableWebAuthn": 2}}})
 }
 
 test_18_10_57_3_9_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fPromptForPassword": 2}}})
-	r.results["18.10.57.3.9.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.9.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fPromptForPassword": 2}}})
 }
 
 test_18_10_57_3_9_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fEncryptRPCTraffic": 2}}})
-	r.results["18.10.57.3.9.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.9.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"fEncryptRPCTraffic": 2}}})
 }
 
 test_18_10_57_3_9_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"SecurityLayer": 3}}})
-	r.results["18.10.57.3.9.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.9.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"SecurityLayer": 3}}})
 }
 
 test_18_10_57_3_9_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"UserAuthentication": 2}}})
-	r.results["18.10.57.3.9.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.9.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"UserAuthentication": 2}}})
 }
 
 test_18_10_57_3_9_5_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"MinEncryptionLevel": 4}}})
-	r.results["18.10.57.3.9.5"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.9.5"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"MinEncryptionLevel": 4}}})
 }
 
 test_18_10_57_3_10_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"MaxIdleTime": 0}}})
-	r.results["18.10.57.3.10.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.10.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"MaxIdleTime": 0}}})
 }
 
 test_18_10_57_3_11_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"DeleteTempDirsOnExit": 2}}})
-	r.results["18.10.57.3.11.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.11.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"DeleteTempDirsOnExit": 2}}})
 }
 
 test_18_10_57_3_11_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"PerSessionTempDir": 2}}})
-	r.results["18.10.57.3.11.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.57.3.11.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {"PerSessionTempDir": 2}}})
 }
 
 test_18_10_58_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds": {"DisableEnclosureDownload": 2}}})
-	r.results["18.10.58.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.58.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds": {"DisableEnclosureDownload": 2}}})
 }
 
 test_18_10_58_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\Feeds": {"AllowBasicAuthInClear": 1}}})
-	r.results["18.10.58.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.58.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\Feeds": {"AllowBasicAuthInClear": 1}}})
 }
 
 test_18_10_59_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"AllowCloudSearch": 1}}})
-	r.results["18.10.59.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.59.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"AllowCloudSearch": 1}}})
 }
 
 test_18_10_59_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"AllowIndexingEncryptedStoresOrItems": 1}}})
-	r.results["18.10.59.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.59.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"AllowIndexingEncryptedStoresOrItems": 1}}})
 }
 
 test_18_10_59_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"EnableDynamicContentInWSB": 1}}})
-	r.results["18.10.59.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.59.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"EnableDynamicContentInWSB": 1}}})
 }
 
 test_18_10_63_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform": {"NoGenTicket": 2}}})
-	r.results["18.10.63.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.63.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform": {"NoGenTicket": 2}}})
 }
 
 test_18_10_77_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnableSmartScreen": 2, "ShellSmartScreenLevel": "Block"}}})
-	r.results["18.10.77.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.77.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System": {"EnableSmartScreen": 2, "ShellSmartScreenLevel": "Block"}}})
 }
 
 test_18_10_81_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\WindowsInkWorkspace": {"AllowSuggestedAppsInWindowsInkWorkspace": 1}}})
-	r.results["18.10.81.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.81.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\WindowsInkWorkspace": {"AllowSuggestedAppsInWindowsInkWorkspace": 1}}})
 }
 
 test_18_10_81_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\WindowsInkWorkspace": {"AllowWindowsInkWorkspace": 2}}})
-	r.results["18.10.81.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.81.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\WindowsInkWorkspace": {"AllowWindowsInkWorkspace": 2}}})
 }
 
 test_18_10_82_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {"EnableUserControl": 1}}})
-	r.results["18.10.82.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.82.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {"EnableUserControl": 1}}})
 }
 
 test_18_10_82_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {"AlwaysInstallElevated": 1}}})
-	r.results["18.10.82.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.82.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {"AlwaysInstallElevated": 1}}})
 }
 
 test_18_10_82_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {"SafeForScripting": 1}}})
-	r.results["18.10.82.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.82.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {"SafeForScripting": 1}}})
 }
 
 test_18_10_83_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableMPR": 1}}})
-	r.results["18.10.83.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.83.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"EnableMPR": 1}}})
 }
 
 test_18_10_83_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DisableAutomaticRestartSignOn": 2}}})
-	r.results["18.10.83.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.83.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"DisableAutomaticRestartSignOn": 2}}})
 }
 
 test_18_10_88_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging": {"EnableScriptBlockLogging": 2}}})
-	r.results["18.10.88.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.88.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging": {"EnableScriptBlockLogging": 2}}})
 }
 
 test_18_10_88_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\Transcription": {"EnableTranscripting": 2}}})
-	r.results["18.10.88.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.88.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\Transcription": {"EnableTranscripting": 2}}})
 }
 
 test_18_10_90_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {"AllowBasic": 1}}})
-	r.results["18.10.90.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {"AllowBasic": 1}}})
 }
 
 test_18_10_90_1_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {"AllowUnencryptedTraffic": 1}}})
-	r.results["18.10.90.1.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.1.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {"AllowUnencryptedTraffic": 1}}})
 }
 
 test_18_10_90_1_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {"AllowDigest": 1}}})
-	r.results["18.10.90.1.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.1.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Client": {"AllowDigest": 1}}})
 }
 
 test_18_10_90_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"AllowBasic": 1}}})
-	r.results["18.10.90.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"AllowBasic": 1}}})
 }
 
 test_18_10_90_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"AllowAutoConfig": 1}}})
-	r.results["18.10.90.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"AllowAutoConfig": 1}}})
 }
 
 test_18_10_90_2_3_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"AllowUnencryptedTraffic": 1}}})
-	r.results["18.10.90.2.3"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.2.3"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"AllowUnencryptedTraffic": 1}}})
 }
 
 test_18_10_90_2_4_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"DisableRunAs": 2}}})
-	r.results["18.10.90.2.4"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.90.2.4"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service": {"DisableRunAs": 2}}})
 }
 
 test_18_10_91_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\\WinRS": {"AllowRemoteShellAccess": 1}}})
-	r.results["18.10.91.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.91.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WinRM\\Service\\WinRS": {"AllowRemoteShellAccess": 1}}})
 }
 
 test_18_10_93_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\App and Browser protection": {"DisallowExploitProtectionOverride": 2}}})
-	r.results["18.10.93.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.93.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\App and Browser protection": {"DisallowExploitProtectionOverride": 2}}})
 }
 
 test_18_10_94_1_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU": {"NoAutoRebootWithLoggedOnUsers": 1}}})
-	r.results["18.10.94.1.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.94.1.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU": {"NoAutoRebootWithLoggedOnUsers": 1}}})
 }
 
 test_18_10_94_2_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU": {"NoAutoUpdate": 1}}})
-	r.results["18.10.94.2.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.94.2.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU": {"NoAutoUpdate": 1}}})
 }
 
 test_18_10_94_2_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU": {"ScheduledInstallDay": 1}}})
-	r.results["18.10.94.2.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.94.2.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU": {"ScheduledInstallDay": 1}}})
 }
 
 test_18_10_94_4_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate": {"ManagePreviewBuildsPolicyValue": 2}}})
-	r.results["18.10.94.4.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.94.4.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate": {"ManagePreviewBuildsPolicyValue": 2}}})
 }
 
 test_18_10_94_4_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate": {"DeferQualityUpdates": 2, "DeferQualityUpdatesPeriodInDays": 0}}})
-	r.results["18.10.94.4.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.10.94.4.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate": {"DeferQualityUpdates": 2, "DeferQualityUpdatesPeriodInDays": 0}}})
 }
 
 test_18_11_1_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp": {"DisableWpad": 2}}})
-	r.results["18.11.1"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.11.1"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WinHttp": {"DisableWpad": 2}}})
 }
 
 test_18_11_2_fails_when_its_facts_do_not_comply if {
-	r := data.cis_windows_server_2022.admin_templates_computer.compliance_report with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings": {"DisableProxyAuthenticationSchemes": 288}}})
-	r.results["18.11.2"] == "fail"
+	data.cis_windows_server_2022.lib.results["18.11.2"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings": {"DisableProxyAuthenticationSchemes": 288}}})
 }

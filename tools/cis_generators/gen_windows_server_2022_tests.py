@@ -138,10 +138,10 @@ def tests(pkg, sections, recs, checks, manual):
             if c["kind"] == "manual" or recs[rid]["section"] != sec_no:
                 continue
             role = "MS" if _applies(recs[rid]["profiles"], "MS") else "DC"
-            # object.union merges objects recursively and replaces arrays: only this recommendation's facts change
+            # object.union merges objects recursively and replaces arrays: only this recommendation's facts change.
+            # lib.results is looked up by id, so only this row is evaluated.
             body.append(f"""test_{rid.replace(".", "_")}_fails_when_its_facts_do_not_comply if {{
-	r := data.{pkg}.{sec}.compliance_report with input as object.union({fx}.fixture_{role.lower()}, {json.dumps(_facts(c, False))})
-	r.results["{rid}"] == "fail"
+	data.{pkg}.lib.results["{rid}"] == "fail" with input as object.union({fx}.fixture_{role.lower()}, {json.dumps(_facts(c, False))})
 }}
 """)
         files[f"test_{sec}.rego"] = "\n".join(body)
