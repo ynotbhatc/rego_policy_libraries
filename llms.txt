@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 18,995 control-level checks in 798 policy files, mapped to 174 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 19,166 control-level checks in 797 policy files, mapped to 174 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -72,7 +72,7 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [Windows 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-11.html): 5 policy files
 - [Windows Server 2019 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2019-modular.html): 11 policy files
 - [Windows Server 2022](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2022.html): 5 policy files
-- [Windows Server 2022 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2022-modular.html): 12 policy files
+- [Windows Server 2022 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2022-modular.html): 11 policy files
 - [Windows Server 2025](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2025.html): 5 policy files
 - [Zero Trust](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-zero-trust.html): 9 policy files
 
