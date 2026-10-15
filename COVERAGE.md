@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**760 of 770 policy files have tests (99%).** 794 test files, 10 policies still uncovered.
+**795 of 813 policy files have tests (98%).** 861 test files, 18 policies still uncovered.
 
 ## Why this file exists
 
@@ -23,6 +23,7 @@ took so two people do not write the same test.
 
 | area | policies without tests |
 |---|---|
+| `converters/packaging` | 8 |
 | `benchmarks/stig` | 4 |
 | `frameworks/federal` | 3 |
 | `benchmarks/cis` | 1 |
@@ -58,6 +59,44 @@ took so two people do not write the same test.
 <details><summary><code>benchmarks/stig/rhel_9</code> — 1 file(s)</summary>
 
 - `stig_rhel9_complete.rego`
+
+</details>
+
+<details><summary><code>converters/packaging/gatekeeper/out/roundtrip/k8saacadmission</code> — 2 file(s)</summary>
+
+- `adapter.rego`
+- `lib0.rego`
+
+</details>
+
+<details><summary><code>converters/packaging/gatekeeper/out/roundtrip/k8spssprofile</code> — 2 file(s)</summary>
+
+- `adapter.rego`
+- `lib0.rego`
+
+</details>
+
+<details><summary><code>converters/packaging/kubewarden/out/k8s-aac-admission</code> — 1 file(s)</summary>
+
+- `adapter.rego`
+
+</details>
+
+<details><summary><code>converters/packaging/kubewarden/out/k8s-pss-baseline</code> — 1 file(s)</summary>
+
+- `adapter.rego`
+
+</details>
+
+<details><summary><code>converters/packaging/kubewarden/out/k8s-pss-restricted</code> — 1 file(s)</summary>
+
+- `adapter.rego`
+
+</details>
+
+<details><summary><code>converters/packaging/terraform_platforms/out/policy-set</code> — 1 file(s)</summary>
+
+- `adapter.rego`
 
 </details>
 

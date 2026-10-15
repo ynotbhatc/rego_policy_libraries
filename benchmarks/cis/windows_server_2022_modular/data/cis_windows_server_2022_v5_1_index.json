@@ -1,0 +1,7347 @@
+{
+  "benchmark": "CIS Microsoft Windows Server 2022 Benchmark",
+  "version": "5.1.0",
+  "source": "official CIS workbook (Combined Profiles sheet)",
+  "sections": {
+    "1": "Account Policies",
+    "2": "Local Policies",
+    "5": "System Services",
+    "9": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+    "17": "Advanced Audit Policy Configuration",
+    "18": "Administrative Templates (Computer)",
+    "19": "Administrative Templates (User)"
+  },
+  "total_recommendations": 408,
+  "form": "keyword-digest (no verbatim CIS titles)",
+  "recommendations": [
+    {
+      "control_id": "1.1.1",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "enforce",
+        "history",
+        "more",
+        "password"
+      ]
+    },
+    {
+      "control_id": "1.1.2",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "365",
+        "age",
+        "but",
+        "days",
+        "fewer",
+        "maximum",
+        "password"
+      ]
+    },
+    {
+      "control_id": "1.1.3",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "age",
+        "day",
+        "minimum",
+        "more",
+        "password"
+      ]
+    },
+    {
+      "control_id": "1.1.4",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "character",
+        "length",
+        "minimum",
+        "more",
+        "password"
+      ]
+    },
+    {
+      "control_id": "1.1.5",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "complexity",
+        "meet",
+        "must",
+        "password",
+        "requirements"
+      ]
+    },
+    {
+      "control_id": "1.1.6",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "length",
+        "limits",
+        "minimum",
+        "password",
+        "relax"
+      ]
+    },
+    {
+      "control_id": "1.1.7",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "encryption",
+        "passwords",
+        "reversible",
+        "store"
+      ]
+    },
+    {
+      "control_id": "1.2.1",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "duration",
+        "lockout",
+        "minute",
+        "more"
+      ]
+    },
+    {
+      "control_id": "1.2.2",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "attempt",
+        "but",
+        "fewer",
+        "invalid",
+        "lockout",
+        "logon",
+        "threshold"
+      ]
+    },
+    {
+      "control_id": "1.2.3",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Manual",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "administrator",
+        "lockout"
+      ]
+    },
+    {
+      "control_id": "1.2.4",
+      "section": 1,
+      "section_name": "Account Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "after",
+        "counter",
+        "lockout",
+        "minute",
+        "more",
+        "reset"
+      ]
+    },
+    {
+      "control_id": "2.2.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "caller",
+        "credential",
+        "manager",
+        "one",
+        "trusted"
+      ]
+    },
+    {
+      "control_id": "2.2.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "access",
+        "administrators",
+        "authenticated",
+        "computer",
+        "controllers",
+        "domain",
+        "enterprise",
+        "network",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.2.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "administrators",
+        "authenticated",
+        "computer",
+        "network",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.2.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "act",
+        "one",
+        "operating",
+        "part",
+        "system"
+      ]
+    },
+    {
+      "control_id": "2.2.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "add",
+        "administrators",
+        "domain",
+        "workstations"
+      ]
+    },
+    {
+      "control_id": "2.2.6",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "adjust",
+        "administrators",
+        "local",
+        "memory",
+        "network",
+        "process",
+        "quotas",
+        "service"
+      ]
+    },
+    {
+      "control_id": "2.2.7",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "administrators",
+        "controllers",
+        "domain",
+        "enterprise",
+        "locally",
+        "log"
+      ]
+    },
+    {
+      "control_id": "2.2.8",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "locally",
+        "log"
+      ]
+    },
+    {
+      "control_id": "2.2.9",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "administrators",
+        "desktop",
+        "log",
+        "remote",
+        "services",
+        "through"
+      ]
+    },
+    {
+      "control_id": "2.2.10",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "desktop",
+        "log",
+        "remote",
+        "services",
+        "through",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.2.11",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "back",
+        "directories",
+        "files"
+      ]
+    },
+    {
+      "control_id": "2.2.12",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "change",
+        "local",
+        "service",
+        "system",
+        "time"
+      ]
+    },
+    {
+      "control_id": "2.2.13",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "create",
+        "pagefile"
+      ]
+    },
+    {
+      "control_id": "2.2.14",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "create",
+        "object",
+        "one",
+        "token"
+      ]
+    },
+    {
+      "control_id": "2.2.15",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "create",
+        "global",
+        "local",
+        "network",
+        "objects",
+        "service"
+      ]
+    },
+    {
+      "control_id": "2.2.16",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "create",
+        "objects",
+        "one",
+        "permanent",
+        "shared"
+      ]
+    },
+    {
+      "control_id": "2.2.17",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "administrators",
+        "create",
+        "links",
+        "symbolic"
+      ]
+    },
+    {
+      "control_id": "2.2.18",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "create",
+        "links",
+        "machine",
+        "machines",
+        "symbolic",
+        "virtual"
+      ]
+    },
+    {
+      "control_id": "2.2.19",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "debug",
+        "programs"
+      ]
+    },
+    {
+      "control_id": "2.2.20",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "access",
+        "computer",
+        "deny",
+        "guests",
+        "include",
+        "network"
+      ]
+    },
+    {
+      "control_id": "2.2.21",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "account",
+        "administrators",
+        "computer",
+        "deny",
+        "group",
+        "guests",
+        "include",
+        "local",
+        "member",
+        "network"
+      ]
+    },
+    {
+      "control_id": "2.2.22",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "batch",
+        "deny",
+        "guests",
+        "include",
+        "job",
+        "log"
+      ]
+    },
+    {
+      "control_id": "2.2.23",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "deny",
+        "guests",
+        "include",
+        "log",
+        "service"
+      ]
+    },
+    {
+      "control_id": "2.2.24",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "deny",
+        "guests",
+        "include",
+        "locally",
+        "log"
+      ]
+    },
+    {
+      "control_id": "2.2.25",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "deny",
+        "desktop",
+        "guests",
+        "include",
+        "log",
+        "remote",
+        "services",
+        "through"
+      ]
+    },
+    {
+      "control_id": "2.2.26",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "deny",
+        "desktop",
+        "guests",
+        "local",
+        "log",
+        "remote",
+        "services",
+        "through"
+      ]
+    },
+    {
+      "control_id": "2.2.27",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "accounts",
+        "administrators",
+        "computer",
+        "delegation",
+        "trusted",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.2.28",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accounts",
+        "computer",
+        "delegation",
+        "one",
+        "trusted",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.2.29",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "force",
+        "remote",
+        "shutdown",
+        "system"
+      ]
+    },
+    {
+      "control_id": "2.2.30",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audits",
+        "generate",
+        "local",
+        "network",
+        "security",
+        "service"
+      ]
+    },
+    {
+      "control_id": "2.2.31",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "administrators",
+        "after",
+        "authentication",
+        "client",
+        "impersonate",
+        "local",
+        "network",
+        "service"
+      ]
+    },
+    {
+      "control_id": "2.2.32",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "after",
+        "authentication",
+        "client",
+        "impersonate",
+        "local",
+        "network",
+        "service"
+      ]
+    },
+    {
+      "control_id": "2.2.33",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "group",
+        "increase",
+        "manager",
+        "priority",
+        "scheduling",
+        "window"
+      ]
+    },
+    {
+      "control_id": "2.2.34",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "device",
+        "drivers",
+        "load",
+        "unload"
+      ]
+    },
+    {
+      "control_id": "2.2.35",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "lock",
+        "memory",
+        "one",
+        "pages"
+      ]
+    },
+    {
+      "control_id": "2.2.36",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC"
+      ],
+      "title_keywords": [
+        "administrators",
+        "batch",
+        "job",
+        "log"
+      ]
+    },
+    {
+      "control_id": "2.2.37",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "administrators",
+        "auditing",
+        "log",
+        "manage",
+        "security"
+      ]
+    },
+    {
+      "control_id": "2.2.38",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "auditing",
+        "log",
+        "manage",
+        "security"
+      ]
+    },
+    {
+      "control_id": "2.2.39",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "label",
+        "modify",
+        "object",
+        "one"
+      ]
+    },
+    {
+      "control_id": "2.2.40",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "environment",
+        "firmware",
+        "modify",
+        "values"
+      ]
+    },
+    {
+      "control_id": "2.2.41",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "maintenance",
+        "perform",
+        "tasks",
+        "volume"
+      ]
+    },
+    {
+      "control_id": "2.2.42",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "process",
+        "profile",
+        "single"
+      ]
+    },
+    {
+      "control_id": "2.2.43",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "performance",
+        "profile",
+        "service",
+        "system",
+        "wdiservicehost"
+      ]
+    },
+    {
+      "control_id": "2.2.44",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "level",
+        "local",
+        "network",
+        "process",
+        "replace",
+        "service",
+        "token"
+      ]
+    },
+    {
+      "control_id": "2.2.45",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "directories",
+        "files",
+        "restore"
+      ]
+    },
+    {
+      "control_id": "2.2.46",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "down",
+        "shut",
+        "system"
+      ]
+    },
+    {
+      "control_id": "2.2.47",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "data",
+        "directory",
+        "one",
+        "service",
+        "synchronize"
+      ]
+    },
+    {
+      "control_id": "2.2.48",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "files",
+        "objects",
+        "other",
+        "ownership",
+        "take"
+      ]
+    },
+    {
+      "control_id": "2.3.1.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "accounts",
+        "guest",
+        "status"
+      ]
+    },
+    {
+      "control_id": "2.3.1.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "accounts",
+        "blank",
+        "console",
+        "limit",
+        "local",
+        "logon",
+        "passwords"
+      ]
+    },
+    {
+      "control_id": "2.3.1.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "accounts",
+        "administrator",
+        "configure",
+        "rename"
+      ]
+    },
+    {
+      "control_id": "2.3.1.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "accounts",
+        "configure",
+        "guest",
+        "rename"
+      ]
+    },
+    {
+      "control_id": "2.3.2.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "category",
+        "force",
+        "later",
+        "override",
+        "settings",
+        "subcategory",
+        "vista",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "2.3.2.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "audits",
+        "down",
+        "immediately",
+        "log",
+        "security",
+        "shut",
+        "system",
+        "unable"
+      ]
+    },
+    {
+      "control_id": "2.3.4.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "devices",
+        "drivers",
+        "installing",
+        "prevent",
+        "printer",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.3.5.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "controller",
+        "domain",
+        "operators",
+        "schedule",
+        "server",
+        "tasks"
+      ]
+    },
+    {
+      "control_id": "2.3.5.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "channel",
+        "connections",
+        "controller",
+        "domain",
+        "netlogon",
+        "secure",
+        "vulnerable"
+      ]
+    },
+    {
+      "control_id": "2.3.5.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "always",
+        "binding",
+        "channel",
+        "controller",
+        "domain",
+        "ldap",
+        "requirements",
+        "server",
+        "token"
+      ]
+    },
+    {
+      "control_id": "2.3.5.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "controller",
+        "domain",
+        "ldap",
+        "require",
+        "requirements",
+        "server",
+        "signing"
+      ]
+    },
+    {
+      "control_id": "2.3.5.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "account",
+        "changes",
+        "controller",
+        "domain",
+        "machine",
+        "password",
+        "refuse"
+      ]
+    },
+    {
+      "control_id": "2.3.6.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "always",
+        "channel",
+        "data",
+        "digitally",
+        "domain",
+        "encrypt",
+        "member",
+        "secure",
+        "sign"
+      ]
+    },
+    {
+      "control_id": "2.3.6.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "channel",
+        "data",
+        "digitally",
+        "domain",
+        "encrypt",
+        "member",
+        "possible",
+        "secure",
+        "when"
+      ]
+    },
+    {
+      "control_id": "2.3.6.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "channel",
+        "data",
+        "digitally",
+        "domain",
+        "member",
+        "possible",
+        "secure",
+        "sign",
+        "when"
+      ]
+    },
+    {
+      "control_id": "2.3.6.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "changes",
+        "domain",
+        "machine",
+        "member",
+        "password"
+      ]
+    },
+    {
+      "control_id": "2.3.6.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "age",
+        "but",
+        "days",
+        "domain",
+        "fewer",
+        "machine",
+        "maximum",
+        "member",
+        "password"
+      ]
+    },
+    {
+      "control_id": "2.3.6.6",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "2000",
+        "domain",
+        "key",
+        "later",
+        "member",
+        "require",
+        "session",
+        "strong",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "2.3.7.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "alt",
+        "ctrl",
+        "del",
+        "interactive",
+        "logon",
+        "require"
+      ]
+    },
+    {
+      "control_id": "2.3.7.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "display",
+        "don't",
+        "interactive",
+        "last",
+        "logon",
+        "signed"
+      ]
+    },
+    {
+      "control_id": "2.3.7.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "900",
+        "but",
+        "fewer",
+        "inactivity",
+        "interactive",
+        "limit",
+        "logon",
+        "machine",
+        "second"
+      ]
+    },
+    {
+      "control_id": "2.3.7.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "attempting",
+        "configure",
+        "interactive",
+        "log",
+        "logon",
+        "message",
+        "text",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.3.7.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "attempting",
+        "configure",
+        "interactive",
+        "log",
+        "logon",
+        "message",
+        "title",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.3.7.6",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "available",
+        "cache",
+        "case",
+        "controller",
+        "domain",
+        "fewer",
+        "interactive",
+        "logon",
+        "logons",
+        "number",
+        "previous"
+      ]
+    },
+    {
+      "control_id": "2.3.7.7",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "before",
+        "between",
+        "change",
+        "days",
+        "expiration",
+        "interactive",
+        "logon",
+        "password",
+        "prompt",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.3.7.8",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "controller",
+        "domain",
+        "interactive",
+        "logon",
+        "require",
+        "unlock",
+        "workstation"
+      ]
+    },
+    {
+      "control_id": "2.3.7.9",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "behavior",
+        "card",
+        "higher",
+        "interactive",
+        "lock",
+        "logon",
+        "removal",
+        "smart",
+        "workstation"
+      ]
+    },
+    {
+      "control_id": "2.3.8.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "always",
+        "client",
+        "communications",
+        "digitally",
+        "microsoft",
+        "network",
+        "sign"
+      ]
+    },
+    {
+      "control_id": "2.3.8.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "client",
+        "microsoft",
+        "network",
+        "party",
+        "password",
+        "send",
+        "servers",
+        "smb",
+        "third",
+        "unencrypted"
+      ]
+    },
+    {
+      "control_id": "2.3.9.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "amount",
+        "before",
+        "fewer",
+        "idle",
+        "microsoft",
+        "minute",
+        "network",
+        "required",
+        "server",
+        "session",
+        "suspending",
+        "time"
+      ]
+    },
+    {
+      "control_id": "2.3.9.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "always",
+        "communications",
+        "digitally",
+        "microsoft",
+        "network",
+        "server",
+        "sign"
+      ]
+    },
+    {
+      "control_id": "2.3.9.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "clients",
+        "disconnect",
+        "expire",
+        "hours",
+        "logon",
+        "microsoft",
+        "network",
+        "server",
+        "when"
+      ]
+    },
+    {
+      "control_id": "2.3.9.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accept",
+        "client",
+        "higher",
+        "level",
+        "microsoft",
+        "name",
+        "network",
+        "provided",
+        "server",
+        "spn",
+        "target",
+        "validation"
+      ]
+    },
+    {
+      "control_id": "2.3.10.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "anonymous",
+        "name",
+        "network",
+        "sid",
+        "translation"
+      ]
+    },
+    {
+      "control_id": "2.3.10.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accounts",
+        "anonymous",
+        "enumeration",
+        "network",
+        "sam"
+      ]
+    },
+    {
+      "control_id": "2.3.10.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accounts",
+        "anonymous",
+        "enumeration",
+        "network",
+        "sam",
+        "shares"
+      ]
+    },
+    {
+      "control_id": "2.3.10.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "authentication",
+        "credentials",
+        "network",
+        "passwords",
+        "storage"
+      ]
+    },
+    {
+      "control_id": "2.3.10.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "anonymous",
+        "apply",
+        "everyone",
+        "let",
+        "network",
+        "permissions",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.3.10.6",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "access",
+        "accessed",
+        "anonymously",
+        "can",
+        "named",
+        "network",
+        "pipes"
+      ]
+    },
+    {
+      "control_id": "2.3.10.7",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accessed",
+        "anonymously",
+        "can",
+        "named",
+        "network",
+        "pipes"
+      ]
+    },
+    {
+      "control_id": "2.3.10.8",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accessible",
+        "network",
+        "paths",
+        "registry",
+        "remotely"
+      ]
+    },
+    {
+      "control_id": "2.3.10.9",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accessible",
+        "network",
+        "paths",
+        "registry",
+        "remotely",
+        "sub"
+      ]
+    },
+    {
+      "control_id": "2.3.10.10",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "anonymous",
+        "named",
+        "network",
+        "pipes",
+        "shares"
+      ]
+    },
+    {
+      "control_id": "2.3.10.11",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "administrators",
+        "calls",
+        "clients",
+        "make",
+        "network",
+        "remote",
+        "sam"
+      ]
+    },
+    {
+      "control_id": "2.3.10.12",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accessed",
+        "anonymously",
+        "can",
+        "network",
+        "none",
+        "shares"
+      ]
+    },
+    {
+      "control_id": "2.3.10.13",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "accounts",
+        "authenticate",
+        "classic",
+        "local",
+        "model",
+        "network",
+        "security",
+        "sharing",
+        "themselves",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.3.11.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "computer",
+        "identity",
+        "local",
+        "network",
+        "ntlm",
+        "security",
+        "system"
+      ]
+    },
+    {
+      "control_id": "2.3.11.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "fallback",
+        "localsystem",
+        "network",
+        "null",
+        "security",
+        "session"
+      ]
+    },
+    {
+      "control_id": "2.3.11.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "computer",
+        "identities",
+        "network",
+        "online",
+        "pku2u",
+        "requests",
+        "security"
+      ]
+    },
+    {
+      "control_id": "2.3.11.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "aes128",
+        "aes256",
+        "configure",
+        "encryption",
+        "future",
+        "hmac",
+        "kerberos",
+        "network",
+        "security",
+        "sha1",
+        "types"
+      ]
+    },
+    {
+      "control_id": "2.3.11.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "change",
+        "hash",
+        "lan",
+        "manager",
+        "network",
+        "next",
+        "password",
+        "security",
+        "store",
+        "value"
+      ]
+    },
+    {
+      "control_id": "2.3.11.6",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Manual",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "expire",
+        "force",
+        "hours",
+        "logoff",
+        "logon",
+        "network",
+        "security",
+        "when"
+      ]
+    },
+    {
+      "control_id": "2.3.11.7",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "lan",
+        "level",
+        "manager",
+        "network",
+        "ntlm",
+        "ntlmv2",
+        "refuse",
+        "response",
+        "security",
+        "send"
+      ]
+    },
+    {
+      "control_id": "2.3.11.8",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "client",
+        "higher",
+        "ldap",
+        "negotiate",
+        "network",
+        "requirements",
+        "security",
+        "signing"
+      ]
+    },
+    {
+      "control_id": "2.3.11.9",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "128",
+        "based",
+        "bit",
+        "clients",
+        "encryption",
+        "including",
+        "minimum",
+        "network",
+        "ntlm",
+        "ntlmv2",
+        "require",
+        "rpc",
+        "secure",
+        "security",
+        "session",
+        "ssp"
+      ]
+    },
+    {
+      "control_id": "2.3.11.10",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "128",
+        "based",
+        "bit",
+        "encryption",
+        "including",
+        "minimum",
+        "network",
+        "ntlm",
+        "ntlmv2",
+        "require",
+        "rpc",
+        "secure",
+        "security",
+        "servers",
+        "session",
+        "ssp"
+      ]
+    },
+    {
+      "control_id": "2.3.11.11",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accounts",
+        "audit",
+        "auditing",
+        "incoming",
+        "network",
+        "ntlm",
+        "security",
+        "traffic"
+      ]
+    },
+    {
+      "control_id": "2.3.11.12",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "audit",
+        "authentication",
+        "domain",
+        "network",
+        "ntlm",
+        "security"
+      ]
+    },
+    {
+      "control_id": "2.3.11.13",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "higher",
+        "network",
+        "ntlm",
+        "outgoing",
+        "remote",
+        "security",
+        "servers",
+        "traffic"
+      ]
+    },
+    {
+      "control_id": "2.3.13.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "down",
+        "having",
+        "log",
+        "shut",
+        "shutdown",
+        "system",
+        "without"
+      ]
+    },
+    {
+      "control_id": "2.3.15.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "case",
+        "insensitivity",
+        "non",
+        "objects",
+        "require",
+        "subsystems",
+        "system",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "2.3.15.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "internal",
+        "links",
+        "objects",
+        "permissions",
+        "strengthen",
+        "symbolic",
+        "system"
+      ]
+    },
+    {
+      "control_id": "2.3.17.1",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "admin",
+        "administrator",
+        "approval",
+        "built",
+        "control",
+        "mode",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.3.17.2",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "admin",
+        "administrators",
+        "approval",
+        "behavior",
+        "consent",
+        "control",
+        "desktop",
+        "elevation",
+        "higher",
+        "mode",
+        "prompt",
+        "secure",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.3.17.3",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "automatically",
+        "behavior",
+        "control",
+        "deny",
+        "elevation",
+        "prompt",
+        "requests",
+        "standard",
+        "user",
+        "users"
+      ]
+    },
+    {
+      "control_id": "2.3.17.4",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "application",
+        "control",
+        "detect",
+        "elevation",
+        "installations",
+        "prompt",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.3.17.5",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "applications",
+        "control",
+        "elevate",
+        "installed",
+        "locations",
+        "secure",
+        "uiaccess",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.3.17.6",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "admin",
+        "administrators",
+        "approval",
+        "control",
+        "mode",
+        "run",
+        "user"
+      ]
+    },
+    {
+      "control_id": "2.3.17.7",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "control",
+        "desktop",
+        "elevation",
+        "prompting",
+        "secure",
+        "switch",
+        "user",
+        "when"
+      ]
+    },
+    {
+      "control_id": "2.3.17.8",
+      "section": 2,
+      "section_name": "Local Policies",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "control",
+        "failures",
+        "file",
+        "locations",
+        "per",
+        "registry",
+        "user",
+        "virtualize",
+        "write"
+      ]
+    },
+    {
+      "control_id": "5.1",
+      "section": 5,
+      "section_name": "System Services",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "print",
+        "spooler"
+      ]
+    },
+    {
+      "control_id": "5.2",
+      "section": 5,
+      "section_name": "System Services",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "print",
+        "spooler"
+      ]
+    },
+    {
+      "control_id": "9.1.1",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "domain",
+        "firewall",
+        "recommended",
+        "state",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.1.2",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "block",
+        "connections",
+        "domain",
+        "firewall",
+        "inbound",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.1.3",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "display",
+        "domain",
+        "firewall",
+        "notification",
+        "settings",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.1.4",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "domain",
+        "firewall",
+        "logging",
+        "name",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.1.5",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "384",
+        "domain",
+        "firewall",
+        "greater",
+        "limit",
+        "logging",
+        "size",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.1.6",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "domain",
+        "dropped",
+        "firewall",
+        "log",
+        "logging",
+        "packets",
+        "windows",
+        "yes"
+      ]
+    },
+    {
+      "control_id": "9.1.7",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connections",
+        "domain",
+        "firewall",
+        "log",
+        "logging",
+        "successful",
+        "windows",
+        "yes"
+      ]
+    },
+    {
+      "control_id": "9.2.1",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "firewall",
+        "private",
+        "recommended",
+        "state",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.2.2",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "block",
+        "connections",
+        "firewall",
+        "inbound",
+        "private",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.2.3",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "display",
+        "firewall",
+        "notification",
+        "private",
+        "settings",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.2.4",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "firewall",
+        "logging",
+        "name",
+        "private",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.2.5",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "384",
+        "firewall",
+        "greater",
+        "limit",
+        "logging",
+        "private",
+        "size",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.2.6",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "dropped",
+        "firewall",
+        "log",
+        "logging",
+        "packets",
+        "private",
+        "windows",
+        "yes"
+      ]
+    },
+    {
+      "control_id": "9.2.7",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connections",
+        "firewall",
+        "log",
+        "logging",
+        "private",
+        "successful",
+        "windows",
+        "yes"
+      ]
+    },
+    {
+      "control_id": "9.3.1",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "firewall",
+        "public",
+        "recommended",
+        "state",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.2",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "block",
+        "connections",
+        "firewall",
+        "inbound",
+        "public",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.3",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "display",
+        "firewall",
+        "notification",
+        "public",
+        "settings",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.4",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "apply",
+        "firewall",
+        "local",
+        "public",
+        "rules",
+        "settings",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.5",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "apply",
+        "connection",
+        "firewall",
+        "local",
+        "public",
+        "rules",
+        "security",
+        "settings",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.6",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "firewall",
+        "logging",
+        "name",
+        "public",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.7",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "384",
+        "firewall",
+        "greater",
+        "limit",
+        "logging",
+        "public",
+        "size",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "9.3.8",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "dropped",
+        "firewall",
+        "log",
+        "logging",
+        "packets",
+        "public",
+        "windows",
+        "yes"
+      ]
+    },
+    {
+      "control_id": "9.3.9",
+      "section": 9,
+      "section_name": "Windows Defender Firewall with Advanced Security (formerly Windows Firewall with Advanced Security)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connections",
+        "firewall",
+        "log",
+        "logging",
+        "public",
+        "successful",
+        "windows",
+        "yes"
+      ]
+    },
+    {
+      "control_id": "17.1.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "credential",
+        "failure",
+        "success",
+        "validation"
+      ]
+    },
+    {
+      "control_id": "17.1.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "audit",
+        "authentication",
+        "failure",
+        "kerberos",
+        "service",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.1.3",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "audit",
+        "failure",
+        "kerberos",
+        "operations",
+        "service",
+        "success",
+        "ticket"
+      ]
+    },
+    {
+      "control_id": "17.2.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "application",
+        "audit",
+        "failure",
+        "group",
+        "management",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.2.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "account",
+        "audit",
+        "computer",
+        "include",
+        "management",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.2.3",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "audit",
+        "distribution",
+        "group",
+        "include",
+        "management",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.2.4",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "account",
+        "audit",
+        "events",
+        "include",
+        "management",
+        "other",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.2.5",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "group",
+        "include",
+        "management",
+        "security",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.2.6",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "audit",
+        "failure",
+        "management",
+        "success",
+        "user"
+      ]
+    },
+    {
+      "control_id": "17.3.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "activity",
+        "audit",
+        "include",
+        "pnp",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.3.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "creation",
+        "include",
+        "process",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.4.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "access",
+        "audit",
+        "directory",
+        "failure",
+        "include",
+        "service"
+      ]
+    },
+    {
+      "control_id": "17.4.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "audit",
+        "changes",
+        "directory",
+        "include",
+        "service",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.5.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "audit",
+        "failure",
+        "include",
+        "lockout"
+      ]
+    },
+    {
+      "control_id": "17.5.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "group",
+        "include",
+        "membership",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.5.3",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "include",
+        "logoff",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.5.4",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "failure",
+        "logon",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.5.5",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "events",
+        "failure",
+        "logoff",
+        "logon",
+        "other",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.5.6",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "include",
+        "logon",
+        "special",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.6.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "detailed",
+        "failure",
+        "file",
+        "include",
+        "share"
+      ]
+    },
+    {
+      "control_id": "17.6.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "failure",
+        "file",
+        "share",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.6.3",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "audit",
+        "events",
+        "failure",
+        "object",
+        "other",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.6.4",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "failure",
+        "removable",
+        "storage",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.7.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "change",
+        "include",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.7.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "authentication",
+        "change",
+        "include",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.7.3",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "authorization",
+        "change",
+        "include",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.7.4",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "change",
+        "failure",
+        "level",
+        "mpssvc",
+        "rule",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.7.5",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "change",
+        "events",
+        "failure",
+        "include",
+        "other"
+      ]
+    },
+    {
+      "control_id": "17.8.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "privilege",
+        "sensitive",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.9.1",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "driver",
+        "failure",
+        "ipsec",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.9.2",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "events",
+        "failure",
+        "other",
+        "success",
+        "system"
+      ]
+    },
+    {
+      "control_id": "17.9.3",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "change",
+        "include",
+        "security",
+        "state",
+        "success"
+      ]
+    },
+    {
+      "control_id": "17.9.4",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "extension",
+        "include",
+        "security",
+        "success",
+        "system"
+      ]
+    },
+    {
+      "control_id": "17.9.5",
+      "section": 17,
+      "section_name": "Advanced Audit Policy Configuration",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "audit",
+        "failure",
+        "integrity",
+        "success",
+        "system"
+      ]
+    },
+    {
+      "control_id": "18.1.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "camera",
+        "enabling",
+        "lock",
+        "prevent",
+        "screen"
+      ]
+    },
+    {
+      "control_id": "18.1.1.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "enabling",
+        "lock",
+        "prevent",
+        "screen",
+        "show",
+        "slide"
+      ]
+    },
+    {
+      "control_id": "18.1.2.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "online",
+        "recognition",
+        "services",
+        "speech",
+        "users"
+      ]
+    },
+    {
+      "control_id": "18.1.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "online",
+        "tips"
+      ]
+    },
+    {
+      "control_id": "18.4.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accounts",
+        "apply",
+        "local",
+        "logons",
+        "network",
+        "restrictions",
+        "uac"
+      ]
+    },
+    {
+      "control_id": "18.4.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "client",
+        "configure",
+        "driver",
+        "recommended",
+        "smb"
+      ]
+    },
+    {
+      "control_id": "18.4.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "server",
+        "smb"
+      ]
+    },
+    {
+      "control_id": "18.4.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "certificate",
+        "padding"
+      ]
+    },
+    {
+      "control_id": "18.4.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "exception",
+        "handling",
+        "overwrite",
+        "protection",
+        "sehop",
+        "structured"
+      ]
+    },
+    {
+      "control_id": "18.4.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configuration",
+        "netbt",
+        "node",
+        "nodetype",
+        "recommended"
+      ]
+    },
+    {
+      "control_id": "18.5.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "autoadminlogon",
+        "automatic",
+        "logon",
+        "mss"
+      ]
+    },
+    {
+      "control_id": "18.5.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "completely",
+        "disableipsourcerouting",
+        "highest",
+        "ipv6",
+        "level",
+        "mss",
+        "protection",
+        "routing",
+        "source"
+      ]
+    },
+    {
+      "control_id": "18.5.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "completely",
+        "disableipsourcerouting",
+        "highest",
+        "level",
+        "mss",
+        "protection",
+        "routing",
+        "source"
+      ]
+    },
+    {
+      "control_id": "18.5.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "enableicmpredirect",
+        "generated",
+        "icmp",
+        "mss",
+        "ospf",
+        "override",
+        "redirects",
+        "routes"
+      ]
+    },
+    {
+      "control_id": "18.5.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "000",
+        "300",
+        "alive",
+        "how",
+        "keep",
+        "keepalivetime",
+        "milliseconds",
+        "minutes",
+        "mss",
+        "often",
+        "packets",
+        "sent"
+      ]
+    },
+    {
+      "control_id": "18.5.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "computer",
+        "except",
+        "ignore",
+        "mss",
+        "name",
+        "netbios",
+        "nonamereleaseondemand",
+        "release",
+        "requests",
+        "servers",
+        "wins"
+      ]
+    },
+    {
+      "control_id": "18.5.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "addresses",
+        "configure",
+        "detect",
+        "gateway",
+        "irdp",
+        "mss",
+        "performrouterdiscovery"
+      ]
+    },
+    {
+      "control_id": "18.5.8",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "dll",
+        "mode",
+        "mss",
+        "safe",
+        "safedllsearchmode",
+        "search"
+      ]
+    },
+    {
+      "control_id": "18.5.9",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "data",
+        "how",
+        "ipv6",
+        "many",
+        "mss",
+        "retransmitted",
+        "tcpmaxdataretransmissions",
+        "times",
+        "unacknowledged"
+      ]
+    },
+    {
+      "control_id": "18.5.10",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "data",
+        "how",
+        "many",
+        "mss",
+        "retransmitted",
+        "tcpmaxdataretransmissions",
+        "times",
+        "unacknowledged"
+      ]
+    },
+    {
+      "control_id": "18.5.11",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "event",
+        "generate",
+        "less",
+        "log",
+        "mss",
+        "percentage",
+        "security",
+        "system",
+        "threshold",
+        "warning",
+        "warninglevel",
+        "will"
+      ]
+    },
+    {
+      "control_id": "18.6.4.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "dns",
+        "mdns",
+        "multicast",
+        "protocol"
+      ]
+    },
+    {
+      "control_id": "18.6.4.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "name",
+        "netbios",
+        "networks",
+        "public",
+        "resolution",
+        "settings"
+      ]
+    },
+    {
+      "control_id": "18.6.4.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "dns",
+        "ipv6",
+        "servers",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.6.4.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "multicast",
+        "name",
+        "resolution",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.6.5.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "font",
+        "providers"
+      ]
+    },
+    {
+      "control_id": "18.6.7.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "mandate",
+        "minimum",
+        "smb",
+        "version"
+      ]
+    },
+    {
+      "control_id": "18.6.8.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "guest",
+        "insecure",
+        "logons"
+      ]
+    },
+    {
+      "control_id": "18.6.8.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "encryption",
+        "require"
+      ]
+    },
+    {
+      "control_id": "18.6.9.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "driver",
+        "lltdio",
+        "mapper",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.6.9.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "driver",
+        "responder",
+        "rspndr",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.6.10.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "microsoft",
+        "networking",
+        "peer",
+        "services",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.6.11.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "bridge",
+        "configuration",
+        "dns",
+        "domain",
+        "installation",
+        "network",
+        "prohibit",
+        "your"
+      ]
+    },
+    {
+      "control_id": "18.6.11.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connection",
+        "dns",
+        "domain",
+        "internet",
+        "network",
+        "prohibit",
+        "sharing",
+        "your"
+      ]
+    },
+    {
+      "control_id": "18.6.11.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "domain",
+        "elevate",
+        "location",
+        "network's",
+        "require",
+        "setting",
+        "users",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.6.14.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "hardened",
+        "integrity",
+        "mutual",
+        "netlogon",
+        "paths",
+        "privacy",
+        "require",
+        "shares",
+        "sysvol",
+        "unc"
+      ]
+    },
+    {
+      "control_id": "18.6.19.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "0xff",
+        "255",
+        "disabledcomponents",
+        "ipv6",
+        "parameter",
+        "tcpip6"
+      ]
+    },
+    {
+      "control_id": "18.6.20.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "configuration",
+        "connect",
+        "now",
+        "settings",
+        "windows",
+        "wireless"
+      ]
+    },
+    {
+      "control_id": "18.6.20.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "connect",
+        "now",
+        "prohibit",
+        "windows",
+        "wizards"
+      ]
+    },
+    {
+      "control_id": "18.6.21.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connections",
+        "domain",
+        "ethernet",
+        "internet",
+        "minimize",
+        "number",
+        "prevent",
+        "simultaneous",
+        "when",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.6.21.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "authenticated",
+        "connected",
+        "connection",
+        "domain",
+        "network",
+        "networks",
+        "non",
+        "prohibit",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.7.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accept",
+        "client",
+        "connections",
+        "print",
+        "spooler"
+      ]
+    },
+    {
+      "control_id": "18.7.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "guard",
+        "redirection"
+      ]
+    },
+    {
+      "control_id": "18.7.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "connection",
+        "connections",
+        "outgoing",
+        "over",
+        "protocol",
+        "rpc",
+        "settings",
+        "tcp"
+      ]
+    },
+    {
+      "control_id": "18.7.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "configure",
+        "connection",
+        "connections",
+        "outgoing",
+        "rpc",
+        "settings"
+      ]
+    },
+    {
+      "control_id": "18.7.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "connections",
+        "incoming",
+        "listener",
+        "over",
+        "protocols",
+        "rpc",
+        "settings",
+        "tcp"
+      ]
+    },
+    {
+      "control_id": "18.7.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "configure",
+        "connections",
+        "higher",
+        "incoming",
+        "listener",
+        "negotiate",
+        "protocol",
+        "rpc",
+        "settings"
+      ]
+    },
+    {
+      "control_id": "18.7.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "over",
+        "port",
+        "rpc",
+        "tcp"
+      ]
+    },
+    {
+      "control_id": "18.7.8",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "connections",
+        "incoming",
+        "level",
+        "packet",
+        "privacy",
+        "rpc",
+        "setting"
+      ]
+    },
+    {
+      "control_id": "18.7.9",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "administrators",
+        "driver",
+        "installation",
+        "limits",
+        "print"
+      ]
+    },
+    {
+      "control_id": "18.7.10",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "color",
+        "files",
+        "limit",
+        "manage",
+        "processing",
+        "profiles",
+        "queue",
+        "specific"
+      ]
+    },
+    {
+      "control_id": "18.7.11",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connection",
+        "drivers",
+        "elevation",
+        "installing",
+        "new",
+        "point",
+        "print",
+        "prompt",
+        "restrictions",
+        "show",
+        "warning",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.7.12",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connection",
+        "drivers",
+        "elevation",
+        "existing",
+        "point",
+        "print",
+        "prompt",
+        "restrictions",
+        "show",
+        "updating",
+        "warning",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.8.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "network",
+        "notifications",
+        "turn",
+        "usage"
+      ]
+    },
+    {
+      "control_id": "18.9.3.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "command",
+        "creation",
+        "events",
+        "include",
+        "line",
+        "process"
+      ]
+    },
+    {
+      "control_id": "18.9.4.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "clients",
+        "encryption",
+        "force",
+        "oracle",
+        "remediation",
+        "updated"
+      ]
+    },
+    {
+      "control_id": "18.9.4.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "allows",
+        "credentials",
+        "delegation",
+        "exportable",
+        "host",
+        "non",
+        "remote"
+      ]
+    },
+    {
+      "control_id": "18.9.5.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC",
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "based",
+        "security",
+        "turn",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.5.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC",
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "based",
+        "boot",
+        "higher",
+        "level",
+        "platform",
+        "secure",
+        "security",
+        "select",
+        "turn",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.5.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC",
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "based",
+        "code",
+        "integrity",
+        "lock",
+        "protection",
+        "security",
+        "turn",
+        "uefi",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.5.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC",
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "attributes",
+        "based",
+        "checked",
+        "memory",
+        "require",
+        "security",
+        "table",
+        "true",
+        "turn",
+        "uefi",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.5.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "based",
+        "configuration",
+        "credential",
+        "guard",
+        "lock",
+        "security",
+        "turn",
+        "uefi",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.5.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC"
+      ],
+      "title_keywords": [
+        "based",
+        "configuration",
+        "credential",
+        "guard",
+        "security",
+        "turn",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.5.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC",
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "based",
+        "configuration",
+        "launch",
+        "secure",
+        "security",
+        "turn",
+        "virtualization"
+      ]
+    },
+    {
+      "control_id": "18.9.7.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "applications",
+        "associated",
+        "automatic",
+        "device",
+        "download",
+        "metadata",
+        "prevent"
+      ]
+    },
+    {
+      "control_id": "18.9.13.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "bad",
+        "boot",
+        "but",
+        "critical",
+        "driver",
+        "good",
+        "initialization",
+        "start",
+        "unknown"
+      ]
+    },
+    {
+      "control_id": "18.9.17.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "clfs",
+        "logfile"
+      ]
+    },
+    {
+      "control_id": "18.9.19.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "apply",
+        "background",
+        "configure",
+        "during",
+        "false",
+        "periodic",
+        "processing",
+        "security"
+      ]
+    },
+    {
+      "control_id": "18.9.19.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "changed",
+        "configure",
+        "even",
+        "group",
+        "objects",
+        "process",
+        "processing",
+        "security",
+        "true"
+      ]
+    },
+    {
+      "control_id": "18.9.19.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "continue",
+        "device",
+        "experiences"
+      ]
+    },
+    {
+      "control_id": "18.9.19.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "background",
+        "group",
+        "refresh",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "downloading",
+        "drivers",
+        "http",
+        "over",
+        "print",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "data",
+        "handwriting",
+        "personalization",
+        "sharing",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "error",
+        "handwriting",
+        "recognition",
+        "reporting",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "com",
+        "connection",
+        "internet",
+        "microsoft",
+        "referring",
+        "turn",
+        "url",
+        "wizard"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "download",
+        "internet",
+        "online",
+        "ordering",
+        "publishing",
+        "turn",
+        "web",
+        "wizards"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "http",
+        "over",
+        "printing",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "com",
+        "connection",
+        "microsoft",
+        "referring",
+        "registration",
+        "turn",
+        "url"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.8",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "companion",
+        "content",
+        "file",
+        "search",
+        "turn",
+        "updates"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.9",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "order",
+        "picture",
+        "prints",
+        "task",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.10",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "files",
+        "folders",
+        "publish",
+        "task",
+        "turn",
+        "web"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.11",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "customer",
+        "experience",
+        "improvement",
+        "messenger",
+        "program",
+        "turn",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.12",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "customer",
+        "experience",
+        "improvement",
+        "program",
+        "turn",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.9.20.1.13",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "error",
+        "reporting",
+        "turn",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.9.23.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "automatic",
+        "certificate",
+        "device",
+        "support"
+      ]
+    },
+    {
+      "control_id": "18.9.24.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "block",
+        "devices",
+        "dma",
+        "enumeration",
+        "external",
+        "incompatible",
+        "kernel",
+        "protection"
+      ]
+    },
+    {
+      "control_id": "18.9.26.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "active",
+        "azure",
+        "backup",
+        "configure",
+        "directory",
+        "password"
+      ]
+    },
+    {
+      "control_id": "18.9.26.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "expiration",
+        "longer",
+        "password",
+        "required",
+        "time"
+      ]
+    },
+    {
+      "control_id": "18.9.26.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "encryption",
+        "password"
+      ]
+    },
+    {
+      "control_id": "18.9.26.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "complexity",
+        "large",
+        "letters",
+        "numbers",
+        "password",
+        "settings",
+        "small",
+        "specials"
+      ]
+    },
+    {
+      "control_id": "18.9.26.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "length",
+        "more",
+        "password",
+        "settings"
+      ]
+    },
+    {
+      "control_id": "18.9.26.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "age",
+        "days",
+        "fewer",
+        "password",
+        "settings"
+      ]
+    },
+    {
+      "control_id": "18.9.26.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "actions",
+        "authentication",
+        "but",
+        "fewer",
+        "grace",
+        "hours",
+        "period",
+        "post"
+      ]
+    },
+    {
+      "control_id": "18.9.26.8",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "actions",
+        "authentication",
+        "higher",
+        "logoff",
+        "managed",
+        "password",
+        "post",
+        "reset"
+      ]
+    },
+    {
+      "control_id": "18.9.27.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "aps",
+        "custom",
+        "into",
+        "loaded",
+        "lsass",
+        "ssps"
+      ]
+    },
+    {
+      "control_id": "18.9.27.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "NG_DC",
+        "NG_MS"
+      ],
+      "title_keywords": [
+        "configures",
+        "lock",
+        "lsass",
+        "process",
+        "protected",
+        "run",
+        "uefi"
+      ]
+    },
+    {
+      "control_id": "18.9.28.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "copying",
+        "disallow",
+        "input",
+        "methods",
+        "sign",
+        "system",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.9.29.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "block",
+        "details",
+        "showing",
+        "sign",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.9.29.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "display",
+        "network",
+        "selection"
+      ]
+    },
+    {
+      "control_id": "18.9.29.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "computers",
+        "connected",
+        "domain",
+        "enumerate",
+        "joined",
+        "users"
+      ]
+    },
+    {
+      "control_id": "18.9.29.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "computers",
+        "domain",
+        "enumerate",
+        "joined",
+        "local",
+        "users"
+      ]
+    },
+    {
+      "control_id": "18.9.29.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "lock",
+        "notifications",
+        "screen",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.29.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "convenience",
+        "pin",
+        "sign",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.33.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "across",
+        "clipboard",
+        "devices",
+        "synchronization"
+      ]
+    },
+    {
+      "control_id": "18.9.33.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "activities",
+        "upload",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.9.35.6.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "battery",
+        "connected",
+        "connectivity",
+        "during",
+        "network",
+        "standby"
+      ]
+    },
+    {
+      "control_id": "18.9.35.6.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "connected",
+        "connectivity",
+        "during",
+        "network",
+        "plugged",
+        "standby"
+      ]
+    },
+    {
+      "control_id": "18.9.35.6.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "battery",
+        "computer",
+        "password",
+        "require",
+        "wakes",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.9.35.6.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "computer",
+        "password",
+        "plugged",
+        "require",
+        "wakes",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.9.37.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "assistance",
+        "configure",
+        "offer",
+        "remote"
+      ]
+    },
+    {
+      "control_id": "18.9.37.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "assistance",
+        "configure",
+        "remote",
+        "solicited"
+      ]
+    },
+    {
+      "control_id": "18.9.38.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "client",
+        "endpoint",
+        "mapper",
+        "rpc"
+      ]
+    },
+    {
+      "control_id": "18.9.38.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "authenticated",
+        "clients",
+        "rpc",
+        "unauthenticated"
+      ]
+    },
+    {
+      "control_id": "18.9.41.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC"
+      ],
+      "title_keywords": [
+        "authentication",
+        "block",
+        "configure",
+        "during",
+        "keys",
+        "roca",
+        "validation",
+        "vulnerable",
+        "whfb"
+      ]
+    },
+    {
+      "control_id": "18.9.49.5.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "communication",
+        "diagnostic",
+        "interactive",
+        "microsoft",
+        "msdt",
+        "provider",
+        "support",
+        "tool",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.49.11.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "perftrack"
+      ]
+    },
+    {
+      "control_id": "18.9.51.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "advertising",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.9.53.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "client",
+        "ntp",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.9.53.1.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "ntp",
+        "server",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.10.4.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "application",
+        "between",
+        "data",
+        "share",
+        "users",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.10.6.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accounts",
+        "microsoft",
+        "optional"
+      ]
+    },
+    {
+      "control_id": "18.10.8.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "autoplay",
+        "devices",
+        "disallow",
+        "non",
+        "volume"
+      ]
+    },
+    {
+      "control_id": "18.10.8.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "autorun",
+        "behavior",
+        "commands",
+        "execute"
+      ]
+    },
+    {
+      "control_id": "18.10.8.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "autoplay",
+        "drives",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.9.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "anti",
+        "configure",
+        "enhanced",
+        "spoofing"
+      ]
+    },
+    {
+      "control_id": "18.10.11.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "camera"
+      ]
+    },
+    {
+      "control_id": "18.10.13.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "cloud",
+        "consumer",
+        "content",
+        "state",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.13.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "cloud",
+        "content",
+        "optimized",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.14.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "always",
+        "first",
+        "pairing",
+        "pin",
+        "require",
+        "time"
+      ]
+    },
+    {
+      "control_id": "18.10.15.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "button",
+        "display",
+        "password",
+        "reveal"
+      ]
+    },
+    {
+      "control_id": "18.10.15.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "accounts",
+        "administrator",
+        "elevation",
+        "enumerate"
+      ]
+    },
+    {
+      "control_id": "18.10.16.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "data",
+        "diagnostic",
+        "recommended",
+        "required",
+        "send"
+      ]
+    },
+    {
+      "control_id": "18.10.16.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "authenticated",
+        "configure",
+        "connected",
+        "experience",
+        "proxy",
+        "service",
+        "telemetry",
+        "usage",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.10.16.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "feedback",
+        "notifications",
+        "show"
+      ]
+    },
+    {
+      "control_id": "18.10.16.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "auditing",
+        "onesettings"
+      ]
+    },
+    {
+      "control_id": "18.10.16.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "collection",
+        "diagnostic",
+        "limit",
+        "log"
+      ]
+    },
+    {
+      "control_id": "18.10.16.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "collection",
+        "dump",
+        "limit"
+      ]
+    },
+    {
+      "control_id": "18.10.18.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "installer"
+      ]
+    },
+    {
+      "control_id": "18.10.18.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "experimental",
+        "features",
+        "installer"
+      ]
+    },
+    {
+      "control_id": "18.10.18.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "hash",
+        "installer",
+        "override"
+      ]
+    },
+    {
+      "control_id": "18.10.18.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "archive",
+        "installer",
+        "local",
+        "malware",
+        "override",
+        "scan"
+      ]
+    },
+    {
+      "control_id": "18.10.18.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "bypass",
+        "certificate",
+        "installer",
+        "microsoft",
+        "source",
+        "store",
+        "validation"
+      ]
+    },
+    {
+      "control_id": "18.10.18.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "app",
+        "appinstaller",
+        "installer",
+        "protocol"
+      ]
+    },
+    {
+      "control_id": "18.10.18.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "command",
+        "interfaces",
+        "line",
+        "manager",
+        "package",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.10.26.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "application",
+        "behavior",
+        "control",
+        "event",
+        "file",
+        "log",
+        "maximum",
+        "reaches",
+        "size",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.10.26.1.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "768",
+        "application",
+        "file",
+        "greater",
+        "log",
+        "maximum",
+        "size",
+        "specify"
+      ]
+    },
+    {
+      "control_id": "18.10.26.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "behavior",
+        "control",
+        "event",
+        "file",
+        "log",
+        "maximum",
+        "reaches",
+        "security",
+        "size",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.10.26.2.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "196",
+        "608",
+        "file",
+        "greater",
+        "log",
+        "maximum",
+        "security",
+        "size",
+        "specify"
+      ]
+    },
+    {
+      "control_id": "18.10.26.3.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "behavior",
+        "control",
+        "event",
+        "file",
+        "log",
+        "maximum",
+        "reaches",
+        "setup",
+        "size",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.10.26.3.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "768",
+        "file",
+        "greater",
+        "log",
+        "maximum",
+        "setup",
+        "size",
+        "specify"
+      ]
+    },
+    {
+      "control_id": "18.10.26.4.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "behavior",
+        "control",
+        "event",
+        "file",
+        "log",
+        "maximum",
+        "reaches",
+        "size",
+        "system",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.10.26.4.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "768",
+        "file",
+        "greater",
+        "log",
+        "maximum",
+        "size",
+        "specify",
+        "system"
+      ]
+    },
+    {
+      "control_id": "18.10.29.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "apply",
+        "copied",
+        "files",
+        "insecure",
+        "mark",
+        "sources",
+        "tag",
+        "web"
+      ]
+    },
+    {
+      "control_id": "18.10.29.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "data",
+        "execution",
+        "explorer",
+        "prevention",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.29.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "corruption",
+        "heap",
+        "termination",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.29.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "mode",
+        "protected",
+        "protocol",
+        "shell",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.36.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "location",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.40.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "cloud",
+        "message",
+        "service",
+        "sync"
+      ]
+    },
+    {
+      "control_id": "18.10.41.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "account",
+        "authentication",
+        "block",
+        "consumer",
+        "microsoft",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.10.56.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "install",
+        "push",
+        "service",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.57.2.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "passwords",
+        "saved"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "desktop",
+        "remote",
+        "services",
+        "session",
+        "single",
+        "users"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "automation",
+        "redirection"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "com",
+        "port",
+        "redirection"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "drive",
+        "redirection"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "location",
+        "redirection"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "lpt",
+        "port",
+        "redirection"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.6",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "device",
+        "play",
+        "plug",
+        "redirection",
+        "supported"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.3.7",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "redirection",
+        "webauthn"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.9.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "always",
+        "connection",
+        "password",
+        "prompt",
+        "upon"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.9.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "communication",
+        "require",
+        "rpc",
+        "secure"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.9.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "connections",
+        "layer",
+        "rdp",
+        "remote",
+        "require",
+        "security",
+        "specific",
+        "ssl"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.9.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "connections",
+        "level",
+        "network",
+        "remote",
+        "require",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.9.5",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "client",
+        "connection",
+        "encryption",
+        "high",
+        "level"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.10.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "active",
+        "but",
+        "desktop",
+        "idle",
+        "less",
+        "limit",
+        "minutes",
+        "never",
+        "remote",
+        "services",
+        "sessions",
+        "time"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.11.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "delete",
+        "exit",
+        "folders",
+        "temp",
+        "upon"
+      ]
+    },
+    {
+      "control_id": "18.10.57.3.11.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "folders",
+        "per",
+        "session",
+        "temporary"
+      ]
+    },
+    {
+      "control_id": "18.10.58.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "downloading",
+        "enclosures",
+        "prevent"
+      ]
+    },
+    {
+      "control_id": "18.10.58.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "basic",
+        "feed",
+        "http",
+        "over",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.59.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "cloud",
+        "search"
+      ]
+    },
+    {
+      "control_id": "18.10.59.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "encrypted",
+        "files",
+        "indexing"
+      ]
+    },
+    {
+      "control_id": "18.10.59.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "highlights",
+        "search"
+      ]
+    },
+    {
+      "control_id": "18.10.63.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "avs",
+        "client",
+        "kms",
+        "online",
+        "turn",
+        "validation"
+      ]
+    },
+    {
+      "control_id": "18.10.77.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "bypass",
+        "configure",
+        "defender",
+        "prevent",
+        "smartscreen",
+        "warn",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.10.81.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "apps",
+        "ink",
+        "suggested",
+        "windows",
+        "workspace"
+      ]
+    },
+    {
+      "control_id": "18.10.81.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "above",
+        "access",
+        "but",
+        "disallow",
+        "ink",
+        "lock",
+        "windows",
+        "workspace"
+      ]
+    },
+    {
+      "control_id": "18.10.82.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "control",
+        "installs",
+        "over",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.10.82.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "always",
+        "elevated",
+        "install",
+        "privileges"
+      ]
+    },
+    {
+      "control_id": "18.10.82.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "explorer",
+        "installer",
+        "internet",
+        "prevent",
+        "prompt",
+        "scripts",
+        "security",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "18.10.83.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "content",
+        "mpr",
+        "notifications",
+        "password",
+        "sent",
+        "transmission",
+        "user's",
+        "winlogon"
+      ]
+    },
+    {
+      "control_id": "18.10.83.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "after",
+        "automatically",
+        "interactive",
+        "last",
+        "lock",
+        "restart",
+        "sign",
+        "user"
+      ]
+    },
+    {
+      "control_id": "18.10.88.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "block",
+        "logging",
+        "powershell",
+        "script",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.88.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "powershell",
+        "transcription",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "18.10.90.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "basic"
+      ]
+    },
+    {
+      "control_id": "18.10.90.1.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "traffic",
+        "unencrypted"
+      ]
+    },
+    {
+      "control_id": "18.10.90.1.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "digest",
+        "disallow"
+      ]
+    },
+    {
+      "control_id": "18.10.90.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "basic"
+      ]
+    },
+    {
+      "control_id": "18.10.90.2.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "management",
+        "remote",
+        "server",
+        "through",
+        "winrm"
+      ]
+    },
+    {
+      "control_id": "18.10.90.2.3",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "traffic",
+        "unencrypted"
+      ]
+    },
+    {
+      "control_id": "18.10.90.2.4",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "credentials",
+        "disallow",
+        "runas",
+        "storing",
+        "winrm"
+      ]
+    },
+    {
+      "control_id": "18.10.91.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "access",
+        "remote",
+        "shell"
+      ]
+    },
+    {
+      "control_id": "18.10.93.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "modifying",
+        "prevent",
+        "settings",
+        "users"
+      ]
+    },
+    {
+      "control_id": "18.10.94.1.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "auto",
+        "automatic",
+        "installations",
+        "logged",
+        "restart",
+        "scheduled",
+        "updates",
+        "users"
+      ]
+    },
+    {
+      "control_id": "18.10.94.2.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "automatic",
+        "configure",
+        "updates"
+      ]
+    },
+    {
+      "control_id": "18.10.94.2.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "automatic",
+        "configure",
+        "day",
+        "every",
+        "install",
+        "scheduled",
+        "updates"
+      ]
+    },
+    {
+      "control_id": "18.10.94.4.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "builds",
+        "manage",
+        "preview"
+      ]
+    },
+    {
+      "control_id": "18.10.94.4.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "days",
+        "quality",
+        "received",
+        "select",
+        "updates",
+        "when"
+      ]
+    },
+    {
+      "control_id": "18.11.1",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "checked",
+        "features",
+        "http",
+        "proxy",
+        "wpad"
+      ]
+    },
+    {
+      "control_id": "18.11.2",
+      "section": 18,
+      "section_name": "Administrative Templates (Computer)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "authentication",
+        "features",
+        "higher",
+        "http",
+        "interfaces",
+        "loopback",
+        "over",
+        "proxy"
+      ]
+    },
+    {
+      "control_id": "19.5.1.1",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "lock",
+        "notifications",
+        "screen",
+        "toast",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "19.6.6.1.1",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "experience",
+        "help",
+        "improvement",
+        "program",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "19.7.5.1",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "attachments",
+        "file",
+        "information",
+        "preserve",
+        "zone"
+      ]
+    },
+    {
+      "control_id": "19.7.5.2",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "antivirus",
+        "attachments",
+        "notify",
+        "opening",
+        "programs",
+        "when"
+      ]
+    },
+    {
+      "control_id": "19.7.8.1",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "configure",
+        "lock",
+        "screen",
+        "spotlight",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "19.7.8.2",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "content",
+        "party",
+        "spotlight",
+        "suggest",
+        "third",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "19.7.8.3",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "data",
+        "diagnostic",
+        "experiences",
+        "tailored"
+      ]
+    },
+    {
+      "control_id": "19.7.8.4",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "features",
+        "spotlight",
+        "turn",
+        "windows"
+      ]
+    },
+    {
+      "control_id": "19.7.8.5",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "collection",
+        "desktop",
+        "spotlight",
+        "turn"
+      ]
+    },
+    {
+      "control_id": "19.7.26.1",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L1_DC",
+        "L1_MS"
+      ],
+      "title_keywords": [
+        "files",
+        "prevent",
+        "profile",
+        "sharing",
+        "their",
+        "users",
+        "within"
+      ]
+    },
+    {
+      "control_id": "19.7.46.2.1",
+      "section": 19,
+      "section_name": "Administrative Templates (User)",
+      "assessment": "Automated",
+      "profiles": [
+        "L2_DC",
+        "L2_MS"
+      ],
+      "title_keywords": [
+        "codec",
+        "download",
+        "prevent"
+      ]
+    }
+  ]
+}

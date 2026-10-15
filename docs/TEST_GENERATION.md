@@ -1,6 +1,6 @@
 # Test generation — what each untested module was proven to do
 
-`scripts/gen_tests.py` wrote a smoke test for every module without one and kept only the expectations each module meets. Suite: **3658 tests pass**.
+`scripts/gen_tests.py` wrote a smoke test for every module without one and kept only the expectations each module meets. Suite: **4701 tests pass**.
 
 | expectation | asserted by | not met by |
 |---|---|---|
