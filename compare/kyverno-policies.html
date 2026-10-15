@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kyverno policy library vs Rego Policy Libraries — size, scope and whether it is an alternative</title>
-<meta name="description" content="Kyverno policy library: 180 policies, Kubernetes admission only. Rego Policy Libraries: 17,078 control-level checks across 57 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
+<meta name="description" content="Kyverno policy library: 180 policies, Kubernetes admission only. Rego Policy Libraries: 18,995 control-level checks across 57 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
 <link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/compare/kyverno-policies.html">
 <meta property="og:title" content="Kyverno policy library vs Rego Policy Libraries — size, scope and whether it is an alternative">
-<meta property="og:description" content="Kyverno policy library: 180 policies, Kubernetes admission only. Rego Policy Libraries: 17,078 control-level checks across 57 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
+<meta property="og:description" content="Kyverno policy library: 180 policies, Kubernetes admission only. Rego Policy Libraries: 18,995 control-level checks across 57 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/compare/kyverno-policies.html">
 <style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
@@ -48,7 +48,7 @@
 <body>
 <h1>Kyverno policy library vs Rego Policy Libraries</h1>
 <table><tr><th></th><th>Kyverno policy library</th><th>Rego Policy Libraries</th></tr>
-<tr><td>Size</td><td>180 policies</td><td>17,078 control-level checks, 788 policy files</td></tr>
+<tr><td>Size</td><td>180 policies</td><td>18,995 control-level checks, 798 policy files</td></tr>
 <tr><td>Scope</td><td>Kubernetes admission only</td><td>hosts (CIS, STIG), cloud, SaaS, Kubernetes, IaC, AI governance, 57 regulatory and management standards</td></tr>
 <tr><td>Language</td><td>YAML / CEL</td><td>OPA Rego v1, Apache 2.0</td></tr></table>
 <p>Kyverno is a policy engine with its own language; its library is admission rules. Our Kubernetes policies ship as Gatekeeper ConstraintTemplates and Kubewarden policies, and a CEL/Kyverno generator is on the converters roadmap.</p>

@@ -135,7 +135,7 @@ def main():
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="{GSV}" />
   <title>Rego Policy Libraries — Browse {total}+ OPA Compliance Policies by Standard</title>
-  <meta name="description" content="Browse {total}+ production-ready Open Policy Agent (OPA) Rego policies by standard: CIS Benchmarks, DISA STIGs, NIST, NERC-CIP, IEC 62443, ISO 27001, SOC 2, PCI-DSS, EU AI Act and 55+ frameworks. Apache 2.0, Rego v1, OCI-ready.">
+  <meta name="description" content="Browse {total}+ production-ready Open Policy Agent (OPA) Rego policies by standard: CIS Benchmarks, DISA STIGs, NIST, NERC-CIP, IEC 62443, ISO 27001, SOC 2, PCI-DSS, EU AI Act: {framework_count}+ standards in all. Apache 2.0, Rego v1, OCI-ready.">
   <style>
     :root {{ --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }}
     * {{ box-sizing:border-box; }}
