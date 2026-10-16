@@ -820,6 +820,28 @@ test_attestation_missing_provenance_is_inadmissible if {
 	contains(v, "not admissible")
 }
 
+# null, blank or non-string provenance is present but is not evidence.
+_attestation_with(field, value) := {"attestations": [object.union({
+	"control_id": "5.2.4.1", "observed": "All",
+	"attested_by": "operator@example.com", "attested_on": "2026-08-14",
+	"evidence_ref": "screenshot-001.png",
+}, {field: value})]}
+
+test_attestation_null_evidence_ref_is_inadmissible if {
+	r := att.compliance_report with input as _attestation_with("evidence_ref", null)
+	not "5.2.4.1" in r.attested_control_ids
+	some v in r.violations
+	contains(v, "CIS 5.2.4.1:")
+	contains(v, "not admissible")
+}
+
+test_attestation_blank_or_non_string_provenance_is_inadmissible if {
+	every c in [["evidence_ref", ""], ["evidence_ref", "   "], ["attested_by", null], ["attested_on", 20260814], ["attested_by", true]] {
+		r := att.compliance_report with input as _attestation_with(c[0], c[1])
+		not "5.2.4.1" in r.attested_control_ids
+	}
+}
+
 test_attestation_marks_its_evidence_source if {
 	r := att.compliance_report with input as {}
 	r.evidence_source == "attested"

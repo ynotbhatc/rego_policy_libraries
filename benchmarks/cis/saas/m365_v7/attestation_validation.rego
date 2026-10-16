@@ -100,11 +100,19 @@ NOT_IMPLEMENTED := {}
 
 attestations := object.get(input, "attestations", [])
 
+# Each field must be a non-empty string. A bare `a.evidence_ref` in a rule
+# body only fails on false or undefined, so null, "" and numbers used to
+# count as evidence and the control read as attested.
+_given(v) if {
+	is_string(v)
+	trim_space(v) != ""
+}
+
 attested_ids := {a.control_id |
 	some a in attestations
-	a.attested_by
-	a.attested_on
-	a.evidence_ref
+	_given(a.attested_by)
+	_given(a.attested_on)
+	_given(a.evidence_ref)
 }
 
 # An attestation missing any of who/when/evidence is not an attestation.
