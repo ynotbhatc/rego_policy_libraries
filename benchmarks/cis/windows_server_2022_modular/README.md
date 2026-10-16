@@ -79,11 +79,11 @@ benchmark's state is a configured value, not the operating system default.
 ## Cross-check against the Windows Server 2022 STIG
 
 The values were compared with `benchmarks/stig/windows_server_2022/` on (registry path, value name), the one
-source in the repository that is not the workbook: 87 of the 92 shared settings accept the STIG's required value.
-The other five: the logon banner text and title (the STIG's are placeholders; CIS needs any text), the SAM
-restriction string (identical), Credential Guard (CIS 18.9.5.6 disables it on domain controllers; the STIG item is
-for member servers) and the boot-start driver policy (CIS 18.9.13.1 "Good, unknown and bad but critical", 3; the
-STIG module checks 1).
+source in the repository that is not the workbook: 88 of the 92 shared settings accept the STIG's required value.
+The other four: the logon banner text and title (the STIG's are placeholders; CIS needs any text), the SAM
+restriction string (identical) and Credential Guard (CIS 18.9.5.6 disables it on domain controllers; the STIG item
+is for member servers). The boot-start driver policy was a fifth until the STIG module was corrected to the STIG's
+own check text (WN22-CC-000130 accepts 1, 3 or 8; CIS 18.9.13.1 sets 3).
 
 ## Regenerating
 

@@ -170,8 +170,22 @@ status_r_wn25_cc_000110 := "Open" if not r_wn25_cc_000110
 
 # WN25-CC-000130 | V-278091 | CAT II
 default r_wn25_cc_000130 := false
+# Check text (V-278091): 1, 3 or 8 is not a finding, 7 ("All", which loads bad
+# drivers) is, and an absent value is not a finding (the default enforces 3).
+# Absent counts only when registry facts were collected at all; any other
+# value is treated as open.
 r_wn25_cc_000130 if {
-	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch"]["DriverLoadPolicy"] == 1
+	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch"]["DriverLoadPolicy"] in {1, 3, 8}
+}
+
+r_wn25_cc_000130 if {
+	is_object(input.registry)
+	count(input.registry) > 0
+	not _wn25_cc_000130_value_set
+}
+
+_wn25_cc_000130_value_set if {
+	_ := input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch"]["DriverLoadPolicy"]
 }
 
 finding_r_wn25_cc_000130 := {
