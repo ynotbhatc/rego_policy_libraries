@@ -77,18 +77,18 @@ _all[id] := {"strategy": spec.key, "level": m.level, "met": object.get(_attest(s
 
 total_requirements := count(_all)
 
-requirements_met := count([id | some id, c in _all; c.met])
+requirements_met := count([id | some id; c := _all[id]; c.met])
 
 # Coverage per maturity level.
 maturity_by_level[lvl] := {"total": total, "met": met} if {
-	some lvl in {c.level | some _, c in _all}
-	total := count([id | some id, c in _all; c.level == lvl])
-	met := count([id | some id, c in _all; c.level == lvl; c.met])
+	some lvl in {c.level | some c in _all}
+	total := count([id | some id; c := _all[id]; c.level == lvl])
+	met := count([id | some id; c := _all[id]; c.level == lvl; c.met])
 }
 
 # A strategy meets level n if every requirement at level <= n is met (cumulative).
 _meets(strat, n) if {
-	reqs := {id | some id, c in _all; c.strategy == strat; c.level <= n}
+	reqs := {id | some id; c := _all[id]; c.strategy == strat; c.level <= n}
 	count(reqs) > 0
 	every id in reqs { _all[id].met }
 }
@@ -101,7 +101,7 @@ strategy_maturity_level[strat] := lvl if {
 }
 
 # ACSC rule: overall maturity = the lowest strategy's achieved level.
-overall_maturity_level := min([lvl | some _, lvl in strategy_maturity_level])
+overall_maturity_level := min([lvl | some lvl in strategy_maturity_level])
 
 # Per-strategy rollup, keyed by strategy name.
 strategies[name] := {"requirements": r.requirements_evaluated, "gaps": r.violation_count, "compliant": r.compliant} if {

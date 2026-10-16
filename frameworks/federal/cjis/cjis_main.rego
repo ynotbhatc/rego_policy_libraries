@@ -93,7 +93,7 @@ _all[id] := {"area": m.area, "met": object.get(_attest(spec.key), id, false) == 
 
 total_requirements := count(_all)
 
-requirements_met := count([id | some id, c in _all; c.met])
+requirements_met := count([id | some id; c := _all[id]; c.met])
 
 # Per-policy-area rollup, keyed by area name.
 policy_areas[name] := {

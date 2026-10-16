@@ -405,7 +405,7 @@ violations contains msg if {
 
 chapter_reports[c] := rpt if {
 	some c, ch in chapters
-	ids := {id | some id, r in duties; r.group == c}
+	ids := {id | some id; r := duties[id]; r.group == c}
 	app := {id | some id in ids; applicable[id]}
 	rpt := {
 		"part": ch.part,
@@ -420,7 +420,7 @@ chapter_reports[c] := rpt if {
 
 part_reports[p] := rpt if {
 	some p, heading in parts
-	ids := {id | some id, r in duties; chapters[r.group].part == p}
+	ids := {id | some id; r := duties[id]; chapters[r.group].part == p}
 	app := {id | some id in ids; applicable[id]}
 	rpt := {
 		"heading": heading,
@@ -440,7 +440,7 @@ compliance_report := {
 	"scope_flags": {k: _flag(k) | some k, _ in _gates},
 	"total_controls": 151,
 	"duties_evaluated": count(applicable),
-	"duties_attested": count({id | some id, _ in applicable; _attested(id)}),
+	"duties_attested": count({id | some id; _ = applicable[id]; _attested(id)}),
 	"parts": part_reports,
 	"chapters": chapter_reports,
 	"out_of_scope": out_of_scope,

@@ -204,7 +204,7 @@ violations contains msg if {
 
 section_rollup[s] := r if {
 	some s, c in sections
-	ids := {id | some id, q in obligations; q.section == s}
+	ids := {id | some id; q := obligations[id]; q.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _true(id)}
 	r := {
@@ -224,7 +224,7 @@ compliance_report := {
 	"gates": {k: object.get(_in, k, "undeclared") | some k, _ in _gates},
 	"standard_total": 12,
 	"rows_evaluated": count(applicable),
-	"rows_attested": count([id | some id, _ in applicable; _true(id)]),
+	"rows_attested": count([id | some id; _ = applicable[id]; _true(id)]),
 	"sections": section_rollup,
 	"compliant": compliant,
 	"violation_count": count(violations),

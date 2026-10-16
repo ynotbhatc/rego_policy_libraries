@@ -1451,7 +1451,7 @@ _true(id) if _given[id] == true
 
 _by_requirement[r] := ids if {
 	some r, _ in requirements
-	ids := {id | some id, d in determinations; d.requirement == r}
+	ids := {id | some id; d := determinations[id]; d.requirement == r}
 }
 
 violations contains "NIST SP 800-171A: FAIL-CLOSED - determinations 'input.nist_sp_800_171a_r2.determinations' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant" if {
@@ -1498,7 +1498,7 @@ requirement_rollup[r] := s if {
 
 family_reports[f] := s if {
 	some f, name in families
-	reqs := {r | some r, q in requirements; q.family == f}
+	reqs := {r | some r; q := requirements[r]; q.family == f}
 	ids := {id | some r in reqs; some id in _by_requirement[r]}
 	s := {
 		"name": name,
@@ -1518,9 +1518,9 @@ compliance_report := {
 	"total_controls": count(determinations),
 	"standard_total": 320, # measured in the PDF (297 labelled + 23 unlabelled); the PDF itself states no total
 	"determinations_total": count(determinations),
-	"determinations_satisfied": count({id | some id, _ in determinations; _true(id)}),
+	"determinations_satisfied": count({id | some id; _ = determinations[id]; _true(id)}),
 	"requirements_total": count(requirements),
-	"requirements_satisfied": count({r | some r, _ in requirements; _req_satisfied(r)}),
+	"requirements_satisfied": count({r | some r; _ = requirements[r]; _req_satisfied(r)}),
 	"families_total": count(families),
 	"families": family_reports,
 	"requirements": requirement_rollup,

@@ -639,7 +639,7 @@ subcategory_results[sid] := r if {
 
 category_rollup[c] := r if {
 	some c, cat in categories
-	ids := {sid | some sid, s in subcategories; s.category == c}
+	ids := {sid | some sid; s := subcategories[sid]; s.category == c}
 	r := {
 		"function": cat.function,
 		"text": cat.text,
@@ -651,9 +651,9 @@ category_rollup[c] := r if {
 
 function_rollup[f] := r if {
 	some f in function_names
-	ids := {sid | some sid, s in subcategories; s.function == f}
+	ids := {sid | some sid; s := subcategories[sid]; s.function == f}
 	r := {
-		"categories": sort([c | some c, cat in categories; cat.function == f]),
+		"categories": sort([c | some c; cat := categories[c]; cat.function == f]),
 		"subcategories_total": count(ids),
 		"subcategories_satisfied": count({sid | some sid in ids; _satisfied(sid)}),
 		"not_satisfied": sort([sid | some sid in ids; not _satisfied(sid)]),
@@ -698,7 +698,7 @@ compliance_report := {
 	"standard_total": 72, # subcategories in AI 100-1 Section 5, Tables 1-4
 	"core_controls": count(subcategories),
 	"profile_controls": _profile_controls,
-	"subcategories_satisfied": count({sid | some sid, _ in subcategories; _satisfied(sid)}),
+	"subcategories_satisfied": count({sid | some sid; _ = subcategories[sid]; _satisfied(sid)}),
 	"functions_total": count(function_names),
 	"categories_total": count(categories),
 	"functions": function_rollup,

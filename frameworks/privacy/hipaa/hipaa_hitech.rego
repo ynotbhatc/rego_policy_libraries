@@ -397,7 +397,7 @@ row_status[id] := s if {
 
 section_reports[s] := rpt if {
 	some s, name in sections
-	ids := {id | some id, r in breach_notification_rule; r.section == s}
+	ids := {id | some id; r := breach_notification_rule[id]; r.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _satisfied(id)}
 	rpt := {
@@ -411,7 +411,7 @@ section_reports[s] := rpt if {
 
 _n_applicable := count(applicable)
 
-_n_satisfied := count({id | some id, _ in applicable; _satisfied(id)})
+_n_satisfied := count({id | some id; _ = applicable[id]; _satisfied(id)})
 
 report := {
 	"standard": "HIPAA Breach Notification Rule (45 CFR Part 164 Subpart D) and HITECH Act (42 U.S.C. §§17921-17954)",

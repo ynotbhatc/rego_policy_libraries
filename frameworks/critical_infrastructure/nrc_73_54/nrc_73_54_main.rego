@@ -173,7 +173,7 @@ compliance_report := {
 	"total_controls": count(_rows),
 	"dated_obligations": dated_obligations,
 	"evaluated": count(applicable),
-	"attested": count([id | some id, _ in applicable; _attested(id)]),
+	"attested": count([id | some id; _ = applicable[id]; _attested(id)]),
 	"sections": section_reports,
 	"violation_count": count(violations),
 	"violations": violations,

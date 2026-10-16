@@ -108,7 +108,8 @@ domain_reports := {
 }
 
 domains_passing := count([domain |
-    some domain, report in domain_reports
+    some domain
+    report := domain_reports[domain]
     report.compliant == true
 ])
 

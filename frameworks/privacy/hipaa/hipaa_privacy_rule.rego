@@ -586,7 +586,7 @@ row_status[id] := s if {
 
 section_reports[s] := rpt if {
 	some s, name in sections
-	ids := {id | some id, r in requirements; r.section == s}
+	ids := {id | some id; r := requirements[id]; r.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _satisfied(id)}
 	rpt := {
@@ -600,7 +600,7 @@ section_reports[s] := rpt if {
 
 _n_applicable := count(applicable)
 
-_n_satisfied := count({id | some id, _ in applicable; _satisfied(id)})
+_n_satisfied := count({id | some id; _ = applicable[id]; _satisfied(id)})
 
 report := {
 	"standard": "HIPAA Privacy Rule (45 CFR Part 164 Subpart E, §§ 164.500-164.534)",
@@ -609,8 +609,8 @@ report := {
 	"id_scheme": "45 CFR paragraph citation of each labelled Standard / Implementation specification, e.g. 164.514(d)(3)",
 	"controls_total": count(requirements),
 	"standard_total": 110, # 45 CFR 164.502-164.530: 55 Standard + 55 Implementation specification paragraphs (164.532 out of scope)
-	"standards": count({id | some id, r in requirements; r.status == "standard"}),
-	"implementation_specifications": count({id | some id, r in requirements; r.status == "implementation specification"}),
+	"standards": count({id | some id; r := requirements[id]; r.status == "standard"}),
+	"implementation_specifications": count({id | some id; r := requirements[id]; r.status == "implementation specification"}),
 	"fact_evaluated": count(fact_basis),
 	"attested": count(requirements) - count(fact_basis),
 	"applicable": _n_applicable,

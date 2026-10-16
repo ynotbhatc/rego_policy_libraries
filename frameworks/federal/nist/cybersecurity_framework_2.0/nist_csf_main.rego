@@ -2274,7 +2274,7 @@ subcategory_results[sid] := r if {
 
 category_rollup[c] := r if {
 	some c, cat in categories
-	ids := {sid | some sid, s in subcategories; s.category == c}
+	ids := {sid | some sid; s := subcategories[sid]; s.category == c}
 	r := {
 		"function": cat.function,
 		"title": cat.title,
@@ -2288,10 +2288,10 @@ category_rollup[c] := r if {
 
 function_rollup[f] := r if {
 	some f, fn in functions
-	ids := {sid | some sid, s in subcategories; s.function == f}
+	ids := {sid | some sid; s := subcategories[sid]; s.function == f}
 	r := {
 		"title": fn.title,
-		"categories": sort([c | some c, cat in categories; cat.function == f]),
+		"categories": sort([c | some c; cat := categories[c]; cat.function == f]),
 		"subcategories_total": count(ids),
 		"subcategories_satisfied": count({sid | some sid in ids; _satisfied(sid)}),
 		"not_satisfied": sort([sid | some sid in ids; not _satisfied(sid)]),
@@ -2328,10 +2328,10 @@ compliance_report := {
 	"compliant": compliant,
 	"total_controls": total_controls,
 	"standard_total": 106, # current subcategories in the CPRT CSF_2_0_0 export (185 subcategory elements, 79 withdrawn)
-	"subcategories_satisfied": count({sid | some sid, _ in subcategories; _satisfied(sid)}),
+	"subcategories_satisfied": count({sid | some sid; _ = subcategories[sid]; _satisfied(sid)}),
 	"basis_counts": {
-		"facts": count({sid | some sid, s in subcategories; s.basis == "facts"}),
-		"attestation": count({sid | some sid, s in subcategories; s.basis == "attestation"}),
+		"facts": count({sid | some sid; s := subcategories[sid]; s.basis == "facts"}),
+		"attestation": count({sid | some sid; s := subcategories[sid]; s.basis == "attestation"}),
 	},
 	"functions_total": count(functions),
 	"categories_total": count(categories),

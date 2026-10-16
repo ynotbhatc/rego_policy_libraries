@@ -207,7 +207,7 @@ compliance_report := {
 	"direction_v_applies": object.get(_in, "provides_datacentre_vps_cloud_or_vpn", "undeclared"),
 	"direction_vi_applies": object.get(_in, "is_virtual_asset_service_provider", "undeclared"),
 	"annexure_i_types": count(annexure_i),
-	"annexure_i_covered": count([id | some id, _ in annexure_i; _in.incident_reporting.reportable_types[id] == true]),
+	"annexure_i_covered": count([id | some id; _ = annexure_i[id]; _in.incident_reporting.reportable_types[id] == true]),
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,

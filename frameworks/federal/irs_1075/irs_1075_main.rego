@@ -82,7 +82,7 @@ _all[id] := {"section": m.section, "met": object.get(_attest(spec.key), id, fals
 
 total_requirements := count(_all)
 
-requirements_met := count([id | some id, c in _all; c.met])
+requirements_met := count([id | some id; c := _all[id]; c.met])
 
 # Per-area rollup, keyed by area name.
 safeguard_areas[name] := {

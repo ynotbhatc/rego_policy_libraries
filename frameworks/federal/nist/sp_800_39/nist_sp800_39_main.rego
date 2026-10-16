@@ -189,7 +189,7 @@ violations contains msg if {
 
 component_reports[c] := r if {
 	some c, name in sections
-	ids := {id | some id, t in tasks; t.component == c}
+	ids := {id | some id; t := tasks[id]; t.component == c}
 	r := {
 		"name": name,
 		"tasks_total": count(ids),
@@ -205,7 +205,7 @@ compliance_report := {
 	"compliant": compliant,
 	"total_controls": count(tasks),
 	"standard_total": 12, # TASK 1-1 .. TASK 4-2 printed in Chapter 3 and Appendix E
-	"tasks_satisfied": count({id | some id, _ in tasks; _true(id)}),
+	"tasks_satisfied": count({id | some id; _ = tasks[id]; _true(id)}),
 	"tiers": ["Tier 1 - Organization", "Tier 2 - Mission / Business Processes", "Tier 3 - Information Systems"],
 	"components": component_reports,
 	"violation_count": count(violations),

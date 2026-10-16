@@ -74,7 +74,7 @@ _all[id] := {"theme": m.theme, "met": object.get(_attest(spec.key), id, false) =
 
 total_requirements := count(_all)
 
-requirements_met := count([id | some id, c in _all; c.met])
+requirements_met := count([id | some id; c := _all[id]; c.met])
 
 # Per-theme rollup, keyed by theme name.
 control_themes[name] := {

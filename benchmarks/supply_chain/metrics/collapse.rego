@@ -39,11 +39,11 @@ frameworks := {
 }
 
 # Total framework->theme reference edges (many).
-framework_theme_references := sum([count(refs) | some _, refs in frameworks])
+framework_theme_references := sum([count(refs) | some refs in frameworks])
 
 # Distinct substrate themes those references land on (few).
 distinct_themes_referenced := count({t |
-	some _, refs in frameworks
+	some refs in frameworks
 	some t in refs
 })
 

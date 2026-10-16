@@ -676,18 +676,18 @@ _gate_valid if {
 # the techniques evaluated: the declared list when it is valid, otherwise all 14
 selected_techniques := {t | some t in _scope.techniques_selected} if _gate_valid
 
-else := {t | some t, _ in techniques}
+else := {t | some t; _ = techniques[t]}
 
 _in_scope(id) if approaches[id].technique in selected_techniques
 
 _by_technique[t] := ids if {
 	some t, _ in techniques
-	ids := {id | some id, a in approaches; a.technique == t}
+	ids := {id | some id; a := approaches[id]; a.technique == t}
 }
 
 _by_objective[o] := ids if {
 	some o, _ in objectives
-	ids := {id | some id, a in approaches; o in a.objectives}
+	ids := {id | some id; a := approaches[id]; o in a.objectives}
 }
 
 violations contains "NIST SP 800-160v2: FAIL-CLOSED - approaches 'input.nist_sp_800_160v2.approaches' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant" if {
@@ -777,8 +777,8 @@ compliance_report := {
 	"compliant": compliant,
 	"total_controls": count(approaches),
 	"standard_total": 50, # implementation approaches in Table D-4
-	"approaches_in_scope": count({id | some id, _ in approaches; _in_scope(id)}),
-	"approaches_attested": count({id | some id, _ in approaches; _in_scope(id); _true(id)}),
+	"approaches_in_scope": count({id | some id; _ = approaches[id]; _in_scope(id)}),
+	"approaches_attested": count({id | some id; _ = approaches[id]; _in_scope(id); _true(id)}),
 	"gate_applied": _gate_valid_bool,
 	"techniques_selected": sort([t | some t in selected_techniques]),
 	"goals_total": count(goals),

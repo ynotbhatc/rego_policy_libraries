@@ -1872,18 +1872,18 @@ else := false
 
 family_reports[f] := r if {
 	some f, name in families
-	ids := {id | some id, q in requirements; q.family == f}
+	ids := {id | some id; q := requirements[id]; q.family == f}
 	ok := {id | some id in ids; _satisfied(id)}
 	r := {
 		"name": name,
 		"requirements": count(ids),
 		"satisfied": count(ok),
-		"withdrawn": count({id | some id, _ in withdrawn; startswith(id, concat("", [f, "."]))}),
+		"withdrawn": count({id | some id; _ = withdrawn[id]; startswith(id, concat("", [f, "."]))}),
 		"gaps": sort([id | some id in ids; not id in ok]),
 	}
 }
 
-_n_satisfied := count({id | some id, _ in requirements; _satisfied(id)})
+_n_satisfied := count({id | some id; _ = requirements[id]; _satisfied(id)})
 
 compliance_report := {
 	"framework": "NIST SP 800-171 Rev 3",
@@ -1900,7 +1900,7 @@ compliance_report := {
 	"statements_total": sum([count(r.statements) | some r in requirements]),
 	"withdrawn_total": count(withdrawn),
 	"families_total": count(families),
-	"families_passing": count([f | some f, r in family_reports; count(r.gaps) == 0]),
+	"families_passing": count([f | some f; r := family_reports[f]; count(r.gaps) == 0]),
 	"families": family_reports,
 	"requirements": requirement_status,
 	"withdrawn": withdrawn,

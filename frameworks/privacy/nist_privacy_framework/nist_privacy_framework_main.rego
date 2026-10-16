@@ -226,7 +226,7 @@ _true(id) if _given[id] == true
 
 _by_category[c] := ids if {
 	some c, _ in categories
-	ids := {id | some id, s in subcategories; s.category == c}
+	ids := {id | some id; s := subcategories[id]; s.category == c}
 }
 
 violations contains "NIST Privacy Framework 1.0: FAIL-CLOSED - subcategories 'input.nist_privacy_framework.subcategories' were not supplied (or are not an object); this module cannot be evaluated and is reported non-compliant" if {
@@ -274,8 +274,8 @@ category_rollup[c] := r if {
 
 function_rollup[f] := r if {
 	some f, fn in functions
-	cats := {c | some c, cat in categories; cat.function == f}
-	ids := {id | some id, s in subcategories; s.function == f}
+	cats := {c | some c; cat := categories[c]; cat.function == f}
+	ids := {id | some id; s := subcategories[id]; s.function == f}
 	r := {
 		"title": fn.title,
 		"csf_relationship": fn.csf_relationship,
@@ -289,7 +289,7 @@ function_rollup[f] := r if {
 
 csf_relationship_counts[k] := n if {
 	some k, _ in csf_relationships
-	n := count({id | some id, s in subcategories; s.csf_relationship == k})
+	n := count({id | some id; s := subcategories[id]; s.csf_relationship == k})
 }
 
 compliance_report := {
@@ -300,9 +300,9 @@ compliance_report := {
 	"total_controls": count(subcategories),
 	"standard_total": 100, # subcategory elements in the CPRT PF_1_0_0 export
 	"subcategories_total": count(subcategories),
-	"subcategories_achieved": count({id | some id, _ in subcategories; _true(id)}),
+	"subcategories_achieved": count({id | some id; _ = subcategories[id]; _true(id)}),
 	"categories_total": count(categories),
-	"categories_achieved": count({c | some c, _ in categories; _cat_achieved(c)}),
+	"categories_achieved": count({c | some c; _ = categories[c]; _cat_achieved(c)}),
 	"functions_total": count(functions),
 	"functions": function_rollup,
 	"categories": category_rollup,

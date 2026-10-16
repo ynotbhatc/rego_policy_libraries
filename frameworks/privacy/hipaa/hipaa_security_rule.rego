@@ -659,7 +659,7 @@ row_status[id] := s if {
 
 section_reports[s] := rpt if {
 	some s, name in sections
-	ids := {id | some id, r in specifications; r.section == s}
+	ids := {id | some id; r := specifications[id]; r.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _satisfied(id)}
 	rpt := {
@@ -673,7 +673,7 @@ section_reports[s] := rpt if {
 
 _n_applicable := count(applicable)
 
-_n_satisfied := count({id | some id, _ in applicable; _satisfied(id)})
+_n_satisfied := count({id | some id; _ = applicable[id]; _satisfied(id)})
 
 # The five data-activity modules' own reports (§ 164.312).
 technical_module_reports := {
@@ -691,9 +691,9 @@ report := {
 	"id_scheme": "45 CFR paragraph citation, e.g. 164.308(a)(1)(ii)(A); status = standard | required | addressable as the regulation marks it",
 	"controls_total": count(specifications),
 	"standard_total": 68, # 45 CFR 164.308-164.316: 22 standards + 24 required + 22 addressable implementation specifications
-	"standards": count({id | some id, r in specifications; r.status == "standard"}),
-	"required_specifications": count({id | some id, r in specifications; r.status == "required"}),
-	"addressable_specifications": count({id | some id, r in specifications; r.status == "addressable"}),
+	"standards": count({id | some id; r := specifications[id]; r.status == "standard"}),
+	"required_specifications": count({id | some id; r := specifications[id]; r.status == "required"}),
+	"addressable_specifications": count({id | some id; r := specifications[id]; r.status == "addressable"}),
 	"fact_evaluated": count(fact_basis),
 	"attested": count(specifications) - count(fact_basis),
 	"applicable": _n_applicable,

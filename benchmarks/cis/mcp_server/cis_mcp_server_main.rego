@@ -84,18 +84,18 @@ _all[id] := {"level": m.level, "met": object.get(_attest(spec.key), id, false) =
 
 total_requirements := count(_all)
 
-requirements_met := count([id | some id, c in _all; c.met])
+requirements_met := count([id | some id; c := _all[id]; c.met])
 
 # Level rollups. Requirements whose level the public sources did not state
 # carry level "unspecified" and are excluded from the L1/L2 floors (but
 # always count toward overall compliance).
-l1_total := count([id | some id, c in _all; c.level == "L1"])
+l1_total := count([id | some id; c := _all[id]; c.level == "L1"])
 
-l1_met := count([id | some id, c in _all; c.level == "L1"; c.met])
+l1_met := count([id | some id; c := _all[id]; c.level == "L1"; c.met])
 
-l2_total := count([id | some id, c in _all; c.level == "L2"])
+l2_total := count([id | some id; c := _all[id]; c.level == "L2"])
 
-l2_met := count([id | some id, c in _all; c.level == "L2"; c.met])
+l2_met := count([id | some id; c := _all[id]; c.level == "L2"; c.met])
 
 default l1_compliant := false
 

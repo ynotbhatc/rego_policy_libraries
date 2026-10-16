@@ -158,7 +158,8 @@ section_compliance := {
 total_violations := count(all_violations)
 
 compliant_sections := [name |
-	some name, section in section_compliance
+	some name
+	section := section_compliance[name]
 	section.compliant == true
 ]
 

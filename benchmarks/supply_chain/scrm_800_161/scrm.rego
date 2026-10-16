@@ -436,7 +436,7 @@ tailoring := {r[0]: row |
 
 tailoring_counts := {c: n |
 	some c in _levels
-	n := count([k | some k, row in tailoring; row[c]])
+	n := count([k | some k; row := tailoring[k]; row[c]])
 }
 
-selected_controls := sort([k | some k, row in tailoring; row[level]])
+selected_controls := sort([k | some k; row := tailoring[k]; row[level]])

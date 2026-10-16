@@ -95,7 +95,8 @@ _third_schedule if _in.in_third_schedule_class == true
 # ── A generic checker: every key in a table must be attested true ────────
 
 _missing(section, table) := {msg |
-	some key, text in table
+	some key
+	text := table[key]
 	not _in[section][key] == true
 	msg := text
 }

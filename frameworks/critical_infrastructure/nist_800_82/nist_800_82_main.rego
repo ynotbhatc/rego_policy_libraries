@@ -876,7 +876,7 @@ ot_overlay := {r[0]: row |
 
 ot_overlay_counts := {lvl: n |
 	some lvl in _impacts
-	n := count([k | some k, row in ot_overlay; row[lvl]])
+	n := count([k | some k; row := ot_overlay[k]; row[lvl]])
 }
 
-ot_overlay_selected := sort([k | some k, row in ot_overlay; row[target_impact]])
+ot_overlay_selected := sort([k | some k; row := ot_overlay[k]; row[target_impact]])

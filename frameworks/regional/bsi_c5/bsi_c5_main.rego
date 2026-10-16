@@ -325,7 +325,7 @@ subject_area_reports[code] := r if {
 	}
 }
 
-_n_satisfied := count({id | some id, _ in criteria; _attested(id)})
+_n_satisfied := count({id | some id; _ = criteria[id]; _attested(id)})
 
 compliance_report := {
 	"framework": "BSI C5:2026",
@@ -340,14 +340,14 @@ compliance_report := {
 	"criteria_satisfied": _n_satisfied,
 	"criteria_fact_evaluated": 0,
 	"criteria_attested_basis": count(criteria),
-	"criteria_with_additional": count([id | some id, c in criteria; c.has_additional]),
+	"criteria_with_additional": count([id | some id; c := criteria[id]; c.has_additional]),
 	"subcriteria": {
 		"basic": sum([count(c.basic) | some c in criteria]),
 		"additional_sharpening": sum([count(c.additional_sharpening) | some c in criteria]),
 		"additional_complementing": sum([count(c.additional_complementing) | some c in criteria]),
 	},
 	"subject_areas_total": count(_areas),
-	"subject_areas_passing": count([code | some code, r in subject_area_reports; r.compliant]),
+	"subject_areas_passing": count([code | some code; r := subject_area_reports[code]; r.compliant]),
 	"subject_areas": subject_area_reports,
 	"criteria": criteria_status,
 	"general_conditions": general_conditions,

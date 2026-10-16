@@ -227,7 +227,7 @@ row_status[id] := s if {
 
 section_reports[s] := rpt if {
 	some s, name in sections
-	ids := {id | some id, r in obligations; r.section == s}
+	ids := {id | some id; r := obligations[id]; r.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _satisfied(id)}
 	rpt := {
@@ -241,7 +241,7 @@ section_reports[s] := rpt if {
 
 _n_applicable := count(applicable)
 
-_n_satisfied := count({id | some id, _ in applicable; _satisfied(id)})
+_n_satisfied := count({id | some id; _ = applicable[id]; _satisfied(id)})
 
 compliance_report := {
 	"framework": "HIPAA Administrative Simplification",

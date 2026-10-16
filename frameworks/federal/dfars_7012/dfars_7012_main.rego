@@ -196,7 +196,7 @@ violations contains msg if {
 
 section_reports[s] := r if {
 	some s, name in sections
-	ids := {id | some id, c in applicable; c.s == s}
+	ids := {id | some id; c := applicable[id]; c.s == s}
 	passed := {id | some id in ids; _attested(id)}
 	r := {"section": name, "obligations": count(ids), "attested": count(passed), "gaps": sort([id | some id in ids; not id in passed])}
 }
@@ -214,7 +214,7 @@ compliance_report := {
 	"out_of_scope": out_of_scope,
 	"obligations_total": count(obligations),
 	"obligations_evaluated": count(applicable),
-	"obligations_attested": count([id | some id, _ in applicable; _attested(id)]),
+	"obligations_attested": count([id | some id; _ = applicable[id]; _attested(id)]),
 	"sections": section_reports,
 	"compliant": compliant,
 	"violation_count": count(violations),

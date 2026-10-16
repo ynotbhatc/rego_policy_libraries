@@ -254,7 +254,7 @@ violations contains msg if {
 
 family_reports[f] := r if {
 	some f, name in families
-	ids := {id | some id, req in requirements; req.family == f}
+	ids := {id | some id; req := requirements[id]; req.family == f}
 	passed := {id | some id in ids; _attested(id)}
 	r := {
 		"family": name,
@@ -272,9 +272,9 @@ compliance_report := {
 	"applies_via": "DFARS 252.204-7012 and CMMC 2.0 Level 2 assess the Rev 2 requirements",
 	"source": source,
 	"standard_total": 110,
-	"requirements_attested": count([id | some id, _ in requirements; _attested(id)]),
-	"basic_attested": count([id | some id, r in requirements; r.type == "basic"; _attested(id)]),
-	"derived_attested": count([id | some id, r in requirements; r.type == "derived"; _attested(id)]),
+	"requirements_attested": count([id | some id; _ = requirements[id]; _attested(id)]),
+	"basic_attested": count([id | some id; r := requirements[id]; r.type == "basic"; _attested(id)]),
+	"derived_attested": count([id | some id; r := requirements[id]; r.type == "derived"; _attested(id)]),
 	"families": family_reports,
 	"compliant": compliant,
 	"violation_count": count(violations),

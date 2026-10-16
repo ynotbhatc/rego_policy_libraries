@@ -238,7 +238,7 @@ _supplied if _given
 
 _true(id) if _given[id] == true
 
-_pep_groups := {g | some g, _ in groups; g != "universal"}
+_pep_groups := {g | some g; _ = groups[g]; g != "universal"}
 
 _scope_declared if "pep_groups_in_scope" in object.keys(_in)
 
@@ -288,7 +288,7 @@ violations contains msg if {
 
 group_reports[g] := r if {
 	some g, label in groups
-	members := {id | some id, c in capabilities; c.group == g}
+	members := {id | some id; c := capabilities[id]; c.group == g}
 	ids := {id | some id in members; applicable[id]}
 	r := {
 		"name": label,
@@ -308,7 +308,7 @@ compliance_report := {
 	"total_controls": count(capabilities),
 	"pep_groups_in_scope": sort([g | some g in pep_scope]),
 	"capabilities_evaluated": count(applicable),
-	"capabilities_attested": count({id | some id, _ in applicable; _true(id)}),
+	"capabilities_attested": count({id | some id; _ = applicable[id]; _true(id)}),
 	"groups": group_reports,
 	"violation_count": count(violations),
 	"violations": violations,

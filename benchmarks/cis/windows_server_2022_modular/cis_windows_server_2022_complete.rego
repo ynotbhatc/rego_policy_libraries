@@ -52,17 +52,17 @@ _tables := [
 
 # Static: every recommendation with a check row, whatever the facts or profile. check_cis_coverage.py reads
 # this (with empty input) to prove the rows and the attestation ledger partition the benchmark.
-evaluated_control_ids := sort([cid | some t in _tables; some cid, _ in t])
+evaluated_control_ids := sort([cid | some t in _tables; some cid; _ = t[cid]])
 
 results := object.union_n([r.results | some r in section_reports])
 
-applicable_ids := {cid | some cid, s in results; s != "not_applicable"} | attestation.in_scope_ids
+applicable_ids := {cid | some cid; s := results[cid]; s != "not_applicable"} | attestation.in_scope_ids
 
-passed_ids := {cid | some cid, s in results; s == "pass"} | attestation.passed_ids
+passed_ids := {cid | some cid; s := results[cid]; s == "pass"} | attestation.passed_ids
 
-failed_ids := {cid | some cid, s in results; s == "fail"}
+failed_ids := {cid | some cid; s := results[cid]; s == "fail"}
 
-not_assessed_ids := {cid | some cid, s in results; s == "not_assessed"}
+not_assessed_ids := {cid | some cid; s := results[cid]; s == "not_assessed"}
 
 # Unattested Manual recommendations count against the host: unverified is not passed.
 unattested_ids := attestation.in_scope_ids - attestation.passed_ids

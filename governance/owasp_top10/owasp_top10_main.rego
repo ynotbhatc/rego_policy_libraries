@@ -227,7 +227,7 @@ compliance_report := {
 	"total_controls": count(categories),
 	"standard_total": 10, # categories A01:2025 to A10:2025
 	"categories_total": count(categories),
-	"categories_attested": count({id | some id, _ in categories; _true(id)}),
+	"categories_attested": count({id | some id; _ = categories[id]; _true(id)}),
 	"cwe_mappings_total": sum([count(c.cwes) | some c in category_rows]),
 	"categories": category_rollup,
 	"violation_count": count(violations),

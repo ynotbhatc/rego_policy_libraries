@@ -1017,7 +1017,7 @@ violations contains msg if {
 	not statements[id]
 	not _withdrawn_statement(id)
 	_parent_statement(id)
-	msg := sprintf("NIST SP 800-172 Rev 3 Input Contract: %v is a parent or lead-in statement — attest its leaf statements (%v)", [id, concat(", ", sort([l | some l, s in statements; startswith(l, concat("", [id, "-"]))]))])
+	msg := sprintf("NIST SP 800-172 Rev 3 Input Contract: %v is a parent or lead-in statement — attest its leaf statements (%v)", [id, concat(", ", sort([l | some l; _ = statements[l]; startswith(l, concat("", [id, "-"]))]))])
 }
 
 violations contains msg if {
@@ -1046,10 +1046,11 @@ violations contains msg if {
 	msg := sprintf("NIST SP 800-172 Rev 3 Input Contract: input.nist_sp_800_172.%v must be an object of {\"<id>\": true}", [key])
 }
 
-_req_statements(r) := {id | some id, s in statements; s.requirement == r}
+_req_statements(r) := {id | some id; s := statements[id]; s.requirement == r}
 
 requirements_satisfied := {r |
-	some r, _ in titles
+	some r
+	_ = titles[r]
 	every id in _req_statements(r) {
 		id in satisfied
 	}
@@ -1057,13 +1058,13 @@ requirements_satisfied := {r |
 
 family_reports[f] := rep if {
 	some f, name in families
-	ids := {id | some id, s in statements; s.family == f}
+	ids := {id | some id; s := statements[id]; s.family == f}
 	reqs := {s.requirement | some id in ids; s := statements[id]}
 	dets := {d | some id in ids; some d in statements[id].determinations}
 	rep := {
 		"family": name,
 		"requirements": count(reqs),
-		"requirements_withdrawn": count({w | some w, wf in withdrawn_family; wf == f}),
+		"requirements_withdrawn": count({w | some w; wf := withdrawn_family[w]; wf == f}),
 		"requirements_satisfied": count({r | some r in reqs; r in requirements_satisfied}),
 		"statements": count(ids),
 		"statements_attested": count({id | some id in ids; _attested(id)}),
@@ -1081,14 +1082,14 @@ compliance_report := {
 	"export_counts": export_counts,
 	"total_controls": 137,
 	"requirements_total": count(titles),
-	"requirements_attested": count({r | some r, _ in titles; every id in _req_statements(r) { _attested(id) }}),
+	"requirements_attested": count({r | some r; _ = titles[r]; every id in _req_statements(r) { _attested(id) }}),
 	"requirements_satisfied": count(requirements_satisfied),
-	"requirements_withdrawn": sort([w | some w, _ in withdrawn]),
+	"requirements_withdrawn": sort([w | some w; _ = withdrawn[w]]),
 	"statements_total": count(statements),
-	"statements_attested": count({id | some id, _ in statements; _attested(id)}),
+	"statements_attested": count({id | some id; _ = statements[id]; _attested(id)}),
 	"statements_satisfied": count(satisfied),
 	"determinations_total": count(determination_text),
-	"determinations_satisfied": count({d | some d, _ in determination_text; _det_true(d)}),
+	"determinations_satisfied": count({d | some d; _ = determination_text[d]; _det_true(d)}),
 	"families": family_reports,
 	"compliant": compliant,
 	"violation_count": count(violations),
