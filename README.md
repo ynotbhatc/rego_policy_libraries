@@ -566,7 +566,8 @@ git add policies && git commit -m "Update policy library"
   [Enterprise OPA (EOPA)](https://www.styra.com/enterprise-opa/) — the policies use only
   standard Rego and built-ins, so either runtime works
 - All policies use `import rego.v1` (Rego v1 syntax)
-- Continuously tested against OPA v0.68 in CI and OPA v1.x locally
+- Continuously tested against OPA v1.10.0 in CI (pinned in `.github/workflows/opa-test.yml`)
+- Other Rego engines are not supported: rego-cpp / regopy 1.5.2 fails to load some policies and reaches different decisions on others — see [docs/ENGINE_COMPATIBILITY.md](docs/ENGINE_COMPATIBILITY.md)
 - No other dependencies — no sidecar, no data documents, no external services. Policies are
   pure functions of their input and perform no I/O (no `http.send`).
 
