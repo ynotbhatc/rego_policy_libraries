@@ -60,46 +60,62 @@ import rego.v1
 # KEY MANAGEMENT SOVEREIGNTY
 # =============================================================================
 
+# NOTE (undefined trap): `not x.field in list` and `x.field != "v"` are undefined
+# when the field is ABSENT (the reference is hoisted outside the negation), so an
+# offender with missing evidence used to be skipped. Fields are read with
+# object.get() so absence counts against the resource, and `approved` is []
+# when input.approved_jurisdictions is missing (fail closed).
+approved := object.get(input, "approved_jurisdictions", [])
+
+regulated_classes := {"sensitive", "restricted", "sovereign"}
+
+resources := object.get(input, "encrypted_resources", [])
+
 # All resources containing sensitive or higher data must use customer-managed keys
-sensitive_data_uses_customer_managed_keys if {
-	violations := [r |
-		r := input.encrypted_resources[_]
-		r.data_classification in ["sensitive", "restricted", "sovereign"]
-		r.key_management != "customer_managed"
-	]
-	count(violations) == 0
+cmk_offenders contains r if {
+	some r in resources
+	object.get(r, "data_classification", "") in regulated_classes
+	object.get(r, "key_management", "") != "customer_managed"
 }
+
+default sensitive_data_uses_customer_managed_keys := false
+
+sensitive_data_uses_customer_managed_keys if count(cmk_offenders) == 0
 
 # Sovereign/restricted data must use HYOK (Hold Your Own Key — on-prem root)
-sovereign_data_uses_hyok if {
-	violations := [r |
-		r := input.encrypted_resources[_]
-		r.data_classification in ["sovereign", "restricted"]
-		not r.hyok_enabled == true
-	]
-	count(violations) == 0
+hyok_offenders contains r if {
+	some r in resources
+	object.get(r, "data_classification", "") in {"sovereign", "restricted"}
+	not r.hyok_enabled == true
 }
 
-# No resource containing regulated data should be unencrypted
-no_unencrypted_regulated_data if {
-	violations := [r |
-		r := input.encrypted_resources[_]
-		r.data_classification != "public"
-		r.key_management == "unencrypted"
-	]
-	count(violations) == 0
+default sovereign_data_uses_hyok := false
+
+sovereign_data_uses_hyok if count(hyok_offenders) == 0
+
+# No resource containing regulated data should be unencrypted. A resource with
+# no recorded classification is not assumed to be public.
+unencrypted_offenders contains r if {
+	some r in resources
+	object.get(r, "data_classification", "") != "public"
+	r.key_management == "unencrypted"
 }
+
+default no_unencrypted_regulated_data := false
+
+no_unencrypted_regulated_data if count(unencrypted_offenders) == 0
 
 # Encryption keys for regulated data must be physically located in approved jurisdiction
-keys_in_approved_jurisdiction if {
-	violations := [r |
-		r := input.encrypted_resources[_]
-		r.data_classification in ["sensitive", "restricted", "sovereign"]
-		r.key_management == "customer_managed"
-		not r.key_location_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+key_location_offenders contains r if {
+	some r in resources
+	object.get(r, "data_classification", "") in regulated_classes
+	r.key_management == "customer_managed"
+	not object.get(r, "key_location_country", "") in approved
 }
+
+default keys_in_approved_jurisdiction := false
+
+keys_in_approved_jurisdiction if count(key_location_offenders) == 0
 
 # =============================================================================
 # HSM CONTROLS
@@ -151,10 +167,15 @@ key_ceremony_documented if {
 	input.key_management_policies.key_ceremony_documented == true
 }
 
-# Keys must not be escrowed with a foreign entity
+# Keys must not be escrowed with a foreign entity. Fail closed: an absent
+# escrow.exists is not evidence of "no escrow"; it must be reported explicitly.
+default no_foreign_key_escrow := false
+
 no_foreign_key_escrow if {
-	not input.key_management_policies.escrow.exists
-} else if {
+	input.key_management_policies.escrow.exists == false
+}
+
+no_foreign_key_escrow if {
 	input.key_management_policies.escrow.exists == true
 	input.key_management_policies.escrow.foreign_entity_holds_keys == false
 }
@@ -173,22 +194,36 @@ only_approved_algorithms_in_use if {
 	count(violations) == 0
 }
 
-# Prohibited algorithms must not be in use
+# Prohibited algorithms must not be in use. The configured list is extended with
+# a baseline so a missing list cannot let DES/RC4/MD5 through, and the control
+# still fails (CS-009) until the list is configured.
+baseline_prohibited := {"DES", "3DES", "RC4", "MD5", "SHA-1"}
+
+configured_prohibited := object.get(object.get(input, "encryption_standards", {}), "prohibited_algorithms", null)
+
+prohibited_algorithms := baseline_prohibited | {a | some a in configured_prohibited}
+
+prohibited_offenders contains r if {
+	some r in resources
+	r.algorithm
+	r.algorithm in prohibited_algorithms
+}
+
+default no_prohibited_algorithms := false
+
 no_prohibited_algorithms if {
-	violations := [r |
-		r := input.encrypted_resources[_]
-		r.algorithm
-		r.algorithm in input.encryption_standards.prohibited_algorithms
-	]
-	count(violations) == 0
+	is_array(configured_prohibited)
+	count(prohibited_offenders) == 0
 }
 
 # TLS minimum version enforced on all connections involving regulated data
+default tls_minimum_version_enforced := false
+
 tls_minimum_version_enforced if {
 	violations := [conn |
 		conn := input.encrypted_resources_in_transit[_]
 		conn.involves_regulated_data == true
-		not tls_version_acceptable(conn.tls_version)
+		not tls_version_acceptable(object.get(conn, "tls_version", ""))
 	]
 	count(violations) == 0
 }
@@ -224,62 +259,49 @@ code_signing_implemented if {
 # =============================================================================
 
 violations contains v if {
-	not sensitive_data_uses_customer_managed_keys
-	r := input.encrypted_resources[_]
-	r.data_classification in ["sensitive", "restricted", "sovereign"]
-	r.key_management != "customer_managed"
+	some r in cmk_offenders
 	v := {
 		"domain": "cryptographic_sovereignty",
 		"control": "CS-001",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Sensitive data encrypted with provider-managed key: ", r.resource_id]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Sensitive data encrypted with provider-managed key (or key management not recorded): ", object.get(r, "resource_id", "unknown")]),
 		"remediation": "Enable CMEK (Customer-Managed Encryption Keys) or BYOK for this resource",
 	}
 }
 
 violations contains v if {
-	not sovereign_data_uses_hyok
-	r := input.encrypted_resources[_]
-	r.data_classification in ["sovereign", "restricted"]
-	not r.hyok_enabled == true
+	some r in hyok_offenders
 	v := {
 		"domain": "cryptographic_sovereignty",
 		"control": "CS-002",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Sovereign/restricted data does not use HYOK: ", r.resource_id]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Sovereign/restricted data does not use HYOK: ", object.get(r, "resource_id", "unknown")]),
 		"remediation": "Implement Hold Your Own Key (HYOK) with on-premises HSM root of trust",
 	}
 }
 
 violations contains v if {
-	not no_unencrypted_regulated_data
-	r := input.encrypted_resources[_]
-	r.data_classification != "public"
-	r.key_management == "unencrypted"
+	some r in unencrypted_offenders
 	v := {
 		"domain": "cryptographic_sovereignty",
 		"control": "CS-003",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Non-public data stored unencrypted: ", r.resource_id]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Non-public data stored unencrypted: ", object.get(r, "resource_id", "unknown")]),
 		"remediation": "Enable encryption for all non-public data resources immediately",
 	}
 }
 
 violations contains v if {
-	not keys_in_approved_jurisdiction
-	r := input.encrypted_resources[_]
-	r.data_classification in ["sensitive", "restricted", "sovereign"]
-	r.key_management == "customer_managed"
-	not r.key_location_country in input.approved_jurisdictions
+	some r in key_location_offenders
 	v := {
 		"domain": "cryptographic_sovereignty",
 		"control": "CS-004",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Encryption keys stored outside approved jurisdiction: ", r.key_location_country]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Encryption keys stored outside approved jurisdiction (or location not recorded): ", object.get(r, "key_location_country", "unknown")]),
 		"remediation": "Move key material to KMS/HSM located within approved jurisdiction",
 	}
 }
@@ -329,16 +351,25 @@ violations contains v if {
 }
 
 violations contains v if {
-	not no_prohibited_algorithms
-	r := input.encrypted_resources[_]
-	r.algorithm in input.encryption_standards.prohibited_algorithms
+	some r in prohibited_offenders
 	v := {
 		"domain": "cryptographic_sovereignty",
 		"control": "CS-009",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Prohibited algorithm in use: ", r.algorithm, " on resource ", r.resource_id]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Prohibited algorithm in use: ", r.algorithm, " on resource ", object.get(r, "resource_id", "unknown")]),
 		"remediation": "Migrate to approved algorithm (AES-256, RSA-4096, ECDSA P-384, or equivalent)",
+	}
+}
+
+violations contains v if {
+	not is_array(configured_prohibited)
+	v := {
+		"domain": "cryptographic_sovereignty",
+		"control": "CS-009",
+		"severity": "high",
+		"description": "Evidence missing: encryption_standards.prohibited_algorithms is not configured, so prohibited algorithm use cannot be verified",
+		"remediation": "Provide the list of prohibited algorithms in encryption_standards.prohibited_algorithms",
 	}
 }
 
@@ -346,13 +377,13 @@ violations contains v if {
 	not tls_minimum_version_enforced
 	conn := input.encrypted_resources_in_transit[_]
 	conn.involves_regulated_data == true
-	not tls_version_acceptable(conn.tls_version)
+	not tls_version_acceptable(object.get(conn, "tls_version", ""))
 	v := {
 		"domain": "cryptographic_sovereignty",
 		"control": "CS-010",
 		"severity": "high",
-		"connection_id": conn.connection_id,
-		"description": concat("", ["TLS version below minimum on regulated data connection: ", conn.tls_version]),
+		"connection_id": object.get(conn, "connection_id", "unknown"),
+		"description": concat("", ["TLS version below minimum on regulated data connection: ", object.get(conn, "tls_version", "not recorded")]),
 		"remediation": "Upgrade to TLS 1.2 minimum; TLS 1.3 preferred",
 	}
 }
