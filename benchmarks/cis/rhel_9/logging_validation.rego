@@ -79,10 +79,14 @@ journald_violations contains violation if {
 # CIS 4.2.1.4 - RSYSLOG FILE PERMISSIONS
 # =============================================================================
 
+rsyslog_violations contains "CIS 4.2.1.4: evidence missing — rsyslog.file_create_mode not collected" if {
+	not input.rsyslog.file_create_mode
+}
+
 rsyslog_violations contains violation if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
-	violation := sprintf("CIS 4.2.1.4: rsyslog $FileCreateMode is not secure (current: %s, expected: 0640 or 0600)", [
+	input.rsyslog.file_create_mode
+	not mode_within(input.rsyslog.file_create_mode, "0640")
+	violation := sprintf("CIS 4.2.1.4: rsyslog $FileCreateMode is not secure (current: %s, expected: 0640 or more restrictive)", [
 		input.rsyslog.file_create_mode,
 	])
 }
@@ -252,3 +256,14 @@ report := {
 	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
