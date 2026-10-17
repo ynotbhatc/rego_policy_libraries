@@ -21,6 +21,18 @@ import rego.v1
 # CIS RHEL 9 Benchmark v2.0.0 - Sections 5.3-5.4 & 6.2: User Accounts and Environment
 # Validates user account security and environment configuration
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # =============================================================================
 # CIS 5.3.1 - Ensure sudo is installed
 # =============================================================================
@@ -126,6 +138,8 @@ violations contains {
 # =============================================================================
 
 validate_sudo_timeout if {
+    # -1 means the credential cache never expires
+    to_number(input.user_accounts.sudo_config.timestamp_timeout) >= 0
     to_number(input.user_accounts.sudo_config.timestamp_timeout) <= 15
 }
 
@@ -135,7 +149,7 @@ violations contains {
     "severity": "medium",
     "description": "sudo timestamp timeout should be 15 minutes or less",
     "status": "fail",
-    "finding": sprintf("sudo timestamp_timeout=%v (should be <= 15)", [input.user_accounts.sudo_config.timestamp_timeout]),
+    "finding": sprintf("sudo timestamp_timeout=%v (should be between 0 and 15)", [input.user_accounts.sudo_config.timestamp_timeout]),
     "remediation": "Edit /etc/sudoers and set 'Defaults timestamp_timeout=15'"
 } if {
     not validate_sudo_timeout
@@ -395,7 +409,7 @@ violations contains {
 # =============================================================================
 
 validate_home_directory_permissions(user) if {
-    user.home_mode_octal <= 750
+    mode_within(user.home_mode_octal, "0750")
     user.home_owner == user.username
 }
 
