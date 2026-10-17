@@ -175,12 +175,10 @@ wireless_disabled if {
 	input.network_config.wireless_disabled == true
 }
 
+# Missing evidence is not a pass: the interface list must be collected (empty = none found).
 wireless_disabled if {
+	is_array(input.wireless_interfaces)
 	count(input.wireless_interfaces) == 0
-}
-
-wireless_disabled if {
-	not input.wireless_interfaces
 }
 
 status_ol08_00_040110 := "Not_a_Finding" if { wireless_disabled } else := "Open"
@@ -221,12 +219,10 @@ finding_ol08_00_040111 := {
 # Network interfaces must not be in promiscuous mode
 default no_promiscuous_interfaces := false
 
+# Missing evidence is not a pass: the interface list must be collected (empty = none found).
 no_promiscuous_interfaces if {
+	is_array(input.promiscuous_interfaces)
 	count(input.promiscuous_interfaces) == 0
-}
-
-no_promiscuous_interfaces if {
-	not input.promiscuous_interfaces
 }
 
 status_ol08_00_040330 := "Not_a_Finding" if { no_promiscuous_interfaces } else := "Open"
@@ -272,7 +268,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# Evidence gate: a module with none of its facts collected is unevaluated, not compliant.
+evidence_present if {
+	some key in {"kernel_params", "network_config", "wireless_interfaces", "promiscuous_interfaces", "kernel_modules"}
+	object.get(input, key, null) != null
+}
+
+# NOTE: `compliant` is scoped to CAT I findings only (module convention), and this module carries
+# no CAT I findings. Whether CAT II should also gate it is an open scope decision, see the
+# validation 2026-10-17 report.
 compliant if {
+	evidence_present
 	count(open_cat_i) == 0
 }
 
