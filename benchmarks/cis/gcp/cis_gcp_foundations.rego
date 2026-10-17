@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [cloud, gcp]
 #   coverage:
-#     checks: 7
-#     cited: 7
+#     checks: 9
+#     cited: 8
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_gcp_foundations
 
 # CIS Google Cloud Platform Foundation Benchmark v4.0.0

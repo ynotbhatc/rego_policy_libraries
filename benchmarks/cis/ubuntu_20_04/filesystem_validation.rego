@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 4
-#     cited: 2
+#     checks: 8
+#     cited: 4
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.filesystem
 
 # CIS Ubuntu 20.04 - Section 1.1 Filesystem Configuration

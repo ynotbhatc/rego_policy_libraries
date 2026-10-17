@@ -29,10 +29,10 @@ test_missing_system_files_flagged if has("6.1.0: evidence missing — ansible_fa
 
 test_system_files_present_clears_evidence_violation if not has("6.1.0: evidence missing — ansible_facts.system_files not collected", {"ansible_facts": {"system_files": []}})
 
-test_unwired_grub_check_evaluated if has("1.x2: Ensure grub config is secure (root:root, mode 0600 or stricter)", {"ansible_facts": {}})
+test_unwired_grub_check_evaluated if has("UNMAPPED-RHEL10-1.2: Ensure grub config is secure (root:root, mode 0600 or stricter)", {"ansible_facts": {}})
 
-test_grub_mode_stricter_than_600_ok if not has("1.x2: Ensure grub config is secure (root:root, mode 0600 or stricter)", {"ansible_facts": {"grub_config": {"owner": "root", "group": "root", "mode": "0400"}}})
+test_grub_mode_stricter_than_600_ok if not has("UNMAPPED-RHEL10-1.2: Ensure grub config is secure (root:root, mode 0600 or stricter)", {"ansible_facts": {"grub_config": {"owner": "root", "group": "root", "mode": "0400"}}})
 
-test_grub_mode_644_flagged if has("1.x2: Ensure grub config is secure (root:root, mode 0600 or stricter)", {"ansible_facts": {"grub_config": {"owner": "root", "group": "root", "mode": "0644"}}})
+test_grub_mode_644_flagged if has("UNMAPPED-RHEL10-1.2: Ensure grub config is secure (root:root, mode 0600 or stricter)", {"ansible_facts": {"grub_config": {"owner": "root", "group": "root", "mode": "0644"}}})
 
-test_cron_allow_mode_600_ok if not has("5.x2: Ensure cron access is restricted", {"ansible_facts": {"file_permissions": {"/etc/cron.allow": {"owner": "root", "group": "root", "mode": "0600"}}}})
+test_cron_allow_mode_600_ok if not has("UNMAPPED-RHEL10-5.2: Ensure cron access is restricted", {"ansible_facts": {"file_permissions": {"/etc/cron.allow": {"owner": "root", "group": "root", "mode": "0600"}}}})

@@ -712,7 +712,7 @@
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-18",
-      "title": "Provenance: Build source URI does not match expected repository",
+      "title": "Provenance: Build source URI missing from provenance (cannot verify repository)",
       "props": [
        {
         "name": "label",
@@ -738,13 +738,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-18_stmt",
         "name": "statement",
-        "prose": "Provenance: Build source URI does not match expected repository"
+        "prose": "Provenance: Build source URI missing from provenance (cannot verify repository)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-19",
-      "title": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
+      "title": "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)",
       "props": [
        {
         "name": "label",
@@ -770,13 +770,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-19_stmt",
         "name": "statement",
-        "prose": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)"
+        "prose": "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-20",
-      "title": "Provenance: Provenance predicate type not SLSA v1.0",
+      "title": "Provenance: Build source URI does not match expected repository",
       "props": [
        {
         "name": "label",
@@ -802,13 +802,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-20_stmt",
         "name": "statement",
-        "prose": "Provenance: Provenance predicate type not SLSA v1.0"
+        "prose": "Provenance: Build source URI does not match expected repository"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-21",
-      "title": "Provenance: Builder identity not in approved builder registry",
+      "title": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
       "props": [
        {
         "name": "label",
@@ -833,6 +833,70 @@
       "parts": [
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-21_stmt",
+        "name": "statement",
+        "prose": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-22",
+      "title": "Provenance: Provenance predicate type not SLSA v1.0",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501e951-c4c3-5810-ae75-bba3dc9dfc5b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-22_stmt",
+        "name": "statement",
+        "prose": "Provenance: Provenance predicate type not SLSA v1.0"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-23",
+      "title": "Provenance: Builder identity not in approved builder registry",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5501e951-c4c3-5810-ae75-bba3dc9dfc5b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-23_stmt",
         "name": "statement",
         "prose": "Provenance: Builder identity not in approved builder registry"
        }

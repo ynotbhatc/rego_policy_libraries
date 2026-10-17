@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 13
+#     checks: 16
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cra.online_marketplace
 
 import rego.v1

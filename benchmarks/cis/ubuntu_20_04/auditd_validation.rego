@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 15
+#     checks: 19
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.auditd
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)

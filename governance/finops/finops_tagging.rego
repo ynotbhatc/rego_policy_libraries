@@ -6,14 +6,14 @@
 #   source: finops-foundation
 #   domains: [finops, cost]
 #   coverage:
-#     checks: 18
+#     checks: 19
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package finops.tagging
 
 # FinOps / Cost Governance — Resource Tagging & Organization Policy

@@ -1318,6 +1318,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.1",
+      "title": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#74f60c76-1973-5321-b7df-95523aef5752",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.1_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -1916,6 +1949,11 @@
         "id": "cmmc-CMMC-CM.L2-3.4.1_stmt",
         "name": "statement",
         "prose": "System '%v' has no documented baseline configuration. Baselines must be established for all CUI systems."
+       },
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.systems not supplied or empty; per-system configuration checks cannot be evaluated"
        }
       ],
       "class": "compliance"
@@ -1987,11 +2025,6 @@
         "id": "cmmc-CMMC-CM.L2-3.4.3_obj.1",
         "name": "assessment-objective",
         "prose": "Changes are not reviewed before implementation. Security impact analysis is required for all changes."
-       },
-       {
-        "id": "cmmc-CMMC-CM.L2-3.4.3_obj.2",
-        "name": "assessment-objective",
-        "prose": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "compliance"
@@ -2492,6 +2525,39 @@
         "id": "cmmc-cmmc.configuration_management-9_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-10",
+      "title": "CMMC CM: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e91bd42c-16d1-5074-b438-063cbd49c065",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-10_stmt",
+        "name": "statement",
+        "prose": "CMMC CM: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "compliance"
@@ -3009,6 +3075,11 @@
        },
        {
         "id": "cmmc-CMMC-IR.L2-3.6.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
+       },
+       {
+        "id": "cmmc-CMMC-IR.L2-3.6.1_obj.4",
         "name": "assessment-objective",
         "prose": "FAIL-CLOSED - facts 'input.incident_response' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }

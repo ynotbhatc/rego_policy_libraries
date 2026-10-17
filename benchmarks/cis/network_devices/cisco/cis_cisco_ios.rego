@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [network, cisco]
 #   coverage:
-#     checks: 3
-#     cited: 3
-#     density: sparse
+#     checks: 47
+#     cited: 47
+#     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_cisco_ios
 
 # CIS Cisco IOS Benchmark v4.1.0
@@ -48,39 +48,39 @@ evidence_violations := [
 
 # Section 1: Management Plane
 management_plane_checks := [
-	{"msg": "1.x2: Ensure aaa authentication login is configured", "ok": aaa_authentication_login_configured},
-	{"msg": "1.x3: Ensure aaa authorization exec is configured", "ok": aaa_authorization_exec_configured},
-	{"msg": "1.x4: Ensure aaa accounting exec is configured", "ok": aaa_accounting_exec_configured},
-	{"msg": "1.x5: Ensure aaa accounting commands is configured", "ok": aaa_accounting_commands_configured},
-	{"msg": "1.x6: Ensure aaa accounting connection is configured", "ok": aaa_accounting_connection_configured},
-	{"msg": "1.x7: Ensure aaa accounting system is configured", "ok": aaa_accounting_system_configured},
-	{"msg": "1.x8: Ensure enable secret is configured", "ok": enable_secret_configured},
-	{"msg": "1.x9: Ensure service password encryption is configured", "ok": service_password_encryption_configured},
-	{"msg": "1.x10: Ensure banner motd is configured", "ok": banner_motd_configured},
-	{"msg": "1.x11: Ensure banner login is configured", "ok": banner_login_configured},
-	{"msg": "1.x12: Ensure banner exec is configured", "ok": banner_exec_configured},
-	{"msg": "1.x13: Ensure vty transport ssh only", "ok": vty_transport_ssh_only},
-	{"msg": "1.x14: Ensure vty exec timeout is configured", "ok": vty_exec_timeout_configured},
-	{"msg": "1.x15: Ensure vty logging synchronous is configured", "ok": vty_logging_synchronous_configured},
-	{"msg": "1.x16: Ensure vty access class is configured", "ok": vty_access_class_configured},
-	{"msg": "1.x17: Ensure console exec timeout is configured", "ok": console_exec_timeout_configured},
-	{"msg": "1.x18: Ensure console logging synchronous is configured", "ok": console_logging_synchronous_configured},
-	{"msg": "1.x19: Ensure ssh version 2 is configured", "ok": ssh_version_2_configured},
-	{"msg": "1.x20: Ensure ssh timeout is configured", "ok": ssh_timeout_configured},
-	{"msg": "1.x21: Ensure ssh auth retries is configured", "ok": ssh_auth_retries_configured},
-	{"msg": "1.x22: Ensure logging on is configured", "ok": logging_on_configured},
-	{"msg": "1.x23: Ensure logging buffered is configured", "ok": logging_buffered_configured},
-	{"msg": "1.x24: Ensure logging console is configured", "ok": logging_console_configured},
-	{"msg": "1.x25: Ensure logging host is configured", "ok": logging_host_configured},
-	{"msg": "1.x26: Ensure logging trap is configured", "ok": logging_trap_configured},
-	{"msg": "1.x27: Ensure service timestamps log is configured", "ok": service_timestamps_log_configured},
-	{"msg": "1.x28: Ensure service timestamps debug is configured", "ok": service_timestamps_debug_configured},
-	{"msg": "1.x29: Ensure ntp authenticate is configured", "ok": ntp_authenticate_configured},
-	{"msg": "1.x30: Ensure ntp authentication key is configured", "ok": ntp_authentication_key_configured},
-	{"msg": "1.x31: Ensure ntp trusted key is configured", "ok": ntp_trusted_key_configured},
-	{"msg": "1.x32: Ensure ntp server with key is configured", "ok": ntp_server_with_key_configured},
-	{"msg": "1.x33: Ensure snmp server location is configured", "ok": snmp_server_location_configured},
-	{"msg": "1.x34: Ensure snmp server contact is configured", "ok": snmp_server_contact_configured},
+	{"msg": "UNMAPPED-CISCO-1.2: Ensure aaa authentication login is configured", "ok": aaa_authentication_login_configured},
+	{"msg": "UNMAPPED-CISCO-1.3: Ensure aaa authorization exec is configured", "ok": aaa_authorization_exec_configured},
+	{"msg": "UNMAPPED-CISCO-1.4: Ensure aaa accounting exec is configured", "ok": aaa_accounting_exec_configured},
+	{"msg": "UNMAPPED-CISCO-1.5: Ensure aaa accounting commands is configured", "ok": aaa_accounting_commands_configured},
+	{"msg": "UNMAPPED-CISCO-1.6: Ensure aaa accounting connection is configured", "ok": aaa_accounting_connection_configured},
+	{"msg": "UNMAPPED-CISCO-1.7: Ensure aaa accounting system is configured", "ok": aaa_accounting_system_configured},
+	{"msg": "UNMAPPED-CISCO-1.8: Ensure enable secret is configured", "ok": enable_secret_configured},
+	{"msg": "UNMAPPED-CISCO-1.9: Ensure service password encryption is configured", "ok": service_password_encryption_configured},
+	{"msg": "UNMAPPED-CISCO-1.10: Ensure banner motd is configured", "ok": banner_motd_configured},
+	{"msg": "UNMAPPED-CISCO-1.11: Ensure banner login is configured", "ok": banner_login_configured},
+	{"msg": "UNMAPPED-CISCO-1.12: Ensure banner exec is configured", "ok": banner_exec_configured},
+	{"msg": "UNMAPPED-CISCO-1.13: Ensure vty transport ssh only", "ok": vty_transport_ssh_only},
+	{"msg": "UNMAPPED-CISCO-1.14: Ensure vty exec timeout is configured", "ok": vty_exec_timeout_configured},
+	{"msg": "UNMAPPED-CISCO-1.15: Ensure vty logging synchronous is configured", "ok": vty_logging_synchronous_configured},
+	{"msg": "UNMAPPED-CISCO-1.16: Ensure vty access class is configured", "ok": vty_access_class_configured},
+	{"msg": "UNMAPPED-CISCO-1.17: Ensure console exec timeout is configured", "ok": console_exec_timeout_configured},
+	{"msg": "UNMAPPED-CISCO-1.18: Ensure console logging synchronous is configured", "ok": console_logging_synchronous_configured},
+	{"msg": "UNMAPPED-CISCO-1.19: Ensure ssh version 2 is configured", "ok": ssh_version_2_configured},
+	{"msg": "UNMAPPED-CISCO-1.20: Ensure ssh timeout is configured", "ok": ssh_timeout_configured},
+	{"msg": "UNMAPPED-CISCO-1.21: Ensure ssh auth retries is configured", "ok": ssh_auth_retries_configured},
+	{"msg": "UNMAPPED-CISCO-1.22: Ensure logging on is configured", "ok": logging_on_configured},
+	{"msg": "UNMAPPED-CISCO-1.23: Ensure logging buffered is configured", "ok": logging_buffered_configured},
+	{"msg": "UNMAPPED-CISCO-1.24: Ensure logging console is configured", "ok": logging_console_configured},
+	{"msg": "UNMAPPED-CISCO-1.25: Ensure logging host is configured", "ok": logging_host_configured},
+	{"msg": "UNMAPPED-CISCO-1.26: Ensure logging trap is configured", "ok": logging_trap_configured},
+	{"msg": "UNMAPPED-CISCO-1.27: Ensure service timestamps log is configured", "ok": service_timestamps_log_configured},
+	{"msg": "UNMAPPED-CISCO-1.28: Ensure service timestamps debug is configured", "ok": service_timestamps_debug_configured},
+	{"msg": "UNMAPPED-CISCO-1.29: Ensure ntp authenticate is configured", "ok": ntp_authenticate_configured},
+	{"msg": "UNMAPPED-CISCO-1.30: Ensure ntp authentication key is configured", "ok": ntp_authentication_key_configured},
+	{"msg": "UNMAPPED-CISCO-1.31: Ensure ntp trusted key is configured", "ok": ntp_trusted_key_configured},
+	{"msg": "UNMAPPED-CISCO-1.32: Ensure ntp server with key is configured", "ok": ntp_server_with_key_configured},
+	{"msg": "UNMAPPED-CISCO-1.33: Ensure snmp server location is configured", "ok": snmp_server_location_configured},
+	{"msg": "UNMAPPED-CISCO-1.34: Ensure snmp server contact is configured", "ok": snmp_server_contact_configured},
 ]
 
 management_plane_violations := array.concat(
@@ -371,17 +371,17 @@ snmp_server_contact_configured if {
 
 # Section 2: Control Plane
 control_plane_checks := [
-	{"msg": "2.x2: Ensure service pad is disabled", "ok": service_pad_disabled},
-	{"msg": "2.x3: Ensure service udp small servers is disabled", "ok": service_udp_small_servers_disabled},
-	{"msg": "2.x4: Ensure service tcp small servers is disabled", "ok": service_tcp_small_servers_disabled},
-	{"msg": "2.x5: Ensure cdp is disabled", "ok": cdp_disabled},
-	{"msg": "2.x6: Ensure lldp is disabled", "ok": lldp_disabled},
-	{"msg": "2.x7: Ensure service dhcp is disabled", "ok": service_dhcp_disabled},
-	{"msg": "2.x8: Ensure ip bootp server is disabled", "ok": ip_bootp_server_disabled},
-	{"msg": "2.x9: Ensure ip http server is disabled", "ok": ip_http_server_disabled},
-	{"msg": "2.x10: Ensure ip http secure server is disabled", "ok": ip_http_secure_server_disabled},
-	{"msg": "2.x11: Ensure infrastructure acl is configured", "ok": infrastructure_acl_configured},
-	{"msg": "2.x12: Ensure control plane is configured", "ok": control_plane_configured},
+	{"msg": "UNMAPPED-CISCO-2.2: Ensure service pad is disabled", "ok": service_pad_disabled},
+	{"msg": "UNMAPPED-CISCO-2.3: Ensure service udp small servers is disabled", "ok": service_udp_small_servers_disabled},
+	{"msg": "UNMAPPED-CISCO-2.4: Ensure service tcp small servers is disabled", "ok": service_tcp_small_servers_disabled},
+	{"msg": "UNMAPPED-CISCO-2.5: Ensure cdp is disabled", "ok": cdp_disabled},
+	{"msg": "UNMAPPED-CISCO-2.6: Ensure lldp is disabled", "ok": lldp_disabled},
+	{"msg": "UNMAPPED-CISCO-2.7: Ensure service dhcp is disabled", "ok": service_dhcp_disabled},
+	{"msg": "UNMAPPED-CISCO-2.8: Ensure ip bootp server is disabled", "ok": ip_bootp_server_disabled},
+	{"msg": "UNMAPPED-CISCO-2.9: Ensure ip http server is disabled", "ok": ip_http_server_disabled},
+	{"msg": "UNMAPPED-CISCO-2.10: Ensure ip http secure server is disabled", "ok": ip_http_secure_server_disabled},
+	{"msg": "UNMAPPED-CISCO-2.11: Ensure infrastructure acl is configured", "ok": infrastructure_acl_configured},
+	{"msg": "UNMAPPED-CISCO-2.12: Ensure control plane is configured", "ok": control_plane_configured},
 ]
 
 control_plane_violations := array.concat(

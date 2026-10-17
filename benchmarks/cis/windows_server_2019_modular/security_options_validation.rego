@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [windows]
 #   coverage:
-#     checks: 22
-#     cited: 21
+#     checks: 24
+#     cited: 22
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_windows_server_2019.security_options
 
 # CIS Windows Server 2019 Benchmark v4.0.0 - Section 2.3: Security Options

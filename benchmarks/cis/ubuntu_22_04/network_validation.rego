@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 20
+#     checks: 24
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.network
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration

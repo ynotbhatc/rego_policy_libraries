@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cra.oss_steward
 
 import rego.v1

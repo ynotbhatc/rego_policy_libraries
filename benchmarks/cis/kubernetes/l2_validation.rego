@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [kubernetes, container]
 #   coverage:
-#     checks: 42
-#     cited: 42
+#     checks: 43
+#     cited: 43
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_kubernetes.l2
 
 # CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls

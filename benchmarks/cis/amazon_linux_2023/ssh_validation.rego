@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 32
+#     checks: 33
 #     cited: 21
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.ssh
 
 # CIS Amazon Linux 2023 Section 5.2.x - SSH Server Configuration

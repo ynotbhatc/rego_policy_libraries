@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.user_group
 
 import rego.v1

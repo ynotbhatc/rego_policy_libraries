@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 15
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_8.pam
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 5.4/5.5: PAM and User Accounts

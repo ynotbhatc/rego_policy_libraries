@@ -6,14 +6,14 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 59
+#     checks: 62
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package governance.geisa.manifest_validation
 
 import rego.v1

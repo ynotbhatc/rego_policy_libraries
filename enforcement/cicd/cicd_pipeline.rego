@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [cicd]
 #   coverage:
-#     checks: 20
+#     checks: 21
 #     cited: 0
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cicd.pipeline
 
 # CI/CD Pipeline Security Governance

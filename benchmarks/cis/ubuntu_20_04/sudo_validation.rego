@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 11
+#     checks: 12
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.sudo
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.3: Configure Sudo

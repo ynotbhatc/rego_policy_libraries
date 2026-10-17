@@ -2,7 +2,7 @@
  "version": "2.4.2",
  "oscal-version": "1.2.3",
  "frameworks": 174,
- "controls": 16377,
+ "controls": 16572,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -91,7 +91,7 @@
   {
    "framework": "cis_amazon_linux_2023",
    "file": "catalogs/cis_amazon_linux_2023.json",
-   "controls": 201,
+   "controls": 202,
    "modules": 16,
    "uuid": "37ca039c-21b9-59b6-96a6-13ea6466b953"
   },
@@ -105,7 +105,7 @@
   {
    "framework": "cis_aws",
    "file": "catalogs/cis_aws.json",
-   "controls": 46,
+   "controls": 61,
    "modules": 2,
    "uuid": "429be292-3979-5096-b2cf-2b34a3ad5d9a"
   },
@@ -147,7 +147,7 @@
   {
    "framework": "cis_debian_11",
    "file": "catalogs/cis_debian_11.json",
-   "controls": 163,
+   "controls": 172,
    "modules": 15,
    "uuid": "036de2b0-f789-5458-bde8-9a298b5aaf32"
   },
@@ -168,7 +168,7 @@
   {
    "framework": "cis_gcp",
    "file": "catalogs/cis_gcp.json",
-   "controls": 52,
+   "controls": 54,
    "modules": 2,
    "uuid": "eaec1905-e7b2-5918-acfb-f0ceff118414"
   },
@@ -182,7 +182,7 @@
   {
    "framework": "cis_kubernetes",
    "file": "catalogs/cis_kubernetes.json",
-   "controls": 47,
+   "controls": 48,
    "modules": 2,
    "uuid": "ed952d98-18d0-53ec-992b-dbb5174ac716"
   },
@@ -217,8 +217,8 @@
   {
    "framework": "cis_network_devices",
    "file": "catalogs/cis_network_devices.json",
-   "controls": 44,
-   "modules": 5,
+   "controls": 94,
+   "modules": 7,
    "uuid": "18754cce-562a-5674-b09a-9c4c56203ef2"
   },
   {
@@ -273,35 +273,35 @@
   {
    "framework": "cis_rhel_10",
    "file": "catalogs/cis_rhel_10.json",
-   "controls": 8,
+   "controls": 25,
    "modules": 1,
    "uuid": "99654873-a1c1-5f4e-89f1-82dc06bac068"
   },
   {
    "framework": "cis_rhel_8",
    "file": "catalogs/cis_rhel_8.json",
-   "controls": 225,
+   "controls": 227,
    "modules": 15,
    "uuid": "51674634-a293-5e05-a6a8-57c97a0ec8ca"
   },
   {
    "framework": "cis_rhel_9",
    "file": "catalogs/cis_rhel_9.json",
-   "controls": 259,
+   "controls": 260,
    "modules": 20,
    "uuid": "678d74b9-0877-52df-873e-88942908c527"
   },
   {
    "framework": "cis_rocky_linux_8",
    "file": "catalogs/cis_rocky_linux_8.json",
-   "controls": 187,
+   "controls": 188,
    "modules": 14,
    "uuid": "5a023364-a8dd-5c2f-b684-7703217e27c6"
   },
   {
    "framework": "cis_rocky_linux_9",
    "file": "catalogs/cis_rocky_linux_9.json",
-   "controls": 187,
+   "controls": 190,
    "modules": 14,
    "uuid": "fce8c668-7a77-5fd4-9b98-f2536e7249ed"
   },
@@ -315,21 +315,21 @@
   {
    "framework": "cis_ubuntu_20_04",
    "file": "catalogs/cis_ubuntu_20_04.json",
-   "controls": 163,
+   "controls": 173,
    "modules": 15,
    "uuid": "be9419cf-a51d-58ee-957b-68952aea1fce"
   },
   {
    "framework": "cis_ubuntu_22_04",
    "file": "catalogs/cis_ubuntu_22_04.json",
-   "controls": 205,
+   "controls": 214,
    "modules": 16,
    "uuid": "7fc57284-13ab-5c7d-b8cd-c2054d6e5699"
   },
   {
    "framework": "cis_ubuntu_24_04",
    "file": "catalogs/cis_ubuntu_24_04.json",
-   "controls": 205,
+   "controls": 214,
    "modules": 16,
    "uuid": "c68fd62d-a58d-548d-b2f4-1bdfd0ce4f3b"
   },
@@ -371,7 +371,7 @@
   {
    "framework": "cis_windows_server_2019_modular",
    "file": "catalogs/cis_windows_server_2019_modular.json",
-   "controls": 173,
+   "controls": 177,
    "modules": 10,
    "uuid": "b87628bd-bc9f-588e-9d58-03c2d5d0d04d"
   },
@@ -420,7 +420,7 @@
   {
    "framework": "cmmc",
    "file": "catalogs/cmmc.json",
-   "controls": 153,
+   "controls": 155,
    "modules": 15,
    "uuid": "64a9b2fd-347c-5fad-8164-787b0dffd08c"
   },
@@ -455,7 +455,7 @@
   {
    "framework": "cra",
    "file": "catalogs/cra.json",
-   "controls": 177,
+   "controls": 180,
    "modules": 17,
    "uuid": "ea4d4198-50c0-5ab0-83a9-a2831eb923a5"
   },
@@ -497,7 +497,7 @@
   {
    "framework": "digital_sovereignty",
    "file": "catalogs/digital_sovereignty.json",
-   "controls": 241,
+   "controls": 276,
    "modules": 12,
    "uuid": "5da68920-22ef-529e-8388-f5ccfa8fb1ab"
   },
@@ -525,14 +525,14 @@
   {
    "framework": "enforcement_ansible",
    "file": "catalogs/enforcement_ansible.json",
-   "controls": 8,
+   "controls": 9,
    "modules": 2,
    "uuid": "06bdffd0-0a39-584e-abef-a92655da485d"
   },
   {
    "framework": "enforcement_cicd",
    "file": "catalogs/enforcement_cicd.json",
-   "controls": 20,
+   "controls": 21,
    "modules": 1,
    "uuid": "720612a8-074a-550c-ad7c-0f95872ad0a5"
   },
@@ -553,7 +553,7 @@
   {
    "framework": "enforcement_kubernetes",
    "file": "catalogs/enforcement_kubernetes.json",
-   "controls": 41,
+   "controls": 42,
    "modules": 2,
    "uuid": "20c852d4-5748-56f9-87e8-2dfb0ef851d2"
   },
@@ -567,14 +567,14 @@
   {
    "framework": "enforcement_supply_chain",
    "file": "catalogs/enforcement_supply_chain.json",
-   "controls": 24,
+   "controls": 26,
    "modules": 1,
    "uuid": "b3779659-3917-5574-80ae-5386a78a7087"
   },
   {
    "framework": "enforcement_terraform",
    "file": "catalogs/enforcement_terraform.json",
-   "controls": 16,
+   "controls": 17,
    "modules": 2,
    "uuid": "6a4b2d82-8208-563e-8fa3-2cb74224399a"
   },
@@ -595,7 +595,7 @@
   {
    "framework": "eu_ai_act",
    "file": "catalogs/eu_ai_act.json",
-   "controls": 53,
+   "controls": 58,
    "modules": 6,
    "uuid": "d8fe35d5-855c-5725-a28b-7cf9382c6b33"
   },
@@ -637,7 +637,7 @@
   {
    "framework": "finops",
    "file": "catalogs/finops.json",
-   "controls": 18,
+   "controls": 19,
    "modules": 1,
    "uuid": "f108fa68-f701-5551-a636-02832559ba2a"
   },
@@ -665,7 +665,7 @@
   {
    "framework": "geisa",
    "file": "catalogs/geisa.json",
-   "controls": 88,
+   "controls": 93,
    "modules": 5,
    "uuid": "36d721f7-1d1d-512d-860f-1f9085b8aa1b"
   },
@@ -777,7 +777,7 @@
   {
    "framework": "nerc_cip",
    "file": "catalogs/nerc_cip.json",
-   "controls": 203,
+   "controls": 207,
    "modules": 15,
    "uuid": "b66d5c38-1c50-5150-b76a-3dd80a03ce2f"
   },

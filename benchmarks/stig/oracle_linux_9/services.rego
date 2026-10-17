@@ -12,8 +12,8 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package stig.oracle_linux_9.services
 
 # DISA STIG for Oracle Linux 9 - Services Module

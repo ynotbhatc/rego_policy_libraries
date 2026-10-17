@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 8
-#     density: section
-#     basis: role
+#     checks: 25
+#     cited: 25
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)
@@ -58,8 +58,8 @@ violations := [v |
 
 # Section 1: Initial Setup (Enhanced for RHEL 10)
 initial_setup_checks := [
-	{"msg": "1.x2: Ensure grub config is secure (root:root, mode 0600 or stricter)", "ok": grub_config_secure},
-	{"msg": "1.x3: Ensure core dumps are restricted", "ok": core_dumps_restricted},
+	{"msg": "UNMAPPED-RHEL10-1.2: Ensure grub config is secure (root:root, mode 0600 or stricter)", "ok": grub_config_secure},
+	{"msg": "UNMAPPED-RHEL10-1.3: Ensure core dumps are restricted", "ok": core_dumps_restricted},
 ]
 
 initial_setup_violations := array.concat(
@@ -221,7 +221,7 @@ file_permissions_secure(file, expected_owner, expected_group, expected_mode) if 
 
 # Section 2: Services (Enhanced for RHEL 10)
 services_checks := [
-	{"msg": "2.x2: Ensure mta local only is configured", "ok": mta_local_only_configured},
+	{"msg": "UNMAPPED-RHEL10-2.2: Ensure mta local only is configured", "ok": mta_local_only_configured},
 ]
 
 services_violations := array.concat(
@@ -267,10 +267,10 @@ mta_local_only_configured if {
 
 # Section 3: Network Configuration (Enhanced for RHEL 10)
 network_checks := [
-	{"msg": "3.x2: Ensure nftables base chains (input, forward, output) exist", "ok": nftables_base_chains_exist},
-	{"msg": "3.x3: Ensure nftables loopback is configured", "ok": nftables_loopback_configured},
-	{"msg": "3.x4: Ensure nftables outbound is configured", "ok": nftables_outbound_configured},
-	{"msg": "3.x5: Ensure nftables default deny is configured", "ok": nftables_default_deny_configured},
+	{"msg": "UNMAPPED-RHEL10-3.2: Ensure nftables base chains (input, forward, output) exist", "ok": nftables_base_chains_exist},
+	{"msg": "UNMAPPED-RHEL10-3.3: Ensure nftables loopback is configured", "ok": nftables_loopback_configured},
+	{"msg": "UNMAPPED-RHEL10-3.4: Ensure nftables outbound is configured", "ok": nftables_outbound_configured},
+	{"msg": "UNMAPPED-RHEL10-3.5: Ensure nftables default deny is configured", "ok": nftables_default_deny_configured},
 ]
 
 network_violations := array.concat(
@@ -449,13 +449,13 @@ log_file_permissions_secure(log_file) if {
 
 # Section 5: Access, Authentication and Authorization (Enhanced for RHEL 10)
 access_auth_checks := [
-	{"msg": "5.x2: Ensure cron access is restricted", "ok": cron_access_restricted},
-	{"msg": "5.x3: Ensure at access is restricted", "ok": at_access_restricted},
-	{"msg": "5.x4: Ensure pam faillock is configured", "ok": pam_faillock_configured},
-	{"msg": "5.x5: Ensure pam pwquality is configured", "ok": pam_pwquality_configured},
-	{"msg": "5.x6: Ensure password lockout is configured", "ok": password_lockout_configured},
-	{"msg": "5.x7: Ensure shell timeout is configured", "ok": shell_timeout_configured},
-	{"msg": "5.x8: Ensure su access is restricted", "ok": su_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.2: Ensure cron access is restricted", "ok": cron_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.3: Ensure at access is restricted", "ok": at_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.4: Ensure pam faillock is configured", "ok": pam_faillock_configured},
+	{"msg": "UNMAPPED-RHEL10-5.5: Ensure pam pwquality is configured", "ok": pam_pwquality_configured},
+	{"msg": "UNMAPPED-RHEL10-5.6: Ensure password lockout is configured", "ok": password_lockout_configured},
+	{"msg": "UNMAPPED-RHEL10-5.7: Ensure shell timeout is configured", "ok": shell_timeout_configured},
+	{"msg": "UNMAPPED-RHEL10-5.8: Ensure su access is restricted", "ok": su_access_restricted},
 ]
 
 access_auth_violations := array.concat(
@@ -648,7 +648,7 @@ su_access_restricted if {
 # Section 6: System Maintenance (Enhanced for RHEL 10)
 system_maintenance_checks := [
 	{"msg": "6.1.0: evidence missing — ansible_facts.system_files not collected", "ok": system_files_collected},
-	{"msg": "6.x2: Ensure root PATH is secure", "ok": root_path_secure},
+	{"msg": "UNMAPPED-RHEL10-6.2: Ensure root PATH is secure", "ok": root_path_secure},
 ]
 
 system_maintenance_violations := array.concat(
@@ -725,7 +725,7 @@ directory_exists(path) if {
 
 # Section 7: Container Security (New for RHEL 10)
 container_security_checks := [
-	{"msg": "7.x2: Ensure container network policies is configured", "ok": container_network_policies_configured},
+	{"msg": "UNMAPPED-RHEL10-7.2: Ensure container network policies is configured", "ok": container_network_policies_configured},
 ]
 
 container_security_violations := array.concat(

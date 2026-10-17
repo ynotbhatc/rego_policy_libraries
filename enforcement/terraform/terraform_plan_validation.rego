@@ -22,14 +22,14 @@
 #   source: aac
 #   domains: [iac, terraform]
 #   coverage:
-#     checks: 13
+#     checks: 14
 #     cited: 0
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package enforcement.terraform.plan
 
 import rego.v1

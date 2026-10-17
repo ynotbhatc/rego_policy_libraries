@@ -133,7 +133,7 @@
      },
      {
       "id": "geisa-governance.geisa.adm-3",
-      "title": "ADM: LwM2M version must be >= 1.1, got '%s'",
+      "title": "ADM: lwm2m.version missing or not a string/number",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "geisa-governance.geisa.adm-3_stmt",
         "name": "statement",
-        "prose": "ADM: LwM2M version must be >= 1.1, got '%s'"
+        "prose": "ADM: lwm2m.version missing or not a string/number"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-4",
-      "title": "ADM: Object /9 (Software Management) must be registered",
+      "title": "ADM: LwM2M version must be >= 1.1, got '%s'",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "geisa-governance.geisa.adm-4_stmt",
         "name": "statement",
-        "prose": "ADM: Object /9 (Software Management) must be registered"
+        "prose": "ADM: LwM2M version must be >= 1.1, got '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-5",
-      "title": "ADM: lwm2m.object9 missing or not an object",
+      "title": "ADM: lwm2m.registered_objects missing or not an array",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "geisa-governance.geisa.adm-5_stmt",
         "name": "statement",
-        "prose": "ADM: lwm2m.object9 missing or not an object"
+        "prose": "ADM: lwm2m.registered_objects missing or not an array"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-6",
-      "title": "ADM: update_result must be 1 (Success), got %v",
+      "title": "ADM: Object /9 (Software Management) must be registered",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "geisa-governance.geisa.adm-6_stmt",
         "name": "statement",
-        "prose": "ADM: update_result must be 1 (Success), got %v"
+        "prose": "ADM: Object /9 (Software Management) must be registered"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-7",
-      "title": "ADM: update_state must be 4 (Installed), got %v",
+      "title": "ADM: lwm2m.object9 missing or not an object",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "geisa-governance.geisa.adm-7_stmt",
         "name": "statement",
-        "prose": "ADM: update_state must be 4 (Installed), got %v"
+        "prose": "ADM: lwm2m.object9 missing or not an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-8",
-      "title": "ADM: activation_state must be 1 (Active)",
+      "title": "ADM: update_result must be 1 (Success), got %v",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "geisa-governance.geisa.adm-8_stmt",
         "name": "statement",
-        "prose": "ADM: activation_state must be 1 (Active)"
+        "prose": "ADM: update_result must be 1 (Success), got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-9",
-      "title": "ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'",
+      "title": "ADM: update_state must be 4 (Installed), got %v",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "geisa-governance.geisa.adm-9_stmt",
         "name": "statement",
-        "prose": "ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'"
+        "prose": "ADM: update_state must be 4 (Installed), got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.adm-10",
-      "title": "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "title": "ADM: activation_state must be 1 (Active)",
       "props": [
        {
         "name": "label",
@@ -389,6 +389,72 @@
       "parts": [
        {
         "id": "geisa-governance.geisa.adm-10_stmt",
+        "name": "statement",
+        "prose": "ADM: activation_state must be 1 (Active)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-11",
+      "title": "ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d761439f-6e7c-5ed9-983c-fff42098301a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-11_stmt",
+        "name": "statement",
+        "prose": "ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.adm-12",
+      "title": "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.adm#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.adm#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.adm"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d761439f-6e7c-5ed9-983c-fff42098301a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.adm-12_stmt",
         "name": "statement",
         "prose": "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
@@ -1195,7 +1261,7 @@
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-7",
-      "title": "manifest: missing required field '%s'",
+      "title": "geisa-application-manifest.signature: must be a 64-character hex string, got a non-string value",
       "props": [
        {
         "name": "label",
@@ -1221,14 +1287,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-7_stmt",
         "name": "statement",
-        "prose": "manifest: missing required field '%s'"
+        "prose": "geisa-application-manifest.signature: must be a 64-character hex string, got a non-string value"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-8",
-      "title": "manifest.app-id: must be a string with at least 4 characters",
+      "title": "manifest: missing required field '%s'",
       "props": [
        {
         "name": "label",
@@ -1254,14 +1320,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-8_stmt",
         "name": "statement",
-        "prose": "manifest.app-id: must be a string with at least 4 characters"
+        "prose": "manifest: missing required field '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-9",
-      "title": "manifest.author: must be a string with at least 4 characters",
+      "title": "manifest.app-id: must be a string with at least 4 characters",
       "props": [
        {
         "name": "label",
@@ -1287,14 +1353,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-9_stmt",
         "name": "statement",
-        "prose": "manifest.author: must be a string with at least 4 characters"
+        "prose": "manifest.app-id: must be a string with at least 4 characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-10",
-      "title": "manifest.name: must be a string with at least 4 characters",
+      "title": "manifest.author: must be a string with at least 4 characters",
       "props": [
        {
         "name": "label",
@@ -1320,14 +1386,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-10_stmt",
         "name": "statement",
-        "prose": "manifest.name: must be a string with at least 4 characters"
+        "prose": "manifest.author: must be a string with at least 4 characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-11",
-      "title": "manifest.description: must be a string",
+      "title": "manifest.name: must be a string with at least 4 characters",
       "props": [
        {
         "name": "label",
@@ -1353,14 +1419,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-11_stmt",
         "name": "statement",
-        "prose": "manifest.description: must be a string"
+        "prose": "manifest.name: must be a string with at least 4 characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-12",
-      "title": "manifest.app-version: '%s' does not match required version pattern (X.Y.Z)",
+      "title": "manifest.description: must be a string",
       "props": [
        {
         "name": "label",
@@ -1386,14 +1452,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-12_stmt",
         "name": "statement",
-        "prose": "manifest.app-version: '%s' does not match required version pattern (X.Y.Z)"
+        "prose": "manifest.description: must be a string"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-13",
-      "title": "manifest.manifest-version: must be '1.0.0', got '%s'",
+      "title": "manifest.app-version: '%s' does not match required version pattern (X.Y.Z)",
       "props": [
        {
         "name": "label",
@@ -1419,14 +1485,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-13_stmt",
         "name": "statement",
-        "prose": "manifest.manifest-version: must be '1.0.0', got '%s'"
+        "prose": "manifest.app-version: '%s' does not match required version pattern (X.Y.Z)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-14",
-      "title": "manifest.api-access: must be an object",
+      "title": "manifest.manifest-version: must be '1.0.0', got '%s'",
       "props": [
        {
         "name": "label",
@@ -1452,14 +1518,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-14_stmt",
         "name": "statement",
-        "prose": "manifest.api-access: must be an object"
+        "prose": "manifest.manifest-version: must be '1.0.0', got '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-15",
-      "title": "manifest.api-access.%s: must be a boolean",
+      "title": "manifest.api-access: must be an object",
       "props": [
        {
         "name": "label",
@@ -1485,14 +1551,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-15_stmt",
         "name": "statement",
-        "prose": "manifest.api-access.%s: must be a boolean"
+        "prose": "manifest.api-access: must be an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-16",
-      "title": "manifest.artifacts: must be an array",
+      "title": "manifest.api-access.%s: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -1518,14 +1584,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-16_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts: must be an array"
+        "prose": "manifest.api-access.%s: must be a boolean"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-17",
-      "title": "manifest.artifacts: must contain at least 1 item",
+      "title": "manifest.artifacts: must be an array",
       "props": [
        {
         "name": "label",
@@ -1551,14 +1617,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-17_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts: must contain at least 1 item"
+        "prose": "manifest.artifacts: must be an array"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-18",
-      "title": "manifest.external-dependencies: must be an array",
+      "title": "manifest.artifacts: must contain at least 1 item",
       "props": [
        {
         "name": "label",
@@ -1584,14 +1650,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-18_stmt",
         "name": "statement",
-        "prose": "manifest.external-dependencies: must be an array"
+        "prose": "manifest.artifacts: must contain at least 1 item"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-19",
-      "title": "manifest.external-dependencies[%d]: must be a string",
+      "title": "manifest.external-dependencies: must be an array",
       "props": [
        {
         "name": "label",
@@ -1617,14 +1683,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-19_stmt",
         "name": "statement",
-        "prose": "manifest.external-dependencies[%d]: must be a string"
+        "prose": "manifest.external-dependencies: must be an array"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-20",
-      "title": "manifest.default-configuration: must be an object",
+      "title": "manifest.external-dependencies[%d]: must be a string",
       "props": [
        {
         "name": "label",
@@ -1650,14 +1716,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-20_stmt",
         "name": "statement",
-        "prose": "manifest.default-configuration: must be an object"
+        "prose": "manifest.external-dependencies[%d]: must be a string"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-21",
-      "title": "manifest.compatibility: must be an object",
+      "title": "manifest.default-configuration: must be an object",
       "props": [
        {
         "name": "label",
@@ -1683,14 +1749,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-21_stmt",
         "name": "statement",
-        "prose": "manifest.compatibility: must be an object"
+        "prose": "manifest.default-configuration: must be an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-22",
-      "title": "manifest.compatibility.GEISA-API: '%v' is not a valid fixed version (X.Y.Z)",
+      "title": "manifest.compatibility: must be an object",
       "props": [
        {
         "name": "label",
@@ -1716,14 +1782,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-22_stmt",
         "name": "statement",
-        "prose": "manifest.compatibility.GEISA-API: '%v' is not a valid fixed version (X.Y.Z)"
+        "prose": "manifest.compatibility: must be an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-23",
-      "title": "manifest.compatibility.GEISA-LEE: '%v' must be a valid fixed version (X.Y.Z) or null",
+      "title": "manifest.compatibility.GEISA-API: '%v' is not a valid fixed version (X.Y.Z)",
       "props": [
        {
         "name": "label",
@@ -1749,14 +1815,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-23_stmt",
         "name": "statement",
-        "prose": "manifest.compatibility.GEISA-LEE: '%v' must be a valid fixed version (X.Y.Z) or null"
+        "prose": "manifest.compatibility.GEISA-API: '%v' is not a valid fixed version (X.Y.Z)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-24",
-      "title": "manifest.compatibility.GEISA-VEE: '%v' must be a valid fixed version (X.Y.Z) or null",
+      "title": "manifest.compatibility.GEISA-LEE: '%v' must be a valid fixed version (X.Y.Z) or null",
       "props": [
        {
         "name": "label",
@@ -1782,14 +1848,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-24_stmt",
         "name": "statement",
-        "prose": "manifest.compatibility.GEISA-VEE: '%v' must be a valid fixed version (X.Y.Z) or null"
+        "prose": "manifest.compatibility.GEISA-LEE: '%v' must be a valid fixed version (X.Y.Z) or null"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-25",
-      "title": "manifest.compatibility.toolchain-id: must be a string between 4 and 256 characters",
+      "title": "manifest.compatibility.GEISA-VEE: '%v' must be a valid fixed version (X.Y.Z) or null",
       "props": [
        {
         "name": "label",
@@ -1815,14 +1881,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-25_stmt",
         "name": "statement",
-        "prose": "manifest.compatibility.toolchain-id: must be a string between 4 and 256 characters"
+        "prose": "manifest.compatibility.GEISA-VEE: '%v' must be a valid fixed version (X.Y.Z) or null"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-26",
-      "title": "manifest.compatibility.toolchain-version: '%v' is not a valid fixed version (X.Y.Z)",
+      "title": "manifest.compatibility.toolchain-id: must be a string between 4 and 256 characters",
       "props": [
        {
         "name": "label",
@@ -1848,14 +1914,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-26_stmt",
         "name": "statement",
-        "prose": "manifest.compatibility.toolchain-version: '%v' is not a valid fixed version (X.Y.Z)"
+        "prose": "manifest.compatibility.toolchain-id: must be a string between 4 and 256 characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-27",
-      "title": "manifest.resources: must be an object",
+      "title": "manifest.compatibility.toolchain-version: '%v' is not a valid fixed version (X.Y.Z)",
       "props": [
        {
         "name": "label",
@@ -1881,14 +1947,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-27_stmt",
         "name": "statement",
-        "prose": "manifest.resources: must be an object"
+        "prose": "manifest.compatibility.toolchain-version: '%v' is not a valid fixed version (X.Y.Z)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-28",
-      "title": "manifest.resources.app-ram: must be an integer >= 1",
+      "title": "manifest.resources: must be an object",
       "props": [
        {
         "name": "label",
@@ -1914,14 +1980,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-28_stmt",
         "name": "statement",
-        "prose": "manifest.resources.app-ram: must be an integer >= 1"
+        "prose": "manifest.resources: must be an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-29",
-      "title": "manifest.resources.storage-persistent: must be an integer >= 0",
+      "title": "manifest.resources.app-ram: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -1947,14 +2013,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-29_stmt",
         "name": "statement",
-        "prose": "manifest.resources.storage-persistent: must be an integer >= 0"
+        "prose": "manifest.resources.app-ram: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-30",
-      "title": "manifest.resources.storage-nonpersistent: must be an integer >= 0",
+      "title": "manifest.resources.storage-persistent: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -1980,14 +2046,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-30_stmt",
         "name": "statement",
-        "prose": "manifest.resources.storage-nonpersistent: must be an integer >= 0"
+        "prose": "manifest.resources.storage-persistent: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-31",
-      "title": "manifest.resources.app-cpu: must be an integer >= 1",
+      "title": "manifest.resources.storage-nonpersistent: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -2013,14 +2079,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-31_stmt",
         "name": "statement",
-        "prose": "manifest.resources.app-cpu: must be an integer >= 1"
+        "prose": "manifest.resources.storage-nonpersistent: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-32",
-      "title": "manifest.resources.threads: must be an integer >= 1",
+      "title": "manifest.resources.app-cpu: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -2046,14 +2112,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-32_stmt",
         "name": "statement",
-        "prose": "manifest.resources.threads: must be an integer >= 1"
+        "prose": "manifest.resources.app-cpu: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-33",
-      "title": "manifest.default-launch-strategy: must be an object",
+      "title": "manifest.resources.threads: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -2079,14 +2145,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-33_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy: must be an object"
+        "prose": "manifest.resources.threads: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-34",
-      "title": "manifest.default-launch-strategy.max-restarts: must be an integer >= 0",
+      "title": "manifest.default-launch-strategy: must be an object",
       "props": [
        {
         "name": "label",
@@ -2112,14 +2178,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-34_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.max-restarts: must be an integer >= 0"
+        "prose": "manifest.default-launch-strategy: must be an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-35",
-      "title": "manifest.default-launch-strategy.restart-period: must be an integer >= 0",
+      "title": "manifest.default-launch-strategy.max-restarts: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -2145,14 +2211,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-35_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.restart-period: must be an integer >= 0"
+        "prose": "manifest.default-launch-strategy.max-restarts: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-36",
-      "title": "manifest.default-launch-strategy.start-timeout: must be an integer 0-60, got %v",
+      "title": "manifest.default-launch-strategy.restart-period: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -2178,14 +2244,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-36_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.start-timeout: must be an integer 0-60, got %v"
+        "prose": "manifest.default-launch-strategy.restart-period: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-37",
-      "title": "manifest.default-launch-strategy.stop-timeout: must be an integer 0-60, got %v",
+      "title": "manifest.default-launch-strategy.start-timeout: must be an integer 0-60, got %v",
       "props": [
        {
         "name": "label",
@@ -2211,14 +2277,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-37_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.stop-timeout: must be an integer 0-60, got %v"
+        "prose": "manifest.default-launch-strategy.start-timeout: must be an integer 0-60, got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-38",
-      "title": "manifest.default-launch-strategy.notify-timeout: must be an integer 0-120, got %v",
+      "title": "manifest.default-launch-strategy.stop-timeout: must be an integer 0-60, got %v",
       "props": [
        {
         "name": "label",
@@ -2244,14 +2310,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-38_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.notify-timeout: must be an integer 0-120, got %v"
+        "prose": "manifest.default-launch-strategy.stop-timeout: must be an integer 0-60, got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-39",
-      "title": "manifest.default-launch-strategy.auto-restart: must be a boolean",
+      "title": "manifest.default-launch-strategy.notify-timeout: must be an integer 0-120, got %v",
       "props": [
        {
         "name": "label",
@@ -2277,14 +2343,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-39_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.auto-restart: must be a boolean"
+        "prose": "manifest.default-launch-strategy.notify-timeout: must be an integer 0-120, got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-40",
-      "title": "manifest.default-launch-strategy.start-background: must be a boolean",
+      "title": "manifest.default-launch-strategy.auto-restart: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -2310,14 +2376,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-40_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.start-background: must be a boolean"
+        "prose": "manifest.default-launch-strategy.auto-restart: must be a boolean"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-41",
-      "title": "manifest.default-launch-strategy.watchdog: must be a boolean",
+      "title": "manifest.default-launch-strategy.start-background: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -2343,14 +2409,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-41_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.watchdog: must be a boolean"
+        "prose": "manifest.default-launch-strategy.start-background: must be a boolean"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-42",
-      "title": "manifest.default-launch-strategy.start-string: must be a string",
+      "title": "manifest.default-launch-strategy.watchdog: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -2376,14 +2442,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-42_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.start-string: must be a string"
+        "prose": "manifest.default-launch-strategy.watchdog: must be a boolean"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-43",
-      "title": "manifest.default-launch-strategy.stop-string: must be a string",
+      "title": "manifest.default-launch-strategy.start-string: must be a string",
       "props": [
        {
         "name": "label",
@@ -2409,14 +2475,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-43_stmt",
         "name": "statement",
-        "prose": "manifest.default-launch-strategy.stop-string: must be a string"
+        "prose": "manifest.default-launch-strategy.start-string: must be a string"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-44",
-      "title": "manifest.artifacts[%d]: missing required field '%s'",
+      "title": "manifest.default-launch-strategy.stop-string: must be a string",
       "props": [
        {
         "name": "label",
@@ -2442,14 +2508,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-44_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts[%d]: missing required field '%s'"
+        "prose": "manifest.default-launch-strategy.stop-string: must be a string"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-45",
-      "title": "manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters",
+      "title": "manifest.artifacts[%d]: missing required field '%s'",
       "props": [
        {
         "name": "label",
@@ -2475,14 +2541,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-45_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters"
+        "prose": "manifest.artifacts[%d]: missing required field '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-46",
-      "title": "manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'",
+      "title": "manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters",
       "props": [
        {
         "name": "label",
@@ -2508,14 +2574,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-46_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'"
+        "prose": "manifest.artifacts[%d].image-name: must be a string between 4 and 256 characters"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-47",
-      "title": "manifest.artifacts[%d].image-size: must be an integer >= 1",
+      "title": "manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'",
       "props": [
        {
         "name": "label",
@@ -2541,14 +2607,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-47_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts[%d].image-size: must be an integer >= 1"
+        "prose": "manifest.artifacts[%d].image-type: must be 'appoverlay', got '%v'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-48",
-      "title": "manifest.artifacts[%d].uncompressed-size: must be an integer >= 1",
+      "title": "manifest.artifacts[%d].image-size: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -2574,14 +2640,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-48_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts[%d].uncompressed-size: must be an integer >= 1"
+        "prose": "manifest.artifacts[%d].image-size: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-49",
-      "title": "manifest.artifacts[%d].signature: must be a 64-character hex string",
+      "title": "manifest.artifacts[%d].uncompressed-size: must be an integer >= 1",
       "props": [
        {
         "name": "label",
@@ -2607,14 +2673,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-49_stmt",
         "name": "statement",
-        "prose": "manifest.artifacts[%d].signature: must be a 64-character hex string"
+        "prose": "manifest.artifacts[%d].uncompressed-size: must be an integer >= 1"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-50",
-      "title": "manifest.communication: must be an object",
+      "title": "manifest.artifacts[%d].signature: must be a 64-character hex string",
       "props": [
        {
         "name": "label",
@@ -2640,14 +2706,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-50_stmt",
         "name": "statement",
-        "prose": "manifest.communication: must be an object"
+        "prose": "manifest.artifacts[%d].signature: must be a 64-character hex string"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-51",
-      "title": "manifest.communication.FAN: must be a boolean",
+      "title": "manifest.communication: must be an object",
       "props": [
        {
         "name": "label",
@@ -2673,14 +2739,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-51_stmt",
         "name": "statement",
-        "prose": "manifest.communication.FAN: must be a boolean"
+        "prose": "manifest.communication: must be an object"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-52",
-      "title": "manifest.communication.HAN: must be a boolean",
+      "title": "manifest.communication.FAN: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -2706,14 +2772,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-52_stmt",
         "name": "statement",
-        "prose": "manifest.communication.HAN: must be a boolean"
+        "prose": "manifest.communication.FAN: must be a boolean"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-53",
-      "title": "manifest.communication.messaging: missing required field 'daily-messages'",
+      "title": "manifest.communication.HAN: must be a boolean",
       "props": [
        {
         "name": "label",
@@ -2739,14 +2805,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-53_stmt",
         "name": "statement",
-        "prose": "manifest.communication.messaging: missing required field 'daily-messages'"
+        "prose": "manifest.communication.HAN: must be a boolean"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-54",
-      "title": "manifest.communication.messaging.daily-messages: must be an integer >= 0",
+      "title": "manifest.communication.messaging: missing required field 'daily-messages'",
       "props": [
        {
         "name": "label",
@@ -2772,14 +2838,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-54_stmt",
         "name": "statement",
-        "prose": "manifest.communication.messaging.daily-messages: must be an integer >= 0"
+        "prose": "manifest.communication.messaging: missing required field 'daily-messages'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-55",
-      "title": "manifest.communication.%s: missing required field 'daily-volume'",
+      "title": "manifest.communication.messaging.daily-messages: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -2805,14 +2871,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-55_stmt",
         "name": "statement",
-        "prose": "manifest.communication.%s: missing required field 'daily-volume'"
+        "prose": "manifest.communication.messaging.daily-messages: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-56",
-      "title": "manifest.communication.%s.daily-volume: must be an integer >= 0",
+      "title": "manifest.communication.%s: missing required field 'daily-volume'",
       "props": [
        {
         "name": "label",
@@ -2838,14 +2904,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-56_stmt",
         "name": "statement",
-        "prose": "manifest.communication.%s.daily-volume: must be an integer >= 0"
+        "prose": "manifest.communication.%s: missing required field 'daily-volume'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-57",
-      "title": "manifest.communication.%s: must have at least one of 'inbound' or 'outbound'",
+      "title": "manifest.communication.%s.daily-volume: must be an integer >= 0",
       "props": [
        {
         "name": "label",
@@ -2871,14 +2937,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-57_stmt",
         "name": "statement",
-        "prose": "manifest.communication.%s: must have at least one of 'inbound' or 'outbound'"
+        "prose": "manifest.communication.%s.daily-volume: must be an integer >= 0"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-58",
-      "title": "manifest.communication.%s.inbound: '%s' does not match transport:address:port pattern",
+      "title": "manifest.communication.%s: must have at least one of 'inbound' or 'outbound'",
       "props": [
        {
         "name": "label",
@@ -2904,14 +2970,14 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-58_stmt",
         "name": "statement",
-        "prose": "manifest.communication.%s.inbound: '%s' does not match transport:address:port pattern"
+        "prose": "manifest.communication.%s: must have at least one of 'inbound' or 'outbound'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.manifest_validation-59",
-      "title": "manifest.communication.%s.outbound: '%s' does not match transport:address:port pattern",
+      "title": "manifest.communication.%s.inbound: '%s' does not match transport:address:port pattern",
       "props": [
        {
         "name": "label",
@@ -2937,7 +3003,106 @@
        {
         "id": "geisa-governance.geisa.manifest_validation-59_stmt",
         "name": "statement",
+        "prose": "manifest.communication.%s.inbound: '%s' does not match transport:address:port pattern"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-60",
+      "title": "manifest.communication.%s.inbound: must be an array of transport:address:port strings",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#60"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#60"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eed0da8e-4c16-58d6-8161-301262e9414c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-60_stmt",
+        "name": "statement",
+        "prose": "manifest.communication.%s.inbound: must be an array of transport:address:port strings"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-61",
+      "title": "manifest.communication.%s.outbound: '%s' does not match transport:address:port pattern",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#61"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#61"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eed0da8e-4c16-58d6-8161-301262e9414c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-61_stmt",
+        "name": "statement",
         "prose": "manifest.communication.%s.outbound: '%s' does not match transport:address:port pattern"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.manifest_validation-62",
+      "title": "manifest.communication.%s.outbound: must be an array of transport:address:port strings",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.manifest_validation#62"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.manifest_validation#62"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.manifest_validation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eed0da8e-4c16-58d6-8161-301262e9414c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.manifest_validation-62_stmt",
+        "name": "statement",
+        "prose": "manifest.communication.%s.outbound: must be an array of transport:address:port strings"
        }
       ],
       "class": "governance"

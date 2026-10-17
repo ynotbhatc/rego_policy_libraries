@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [kubernetes]
 #   coverage:
-#     checks: 27
+#     checks: 28
 #     cited: 0
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package kubernetes.admission
 
 # Kubernetes Admission Control — Security and Operations Policy

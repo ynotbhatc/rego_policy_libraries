@@ -100,7 +100,7 @@
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-2",
-      "title": "Resources: Container '%s' in %s '%s' has no CPU limit — resource limits required for cluster stability",
+      "title": "AdmissionReview: request.kind.kind / request.object missing or empty — request cannot be evaluated",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-2_stmt",
         "name": "statement",
-        "prose": "Resources: Container '%s' in %s '%s' has no CPU limit — resource limits required for cluster stability"
+        "prose": "AdmissionReview: request.kind.kind / request.object missing or empty — request cannot be evaluated"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-3",
-      "title": "Resources: Container '%s' in %s '%s' has no memory limit — memory limits required to prevent OOM evictions",
+      "title": "Resources: Container '%s' in %s '%s' has no CPU limit — resource limits required for cluster stability",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-3_stmt",
         "name": "statement",
-        "prose": "Resources: Container '%s' in %s '%s' has no memory limit — memory limits required to prevent OOM evictions"
+        "prose": "Resources: Container '%s' in %s '%s' has no CPU limit — resource limits required for cluster stability"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-4",
-      "title": "Resources: Container '%s' in %s '%s' has no CPU request — requests required for scheduler accuracy",
+      "title": "Resources: Container '%s' in %s '%s' has no memory limit — memory limits required to prevent OOM evictions",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-4_stmt",
         "name": "statement",
-        "prose": "Resources: Container '%s' in %s '%s' has no CPU request — requests required for scheduler accuracy"
+        "prose": "Resources: Container '%s' in %s '%s' has no memory limit — memory limits required to prevent OOM evictions"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-5",
-      "title": "Resources: Container '%s' in %s '%s' has no memory request",
+      "title": "Resources: Container '%s' in %s '%s' has no CPU request — requests required for scheduler accuracy",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-5_stmt",
         "name": "statement",
-        "prose": "Resources: Container '%s' in %s '%s' has no memory request"
+        "prose": "Resources: Container '%s' in %s '%s' has no CPU request — requests required for scheduler accuracy"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-6",
-      "title": "Registry: Container '%s' in %s '%s' uses unapproved image '%s' — only approved registries allowed: %s",
+      "title": "Resources: Container '%s' in %s '%s' has no memory request",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-6_stmt",
         "name": "statement",
-        "prose": "Registry: Container '%s' in %s '%s' uses unapproved image '%s' — only approved registries allowed: %s"
+        "prose": "Resources: Container '%s' in %s '%s' has no memory request"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-7",
-      "title": "ImageTag: Container '%s' in %s '%s' uses 'latest' tag — pin to a specific digest or version tag",
+      "title": "Registry: Container '%s' in %s '%s' uses unapproved image '%s' — only approved registries allowed: %s",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-7_stmt",
         "name": "statement",
-        "prose": "ImageTag: Container '%s' in %s '%s' uses 'latest' tag — pin to a specific digest or version tag"
+        "prose": "Registry: Container '%s' in %s '%s' uses unapproved image '%s' — only approved registries allowed: %s"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-8",
-      "title": "ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production",
+      "title": "ImageTag: Container '%s' in %s '%s' uses 'latest' tag — pin to a specific digest or version tag",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-8_stmt",
         "name": "statement",
-        "prose": "ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production"
+        "prose": "ImageTag: Container '%s' in %s '%s' uses 'latest' tag — pin to a specific digest or version tag"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-9",
-      "title": "Labels: %s '%s' in namespace '%s' is missing required label '%s'",
+      "title": "ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-9_stmt",
         "name": "statement",
-        "prose": "Labels: %s '%s' in namespace '%s' is missing required label '%s'"
+        "prose": "ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-10",
-      "title": "Labels: %s '%s' pod template is missing required label '%s' (needed for service selection and observability)",
+      "title": "Labels: %s '%s' in namespace '%s' is missing required label '%s'",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-10_stmt",
         "name": "statement",
-        "prose": "Labels: %s '%s' pod template is missing required label '%s' (needed for service selection and observability)"
+        "prose": "Labels: %s '%s' in namespace '%s' is missing required label '%s'"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-11",
-      "title": "Security: Container '%s' in %s '%s' is privileged — privileged containers are not permitted",
+      "title": "Labels: %s '%s' pod template is missing required label '%s' (needed for service selection and observability)",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-11_stmt",
         "name": "statement",
-        "prose": "Security: Container '%s' in %s '%s' is privileged — privileged containers are not permitted"
+        "prose": "Labels: %s '%s' pod template is missing required label '%s' (needed for service selection and observability)"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-12",
-      "title": "Security: %s '%s' shares host PID namespace — hostPID: true is not permitted",
+      "title": "Security: Container '%s' in %s '%s' is privileged — privileged containers are not permitted",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-12_stmt",
         "name": "statement",
-        "prose": "Security: %s '%s' shares host PID namespace — hostPID: true is not permitted"
+        "prose": "Security: Container '%s' in %s '%s' is privileged — privileged containers are not permitted"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-13",
-      "title": "Security: %s '%s' shares host IPC namespace — hostIPC: true is not permitted",
+      "title": "Security: %s '%s' shares host PID namespace — hostPID: true is not permitted",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-13_stmt",
         "name": "statement",
-        "prose": "Security: %s '%s' shares host IPC namespace — hostIPC: true is not permitted"
+        "prose": "Security: %s '%s' shares host PID namespace — hostPID: true is not permitted"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-14",
-      "title": "Security: %s '%s' shares host network namespace — hostNetwork: true is not permitted",
+      "title": "Security: %s '%s' shares host IPC namespace — hostIPC: true is not permitted",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-14_stmt",
         "name": "statement",
-        "prose": "Security: %s '%s' shares host network namespace — hostNetwork: true is not permitted"
+        "prose": "Security: %s '%s' shares host IPC namespace — hostIPC: true is not permitted"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-15",
-      "title": "Security: Container '%s' in %s '%s' allows privilege escalation — set allowPrivilegeEscalation: false",
+      "title": "Security: %s '%s' shares host network namespace — hostNetwork: true is not permitted",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-15_stmt",
         "name": "statement",
-        "prose": "Security: Container '%s' in %s '%s' allows privilege escalation — set allowPrivilegeEscalation: false"
+        "prose": "Security: %s '%s' shares host network namespace — hostNetwork: true is not permitted"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-16",
-      "title": "Security: Container '%s' in %s '%s' does not set readOnlyRootFilesystem: true — use ephemeral volumes for writes",
+      "title": "Security: Container '%s' in %s '%s' allows privilege escalation — set allowPrivilegeEscalation: false",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-16_stmt",
         "name": "statement",
-        "prose": "Security: Container '%s' in %s '%s' does not set readOnlyRootFilesystem: true — use ephemeral volumes for writes"
+        "prose": "Security: Container '%s' in %s '%s' allows privilege escalation — set allowPrivilegeEscalation: false"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-17",
-      "title": "Security: Container '%s' in %s '%s' runs as root (runAsNonRoot not set or false)",
+      "title": "Security: Container '%s' in %s '%s' does not set readOnlyRootFilesystem: true — use ephemeral volumes for writes",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-17_stmt",
         "name": "statement",
-        "prose": "Security: Container '%s' in %s '%s' runs as root (runAsNonRoot not set or false)"
+        "prose": "Security: Container '%s' in %s '%s' does not set readOnlyRootFilesystem: true — use ephemeral volumes for writes"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-18",
-      "title": "Security: Container '%s' drops no capabilities — add 'drop: [\"ALL\"]' to securityContext",
+      "title": "Security: Container '%s' in %s '%s' runs as root (runAsNonRoot not set or false)",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-18_stmt",
         "name": "statement",
-        "prose": "Security: Container '%s' drops no capabilities — add 'drop: [\"ALL\"]' to securityContext"
+        "prose": "Security: Container '%s' in %s '%s' runs as root (runAsNonRoot not set or false)"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-19",
-      "title": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account with minimal RBAC",
+      "title": "Security: Container '%s' drops no capabilities — add 'drop: [\"ALL\"]' to securityContext",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-19_stmt",
         "name": "statement",
-        "prose": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account with minimal RBAC"
+        "prose": "Security: Container '%s' drops no capabilities — add 'drop: [\"ALL\"]' to securityContext"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-20",
-      "title": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account",
+      "title": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account with minimal RBAC",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-20_stmt",
         "name": "statement",
-        "prose": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account"
+        "prose": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account with minimal RBAC"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-21",
-      "title": "ServiceAccount: %s '%s' auto-mounts service account token — set automountServiceAccountToken: false if API access not needed",
+      "title": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-21_stmt",
         "name": "statement",
-        "prose": "ServiceAccount: %s '%s' auto-mounts service account token — set automountServiceAccountToken: false if API access not needed"
+        "prose": "ServiceAccount: %s '%s' uses default service account — create a dedicated service account"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-22",
-      "title": "Probes: Container '%s' in Deployment '%s' has no readinessProbe — readiness probes required for zero-downtime deployments",
+      "title": "ServiceAccount: %s '%s' auto-mounts service account token — set automountServiceAccountToken: false if API access not needed",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-22_stmt",
         "name": "statement",
-        "prose": "Probes: Container '%s' in Deployment '%s' has no readinessProbe — readiness probes required for zero-downtime deployments"
+        "prose": "ServiceAccount: %s '%s' auto-mounts service account token — set automountServiceAccountToken: false if API access not needed"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-23",
-      "title": "Probes: Container '%s' in Deployment '%s' has no livenessProbe — liveness probes required for self-healing",
+      "title": "Probes: Container '%s' in Deployment '%s' has no readinessProbe — readiness probes required for zero-downtime deployments",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-23_stmt",
         "name": "statement",
-        "prose": "Probes: Container '%s' in Deployment '%s' has no livenessProbe — liveness probes required for self-healing"
+        "prose": "Probes: Container '%s' in Deployment '%s' has no readinessProbe — readiness probes required for zero-downtime deployments"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-24",
-      "title": "Service: Service '%s' uses NodePort type in production namespace '%s' — use ClusterIP + Ingress or LoadBalancer",
+      "title": "Probes: Container '%s' in Deployment '%s' has no livenessProbe — liveness probes required for self-healing",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-24_stmt",
         "name": "statement",
-        "prose": "Service: Service '%s' uses NodePort type in production namespace '%s' — use ClusterIP + Ingress or LoadBalancer"
+        "prose": "Probes: Container '%s' in Deployment '%s' has no livenessProbe — liveness probes required for self-healing"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-25",
-      "title": "Service: Service '%s' has no selector — services without selectors should be documented with annotation 'admission.kubernetes.io/headless-service: true'",
+      "title": "Service: Service '%s' uses NodePort type in production namespace '%s' — use ClusterIP + Ingress or LoadBalancer",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-25_stmt",
         "name": "statement",
-        "prose": "Service: Service '%s' has no selector — services without selectors should be documented with annotation 'admission.kubernetes.io/headless-service: true'"
+        "prose": "Service: Service '%s' uses NodePort type in production namespace '%s' — use ClusterIP + Ingress or LoadBalancer"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-26",
-      "title": "Ingress: Ingress '%s' has no TLS configuration — all production ingresses must use TLS",
+      "title": "Service: Service '%s' has no selector — services without selectors should be documented with annotation 'admission.kubernetes.io/headless-service: true'",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "enforcement_kubernetes-kubernetes.admission-26_stmt",
         "name": "statement",
-        "prose": "Ingress: Ingress '%s' has no TLS configuration — all production ingresses must use TLS"
+        "prose": "Service: Service '%s' has no selector — services without selectors should be documented with annotation 'admission.kubernetes.io/headless-service: true'"
        }
       ],
       "class": "enforcement"
      },
      {
       "id": "enforcement_kubernetes-kubernetes.admission-27",
-      "title": "Ingress: Ingress '%s' does not specify ingressClassName — use explicit class to prevent routing conflicts",
+      "title": "Ingress: Ingress '%s' has no TLS configuration — all production ingresses must use TLS",
       "props": [
        {
         "name": "label",
@@ -950,6 +950,39 @@
       "parts": [
        {
         "id": "enforcement_kubernetes-kubernetes.admission-27_stmt",
+        "name": "statement",
+        "prose": "Ingress: Ingress '%s' has no TLS configuration — all production ingresses must use TLS"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_kubernetes-kubernetes.admission-28",
+      "title": "Ingress: Ingress '%s' does not specify ingressClassName — use explicit class to prevent routing conflicts",
+      "props": [
+       {
+        "name": "label",
+        "value": "kubernetes.admission#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "kubernetes.admission#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "kubernetes.admission"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bc750f98-4512-5b19-bd38-dfd39acf56ca",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_kubernetes-kubernetes.admission-28_stmt",
         "name": "statement",
         "prose": "Ingress: Ingress '%s' does not specify ingressClassName — use explicit class to prevent routing conflicts"
        }

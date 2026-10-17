@@ -201,6 +201,39 @@
        }
       ],
       "class": "enforcement"
+     },
+     {
+      "id": "enforcement_ansible-AAC-ANS-000",
+      "title": "%s: no plays evaluated — input.plays is missing, not an array, or empty",
+      "props": [
+       {
+        "name": "label",
+        "value": "AAC-ANS-000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AAC-ANS-000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.repo.hygiene"
+       }
+      ],
+      "links": [
+       {
+        "href": "#014f4eeb-61bf-5cb6-bbde-573832eea344",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_ansible-AAC-ANS-000_stmt",
+        "name": "statement",
+        "prose": "%s: no plays evaluated — input.plays is missing, not an array, or empty"
+       }
+      ],
+      "class": "enforcement"
      }
     ]
    },

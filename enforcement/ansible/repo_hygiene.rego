@@ -38,14 +38,14 @@
 #   source: aac
 #   domains: [ansible]
 #   coverage:
-#     checks: 5
-#     cited: 4
+#     checks: 6
+#     cited: 5
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package aac.repo.hygiene
 
 import rego.v1

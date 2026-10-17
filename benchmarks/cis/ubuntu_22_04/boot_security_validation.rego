@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 14
+#     checks: 18
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.boot_security
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 1.3-1.5: Boot Security and Process Hardening

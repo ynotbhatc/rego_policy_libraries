@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [cloud, aws]
 #   coverage:
-#     checks: 5
-#     cited: 5
-#     density: section
-#     basis: role
+#     checks: 20
+#     cited: 20
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0

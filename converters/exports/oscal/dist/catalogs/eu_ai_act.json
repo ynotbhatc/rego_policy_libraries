@@ -662,8 +662,74 @@
       "class": "governance"
      },
      {
+      "id": "eu_ai_act-Article-51-55",
+      "title": "evidence missing — article_55.training_flops (or training_flops_exceeds_threshold) not provided, so systemic-risk classification cannot be established",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 51/55"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 51/55"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f92803fd-fc35-5af5-a20d-883f4cd1e912",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-51-55_stmt",
+        "name": "statement",
+        "prose": "evidence missing — article_55.training_flops (or training_flops_exceeds_threshold) not provided, so systemic-risk classification cannot be established"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-51",
+      "title": "training computation exceeds 10^25 FLOPs but the model is declared not systemic-risk; classification is presumed under Art. 51(2)",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 51"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 51"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f92803fd-fc35-5af5-a20d-883f4cd1e912",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-51_stmt",
+        "name": "statement",
+        "prose": "training computation exceeds 10^25 FLOPs but the model is declared not systemic-risk; classification is presumed under Art. 51(2)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
       "id": "eu_ai_act-Article-54",
-      "title": "GPAI model provider established outside the EU has not designated an authorized representative established in the EU",
+      "title": "evidence missing — article_54.provider_established_outside_eu not declared, so the authorised-representative obligation cannot be ruled out",
       "props": [
        {
         "name": "label",
@@ -689,15 +755,20 @@
        {
         "id": "eu_ai_act-Article-54_stmt",
         "name": "statement",
-        "prose": "GPAI model provider established outside the EU has not designated an authorized representative established in the EU"
+        "prose": "evidence missing — article_54.provider_established_outside_eu not declared, so the authorised-representative obligation cannot be ruled out"
        },
        {
         "id": "eu_ai_act-Article-54_obj.1",
         "name": "assessment-objective",
-        "prose": "Designated EU authorized representative does not hold a full mandate to act on behalf of the provider and be held responsible for obligations"
+        "prose": "GPAI model provider established outside the EU has not designated an authorized representative established in the EU"
        },
        {
         "id": "eu_ai_act-Article-54_obj.2",
+        "name": "assessment-objective",
+        "prose": "Designated EU authorized representative does not hold a full mandate to act on behalf of the provider and be held responsible for obligations"
+       },
+       {
+        "id": "eu_ai_act-Article-54_obj.3",
         "name": "assessment-objective",
         "prose": "Authorized representative not registered with the relevant national competent authority in the EU member state of establishment"
        }
@@ -1715,6 +1786,39 @@
     ],
     "controls": [
      {
+      "id": "eu_ai_act-eu_ai_act.prohibited-1",
+      "title": "Article %s: evidence missing — eu_ai_act.prohibited.%s was not assessed",
+      "props": [
+       {
+        "name": "label",
+        "value": "eu_ai_act.prohibited#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eu_ai_act.prohibited#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.prohibited"
+       }
+      ],
+      "links": [
+       {
+        "href": "#790ead33-0dba-59e0-a77e-1ae2c51c47d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-eu_ai_act.prohibited-1_stmt",
+        "name": "statement",
+        "prose": "Article %s: evidence missing — eu_ai_act.prohibited.%s was not assessed"
+       }
+      ],
+      "class": "governance"
+     },
+     {
       "id": "eu_ai_act-Article-5.1-a",
       "title": "AI system employs subliminal techniques beyond a person's consciousness to materially distort behavior in a manner causing or likely to cause significant harm",
       "props": [
@@ -2074,16 +2178,16 @@
       "class": "governance"
      },
      {
-      "id": "eu_ai_act-eu_ai_act.prohibited-1",
+      "id": "eu_ai_act-eu_ai_act.prohibited-2",
       "title": "Article 5(1)(ba) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate realistic intimate imagery of identifiable persons without consent, and lacks effective technical safeguards",
       "props": [
        {
         "name": "label",
-        "value": "eu_ai_act.prohibited#1"
+        "value": "eu_ai_act.prohibited#2"
        },
        {
         "name": "alt-identifier",
-        "value": "eu_ai_act.prohibited#1"
+        "value": "eu_ai_act.prohibited#2"
        },
        {
         "name": "rego-package",
@@ -2099,7 +2203,7 @@
       ],
       "parts": [
        {
-        "id": "eu_ai_act-eu_ai_act.prohibited-1_stmt",
+        "id": "eu_ai_act-eu_ai_act.prohibited-2_stmt",
         "name": "statement",
         "prose": "Article 5(1)(ba) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate realistic intimate imagery of identifiable persons without consent, and lacks effective technical safeguards that reliably prevent such outputs"
        }
@@ -2140,16 +2244,16 @@
       "class": "governance"
      },
      {
-      "id": "eu_ai_act-eu_ai_act.prohibited-2",
+      "id": "eu_ai_act-eu_ai_act.prohibited-3",
       "title": "Article 5(1)(bb) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate child sexual abuse material, and lacks effective technical safeguards that reliably prevent such outputs",
       "props": [
        {
         "name": "label",
-        "value": "eu_ai_act.prohibited#2"
+        "value": "eu_ai_act.prohibited#3"
        },
        {
         "name": "alt-identifier",
-        "value": "eu_ai_act.prohibited#2"
+        "value": "eu_ai_act.prohibited#3"
        },
        {
         "name": "rego-package",
@@ -2165,7 +2269,7 @@
       ],
       "parts": [
        {
-        "id": "eu_ai_act-eu_ai_act.prohibited-2_stmt",
+        "id": "eu_ai_act-eu_ai_act.prohibited-3_stmt",
         "name": "statement",
         "prose": "Article 5(1)(bb) (Reg. 2026/1744, applies 2026-12-02): AI system can generate or manipulate child sexual abuse material, and lacks effective technical safeguards that reliably prevent such outputs"
        }
@@ -2229,6 +2333,39 @@
      }
     ],
     "controls": [
+     {
+      "id": "eu_ai_act-Article-50",
+      "title": "evidence missing — eu_ai_act.transparency assessment not provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 50"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 50"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eaa2b578-1361-5b5c-accb-d58d5485dc25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-50_stmt",
+        "name": "statement",
+        "prose": "evidence missing — eu_ai_act.transparency assessment not provided"
+       }
+      ],
+      "class": "governance"
+     },
      {
       "id": "eu_ai_act-Article-50.1",
       "title": "Chatbot or conversational AI system does not inform users they are interacting with an AI and not a human at the start of each interaction",
@@ -2422,8 +2559,41 @@
       "class": "governance"
      },
      {
-      "id": "eu_ai_act-Article-50.5",
+      "id": "eu_ai_act-Article-49",
       "title": "High-risk AI system not registered in the EU database for AI systems as required before deployment",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 49"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 49"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eaa2b578-1361-5b5c-accb-d58d5485dc25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-49_stmt",
+        "name": "statement",
+        "prose": "High-risk AI system not registered in the EU database for AI systems as required before deployment"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-Article-50.5",
+      "title": "Deployer of emotion recognition system has not informed affected persons of the system's deployment and use",
       "props": [
        {
         "name": "label",
@@ -2449,15 +2619,10 @@
        {
         "id": "eu_ai_act-Article-50.5_stmt",
         "name": "statement",
-        "prose": "High-risk AI system not registered in the EU database for AI systems as required before deployment"
-       },
-       {
-        "id": "eu_ai_act-Article-50.5_obj.1",
-        "name": "assessment-objective",
         "prose": "Deployer of emotion recognition system has not informed affected persons of the system's deployment and use"
        },
        {
-        "id": "eu_ai_act-Article-50.5_obj.2",
+        "id": "eu_ai_act-Article-50.5_obj.1",
         "name": "assessment-objective",
         "prose": "Information about emotion recognition system not provided to affected persons before their exposure to the system"
        }

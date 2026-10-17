@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.oracle_linux_9.account_auth
 
 # DISA STIG for Oracle Linux 9 - Account and Authentication Module

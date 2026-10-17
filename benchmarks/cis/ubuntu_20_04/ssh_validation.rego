@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 26
-#     cited: 22
+#     checks: 33
+#     cited: 23
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.ssh
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 5.2: Configure SSH Server

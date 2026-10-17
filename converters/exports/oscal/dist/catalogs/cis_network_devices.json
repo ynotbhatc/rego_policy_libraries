@@ -272,6 +272,1482 @@
     ]
    },
    {
+    "id": "cis_network_devices-cis_cisco_ios",
+    "class": "rego-module",
+    "title": "CIS Cisco IOS Benchmark v4.1.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_cisco_ios"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.2",
+      "title": "Ensure aaa authentication login is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure aaa authentication login is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.3",
+      "title": "Ensure aaa authorization exec is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure aaa authorization exec is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.4",
+      "title": "Ensure aaa accounting exec is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure aaa accounting exec is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.5",
+      "title": "Ensure aaa accounting commands is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure aaa accounting commands is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.6",
+      "title": "Ensure aaa accounting connection is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure aaa accounting connection is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.7",
+      "title": "Ensure aaa accounting system is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure aaa accounting system is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.8",
+      "title": "Ensure enable secret is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure enable secret is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.9",
+      "title": "Ensure service password encryption is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure service password encryption is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.10",
+      "title": "Ensure banner motd is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure banner motd is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.11",
+      "title": "Ensure banner login is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure banner login is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.12",
+      "title": "Ensure banner exec is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure banner exec is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.13",
+      "title": "Ensure vty transport ssh only",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.13_stmt",
+        "name": "statement",
+        "prose": "Ensure vty transport ssh only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.14",
+      "title": "Ensure vty exec timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.14_stmt",
+        "name": "statement",
+        "prose": "Ensure vty exec timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.15",
+      "title": "Ensure vty logging synchronous is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure vty logging synchronous is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.16",
+      "title": "Ensure vty access class is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure vty access class is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.17",
+      "title": "Ensure console exec timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.17_stmt",
+        "name": "statement",
+        "prose": "Ensure console exec timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.18",
+      "title": "Ensure console logging synchronous is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.18_stmt",
+        "name": "statement",
+        "prose": "Ensure console logging synchronous is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.19",
+      "title": "Ensure ssh version 2 is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.19_stmt",
+        "name": "statement",
+        "prose": "Ensure ssh version 2 is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.20",
+      "title": "Ensure ssh timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.20_stmt",
+        "name": "statement",
+        "prose": "Ensure ssh timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.21",
+      "title": "Ensure ssh auth retries is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.21_stmt",
+        "name": "statement",
+        "prose": "Ensure ssh auth retries is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.22",
+      "title": "Ensure logging on is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.22_stmt",
+        "name": "statement",
+        "prose": "Ensure logging on is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.23",
+      "title": "Ensure logging buffered is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.23_stmt",
+        "name": "statement",
+        "prose": "Ensure logging buffered is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.24",
+      "title": "Ensure logging console is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.24_stmt",
+        "name": "statement",
+        "prose": "Ensure logging console is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.25",
+      "title": "Ensure logging host is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.25_stmt",
+        "name": "statement",
+        "prose": "Ensure logging host is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.26",
+      "title": "Ensure logging trap is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.26_stmt",
+        "name": "statement",
+        "prose": "Ensure logging trap is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.27",
+      "title": "Ensure service timestamps log is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.27_stmt",
+        "name": "statement",
+        "prose": "Ensure service timestamps log is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.28",
+      "title": "Ensure service timestamps debug is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.28_stmt",
+        "name": "statement",
+        "prose": "Ensure service timestamps debug is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.29",
+      "title": "Ensure ntp authenticate is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.29_stmt",
+        "name": "statement",
+        "prose": "Ensure ntp authenticate is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.30",
+      "title": "Ensure ntp authentication key is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.30_stmt",
+        "name": "statement",
+        "prose": "Ensure ntp authentication key is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.31",
+      "title": "Ensure ntp trusted key is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.31_stmt",
+        "name": "statement",
+        "prose": "Ensure ntp trusted key is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.32",
+      "title": "Ensure ntp server with key is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.32_stmt",
+        "name": "statement",
+        "prose": "Ensure ntp server with key is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.33",
+      "title": "Ensure snmp server location is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.33_stmt",
+        "name": "statement",
+        "prose": "Ensure snmp server location is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-1.34",
+      "title": "Ensure snmp server contact is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-1.34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-1.34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-1.34_stmt",
+        "name": "statement",
+        "prose": "Ensure snmp server contact is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.2",
+      "title": "Ensure service pad is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure service pad is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.3",
+      "title": "Ensure service udp small servers is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.3_stmt",
+        "name": "statement",
+        "prose": "Ensure service udp small servers is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.4",
+      "title": "Ensure service tcp small servers is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.4_stmt",
+        "name": "statement",
+        "prose": "Ensure service tcp small servers is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.5",
+      "title": "Ensure cdp is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.5_stmt",
+        "name": "statement",
+        "prose": "Ensure cdp is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.6",
+      "title": "Ensure lldp is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure lldp is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.7",
+      "title": "Ensure service dhcp is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.7_stmt",
+        "name": "statement",
+        "prose": "Ensure service dhcp is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.8",
+      "title": "Ensure ip bootp server is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.8_stmt",
+        "name": "statement",
+        "prose": "Ensure ip bootp server is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.9",
+      "title": "Ensure ip http server is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.9_stmt",
+        "name": "statement",
+        "prose": "Ensure ip http server is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.10",
+      "title": "Ensure ip http secure server is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure ip http secure server is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.11",
+      "title": "Ensure infrastructure acl is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.11_stmt",
+        "name": "statement",
+        "prose": "Ensure infrastructure acl is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-CISCO-2.12",
+      "title": "Ensure control plane is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-CISCO-2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-CISCO-2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-CISCO-2.12_stmt",
+        "name": "statement",
+        "prose": "Ensure control plane is configured"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
     "id": "cis_network_devices-cis_fortinet_fortigate",
     "class": "rego-module",
     "title": "CIS Fortinet FortiGate Benchmark v1.3.0",
@@ -520,6 +1996,228 @@
         "id": "cis_network_devices-wireless_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_network_devices-cis_juniper_junos",
+    "class": "rego-module",
+    "title": "CIS Juniper JunOS Benchmark v2.1.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_juniper_junos"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_network_devices-UNMAPPED-JUNOS-1.1",
+      "title": "Ensure remote AAA (RADIUS or TACACS+) is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-JUNOS-1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-JUNOS-1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_juniper_junos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-JUNOS-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure remote AAA (RADIUS or TACACS+) is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-JUNOS-1.2",
+      "title": "Ensure SSH is configured securely (protocol v2, root login denied)",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-JUNOS-1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-JUNOS-1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_juniper_junos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-JUNOS-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure SSH is configured securely (protocol v2, root login denied)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-JUNOS-1.3",
+      "title": "Ensure security syslog is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-JUNOS-1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-JUNOS-1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_juniper_junos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-JUNOS-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure security syslog is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-JUNOS-1.4",
+      "title": "Ensure ntp authentication is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-JUNOS-1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-JUNOS-1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_juniper_junos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-JUNOS-1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure ntp authentication is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-JUNOS-3.2",
+      "title": "Ensure anti spoofing is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-JUNOS-3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-JUNOS-3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_juniper_junos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-JUNOS-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure anti spoofing is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-UNMAPPED-JUNOS-3.3",
+      "title": "Ensure spanning tree protection is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-JUNOS-3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-JUNOS-3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_juniper_junos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-UNMAPPED-JUNOS-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure spanning tree protection is configured"
        }
       ],
       "class": "security"
@@ -1433,10 +3131,15 @@
        {
         "id": "cis_network_devices-5.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "UNABLE TO VERIFY — vulnerability scan facts not provided (input.vulnerability_scan.performed is not true)"
+        "prose": "UNABLE TO VERIFY — vulnerability scan performed but input.vulnerable_packages not provided"
        },
        {
         "id": "cis_network_devices-5.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "UNABLE TO VERIFY — vulnerability scan facts not provided (input.vulnerability_scan.performed is not true)"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.3",
         "name": "assessment-objective",
         "prose": "Default hostname 'vyos' not changed — device not identifiable"
        }

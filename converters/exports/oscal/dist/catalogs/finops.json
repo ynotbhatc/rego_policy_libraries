@@ -628,7 +628,7 @@
      },
      {
       "id": "finops-finops.tagging-18",
-      "title": "Budget: Cost center '%s' current spend $%.2f exceeds budget $%.2f (%.0f%% over)",
+      "title": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)",
       "props": [
        {
         "name": "label",
@@ -654,7 +654,40 @@
        {
         "id": "finops-finops.tagging-18_stmt",
         "name": "statement",
-        "prose": "Budget: Cost center '%s' current spend $%.2f exceeds budget $%.2f (%.0f%% over)"
+        "prose": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "finops-finops.tagging-19",
+      "title": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)",
+      "props": [
+       {
+        "name": "label",
+        "value": "finops.tagging#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "finops.tagging#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "finops.tagging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b3e8c185-b423-547a-9ef2-66ed91fea128",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "finops-finops.tagging-19_stmt",
+        "name": "statement",
+        "prose": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)"
        }
       ],
       "class": "governance"

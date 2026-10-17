@@ -255,6 +255,39 @@
     ],
     "controls": [
      {
+      "id": "cis_kubernetes-CIS-L2",
+      "title": "evidence missing — %s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS L2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS L2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes.l2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c1df534-bcf4-5123-9f5a-9c2efb765e20",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-CIS-L2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — %s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_kubernetes-CIS-L2-1.2.1",
       "title": "API server anonymous-auth flag must be false",
       "props": [
@@ -1081,7 +1114,7 @@
      },
      {
       "id": "cis_kubernetes-CIS-L2-4.2.5",
-      "title": "Kubelet --streaming-connection-idle-timeout not set to 0",
+      "title": "Kubelet --streaming-connection-idle-timeout must not be set to 0",
       "props": [
        {
         "name": "label",
@@ -1107,7 +1140,7 @@
        {
         "id": "cis_kubernetes-CIS-L2-4.2.5_stmt",
         "name": "statement",
-        "prose": "Kubelet --streaming-connection-idle-timeout not set to 0"
+        "prose": "Kubelet --streaming-connection-idle-timeout must not be set to 0"
        }
       ],
       "class": "security"
@@ -1147,7 +1180,7 @@
      },
      {
       "id": "cis_kubernetes-CIS-L2-4.2.9",
-      "title": "Kubelet --event-qps set to 0 (unlimited throttling disabled)",
+      "title": "Kubelet --event-qps must be set to 0 (event rate limiting disabled)",
       "props": [
        {
         "name": "label",
@@ -1173,7 +1206,7 @@
        {
         "id": "cis_kubernetes-CIS-L2-4.2.9_stmt",
         "name": "statement",
-        "prose": "Kubelet --event-qps set to 0 (unlimited throttling disabled)"
+        "prose": "Kubelet --event-qps must be set to 0 (event rate limiting disabled)"
        }
       ],
       "class": "security"

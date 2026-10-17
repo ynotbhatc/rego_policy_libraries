@@ -520,7 +520,7 @@
      },
      {
       "id": "ami-HEADEND-AUD-2",
-      "title": "Audit log retention is %d days — minimum 365 days required",
+      "title": "Audit log retention is %v days — minimum 365 days required",
       "props": [
        {
         "name": "label",
@@ -546,7 +546,7 @@
        {
         "id": "ami-HEADEND-AUD-2_stmt",
         "name": "statement",
-        "prose": "Audit log retention is %d days — minimum 365 days required"
+        "prose": "Audit log retention is %v days — minimum 365 days required"
        }
       ],
       "class": "ot"
@@ -1511,12 +1511,22 @@
        {
         "id": "ami-SG.IA-5_obj.1",
         "name": "assessment-objective",
-        "prose": "Device certificates expiring within 30 days: %v"
+        "prose": "evidence missing — pki.device_certificates not collected (certificate expiry cannot be assessed)"
        },
        {
         "id": "ami-SG.IA-5_obj.2",
         "name": "assessment-objective",
-        "prose": "Key rotation overdue (>90 days) for devices: %v"
+        "prose": "Device certificates expiring within 30 days (or with unreadable expiry_date): %v"
+       },
+       {
+        "id": "ami-SG.IA-5_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — devices.credential_inventory not collected (key rotation cannot be assessed)"
+       },
+       {
+        "id": "ami-SG.IA-5_obj.4",
+        "name": "assessment-objective",
+        "prose": "Key rotation overdue (>90 days) or last_key_rotation_date unreadable for devices: %v"
        }
       ],
       "class": "ot"

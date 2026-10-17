@@ -66,6 +66,567 @@
     ],
     "controls": [
      {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-1.2",
+      "title": "Ensure grub config is secure (root:root, mode 0600 or stricter)",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure grub config is secure (root:root, mode 0600 or stricter)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-1.3",
+      "title": "Ensure core dumps are restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure core dumps are restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-2.2",
+      "title": "Ensure mta local only is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure mta local only is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-3.2",
+      "title": "Ensure nftables base chains (input, forward, output) exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure nftables base chains (input, forward, output) exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-3.3",
+      "title": "Ensure nftables loopback is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure nftables loopback is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-3.4",
+      "title": "Ensure nftables outbound is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure nftables outbound is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-3.5",
+      "title": "Ensure nftables default deny is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure nftables default deny is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.2",
+      "title": "Ensure cron access is restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.2_stmt",
+        "name": "statement",
+        "prose": "Ensure cron access is restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.3",
+      "title": "Ensure at access is restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure at access is restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.4",
+      "title": "Ensure pam faillock is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure pam faillock is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.5",
+      "title": "Ensure pam pwquality is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.5_stmt",
+        "name": "statement",
+        "prose": "Ensure pam pwquality is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.6",
+      "title": "Ensure password lockout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.6_stmt",
+        "name": "statement",
+        "prose": "Ensure password lockout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.7",
+      "title": "Ensure shell timeout is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.7_stmt",
+        "name": "statement",
+        "prose": "Ensure shell timeout is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-5.8",
+      "title": "Ensure su access is restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-5.8_stmt",
+        "name": "statement",
+        "prose": "Ensure su access is restricted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-6.1.0",
+      "title": "evidence missing — ansible_facts.system_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.0"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.0"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-6.1.0_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ansible_facts.system_files not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-6.2",
+      "title": "Ensure root PATH is secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure root PATH is secure"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_10-UNMAPPED-RHEL10-7.2",
+      "title": "Ensure container network policies is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "UNMAPPED-RHEL10-7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UNMAPPED-RHEL10-7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9d784eff-e240-5ee8-958d-6a3d10d7e007",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_10-UNMAPPED-RHEL10-7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure container network policies is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rhel_10-access_auth",
       "title": "Implemented by a Rego rule in benchmarks/cis/rhel_10/cis_rhel_10.rego (package cis.rhel_10); see the rule body.",
       "props": [

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.cron
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 5.1: Configure time-based job schedulers
@@ -52,37 +52,90 @@ violations contains msg if {
 
 # CIS 5.1.2 - 5.1.7: permissions and ownership of the cron files and directories.
 # Missing facts fail closed: an unreported mode/owner/group is a violation, not a pass.
-cron_paths := {
-	"crontab": {"ctl": "5.1.2", "path": "/etc/crontab", "max": "0600", "group": true},
-	"cron_hourly": {"ctl": "5.1.3", "path": "/etc/cron.hourly", "max": "0700", "group": false},
-	"cron_daily": {"ctl": "5.1.4", "path": "/etc/cron.daily", "max": "0700", "group": false},
-	"cron_weekly": {"ctl": "5.1.5", "path": "/etc/cron.weekly", "max": "0700", "group": false},
-	"cron_monthly": {"ctl": "5.1.6", "path": "/etc/cron.monthly", "max": "0700", "group": false},
-	"cron_d": {"ctl": "5.1.7", "path": "/etc/cron.d", "max": "0700", "group": false},
-}
-
 cron_facts := object.get(input, "cron", {})
 
+# CIS 5.1.2: /etc/crontab
 violations contains msg if {
-	some key, spec in cron_paths
-	mode := object.get(cron_facts, concat("", [key, "_mode"]), "<not collected>")
-	not mode_within(mode, spec.max)
-	msg := sprintf("CIS %s: %s has mode %v, should be %s", [spec.ctl, spec.path, mode, spec.max])
+	mode := object.get(cron_facts, "crontab_mode", "<not collected>")
+	not mode_within(mode, "0600")
+	msg := sprintf("CIS 5.1.2: /etc/crontab has mode %v, should be 0600", [mode])
 }
 
 violations contains msg if {
-	some key, spec in cron_paths
-	owner := object.get(cron_facts, concat("", [key, "_owner"]), "<not collected>")
+	owner := object.get(cron_facts, "crontab_owner", "<not collected>")
 	owner != "root"
-	msg := sprintf("CIS %s: %s owned by %v, should be root", [spec.ctl, spec.path, owner])
+	msg := sprintf("CIS 5.1.2: /etc/crontab owned by %v, should be root", [owner])
 }
 
 violations contains msg if {
-	some key, spec in cron_paths
-	spec.group
-	group := object.get(cron_facts, concat("", [key, "_group"]), "<not collected>")
+	group := object.get(cron_facts, "crontab_group", "<not collected>")
 	group != "root"
-	msg := sprintf("CIS %s: %s group is %v, should be root", [spec.ctl, spec.path, group])
+	msg := sprintf("CIS 5.1.2: /etc/crontab group is %v, should be root", [group])
+}
+
+# CIS 5.1.3: /etc/cron.hourly
+violations contains msg if {
+	mode := object.get(cron_facts, "cron_hourly_mode", "<not collected>")
+	not mode_within(mode, "0700")
+	msg := sprintf("CIS 5.1.3: /etc/cron.hourly has mode %v, should be 0700", [mode])
+}
+
+violations contains msg if {
+	owner := object.get(cron_facts, "cron_hourly_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 5.1.3: /etc/cron.hourly owned by %v, should be root", [owner])
+}
+
+# CIS 5.1.4: /etc/cron.daily
+violations contains msg if {
+	mode := object.get(cron_facts, "cron_daily_mode", "<not collected>")
+	not mode_within(mode, "0700")
+	msg := sprintf("CIS 5.1.4: /etc/cron.daily has mode %v, should be 0700", [mode])
+}
+
+violations contains msg if {
+	owner := object.get(cron_facts, "cron_daily_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 5.1.4: /etc/cron.daily owned by %v, should be root", [owner])
+}
+
+# CIS 5.1.5: /etc/cron.weekly
+violations contains msg if {
+	mode := object.get(cron_facts, "cron_weekly_mode", "<not collected>")
+	not mode_within(mode, "0700")
+	msg := sprintf("CIS 5.1.5: /etc/cron.weekly has mode %v, should be 0700", [mode])
+}
+
+violations contains msg if {
+	owner := object.get(cron_facts, "cron_weekly_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 5.1.5: /etc/cron.weekly owned by %v, should be root", [owner])
+}
+
+# CIS 5.1.6: /etc/cron.monthly
+violations contains msg if {
+	mode := object.get(cron_facts, "cron_monthly_mode", "<not collected>")
+	not mode_within(mode, "0700")
+	msg := sprintf("CIS 5.1.6: /etc/cron.monthly has mode %v, should be 0700", [mode])
+}
+
+violations contains msg if {
+	owner := object.get(cron_facts, "cron_monthly_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 5.1.6: /etc/cron.monthly owned by %v, should be root", [owner])
+}
+
+# CIS 5.1.7: /etc/cron.d
+violations contains msg if {
+	mode := object.get(cron_facts, "cron_d_mode", "<not collected>")
+	not mode_within(mode, "0700")
+	msg := sprintf("CIS 5.1.7: /etc/cron.d has mode %v, should be 0700", [mode])
+}
+
+violations contains msg if {
+	owner := object.get(cron_facts, "cron_d_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 5.1.7: /etc/cron.d owned by %v, should be root", [owner])
 }
 
 # CIS 5.1.8: Ensure cron is restricted to authorized users

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.oracle_linux_8.file_permissions
 
 # DISA STIG for Oracle Linux 8 - File Permissions Module

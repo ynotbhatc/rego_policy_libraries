@@ -2350,7 +2350,7 @@
      },
      {
       "id": "stig_rhel_9-RHEL-09-232030",
-      "title": "RHEL 9 /etc/shadow file must be owned by root",
+      "title": "RHEL 9 /etc/shadow file must have mode 0000",
       "props": [
        {
         "name": "label",
@@ -2376,7 +2376,7 @@
        {
         "id": "stig_rhel_9-RHEL-09-232030_stmt",
         "name": "statement",
-        "prose": "RHEL 9 /etc/shadow file must be owned by root"
+        "prose": "RHEL 9 /etc/shadow file must have mode 0000"
        }
       ],
       "class": "security"
@@ -2416,7 +2416,7 @@
      },
      {
       "id": "stig_rhel_9-RHEL-09-232040",
-      "title": "RHEL 9 /etc/gshadow file must be owned by root",
+      "title": "RHEL 9 /etc/gshadow file must have mode 0000",
       "props": [
        {
         "name": "label",
@@ -2442,7 +2442,7 @@
        {
         "id": "stig_rhel_9-RHEL-09-232040_stmt",
         "name": "statement",
-        "prose": "RHEL 9 /etc/gshadow file must be owned by root"
+        "prose": "RHEL 9 /etc/gshadow file must have mode 0000"
        }
       ],
       "class": "security"

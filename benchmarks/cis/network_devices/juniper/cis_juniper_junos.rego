@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [network]
 #   coverage:
-#     checks: 3
-#     cited: 3
+#     checks: 9
+#     cited: 9
 #     density: sparse
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_juniper_junos
 
 # CIS Juniper JunOS Benchmark v2.1.0
@@ -47,10 +47,10 @@ violations := [v |
 
 # Section 1: Management Plane Security
 management_plane_checks := [
-	{"msg": "1.x1: Ensure remote AAA (RADIUS or TACACS+) is configured", "ok": remote_aaa_configured},
-	{"msg": "1.x2: Ensure SSH is configured securely (protocol v2, root login denied)", "ok": ssh_configured_securely},
-	{"msg": "1.x3: Ensure security syslog is configured", "ok": security_syslog_configured},
-	{"msg": "1.x4: Ensure ntp authentication is configured", "ok": ntp_authentication_configured},
+	{"msg": "UNMAPPED-JUNOS-1.1: Ensure remote AAA (RADIUS or TACACS+) is configured", "ok": remote_aaa_configured},
+	{"msg": "UNMAPPED-JUNOS-1.2: Ensure SSH is configured securely (protocol v2, root login denied)", "ok": ssh_configured_securely},
+	{"msg": "UNMAPPED-JUNOS-1.3: Ensure security syslog is configured", "ok": security_syslog_configured},
+	{"msg": "UNMAPPED-JUNOS-1.4: Ensure ntp authentication is configured", "ok": ntp_authentication_configured},
 ]
 
 management_plane_violations := array.concat(
@@ -186,8 +186,8 @@ routing_protocol_auth_configured if {
 
 # Section 3: Data Plane Security
 data_plane_checks := [
-	{"msg": "3.x2: Ensure anti spoofing is configured", "ok": anti_spoofing_configured},
-	{"msg": "3.x3: Ensure spanning tree protection is configured", "ok": spanning_tree_protection_configured},
+	{"msg": "UNMAPPED-JUNOS-3.2: Ensure anti spoofing is configured", "ok": anti_spoofing_configured},
+	{"msg": "UNMAPPED-JUNOS-3.3: Ensure spanning tree protection is configured", "ok": spanning_tree_protection_configured},
 ]
 
 data_plane_violations := array.concat(

@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 28
-#     cited: 15
+#     checks: 35
+#     cited: 19
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.infrastructure_sovereignty
 
 import rego.v1

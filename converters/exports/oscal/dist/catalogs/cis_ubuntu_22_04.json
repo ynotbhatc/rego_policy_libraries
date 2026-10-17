@@ -300,7 +300,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.1.1.2",
-      "title": "auditd service not enabled",
+      "title": "auditd service not enabled (or service status not collected)",
       "props": [
        {
         "name": "label",
@@ -326,19 +326,19 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.1.1.2_stmt",
         "name": "statement",
-        "prose": "auditd service not enabled"
+        "prose": "auditd service not enabled (or service status not collected)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-4.1.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "auditd service not running"
+        "prose": "auditd service not running (or service state not collected)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.1.1.3",
-      "title": "audit=1 not set in bootloader configuration",
+      "title": "evidence missing — bootloader.grub_config not collected",
       "props": [
        {
         "name": "label",
@@ -364,7 +364,50 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.1.1.3_stmt",
         "name": "statement",
+        "prose": "evidence missing — bootloader.grub_config not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.1.1.3_obj.1",
+        "name": "assessment-objective",
         "prose": "audit=1 not set in bootloader configuration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-4.1.2.1",
+      "title": "evidence missing — auditd.config not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4589d059-6eb1-5ff2-993b-9853196ae079",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.1.2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — auditd.config not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.1.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "max_log_file not configured in auditd.conf"
        }
       ],
       "class": "security"
@@ -398,39 +441,6 @@
         "id": "cis_ubuntu_22_04-CIS-4.1.1.4_stmt",
         "name": "statement",
         "prose": "audit_backlog_limit not configured (should be 8192 or higher)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_22_04-CIS-4.1.2.1",
-      "title": "max_log_file not configured in auditd.conf",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 4.1.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 4.1.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_22_04.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4589d059-6eb1-5ff2-993b-9853196ae079",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_22_04-CIS-4.1.2.1_stmt",
-        "name": "statement",
-        "prose": "max_log_file not configured in auditd.conf"
        }
       ],
       "class": "security"
@@ -579,7 +589,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.1.4.1",
-      "title": "Audit log permissions too permissive (mode: %s, should be 0640 or less)",
+      "title": "evidence missing — auditd.log_permissions not collected",
       "props": [
        {
         "name": "label",
@@ -605,6 +615,11 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.1.4.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — auditd.log_permissions not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.1.4.1_obj.1",
+        "name": "assessment-objective",
         "prose": "Audit log permissions too permissive (mode: %s, should be 0640 or less)"
        }
       ],
@@ -805,7 +820,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.4.2",
-      "title": "GRUB configuration file has mode %s, should be 0400 or 0600",
+      "title": "evidence missing — grub.config_mode not collected",
       "props": [
        {
         "name": "label",
@@ -835,20 +850,30 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.4.2_stmt",
         "name": "statement",
-        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+        "prose": "evidence missing — grub.config_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "GRUB configuration file is owned by %s, should be root"
+        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.4.2_obj.2",
         "name": "assessment-objective",
-        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+        "prose": "evidence missing — grub.config_owner not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.4.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "GRUB configuration file is owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.4.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "GRUB configuration file has mode %v, should be 0400 or 0600 (or mode not collected)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.4.2_obj.5",
         "name": "assessment-objective",
         "prose": "GRUB configuration file is not owned by root"
        }
@@ -890,7 +915,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.5.1",
-      "title": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)",
+      "title": "evidence missing — process_hardening.core_dumps_enabled not collected",
       "props": [
        {
         "name": "label",
@@ -920,15 +945,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.5.1_stmt",
         "name": "statement",
-        "prose": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
+        "prose": "evidence missing — process_hardening.core_dumps_enabled not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "fs.suid_dumpable is %s, should be 0"
+        "prose": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.5.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "fs.suid_dumpable is %v, should be 0 (or was not collected)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5.1_obj.3",
         "name": "assessment-objective",
         "prose": "Core dumps are not restricted (hard limit should be 0)"
        }
@@ -979,7 +1009,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.5.3",
-      "title": "prelink is installed - remove it as it can reduce ASLR effectiveness",
+      "title": "evidence missing — process_hardening.prelink_installed not collected",
       "props": [
        {
         "name": "label",
@@ -1009,10 +1039,15 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.5.3_stmt",
         "name": "statement",
-        "prose": "prelink is installed - remove it as it can reduce ASLR effectiveness"
+        "prose": "evidence missing — process_hardening.prelink_installed not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "prelink is installed - remove it as it can reduce ASLR effectiveness"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5.3_obj.2",
         "name": "assessment-objective",
         "prose": "prelink is installed (disables ASLR effectiveness)"
        }
@@ -1215,7 +1250,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.1.2",
-      "title": "/etc/crontab has mode %s, should be 0600",
+      "title": "evidence missing — cron.crontab_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1241,15 +1276,30 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.2_stmt",
         "name": "statement",
-        "prose": "/etc/crontab has mode %s, should be 0600"
+        "prose": "evidence missing — cron.crontab_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/crontab owned by %s, should be root"
+        "prose": "/etc/crontab has mode %s, should be 0600"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.crontab_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.crontab_group not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.2_obj.5",
         "name": "assessment-objective",
         "prose": "/etc/crontab group is %s, should be root"
        }
@@ -1258,7 +1308,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.1.3",
-      "title": "/etc/cron.hourly has mode %s, should be 0700",
+      "title": "evidence missing — cron.cron_hourly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1284,10 +1334,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.3_stmt",
         "name": "statement",
-        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+        "prose": "evidence missing — cron.cron_hourly_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_hourly_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.3_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.hourly owned by %s, should be root"
        }
@@ -1296,7 +1356,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.1.4",
-      "title": "/etc/cron.daily has mode %s, should be 0700",
+      "title": "evidence missing — cron.cron_daily_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1322,10 +1382,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.4_stmt",
         "name": "statement",
-        "prose": "/etc/cron.daily has mode %s, should be 0700"
+        "prose": "evidence missing — cron.cron_daily_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.daily has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_daily_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.4_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.daily owned by %s, should be root"
        }
@@ -1334,7 +1404,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.1.5",
-      "title": "/etc/cron.weekly has mode %s, should be 0700",
+      "title": "evidence missing — cron.cron_weekly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1360,10 +1430,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.5_stmt",
         "name": "statement",
-        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+        "prose": "evidence missing — cron.cron_weekly_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_weekly_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.5_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.weekly owned by %s, should be root"
        }
@@ -1372,7 +1452,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.1.6",
-      "title": "/etc/cron.monthly has mode %s, should be 0700",
+      "title": "evidence missing — cron.cron_monthly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1398,10 +1478,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.6_stmt",
         "name": "statement",
-        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+        "prose": "evidence missing — cron.cron_monthly_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_monthly_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.6_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.monthly owned by %s, should be root"
        }
@@ -1410,7 +1500,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.1.7",
-      "title": "/etc/cron.d has mode %s, should be 0700",
+      "title": "evidence missing — cron.cron_d_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1436,10 +1526,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.7_stmt",
         "name": "statement",
-        "prose": "/etc/cron.d has mode %s, should be 0700"
+        "prose": "evidence missing — cron.cron_d_mode not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.d has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_d_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.1.7_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.d owned by %s, should be root"
        }
@@ -1484,7 +1584,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.8_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/cron.allow has mode %s, should be 0600"
+        "prose": "/etc/cron.allow has mode %v, should be 0600 (or mode not collected)"
        }
       ],
       "class": "security"
@@ -1527,7 +1627,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.1.9_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/at.allow has mode %s, should be 0600"
+        "prose": "/etc/at.allow has mode %v, should be 0600 (or mode not collected)"
        }
       ],
       "class": "security"
@@ -1558,7 +1658,7 @@
     "controls": [
      {
       "id": "cis_ubuntu_22_04-CIS-6.1.x",
-      "title": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "title": "evidence missing — %s.%s not collected",
       "props": [
        {
         "name": "label",
@@ -1584,6 +1684,11 @@
        {
         "id": "cis_ubuntu_22_04-CIS-6.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — %s.%s not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-6.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
        }
       ],
@@ -2031,7 +2136,7 @@
     "controls": [
      {
       "id": "cis_ubuntu_22_04-CIS-1.1.1.x",
-      "title": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)",
+      "title": "evidence missing — disabled_filesystem_modules.modules not collected",
       "props": [
        {
         "name": "label",
@@ -2057,7 +2162,45 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.1.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — disabled_filesystem_modules.modules not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.1.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.1.2",
+      "title": "evidence missing — required_partitions.partitions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b37a2f81-05da-562e-8993-f2dfdcdb8876",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.1.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — required_partitions.partitions not collected"
        }
       ],
       "class": "security"
@@ -2091,6 +2234,39 @@
         "id": "cis_ubuntu_22_04-cis_ubuntu_22_04.filesystem-1_stmt",
         "name": "statement",
         "prose": "CIS 1.1.%s: Separate partition for %s does not exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.1.x",
+      "title": "evidence missing — mount_options.mounts not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b37a2f81-05da-562e-8993-f2dfdcdb8876",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.1.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — mount_options.mounts not collected"
        }
       ],
       "class": "security"
@@ -2130,7 +2306,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.1.22",
-      "title": "World-writable directory %s does not have sticky bit set",
+      "title": "evidence missing — sticky_bit_check.world_writable_dirs not collected",
       "props": [
        {
         "name": "label",
@@ -2156,6 +2332,11 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.1.22_stmt",
         "name": "statement",
+        "prose": "evidence missing — sticky_bit_check.world_writable_dirs not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.1.22_obj.1",
+        "name": "assessment-objective",
         "prose": "World-writable directory %s does not have sticky bit set"
        }
       ],
@@ -2186,8 +2367,74 @@
     ],
     "controls": [
      {
+      "id": "cis_ubuntu_22_04-CIS-1.5-1.8",
+      "title": "evidence missing — initial_setup.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.5/1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.5/1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e22da9da-b00d-5c49-8498-a3dac49d9649",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.5-1.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — initial_setup.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-1.7",
+      "title": "evidence missing — initial_setup.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e22da9da-b00d-5c49-8498-a3dac49d9649",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-1.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — initial_setup.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_22_04-CIS-1.2.1",
-      "title": "No apt package repositories are enabled",
+      "title": "No apt package repositories are enabled (or enabled_repos not collected)",
       "props": [
        {
         "name": "label",
@@ -2213,14 +2460,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.2.1_stmt",
         "name": "statement",
-        "prose": "No apt package repositories are enabled"
+        "prose": "No apt package repositories are enabled (or enabled_repos not collected)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.2.2",
-      "title": "No GPG keys configured for apt package verification",
+      "title": "No GPG keys configured for apt package verification (or gpg_keys not collected)",
       "props": [
        {
         "name": "label",
@@ -2246,14 +2493,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.2.2_stmt",
         "name": "statement",
-        "prose": "No GPG keys configured for apt package verification"
+        "prose": "No GPG keys configured for apt package verification (or gpg_keys not collected)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.7.1",
-      "title": "/etc/motd has mode %s, should be 0644",
+      "title": "/etc/motd has mode %v, should be 0644 (or mode not collected)",
       "props": [
        {
         "name": "label",
@@ -2279,7 +2526,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.1_stmt",
         "name": "statement",
-        "prose": "/etc/motd has mode %s, should be 0644"
+        "prose": "/etc/motd has mode %v, should be 0644 (or mode not collected)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.1_obj.1",
@@ -2327,7 +2574,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue has mode %s, should be 0644"
+        "prose": "/etc/issue has mode %v, should be 0644 (or mode not collected)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.2_obj.2",
@@ -2370,7 +2617,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue.net has mode %s, should be 0644"
+        "prose": "/etc/issue.net has mode %v, should be 0644 (or mode not collected)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.3_obj.2",
@@ -2382,7 +2629,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.7.4",
-      "title": "/etc/motd owned by %s, should be root",
+      "title": "/etc/motd owned by %v, should be root (or owner not collected)",
       "props": [
        {
         "name": "label",
@@ -2408,14 +2655,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.4_stmt",
         "name": "statement",
-        "prose": "/etc/motd owned by %s, should be root"
+        "prose": "/etc/motd owned by %v, should be root (or owner not collected)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.7.5",
-      "title": "/etc/issue owned by %s, should be root",
+      "title": "/etc/issue owned by %v, should be root (or owner not collected)",
       "props": [
        {
         "name": "label",
@@ -2441,14 +2688,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.5_stmt",
         "name": "statement",
-        "prose": "/etc/issue owned by %s, should be root"
+        "prose": "/etc/issue owned by %v, should be root (or owner not collected)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.7.6",
-      "title": "/etc/issue.net owned by %s, should be root",
+      "title": "/etc/issue.net owned by %v, should be root (or owner not collected)",
       "props": [
        {
         "name": "label",
@@ -2474,7 +2721,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.7.6_stmt",
         "name": "statement",
-        "prose": "/etc/issue.net owned by %s, should be root"
+        "prose": "/etc/issue.net owned by %v, should be root (or owner not collected)"
        }
       ],
       "class": "security"
@@ -2580,7 +2827,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-1.8.4",
-      "title": "GDM idle delay is %d seconds, should be 900 or less",
+      "title": "GDM idle delay is %v seconds, should be 900 or less (or not collected)",
       "props": [
        {
         "name": "label",
@@ -2606,7 +2853,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-1.8.4_stmt",
         "name": "statement",
-        "prose": "GDM idle delay is %d seconds, should be 900 or less"
+        "prose": "GDM idle delay is %v seconds, should be 900 or less (or not collected)"
        }
       ],
       "class": "security"
@@ -4138,7 +4385,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.2.1.3",
-      "title": "journald not configured to forward to rsyslog (ForwardToSyslog: %s)",
+      "title": "journald not configured to forward to rsyslog (ForwardToSyslog: %v)",
       "props": [
        {
         "name": "label",
@@ -4164,14 +4411,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.1.3_stmt",
         "name": "statement",
-        "prose": "journald not configured to forward to rsyslog (ForwardToSyslog: %s)"
+        "prose": "journald not configured to forward to rsyslog (ForwardToSyslog: %v)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.2.1.4",
-      "title": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)",
+      "title": "rsyslog FileCreateMode not secure (current: %v, expected: 0640 or 0600)",
       "props": [
        {
         "name": "label",
@@ -4197,14 +4444,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.1.4_stmt",
         "name": "statement",
-        "prose": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)"
+        "prose": "rsyslog FileCreateMode not secure (current: %v, expected: 0640 or 0600)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.2.1.5",
-      "title": "No rsyslog logging rules configured",
+      "title": "evidence missing — rsyslog.logging_rules_count not collected",
       "props": [
        {
         "name": "label",
@@ -4230,10 +4477,15 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.1.5_stmt",
         "name": "statement",
-        "prose": "No rsyslog logging rules configured"
+        "prose": "evidence missing — rsyslog.logging_rules_count not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "No rsyslog logging rules configured"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.2.1.5_obj.2",
         "name": "assessment-objective",
         "prose": "Insufficient rsyslog logging rules (%d rules, expected at least 4)"
        }
@@ -4275,7 +4527,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.2.2.1",
-      "title": "journald compression not enabled (Compress: %s)",
+      "title": "journald compression not enabled (Compress: %v)",
       "props": [
        {
         "name": "label",
@@ -4301,14 +4553,14 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.2.1_stmt",
         "name": "statement",
-        "prose": "journald compression not enabled (Compress: %s)"
+        "prose": "journald compression not enabled (Compress: %v)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.2.2.2",
-      "title": "journald not configured for persistent storage (Storage: %s)",
+      "title": "journald not configured for persistent storage (Storage: %v)",
       "props": [
        {
         "name": "label",
@@ -4334,7 +4586,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.2.2_stmt",
         "name": "statement",
-        "prose": "journald not configured for persistent storage (Storage: %s)"
+        "prose": "journald not configured for persistent storage (Storage: %v)"
        }
       ],
       "class": "security"
@@ -4374,7 +4626,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-CIS-4.2.3",
-      "title": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "title": "evidence missing — log_file_permissions.analysis not collected",
       "props": [
        {
         "name": "label",
@@ -4400,10 +4652,20 @@
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.3_stmt",
         "name": "statement",
-        "prose": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+        "prose": "evidence missing — log_file_permissions.analysis not collected"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-4.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — excessive_permissions.files not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-4.2.3_obj.3",
         "name": "assessment-objective",
         "prose": "Log file '%s' has excessive permissions (mode: %s, issue: %s)"
        }
@@ -4535,7 +4797,7 @@
     "controls": [
      {
       "id": "cis_ubuntu_22_04-CIS-3.x",
-      "title": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s",
+      "title": "evidence missing — sysctl %s not collected",
       "props": [
        {
         "name": "label",
@@ -4561,7 +4823,141 @@
        {
         "id": "cis_ubuntu_22_04-CIS-3.x_stmt",
         "name": "statement",
-        "prose": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s"
+        "prose": "evidence missing — sysctl %s not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Kernel parameter '%s' has incorrect value (current: %v, expected: %v) - %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-3.1.1",
+      "title": "evidence missing — ip_forwarding.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297ddda3-5a8f-5c20-9770-f2ce44f2b5a0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.1.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ip_forwarding.%s not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-3.3.2",
+      "title": "evidence missing — wireless_interfaces.compliant not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297ddda3-5a8f-5c20-9770-f2ce44f2b5a0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.3.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — wireless_interfaces.compliant not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Wireless interface detected on server: %s"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "%v wireless interfaces found on server (should have 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-3.5.x",
+      "title": "evidence missing — firewall.active not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#297ddda3-5a8f-5c20-9770-f2ce44f2b5a0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.5.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — firewall.active not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.5.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "No active firewall detected (type: %v)"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-3.5.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "Using legacy iptables instead of ufw or nftables"
        }
       ],
       "class": "security"
@@ -4694,44 +5090,6 @@
         "id": "cis_ubuntu_22_04-CIS-3.2.5_stmt",
         "name": "statement",
         "prose": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_22_04-CIS-3.1.1",
-      "title": "IPv4 forwarding is enabled (value: %v, expected: 0)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_22_04.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#297ddda3-5a8f-5c20-9770-f2ce44f2b5a0",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_22_04-CIS-3.1.1_stmt",
-        "name": "statement",
-        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
-       },
-       {
-        "id": "cis_ubuntu_22_04-CIS-3.1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
        }
       ],
       "class": "security"
@@ -4935,82 +5293,6 @@
         "id": "cis_ubuntu_22_04-CIS-3.2.9_stmt",
         "name": "statement",
         "prose": "IPv6 router advertisements accepted on %s (rogue router risk)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_22_04-CIS-3.3.2",
-      "title": "Wireless interface detected on server: %s",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_22_04.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#297ddda3-5a8f-5c20-9770-f2ce44f2b5a0",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_22_04-CIS-3.3.2_stmt",
-        "name": "statement",
-        "prose": "Wireless interface detected on server: %s"
-       },
-       {
-        "id": "cis_ubuntu_22_04-CIS-3.3.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d wireless interfaces found on server (should have 0)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_22_04-CIS-3.5.x",
-      "title": "No active firewall detected (type: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.5.x"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.5.x"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_22_04.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#297ddda3-5a8f-5c20-9770-f2ce44f2b5a0",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_22_04-CIS-3.5.x_stmt",
-        "name": "statement",
-        "prose": "No active firewall detected (type: %s)"
-       },
-       {
-        "id": "cis_ubuntu_22_04-CIS-3.5.x_obj.1",
-        "name": "assessment-objective",
-        "prose": "Using legacy iptables instead of ufw or nftables"
        }
       ],
       "class": "security"
@@ -5531,7 +5813,73 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.5.x_obj.2",
         "name": "assessment-objective",
-        "prose": "Default umask is %s, should be 027 or more restrictive"
+        "prose": "Default umask is %v, should be 027 or more restrictive (or not collected)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-cis_ubuntu_22_04.pam-1",
+      "title": "CIS %s: evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_22_04.pam#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_22_04.pam#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b2facfb6-0845-52ea-a93e-3abcc6fe5b58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-cis_ubuntu_22_04.pam-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — pam.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_22_04-CIS-5.4-5.5",
+      "title": "evidence missing — pam.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4/5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4/5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b2facfb6-0845-52ea-a93e-3abcc6fe5b58",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.4-5.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — pam.%s not collected"
        }
       ],
       "class": "security"
@@ -5560,6 +5908,39 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_ubuntu_22_04-CIS-2.x",
+      "title": "evidence missing — %s.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c960a4c2-ed80-5170-9dcf-a1890ff132b0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-2.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — %s.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_ubuntu_22_04-CIS-2.1.x",
       "title": "autofs service is active (should be disabled)",
@@ -5988,8 +6369,41 @@
     ],
     "controls": [
      {
+      "id": "cis_ubuntu_22_04-CIS-5.2.x",
+      "title": "evidence missing — ssh.sshd_config_raw not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39b5535b-51fb-5ac7-a31c-56ff701a5bb9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.2.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ssh.sshd_config_raw not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_22_04-CIS-5.2.1",
-      "title": "/etc/ssh/sshd_config has mode %s, should be 0600",
+      "title": "/etc/ssh/sshd_config has mode %v, should be 0600 (or mode not collected)",
       "props": [
        {
         "name": "label",
@@ -6015,24 +6429,24 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.2.1_stmt",
         "name": "statement",
-        "prose": "/etc/ssh/sshd_config has mode %s, should be 0600"
+        "prose": "/etc/ssh/sshd_config has mode %v, should be 0600 (or mode not collected)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/ssh/sshd_config owned by %s, should be root"
+        "prose": "/etc/ssh/sshd_config owned by %v, should be root (or owner not collected)"
        },
        {
         "id": "cis_ubuntu_22_04-CIS-5.2.1_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/ssh/sshd_config group is %s, should be root"
+        "prose": "/etc/ssh/sshd_config group is %v, should be root (or group not collected)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.2.2",
-      "title": "SSH private host key %s has mode %s, should be 0600",
+      "title": "evidence missing — ssh.private_key_files not collected",
       "props": [
        {
         "name": "label",
@@ -6058,14 +6472,19 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.2.2_stmt",
         "name": "statement",
-        "prose": "SSH private host key %s has mode %s, should be 0600"
+        "prose": "evidence missing — ssh.private_key_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH private host key %v has mode %v, should be 0600"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_22_04-CIS-5.2.3",
-      "title": "SSH public host key %s has mode %s, should be 0644",
+      "title": "evidence missing — ssh.public_key_files not collected",
       "props": [
        {
         "name": "label",
@@ -6091,7 +6510,12 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.2.3_stmt",
         "name": "statement",
-        "prose": "SSH public host key %s has mode %s, should be 0644"
+        "prose": "evidence missing — ssh.public_key_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH public host key %v has mode %v, should be 0644"
        }
       ],
       "class": "security"
@@ -6493,6 +6917,11 @@
         "id": "cis_ubuntu_22_04-CIS-5.2.15_stmt",
         "name": "statement",
         "prose": "SSH MaxAuthTries is %s, should be 4 or less"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.2.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH MaxAuthTries is not configured (sshd default is 6, should be 4 or less)"
        }
       ],
       "class": "security"
@@ -6592,6 +7021,11 @@
         "id": "cis_ubuntu_22_04-CIS-5.2.18_stmt",
         "name": "statement",
         "prose": "SSH LoginGraceTime is %s seconds, should be 60 or less"
+       },
+       {
+        "id": "cis_ubuntu_22_04-CIS-5.2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime is not configured (sshd default is 120 seconds, should be 60 or less)"
        }
       ],
       "class": "security"
@@ -7031,7 +7465,7 @@
        {
         "id": "cis_ubuntu_22_04-CIS-5.3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/sudoers has mode %s, should be 0440"
+        "prose": "/etc/sudoers has mode %v, should be 0440 (or mode not collected)"
        }
       ],
       "class": "security"
@@ -7060,6 +7494,39 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_ubuntu_22_04-cis_ubuntu_22_04.user_group-1",
+      "title": "CIS %s: evidence missing — user_group.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_22_04.user_group#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_22_04.user_group#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_22_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#46dd5b4b-f17e-5506-9f75-e762b3c92d30",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_22_04-cis_ubuntu_22_04.user_group-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — user_group.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_ubuntu_22_04-CIS-6.2.1",
       "title": "User %s in /etc/passwd does not use shadowed passwords",

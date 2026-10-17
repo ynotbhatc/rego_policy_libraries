@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.logging
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 4.2: Logging Configuration

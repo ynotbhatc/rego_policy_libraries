@@ -66,6 +66,72 @@
     ],
     "controls": [
      {
+      "id": "cis_gcp-cis_gcp_foundations-1",
+      "title": "%s: evidence missing — %s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_gcp_foundations#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_gcp_foundations#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4960877f-1622-5a19-a11b-8a93c42dc695",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-cis_gcp_foundations-1_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — %s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_gcp-2.1",
+      "title": "evidence missing — audit_config.services not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_gcp_foundations"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4960877f-1622-5a19-a11b-8a93c42dc695",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_gcp-2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — audit_config.services not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_gcp-bigquery",
       "title": "Implemented by a Rego rule in benchmarks/cis/gcp/cis_gcp_foundations.rego (package cis_gcp_foundations); see the rule body.",
       "props": [

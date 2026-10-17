@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 19
+#     checks: 23
 #     cited: 14
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.network
 
 # CIS Amazon Linux 2023 Sections 3.1.x, 3.2.x, 3.3.x - Network Configuration
