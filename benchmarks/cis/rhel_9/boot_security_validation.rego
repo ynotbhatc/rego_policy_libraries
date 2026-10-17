@@ -61,17 +61,31 @@ violations contains msg if {
 
 # CIS 1.4.2: Ensure permissions on bootloader config are configured
 violations contains msg if {
+    not input.boot_security.grub_cfg_mode
+    msg := "CIS 1.4.2: evidence missing — boot_security.grub_cfg_mode not collected"
+}
+
+violations contains msg if {
     input.boot_security.grub_cfg_mode
-    input.boot_security.grub_cfg_mode != "0600"
-    input.boot_security.grub_cfg_mode != "0400"
-    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg has mode %s, should be 0600 or 0400",
+    not mode_within(input.boot_security.grub_cfg_mode, "0600")
+    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg has mode %s, should be 0600 or more restrictive",
         [input.boot_security.grub_cfg_mode])
+}
+
+violations contains msg if {
+    not input.boot_security.grub_cfg_owner
+    msg := "CIS 1.4.2: evidence missing — boot_security.grub_cfg_owner not collected"
 }
 
 violations contains msg if {
     input.boot_security.grub_cfg_owner != "root"
     msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg owned by %s, should be root",
         [input.boot_security.grub_cfg_owner])
+}
+
+violations contains msg if {
+    not input.boot_security.grub_cfg_group
+    msg := "CIS 1.4.2: evidence missing — boot_security.grub_cfg_group not collected"
 }
 
 violations contains msg if {
@@ -166,3 +180,15 @@ violations contains msg if {
 compliant if {
     count(violations) == 0
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
