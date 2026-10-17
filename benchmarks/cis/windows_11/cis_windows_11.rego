@@ -731,8 +731,9 @@ netlogon_manual if {
 	input.system.services.net_logon.startup_type == "Manual"
 }
 
+# applicability must be stated: an absent is_domain_controller does not pass the DC-only control
 netlogon_auto_dc if {
-	not input.system.is_domain_controller
+	input.system.is_domain_controller == false
 }
 
 netlogon_auto_dc if {
@@ -1071,8 +1072,9 @@ multiple_internet_minimized if {
 	input.system.administrative_templates.computer_config.network.minimize_connections_multiple_internet == true
 }
 
+# applicability must be stated: an absent is_domain_joined does not pass the control
 non_domain_networks_prohibited if {
-	not input.system.is_domain_joined
+	input.system.is_domain_joined == false
 }
 
 non_domain_networks_prohibited if {
