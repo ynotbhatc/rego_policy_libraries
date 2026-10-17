@@ -32,6 +32,21 @@ default shared_accounts_managed := false
 default training_completed_for_all_authorized_personnel := false
 default training_records_maintained := false
 
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# No roster is no evidence: every per-person check below requires one.
+personnel_roster_present if {
+	is_array(input.personnel)
+	count(input.personnel) > 0
+}
+
 # CIP-004-6: Personnel & Training
 # Requirement: Minimize the risk against compromise of BES Cyber Systems from
 # personnel who have authorized electronic or authorized unescorted physical
@@ -77,6 +92,7 @@ cyber_security_training_program if {
 # All personnel with access must complete training before access is granted
 # and at least annually thereafter
 training_completed_for_all_authorized_personnel if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
 		requires_cybersecurity_training(person)
@@ -91,7 +107,7 @@ requires_cybersecurity_training(person) if {
 
 training_current(person) if {
 	person.cyber_security_training.initial_completed == true
-	training_age_days := (time.now_ns() - person.cyber_security_training.last_completion_date) / (24 * 60 * 60 * 1000000000)
+	training_age_days := (time.now_ns() - date_ns(person.cyber_security_training.last_completion_date)) / (24 * 60 * 60 * 1000000000)
 	training_age_days <= 365 # annual
 }
 
@@ -102,6 +118,7 @@ initial_training_before_access(person) if {
 
 # Training records maintained
 training_records_maintained if {
+	personnel_roster_present
 	every person in input.personnel {
 		person.cyber_security_training.record_maintained == true
 	}
@@ -115,6 +132,7 @@ training_records_maintained if {
 # electronic or authorized unescorted physical access
 
 personnel_risk_assessments_current if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
 		requires_risk_assessment(person)
@@ -129,7 +147,7 @@ requires_risk_assessment(person) if {
 
 risk_assessment_current(person) if {
 	person.risk_assessment.completed == true
-	assessment_age_days := (time.now_ns() - person.risk_assessment.completion_date) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - date_ns(person.risk_assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
 	assessment_age_days <= 2555 # 7 years
 }
 
@@ -143,10 +161,12 @@ risk_assessment_complete(person) if {
 
 # PRA must be performed before granting access (except for emergencies)
 pra_before_access_granted if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
 		requires_risk_assessment(person)
-		person.risk_assessment.completed_before_access_granted == false
+		# Missing completed_before_access_granted is not a pass.
+		not person.risk_assessment.completed_before_access_granted == true
 		not person.emergency_access_exception == true
 	]
 	count(violations) == 0
@@ -159,31 +179,43 @@ pra_before_access_granted if {
 # R4 - Verify that individuals with authorized electronic or authorized
 # unescorted physical access have authorization based on job function
 
+requires_access_authorization(person) if {
+	person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access", "authorized_cyber_asset_access"]
+}
+
 access_authorization_documented if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
-		person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access"]
+		requires_access_authorization(person)
 		not person.access_authorization.documented == true
 	]
 	count(violations) == 0
 }
 
 access_based_on_need_to_know if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
-		person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access"]
+		requires_access_authorization(person)
 		not person.access_authorization.need_to_know_verified == true
 	]
 	count(violations) == 0
 }
 
 # R4.2 - Review access authorizations at least every 15 calendar months
+access_review_current(person) if {
+	review_age_days := (time.now_ns() - date_ns(person.access_authorization.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	review_age_days <= 455
+}
+
 access_authorization_reviewed if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
-		person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access"]
-		review_age_days := (time.now_ns() - person.access_authorization.last_review_date) / (24 * 60 * 60 * 1000000000)
-		review_age_days > 455
+		requires_access_authorization(person)
+		# A missing or unparseable last_review_date is not current.
+		not access_review_current(person)
 	]
 	count(violations) == 0
 }
@@ -196,6 +228,7 @@ access_authorization_reviewed if {
 # or change in job function requiring revocation
 
 access_revoked_timely_on_termination if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
 		person.employment_status == "terminated"
@@ -206,12 +239,13 @@ access_revoked_timely_on_termination if {
 
 access_revoked_within_24h(person) if {
 	person.access_revocation.completed == true
-	revocation_hours := (person.access_revocation.completion_date - person.termination_date) / (3600 * 1000000000)
+	revocation_hours := (date_ns(person.access_revocation.completion_date) - date_ns(person.termination_date)) / (3600 * 1000000000)
 	revocation_hours <= 24
 }
 
 # Shared accounts disabled upon individual departure
 shared_accounts_managed if {
+	personnel_roster_present
 	violations := [person |
 		person := input.personnel[_]
 		person.employment_status == "terminated"
@@ -233,7 +267,7 @@ access_changed_on_role_change if {
 
 role_change_access_updated_timely(change) if {
 	change.access_updated == true
-	update_hours := (change.access_update_date - change.role_change_date) / (3600 * 1000000000)
+	update_hours := (date_ns(change.access_update_date) - date_ns(change.role_change_date)) / (3600 * 1000000000)
 	update_hours <= 24
 }
 
