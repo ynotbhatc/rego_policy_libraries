@@ -33,6 +33,47 @@ violations := array.concat(
 	[v | some v in running_service_violations],
 )
 
+# Every service below is read by a rule in this module. A service with no entry at all is
+# missing evidence, not a pass: the collector reports uninstalled services with
+# not_installed: true, which is an acceptable state.
+checked_services := [
+	"BTAGService",
+	"bthserv",
+	"Browser",
+	"MapsBroker",
+	"lfsvc",
+	"IISADMIN",
+	"irmon",
+	"SharedAccess",
+	"lltdsvc",
+	"LxssManager",
+	"FTPSVC",
+	"MSiSCSI",
+	"sshd",
+	"PNRPsvc",
+	"p2psvc",
+	"SessionEnv",
+	"RpcLocator",
+	"RemoteRegistry",
+	"RemoteAccess",
+	"simptcp",
+	"SNMP",
+	"TlntSvr",
+	"tftpd",
+	"W3SVC",
+	"XblAuthManager",
+]
+
+disabled_service_violations contains msg if {
+	some name in checked_services
+	object.get(input, ["services", name], null) == null
+	msg := sprintf("CIS 5.x: evidence missing - services.%s not collected", [name])
+}
+
+running_service_violations contains "CIS 5.20: evidence missing - services.smb1_enabled not collected" if {
+	object.get(input, ["services", "smb1_enabled"], null) == null
+}
+
 # Services that should be disabled on non-DC member servers
 
 # CIS 5.1: Bluetooth Audio Gateway Service = Disabled
