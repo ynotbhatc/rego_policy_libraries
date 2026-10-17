@@ -39,6 +39,12 @@ violations contains msg if {
 # CIS 1.6.1.2: SELinux not disabled in bootloader
 violations contains msg if {
 	input.selinux.installed
+	object.get(input.selinux, "grub_cmdline", null) == null
+	msg := "CIS 1.6.1.2: evidence missing — selinux.grub_cmdline not collected"
+}
+
+violations contains msg if {
+	input.selinux.installed
 	contains(input.selinux.grub_cmdline, "selinux=0")
 	msg := "CIS 1.6.1.2: SELinux is disabled in bootloader configuration (selinux=0)"
 }
@@ -81,6 +87,14 @@ violations contains msg if {
 violations contains msg if {
 	input.selinux.installed
 	selinux_enabled
+	not input.selinux.mode
+	msg := "CIS 1.6.1.5: evidence missing — selinux.mode not collected"
+}
+
+violations contains msg if {
+	input.selinux.installed
+	selinux_enabled
+	input.selinux.mode
 	not selinux_enforcing
 	msg := sprintf("CIS 1.6.1.5: SELinux mode is %s, should be enforcing", [input.selinux.mode])
 }
