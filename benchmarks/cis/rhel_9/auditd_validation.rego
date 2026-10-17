@@ -49,6 +49,10 @@ service_violations contains "CIS 4.1.1.1: audit package not installed" if {
 # CIS 4.1.1.2 - AUDITD SERVICE ENABLED AND RUNNING
 # =============================================================================
 
+service_violations contains "CIS 4.1.1.2: evidence missing — auditd.service not collected" if {
+	not input.services["auditd.service"]
+}
+
 service_violations contains "CIS 4.1.1.2: auditd service not enabled" if {
 	service := input.services["auditd.service"]
 	service.status != "enabled"
@@ -230,8 +234,7 @@ rules_violations contains "CIS 4.1.3.21: Audit configuration not set to immutabl
 
 permission_violations contains sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode]) if {
 	mode := input.auditd.log_permissions.mode
-	mode_num := to_number(mode)
-	mode_num > 640
+	not mode_within(mode, "0640")
 }
 
 # =============================================================================
@@ -254,19 +257,18 @@ permission_violations contains sprintf("CIS 4.1.4.2: Audit log group not root or
 
 permission_violations contains sprintf("CIS 4.1.4.3: Audit log directory permissions too permissive (mode: %s)", [mode]) if {
 	mode := input.auditd.log_dir_permissions.mode
-	mode_num := to_number(mode)
-	mode_num > 750
+	not mode_within(mode, "0750")
 }
 
 # =============================================================================
 # CIS 4.1.4.4 - AUDIT CONFIGURATION FILES PERMISSIONS
 # =============================================================================
 
-permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has incorrect permissions (mode: %s, should be 0640)", [file, mode]) if {
+permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has incorrect permissions (mode: %s, should be 0640 or more restrictive)", [file, mode]) if {
 	some config_file in input.auditd.config_permissions
 	file := config_file.stat.path
 	mode := config_file.stat.mode
-	mode != "0640"
+	not mode_within(mode, "0640")
 }
 
 permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s not owned by root (owner: %s)", [file, owner]) if {
@@ -275,6 +277,22 @@ permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s not ow
 	owner := config_file.stat.pw_name
 	owner != "root"
 }
+
+# =============================================================================
+# HELPERS - octal permission modes
+# =============================================================================
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 # =============================================================================
 # SUMMARY REPORT
