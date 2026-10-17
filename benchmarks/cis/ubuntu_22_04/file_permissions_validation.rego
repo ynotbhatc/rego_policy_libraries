@@ -31,6 +31,27 @@ violations := array.concat(
 	array.concat([v | some v in ownership_violations], [v | some v in suid_sgid_violations]),
 )
 
+# Evidence: each section must have been collected. Offender lists/counts that are absent
+# mean "not assessed", which is not the same as "no offenders".
+evidence_keys := {
+	"critical_files": "analysis",
+	"world_writable": "count",
+	"unowned_files": "count",
+	"ungrouped_files": "count",
+	"suid_files": "unknown_count",
+	"sgid_files": "count",
+}
+
+evidence_present(section) if is_array(input[section][evidence_keys[section]])
+
+evidence_present(section) if is_number(input[section][evidence_keys[section]])
+
+critical_file_violations contains msg if {
+	some section, key in evidence_keys
+	not evidence_present(section)
+	msg := sprintf("CIS 6.1.x: evidence missing — %s.%s not collected", [section, key])
+}
+
 # CIS 6.1.x: Critical system file permissions
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
