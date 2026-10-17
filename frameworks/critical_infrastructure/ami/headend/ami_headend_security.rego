@@ -244,8 +244,10 @@ violations contains msg if {
 
 violations contains msg if {
     not audit_log_retention
-    msg := sprintf("HEADEND-AUD-2: Audit log retention is %d days — minimum 365 days required",
-        [input.mdms.audit_logging.retention_days])
+    # %v with a default: a missing retention_days must still produce the violation
+    # (a %d over an undefined value silently dropped it).
+    msg := sprintf("HEADEND-AUD-2: Audit log retention is %v days — minimum 365 days required",
+        [object.get(input, ["mdms", "audit_logging", "retention_days"], "unreported")])
 }
 
 violations contains msg if {
