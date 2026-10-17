@@ -50,7 +50,10 @@ import rego.v1
 # conflicts with commercial markers (mis-claim detection), plus two
 # self-assessment hygiene checks (library practice, not CRA duties).
 
-default compliant := true # default is "no obligation" — exclusion applies
+# Fail closed. (An earlier `default compliant := true` meant the rule below could never make
+# compliant false: when violations existed the default still applied.) An entity that declares
+# no exemption claim has no mis-claim to report and still evaluates to compliant below.
+default compliant := false
 
 default exempt := false
 
@@ -59,6 +62,36 @@ default exempt := false
 exempt if {
 	input.foss.is_open_source_product
 	input.foss.not_made_available_in_course_of_commercial_activity
+}
+
+# ── Applicability and evidence ──────────────────────────────────────────────
+# Whether an exclusion is claimed is a conditional-applicability fact: when it is not declared the
+# module has not been evaluated, so that is a violation, not "no obligation". When an exclusion IS
+# claimed, every commercial marker it is tested against must be declared too, otherwise the
+# mis-claim checks below silently skip.
+
+violation contains "CRA scope: applicability not determined — foss.claimed_exemption was not declared (true/false)" if {
+	not is_boolean(object.get(object.get(input, "foss", {}), "claimed_exemption", null))
+}
+
+claim_evidence_fields := [
+	["foss", "is_open_source_product"],
+	["foss", "not_made_available_in_course_of_commercial_activity"],
+	["foss.revenue", "paid_support_offered"],
+	["foss.revenue", "license_fees_collected"],
+	["foss.revenue", "commercial_saas_hosting"],
+	["foss.revenue", "use_conditioned_on_personal_data"],
+	["foss.distribution", "claimant_integrates_into_own_commercial_product"],
+	["foss.distribution", "distributed_in_eu_market"],
+]
+
+foss_section(path) := object.get(input, split(path, "."), {})
+
+violation contains msg if {
+	input.foss.claimed_exemption == true
+	some pair in claim_evidence_fields
+	not is_boolean(object.get(foss_section(pair[0]), pair[1], null))
+	msg := sprintf("CRA Art.3(22)/recital 15 (evidence missing): exclusion claimed but %s.%s was not declared (true/false) — the mis-claim check cannot run", [pair[0], pair[1]])
 }
 
 # ── Mis-claim: asserted exclusion vs commercial markers ────────────────────
