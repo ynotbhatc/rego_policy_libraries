@@ -158,7 +158,7 @@ config_files_secured if {
 subdirs_outside_system if {
 	dirs := input.postgresql.directories
 	data_dir := dirs.data_directory
-	not startswith(data_dir, "/")
+	startswith(data_dir, "/") # an absolute path is required to judge the location
 	not startswith(data_dir, "/usr")
 	not startswith(data_dir, "/etc")
 }
@@ -428,9 +428,16 @@ log_rotation_age_correct if {
 
 log_rotation_size_correct if {
 	rotation_size := input.postgresql.logging.log_rotation_size
-	rotation_size != "0"
-	rotation_size_mb := to_number(split(rotation_size, "MB")[0])
-	rotation_size_mb <= 1024
+	rotation_size_kb := size_to_kb(rotation_size)
+	rotation_size_kb > 0
+	rotation_size_kb <= 1048576 # 1024 MB
+}
+
+# Parse a PostgreSQL size setting ("10MB", "1GB", "512kB", "1024" = kB by default) to kB
+size_to_kb(raw) := kb if {
+	m := regex.find_all_string_submatch_n(`^\s*([0-9]+)\s*(kB|MB|GB|TB)?\s*$`, sprintf("%v", [raw]), 1)[0]
+	mult := {"": 1, "kB": 1, "MB": 1024, "GB": 1048576, "TB": 1073741824}[m[2]]
+	kb := to_number(m[1]) * mult
 }
 
 syslog_facility_correct if {
@@ -493,9 +500,16 @@ shared_preload_libraries_correct if {
 
 pgaudit_log_correct if {
 	pgaudit_log := input.postgresql.pgaudit.log
-	pgaudit_settings := split(pgaudit_log, ",")
-	"ddl" in pgaudit_settings
-	"write" in pgaudit_settings
+	pgaudit_settings := {trim_space(t) | some t in split(pgaudit_log, ",")}
+	pgaudit_covers(pgaudit_settings)
+}
+
+# "all" is the superset of every class; otherwise both ddl and write are required
+pgaudit_covers(settings) if "all" in settings
+
+pgaudit_covers(settings) if {
+	"ddl" in settings
+	"write" in settings
 }
 
 pgaudit_log_catalog_enabled if {
@@ -550,8 +564,7 @@ sudo_configured_correctly if {
 	sudo_config := input.postgresql.system.sudo_config
 	postgres_sudo := [rule | rule := sudo_config[_]; rule.user == "postgres"]
 	count(postgres_sudo) > 0
-	postgres_rule := postgres_sudo[0]
-	not postgres_rule.allow_all_commands
+	count([r | some r in postgres_sudo; r.allow_all_commands]) == 0
 }
 
 excessive_admin_privileges_revoked if {
@@ -594,12 +607,18 @@ database_names_appropriate if {
 	databases := input.postgresql.databases
 	default_names := ["postgres", "template0", "template1"]
 	user_databases := [db | db := databases[_]; not db.name in default_names]
-	prod_names := [db | db := user_databases[_]; contains(lower(db.name), "prod")]
-	test_names := [db | db := user_databases[_]; contains(lower(db.name), "test")]
-	dev_names := [db | db := user_databases[_]; contains(lower(db.name), "dev")]
+	# whole name tokens only: "product_catalog" or "latest_orders" are not environment names
+	prod_names := [db | db := user_databases[_]; name_has_token(db.name, {"prod", "production"})]
+	test_names := [db | db := user_databases[_]; name_has_token(db.name, {"test"})]
+	dev_names := [db | db := user_databases[_]; name_has_token(db.name, {"dev", "development"})]
 	count(prod_names) == 0
 	count(test_names) == 0
 	count(dev_names) == 0
+}
+
+name_has_token(name, tokens) if {
+	some t in regex.split(`[^a-z0-9]+`, lower(name))
+	t in tokens
 }
 
 version_not_identifiable if {
