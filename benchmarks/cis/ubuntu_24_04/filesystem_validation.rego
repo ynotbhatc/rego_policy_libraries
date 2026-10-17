@@ -39,9 +39,9 @@ filesystem_module_violations contains violation if {
 	some module in input.disabled_filesystem_modules.modules
 	not module.compliant
 	violation := sprintf("CIS 1.1.1.x: Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)", [
-		module.module,
-		module.loaded,
-		module.disabled,
+		object.get(module, "module", "unknown"),
+		object.get(module, "loaded", "unknown"),
+		object.get(module, "disabled", "unknown"),
 	])
 }
 
@@ -53,8 +53,8 @@ partition_violations contains violation if {
 	some partition in input.required_partitions.partitions
 	not partition.exists
 	violation := sprintf("CIS 1.1.%s: Separate partition for %s does not exist", [
-		partition.cis_id,
-		partition.mount_point,
+		object.get(partition, "cis_id", "x"),
+		object.get(partition, "mount_point", "unknown"),
 	])
 }
 
@@ -65,10 +65,10 @@ partition_violations contains violation if {
 mount_option_violations contains violation if {
 	some mount in input.mount_options.mounts
 	not mount.compliant
-	missing_opts := concat(", ", mount.missing_options)
+	missing_opts := concat(", ", object.get(mount, "missing_options", []))
 	violation := sprintf("CIS %s: %s is missing mount options: %s", [
-		mount.cis_id,
-		mount.mount_point,
+		object.get(mount, "cis_id", "1.1.x"),
+		object.get(mount, "mount_point", "unknown"),
 		missing_opts,
 	])
 }
@@ -80,7 +80,7 @@ mount_option_violations contains violation if {
 sticky_bit_violations contains violation if {
 	some dir in input.sticky_bit_check.world_writable_dirs
 	not dir.has_sticky_bit
-	violation := sprintf("CIS 1.1.22: World-writable directory %s does not have sticky bit set", [dir.path])
+	violation := sprintf("CIS 1.1.22: World-writable directory %s does not have sticky bit set", [object.get(dir, "path", "unknown")])
 }
 
 # =============================================================================
@@ -95,6 +95,36 @@ usb_storage_violation contains violation if {
 usb_storage_violation contains violation if {
 	input.usb_storage_disabled.disabled == false
 	violation := "CIS 1.1.24: USB storage driver is not disabled in modprobe"
+}
+
+usb_storage_violation contains violation if {
+	count(object.get(input, "usb_storage_disabled", {})) > 0
+	object.get(input.usb_storage_disabled, "disabled", null) == null
+	violation := "CIS 1.1.24: evidence missing — usb_storage_disabled.disabled not collected"
+}
+
+# =============================================================================
+# EVIDENCE GATES: a section that was not collected is a violation, not a pass
+# =============================================================================
+
+filesystem_module_violations contains "CIS 1.1.1.x: evidence missing — disabled_filesystem_modules.modules not collected" if {
+	count(object.get(object.get(input, "disabled_filesystem_modules", {}), "modules", [])) == 0
+}
+
+partition_violations contains "CIS 1.1.2: evidence missing — required_partitions.partitions not collected" if {
+	count(object.get(object.get(input, "required_partitions", {}), "partitions", [])) == 0
+}
+
+mount_option_violations contains "CIS 1.1.x: evidence missing — mount_options.mounts not collected" if {
+	count(object.get(object.get(input, "mount_options", {}), "mounts", [])) == 0
+}
+
+sticky_bit_violations contains "CIS 1.1.22: evidence missing — sticky_bit_check.world_writable_dirs not collected" if {
+	object.get(object.get(input, "sticky_bit_check", {}), "world_writable_dirs", null) == null
+}
+
+usb_storage_violation contains "CIS 1.1.24: evidence missing — usb_storage_disabled not collected" if {
+	count(object.get(input, "usb_storage_disabled", {})) == 0
 }
 
 # =============================================================================
