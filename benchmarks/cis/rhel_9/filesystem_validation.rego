@@ -90,7 +90,7 @@ missing_facts_violations := array.concat(
 		some pair in required_collections
 		fact_present(pair[0])
 		not collection_present(pair[0], pair[1])
-		msg := sprintf("CIS 1.1: FAIL-CLOSED - filesystem facts '%s.%s' are empty; nothing was evaluated and the section is reported non-compliant", [pair[0], pair[1]])
+		msg := sprintf("CIS 1.1: evidence missing — filesystem facts '%s.%s' are empty; nothing was evaluated and the section is reported non-compliant", [pair[0], pair[1]])
 	],
 )
 

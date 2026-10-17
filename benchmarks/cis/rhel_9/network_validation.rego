@@ -94,14 +94,14 @@ missing_facts_violations := array.concat(
 			fact_present("sysctl_parameters")
 			some name in required_sysctl_params
 			not sysctl_param_collected(name)
-			msg := sprintf("CIS 3.x: FAIL-CLOSED - sysctl parameter '%s' was not collected; it cannot be evaluated and is reported non-compliant", [name])
+			msg := sprintf("CIS 3.x: evidence missing — sysctl parameter '%s' was not collected; it cannot be evaluated and is reported non-compliant", [name])
 		],
 	),
 	[msg |
 		fact_present("ip_forwarding")
 		some field in ip_forwarding_required_fields
 		not is_number(object.get(input.ip_forwarding, field, null))
-		msg := sprintf("CIS 3.1.1: FAIL-CLOSED - ip_forwarding.%s was not collected; it cannot be evaluated and is reported non-compliant", [field])
+		msg := sprintf("CIS 3.1.1: evidence missing — ip_forwarding.%s was not collected; it cannot be evaluated and is reported non-compliant", [field])
 	],
 )
 
