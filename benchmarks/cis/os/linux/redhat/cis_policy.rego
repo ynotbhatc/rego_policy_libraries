@@ -22,6 +22,8 @@ import rego.v1
 # This demonstrates key CIS controls validation using Ansible facts
 
 # Allow access if all CIS controls pass
+default allow := false
+
 allow if {
     selinux_enabled
     ssh_hardened
@@ -30,6 +32,8 @@ allow if {
 }
 
 # CIS Control 1.6.1 - Ensure SELinux is enabled
+default selinux_enabled := false
+
 selinux_enabled if {
     input.selinux_status == "enforcing"
 }
@@ -39,6 +43,8 @@ selinux_enabled if {
 }
 
 # CIS Control 5.2.2 - Ensure SSH access is limited
+default ssh_hardened := false
+
 ssh_hardened if {
     input.ssh_port != 22
 }
@@ -51,11 +57,15 @@ ssh_hardened if {
 }
 
 # CIS Control 3.5.1 - Ensure firewall is active
+default firewall_configured := false
+
 firewall_configured if {
     input.firewall_enabled == true
 }
 
 # Support for major Linux distributions
+default os_supported := false
+
 os_supported if {
     input.os_family == "RedHat"
     supported_redhat_version
@@ -73,22 +83,22 @@ supported_redhat_version if {
 compliance_details := {
     "selinux": {
         "status": selinux_enabled,
-        "current_value": input.selinux_status,
+        "current_value": object.get(input, "selinux_status", null),
         "requirement": "enforcing or permissive"
     },
     "ssh": {
         "status": ssh_hardened,
-        "current_port": input.ssh_port,
+        "current_port": object.get(input, "ssh_port", null),
         "requirement": "non-default port recommended"
     },
     "firewall": {
         "status": firewall_configured,
-        "current_status": input.firewall_enabled,
+        "current_status": object.get(input, "firewall_enabled", null),
         "requirement": "firewall must be active"
     },
     "os": {
         "status": os_supported,
-        "current_os": sprintf("%s %s", [input.distribution, input.distribution_version]),
+        "current_os": sprintf("%s %s", [object.get(input, "distribution", "unknown"), object.get(input, "distribution_version", "unknown")]),
         "requirement": "supported OS version"
     }
 }
@@ -97,6 +107,11 @@ compliance_details := {
 failed_controls contains control if {
     control := "selinux"
     not selinux_enabled
+}
+
+failed_controls contains control if {
+    control := "ssh"
+    not ssh_hardened
 }
 
 failed_controls contains control if {
