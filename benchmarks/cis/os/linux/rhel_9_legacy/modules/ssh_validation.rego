@@ -300,6 +300,11 @@ violations contains {
 # CIS 5.1.13 - Ensure only strong ciphers are used
 # =============================================================================
 
+# Algorithm directives arrive as a list or as the comma-separated sshd value.
+ssh_algorithm_list(v) := v if is_array(v)
+
+ssh_algorithm_list(v) := [trim_space(x) | some x in split(v, ",")] if is_string(v)
+
 weak_ciphers := [
     "3des-cbc",
     "aes128-cbc",
@@ -313,9 +318,11 @@ weak_ciphers := [
     "rijndael-cbc@lysator.liu.se"
 ]
 
+# An unset or unparsable Ciphers directive is missing evidence, not a pass.
 validate_ssh_strong_ciphers if {
+    algos := ssh_algorithm_list(input.ssh.config.Ciphers)
     count([cipher |
-        some cipher in input.ssh.config.Ciphers
+        some cipher in algos
         cipher in weak_ciphers
     ]) == 0
 }
@@ -326,7 +333,7 @@ violations contains {
     "severity": "high",
     "description": "SSH should only use strong encryption ciphers",
     "status": "fail",
-    "finding": sprintf("SSH is configured with weak ciphers: %v", [input.ssh.config.Ciphers]),
+    "finding": sprintf("SSH is configured with weak ciphers: %v", [object.get(input, ["ssh", "config", "Ciphers"], "not set")]),
     "remediation": "Edit /etc/ssh/sshd_config and set 'Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr'"
 } if {
     not validate_ssh_strong_ciphers
@@ -351,9 +358,11 @@ weak_macs := [
     "umac-64-etm@openssh.com"
 ]
 
+# An unset or unparsable MACs directive is missing evidence, not a pass.
 validate_ssh_strong_macs if {
+    algos := ssh_algorithm_list(input.ssh.config.MACs)
     count([mac |
-        some mac in input.ssh.config.MACs
+        some mac in algos
         mac in weak_macs
     ]) == 0
 }
@@ -364,7 +373,7 @@ violations contains {
     "severity": "high",
     "description": "SSH should only use strong MAC algorithms",
     "status": "fail",
-    "finding": sprintf("SSH is configured with weak MACs: %v", [input.ssh.config.MACs]),
+    "finding": sprintf("SSH is configured with weak MACs: %v", [object.get(input, ["ssh", "config", "MACs"], "not set")]),
     "remediation": "Edit /etc/ssh/sshd_config and set 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256'"
 } if {
     not validate_ssh_strong_macs
@@ -380,9 +389,11 @@ weak_kex := [
     "diffie-hellman-group-exchange-sha1"
 ]
 
+# An unset or unparsable KexAlgorithms directive is missing evidence, not a pass.
 validate_ssh_strong_kex if {
+    algos := ssh_algorithm_list(input.ssh.config.KexAlgorithms)
     count([kex |
-        some kex in input.ssh.config.KexAlgorithms
+        some kex in algos
         kex in weak_kex
     ]) == 0
 }
@@ -393,7 +404,7 @@ violations contains {
     "severity": "high",
     "description": "SSH should only use strong key exchange algorithms",
     "status": "fail",
-    "finding": sprintf("SSH is configured with weak key exchange algorithms: %v", [input.ssh.config.KexAlgorithms]),
+    "finding": sprintf("SSH is configured with weak key exchange algorithms: %v", [object.get(input, ["ssh", "config", "KexAlgorithms"], "not set")]),
     "remediation": "Edit /etc/ssh/sshd_config and set 'KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256'"
 } if {
     not validate_ssh_strong_kex
