@@ -27,6 +27,9 @@ import rego.v1
 #   input.cmmc_level            - target maturity level
 # =============================================================================
 
+# A missing plan age fails closed: an undated plan cannot be shown to be current.
+plan_reviewed_within(days) if input.incident_response.plan_age_days <= days
+
 # IR.L2-3.6.1 — Establish an operational incident-handling capability
 violation_ir_1 contains msg if {
     input.cmmc_level >= 2
@@ -44,10 +47,10 @@ violation_ir_1 contains msg if {
 violation_ir_1 contains msg if {
     input.cmmc_level >= 2
     input.incident_response.plan_documented
-    input.incident_response.plan_age_days > 365
+    not plan_reviewed_within(365)
     msg := sprintf(
         "CMMC IR.L2-3.6.1: Incident response plan is %v days old. Plans must be reviewed and updated annually.",
-        [input.incident_response.plan_age_days]
+        [object.get(input.incident_response, "plan_age_days", "of unknown")]
     )
 }
 
@@ -76,6 +79,11 @@ violations contains msg if { some msg in violation_ir_2 }
 violations contains msg if { some msg in violation_ir_3 }
 
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
+# Every IR practice is gated on cmmc_level >= 2; without the level nothing runs.
+violations contains "CMMC IR.L2-3.6.1: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+	not input.cmmc_level
+}
+
 violations contains "CMMC IR.L2-3.6.1: FAIL-CLOSED - facts 'input.incident_response' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
 	not input.incident_response
 }
