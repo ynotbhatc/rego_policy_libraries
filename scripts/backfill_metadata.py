@@ -205,6 +205,7 @@ TABLE: dict[str, tuple[str, list[str]]] = {
     # ---- governance ----
     "governance/ai": ("aac", ["ai"]),
     "governance/eu_ai_act": ("eu", ["ai", "eu"]),
+    "governance/estate_continuity": ("aac", ["assurance", "it-governance"]),
     "governance/exceptions": ("aac", ["exceptions"]),
     "governance/finops": ("finops-foundation", ["finops", "cost"]),
     "governance/geisa": ("geisa", ["ot", "energy", "smart-grid"]),
