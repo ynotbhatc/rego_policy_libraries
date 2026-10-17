@@ -382,9 +382,10 @@ violations contains v if {
 
 violations contains v if {
 	not is_array(providers)
+	some control in ["DORA-011", "DORA-012", "DORA-013"]
 	v := {
 		"domain":       "dora_sovereignty",
-		"control":      "DORA-011",
+		"control":      control,
 		"severity":     "high",
 		"description":  "Evidence missing: dora.critical_ict_providers is not provided, so exit strategies, contracts and concentration risk cannot be verified (DORA Art. 28, 30)",
 		"remediation":  "Provide the list of critical ICT third-party providers (an empty list if there are none)",

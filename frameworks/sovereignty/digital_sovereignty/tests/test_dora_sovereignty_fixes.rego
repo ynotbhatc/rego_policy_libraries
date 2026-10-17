@@ -56,6 +56,8 @@ test_absent_provider_list_fails_all_three if {
 	not d.all_providers_meet_contractual_requirements with input as dora({})
 	not d.concentration_risk_acceptable with input as dora({})
 	has_control(d.violations, "DORA-011") with input as dora({})
+	has_control(d.violations, "DORA-012") with input as dora({})
+	has_control(d.violations, "DORA-013") with input as dora({})
 }
 
 test_empty_provider_list_ok if {
