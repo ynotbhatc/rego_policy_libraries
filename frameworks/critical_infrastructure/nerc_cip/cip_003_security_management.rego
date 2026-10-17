@@ -103,7 +103,10 @@ policy_review_current if {
 # R3 - Implement one or more documented cybersecurity plans for Low Impact BES Cyber Systems
 
 low_impact_plan_implemented if {
-	# Only required if low impact systems exist
+	# Only required if low impact systems exist. The BES Cyber System inventory
+	# itself must be present: no inventory is not "no low impact systems".
+	is_array(input.bes_cyber_systems)
+	count(input.bes_cyber_systems) > 0
 	low_systems := [s | s := input.bes_cyber_systems[_]; s.impact_categorization == "low"]
 	count(low_systems) == 0
 } else if {
@@ -116,6 +119,8 @@ low_impact_plan_implemented if {
 }
 
 low_impact_plan_reviewed if {
+	is_array(input.bes_cyber_systems)
+	count(input.bes_cyber_systems) > 0
 	low_systems := [s | s := input.bes_cyber_systems[_]; s.impact_categorization == "low"]
 	count(low_systems) == 0
 } else if {
