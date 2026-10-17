@@ -73,6 +73,32 @@ applies_to_entity if {
 	input.oss_steward.oss_product_intended_for_commercial_activities
 }
 
+# Applicability must be declared. Each threshold element has to be an explicit true/false: an
+# undeclared element used to read as "not a steward" and silently skipped every Art. 24 check.
+# Only a fully declared threshold with at least one false element is "not applicable".
+threshold_facts := [
+	"is_legal_person",
+	"not_manufacturer_of_product",
+	"provides_systematic_sustained_support",
+	"ensures_product_viability",
+	"oss_product_intended_for_commercial_activities",
+]
+
+violation contains msg if {
+	some fact in threshold_facts
+	not is_boolean(object.get(object.get(input, "oss_steward", {}), fact, null))
+	msg := sprintf("CRA Art.3(14): applicability not determined — oss_steward.%s was not declared (true/false)", [fact])
+}
+
+# Art. 24(3) conditionality facts must be declared once the entity is a steward, otherwise the
+# Art. 14 reporting checks below silently skip.
+violation contains msg if {
+	applies_to_entity
+	some fact in ["involved_in_development", "provides_development_infrastructure"]
+	not is_boolean(object.get(input.oss_steward, fact, null))
+	msg := sprintf("CRA Art.24(3): evidence missing — oss_steward.%s was not declared (true/false); the Art.14 reporting checks cannot be scoped", [fact])
+}
+
 # ── Art. 24(1) — cybersecurity policy ───────────────────────────────────────
 
 violation contains msg if {
