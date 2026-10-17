@@ -136,9 +136,14 @@ violation contains msg if {
 writes_evidence(task) if {
 	some k, v in task
 	endswith(k, "postgresql_query")
-	q := object.get(v, "query", "")
-	contains(lower(q), "insert into compliance_results")
+	contains(lower(query_text(v)), "insert into compliance_results")
 }
+
+# The module accepts both `postgresql_query: {query: "..."}` and the string
+# shorthand `postgresql_query: "..."`.
+query_text(v) := v if is_string(v)
+
+query_text(v) := object.get(v, "query", "") if is_object(v)
 
 violation contains msg if {
 	some play in input.plays
@@ -153,12 +158,29 @@ violation contains msg if {
 	)
 }
 
-framework_supplied(v) if contains(lower(object.get(v, "query", "")), "framework")
+# The framework must be a named column of the INSERT, not just mentioned
+# somewhere in the text (a WHERE clause or a comment does not count).
+framework_supplied(v) if {
+	regex.match(`(?is)insert\s+into\s+compliance_results\s*\([^)]*\bframework\b`, query_text(v))
+}
 
 framework_supplied(v) if {
 	some arg in object.get(v, "positional_args", [])
 	is_string(arg)
 	contains(lower(arg), "framework")
+}
+
+# ── Evidence gate ────────────────────────────────────────────────────────────
+# Fail closed: a gate that evaluated nothing (wrong shape, unparsed YAML, empty
+# playbook) must not report compliant.
+violation contains msg if {
+	not has_plays
+	msg := sprintf("AAC-ANS-000: %s: no plays evaluated — input.plays is missing, not an array, or empty", [path_label])
+}
+
+has_plays if {
+	is_array(input.plays)
+	count(input.plays) > 0
 }
 
 # ── Report ───────────────────────────────────────────────────────────────────

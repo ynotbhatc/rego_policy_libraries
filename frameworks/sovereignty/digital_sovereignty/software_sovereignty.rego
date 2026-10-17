@@ -76,8 +76,11 @@ sbom_current if {
 }
 
 sbom_coverage_adequate if {
+	is_number(input.sbom.coverage_pct)
 	input.sbom.coverage_pct >= 95
 }
+
+default sbom_includes_transitive_deps := false
 
 sbom_includes_transitive_deps if {
 	input.sbom.includes_transitive_dependencies == true
@@ -89,11 +92,17 @@ sbom_includes_transitive_deps if {
 
 # Critical software components must come from approved-jurisdiction vendors
 # or have audited source code
+# `not c.field in list` is undefined when the field is absent (the reference is
+# hoisted outside the negation), which skipped components with no recorded vendor
+# country / repos with no recorded location. Fields are read with object.get so
+# an unrecorded value counts against the item (fail closed).
+default critical_software_provenance_acceptable := false
+
 critical_software_provenance_acceptable if {
 	violations := [c |
 		c := input.software_components[_]
 		c.component_type in ["os", "middleware", "firmware"]
-		not c.vendor_country in input.approved_jurisdictions
+		not object.get(c, "vendor_country", "") in object.get(input, "approved_jurisdictions", [])
 		not c.source_available == true
 		not c.audited == true
 	]
@@ -116,6 +125,8 @@ critical_software_auditable if {
 # =============================================================================
 
 # No vendor-pushed automatic updates without approval for critical systems
+default no_uncontrolled_vendor_updates := false
+
 no_uncontrolled_vendor_updates if {
 	violations := [u |
 		u := input.update_mechanisms[_]
@@ -126,6 +137,8 @@ no_uncontrolled_vendor_updates if {
 }
 
 # Update sources must be in approved jurisdictions or use airgapped process
+default update_sources_in_jurisdiction := false
+
 update_sources_in_jurisdiction if {
 	violations := [u |
 		u := input.update_mechanisms[_]
@@ -136,6 +149,8 @@ update_sources_in_jurisdiction if {
 }
 
 # Components with forced update mechanisms must be flagged and managed
+default forced_updates_managed := false
+
 forced_updates_managed if {
 	violations := [c |
 		c := input.software_components[_]
@@ -150,11 +165,13 @@ forced_updates_managed if {
 # =============================================================================
 
 # Vendor telemetry to foreign entities must be disabled or scoped to non-regulated data
+default vendor_telemetry_controlled := false
+
 vendor_telemetry_controlled if {
 	violations := [c |
 		c := input.software_components[_]
 		c.telemetry_to_vendor == true
-		not c.vendor_country in input.approved_jurisdictions
+		not object.get(c, "vendor_country", "") in object.get(input, "approved_jurisdictions", [])
 		not c.telemetry_can_be_disabled == true
 		not c.telemetry_scoped_to_non_regulated == true
 	]
@@ -172,6 +189,8 @@ all_artifacts_signed if {
 }
 
 # Integrity must be verified on deployment
+default integrity_verified_on_deploy := false
+
 integrity_verified_on_deploy if {
 	input.software_provenance.verification.integrity_checked_on_deploy == true
 	input.software_provenance.verification.hash_validation == true
@@ -188,6 +207,8 @@ private_registry_used if {
 }
 
 # Dependencies must be pinned to exact versions (no floating versions)
+default dependencies_pinned := false
+
 dependencies_pinned if {
 	input.dependency_management.dependency_pinning_enforced == true
 }
@@ -205,16 +226,20 @@ dependency_vulnerability_scanning if {
 # =============================================================================
 
 # Source code repositories must be in approved jurisdictions
+default code_repos_in_jurisdiction := false
+
 code_repos_in_jurisdiction if {
 	violations := [r |
 		r := input.code_repositories[_]
-		not r.location_country in input.approved_jurisdictions
-		not r.hosting_provider_jurisdiction in input.approved_jurisdictions
+		not object.get(r, "location_country", "") in object.get(input, "approved_jurisdictions", [])
+		not object.get(r, "hosting_provider_jurisdiction", "") in object.get(input, "approved_jurisdictions", [])
 	]
 	count(violations) == 0
 }
 
 # Repositories must have adequate access controls
+default repo_access_controls_adequate := false
+
 repo_access_controls_adequate if {
 	violations := [r |
 		r := input.code_repositories[_]
@@ -269,7 +294,7 @@ violations contains v if {
 		"domain": "software_sovereignty",
 		"control": "SS-003",
 		"severity": "medium",
-		"description": concat("", ["SBOM coverage insufficient: ", format_int(input.sbom.coverage_pct, 10), "% (requires 95%)"]),
+		"description": concat("", ["SBOM coverage insufficient (or not recorded): ", sprintf("%v", [object.get(object.get(input, "sbom", {}), "coverage_pct", "not recorded")]), "% (requires 95%)"]),
 		"remediation": "Expand SBOM tooling to cover all components including transitive dependencies",
 	}
 }
@@ -278,15 +303,15 @@ violations contains v if {
 	not critical_software_provenance_acceptable
 	c := input.software_components[_]
 	c.component_type in ["os", "middleware", "firmware"]
-	not c.vendor_country in input.approved_jurisdictions
+	not object.get(c, "vendor_country", "") in object.get(input, "approved_jurisdictions", [])
 	not c.source_available == true
 	not c.audited == true
 	v := {
 		"domain": "software_sovereignty",
 		"control": "SS-004",
 		"severity": "high",
-		"component_id": c.component_id,
-		"description": concat("", ["Critical software component from unapproved jurisdiction without audit: ", c.name, " (", c.vendor_country, ")"]),
+		"component_id": object.get(c, "component_id", "unknown"),
+		"description": concat("", ["Critical software component from unapproved jurisdiction without audit: ", object.get(c, "name", "unknown"), " (", object.get(c, "vendor_country", "unknown"), ")"]),
 		"remediation": "Replace with approved-jurisdiction equivalent, obtain source code escrow, or conduct security audit",
 	}
 }
@@ -300,8 +325,8 @@ violations contains v if {
 		"domain": "software_sovereignty",
 		"control": "SS-005",
 		"severity": "critical",
-		"software_id": u.software_id,
-		"description": concat("", ["Vendor can push updates without approval: ", u.software_id]),
+		"software_id": object.get(u, "software_id", "unknown"),
+		"description": concat("", ["Vendor can push updates without approval: ", object.get(u, "software_id", "unknown")]),
 		"remediation": "Disable automatic vendor updates; require internal testing and approval before deployment",
 	}
 }
@@ -310,14 +335,14 @@ violations contains v if {
 	not vendor_telemetry_controlled
 	c := input.software_components[_]
 	c.telemetry_to_vendor == true
-	not c.vendor_country in input.approved_jurisdictions
+	not object.get(c, "vendor_country", "") in object.get(input, "approved_jurisdictions", [])
 	not c.telemetry_can_be_disabled == true
 	v := {
 		"domain": "software_sovereignty",
 		"control": "SS-006",
 		"severity": "high",
-		"component_id": c.component_id,
-		"description": concat("", ["Software sends telemetry to foreign vendor and cannot be disabled: ", c.name]),
+		"component_id": object.get(c, "component_id", "unknown"),
+		"description": concat("", ["Software sends telemetry to foreign vendor and cannot be disabled: ", object.get(c, "name", "unknown")]),
 		"remediation": "Disable telemetry, restrict network access, or replace with sovereignty-compliant alternative",
 	}
 }
@@ -358,15 +383,83 @@ violations contains v if {
 violations contains v if {
 	not code_repos_in_jurisdiction
 	r := input.code_repositories[_]
-	not r.location_country in input.approved_jurisdictions
-	not r.hosting_provider_jurisdiction in input.approved_jurisdictions
+	not object.get(r, "location_country", "") in object.get(input, "approved_jurisdictions", [])
+	not object.get(r, "hosting_provider_jurisdiction", "") in object.get(input, "approved_jurisdictions", [])
 	v := {
 		"domain": "software_sovereignty",
 		"control": "SS-010",
 		"severity": "high",
-		"repo_id": r.repo_id,
-		"description": concat("", ["Source code repository hosted outside approved jurisdiction: ", r.repo_id]),
+		"repo_id": object.get(r, "repo_id", "unknown"),
+		"description": concat("", ["Source code repository hosted outside approved jurisdiction: ", object.get(r, "repo_id", "unknown")]),
 		"remediation": "Migrate repositories to in-jurisdiction hosting or self-hosted git in approved jurisdiction",
+	}
+}
+
+# Controls that gate `compliant` and previously had no violation entry
+# (compliant could be false with violation_count 0).
+violations contains v if {
+	not sbom_includes_transitive_deps
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-011",
+		"severity": "medium",
+		"description": "SBOM does not include transitive dependencies",
+		"remediation": "Generate the SBOM with transitive dependency resolution enabled",
+	}
+}
+
+violations contains v if {
+	not update_sources_in_jurisdiction
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-012",
+		"severity": "high",
+		"description": "One or more update sources are outside approved jurisdictions (and not air-gapped)",
+		"remediation": "Mirror updates through an in-jurisdiction source or use an air-gapped update process",
+	}
+}
+
+violations contains v if {
+	not forced_updates_managed
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-013",
+		"severity": "high",
+		"description": "One or more components have a forced update mechanism with no documented mitigation",
+		"remediation": "Document and enforce a mitigation (staging, approval gate or network control) for forced vendor updates",
+	}
+}
+
+violations contains v if {
+	not integrity_verified_on_deploy
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-014",
+		"severity": "high",
+		"description": "Artifact integrity and hash validation are not verified on deployment",
+		"remediation": "Verify signatures and hashes of every artifact at deploy time",
+	}
+}
+
+violations contains v if {
+	not dependencies_pinned
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-015",
+		"severity": "medium",
+		"description": "Dependency version pinning is not enforced",
+		"remediation": "Pin dependencies to exact versions and enforce it in CI",
+	}
+}
+
+violations contains v if {
+	not repo_access_controls_adequate
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-016",
+		"severity": "high",
+		"description": "One or more source code repositories lack adequate access controls",
+		"remediation": "Apply least-privilege access controls and MFA to all source code repositories",
 	}
 }
 
@@ -409,6 +502,12 @@ report := {
 		"SS-008_private_registry": private_registry_used,
 		"SS-009_vuln_scanning": dependency_vulnerability_scanning,
 		"SS-010_repos_in_jurisdiction": code_repos_in_jurisdiction,
+		"SS-011_sbom_transitive_deps": sbom_includes_transitive_deps,
+		"SS-012_update_sources_in_jurisdiction": update_sources_in_jurisdiction,
+		"SS-013_forced_updates_managed": forced_updates_managed,
+		"SS-014_integrity_verified_on_deploy": integrity_verified_on_deploy,
+		"SS-015_dependencies_pinned": dependencies_pinned,
+		"SS-016_repo_access_controls": repo_access_controls_adequate,
 	},
 	"sbom_summary": {
 		"maintained": object.get(input, ["sbom", "maintained"], false),

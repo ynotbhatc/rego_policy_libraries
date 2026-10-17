@@ -65,32 +65,40 @@ import rego.v1
 
 # Critical workloads must not run on providers subject to CLOUD Act
 # (or equivalent foreign surveillance laws) without mitigating controls
-cloud_act_risk_mitigated if {
-	violations := [c |
-		c := input.infrastructure_components[_]
-		c.data_classification in ["sensitive", "restricted", "sovereign"]
-		c.subject_to_foreign_surveillance_law == true
-		not c.mitigation.encryption_before_upload == true
-		not c.mitigation.sovereign_cloud_used == true
-	]
-	count(violations) == 0
+# Fail closed: a component handling regulated data is exposed unless the
+# surveillance-law flag is explicitly false; an unrecorded flag is not "no exposure".
+cloud_act_offenders contains c if {
+	some c in object.get(input, "infrastructure_components", [])
+	c.data_classification in ["sensitive", "restricted", "sovereign"]
+	not c.subject_to_foreign_surveillance_law == false
+	not c.mitigation.encryption_before_upload == true
+	not c.mitigation.sovereign_cloud_used == true
 }
 
+default cloud_act_risk_mitigated := false
+
+cloud_act_risk_mitigated if count(cloud_act_offenders) == 0
+
 # Sovereign/restricted workloads must not use providers with high foreign access risk
-sovereign_workloads_not_at_risk if {
-	violations := [c |
-		c := input.infrastructure_components[_]
-		c.data_classification in ["sovereign", "restricted"]
-		c.foreign_government_access_risk in ["medium", "high"]
-	]
-	count(violations) == 0
+# Fail closed: the risk rating must be recorded as none/low. (`not x.f in list`
+# is undefined when f is absent, so the rating is read with object.get.)
+foreign_access_offenders contains c if {
+	some c in object.get(input, "infrastructure_components", [])
+	c.data_classification in ["sovereign", "restricted"]
+	not object.get(c, "foreign_government_access_risk", "") in ["none", "low"]
 }
+
+default sovereign_workloads_not_at_risk := false
+
+sovereign_workloads_not_at_risk if count(foreign_access_offenders) == 0
 
 # =============================================================================
 # PROVIDER CONCENTRATION RISK
 # =============================================================================
 
 # No single foreign provider should handle more than allowed percentage of data
+default provider_concentration_within_limits := false
+
 provider_concentration_within_limits if {
 	violations := [p |
 		p := input.cloud_providers[_]
@@ -114,6 +122,8 @@ foreign_provider_concentration_within_limits if {
 # =============================================================================
 
 # Critical hardware must not come from high-risk manufacturer countries
+default hardware_supply_chain_acceptable := false
+
 hardware_supply_chain_acceptable if {
 	violations := [h |
 		h := input.hardware_components[_]
@@ -125,6 +135,8 @@ hardware_supply_chain_acceptable if {
 }
 
 # No hardware with known backdoors in critical infrastructure
+default no_hardware_backdoors := false
+
 no_hardware_backdoors if {
 	violations := [h |
 		h := input.hardware_components[_]
@@ -134,6 +146,8 @@ no_hardware_backdoors if {
 }
 
 # Firmware must originate from approved or audited sources
+default firmware_origin_acceptable := false
+
 firmware_origin_acceptable if {
 	violations := [h |
 		h := input.hardware_components[_]
@@ -153,11 +167,15 @@ dns_sovereignty if {
 	input.network_infrastructure.dns_provider.under_foreign_jurisdiction == false
 }
 
+default dns_in_jurisdiction := false
+
 dns_in_jurisdiction if {
 	input.network_infrastructure.dns_provider.location_country in input.approved_jurisdictions
 }
 
 # CDN caches must only be in approved regions for regulated data
+default cdn_in_approved_regions := false
+
 cdn_in_approved_regions if {
 	not input.network_infrastructure.cdn
 } else if {
@@ -169,6 +187,8 @@ cdn_in_approved_regions if {
 # =============================================================================
 
 # Sovereign data must only be on on-premises or sovereign cloud
+default sovereign_data_on_sovereign_infra := false
+
 sovereign_data_on_sovereign_infra if {
 	violations := [c |
 		c := input.infrastructure_components[_]
@@ -179,6 +199,8 @@ sovereign_data_on_sovereign_infra if {
 }
 
 # All components classified as to sovereignty impact
+default all_components_classified := false
+
 all_components_classified if {
 	violations := [c |
 		c := input.infrastructure_components[_]
@@ -250,6 +272,8 @@ vendor_lockin_cost_assessed if {
 }
 
 # All proprietary API dependencies must have documented mitigations
+default proprietary_apis_have_mitigations := false
+
 proprietary_apis_have_mitigations if {
 	unmitigated := [dep |
 		dep := input.vendor_lock_in_assessment.proprietary_api_dependencies[_]
@@ -263,33 +287,25 @@ proprietary_apis_have_mitigations if {
 # =============================================================================
 
 violations contains v if {
-	not cloud_act_risk_mitigated
-	c := input.infrastructure_components[_]
-	c.data_classification in ["sensitive", "restricted", "sovereign"]
-	c.subject_to_foreign_surveillance_law == true
-	not c.mitigation.encryption_before_upload == true
-	not c.mitigation.sovereign_cloud_used == true
+	some c in cloud_act_offenders
 	v := {
 		"domain": "infrastructure_sovereignty",
 		"control": "IS-001",
 		"severity": "critical",
-		"component_id": c.component_id,
-		"description": concat("", ["Component subject to foreign surveillance law without mitigation: ", c.component_id, " (", c.provider, ")"]),
+		"component_id": object.get(c, "component_id", "unknown"),
+		"description": concat("", ["Component subject to (or not recorded as free of) foreign surveillance law, without mitigation: ", object.get(c, "component_id", "unknown"), " (", object.get(c, "provider", "unknown"), ")"]),
 		"remediation": "Implement client-side encryption before upload, or migrate to sovereign cloud offering",
 	}
 }
 
 violations contains v if {
-	not sovereign_workloads_not_at_risk
-	c := input.infrastructure_components[_]
-	c.data_classification in ["sovereign", "restricted"]
-	c.foreign_government_access_risk in ["medium", "high"]
+	some c in foreign_access_offenders
 	v := {
 		"domain": "infrastructure_sovereignty",
 		"control": "IS-002",
 		"severity": "critical",
-		"component_id": c.component_id,
-		"description": concat("", ["Sovereign data on infrastructure with medium/high foreign access risk: ", c.component_id]),
+		"component_id": object.get(c, "component_id", "unknown"),
+		"description": concat("", ["Sovereign data on infrastructure with medium/high (or unrecorded) foreign access risk: ", object.get(c, "component_id", "unknown")]),
 		"remediation": "Move sovereign/restricted workloads to on-premises or approved sovereign cloud",
 	}
 }
@@ -445,6 +461,52 @@ violations contains v if {
 	}
 }
 
+# Controls that gate `compliant` and previously had no violation entry
+# (compliant could be false with violation_count 0).
+violations contains v if {
+	not firmware_origin_acceptable
+	v := {
+		"domain": "infrastructure_sovereignty",
+		"control": "IS-014",
+		"severity": "high",
+		"description": "Firmware originates outside approved jurisdictions without a supply-chain audit",
+		"remediation": "Source firmware from approved jurisdictions or complete a supply-chain audit for the affected components",
+	}
+}
+
+violations contains v if {
+	not dns_in_jurisdiction
+	v := {
+		"domain": "infrastructure_sovereignty",
+		"control": "IS-015",
+		"severity": "high",
+		"description": "DNS provider is not located in an approved jurisdiction (or its location is not recorded)",
+		"remediation": "Use a DNS provider located in an approved jurisdiction and record network_infrastructure.dns_provider.location_country",
+	}
+}
+
+violations contains v if {
+	not cdn_in_approved_regions
+	v := {
+		"domain": "infrastructure_sovereignty",
+		"control": "IS-016",
+		"severity": "high",
+		"description": "CDN content is cached outside approved regions",
+		"remediation": "Restrict CDN caching to approved regions for regulated data",
+	}
+}
+
+violations contains v if {
+	not all_components_classified
+	v := {
+		"domain": "infrastructure_sovereignty",
+		"control": "IS-017",
+		"severity": "medium",
+		"description": "One or more infrastructure components have no data classification recorded",
+		"remediation": "Classify every infrastructure component by data classification",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -489,6 +551,10 @@ report := {
 		"IS-011_cloud_act_response": cloud_act_response_procedure_documented,
 		"IS-012_fisa_702_response": fisa_702_response_procedure_documented,
 		"IS-013_vendor_lockin_assessed": vendor_lockin_cost_assessed,
+		"IS-014_firmware_origin": firmware_origin_acceptable,
+		"IS-015_dns_in_jurisdiction": dns_in_jurisdiction,
+		"IS-016_cdn_in_approved_regions": cdn_in_approved_regions,
+		"IS-017_components_classified": all_components_classified,
 	},
 	"provider_summary": {
 		"total_providers": count(object.get(input, ["cloud_providers"], [])),

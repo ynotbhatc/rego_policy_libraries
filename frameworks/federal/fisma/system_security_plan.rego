@@ -23,6 +23,8 @@ import rego.v1
 # Validates SSP completeness, accuracy, and compliance with FISMA requirements
 
 # Main SSP Compliance Check
+default ssp_compliant := false
+
 ssp_compliant if {
 	ssp_document_structure_valid
 	system_identification_complete
@@ -34,6 +36,8 @@ ssp_compliant if {
 }
 
 # SSP Document Structure and Format
+default ssp_document_structure_valid := false
+
 ssp_document_structure_valid if {
 	input.ssp.document.format in ["pdf", "docx", "xml", "oscal"]
 	input.ssp.document.version_control == true
@@ -43,6 +47,8 @@ ssp_document_structure_valid if {
 }
 
 # System Identification and Description (Section 1)
+default system_identification_complete := false
+
 system_identification_complete if {
 	system_overview_adequate
 	system_boundary_defined
@@ -75,6 +81,8 @@ system_ownership_documented if {
 }
 
 # System Categorization (Section 2)
+default system_categorization_documented := false
+
 system_categorization_documented if {
 	fips_199_categorization_complete
 	information_types_categorized
@@ -116,6 +124,8 @@ categorization_rationale_provided if {
 }
 
 # Security Control Implementation (Section 3)
+default control_implementation_documented := false
+
 control_implementation_documented if {
 	control_baseline_identified
 	control_descriptions_complete
@@ -130,6 +140,9 @@ control_baseline_identified if {
 }
 
 control_descriptions_complete if {
+	# every is vacuously true for an empty list; documenting zero controls is not complete
+	is_array(input.ssp.controls.implemented_controls)
+	count(input.ssp.controls.implemented_controls) > 0
 	every control in input.ssp.controls.implemented_controls {
 		control.control_id != ""
 		control.control_name != ""
@@ -140,6 +153,9 @@ control_descriptions_complete if {
 }
 
 control_implementation_details_provided if {
+	# every is vacuously true for an empty list; documenting zero controls is not complete
+	is_array(input.ssp.controls.implemented_controls)
+	count(input.ssp.controls.implemented_controls) > 0
 	every control in input.ssp.controls.implemented_controls {
 		control.responsible_role != ""
 		control.implementation_guidance != ""
@@ -178,6 +194,8 @@ control_provider_valid(control) if {
 }
 
 # System Environment (Section 4)
+default system_environment_documented := false
+
 system_environment_documented if {
 	hardware_inventory_complete
 	software_inventory_complete
@@ -232,6 +250,8 @@ data_flows_mapped if {
 }
 
 # Roles and Responsibilities (Section 5)
+default roles_responsibilities_defined := false
+
 roles_responsibilities_defined if {
 	key_personnel_identified
 	role_descriptions_complete
@@ -284,6 +304,8 @@ delegation_authorities_documented if {
 }
 
 # SSP Maintenance and Currency
+default ssp_maintenance_current := false
+
 ssp_maintenance_current if {
 	document_version_control_implemented
 	review_cycle_established

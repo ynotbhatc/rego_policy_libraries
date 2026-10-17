@@ -82,12 +82,20 @@ finding_rhel_09_653015 := {
 default audit_log_dir_permissions_ok := false
 
 audit_log_dir_permissions_ok if {
-	input.auditd_config.log_dir_permissions == "0750"
+	mode_within(input.auditd_config.log_dir_permissions, "0750")
 }
 
-audit_log_dir_permissions_ok if {
-	input.auditd_config.log_dir_permissions == "750"
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
 }
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 status_rhel_09_653020 := "Not_a_Finding" if { audit_log_dir_permissions_ok } else := "Open"
 
