@@ -39,20 +39,44 @@ pki_certificates_valid if {
 }
 
 # SG.IA-5: Certificate expiry — warn if any device cert expires within 30 days
+thirty_days_ns := 30 * 24 * 60 * 60 * 1000000000
+
+ninety_days_ns := 90 * 24 * 60 * 60 * 1000000000
+
+# A certificate with an unparseable or missing expiry_date is not "fine".
+cert_not_expiring_soon(cert) if {
+    expiry_ns := time.parse_rfc3339_ns(cert.expiry_date)
+    (expiry_ns - time.now_ns()) > thirty_days_ns
+}
+
+# No certificate inventory is no evidence (an empty list is vacuously "fine").
+certs_inventory_present if {
+    is_array(input.identification_auth.pki.device_certificates)
+    count(input.identification_auth.pki.device_certificates) > 0
+}
+
 no_certs_expiring_soon if {
-    thirty_days_ns := 30 * 24 * 60 * 60 * 1000000000
+    certs_inventory_present
     every cert in input.identification_auth.pki.device_certificates {
-        expiry_ns := time.parse_rfc3339_ns(cert.expiry_date)
-        (expiry_ns - time.now_ns()) > thirty_days_ns
+        cert_not_expiring_soon(cert)
     }
 }
 
 # SG.IA-5: Key rotation — device credentials must be rotated at least every 90 days
+rotated_recently(device) if {
+    last_rotation_ns := time.parse_rfc3339_ns(device.last_key_rotation_date)
+    (time.now_ns() - last_rotation_ns) <= ninety_days_ns
+}
+
+credential_inventory_present if {
+    is_array(input.identification_auth.devices.credential_inventory)
+    count(input.identification_auth.devices.credential_inventory) > 0
+}
+
 key_rotation_current if {
-    ninety_days_ns := 90 * 24 * 60 * 60 * 1000000000
+    credential_inventory_present
     every device in input.identification_auth.devices.credential_inventory {
-        last_rotation_ns := time.parse_rfc3339_ns(device.last_key_rotation_date)
-        (time.now_ns() - last_rotation_ns) <= ninety_days_ns
+        rotated_recently(device)
     }
 }
 
@@ -84,25 +108,34 @@ violations contains msg if {
 
 violations contains msg if {
     pki_certificates_valid
-    not no_certs_expiring_soon
-    expiring := [cert.device_id |
-        cert := input.identification_auth.pki.device_certificates[_]
-        expiry_ns := time.parse_rfc3339_ns(cert.expiry_date)
-        thirty_days_ns := 30 * 24 * 60 * 60 * 1000000000
-        (expiry_ns - time.now_ns()) <= thirty_days_ns
-    ]
-    msg := sprintf("SG.IA-5: Device certificates expiring within 30 days: %v", [expiring])
+    not certs_inventory_present
+    msg := "SG.IA-5: evidence missing — pki.device_certificates not collected (certificate expiry cannot be assessed)"
 }
 
 violations contains msg if {
+    pki_certificates_valid
+    certs_inventory_present
+    not no_certs_expiring_soon
+    expiring := [cert.device_id |
+        cert := input.identification_auth.pki.device_certificates[_]
+        not cert_not_expiring_soon(cert)
+    ]
+    msg := sprintf("SG.IA-5: Device certificates expiring within 30 days (or with unreadable expiry_date): %v", [expiring])
+}
+
+violations contains msg if {
+    not credential_inventory_present
+    msg := "SG.IA-5: evidence missing — devices.credential_inventory not collected (key rotation cannot be assessed)"
+}
+
+violations contains msg if {
+    credential_inventory_present
     not key_rotation_current
     overdue := [device.device_id |
         device := input.identification_auth.devices.credential_inventory[_]
-        ninety_days_ns := 90 * 24 * 60 * 60 * 1000000000
-        last_rotation_ns := time.parse_rfc3339_ns(device.last_key_rotation_date)
-        (time.now_ns() - last_rotation_ns) > ninety_days_ns
+        not rotated_recently(device)
     ]
-    msg := sprintf("SG.IA-5: Key rotation overdue (>90 days) for devices: %v", [overdue])
+    msg := sprintf("SG.IA-5: Key rotation overdue (>90 days) or last_key_rotation_date unreadable for devices: %v", [overdue])
 }
 
 violations contains msg if {
