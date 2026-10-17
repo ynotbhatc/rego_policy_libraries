@@ -187,10 +187,14 @@ performance_charts_violations := [msg |
 ]
 
 # vCenter Server Security Controls
+default vcenter_service_account_secure := false
+
 vcenter_service_account_secure if {
 	input.vcenter.service_account.name != "root"
 	input.vcenter.service_account.privileges_minimal == true
 }
+
+default vcenter_logging_configured := false
 
 vcenter_logging_configured if {
 	input.vcenter.logging.enabled == true
@@ -198,10 +202,14 @@ vcenter_logging_configured if {
 	input.vcenter.logging.rotation_enabled == true
 }
 
+default vcenter_session_timeout_configured := false
+
 vcenter_session_timeout_configured if {
 	input.vcenter.session.timeout_minutes <= 30
 	input.vcenter.session.timeout_minutes > 0
 }
+
+default vcenter_password_policy_enforced := false
 
 vcenter_password_policy_enforced if {
 	policy := input.vcenter.password_policy
@@ -209,6 +217,8 @@ vcenter_password_policy_enforced if {
 	policy.complexity_required == true
 	policy.max_age_days <= 90
 }
+
+default vcenter_ssl_certificates_secure := false
 
 vcenter_ssl_certificates_secure if {
 	ssl := input.vcenter.ssl
@@ -218,12 +228,16 @@ vcenter_ssl_certificates_secure if {
 	ssl.weak_protocols_disabled == true
 }
 
+default vcenter_network_security_configured := false
+
 vcenter_network_security_configured if {
 	network := input.vcenter.network
 	network.firewall_enabled == true
 	network.unnecessary_services_disabled == true
 	network.secure_protocols_only == true
 }
+
+default vcenter_backup_procedures_configured := false
 
 vcenter_backup_procedures_configured if {
 	backup := input.vcenter.backup
@@ -232,12 +246,16 @@ vcenter_backup_procedures_configured if {
 	backup.secure_storage == true
 }
 
+default vcenter_database_security_configured := false
+
 vcenter_database_security_configured if {
 	db := input.vcenter.database
 	db.authentication_secure == true
 	db.encryption_enabled == true
 	db.access_controls_configured == true
 }
+
+default vcenter_access_control_configured := false
 
 vcenter_access_control_configured if {
 	access := input.vcenter.access_control
@@ -246,12 +264,16 @@ vcenter_access_control_configured if {
 	access.regular_review == true
 }
 
+default vcenter_audit_logging_enabled := false
+
 vcenter_audit_logging_enabled if {
 	audit := input.vcenter.audit
 	audit.enabled == true
 	audit.comprehensive_coverage == true
 	audit.log_retention_configured == true
 }
+
+default vcenter_management_interfaces_secured := false
 
 vcenter_management_interfaces_secured if {
 	mgmt := input.vcenter.management_interfaces
@@ -260,11 +282,15 @@ vcenter_management_interfaces_secured if {
 	mgmt.remote_access_secured == true
 }
 
+default vcenter_time_sync_configured := false
+
 vcenter_time_sync_configured if {
 	time := input.vcenter.time_sync
 	time.ntp_enabled == true
 	time.secure_time_sources == true
 }
+
+default vcenter_snmp_secure := false
 
 vcenter_snmp_secure if {
 	snmp := input.vcenter.snmp
@@ -272,11 +298,15 @@ vcenter_snmp_secure if {
 	snmp.community_strings_secure == true
 }
 
+default vcenter_performance_monitoring_secure := false
+
 vcenter_performance_monitoring_secure if {
 	performance := input.vcenter.performance_monitoring
 	performance.secure_access == true
 	performance.data_retention_configured == true
 }
+
+default vcenter_patch_management_configured := false
 
 vcenter_patch_management_configured if {
 	patch := input.vcenter.patch_management
@@ -284,11 +314,15 @@ vcenter_patch_management_configured if {
 	patch.testing_procedures == true
 }
 
+default vcenter_ha_configured := false
+
 vcenter_ha_configured if {
 	ha := input.vcenter.high_availability
 	ha.enabled == true
 	ha.properly_configured == true
 }
+
+default vcenter_dr_configured := false
 
 vcenter_dr_configured if {
 	dr := input.vcenter.disaster_recovery
@@ -296,11 +330,15 @@ vcenter_dr_configured if {
 	dr.tested_regularly == true
 }
 
+default vcenter_inventory_management_secure := false
+
 vcenter_inventory_management_secure if {
 	inventory := input.vcenter.inventory_management
 	inventory.access_controlled == true
 	inventory.changes_audited == true
 }
+
+default vcenter_api_access_secure := false
 
 vcenter_api_access_secure if {
 	api := input.vcenter.api_access
@@ -309,6 +347,8 @@ vcenter_api_access_secure if {
 	api.rate_limiting_enabled == true
 }
 
+default vcenter_licensing_managed := false
+
 vcenter_licensing_managed if {
 	licensing := input.vcenter.licensing
 	licensing.properly_configured == true
@@ -316,6 +356,8 @@ vcenter_licensing_managed if {
 }
 
 # SSO Security Controls
+default sso_password_policy_secure := false
+
 sso_password_policy_secure if {
 	policy := input.vcenter.sso.password_policy
 	policy.min_length >= 8
@@ -324,11 +366,15 @@ sso_password_policy_secure if {
 	policy.lockout_threshold <= 5
 }
 
+default sso_lockout_policy_configured := false
+
 sso_lockout_policy_configured if {
 	lockout := input.vcenter.sso.lockout_policy
 	lockout.failed_attempts_threshold <= 5
 	lockout.lockout_duration_minutes >= 15
 }
+
+default sso_identity_sources_secure := false
 
 sso_identity_sources_secure if {
 	sources := input.vcenter.sso.identity_sources
@@ -336,11 +382,15 @@ sso_identity_sources_secure if {
 	sources.certificate_validation == true
 }
 
+default sso_token_policy_configured := false
+
 sso_token_policy_configured if {
 	token := input.vcenter.sso.token_policy
 	token.max_lifetime_hours <= 24
 	token.renewal_count_limited == true
 }
+
+default sso_certificate_management_secure := false
 
 sso_certificate_management_secure if {
 	certs := input.vcenter.sso.certificates
@@ -349,11 +399,15 @@ sso_certificate_management_secure if {
 	certs.strong_key_length == true
 }
 
+default sso_domain_join_secure := false
+
 sso_domain_join_secure if {
 	domain := input.vcenter.sso.domain_join
 	domain.secure_protocols == true
 	domain.service_account_minimal_privileges == true
 }
+
+default sso_service_accounts_minimal_privileges := false
 
 sso_service_accounts_minimal_privileges if {
 	accounts := input.vcenter.sso.service_accounts
@@ -361,11 +415,15 @@ sso_service_accounts_minimal_privileges if {
 	accounts.regular_review == true
 }
 
+default sso_audit_logging_enabled := false
+
 sso_audit_logging_enabled if {
 	audit := input.vcenter.sso.audit_logging
 	audit.enabled == true
 	audit.comprehensive_events == true
 }
+
+default sso_global_permissions_minimized := false
 
 sso_global_permissions_minimized if {
 	permissions := input.vcenter.sso.global_permissions
@@ -373,16 +431,22 @@ sso_global_permissions_minimized if {
 	permissions.regularly_reviewed == true
 }
 
+default sso_solution_user_certs_managed := false
+
 sso_solution_user_certs_managed if {
 	solution_users := input.vcenter.sso.solution_users
 	solution_users.certificates_managed == true
 	solution_users.rotation_scheduled == true
 }
 
+default sso_idp_discovery_secure := false
+
 sso_idp_discovery_secure if {
 	idp := input.vcenter.sso.idp_discovery
 	idp.secure_configuration == true
 }
+
+default sso_smart_card_auth_configured := false
 
 sso_smart_card_auth_configured if {
 	smart_card := input.vcenter.sso.smart_card_auth
@@ -390,11 +454,15 @@ sso_smart_card_auth_configured if {
 }
 
 # vSphere Client Security Controls
+default vsphere_client_session_timeout_configured := false
+
 vsphere_client_session_timeout_configured if {
 	client := input.vcenter.vsphere_client
 	client.session_timeout_minutes <= 30
 	client.session_timeout_minutes > 0
 }
+
+default vsphere_client_ssl_secure := false
 
 vsphere_client_ssl_secure if {
 	ssl := input.vcenter.vsphere_client.ssl
@@ -402,11 +470,15 @@ vsphere_client_ssl_secure if {
 	ssl.strong_cipher_suites == true
 }
 
+default vsphere_client_access_logging_enabled := false
+
 vsphere_client_access_logging_enabled if {
 	logging := input.vcenter.vsphere_client.logging
 	logging.access_logs_enabled == true
 	logging.error_logs_enabled == true
 }
+
+default vsphere_client_plugin_security_configured := false
 
 vsphere_client_plugin_security_configured if {
 	plugins := input.vcenter.vsphere_client.plugins
@@ -414,11 +486,15 @@ vsphere_client_plugin_security_configured if {
 	plugins.unauthorized_disabled == true
 }
 
+default vsphere_client_csp_configured := false
+
 vsphere_client_csp_configured if {
 	csp := input.vcenter.vsphere_client.content_security_policy
 	csp.enabled == true
 	csp.properly_configured == true
 }
+
+default vsphere_client_security_headers_configured := false
 
 vsphere_client_security_headers_configured if {
 	headers := input.vcenter.vsphere_client.security_headers
@@ -427,11 +503,15 @@ vsphere_client_security_headers_configured if {
 	headers.content_type_nosniff_enabled == true
 }
 
+default vsphere_client_auth_secure := false
+
 vsphere_client_auth_secure if {
 	auth := input.vcenter.vsphere_client.authentication
 	auth.strong_mechanisms == true
 	auth.multi_factor_supported == true
 }
+
+default vsphere_client_cookie_security_configured := false
 
 vsphere_client_cookie_security_configured if {
 	cookies := input.vcenter.vsphere_client.cookies
@@ -440,11 +520,15 @@ vsphere_client_cookie_security_configured if {
 }
 
 # Inventory Service Security Controls
+default inventory_service_logging_configured := false
+
 inventory_service_logging_configured if {
 	logging := input.vcenter.inventory_service.logging
 	logging.enabled == true
 	logging.appropriate_level == true
 }
+
+default inventory_service_access_controls_configured := false
 
 inventory_service_access_controls_configured if {
 	access := input.vcenter.inventory_service.access_controls
@@ -452,11 +536,15 @@ inventory_service_access_controls_configured if {
 	access.authorization_enforced == true
 }
 
+default inventory_service_ssl_secure := false
+
 inventory_service_ssl_secure if {
 	ssl := input.vcenter.inventory_service.ssl
 	ssl.enabled == true
 	ssl.strong_configuration == true
 }
+
+default inventory_service_database_secure := false
 
 inventory_service_database_secure if {
 	db := input.vcenter.inventory_service.database
@@ -464,11 +552,15 @@ inventory_service_database_secure if {
 	db.access_controls == true
 }
 
+default inventory_service_performance_monitoring_configured := false
+
 inventory_service_performance_monitoring_configured if {
 	monitoring := input.vcenter.inventory_service.performance_monitoring
 	monitoring.enabled == true
 	monitoring.secure_access == true
 }
+
+default inventory_service_backup_configured := false
 
 inventory_service_backup_configured if {
 	backup := input.vcenter.inventory_service.backup
@@ -477,11 +569,15 @@ inventory_service_backup_configured if {
 }
 
 # Lookup Service Security Controls
+default lookup_service_ssl_secure := false
+
 lookup_service_ssl_secure if {
 	ssl := input.vcenter.lookup_service.ssl
 	ssl.enabled == true
 	ssl.strong_configuration == true
 }
+
+default lookup_service_logging_configured := false
 
 lookup_service_logging_configured if {
 	logging := input.vcenter.lookup_service.logging
@@ -489,16 +585,22 @@ lookup_service_logging_configured if {
 	logging.appropriate_level == true
 }
 
+default lookup_service_registration_secure := false
+
 lookup_service_registration_secure if {
 	registration := input.vcenter.lookup_service.registration
 	registration.secure_protocols == true
 	registration.authentication_required == true
 }
 
+default lookup_service_access_controls_configured := false
+
 lookup_service_access_controls_configured if {
 	access := input.vcenter.lookup_service.access_controls
 	access.properly_configured == true
 }
+
+default lookup_service_endpoint_security_configured := false
 
 lookup_service_endpoint_security_configured if {
 	endpoints := input.vcenter.lookup_service.endpoints
@@ -506,11 +608,15 @@ lookup_service_endpoint_security_configured if {
 }
 
 # PostgreSQL Security Controls
+default postgresql_auth_secure := false
+
 postgresql_auth_secure if {
 	auth := input.vcenter.postgresql.authentication
 	auth.strong_mechanisms == true
 	auth.no_trust_authentication == true
 }
+
+default postgresql_logging_configured := false
 
 postgresql_logging_configured if {
 	logging := input.vcenter.postgresql.logging
@@ -518,11 +624,15 @@ postgresql_logging_configured if {
 	logging.comprehensive == true
 }
 
+default postgresql_connection_security_configured := false
+
 postgresql_connection_security_configured if {
 	connections := input.vcenter.postgresql.connections
 	connections.ssl_required == true
 	connections.limits_configured == true
 }
+
+default postgresql_access_controls_configured := false
 
 postgresql_access_controls_configured if {
 	access := input.vcenter.postgresql.access_controls
@@ -530,11 +640,15 @@ postgresql_access_controls_configured if {
 	access.least_privilege == true
 }
 
+default postgresql_ssl_secure := false
+
 postgresql_ssl_secure if {
 	ssl := input.vcenter.postgresql.ssl
 	ssl.enabled == true
 	ssl.strong_configuration == true
 }
+
+default postgresql_backup_configured := false
 
 postgresql_backup_configured if {
 	backup := input.vcenter.postgresql.backup
@@ -542,10 +656,14 @@ postgresql_backup_configured if {
 	backup.tested == true
 }
 
+default postgresql_performance_monitoring_configured := false
+
 postgresql_performance_monitoring_configured if {
 	monitoring := input.vcenter.postgresql.performance_monitoring
 	monitoring.enabled == true
 }
+
+default postgresql_audit_logging_enabled := false
 
 postgresql_audit_logging_enabled if {
 	audit := input.vcenter.postgresql.audit_logging
@@ -553,11 +671,15 @@ postgresql_audit_logging_enabled if {
 }
 
 # Photon OS Security Controls
+default photon_firewall_configured := false
+
 photon_firewall_configured if {
 	firewall := input.vcenter.photon_os.firewall
 	firewall.enabled == true
 	firewall.rules_configured == true
 }
+
+default photon_logging_configured := false
 
 photon_logging_configured if {
 	logging := input.vcenter.photon_os.logging
@@ -565,11 +687,15 @@ photon_logging_configured if {
 	logging.secure_transport == true
 }
 
+default photon_access_controls_configured := false
+
 photon_access_controls_configured if {
 	access := input.vcenter.photon_os.access_controls
 	access.sudo_configured == true
 	access.unnecessary_accounts_removed == true
 }
+
+default photon_network_security_configured := false
 
 photon_network_security_configured if {
 	network := input.vcenter.photon_os.network_security
@@ -577,11 +703,15 @@ photon_network_security_configured if {
 	network.unnecessary_services_disabled == true
 }
 
+default photon_time_sync_configured := false
+
 photon_time_sync_configured if {
 	time := input.vcenter.photon_os.time_sync
 	time.ntp_enabled == true
 	time.secure_servers == true
 }
+
+default photon_package_management_secure := false
 
 photon_package_management_secure if {
 	packages := input.vcenter.photon_os.package_management
@@ -589,11 +719,15 @@ photon_package_management_secure if {
 	packages.updates_automated == true
 }
 
+default photon_user_account_security_configured := false
+
 photon_user_account_security_configured if {
 	users := input.vcenter.photon_os.user_accounts
 	users.strong_passwords == true
 	users.unnecessary_accounts_removed == true
 }
+
+default photon_audit_logging_enabled := false
 
 photon_audit_logging_enabled if {
 	audit := input.vcenter.photon_os.audit_logging
@@ -601,11 +735,15 @@ photon_audit_logging_enabled if {
 	audit.comprehensive == true
 }
 
+default photon_kernel_security_configured := false
+
 photon_kernel_security_configured if {
 	kernel := input.vcenter.photon_os.kernel_security
 	kernel.hardening_enabled == true
 	kernel.modules_restricted == true
 }
+
+default photon_filesystem_security_configured := false
 
 photon_filesystem_security_configured if {
 	filesystem := input.vcenter.photon_os.filesystem_security
@@ -614,11 +752,15 @@ photon_filesystem_security_configured if {
 }
 
 # Performance Charts Security Controls
+default performance_charts_logging_configured := false
+
 performance_charts_logging_configured if {
 	logging := input.vcenter.performance_charts.logging
 	logging.enabled == true
 	logging.appropriate_level == true
 }
+
+default performance_charts_ssl_secure := false
 
 performance_charts_ssl_secure if {
 	ssl := input.vcenter.performance_charts.ssl
@@ -626,11 +768,15 @@ performance_charts_ssl_secure if {
 	ssl.strong_configuration == true
 }
 
+default performance_charts_access_controls_configured := false
+
 performance_charts_access_controls_configured if {
 	access := input.vcenter.performance_charts.access_controls
 	access.authentication_required == true
 	access.authorization_enforced == true
 }
+
+default performance_charts_database_secure := false
 
 performance_charts_database_secure if {
 	db := input.vcenter.performance_charts.database
