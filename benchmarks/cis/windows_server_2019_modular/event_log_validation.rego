@@ -28,7 +28,7 @@ compliant if {
 
 violations := array.concat(
 	array.concat([v | some v in application_log_violations], [v | some v in security_log_violations]),
-	[v | some v in system_log_violations],
+	array.concat([v | some v in setup_log_violations], [v | some v in system_log_violations]),
 )
 
 # CIS 18.9.26.1.1: Application log maximum size >= 32768 KB (32 MB)

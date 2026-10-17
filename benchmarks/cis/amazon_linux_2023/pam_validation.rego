@@ -23,6 +23,18 @@ import rego.v1
 
 default compliant := false
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # Helper to check if pwquality is configured
 pwquality_configured if {
     input.pam.pwquality_installed
@@ -41,8 +53,16 @@ pwquality_config := {key: value |
 }
 
 # Helper to check PAM files
-check_pam_file(filename, pattern) if {
+# Active (non-blank, non-comment) lines of a PAM file; commented-out directives never count.
+pam_active_lines(filename) := [trimmed |
     some line in split(input.pam[filename], "\n")
+    trimmed := trim_space(line)
+    trimmed != ""
+    not startswith(trimmed, "#")
+]
+
+check_pam_file(filename, pattern) if {
+    some line in pam_active_lines(filename)
     contains(line, pattern)
 }
 
@@ -91,13 +111,13 @@ violations contains msg if {
 
 violations contains msg if {
     check_pam_file("system_auth", "pam_faillock.so")
-    not contains(input.pam.system_auth, "deny=")
+    not check_pam_file("system_auth", "deny=")
     msg := "CIS 5.4.2: Account lockout threshold (deny) not configured"
 }
 
 violations contains msg if {
     check_pam_file("system_auth", "pam_faillock.so")
-    not contains(input.pam.system_auth, "unlock_time=")
+    not check_pam_file("system_auth", "unlock_time=")
     msg := "CIS 5.4.2: Account lockout time (unlock_time) not configured"
 }
 
@@ -111,7 +131,7 @@ violations contains msg if {
 violations contains msg if {
     check_pam_file("system_auth", "remember=")
     system_auth_line := [line |
-        some line in split(input.pam.system_auth, "\n")
+        some line in pam_active_lines("system_auth")
         contains(line, "remember=")
     ][0]
     remember_match := regex.find_n(`remember=(\d+)`, system_auth_line, 1)
@@ -157,8 +177,14 @@ violations contains msg if {
 violations contains msg if {
     input.pam.inactive_days
     to_number(input.pam.inactive_days) > 30
-    to_number(input.pam.inactive_days) >= 0
     msg := sprintf("CIS 5.5.1.4: Inactive password lock is %s days, should be 30 or less", [input.pam.inactive_days])
+}
+
+# INACTIVE=-1 means the inactive lock is disabled
+violations contains msg if {
+    input.pam.inactive_days
+    to_number(input.pam.inactive_days) < 0
+    msg := sprintf("CIS 5.5.1.4: Inactive password lock is disabled (%s), should be 30 days or less", [input.pam.inactive_days])
 }
 
 violations contains msg if {
@@ -185,12 +211,13 @@ violations contains msg if {
     msg := sprintf("CIS 5.5.3: Root account GID is %s, should be 0", [input.pam.root_gid])
 }
 
+# 027 octal is 23: the umask must mask at least every bit 027 masks. Unparsable values fail.
+umask_restrictive(u) if bits.and(octal(u), 23) == 23
+
 # CIS 5.5.4: Ensure default user umask is 027 or more restrictive
 violations contains msg if {
     input.pam.default_umask
-    umask_value := to_number(input.pam.default_umask)
-    umask_value > 27
-    not umask_value in [77, 177, 277, 377]
+    not umask_restrictive(input.pam.default_umask)
     msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 

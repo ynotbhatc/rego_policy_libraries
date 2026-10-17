@@ -47,15 +47,25 @@ import rego.v1
 
 workload_kinds := {"Deployment", "StatefulSet", "DaemonSet", "Job", "CronJob", "Pod"}
 
-# Extract containers from any workload kind
-containers := input.manifest.spec.template.spec.containers if {
-    input.kind in workload_kinds
-    input.kind != "Pod"
-}
-
-containers := input.manifest.spec.containers if {
+# Pod spec location differs by kind:
+#   Pod      -> spec
+#   CronJob  -> spec.jobTemplate.spec.template.spec
+#   others   -> spec.template.spec
+pod_spec := input.manifest.spec if {
     input.kind == "Pod"
 }
+
+pod_spec := input.manifest.spec.jobTemplate.spec.template.spec if {
+    input.kind == "CronJob"
+}
+
+pod_spec := input.manifest.spec.template.spec if {
+    input.kind in workload_kinds
+    not input.kind in {"Pod", "CronJob"}
+}
+
+# Extract containers from any workload kind
+containers := pod_spec.containers
 
 # ---------------------------------------------------------------------------
 # SENTINEL-K8S-001 — No privileged containers
@@ -99,7 +109,7 @@ violation_k8s_002 contains msg if {
 
 violation_k8s_003 contains msg if {
     some container in containers
-    container.securityContext.readOnlyRootFilesystem != true
+    not container.securityContext.readOnlyRootFilesystem == true
     msg := sprintf(
         "SENTINEL-K8S-003: Container '%v' does not set readOnlyRootFilesystem: true. Read-only root filesystem prevents runtime modification.",
         [container.name]
@@ -142,17 +152,17 @@ violation_k8s_004 contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_k8s_005 contains msg if {
-    input.manifest.spec.template.spec.hostNetwork == true
+    pod_spec.hostNetwork == true
     msg := "SENTINEL-K8S-005: hostNetwork is enabled. Pods must not share the host network namespace."
 }
 
 violation_k8s_005 contains msg if {
-    input.manifest.spec.template.spec.hostPID == true
+    pod_spec.hostPID == true
     msg := "SENTINEL-K8S-005: hostPID is enabled. Pods must not share the host process namespace."
 }
 
 violation_k8s_005 contains msg if {
-    input.manifest.spec.template.spec.hostIPC == true
+    pod_spec.hostIPC == true
     msg := "SENTINEL-K8S-005: hostIPC is enabled. Pods must not share the host IPC namespace."
 }
 
@@ -161,7 +171,7 @@ violation_k8s_005 contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_k8s_006 contains msg if {
-    some volume in input.manifest.spec.template.spec.volumes
+    some volume in pod_spec.volumes
     volume.hostPath
     msg := sprintf(
         "SENTINEL-K8S-006: Volume '%v' uses hostPath. hostPath volumes mount from the host filesystem and create security risks.",
@@ -221,7 +231,7 @@ violation_k8s_008 contains msg if {
 
 violation_k8s_009 contains msg if {
     some container in containers
-    container.securityContext.allowPrivilegeEscalation != false
+    not container.securityContext.allowPrivilegeEscalation == false
     msg := sprintf(
         "SENTINEL-K8S-009: Container '%v' does not set allowPrivilegeEscalation: false. Set this explicitly to prevent privilege escalation.",
         [container.name]
@@ -296,8 +306,8 @@ violation_k8s_013 contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_k8s_014 contains msg if {
-    input.manifest.spec.template.spec.automountServiceAccountToken != false
     input.kind in {"Deployment", "StatefulSet", "DaemonSet"}
+    not pod_spec.automountServiceAccountToken == false
     msg := sprintf(
         "SENTINEL-K8S-014: %v '%v' does not set automountServiceAccountToken: false. Disable auto-mounting of service account tokens unless required.",
         [input.kind, input.manifest.metadata.name]
@@ -349,13 +359,17 @@ all_violations := array.concat(
     )
 )
 
+# Gate semantics: judges only what is present in the manifest, so a manifest with no
+# workload containers has nothing to violate. A failing manifest still yields a result.
+default compliant := false
+
 compliant if { count(all_violations) == 0 }
 
 result := {
     "compliant":        compliant,
     "violation_count":  count(all_violations),
     "violations":       all_violations,
-    "resource":         input.manifest.metadata.name,
-    "kind":             input.kind,
-    "namespace":        input.manifest.metadata.namespace,
+    "resource":         object.get(input, ["manifest", "metadata", "name"], null),
+    "kind":             object.get(input, ["kind"], null),
+    "namespace":        object.get(input, ["manifest", "metadata", "namespace"], null),
 }

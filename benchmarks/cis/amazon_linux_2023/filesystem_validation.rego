@@ -78,10 +78,9 @@ partition_violations contains violation if {
 	some partition in input.separate_partitions.analysis
 	partition.is_separate_partition
 	not partition.has_all_required_options
-	count(partition.missing_options) > 0
 	violation := sprintf("CIS 1.1.2.x: Partition '%s' is missing required mount options: %v", [
 		partition.mount_point,
-		partition.missing_options,
+		object.get(partition, "missing_options", []),
 	])
 }
 
@@ -173,13 +172,22 @@ usb_storage_violation contains violation if {
 	violation := "CIS 1.1.1.8: USB storage module is loaded (should be disabled)"
 }
 
+usb_storage_violation contains "CIS 1.1.1.8: evidence missing - usb_storage not collected" if {
+	not input.usb_storage
+}
+
 usb_storage_violation contains violation if {
-	input.usb_storage.disabled == false
-	input.usb_storage.status != "disabled"
-	violation := sprintf("CIS 1.1.1.8: USB storage module is not disabled (status: %s)", [
-		input.usb_storage.status,
+	input.usb_storage
+	not usb_storage_disabled
+	violation := sprintf("CIS 1.1.1.8: USB storage module is not disabled (status: %v)", [
+		object.get(input.usb_storage, "status", "unknown"),
 	])
 }
+
+# Disabled means the collector reported disabled == true or status == "disabled".
+usb_storage_disabled if input.usb_storage.disabled == true
+
+usb_storage_disabled if input.usb_storage.status == "disabled"
 
 # =============================================================================
 # COMPLIANCE CHECKS
@@ -194,7 +202,7 @@ compliance_summary := {
 	"dev_shm_secure": object.get(input, ["compliance_checks", "dev_shm_secure"], null),
 	"sticky_bit_compliant": object.get(input, ["compliance_checks", "sticky_bit_compliant"], null),
 	"usb_storage_compliant": object.get(input, ["compliance_checks", "usb_storage_compliant"], null),
-	"overall_compliant": count(violations) == 0,
+	"overall_compliant": compliant,
 }
 
 # =============================================================================

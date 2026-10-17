@@ -58,6 +58,27 @@ sysctl_violations contains violation if {
 	])
 }
 
+# Parameters this module checks by name; absent from the analysis means no evidence.
+required_sysctl_params := {
+	"net.ipv4.tcp_syncookies": "3.2.8",
+	"net.ipv4.conf.all.rp_filter": "3.2.7",
+	"net.ipv4.conf.all.log_martians": "3.2.4",
+	"net.ipv4.icmp_echo_ignore_broadcasts": "3.2.5",
+	"net.ipv4.conf.all.send_redirects": "3.1.2",
+	"net.ipv4.conf.default.send_redirects": "3.1.2",
+}
+
+sysctl_violations contains violation if {
+	some name, cis in required_sysctl_params
+	not sysctl_param_collected(name)
+	violation := sprintf("CIS %s: evidence missing - %s not present in sysctl_parameters.analysis", [cis, name])
+}
+
+sysctl_param_collected(name) if {
+	some param in input.sysctl_parameters.analysis
+	param.parameter == name
+}
+
 # Specific high-priority parameter violations
 sysctl_violations contains violation if {
 	some param in input.sysctl_parameters.analysis
@@ -91,9 +112,17 @@ sysctl_violations contains violation if {
 # CIS 3.1.1 - IP FORWARDING
 # =============================================================================
 
+# The raw forwarding value is authoritative: a collector-supplied *_compliant flag must not hide it.
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing - ip_forwarding.ipv4_forwarding not collected" if {
+	not is_number(object.get(input, ["ip_forwarding", "ipv4_forwarding"], null))
+}
+
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing - ip_forwarding.ipv6_forwarding not collected" if {
+	not is_number(object.get(input, ["ip_forwarding", "ipv6_forwarding"], null))
+}
+
 ip_forwarding_violations contains violation if {
 	input.ip_forwarding.ipv4_forwarding != 0
-	not input.ip_forwarding.ipv4_compliant
 	violation := sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [
 		input.ip_forwarding.ipv4_forwarding,
 	])
@@ -101,7 +130,6 @@ ip_forwarding_violations contains violation if {
 
 ip_forwarding_violations contains violation if {
 	input.ip_forwarding.ipv6_forwarding != 0
-	not input.ip_forwarding.ipv6_compliant
 	violation := sprintf("CIS 3.1.1: IPv6 forwarding is enabled (value: %v, expected: 0)", [
 		input.ip_forwarding.ipv6_forwarding,
 	])
@@ -188,6 +216,12 @@ ipv6_violations contains violation if {
 		input.ipv6.status,
 		input.ipv6.address_count,
 	])
+}
+
+ipv6_violations contains "CIS 3.3.1: evidence missing - ipv6.address_count not collected" if {
+	input.require_ipv6_disabled == true
+	not input.ipv6.disabled
+	not is_number(object.get(input, ["ipv6", "address_count"], null))
 }
 
 # If IPv6 is enabled, ensure router advertisements are disabled

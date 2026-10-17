@@ -23,6 +23,18 @@ import rego.v1
 
 default compliant := false
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 compliant if {
 	count(violations) == 0
 }
@@ -38,6 +50,10 @@ service_violations contains "CIS 4.1.1.1: audit package not installed" if {
 }
 
 # CIS 4.1.1.2: auditd service enabled and running
+service_violations contains "CIS 4.1.1.2: evidence missing - auditd.service not collected" if {
+	not input.services["auditd.service"]
+}
+
 service_violations contains "CIS 4.1.1.2: auditd service not enabled" if {
 	service := input.services["auditd.service"]
 	service.status != "enabled"
@@ -170,15 +186,30 @@ rules_violations contains "CIS 4.1.3.21: Audit configuration not set to immutabl
 }
 
 # CIS 4.1.4.1: Audit log file permissions
-permission_violations contains sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode]) if {
-	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+permission_violations contains "CIS 4.1.4.1: evidence missing - auditd.log_permissions.mode not collected" if {
+	not input.auditd.log_permissions.mode
 }
 
-# CIS 4.1.4.2: Audit log file ownership
+permission_violations contains sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode]) if {
+	mode := input.auditd.log_permissions.mode
+	not mode_within(mode, "0640")
+}
+
+# =============================================================================
+# CIS 4.1.4.2 - AUDIT LOG FILES OWNERSHIP
+# =============================================================================
+
+permission_violations contains "CIS 4.1.4.2: evidence missing - auditd.log_permissions.pw_name not collected" if {
+	not input.auditd.log_permissions.pw_name
+}
+
 permission_violations contains sprintf("CIS 4.1.4.2: Audit log not owned by root (owner: %s)", [owner]) if {
 	owner := input.auditd.log_permissions.pw_name
 	owner != "root"
+}
+
+permission_violations contains "CIS 4.1.4.2: evidence missing - auditd.log_permissions.gr_name not collected" if {
+	not input.auditd.log_permissions.gr_name
 }
 
 permission_violations contains sprintf("CIS 4.1.4.2: Audit log group not root or adm (group: %s)", [group]) if {
@@ -186,18 +217,32 @@ permission_violations contains sprintf("CIS 4.1.4.2: Audit log group not root or
 	not group in ["root", "adm"]
 }
 
-# CIS 4.1.4.3: Audit log directory permissions
-permission_violations contains sprintf("CIS 4.1.4.3: Audit log directory permissions too permissive (mode: %s)", [mode]) if {
-	mode := input.auditd.log_dir_permissions.mode
-	to_number(mode) > 750
+# =============================================================================
+# CIS 4.1.4.3 - AUDIT LOG DIRECTORY PERMISSIONS
+# =============================================================================
+
+permission_violations contains "CIS 4.1.4.3: evidence missing - auditd.log_dir_permissions.mode not collected" if {
+	not input.auditd.log_dir_permissions.mode
 }
 
-# CIS 4.1.4.4: Audit config file permissions
-permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has incorrect permissions (mode: %s, should be 0640)", [file, mode]) if {
+permission_violations contains sprintf("CIS 4.1.4.3: Audit log directory permissions too permissive (mode: %s, should be 0750 or less)", [mode]) if {
+	mode := input.auditd.log_dir_permissions.mode
+	not mode_within(mode, "0750")
+}
+
+# =============================================================================
+# CIS 4.1.4.4 - AUDIT CONFIGURATION FILES PERMISSIONS
+# =============================================================================
+
+permission_violations contains "CIS 4.1.4.4: evidence missing - auditd.config_permissions not collected" if {
+	count(object.get(input.auditd, "config_permissions", [])) == 0
+}
+
+permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has incorrect permissions (mode: %s, should be 0640 or less)", [file, mode]) if {
 	some config_file in input.auditd.config_permissions
 	file := config_file.stat.path
 	mode := config_file.stat.mode
-	mode != "0640"
+	not mode_within(mode, "0640")
 }
 
 permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s not owned by root (owner: %s)", [file, owner]) if {
@@ -215,7 +260,7 @@ report := {
 	"config_violations": count(config_violations),
 	"rules_violations": count(rules_violations),
 	"permission_violations": count(permission_violations),
-	"controls_checked": 40,
+	"controls_checked": 18,
 	"rules_checked": count(required_rules),
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "CIS Rocky Linux 8 v3.0.0",

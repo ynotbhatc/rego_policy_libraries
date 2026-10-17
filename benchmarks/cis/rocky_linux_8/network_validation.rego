@@ -41,6 +41,26 @@ sysctl_violations contains sprintf("CIS 3.x: Kernel parameter '%s' has incorrect
 	some param in input.sysctl_parameters.non_compliant_params
 }
 
+# Parameters this module checks by name; absent from the analysis means no evidence.
+required_sysctl_params := {
+	"net.ipv4.tcp_syncookies": "3.2.8",
+	"net.ipv4.conf.all.rp_filter": "3.2.7",
+	"net.ipv4.conf.all.log_martians": "3.2.4",
+	"net.ipv4.icmp_echo_ignore_broadcasts": "3.2.5",
+	"net.ipv4.conf.all.send_redirects": "3.1.2",
+	"net.ipv4.conf.default.send_redirects": "3.1.2",
+}
+
+sysctl_violations contains sprintf("CIS %s: evidence missing - %s not present in sysctl_parameters.analysis", [cis, name]) if {
+	some name, cis in required_sysctl_params
+	not sysctl_param_collected(name)
+}
+
+sysctl_param_collected(name) if {
+	some param in input.sysctl_parameters.analysis
+	param.parameter == name
+}
+
 sysctl_violations contains "CIS 3.2.8: TCP SYN cookies not enabled (vulnerable to SYN flood attacks)" if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.tcp_syncookies"
@@ -66,14 +86,21 @@ sysctl_violations contains "CIS 3.2.5: Broadcast ICMP not ignored (vulnerable to
 }
 
 # CIS 3.1.1: IP forwarding disabled
+# The raw forwarding value is authoritative: a collector-supplied *_compliant flag must not hide it.
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing - ip_forwarding.ipv4_forwarding not collected" if {
+	not is_number(object.get(input, ["ip_forwarding", "ipv4_forwarding"], null))
+}
+
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing - ip_forwarding.ipv6_forwarding not collected" if {
+	not is_number(object.get(input, ["ip_forwarding", "ipv6_forwarding"], null))
+}
+
 ip_forwarding_violations contains sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv4_forwarding]) if {
 	input.ip_forwarding.ipv4_forwarding != 0
-	not input.ip_forwarding.ipv4_compliant
 }
 
 ip_forwarding_violations contains sprintf("CIS 3.1.1: IPv6 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv6_forwarding]) if {
 	input.ip_forwarding.ipv6_forwarding != 0
-	not input.ip_forwarding.ipv6_compliant
 }
 
 # CIS 3.1.2: Packet redirect sending disabled

@@ -23,6 +23,13 @@ import rego.v1
 
 default compliant := false
 
+# All checks below read offender lists, where an absent list means "none".
+# That is only sound if the collector emitted the section, so an empty or
+# missing user_group object is a violation, not a pass.
+violations contains "CIS 6.2: evidence missing - user_group not collected" if {
+    count(object.get(input, "user_group", {})) == 0
+}
+
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords
 violations contains msg if {
     some user in input.user_group.users_without_shadow

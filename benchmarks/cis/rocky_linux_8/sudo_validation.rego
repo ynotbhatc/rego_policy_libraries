@@ -27,6 +27,25 @@ sudo_installed if {
 	input.sudo.installed
 }
 
+# `Defaults use_pty` style flag: set on a Defaults line, never negated (`!use_pty`).
+# Substring matching would accept "Defaults !use_pty".
+sudoers_default_flag_set(flag) if {
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?%s\s*(,|#|$)`, [flag]), line)
+	not sudoers_default_flag_negated(flag)
+}
+
+sudoers_default_flag_negated(flag) if {
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?!\s*%s\s*(,|#|$)`, [flag]), line)
+}
+
+# `#includedir` and `@includedir` are directives, not comments.
+sudoers_includes_sudoers_d if {
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(`^\s*[#@]includedir\s+/etc/sudoers\.d\s*$`, line)
+}
+
 sudoers_has_option(option) if {
 	some line in split(input.sudo.sudoers_content, "\n")
 	trimmed := trim_space(line)
@@ -43,7 +62,7 @@ violations contains msg if {
 # CIS 5.3.2: sudo uses pty
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("use_pty")
+	not sudoers_default_flag_set("use_pty")
 	msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
 }
 
@@ -81,6 +100,14 @@ violations contains msg if {
 	input.sudo.timestamp_timeout
 	to_number(input.sudo.timestamp_timeout) > 15
 	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s minutes, should be 15 or less", [input.sudo.timestamp_timeout])
+}
+
+# -1 means the credential cache never expires
+violations contains msg if {
+	sudo_installed
+	input.sudo.timestamp_timeout
+	to_number(input.sudo.timestamp_timeout) < 0
+	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s (never expires), should be 0-15 minutes", [input.sudo.timestamp_timeout])
 }
 
 violations contains msg if {
@@ -124,8 +151,7 @@ violations contains msg if {
 
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("#includedir /etc/sudoers.d")
-	not sudoers_has_option("@includedir /etc/sudoers.d")
+	not sudoers_includes_sudoers_d
 	msg := "CIS 5.3: sudoers should include /etc/sudoers.d directory"
 }
 
