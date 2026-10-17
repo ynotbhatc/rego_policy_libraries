@@ -67,3 +67,11 @@ test_missing_syscall_rules_counted_separately if {
 	r.rules_violations > 4
 	r.controls_checked == count(data.cis_debian_11.auditd.required_rules) + 14
 }
+
+test_unset_space_left_action_violates if {
+	i := object.union(good, {"auditd": {"config": "max_log_file = 8\nmax_log_file_action = keep_logs\n"}})
+	some m in msgs(i)
+	contains(m, "space_left_action not appropriate (should be email")
+	some m2 in msgs(i)
+	contains(m2, "admin_space_left_action not appropriate")
+}

@@ -75,6 +75,8 @@ conf_value(key) := v if {
 	v := vals[count(vals) - 1]
 }
 
+conf_in(key, allowed) if conf_value(key) in allowed
+
 grub_has_token(tok) if {
 	some t in split(regex.replace(input.bootloader.grub_config, `\s+`, " "), " ")
 	t == tok
@@ -129,12 +131,12 @@ config_violations contains msg if {
 
 # CIS 4.1.2.3: Ensure system is disabled when audit logs are full
 config_violations contains msg if {
-	not conf_value("space_left_action") in {"email", "exec", "single", "halt"}
+	not conf_in("space_left_action", {"email", "exec", "single", "halt"})
 	msg := "CIS 4.1.2.3: space_left_action not appropriate (should be email, exec, single, or halt)"
 }
 
 config_violations contains msg if {
-	not conf_value("admin_space_left_action") in {"single", "halt"}
+	not conf_in("admin_space_left_action", {"single", "halt"})
 	msg := "CIS 4.1.2.3: admin_space_left_action not appropriate (should be single or halt)"
 }
 
