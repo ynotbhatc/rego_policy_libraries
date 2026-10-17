@@ -57,6 +57,13 @@ adequacy_decision if {
 	input.gdpr.transfers.adequacy.countries_verified == true
 	input.gdpr.transfers.adequacy.list_current == true
 	input.gdpr.transfers.adequacy.monitoring.for_withdrawal == true
+
+	# self-attested flags are not enough: every destination must actually hold an adequacy decision
+	destinations := input.gdpr.transfers.destination_countries
+	count(destinations) > 0
+	every c in destinations {
+		c in adequacy_countries
+	}
 }
 
 # Countries with current adequacy decisions (EDPB maintained list)
@@ -74,7 +81,8 @@ adequacy_countries := {
 	"Republic of Korea",
 	"Switzerland",
 	"United Kingdom",
-	"United States",  # EU-US Data Privacy Framework (since 2023)
+	# "United States" is deliberately absent: the EU-US DPF adequacy decision covers only DPF-certified
+	# recipients, so US transfers qualify through eu_us_dpf (certification verified), not by country name.
 	"Uruguay",
 }
 
@@ -106,7 +114,7 @@ transfer_impact_assessment if {
 
 # Supplementary measures when TIA identifies risks
 supplementary_measures if {
-	not input.gdpr.transfers.tia.supplementary_measures_required
+	input.gdpr.transfers.tia.supplementary_measures_required == false
 } else if {
 	input.gdpr.transfers.tia.supplementary_measures_required
 	input.gdpr.transfers.supplementary_measures.technical.end_to_end_encryption == true
@@ -120,7 +128,7 @@ supplementary_measures if {
 # =============================================================================
 
 binding_corporate_rules if {
-	not input.gdpr.transfers.bcr.used
+	input.gdpr.transfers.bcr.used == false
 } else if {
 	input.gdpr.transfers.bcr.used
 	input.gdpr.transfers.bcr.approved_by_lead_dpa == true
@@ -136,7 +144,7 @@ binding_corporate_rules if {
 # =============================================================================
 
 eu_us_dpf if {
-	not input.gdpr.transfers.us_transfers.occur
+	input.gdpr.transfers.us_transfers.occur == false
 } else if {
 	input.gdpr.transfers.us_transfers.occur
 	input.gdpr.transfers.us_transfers.mechanism.eu_us_dpf_or_scc == true
@@ -149,7 +157,7 @@ eu_us_dpf if {
 # =============================================================================
 
 derogation_if_used if {
-	not input.gdpr.transfers.derogations.used
+	input.gdpr.transfers.derogations.used == false
 } else if {
 	input.gdpr.transfers.derogations.used
 	input.gdpr.transfers.derogations.basis.documented == true
@@ -210,16 +218,21 @@ compliant if {
 	transfer_mechanism_in_place
 }
 
+# The "not used" branches of bcr / dpf / derogation mean "not applicable", which is not a mechanism:
+# only a mechanism that is actually in use can satisfy Chapter V.
 transfer_mechanism_in_place if {
 	adequacy_decision
 } else if {
 	standard_contractual_clauses
 	transfer_impact_assessment
 } else if {
+	input.gdpr.transfers.bcr.used == true
 	binding_corporate_rules
 } else if {
+	input.gdpr.transfers.us_transfers.occur == true
 	eu_us_dpf
 } else if {
+	input.gdpr.transfers.derogations.used == true
 	derogation_if_used
 }
 
