@@ -32,6 +32,15 @@ default information_disposal_procedures_implemented := false
 default information_protection_program := false
 default media_sanitization_verified := false
 
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
 # CIP-011-3: Information Protection
 # Requirement: Prevent unauthorized access to BES Cyber System Information
 # by specifying information protection requirements in support of protecting
@@ -92,6 +101,9 @@ information_access_adequate(access) if {
 
 # Authorization based on job function / need to know
 bcsi_access_need_to_know if {
+	# No access list is no evidence.
+	is_array(input.bcsi_access_list)
+	count(input.bcsi_access_list) > 0
 	violations := [person |
 		person := input.bcsi_access_list[_]
 		not person.need_to_know_documented == true
@@ -100,11 +112,18 @@ bcsi_access_need_to_know if {
 }
 
 # Access authorization reviewed at least every 15 calendar months
+bcsi_review_current(person) if {
+	review_age_days := (time.now_ns() - date_ns(person.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	review_age_days <= 455
+}
+
 bcsi_access_reviewed if {
+	is_array(input.bcsi_access_list)
+	count(input.bcsi_access_list) > 0
 	violations := [person |
 		person := input.bcsi_access_list[_]
-		review_age_days := (time.now_ns() - person.last_review_date) / (24 * 60 * 60 * 1000000000)
-		review_age_days > 455
+		# A missing or unparseable last_review_date is not current.
+		not bcsi_review_current(person)
 	]
 	count(violations) == 0
 }
@@ -141,14 +160,20 @@ bcsi_physical_access_controlled if {
 bcsi_transmission_protected if {
 	violations := [transmission |
 		transmission := input.bcsi_transmissions[_]
-		transmission.outside_esp == true
+		# A transmission with no outside_esp flag is treated as outside the ESP.
+		not transmission.outside_esp == false
 		not transmission_protected(transmission)
 	]
 	count(violations) == 0
 }
 
+# DATA_SOURCES.md documents `encrypted`; `encryption_used` is the older spelling.
+transmission_encrypted(transmission) if transmission.encryption_used == true
+
+transmission_encrypted(transmission) if transmission.encrypted == true
+
 transmission_protected(transmission) if {
-	transmission.encryption_used == true
+	transmission_encrypted(transmission)
 	transmission.recipient_authorized == true
 	transmission.transmission_logged == true
 }
