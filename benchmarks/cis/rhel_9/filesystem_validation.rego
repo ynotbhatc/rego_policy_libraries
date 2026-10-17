@@ -61,11 +61,38 @@ required_fact_keys := [
 	"usb_storage",
 ]
 
-missing_facts_violations := [msg |
-	some key in required_fact_keys
-	not input[key]
-	msg := sprintf("CIS 1.1: FAIL-CLOSED - filesystem facts '%s' were not supplied; the section cannot be evaluated and is reported non-compliant", [key])
+# A fact is evidence only when it is a non-empty object: `{}` is truthy but proves nothing.
+fact_present(key) if {
+	v := object.get(input, key, null)
+	is_object(v)
+	count(v) > 0
+}
+
+# Collections that must also be non-empty arrays inside a present fact.
+required_collections := [
+	["disabled_filesystem_modules", "modules"],
+	["separate_partitions", "analysis"],
 ]
+
+collection_present(key, sub) if {
+	v := object.get(object.get(input, key, {}), sub, null)
+	is_array(v)
+	count(v) > 0
+}
+
+missing_facts_violations := array.concat(
+	[msg |
+		some key in required_fact_keys
+		not fact_present(key)
+		msg := sprintf("CIS 1.1: FAIL-CLOSED - filesystem facts '%s' were not supplied; the section cannot be evaluated and is reported non-compliant", [key])
+	],
+	[msg |
+		some pair in required_collections
+		fact_present(pair[0])
+		not collection_present(pair[0], pair[1])
+		msg := sprintf("CIS 1.1: FAIL-CLOSED - filesystem facts '%s.%s' are empty; nothing was evaluated and the section is reported non-compliant", [pair[0], pair[1]])
+	],
+)
 
 # =============================================================================
 # CIS 1.1.1.x - DISABLED FILESYSTEM MODULES
