@@ -104,11 +104,15 @@ major_incident_criteria_defined if {
 
 # Art. 19.3(a): initial notification within 4 hours of classification
 initial_notification_compliant if {
+	# JSON null sorts below every number in OPA, so an unknown timeline would
+	# pass a bare `<=`; the value must be a real number.
+	is_number(input.dora.initial_notification_timeline_hours)
 	input.dora.initial_notification_timeline_hours <= 4
 }
 
 # Art. 19.3(b): intermediate report within 72 hours
 intermediate_report_compliant if {
+	is_number(input.dora.intermediate_report_timeline_hours)
 	input.dora.intermediate_report_timeline_hours <= 72
 }
 
@@ -144,24 +148,38 @@ critical_ict_register_maintained if {
 	input.dora.critical_ict_providers_register_maintained == true
 }
 
+# The provider list is the evidence for DORA-011/012/013: when it is absent (or
+# not a list) the controls cannot pass. An explicitly empty list means the entity
+# has no critical ICT providers.
+providers := object.get(object.get(input, "dora", {}), "critical_ict_providers", null)
+
+# NOTE: `provider.field != true` is undefined when the field is ABSENT, which
+# used to let a provider with no recorded exit strategy / contract pass.
+
 # All critical ICT providers must have documented exit strategies (Art. 28)
+default all_providers_have_exit_strategy := false
+
 all_providers_have_exit_strategy if {
+	is_array(providers)
 	not some_provider_missing_exit_strategy
 }
 
 some_provider_missing_exit_strategy if {
-	some provider in input.dora.critical_ict_providers
-	provider.exit_strategy_documented != true
+	some provider in providers
+	not provider.exit_strategy_documented == true
 }
 
 # All critical ICT providers must meet Art. 30 contractual requirements
+default all_providers_meet_contractual_requirements := false
+
 all_providers_meet_contractual_requirements if {
+	is_array(providers)
 	not some_provider_missing_contract
 }
 
 some_provider_missing_contract if {
-	some provider in input.dora.critical_ict_providers
-	provider.contractual_requirements_met != true
+	some provider in providers
+	not provider.contractual_requirements_met == true
 }
 
 # =============================================================================
@@ -170,11 +188,24 @@ some_provider_missing_contract if {
 
 # Art. 30: no single ICT provider should handle an excessive share of
 # critical functions. DORA guidance indicates concern above 60%.
+concentration_threshold := object.get(object.get(input, "dora", {}), "concentration_risk_threshold_pct", null)
+
+# Both the share and the threshold must be real numbers (null sorts below every
+# number, so a null share used to pass the check and raise no violation).
+pct_within_threshold(provider) if {
+	is_number(provider.pct_critical_functions)
+	is_number(concentration_threshold)
+	provider.pct_critical_functions <= concentration_threshold
+}
+
+concentration_offenders contains provider if {
+	some provider in providers
+	not pct_within_threshold(provider)
+}
+
 concentration_risk_acceptable if {
-	threshold := input.dora.concentration_risk_threshold_pct
-	every provider in input.dora.critical_ict_providers {
-		provider.pct_critical_functions <= threshold
-	}
+	is_array(providers)
+	count(concentration_offenders) == 0
 }
 
 # =============================================================================
@@ -243,8 +274,8 @@ violations contains v if {
 		"control":      "DORA-006",
 		"severity":     "critical",
 		"description":  concat("", [
-			"Initial major incident notification timeline exceeds 4 hours: ",
-			format_int(input.dora.initial_notification_timeline_hours, 10),
+			"Initial major incident notification timeline exceeds 4 hours or is unknown: ",
+			sprintf("%v", [object.get(object.get(input, "dora", {}), "initial_notification_timeline_hours", "not recorded")]),
 			"h (DORA Art. 19.3(a) requires ≤4h)",
 		]),
 		"remediation":  "Implement automated alerting to competent authority within 4 hours of major incident classification; test via tabletop exercises",
@@ -258,8 +289,8 @@ violations contains v if {
 		"control":      "DORA-007",
 		"severity":     "high",
 		"description":  concat("", [
-			"Intermediate incident report timeline exceeds 72 hours: ",
-			format_int(input.dora.intermediate_report_timeline_hours, 10),
+			"Intermediate incident report timeline exceeds 72 hours or is unknown: ",
+			sprintf("%v", [object.get(object.get(input, "dora", {}), "intermediate_report_timeline_hours", "not recorded")]),
 			"h (DORA Art. 19.3(b) requires ≤72h)",
 		]),
 		"remediation":  "Establish incident reporting workflow with intermediate report SLA of 72 hours including cause analysis and containment status",
@@ -300,16 +331,15 @@ violations contains v if {
 }
 
 violations contains v if {
-	not all_providers_have_exit_strategy
-	some provider in input.dora.critical_ict_providers
-	provider.exit_strategy_documented != true
+	some provider in providers
+	not provider.exit_strategy_documented == true
 	v := {
 		"domain":       "dora_sovereignty",
 		"control":      "DORA-011",
 		"severity":     "high",
 		"description":  concat("", [
 			"No documented exit strategy for critical ICT provider: ",
-			provider.provider_name,
+			object.get(provider, "provider_name", "unknown"),
 			" (DORA Art. 28)",
 		]),
 		"remediation":  "Document a tested exit strategy for each critical ICT provider including data migration, service continuity, and transition timeline",
@@ -317,39 +347,47 @@ violations contains v if {
 }
 
 violations contains v if {
-	not all_providers_meet_contractual_requirements
-	some provider in input.dora.critical_ict_providers
-	provider.contractual_requirements_met != true
+	some provider in providers
+	not provider.contractual_requirements_met == true
 	v := {
 		"domain":       "dora_sovereignty",
 		"control":      "DORA-012",
 		"severity":     "high",
 		"description":  concat("", [
 			"ICT provider contract does not meet DORA Art. 30 requirements: ",
-			provider.provider_name,
+			object.get(provider, "provider_name", "unknown"),
 		]),
 		"remediation":  "Update ICT service contracts to include Art. 30 requirements: audit rights, SLAs, incident notification, data location, and exit provisions",
 	}
 }
 
 violations contains v if {
-	not concentration_risk_acceptable
-	some provider in input.dora.critical_ict_providers
-	provider.pct_critical_functions > input.dora.concentration_risk_threshold_pct
+	some provider in concentration_offenders
 	v := {
 		"domain":       "dora_sovereignty",
 		"control":      "DORA-013",
 		"severity":     "high",
 		"description":  concat("", [
 			"ICT concentration risk: ",
-			provider.provider_name,
+			object.get(provider, "provider_name", "unknown"),
 			" handles ",
-			format_int(provider.pct_critical_functions, 10),
-			"% of critical functions — exceeds threshold of ",
-			format_int(input.dora.concentration_risk_threshold_pct, 10),
+			sprintf("%v", [object.get(provider, "pct_critical_functions", "unknown")]),
+			"% of critical functions — exceeds (or cannot be verified against) threshold of ",
+			sprintf("%v", [concentration_threshold]),
 			"% (DORA Art. 30)",
 		]),
 		"remediation":  "Implement multi-provider strategy to reduce concentration; develop alternative sourcing plan for critical ICT functions",
+	}
+}
+
+violations contains v if {
+	not is_array(providers)
+	v := {
+		"domain":       "dora_sovereignty",
+		"control":      "DORA-011",
+		"severity":     "high",
+		"description":  "Evidence missing: dora.critical_ict_providers is not provided, so exit strategies, contracts and concentration risk cannot be verified (DORA Art. 28, 30)",
+		"remediation":  "Provide the list of critical ICT third-party providers (an empty list if there are none)",
 	}
 }
 
