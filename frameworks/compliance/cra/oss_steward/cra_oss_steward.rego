@@ -65,6 +65,9 @@ default compliant := false
 # Threshold — Art. 3(14). A steward classification applies only if ALL
 # definition elements hold; entities below the threshold have no
 # Article 24 obligations (most open-source projects have no steward).
+# Conditional-applicability article: an undeclared threshold element reads as "not a steward" and the
+# Art. 24 checks are skipped by design (pinned by tests/test_cra_main.rego). Whether an undeclared
+# element should instead be a violation is an open scope decision (validation 2026-10-17 report).
 applies_to_entity if {
 	input.oss_steward.is_legal_person
 	input.oss_steward.not_manufacturer_of_product
