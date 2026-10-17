@@ -71,6 +71,9 @@ electronic_security_perimeters_documented if {
 
 # R1.3 - Each EAP must have controls for inbound and outbound access
 electronic_access_points_controlled if {
+	# No EAP inventory is no evidence (an ESP with no EAPs is not "controlled").
+	is_array(input.electronic_access_points)
+	count(input.electronic_access_points) > 0
 	violations := [eap |
 		eap := input.electronic_access_points[_]
 		not eap_controls_adequate(eap)
@@ -98,15 +101,17 @@ deny_by_default_implemented if {
 
 # R1.5 - Physical I/O ports not used must be disabled or protected
 unused_ports_disabled if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
+	is_array(input.bes_cyber_systems)
+	# Judge only high/medium systems: an out-of-scope (low impact) system must not
+	# make the whole requirement false.
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		not unused_io_ports_vulnerable(system)
 	}
 }
 
+# Missing port-management evidence is a finding, not a pass.
 unused_io_ports_vulnerable(system) if {
-	port_mgmt := input.network_port_management[system.system_id]
-	port_mgmt.unused_ports_disabled == false
+	not input.network_port_management[system.system_id].unused_ports_disabled == true
 }
 
 # =============================================================================
@@ -122,6 +127,8 @@ remote_access_authentication_implemented if {
 
 # R2.2 - Use encryption for all remote access connections
 remote_access_encrypted if {
+	# The session list must have been collected (an empty list means no sessions).
+	is_array(input.remote_access_sessions)
 	violations := [session |
 		session := input.remote_access_sessions[_]
 		not session.encryption_enabled == true
@@ -147,6 +154,7 @@ controlled_intermediary if {
 
 # R2.4 - Monitor remote access sessions
 remote_access_monitored if {
+	is_array(input.remote_access_sessions)
 	violations := [session |
 		session := input.remote_access_sessions[_]
 		not session.session_monitoring == true
