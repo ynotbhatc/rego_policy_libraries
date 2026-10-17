@@ -30,25 +30,20 @@ prohibited_algorithms := {"DES", "3DES", "RC4", "RC2", "MD5", "SHA1"}
 # FIRMWARE COMPLIANCE HELPERS
 # =============================================================================
 
-firmware_meets_minimum(current_version, minimum_version) if {
-    current_parts := split(current_version, ".")
-    min_parts := split(minimum_version, ".")
-    to_number(current_parts[0]) > to_number(min_parts[0])
+# Leading digits of a version segment ("1-rc1" -> 1); 0 when the segment is
+# missing or has no leading digits. A non-numeric suffix must not make the
+# whole comparison undefined (that reported newer firmware as below minimum).
+version_segment(parts, i) := n if {
+    m := regex.find_n(`^[0-9]+`, parts[i], 1)
+    n := to_number(m[0])
+} else := 0
+
+version_tuple(v) := [version_segment(parts, 0), version_segment(parts, 1), version_segment(parts, 2)] if {
+    parts := split(sprintf("%v", [v]), ".")
 }
 
 firmware_meets_minimum(current_version, minimum_version) if {
-    current_parts := split(current_version, ".")
-    min_parts := split(minimum_version, ".")
-    to_number(current_parts[0]) == to_number(min_parts[0])
-    to_number(current_parts[1]) > to_number(min_parts[1])
-}
-
-firmware_meets_minimum(current_version, minimum_version) if {
-    current_parts := split(current_version, ".")
-    min_parts := split(minimum_version, ".")
-    to_number(current_parts[0]) == to_number(min_parts[0])
-    to_number(current_parts[1]) == to_number(min_parts[1])
-    to_number(current_parts[2]) >= to_number(min_parts[2])
+    version_tuple(current_version) >= version_tuple(minimum_version)
 }
 
 # =============================================================================
@@ -105,6 +100,9 @@ keys_in_secure_storage(device) if {
 }
 
 strong_encryption_only(device) if {
+    # Missing evidence is not a pass: the device must report its algorithms.
+    is_array(device.communications.encryption_algorithms)
+    count(device.communications.encryption_algorithms) > 0
     device_algorithms := {alg | alg := device.communications.encryption_algorithms[_]}
     count(device_algorithms & prohibited_algorithms) == 0
 }
@@ -192,13 +190,15 @@ comms_violation_msgs(device) := msgs if {
 tamper_violation_msgs(device) := msgs if {
     tamper_msgs := [ sprintf("Device %v: CRITICAL — Physical tamper detected! Immediate investigation required",
         [device.device_id]) |
-        not no_tamper_detected(device)]
+        device.security.tamper_status == "tamper_detected"]
+    status_missing_msgs := [ sprintf("Device %v: Tamper status not reported", [device.device_id]) |
+        not device.security.tamper_status]
     detection_msgs := [ sprintf("Device %v: Tamper detection hardware not enabled or not operational",
         [device.device_id]) |
         not tamper_detection_operational(device)]
     boot_msgs := [ sprintf("Device %v: Secure boot not enabled", [device.device_id]) |
         not secure_boot_enabled(device)]
-    msgs := array.concat(array.concat(tamper_msgs, detection_msgs), boot_msgs)
+    msgs := array.concat(array.concat(array.concat(tamper_msgs, status_missing_msgs), detection_msgs), boot_msgs)
 }
 
 device_all_violations(device) := msgs if {
@@ -234,7 +234,8 @@ default compliant := false
 
 compliant if {
 	# fail-closed: no facts, no compliance
-	input.devices
+	is_array(input.devices)
+	count(input.devices) > 0
     count(all_violations) == 0
 }
 
