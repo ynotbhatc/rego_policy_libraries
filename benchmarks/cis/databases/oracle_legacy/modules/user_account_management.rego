@@ -125,10 +125,23 @@ password_policy_violations contains violation if {
 	])
 }
 
+default_unlimited_life(profile) if {
+	profile.profile_name == "DEFAULT"
+	profile.PASSWORD_LIFE_TIME == "UNLIMITED"
+}
+
+# A limit is exceeded when the value is UNLIMITED (to_number("UNLIMITED") is undefined,
+# so a bare numeric comparison silently passed) or numerically above max.
+exceeds(value, _) if upper(sprintf("%v", [value])) == "UNLIMITED"
+
+exceeds(value, max) if to_number(sprintf("%v", [value])) > max
+
 password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	profile.PASSWORD_LIFE_TIME
-	to_number(profile.PASSWORD_LIFE_TIME) > 90
+	exceeds(profile.PASSWORD_LIFE_TIME, 90)
+	not default_unlimited_life(profile) # reported by the DEFAULT-profile rule above
+	profile.profile_name != "DEFAULT" # DEFAULT + UNLIMITED has its own message above
 	violation := sprintf("CIS 3.2: Profile '%s' has PASSWORD_LIFE_TIME=%s days (should be 90 or less)", [
 		profile.profile_name,
 		profile.PASSWORD_LIFE_TIME,
@@ -138,7 +151,7 @@ password_policy_violations contains violation if {
 password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	profile.PASSWORD_GRACE_TIME
-	to_number(profile.PASSWORD_GRACE_TIME) > 5
+	exceeds(profile.PASSWORD_GRACE_TIME, 5)
 	violation := sprintf("CIS 3.2: Profile '%s' has PASSWORD_GRACE_TIME=%s days (should be 5 or less)", [
 		profile.profile_name,
 		profile.PASSWORD_GRACE_TIME,
@@ -148,7 +161,7 @@ password_policy_violations contains violation if {
 password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	profile.FAILED_LOGIN_ATTEMPTS
-	to_number(profile.FAILED_LOGIN_ATTEMPTS) > 5
+	exceeds(profile.FAILED_LOGIN_ATTEMPTS, 5)
 	violation := sprintf("CIS 3.2: Profile '%s' has FAILED_LOGIN_ATTEMPTS=%s (should be 5 or less)", [
 		profile.profile_name,
 		profile.FAILED_LOGIN_ATTEMPTS,
@@ -166,10 +179,15 @@ password_policy_violations contains violation if {
 	])
 }
 
+# A profile passes only with a real (non-NULL) verify function
+verify_function_set(profile) if {
+	profile.PASSWORD_VERIFY_FUNCTION
+	profile.PASSWORD_VERIFY_FUNCTION != "NULL"
+}
+
 password_policy_violations contains violation if {
 	some profile in input.password_profiles
-	not profile.PASSWORD_VERIFY_FUNCTION
-	profile.PASSWORD_VERIFY_FUNCTION == "NULL"
+	not verify_function_set(profile)
 	violation := sprintf("CIS 3.2: Profile '%s' has no password complexity function (PASSWORD_VERIFY_FUNCTION=NULL)", [
 		profile.profile_name,
 	])
