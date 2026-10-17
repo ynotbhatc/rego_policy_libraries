@@ -31,6 +31,40 @@ violations := array.concat(
 	array.concat([v | some v in ownership_violations], [v | some v in suid_sgid_violations]),
 )
 
+# Missing evidence must not pass: every section the checks below judge has to be collected.
+# A section is "present" when it is a non-empty object ({} is not evidence).
+section_present(key) if count(object.get(input, key, {})) > 0
+
+critical_file_violations contains msg if {
+	not section_present("critical_files")
+	msg := "CIS 6.1.x: evidence missing — critical_files not collected"
+}
+
+world_writable_violations contains msg if {
+	not section_present("world_writable")
+	msg := "CIS 6.1.10: evidence missing — world_writable not collected"
+}
+
+ownership_violations contains msg if {
+	not section_present("unowned_files")
+	msg := "CIS 6.1.11: evidence missing — unowned_files not collected"
+}
+
+ownership_violations contains msg if {
+	not section_present("ungrouped_files")
+	msg := "CIS 6.1.12: evidence missing — ungrouped_files not collected"
+}
+
+suid_sgid_violations contains msg if {
+	not section_present("suid_files")
+	msg := "CIS 6.1.13: evidence missing — suid_files not collected"
+}
+
+suid_sgid_violations contains msg if {
+	not section_present("sgid_files")
+	msg := "CIS 6.1.14: evidence missing — sgid_files not collected"
+}
+
 # CIS 6.1.x: Critical system file permissions
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
