@@ -61,6 +61,21 @@ import rego.v1
 
 default compliant := false
 
+# A missing value fails closed: absent password length/lockout/feedback is a violation.
+min_value_at_least(system, key, n) if system[key] >= n
+
+# Lockout must be enabled (> 0) and no more than n failed attempts.
+lockout_within(system, n) if {
+    system.account_lockout_threshold > 0
+    system.account_lockout_threshold <= n
+}
+
+# SL-dependent requirements (SR x RE y) are gated on target_sl. Without it they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443 FR 1 (IAC): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+    not is_number(object.get(input, "target_sl", null))
+}
+
 # ---------------------------------------------------------------------------
 # SR 1.1 — Human user identification and authentication
 # All human users must be uniquely identified and authenticated before access.
@@ -225,20 +240,20 @@ violations contains msg if {
 
 violations contains msg if {
     some system in input.ics_systems
-    system.password_min_length < 8
+    not min_value_at_least(system, "password_min_length", 8)
     msg := sprintf(
         "IEC 62443 SR 1.7 (IAC): ICS system '%v' has minimum password length of %v characters. Minimum 8 characters required (12+ recommended for SL 2+).",
-        [system.name, system.password_min_length]
+        [system.name, object.get(system, "password_min_length", "not set")]
     )
 }
 
 violations contains msg if {
     input.target_sl >= 2
     some system in input.ics_systems
-    system.password_min_length < 12
+    not min_value_at_least(system, "password_min_length", 12)
     msg := sprintf(
         "IEC 62443 SR 1.7 RE 1 SL%v (IAC): ICS system '%v' has minimum password length of %v. Minimum 12 characters required at Security Level 2+.",
-        [input.target_sl, system.name, system.password_min_length]
+        [input.target_sl, system.name, object.get(system, "password_min_length", "not set")]
     )
 }
 
@@ -289,7 +304,7 @@ violations contains msg if {
 
 violations contains msg if {
     some system in input.ics_systems
-    system.authenticator_feedback_obscured == false
+    not system.authenticator_feedback_obscured == true
     msg := sprintf(
         "IEC 62443 SR 1.10 (IAC): ICS system '%v' displays authenticator feedback in plaintext. Authentication information (passwords, tokens) must be obscured during entry.",
         [system.name]
@@ -303,20 +318,20 @@ violations contains msg if {
 
 violations contains msg if {
     some system in input.ics_systems
-    system.account_lockout_threshold > 10
+    not lockout_within(system, 10)
     msg := sprintf(
         "IEC 62443 SR 1.11 (IAC): ICS system '%v' allows %v failed login attempts before lockout. Threshold must be 10 or fewer.",
-        [system.name, system.account_lockout_threshold]
+        [system.name, object.get(system, "account_lockout_threshold", "not set")]
     )
 }
 
 violations contains msg if {
     input.target_sl >= 2
     some system in input.ics_systems
-    system.account_lockout_threshold > 5
+    not lockout_within(system, 5)
     msg := sprintf(
         "IEC 62443 SR 1.11 RE 1 SL%v (IAC): ICS system '%v' allows %v failed login attempts. Threshold must be 5 or fewer at Security Level 2+.",
-        [input.target_sl, system.name, system.account_lockout_threshold]
+        [input.target_sl, system.name, object.get(system, "account_lockout_threshold", "not set")]
     )
 }
 
@@ -377,19 +392,19 @@ compliant if { count(violations) == 0 }
 
 fr1_passing_srs := count([sr |
     sr := [
-        count([v | some v in violations; contains(v, "SR 1.1")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.2")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.3")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.4")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.5")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.6")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.7")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.8")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.9")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.10")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.11")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.12")]) == 0,
-        count([v | some v in violations; contains(v, "SR 1.13")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.1 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.2 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.3 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.4 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.5 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.6 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.7 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.8 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.9 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.10 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.11 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.12 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 1.13 ")]) == 0,
     ][_]
     sr == true
 ])

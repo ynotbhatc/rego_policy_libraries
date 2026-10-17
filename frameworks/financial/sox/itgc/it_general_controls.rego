@@ -22,6 +22,8 @@ import rego.v1
 # Core IT infrastructure controls supporting financial reporting systems
 
 # IT General Controls Compliance Assessment
+default itgc_compliant := false
+
 itgc_compliant if {
     access_controls_compliant
     change_management_compliant
@@ -29,9 +31,13 @@ itgc_compliant if {
     system_development_compliant
     data_center_operations_compliant
     backup_recovery_compliant
+    # itgc_compliance_score includes this family, so the verdict must too
+    financial_application_itgc_compliant
 }
 
 # Access Controls (ITGC-AC)
+default access_controls_compliant := false
+
 access_controls_compliant if {
     data.sox.itgc.access_controls.implemented
     logical_access_controls_effective
@@ -39,6 +45,8 @@ access_controls_compliant if {
     access_reviews_current
     segregation_of_duties_enforced
 }
+
+default logical_access_controls_effective := false
 
 logical_access_controls_effective if {
     data.sox.itgc.logical_access.unique_user_ids.required
@@ -48,6 +56,8 @@ logical_access_controls_effective if {
     data.sox.itgc.logical_access.account_lockout.configured
 }
 
+default privileged_access_controlled := false
+
 privileged_access_controlled if {
     data.sox.itgc.privileged_access.admin_accounts.monitored
     data.sox.itgc.privileged_access.elevated_permissions.justified
@@ -55,12 +65,16 @@ privileged_access_controlled if {
     data.sox.itgc.privileged_access.approval_workflow.documented
 }
 
+default access_reviews_current := false
+
 access_reviews_current if {
     data.sox.itgc.access_reviews.quarterly_review.completed
     data.sox.itgc.access_reviews.terminated_users.removed_timely
     data.sox.itgc.access_reviews.role_changes.updated_promptly
     data.sox.itgc.access_reviews.exceptions.documented
 }
+
+default segregation_of_duties_enforced := false
 
 segregation_of_duties_enforced if {
     data.sox.itgc.segregation_of_duties.development_production.separated
@@ -70,6 +84,8 @@ segregation_of_duties_enforced if {
 }
 
 # Change Management (ITGC-CM)
+default change_management_compliant := false
+
 change_management_compliant if {
     data.sox.itgc.change_management.controlled
     change_approval_process_effective
@@ -77,6 +93,8 @@ change_management_compliant if {
     emergency_changes_controlled
     change_documentation_complete
 }
+
+default change_approval_process_effective := false
 
 change_approval_process_effective if {
     data.sox.itgc.change_approval.business_approval.required
@@ -86,6 +104,8 @@ change_approval_process_effective if {
     data.sox.itgc.change_approval.rollback_plan.prepared
 }
 
+default change_testing_comprehensive := false
+
 change_testing_comprehensive if {
     data.sox.itgc.change_testing.development_testing.completed
     data.sox.itgc.change_testing.user_acceptance_testing.passed
@@ -94,12 +114,16 @@ change_testing_comprehensive if {
     data.sox.itgc.change_testing.regression_testing.completed
 }
 
+default emergency_changes_controlled := false
+
 emergency_changes_controlled if {
     data.sox.itgc.emergency_changes.approval_process.expedited
     data.sox.itgc.emergency_changes.documentation.post_implementation
     data.sox.itgc.emergency_changes.review_process.timely
     data.sox.itgc.emergency_changes.permanent_fix.implemented
 }
+
+default change_documentation_complete := false
 
 change_documentation_complete if {
     data.sox.itgc.change_documentation.requirements.documented
@@ -109,6 +133,8 @@ change_documentation_complete if {
 }
 
 # Computer Operations (ITGC-CO)
+default computer_operations_compliant := false
+
 computer_operations_compliant if {
     data.sox.itgc.computer_operations.monitored
     system_monitoring_effective
@@ -116,6 +142,8 @@ computer_operations_compliant if {
     capacity_management_adequate
     performance_monitoring_continuous
 }
+
+default system_monitoring_effective := false
 
 system_monitoring_effective if {
     data.sox.itgc.system_monitoring.availability_monitoring.real_time
@@ -125,6 +153,8 @@ system_monitoring_effective if {
     data.sox.itgc.system_monitoring.alerting.immediate
 }
 
+default incident_management_robust := false
+
 incident_management_robust if {
     data.sox.itgc.incident_management.incident_detection.automated
     data.sox.itgc.incident_management.response_procedures.documented
@@ -133,12 +163,16 @@ incident_management_robust if {
     data.sox.itgc.incident_management.post_incident_review.conducted
 }
 
+default capacity_management_adequate := false
+
 capacity_management_adequate if {
     data.sox.itgc.capacity_management.capacity_planning.annual
     data.sox.itgc.capacity_management.resource_monitoring.continuous
     data.sox.itgc.capacity_management.growth_projections.documented
     data.sox.itgc.capacity_management.scalability_testing.periodic
 }
+
+default performance_monitoring_continuous := false
 
 performance_monitoring_continuous if {
     data.sox.itgc.performance_monitoring.response_time.monitored
@@ -148,6 +182,8 @@ performance_monitoring_continuous if {
 }
 
 # System Development (ITGC-SD)
+default system_development_compliant := false
+
 system_development_compliant if {
     data.sox.itgc.system_development.secure
     sdlc_process_defined
@@ -155,6 +191,8 @@ system_development_compliant if {
     code_review_mandatory
     deployment_process_controlled
 }
+
+default sdlc_process_defined := false
 
 sdlc_process_defined if {
     data.sox.itgc.sdlc.methodology.documented
@@ -164,6 +202,8 @@ sdlc_process_defined if {
     data.sox.itgc.sdlc.approval_checkpoints.required
 }
 
+default security_requirements_integrated := false
+
 security_requirements_integrated if {
     data.sox.itgc.security_requirements.threat_modeling.conducted
     data.sox.itgc.security_requirements.security_controls.designed
@@ -171,12 +211,16 @@ security_requirements_integrated if {
     data.sox.itgc.security_requirements.penetration_testing.completed
 }
 
+default code_review_mandatory := false
+
 code_review_mandatory if {
     data.sox.itgc.code_review.peer_review.required
     data.sox.itgc.code_review.security_review.mandatory
     data.sox.itgc.code_review.automated_scanning.performed
     data.sox.itgc.code_review.findings_remediation.tracked
 }
+
+default deployment_process_controlled := false
 
 deployment_process_controlled if {
     data.sox.itgc.deployment.automated_deployment.implemented
@@ -186,6 +230,8 @@ deployment_process_controlled if {
 }
 
 # Data Center Operations (ITGC-DCO)
+default data_center_operations_compliant := false
+
 data_center_operations_compliant if {
     data.sox.itgc.data_center_operations.controlled
     physical_security_adequate
@@ -193,6 +239,8 @@ data_center_operations_compliant if {
     power_systems_redundant
     network_infrastructure_secure
 }
+
+default physical_security_adequate := false
 
 physical_security_adequate if {
     data.sox.itgc.physical_security.access_controls.multi_factor
@@ -202,6 +250,8 @@ physical_security_adequate if {
     data.sox.itgc.physical_security.security_guards.present
 }
 
+default environmental_controls_effective := false
+
 environmental_controls_effective if {
     data.sox.itgc.environmental.temperature_control.monitored
     data.sox.itgc.environmental.humidity_control.maintained
@@ -210,12 +260,16 @@ environmental_controls_effective if {
     data.sox.itgc.environmental.air_quality.monitored
 }
 
+default power_systems_redundant := false
+
 power_systems_redundant if {
     data.sox.itgc.power_systems.ups_systems.redundant
     data.sox.itgc.power_systems.backup_generators.tested
     data.sox.itgc.power_systems.power_monitoring.continuous
     data.sox.itgc.power_systems.load_balancing.implemented
 }
+
+default network_infrastructure_secure := false
 
 network_infrastructure_secure if {
     data.sox.itgc.network.network_segmentation.implemented
@@ -225,6 +279,8 @@ network_infrastructure_secure if {
 }
 
 # Backup and Recovery (ITGC-BR)
+default backup_recovery_compliant := false
+
 backup_recovery_compliant if {
     data.sox.itgc.backup_recovery.tested
     backup_procedures_comprehensive
@@ -232,6 +288,8 @@ backup_recovery_compliant if {
     disaster_recovery_planned
     business_continuity_ensured
 }
+
+default backup_procedures_comprehensive := false
 
 backup_procedures_comprehensive if {
     data.sox.itgc.backup.backup_frequency.appropriate
@@ -241,6 +299,8 @@ backup_procedures_comprehensive if {
     data.sox.itgc.backup.retention_policy.documented
 }
 
+default recovery_procedures_tested := false
+
 recovery_procedures_tested if {
     data.sox.itgc.recovery.recovery_testing.quarterly
     data.sox.itgc.recovery.recovery_time_objectives.met
@@ -248,12 +308,16 @@ recovery_procedures_tested if {
     data.sox.itgc.recovery.recovery_documentation.current
 }
 
+default disaster_recovery_planned := false
+
 disaster_recovery_planned if {
     data.sox.itgc.disaster_recovery.dr_plan.documented
     data.sox.itgc.disaster_recovery.dr_site.configured
     data.sox.itgc.disaster_recovery.dr_testing.annual
     data.sox.itgc.disaster_recovery.communication_plan.defined
 }
+
+default business_continuity_ensured := false
 
 business_continuity_ensured if {
     data.sox.itgc.business_continuity.bcp_plan.documented
@@ -263,12 +327,16 @@ business_continuity_ensured if {
 }
 
 # Financial Application-Specific ITGC
+default financial_application_itgc_compliant := false
+
 financial_application_itgc_compliant if {
     financial_system_access_controlled
     financial_data_integrity_maintained
     financial_processing_controls_effective
     financial_reporting_systems_secure
 }
+
+default financial_system_access_controlled := false
 
 financial_system_access_controlled if {
     data.sox.financial_systems.access_controls.role_based
@@ -277,6 +345,8 @@ financial_system_access_controlled if {
     data.sox.financial_systems.access_certification.quarterly
 }
 
+default financial_data_integrity_maintained := false
+
 financial_data_integrity_maintained if {
     data.sox.financial_data.data_validation.comprehensive
     data.sox.financial_data.data_reconciliation.automated
@@ -284,12 +354,16 @@ financial_data_integrity_maintained if {
     data.sox.financial_data.data_retention.compliant
 }
 
+default financial_processing_controls_effective := false
+
 financial_processing_controls_effective if {
     data.sox.financial_processing.transaction_processing.controlled
     data.sox.financial_processing.batch_processing.monitored
     data.sox.financial_processing.exception_handling.documented
     data.sox.financial_processing.processing_completeness.verified
 }
+
+default financial_reporting_systems_secure := false
 
 financial_reporting_systems_secure if {
     data.sox.financial_reporting.report_generation.controlled

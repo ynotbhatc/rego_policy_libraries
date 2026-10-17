@@ -34,6 +34,40 @@ sudoers_has_option(option) if {
 	contains(trimmed, option)
 }
 
+# Tokens of the global (unscoped) "Defaults a, b=c, !d" lines in sudoers,
+# ignoring comments. Scoped forms (Defaults:user, Defaults!cmd, ...) do not
+# match: they apply to a subset and cannot satisfy a global control.
+sudoers_lines := [trimmed |
+	some line in split(object.get(object.get(input, "sudo", {}), "sudoers_content", ""), "\n")
+	trimmed := trim_space(line)
+	not startswith(trimmed, "#")
+]
+
+defaults_tokens := {t |
+	some line in sudoers_lines
+	m := regex.find_all_string_submatch_n(`^Defaults\s+(.+)$`, line, 1)
+	some tok in split(m[0][1], ",")
+	t := trim_space(tok)
+}
+
+# Defaults option that is switched on (present, and not negated later as !option).
+defaults_option_on(option) if {
+	option in defaults_tokens
+	not concat("", ["!", option]) in defaults_tokens
+}
+
+# Defaults key=value option (e.g. logfile=, timestamp_timeout=), not negated.
+defaults_value_set(key) if {
+	some t in defaults_tokens
+	startswith(t, concat("", [key, "="]))
+}
+
+# sudoers include directives start with "#" or "@" and are NOT comments.
+includes_sudoers_d if {
+	some line in split(object.get(object.get(input, "sudo", {}), "sudoers_content", ""), "\n")
+	regex.match(`^[#@]includedir\s+/etc/sudoers\.d/?\s*$`, trim_space(line))
+}
+
 # CIS 5.3.1: sudo installed
 violations contains msg if {
 	not sudo_installed
@@ -43,20 +77,20 @@ violations contains msg if {
 # CIS 5.3.2: sudo uses pty
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("use_pty")
+	not defaults_option_on("use_pty")
 	msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
 }
 
 # CIS 5.3.3: sudo log file
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("logfile=")
+	not defaults_value_set("logfile")
 	msg := "CIS 5.3.3: sudo logfile not configured (Defaults logfile= missing)"
 }
 
 violations contains msg if {
 	sudo_installed
-	sudoers_has_option("logfile=")
+	defaults_value_set("logfile")
 	not input.sudo.logfile_exists
 	msg := "CIS 5.3.3: sudo logfile configured but file does not exist"
 }
@@ -86,7 +120,7 @@ violations contains msg if {
 violations contains msg if {
 	sudo_installed
 	not input.sudo.timestamp_timeout
-	not sudoers_has_option("timestamp_timeout=")
+	not defaults_value_set("timestamp_timeout")
 	msg := "CIS 5.3.6: sudo timestamp_timeout not configured"
 }
 
@@ -124,8 +158,7 @@ violations contains msg if {
 
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("#includedir /etc/sudoers.d")
-	not sudoers_has_option("@includedir /etc/sudoers.d")
+	not includes_sudoers_d
 	msg := "CIS 5.3: sudoers should include /etc/sudoers.d directory"
 }
 

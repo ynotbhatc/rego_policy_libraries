@@ -65,6 +65,11 @@ import rego.v1
 
 default compliant := false
 
+# A missing value fails closed: an unreported backup frequency / RTO does not meet the limit.
+backup_frequency_within(n) if input.backups.backup_frequency_days <= n
+
+rto_within(system, n) if system.recovery_time_objective_hours <= n
+
 # ---------------------------------------------------------------------------
 # SR 7.1 — Denial of service protection
 # Protect the IACS against DoS attacks.
@@ -143,10 +148,10 @@ violations contains msg if {
 }
 
 violations contains msg if {
-    input.backups.backup_frequency_days > 7
+    not backup_frequency_within(7)
     msg := sprintf(
         "IEC 62443 SR 7.3 (RA): IACS backups are performed every %v days. Backups must be performed at least weekly; daily backups are recommended for critical systems.",
-        [input.backups.backup_frequency_days]
+        [object.get(object.get(input, "backups", {}), "backup_frequency_days", "not set")]
     )
 }
 
@@ -185,11 +190,11 @@ violations contains msg if {
 
 violations contains msg if {
     some system in input.ics_systems
-    system.recovery_time_objective_hours > 24
     system.criticality == "high"
+    not rto_within(system, 24)
     msg := sprintf(
         "IEC 62443 SR 7.4 (RA): High-criticality ICS system '%v' has an RTO of %v hours. Critical IACS systems must achieve recovery within 24 hours; 4 hours or less is recommended.",
-        [system.name, system.recovery_time_objective_hours]
+        [system.name, object.get(system, "recovery_time_objective_hours", "not set")]
     )
 }
 

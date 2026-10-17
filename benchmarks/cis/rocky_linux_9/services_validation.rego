@@ -97,6 +97,23 @@ time_sync_violations contains violation if {
 	])
 }
 
+# Missing evidence fails closed. Keys are emitted by the gather_service_config role.
+unnecessary_service_violations contains "CIS 2.2.x: evidence missing — unnecessary_services.analysis not collected" if {
+	not is_array(object.get(object.get(input, "unnecessary_services", {}), "analysis", null))
+}
+
+package_violations contains "CIS 2.2.12: evidence missing — webserver.any_installed not collected" if {
+	object.get(object.get(input, "webserver", {}), "any_installed", null) == null
+}
+
+package_violations contains "CIS 2.3.x: evidence missing — client_packages.analysis not collected" if {
+	not is_array(object.get(object.get(input, "client_packages", {}), "analysis", null))
+}
+
+package_violations contains "CIS 2.2.1: evidence missing — x11.any_installed not collected" if {
+	object.get(object.get(input, "x11", {}), "any_installed", null) == null
+}
+
 # CIS 2.2.x: Unnecessary services
 unnecessary_service_violations contains violation if {
 	some service in input.unnecessary_services.non_compliant

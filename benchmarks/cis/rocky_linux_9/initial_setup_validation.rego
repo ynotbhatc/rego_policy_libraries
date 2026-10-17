@@ -20,6 +20,23 @@ package cis_rocky_linux_9.initial_setup
 
 import rego.v1
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+setup := object.get(input, "initial_setup", {})
+
+# true for a non-empty array/object/set; undefined for absent or empty
+has_items(x) if count(x) > 0
+
 default compliant := false
 
 compliant if {
@@ -30,13 +47,13 @@ compliant if {
 
 # CIS 1.2.1: Ensure GPG keys are configured
 violations contains msg if {
-	count(input.initial_setup.gpg_keys) == 0
+	not has_items(object.get(setup, "gpg_keys", null))
 	msg := "CIS 1.2.1: No GPG keys configured for package verification"
 }
 
 # CIS 1.2.2: Ensure package manager repositories are configured
 violations contains msg if {
-	count(input.initial_setup.enabled_repos) == 0
+	not has_items(object.get(setup, "enabled_repos", null))
 	msg := "CIS 1.2.2: No package repositories are enabled"
 }
 
@@ -61,8 +78,9 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.motd_exists
-	input.initial_setup.motd_mode != "0644"
-	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644", [input.initial_setup.motd_mode])
+	mode := object.get(setup, "motd_mode", "<not collected>")
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.1: /etc/motd has mode %v, should be 0644 or less", [mode])
 }
 
 violations contains msg if {
@@ -78,8 +96,9 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_exists
-	input.initial_setup.issue_mode != "0644"
-	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644", [input.initial_setup.issue_mode])
+	mode := object.get(setup, "issue_mode", "<not collected>")
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.2: /etc/issue has mode %v, should be 0644 or less", [mode])
 }
 
 violations contains msg if {
@@ -95,8 +114,9 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_net_exists
-	input.initial_setup.issue_net_mode != "0644"
-	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644", [input.initial_setup.issue_net_mode])
+	mode := object.get(setup, "issue_net_mode", "<not collected>")
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %v, should be 0644 or less", [mode])
 }
 
 violations contains msg if {
@@ -106,23 +126,36 @@ violations contains msg if {
 
 # CIS 1.7.4: Ensure permissions on /etc/motd are configured
 violations contains msg if {
-	input.initial_setup.motd_owner != "root"
-	msg := sprintf("CIS 1.7.4: /etc/motd owned by %s, should be root", [input.initial_setup.motd_owner])
+	owner := object.get(setup, "motd_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 1.7.4: /etc/motd owned by %v, should be root", [owner])
 }
 
 # CIS 1.7.5: Ensure permissions on /etc/issue are configured
 violations contains msg if {
-	input.initial_setup.issue_owner != "root"
-	msg := sprintf("CIS 1.7.5: /etc/issue owned by %s, should be root", [input.initial_setup.issue_owner])
+	owner := object.get(setup, "issue_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 1.7.5: /etc/issue owned by %v, should be root", [owner])
 }
 
 # CIS 1.7.6: Ensure permissions on /etc/issue.net are configured
 violations contains msg if {
-	input.initial_setup.issue_net_owner != "root"
-	msg := sprintf("CIS 1.7.6: /etc/issue.net owned by %s, should be root", [input.initial_setup.issue_net_owner])
+	owner := object.get(setup, "issue_net_owner", "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS 1.7.6: /etc/issue.net owned by %v, should be root", [owner])
 }
 
 # CIS 1.8: GNOME Display Manager
+
+# Missing GDM facts must not silently skip every 1.8.x check.
+violations contains "CIS 1.8: evidence missing — initial_setup.gdm_installed not collected" if {
+	not is_boolean(object.get(setup, "gdm_installed", null))
+}
+
+violations contains "CIS 1.8: evidence missing — initial_setup.gui_required not collected" if {
+	setup.gdm_installed == true
+	not is_boolean(object.get(setup, "gui_required", null))
+}
 
 # CIS 1.8.1: Ensure GNOME Display Manager is removed (if not required)
 violations contains msg if {

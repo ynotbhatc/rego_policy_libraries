@@ -162,11 +162,31 @@ violations contains "CIS L2 3.11: Ensure that Cloud DNS logging is enabled for a
 	not network.dns_logging_enabled
 }
 
+# A firewall spec covers a port when its protocol is the one asked for (or
+# "all"), and it either lists no ports (GCP: every port), lists the port, or
+# lists a range ("0-65535", "20-30") that contains it.
 contains_port(ports, protocol, port) if {
 	some port_spec in ports
-	port_spec.protocol == protocol
-	port == port_spec.ports[_]
+	port_spec.protocol in {protocol, "all"}
+	port_covers(port_spec, port)
 }
+
+port_covers(port_spec, _) if count(object.get(port_spec, "ports", [])) == 0
+
+port_covers(port_spec, port) if {
+	some p in port_spec.ports
+	sprintf("%v", [p]) == port
+}
+
+port_covers(port_spec, port) if {
+	some p in port_spec.ports
+	bounds := regex.find_all_string_submatch_n(`^(\d+)-(\d+)$`, sprintf("%v", [p]), 1)[0]
+	to_number(bounds[1]) <= to_number(port)
+	to_number(port) <= to_number(bounds[2])
+}
+
+# A Cloud SQL flag is "on" only when explicitly set so; an unset flag is a violation.
+flag_on(instance, name) if object.get(object.get(instance, "flags", {}), name, "") == "on"
 
 # ---------------------------------------------------------------------------
 # Section 4 - Virtual Machines (L2)
@@ -243,27 +263,27 @@ violations contains "CIS L2 6.1.1: Ensure that a MySQL database instance does no
 
 violations contains "CIS L2 6.1.2: Ensure that the MySQL database instance 'skip_show_database' flag is set to 'on'" if {
 	some instance in input.cloudsql.mysql_instances
-	instance.flags["skip_show_database"] != "on"
+	not flag_on(instance, "skip_show_database")
 }
 
 violations contains "CIS L2 6.2.1: Ensure that the PostgreSQL database instance 'log_checkpoints' flag is set to 'on'" if {
 	some instance in input.cloudsql.postgresql_instances
-	instance.flags["log_checkpoints"] != "on"
+	not flag_on(instance, "log_checkpoints")
 }
 
 violations contains "CIS L2 6.2.2: Ensure that the PostgreSQL database instance 'log_connections' flag is set to 'on'" if {
 	some instance in input.cloudsql.postgresql_instances
-	instance.flags["log_connections"] != "on"
+	not flag_on(instance, "log_connections")
 }
 
 violations contains "CIS L2 6.2.3: Ensure that the PostgreSQL database instance 'log_disconnections' flag is set to 'on'" if {
 	some instance in input.cloudsql.postgresql_instances
-	instance.flags["log_disconnections"] != "on"
+	not flag_on(instance, "log_disconnections")
 }
 
 violations contains "CIS L2 6.2.4: Ensure that the PostgreSQL database instance 'log_lock_waits' flag is set to 'on'" if {
 	some instance in input.cloudsql.postgresql_instances
-	instance.flags["log_lock_waits"] != "on"
+	not flag_on(instance, "log_lock_waits")
 }
 
 violations contains "CIS L2 6.4: Ensure that Cloud SQL database instances are not open to the world" if {
@@ -301,7 +321,7 @@ violations contains "CIS L2 7.3: Ensure that a Default Customer-managed encrypti
 # Compliance report
 # ---------------------------------------------------------------------------
 
-l2_total_controls := 42
+l2_total_controls := 45
 
 compliance_report := {
 	"profile":           "level2",

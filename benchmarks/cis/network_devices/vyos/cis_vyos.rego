@@ -44,7 +44,6 @@ ssh_enabled if {
 
 # 1.1.2  Only SSH v2 allowed
 ssh_version_2 if {
-    not input.service.ssh["disable-host-validation"]
     # VyOS defaults to v2; flag if older is forced
     not input.service.ssh["v1-enabled"]
 }
@@ -220,12 +219,21 @@ firewall_logging_enabled if {
 }
 
 # 3.1.6  Source routing (IP options) disabled
+# VyOS has no system.ip["source-route"] key. Source routing is disabled by an
+# explicit setting (a valueless node, serialised as null/{}), so the key must be
+# PRESENT: an absent setting is not evidence that source routing is disabled.
 source_routing_disabled if {
-    not input.system["ip"]["source-route"]
+    ip := object.get(input, ["system", "ip"], {})
+    object.get(ip, "disable-source-route", "__absent__") != "__absent__"
 }
 
 source_routing_disabled if {
-    input.system["ip"]["source-route"] == "false"
+    object.get(object.get(input, "firewall", {}), "ip-src-route", "") == "disable"
+}
+
+source_routing_disabled if {
+    gopts := object.get(object.get(input, "firewall", {}), "global-options", {})
+    object.get(gopts, "ip-src-route", "") == "disable"
 }
 
 section_3_violations contains msg if {
@@ -364,7 +372,7 @@ compliant if {
 
 # ── Compliance report ─────────────────────────────────────────────────────────
 
-total_controls := 20
+total_controls := 23
 
 _overall_compliance := "PASS" if { compliant }
 _overall_compliance := "FAIL" if { not compliant }

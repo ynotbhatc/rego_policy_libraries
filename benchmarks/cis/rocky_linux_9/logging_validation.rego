@@ -21,6 +21,18 @@ package cis_rocky_linux_9.logging
 
 import rego.v1
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 default compliant := false
 
 compliant if {
@@ -54,9 +66,9 @@ journald_violations contains sprintf("CIS 4.2.1.3: journald not configured to fo
 }
 
 # CIS 4.2.1.4: rsyslog default file permissions
-rsyslog_violations contains sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode]) if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
+rsyslog_violations contains sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %v, expected: 0640 or stricter)", [mode]) if {
+	mode := object.get(object.get(input, "rsyslog", {}), "file_create_mode", "<not collected>")
+	not mode_within(mode, "0640")
 }
 
 # CIS 4.2.1.5: Logging configured

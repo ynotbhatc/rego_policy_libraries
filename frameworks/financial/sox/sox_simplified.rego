@@ -68,10 +68,13 @@ itgc_compliant if {
     input.sox.itgc.change_management.controlled
     input.sox.itgc.computer_operations.monitored
     input.sox.itgc.system_development.secure
+    input.sox.itgc.data_center_operations.controlled
     input.sox.itgc.backup_recovery.tested
 }
 
 # SOX Compliance Score Calculation
+default sox_compliance_score := 0
+
 sox_compliance_score := score if {
     components := [
         section_302_score,
@@ -85,12 +88,12 @@ sox_compliance_score := score if {
 # Section 302 Score
 section_302_score := score if {
     checks := [
-        input.sox.section_302.ceo_certification.provided,
-        input.sox.section_302.cfo_certification.provided,
-        input.sox.section_302.disclosure_controls.effective,
-        input.sox.section_302.material_weaknesses.none_identified,
-        input.sox.section_302.quarterly_review.completed,
-        input.sox.section_302.annual_assessment.completed
+        _i_section_302_ceo_certification_provided,
+        _i_section_302_cfo_certification_provided,
+        _i_section_302_disclosure_controls_effective,
+        _i_section_302_material_weaknesses_none_identified,
+        _i_section_302_quarterly_review_completed,
+        _i_section_302_annual_assessment_completed
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -99,12 +102,12 @@ section_302_score := score if {
 # Section 404 Score
 section_404_score := score if {
     checks := [
-        input.sox.section_404.management_assessment.completed,
-        input.sox.section_404.internal_controls.designed_effectively,
-        input.sox.section_404.internal_controls.operating_effectively,
-        input.sox.section_404.external_auditor_attestation.unqualified,
-        input.sox.section_404.remediation_plan.implemented,
-        input.sox.section_404.continuous_monitoring.active
+        _i_section_404_management_assessment_completed,
+        _i_section_404_internal_controls_designed_effectively,
+        _i_section_404_internal_controls_operating_effectively,
+        _i_section_404_external_auditor_attestation_unqualified,
+        _i_section_404_remediation_plan_implemented,
+        _i_section_404_continuous_monitoring_active
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -113,11 +116,11 @@ section_404_score := score if {
 # Section 409 Score
 section_409_score := score if {
     checks := [
-        input.sox.section_409.material_events.disclosed_timely,
-        input.sox.section_409.disclosure_process.automated,
-        input.sox.section_409.disclosure_controls.reviewed_quarterly,
-        input.sox.section_409.event_detection.real_time,
-        input.sox.section_409.filing_deadlines.met
+        _i_section_409_material_events_disclosed_timely,
+        _i_section_409_disclosure_process_automated,
+        _i_section_409_disclosure_controls_reviewed_quarterly,
+        _i_section_409_event_detection_real_time,
+        _i_section_409_filing_deadlines_met
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -126,12 +129,12 @@ section_409_score := score if {
 # ITGC Score
 itgc_score := score if {
     checks := [
-        input.sox.itgc.access_controls.implemented,
-        input.sox.itgc.change_management.controlled,
-        input.sox.itgc.computer_operations.monitored,
-        input.sox.itgc.system_development.secure,
-        input.sox.itgc.data_center_operations.controlled,
-        input.sox.itgc.backup_recovery.tested
+        _i_itgc_access_controls_implemented,
+        _i_itgc_change_management_controlled,
+        _i_itgc_computer_operations_monitored,
+        _i_itgc_system_development_secure,
+        _i_itgc_data_center_operations_controlled,
+        _i_itgc_backup_recovery_tested
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -151,10 +154,10 @@ sox_detailed_findings := findings if {
 section_302_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "CEO Certification", "status": input.sox.section_302.ceo_certification.provided, "risk": "CRITICAL"},
-            {"control": "CFO Certification", "status": input.sox.section_302.cfo_certification.provided, "risk": "CRITICAL"},
-            {"control": "Disclosure Controls", "status": input.sox.section_302.disclosure_controls.effective, "risk": "HIGH"},
-            {"control": "Material Weaknesses", "status": input.sox.section_302.material_weaknesses.none_identified, "risk": "HIGH"}
+            {"control": "CEO Certification", "status": _i_section_302_ceo_certification_provided, "risk": "CRITICAL"},
+            {"control": "CFO Certification", "status": _i_section_302_cfo_certification_provided, "risk": "CRITICAL"},
+            {"control": "Disclosure Controls", "status": _i_section_302_disclosure_controls_effective, "risk": "HIGH"},
+            {"control": "Material Weaknesses", "status": _i_section_302_material_weaknesses_none_identified, "risk": "HIGH"}
         ]
         control := controls[_]
         not control.status
@@ -172,10 +175,10 @@ section_302_findings := findings if {
 section_404_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Management Assessment", "status": input.sox.section_404.management_assessment.completed, "risk": "CRITICAL"},
-            {"control": "Control Design", "status": input.sox.section_404.internal_controls.designed_effectively, "risk": "HIGH"},
-            {"control": "Control Operation", "status": input.sox.section_404.internal_controls.operating_effectively, "risk": "HIGH"},
-            {"control": "Auditor Attestation", "status": input.sox.section_404.external_auditor_attestation.unqualified, "risk": "CRITICAL"}
+            {"control": "Management Assessment", "status": _i_section_404_management_assessment_completed, "risk": "CRITICAL"},
+            {"control": "Control Design", "status": _i_section_404_internal_controls_designed_effectively, "risk": "HIGH"},
+            {"control": "Control Operation", "status": _i_section_404_internal_controls_operating_effectively, "risk": "HIGH"},
+            {"control": "Auditor Attestation", "status": _i_section_404_external_auditor_attestation_unqualified, "risk": "CRITICAL"}
         ]
         control := controls[_]
         not control.status
@@ -193,9 +196,9 @@ section_404_findings := findings if {
 section_409_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Timely Disclosure", "status": input.sox.section_409.material_events.disclosed_timely, "risk": "HIGH"},
-            {"control": "Automated Process", "status": input.sox.section_409.disclosure_process.automated, "risk": "MEDIUM"},
-            {"control": "Quarterly Review", "status": input.sox.section_409.disclosure_controls.reviewed_quarterly, "risk": "MEDIUM"}
+            {"control": "Timely Disclosure", "status": _i_section_409_material_events_disclosed_timely, "risk": "HIGH"},
+            {"control": "Automated Process", "status": _i_section_409_disclosure_process_automated, "risk": "MEDIUM"},
+            {"control": "Quarterly Review", "status": _i_section_409_disclosure_controls_reviewed_quarterly, "risk": "MEDIUM"}
         ]
         control := controls[_]
         not control.status
@@ -213,10 +216,10 @@ section_409_findings := findings if {
 itgc_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Access Controls", "status": input.sox.itgc.access_controls.implemented, "risk": "HIGH"},
-            {"control": "Change Management", "status": input.sox.itgc.change_management.controlled, "risk": "HIGH"},
-            {"control": "Computer Operations", "status": input.sox.itgc.computer_operations.monitored, "risk": "MEDIUM"},
-            {"control": "System Development", "status": input.sox.itgc.system_development.secure, "risk": "MEDIUM"}
+            {"control": "Access Controls", "status": _i_itgc_access_controls_implemented, "risk": "HIGH"},
+            {"control": "Change Management", "status": _i_itgc_change_management_controlled, "risk": "HIGH"},
+            {"control": "Computer Operations", "status": _i_itgc_computer_operations_monitored, "risk": "MEDIUM"},
+            {"control": "System Development", "status": _i_itgc_system_development_secure, "risk": "MEDIUM"}
         ]
         control := controls[_]
         not control.status
@@ -349,3 +352,101 @@ count_medium_findings := count([finding |
     finding := section[_]
     finding.risk_level == "MEDIUM"
 ])
+
+# ---------------------------------------------------------------------------
+# Fact accessors. A missing input field must read as false, not make the whole
+# checks/controls array undefined (which silently dropped that control's
+# finding and left the score and assessment undefined).
+# ---------------------------------------------------------------------------
+
+default _i_section_302_ceo_certification_provided := false
+
+_i_section_302_ceo_certification_provided := input.sox.section_302.ceo_certification.provided
+
+default _i_section_302_cfo_certification_provided := false
+
+_i_section_302_cfo_certification_provided := input.sox.section_302.cfo_certification.provided
+
+default _i_section_302_disclosure_controls_effective := false
+
+_i_section_302_disclosure_controls_effective := input.sox.section_302.disclosure_controls.effective
+
+default _i_section_302_material_weaknesses_none_identified := false
+
+_i_section_302_material_weaknesses_none_identified := input.sox.section_302.material_weaknesses.none_identified
+
+default _i_section_302_quarterly_review_completed := false
+
+_i_section_302_quarterly_review_completed := input.sox.section_302.quarterly_review.completed
+
+default _i_section_302_annual_assessment_completed := false
+
+_i_section_302_annual_assessment_completed := input.sox.section_302.annual_assessment.completed
+
+default _i_section_404_management_assessment_completed := false
+
+_i_section_404_management_assessment_completed := input.sox.section_404.management_assessment.completed
+
+default _i_section_404_internal_controls_designed_effectively := false
+
+_i_section_404_internal_controls_designed_effectively := input.sox.section_404.internal_controls.designed_effectively
+
+default _i_section_404_internal_controls_operating_effectively := false
+
+_i_section_404_internal_controls_operating_effectively := input.sox.section_404.internal_controls.operating_effectively
+
+default _i_section_404_external_auditor_attestation_unqualified := false
+
+_i_section_404_external_auditor_attestation_unqualified := input.sox.section_404.external_auditor_attestation.unqualified
+
+default _i_section_404_remediation_plan_implemented := false
+
+_i_section_404_remediation_plan_implemented := input.sox.section_404.remediation_plan.implemented
+
+default _i_section_404_continuous_monitoring_active := false
+
+_i_section_404_continuous_monitoring_active := input.sox.section_404.continuous_monitoring.active
+
+default _i_section_409_material_events_disclosed_timely := false
+
+_i_section_409_material_events_disclosed_timely := input.sox.section_409.material_events.disclosed_timely
+
+default _i_section_409_disclosure_process_automated := false
+
+_i_section_409_disclosure_process_automated := input.sox.section_409.disclosure_process.automated
+
+default _i_section_409_disclosure_controls_reviewed_quarterly := false
+
+_i_section_409_disclosure_controls_reviewed_quarterly := input.sox.section_409.disclosure_controls.reviewed_quarterly
+
+default _i_section_409_event_detection_real_time := false
+
+_i_section_409_event_detection_real_time := input.sox.section_409.event_detection.real_time
+
+default _i_section_409_filing_deadlines_met := false
+
+_i_section_409_filing_deadlines_met := input.sox.section_409.filing_deadlines.met
+
+default _i_itgc_access_controls_implemented := false
+
+_i_itgc_access_controls_implemented := input.sox.itgc.access_controls.implemented
+
+default _i_itgc_change_management_controlled := false
+
+_i_itgc_change_management_controlled := input.sox.itgc.change_management.controlled
+
+default _i_itgc_computer_operations_monitored := false
+
+_i_itgc_computer_operations_monitored := input.sox.itgc.computer_operations.monitored
+
+default _i_itgc_system_development_secure := false
+
+_i_itgc_system_development_secure := input.sox.itgc.system_development.secure
+
+default _i_itgc_data_center_operations_controlled := false
+
+_i_itgc_data_center_operations_controlled := input.sox.itgc.data_center_operations.controlled
+
+default _i_itgc_backup_recovery_tested := false
+
+_i_itgc_backup_recovery_tested := input.sox.itgc.backup_recovery.tested

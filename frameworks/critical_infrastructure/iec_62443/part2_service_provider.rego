@@ -200,6 +200,14 @@ violations contains "IEC 62443-2-4 SP.01: FAIL-CLOSED - facts 'input.service_pro
 	not input.service_provider
 }
 
+# Applicability gate: every SP check runs only when is_iacs_service_provider == true.
+# An explicit false means the module does not apply to this subject (conditional
+# applicability, nothing to judge). An ABSENT flag is unknown applicability and
+# must not read as "not a service provider": fail closed.
+violations contains "IEC 62443-2-4 SP.01: evidence missing - input.is_iacs_service_provider not provided; applicability of the service provider requirements cannot be determined" if {
+    not is_boolean(object.get(input, "is_iacs_service_provider", null))
+}
+
 compliant if { count(violations) == 0 }
 
 compliance_report := {

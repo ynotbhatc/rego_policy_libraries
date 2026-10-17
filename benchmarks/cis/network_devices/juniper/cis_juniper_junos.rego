@@ -29,6 +29,8 @@ package cis_juniper_junos
 import rego.v1
 
 # Main compliance rule - all controls must pass
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
@@ -44,10 +46,20 @@ violations := [v |
 ]
 
 # Section 1: Management Plane Security
-management_plane_violations := [
+management_plane_checks := [
+	{"msg": "1.x1: Ensure remote AAA (RADIUS or TACACS+) is configured", "ok": remote_aaa_configured},
+	{"msg": "1.x2: Ensure SSH is configured securely (protocol v2, root login denied)", "ok": ssh_configured_securely},
+	{"msg": "1.x3: Ensure security syslog is configured", "ok": security_syslog_configured},
+	{"msg": "1.x4: Ensure ntp authentication is configured", "ok": ntp_authentication_configured},
+]
+
+management_plane_violations := array.concat(
+[
     "1.1.1: Ensure root authentication is configured" |
     not root_authentication_configured
-]
+],
+[c.msg | some c in management_plane_checks; not c.ok],
+)
 
 root_authentication_configured if {
     user := input.junos_config.system.login.user[_]
@@ -58,6 +70,8 @@ root_authentication_configured if {
 
 
 
+
+default ssh_configured_securely := false
 
 ssh_configured_securely if {
     ssh := input.junos_config.system.services.ssh
@@ -79,6 +93,8 @@ ssh_configured_securely if {
 
 
 
+default security_syslog_configured := false
+
 security_syslog_configured if {
     file := input.junos_config.system.syslog.file[_]
     file.name == "security"
@@ -87,6 +103,8 @@ security_syslog_configured if {
 }
 
 
+
+default ntp_authentication_configured := false
 
 ntp_authentication_configured if {
     ntp := input.junos_config.system.ntp
@@ -111,10 +129,17 @@ tacplus_configured if {
 }
 
 # Section 2: Control Plane Security
-control_plane_violations := [
-    "2.1.1: Ensure control plane traffic is protected with a filter" |
-    not control_plane_filter_configured
-]
+control_plane_violations := array.concat(
+    [
+        "2.1.1: Ensure control plane traffic is protected with a filter" |
+        not control_plane_filter_configured
+    ],
+    [
+        "2.2.1: Ensure routing protocol (OSPF/BGP) authentication is configured" |
+        routing_protocol_in_use
+        not routing_protocol_auth_configured
+    ],
+)
 
 control_plane_filter_configured if {
     filter := input.junos_config.firewall.family.inet.filter[_]
@@ -123,6 +148,20 @@ control_plane_filter_configured if {
     lo0.unit["0"].family.inet.filter.input == "CONTROL_PLANE_FILTER"
 }
 
+
+# RADIUS or TACACS+ satisfies remote AAA (alternatives, not both required).
+default remote_aaa_configured := false
+
+remote_aaa_configured if radius_configured
+
+remote_aaa_configured if tacplus_configured
+
+# Routing-protocol authentication applies only where OSPF or BGP is running.
+routing_protocol_in_use if input.junos_config.protocols.ospf
+
+routing_protocol_in_use if input.junos_config.protocols.bgp
+
+default routing_protocol_auth_configured := false
 
 routing_protocol_auth_configured if {
     ospf := input.junos_config.protocols.ospf
@@ -146,14 +185,27 @@ routing_protocol_auth_configured if {
 
 
 # Section 3: Data Plane Security
-data_plane_violations := [
-    "3.1.1: Ensure ingress filtering is applied on all external interfaces" |
-    interface := input.external_interfaces[_]
-    unit := interface.unit["0"]
-    not unit.family.inet.filter.input
+data_plane_checks := [
+	{"msg": "3.x2: Ensure anti spoofing is configured", "ok": anti_spoofing_configured},
+	{"msg": "3.x3: Ensure spanning tree protection is configured", "ok": spanning_tree_protection_configured},
 ]
 
+data_plane_violations := array.concat(
+[
+    "3.1.1: Ensure ingress filtering is applied on all external interfaces" |
+    interface := input.external_interfaces[_]
+    not ingress_filter_applied(interface)
+]
+,
+[c.msg | some c in data_plane_checks; not c.ok],
+)
 
+# An interface with no unit 0 (or no input filter on it) is unfiltered.
+ingress_filter_applied(interface) if interface.unit["0"].family.inet.filter.input
+
+
+
+default anti_spoofing_configured := false
 
 anti_spoofing_configured if {
     filter := input.junos_config.firewall.family.inet.filter[_]
@@ -166,6 +218,8 @@ anti_spoofing_configured if {
 
 
 
+
+default spanning_tree_protection_configured := false
 
 spanning_tree_protection_configured if {
     input.junos_config.protocols.rstp.bpdu_block_on_edge == true
