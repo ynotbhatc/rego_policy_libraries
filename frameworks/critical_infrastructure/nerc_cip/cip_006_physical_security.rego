@@ -30,6 +30,15 @@ default physical_security_plan_current := false
 default physical_security_plan_documented := false
 default visitor_control_program_established := false
 
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
 # CIP-006-6: Physical Security of BES Cyber Systems
 # Requirement: Manage physical access to BES Cyber Systems by specifying
 # a physical security plan in support of protecting BES Cyber Systems
@@ -139,8 +148,9 @@ physical_access_alerting_configured if {
 # =============================================================================
 
 standalone_assets_protected if {
-	every asset in input.standalone_bes_cyber_assets {
-		asset.impact_categorization in ["high", "medium"]
+	is_array(input.standalone_bes_cyber_assets)
+	# Judge only high/medium assets; a low impact asset is out of scope.
+	every asset in [a | some a in input.standalone_bes_cyber_assets; a.impact_categorization in ["high", "medium"]] {
 		asset.physical_protection_documented == true
 		asset.access_controlled == true
 	}
@@ -186,12 +196,20 @@ quarterly_review_performed if {
 }
 
 # Physical access authorization reviewed at least every 15 calendar months
+physical_access_review_current(person) if {
+	review_age_days := (time.now_ns() - date_ns(person.physical_access_authorization.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	review_age_days <= 455
+}
+
 physical_access_authorization_reviewed if {
+	# No roster is no evidence.
+	is_array(input.personnel)
+	count(input.personnel) > 0
 	violations := [person |
 		person := input.personnel[_]
 		person.access_level == "authorized_unescorted_physical_access"
-		review_age_days := (time.now_ns() - person.physical_access_authorization.last_review_date) / (24 * 60 * 60 * 1000000000)
-		review_age_days > 455
+		# A missing or unparseable last_review_date is not current.
+		not physical_access_review_current(person)
 	]
 	count(violations) == 0
 }
