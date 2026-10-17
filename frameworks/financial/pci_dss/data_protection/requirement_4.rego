@@ -74,7 +74,7 @@ certificate_management_secure if {
 # Payment page encryption (e-commerce)
 payment_page_encryption if {
 	# Only required if e-commerce is in scope
-	not input.pci.ecommerce.in_scope
+	input.pci.ecommerce.in_scope == false
 } else if {
 	input.pci.ecommerce.in_scope
 	input.pci.ecommerce.payment_pages.tls_enforced == true
@@ -86,7 +86,7 @@ payment_page_encryption if {
 # Point-of-sale terminal encryption
 pos_terminal_encryption if {
 	# Only required if POS terminals are in scope
-	not input.pci.pos.in_scope
+	input.pci.pos.in_scope == false
 } else if {
 	input.pci.pos.in_scope
 	input.pci.pos.terminals.point_to_point_encryption == true
@@ -120,7 +120,7 @@ trusted_keys_certificates_managed if {
 
 wireless_pan_transmission_secure if {
 	# Only required if wireless in scope transmits PAN
-	not input.pci.wireless.transmits_pan
+	input.pci.wireless.transmits_pan == false
 } else if {
 	input.pci.wireless.transmits_pan
 	input.pci.wireless.pan_transmission.strong_cryptography == true
@@ -151,6 +151,22 @@ weak_protocols_inventory_current if {
 	input.pci.weak_protocols.early_tls.migration_plan.completed == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default transmission_security_policies_established := false
+default transmission_security_roles_defined := false
+default strong_cryptography_for_pan := false
+default accepted_cryptography_standards := false
+default certificate_management_secure := false
+default payment_page_encryption := false
+default pos_terminal_encryption := false
+default api_transmission_encrypted := false
+default trusted_keys_certificates_managed := false
+default wireless_pan_transmission_secure := false
+default pan_in_messaging_secured := false
+default weak_protocols_inventory_current := false
+default pci_requirement_4_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
@@ -165,6 +181,8 @@ pci_requirement_4_compliant if {
 	pos_terminal_encryption
 	api_transmission_encrypted
 	trusted_keys_certificates_managed
+	wireless_pan_transmission_secure
+	pan_in_messaging_secured
 	weak_protocols_inventory_current
 }
 
