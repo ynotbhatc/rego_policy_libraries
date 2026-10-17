@@ -23,6 +23,8 @@ package cis.amazon_linux_2023
 import rego.v1
 
 # Main compliance rule - all controls must pass
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
@@ -331,17 +333,15 @@ log_file_permissions_secure(log_file) if {
 # Section 5: Access, Authentication and Authorization
 access_auth_violations := [
     "5.1.1: Ensure cron daemon is enabled and running" |
-    service := input.ansible_facts.ansible_services["crond"]
-    service.state != "running"
-    service.enabled != true
+    not cron_daemon_ok
 ]
 
-
-
-
-
-
-
+# crond must be present in the collected services, running AND enabled.
+cron_daemon_ok if {
+    service := input.ansible_facts.ansible_services["crond"]
+    service.state == "running"
+    service.enabled == true
+}
 
 cron_access_restricted if {
     file_exists("/etc/cron.deny")
@@ -554,35 +554,42 @@ directory_exists(path) if {
 
 
 
-# Compliance summary for reporting
+# Compliance summary for reporting.
+# Only the six controls wired into `violations` are evaluated by this module;
+# the totals below count those, not the full benchmark.
+evaluated_controls := 6
+
+failing_control_count := count({v | some v in violations})
+
 compliance_summary := {
-    "total_controls": 278,
-    "passing_controls": 278 - count(violations),
-    "failing_controls": count(violations),
-    "compliance_percentage": ((278 - count(violations)) * 100) / 278,
+    "total_controls": evaluated_controls,
+    "controls_evaluated": evaluated_controls,
+    "passing_controls": evaluated_controls - failing_control_count,
+    "failing_controls": failing_control_count,
+    "compliance_percentage": ((evaluated_controls - failing_control_count) * 100) / evaluated_controls,
     "sections": {
         "initial_setup": {
-            "total": 72,
+            "total": 1,
             "violations": count(initial_setup_violations)
         },
         "services": {
-            "total": 26,
+            "total": 1,
             "violations": count(services_violations)
         },
         "network": {
-            "total": 21,
+            "total": 1,
             "violations": count(network_violations)
         },
         "logging": {
-            "total": 42,
+            "total": 1,
             "violations": count(logging_violations)
         },
         "access_auth": {
-            "total": 65,
+            "total": 1,
             "violations": count(access_auth_violations)
         },
         "system_maintenance": {
-            "total": 52,
+            "total": 1,
             "violations": count(system_maintenance_violations)
         }
     }
