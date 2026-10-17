@@ -59,6 +59,9 @@ import rego.v1
 
 default compliant := false
 
+# A missing patch delay fails closed: an undocumented delay is not within the limit.
+patch_delay_within(n) if input.patch_management.max_patch_delay_days <= n
+
 # ---------------------------------------------------------------------------
 # SR 3.1 — Communication integrity
 # Protect the integrity of transmitted information.
@@ -159,7 +162,7 @@ violations contains msg if {
 
 violations contains msg if {
     some system in input.ics_systems
-    system.firmware_integrity_checking == false
+    not system.firmware_integrity_checking
     msg := sprintf(
         "IEC 62443 SR 3.4 (SI): ICS system '%v' does not verify firmware integrity. Firmware must be verified against known-good hashes before and after updates.",
         [system.name]
@@ -173,10 +176,10 @@ violations contains msg if {
 
 violations contains msg if {
     input.patch_management.process_documented
-    input.patch_management.max_patch_delay_days > 90
+    not patch_delay_within(90)
     msg := sprintf(
         "IEC 62443 SR 3.4 (SI): Critical IACS patches are delayed up to %v days. Critical security patches must be evaluated within 30 days and applied within 90 days.",
-        [input.patch_management.max_patch_delay_days]
+        [object.get(input.patch_management, "max_patch_delay_days", "not set")]
     )
 }
 
