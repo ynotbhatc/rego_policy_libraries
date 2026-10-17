@@ -26,6 +26,13 @@ compliant if {
 	count(violations) == 0
 }
 
+# Evidence gates: values and offender lists this module judges must be collected.
+violations contains msg if {
+	some key in ["nopasswd_entries", "noauthenticate_entries", "timestamp_timeout", "sudoers_mode"]
+	object.get(object.get(input, "sudo", {}), key, null) == null
+	msg := sprintf("CIS 5.3: evidence missing — sudo.%s not collected", [key])
+}
+
 # CIS 5.3.1: Ensure sudo is installed
 violations contains msg if {
 	not input.sudo.installed
@@ -89,7 +96,8 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	input.sudo.sudoers_mode != "0440"
+	input.sudo.sudoers_mode
+	not mode_within(input.sudo.sudoers_mode, "0440")
 	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440", [input.sudo.sudoers_mode])
 }
 
@@ -101,3 +109,15 @@ report := {
 	"section": "5.3 Configure Sudo",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
