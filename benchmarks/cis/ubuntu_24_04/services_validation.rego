@@ -86,7 +86,7 @@ unnecessary_service_violations contains violation if {
 	service.active
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is active (risk: %s)", [
 		service.service,
-		service.risk_level,
+		object.get(service, "risk_level", "unknown"),
 	])
 }
 
@@ -96,7 +96,7 @@ unnecessary_service_violations contains violation if {
 	not service.active
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is enabled (risk: %s)", [
 		service.service,
-		service.risk_level,
+		object.get(service, "risk_level", "unknown"),
 	])
 }
 
@@ -135,7 +135,7 @@ package_violations contains violation if {
 	pkg.installed
 	violation := sprintf("CIS 2.2.12: Web server package installed: %s (%s)", [
 		pkg["package"],
-		pkg.version,
+		object.get(pkg, "version", "unknown"),
 	])
 }
 
@@ -145,8 +145,8 @@ package_violations contains violation if {
 	some pkg in input.client_packages.installed_packages
 	violation := sprintf("CIS 2.3.x: Unnecessary client package installed: %s (%s, severity: %s)", [
 		pkg["package"],
-		pkg.version,
-		pkg.severity,
+		object.get(pkg, "version", "unknown"),
+		object.get(pkg, "severity", "unknown"),
 	])
 }
 
@@ -178,7 +178,7 @@ package_violations contains violation if {
 	pkg.installed
 	violation := sprintf("CIS 2.2.1: X Window System package installed on server: %s (%s)", [
 		pkg["package"],
-		pkg.version,
+		object.get(pkg, "version", "unknown"),
 	])
 }
 
