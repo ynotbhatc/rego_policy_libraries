@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 13
+#     checks: 15
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.selinux
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 1.6: Mandatory Access Controls (SELinux)
@@ -37,6 +37,12 @@ violations contains msg if {
 }
 
 # CIS 1.6.1.2: SELinux not disabled in bootloader
+violations contains msg if {
+	input.selinux.installed
+	object.get(input.selinux, "grub_cmdline", null) == null
+	msg := "CIS 1.6.1.2: evidence missing — selinux.grub_cmdline not collected"
+}
+
 violations contains msg if {
 	input.selinux.installed
 	contains(input.selinux.grub_cmdline, "selinux=0")
@@ -81,6 +87,14 @@ violations contains msg if {
 violations contains msg if {
 	input.selinux.installed
 	selinux_enabled
+	not input.selinux.mode
+	msg := "CIS 1.6.1.5: evidence missing — selinux.mode not collected"
+}
+
+violations contains msg if {
+	input.selinux.installed
+	selinux_enabled
+	input.selinux.mode
 	not selinux_enforcing
 	msg := sprintf("CIS 1.6.1.5: SELinux mode is %s, should be enforcing", [input.selinux.mode])
 }

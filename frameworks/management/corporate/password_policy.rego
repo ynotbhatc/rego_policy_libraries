@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package corporate.password
 
 import rego.v1
@@ -21,6 +21,22 @@ import rego.v1
 # Corporate Password Policy Implementation
 # Based on typical enterprise password requirements
 # Maps corporate policy documents to technical enforcement
+
+# Date normaliser: RFC3339 string or epoch nanoseconds; anything else is
+# undefined, so callers fail closed (a missing or unparseable date is never a pass).
+date_ns(v) := n if {
+    is_string(v)
+    n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# Rules used as values inside the violations / score arrays must be false, not
+# undefined, or the whole array is undefined and a failing check disappears.
+default length_requirements_met := false
+default complexity_requirements_met := false
+default history_requirements_met := false
+default age_requirements_met := false
 
 # Main password policy evaluation
 password_compliant if {
@@ -95,6 +111,9 @@ password_in_history if {
 # Password Age Requirements
 # Corporate Policy: "Passwords must be changed every 90 days, cannot be changed more than once per day"
 age_requirements_met if {
+    # The age must be knowable: a missing or unparseable last_password_change is
+    # not a pass (days_since_last_change would be undefined, so "not expired").
+    days_since_last_change
     not password_expired
     not changed_too_recently
 }
@@ -103,7 +122,11 @@ password_expired if {
     days_since_last_change > maximum_password_age
 }
 
-days_since_last_change := (time.now_ns() - input.user.last_password_change) / (24 * 60 * 60 * 1000000000)
+days_since_last_change := (time.now_ns() - date_ns(input.user.last_password_change)) / (24 * 60 * 60 * 1000000000)
+
+# Roles not listed below get the general 90-day rule (previously undefined, which
+# made password_expired undefined and the age check pass).
+default maximum_password_age := 90
 
 maximum_password_age := 90 if {
     input.user.role in ["standard", "contractor", "guest"]
@@ -161,24 +184,19 @@ contains_company_info if {
 
 # Sequential Character Detection
 contains_sequential_chars if {
-    password_chars := [char | char := input.password.value[_]]
-    some i
-    i >= 0
-    i < count(password_chars) - 2
-
-    # Check for ascending sequences (abc, 123)
-    ascii_val_1 := to_number(sprintf("%c", [password_chars[i]]))
-    ascii_val_2 := to_number(sprintf("%c", [password_chars[i + 1]]))
-    ascii_val_3 := to_number(sprintf("%c", [password_chars[i + 2]]))
-
-    ascii_val_2 == ascii_val_1 + 1
-    ascii_val_3 == ascii_val_2 + 1
+    chars := regex.find_n(`(?s).`, lower(input.password.value), -1)
+    count(chars) >= 3
+    some i in numbers.range(0, count(chars) - 3)
+    window := concat("", array.slice(chars, i, i + 3))
+    some alphabet in ["abcdefghijklmnopqrstuvwxyz", "0123456789"]
+    contains(alphabet, window)
 }
 
 # Repeated Character Detection
 contains_repeated_chars if {
-    some char in input.password.value
-    char_count := count([c | c := input.password.value[_]; c == char])
+    chars := regex.find_n(`(?s).`, input.password.value, -1)
+    some char in chars
+    char_count := count([c | some c in chars; c == char])
     char_count > 3  # More than 3 of the same character
 }
 
@@ -217,8 +235,8 @@ service_account_entropy_met if {
 # Entropy calculation (simplified approximation)
 # Estimates entropy based on character set size and password length
 password_entropy := entropy if {
-    chars = [char | char := input.password.value[_]]
-    unique_chars := {char | char := chars[_]}
+    chars := regex.find_n(`(?s).`, input.password.value, -1)
+    unique_chars := {char | some char in chars}
 
     # Estimate bits per character based on character diversity
     # Lowercase: ~4.7 bits, Uppercase: ~4.7 bits, Digits: ~3.3 bits, Symbols: ~5 bits
@@ -230,8 +248,14 @@ password_entropy := entropy if {
     entropy := bits_per_char * count(chars)
 }
 
+# Three identical characters in a row. (The old `(.)\1{2,}` back-reference is not
+# valid RE2, so it never matched.)
 contains_predictable_patterns if {
-    regex.match(`(.)\1{2,}`, input.password.value)  # Repeated characters
+    chars := regex.find_n(`(?s).`, input.password.value, -1)
+    count(chars) >= 3
+    some i in numbers.range(0, count(chars) - 3)
+    chars[i] == chars[i + 1]
+    chars[i + 1] == chars[i + 2]
 }
 
 no_forbidden_patterns if {
@@ -257,7 +281,7 @@ temporary_password_compliant if {
 }
 
 temporary_password_not_expired if {
-    temp_age_days := (time.now_ns() - input.password.created_date) / (24 * 60 * 60 * 1000000000)
+    temp_age_days := (time.now_ns() - date_ns(input.password.created_date)) / (24 * 60 * 60 * 1000000000)
     temp_age_days <= 7  # Temporary passwords expire in 7 days
 }
 
@@ -293,10 +317,14 @@ sox_password_compliant if {
 }
 
 # Password Policy Violations and Remediation
+length_requirement_text := sprintf("Minimum %d characters", [minimum_length_for_role]) if {
+    minimum_length_for_role
+} else := "Minimum length for the user's role (role not recognised)"
+
 password_violations := violations if {
     violations = [violation |
         checks = [
-            {"check": "length", "passed": length_requirements_met, "requirement": sprintf("Minimum %d characters", [minimum_length_for_role])},
+            {"check": "length", "passed": length_requirements_met, "requirement": length_requirement_text},
             {"check": "complexity", "passed": complexity_requirements_met, "requirement": "At least 3 character classes"},
             {"check": "history", "passed": history_requirements_met, "requirement": "Cannot reuse last 12 passwords"},
             {"check": "age", "passed": age_requirements_met, "requirement": sprintf("Must change every %d days", [maximum_password_age])},

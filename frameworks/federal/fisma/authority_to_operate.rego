@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package fisma.ato
 
 import rego.v1
@@ -23,6 +23,8 @@ import rego.v1
 # Evaluates readiness for ATO based on complete authorization package and risk assessment
 
 # Main ATO Readiness Assessment
+default ato_ready := false
+
 ato_ready if {
 	authorization_package_complete
 	risk_assessment_acceptable
@@ -33,6 +35,8 @@ ato_ready if {
 }
 
 # Authorization Package Completeness
+default authorization_package_complete := false
+
 authorization_package_complete if {
 	system_security_plan_adequate
 	security_assessment_report_adequate
@@ -94,6 +98,8 @@ supporting_documentation_complete if {
 }
 
 # Risk Assessment and Acceptability
+default risk_assessment_acceptable := false
+
 risk_assessment_acceptable if {
 	threat_assessment_comprehensive
 	vulnerability_assessment_current
@@ -136,6 +142,8 @@ residual_risk_acceptable if {
 }
 
 # Security Controls Effectiveness
+default security_controls_effective := false
+
 security_controls_effective if {
 	control_implementation_verified
 	control_testing_adequate
@@ -173,6 +181,8 @@ control_inheritance_validated if {
 }
 
 # Plan of Action and Milestones (POA&M) Acceptability
+default plan_of_actions_acceptable := false
+
 plan_of_actions_acceptable if {
 	poam_completeness_adequate
 	remediation_plans_reasonable
@@ -209,6 +219,8 @@ timeline_realistic if {
 }
 
 # Authorizing Official Preparedness
+default authorizing_official_prepared := false
+
 authorizing_official_prepared if {
 	ao_role_understanding
 	risk_decision_framework
@@ -245,6 +257,8 @@ accountability_measures if {
 }
 
 # Ongoing Authorization Considerations
+default ongoing_authorization_considerations := false
+
 ongoing_authorization_considerations if {
 	continuous_monitoring_ready
 	reauthorization_planning
@@ -281,33 +295,30 @@ incident_response_coordination if {
 }
 
 # ATO Decision Recommendation
-ato_decision_recommendation := "AUTHORIZE" if {
-	ato_ready == true
-	input.ato.risk_assessment.residual_risk.overall_risk_level in ["low", "moderate"]
-	input.ato.controls.deficiencies.critical_deficiencies_resolved == true
-}
-
-ato_decision_recommendation := "AUTHORIZE_WITH_CONDITIONS" if {
-	authorization_package_complete == true
-	security_controls_effective == true
-	input.ato.risk_assessment.residual_risk.overall_risk_level == "moderate"
-	count(input.ato.authorization_package.poam.action_items) > 0
-	count(input.ato.authorization_package.poam.action_items) <= 10
-}
-
-ato_decision_recommendation := "INTERIM_AUTHORIZE" if {
-	authorization_package_complete == true
-	input.ato.risk_assessment.residual_risk.overall_risk_level == "moderate"
-	input.ato.controls.deficiencies.critical_deficiencies_resolved == false
-	input.ato.poam.timeline.critical_items_timeline <= 90
-}
-
-ato_decision_recommendation := "DENY" if {
-	not authorization_package_complete
-}
+# A complete rule evaluated as a single else-chain so exactly one outcome can
+# fire. Order is most restrictive first: when several outcomes would apply, the
+# more conservative one wins (previously AUTHORIZE and AUTHORIZE_WITH_CONDITIONS
+# could both fire and make the rule a conflict error). Any package that no
+# branch covers falls through to DENY (fail closed).
+default ato_decision_recommendation := "DENY"
 
 ato_decision_recommendation := "DENY" if {
 	input.ato.risk_assessment.residual_risk.overall_risk_level in ["high", "very_high"]
+} else := "DENY" if {
+	not authorization_package_complete
+} else := "INTERIM_AUTHORIZE" if {
+	input.ato.risk_assessment.residual_risk.overall_risk_level == "moderate"
+	input.ato.controls.deficiencies.critical_deficiencies_resolved == false
+	input.ato.poam.timeline.critical_items_timeline <= 90
+} else := "AUTHORIZE_WITH_CONDITIONS" if {
+	security_controls_effective
+	input.ato.risk_assessment.residual_risk.overall_risk_level == "moderate"
+	count(input.ato.authorization_package.poam.action_items) > 0
+	count(input.ato.authorization_package.poam.action_items) <= 10
+} else := "AUTHORIZE" if {
+	ato_ready
+	input.ato.risk_assessment.residual_risk.overall_risk_level in ["low", "moderate"]
+	input.ato.controls.deficiencies.critical_deficiencies_resolved == true
 }
 
 # ATO Readiness Score

@@ -12,8 +12,8 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package stig.oracle_linux_8.services
 
 # DISA STIG for Oracle Linux 8 - Services Module
@@ -32,12 +32,26 @@ default compliant := false
 
 # Shared helpers (defined in a source block whose rule Oracle Linux 8 does not carry)
 
-# Helper: package not installed
+# Evidence: an inventory must have been collected. A missing/empty inventory is not
+# proof that a package is absent.
+packages_collected if {
+	is_object(input.packages)
+	count(input.packages) > 0
+}
+
+services_collected if {
+	is_object(input.services)
+	count(input.services) > 0
+}
+
+# Helper: package not installed (only provable against a collected inventory)
 pkg_absent(pkg) if {
+	packages_collected
 	input.packages[pkg] == false
 }
 
 pkg_absent(pkg) if {
+	packages_collected
 	not input.packages[pkg]
 }
 
@@ -53,6 +67,7 @@ service_disabled(svc) if {
 }
 
 service_disabled(svc) if {
+	services_collected
 	not input.services[svc]
 }
 
@@ -81,8 +96,11 @@ finding_ol08_00_040190 := {
 # telnet server must not be installed
 default telnet_server_absent := false
 
-telnet_server_absent if { pkg_absent("telnet-server") }
-telnet_server_absent if { pkg_absent("telnetd") }
+# Both package names must be absent (either one installed is a finding).
+telnet_server_absent if {
+	pkg_absent("telnet-server")
+	pkg_absent("telnetd")
+}
 
 status_ol08_00_040000 := "Not_a_Finding" if { telnet_server_absent } else := "Open"
 

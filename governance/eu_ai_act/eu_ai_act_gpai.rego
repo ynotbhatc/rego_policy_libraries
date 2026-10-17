@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 23
-#     cited: 12
+#     checks: 26
+#     cited: 14
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package eu_ai_act.gpai
 
 import rego.v1
@@ -73,9 +73,52 @@ violations contains msg if {
 	msg := "Article 53: No model card or equivalent technical summary document available describing intended use cases, known limitations, and evaluation results"
 }
 
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# Art. 51(2): a model is presumed to have high-impact capabilities when cumulative training
+# computation exceeds 10^25 FLOPs. A numeric figure (training_flops) is compared to the threshold;
+# the self-declared flags can only add to the classification, never remove a figure-based one.
+systemic_flops_threshold := 10000000000000000000000000
+
+flops_exceed_threshold if {
+	f := input.eu_ai_act.gpai.article_55.training_flops
+	to_number(f) >= systemic_flops_threshold
+}
+
+exceeds_threshold if flops_exceed_threshold
+
+exceeds_threshold if input.eu_ai_act.gpai.article_55.training_flops_exceeds_threshold == true
+
+is_systemic if exceeds_threshold
+
+is_systemic if input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+
+# Classification evidence must exist: a FLOPs figure or an explicit self-declaration
+classification_evidenced if has_key(object.get(object.get(object.get(input, "eu_ai_act", {}), "gpai", {}), "article_55", {}), "training_flops")
+
+classification_evidenced if has_key(object.get(object.get(object.get(input, "eu_ai_act", {}), "gpai", {}), "article_55", {}), "training_flops_exceeds_threshold")
+
+violations contains msg if {
+	not classification_evidenced
+	msg := "Article 51/55: evidence missing — article_55.training_flops (or training_flops_exceeds_threshold) not provided, so systemic-risk classification cannot be established"
+}
+
+violations contains msg if {
+	flops_exceed_threshold
+	input.eu_ai_act.gpai.article_55.systemic_risk_model == false
+	msg := "Article 51: training computation exceeds 10^25 FLOPs but the model is declared not systemic-risk; classification is presumed under Art. 51(2)"
+}
+
 # =============================================================================
 # Article 54 — Authorized Representatives for Non-EU Providers
 # =============================================================================
+
+violations contains msg if {
+	not has_key(object.get(object.get(object.get(input, "eu_ai_act", {}), "gpai", {}), "article_54", {}), "provider_established_outside_eu")
+	msg := "Article 54: evidence missing — article_54.provider_established_outside_eu not declared, so the authorised-representative obligation cannot be ruled out"
+}
 
 violations contains msg if {
 	input.eu_ai_act.gpai.article_54.provider_established_outside_eu == true
@@ -100,55 +143,55 @@ violations contains msg if {
 # =============================================================================
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.training_flops_exceeds_threshold == true
+	exceeds_threshold
 	not input.eu_ai_act.gpai.article_55.notified_to_ai_office == true
 	msg := "Article 55.1: GPAI model with training computation exceeding 10^25 FLOPs not notified to the AI Office within two weeks of classification"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.training_flops_exceeds_threshold == true
+	exceeds_threshold
 	not input.eu_ai_act.gpai.article_55.notification_timely == true
 	msg := "Article 55.1: Notification to AI Office for systemic-risk GPAI model not submitted within the two-week deadline after reaching the 10^25 FLOPs threshold"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.model_evaluation_conducted == true
 	msg := "Article 55.1(a): Model evaluation including adversarial testing not conducted for GPAI model with systemic risk; standardized protocols must be followed"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.adversarial_testing_performed == true
 	msg := "Article 55.1(a): Adversarial testing not performed on systemic-risk GPAI model to assess and mitigate systemic risks including critical infrastructure harms"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.serious_incident_reporting_established == true
 	msg := "Article 55.1(b): Serious incident reporting procedure not established for systemic-risk GPAI model; incidents must be reported to the AI Office without undue delay"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.cybersecurity_measures_proportionate == true
 	msg := "Article 55.1(c): Cybersecurity measures not implemented or not proportionate to the systemic risks posed by the GPAI model"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.physical_cybersecurity_protections == true
 	msg := "Article 55.1(c): Physical and logical access controls to protect model weights, parameters, and infrastructure not implemented for systemic-risk GPAI model"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.energy_efficiency_reporting_provided == true
 	msg := "Article 55.1(d): Energy efficiency reporting not provided to the European Commission for systemic-risk GPAI model; power consumption data must be disclosed"
 }
 
 violations contains msg if {
-	input.eu_ai_act.gpai.article_55.systemic_risk_model == true
+	is_systemic
 	not input.eu_ai_act.gpai.article_55.systemic_risk_mitigation_measures_documented == true
 	msg := "Article 55: Systemic risk mitigation measures not documented; providers of systemic-risk GPAI models must maintain records of identified risks and mitigation actions"
 }

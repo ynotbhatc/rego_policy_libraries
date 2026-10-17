@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 26
+#     checks: 30
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.pam
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.4/5.5: PAM and User Accounts
@@ -38,8 +38,16 @@ pwquality_config := {key: value |
 	value := trim_space(parts[1])
 }
 
-check_pam_file(filename, pattern) if {
+# Non-comment, non-blank lines of a PAM file: commented-out directives must not satisfy a check.
+active_lines(filename) := [t |
 	some line in split(input.pam[filename], "\n")
+	t := trim_space(line)
+	t != ""
+	not startswith(t, "#")
+]
+
+check_pam_file(filename, pattern) if {
+	some line in active_lines(filename)
 	contains(line, pattern)
 }
 
@@ -90,13 +98,13 @@ violations contains msg if {
 
 violations contains msg if {
 	check_pam_file("system_auth", "pam_faillock.so")
-	not contains(input.pam.system_auth, "deny=")
+	not check_pam_file("system_auth", "deny=")
 	msg := "CIS 5.4.2: Account lockout threshold (deny) not configured"
 }
 
 violations contains msg if {
 	check_pam_file("system_auth", "pam_faillock.so")
-	not contains(input.pam.system_auth, "unlock_time=")
+	not check_pam_file("system_auth", "unlock_time=")
 	msg := "CIS 5.4.2: Account lockout time (unlock_time) not configured"
 }
 
@@ -110,7 +118,7 @@ violations contains msg if {
 violations contains msg if {
 	check_pam_file("system_auth", "remember=")
 	system_auth_line := [line |
-		some line in split(input.pam.system_auth, "\n")
+		some line in active_lines("system_auth")
 		contains(line, "remember=")
 	][0]
 	remember_match := regex.find_n(`remember=(\d+)`, system_auth_line, 1)
@@ -137,6 +145,25 @@ violations contains msg if {
 	check_pam_file("system_auth", "pam_pwhistory.so")
 	not check_pam_file("system_auth", "enforce_for_root")
 	msg := "CIS 5.4.3.1: pam_pwhistory enforce_for_root not set — root password history not enforced"
+}
+
+pam_value_absent(key) if object.get(object.get(input, "pam", {}), key, null) == null
+
+# Evidence gates: login.defs aging values and root GID must be collected.
+violations contains "CIS 5.5.1.1: evidence missing — pass_min_days not collected" if {
+	pam_value_absent("pass_min_days")
+}
+
+violations contains "CIS 5.5.1.2: evidence missing — pass_max_days not collected" if {
+	pam_value_absent("pass_max_days")
+}
+
+violations contains "CIS 5.5.1.3: evidence missing — pass_warn_age not collected" if {
+	pam_value_absent("pass_warn_age")
+}
+
+violations contains "CIS 5.5.3: evidence missing — root_gid not collected" if {
+	pam_value_absent("root_gid")
 }
 
 # CIS 5.5.1.1: PASS_MIN_DAYS
@@ -195,9 +222,8 @@ violations contains msg if {
 # CIS 5.5.4: Default umask 027 or more restrictive
 violations contains msg if {
 	input.pam.default_umask
-	umask_value := to_number(input.pam.default_umask)
-	umask_value > 27
-	not umask_value in [77, 177, 277, 377]
+	# "027 or more restrictive" means every bit of 027 is set (octal compare, not decimal)
+	bits.and(octal(input.pam.default_umask), 23) != 23
 	msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 
@@ -236,3 +262,15 @@ report := {
 	"section": "5.4-5.5 PAM and User Accounts",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

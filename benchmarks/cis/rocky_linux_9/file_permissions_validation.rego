@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 17
+#     checks: 24
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.file_permissions
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 6.1: System File Permissions
@@ -30,6 +30,36 @@ violations := array.concat(
 	array.concat([v | some v in critical_file_violations], [v | some v in world_writable_violations]),
 	array.concat([v | some v in ownership_violations], [v | some v in suid_sgid_violations]),
 )
+
+# Missing evidence fails closed: a section that was not collected cannot pass.
+# Keys are emitted by the gather_file_permissions role.
+critical_file_violations contains "CIS 6.1.x: evidence missing — critical_files.analysis not collected" if {
+	not is_array(object.get(object.get(input, "critical_files", {}), "analysis", null))
+}
+
+critical_file_violations contains "SSH Private Keys: evidence missing — ssh_private_keys not collected" if {
+	not is_object(object.get(input, "ssh_private_keys", null))
+}
+
+world_writable_violations contains "CIS 6.1.10: evidence missing — world_writable not collected" if {
+	object.get(object.get(input, "world_writable", {}), "count", null) == null
+}
+
+ownership_violations contains "CIS 6.1.11: evidence missing — unowned_files not collected" if {
+	object.get(object.get(input, "unowned_files", {}), "count", null) == null
+}
+
+ownership_violations contains "CIS 6.1.12: evidence missing — ungrouped_files not collected" if {
+	object.get(object.get(input, "ungrouped_files", {}), "count", null) == null
+}
+
+suid_sgid_violations contains "CIS 6.1.13: evidence missing — suid_files not collected" if {
+	object.get(object.get(input, "suid_files", {}), "total_count", null) == null
+}
+
+suid_sgid_violations contains "CIS 6.1.14: evidence missing — sgid_files not collected" if {
+	object.get(object.get(input, "sgid_files", {}), "count", null) == null
+}
 
 # CIS 6.1.2-6.1.9: Critical system file permissions
 critical_file_violations contains sprintf("CIS 6.1.x: Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [

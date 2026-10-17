@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cra.authorised_representative
 
 import rego.v1
@@ -28,9 +28,18 @@ import rego.v1
 
 default compliant := false
 
-# Art.18(1) — Mandate must be in writing
+# Applicability (conditional-applicability article): Art.18 applies only to manufacturers outside
+# the Union. When `manufacturer_outside_eu` is not declared the checks below are skipped by design;
+# that is a documented pass, not a defect. Whether an undeclared flag should instead be a violation
+# is an open scope decision (see the validation 2026-10-17 report).
+
+# Art.18(1) — Mandate must be in writing (required, or a representative has actually been appointed)
+mandate_applies if input.authorised_representative.required == true
+
+mandate_applies if input.authorised_representative.appointed == true
+
 violation contains msg if {
-	input.authorised_representative.required == true
+	mandate_applies
 	not input.authorised_representative.written_mandate_in_place
 	msg := "CRA Art.18(1): Written mandate from the manufacturer to the authorised representative not in place"
 }

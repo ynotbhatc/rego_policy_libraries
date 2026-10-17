@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 17
+#     checks: 24
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.file_permissions
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 6.1: System File Permissions
@@ -30,6 +30,35 @@ violations := array.concat(
 	array.concat([v | some v in critical_file_violations], [v | some v in world_writable_violations]),
 	array.concat([v | some v in ownership_violations], [v | some v in suid_sgid_violations]),
 )
+
+# Evidence gates: a section that was not collected (absent or empty) is a violation, not a pass.
+critical_file_violations contains "CIS 6.1.x: evidence missing — critical_files.analysis not collected" if {
+	count(object.get(object.get(input, "critical_files", {}), "analysis", [])) == 0
+}
+
+critical_file_violations contains "SSH Private Keys: evidence missing — ssh_private_keys not collected" if {
+	count(object.get(input, "ssh_private_keys", {})) == 0
+}
+
+world_writable_violations contains "CIS 6.1.10: evidence missing — world_writable not collected" if {
+	count(object.get(input, "world_writable", {})) == 0
+}
+
+ownership_violations contains "CIS 6.1.11: evidence missing — unowned_files not collected" if {
+	count(object.get(input, "unowned_files", {})) == 0
+}
+
+ownership_violations contains "CIS 6.1.12: evidence missing — ungrouped_files not collected" if {
+	count(object.get(input, "ungrouped_files", {})) == 0
+}
+
+suid_sgid_violations contains "CIS 6.1.13: evidence missing — suid_files not collected" if {
+	count(object.get(input, "suid_files", {})) == 0
+}
+
+suid_sgid_violations contains "CIS 6.1.14: evidence missing — sgid_files not collected" if {
+	count(object.get(input, "sgid_files", {})) == 0
+}
 
 # CIS 6.1.2-6.1.9: Critical system file permissions
 critical_file_violations contains sprintf("CIS 6.1.x: Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
@@ -74,6 +103,7 @@ critical_file_violations contains sprintf("SSH Private Key: %s has insecure perm
 }
 
 critical_file_violations contains "SSH Private Keys: One or more SSH host keys have insecure permissions" if {
+	count(object.get(input, "ssh_private_keys", {})) > 0
 	not input.ssh_private_keys.all_compliant
 }
 

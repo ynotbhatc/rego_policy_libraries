@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package sox.application_controls
 
 import rego.v1
@@ -22,6 +22,8 @@ import rego.v1
 # Controls specific to financial applications and data processing
 
 # Overall Application Controls Compliance
+default application_controls_compliant := false
+
 application_controls_compliant if {
     input_controls_effective
     processing_controls_accurate
@@ -32,6 +34,8 @@ application_controls_compliant if {
 }
 
 # Input Controls
+default input_controls_effective := false
+
 input_controls_effective if {
     data.sox.application_controls.input_validation.comprehensive
     input_validation_comprehensive
@@ -39,6 +43,8 @@ input_controls_effective if {
     authorization_controls_proper
     input_completeness_verified
 }
+
+default input_validation_comprehensive := false
 
 input_validation_comprehensive if {
     data.sox.input_validation.data_type_validation.enforced
@@ -48,6 +54,8 @@ input_validation_comprehensive if {
     data.sox.input_validation.cross_field_validation.configured
 }
 
+default data_entry_controls_adequate := false
+
 data_entry_controls_adequate if {
     data.sox.data_entry.mandatory_field_validation.enforced
     data.sox.data_entry.duplicate_detection.automated
@@ -55,6 +63,8 @@ data_entry_controls_adequate if {
     data.sox.data_entry.error_highlighting.implemented
     data.sox.data_entry.confirmation_screens.required
 }
+
+default authorization_controls_proper := false
 
 authorization_controls_proper if {
     data.sox.authorization.transaction_authorization.required
@@ -64,6 +74,8 @@ authorization_controls_proper if {
     data.sox.authorization.override_controls.restricted
 }
 
+default input_completeness_verified := false
+
 input_completeness_verified if {
     data.sox.input_completeness.batch_totals.verified
     data.sox.input_completeness.record_counts.validated
@@ -72,6 +84,8 @@ input_completeness_verified if {
 }
 
 # Processing Controls
+default processing_controls_accurate := false
+
 processing_controls_accurate if {
     data.sox.application_controls.processing_controls.accurate
     calculation_controls_reliable
@@ -79,6 +93,8 @@ processing_controls_accurate if {
     processing_completeness_ensured
     exception_processing_controlled
 }
+
+default calculation_controls_reliable := false
 
 calculation_controls_reliable if {
     data.sox.calculation_controls.arithmetic_accuracy.verified
@@ -88,6 +104,8 @@ calculation_controls_reliable if {
     data.sox.calculation_controls.recalculation_procedures.documented
 }
 
+default sequence_controls_maintained := false
+
 sequence_controls_maintained if {
     data.sox.sequence_controls.transaction_sequencing.verified
     data.sox.sequence_controls.batch_sequencing.controlled
@@ -95,12 +113,16 @@ sequence_controls_maintained if {
     data.sox.sequence_controls.duplicate_sequences.prevented
 }
 
+default processing_completeness_ensured := false
+
 processing_completeness_ensured if {
     data.sox.processing_completeness.all_records_processed.verified
     data.sox.processing_completeness.processing_totals.reconciled
     data.sox.processing_completeness.incomplete_processing.detected
     data.sox.processing_completeness.reprocessing_controls.implemented
 }
+
+default exception_processing_controlled := false
 
 exception_processing_controlled if {
     data.sox.exception_processing.exception_identification.automated
@@ -110,6 +132,8 @@ exception_processing_controlled if {
 }
 
 # Output Controls
+default output_controls_complete := false
+
 output_controls_complete if {
     data.sox.application_controls.output_controls.complete
     output_distribution_controlled
@@ -118,12 +142,16 @@ output_controls_complete if {
     output_authorization_required
 }
 
+default output_distribution_controlled := false
+
 output_distribution_controlled if {
     data.sox.output_distribution.authorized_recipients.verified
     data.sox.output_distribution.distribution_lists.current
     data.sox.output_distribution.sensitive_output.protected
     data.sox.output_distribution.transmission_security.enforced
 }
+
+default output_completeness_verified := false
 
 output_completeness_verified if {
     data.sox.output_completeness.output_totals.reconciled
@@ -132,12 +160,16 @@ output_completeness_verified if {
     data.sox.output_completeness.missing_output.detected
 }
 
+default output_accuracy_validated := false
+
 output_accuracy_validated if {
     data.sox.output_accuracy.format_validation.automated
     data.sox.output_accuracy.content_validation.performed
     data.sox.output_accuracy.cross_reference_checks.completed
     data.sox.output_accuracy.reasonableness_tests.conducted
 }
+
+default output_authorization_required := false
 
 output_authorization_required if {
     data.sox.output_authorization.report_approval.required
@@ -147,6 +179,8 @@ output_authorization_required if {
 }
 
 # Data Integrity Controls
+default data_integrity_maintained := false
+
 data_integrity_maintained if {
     data.sox.application_controls.data_integrity.maintained
     database_integrity_controls_active
@@ -154,6 +188,8 @@ data_integrity_maintained if {
     data_storage_integrity_verified
     referential_integrity_enforced
 }
+
+default database_integrity_controls_active := false
 
 database_integrity_controls_active if {
     data.sox.database_integrity.constraint_enforcement.active
@@ -163,6 +199,8 @@ database_integrity_controls_active if {
     data.sox.database_integrity.deadlock_resolution.automated
 }
 
+default data_transmission_integrity_protected := false
+
 data_transmission_integrity_protected if {
     data.sox.transmission_integrity.checksum_validation.implemented
     data.sox.transmission_integrity.encryption_in_transit.enforced
@@ -170,12 +208,16 @@ data_transmission_integrity_protected if {
     data.sox.transmission_integrity.retransmission_controls.automated
 }
 
+default data_storage_integrity_verified := false
+
 data_storage_integrity_verified if {
     data.sox.storage_integrity.data_corruption_detection.active
     data.sox.storage_integrity.backup_integrity_verification.automated
     data.sox.storage_integrity.storage_monitoring.continuous
     data.sox.storage_integrity.integrity_reporting.regular
 }
+
+default referential_integrity_enforced := false
 
 referential_integrity_enforced if {
     data.sox.referential_integrity.foreign_key_constraints.enforced
@@ -185,6 +227,8 @@ referential_integrity_enforced if {
 }
 
 # Error Handling and Logging
+default error_handling_robust := false
+
 error_handling_robust if {
     data.sox.application_controls.error_handling.robust
     error_detection_comprehensive
@@ -193,12 +237,16 @@ error_handling_robust if {
     error_prevention_proactive
 }
 
+default error_detection_comprehensive := false
+
 error_detection_comprehensive if {
     data.sox.error_detection.real_time_validation.enabled
     data.sox.error_detection.batch_validation.comprehensive
     data.sox.error_detection.cross_system_validation.implemented
     data.sox.error_detection.business_rule_validation.active
 }
+
+default error_reporting_detailed := false
 
 error_reporting_detailed if {
     data.sox.error_reporting.error_classification.detailed
@@ -207,12 +255,16 @@ error_reporting_detailed if {
     data.sox.error_reporting.error_escalation.automated
 }
 
+default error_correction_controlled := false
+
 error_correction_controlled if {
     data.sox.error_correction.correction_authorization.required
     data.sox.error_correction.correction_validation.enforced
     data.sox.error_correction.correction_logging.complete
     data.sox.error_correction.correction_approval.documented
 }
+
+default error_prevention_proactive := false
 
 error_prevention_proactive if {
     data.sox.error_prevention.preventive_controls.implemented
@@ -222,6 +274,8 @@ error_prevention_proactive if {
 }
 
 # Transaction Logging and Audit Trails
+default transaction_logging_complete := false
+
 transaction_logging_complete if {
     data.sox.application_controls.transaction_logging.complete
     audit_trail_comprehensive
@@ -229,6 +283,8 @@ transaction_logging_complete if {
     log_integrity_protected
     log_retention_compliant
 }
+
+default audit_trail_comprehensive := false
 
 audit_trail_comprehensive if {
     data.sox.audit_trail.transaction_logging.complete
@@ -238,6 +294,8 @@ audit_trail_comprehensive if {
     data.sox.audit_trail.access_logging.monitored
 }
 
+default transaction_traceability_maintained := false
+
 transaction_traceability_maintained if {
     data.sox.transaction_traceability.unique_transaction_ids.assigned
     data.sox.transaction_traceability.transaction_timeline.maintained
@@ -245,12 +303,16 @@ transaction_traceability_maintained if {
     data.sox.transaction_traceability.approval_trail.documented
 }
 
+default log_integrity_protected := false
+
 log_integrity_protected if {
     data.sox.log_integrity.log_tampering_prevention.implemented
     data.sox.log_integrity.log_encryption.enforced
     data.sox.log_integrity.log_backup.automated
     data.sox.log_integrity.log_verification.periodic
 }
+
+default log_retention_compliant := false
 
 log_retention_compliant if {
     data.sox.log_retention.retention_period.compliant
@@ -260,6 +322,8 @@ log_retention_compliant if {
 }
 
 # Financial Application-Specific Controls
+default financial_application_controls_effective := false
+
 financial_application_controls_effective if {
     general_ledger_controls_adequate
     accounts_payable_controls_robust
@@ -269,6 +333,8 @@ financial_application_controls_effective if {
 }
 
 # General Ledger Controls
+default general_ledger_controls_adequate := false
+
 general_ledger_controls_adequate if {
     data.sox.general_ledger.journal_entry_controls.enforced
     data.sox.general_ledger.chart_of_accounts.maintained
@@ -278,6 +344,8 @@ general_ledger_controls_adequate if {
 }
 
 # Accounts Payable Controls
+default accounts_payable_controls_robust := false
+
 accounts_payable_controls_robust if {
     data.sox.accounts_payable.three_way_matching.enforced
     data.sox.accounts_payable.vendor_master_controls.maintained
@@ -287,6 +355,8 @@ accounts_payable_controls_robust if {
 }
 
 # Accounts Receivable Controls
+default accounts_receivable_controls_complete := false
+
 accounts_receivable_controls_complete if {
     data.sox.accounts_receivable.invoice_generation_controls.automated
     data.sox.accounts_receivable.credit_limit_controls.enforced
@@ -296,6 +366,8 @@ accounts_receivable_controls_complete if {
 }
 
 # Payroll Controls
+default payroll_controls_comprehensive := false
+
 payroll_controls_comprehensive if {
     data.sox.payroll.employee_master_controls.maintained
     data.sox.payroll.time_recording_controls.accurate
@@ -305,6 +377,8 @@ payroll_controls_comprehensive if {
 }
 
 # Treasury Controls
+default treasury_controls_secure := false
+
 treasury_controls_secure if {
     data.sox.treasury.cash_management_controls.comprehensive
     data.sox.treasury.investment_controls.authorized

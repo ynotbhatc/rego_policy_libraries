@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package stig.rhel_9.services
 
 # DISA STIG for RHEL 9 - Services Module
@@ -24,28 +24,20 @@ import rego.v1
 
 default compliant := false
 
-# Helper: check if service is inactive or not installed
-service_disabled(svc) if {
-	val := input.services[svc]
-	val == "inactive"
-}
+# Helper: service is inactive or masked. Fail closed: a service with no
+# reported state is NOT treated as disabled (absent telemetry is not evidence).
+service_disabled(svc) if input.services[svc] in {"inactive", "masked"}
 
-service_disabled(svc) if {
-	val := input.services[svc]
-	val == "masked"
-}
+# Helper: package not installed. Fail closed: only an explicit `false` counts.
+pkg_absent(pkg) if input.packages[pkg] == false
 
-service_disabled(svc) if {
-	not input.services[svc]
-}
-
-# Helper: package not installed
-pkg_absent(pkg) if {
-	input.packages[pkg] == false
-}
-
-pkg_absent(pkg) if {
-	not input.packages[pkg]
+# Helper: at least one alias is explicitly absent and no alias is installed.
+pkgs_absent(names) if {
+	some n in names
+	pkg_absent(n)
+	every m in names {
+		not input.packages[m] == true
+	}
 }
 
 # =============================================================================
@@ -56,8 +48,7 @@ pkg_absent(pkg) if {
 # telnet server must not be installed
 default telnet_server_absent := false
 
-telnet_server_absent if { pkg_absent("telnet-server") }
-telnet_server_absent if { pkg_absent("telnetd") }
+telnet_server_absent if { pkgs_absent(["telnet-server", "telnetd"]) }
 
 status_rhel_09_291010 := "Not_a_Finding" if { telnet_server_absent } else := "Open"
 
@@ -74,8 +65,7 @@ finding_rhel_09_291010 := {
 # rsh-server must not be installed
 default rsh_server_absent := false
 
-rsh_server_absent if { pkg_absent("rsh-server") }
-rsh_server_absent if { pkg_absent("rshd") }
+rsh_server_absent if { pkgs_absent(["rsh-server", "rshd"]) }
 
 status_rhel_09_291015 := "Not_a_Finding" if { rsh_server_absent } else := "Open"
 
@@ -126,14 +116,8 @@ finding_rhel_09_291025 := {
 # FTP server must not be running
 default ftp_server_disabled := false
 
-ftp_server_disabled if {
-	service_disabled("vsftpd")
-	pkg_absent("vsftpd")
-}
-
-ftp_server_disabled if {
-	service_disabled("ftpd")
-}
+# title: the vsftpd package must not be installed (an inactive ftpd service is not enough)
+ftp_server_disabled if { pkg_absent("vsftpd") }
 
 status_rhel_09_291030 := "Not_a_Finding" if { ftp_server_disabled } else := "Open"
 
@@ -223,8 +207,7 @@ finding_rhel_09_291050 := {
 # SNMP server must not be running
 default snmp_disabled := false
 
-snmp_disabled if { service_disabled("snmpd") }
-snmp_disabled if { pkg_absent("net-snmp") }
+snmp_disabled if { pkg_absent("net-snmp") } # title: package must not be installed
 
 status_rhel_09_291055 := "Not_a_Finding" if { snmp_disabled } else := "Open"
 
@@ -276,8 +259,7 @@ finding_rhel_09_291065 := {
 # DNS server must not be running unless required
 default dns_disabled := false
 
-dns_disabled if { service_disabled("named") }
-dns_disabled if { pkg_absent("bind") }
+dns_disabled if { pkg_absent("bind") } # title: package must not be installed
 
 status_rhel_09_291070 := "Not_a_Finding" if { dns_disabled } else := "Open"
 
@@ -294,8 +276,7 @@ finding_rhel_09_291070 := {
 # DHCP server must not be running unless required
 default dhcp_disabled := false
 
-dhcp_disabled if { service_disabled("dhcpd") }
-dhcp_disabled if { pkg_absent("dhcp-server") }
+dhcp_disabled if { pkg_absent("dhcp-server") } # title: package must not be installed
 
 status_rhel_09_291075 := "Not_a_Finding" if { dhcp_disabled } else := "Open"
 
@@ -312,8 +293,7 @@ finding_rhel_09_291075 := {
 # HTTP server (Apache) must not be running unless required
 default httpd_disabled := false
 
-httpd_disabled if { service_disabled("httpd") }
-httpd_disabled if { pkg_absent("httpd") }
+httpd_disabled if { pkg_absent("httpd") } # title: package must not be installed
 
 status_rhel_09_291080 := "Not_a_Finding" if { httpd_disabled } else := "Open"
 
@@ -330,8 +310,7 @@ finding_rhel_09_291080 := {
 # Samba server must not be running unless required
 default smb_disabled := false
 
-smb_disabled if { service_disabled("smb") }
-smb_disabled if { pkg_absent("samba") }
+smb_disabled if { pkg_absent("samba") } # title: package must not be installed
 
 status_rhel_09_291085 := "Not_a_Finding" if { smb_disabled } else := "Open"
 
@@ -348,8 +327,7 @@ finding_rhel_09_291085 := {
 # Squid proxy server must not be running unless required
 default squid_disabled := false
 
-squid_disabled if { service_disabled("squid") }
-squid_disabled if { pkg_absent("squid") }
+squid_disabled if { pkg_absent("squid") } # title: package must not be installed
 
 status_rhel_09_291090 := "Not_a_Finding" if { squid_disabled } else := "Open"
 
@@ -366,8 +344,7 @@ finding_rhel_09_291090 := {
 # rsync daemon must not be running
 default rsync_disabled := false
 
-rsync_disabled if { service_disabled("rsyncd") }
-rsync_disabled if { pkg_absent("rsync-daemon") }
+rsync_disabled if { pkg_absent("rsync-daemon") } # title: package must not be installed
 
 status_rhel_09_291095 := "Not_a_Finding" if { rsync_disabled } else := "Open"
 

@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 17
+#     checks: 18
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iec_62443.part2_4
 
 import rego.v1
@@ -198,6 +198,14 @@ violations contains msg if {
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
 violations contains "IEC 62443-2-4 SP.01: FAIL-CLOSED - facts 'input.service_provider' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
 	not input.service_provider
+}
+
+# Applicability gate: every SP check runs only when is_iacs_service_provider == true.
+# An explicit false means the module does not apply to this subject (conditional
+# applicability, nothing to judge). An ABSENT flag is unknown applicability and
+# must not read as "not a service provider": fail closed.
+violations contains "IEC 62443-2-4 SP.01: evidence missing - input.is_iacs_service_provider not provided; applicability of the service provider requirements cannot be determined" if {
+    not is_boolean(object.get(input, "is_iacs_service_provider", null))
 }
 
 compliant if { count(violations) == 0 }

@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.apache_2_4
 
 import rego.v1
@@ -24,6 +24,60 @@ import rego.v1
 # CIS Apache HTTP Server 2.4 Benchmark v2.3.0
 # This policy implements the CIS benchmarks for Apache HTTP Server 2.4
 # Reference: https://www.cisecurity.org/benchmark/apache_http_server
+
+
+# ---------------------------------------------------------------------------
+# Shared helpers (validation 2026-10-17)
+# ---------------------------------------------------------------------------
+
+# Service account names used by the common Apache packages (RHEL: apache, Debian/Ubuntu: www-data, httpd on some builds)
+apache_service_users := {"apache", "www-data", "httpd"}
+
+apache_service_groups := {"apache", "www-data", "httpd"}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+# permission bit tests (undefined for an unparsable mode, so `not` fails closed)
+no_group_write(mode) if bits.and(octal(mode), 16) == 0
+
+no_other_write(mode) if bits.and(octal(mode), 2) == 0
+
+# Options directive: array of tokens or a whitespace separated string, with optional +/- prefixes.
+# Returns the set of lower-cased options that are switched on ("all" expands to the options it enables).
+enabled_options(cfg) := opts if {
+	is_array(cfg.options)
+	toks := cfg.options
+	opts := option_set(toks)
+}
+
+enabled_options(cfg) := opts if {
+	is_string(cfg.options)
+	opts := option_set(split(trim_space(cfg.options), " "))
+}
+
+option_set(toks) := {o |
+	some t in toks
+	t != ""
+	not startswith(t, "-")
+	base := lower(trim_prefix(t, "+"))
+	some o in expand_option(base)
+}
+
+expand_option(o) := {"indexes", "includes", "execcgi", "followsymlinks", "symlinksifownermatch", "all"} if o == "all"
+
+expand_option(o) := {o} if o != "all"
+
+has_opt(cfg, opt) if lower(opt) in enabled_options(cfg)
 
 # Main compliance evaluation
 default compliant := false
@@ -121,8 +175,8 @@ apache_runs_non_root if {
 	group := input.apache.config.group
 	user != "root"
 	group != "root"
-	user == "apache"
-	group == "apache"
+	user in apache_service_users
+	group in apache_service_groups
 }
 
 apache_user_invalid_shell if {
@@ -146,41 +200,40 @@ apache_user_home_non_privileged if {
 	user_info := input.apache.system.apache_user
 	home_dir := user_info.home_directory
 	not startswith(home_dir, "/root")
-	not startswith(home_dir, "/")
 	home_dir in ["/var/www", "/home/apache", "/usr/share/apache"]
 }
 
 core_dump_directory_secured if {
 	core_dump_permissions := input.apache.file_permissions.core_dump_directory
 	core_dump_permissions.owner == "root"
-	core_dump_permissions.group == "apache"
+	core_dump_permissions.group in apache_service_groups
 	core_dump_permissions.mode == "750"
 }
 
 pid_file_secured if {
 	pid_file_permissions := input.apache.file_permissions.pid_file
 	pid_file_permissions.owner == "root"
-	pid_file_permissions.group == "apache"
+	pid_file_permissions.group in apache_service_groups
 	pid_file_permissions.mode == "644"
 }
 
 scoreboard_file_secured if {
 	scoreboard_permissions := input.apache.file_permissions.scoreboard
 	scoreboard_permissions.owner == "root"
-	scoreboard_permissions.group == "apache"
+	scoreboard_permissions.group in apache_service_groups
 	scoreboard_permissions.mode == "644"
 }
 
 group_write_access_restricted if {
 	apache_dir_permissions := input.apache.file_permissions.server_root
-	apache_dir_permissions.mode in ["755", "750"]
-	not contains(apache_dir_permissions.mode, "2") # No group write
+	mode_within(apache_dir_permissions.mode, "0755")
+	no_group_write(apache_dir_permissions.mode)
 }
 
 docroot_group_write_restricted if {
 	docroot_permissions := input.apache.file_permissions.document_root
-	docroot_permissions.mode in ["755", "750"]
-	not contains(docroot_permissions.mode, "2") # No group write
+	mode_within(docroot_permissions.mode, "0755")
+	no_group_write(docroot_permissions.mode)
 }
 
 http_methods_restricted if {
@@ -368,7 +421,7 @@ apache_non_privileged_user if {
 	process_group := input.apache.process.group
 	process_user != "root"
 	process_group != "root"
-	process_user == "apache"
+	process_user in apache_service_users
 }
 
 apache_home_non_privileged if {
@@ -393,8 +446,8 @@ apache_owned_by_root if {
 apache_group_ownership_correct if {
 	server_root_perms := input.apache.file_permissions.server_root
 	config_perms := input.apache.file_permissions.config_files
-	server_root_perms.group == "apache"
-	config_perms.group == "apache"
+	server_root_perms.group in apache_service_groups
+	config_perms.group in apache_service_groups
 }
 
 other_write_access_restricted if {
@@ -403,46 +456,46 @@ other_write_access_restricted if {
 		input.apache.file_permissions.config_files,
 		input.apache.file_permissions.document_root
 	]
-	other_writable := [p | p := all_perms[_]; contains(p.mode, "2")]  # Check for world-writable
+	other_writable := [p | p := all_perms[_]; not no_other_write(p.mode)]  # other-write bit (or unparsable mode)
 	count(other_writable) == 0
 }
 
 core_dump_secured if {
 	core_dump_perms := input.apache.file_permissions.core_dump_directory
 	core_dump_perms.owner == "root"
-	core_dump_perms.group == "apache"
+	core_dump_perms.group in apache_service_groups
 	core_dump_perms.mode == "750"
 }
 
 lock_file_secured if {
 	lock_file_perms := input.apache.file_permissions.lock_file
 	lock_file_perms.owner == "root"
-	lock_file_perms.group == "apache"
+	lock_file_perms.group in apache_service_groups
 	lock_file_perms.mode == "644"
 }
 
 pid_file_secured_perms if {
 	pid_perms := input.apache.file_permissions.pid_file
 	pid_perms.owner == "root"
-	pid_perms.group == "apache"
+	pid_perms.group in apache_service_groups
 	pid_perms.mode == "644"
 }
 
 scoreboard_secured if {
 	scoreboard_perms := input.apache.file_permissions.scoreboard
 	scoreboard_perms.owner == "root"
-	scoreboard_perms.group == "apache"
+	scoreboard_perms.group in apache_service_groups
 	scoreboard_perms.mode == "644"
 }
 
 apache_group_write_restricted if {
 	apache_perms := input.apache.file_permissions.server_root
-	not contains(apache_perms.mode, "2")  # No group write
+	no_group_write(apache_perms.mode)
 }
 
 docroot_group_write_properly_restricted if {
 	docroot_perms := input.apache.file_permissions.document_root
-	not contains(docroot_perms.mode, "2")  # No group write
+	no_group_write(docroot_perms.mode)
 }
 
 os_root_access_denied if {
@@ -455,7 +508,7 @@ docroot_permissions_appropriate if {
 	docroot_perms := input.apache.file_permissions.document_root
 	docroot_perms.mode in ["755", "750"]
 	docroot_perms.owner == "root"
-	docroot_perms.group == "apache"
+	docroot_perms.group in apache_service_groups
 }
 
 file_operations_limited if {
@@ -580,7 +633,7 @@ override_disabled_docroot if {
 
 default_html_removed if {
 	html_files := input.apache.content.html_files
-	default_files := [f | f := html_files[_]; f.name in ["index.html", "welcome.html"]]
+	default_files := [f | f := html_files[_]; f.name in ["index.html", "welcome.html"]; object.get(f, "is_default", true) != false]
 	count(default_files) == 0
 }
 
@@ -660,35 +713,44 @@ sensitive_dirs_denied if {
 options_files_restricted if {
 	directory_configs := input.apache.config.directory_access
 	configs_with_none_options := [cfg | cfg := directory_configs[_]; 
-		cfg.options == "None"]
+		is_string(cfg.options)
+		lower(trim_space(cfg.options)) == "none"]
 	count(configs_with_none_options) > 0
+
+	# every directory that sets Options must be restricted (None, or MultiViews only for web content)
+	unrestricted := [cfg | cfg := directory_configs[_]
+		opts := enabled_options(cfg)
+		some o in opts
+		not o in {"none", "multiviews"}
+	]
+	count(unrestricted) == 0
 }
 
 directory_browsing_restricted if {
 	directory_configs := input.apache.config.directory_access
 	configs_with_indexes := [cfg | cfg := directory_configs[_]; 
-		"Indexes" in cfg.options]
+		has_opt(cfg, "Indexes")]
 	count(configs_with_indexes) == 0
 }
 
 ssi_disabled if {
 	directory_configs := input.apache.config.directory_access
 	configs_with_includes := [cfg | cfg := directory_configs[_]; 
-		"Includes" in cfg.options]
+		has_opt(cfg, "Includes")]
 	count(configs_with_includes) == 0
 }
 
 cgi_execution_disabled if {
 	directory_configs := input.apache.config.directory_access
 	configs_with_execcgi := [cfg | cfg := directory_configs[_]; 
-		"ExecCGI" in cfg.options]
+		has_opt(cfg, "ExecCGI")]
 	count(configs_with_execcgi) == 0
 }
 
 follow_symlinks_disabled if {
 	directory_configs := input.apache.config.directory_access
 	configs_with_symlinks := [cfg | cfg := directory_configs[_]; 
-		"FollowSymLinks" in cfg.options]
+		has_opt(cfg, "FollowSymLinks")]
 	count(configs_with_symlinks) == 0
 }
 
@@ -955,7 +1017,7 @@ valid_certificate_installed if {
 private_key_protected if {
 	key_permissions := input.apache.file_permissions.ssl_private_key
 	key_permissions.owner == "root"
-	key_permissions.group == "apache"
+	key_permissions.group in apache_service_groups
 	key_permissions.mode == "600"
 }
 
@@ -975,9 +1037,25 @@ weak_ciphers_disabled if {
 insecure_protocols_disabled if {
 	ssl_config := input.apache.config.ssl
 	protocol := ssl_config.protocol
-	insecure_protocols := ["SSLv2", "SSLv3", "TLSv1", "TLSv1.1"]
-	insecure_found := [p | p := insecure_protocols[_]; contains(protocol, p)]
+	insecure_protocols := ["sslv2", "sslv3", "tlsv1", "tlsv1.1"]
+	insecure_found := [p | p := insecure_protocols[_]; protocol_enabled(protocol, p)]
 	count(insecure_found) == 0
+}
+
+# SSLProtocol is a list of tokens: "+X" / "X" enable, "-X" removes, "all" enables every
+# protocol except SSLv2. Exact token match: "TLSv1" must not match "TLSv1.2".
+protocol_enabled(protocol, p) if {
+	toks := [lower(t) | some t in split(trim_space(protocol), " "); t != ""]
+	not concat("", ["-", p]) in toks
+	some t in toks
+	trim_prefix(t, "+") == p
+}
+
+protocol_enabled(protocol, p) if {
+	toks := [lower(t) | some t in split(trim_space(protocol), " "); t != ""]
+	not concat("", ["-", p]) in toks
+	"all" in toks
+	p != "sslv2"
 }
 
 ssl_compression_disabled if {
@@ -1165,8 +1243,7 @@ filesystem_info_not_disclosed if {
 	# Ensure sensitive directories are not browsable
 	sensitive_dirs := ["/etc", "/var", "/usr", "/tmp"]
 	disclosed_dirs := [dir | dir := sensitive_dirs[_]; 
-		directory_config[dir].options != "None";
-		"Indexes" in directory_config[dir].options]
+		has_opt(directory_config[dir], "Indexes")]
 	count(disclosed_dirs) == 0
 }
 
@@ -1227,7 +1304,7 @@ log_rotation_policy if {
 log_files_secured if {
 	log_perms := input.apache.file_permissions.log_files
 	log_perms.owner == "root"
-	log_perms.group == "apache"
+	log_perms.group in apache_service_groups
 	log_perms.mode == "640"
 }
 

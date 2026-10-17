@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package corporate.environment.controls
 
 import rego.v1
@@ -39,14 +39,20 @@ environment_separation_enforced if {
 }
 
 network_separation_adequate if {
-    # Verify each environment has separate network segments
-    environments := {"development", "qa", "production"}
+    # Every environment must report a VLAN, and no two DIFFERENT environments may
+    # share one. (The old `other_env := environments[_]` inside `every` was
+    # existential: one differing VLAN per environment was enough.)
+    environments := ["development", "qa", "production"]
     every env in environments {
-        other_env := environments[_]
-        env != other_env
-        env_config := input.environments[env]
-        env_config.network.vlan_id != input.environments[other_env].network.vlan_id
+        input.environments[env].network.vlan_id
     }
+    shared := [[env, other_env] |
+        some env in environments
+        some other_env in environments
+        env != other_env
+        input.environments[env].network.vlan_id == input.environments[other_env].network.vlan_id
+    ]
+    count(shared) == 0
 }
 
 infrastructure_separation_adequate if {
@@ -541,13 +547,18 @@ environment_control_score := score if {
 }
 
 # Compliance Framework Mapping
+sox_scoped_deployment(deployment) if deployment.target_environment == "production"
+
+sox_scoped_deployment(deployment) if "financial_reporting" in deployment.impact_areas
+
 sox_environment_controls_compliant if {
     environment_controls_compliant
     # Additional SOX-specific requirements
     segregation_of_duties_maintained
-    every deployment in input.deployments {
-        deployment.target_environment == "production"
-        "financial_reporting" in deployment.impact_areas
+    # Judge the deployments in SOX scope (production, or touching financial
+    # reporting); a non-production, non-financial deployment must not make the
+    # overlay false.
+    every deployment in [d | some d in input.deployments; sox_scoped_deployment(d)] {
         deployment.authorization.change_board_approval == true
     }
 }

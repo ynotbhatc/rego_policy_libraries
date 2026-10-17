@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 12
+#     checks: 14
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_oracle.installation_patches
 
 # CIS Oracle Database 19c Benchmark - Section 1
@@ -48,9 +48,7 @@ installation_violations contains violation if {
 
 installation_violations contains violation if {
 	input.oracle_version.version
-	not startswith(input.oracle_version.version, "19c")
-	not startswith(input.oracle_version.version, "21c")
-	not startswith(input.oracle_version.version, "23c")
+	not regex.match(`^(19|21|23)([^0-9]|$)`, lower(sprintf("%v", [input.oracle_version.version])))
 	violation := sprintf("CIS 1.1: Oracle version %s is not a recommended version (use 19c, 21c, or 23c)", [
 		input.oracle_version.version,
 	])
@@ -83,10 +81,37 @@ installation_violations contains violation if {
 # ORACLE HOME PERMISSIONS
 # =============================================================================
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+# Evidence: oracle_home must carry permissions, owner and group
+installation_violations contains violation if {
+	some key in ["permissions", "owner", "group"]
+	not oracle_home_has(key)
+	violation := sprintf("CIS 1.1: evidence missing — oracle_home.%s not collected", [key])
+}
+
+oracle_home_has(key) if input.oracle_home[key]
+
+installation_violations contains violation if {
+	input.oracle_inventory.exists
+	not input.oracle_inventory.permissions
+	violation := "CIS 1.1: evidence missing — oracle_inventory.permissions not collected"
+}
+
 installation_violations contains violation if {
 	input.oracle_home.permissions
-	not regex.match("^[0-7][0-5][0-5]$", input.oracle_home.permissions)
-	violation := sprintf("CIS 1.1: ORACLE_HOME permissions %s are too permissive (should be 755 or stricter)", [
+	not mode_within(input.oracle_home.permissions, "0755")
+	violation := sprintf("CIS 1.1: ORACLE_HOME permissions %s are too permissive (should be 755 or stricter, or not parseable as an octal mode)", [
 		input.oracle_home.permissions,
 	])
 }
@@ -118,7 +143,7 @@ installation_violations contains violation if {
 installation_violations contains violation if {
 	input.oracle_inventory.exists
 	input.oracle_inventory.permissions
-	not regex.match("^[0-7][0-5][0-5]$", input.oracle_inventory.permissions)
+	not mode_within(input.oracle_inventory.permissions, "0755")
 	violation := sprintf("CIS 1.1: Oracle inventory permissions %s are too permissive", [
 		input.oracle_inventory.permissions,
 	])

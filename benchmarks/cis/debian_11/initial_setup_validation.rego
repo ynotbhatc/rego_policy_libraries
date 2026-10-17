@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 27
-#     cited: 20
+#     checks: 30
+#     cited: 22
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_debian_11.initial_setup
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.2, 1.7, 1.8: Initial System Setup
@@ -24,6 +24,45 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# Missing evidence fails closed: every fact below must be collected.
+violations contains msg if {
+	some k in ["enabled_repos", "gpg_keys", "aide_installed", "grub_password_configured", "grub_config_mode", "grub_owner_root", "core_dumps_enabled", "aslr_enabled", "prelink_installed", "ptrace_scope_restricted", "motd_exists", "issue_exists", "issue_net_exists", "motd_owner", "issue_owner", "issue_net_owner", "gdm_installed"]
+	not has_key(object.get(input, "initial_setup", {}), k)
+	msg := sprintf("CIS 1.x: evidence missing — initial_setup.%s not collected", [k])
+}
+
+# a file that exists needs its mode collected
+violations contains msg if {
+	some f in ["motd", "issue", "issue_net"]
+	input.initial_setup[sprintf("%s_exists", [f])]
+	not has_key(input.initial_setup, sprintf("%s_mode", [f]))
+	msg := sprintf("CIS 1.7.x: evidence missing — initial_setup.%s_mode not collected", [f])
+}
+
+violations contains msg if {
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_screen_lock_enabled
+	not has_key(input.initial_setup, "gdm_idle_delay")
+	msg := "CIS 1.8.4: evidence missing — initial_setup.gdm_idle_delay not collected"
 }
 
 # CIS 1.2: Configure Software Updates (Ubuntu uses apt)
@@ -59,8 +98,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	input.initial_setup.grub_config_mode != "0400"
-	input.initial_setup.grub_config_mode != "0600"
+	not mode_within(input.initial_setup.grub_config_mode, "0600")
 	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.initial_setup.grub_config_mode])
 }
 
@@ -98,7 +136,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.motd_exists
-	input.initial_setup.motd_mode != "0644"
+	not mode_within(input.initial_setup.motd_mode, "0644")
 	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644", [input.initial_setup.motd_mode])
 }
 
@@ -114,7 +152,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_exists
-	input.initial_setup.issue_mode != "0644"
+	not mode_within(input.initial_setup.issue_mode, "0644")
 	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644", [input.initial_setup.issue_mode])
 }
 
@@ -130,7 +168,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_net_exists
-	input.initial_setup.issue_net_mode != "0644"
+	not mode_within(input.initial_setup.issue_net_mode, "0644")
 	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644", [input.initial_setup.issue_net_mode])
 }
 

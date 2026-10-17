@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 4
-#     cited: 2
+#     checks: 8
+#     cited: 4
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.filesystem
 
 # CIS Ubuntu 20.04 - Section 1.1 Filesystem Configuration
@@ -95,6 +95,41 @@ usb_storage_violation contains violation if {
 usb_storage_violation contains violation if {
 	input.usb_storage_disabled.disabled == false
 	violation := "CIS 1.1.24: USB storage driver is not disabled in modprobe"
+}
+
+# =============================================================================
+# EVIDENCE: missing collector data must not pass
+# =============================================================================
+
+# evidence list at input[key][sub]; an empty list is accepted only by list_present ("no offenders")
+list_present(key, sub) if is_array(object.get(input, [key, sub], null))
+
+list_nonempty(key, sub) if count(object.get(input, [key, sub], [])) > 0
+
+filesystem_module_violations contains violation if {
+	not list_nonempty("disabled_filesystem_modules", "modules")
+	violation := "CIS 1.1.1.x: evidence missing — disabled_filesystem_modules.modules not collected"
+}
+
+partition_violations contains violation if {
+	not list_nonempty("required_partitions", "partitions")
+	violation := "CIS 1.1.2: evidence missing — required_partitions.partitions not collected"
+}
+
+mount_option_violations contains violation if {
+	not list_nonempty("mount_options", "mounts")
+	violation := "CIS 1.1.x: evidence missing — mount_options.mounts not collected"
+}
+
+sticky_bit_violations contains violation if {
+	not list_present("sticky_bit_check", "world_writable_dirs")
+	violation := "CIS 1.1.22: evidence missing — sticky_bit_check.world_writable_dirs not collected"
+}
+
+usb_storage_violation contains violation if {
+	is_null(object.get(input, ["usb_storage_disabled", "loaded"], null))
+	is_null(object.get(input, ["usb_storage_disabled", "disabled"], null))
+	violation := "CIS 1.1.24: evidence missing — usb_storage_disabled not collected"
 }
 
 # =============================================================================

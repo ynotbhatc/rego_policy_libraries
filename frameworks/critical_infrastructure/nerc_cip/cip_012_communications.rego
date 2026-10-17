@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package nerc_cip.cip_012
 
 import rego.v1
@@ -135,9 +135,15 @@ communication_contingency_plans_established if {
 }
 
 # Backup communication links with equivalent protection
+# Backup links are judged whenever they are listed, whether or not backup_links_exist
+# is set. A missing backup_links_exist flag is not a waiver: only an explicit
+# `backup_links_exist: false` with no listed backup links means there are none.
 backup_communication_protected if {
-	not input.communication_contingency.backup_links_exist
+	input.communication_contingency.backup_links_exist == false
+	count(object.get(input, ["communication_contingency", "backup_links"], [])) == 0
 } else if {
+	is_array(input.communication_contingency.backup_links)
+	count(input.communication_contingency.backup_links) > 0
 	every link in input.communication_contingency.backup_links {
 		link.same_protection_level == true
 		link.encryption_enabled == true

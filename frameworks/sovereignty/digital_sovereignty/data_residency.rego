@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 21
-#     cited: 12
+#     checks: 24
+#     cited: 14
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.data_residency
 
 import rego.v1
@@ -48,80 +48,115 @@ import rego.v1
 # DATA RESIDENCY — PRIMARY STORAGE
 # =============================================================================
 
+# NOTE (undefined trap): `not x.field in list` is compiled with the field
+# reference hoisted outside the negation, so an ABSENT field makes the whole
+# body undefined and the offender is silently skipped. Fields are read with
+# object.get() (absent -> "", never an approved value), and the approved lists
+# default to [] when missing (fail closed).
+approved := object.get(input, "approved_jurisdictions", [])
+
+approved_regions := object.get(input, "approved_cloud_regions", [])
+
+resources := object.get(input, "cloud_resources", [])
+
+backups := object.get(input, "backup_configurations", [])
+
+dr_configs := object.get(input, "dr_configurations", [])
+
+flows := object.get(input, "data_flows", [])
+
+regulated_classes := {"sensitive", "restricted", "sovereign"}
+
 # All resources storing regulated or sensitive data must be in approved regions
-regulated_data_in_approved_regions if {
-	violations := [r |
-		r := input.cloud_resources[_]
-		r.stores_regulated_data == true
-		not r.region in input.approved_cloud_regions
-	]
-	count(violations) == 0
+region_offenders contains r if {
+	some r in resources
+	r.stores_regulated_data == true
+	not object.get(r, "region", "") in approved_regions
 }
+
+default regulated_data_in_approved_regions := false
+
+regulated_data_in_approved_regions if count(region_offenders) == 0
 
 # All resources storing regulated data must be in approved jurisdictions
-regulated_data_in_approved_jurisdictions if {
-	violations := [r |
-		r := input.cloud_resources[_]
-		r.stores_regulated_data == true
-		not r.country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+country_offenders contains r if {
+	some r in resources
+	r.stores_regulated_data == true
+	not object.get(r, "country", "") in approved
 }
 
+default regulated_data_in_approved_jurisdictions := false
+
+regulated_data_in_approved_jurisdictions if count(country_offenders) == 0
+
 # Sovereign/restricted data must not be placed in public cloud at all
-sovereign_data_not_in_public_cloud if {
-	violations := [r |
-		r := input.cloud_resources[_]
-		r.data_classification in ["sovereign", "restricted"]
-		r.infrastructure_type == "public_cloud"
-	]
-	count(violations) == 0
+public_cloud_offenders contains r if {
+	some r in resources
+	r.data_classification in ["sovereign", "restricted"]
+	r.infrastructure_type == "public_cloud"
 }
+
+default sovereign_data_not_in_public_cloud := false
+
+sovereign_data_not_in_public_cloud if count(public_cloud_offenders) == 0
 
 # =============================================================================
 # DATA RESIDENCY — BACKUPS
 # =============================================================================
 
-# Backups of regulated data must stay in approved jurisdictions
-backups_in_approved_jurisdictions if {
-	violations := [b |
-		b := input.backup_configurations[_]
-		resource := input.cloud_resources[_]
-		resource.resource_id == b.resource_id
-		resource.stores_regulated_data == true
-		not b.backup_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+# A backup/DR entry is in scope when it belongs to a regulated resource OR when
+# its resource_id matches no known resource at all (orphan or mistyped id): an
+# entry that cannot be tied to a resource is not assumed to be harmless.
+known_resource_ids := {r.resource_id | some r in resources; r.resource_id}
+
+regulated_target(entry) if {
+	some r in resources
+	r.resource_id == entry.resource_id
+	r.stores_regulated_data == true
 }
 
-# Offsite backups must also remain in approved jurisdictions
-offsite_backups_in_jurisdiction if {
-	violations := [b |
-		b := input.backup_configurations[_]
-		resource := input.cloud_resources[_]
-		resource.resource_id == b.resource_id
-		resource.stores_regulated_data == true
-		b.offsite_country
-		not b.offsite_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+regulated_target(entry) if {
+	not object.get(entry, "resource_id", null) in known_resource_ids
 }
+
+# Backups of regulated data must stay in approved jurisdictions
+backup_offenders contains b if {
+	some b in backups
+	regulated_target(b)
+	not object.get(b, "backup_country", "") in approved
+}
+
+default backups_in_approved_jurisdictions := false
+
+backups_in_approved_jurisdictions if count(backup_offenders) == 0
+
+# Offsite backups must also remain in approved jurisdictions (offsite_country is
+# optional: only a recorded offsite country is checked)
+offsite_offenders contains b if {
+	some b in backups
+	regulated_target(b)
+	b.offsite_country
+	not b.offsite_country in approved
+}
+
+default offsite_backups_in_jurisdiction := false
+
+offsite_backups_in_jurisdiction if count(offsite_offenders) == 0
 
 # =============================================================================
 # DATA RESIDENCY — DISASTER RECOVERY
 # =============================================================================
 
 # DR replicas of regulated data must stay in approved jurisdictions
-dr_in_approved_jurisdictions if {
-	violations := [dr |
-		dr := input.dr_configurations[_]
-		resource := input.cloud_resources[_]
-		resource.resource_id == dr.resource_id
-		resource.stores_regulated_data == true
-		not dr.dr_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+dr_offenders contains dr if {
+	some dr in dr_configs
+	regulated_target(dr)
+	not object.get(dr, "dr_country", "") in approved
 }
+
+default dr_in_approved_jurisdictions := false
+
+dr_in_approved_jurisdictions if count(dr_offenders) == 0
 
 # =============================================================================
 # DATA RESIDENCY — METADATA AND TELEMETRY
@@ -148,26 +183,29 @@ no_vendor_log_access if {
 # CROSS-BORDER DATA TRANSFERS
 # =============================================================================
 
-# All cross-border transfers must have a documented legal mechanism
-cross_border_transfers_controlled if {
-	violations := [f |
-		f := input.data_flows[_]
-		f.source_country != f.destination_country
-		f.data_classification in ["sensitive", "restricted", "sovereign"]
-		not f.transfer_mechanism_documented == true
-	]
-	count(violations) == 0
+# All cross-border transfers must have a documented legal mechanism. A flow
+# with an unrecorded source or destination is not assumed to be domestic.
+transfer_offenders contains f if {
+	some f in flows
+	object.get(f, "source_country", "unknown source") != object.get(f, "destination_country", "unknown destination")
+	f.data_classification in regulated_classes
+	not f.transfer_mechanism_documented == true
 }
 
+default cross_border_transfers_controlled := false
+
+cross_border_transfers_controlled if count(transfer_offenders) == 0
+
 # No regulated data flows to non-approved countries
-no_regulated_data_to_unapproved_countries if {
-	violations := [f |
-		f := input.data_flows[_]
-		f.data_classification in ["sensitive", "restricted", "sovereign"]
-		not f.destination_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+unapproved_flow_offenders contains f if {
+	some f in flows
+	f.data_classification in regulated_classes
+	not object.get(f, "destination_country", "") in approved
 }
+
+default no_regulated_data_to_unapproved_countries := false
+
+no_regulated_data_to_unapproved_countries if count(unapproved_flow_offenders) == 0
 
 # Data flows are inventoried
 data_flow_inventory_maintained if {
@@ -183,37 +221,54 @@ data_flow_inventory_maintained if {
 # =============================================================================
 
 violations contains v if {
-	not regulated_data_in_approved_regions
-	r := input.cloud_resources[_]
-	r.stores_regulated_data == true
-	not r.region in input.approved_cloud_regions
+	some r in region_offenders
 	v := {
 		"domain": "data_residency",
 		"control": "DR-001",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Regulated data stored in unapproved region: ", r.region, " (", r.country, ")"]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Regulated data stored in unapproved region (or region not recorded): ", object.get(r, "region", "unknown"), " (", object.get(r, "country", "unknown"), ")"]),
 		"remediation": "Migrate resource to an approved cloud region within the approved jurisdiction",
 	}
 }
 
 violations contains v if {
-	not sovereign_data_not_in_public_cloud
-	r := input.cloud_resources[_]
-	r.data_classification in ["sovereign", "restricted"]
-	r.infrastructure_type == "public_cloud"
+	some r in country_offenders
+	v := {
+		"domain": "data_residency",
+		"control": "DR-011",
+		"severity": "critical",
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Regulated data stored in unapproved jurisdiction (or country not recorded): ", object.get(r, "country", "unknown")]),
+		"remediation": "Migrate resource to an approved jurisdiction",
+	}
+}
+
+violations contains v if {
+	count(offsite_offenders) > 0
+	v := {
+		"domain": "data_residency",
+		"control": "DR-012",
+		"severity": "critical",
+		"description": "One or more offsite backups of regulated data reside outside approved jurisdictions",
+		"remediation": "Reconfigure offsite backup destinations to approved jurisdictions only",
+	}
+}
+
+violations contains v if {
+	some r in public_cloud_offenders
 	v := {
 		"domain": "data_residency",
 		"control": "DR-002",
 		"severity": "critical",
-		"resource_id": r.resource_id,
-		"description": concat("", ["Sovereign/restricted data stored in public cloud: ", r.resource_id]),
+		"resource_id": object.get(r, "resource_id", "unknown"),
+		"description": concat("", ["Sovereign/restricted data stored in public cloud: ", object.get(r, "resource_id", "unknown")]),
 		"remediation": "Move sovereign/restricted data to on-premises or sovereign cloud infrastructure",
 	}
 }
 
 violations contains v if {
-	not backups_in_approved_jurisdictions
+	count(backup_offenders) > 0
 	v := {
 		"domain": "data_residency",
 		"control": "DR-003",
@@ -224,7 +279,7 @@ violations contains v if {
 }
 
 violations contains v if {
-	not dr_in_approved_jurisdictions
+	count(dr_offenders) > 0
 	v := {
 		"domain": "data_residency",
 		"control": "DR-004",
@@ -240,7 +295,7 @@ violations contains v if {
 		"domain": "data_residency",
 		"control": "DR-005",
 		"severity": "high",
-		"description": concat("", ["Metadata stored outside approved jurisdiction: ", input.metadata_storage.location_country]),
+		"description": concat("", ["Metadata stored outside approved jurisdiction (or location not recorded): ", object.get(object.get(input, "metadata_storage", {}), "location_country", "unknown")]),
 		"remediation": "Move metadata storage (indexes, manifests, tags) to approved jurisdiction",
 	}
 }
@@ -251,7 +306,7 @@ violations contains v if {
 		"domain": "data_residency",
 		"control": "DR-006",
 		"severity": "high",
-		"description": concat("", ["Telemetry/logs stored outside approved jurisdiction: ", input.telemetry_and_logs.location_country]),
+		"description": concat("", ["Telemetry/logs stored outside approved jurisdiction (or location not recorded): ", object.get(object.get(input, "telemetry_and_logs", {}), "location_country", "unknown")]),
 		"remediation": "Configure log forwarding to store logs within approved jurisdiction",
 	}
 }
@@ -268,32 +323,25 @@ violations contains v if {
 }
 
 violations contains v if {
-	not cross_border_transfers_controlled
-	f := input.data_flows[_]
-	f.source_country != f.destination_country
-	f.data_classification in ["sensitive", "restricted", "sovereign"]
-	not f.transfer_mechanism_documented == true
+	some f in transfer_offenders
 	v := {
 		"domain": "data_residency",
 		"control": "DR-008",
 		"severity": "high",
-		"flow_id": f.flow_id,
-		"description": concat("", ["Cross-border data transfer without documented legal mechanism: ", f.source_country, " → ", f.destination_country]),
+		"flow_id": object.get(f, "flow_id", "unknown"),
+		"description": concat("", ["Cross-border data transfer without documented legal mechanism: ", object.get(f, "source_country", "unknown"), " → ", object.get(f, "destination_country", "unknown")]),
 		"remediation": "Document legal transfer mechanism (SCCs, adequacy decision, BCRs) for this data flow",
 	}
 }
 
 violations contains v if {
-	not no_regulated_data_to_unapproved_countries
-	f := input.data_flows[_]
-	f.data_classification in ["sensitive", "restricted", "sovereign"]
-	not f.destination_country in input.approved_jurisdictions
+	some f in unapproved_flow_offenders
 	v := {
 		"domain": "data_residency",
 		"control": "DR-009",
 		"severity": "critical",
-		"flow_id": f.flow_id,
-		"description": concat("", ["Regulated data flowing to unapproved country: ", f.destination_country]),
+		"flow_id": object.get(f, "flow_id", "unknown"),
+		"description": concat("", ["Regulated data flowing to unapproved country: ", object.get(f, "destination_country", "unknown")]),
 		"remediation": "Block or reroute data flow to prevent transfer to unapproved jurisdiction",
 	}
 }
@@ -344,6 +392,8 @@ report := {
 		"DR-008_cross_border_transfers_controlled": cross_border_transfers_controlled,
 		"DR-009_no_regulated_data_to_unapproved": no_regulated_data_to_unapproved_countries,
 		"DR-010_data_flow_inventory": data_flow_inventory_maintained,
+		"DR-011_regulated_data_in_approved_jurisdictions": regulated_data_in_approved_jurisdictions,
+		"DR-012_offsite_backups_in_jurisdiction": offsite_backups_in_jurisdiction,
 	},
 	"resource_summary": {
 		"total_resources": count(object.get(input, ["cloud_resources"], [])),

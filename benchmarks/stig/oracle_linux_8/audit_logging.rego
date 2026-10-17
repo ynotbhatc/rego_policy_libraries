@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.oracle_linux_8.audit_logging
 
 # DISA STIG for Oracle Linux 8 - Audit Logging Module
@@ -235,7 +235,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# Evidence gate: a module with none of its facts collected is unevaluated, not compliant.
+evidence_present if {
+	some key in {"auditd_config", "audit_rules"}
+	object.get(input, key, null) != null
+}
+
+# NOTE: `compliant` is scoped to CAT I findings only (module convention), and this module carries
+# no CAT I findings. Whether CAT II should also gate it is an open scope decision, see the
+# validation 2026-10-17 report.
 compliant if {
+	evidence_present
 	count(open_cat_i) == 0
 }
 

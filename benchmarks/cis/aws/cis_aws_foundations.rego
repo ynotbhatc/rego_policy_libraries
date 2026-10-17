@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [cloud, aws]
 #   coverage:
-#     checks: 5
-#     cited: 5
-#     density: section
-#     basis: role
+#     checks: 20
+#     cited: 20
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_aws
 
 # CIS Amazon Web Services Foundations Benchmark v7.0.0
@@ -23,6 +23,8 @@ package cis_aws
 import rego.v1
 
 # Main compliance rule - all controls must pass
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
@@ -42,7 +44,7 @@ violations := [v |
 # Section 1: Identity and Access Management
 identity_access_violations := [
     "1.1: Avoid the use of 'root' account" |
-    input.aws_account_summary.account_access_keys_present == 1
+    input.aws_account_summary.account_access_keys_present > 0
 ]
 
 
@@ -104,18 +106,43 @@ logging_violations := [
 
 # Section 4: Monitoring
 monitoring_violations := [
-    "4.1: Ensure a log metric filter and alarm exist for unauthorized API calls" |
-    not unauthorized_api_calls_alarm_exists
+    msg |
+    some control in monitoring_controls
+    not control.ok
+    msg := control.msg
 ]
+
+# Controls 4.1-4.15: each needs a log metric filter plus an alarm on its metric.
+monitoring_controls := [
+    {"msg": "4.1: Ensure a log metric filter and alarm exist for unauthorized API calls", "ok": unauthorized_api_calls_alarm_exists},
+    {"msg": "4.2: Ensure a log metric filter and alarm exist for console sign-in without MFA", "ok": console_signin_without_mfa_alarm_exists},
+    {"msg": "4.3: Ensure a log metric filter and alarm exist for usage of the root account", "ok": root_account_usage_alarm_exists},
+    {"msg": "4.4: Ensure a log metric filter and alarm exist for IAM policy changes", "ok": iam_policy_changes_alarm_exists},
+    {"msg": "4.5: Ensure a log metric filter and alarm exist for CloudTrail configuration changes", "ok": cloudtrail_config_changes_alarm_exists},
+    {"msg": "4.6: Ensure a log metric filter and alarm exist for console authentication failures", "ok": console_auth_failures_alarm_exists},
+    {"msg": "4.7: Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys", "ok": cmk_deletion_alarm_exists},
+    {"msg": "4.8: Ensure a log metric filter and alarm exist for S3 bucket policy changes", "ok": s3_bucket_policy_changes_alarm_exists},
+    {"msg": "4.9: Ensure a log metric filter and alarm exist for AWS Config configuration changes", "ok": config_changes_alarm_exists},
+    {"msg": "4.10: Ensure a log metric filter and alarm exist for security group changes", "ok": security_group_changes_alarm_exists},
+    {"msg": "4.11: Ensure a log metric filter and alarm exist for changes to Network ACLs", "ok": nacl_changes_alarm_exists},
+    {"msg": "4.12: Ensure a log metric filter and alarm exist for changes to network gateways", "ok": network_gateway_changes_alarm_exists},
+    {"msg": "4.13: Ensure a log metric filter and alarm exist for route table changes", "ok": route_table_changes_alarm_exists},
+    {"msg": "4.14: Ensure a log metric filter and alarm exist for VPC changes", "ok": vpc_changes_alarm_exists},
+    {"msg": "4.15: Ensure a log metric filter and alarm exist for AWS Organizations changes", "ok": organizations_changes_alarm_exists},
+]
+
+default unauthorized_api_calls_alarm_exists := false
 
 unauthorized_api_calls_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
-    contains(filter.filter_pattern, "ERROR")
-    contains(filter.filter_pattern, "Denied")
+    contains(filter.filter_pattern, "UnauthorizedOperation")
+    contains(filter.filter_pattern, "AccessDenied")
     alarm.metric_name == filter.metric_name
 }
 
+
+default console_signin_without_mfa_alarm_exists := false
 
 console_signin_without_mfa_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -126,6 +153,8 @@ console_signin_without_mfa_alarm_exists if {
 }
 
 
+default root_account_usage_alarm_exists := false
+
 root_account_usage_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -133,6 +162,8 @@ root_account_usage_alarm_exists if {
     alarm.metric_name == filter.metric_name
 }
 
+
+default iam_policy_changes_alarm_exists := false
 
 iam_policy_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -143,6 +174,8 @@ iam_policy_changes_alarm_exists if {
 }
 
 
+default cloudtrail_config_changes_alarm_exists := false
+
 cloudtrail_config_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -151,6 +184,8 @@ cloudtrail_config_changes_alarm_exists if {
     alarm.metric_name == filter.metric_name
 }
 
+
+default console_auth_failures_alarm_exists := false
 
 console_auth_failures_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -161,6 +196,8 @@ console_auth_failures_alarm_exists if {
 }
 
 
+default cmk_deletion_alarm_exists := false
+
 cmk_deletion_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -169,6 +206,8 @@ cmk_deletion_alarm_exists if {
     alarm.metric_name == filter.metric_name
 }
 
+
+default s3_bucket_policy_changes_alarm_exists := false
 
 s3_bucket_policy_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -179,6 +218,8 @@ s3_bucket_policy_changes_alarm_exists if {
 }
 
 
+default config_changes_alarm_exists := false
+
 config_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -187,6 +228,8 @@ config_changes_alarm_exists if {
     alarm.metric_name == filter.metric_name
 }
 
+
+default security_group_changes_alarm_exists := false
 
 security_group_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -197,6 +240,8 @@ security_group_changes_alarm_exists if {
 }
 
 
+default nacl_changes_alarm_exists := false
+
 nacl_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -205,6 +250,8 @@ nacl_changes_alarm_exists if {
     alarm.metric_name == filter.metric_name
 }
 
+
+default network_gateway_changes_alarm_exists := false
 
 network_gateway_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -215,6 +262,8 @@ network_gateway_changes_alarm_exists if {
 }
 
 
+default route_table_changes_alarm_exists := false
+
 route_table_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -224,6 +273,8 @@ route_table_changes_alarm_exists if {
 }
 
 
+default vpc_changes_alarm_exists := false
+
 vpc_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
     filter := input.cloudwatch_log_metric_filters[_]
@@ -232,6 +283,8 @@ vpc_changes_alarm_exists if {
     alarm.metric_name == filter.metric_name
 }
 
+
+default organizations_changes_alarm_exists := false
 
 organizations_changes_alarm_exists if {
     alarm := input.cloudwatch_alarms[_]
@@ -248,8 +301,14 @@ networking_violations := [
     entry := nacl.entries[_]
     entry.rule_action == "allow"
     entry.cidr_block == "0.0.0.0/0"
-    admin_port_range(entry.port_range)
+    admin_entry(entry)
 ]
+
+# An entry opens admin ports if its range covers 22/3389, or if it allows all
+# protocols (-1 / "all") and so carries no port_range at all.
+admin_entry(entry) if admin_port_range(entry.port_range)
+
+admin_entry(entry) if sprintf("%v", [entry.protocol]) in {"-1", "all"}
 
 admin_port_range(port_range) if {
     port_range.from <= 22

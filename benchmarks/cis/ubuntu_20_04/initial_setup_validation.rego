@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 27
+#     checks: 29
 #     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.initial_setup
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup
@@ -24,6 +24,49 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+# Missing evidence must not pass: these fields are judged by comparison, so an
+# absent field would otherwise silently produce no violation.
+required_evidence := {
+	"enabled_repos": "1.2.1",
+	"gpg_keys": "1.2.2",
+	"grub_config_mode": "1.4.2",
+	"motd_owner": "1.7.4",
+	"issue_owner": "1.7.5",
+	"issue_net_owner": "1.7.6",
+}
+
+violations contains msg if {
+	some key, ctl in required_evidence
+	not input.initial_setup[key]
+	msg := sprintf("CIS %s: evidence missing — initial_setup.%s not collected", [ctl, key])
+}
+
+# A banner file that exists must also report its mode.
+banner_files := {
+	"motd": "1.7.1",
+	"issue": "1.7.2",
+	"issue_net": "1.7.3",
+}
+
+violations contains msg if {
+	some name, ctl in banner_files
+	input.initial_setup[sprintf("%s_exists", [name])]
+	not input.initial_setup[sprintf("%s_mode", [name])]
+	msg := sprintf("CIS %s: evidence missing — initial_setup.%s_mode not collected", [ctl, name])
 }
 
 # CIS 1.2: Configure Software Updates (Ubuntu uses apt)
@@ -59,9 +102,8 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	input.initial_setup.grub_config_mode != "0400"
-	input.initial_setup.grub_config_mode != "0600"
-	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.initial_setup.grub_config_mode])
+	not mode_within(input.initial_setup.grub_config_mode, "0600")
+	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0600 or more restrictive", [input.initial_setup.grub_config_mode])
 }
 
 violations contains msg if {
@@ -98,7 +140,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.motd_exists
-	input.initial_setup.motd_mode != "0644"
+	not mode_within(input.initial_setup.motd_mode, "0644")
 	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644", [input.initial_setup.motd_mode])
 }
 
@@ -114,7 +156,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_exists
-	input.initial_setup.issue_mode != "0644"
+	not mode_within(input.initial_setup.issue_mode, "0644")
 	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644", [input.initial_setup.issue_mode])
 }
 
@@ -130,7 +172,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_net_exists
-	input.initial_setup.issue_net_mode != "0644"
+	not mode_within(input.initial_setup.issue_net_mode, "0644")
 	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644", [input.initial_setup.issue_net_mode])
 }
 

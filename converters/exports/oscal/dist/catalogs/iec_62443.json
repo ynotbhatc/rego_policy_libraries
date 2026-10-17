@@ -66,6 +66,39 @@
     ],
     "controls": [
      {
+      "id": "iec_62443-IEC-62443-FR-1-IAC",
+      "title": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 FR 1 (IAC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 FR 1 (IAC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr1"
+       }
+      ],
+      "links": [
+       {
+        "href": "#464fadb9-7d45-5a75-82df-f5b71e8c102e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-FR-1-IAC_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
+       }
+      ],
+      "class": "ot"
+     },
+     {
       "id": "iec_62443-IEC-62443-SR-1.1-IAC",
       "title": "ICS system '%v' does not enforce unique user identification. Every human user must have a unique identifier.",
       "props": [
@@ -2213,6 +2246,16 @@
         "id": "iec_62443-IEC-62443-SR-4.1-DC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' uses outdated TLS version. TLS 1.2 minimum is required; TLS 1.3 is recommended for IACS communications."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.1-DC_obj.1",
+        "name": "assessment-objective",
+        "prose": "FAIL-CLOSED - facts 'input.ics_systems' were not supplied or are empty; this module cannot be evaluated and is reported non-compliant"
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.1-DC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
        }
       ],
       "class": "ot"
@@ -2365,39 +2408,6 @@
         "id": "iec_62443-iec_62443.fr4-5_stmt",
         "name": "statement",
         "prose": "IEC 62443 SR 4.3 RE 1 SL%v (DC): ICS system '%v' cryptographic modules are not FIPS 140-2 validated. FIPS 140-2 Level 2+ is required for cryptographic implementations at Security Level 3+."
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "iec_62443-iec_62443.fr4-6",
-      "title": "IEC 62443 SR 4.1 SL%v (DC): FAIL-CLOSED - facts 'input.ics_systems' were not supplied; this module cannot be evaluated and is reported non-compliant",
-      "props": [
-       {
-        "name": "label",
-        "value": "iec_62443.fr4#6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "iec_62443.fr4#6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iec_62443.fr4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#b97e1588-e94d-5130-ac8c-3c23d4504d22",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iec_62443-iec_62443.fr4-6_stmt",
-        "name": "statement",
-        "prose": "IEC 62443 SR 4.1 SL%v (DC): FAIL-CLOSED - facts 'input.ics_systems' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "ot"
@@ -4476,6 +4486,11 @@
         "id": "iec_62443-IEC-62443-2-4-SP.01_obj.2",
         "name": "assessment-objective",
         "prose": "FAIL-CLOSED - facts 'input.service_provider' were not supplied; this module cannot be evaluated and is reported non-compliant"
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.01_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.is_iacs_service_provider not provided; applicability of the service provider requirements cannot be determined"
        }
       ],
       "class": "ot"

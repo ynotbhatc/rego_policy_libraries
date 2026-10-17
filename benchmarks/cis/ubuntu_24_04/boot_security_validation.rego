@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 14
+#     checks: 15
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_24_04.boot_security
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 1.3-1.5: Boot Security and Process Hardening
@@ -58,9 +58,13 @@ grub_violations contains msg if {
 }
 
 # CIS 1.4.2: GRUB config file permissions
+grub_violations contains "CIS 1.4.2: evidence missing — grub.config_mode not collected" if {
+	object.get(object.get(input, "grub", {}), "config_mode", null) == null
+}
+
 grub_violations contains msg if {
-	input.grub.config_mode != "0400"
-	input.grub.config_mode != "0600"
+	input.grub.config_mode
+	not mode_within(input.grub.config_mode, "0600")
 	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.grub.config_mode])
 }
 
@@ -127,3 +131,15 @@ report := {
 	"section": "1.3-1.5 Boot Security and Process Hardening",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 13
+#     checks: 14
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iec_62443.fr4
 
 import rego.v1
@@ -52,7 +52,8 @@ default compliant := false
 violations contains msg if {
     input.target_sl >= 2
     some system in input.ics_systems
-    system.sensitive_data_transmitted
+    # unknown (absent) counts as sensitive: only an explicit false exempts the system
+    object.get(system, "sensitive_data_transmitted", true) != false
     not system.data_encrypted_in_transit
     msg := sprintf(
         "IEC 62443 SR 4.1 SL%v (DC): ICS system '%v' transmits sensitive data without encryption. All sensitive IACS communications must be encrypted in transit at Security Level 2+.",
@@ -181,8 +182,13 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
-violations contains "IEC 62443 SR 4.1 SL%v (DC): FAIL-CLOSED - facts 'input.ics_systems' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
-	not input.ics_systems
+violations contains "IEC 62443 SR 4.1 (DC): FAIL-CLOSED - facts 'input.ics_systems' were not supplied or are empty; this module cannot be evaluated and is reported non-compliant" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+# SL-dependent requirements are gated on target_sl; without it they never run.
+violations contains "IEC 62443 SR 4.1 (DC): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
 }
 
 compliant if { count(violations) == 0 }

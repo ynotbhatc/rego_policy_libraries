@@ -66,6 +66,501 @@
     ],
     "controls": [
      {
+      "id": "cis_aws-4.1",
+      "title": "Ensure a log metric filter and alarm exist for unauthorized API calls",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for unauthorized API calls"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.2",
+      "title": "Ensure a log metric filter and alarm exist for console sign-in without MFA",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.2_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for console sign-in without MFA"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.3",
+      "title": "Ensure a log metric filter and alarm exist for usage of the root account",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for usage of the root account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.4",
+      "title": "Ensure a log metric filter and alarm exist for IAM policy changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for IAM policy changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.5",
+      "title": "Ensure a log metric filter and alarm exist for CloudTrail configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for CloudTrail configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.6",
+      "title": "Ensure a log metric filter and alarm exist for console authentication failures",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.6_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for console authentication failures"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.7",
+      "title": "Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.8",
+      "title": "Ensure a log metric filter and alarm exist for S3 bucket policy changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.8_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for S3 bucket policy changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.9",
+      "title": "Ensure a log metric filter and alarm exist for AWS Config configuration changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.9_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for AWS Config configuration changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.10",
+      "title": "Ensure a log metric filter and alarm exist for security group changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.10_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for security group changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.11",
+      "title": "Ensure a log metric filter and alarm exist for changes to Network ACLs",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.11_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for changes to Network ACLs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.12",
+      "title": "Ensure a log metric filter and alarm exist for changes to network gateways",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.12_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for changes to network gateways"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.13",
+      "title": "Ensure a log metric filter and alarm exist for route table changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.13_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for route table changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.14",
+      "title": "Ensure a log metric filter and alarm exist for VPC changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.14_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for VPC changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_aws-4.15",
+      "title": "Ensure a log metric filter and alarm exist for AWS Organizations changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_aws"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f40b0f08-14fb-5eb6-aeda-23db29cbeb71",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_aws-4.15_stmt",
+        "name": "statement",
+        "prose": "Ensure a log metric filter and alarm exist for AWS Organizations changes"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_aws-identity_access",
       "title": "Implemented by a Rego rule in benchmarks/cis/aws/cis_aws_foundations.rego (package cis_aws); see the rule body.",
       "props": [

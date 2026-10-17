@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.file_permissions
 
 # DISA STIG for RHEL 8 - File Permissions Module
@@ -23,13 +23,27 @@ import rego.v1
 
 default compliant := false
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # =============================================================================
 # CAT I
 # =============================================================================
 
+# Offender lists: an absent list is missing evidence (no collector emits file_permissions.*),
+# so a rule only passes when the list is present and empty.
+
 # RHEL-08-010200 | V-230264 | CAT I - No world-writable files
 default no_world_writable := false
-no_world_writable if { not input.file_permissions.world_writable_files }
 no_world_writable if { count(input.file_permissions.world_writable_files) == 0 }
 
 status_rhel_08_010200 := "Not_a_Finding" if { no_world_writable } else := "Open"
@@ -44,7 +58,6 @@ finding_rhel_08_010200 := {
 
 # RHEL-08-010210 | V-230265 | CAT I - No unowned files
 default no_unowned := false
-no_unowned if { not input.file_permissions.unowned_files }
 no_unowned if { count(input.file_permissions.unowned_files) == 0 }
 
 status_rhel_08_010210 := "Not_a_Finding" if { no_unowned } else := "Open"
@@ -63,8 +76,7 @@ finding_rhel_08_010210 := {
 
 # RHEL-08-010220 | V-230266 | CAT II - /etc/passwd permissions 0644
 default passwd_perms := false
-passwd_perms if { input.file_permissions.etc_passwd.mode == "0644" }
-passwd_perms if { input.file_permissions.etc_passwd.mode == "644" }
+passwd_perms if { mode_within(input.file_permissions.etc_passwd.mode, "0644") }
 
 status_rhel_08_010220 := "Not_a_Finding" if { passwd_perms } else := "Open"
 finding_rhel_08_010220 := {
@@ -93,8 +105,7 @@ finding_rhel_08_010230 := {
 
 # RHEL-08-010240 | V-230268 | CAT II - /etc/group permissions 0644
 default group_perms := false
-group_perms if { input.file_permissions.etc_group.mode == "0644" }
-group_perms if { input.file_permissions.etc_group.mode == "644" }
+group_perms if { mode_within(input.file_permissions.etc_group.mode, "0644") }
 
 status_rhel_08_010240 := "Not_a_Finding" if { group_perms } else := "Open"
 finding_rhel_08_010240 := {
@@ -108,7 +119,6 @@ finding_rhel_08_010240 := {
 
 # RHEL-08-010250 | V-230269 | CAT II - No undocumented SUID files
 default no_suid_issues := false
-no_suid_issues if { not input.file_permissions.undocumented_suid_files }
 no_suid_issues if { count(input.file_permissions.undocumented_suid_files) == 0 }
 
 status_rhel_08_010250 := "Not_a_Finding" if { no_suid_issues } else := "Open"
@@ -137,7 +147,6 @@ finding_rhel_08_010260 := {
 
 # RHEL-08-010270 | V-230271 | CAT II - Home directory permissions
 default home_perms := false
-home_perms if { not input.file_permissions.insecure_home_dirs }
 home_perms if { count(input.file_permissions.insecure_home_dirs) == 0 }
 
 status_rhel_08_010270 := "Not_a_Finding" if { home_perms } else := "Open"

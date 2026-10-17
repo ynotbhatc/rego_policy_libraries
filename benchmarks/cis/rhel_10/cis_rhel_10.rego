@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 8
-#     density: section
-#     basis: role
+#     checks: 25
+#     cited: 25
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.rhel_10
 
 # CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1 (Draft)
@@ -22,7 +22,21 @@ package cis.rhel_10
 
 import rego.v1
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # Main compliance rule - all controls must pass
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
@@ -43,10 +57,18 @@ violations := [v |
 ]
 
 # Section 1: Initial Setup (Enhanced for RHEL 10)
-initial_setup_violations := [
+initial_setup_checks := [
+	{"msg": "UNMAPPED-RHEL10-1.2: Ensure grub config is secure (root:root, mode 0600 or stricter)", "ok": grub_config_secure},
+	{"msg": "UNMAPPED-RHEL10-1.3: Ensure core dumps are restricted", "ok": core_dumps_restricted},
+]
+
+initial_setup_violations := array.concat(
+[
     "1.1.1.1: Ensure mounting of squashfs filesystems is disabled" |
     not filesystem_disabled("squashfs")
-]
+],
+[c.msg | some c in initial_setup_checks; not c.ok],
+)
 
 filesystem_disabled(fs_type) if {
     modprobe_config := input.ansible_facts.ansible_modprobe_config[_]
@@ -131,15 +153,19 @@ package_installed(package_name) if {
 
 
 
+default grub_config_secure := false
+
 grub_config_secure if {
     grub := input.ansible_facts.grub_config
     grub.owner == "root"
     grub.group == "root"
-    grub.mode == "0600"
+    mode_within(grub.mode, "0600")
 }
 
 
 
+
+default core_dumps_restricted := false
 
 core_dumps_restricted if {
     sysctl := input.ansible_facts.ansible_sysctl
@@ -177,7 +203,7 @@ core_dumps_restricted if {
 file_permissions_secure(file, expected_owner, expected_group, expected_mode) if {
     file.owner == expected_owner
     file.group == expected_group
-    file.mode == expected_mode
+    mode_within(file.mode, expected_mode)
 }
 
 
@@ -194,11 +220,17 @@ file_permissions_secure(file, expected_owner, expected_group, expected_mode) if 
 
 
 # Section 2: Services (Enhanced for RHEL 10)
-services_violations := [
-    "2.1.1: Ensure xinetd is not installed" |
-    package_installed("xinetd")
+services_checks := [
+	{"msg": "UNMAPPED-RHEL10-2.2: Ensure mta local only is configured", "ok": mta_local_only_configured},
 ]
 
+services_violations := array.concat(
+[
+    "2.1.1: Ensure xinetd is not installed" |
+    package_installed("xinetd")
+],
+[c.msg | some c in services_checks; not c.ok],
+)
 
 
 
@@ -214,6 +246,9 @@ services_violations := [
 
 
 
+
+
+default mta_local_only_configured := false
 
 mta_local_only_configured if {
     postfix := input.ansible_facts.postfix_config
@@ -231,11 +266,21 @@ mta_local_only_configured if {
 
 
 # Section 3: Network Configuration (Enhanced for RHEL 10)
-network_violations := [
+network_checks := [
+	{"msg": "UNMAPPED-RHEL10-3.2: Ensure nftables base chains (input, forward, output) exist", "ok": nftables_base_chains_exist},
+	{"msg": "UNMAPPED-RHEL10-3.3: Ensure nftables loopback is configured", "ok": nftables_loopback_configured},
+	{"msg": "UNMAPPED-RHEL10-3.4: Ensure nftables outbound is configured", "ok": nftables_outbound_configured},
+	{"msg": "UNMAPPED-RHEL10-3.5: Ensure nftables default deny is configured", "ok": nftables_default_deny_configured},
+]
+
+network_violations := array.concat(
+[
     "3.1.1: Verify if IPv6 is enabled on the system" |
     ipv6_enabled
     not ipv6_properly_configured
-]
+],
+[c.msg | some c in network_checks; not c.ok],
+)
 
 ipv6_enabled if {
     interfaces := input.ansible_facts.ansible_interfaces
@@ -305,6 +350,8 @@ necessary_service(service) if {
 
 
 
+default nftables_base_chains_exist := false
+
 nftables_base_chains_exist if {
     nftables := input.ansible_facts.nftables_config
     table := nftables.tables[_]
@@ -314,6 +361,8 @@ nftables_base_chains_exist if {
 }
 
 
+default nftables_loopback_configured := false
+
 nftables_loopback_configured if {
     nftables := input.ansible_facts.nftables_config
     rule := nftables.rules[_]
@@ -322,6 +371,8 @@ nftables_loopback_configured if {
 }
 
 
+default nftables_outbound_configured := false
+
 nftables_outbound_configured if {
     nftables := input.ansible_facts.nftables_config
     rule := nftables.rules[_]
@@ -329,6 +380,8 @@ nftables_outbound_configured if {
     rule.action == "accept"
 }
 
+
+default nftables_default_deny_configured := false
 
 nftables_default_deny_configured if {
     nftables := input.ansible_facts.nftables_config
@@ -390,24 +443,46 @@ audit_rule_exists(rule) if {
 
 
 log_file_permissions_secure(log_file) if {
-    log_file.mode <= "640"
+    mode_within(log_file.mode, "0640")
     log_file.owner == "root"
 }
 
 # Section 5: Access, Authentication and Authorization (Enhanced for RHEL 10)
-access_auth_violations := [
-    "5.1.1: Ensure cron daemon is enabled and running" |
-    service := input.ansible_facts.ansible_services["crond"]
-    service.state != "running"
-    service.enabled != true
+access_auth_checks := [
+	{"msg": "UNMAPPED-RHEL10-5.2: Ensure cron access is restricted", "ok": cron_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.3: Ensure at access is restricted", "ok": at_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.4: Ensure pam faillock is configured", "ok": pam_faillock_configured},
+	{"msg": "UNMAPPED-RHEL10-5.5: Ensure pam pwquality is configured", "ok": pam_pwquality_configured},
+	{"msg": "UNMAPPED-RHEL10-5.6: Ensure password lockout is configured", "ok": password_lockout_configured},
+	{"msg": "UNMAPPED-RHEL10-5.7: Ensure shell timeout is configured", "ok": shell_timeout_configured},
+	{"msg": "UNMAPPED-RHEL10-5.8: Ensure su access is restricted", "ok": su_access_restricted},
 ]
 
+access_auth_violations := array.concat(
+[
+    "5.1.1: Ensure cron daemon is enabled and running" |
+    not cron_running_and_enabled
+],
+[c.msg | some c in access_auth_checks; not c.ok],
+)
+
+# Missing service evidence (no crond entry) fails closed; running AND enabled required.
+default cron_running_and_enabled := false
+
+cron_running_and_enabled if {
+    service := input.ansible_facts.ansible_services["crond"]
+    service.state == "running"
+    service.enabled == true
+}
 
 
 
 
 
 
+
+
+default cron_access_restricted := false
 
 cron_access_restricted if {
     file_exists("/etc/cron.deny")
@@ -424,6 +499,8 @@ file_exists(filepath) if {
     input.ansible_facts.file_permissions[filepath]
 }
 
+
+default at_access_restricted := false
 
 at_access_restricted if {
     file_exists("/etc/at.deny")
@@ -506,12 +583,16 @@ weak_ssh_kex(kex) if {
 
 
 
+default pam_faillock_configured := false
+
 pam_faillock_configured if {
     pam := input.ansible_facts.pam_config
     pam.faillock.deny <= 5
     pam.faillock.unlock_time >= 900
 }
 
+
+default pam_pwquality_configured := false
 
 pam_pwquality_configured if {
     pam := input.ansible_facts.pam_config
@@ -520,6 +601,8 @@ pam_pwquality_configured if {
 }
 
 
+
+default password_lockout_configured := false
 
 password_lockout_configured if {
     pam := input.ansible_facts.pam_config
@@ -546,6 +629,8 @@ system_account_not_secured(user) if {
 
 
 
+default shell_timeout_configured := false
+
 shell_timeout_configured if {
     timeout := input.ansible_facts.shell_timeout
     timeout <= 900
@@ -553,17 +638,32 @@ shell_timeout_configured if {
 
 
 
+default su_access_restricted := false
+
 su_access_restricted if {
     pam := input.ansible_facts.pam_config
     pam.su_restricted == true
 }
 
 # Section 6: System Maintenance (Enhanced for RHEL 10)
-system_maintenance_violations := [
+system_maintenance_checks := [
+	{"msg": "6.1.0: evidence missing — ansible_facts.system_files not collected", "ok": system_files_collected},
+	{"msg": "UNMAPPED-RHEL10-6.2: Ensure root PATH is secure", "ok": root_path_secure},
+]
+
+system_maintenance_violations := array.concat(
+[
     "6.1.1: Audit system file permissions" |
     file := input.ansible_facts.system_files[_]
     not system_file_permissions_correct(file)
-]
+],
+[c.msg | some c in system_maintenance_checks; not c.ok],
+)
+
+# An absent file list is not evidence that permissions are correct.
+default system_files_collected := false
+
+system_files_collected if is_array(input.ansible_facts.system_files)
 
 system_file_permissions_correct(file) if {
     file.permissions_correct == true
@@ -596,6 +696,8 @@ group_exists(gid) if {
 
 
 
+default root_path_secure := false
+
 root_path_secure if {
     path := input.ansible_facts.root_path
     not "." in path.directories
@@ -622,10 +724,17 @@ directory_exists(path) if {
 
 
 # Section 7: Container Security (New for RHEL 10)
-container_security_violations := [
+container_security_checks := [
+	{"msg": "UNMAPPED-RHEL10-7.2: Ensure container network policies is configured", "ok": container_network_policies_configured},
+]
+
+container_security_violations := array.concat(
+[
     "7.1.1: Ensure Podman is configured securely" |
     not podman_configured_securely
-]
+],
+[c.msg | some c in container_security_checks; not c.ok],
+)
 
 podman_configured_securely if {
     podman := input.ansible_facts.podman_config
@@ -644,6 +753,8 @@ trusted_registry(image) if {
 
 
 
+
+default container_network_policies_configured := false
 
 container_network_policies_configured if {
     podman := input.ansible_facts.podman_config
@@ -667,42 +778,57 @@ systemd_security_violations := [
 
 
 # Compliance summary for reporting
+# Totals count the checks this module implements: one base check per section
+# plus the wired checks (previously hard-coded 312/327, which did not reconcile).
+section_totals := {
+	"initial_setup": count(initial_setup_checks) + 1,
+	"services": count(services_checks) + 1,
+	"network": count(network_checks) + 1,
+	"logging": 1,
+	"access_auth": count(access_auth_checks) + 1,
+	"system_maintenance": count(system_maintenance_checks) + 1,
+	"container_security": count(container_security_checks) + 1,
+	"systemd_security": 1
+}
+
+total_controls := sum([t | some t in section_totals])
+
 compliance_summary := {
-    "total_controls": 312,
-    "passing_controls": 312 - count(violations),
+    "total_controls": total_controls,
+    "passing_controls": total_controls - count(violations),
     "failing_controls": count(violations),
-    "compliance_percentage": ((312 - count(violations)) * 100) / 312,
+    "compliance_percentage": ((total_controls - count(violations)) * 100) / total_controls,
     "sections": {
         "initial_setup": {
-            "total": 78,
+            "total": section_totals.initial_setup,
             "violations": count(initial_setup_violations)
         },
         "services": {
-            "total": 28,
+            "total": section_totals.services,
             "violations": count(services_violations)
         },
         "network": {
-            "total": 35,
+            "total": section_totals.network,
             "violations": count(network_violations)
         },
         "logging": {
-            "total": 46,
+            "total": section_totals.logging,
             "violations": count(logging_violations)
         },
         "access_auth": {
-            "total": 68,
+            "total": section_totals.access_auth,
             "violations": count(access_auth_violations)
         },
         "system_maintenance": {
-            "total": 55,
+            "total": section_totals.system_maintenance,
             "violations": count(system_maintenance_violations)
         },
         "container_security": {
-            "total": 9,
+            "total": section_totals.container_security,
             "violations": count(container_security_violations)
         },
         "systemd_security": {
-            "total": 8,
+            "total": section_totals.systemd_security,
             "violations": count(systemd_security_violations)
         }
     }

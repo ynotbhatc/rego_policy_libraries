@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package soc2.infrastructure.storage
 
 import rego.v1
@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # Storage architecture is well-designed and documented
+default storage_architecture_managed := false
+
 storage_architecture_managed if {
     input.storage.architecture.documentation.current == true
     input.storage.architecture.design.tiered_storage == true
@@ -35,6 +37,8 @@ storage_architecture_managed if {
 }
 
 # Storage virtualization and abstraction
+default storage_virtualization_implemented := false
+
 storage_virtualization_implemented if {
     input.storage.virtualization.enabled == true
     input.storage.virtualization.pooling.configured == true
@@ -43,6 +47,8 @@ storage_virtualization_implemented if {
 }
 
 # Storage capacity planning and management
+default storage_capacity_managed := false
+
 storage_capacity_managed if {
     input.storage.capacity.planning.predictive == true
     input.storage.capacity.monitoring.real_time == true
@@ -56,6 +62,8 @@ storage_capacity_managed if {
 # =================================================================
 
 # Encryption at rest implementation
+default encryption_at_rest_comprehensive := false
+
 encryption_at_rest_comprehensive if {
     input.storage.encryption.at_rest.enabled == true
     input.storage.encryption.at_rest.algorithm.aes_256 == true
@@ -65,6 +73,8 @@ encryption_at_rest_comprehensive if {
 }
 
 # Key management for storage encryption
+default storage_key_management_secure := false
+
 storage_key_management_secure if {
     input.storage.encryption.key_management.hsm.enabled == true
     input.storage.encryption.key_management.rotation.automated == true
@@ -73,6 +83,8 @@ storage_key_management_secure if {
 }
 
 # Data-at-rest protection mechanisms
+default data_protection_comprehensive := false
+
 data_protection_comprehensive if {
     input.storage.protection.integrity_checking.enabled == true
     input.storage.protection.checksums.automated == true
@@ -85,6 +97,8 @@ data_protection_comprehensive if {
 # =================================================================
 
 # Storage access control implementation
+default storage_access_control_enforced := false
+
 storage_access_control_enforced if {
     input.storage.access_control.rbac.implemented == true
     input.storage.access_control.least_privilege.enforced == true
@@ -93,6 +107,8 @@ storage_access_control_enforced if {
 }
 
 # File system permissions and ACLs
+default filesystem_permissions_secure := false
+
 filesystem_permissions_secure if {
     input.storage.filesystem.permissions.restrictive == true
     input.storage.filesystem.acls.configured == true
@@ -101,6 +117,8 @@ filesystem_permissions_secure if {
 }
 
 # Network-attached storage (NAS) security
+default nas_security_implemented := false
+
 nas_security_implemented if {
     input.storage.nas.authentication.enabled == true
     input.storage.nas.authorization.configured == true
@@ -113,6 +131,8 @@ nas_security_implemented if {
 # =================================================================
 
 # Backup strategy and implementation
+default backup_strategy_robust := false
+
 backup_strategy_robust if {
     input.storage.backup.strategy.three_two_one.implemented == true
     input.storage.backup.automation.scheduled == true
@@ -122,6 +142,8 @@ backup_strategy_robust if {
 }
 
 # Backup infrastructure security
+default backup_infrastructure_secure := false
+
 backup_infrastructure_secure if {
     input.storage.backup.infrastructure.isolated == true
     input.storage.backup.infrastructure.immutable == true
@@ -130,6 +152,8 @@ backup_infrastructure_secure if {
 }
 
 # Recovery procedures and testing
+default recovery_procedures_tested := false
+
 recovery_procedures_tested if {
     input.storage.recovery.procedures.documented == true
     input.storage.recovery.testing.regular == true
@@ -143,6 +167,8 @@ recovery_procedures_tested if {
 # =================================================================
 
 # Storage performance monitoring
+default storage_performance_monitored := false
+
 storage_performance_monitored if {
     input.storage.monitoring.performance.iops.tracked == true
     input.storage.monitoring.performance.latency.measured == true
@@ -151,6 +177,8 @@ storage_performance_monitored if {
 }
 
 # Storage health and status monitoring
+default storage_health_monitored := false
+
 storage_health_monitored if {
     input.storage.monitoring.health.drive_status.tracked == true
     input.storage.monitoring.health.smart_data.analyzed == true
@@ -159,6 +187,8 @@ storage_health_monitored if {
 }
 
 # Storage access and security logging
+default storage_logging_comprehensive := false
+
 storage_logging_comprehensive if {
     input.storage.logging.access.comprehensive == true
     input.storage.logging.security_events.captured == true
@@ -172,6 +202,8 @@ storage_logging_comprehensive if {
 # =================================================================
 
 # Cloud storage configuration security
+default cloud_storage_secure := false
+
 cloud_storage_secure if {
     input.storage.cloud.encryption.customer_managed_keys == true
     input.storage.cloud.access_control.iam_policies == true
@@ -181,6 +213,8 @@ cloud_storage_secure if {
 }
 
 # Object storage security
+default object_storage_secure := false
+
 object_storage_secure if {
     input.storage.object.bucket_policies.restrictive == true
     input.storage.object.lifecycle_management.configured == true
@@ -189,6 +223,8 @@ object_storage_secure if {
 }
 
 # Hybrid cloud storage security
+default hybrid_storage_secure := false
+
 hybrid_storage_secure if {
     input.storage.hybrid.data_classification.implemented == true
     input.storage.hybrid.tiering_policies.secure == true
@@ -201,6 +237,8 @@ hybrid_storage_secure if {
 # =================================================================
 
 # Container storage interface (CSI) security
+default csi_security_implemented := false
+
 csi_security_implemented if {
     input.storage.containers.csi.encryption.enabled == true
     input.storage.containers.csi.access_control.rbac == true
@@ -209,6 +247,8 @@ csi_security_implemented if {
 }
 
 # Persistent volume security
+default persistent_volume_secure := false
+
 persistent_volume_secure if {
     input.storage.containers.pv.encryption_at_rest == true
     input.storage.containers.pv.access_modes.restricted == true
@@ -217,6 +257,8 @@ persistent_volume_secure if {
 }
 
 # Container image storage security
+default container_image_storage_secure := false
+
 container_image_storage_secure if {
     input.storage.containers.images.registry_security.enabled == true
     input.storage.containers.images.vulnerability_scanning == true
@@ -229,6 +271,8 @@ container_image_storage_secure if {
 # =================================================================
 
 # Data classification and handling
+default data_classification_implemented := false
+
 data_classification_implemented if {
     input.storage.data_lifecycle.classification.automated == true
     input.storage.data_lifecycle.classification.policies.defined == true
@@ -237,6 +281,8 @@ data_classification_implemented if {
 }
 
 # Data retention and archival
+default data_retention_managed := false
+
 data_retention_managed if {
     input.storage.data_lifecycle.retention.policies.documented == true
     input.storage.data_lifecycle.retention.enforcement.automated == true
@@ -245,6 +291,8 @@ data_retention_managed if {
 }
 
 # Secure data disposal
+default data_disposal_secure := false
+
 data_disposal_secure if {
     input.storage.data_lifecycle.disposal.secure_erasure == true
     input.storage.data_lifecycle.disposal.verification.completed == true
@@ -257,6 +305,8 @@ data_disposal_secure if {
 # =================================================================
 
 # Regulatory compliance for storage
+default storage_compliance_maintained := false
+
 storage_compliance_maintained if {
     input.storage.compliance.regulations.identified == true
     input.storage.compliance.controls.implemented == true
@@ -265,6 +315,8 @@ storage_compliance_maintained if {
 }
 
 # Storage audit trail and forensics
+default storage_audit_comprehensive := false
+
 storage_audit_comprehensive if {
     input.storage.auditing.trail.comprehensive == true
     input.storage.auditing.integrity.tamper_evident == true
@@ -273,6 +325,8 @@ storage_audit_comprehensive if {
 }
 
 # Data sovereignty and location controls
+default data_sovereignty_controlled := false
+
 data_sovereignty_controlled if {
     input.storage.sovereignty.location.tracked == true
     input.storage.sovereignty.jurisdiction.compliant == true
@@ -285,6 +339,8 @@ data_sovereignty_controlled if {
 # =================================================================
 
 # Storage disaster recovery
+default storage_disaster_recovery_ready := false
+
 storage_disaster_recovery_ready if {
     input.storage.disaster_recovery.replication.real_time == true
     input.storage.disaster_recovery.failover.automated == true
@@ -293,6 +349,8 @@ storage_disaster_recovery_ready if {
 }
 
 # Geographic redundancy
+default geographic_redundancy_implemented := false
+
 geographic_redundancy_implemented if {
     input.storage.redundancy.geographic.multi_site == true
     input.storage.redundancy.geographic.synchronous == true
@@ -301,6 +359,8 @@ geographic_redundancy_implemented if {
 }
 
 # Business continuity for storage
+default storage_business_continuity := false
+
 storage_business_continuity if {
     input.storage.business_continuity.critical_data.identified == true
     input.storage.business_continuity.recovery_priorities.defined == true
@@ -312,11 +372,15 @@ storage_business_continuity if {
 # OVERALL STORAGE INFRASTRUCTURE ASSESSMENT
 # =================================================================
 
+default storage_architecture_compliant := false
+
 storage_architecture_compliant if {
     storage_architecture_managed
     storage_virtualization_implemented
     storage_capacity_managed
 }
+
+default storage_encryption_compliant := false
 
 storage_encryption_compliant if {
     encryption_at_rest_comprehensive
@@ -324,11 +388,15 @@ storage_encryption_compliant if {
     data_protection_comprehensive
 }
 
+default storage_access_compliant := false
+
 storage_access_compliant if {
     storage_access_control_enforced
     filesystem_permissions_secure
     nas_security_implemented
 }
+
+default storage_backup_compliant := false
 
 storage_backup_compliant if {
     backup_strategy_robust
@@ -336,11 +404,15 @@ storage_backup_compliant if {
     recovery_procedures_tested
 }
 
+default storage_monitoring_compliant := false
+
 storage_monitoring_compliant if {
     storage_performance_monitored
     storage_health_monitored
     storage_logging_comprehensive
 }
+
+default cloud_storage_compliant := false
 
 cloud_storage_compliant if {
     cloud_storage_secure
@@ -348,11 +420,15 @@ cloud_storage_compliant if {
     hybrid_storage_secure
 }
 
+default container_storage_compliant := false
+
 container_storage_compliant if {
     csi_security_implemented
     persistent_volume_secure
     container_image_storage_secure
 }
+
+default storage_lifecycle_compliant := false
 
 storage_lifecycle_compliant if {
     data_classification_implemented
@@ -360,17 +436,23 @@ storage_lifecycle_compliant if {
     data_disposal_secure
 }
 
+default storage_governance_compliant := false
+
 storage_governance_compliant if {
     storage_compliance_maintained
     storage_audit_comprehensive
     data_sovereignty_controlled
 }
 
+default storage_resilience_compliant := false
+
 storage_resilience_compliant if {
     storage_disaster_recovery_ready
     geographic_redundancy_implemented
     storage_business_continuity
 }
+
+default overall_storage_infrastructure_compliant := false
 
 overall_storage_infrastructure_compliant if {
     storage_architecture_compliant

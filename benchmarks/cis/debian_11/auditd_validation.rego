@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 15
+#     checks: 17
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_debian_11.auditd
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 4.1: Configure System Accounting (auditd)
@@ -33,12 +33,17 @@ violations := array.concat(
 
 # CIS 4.1.1.1: Ensure audit is installed
 service_violations contains msg if {
-	not input.packages["auditd"]
-	not input.packages["audit"]
+	not input.packages.auditd
+	not input.packages.audit
 	msg := "CIS 4.1.1.1: auditd package not installed"
 }
 
 # CIS 4.1.1.2: Ensure auditd service is enabled and running
+service_violations contains msg if {
+	not input.services["auditd.service"]
+	msg := "CIS 4.1.1.2: evidence missing — services['auditd.service'] not collected"
+}
+
 service_violations contains msg if {
 	service := input.services["auditd.service"]
 	service.status != "enabled"
@@ -51,47 +56,87 @@ service_violations contains msg if {
 	msg := "CIS 4.1.1.2: auditd service not running"
 }
 
+# --- config helpers: only non-comment lines, whole-key match, last occurrence wins ---
+
+conf_lines := [t |
+	some l in split(object.get(object.get(input, "auditd", {}), "config", ""), "\n")
+	t := trim_space(l)
+	t != ""
+	not startswith(t, "#")
+]
+
+# last value assigned to key in auditd.conf (undefined when unset)
+conf_value(key) := v if {
+	vals := [lower(m[1]) |
+		some l in conf_lines
+		m := regex.find_all_string_submatch_n(sprintf(`^%s\s*=\s*(\S+)`, [key]), l, 1)[0]
+	]
+	count(vals) > 0
+	v := vals[count(vals) - 1]
+}
+
+conf_in(key, allowed) if conf_value(key) in allowed
+
+grub_has_token(tok) if {
+	some t in split(regex.replace(input.bootloader.grub_config, `\s+`, " "), " ")
+	t == tok
+}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # CIS 4.1.1.3: Ensure auditing for processes prior to auditd
 config_violations contains msg if {
-	not contains(input.bootloader.grub_config, "audit=1")
+	not grub_has_token("audit=1")
 	msg := "CIS 4.1.1.3: audit=1 not set in bootloader configuration"
 }
 
 # CIS 4.1.1.4: Ensure audit_backlog_limit is sufficient
 config_violations contains msg if {
-	not contains(input.bootloader.grub_config, "audit_backlog_limit")
+	not backlog_ok
 	msg := "CIS 4.1.1.4: audit_backlog_limit not configured (should be 8192 or higher)"
+}
+
+backlog_ok if {
+	some t in split(regex.replace(input.bootloader.grub_config, `\s+`, " "), " ")
+	m := regex.find_all_string_submatch_n(`^audit_backlog_limit=([0-9]+)$`, t, 1)[0]
+	to_number(m[1]) >= 8192
 }
 
 # CIS 4.1.2.1: Ensure audit log storage size is configured
 config_violations contains msg if {
-	not contains(input.auditd.config, "max_log_file")
+	not conf_value("max_log_file")
 	msg := "CIS 4.1.2.1: max_log_file not configured in auditd.conf"
 }
 
 # CIS 4.1.2.2: Ensure audit logs are not automatically deleted
 config_violations contains msg if {
-	contains(input.auditd.config, "max_log_file_action = delete")
+	conf_value("max_log_file_action") == "delete"
 	msg := "CIS 4.1.2.2: max_log_file_action set to delete (logs will be deleted)"
 }
 
 config_violations contains msg if {
-	contains(input.auditd.config, "max_log_file_action = ignore")
+	conf_value("max_log_file_action") == "ignore"
 	msg := "CIS 4.1.2.2: max_log_file_action set to ignore (no action on full logs)"
 }
 
 # CIS 4.1.2.3: Ensure system is disabled when audit logs are full
 config_violations contains msg if {
-	not contains(input.auditd.config, "space_left_action = email")
-	not contains(input.auditd.config, "space_left_action = exec")
-	not contains(input.auditd.config, "space_left_action = single")
-	not contains(input.auditd.config, "space_left_action = halt")
+	not conf_in("space_left_action", {"email", "exec", "single", "halt"})
 	msg := "CIS 4.1.2.3: space_left_action not appropriate (should be email, exec, single, or halt)"
 }
 
 config_violations contains msg if {
-	not contains(input.auditd.config, "admin_space_left_action = single")
-	not contains(input.auditd.config, "admin_space_left_action = halt")
+	not conf_in("admin_space_left_action", {"single", "halt"})
 	msg := "CIS 4.1.2.3: admin_space_left_action not appropriate (should be single or halt)"
 }
 
@@ -162,7 +207,7 @@ extract_rule_description(rule) := desc if {
 	contains(rule, "-w")
 	parts := split(rule, " ")
 	desc := parts[1]
-} else := "system call monitoring"
+} else := rule
 
 rules_violations contains msg if {
 	some required_rule in required_rules
@@ -179,8 +224,13 @@ rules_violations contains msg if {
 
 # CIS 4.1.4.1: Audit log file permissions
 permission_violations contains msg if {
+	not input.auditd.log_permissions
+	msg := "CIS 4.1.4.1: evidence missing — auditd.log_permissions not collected"
+}
+
+permission_violations contains msg if {
 	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+	not mode_within(mode, "0640")
 	msg := sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode])
 }
 
@@ -205,7 +255,7 @@ report := {
 	"config_violations": count(config_violations),
 	"rules_violations": count(rules_violations),
 	"permission_violations": count(permission_violations),
-	"controls_checked": 38,
+	"controls_checked": count(required_rules) + 14, # 14 non-rule checks above + one per required audit rule
 	"rules_checked": count(required_rules),
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 (applied to Debian 11)",

@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package soc2.availability.system_availability
 
 import rego.v1
@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # System availability meets service level commitments
+default availability_commitments_met := false
+
 availability_commitments_met if {
     input.availability.sla.target_uptime >= 99.9
     input.availability.current_uptime >= input.availability.sla.target_uptime
@@ -33,6 +35,8 @@ availability_commitments_met if {
 }
 
 # Monitoring systems are in place
+default monitoring_systems_configured := false
+
 monitoring_systems_configured if {
     input.monitoring.infrastructure.enabled == true
     input.monitoring.application.enabled == true
@@ -41,6 +45,8 @@ monitoring_systems_configured if {
 }
 
 # Capacity planning is performed
+default capacity_planning_implemented := false
+
 capacity_planning_implemented if {
     input.capacity_management.monitoring.enabled == true
     input.capacity_management.thresholds.cpu_warning <= 80
@@ -54,6 +60,8 @@ capacity_planning_implemented if {
 # =================================================================
 
 # Preventive maintenance is scheduled
+default preventive_maintenance_scheduled := false
+
 preventive_maintenance_scheduled if {
     input.maintenance.scheduled_windows.defined == true
     input.maintenance.change_management.process_documented == true
@@ -62,6 +70,8 @@ preventive_maintenance_scheduled if {
 }
 
 # Backup and recovery procedures are implemented
+default backup_recovery_implemented := false
+
 backup_recovery_implemented if {
     input.backup.automated_backups.enabled == true
     input.backup.frequency.daily == true
@@ -71,6 +81,8 @@ backup_recovery_implemented if {
 }
 
 # Incident response procedures are in place
+default incident_response_ready := false
+
 incident_response_ready if {
     input.incident_response.procedures_documented == true
     input.incident_response.team_defined == true
@@ -83,6 +95,8 @@ incident_response_ready if {
 # =================================================================
 
 # High availability is configured
+default openshift_ha_configured := false
+
 openshift_ha_configured if {
     input.openshift.control_plane.replicas >= 3
     input.openshift.worker_nodes.count >= 3
@@ -91,6 +105,8 @@ openshift_ha_configured if {
 }
 
 # Auto-scaling is implemented
+default auto_scaling_configured := false
+
 auto_scaling_configured if {
     input.openshift.autoscaling.horizontal_pod_autoscaler.enabled == true
     input.openshift.autoscaling.cluster_autoscaler.enabled == true
@@ -98,6 +114,8 @@ auto_scaling_configured if {
 }
 
 # Pod disruption budgets are set
+default pod_disruption_budgets_set := false
+
 pod_disruption_budgets_set if {
     count(input.openshift.workloads) > 0
     workloads_with_pdb := [workload | 
@@ -108,7 +126,10 @@ pod_disruption_budgets_set if {
 }
 
 # Resource quotas and limits are enforced
+default resource_limits_enforced := false
+
 resource_limits_enforced if {
+    count(input.openshift.workloads) > 0
     input.openshift.resource_management.quotas.enabled == true
     input.openshift.resource_management.limit_ranges.enabled == true
     count([workload | 
@@ -119,7 +140,10 @@ resource_limits_enforced if {
 }
 
 # Health checks are configured
+default health_checks_configured := false
+
 health_checks_configured if {
+    count(input.openshift.workloads) > 0
     count([workload | 
         workload := input.openshift.workloads[_];
         workload.health_checks.readiness_probe.configured == true;
@@ -132,6 +156,8 @@ health_checks_configured if {
 # =================================================================
 
 # Multi-zone deployment is implemented
+default multi_zone_deployment := false
+
 multi_zone_deployment if {
     input.infrastructure.zones.count >= 2
     input.infrastructure.load_balancing.cross_zone == true
@@ -139,6 +165,8 @@ multi_zone_deployment if {
 }
 
 # Network redundancy is in place
+default network_redundancy_implemented := false
+
 network_redundancy_implemented if {
     input.network.redundant_connections.count >= 2
     input.network.failover.automatic == true
@@ -146,6 +174,8 @@ network_redundancy_implemented if {
 }
 
 # Storage redundancy is configured
+default storage_redundancy_configured := false
+
 storage_redundancy_configured if {
     input.storage.replication.enabled == true
     input.storage.replication.factor >= 2
@@ -158,6 +188,8 @@ storage_redundancy_configured if {
 # =================================================================
 
 # Performance monitoring is implemented
+default performance_monitoring_active := false
+
 performance_monitoring_active if {
     input.performance.response_time.monitoring == true
     input.performance.throughput.monitoring == true
@@ -166,6 +198,8 @@ performance_monitoring_active if {
 }
 
 # Performance thresholds are defined
+default performance_thresholds_defined := false
+
 performance_thresholds_defined if {
     input.performance.thresholds.response_time_ms <= 2000
     input.performance.thresholds.error_rate_percent <= 1
@@ -176,6 +210,8 @@ performance_thresholds_defined if {
 # Overall Availability Assessment
 # =================================================================
 
+default availability_controls_compliant := false
+
 availability_controls_compliant if {
     availability_commitments_met
     monitoring_systems_configured
@@ -185,6 +221,8 @@ availability_controls_compliant if {
     incident_response_ready
 }
 
+default openshift_availability_compliant := false
+
 openshift_availability_compliant if {
     openshift_ha_configured
     auto_scaling_configured
@@ -193,16 +231,22 @@ openshift_availability_compliant if {
     health_checks_configured
 }
 
+default infrastructure_resilient := false
+
 infrastructure_resilient if {
     multi_zone_deployment
     network_redundancy_implemented
     storage_redundancy_configured
 }
 
+default performance_managed := false
+
 performance_managed if {
     performance_monitoring_active
     performance_thresholds_defined
 }
+
+default overall_availability_compliant := false
 
 overall_availability_compliant if {
     availability_controls_compliant

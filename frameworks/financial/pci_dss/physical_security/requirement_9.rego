@@ -15,7 +15,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package pci_dss.physical_security.requirement_9
 
 import rego.v1
@@ -129,7 +129,7 @@ disk_destruction if {
 
 poi_device_protection if {
 	# Only required if POI devices are used
-	not input.pci.poi_devices.in_scope
+	input.pci.poi_devices.in_scope == false
 } else if {
 	input.pci.poi_devices.in_scope
 	input.pci.poi_devices.inventory.maintained == true
@@ -140,6 +140,22 @@ poi_device_protection if {
 	input.pci.poi_devices.substitution.procedures_for_detecting == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default physical_security_policies_established := false
+default physical_security_roles_defined := false
+default physical_access_controls := false
+default badge_system := false
+default public_network_jacks_disabled := false
+default physical_access_authorization := false
+default visitor_management := false
+default physical_media_controls := false
+default media_distribution_secured := false
+default media_destruction := false
+default disk_destruction := false
+default poi_device_protection := false
+default pci_requirement_9_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
@@ -149,6 +165,7 @@ pci_requirement_9_compliant if {
 	physical_security_roles_defined
 	physical_access_controls
 	badge_system
+	public_network_jacks_disabled
 	physical_access_authorization
 	visitor_management
 	physical_media_controls

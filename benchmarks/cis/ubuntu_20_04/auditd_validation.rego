@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 15
+#     checks: 19
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.auditd
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 4.1: Configure System Accounting (auditd)
@@ -30,6 +30,39 @@ violations := array.concat(
 	array.concat([v | some v in service_violations], [v | some v in config_violations]),
 	array.concat([v | some v in rules_violations], [v | some v in permission_violations]),
 )
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+# Missing evidence must not pass: absent collector sections are violations.
+service_violations contains msg if {
+	not input.services["auditd.service"]
+	msg := "CIS 4.1.1.2: evidence missing — services.auditd.service not collected"
+}
+
+config_violations contains msg if {
+	not input.bootloader.grub_config
+	msg := "CIS 4.1.1.3: evidence missing — bootloader.grub_config not collected"
+}
+
+config_violations contains msg if {
+	not input.auditd.config
+	msg := "CIS 4.1.2.1: evidence missing — auditd.config not collected"
+}
+
+permission_violations contains msg if {
+	not input.auditd.log_permissions
+	msg := "CIS 4.1.4.1: evidence missing — auditd.log_permissions not collected"
+}
 
 # CIS 4.1.1.1: Ensure audit is installed
 service_violations contains msg if {
@@ -180,7 +213,7 @@ rules_violations contains msg if {
 # CIS 4.1.4.1: Audit log file permissions
 permission_violations contains msg if {
 	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+	not mode_within(mode, "0640")
 	msg := sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode])
 }
 

@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package pci_dss.logging_monitoring.requirement_10
 
 import rego.v1
@@ -180,6 +180,26 @@ siem_deployed if {
 	input.pci.siem.tuned.false_positives_managed == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default logging_policies_established := false
+default logging_roles_defined := false
+default required_events_logged := false
+default audit_log_data_elements := false
+default audit_log_protection := false
+default external_log_server := false
+default daily_log_review := false
+default automated_log_analysis := false
+default periodic_log_review := false
+default log_exceptions_followed_up := false
+default log_retention := false
+default time_synchronization := false
+default time_data_protected := false
+default security_control_failure_detection := false
+default security_failure_response := false
+default siem_deployed := false
+default pci_requirement_10_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
@@ -197,8 +217,10 @@ pci_requirement_10_compliant if {
 	log_exceptions_followed_up
 	log_retention
 	time_synchronization
+	time_data_protected
 	security_control_failure_detection
 	security_failure_response
+	siem_deployed
 }
 
 default pci_requirement_10_score := 0

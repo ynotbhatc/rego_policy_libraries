@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 16
+#     checks: 23
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel9.file_permissions
 
 # CIS RHEL 9 Section 6.1.x - System File Permissions
@@ -216,6 +216,44 @@ critical_file_violations contains violation if {
 critical_file_violations contains violation if {
 	not input.ssh_private_keys.all_compliant
 	violation := "SSH Private Keys: One or more SSH host keys have insecure permissions"
+}
+
+# =============================================================================
+# EVIDENCE GATES - a section that was not collected is not a pass
+# =============================================================================
+
+has_array(section, key) if is_array(object.get(object.get(input, section, {}), key, null))
+
+has_number(section, key) if is_number(object.get(object.get(input, section, {}), key, null))
+
+has_bool(section, key) if is_boolean(object.get(object.get(input, section, {}), key, null))
+
+critical_file_violations contains "CIS 6.1.2: evidence missing — critical_files.analysis not collected" if {
+	not has_array("critical_files", "analysis")
+}
+
+critical_file_violations contains "SSH Private Keys: evidence missing — ssh_private_keys.all_compliant not collected" if {
+	not has_bool("ssh_private_keys", "all_compliant")
+}
+
+world_writable_violations contains "CIS 6.1.10: evidence missing — world_writable.count not collected" if {
+	not has_number("world_writable", "count")
+}
+
+ownership_violations contains "CIS 6.1.11: evidence missing — unowned_files.count not collected" if {
+	not has_number("unowned_files", "count")
+}
+
+ownership_violations contains "CIS 6.1.12: evidence missing — ungrouped_files.count not collected" if {
+	not has_number("ungrouped_files", "count")
+}
+
+suid_sgid_violations contains "CIS 6.1.13: evidence missing — suid_files.total_count not collected" if {
+	not has_number("suid_files", "total_count")
+}
+
+suid_sgid_violations contains "CIS 6.1.14: evidence missing — sgid_files.count not collected" if {
+	not has_number("sgid_files", "count")
 }
 
 # =============================================================================

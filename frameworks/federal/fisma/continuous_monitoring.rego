@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package fisma.continuous_monitoring
 
 import rego.v1
@@ -23,6 +23,8 @@ import rego.v1
 # RMF Step 7: Monitor security controls on an ongoing basis
 
 # Main Continuous Monitoring Compliance
+default continuous_monitoring_compliant := false
+
 continuous_monitoring_compliant if {
 	iscm_program_established
 	continuous_monitoring_strategy_implemented
@@ -33,6 +35,8 @@ continuous_monitoring_compliant if {
 }
 
 # ISCM Program Establishment
+default iscm_program_established := false
+
 iscm_program_established if {
 	iscm_program_documented
 	iscm_roles_responsibilities_defined
@@ -76,6 +80,8 @@ iscm_metrics_defined if {
 }
 
 # Continuous Monitoring Strategy Implementation
+default continuous_monitoring_strategy_implemented := false
+
 continuous_monitoring_strategy_implemented if {
 	monitoring_frequencies_established
 	monitoring_procedures_documented
@@ -120,6 +126,8 @@ monitoring_tools_configured if {
 }
 
 # Security Status Monitoring
+default security_status_monitoring_active := false
+
 security_status_monitoring_active if {
 	configuration_management_monitoring
 	vulnerability_management_monitoring
@@ -158,6 +166,8 @@ threat_intelligence_integration if {
 }
 
 # Ongoing Assessments
+default ongoing_assessments_conducted := false
+
 ongoing_assessments_conducted if {
 	security_control_assessments_ongoing
 	risk_assessments_current
@@ -194,6 +204,8 @@ red_team_exercises_conducted if {
 }
 
 # Incident Response Integration
+default incident_response_integrated := false
+
 incident_response_integrated if {
 	incident_detection_capabilities
 	incident_response_procedures_current
@@ -231,6 +243,8 @@ lessons_learned_integration if {
 }
 
 # Reporting Requirements
+default reporting_requirements_met := false
+
 reporting_requirements_met if {
 	management_reporting_current
 	regulatory_reporting_compliant

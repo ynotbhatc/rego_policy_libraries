@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package soc2.infrastructure.systems
 
 import rego.v1
@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # System architecture is documented and managed
+default system_architecture_managed := false
+
 system_architecture_managed if {
     input.systems.architecture.documentation.current == true
     input.systems.architecture.documentation.detailed == true
@@ -35,6 +37,8 @@ system_architecture_managed if {
 }
 
 # Infrastructure as Code (IaC) implementation
+default infrastructure_as_code_implemented := false
+
 infrastructure_as_code_implemented if {
     input.systems.iac.enabled == true
     input.systems.iac.version_control.git_managed == true
@@ -44,6 +48,8 @@ infrastructure_as_code_implemented if {
 }
 
 # System standardization and consistency
+default system_standardization := false
+
 system_standardization if {
     input.systems.standardization.base_images.standardized == true
     input.systems.standardization.configurations.templated == true
@@ -56,6 +62,8 @@ system_standardization if {
 # =================================================================
 
 # OS hardening standards compliance
+default os_hardening_compliant := false
+
 os_hardening_compliant if {
     input.systems.hardening.cis_benchmarks.applied == true
     input.systems.hardening.unnecessary_services.disabled == true
@@ -65,6 +73,8 @@ os_hardening_compliant if {
 }
 
 # Security configurations management
+default security_configurations_managed := false
+
 security_configurations_managed if {
     input.systems.security_config.baseline.defined == true
     input.systems.security_config.compliance_scanning.automated == true
@@ -73,6 +83,8 @@ security_configurations_managed if {
 }
 
 # System access controls
+default system_access_controls := false
+
 system_access_controls if {
     input.systems.access_control.local_accounts.minimized == true
     input.systems.access_control.privileged_access.managed == true
@@ -86,6 +98,8 @@ system_access_controls if {
 # =================================================================
 
 # Patch management program
+default patch_management_effective := false
+
 patch_management_effective if {
     input.systems.patch_management.automated_scanning == true
     input.systems.patch_management.testing_environment == true
@@ -95,6 +109,8 @@ patch_management_effective if {
 }
 
 # Vulnerability assessment and management
+default vulnerability_management_comprehensive := false
+
 vulnerability_management_comprehensive if {
     input.systems.vulnerability_management.scanning.continuous == true
     input.systems.vulnerability_management.assessment.risk_based == true
@@ -103,6 +119,8 @@ vulnerability_management_comprehensive if {
 }
 
 # Security update automation
+default security_updates_automated := false
+
 security_updates_automated if {
     input.systems.security_updates.critical_patches.automatic == true
     input.systems.security_updates.non_critical.scheduled == true
@@ -115,6 +133,8 @@ security_updates_automated if {
 # =================================================================
 
 # System monitoring infrastructure
+default system_monitoring_comprehensive := false
+
 system_monitoring_comprehensive if {
     input.systems.monitoring.performance.continuous == true
     input.systems.monitoring.availability.real_time == true
@@ -124,6 +144,8 @@ system_monitoring_comprehensive if {
 }
 
 # System logging and audit
+default system_logging_compliant := false
+
 system_logging_compliant if {
     input.systems.logging.audit_logs.comprehensive == true
     input.systems.logging.security_events.captured == true
@@ -133,6 +155,8 @@ system_logging_compliant if {
 }
 
 # Performance monitoring and optimization
+default performance_monitoring_active := false
+
 performance_monitoring_active if {
     input.systems.performance.metrics.comprehensive == true
     input.systems.performance.baselines.established == true
@@ -145,6 +169,8 @@ performance_monitoring_active if {
 # =================================================================
 
 # Backup strategy and implementation
+default backup_strategy_comprehensive := false
+
 backup_strategy_comprehensive if {
     input.systems.backup.strategy.three_two_one_rule == true
     input.systems.backup.automation.scheduled == true
@@ -154,6 +180,8 @@ backup_strategy_comprehensive if {
 }
 
 # Disaster recovery planning
+default disaster_recovery_ready := false
+
 disaster_recovery_ready if {
     input.systems.disaster_recovery.plan.documented == true
     input.systems.disaster_recovery.testing.regular == true
@@ -163,6 +191,8 @@ disaster_recovery_ready if {
 }
 
 # Business continuity controls
+default business_continuity_implemented := false
+
 business_continuity_implemented if {
     input.systems.business_continuity.critical_systems.identified == true
     input.systems.business_continuity.dependencies.mapped == true
@@ -175,6 +205,8 @@ business_continuity_implemented if {
 # =================================================================
 
 # Container platform security
+default container_platform_secure := false
+
 container_platform_secure if {
     input.systems.containers.runtime_security.enabled == true
     input.systems.containers.image_scanning.automated == true
@@ -183,6 +215,8 @@ container_platform_secure if {
 }
 
 # Kubernetes/OpenShift security
+default orchestration_security_compliant := false
+
 orchestration_security_compliant if {
     input.systems.orchestration.rbac.configured == true
     input.systems.orchestration.pod_security.standards_enforced == true
@@ -191,6 +225,8 @@ orchestration_security_compliant if {
 }
 
 # Container lifecycle management
+default container_lifecycle_managed := false
+
 container_lifecycle_managed if {
     input.systems.containers.lifecycle.build_security == true
     input.systems.containers.lifecycle.deployment_controls == true
@@ -203,6 +239,8 @@ container_lifecycle_managed if {
 # =================================================================
 
 # Cloud security posture management
+default cloud_security_posture_managed := false
+
 cloud_security_posture_managed if {
     input.systems.cloud.cspm.enabled == true
     input.systems.cloud.compliance_monitoring.continuous == true
@@ -211,6 +249,8 @@ cloud_security_posture_managed if {
 }
 
 # Infrastructure security controls
+default infrastructure_security_controls := false
+
 infrastructure_security_controls if {
     input.systems.cloud.identity_management.centralized == true
     input.systems.cloud.resource_access.controlled == true
@@ -219,6 +259,8 @@ infrastructure_security_controls if {
 }
 
 # Multi-cloud and hybrid security
+default multi_cloud_security_consistent := false
+
 multi_cloud_security_consistent if {
     input.systems.multi_cloud.policies.consistent == true
     input.systems.multi_cloud.monitoring.unified == true
@@ -231,6 +273,8 @@ multi_cloud_security_consistent if {
 # =================================================================
 
 # Configuration management system
+default configuration_management_implemented := false
+
 configuration_management_implemented if {
     input.systems.config_management.tool.deployed == true
     input.systems.config_management.version_control.enabled == true
@@ -239,6 +283,8 @@ configuration_management_implemented if {
 }
 
 # Configuration drift detection
+default configuration_drift_managed := false
+
 configuration_drift_managed if {
     input.systems.config_drift.detection.continuous == true
     input.systems.config_drift.alerting.real_time == true
@@ -247,6 +293,8 @@ configuration_drift_managed if {
 }
 
 # Baseline configuration management
+default baseline_configuration_enforced := false
+
 baseline_configuration_enforced if {
     input.systems.baseline.security_hardening.applied == true
     input.systems.baseline.performance_optimization.applied == true
@@ -259,6 +307,8 @@ baseline_configuration_enforced if {
 # =================================================================
 
 # Capacity planning and management
+default capacity_management_effective := false
+
 capacity_management_effective if {
     input.systems.capacity.planning.predictive == true
     input.systems.capacity.monitoring.real_time == true
@@ -267,6 +317,8 @@ capacity_management_effective if {
 }
 
 # Auto-scaling implementation
+default auto_scaling_configured := false
+
 auto_scaling_configured if {
     input.systems.scaling.horizontal.enabled == true
     input.systems.scaling.vertical.enabled == true
@@ -275,6 +327,8 @@ auto_scaling_configured if {
 }
 
 # Resource optimization
+default resource_optimization_active := false
+
 resource_optimization_active if {
     input.systems.resources.utilization.monitored == true
     input.systems.resources.allocation.optimized == true
@@ -286,11 +340,15 @@ resource_optimization_active if {
 # OVERALL SYSTEMS INFRASTRUCTURE ASSESSMENT
 # =================================================================
 
+default systems_architecture_compliant := false
+
 systems_architecture_compliant if {
     system_architecture_managed
     infrastructure_as_code_implemented
     system_standardization
 }
+
+default systems_security_compliant := false
 
 systems_security_compliant if {
     os_hardening_compliant
@@ -301,11 +359,15 @@ systems_security_compliant if {
     security_updates_automated
 }
 
+default systems_monitoring_compliant := false
+
 systems_monitoring_compliant if {
     system_monitoring_comprehensive
     system_logging_compliant
     performance_monitoring_active
 }
+
+default systems_resilience_compliant := false
 
 systems_resilience_compliant if {
     backup_strategy_comprehensive
@@ -313,17 +375,23 @@ systems_resilience_compliant if {
     business_continuity_implemented
 }
 
+default container_orchestration_compliant := false
+
 container_orchestration_compliant if {
     container_platform_secure
     orchestration_security_compliant
     container_lifecycle_managed
 }
 
+default cloud_systems_compliant := false
+
 cloud_systems_compliant if {
     cloud_security_posture_managed
     infrastructure_security_controls
     multi_cloud_security_consistent
 }
+
+default systems_management_compliant := false
 
 systems_management_compliant if {
     configuration_management_implemented
@@ -333,6 +401,8 @@ systems_management_compliant if {
     auto_scaling_configured
     resource_optimization_active
 }
+
+default overall_systems_infrastructure_compliant := false
 
 overall_systems_infrastructure_compliant if {
     systems_architecture_compliant

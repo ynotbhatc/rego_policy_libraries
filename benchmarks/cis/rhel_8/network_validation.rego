@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 23
+#     checks: 25
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.network
 
 # CIS RHEL 8 Benchmark v4.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -33,6 +33,32 @@ violations := array.concat(
 	array.concat([v | some v in sysctl_violations], [v | some v in ip_forwarding_violations]),
 	array.concat([v | some v in ipv6_violations], [v | some v in network_interface_violations]),
 )
+
+# Required sysctl parameters: each must appear in sysctl_parameters.analysis,
+# otherwise the check below would silently pass on missing evidence.
+required_sysctls := {
+	"net.ipv4.tcp_syncookies": "CIS 3.2.8",
+	"net.ipv4.conf.all.rp_filter": "CIS 3.2.7",
+	"net.ipv4.conf.all.log_martians": "CIS 3.2.4",
+	"net.ipv4.icmp_echo_ignore_broadcasts": "CIS 3.2.5",
+	"net.ipv4.conf.all.send_redirects": "CIS 3.1.2",
+	"net.ipv4.conf.default.send_redirects": "CIS 3.1.2",
+}
+
+sysctl_collected(name) if {
+	some param in input.sysctl_parameters.analysis
+	param.parameter == name
+}
+
+sysctl_violations contains msg if {
+	some name, cis in required_sysctls
+	not sysctl_collected(name)
+	msg := sprintf("%s: evidence missing — sysctl %s not collected", [cis, name])
+}
+
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing — ip_forwarding not collected" if {
+	count(object.get(input, "ip_forwarding", {})) == 0
+}
 
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [
@@ -145,7 +171,7 @@ network_interface_violations contains sprintf("CIS 3.3.2: %d wireless interfaces
 }
 
 # CIS 3.5.1.1 (v4.0.0): Firewall active
-network_interface_violations contains sprintf("CIS 3.5.1.1: No active firewall detected (type: %s)", [input.firewall.type]) if {
+network_interface_violations contains sprintf("CIS 3.5.1.1: No active firewall detected (type: %s)", [object.get(input, ["firewall", "type"], "unknown")]) if {
 	not input.firewall.active
 }
 

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.user_group
 
 import rego.v1
@@ -22,6 +22,13 @@ import rego.v1
 # User and group account validation
 
 default compliant := false
+
+# All checks below read offender lists, where an absent list means "none".
+# That is only sound if the collector emitted the section, so an empty or
+# missing user_group object is a violation, not a pass.
+violations contains "CIS 6.2: evidence missing - user_group not collected" if {
+    count(object.get(input, "user_group", {})) == 0
+}
 
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords
 violations contains msg if {

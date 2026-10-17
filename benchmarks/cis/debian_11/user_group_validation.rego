@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 23
+#     checks: 24
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_debian_11.user_group
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 6.2: User and Group Settings
@@ -24,6 +24,26 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# Missing evidence fails closed: an absent offender list is not proof there are no offenders.
+required_facts := [
+	"users_without_shadow", "users_with_empty_password", "passwd_groups_not_in_group_file",
+	"duplicate_uids", "duplicate_gids", "duplicate_usernames", "duplicate_groupnames",
+	"root_path", "root_path_dirs", "root_path_writable_dirs", "uid_zero_accounts",
+	"users_without_home_directory", "users_not_owning_home", "home_dirs_too_permissive",
+	"users_with_netrc", "users_with_forward", "users_with_rhosts", "dotfiles_group_or_world_writable",
+	"passwd_content", "shadow_content", "group_content",
+]
+
+violations contains msg if {
+	some k in required_facts
+	not has_key(object.get(input, "user_group", {}), k)
+	msg := sprintf("CIS 6.2: evidence missing — user_group.%s not collected", [k])
 }
 
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords

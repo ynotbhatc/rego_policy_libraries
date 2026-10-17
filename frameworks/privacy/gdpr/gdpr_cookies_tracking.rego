@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package gdpr.cookies_tracking
 
 import rego.v1
@@ -130,7 +130,7 @@ local_storage_compliant if {
 
 # Fingerprinting
 fingerprinting_controlled if {
-	not input.cookies.fingerprinting.used
+	input.cookies.fingerprinting.used == false
 } else if {
 	input.cookies.fingerprinting.used
 	input.cookies.fingerprinting.consent.obtained == true
@@ -140,7 +140,7 @@ fingerprinting_controlled if {
 
 # Tracking pixels / web beacons
 tracking_pixels_compliant if {
-	not input.cookies.tracking_pixels.used
+	input.cookies.tracking_pixels.used == false
 } else if {
 	input.cookies.tracking_pixels.used
 	input.cookies.tracking_pixels.consent.obtained == true
@@ -185,7 +185,7 @@ email_marketing_consent if {
 
 # Profiling and automated decision-making (GDPR Art. 22)
 automated_decision_making if {
-	not input.profiling.solely_automated_with_legal_effect.used
+	input.profiling.solely_automated_with_legal_effect.used == false
 } else if {
 	input.profiling.solely_automated_with_legal_effect.used
 	input.profiling.lawful_basis.one_of_three_bases == true
@@ -197,7 +197,7 @@ automated_decision_making if {
 
 # Behavioural advertising
 behavioural_advertising if {
-	not input.marketing.behavioural_advertising.used
+	input.marketing.behavioural_advertising.used == false
 } else if {
 	input.marketing.behavioural_advertising.used
 	input.marketing.behavioural_advertising.consent.obtained == true
@@ -211,7 +211,7 @@ behavioural_advertising if {
 # =============================================================================
 
 childrens_data if {
-	not input.gdpr.childrens_data.services_directed_at_children
+	input.gdpr.childrens_data.services_directed_at_children == false
 } else if {
 	input.gdpr.childrens_data.services_directed_at_children
 	input.gdpr.childrens_data.age_verification.implemented == true
@@ -238,6 +238,7 @@ compliant if {
 	cmp_implementation
 	consent_records
 	email_marketing_consent
+	local_storage_compliant
 }
 
 report := {

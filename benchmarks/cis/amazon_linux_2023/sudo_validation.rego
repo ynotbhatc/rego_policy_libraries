@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 14
+#     checks: 15
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.sudo
 
 import rego.v1
@@ -26,6 +26,25 @@ default compliant := false
 # Helper to check if sudo is installed
 sudo_installed if {
     input.sudo.installed
+}
+
+# `Defaults use_pty` style flag: set on a Defaults line, never negated (`!use_pty`).
+# Substring matching would accept "Defaults !use_pty".
+sudoers_default_flag_set(flag) if {
+    some line in split(input.sudo.sudoers_content, "\n")
+    regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?%s\s*(,|#|$)`, [flag]), line)
+    not sudoers_default_flag_negated(flag)
+}
+
+sudoers_default_flag_negated(flag) if {
+    some line in split(input.sudo.sudoers_content, "\n")
+    regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?!\s*%s\s*(,|#|$)`, [flag]), line)
+}
+
+# `#includedir` and `@includedir` are directives, not comments.
+sudoers_includes_sudoers_d if {
+    some line in split(input.sudo.sudoers_content, "\n")
+    regex.match(`^\s*[#@]includedir\s+/etc/sudoers\.d\s*$`, line)
 }
 
 # Helper to parse sudoers file
@@ -44,7 +63,7 @@ violations contains msg if {
 # CIS 5.3.2: Ensure sudo commands use pty
 violations contains msg if {
     sudo_installed
-    not sudoers_has_option("use_pty")
+    not sudoers_default_flag_set("use_pty")
     msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
 }
 
@@ -82,6 +101,14 @@ violations contains msg if {
     input.sudo.timestamp_timeout
     to_number(input.sudo.timestamp_timeout) > 15
     msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s minutes, should be 15 or less", [input.sudo.timestamp_timeout])
+}
+
+# -1 means the credential cache never expires
+violations contains msg if {
+    sudo_installed
+    input.sudo.timestamp_timeout
+    to_number(input.sudo.timestamp_timeout) < 0
+    msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s (never expires), should be 0-15 minutes", [input.sudo.timestamp_timeout])
 }
 
 violations contains msg if {
@@ -126,8 +153,7 @@ violations contains msg if {
 # Check for includedir in sudoers
 violations contains msg if {
     sudo_installed
-    not sudoers_has_option("#includedir /etc/sudoers.d")
-    not sudoers_has_option("@includedir /etc/sudoers.d")
+    not sudoers_includes_sudoers_d
     msg := "CIS 5.3: sudoers should include /etc/sudoers.d directory"
 }
 

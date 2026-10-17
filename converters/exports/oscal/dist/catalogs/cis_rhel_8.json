@@ -100,7 +100,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-4.1.1.2",
-      "title": "auditd service not enabled",
+      "title": "evidence missing — auditd.service not collected",
       "props": [
        {
         "name": "label",
@@ -126,10 +126,15 @@
        {
         "id": "cis_rhel_8-CIS-4.1.1.2_stmt",
         "name": "statement",
-        "prose": "auditd service not enabled"
+        "prose": "evidence missing — auditd.service not collected"
        },
        {
         "id": "cis_rhel_8-CIS-4.1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditd service not enabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-4.1.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "auditd service not running"
        }
@@ -1069,7 +1074,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.1.2",
-      "title": "/etc/crontab has mode %s, should be 0600",
+      "title": "evidence missing — crontab_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1095,15 +1100,30 @@
        {
         "id": "cis_rhel_8-CIS-5.1.2_stmt",
         "name": "statement",
-        "prose": "/etc/crontab has mode %s, should be 0600"
+        "prose": "evidence missing — crontab_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/crontab owned by %s, should be root"
+        "prose": "/etc/crontab has mode %s, should be 0600"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — crontab_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab owned by %s, should be root"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — crontab_group not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.2_obj.5",
         "name": "assessment-objective",
         "prose": "/etc/crontab group is %s, should be root"
        }
@@ -1112,7 +1132,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.1.3",
-      "title": "/etc/cron.hourly has mode %s, should be 0700",
+      "title": "evidence missing — cron_hourly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1138,10 +1158,20 @@
        {
         "id": "cis_rhel_8-CIS-5.1.3_stmt",
         "name": "statement",
-        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+        "prose": "evidence missing — cron_hourly_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron_hourly_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.3_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.hourly owned by %s, should be root"
        }
@@ -1150,7 +1180,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.1.4",
-      "title": "/etc/cron.daily has mode %s, should be 0700",
+      "title": "evidence missing — cron_daily_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1176,10 +1206,20 @@
        {
         "id": "cis_rhel_8-CIS-5.1.4_stmt",
         "name": "statement",
-        "prose": "/etc/cron.daily has mode %s, should be 0700"
+        "prose": "evidence missing — cron_daily_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.daily has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron_daily_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.4_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.daily owned by %s, should be root"
        }
@@ -1188,7 +1228,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.1.5",
-      "title": "/etc/cron.weekly has mode %s, should be 0700",
+      "title": "evidence missing — cron_weekly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1214,10 +1254,20 @@
        {
         "id": "cis_rhel_8-CIS-5.1.5_stmt",
         "name": "statement",
-        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+        "prose": "evidence missing — cron_weekly_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron_weekly_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.5_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.weekly owned by %s, should be root"
        }
@@ -1226,7 +1276,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.1.6",
-      "title": "/etc/cron.monthly has mode %s, should be 0700",
+      "title": "evidence missing — cron_monthly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1252,10 +1302,20 @@
        {
         "id": "cis_rhel_8-CIS-5.1.6_stmt",
         "name": "statement",
-        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+        "prose": "evidence missing — cron_monthly_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron_monthly_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.6_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.monthly owned by %s, should be root"
        }
@@ -1264,7 +1324,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.1.7",
-      "title": "/etc/cron.d has mode %s, should be 0700",
+      "title": "evidence missing — cron_d_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1290,10 +1350,20 @@
        {
         "id": "cis_rhel_8-CIS-5.1.7_stmt",
         "name": "statement",
-        "prose": "/etc/cron.d has mode %s, should be 0700"
+        "prose": "evidence missing — cron_d_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-5.1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.d has mode %s, should be 0700"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron_d_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.7_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.d owned by %s, should be root"
        }
@@ -1338,6 +1408,11 @@
        {
         "id": "cis_rhel_8-CIS-5.1.8_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — cron_allow_mode not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.8_obj.3",
+        "name": "assessment-objective",
         "prose": "/etc/cron.allow has mode %s, should be 0600"
        }
       ],
@@ -1381,6 +1456,11 @@
        {
         "id": "cis_rhel_8-CIS-5.1.9_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — at_allow_mode not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.1.9_obj.3",
+        "name": "assessment-objective",
         "prose": "/etc/at.allow has mode %s, should be 0600"
        }
       ],
@@ -1412,7 +1492,7 @@
     "controls": [
      {
       "id": "cis_rhel_8-CIS-6.1.x",
-      "title": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "title": "evidence missing — critical_files.analysis not collected",
       "props": [
        {
         "name": "label",
@@ -1438,7 +1518,255 @@
        {
         "id": "cis_rhel_8-CIS-6.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — critical_files.analysis not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-cis_rhel8.file_permissions-1",
+      "title": "SSH Private Keys: evidence missing — ssh_private_keys not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rhel8.file_permissions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rhel8.file_permissions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-cis_rhel8.file_permissions-1_stmt",
+        "name": "statement",
+        "prose": "SSH Private Keys: evidence missing — ssh_private_keys not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.1.10",
+      "title": "evidence missing — world_writable not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.1.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — world_writable not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d world-writable files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.1.11",
+      "title": "evidence missing — unowned_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.1.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — unowned_files not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d unowned files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.1.12",
+      "title": "evidence missing — ungrouped_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.1.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ungrouped_files not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d ungrouped files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.1.13",
+      "title": "evidence missing — suid_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.1.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — suid_files not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-6.1.14",
+      "title": "evidence missing — sgid_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.1.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sgid_files not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.1.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Excessive SGID binaries found (%d files)"
        }
       ],
       "class": "security"
@@ -1576,41 +1904,8 @@
       "class": "security"
      },
      {
-      "id": "cis_rhel_8-cis_rhel8.file_permissions-1",
-      "title": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rhel8.file_permissions#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rhel8.file_permissions#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-cis_rhel8.file_permissions-1_stmt",
-        "name": "statement",
-        "prose": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rhel_8-cis_rhel8.file_permissions-2",
-      "title": "SSH Private Keys: One or more SSH host keys have insecure permissions",
+      "title": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)",
       "props": [
        {
         "name": "label",
@@ -1636,192 +1931,40 @@
        {
         "id": "cis_rhel_8-cis_rhel8.file_permissions-2_stmt",
         "name": "statement",
+        "prose": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-cis_rhel8.file_permissions-3",
+      "title": "SSH Private Keys: One or more SSH host keys have insecure permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rhel8.file_permissions#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rhel8.file_permissions#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-cis_rhel8.file_permissions-3_stmt",
+        "name": "statement",
         "prose": "SSH Private Keys: One or more SSH host keys have insecure permissions"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-6.1.10",
-      "title": "World-writable file found: %s (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-6.1.10_stmt",
-        "name": "statement",
-        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
-       },
-       {
-        "id": "cis_rhel_8-CIS-6.1.10_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d world-writable files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-6.1.11",
-      "title": "Unowned file found: %s (UID: %d, mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-6.1.11_stmt",
-        "name": "statement",
-        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
-       },
-       {
-        "id": "cis_rhel_8-CIS-6.1.11_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d unowned files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-6.1.12",
-      "title": "Ungrouped file found: %s (GID: %d, mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-6.1.12_stmt",
-        "name": "statement",
-        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
-       },
-       {
-        "id": "cis_rhel_8-CIS-6.1.12_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d ungrouped files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-6.1.13",
-      "title": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-6.1.13_stmt",
-        "name": "statement",
-        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
-       },
-       {
-        "id": "cis_rhel_8-CIS-6.1.13_obj.1",
-        "name": "assessment-objective",
-        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-6.1.14",
-      "title": "Excessive SGID binaries found (%d files)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6a32023f-d04a-5ca4-a49f-a0cfd53e0e07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-6.1.14_stmt",
-        "name": "statement",
-        "prose": "Excessive SGID binaries found (%d files)"
        }
       ],
       "class": "security"
@@ -1885,7 +2028,7 @@
     "controls": [
      {
       "id": "cis_rhel_8-CIS-1.1.1.x",
-      "title": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)",
+      "title": "evidence missing — disabled_filesystem_modules not collected",
       "props": [
        {
         "name": "label",
@@ -1911,6 +2054,11 @@
        {
         "id": "cis_rhel_8-CIS-1.1.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — disabled_filesystem_modules not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.1.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)"
        }
       ],
@@ -1918,7 +2066,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.1.2.x",
-      "title": "Required partition '%s' is not a separate partition",
+      "title": "evidence missing — separate_partitions not collected",
       "props": [
        {
         "name": "label",
@@ -1944,12 +2092,65 @@
        {
         "id": "cis_rhel_8-CIS-1.1.2.x_stmt",
         "name": "statement",
-        "prose": "Required partition '%s' is not a separate partition"
+        "prose": "evidence missing — separate_partitions not collected"
        },
        {
         "id": "cis_rhel_8-CIS-1.1.2.x_obj.1",
         "name": "assessment-objective",
+        "prose": "evidence missing — mount_options not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.1.2.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "Required partition '%s' is not a separate partition"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.1.2.x_obj.3",
+        "name": "assessment-objective",
         "prose": "Partition '%s' is missing required mount options: %v"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-1.1.22",
+      "title": "evidence missing — sticky_bit not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#191ce1c8-2a17-5b28-a065-5e79631a6cc8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-1.1.22_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sticky_bit not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.1.22_obj.1",
+        "name": "assessment-objective",
+        "prose": "Directory '%s' is world-writable without sticky bit (mode: %s)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.1.22_obj.2",
+        "name": "assessment-objective",
+        "prose": "World-writable directory without sticky bit: %s"
        }
       ],
       "class": "security"
@@ -2151,44 +2352,6 @@
        }
       ],
       "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-1.1.22",
-      "title": "Directory '%s' is world-writable without sticky bit (mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 1.1.22"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 1.1.22"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.filesystem"
-       }
-      ],
-      "links": [
-       {
-        "href": "#191ce1c8-2a17-5b28-a065-5e79631a6cc8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-1.1.22_stmt",
-        "name": "statement",
-        "prose": "Directory '%s' is world-writable without sticky bit (mode: %s)"
-       },
-       {
-        "id": "cis_rhel_8-CIS-1.1.22_obj.1",
-        "name": "assessment-objective",
-        "prose": "World-writable directory without sticky bit: %s"
-       }
-      ],
-      "class": "security"
      }
     ]
    },
@@ -2216,7 +2379,7 @@
     "controls": [
      {
       "id": "cis_rhel_8-CIS-1.2.1",
-      "title": "No GPG keys configured for package verification",
+      "title": "evidence missing — gpg_keys not collected",
       "props": [
        {
         "name": "label",
@@ -2242,6 +2405,11 @@
        {
         "id": "cis_rhel_8-CIS-1.2.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — gpg_keys not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.2.1_obj.1",
+        "name": "assessment-objective",
         "prose": "No GPG keys configured for package verification"
        }
       ],
@@ -2249,7 +2417,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.2.2",
-      "title": "No package repositories are enabled",
+      "title": "evidence missing — enabled_repos not collected",
       "props": [
        {
         "name": "label",
@@ -2275,10 +2443,15 @@
        {
         "id": "cis_rhel_8-CIS-1.2.2_stmt",
         "name": "statement",
-        "prose": "No package repositories are enabled"
+        "prose": "evidence missing — enabled_repos not collected"
        },
        {
         "id": "cis_rhel_8-CIS-1.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "No package repositories are enabled"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.2.2_obj.2",
         "name": "assessment-objective",
         "prose": "Repository %s does not have gpgcheck enabled"
        }
@@ -2320,7 +2493,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.7.1",
-      "title": "/etc/motd has mode %s, should be 0644",
+      "title": "evidence missing — motd_mode not collected",
       "props": [
        {
         "name": "label",
@@ -2346,15 +2519,20 @@
        {
         "id": "cis_rhel_8-CIS-1.7.1_stmt",
         "name": "statement",
-        "prose": "/etc/motd has mode %s, should be 0644"
+        "prose": "evidence missing — motd_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-1.7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/motd contains sensitive system information (OS version, kernel, etc.)"
+        "prose": "/etc/motd has mode %s, should be 0644"
        },
        {
         "id": "cis_rhel_8-CIS-1.7.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/motd contains sensitive system information (OS version, kernel, etc.)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.1_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/motd does not exist"
        }
@@ -2394,10 +2572,15 @@
        {
         "id": "cis_rhel_8-CIS-1.7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue has mode %s, should be 0644"
+        "prose": "evidence missing — issue_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-1.7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/issue has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.2_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/issue contains sensitive system information"
        }
@@ -2437,10 +2620,15 @@
        {
         "id": "cis_rhel_8-CIS-1.7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue.net has mode %s, should be 0644"
+        "prose": "evidence missing — issue_net_mode not collected"
        },
        {
         "id": "cis_rhel_8-CIS-1.7.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/issue.net has mode %s, should be 0644"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.3_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/issue.net contains sensitive system information"
        }
@@ -2449,7 +2637,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.7.4",
-      "title": "/etc/motd owned by %s, should be root",
+      "title": "evidence missing — motd_owner not collected",
       "props": [
        {
         "name": "label",
@@ -2475,6 +2663,11 @@
        {
         "id": "cis_rhel_8-CIS-1.7.4_stmt",
         "name": "statement",
+        "prose": "evidence missing — motd_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.4_obj.1",
+        "name": "assessment-objective",
         "prose": "/etc/motd owned by %s, should be root"
        }
       ],
@@ -2482,7 +2675,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.7.5",
-      "title": "/etc/issue owned by %s, should be root",
+      "title": "evidence missing — issue_owner not collected",
       "props": [
        {
         "name": "label",
@@ -2508,6 +2701,11 @@
        {
         "id": "cis_rhel_8-CIS-1.7.5_stmt",
         "name": "statement",
+        "prose": "evidence missing — issue_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.5_obj.1",
+        "name": "assessment-objective",
         "prose": "/etc/issue owned by %s, should be root"
        }
       ],
@@ -2515,7 +2713,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.7.6",
-      "title": "/etc/issue.net owned by %s, should be root",
+      "title": "evidence missing — issue_net_owner not collected",
       "props": [
        {
         "name": "label",
@@ -2541,6 +2739,11 @@
        {
         "id": "cis_rhel_8-CIS-1.7.6_stmt",
         "name": "statement",
+        "prose": "evidence missing — issue_net_owner not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.7.6_obj.1",
+        "name": "assessment-objective",
         "prose": "/etc/issue.net owned by %s, should be root"
        }
       ],
@@ -4512,6 +4715,82 @@
     ],
     "controls": [
      {
+      "id": "cis_rhel_8-cis_rhel8.network-1",
+      "title": "%s: evidence missing — sysctl %s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rhel8.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rhel8.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23bb6306-7c64-5255-be35-d6919faf280a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-cis_rhel8.network-1_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — sysctl %s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-3.1.1",
+      "title": "evidence missing — ip_forwarding not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#23bb6306-7c64-5255-be35-d6919faf280a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-3.1.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ip_forwarding not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-3.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rhel_8-CIS-3.x",
       "title": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s",
       "props": [
@@ -4672,44 +4951,6 @@
         "id": "cis_rhel_8-CIS-3.2.5_stmt",
         "name": "statement",
         "prose": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-3.1.1",
-      "title": "IPv4 forwarding is enabled (value: %v, expected: 0)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#23bb6306-7c64-5255-be35-d6919faf280a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-3.1.1_stmt",
-        "name": "statement",
-        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
-       },
-       {
-        "id": "cis_rhel_8-CIS-3.1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
        }
       ],
       "class": "security"
@@ -5389,7 +5630,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.5.1.1",
-      "title": "PASS_MIN_DAYS is %s, should be 1 or more",
+      "title": "evidence missing — pass_min_days not collected",
       "props": [
        {
         "name": "label",
@@ -5415,6 +5656,11 @@
        {
         "id": "cis_rhel_8-CIS-5.5.1.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — pass_min_days not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.1_obj.1",
+        "name": "assessment-objective",
         "prose": "PASS_MIN_DAYS is %s, should be 1 or more"
        }
       ],
@@ -5422,7 +5668,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.5.1.2",
-      "title": "PASS_MAX_DAYS is %s, should be 365 or less",
+      "title": "evidence missing — pass_max_days not collected",
       "props": [
        {
         "name": "label",
@@ -5448,6 +5694,11 @@
        {
         "id": "cis_rhel_8-CIS-5.5.1.2_stmt",
         "name": "statement",
+        "prose": "evidence missing — pass_max_days not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.2_obj.1",
+        "name": "assessment-objective",
         "prose": "PASS_MAX_DAYS is %s, should be 365 or less"
        }
       ],
@@ -5455,7 +5706,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-5.5.1.3",
-      "title": "PASS_WARN_AGE is %s, should be 7 or more",
+      "title": "evidence missing — pass_warn_age not collected",
       "props": [
        {
         "name": "label",
@@ -5481,7 +5732,50 @@
        {
         "id": "cis_rhel_8-CIS-5.5.1.3_stmt",
         "name": "statement",
+        "prose": "evidence missing — pass_warn_age not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.1.3_obj.1",
+        "name": "assessment-objective",
         "prose": "PASS_WARN_AGE is %s, should be 7 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rhel_8-CIS-5.5.3",
+      "title": "evidence missing — root_gid not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#986adfde-0ff7-5ca9-8cf3-752d80d9bb55",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-5.5.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — root_gid not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-5.5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Root account GID is %s, should be 0"
        }
       ],
       "class": "security"
@@ -5586,39 +5880,6 @@
         "id": "cis_rhel_8-CIS-5.5.2_stmt",
         "name": "statement",
         "prose": "System account %s has a login shell"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-5.5.3",
-      "title": "Root account GID is %s, should be 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 5.5.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 5.5.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.pam"
-       }
-      ],
-      "links": [
-       {
-        "href": "#986adfde-0ff7-5ca9-8cf3-752d80d9bb55",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-5.5.3_stmt",
-        "name": "statement",
-        "prose": "Root account GID is %s, should be 0"
        }
       ],
       "class": "security"
@@ -5763,7 +6024,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.6.1.2",
-      "title": "SELinux is disabled in bootloader configuration (selinux=0)",
+      "title": "evidence missing — selinux.grub_cmdline not collected",
       "props": [
        {
         "name": "label",
@@ -5789,10 +6050,15 @@
        {
         "id": "cis_rhel_8-CIS-1.6.1.2_stmt",
         "name": "statement",
-        "prose": "SELinux is disabled in bootloader configuration (selinux=0)"
+        "prose": "evidence missing — selinux.grub_cmdline not collected"
        },
        {
         "id": "cis_rhel_8-CIS-1.6.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "SELinux is disabled in bootloader configuration (selinux=0)"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "SELinux enforcing is disabled in bootloader configuration (enforcing=0)"
        }
@@ -5877,7 +6143,7 @@
      },
      {
       "id": "cis_rhel_8-CIS-1.6.1.5",
-      "title": "SELinux mode is %s, should be enforcing",
+      "title": "evidence missing — selinux.mode not collected",
       "props": [
        {
         "name": "label",
@@ -5903,6 +6169,11 @@
        {
         "id": "cis_rhel_8-CIS-1.6.1.5_stmt",
         "name": "statement",
+        "prose": "evidence missing — selinux.mode not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-1.6.1.5_obj.1",
+        "name": "assessment-objective",
         "prose": "SELinux mode is %s, should be enforcing"
        }
       ],
@@ -6193,7 +6464,7 @@
        {
         "id": "cis_rhel_8-CIS-2.1.1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "chronyd has no time sources configured (servers: %d, pools: %d)"
+        "prose": "chronyd has no time sources configured (servers: %v, pools: %v)"
        }
       ],
       "class": "security"
@@ -7681,6 +7952,54 @@
       "class": "security"
      },
      {
+      "id": "cis_rhel_8-CIS-6.2",
+      "title": "evidence missing — user_group.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rhel8.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c192c92d-6599-5248-a89c-b0cccd773f07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rhel_8-CIS-6.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — user_group.%s not collected"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/passwd"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/shadow"
+       },
+       {
+        "id": "cis_rhel_8-CIS-6.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Legacy '+' entry found in /etc/group"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rhel_8-CIS-6.2.1",
       "title": "User %s in /etc/passwd does not use shadowed passwords",
       "props": [
@@ -8229,49 +8548,6 @@
         "id": "cis_rhel_8-CIS-6.2.16_stmt",
         "name": "statement",
         "prose": "User %s has group/world writable dot file: %s (mode: %s)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rhel_8-CIS-6.2",
-      "title": "Legacy '+' entry found in /etc/passwd",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rhel8.user_group"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c192c92d-6599-5248-a89c-b0cccd773f07",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rhel_8-CIS-6.2_stmt",
-        "name": "statement",
-        "prose": "Legacy '+' entry found in /etc/passwd"
-       },
-       {
-        "id": "cis_rhel_8-CIS-6.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "Legacy '+' entry found in /etc/shadow"
-       },
-       {
-        "id": "cis_rhel_8-CIS-6.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "Legacy '+' entry found in /etc/group"
        }
       ],
       "class": "security"

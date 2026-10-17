@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package pci_dss.data_protection.requirement_3
 
 import rego.v1
@@ -370,6 +370,49 @@ pci_requirement_3_compliant if {
 # =================================================================
 # PCI Requirement 3 Score Calculation
 # =================================================================
+
+# Every control referenced by the score, findings and roll-ups has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default account_data_protection_policies := false
+default data_protection_roles_defined := false
+default account_data_inventory_maintained := false
+default data_retention_policy_implemented := false
+default cardholder_data_purging := false
+default sad_post_auth_deletion := false
+default quarterly_data_discovery := false
+default magnetic_stripe_data_prohibited := false
+default cvc_storage_prohibited := false
+default pin_storage_prohibited := false
+default pan_display_restricted := false
+default pan_masking_implemented := false
+default screen_protection_implemented := false
+default pan_encryption_implemented := false
+default database_encryption_implemented := false
+default filesystem_encryption_implemented := false
+default key_management_policies := false
+default key_generation_standards := false
+default key_distribution_secure := false
+default key_storage_protected := false
+default crypto_architecture_documented := false
+default crypto_key_administration := false
+default key_lifecycle_management := false
+default openshift_secrets_pci_compliant := false
+default container_data_encryption := false
+default openshift_storage_encryption := false
+default container_registry_security := false
+default cloud_encryption_services := false
+default cloud_database_encryption := false
+default cloud_storage_encryption := false
+default requirement_3_1_compliant := false
+default requirement_3_2_compliant := false
+default requirement_3_3_compliant := false
+default requirement_3_4_compliant := false
+default requirement_3_5_compliant := false
+default requirement_3_6_compliant := false
+default requirement_3_7_compliant := false
+default openshift_data_protection_compliant := false
+default cloud_data_protection_compliant := false
+default pci_requirement_3_compliant := false
 
 default pci_requirement_3_score := 0
 default pci_requirement_3_findings := {}

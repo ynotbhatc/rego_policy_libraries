@@ -14,6 +14,38 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Library-wide validation and fixes (2026-10-17): 755 defects fixed in 286 policy files, each with a test that fails on the old code.**
+  - **How the defects were found:**
+    - Every package was evaluated against empty input. 45 packages reported compliant with no evidence, and 18 were wholly undefined.
+    - Agents reviewed 269 files (everything flagged by that evaluation, plus every file under 50 % test coverage) and found 788 defects.
+    - A random sample of 30 high-severity findings was re-verified: 24 real, 6 real but overstated, 0 false.
+    - The existing unit tests could not catch these. Most were generated smoke tests that only assert that a package loads or returns an object.
+  - **The recurring defects, now fixed wherever they appeared:**
+    - **Missing evidence passed.** A section with no facts, or with `{}`, produced no violations. Each check now emits a `CIS x.y: evidence missing — … not collected` violation, in line with the documented contract that empty facts fail closed.
+    - **Rules without defaults inside object or array literals.** A failing control made its section, score or findings object undefined, so the failure removed its own violation. Affected: OpenShift 4, PCI DSS (all 12 requirements), SOC 2, SOX ITGC, nginx, ESXi and vCenter.
+    - **File modes and umasks compared as decimal numbers or exact strings.** umask `022` passed the `027` check, and `0604` key and log modes passed. There is now a shared, tested octal helper with bitwise "no more permissive than" checks.
+    - **Config text matched by substring, comments included.** For example, `#PermitRootLogin no` masked `PermitRootLogin yes`, and `contains("TLSv1")` matched TLSv1.2. Only active directives are parsed now.
+    - **`contains()` applied to array-shaped facts.** These checks never fired. Affected: Cisco, MySQL, Apache modules, and RHEL access_control and filesystem.
+    - **Values used as keys.** AWS IAM CIS 1.2 and 1.3 always passed.
+    - **Applicability filters inside `every`.** In NERC CIP-005, 006, 007, 010, 014 and 015, one low-impact system failed the rule.
+    - **Inflated roll-ups.** RHEL 9, RHEL 10 and Amazon Linux 2023 reported 99.28 % on empty input from a hard-coded 278-control denominator. Totals are now computed from the controls actually evaluated.
+    - **Runtime errors.** Two `eval_conflict_error`s (FISMA ATO and corporate backup retention), plus divisions by zero.
+  - **Notable single fixes:**
+    - The Terraform gate now flags protocol `-1` and IPv6 `::/0` open to the world, and it no longer allows `{}`.
+    - The Kubernetes gates now cover initContainers, CronJob templates and Pod-level host namespaces.
+    - SOX no longer reports FULLY_COMPLIANT when ITGC fails.
+    - GDPR transfers: US recipients qualify only through a verified EU-US Data Privacy Framework (DPF) certification, not by country name.
+    - The CRA `foss_exclusion` module's `compliant` can be false again.
+  - **Changes to existing behaviour that consumers will see:**
+    - **Many CIS Linux and STIG sections now report "evidence missing".** No collector in the compliance repository sends these facts yet; the per-key list is in the fix reports.
+    - **PCI DSS scope flags.** A requirement now counts as not applicable only when `in_scope == false` is explicit.
+    - **Two existing tests changed.** The `test_soc2_main.rego` assertions pinned the undefined-score bug and were updated. The `eu_ai_act_main` `clean_minimal` fixture now declares all ten Article 5 sections. No test was deleted.
+    - **Placeholder control IDs.** Newly wired Cisco, Juniper and RHEL 10 checks carry `UNMAPPED-<platform>-N` IDs until they are mapped to the CIS benchmark.
+  - **Counts:**
+    - The control-level count rises from 19,173 to 19,735. Most of the +562 are the new evidence-missing checks (about 410 new message lines), not new standard coverage.
+    - The OSCAL catalogs grow by 195 controls.
+    - The test suite grows from 4,713 to 6,669 tests.
+  - **84 judgment calls were left unchanged for the maintainer.** Examples: whether STIG `compliant` should count only CAT I findings, whether undeclared applicability means not applicable, and the OIDC token checks.
 - **CIS M365 v7 attestations no longer accept null or blank evidence.** `attestation_validation.rego` tested `attested_by`, `attested_on` and `evidence_ref` by truthiness, which fails only on `false` or undefined, so an attestation with `"evidence_ref": null` (or `""`, or a number) counted as attested and the control left the violation list. Each field must now be a non-empty string, the rule the Windows Server 2022 module already uses. Two regression tests (null evidence; blank, whitespace and non-string provenance) fail on the old rule and pass now.
 - **STIG Windows Server 2022 / 2025: boot-start driver policy (WN22-CC-000130, WN25-CC-000130).** The rules passed only on `DriverLoadPolicy == 1`. The DISA check text (V-254344, V-278091) accepts 1, 3 or 8, treats an absent value as not a finding (the default enforces 3) and flags 7 ("All"). A host on the default or on CIS 18.9.13.1's value 3 was reported Open. Now 1/3/8 pass, 7 and any other value stay open, and an absent value passes only when registry facts were collected. Five tests per platform. The CIS Windows Server 2022 README's STIG cross-check now reads 88 of 92.
 

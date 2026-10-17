@@ -13,13 +13,28 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package corporate.backup
 
 import rego.v1
 
 # Corporate Backup and Recovery Policy Implementation
 # Validates backup procedures, retention, testing, and recovery capabilities
+
+# Date normaliser: RFC3339 string or epoch nanoseconds; anything else is
+# undefined, so callers fail closed (a missing or unparseable date is never a pass).
+date_ns(v) := n if {
+    is_string(v)
+    n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# Whole days since a timestamp, or "unknown" when it is missing/unparseable, so a
+# violation object is still produced instead of being silently dropped.
+days_since(v) := d if {
+    d := (time.now_ns() - date_ns(v)) / (24 * 60 * 60 * 1000000000)
+} else := "unknown"
 
 # Main backup policy compliance evaluation
 backup_compliant if {
@@ -117,44 +132,32 @@ retention_periods_meet_requirements if {
     count(violations) == 0
 }
 
+# A system must keep backups for the LONGEST period any of its data types or
+# regulations requires (the clauses used to be OR-ed, so a SOX personal-data system
+# passed on the 3-year operational minimum). data_types must have been reported.
 retention_period_adequate(system) if {
-    "financial" in system.data_types
-    system.backup_config.retention_policy.years >= 7
+    is_array(system.data_types)
+    system.backup_config.retention_policy.years >= required_retention_years(system)
 }
 
-retention_period_adequate(system) if {
-    "operational" in system.data_types
-    not "financial" in system.data_types
-    system.backup_config.retention_policy.years >= 3
-}
+required_retention_years(system) := max(array.concat([1], [n |
+    some data_type in system.data_types
+    n := data_type_minimum_years(system, data_type)
+]))
 
-retention_period_adequate(system) if {
-    "personal" in system.data_types
-    system.backup_config.retention_policy.years >= minimum_personal_data_retention(system)
-}
+data_type_minimum_years(_, "financial") := 7
 
-retention_period_adequate(system) if {
-    not "financial" in system.data_types
-    not "operational" in system.data_types
-    not "personal" in system.data_types
-    system.backup_config.retention_policy.years >= 1
-}
+data_type_minimum_years(_, "operational") := 3
 
-minimum_personal_data_retention(system) := 3 if {
-    system.regulatory_requirements[_] == "GDPR"
-}
+data_type_minimum_years(system, "personal") := minimum_personal_data_retention(system)
 
-minimum_personal_data_retention(system) := 6 if {
-    system.regulatory_requirements[_] == "HIPAA"
-}
+# Personal data: the strictest applicable regulation wins; 2 years when none applies.
+personal_retention_by_regulation := {"GDPR": 3, "HIPAA": 6, "SOX": 7}
 
-minimum_personal_data_retention(system) := 7 if {
-    system.regulatory_requirements[_] == "SOX"
-}
-
-minimum_personal_data_retention(_) := 2 if {
-    true  # Default minimum
-}
+minimum_personal_data_retention(system) := max(array.concat([2], [n |
+    some regulation in object.get(system, "regulatory_requirements", [])
+    n := personal_retention_by_regulation[regulation]
+]))
 
 automated_deletion_configured if {
     violations := [system |
@@ -182,28 +185,33 @@ all_systems_tested_regularly if {
 
 restore_testing_frequent_enough(system) if {
     system.criticality_level == "critical"
-    days_since_last_test := (time.now_ns() - system.backup_config.last_restore_test) / (24 * 60 * 60 * 1000000000)
+    days_since_last_test := (time.now_ns() - date_ns(system.backup_config.last_restore_test)) / (24 * 60 * 60 * 1000000000)
     days_since_last_test <= 30
 }
 
 restore_testing_frequent_enough(system) if {
     system.criticality_level == "important"
-    days_since_last_test := (time.now_ns() - system.backup_config.last_restore_test) / (24 * 60 * 60 * 1000000000)
+    days_since_last_test := (time.now_ns() - date_ns(system.backup_config.last_restore_test)) / (24 * 60 * 60 * 1000000000)
     days_since_last_test <= 60
 }
 
 restore_testing_frequent_enough(system) if {
     system.criticality_level in ["standard", "low"]
-    days_since_last_test := (time.now_ns() - system.backup_config.last_restore_test) / (24 * 60 * 60 * 1000000000)
+    days_since_last_test := (time.now_ns() - date_ns(system.backup_config.last_restore_test)) / (24 * 60 * 60 * 1000000000)
     days_since_last_test <= 90
 }
 
 test_success_rates_adequate if {
     violations := [system |
         system := input.systems[_]
-        system.backup_config.test_success_rate < minimum_success_rate(system)
+        # A missing test_success_rate is not a pass.
+        not success_rate_adequate(system)
     ]
     count(violations) == 0
+}
+
+success_rate_adequate(system) if {
+    system.backup_config.test_success_rate >= minimum_success_rate(system)
 }
 
 minimum_success_rate(system) := 98 if {
@@ -268,7 +276,7 @@ recovery_procedures_tested if {
 }
 
 disaster_recovery_testing_current(system) if {
-    days_since_dr_test := (time.now_ns() - system.recovery_config.last_dr_test) / (24 * 60 * 60 * 1000000000)
+    days_since_dr_test := (time.now_ns() - date_ns(system.recovery_config.last_dr_test)) / (24 * 60 * 60 * 1000000000)
     days_since_dr_test <= dr_test_frequency_days(system)
 }
 
@@ -396,8 +404,12 @@ vendor_compliance_adequate(vendor) if {
 }
 
 # Backup Performance Metrics
+# No systems, no evidence: score 0 rather than a division by zero.
+default backup_performance_score := 0
+
 backup_performance_score := score if {
     total_systems := count(input.systems)
+    total_systems > 0
     
     schedule_score := (count([system | 
         system := input.systems[_]
@@ -457,7 +469,7 @@ retention_violations := [violation |
         "severity": "medium",
         "description": sprintf("Retention period for %s does not meet data type requirements", [system.name]),
         "current_retention": sprintf("%d years", [system.backup_config.retention_policy.years]),
-        "required_retention": sprintf("%d years minimum", [minimum_retention_for_data_types(system.data_types)]),
+        "required_retention": sprintf("%d years minimum", [required_retention_years(system)]),
         "remediation": "Extend backup retention period to meet regulatory and policy requirements"
     }
 ]
@@ -470,7 +482,7 @@ testing_violations := [violation |
         "type": "backup_testing",
         "severity": "high",
         "description": sprintf("Restore testing for %s is overdue", [system.name]),
-        "days_overdue": (time.now_ns() - system.backup_config.last_restore_test) / (24 * 60 * 60 * 1000000000),
+        "days_overdue": days_since(object.get(system, ["backup_config", "last_restore_test"], null)),
         "remediation": "Schedule and perform restore testing immediately"
     }
 ]
@@ -483,7 +495,7 @@ recovery_violations := [violation |
         "type": "disaster_recovery",
         "severity": "critical",
         "description": sprintf("Disaster recovery testing for %s is overdue", [system.name]),
-        "days_overdue": (time.now_ns() - system.recovery_config.last_dr_test) / (24 * 60 * 60 * 1000000000),
+        "days_overdue": days_since(object.get(system, ["recovery_config", "last_dr_test"], null)),
         "remediation": "Conduct full disaster recovery test and update procedures"
     }
 ]
@@ -523,28 +535,17 @@ required_frequency_for_criticality("low") := "monthly"
 
 minimum_retention_for_data_types(data_types) := 7 if {
     "financial" in data_types
-}
-
-minimum_retention_for_data_types(data_types) := 3 if {
+} else := 3 if {
     "operational" in data_types
-    not "financial" in data_types
-}
-
-minimum_retention_for_data_types(data_types) := 2 if {
+} else := 2 if {
     "personal" in data_types
-    not "financial" in data_types
-    not "operational" in data_types
-}
-
-minimum_retention_for_data_types(_) := 1 if {
-    true  # Default
-}
+} else := 1
 
 # Compliance Framework Mapping
 pci_dss_backup_compliant if {
     backup_compliant
-    every system in input.systems {
-        "cardholder_data" in system.data_types
+    # Only systems holding cardholder data are in PCI DSS scope.
+    every system in [s | some s in input.systems; "cardholder_data" in s.data_types] {
         system.backup_config.encryption.enabled
         system.backup_config.access_controls.mfa_required
     }
@@ -552,8 +553,8 @@ pci_dss_backup_compliant if {
 
 sox_backup_compliant if {
     backup_compliant
-    every system in input.systems {
-        "financial" in system.data_types
+    # Only financial systems are in SOX scope.
+    every system in [s | some s in input.systems; "financial" in s.data_types] {
         system.backup_config.retention_policy.years >= 7
         disaster_recovery_testing_current(system)
     }

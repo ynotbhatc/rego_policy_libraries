@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 16
-#     cited: 13
+#     checks: 19
+#     cited: 14
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_debian_11.logging
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 4.2: Logging Configuration
@@ -30,6 +30,40 @@ violations := array.concat(
 	array.concat([v | some v in rsyslog_violations], [v | some v in journald_violations]),
 	[v | some v in log_file_violations],
 )
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# Missing evidence fails closed.
+rsyslog_violations contains msg if {
+	some k in ["file_create_mode", "logging_rules_count"]
+	not has_key(object.get(input, "rsyslog", {}), k)
+	msg := sprintf("CIS 4.2.1.x: evidence missing — rsyslog.%s not collected", [k])
+}
+
+journald_violations contains msg if {
+	some k in ["forward_to_syslog", "compress_enabled", "storage_mode"]
+	not has_key(object.get(input, "journald", {}), k)
+	msg := sprintf("CIS 4.2.x: evidence missing — journald.%s not collected", [k])
+}
+
+log_file_violations contains msg if {
+	not input.log_file_permissions.analysis
+	msg := "CIS 4.2.3: evidence missing — log_file_permissions.analysis not collected"
+}
 
 # CIS 4.2.1.1: rsyslog installed
 rsyslog_violations contains msg if {
@@ -58,8 +92,7 @@ journald_violations contains msg if {
 
 # CIS 4.2.1.4: rsyslog default file permissions
 rsyslog_violations contains msg if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
+	not mode_within(input.rsyslog.file_create_mode, "0640")
 	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode])
 }
 

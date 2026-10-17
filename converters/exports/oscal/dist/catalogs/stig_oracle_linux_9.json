@@ -364,7 +364,7 @@
      },
      {
       "id": "stig_oracle_linux_9-OL09-00-002416",
-      "title": "OL 9 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period.",
+      "title": "OL 9 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
       "props": [
        {
         "name": "label",
@@ -390,7 +390,7 @@
        {
         "id": "stig_oracle_linux_9-OL09-00-002416_stmt",
         "name": "statement",
-        "prose": "OL 9 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period."
+        "prose": "OL 9 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity."
        }
       ],
       "class": "security"

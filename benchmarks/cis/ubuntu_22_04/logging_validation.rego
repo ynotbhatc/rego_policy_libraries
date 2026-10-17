@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 16
+#     checks: 19
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.logging
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration
@@ -30,6 +30,21 @@ violations := array.concat(
 	array.concat([v | some v in rsyslog_violations], [v | some v in journald_violations]),
 	[v | some v in log_file_violations],
 )
+
+# Helpers. Absent facts must not satisfy a check (fail closed).
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+journald_is(key, want) if input.journald[key] == want
 
 # CIS 4.2.1.1: rsyslog installed
 rsyslog_violations contains msg if {
@@ -52,18 +67,27 @@ rsyslog_violations contains msg if {
 
 # CIS 4.2.1.3: journald forwards to rsyslog
 journald_violations contains msg if {
-	input.journald.forward_to_syslog != "yes"
-	msg := sprintf("CIS 4.2.1.3: journald not configured to forward to rsyslog (ForwardToSyslog: %s)", [input.journald.forward_to_syslog])
+	not journald_is("forward_to_syslog", "yes")
+	msg := sprintf("CIS 4.2.1.3: journald not configured to forward to rsyslog (ForwardToSyslog: %v)", [object.get(input, ["journald", "forward_to_syslog"], "<not collected>")])
 }
 
 # CIS 4.2.1.4: rsyslog default file permissions
+# octal compare: "640", "0640" and "0600" pass, anything granting more than 0640 (or unparsable/absent) fails
+rsyslog_mode_ok if mode_within(input.rsyslog.file_create_mode, "0640")
+
 rsyslog_violations contains msg if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
-	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode])
+	not rsyslog_mode_ok
+	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %v, expected: 0640 or 0600)", [object.get(input, ["rsyslog", "file_create_mode"], "<not collected>")])
 }
 
 # CIS 4.2.1.5: Logging configured
+rules_count_known if is_number(input.rsyslog.logging_rules_count)
+
+rsyslog_violations contains msg if {
+	not rules_count_known
+	msg := "CIS 4.2.1.5: evidence missing — rsyslog.logging_rules_count not collected"
+}
+
 rsyslog_violations contains msg if {
 	input.rsyslog.logging_rules_count == 0
 	msg := "CIS 4.2.1.5: No rsyslog logging rules configured"
@@ -84,14 +108,14 @@ rsyslog_violations contains msg if {
 
 # CIS 4.2.2.1: journald compression
 journald_violations contains msg if {
-	input.journald.compress_enabled != "yes"
-	msg := sprintf("CIS 4.2.2.1: journald compression not enabled (Compress: %s)", [input.journald.compress_enabled])
+	not journald_is("compress_enabled", "yes")
+	msg := sprintf("CIS 4.2.2.1: journald compression not enabled (Compress: %v)", [object.get(input, ["journald", "compress_enabled"], "<not collected>")])
 }
 
 # CIS 4.2.2.2: journald persistent storage
 journald_violations contains msg if {
-	input.journald.storage_mode != "persistent"
-	msg := sprintf("CIS 4.2.2.2: journald not configured for persistent storage (Storage: %s)", [input.journald.storage_mode])
+	not journald_is("storage_mode", "persistent")
+	msg := sprintf("CIS 4.2.2.2: journald not configured for persistent storage (Storage: %v)", [object.get(input, ["journald", "storage_mode"], "<not collected>")])
 }
 
 # CIS 4.2.2.3: systemd-journald active
@@ -101,6 +125,20 @@ journald_violations contains msg if {
 }
 
 # CIS 4.2.3: Log file permissions
+log_files_known if is_array(input.log_file_permissions.analysis)
+
+log_file_violations contains msg if {
+	not log_files_known
+	msg := "CIS 4.2.3: evidence missing — log_file_permissions.analysis not collected"
+}
+
+excessive_known if is_array(input.excessive_permissions.files)
+
+log_file_violations contains msg if {
+	not excessive_known
+	msg := "CIS 4.2.3: evidence missing — excessive_permissions.files not collected"
+}
+
 log_file_violations contains msg if {
 	some file in input.log_file_permissions.analysis
 	not file.fully_compliant

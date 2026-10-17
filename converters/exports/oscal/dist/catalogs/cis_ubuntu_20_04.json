@@ -266,6 +266,163 @@
     ],
     "controls": [
      {
+      "id": "cis_ubuntu_20_04-CIS-4.1.1.2",
+      "title": "evidence missing — services.auditd.service not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — services.auditd.service not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditd service not enabled"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "auditd service not running"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-4.1.1.3",
+      "title": "evidence missing — bootloader.grub_config not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — bootloader.grub_config not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "audit=1 not set in bootloader configuration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-4.1.2.1",
+      "title": "evidence missing — auditd.config not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — auditd.config not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "max_log_file not configured in auditd.conf"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-4.1.4.1",
+      "title": "evidence missing — auditd.log_permissions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.auditd"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.4.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — auditd.log_permissions not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.1.4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log permissions too permissive (mode: %s, should be 0640 or less)"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_20_04-CIS-4.1.1.1",
       "title": "auditd package not installed",
       "props": [
@@ -299,77 +456,6 @@
       "class": "security"
      },
      {
-      "id": "cis_ubuntu_20_04-CIS-4.1.1.2",
-      "title": "auditd service not enabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 4.1.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 4.1.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.1.1.2_stmt",
-        "name": "statement",
-        "prose": "auditd service not enabled"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.1.1.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "auditd service not running"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-4.1.1.3",
-      "title": "audit=1 not set in bootloader configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 4.1.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 4.1.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.1.1.3_stmt",
-        "name": "statement",
-        "prose": "audit=1 not set in bootloader configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_ubuntu_20_04-CIS-4.1.1.4",
       "title": "audit_backlog_limit not configured (should be 8192 or higher)",
       "props": [
@@ -398,39 +484,6 @@
         "id": "cis_ubuntu_20_04-CIS-4.1.1.4_stmt",
         "name": "statement",
         "prose": "audit_backlog_limit not configured (should be 8192 or higher)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-4.1.2.1",
-      "title": "max_log_file not configured in auditd.conf",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 4.1.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 4.1.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.1.2.1_stmt",
-        "name": "statement",
-        "prose": "max_log_file not configured in auditd.conf"
        }
       ],
       "class": "security"
@@ -573,39 +626,6 @@
         "id": "cis_ubuntu_20_04-CIS-4.1.3.21_stmt",
         "name": "statement",
         "prose": "Audit configuration not set to immutable (missing '-e 2')"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-4.1.4.1",
-      "title": "Audit log permissions too permissive (mode: %s, should be 0640 or less)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 4.1.4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 4.1.4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.auditd"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6b9e6c45-2100-54e3-bee1-1b9d3f9abedd",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.1.4.1_stmt",
-        "name": "statement",
-        "prose": "Audit log permissions too permissive (mode: %s, should be 0640 or less)"
        }
       ],
       "class": "security"
@@ -805,7 +825,7 @@
      },
      {
       "id": "cis_ubuntu_20_04-CIS-1.4.2",
-      "title": "GRUB configuration file has mode %s, should be 0400 or 0600",
+      "title": "GRUB configuration file has mode %s, should be 0600 or more restrictive",
       "props": [
        {
         "name": "label",
@@ -835,20 +855,30 @@
        {
         "id": "cis_ubuntu_20_04-CIS-1.4.2_stmt",
         "name": "statement",
-        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+        "prose": "GRUB configuration file has mode %s, should be 0600 or more restrictive"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-1.4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "GRUB configuration file is owned by %s, should be root"
+        "prose": "evidence missing — grub.config_mode not collected"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-1.4.2_obj.2",
         "name": "assessment-objective",
-        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+        "prose": "evidence missing — grub.config_owner not collected"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-1.4.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "GRUB configuration file is owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.4.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "GRUB configuration file has mode %s, should be 0600 or more restrictive"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.4.2_obj.5",
         "name": "assessment-objective",
         "prose": "GRUB configuration file is not owned by root"
        }
@@ -1252,6 +1282,21 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "/etc/crontab group is %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.crontab_mode not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.crontab_owner not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.crontab_group not collected"
        }
       ],
       "class": "security"
@@ -1290,6 +1335,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.3_obj.1",
         "name": "assessment-objective",
         "prose": "/etc/cron.hourly owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_hourly_mode not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_hourly_owner not collected"
        }
       ],
       "class": "security"
@@ -1328,6 +1383,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.4_obj.1",
         "name": "assessment-objective",
         "prose": "/etc/cron.daily owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_daily_mode not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_daily_owner not collected"
        }
       ],
       "class": "security"
@@ -1366,6 +1431,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.5_obj.1",
         "name": "assessment-objective",
         "prose": "/etc/cron.weekly owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_weekly_mode not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_weekly_owner not collected"
        }
       ],
       "class": "security"
@@ -1404,6 +1479,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.6_obj.1",
         "name": "assessment-objective",
         "prose": "/etc/cron.monthly owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_monthly_mode not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_monthly_owner not collected"
        }
       ],
       "class": "security"
@@ -1442,6 +1527,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.7_obj.1",
         "name": "assessment-objective",
         "prose": "/etc/cron.d owned by %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_d_mode not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.7_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_d_owner not collected"
        }
       ],
       "class": "security"
@@ -1485,6 +1580,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.8_obj.2",
         "name": "assessment-objective",
         "prose": "/etc/cron.allow has mode %s, should be 0600"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.8_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.cron_allow_mode not collected"
        }
       ],
       "class": "security"
@@ -1528,6 +1628,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.1.9_obj.2",
         "name": "assessment-objective",
         "prose": "/etc/at.allow has mode %s, should be 0600"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.1.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — cron.at_allow_mode not collected"
        }
       ],
       "class": "security"
@@ -1558,7 +1663,7 @@
     "controls": [
      {
       "id": "cis_ubuntu_20_04-CIS-6.1.x",
-      "title": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "title": "evidence missing — critical_files not collected",
       "props": [
        {
         "name": "label",
@@ -1584,7 +1689,222 @@
        {
         "id": "cis_ubuntu_20_04-CIS-6.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — critical_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-6.1.10",
+      "title": "evidence missing — world_writable not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — world_writable not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d world-writable files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-6.1.11",
+      "title": "evidence missing — unowned_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — unowned_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d unowned files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-6.1.12",
+      "title": "evidence missing — ungrouped_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ungrouped_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d ungrouped files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-6.1.13",
+      "title": "evidence missing — suid_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — suid_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-6.1.14",
+      "title": "evidence missing — sgid_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sgid_files not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Excessive SGID binaries found (%d files)"
        }
       ],
       "class": "security"
@@ -1788,191 +2108,6 @@
       "class": "security"
      },
      {
-      "id": "cis_ubuntu_20_04-CIS-6.1.10",
-      "title": "World-writable file found: %s (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.10_stmt",
-        "name": "statement",
-        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.10_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d world-writable files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-6.1.11",
-      "title": "Unowned file found: %s (UID: %d, mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.11_stmt",
-        "name": "statement",
-        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.11_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d unowned files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-6.1.12",
-      "title": "Ungrouped file found: %s (GID: %d, mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.12_stmt",
-        "name": "statement",
-        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.12_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d ungrouped files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-6.1.13",
-      "title": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.13_stmt",
-        "name": "statement",
-        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.1",
-        "name": "assessment-objective",
-        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-6.1.14",
-      "title": "Excessive SGID binaries found (%d files)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#871c87e7-121b-51fa-9a13-3a66a7f58939",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-6.1.14_stmt",
-        "name": "statement",
-        "prose": "Excessive SGID binaries found (%d files)"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_ubuntu_20_04-security_risks",
       "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/file_permissions_validation.rego (package cis_ubuntu_20_04.file_permissions); see the rule body.",
       "props": [
@@ -2058,6 +2193,11 @@
         "id": "cis_ubuntu_20_04-CIS-1.1.1.x_stmt",
         "name": "statement",
         "prose": "Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.1.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — disabled_filesystem_modules.modules not collected"
        }
       ],
       "class": "security"
@@ -2157,6 +2297,77 @@
         "id": "cis_ubuntu_20_04-CIS-1.1.22_stmt",
         "name": "statement",
         "prose": "World-writable directory %s does not have sticky bit set"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.22_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sticky_bit_check.world_writable_dirs not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-1.1.2",
+      "title": "evidence missing — required_partitions.partitions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81202fca-e3c1-5900-9cf4-e69b6f901da9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — required_partitions.partitions not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-1.1.x",
+      "title": "evidence missing — mount_options.mounts not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.filesystem"
+       }
+      ],
+      "links": [
+       {
+        "href": "#81202fca-e3c1-5900-9cf4-e69b6f901da9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.1.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — mount_options.mounts not collected"
        }
       ],
       "class": "security"
@@ -2185,6 +2396,72 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-1",
+      "title": "CIS %s: evidence missing — initial_setup.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.initial_setup#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.initial_setup#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fc3bfdc2-aa81-5077-bf0a-0a2fa249834b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — initial_setup.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-2",
+      "title": "CIS %s: evidence missing — initial_setup.%s_mode not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.initial_setup#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.initial_setup#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fc3bfdc2-aa81-5077-bf0a-0a2fa249834b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.initial_setup-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — initial_setup.%s_mode not collected"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_ubuntu_20_04-CIS-1.2.1",
       "title": "No apt package repositories are enabled",
@@ -2636,6 +2913,115 @@
     ],
     "controls": [
      {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-1",
+      "title": "CIS %s: evidence missing — journald.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.logging#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.logging#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04485778-7321-5681-b205-e46bf60b7244",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — journald.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-2",
+      "title": "CIS %s: evidence missing — rsyslog.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.logging#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.logging#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04485778-7321-5681-b205-e46bf60b7244",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.logging-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — rsyslog.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-4.2.3",
+      "title": "evidence missing — log_file_permissions.analysis not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#04485778-7321-5681-b205-e46bf60b7244",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.2.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — log_file_permissions.analysis not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Log file '%s' has excessive permissions (mode: %s, issue: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_20_04-CIS-4.2.1.1",
       "title": "rsyslog is not installed",
       "props": [
@@ -2741,7 +3127,7 @@
      },
      {
       "id": "cis_ubuntu_20_04-CIS-4.2.1.4",
-      "title": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)",
+      "title": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or more restrictive)",
       "props": [
        {
         "name": "label",
@@ -2767,7 +3153,7 @@
        {
         "id": "cis_ubuntu_20_04-CIS-4.2.1.4_stmt",
         "name": "statement",
-        "prose": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)"
+        "prose": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or more restrictive)"
        }
       ],
       "class": "security"
@@ -2943,44 +3329,6 @@
       "class": "security"
      },
      {
-      "id": "cis_ubuntu_20_04-CIS-4.2.3",
-      "title": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 4.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 4.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#04485778-7321-5681-b205-e46bf60b7244",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.2.3_stmt",
-        "name": "statement",
-        "prose": "Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-4.2.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "Log file '%s' has excessive permissions (mode: %s, issue: %s)"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_ubuntu_20_04-CIS-4.2.x",
       "title": "logrotate is not installed (logs may fill disk)",
       "props": [
@@ -3105,7 +3453,7 @@
     "controls": [
      {
       "id": "cis_ubuntu_20_04-CIS-3.x",
-      "title": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s",
+      "title": "evidence missing — sysctl_parameters.analysis not collected",
       "props": [
        {
         "name": "label",
@@ -3131,7 +3479,141 @@
        {
         "id": "cis_ubuntu_20_04-CIS-3.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — sysctl_parameters.analysis not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-3.1.1",
+      "title": "evidence missing — ip_forwarding.ipv4_forwarding not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8b67ac1-bc37-5c66-89f3-83b270f86427",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.1.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ip_forwarding.ipv4_forwarding not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-3.3.2",
+      "title": "evidence missing — wireless_interfaces not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8b67ac1-bc37-5c66-89f3-83b270f86427",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.3.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — wireless_interfaces not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Wireless interface detected on server: %s"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "%v wireless interfaces found on server (should have 0)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-3.5.x",
+      "title": "evidence missing — firewall not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 3.5.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c8b67ac1-bc37-5c66-89f3-83b270f86427",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.5.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — firewall not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.5.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "No active firewall detected (type: %s)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.5.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "Using legacy iptables instead of ufw or nftables"
        }
       ],
       "class": "security"
@@ -3264,44 +3746,6 @@
         "id": "cis_ubuntu_20_04-CIS-3.2.5_stmt",
         "name": "statement",
         "prose": "Broadcast ICMP not ignored (vulnerable to Smurf attacks)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-3.1.1",
-      "title": "IPv4 forwarding is enabled (value: %v, expected: 0)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8b67ac1-bc37-5c66-89f3-83b270f86427",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-3.1.1_stmt",
-        "name": "statement",
-        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-3.1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
        }
       ],
       "class": "security"
@@ -3510,82 +3954,6 @@
       "class": "security"
      },
      {
-      "id": "cis_ubuntu_20_04-CIS-3.3.2",
-      "title": "Wireless interface detected on server: %s",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8b67ac1-bc37-5c66-89f3-83b270f86427",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-3.3.2_stmt",
-        "name": "statement",
-        "prose": "Wireless interface detected on server: %s"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-3.3.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d wireless interfaces found on server (should have 0)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_ubuntu_20_04-CIS-3.5.x",
-      "title": "No active firewall detected (type: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 3.5.x"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 3.5.x"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8b67ac1-bc37-5c66-89f3-83b270f86427",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-3.5.x_stmt",
-        "name": "statement",
-        "prose": "No active firewall detected (type: %s)"
-       },
-       {
-        "id": "cis_ubuntu_20_04-CIS-3.5.x_obj.1",
-        "name": "assessment-objective",
-        "prose": "Using legacy iptables instead of ufw or nftables"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_ubuntu_20_04-CIS-3.5.1.1",
       "title": "UFW default incoming policy is '%s', should be deny or reject",
       "props": [
@@ -3676,6 +4044,39 @@
     ],
     "controls": [
      {
+      "id": "cis_ubuntu_20_04-CIS-5.4.1",
+      "title": "evidence missing — pam.pwquality_conf_raw not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.pam"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ffa9c8c-2eec-5724-89b6-344431628967",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — pam.pwquality_conf_raw not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_20_04-CIS-5.4.1.1",
       "title": "Password minimum length is %s, should be at least 14",
       "props": [
@@ -3707,6 +4108,11 @@
        },
        {
         "id": "cis_ubuntu_20_04-CIS-5.4.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Password minimum length is %s, should be at least 14"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "Password minimum length (minlen) not configured in pwquality.conf"
        }
@@ -3829,7 +4235,7 @@
      },
      {
       "id": "cis_ubuntu_20_04-CIS-5.4.4",
-      "title": "Password hashing algorithm is not SHA-512 or yescrypt",
+      "title": "evidence missing — pam.common_password_raw not collected",
       "props": [
        {
         "name": "label",
@@ -3855,6 +4261,11 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.4.4_stmt",
         "name": "statement",
+        "prose": "evidence missing — pam.common_password_raw not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.4_obj.1",
+        "name": "assessment-objective",
         "prose": "Password hashing algorithm is not SHA-512 or yescrypt"
        }
       ],
@@ -4100,6 +4511,11 @@
        },
        {
         "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.default_umask not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.3",
         "name": "assessment-objective",
         "prose": "Default umask is %s, should be 027 or more restrictive"
        }
@@ -4558,8 +4974,41 @@
     ],
     "controls": [
      {
+      "id": "cis_ubuntu_20_04-CIS-5.2.x",
+      "title": "evidence missing — ssh.sshd_config_raw not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de56f60-82c0-5918-9c9d-1d5298abbb1a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ssh.sshd_config_raw not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_ubuntu_20_04-CIS-5.2.1",
-      "title": "/etc/ssh/sshd_config has mode %s, should be 0600",
+      "title": "/etc/ssh/sshd_config has mode %s, should be 0600 or more restrictive",
       "props": [
        {
         "name": "label",
@@ -4585,7 +5034,7 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.1_stmt",
         "name": "statement",
-        "prose": "/etc/ssh/sshd_config has mode %s, should be 0600"
+        "prose": "/etc/ssh/sshd_config has mode %s, should be 0600 or more restrictive"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.1_obj.1",
@@ -4596,13 +5045,18 @@
         "id": "cis_ubuntu_20_04-CIS-5.2.1_obj.2",
         "name": "assessment-objective",
         "prose": "/etc/ssh/sshd_config group is %s, should be root"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ssh.%s not collected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_20_04-CIS-5.2.2",
-      "title": "SSH private host key %s has mode %s, should be 0600",
+      "title": "SSH private host key %s has mode %s, should be 0600 or more restrictive",
       "props": [
        {
         "name": "label",
@@ -4628,14 +5082,19 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.2_stmt",
         "name": "statement",
-        "prose": "SSH private host key %s has mode %s, should be 0600"
+        "prose": "SSH private host key %s has mode %s, should be 0600 or more restrictive"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ssh.private_key_files not collected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_20_04-CIS-5.2.3",
-      "title": "SSH public host key %s has mode %s, should be 0644",
+      "title": "SSH public host key %s has mode %s, should be 0644 or more restrictive",
       "props": [
        {
         "name": "label",
@@ -4661,7 +5120,12 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.3_stmt",
         "name": "statement",
-        "prose": "SSH public host key %s has mode %s, should be 0644"
+        "prose": "SSH public host key %s has mode %s, should be 0644 or more restrictive"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ssh.public_key_files not collected"
        }
       ],
       "class": "security"
@@ -4733,39 +5197,6 @@
       "class": "security"
      },
      {
-      "id": "cis_ubuntu_20_04-CIS-5.2.6",
-      "title": "SSH UsePAM is disabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 5.2.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 5.2.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_ubuntu_20_04.ssh"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6de56f60-82c0-5918-9c9d-1d5298abbb1a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_ubuntu_20_04-CIS-5.2.6_stmt",
-        "name": "statement",
-        "prose": "SSH UsePAM is disabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_ubuntu_20_04-CIS-5.2.7",
       "title": "SSH root login is not disabled",
       "props": [
@@ -4794,6 +5225,39 @@
         "id": "cis_ubuntu_20_04-CIS-5.2.7_stmt",
         "name": "statement",
         "prose": "SSH root login is not disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-CIS-5.2.6",
+      "title": "SSH UsePAM is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de56f60-82c0-5918-9c9d-1d5298abbb1a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.6_stmt",
+        "name": "statement",
+        "prose": "SSH UsePAM is disabled"
        }
       ],
       "class": "security"
@@ -4998,7 +5462,7 @@
      },
      {
       "id": "cis_ubuntu_20_04-CIS-5.2.14",
-      "title": "SSH warning banner (Banner) is not configured",
+      "title": "SSH banner is set to none",
       "props": [
        {
         "name": "label",
@@ -5024,12 +5488,45 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.14_stmt",
         "name": "statement",
-        "prose": "SSH warning banner (Banner) is not configured"
+        "prose": "SSH banner is set to none"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-5.2.14_obj.1",
         "name": "assessment-objective",
-        "prose": "SSH banner is set to none"
+        "prose": "SSH warning banner (Banner) is not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.ssh-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/ssh_validation.rego (package cis_ubuntu_20_04.ssh); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.ssh#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.ssh#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.ssh"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6de56f60-82c0-5918-9c9d-1d5298abbb1a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.ssh-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/ubuntu_20_04/ssh_validation.rego (package cis_ubuntu_20_04.ssh); see the rule body."
        }
       ],
       "class": "security"
@@ -5063,6 +5560,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.2.15_stmt",
         "name": "statement",
         "prose": "SSH MaxAuthTries is %s, should be 4 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH MaxAuthTries is %s, should be 4 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSH MaxAuthTries is not configured (sshd default is 6), should be 4 or less"
        }
       ],
       "class": "security"
@@ -5129,6 +5636,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.2.17_stmt",
         "name": "statement",
         "prose": "SSH MaxSessions is %s, should be 10 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH MaxSessions is %s, should be 10 or less"
        }
       ],
       "class": "security"
@@ -5162,6 +5674,16 @@
         "id": "cis_ubuntu_20_04-CIS-5.2.18_stmt",
         "name": "statement",
         "prose": "SSH LoginGraceTime is %s seconds, should be 60 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime is %s seconds, should be 60 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.2.18_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime is not configured (sshd default is 120 seconds), should be 60 or less"
        }
       ],
       "class": "security"
@@ -5601,7 +6123,12 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/sudoers has mode %s, should be 0440"
+        "prose": "/etc/sudoers has mode %s, should be 0440 or more restrictive"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.3.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sudo.sudoers_mode not collected"
        }
       ],
       "class": "security"
@@ -5630,6 +6157,39 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.user_group-1",
+      "title": "CIS %s: evidence missing — user_group.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_ubuntu_20_04.user_group#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_ubuntu_20_04.user_group#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_ubuntu_20_04.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dc343c94-91b0-5939-8908-3929b8028e02",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_ubuntu_20_04-cis_ubuntu_20_04.user_group-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — user_group.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_ubuntu_20_04-CIS-6.2.1",
       "title": "User %s in /etc/passwd does not use shadowed passwords",

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 25
+#     checks: 27
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel9.user_group
 
 import rego.v1
@@ -30,6 +30,50 @@ default compliant := false
 violations contains msg if {
     not input.user_group
     msg := "CIS 6.2: FAIL-CLOSED - user_group facts were not supplied; the section cannot be evaluated and is reported non-compliant"
+}
+
+# An empty object is not evidence either: each fact a control iterates must be present
+# with its expected type. An absent offender list is NOT read as "no offenders" because
+# no collector in the compliance repo emits input.user_group yet.
+required_arrays := [
+    "users_without_shadow",
+    "users_with_empty_password",
+    "passwd_groups_not_in_group_file",
+    "uid_zero_accounts",
+    "users_without_home_directory",
+    "users_not_owning_home",
+    "home_dirs_too_permissive",
+    "users_with_netrc",
+    "users_with_forward",
+    "users_with_rhosts",
+    "dotfiles_group_or_world_writable",
+]
+
+required_objects := [
+    "duplicate_uids",
+    "duplicate_gids",
+    "duplicate_usernames",
+    "duplicate_groupnames",
+]
+
+violations contains msg if {
+    input.user_group
+    some key in required_arrays
+    not is_array(object.get(input.user_group, key, null))
+    msg := sprintf("CIS 6.2: evidence missing — user_group.%s not collected", [key])
+}
+
+violations contains msg if {
+    input.user_group
+    some key in required_objects
+    not is_object(object.get(input.user_group, key, null))
+    msg := sprintf("CIS 6.2: evidence missing — user_group.%s not collected", [key])
+}
+
+violations contains msg if {
+    input.user_group
+    not is_string(object.get(input.user_group, "root_path", null))
+    msg := "CIS 6.2.8: evidence missing — user_group.root_path not collected"
 }
 
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords

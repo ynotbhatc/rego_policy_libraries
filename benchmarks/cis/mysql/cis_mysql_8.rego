@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.mysql_8
 
 import rego.v1
@@ -113,7 +113,7 @@ installation_violations := [v |
 
 databases_on_non_system_partitions if {
 	datadir := input.mysql.config.datadir
-	not startswith(datadir, "/")
+	startswith(datadir, "/")
 	not startswith(datadir, "/var")
 	not startswith(datadir, "/usr")
 }
@@ -154,7 +154,9 @@ logs_on_non_system_partitions if {
 	general_log_file := input.mysql.config.general_log_file
 	slow_query_log_file := input.mysql.config.slow_query_log_file
 	
-	not startswith(log_bin, "/")
+	startswith(log_bin, "/")
+	not startswith(log_bin, "/var")
+	not startswith(log_bin, "/usr")
 	not startswith(general_log_file, "/var")
 	not startswith(slow_query_log_file, "/var")
 }
@@ -245,7 +247,7 @@ no_auto_value_on_zero if {
 }
 
 password_complexity_enabled if {
-	input.mysql.config.validate_password_policy == "MEDIUM"
+	input.mysql.config.validate_password_policy in ["MEDIUM", "STRONG"]
 }
 
 password_reuse_limited if {
@@ -1033,7 +1035,7 @@ require_secure_transport_enabled if {
 tls_version_secure if {
 	tls_version := input.mysql.config.tls_version
 	secure_versions := ["TLSv1.2", "TLSv1.3"]
-	supported_versions := split(tls_version, ",")
+	supported_versions := [trim_space(t) | some t in split(tls_version, ",")]
 	secure_version_found := [v | v := supported_versions[_]; v in secure_versions]
 	count(secure_version_found) > 0
 }
@@ -1091,7 +1093,8 @@ replication_traffic_secured if {
 }
 
 master_ssl_verify_server_cert_on if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_verify_server_cert_on if {
@@ -1100,7 +1103,8 @@ master_ssl_verify_server_cert_on if {
 }
 
 master_ssl_ca_set if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_ca_set if {
@@ -1109,7 +1113,8 @@ master_ssl_ca_set if {
 }
 
 master_ssl_capath_set if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_capath_set if {
@@ -1118,7 +1123,8 @@ master_ssl_capath_set if {
 }
 
 master_ssl_cert_set if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_cert_set if {
@@ -1127,7 +1133,8 @@ master_ssl_cert_set if {
 }
 
 master_ssl_key_set if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_key_set if {
@@ -1136,7 +1143,8 @@ master_ssl_key_set if {
 }
 
 master_ssl_crl_set if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_crl_set if {
@@ -1145,7 +1153,8 @@ master_ssl_crl_set if {
 }
 
 master_ssl_crlpath_set if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 master_ssl_crlpath_set if {
@@ -1154,7 +1163,8 @@ master_ssl_crlpath_set if {
 }
 
 slave_ssl_verify_server_cert_on if {
-	not input.mysql.replication.is_slave
+	# fail closed: applicability is only established when is_slave is explicitly false
+	input.mysql.replication.is_slave == false
 }
 
 slave_ssl_verify_server_cert_on if {

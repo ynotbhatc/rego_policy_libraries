@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 17
+#     checks: 18
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_8.file_permissions
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Section 6.1: System File Permissions
@@ -40,7 +40,11 @@ critical_file_violations contains sprintf("CIS 6.1.x: Critical file '%s' has inc
 ]) if {
 	some file in input.critical_files.analysis
 	not file.fully_compliant
-	file.exists
+	not file.exists == false
+}
+
+critical_file_violations contains "CIS 6.1.x: evidence missing - critical_files.analysis not collected" if {
+	count(object.get(input, ["critical_files", "analysis"], [])) == 0
 }
 
 critical_file_violations contains sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode]) if {
@@ -134,7 +138,17 @@ risk_level := "critical" if {
 	input.suid_files.unknown_count > 5
 } else := "medium" if {
 	input.unowned_files.count > 0
+} else := "unknown" if {
+	not risk_evidence_present
 } else := "low"
+
+# "low" is only meaningful when every count the risk level reads was collected.
+risk_evidence_present if {
+	is_number(input.world_writable.count)
+	is_number(input.critical_files.non_compliant_count)
+	is_number(input.suid_files.unknown_count)
+	is_number(input.unowned_files.count)
+}
 
 report := {
 	"compliant": compliant,

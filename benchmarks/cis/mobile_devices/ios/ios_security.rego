@@ -13,10 +13,38 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.mobile.ios
 
 import rego.v1
+
+# Every rule used as a value in the report object needs a neutral default,
+# otherwise a single failing check leaves the whole report undefined.
+default passcode_enabled := false
+default passcode_min_length := false
+default passcode_alphanumeric := false
+default passcode_complex_characters := false
+default passcode_max_age := false
+default passcode_history := false
+default max_failed_attempts := false
+default auto_lock_enabled := false
+default encrypted_backups_enabled := false
+default icloud_backup_disabled := false
+default icloud_keychain_disabled := false
+default icloud_drive_disabled := false
+default siri_disabled_when_locked := false
+default spotlight_suggestions_disabled := false
+default notification_previews_disabled_when_locked := false
+default app_installation_restricted := false
+default untrusted_tls_blocked := false
+default safari_secure := false
+default airdrop_disabled := false
+default device_supervised := false
+default mdm_removal_restricted := false
+default diagnostic_data_disabled := false
+default location_services_configured := false
+default advertising_tracking_disabled := false
+default ios_device_compliant := false
 
 # CIS Apple iOS Benchmark
 # Mobile Device Security Configuration

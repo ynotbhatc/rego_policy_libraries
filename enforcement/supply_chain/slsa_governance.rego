@@ -115,9 +115,10 @@ approved_oidc_providers := {
 	"https://accounts.google.com",
 }
 
+# Exact issuer match (a trailing slash is ignored): a prefix match would accept
+# lookalike hosts such as https://gitlab.com.attacker.example
 approved_signing_identity(identity) if {
-	some provider in approved_oidc_providers
-	startswith(identity.issuer, provider)
+	trim_suffix(identity.issuer, "/") in approved_oidc_providers
 }
 
 # =============================================================================
@@ -176,21 +177,26 @@ is_floating_version(version) if { version == "" }
 is_floating_version(version) if { startswith(version, "^") }
 is_floating_version(version) if { startswith(version, "~") }
 is_floating_version(version) if { startswith(version, ">") }
-is_floating_version(version) if { contains(version, "x") }
+is_floating_version(version) if { regex.match(`(^|\.)[xX*](\.|$)`, version) }
 
 violations contains sprintf("Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)", [dep.name, dep.version, vuln.cve_id, vuln.cvss_score, vuln.severity]) if {
 	some dep in input.dependencies
 	some vuln in dep.vulnerabilities
 	vuln.cvss_score >= 7.0
-	not vuln.exempted
+	not vuln_exempt(vuln)
 }
 
 violations contains sprintf("Dependencies: %s@%s has critical CVE %s with no exemption", [dep.name, dep.version, vuln.cve_id]) if {
 	some dep in input.dependencies
 	some vuln in dep.vulnerabilities
 	vuln.severity == "critical"
-	not vuln.exemption_approved
+	not vuln_exempt(vuln)
 }
+
+# Collectors and humans use both spellings; either one grants the exemption.
+vuln_exempt(vuln) if vuln.exempted == true
+
+vuln_exempt(vuln) if vuln.exemption_approved == true
 
 # =============================================================================
 # LICENSE COMPLIANCE
@@ -204,7 +210,7 @@ strong_copyleft_licenses := {
 	"SSPL-1.0",
 }
 
-violations contains sprintf("License: %s uses %s (strong copyleft — legal review required for commercial distribution)", [dep.name, dep.license]) if {
+violations contains sprintf("License: %s uses %s (strong copyleft — legal review required for commercial distribution)", [dep.name, dep.license_concluded]) if {
 	input.policy.enforce_license_compliance
 	some dep in input.sbom.components
 	dep.license_concluded in strong_copyleft_licenses
@@ -222,9 +228,20 @@ violations contains sprintf("License: %s has no license declaration (unknown lic
 # BUILD PROVENANCE INTEGRITY
 # =============================================================================
 
+violations contains "Provenance: Build source URI missing from provenance (cannot verify repository)" if {
+	input.provenance.exists
+	not input.provenance.build_definition.external_parameters.source_uri
+}
+
+violations contains "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)" if {
+	input.provenance.exists
+	not input.policy.expected_source_uri_prefix
+}
+
 violations contains "Provenance: Build source URI does not match expected repository" if {
 	input.provenance.exists
 	input.provenance.build_definition.external_parameters.source_uri
+	input.policy.expected_source_uri_prefix
 	not startswith(
 		input.provenance.build_definition.external_parameters.source_uri,
 		input.policy.expected_source_uri_prefix,
@@ -254,9 +271,21 @@ approved_builders := {
 	"https://gitlab.com/gitlab-org/gitlab-runner",
 }
 
+# The builder id is the approved id itself, or the approved id followed by a path or @ref
+# (reusable-workflow ids look like <repo>/.github/workflows/x.yml@refs/tags/v1)
 approved_builder(builder_id) if {
 	some approved in approved_builders
-	startswith(builder_id, approved)
+	builder_id == approved
+}
+
+approved_builder(builder_id) if {
+	some approved in approved_builders
+	startswith(builder_id, concat("", [approved, "/"]))
+}
+
+approved_builder(builder_id) if {
+	some approved in approved_builders
+	startswith(builder_id, concat("", [approved, "@"]))
 }
 
 # =============================================================================
@@ -280,10 +309,10 @@ compliance_report := {
 	"compliant":    compliant,
 	"assessment":   slsa_assessment,
 	"controls_checked": {
-		"provenance":   true,
-		"signing":      true,
-		"sbom":         true,
-		"dependencies": true,
+		"provenance":   is_object(object.get(input, "provenance", null)),
+		"signing":      is_object(object.get(input, "artifact", null)),
+		"sbom":         is_object(object.get(input, "sbom", null)),
+		"dependencies": is_array(object.get(input, "dependencies", null)),
 		"licenses":     object.get(input, ["policy", "enforce_license_compliance"], false),
 	},
 }

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 25
+#     checks: 26
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.user_group
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 6.2: User and Group Settings
@@ -29,6 +29,33 @@ violations contains "CIS: FAIL-CLOSED - facts 'input.user_group' were not suppli
 
 compliant if {
 	count(violations) == 0
+}
+
+# Missing evidence fails closed. Each offender-list key must be PRESENT in the
+# facts; an empty list is valid evidence of "no offenders", an absent key is not.
+required_keys := {
+	"users_without_shadow": "6.2.1",
+	"users_with_empty_password": "6.2.2",
+	"passwd_groups_not_in_group_file": "6.2.3",
+	"duplicate_uids": "6.2.4",
+	"duplicate_gids": "6.2.5",
+	"duplicate_usernames": "6.2.6",
+	"duplicate_groupnames": "6.2.7",
+	"root_path": "6.2.8",
+	"uid_zero_accounts": "6.2.9",
+	"users_without_home_directory": "6.2.10",
+	"users_not_owning_home": "6.2.11",
+	"home_dirs_too_permissive": "6.2.12",
+	"users_with_netrc": "6.2.13",
+	"users_with_forward": "6.2.14",
+	"users_with_rhosts": "6.2.15",
+	"dotfiles_group_or_world_writable": "6.2.16",
+}
+
+violations contains msg if {
+	some key, ctl in required_keys
+	object.get(object.get(input, "user_group", {}), key, null) == null
+	msg := sprintf("CIS %s: evidence missing — user_group.%s not collected", [ctl, key])
 }
 
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords

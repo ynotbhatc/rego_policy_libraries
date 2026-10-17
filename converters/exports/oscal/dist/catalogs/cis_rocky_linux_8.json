@@ -100,7 +100,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-4.1.1.2",
-      "title": "auditd service not enabled",
+      "title": "evidence missing - auditd.service not collected",
       "props": [
        {
         "name": "label",
@@ -126,10 +126,15 @@
        {
         "id": "cis_rocky_linux_8-CIS-4.1.1.2_stmt",
         "name": "statement",
-        "prose": "auditd service not enabled"
+        "prose": "evidence missing - auditd.service not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-4.1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "auditd service not enabled"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "auditd service not running"
        }
@@ -379,7 +384,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-4.1.4.1",
-      "title": "Audit log permissions too permissive (mode: %s, should be 0640 or less)",
+      "title": "evidence missing - auditd.log_permissions.mode not collected",
       "props": [
        {
         "name": "label",
@@ -405,6 +410,11 @@
        {
         "id": "cis_rocky_linux_8-CIS-4.1.4.1_stmt",
         "name": "statement",
+        "prose": "evidence missing - auditd.log_permissions.mode not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.4.1_obj.1",
+        "name": "assessment-objective",
         "prose": "Audit log permissions too permissive (mode: %s, should be 0640 or less)"
        }
       ],
@@ -412,7 +422,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-4.1.4.2",
-      "title": "Audit log not owned by root (owner: %s)",
+      "title": "evidence missing - auditd.log_permissions.pw_name not collected",
       "props": [
        {
         "name": "label",
@@ -438,10 +448,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-4.1.4.2_stmt",
         "name": "statement",
-        "prose": "Audit log not owned by root (owner: %s)"
+        "prose": "evidence missing - auditd.log_permissions.pw_name not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-4.1.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log not owned by root (owner: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.4.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - auditd.log_permissions.gr_name not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.4.2_obj.3",
         "name": "assessment-objective",
         "prose": "Audit log group not root or adm (group: %s)"
        }
@@ -450,7 +470,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-4.1.4.3",
-      "title": "Audit log directory permissions too permissive (mode: %s)",
+      "title": "evidence missing - auditd.log_dir_permissions.mode not collected",
       "props": [
        {
         "name": "label",
@@ -476,14 +496,19 @@
        {
         "id": "cis_rocky_linux_8-CIS-4.1.4.3_stmt",
         "name": "statement",
-        "prose": "Audit log directory permissions too permissive (mode: %s)"
+        "prose": "evidence missing - auditd.log_dir_permissions.mode not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit log directory permissions too permissive (mode: %s, should be 0750 or less)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_8-CIS-4.1.4.4",
-      "title": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)",
+      "title": "evidence missing - auditd.config_permissions not collected",
       "props": [
        {
         "name": "label",
@@ -509,10 +534,15 @@
        {
         "id": "cis_rocky_linux_8-CIS-4.1.4.4_stmt",
         "name": "statement",
-        "prose": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)"
+        "prose": "evidence missing - auditd.config_permissions not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-4.1.4.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Audit config file %s has incorrect permissions (mode: %s, should be 0640 or less)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.1.4.4_obj.2",
         "name": "assessment-objective",
         "prose": "Audit config file %s not owned by root (owner: %s)"
        }
@@ -1069,7 +1099,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.1.2",
-      "title": "/etc/crontab has mode %s, should be 0600",
+      "title": "evidence missing - cron.crontab_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1095,15 +1125,30 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.2_stmt",
         "name": "statement",
-        "prose": "/etc/crontab has mode %s, should be 0600"
+        "prose": "evidence missing - cron.crontab_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/crontab owned by %s, should be root"
+        "prose": "/etc/crontab has mode %s, should be 0600 or stricter"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.crontab_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "/etc/crontab owned by %s, should be root"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.crontab_group not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.2_obj.5",
         "name": "assessment-objective",
         "prose": "/etc/crontab group is %s, should be root"
        }
@@ -1112,7 +1157,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.1.3",
-      "title": "/etc/cron.hourly has mode %s, should be 0700",
+      "title": "evidence missing - cron.cron_hourly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1138,10 +1183,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.3_stmt",
         "name": "statement",
-        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+        "prose": "evidence missing - cron.cron_hourly_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.hourly has mode %s, should be 0700 or stricter"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.cron_hourly_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.3_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.hourly owned by %s, should be root"
        }
@@ -1150,7 +1205,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.1.4",
-      "title": "/etc/cron.daily has mode %s, should be 0700",
+      "title": "evidence missing - cron.cron_daily_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1176,10 +1231,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.4_stmt",
         "name": "statement",
-        "prose": "/etc/cron.daily has mode %s, should be 0700"
+        "prose": "evidence missing - cron.cron_daily_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.daily has mode %s, should be 0700 or stricter"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.cron_daily_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.4_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.daily owned by %s, should be root"
        }
@@ -1188,7 +1253,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.1.5",
-      "title": "/etc/cron.weekly has mode %s, should be 0700",
+      "title": "evidence missing - cron.cron_weekly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1214,10 +1279,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.5_stmt",
         "name": "statement",
-        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+        "prose": "evidence missing - cron.cron_weekly_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.weekly has mode %s, should be 0700 or stricter"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.cron_weekly_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.5_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.weekly owned by %s, should be root"
        }
@@ -1226,7 +1301,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.1.6",
-      "title": "/etc/cron.monthly has mode %s, should be 0700",
+      "title": "evidence missing - cron.cron_monthly_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1252,10 +1327,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.6_stmt",
         "name": "statement",
-        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+        "prose": "evidence missing - cron.cron_monthly_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.monthly has mode %s, should be 0700 or stricter"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.cron_monthly_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.6_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.monthly owned by %s, should be root"
        }
@@ -1264,7 +1349,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.1.7",
-      "title": "/etc/cron.d has mode %s, should be 0700",
+      "title": "evidence missing - cron.cron_d_mode not collected",
       "props": [
        {
         "name": "label",
@@ -1290,10 +1375,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.7_stmt",
         "name": "statement",
-        "prose": "/etc/cron.d has mode %s, should be 0700"
+        "prose": "evidence missing - cron.cron_d_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.d has mode %s, should be 0700 or stricter"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - cron.cron_d_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.7_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/cron.d owned by %s, should be root"
        }
@@ -1338,7 +1433,12 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.8_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/cron.allow has mode %s, should be 0600"
+        "prose": "evidence missing - cron.cron_allow_mode not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.8_obj.3",
+        "name": "assessment-objective",
+        "prose": "/etc/cron.allow has mode %s, should be 0600 or stricter"
        }
       ],
       "class": "security"
@@ -1381,7 +1481,12 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.1.9_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/at.allow has mode %s, should be 0600"
+        "prose": "evidence missing - cron.at_allow_mode not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.1.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "/etc/at.allow has mode %s, should be 0600 or stricter"
        }
       ],
       "class": "security"
@@ -1439,6 +1544,11 @@
         "id": "cis_rocky_linux_8-CIS-6.1.x_stmt",
         "name": "statement",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-6.1.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - critical_files.analysis not collected"
        }
       ],
       "class": "security"
@@ -2178,7 +2288,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-1.7.1",
-      "title": "/etc/motd has mode %s, should be 0644",
+      "title": "/etc/motd has mode %s, should be 0644 or stricter",
       "props": [
        {
         "name": "label",
@@ -2204,15 +2314,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.7.1_stmt",
         "name": "statement",
-        "prose": "/etc/motd has mode %s, should be 0644"
+        "prose": "/etc/motd has mode %s, should be 0644 or stricter"
        },
        {
         "id": "cis_rocky_linux_8-CIS-1.7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/motd contains sensitive system information (OS version, kernel, etc.)"
+        "prose": "evidence missing - initial_setup.motd_mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-1.7.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/motd contains sensitive system information (OS version, kernel, etc.)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.7.1_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/motd does not exist"
        }
@@ -2252,10 +2367,15 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue has mode %s, should be 0644"
+        "prose": "/etc/issue has mode %s, should be 0644 or stricter"
        },
        {
         "id": "cis_rocky_linux_8-CIS-1.7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - initial_setup.issue_mode not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.7.2_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/issue contains sensitive system information"
        }
@@ -2295,10 +2415,15 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue.net has mode %s, should be 0644"
+        "prose": "/etc/issue.net has mode %s, should be 0644 or stricter"
        },
        {
         "id": "cis_rocky_linux_8-CIS-1.7.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - initial_setup.issue_net_mode not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.7.3_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/issue.net contains sensitive system information"
        }
@@ -2307,7 +2432,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-1.7.4",
-      "title": "/etc/motd owned by %s, should be root",
+      "title": "evidence missing - initial_setup.motd_owner not collected",
       "props": [
        {
         "name": "label",
@@ -2333,6 +2458,11 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.7.4_stmt",
         "name": "statement",
+        "prose": "evidence missing - initial_setup.motd_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.7.4_obj.1",
+        "name": "assessment-objective",
         "prose": "/etc/motd owned by %s, should be root"
        }
       ],
@@ -2340,7 +2470,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-1.7.5",
-      "title": "/etc/issue owned by %s, should be root",
+      "title": "evidence missing - initial_setup.issue_owner not collected",
       "props": [
        {
         "name": "label",
@@ -2366,6 +2496,11 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.7.5_stmt",
         "name": "statement",
+        "prose": "evidence missing - initial_setup.issue_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.7.5_obj.1",
+        "name": "assessment-objective",
         "prose": "/etc/issue owned by %s, should be root"
        }
       ],
@@ -2373,7 +2508,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-1.7.6",
-      "title": "/etc/issue.net owned by %s, should be root",
+      "title": "evidence missing - initial_setup.issue_net_owner not collected",
       "props": [
        {
         "name": "label",
@@ -2399,6 +2534,11 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.7.6_stmt",
         "name": "statement",
+        "prose": "evidence missing - initial_setup.issue_net_owner not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.7.6_obj.1",
+        "name": "assessment-objective",
         "prose": "/etc/issue.net owned by %s, should be root"
        }
       ],
@@ -2536,7 +2676,12 @@
        {
         "id": "cis_rocky_linux_8-CIS-1.8.4_obj.1",
         "name": "assessment-objective",
-        "prose": "GDM idle delay is %d seconds, should be 900 or less"
+        "prose": "GDM idle delay is %v seconds, should be 900 or less"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-1.8.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - initial_setup.gdm_idle_delay not collected"
        }
       ],
       "class": "security"
@@ -2912,7 +3057,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-4.2.1.4",
-      "title": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)",
+      "title": "evidence missing - rsyslog.file_create_mode not collected ($FileCreateMode unset defaults to 0644)",
       "props": [
        {
         "name": "label",
@@ -2938,7 +3083,12 @@
        {
         "id": "cis_rocky_linux_8-CIS-4.2.1.4_stmt",
         "name": "statement",
-        "prose": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)"
+        "prose": "evidence missing - rsyslog.file_create_mode not collected ($FileCreateMode unset defaults to 0644)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-4.2.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or stricter)"
        }
       ],
       "class": "security"
@@ -3308,6 +3458,39 @@
       "class": "security"
      },
      {
+      "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-1",
+      "title": "CIS %s: evidence missing - %s not present in sysctl_parameters.analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_8.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_8.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#215b9962-47e2-5f8e-8d3d-8f7d61c3a728",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_8-cis_rocky_linux_8.network-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing - %s not present in sysctl_parameters.analysis"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_rocky_linux_8-CIS-3.2.8",
       "title": "TCP SYN cookies not enabled (vulnerable to SYN flood attacks)",
       "props": [
@@ -3441,7 +3624,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-3.1.1",
-      "title": "IPv4 forwarding is enabled (value: %v, expected: 0)",
+      "title": "evidence missing - ip_forwarding.ipv4_forwarding not collected",
       "props": [
        {
         "name": "label",
@@ -3467,10 +3650,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-3.1.1_stmt",
         "name": "statement",
-        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+        "prose": "evidence missing - ip_forwarding.ipv4_forwarding not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - ip_forwarding.ipv6_forwarding not collected"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-3.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-3.1.1_obj.3",
         "name": "assessment-objective",
         "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
        }
@@ -4205,6 +4398,11 @@
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Inactive password lock is disabled (%s), should be 30 days or less"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.5.1.4_obj.2",
         "name": "assessment-objective",
         "prose": "Inactive password lock not configured"
        }
@@ -5246,7 +5444,7 @@
     "controls": [
      {
       "id": "cis_rocky_linux_8-CIS-5.2.1",
-      "title": "/etc/ssh/sshd_config permissions not 0600",
+      "title": "evidence missing - ssh.config_permissions.mode not collected",
       "props": [
        {
         "name": "label",
@@ -5272,15 +5470,20 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.2.1_stmt",
         "name": "statement",
-        "prose": "/etc/ssh/sshd_config permissions not 0600"
+        "prose": "evidence missing - ssh.config_permissions.mode not collected"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/ssh/sshd_config not owned by root"
+        "prose": "/etc/ssh/sshd_config permissions not 0600 or stricter"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "/etc/ssh/sshd_config not owned by root"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.2.1_obj.3",
         "name": "assessment-objective",
         "prose": "/etc/ssh/sshd_config group not root"
        }
@@ -5289,7 +5492,7 @@
      },
      {
       "id": "cis_rocky_linux_8-CIS-5.2.2",
-      "title": "SSH private key %s has incorrect permissions (mode: %s)",
+      "title": "SSH private key %s has incorrect permissions (mode: %s, should be 0600 or stricter)",
       "props": [
        {
         "name": "label",
@@ -5315,7 +5518,7 @@
        {
         "id": "cis_rocky_linux_8-CIS-5.2.2_stmt",
         "name": "statement",
-        "prose": "SSH private key %s has incorrect permissions (mode: %s)"
+        "prose": "SSH private key %s has incorrect permissions (mode: %s, should be 0600 or stricter)"
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.2.2_obj.1",
@@ -6218,6 +6421,11 @@
        },
        {
         "id": "cis_rocky_linux_8-CIS-5.3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "sudo timestamp_timeout is %s (never expires), should be 0-15 minutes"
+       },
+       {
+        "id": "cis_rocky_linux_8-CIS-5.3.6_obj.2",
         "name": "assessment-objective",
         "prose": "sudo timestamp_timeout not configured"
        }

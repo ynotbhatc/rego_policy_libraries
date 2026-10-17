@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.breach_notification_sovereignty
 
 import rego.v1
@@ -46,11 +46,13 @@ import rego.v1
 
 # GDPR Art. 33: supervisory authority must be notified within 72 hours
 notification_timeline_compliant if {
+	is_number(input.breach_notification.notification_timeline_hours)
 	input.breach_notification.notification_timeline_hours <= 72
 }
 
 # NIS2 Art. 20: 24-hour early warning to competent authority
 early_warning_timeline_compliant if {
+	is_number(input.breach_notification.early_warning_timeline_hours)
 	input.breach_notification.early_warning_timeline_hours <= 24
 }
 
@@ -128,7 +130,7 @@ violations contains v if {
 		"severity": "critical",
 		"description": concat("", [
 			"Breach notification timeline exceeds 72 hours: ",
-			format_int(input.breach_notification.notification_timeline_hours, 10),
+			sprintf("%v", [object.get(object.get(input, "breach_notification", {}), "notification_timeline_hours", "not recorded")]),
 			"h (GDPR Art. 33 requires ≤72h)",
 		]),
 		"remediation": "Update incident response procedure to guarantee supervisory authority notification within 72 hours; assign a dedicated breach response role",
@@ -143,7 +145,7 @@ violations contains v if {
 		"severity": "high",
 		"description": concat("", [
 			"NIS2 early warning timeline exceeds 24 hours: ",
-			format_int(input.breach_notification.early_warning_timeline_hours, 10),
+			sprintf("%v", [object.get(object.get(input, "breach_notification", {}), "early_warning_timeline_hours", "not recorded")]),
 			"h (NIS2 Art. 20 requires ≤24h early warning)",
 		]),
 		"remediation": "Implement 24-hour early warning process to competent authority for significant incidents",
@@ -180,7 +182,7 @@ violations contains v if {
 		"severity": "high",
 		"description": concat("", [
 			"Breach notification channel routes through foreign-HQ tooling: ",
-			input.breach_notification.notification_vendor_hq_country,
+			sprintf("%v", [object.get(object.get(input, "breach_notification", {}), "notification_vendor_hq_country", "not recorded")]),
 		]),
 		"remediation": "Replace SIEM/SOAR/ticketing with in-jurisdiction tooling, or ensure notification channel is fully in-jurisdiction",
 	}
@@ -216,7 +218,7 @@ violations contains v if {
 		"severity": "high",
 		"description": concat("", [
 			"Forensic evidence and incident artefacts stored outside approved jurisdiction: ",
-			input.breach_notification.forensic_evidence_jurisdiction,
+			sprintf("%v", [object.get(object.get(input, "breach_notification", {}), "forensic_evidence_jurisdiction", "not recorded")]),
 		]),
 		"remediation": "Ensure all forensic captures, memory dumps, and incident logs are stored in-jurisdiction",
 	}

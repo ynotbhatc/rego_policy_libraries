@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 15
+#     checks: 17
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_24_04.auditd
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 4.1: Configure System Accounting (auditd)
@@ -39,6 +39,11 @@ service_violations contains msg if {
 }
 
 # CIS 4.1.1.2: Ensure auditd service is enabled and running
+service_violations contains msg if {
+	not input.services["auditd.service"]
+	msg := "CIS 4.1.1.2: evidence missing — auditd.service not collected"
+}
+
 service_violations contains msg if {
 	service := input.services["auditd.service"]
 	service.status != "enabled"
@@ -180,8 +185,15 @@ rules_violations contains msg if {
 # CIS 4.1.4.1: Audit log file permissions
 permission_violations contains msg if {
 	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+	not mode_within(mode, "0640")
 	msg := sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode])
+}
+
+# Evidence gate: mode, owner and group of the audit log must all be collected.
+permission_violations contains msg if {
+	some field in ["mode", "pw_name", "gr_name"]
+	object.get(object.get(object.get(input, "auditd", {}), "log_permissions", {}), field, null) == null
+	msg := sprintf("CIS 4.1.4.1: evidence missing — auditd.log_permissions.%s not collected", [field])
 }
 
 # CIS 4.1.4.2: Audit log file ownership
@@ -210,3 +222,15 @@ report := {
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

@@ -13,12 +13,13 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_nginx_1_20
 
 import rego.v1
 
 default compliant := false
+
 
 violations := array.concat(
     installation_violations,
@@ -199,407 +200,636 @@ performance_violations := [msg |
     msg := m.msg
 ]
 
+default nginx_minimal_modules := false
+
 nginx_minimal_modules if {
     input.nginx.modules_minimal == true
 }
+
+default nginx_security_flags := false
 
 nginx_security_flags if {
     input.nginx.security_flags_enabled == true
 }
 
+default nginx_current_version := false
+
 nginx_current_version if {
     input.nginx.version_current == true
 }
+
+default nginx_non_privileged_user := false
 
 nginx_non_privileged_user if {
     input.nginx.user != "root"
     input.nginx.user != ""
 }
 
+default nginx_minimal_privileges := false
+
 nginx_minimal_privileges if {
     input.nginx.privileges_minimal == true
 }
+
+default nginx_config_ownership := false
 
 nginx_config_ownership if {
     input.nginx.config.owner == "root"
     input.nginx.config.group == "root"
 }
 
-nginx_config_permissions if {
-    input.nginx.config.permissions <= 644
+# config_mode: octal permission string ("644", "0644", "0o644") parsed to an integer; undefined if not octal.
+# NOTE: no helper functions in this package: a function in the package makes `data.cis_nginx_1_20`
+# ill-typed as an argument to object.get (see tests/test_cis_nginx_1_20_fail_closed.rego), so the
+# octal parse is repeated per path as a plain rule.
+config_mode := n if {
+    t := trim_prefix(lower(trim_space(sprintf("%v", [input.nginx.config.permissions]))), "0o")
+    regex.match(`^[0-7]{1,4}$`, t)
+    p := concat("", [substring("0000", 0, 4 - count(t)), t])
+    ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+    n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
 }
 
+default nginx_config_permissions := false
+
+nginx_config_permissions if {
+    bits.and(config_mode, bits.and(bits.negate(420), 4095)) == 0 # 0644
+}
+
+# binary_mode: octal permission string parsed to an integer; undefined if not octal.
+binary_mode := n if {
+    t := trim_prefix(lower(trim_space(sprintf("%v", [input.nginx.binary.permissions]))), "0o")
+    regex.match(`^[0-7]{1,4}$`, t)
+    p := concat("", [substring("0000", 0, 4 - count(t)), t])
+    ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+    n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+default nginx_binary_permissions := false
+
 nginx_binary_permissions if {
-    input.nginx.binary.permissions <= 755
+    bits.and(binary_mode, bits.and(bits.negate(493), 4095)) == 0 # 0755
     input.nginx.binary.owner == "root"
 }
+
+default nginx_chroot_enabled := false
 
 nginx_chroot_enabled if {
     input.nginx.chroot.enabled == true
 }
 
+default nginx_directory_permissions := false
+
 nginx_directory_permissions if {
     input.nginx.directories.permissions_secure == true
 }
+
+default nginx_unnecessary_modules_disabled := false
 
 nginx_unnecessary_modules_disabled if {
     count(input.nginx.modules.unnecessary) == 0
 }
 
+default nginx_debug_modules_removed := false
+
 nginx_debug_modules_removed if {
     count(input.nginx.modules.debug) == 0
 }
+
+default server_tokens_disabled := false
 
 server_tokens_disabled if {
     input.nginx.config.server_tokens == "off"
 }
 
+default server_signature_hidden := false
+
 server_signature_hidden if {
     input.nginx.config.server_signature_hidden == true
 }
+
+default version_info_hidden := false
 
 version_info_hidden if {
     input.nginx.config.version_disclosure == false
 }
 
+default default_config_removed := false
+
 default_config_removed if {
     input.nginx.config.default_removed == true
 }
+
+default default_docroot_changed := false
 
 default_docroot_changed if {
     input.nginx.config.default_docroot_changed == true
 }
 
+default default_error_pages_changed := false
+
 default_error_pages_changed if {
     input.nginx.config.custom_error_pages == true
 }
+
+default worker_processes_configured := false
 
 worker_processes_configured if {
     input.nginx.config.worker_processes > 0
     input.nginx.config.worker_processes <= input.system.cpu_cores * 2
 }
 
+default worker_connections_configured := false
+
 worker_connections_configured if {
     input.nginx.config.worker_connections > 0
     input.nginx.config.worker_connections <= 4096
 }
 
+default worker_rlimit_configured := false
+
 worker_rlimit_configured if {
     input.nginx.config.worker_rlimit_nofile > 0
 }
 
+default client_max_body_size_configured := false
+
 client_max_body_size_configured if {
     input.nginx.config.client_max_body_size != ""
-    input.nginx.config.client_max_body_size != "1m"
 }
+
+default client_body_timeout_configured := false
 
 client_body_timeout_configured if {
     input.nginx.config.client_body_timeout > 0
     input.nginx.config.client_body_timeout <= 60
 }
 
+default client_header_timeout_configured := false
+
 client_header_timeout_configured if {
     input.nginx.config.client_header_timeout > 0
     input.nginx.config.client_header_timeout <= 60
 }
+
+default keepalive_timeout_configured := false
 
 keepalive_timeout_configured if {
     input.nginx.config.keepalive_timeout > 0
     input.nginx.config.keepalive_timeout <= 30
 }
 
+default send_timeout_configured := false
+
 send_timeout_configured if {
     input.nginx.config.send_timeout > 0
     input.nginx.config.send_timeout <= 60
 }
+
+default server_name_configured := false
 
 server_name_configured if {
     count(input.nginx.config.server_blocks) > 0
     count([block | block := input.nginx.config.server_blocks[_]; block.server_name == "_"]) == 0
 }
 
+default listen_directive_configured := false
+
 listen_directive_configured if {
     count([block | block := input.nginx.config.server_blocks[_]; block.listen_configured != true]) == 0
     count(input.nginx.config.server_blocks) > 0
 }
 
+default default_server_configured := false
+
 default_server_configured if {
     input.nginx.config.default_server_secure == true
 }
+
+default http_methods_restricted := false
 
 http_methods_restricted if {
     input.nginx.config.allowed_methods != null
     count(input.nginx.config.allowed_methods) <= 5
 }
 
+default dangerous_methods_disabled := false
+
 dangerous_methods_disabled if {
+    is_array(input.nginx.config.allowed_methods)
     count([method | method := input.nginx.config.allowed_methods[_]; method in ["TRACE", "CONNECT", "DELETE", "PATCH"]]) == 0
 }
 
+default trace_method_disabled := false
+
 trace_method_disabled if {
+    is_array(input.nginx.config.allowed_methods)
     not "TRACE" in input.nginx.config.allowed_methods
 }
+
+default access_logging_enabled := false
 
 access_logging_enabled if {
     input.nginx.logging.access_log_enabled == true
 }
 
+default error_logging_enabled := false
+
 error_logging_enabled if {
     input.nginx.logging.error_log_enabled == true
 }
 
-log_file_permissions if {
-    input.nginx.logging.log_permissions <= 640
+# log_mode: octal permission string parsed to an integer; undefined if not octal.
+log_mode := n if {
+    t := trim_prefix(lower(trim_space(sprintf("%v", [input.nginx.logging.log_permissions]))), "0o")
+    regex.match(`^[0-7]{1,4}$`, t)
+    p := concat("", [substring("0000", 0, 4 - count(t)), t])
+    ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+    n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
 }
+
+default log_file_permissions := false
+
+log_file_permissions if {
+    bits.and(log_mode, bits.and(bits.negate(416), 4095)) == 0 # 0640
+}
+
+default log_rotation_configured := false
 
 log_rotation_configured if {
     input.nginx.logging.rotation_configured == true
 }
 
+default access_log_format_configured := false
+
 access_log_format_configured if {
     input.nginx.logging.access_log_format != ""
-    input.nginx.logging.access_log_format != "combined"
 }
+
+default error_log_level_configured := false
 
 error_log_level_configured if {
     input.nginx.logging.error_log_level in ["error", "crit", "alert", "emerg"]
 }
 
+default sensitive_info_filtered := false
+
 sensitive_info_filtered if {
     input.nginx.logging.sensitive_data_filtered == true
 }
+
+default log_storage_secure := false
 
 log_storage_secure if {
     input.nginx.logging.storage_secure == true
 }
 
+default log_backup_configured := false
+
 log_backup_configured if {
     input.nginx.logging.backup_configured == true
 }
+
+default log_monitoring_enabled := false
 
 log_monitoring_enabled if {
     input.nginx.logging.monitoring_enabled == true
 }
 
+default syslog_integration := false
+
 syslog_integration if {
     input.nginx.logging.syslog_enabled == true
 }
+
+default remote_logging_secure := false
 
 remote_logging_secure if {
     input.nginx.logging.remote_logging_secure == true
 }
 
+default ssl_enabled := false
+
 ssl_enabled if {
     input.nginx.ssl.enabled == true
 }
 
+default strong_ssl_protocols := false
+
 strong_ssl_protocols if {
     allowed_protocols := {"TLSv1.2", "TLSv1.3"}
+    is_array(input.nginx.ssl.protocols)
+    count(input.nginx.ssl.protocols) > 0
     count([protocol | protocol := input.nginx.ssl.protocols[_]; protocol in allowed_protocols]) == count(input.nginx.ssl.protocols)
 }
 
+default weak_protocols_disabled := false
+
 weak_protocols_disabled if {
     weak_protocols := {"SSLv2", "SSLv3", "TLSv1", "TLSv1.1"}
+    is_array(input.nginx.ssl.protocols)
+    count(input.nginx.ssl.protocols) > 0
     count([protocol | protocol := input.nginx.ssl.protocols[_]; protocol in weak_protocols]) == 0
 }
+
+default strong_ciphers_configured := false
 
 strong_ciphers_configured if {
     input.nginx.ssl.strong_ciphers == true
 }
 
+default weak_ciphers_disabled := false
+
 weak_ciphers_disabled if {
     input.nginx.ssl.weak_ciphers_disabled == true
 }
+
+default server_cipher_order := false
 
 server_cipher_order if {
     input.nginx.ssl.prefer_server_ciphers == true
 }
 
+default valid_ssl_certificates := false
+
 valid_ssl_certificates if {
     input.nginx.ssl.certificates_valid == true
 }
+
+default certificates_not_expired := false
 
 certificates_not_expired if {
     input.nginx.ssl.certificates_expired == false
 }
 
+default certificate_chain_complete := false
+
 certificate_chain_complete if {
     input.nginx.ssl.certificate_chain_complete == true
 }
+
+default private_keys_protected := false
 
 private_keys_protected if {
     input.nginx.ssl.private_keys_protected == true
 }
 
+default hsts_enabled := false
+
 hsts_enabled if {
     input.nginx.ssl.hsts_enabled == true
 }
 
+default ssl_session_cache_secure := false
+
 ssl_session_cache_secure if {
     input.nginx.ssl.session_cache_secure == true
 }
+
+default ssl_session_timeout_configured := false
 
 ssl_session_timeout_configured if {
     input.nginx.ssl.session_timeout > 0
     input.nginx.ssl.session_timeout <= 600
 }
 
+default ocsp_stapling_enabled := false
+
 ocsp_stapling_enabled if {
     input.nginx.ssl.ocsp_stapling == true
 }
+
+default certificate_transparency := false
 
 certificate_transparency if {
     input.nginx.ssl.certificate_transparency == true
 }
 
+default http_to_https_redirect := false
+
 http_to_https_redirect if {
     input.nginx.ssl.http_redirect_enabled == true
 }
+
+default secure_cookies_configured := false
 
 secure_cookies_configured if {
     input.nginx.ssl.secure_cookies == true
 }
 
+default required_modules_only := false
+
 required_modules_only if {
     input.nginx.modules.only_required_loaded == true
 }
 
+default dangerous_modules_disabled := false
+
 dangerous_modules_disabled if {
     dangerous_modules := {"debug", "status", "info", "autoindex"}
+    is_array(input.nginx.modules.loaded)
     count([module | module := input.nginx.modules.loaded[_]; module in dangerous_modules]) == 0
 }
+
+default realip_module_secure := false
 
 realip_module_secure if {
     input.nginx.modules.realip.configured_securely == true
 }
 
+default geoip_restrictions := false
+
 geoip_restrictions if {
     input.nginx.modules.geoip.restrictions_enabled == true
 }
+
+default auth_modules_configured := false
 
 auth_modules_configured if {
     input.nginx.modules.auth.properly_configured == true
 }
 
+default rate_limiting_enabled := false
+
 rate_limiting_enabled if {
     input.nginx.modules.rate_limiting.enabled == true
 }
+
+default security_headers_configured := false
 
 security_headers_configured if {
     input.nginx.modules.security_headers.configured == true
 }
 
+default waf_enabled := false
+
 waf_enabled if {
     input.nginx.modules.waf.enabled == true
 }
+
+default anti_ddos_configured := false
 
 anti_ddos_configured if {
     input.nginx.modules.anti_ddos.configured == true
 }
 
+default compression_secure := false
+
 compression_secure if {
     input.nginx.modules.compression.secure_config == true
 }
+
+default caching_configured := false
 
 caching_configured if {
     input.nginx.modules.caching.properly_configured == true
 }
 
+default access_controls_implemented := false
+
 access_controls_implemented if {
     input.nginx.access_control.implemented == true
 }
+
+default ip_restrictions_configured := false
 
 ip_restrictions_configured if {
     input.nginx.access_control.ip_restrictions == true
 }
 
+default geo_restrictions_configured := false
+
 geo_restrictions_configured if {
     input.nginx.access_control.geo_restrictions == true
 }
+
+default admin_auth_required := false
 
 admin_auth_required if {
     input.nginx.access_control.admin_auth_required == true
 }
 
+default strong_auth_mechanisms := false
+
 strong_auth_mechanisms if {
     input.nginx.access_control.strong_auth == true
 }
+
+default auth_bypass_protected := false
 
 auth_bypass_protected if {
     input.nginx.access_control.auth_bypass_protected == true
 }
 
+default directory_browsing_disabled := false
+
 directory_browsing_disabled if {
     input.nginx.access_control.autoindex == "off"
 }
+
+default file_access_restrictive := false
 
 file_access_restrictive if {
     input.nginx.access_control.file_access_restrictive == true
 }
 
+default symlinks_secure := false
+
 symlinks_secure if {
     input.nginx.access_control.symlinks_secure == true
 }
+
+default request_size_limits := false
 
 request_size_limits if {
     input.nginx.access_control.request_size_limits == true
 }
 
+default request_rate_limits := false
+
 request_rate_limits if {
     input.nginx.access_control.rate_limits == true
 }
+
+default connection_limits_configured := false
 
 connection_limits_configured if {
     input.nginx.access_control.connection_limits == true
 }
 
+default security_headers_implemented := false
+
 security_headers_implemented if {
     input.nginx.headers.security_headers == true
 }
+
+default csp_headers_configured := false
 
 csp_headers_configured if {
     input.nginx.headers.csp_configured == true
 }
 
+default xss_protection_enabled := false
+
 xss_protection_enabled if {
     input.nginx.headers.xss_protection == true
 }
+
+default buffer_sizes_configured := false
 
 buffer_sizes_configured if {
     input.nginx.performance.buffer_sizes_secure == true
 }
 
+default timeout_values_secure := false
+
 timeout_values_secure if {
     input.nginx.performance.timeout_values_secure == true
 }
+
+default resource_limits_configured := false
 
 resource_limits_configured if {
     input.nginx.performance.resource_limits == true
 }
 
+default connection_pooling_configured := false
+
 connection_pooling_configured if {
     input.nginx.performance.connection_pooling == true
 }
+
+default upstream_servers_secure := false
 
 upstream_servers_secure if {
     input.nginx.performance.upstream_secure == true
 }
 
+default load_balancing_secure := false
+
 load_balancing_secure if {
     input.nginx.performance.load_balancing_secure == true
 }
+
+default caching_secure := false
 
 caching_secure if {
     input.nginx.performance.caching_secure == true
 }
 
+default proxy_cache_headers := false
+
 proxy_cache_headers if {
     input.nginx.performance.proxy_cache_headers == true
 }
 
+default monitoring_enabled := false
+
 monitoring_enabled if {
     input.nginx.performance.monitoring_enabled == true
 }
+
+default metrics_secure := false
 
 metrics_secure if {
     input.nginx.performance.metrics_secure == true

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 27
+#     checks: 36
 #     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_24_04.initial_setup
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Sections 1.2, 1.7, 1.8: Initial System Setup
@@ -29,6 +29,14 @@ compliant if {
 # CIS 1.2: Configure Software Updates (Ubuntu uses apt)
 
 # CIS 1.2.1: Ensure package manager repositories are configured
+violations contains "CIS 1.2.1: evidence missing — enabled_repos not collected" if {
+	not input.initial_setup.enabled_repos
+}
+
+violations contains "CIS 1.2.2: evidence missing — gpg_keys not collected" if {
+	not input.initial_setup.gpg_keys
+}
+
 violations contains msg if {
 	count(input.initial_setup.enabled_repos) == 0
 	msg := "CIS 1.2.1: No apt package repositories are enabled"
@@ -58,9 +66,13 @@ violations contains msg if {
 	msg := "CIS 1.4.1: GRUB boot loader password is not configured"
 }
 
+violations contains "CIS 1.4.2: evidence missing — grub_config_mode not collected" if {
+	not input.initial_setup.grub_config_mode
+}
+
 violations contains msg if {
-	input.initial_setup.grub_config_mode != "0400"
-	input.initial_setup.grub_config_mode != "0600"
+	input.initial_setup.grub_config_mode
+	not mode_within(input.initial_setup.grub_config_mode, "0600")
 	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.initial_setup.grub_config_mode])
 }
 
@@ -98,7 +110,13 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.motd_exists
-	input.initial_setup.motd_mode != "0644"
+	not input.initial_setup.motd_mode
+	msg := "CIS 1.7.1: evidence missing — motd_mode not collected"
+}
+
+violations contains msg if {
+	input.initial_setup.motd_exists
+	not mode_within(input.initial_setup.motd_mode, "0644")
 	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644", [input.initial_setup.motd_mode])
 }
 
@@ -114,7 +132,13 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_exists
-	input.initial_setup.issue_mode != "0644"
+	not input.initial_setup.issue_mode
+	msg := "CIS 1.7.2: evidence missing — issue_mode not collected"
+}
+
+violations contains msg if {
+	input.initial_setup.issue_exists
+	not mode_within(input.initial_setup.issue_mode, "0644")
 	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644", [input.initial_setup.issue_mode])
 }
 
@@ -130,7 +154,13 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_net_exists
-	input.initial_setup.issue_net_mode != "0644"
+	not input.initial_setup.issue_net_mode
+	msg := "CIS 1.7.3: evidence missing — issue_net_mode not collected"
+}
+
+violations contains msg if {
+	input.initial_setup.issue_net_exists
+	not mode_within(input.initial_setup.issue_net_mode, "0644")
 	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644", [input.initial_setup.issue_net_mode])
 }
 
@@ -140,13 +170,28 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	not input.initial_setup.motd_owner
+	msg := "CIS 1.7.4: evidence missing — motd_owner not collected"
+}
+
+violations contains msg if {
 	input.initial_setup.motd_owner != "root"
 	msg := sprintf("CIS 1.7.4: /etc/motd owned by %s, should be root", [input.initial_setup.motd_owner])
 }
 
 violations contains msg if {
+	not input.initial_setup.issue_owner
+	msg := "CIS 1.7.5: evidence missing — issue_owner not collected"
+}
+
+violations contains msg if {
 	input.initial_setup.issue_owner != "root"
 	msg := sprintf("CIS 1.7.5: /etc/issue owned by %s, should be root", [input.initial_setup.issue_owner])
+}
+
+violations contains msg if {
+	not input.initial_setup.issue_net_owner
+	msg := "CIS 1.7.6: evidence missing — issue_net_owner not collected"
 }
 
 violations contains msg if {
@@ -192,3 +237,15 @@ report := {
 	"section": "1.2-1.8 Initial System Setup",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

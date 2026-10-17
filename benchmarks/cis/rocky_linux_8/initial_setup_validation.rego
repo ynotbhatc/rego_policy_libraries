@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 30
+#     checks: 37
 #     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_8.initial_setup
 
 # CIS Rocky Linux 8 Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8, 1.9: Initial System Setup
@@ -21,6 +21,18 @@ package cis_rocky_linux_8.initial_setup
 import rego.v1
 
 default compliant := false
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 compliant if {
 	count(violations) == 0
@@ -61,8 +73,15 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.motd_exists
-	input.initial_setup.motd_mode != "0644"
-	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644", [input.initial_setup.motd_mode])
+	mode := input.initial_setup.motd_mode
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644 or stricter", [mode])
+}
+
+violations contains msg if {
+	input.initial_setup.motd_exists
+	not input.initial_setup.motd_mode
+	msg := "CIS 1.7.1: evidence missing - initial_setup.motd_mode not collected"
 }
 
 violations contains msg if {
@@ -78,8 +97,15 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_exists
-	input.initial_setup.issue_mode != "0644"
-	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644", [input.initial_setup.issue_mode])
+	mode := input.initial_setup.issue_mode
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644 or stricter", [mode])
+}
+
+violations contains msg if {
+	input.initial_setup.issue_exists
+	not input.initial_setup.issue_mode
+	msg := "CIS 1.7.2: evidence missing - initial_setup.issue_mode not collected"
 }
 
 violations contains msg if {
@@ -95,8 +121,15 @@ violations contains msg if {
 
 violations contains msg if {
 	input.initial_setup.issue_net_exists
-	input.initial_setup.issue_net_mode != "0644"
-	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644", [input.initial_setup.issue_net_mode])
+	mode := input.initial_setup.issue_net_mode
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644 or stricter", [mode])
+}
+
+violations contains msg if {
+	input.initial_setup.issue_net_exists
+	not input.initial_setup.issue_net_mode
+	msg := "CIS 1.7.3: evidence missing - initial_setup.issue_net_mode not collected"
 }
 
 violations contains msg if {
@@ -106,17 +139,35 @@ violations contains msg if {
 
 # CIS 1.7.4: Ensure permissions on /etc/motd are configured
 violations contains msg if {
+	input.initial_setup.motd_exists
+	not input.initial_setup.motd_owner
+	msg := "CIS 1.7.4: evidence missing - initial_setup.motd_owner not collected"
+}
+
+violations contains msg if {
 	input.initial_setup.motd_owner != "root"
 	msg := sprintf("CIS 1.7.4: /etc/motd owned by %s, should be root", [input.initial_setup.motd_owner])
 }
 
 # CIS 1.7.5: Ensure permissions on /etc/issue are configured
 violations contains msg if {
+	input.initial_setup.issue_exists
+	not input.initial_setup.issue_owner
+	msg := "CIS 1.7.5: evidence missing - initial_setup.issue_owner not collected"
+}
+
+violations contains msg if {
 	input.initial_setup.issue_owner != "root"
 	msg := sprintf("CIS 1.7.5: /etc/issue owned by %s, should be root", [input.initial_setup.issue_owner])
 }
 
 # CIS 1.7.6: Ensure permissions on /etc/issue.net are configured
+violations contains msg if {
+	input.initial_setup.issue_net_exists
+	not input.initial_setup.issue_net_owner
+	msg := "CIS 1.7.6: evidence missing - initial_setup.issue_net_owner not collected"
+}
+
 violations contains msg if {
 	input.initial_setup.issue_net_owner != "root"
 	msg := sprintf("CIS 1.7.6: /etc/issue.net owned by %s, should be root", [input.initial_setup.issue_net_owner])
@@ -160,8 +211,17 @@ violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.gui_required
 	input.initial_setup.gdm_screen_lock_enabled
-	input.initial_setup.gdm_idle_delay > 900
-	msg := sprintf("CIS 1.8.4: GDM idle delay is %d seconds, should be 900 or less", [input.initial_setup.gdm_idle_delay])
+	delay := to_number(input.initial_setup.gdm_idle_delay)
+	delay > 900
+	msg := sprintf("CIS 1.8.4: GDM idle delay is %v seconds, should be 900 or less", [delay])
+}
+
+violations contains msg if {
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_screen_lock_enabled
+	not input.initial_setup.gdm_idle_delay
+	msg := "CIS 1.8.4: evidence missing - initial_setup.gdm_idle_delay not collected"
 }
 
 # CIS 1.8.5: Ensure GDM screen locks cannot be overridden

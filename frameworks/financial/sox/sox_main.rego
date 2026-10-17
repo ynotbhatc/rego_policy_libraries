@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package sox.main
 
 import rego.v1
@@ -29,6 +29,32 @@ sox_compliant if {
     section_404_compliant
     section_409_compliant
     management_assessment_compliant
+    itgc_controls_compliant
+    application_controls_all_compliant
+}
+
+# ITGC and application controls are scored (it_general_controls_score,
+# application_controls_score) so a failed area must also fail the verdict.
+default itgc_controls_compliant := false
+
+itgc_controls_compliant if {
+    data.sox.itgc.access_controls.implemented
+    data.sox.itgc.change_management.controlled
+    data.sox.itgc.computer_operations.monitored
+    data.sox.itgc.system_development.secure
+    data.sox.itgc.data_center_operations.controlled
+    data.sox.itgc.backup_recovery.tested
+}
+
+default application_controls_all_compliant := false
+
+application_controls_all_compliant if {
+    data.sox.application_controls.input_validation.comprehensive
+    data.sox.application_controls.processing_controls.accurate
+    data.sox.application_controls.output_controls.complete
+    data.sox.application_controls.data_integrity.maintained
+    data.sox.application_controls.error_handling.robust
+    data.sox.application_controls.transaction_logging.complete
 }
 
 # Section 302: Corporate Responsibility for Financial Reports
@@ -90,12 +116,12 @@ default section_302_score := 0
 
 section_302_score := score if {
     checks := [
-        data.sox.section_302.ceo_certification.provided,
-        data.sox.section_302.cfo_certification.provided,
-        data.sox.section_302.disclosure_controls.effective,
-        data.sox.section_302.material_weaknesses.none_identified,
-        data.sox.section_302.quarterly_review.completed,
-        data.sox.section_302.annual_assessment.completed
+        _d_section_302_ceo_certification_provided,
+        _d_section_302_cfo_certification_provided,
+        _d_section_302_disclosure_controls_effective,
+        _d_section_302_material_weaknesses_none_identified,
+        _d_section_302_quarterly_review_completed,
+        _d_section_302_annual_assessment_completed
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -106,12 +132,12 @@ default section_404_score := 0
 
 section_404_score := score if {
     checks := [
-        data.sox.section_404.management_assessment.completed,
-        data.sox.section_404.internal_controls.designed_effectively,
-        data.sox.section_404.internal_controls.operating_effectively,
-        data.sox.section_404.external_auditor_attestation.unqualified,
-        data.sox.section_404.remediation_plan.implemented,
-        data.sox.section_404.continuous_monitoring.active
+        _d_section_404_management_assessment_completed,
+        _d_section_404_internal_controls_designed_effectively,
+        _d_section_404_internal_controls_operating_effectively,
+        _d_section_404_external_auditor_attestation_unqualified,
+        _d_section_404_remediation_plan_implemented,
+        _d_section_404_continuous_monitoring_active
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -122,11 +148,11 @@ default section_409_score := 0
 
 section_409_score := score if {
     checks := [
-        data.sox.section_409.material_events.disclosed_timely,
-        data.sox.section_409.disclosure_process.automated,
-        data.sox.section_409.disclosure_controls.reviewed_quarterly,
-        data.sox.section_409.event_detection.real_time,
-        data.sox.section_409.filing_deadlines.met
+        _d_section_409_material_events_disclosed_timely,
+        _d_section_409_disclosure_process_automated,
+        _d_section_409_disclosure_controls_reviewed_quarterly,
+        _d_section_409_event_detection_real_time,
+        _d_section_409_filing_deadlines_met
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -137,12 +163,12 @@ default management_assessment_score := 0
 
 management_assessment_score := score if {
     checks := [
-        data.sox.management.assessment_framework.documented,
-        data.sox.management.testing_procedures.comprehensive,
-        data.sox.management.deficiency_remediation.timely,
-        data.sox.management.continuous_monitoring.implemented,
-        data.sox.management.risk_assessment.annual,
-        data.sox.management.control_documentation.current
+        _d_management_assessment_framework_documented,
+        _d_management_testing_procedures_comprehensive,
+        _d_management_deficiency_remediation_timely,
+        _d_management_continuous_monitoring_implemented,
+        _d_management_risk_assessment_annual,
+        _d_management_control_documentation_current
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -153,12 +179,12 @@ default it_general_controls_score := 0
 
 it_general_controls_score := score if {
     checks := [
-        data.sox.itgc.access_controls.implemented,
-        data.sox.itgc.change_management.controlled,
-        data.sox.itgc.computer_operations.monitored,
-        data.sox.itgc.system_development.secure,
-        data.sox.itgc.data_center_operations.controlled,
-        data.sox.itgc.backup_recovery.tested
+        _d_itgc_access_controls_implemented,
+        _d_itgc_change_management_controlled,
+        _d_itgc_computer_operations_monitored,
+        _d_itgc_system_development_secure,
+        _d_itgc_data_center_operations_controlled,
+        _d_itgc_backup_recovery_tested
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -169,12 +195,12 @@ default application_controls_score := 0
 
 application_controls_score := score if {
     checks := [
-        data.sox.application_controls.input_validation.comprehensive,
-        data.sox.application_controls.processing_controls.accurate,
-        data.sox.application_controls.output_controls.complete,
-        data.sox.application_controls.data_integrity.maintained,
-        data.sox.application_controls.error_handling.robust,
-        data.sox.application_controls.transaction_logging.complete
+        _d_application_controls_input_validation_comprehensive,
+        _d_application_controls_processing_controls_accurate,
+        _d_application_controls_output_controls_complete,
+        _d_application_controls_data_integrity_maintained,
+        _d_application_controls_error_handling_robust,
+        _d_application_controls_transaction_logging_complete
     ]
     passed := count([check | check := checks[_]; check == true])
     score := passed / count(checks)
@@ -196,10 +222,10 @@ sox_detailed_findings := findings if {
 section_302_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "CEO Certification", "status": data.sox.section_302.ceo_certification.provided},
-            {"control": "CFO Certification", "status": data.sox.section_302.cfo_certification.provided},
-            {"control": "Disclosure Controls", "status": data.sox.section_302.disclosure_controls.effective},
-            {"control": "Material Weaknesses", "status": data.sox.section_302.material_weaknesses.none_identified}
+            {"control": "CEO Certification", "status": _d_section_302_ceo_certification_provided},
+            {"control": "CFO Certification", "status": _d_section_302_cfo_certification_provided},
+            {"control": "Disclosure Controls", "status": _d_section_302_disclosure_controls_effective},
+            {"control": "Material Weaknesses", "status": _d_section_302_material_weaknesses_none_identified}
         ]
         control := controls[_]
         not control.status
@@ -217,10 +243,10 @@ section_302_findings := findings if {
 section_404_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Management Assessment", "status": data.sox.section_404.management_assessment.completed},
-            {"control": "Control Design", "status": data.sox.section_404.internal_controls.designed_effectively},
-            {"control": "Control Operation", "status": data.sox.section_404.internal_controls.operating_effectively},
-            {"control": "Auditor Attestation", "status": data.sox.section_404.external_auditor_attestation.unqualified}
+            {"control": "Management Assessment", "status": _d_section_404_management_assessment_completed},
+            {"control": "Control Design", "status": _d_section_404_internal_controls_designed_effectively},
+            {"control": "Control Operation", "status": _d_section_404_internal_controls_operating_effectively},
+            {"control": "Auditor Attestation", "status": _d_section_404_external_auditor_attestation_unqualified}
         ]
         control := controls[_]
         not control.status
@@ -238,9 +264,9 @@ section_404_findings := findings if {
 section_409_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Timely Disclosure", "status": data.sox.section_409.material_events.disclosed_timely},
-            {"control": "Automated Process", "status": data.sox.section_409.disclosure_process.automated},
-            {"control": "Quarterly Review", "status": data.sox.section_409.disclosure_controls.reviewed_quarterly}
+            {"control": "Timely Disclosure", "status": _d_section_409_material_events_disclosed_timely},
+            {"control": "Automated Process", "status": _d_section_409_disclosure_process_automated},
+            {"control": "Quarterly Review", "status": _d_section_409_disclosure_controls_reviewed_quarterly}
         ]
         control := controls[_]
         not control.status
@@ -258,10 +284,10 @@ section_409_findings := findings if {
 itgc_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Access Controls", "status": data.sox.itgc.access_controls.implemented},
-            {"control": "Change Management", "status": data.sox.itgc.change_management.controlled},
-            {"control": "Computer Operations", "status": data.sox.itgc.computer_operations.monitored},
-            {"control": "System Development", "status": data.sox.itgc.system_development.secure}
+            {"control": "Access Controls", "status": _d_itgc_access_controls_implemented},
+            {"control": "Change Management", "status": _d_itgc_change_management_controlled},
+            {"control": "Computer Operations", "status": _d_itgc_computer_operations_monitored},
+            {"control": "System Development", "status": _d_itgc_system_development_secure}
         ]
         control := controls[_]
         not control.status
@@ -279,10 +305,10 @@ itgc_findings := findings if {
 application_control_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Input Validation", "status": data.sox.application_controls.input_validation.comprehensive},
-            {"control": "Processing Controls", "status": data.sox.application_controls.processing_controls.accurate},
-            {"control": "Output Controls", "status": data.sox.application_controls.output_controls.complete},
-            {"control": "Data Integrity", "status": data.sox.application_controls.data_integrity.maintained}
+            {"control": "Input Validation", "status": _d_application_controls_input_validation_comprehensive},
+            {"control": "Processing Controls", "status": _d_application_controls_processing_controls_accurate},
+            {"control": "Output Controls", "status": _d_application_controls_output_controls_complete},
+            {"control": "Data Integrity", "status": _d_application_controls_data_integrity_maintained}
         ]
         control := controls[_]
         not control.status
@@ -300,10 +326,10 @@ application_control_findings := findings if {
 management_findings := findings if {
     findings := [finding |
         controls := [
-            {"control": "Assessment Framework", "status": data.sox.management.assessment_framework.documented},
-            {"control": "Testing Procedures", "status": data.sox.management.testing_procedures.comprehensive},
-            {"control": "Deficiency Remediation", "status": data.sox.management.deficiency_remediation.timely},
-            {"control": "Continuous Monitoring", "status": data.sox.management.continuous_monitoring.implemented}
+            {"control": "Assessment Framework", "status": _d_management_assessment_framework_documented},
+            {"control": "Testing Procedures", "status": _d_management_testing_procedures_comprehensive},
+            {"control": "Deficiency Remediation", "status": _d_management_deficiency_remediation_timely},
+            {"control": "Continuous Monitoring", "status": _d_management_continuous_monitoring_implemented}
         ]
         control := controls[_]
         not control.status
@@ -456,13 +482,20 @@ _get_mgmt_remediation(control) := "Deploy continuous monitoring and automated te
 }
 
 # SOX Compliance Level Determination
-sox_compliance_level := "FULLY_COMPLIANT" if {
+# FULLY_COMPLIANT additionally requires the gated verdict: a high average score
+# must not mask a failed ITGC / application-control area.
+default _fully_compliant := false
+
+_fully_compliant if {
     sox_compliance_score >= 95
+    sox_compliant
 }
+
+sox_compliance_level := "FULLY_COMPLIANT" if _fully_compliant
 
 sox_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
     sox_compliance_score >= 85
-    sox_compliance_score < 95
+    not _fully_compliant
 }
 
 sox_compliance_level := "PARTIALLY_COMPLIANT" if {
@@ -521,3 +554,149 @@ _count_medium_findings := count([finding |
     finding := section[_]
     finding.risk_level == "MEDIUM"
 ])
+
+# ---------------------------------------------------------------------------
+# Fact accessors. A missing data field must read as false, not make the whole
+# checks/controls array undefined (which silently dropped that control's
+# finding and zeroed the section score).
+# ---------------------------------------------------------------------------
+
+default _d_section_302_ceo_certification_provided := false
+
+_d_section_302_ceo_certification_provided := data.sox.section_302.ceo_certification.provided
+
+default _d_section_302_cfo_certification_provided := false
+
+_d_section_302_cfo_certification_provided := data.sox.section_302.cfo_certification.provided
+
+default _d_section_302_disclosure_controls_effective := false
+
+_d_section_302_disclosure_controls_effective := data.sox.section_302.disclosure_controls.effective
+
+default _d_section_302_material_weaknesses_none_identified := false
+
+_d_section_302_material_weaknesses_none_identified := data.sox.section_302.material_weaknesses.none_identified
+
+default _d_section_302_quarterly_review_completed := false
+
+_d_section_302_quarterly_review_completed := data.sox.section_302.quarterly_review.completed
+
+default _d_section_302_annual_assessment_completed := false
+
+_d_section_302_annual_assessment_completed := data.sox.section_302.annual_assessment.completed
+
+default _d_section_404_management_assessment_completed := false
+
+_d_section_404_management_assessment_completed := data.sox.section_404.management_assessment.completed
+
+default _d_section_404_internal_controls_designed_effectively := false
+
+_d_section_404_internal_controls_designed_effectively := data.sox.section_404.internal_controls.designed_effectively
+
+default _d_section_404_internal_controls_operating_effectively := false
+
+_d_section_404_internal_controls_operating_effectively := data.sox.section_404.internal_controls.operating_effectively
+
+default _d_section_404_external_auditor_attestation_unqualified := false
+
+_d_section_404_external_auditor_attestation_unqualified := data.sox.section_404.external_auditor_attestation.unqualified
+
+default _d_section_404_remediation_plan_implemented := false
+
+_d_section_404_remediation_plan_implemented := data.sox.section_404.remediation_plan.implemented
+
+default _d_section_404_continuous_monitoring_active := false
+
+_d_section_404_continuous_monitoring_active := data.sox.section_404.continuous_monitoring.active
+
+default _d_section_409_material_events_disclosed_timely := false
+
+_d_section_409_material_events_disclosed_timely := data.sox.section_409.material_events.disclosed_timely
+
+default _d_section_409_disclosure_process_automated := false
+
+_d_section_409_disclosure_process_automated := data.sox.section_409.disclosure_process.automated
+
+default _d_section_409_disclosure_controls_reviewed_quarterly := false
+
+_d_section_409_disclosure_controls_reviewed_quarterly := data.sox.section_409.disclosure_controls.reviewed_quarterly
+
+default _d_section_409_event_detection_real_time := false
+
+_d_section_409_event_detection_real_time := data.sox.section_409.event_detection.real_time
+
+default _d_section_409_filing_deadlines_met := false
+
+_d_section_409_filing_deadlines_met := data.sox.section_409.filing_deadlines.met
+
+default _d_management_assessment_framework_documented := false
+
+_d_management_assessment_framework_documented := data.sox.management.assessment_framework.documented
+
+default _d_management_testing_procedures_comprehensive := false
+
+_d_management_testing_procedures_comprehensive := data.sox.management.testing_procedures.comprehensive
+
+default _d_management_deficiency_remediation_timely := false
+
+_d_management_deficiency_remediation_timely := data.sox.management.deficiency_remediation.timely
+
+default _d_management_continuous_monitoring_implemented := false
+
+_d_management_continuous_monitoring_implemented := data.sox.management.continuous_monitoring.implemented
+
+default _d_management_risk_assessment_annual := false
+
+_d_management_risk_assessment_annual := data.sox.management.risk_assessment.annual
+
+default _d_management_control_documentation_current := false
+
+_d_management_control_documentation_current := data.sox.management.control_documentation.current
+
+default _d_itgc_access_controls_implemented := false
+
+_d_itgc_access_controls_implemented := data.sox.itgc.access_controls.implemented
+
+default _d_itgc_change_management_controlled := false
+
+_d_itgc_change_management_controlled := data.sox.itgc.change_management.controlled
+
+default _d_itgc_computer_operations_monitored := false
+
+_d_itgc_computer_operations_monitored := data.sox.itgc.computer_operations.monitored
+
+default _d_itgc_system_development_secure := false
+
+_d_itgc_system_development_secure := data.sox.itgc.system_development.secure
+
+default _d_itgc_data_center_operations_controlled := false
+
+_d_itgc_data_center_operations_controlled := data.sox.itgc.data_center_operations.controlled
+
+default _d_itgc_backup_recovery_tested := false
+
+_d_itgc_backup_recovery_tested := data.sox.itgc.backup_recovery.tested
+
+default _d_application_controls_input_validation_comprehensive := false
+
+_d_application_controls_input_validation_comprehensive := data.sox.application_controls.input_validation.comprehensive
+
+default _d_application_controls_processing_controls_accurate := false
+
+_d_application_controls_processing_controls_accurate := data.sox.application_controls.processing_controls.accurate
+
+default _d_application_controls_output_controls_complete := false
+
+_d_application_controls_output_controls_complete := data.sox.application_controls.output_controls.complete
+
+default _d_application_controls_data_integrity_maintained := false
+
+_d_application_controls_data_integrity_maintained := data.sox.application_controls.data_integrity.maintained
+
+default _d_application_controls_error_handling_robust := false
+
+_d_application_controls_error_handling_robust := data.sox.application_controls.error_handling.robust
+
+default _d_application_controls_transaction_logging_complete := false
+
+_d_application_controls_transaction_logging_complete := data.sox.application_controls.transaction_logging.complete

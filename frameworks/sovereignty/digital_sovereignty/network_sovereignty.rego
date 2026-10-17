@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.network_sovereignty
 
 import rego.v1
@@ -91,6 +91,8 @@ dnssec_enabled if {
 
 # DNS logs must be retained for security analysis
 dns_logs_retained if {
+	# OPA orders strings above numbers, so a string value would satisfy a bare `>=`.
+	is_number(input.dns_configuration.dns_logs_retained_days)
 	input.dns_configuration.dns_logs_retained_days >= 90
 }
 
@@ -132,9 +134,15 @@ bgp_peers_reviewed if {
 # =============================================================================
 
 # Sensitive traffic must not transit foreign countries unencrypted
+# Fail closed: the transit flag must be reported. An absent flag is not evidence
+# of "no foreign transit".
+default sensitive_traffic_protected := false
+
 sensitive_traffic_protected if {
-	not input.traffic_routing.sensitive_traffic_transits_foreign_country
-} else if {
+	input.traffic_routing.sensitive_traffic_transits_foreign_country == false
+}
+
+sensitive_traffic_protected if {
 	input.traffic_routing.sensitive_traffic_transits_foreign_country == true
 	input.traffic_routing.encrypted_if_transits_foreign == true
 }
@@ -172,6 +180,7 @@ egress_policy_documented if {
 # Network flow data must be collected and retained
 netflow_monitoring if {
 	input.network_monitoring.netflow_collection_enabled == true
+	is_number(input.network_monitoring.retention_days)
 	input.network_monitoring.retention_days >= 90
 }
 
@@ -221,14 +230,18 @@ regulated_segments_encrypted if {
 }
 
 # All segments must be in approved jurisdictions
-segments_in_approved_jurisdictions if {
-	violations := [seg |
-		seg := input.network_segments[_]
-		seg.handles_regulated_data == true
-		not seg.location_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+# `not seg.location_country in list` is undefined when the field is absent (the
+# reference is hoisted outside the negation), which skipped the segment. The
+# country is read with object.get so an unrecorded location counts against it.
+segment_location_offenders contains seg if {
+	some seg in object.get(input, "network_segments", [])
+	seg.handles_regulated_data == true
+	not object.get(seg, "location_country", "") in object.get(input, "approved_jurisdictions", [])
 }
+
+default segments_in_approved_jurisdictions := false
+
+segments_in_approved_jurisdictions if count(segment_location_offenders) == 0
 
 # =============================================================================
 # VIOLATIONS
@@ -251,7 +264,7 @@ violations contains v if {
 		"domain": "network_sovereignty",
 		"control": "NS-002",
 		"severity": "high",
-		"description": concat("", ["DNS resolver located outside approved jurisdiction: ", input.dns_configuration.resolver_location_country]),
+		"description": concat("", ["DNS resolver located outside approved jurisdiction (or location not recorded): ", object.get(object.get(input, "dns_configuration", {}), "resolver_location_country", "unknown")]),
 		"remediation": "Move DNS resolver to approved jurisdiction",
 	}
 }
@@ -317,7 +330,7 @@ violations contains v if {
 		"domain": "network_sovereignty",
 		"control": "NS-008",
 		"severity": "high",
-		"description": concat("", ["Internet egress point located outside approved jurisdiction: ", input.internet_egress.egress_country]),
+		"description": concat("", ["Internet egress point located outside approved jurisdiction (or location not recorded): ", object.get(object.get(input, "internet_egress", {}), "egress_country", "unknown")]),
 		"remediation": "Move internet egress to a point physically located in approved jurisdiction",
 	}
 }
@@ -345,16 +358,13 @@ violations contains v if {
 }
 
 violations contains v if {
-	not segments_in_approved_jurisdictions
-	seg := input.network_segments[_]
-	seg.handles_regulated_data == true
-	not seg.location_country in input.approved_jurisdictions
+	some seg in segment_location_offenders
 	v := {
 		"domain": "network_sovereignty",
 		"control": "NS-011",
 		"severity": "critical",
-		"segment_id": seg.segment_id,
-		"description": concat("", ["Network segment handling regulated data located outside approved jurisdiction: ", seg.segment_id, " in ", seg.location_country]),
+		"segment_id": object.get(seg, "segment_id", "unknown"),
+		"description": concat("", ["Network segment handling regulated data located outside approved jurisdiction (or location not recorded): ", object.get(seg, "segment_id", "unknown"), " in ", object.get(seg, "location_country", "unknown")]),
 		"remediation": "Move network segment to approved jurisdiction or reclassify data",
 	}
 }

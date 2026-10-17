@@ -12,8 +12,8 @@
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package stig.oracle_linux_9.services
 
 # DISA STIG for Oracle Linux 9 - Services Module
@@ -32,16 +32,23 @@ default compliant := false
 
 # Shared helpers (defined in a source block whose rule Oracle Linux 9 does not carry)
 
-# Helper: package not installed
+# Helper: package not installed. Requires a collected package inventory: an
+# empty or missing input.packages is "no evidence", never a pass. Within a
+# collected inventory a package is absent when it is false or not listed.
 pkg_absent(pkg) if {
+	is_object(input.packages)
+	count(input.packages) > 0
 	input.packages[pkg] == false
 }
 
 pkg_absent(pkg) if {
+	is_object(input.packages)
+	count(input.packages) > 0
 	not input.packages[pkg]
 }
 
-# Helper: check if service is inactive or not installed
+# Helper: check if service is inactive or not installed. Requires a collected
+# service inventory (non-empty input.services); same evidence rule as pkg_absent.
 service_disabled(svc) if {
 	val := input.services[svc]
 	val == "inactive"
@@ -53,6 +60,8 @@ service_disabled(svc) if {
 }
 
 service_disabled(svc) if {
+	is_object(input.services)
+	count(input.services) > 0
 	not input.services[svc]
 }
 
@@ -83,11 +92,8 @@ default ftp_server_disabled := false
 
 ftp_server_disabled if {
 	service_disabled("vsftpd")
-	pkg_absent("vsftpd")
-}
-
-ftp_server_disabled if {
 	service_disabled("ftpd")
+	pkg_absent("vsftpd")
 }
 
 status_ol09_00_000130 := "Not_a_Finding" if { ftp_server_disabled } else := "Open"
@@ -109,8 +115,10 @@ finding_ol09_00_000130 := {
 # telnet server must not be installed
 default telnet_server_absent := false
 
-telnet_server_absent if { pkg_absent("telnet-server") }
-telnet_server_absent if { pkg_absent("telnetd") }
+telnet_server_absent if {
+	pkg_absent("telnet-server")
+	pkg_absent("telnetd")
+}
 
 status_ol09_00_000110 := "Not_a_Finding" if { telnet_server_absent } else := "Open"
 
@@ -144,8 +152,11 @@ finding_ol09_00_000125 := {
 # NFS server must not be running unless required
 default nfs_disabled := false
 
-nfs_disabled if { service_disabled("nfs-server") }
-nfs_disabled if { service_disabled("nfsd") }
+# Both unit names must be disabled: one being absent does not excuse the other running.
+nfs_disabled if {
+	service_disabled("nfs-server")
+	service_disabled("nfsd")
+}
 
 status_ol09_00_000100 := "Not_a_Finding" if { nfs_disabled } else := "Open"
 

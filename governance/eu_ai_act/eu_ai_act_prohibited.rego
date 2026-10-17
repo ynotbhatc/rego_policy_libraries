@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 31
+#     checks: 32
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package eu_ai_act.prohibited
 
 import rego.v1
@@ -30,6 +30,39 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# =============================================================================
+# Evidence: every Article 5 practice must have been assessed
+# =============================================================================
+# Each rule below fires only on an explicit `true` flag, so a section that was never assessed
+# (absent, or an empty object) would read as "no prohibited practice". An unassessed practice is
+# a violation, not a pass. A section is evidence when it is a non-empty object (every flag may be
+# an explicit false).
+
+assessed_practices := {
+	"subliminal_manipulation": "5.1(a)",
+	"vulnerability_exploitation": "5.1(b)",
+	"social_scoring": "5.1(c)",
+	"realtime_biometric_id": "5.1(d)",
+	"biometric_categorization": "5.1(e)",
+	"emotion_recognition": "5.1(f)",
+	"facial_recognition_scraping": "5.1(g)",
+	"predictive_policing": "5.1(h)",
+	"intimate_imagery": "5(1)(ba)",
+	"csam": "5(1)(bb)",
+}
+
+practice_assessed(section) if {
+	v := object.get(object.get(object.get(input, "eu_ai_act", {}), "prohibited", {}), section, null)
+	is_object(v)
+	count(v) > 0
+}
+
+violations contains msg if {
+	some section, article in assessed_practices
+	not practice_assessed(section)
+	msg := sprintf("Article %s: evidence missing — eu_ai_act.prohibited.%s was not assessed", [article, section])
 }
 
 # =============================================================================

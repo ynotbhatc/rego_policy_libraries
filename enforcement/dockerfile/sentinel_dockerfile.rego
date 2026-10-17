@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package sentinel.dockerfile
 
 import rego.v1
@@ -83,7 +83,8 @@ violation_df_002 contains msg if {
 
 violation_df_002 contains msg if {
     some user_instr in user_instructions
-    user_instr.value in {"root", "0"}
+    # USER may be "user[:group]"; only the user part decides root.
+    split(lower(trim_space(user_instr.value)), ":")[0] in {"root", "0"}
     msg := sprintf(
         "SENTINEL-DF-002: USER is set to '%v'. Containers must not run as root. Use a non-root user or UID > 0.",
         [user_instr.value]
@@ -152,7 +153,6 @@ violation_df_005 contains msg if {
     some run_instr in run_instructions
     contains(run_instr.value, "apt-get install")
     not contains(run_instr.value, "=")
-    not contains(run_instr.value, "--no-install-recommends")
     msg := "SENTINEL-DF-005: apt-get install without version pinning detected. Pin package versions to ensure reproducible builds (e.g., 'apt-get install nginx=1.24.*')."
 }
 
@@ -220,8 +220,11 @@ violation_df_009 contains msg if {
 
 violation_df_010 contains msg if {
     some expose_instr in expose_instructions
-    port_str := split(expose_instr.value, "/")[0]
-    port := to_number(port_str)
+    # EXPOSE takes several space-separated tokens, each "port", "port/proto"
+    # or "start-end"; the lowest port of a range is the one that matters.
+    some token in split(trim_space(expose_instr.value), " ")
+    regex.match(`^[0-9]+`, token)
+    port := to_number(regex.find_n(`^[0-9]+`, token, 1)[0])
     port < 1024
     msg := sprintf(
         "SENTINEL-DF-010: EXPOSE declares privileged port %v (< 1024). Use ports >= 1024 and configure port mapping at runtime.",
@@ -323,6 +326,8 @@ all_violations := array.concat(
         )
     )
 )
+
+default compliant := false
 
 compliant if { count(all_violations) == 0 }
 

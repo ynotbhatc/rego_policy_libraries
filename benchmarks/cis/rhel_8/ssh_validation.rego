@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.ssh
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.2: SSH Server Configuration
@@ -54,7 +54,7 @@ sshd_config := {key: value |
 
 # CIS 5.2.1 - SSH config file permissions
 permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config permissions not 0600" if {
-	input.ssh.config_permissions.mode != "0600"
+	not mode_within(input.ssh.config_permissions.mode, "0600")
 }
 
 permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config not owned by root" if {
@@ -68,7 +68,7 @@ permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config group not root" 
 # CIS 5.2.2 - SSH private key permissions
 permission_violations contains sprintf("CIS 5.2.2: SSH private key %s has incorrect permissions (mode: %s)", [key.stat.path, key.stat.mode]) if {
 	some key in input.ssh.private_key_permissions
-	key.stat.mode != "0600"
+	not mode_within(key.stat.mode, "0600")
 }
 
 permission_violations contains sprintf("CIS 5.2.2: SSH private key %s not owned by root (owner: %s)", [key.stat.path, key.stat.pw_name]) if {
@@ -79,7 +79,7 @@ permission_violations contains sprintf("CIS 5.2.2: SSH private key %s not owned 
 # CIS 5.2.3 - SSH public key permissions
 permission_violations contains sprintf("CIS 5.2.3: SSH public key %s permissions too permissive (mode: %s)", [key.path, key.mode]) if {
 	some key in input.ssh.public_key_permissions
-	to_number(key.mode) > 644
+	not mode_within(key.mode, "0644")
 }
 
 # CIS 5.2.4 - LogLevel
@@ -243,3 +243,15 @@ report := {
 	"section": "5.2 SSH Server Configuration",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

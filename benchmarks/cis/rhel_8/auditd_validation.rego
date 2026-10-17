@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 18
+#     checks: 19
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.auditd
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 4.1: Configure System Accounting (auditd)
@@ -38,6 +38,10 @@ service_violations contains "CIS 4.1.1.1: audit package not installed" if {
 }
 
 # CIS 4.1.1.2: auditd service enabled and running
+service_violations contains "CIS 4.1.1.2: evidence missing — auditd.service not collected" if {
+	not input.services["auditd.service"]
+}
+
 service_violations contains "CIS 4.1.1.2: auditd service not enabled" if {
 	service := input.services["auditd.service"]
 	service.status != "enabled"
@@ -172,7 +176,7 @@ rules_violations contains "CIS 4.1.3.21: Audit configuration not set to immutabl
 # CIS 4.1.4.1: Audit log file permissions
 permission_violations contains sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode]) if {
 	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+	not mode_within(mode, "0640")
 }
 
 # CIS 4.1.4.2: Audit log file ownership
@@ -189,7 +193,7 @@ permission_violations contains sprintf("CIS 4.1.4.2: Audit log group not root or
 # CIS 4.1.4.3: Audit log directory permissions
 permission_violations contains sprintf("CIS 4.1.4.3: Audit log directory permissions too permissive (mode: %s)", [mode]) if {
 	mode := input.auditd.log_dir_permissions.mode
-	to_number(mode) > 750
+	not mode_within(mode, "0750")
 }
 
 # CIS 4.1.4.4: Audit config file permissions
@@ -197,7 +201,7 @@ permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has in
 	some config_file in input.auditd.config_permissions
 	file := config_file.stat.path
 	mode := config_file.stat.mode
-	mode != "0640"
+	not mode_within(mode, "0640")
 }
 
 permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s not owned by root (owner: %s)", [file, owner]) if {
@@ -220,3 +224,15 @@ report := {
 	"section": "4.1 Configure System Accounting (auditd)",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

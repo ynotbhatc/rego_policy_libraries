@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.cyber_resilience_sovereignty
 
 import rego.v1
@@ -163,6 +163,10 @@ supply_chain_resilience_current if {
 
 mttr_within_threshold if {
 	input.cyber_resilience.metrics.mttr_tracked == true
+	# JSON null sorts below every number in OPA, so a null/unmeasured MTTR would
+	# pass a bare `<=`; both operands must be real numbers.
+	is_number(input.cyber_resilience.metrics.mttr_hours)
+	is_number(input.cyber_resilience.metrics.mttr_threshold_hours)
 	input.cyber_resilience.metrics.mttr_hours <= input.cyber_resilience.metrics.mttr_threshold_hours
 }
 
@@ -281,10 +285,10 @@ violations contains v if {
 		"control":     "CR-009",
 		"severity":    "high",
 		"description":  concat("", [
-			"Mean Time to Recover (MTTR) exceeds threshold: ",
-			format_int(input.cyber_resilience.metrics.mttr_hours, 10),
+			"Mean Time to Recover (MTTR) exceeds threshold or is not measured: ",
+			sprintf("%v", [object.get(object.get(object.get(input, "cyber_resilience", {}), "metrics", {}), "mttr_hours", "not recorded")]),
 			"h actual vs ",
-			format_int(input.cyber_resilience.metrics.mttr_threshold_hours, 10),
+			sprintf("%v", [object.get(object.get(object.get(input, "cyber_resilience", {}), "metrics", {}), "mttr_threshold_hours", "not recorded")]),
 			"h target (NIST CSF RC.RP)",
 		]),
 		"remediation": "Analyse recovery bottlenecks; invest in automation of recovery procedures; conduct post-incident reviews to reduce MTTR",

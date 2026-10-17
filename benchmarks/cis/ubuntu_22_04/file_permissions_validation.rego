@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 17
+#     checks: 18
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.file_permissions
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.1: System File Permissions
@@ -30,6 +30,27 @@ violations := array.concat(
 	array.concat([v | some v in critical_file_violations], [v | some v in world_writable_violations]),
 	array.concat([v | some v in ownership_violations], [v | some v in suid_sgid_violations]),
 )
+
+# Evidence: each section must have been collected. Offender lists/counts that are absent
+# mean "not assessed", which is not the same as "no offenders".
+evidence_keys := {
+	"critical_files": "analysis",
+	"world_writable": "count",
+	"unowned_files": "count",
+	"ungrouped_files": "count",
+	"suid_files": "unknown_count",
+	"sgid_files": "count",
+}
+
+evidence_present(section) if is_array(input[section][evidence_keys[section]])
+
+evidence_present(section) if is_number(input[section][evidence_keys[section]])
+
+critical_file_violations contains msg if {
+	some section, key in evidence_keys
+	not evidence_present(section)
+	msg := sprintf("CIS 6.1.x: evidence missing — %s.%s not collected", [section, key])
+}
 
 # CIS 6.1.x: Critical system file permissions
 critical_file_violations contains msg if {

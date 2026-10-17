@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.rhel_9
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0
@@ -22,7 +22,11 @@ package cis.rhel_9
 
 import rego.v1
 
-# Main compliance rule - all controls must pass
+# Main compliance rule: every control this module evaluates (see controls_evaluated) must pass.
+# Only the controls listed in controls_evaluated feed `violations`; the helper rules below
+# are building blocks that are not (yet) wired into a control.
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
@@ -153,7 +157,7 @@ core_dumps_restricted if {
 file_permissions_secure(file, expected_owner, expected_group, expected_mode) if {
     file.owner == expected_owner
     file.group == expected_group
-    file.mode == expected_mode
+    mode_within(file.mode, expected_mode)
 }
 
 
@@ -170,10 +174,15 @@ file_permissions_secure(file, expected_owner, expected_group, expected_mode) if 
 
 
 # Section 2: Services
-services_violations := [
-    "2.1.1: Ensure xinetd is not installed" |
-    package_installed("xinetd")
-]
+services_violations := array.concat(
+    ["2.1.1: Ensure xinetd is not installed" | package_installed("xinetd")],
+    # No package inventory = no evidence that xinetd is absent
+    ["2.1.1: evidence missing — ansible_packages not collected" | not packages_collected],
+)
+
+packages_collected if {
+    count(object.get(object.get(input, "ansible_facts", {}), "ansible_packages", {})) > 0
+}
 
 
 
@@ -208,11 +217,19 @@ mta_local_only_configured if {
 
 
 # Section 3: Network Configuration
-network_violations := [
-    "3.1.1: Verify if IPv6 is enabled on the system" |
-    ipv6_enabled
-    not ipv6_properly_configured
-]
+network_violations := array.concat(
+    [
+        "3.1.1: Verify if IPv6 is enabled on the system" |
+        ipv6_enabled
+        not ipv6_properly_configured
+    ],
+    # No interface inventory = no evidence about IPv6
+    ["3.1.1: evidence missing — ansible_interfaces not collected" | not interfaces_collected],
+)
+
+interfaces_collected if {
+    count(object.get(object.get(input, "ansible_facts", {}), "ansible_interfaces", [])) > 0
+}
 
 ipv6_enabled if {
     interfaces := input.ansible_facts.ansible_interfaces
@@ -324,17 +341,22 @@ audit_rule_exists(rule) if {
 
 
 log_file_permissions_secure(log_file) if {
-    log_file.mode <= "640"
+    mode_within(log_file.mode, "0640")
     log_file.owner == "root"
 }
 
 # Section 5: Access, Authentication and Authorization
 access_auth_violations := [
     "5.1.1: Ensure cron daemon is enabled and running" |
-    service := input.ansible_facts.ansible_services["crond"]
-    service.state != "running"
-    service.enabled != true
+    not crond_ok
 ]
+
+# crond must be running AND enabled; a missing service entry is a failure
+crond_ok if {
+    service := input.ansible_facts.ansible_services["crond"]
+    service.state == "running"
+    service.enabled == true
+}
 
 
 
@@ -492,11 +514,19 @@ su_access_restricted if {
 }
 
 # Section 6: System Maintenance
-system_maintenance_violations := [
-    "6.1.1: Audit system file permissions" |
-    file := input.ansible_facts.system_files[_]
-    not system_file_permissions_correct(file)
-]
+system_maintenance_violations := array.concat(
+    [
+        "6.1.1: Audit system file permissions" |
+        file := input.ansible_facts.system_files[_]
+        not system_file_permissions_correct(file)
+    ],
+    # No file inventory = nothing was audited
+    ["6.1.1: evidence missing — system_files not collected" | not system_files_collected],
+)
+
+system_files_collected if {
+    count(object.get(object.get(input, "ansible_facts", {}), "system_files", [])) > 0
+}
 
 system_file_permissions_correct(file) if {
     file.permissions_correct == true
@@ -554,35 +584,45 @@ directory_exists(path) if {
 
 
 
-# Compliance summary for reporting
+# Controls this module actually evaluates (one per section). The CIS benchmark has 278;
+# this module implements only these, so the summary is scoped to them.
+controls_evaluated := 6
+
+# Distinct failing controls (a control id may emit several violations, e.g. one per file)
+failing_control_ids := {id |
+    some v in violations
+    id := split(v, ":")[0]
+}
+
+# Compliance summary for reporting (over the controls evaluated, not the full benchmark)
 compliance_summary := {
-    "total_controls": 278,
-    "passing_controls": 278 - count(violations),
-    "failing_controls": count(violations),
-    "compliance_percentage": ((278 - count(violations)) * 100) / 278,
+    "total_controls": controls_evaluated,
+    "passing_controls": controls_evaluated - count(failing_control_ids),
+    "failing_controls": count(failing_control_ids),
+    "compliance_percentage": ((controls_evaluated - count(failing_control_ids)) * 100) / controls_evaluated,
     "sections": {
         "initial_setup": {
-            "total": 72,
+            "total": 1,
             "violations": count(initial_setup_violations)
         },
         "services": {
-            "total": 26,
+            "total": 1,
             "violations": count(services_violations)
         },
         "network": {
-            "total": 21,
+            "total": 1,
             "violations": count(network_violations)
         },
         "logging": {
-            "total": 42,
+            "total": 1,
             "violations": count(logging_violations)
         },
         "access_auth": {
-            "total": 65,
+            "total": 1,
             "violations": count(access_auth_violations)
         },
         "system_maintenance": {
-            "total": 52,
+            "total": 1,
             "violations": count(system_maintenance_violations)
         }
     }
@@ -597,3 +637,15 @@ detailed_findings := {
     "access_auth_violations": access_auth_violations,
     "system_maintenance_violations": system_maintenance_violations
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

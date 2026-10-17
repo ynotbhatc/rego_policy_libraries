@@ -6,20 +6,32 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 15
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.pam
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 5.4/5.5: PAM and User Accounts
 # Password Authentication Module configuration validation
 
 import rego.v1
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 default compliant := false
 
@@ -152,8 +164,14 @@ violations contains msg if {
 violations contains msg if {
 	input.pam.inactive_days
 	to_number(input.pam.inactive_days) > 30
-	to_number(input.pam.inactive_days) >= 0
 	msg := sprintf("CIS 5.5.1.4: Inactive password lock is %s days, should be 30 or less", [input.pam.inactive_days])
+}
+
+# useradd -D reports INACTIVE=-1 when inactive-lock is disabled (never expires).
+violations contains msg if {
+	input.pam.inactive_days
+	to_number(input.pam.inactive_days) < 0
+	msg := sprintf("CIS 5.5.1.4: Inactive password lock is disabled (%s), should be 30 days or less", [input.pam.inactive_days])
 }
 
 violations contains msg if {
@@ -183,9 +201,8 @@ violations contains msg if {
 # CIS 5.5.4: Default umask 027 or more restrictive
 violations contains msg if {
 	input.pam.default_umask
-	umask_value := to_number(input.pam.default_umask)
-	umask_value > 27
-	not umask_value in [77, 177, 277, 377]
+	# "at least as restrictive as 027" means the umask masks all of 027's bits (23 decimal)
+	not umask_restrictive(input.pam.default_umask)
 	msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 
@@ -211,6 +228,8 @@ violations contains msg if {
 	not input.pam.tmout
 	msg := "CIS 5.5.5: TMOUT not configured"
 }
+
+umask_restrictive(u) if bits.and(octal(u), 23) == 23
 
 compliant if {
 	count(violations) == 0

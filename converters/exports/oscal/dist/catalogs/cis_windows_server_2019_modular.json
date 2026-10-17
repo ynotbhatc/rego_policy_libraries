@@ -66,6 +66,72 @@
     ],
     "controls": [
      {
+      "id": "cis_windows_server_2019_modular-CIS-1.1.x",
+      "title": "evidence missing - account_policies.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9c76515e-58ed-5210-a128-7e1086600b94",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.1.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing - account_policies.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-1.2.x",
+      "title": "evidence missing - account_policies.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.2.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.2.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.account_policies"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9c76515e-58ed-5210-a128-7e1086600b94",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-1.2.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing - account_policies.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_windows_server_2019_modular-CIS-1.1.1",
       "title": "Password history is %d, should be 24 or more",
       "props": [
@@ -367,7 +433,7 @@
        {
         "id": "cis_windows_server_2019_modular-CIS-1.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Account lockout threshold is %d, should be 10 or less"
+        "prose": "Account lockout threshold is %d, should be 5 or fewer"
        }
       ],
       "class": "security"
@@ -3906,6 +3972,39 @@
     ],
     "controls": [
      {
+      "id": "cis_windows_server_2019_modular-CIS-2.3.1.x",
+      "title": "evidence missing - security_options.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.security_options"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd513cac-10b3-53db-ba94-da1469ff7edf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.1.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing - security_options.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_windows_server_2019_modular-CIS-2.3.1.1",
       "title": "Built-in Administrator account should be disabled (or renamed)",
       "props": [
@@ -4105,7 +4204,7 @@
      },
      {
       "id": "cis_windows_server_2019_modular-CIS-2.3.7.1",
-      "title": "'Do not require CTRL+ALT+DEL' should be disabled (CTRL+ALT+DEL should be required)",
+      "title": "evidence missing - security_options.no_ctrl_alt_del_required not collected",
       "props": [
        {
         "name": "label",
@@ -4131,6 +4230,11 @@
        {
         "id": "cis_windows_server_2019_modular-CIS-2.3.7.1_stmt",
         "name": "statement",
+        "prose": "evidence missing - security_options.no_ctrl_alt_del_required not collected"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-2.3.7.1_obj.1",
+        "name": "assessment-objective",
         "prose": "'Do not require CTRL+ALT+DEL' should be disabled (CTRL+ALT+DEL should be required)"
        }
       ],
@@ -4627,6 +4731,77 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.x",
+      "title": "evidence missing - services.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86040102-2e31-5545-b594-b3d90c772724",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing - services.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_server_2019_modular-CIS-5.20",
+      "title": "evidence missing - services.smb1_enabled not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_server_2019.system_services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#86040102-2e31-5545-b594-b3d90c772724",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.20_stmt",
+        "name": "statement",
+        "prose": "evidence missing - services.smb1_enabled not collected"
+       },
+       {
+        "id": "cis_windows_server_2019_modular-CIS-5.20_obj.1",
+        "name": "assessment-objective",
+        "prose": "SMBv1 server is enabled (should be disabled)"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_windows_server_2019_modular-CIS-5.1",
       "title": "Bluetooth Audio Gateway Service (BTAGService) should be Disabled (current: %s)",
@@ -5250,39 +5425,6 @@
         "id": "cis_windows_server_2019_modular-CIS-5.19_stmt",
         "name": "statement",
         "prose": "Routing and Remote Access service is Running (should be Disabled)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_windows_server_2019_modular-CIS-5.20",
-      "title": "SMBv1 server is enabled (should be disabled)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 5.20"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 5.20"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_windows_server_2019.system_services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#86040102-2e31-5545-b594-b3d90c772724",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_windows_server_2019_modular-CIS-5.20_stmt",
-        "name": "statement",
-        "prose": "SMBv1 server is enabled (should be disabled)"
        }
       ],
       "class": "security"

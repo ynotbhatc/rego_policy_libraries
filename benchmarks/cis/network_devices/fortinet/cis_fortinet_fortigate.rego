@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_fortinet_fortigate
 
 # CIS Fortinet FortiGate Benchmark v1.3.0
@@ -23,6 +23,8 @@ package cis_fortinet_fortigate
 import rego.v1
 
 # Main compliance rule - all controls must pass
+default compliant := false
+
 compliant if {
     count(violations) == 0
 }
@@ -45,7 +47,7 @@ violations := [v |
 # Section 1: System Settings
 system_settings_violations := [
     "1.1: Ensure 'admin-https-ssl-versions' is set to 'tlsv1-2'" |
-    input.fortigate_config.system.global.admin_https_ssl_versions != "tlsv1-2"
+    not input.fortigate_config.system.global.admin_https_ssl_versions == "tlsv1-2"
 ]
 
 
@@ -119,7 +121,7 @@ admin_logging_configured if {
 # Section 3: Logging
 logging_violations := [
     "3.1: Ensure 'central-management' logging is enabled" |
-    input.fortigate_config.log.fortiguard.status != "enable"
+    not input.fortigate_config.log.fortiguard.status == "enable"
 ]
 
 
@@ -212,8 +214,16 @@ ssl_ssh_inspection_configured if {
 vpn_violations := [
     "6.1: Ensure 'enc-algorithm' is set to AES for IPSec VPNs" |
     vpn := input.fortigate_config.vpn.ipsec.phase1_interface[_]
-    not contains(vpn.proposal, "aes")
+    not aes_only_proposal(object.get(vpn, "proposal", ""))
 ]
+
+# Every proposal in the (space-separated) list must use AES; a mixed list that
+# still offers 3DES/DES is weak. A missing or empty proposal fails.
+aes_only_proposal(proposal) if {
+    tokens := [t | some t in split(trim_space(sprintf("%v", [proposal])), " "); t != ""]
+    count(tokens) > 0
+    every t in tokens { startswith(lower(t), "aes") }
+}
 
 
 
@@ -240,8 +250,7 @@ rogue_ap_detection_enabled if {
 # Section 8: Security Fabric
 security_fabric_violations := [
     "8.1: Ensure FortiGuard services are enabled and configured" |
-    fortiguard := input.fortigate_config.system.fortiguard
-    fortiguard.antispam != "enable"
+    not input.fortigate_config.system.fortiguard.antispam == "enable"
 ]
 
 
@@ -250,10 +259,10 @@ security_fabric_violations := [
 
 # Compliance summary for reporting
 compliance_summary := {
-    "total_controls": 73,
-    "passing_controls": 73 - count(violations),
+    "total_controls": 66,
+    "passing_controls": 66 - count(violations),
     "failing_controls": count(violations),
-    "compliance_percentage": ((73 - count(violations)) * 100) / 73,
+    "compliance_percentage": ((66 - count(violations)) * 100) / 66,
     "sections": {
         "system_settings": {
             "total": 14,

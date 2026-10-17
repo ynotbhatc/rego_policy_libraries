@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 20
+#     checks: 24
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.network
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -31,10 +31,57 @@ violations := array.concat(
 	array.concat([v | some v in ipv6_violations], [v | some v in network_interface_violations]),
 )
 
+# sysctl current_value may be a string or a number; compare its text. An absent value is "not equal".
+val_is(param, want) if sprintf("%v", [param.current_value]) == want
+
+# Evidence: sections and the specific sysctl parameters the checks rely on must be collected.
+# (Previously empty input, or a missing parameter, was compliant.)
+required_sysctls := {
+	"net.ipv4.tcp_syncookies",
+	"net.ipv4.conf.all.rp_filter",
+	"net.ipv4.conf.all.log_martians",
+	"net.ipv4.icmp_echo_ignore_broadcasts",
+	"net.ipv4.conf.all.send_redirects",
+	"net.ipv4.conf.default.send_redirects",
+}
+
+sysctl_collected(name) if {
+	some param in input.sysctl_parameters.analysis
+	param.parameter == name
+}
+
+sysctl_violations contains msg if {
+	some name in required_sysctls
+	not sysctl_collected(name)
+	msg := sprintf("CIS 3.x: evidence missing — sysctl %s not collected", [name])
+}
+
+forwarding_known(key) if is_number(input.ip_forwarding[key])
+
+ip_forwarding_violations contains msg if {
+	some key in ["ipv4_forwarding", "ipv6_forwarding"]
+	not forwarding_known(key)
+	msg := sprintf("CIS 3.1.1: evidence missing — ip_forwarding.%s not collected", [key])
+}
+
+wireless_known if is_boolean(input.wireless_interfaces.compliant)
+
+network_interface_violations contains msg if {
+	not wireless_known
+	msg := "CIS 3.3.2: evidence missing — wireless_interfaces.compliant not collected"
+}
+
+firewall_known if is_boolean(input.firewall.active)
+
+network_interface_violations contains msg if {
+	not firewall_known
+	msg := "CIS 3.5.x: evidence missing — firewall.active not collected"
+}
+
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.non_compliant_params
-	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [
+	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %v, expected: %v) - %s", [
 		param.parameter, param.current_value, param.expected_value, param.description,
 	])
 }
@@ -42,28 +89,28 @@ sysctl_violations contains msg if {
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.tcp_syncookies"
-	param.current_value != "1"
+	not val_is(param, "1")
 	msg := "CIS 3.2.8: TCP SYN cookies not enabled (vulnerable to SYN flood attacks)"
 }
 
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.conf.all.rp_filter"
-	param.current_value != "1"
+	not val_is(param, "1")
 	msg := "CIS 3.2.7: Reverse path filtering not enabled (vulnerable to IP spoofing)"
 }
 
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.conf.all.log_martians"
-	param.current_value != "1"
+	not val_is(param, "1")
 	msg := "CIS 3.2.4: Martian packet logging not enabled (won't detect spoofing attempts)"
 }
 
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.icmp_echo_ignore_broadcasts"
-	param.current_value != "1"
+	not val_is(param, "1")
 	msg := "CIS 3.2.5: Broadcast ICMP not ignored (vulnerable to Smurf attacks)"
 }
 
@@ -84,14 +131,14 @@ ip_forwarding_violations contains msg if {
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.conf.all.send_redirects"
-	param.current_value != "0"
+	not val_is(param, "0")
 	msg := "CIS 3.1.2: Sending ICMP redirects is enabled (man-in-the-middle risk)"
 }
 
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	param.parameter == "net.ipv4.conf.default.send_redirects"
-	param.current_value != "0"
+	not val_is(param, "0")
 	msg := "CIS 3.1.2: Sending ICMP redirects enabled on default interface"
 }
 
@@ -100,7 +147,7 @@ sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	startswith(param.parameter, "net.ipv4.conf.")
 	endswith(param.parameter, ".accept_source_route")
-	param.current_value != "0"
+	not val_is(param, "0")
 	msg := sprintf("CIS 3.2.1: Source routed packets accepted on %s (firewall bypass risk)", [param.parameter])
 }
 
@@ -108,7 +155,7 @@ sysctl_violations contains msg if {
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "accept_redirects")
-	param.current_value != "0"
+	not val_is(param, "0")
 	msg := sprintf("CIS 3.2.2: ICMP redirects accepted on %s (man-in-the-middle risk)", [param.parameter])
 }
 
@@ -116,7 +163,7 @@ sysctl_violations contains msg if {
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "secure_redirects")
-	param.current_value != "0"
+	not val_is(param, "0")
 	msg := sprintf("CIS 3.2.3: Secure ICMP redirects accepted on %s", [param.parameter])
 }
 
@@ -134,7 +181,7 @@ ipv6_violations contains msg if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "ipv6.conf.")
 	contains(param.parameter, ".accept_ra")
-	param.current_value != "0"
+	not val_is(param, "0")
 	msg := sprintf("CIS 3.2.9: IPv6 router advertisements accepted on %s (rogue router risk)", [param.parameter])
 }
 
@@ -146,14 +193,16 @@ network_interface_violations contains msg if {
 }
 
 network_interface_violations contains msg if {
+	wireless_known
 	not input.wireless_interfaces.compliant
-	msg := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [input.wireless_interfaces.count])
+	msg := sprintf("CIS 3.3.2: %v wireless interfaces found on server (should have 0)", [object.get(input, ["wireless_interfaces", "count"], "unknown number of")])
 }
 
 # CIS 3.5.x: Firewall (Ubuntu uses ufw or nftables)
 network_interface_violations contains msg if {
+	firewall_known
 	not input.firewall.active
-	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [input.firewall.type])
+	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %v)", [object.get(input, ["firewall", "type"], "unknown")])
 }
 
 network_interface_violations contains msg if {

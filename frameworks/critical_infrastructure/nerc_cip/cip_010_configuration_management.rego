@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package nerc_cip.cip_010
 
 import rego.v1
@@ -31,6 +31,18 @@ default transient_asset_config_managed := false
 default unauthorized_change_monitoring := false
 default vulnerability_assessments_performed := false
 default vulnerability_remediation_tracked := false
+
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# Per-system requirements need the BES Cyber System inventory to have been collected.
+bes_inventory_present if is_array(input.bes_cyber_systems)
 
 # CIP-010-4: Configuration Change Management and Vulnerability Assessments
 # Requirement: Prevent and detect unauthorized changes to BES Cyber Systems
@@ -53,6 +65,7 @@ change_management_process_documented if {
 
 # R1.2 - Maintain baseline configurations for each applicable BES Cyber System
 baseline_configurations_established if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -95,8 +108,10 @@ change_control_adequate(change) if {
 
 # R1.4 - Monitor for unauthorized changes to baseline configuration
 unauthorized_change_monitoring if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
+	bes_inventory_present
+	# Judge only high/medium systems: a low impact system is out of scope and must
+	# not make the whole requirement false.
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		sys_monitoring := input.configuration_monitoring[system.system_id]
 		sys_monitoring.enabled == true
 		sys_monitoring.change_detection == true
@@ -125,11 +140,10 @@ software_integrity_verification if {
 
 # R2 - Monitor for unauthorized changes at least every 35 days
 configuration_monitoring_timely if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
+	bes_inventory_present
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		sys_monitoring := input.configuration_monitoring[system.system_id]
-		sys_monitoring.last_review_date
-		review_age_days := (time.now_ns() - sys_monitoring.last_review_date) / (24 * 60 * 60 * 1000000000)
+		review_age_days := (time.now_ns() - date_ns(sys_monitoring.last_review_date)) / (24 * 60 * 60 * 1000000000)
 		review_age_days <= 35
 	}
 }
@@ -140,6 +154,7 @@ configuration_monitoring_timely if {
 
 # R3.1 - Conduct vulnerability assessments at least every 15 calendar months
 vulnerability_assessments_performed if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -150,7 +165,7 @@ vulnerability_assessments_performed if {
 
 vulnerability_assessment_current(system) if {
 	assessment := input.vulnerability_assessments[system.system_id]
-	assessment_age_days := (time.now_ns() - assessment.completion_date) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
 	assessment_age_days <= 455 # 15 calendar months
 	assessment.documented == true
 	assessment.remediation_plan_exists == true
@@ -167,8 +182,8 @@ vulnerability_remediation_tracked if {
 
 # R3.3 - Where possible, perform authenticated scanning
 authenticated_scanning_used if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
+	bes_inventory_present
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		sys_scan := input.vulnerability_assessments[system.system_id]
 		sys_scan.authenticated_scan_used == true
 	}

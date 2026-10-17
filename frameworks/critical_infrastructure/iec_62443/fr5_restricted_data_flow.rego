@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iec_62443.fr5
 
 import rego.v1
@@ -37,6 +37,7 @@ import rego.v1
 #     .name                                     - string
 #     .security_level_defined                   - bool
 #     .security_level                           - int
+#     .type                                     - optional "it" | "ot" (else inferred from the name)
 #     .assets_inventoried                       - bool
 #   input.conduits[]
 #     .source_zone                              - string
@@ -55,13 +56,32 @@ import rego.v1
 
 default compliant := false
 
+# Zone class for the IT/OT boundary check. An explicit zones[].type wins; else the
+# name is normalised (lower case, spaces/hyphens to underscores) and matched
+# against common IT and OT zone names, so "Corporate-IT" / "OT" / "scada" work.
+it_zone_names := {"corporate_it", "it", "enterprise", "corporate", "business"}
+
+ot_zone_names := {"ics_control", "ot", "ics", "control", "scada", "process", "ot_control"}
+
+_norm(name) := replace(replace(lower(sprintf("%v", [name])), " ", "_"), "-", "_")
+
+zone_class(name) := z.type if {
+    some z in input.zones
+    z.name == name
+    z.type in {"it", "ot"}
+} else := "it" if {
+    _norm(name) in it_zone_names
+} else := "ot" if {
+    _norm(name) in ot_zone_names
+}
+
 # ---------------------------------------------------------------------------
 # SR 5.1 — Network segmentation
 # Segment the IACS network into zones and define conduits between zones.
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
-    count(input.zones) == 0
+    count(object.get(input, "zones", [])) == 0
     msg := "IEC 62443 SR 5.1 (RDF): No network zones defined. IEC 62443 requires the IACS to be segmented into security zones with clearly defined boundaries."
 }
 
@@ -83,7 +103,7 @@ violations contains msg if {
 # SR 5.1 RE 1 (SL 2+): Independence of security zones
 violations contains msg if {
     input.target_sl >= 2
-    count(input.zones) < 3
+    count(object.get(input, "zones", [])) < 3
     msg := sprintf(
         "IEC 62443 SR 5.1 RE 1 SL%v (RDF): Insufficient zone segmentation. At Security Level 2+, at minimum three distinct zones are required: corporate IT, DMZ, and OT/ICS control.",
         [input.target_sl]
@@ -126,8 +146,8 @@ violations contains msg if {
 violations contains msg if {
     input.target_sl >= 3
     some conduit in input.conduits
-    conduit.source_zone == "corporate_it"
-    conduit.dest_zone == "ics_control"
+    zone_class(conduit.source_zone) == "it"
+    zone_class(conduit.dest_zone) == "ot"
     not conduit.unidirectional_gateway
     msg := sprintf(
         "IEC 62443 SR 5.2 RE 1 SL%v (RDF): The IT/OT boundary between corporate and ICS control zones lacks a unidirectional gateway (data diode). Required at Security Level 3+ for critical infrastructure.",

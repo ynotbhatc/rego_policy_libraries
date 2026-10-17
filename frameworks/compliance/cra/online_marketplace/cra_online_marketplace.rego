@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 13
+#     checks: 16
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cra.online_marketplace
 
 import rego.v1
@@ -38,6 +38,11 @@ applies if {
 	input.online_marketplace.is_marketplace_provider
 	input.online_marketplace.products_offered.includes_products_with_digital_elements
 }
+
+# Applicability (conditional-applicability gate): the checks below apply only to marketplace
+# providers offering products with digital elements. When either flag is undeclared the module is
+# treated as not applicable by design (a documented pass, not a defect); whether an undeclared flag
+# should be a violation is an open scope decision (see the validation 2026-10-17 report).
 
 # Single point of contact for market surveillance authorities
 violation contains msg if {
@@ -69,6 +74,12 @@ violation contains msg if {
 	msg := sprintf("Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)", [input.online_marketplace.authority_takedown_order_hours_pending])
 }
 
+violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared" if {
+	applies
+	input.online_marketplace.authority_takedown_order_received == true
+	not is_number(object.get(input.online_marketplace, "authority_takedown_order_hours_pending", null))
+}
+
 # Trader identification (CRA-relevant info: traceability of the seller)
 violation contains msg if {
 	applies
@@ -96,6 +107,12 @@ violation contains msg if {
 	msg := sprintf("Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)", [input.online_marketplace.random_checks.sample_size_pct])
 }
 
+violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared" if {
+	applies
+	input.online_marketplace.random_checks.performed == true
+	not is_number(object.get(input.online_marketplace.random_checks, "sample_size_pct", null))
+}
+
 # Where compliance issue identified, manufacturer notified + listing handled
 violation contains msg if {
 	applies
@@ -107,9 +124,15 @@ violation contains msg if {
 violation contains msg if {
 	applies
 	input.online_marketplace.non_compliant_listing_identified == true
-	input.online_marketplace.severity == "high"
+	lower(input.online_marketplace.severity) in {"high", "critical"}
 	not input.online_marketplace.listing_removed
 	msg := "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing"
+}
+
+violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared" if {
+	applies
+	input.online_marketplace.non_compliant_listing_identified == true
+	not is_string(object.get(input.online_marketplace, "severity", null))
 }
 
 # End-user information on identified non-compliance affecting them

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 4
-#     cited: 2
+#     checks: 8
+#     cited: 4
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.filesystem
 
 # CIS Ubuntu 22.04 - Section 1.1 Filesystem Configuration
@@ -35,6 +35,14 @@ compliant if {
 # FILESYSTEM MODULE VIOLATIONS (CIS 1.1.1.x)
 # =============================================================================
 
+# Evidence: a section that was not collected is not a pass (empty input used to be compliant).
+modules_collected if count(input.disabled_filesystem_modules.modules) > 0
+
+filesystem_module_violations contains violation if {
+	not modules_collected
+	violation := "CIS 1.1.1.x: evidence missing — disabled_filesystem_modules.modules not collected"
+}
+
 filesystem_module_violations contains violation if {
 	some module in input.disabled_filesystem_modules.modules
 	not module.compliant
@@ -49,6 +57,13 @@ filesystem_module_violations contains violation if {
 # PARTITION VIOLATIONS (CIS 1.1.2 - 1.1.10)
 # =============================================================================
 
+partitions_collected if count(input.required_partitions.partitions) > 0
+
+partition_violations contains violation if {
+	not partitions_collected
+	violation := "CIS 1.1.2: evidence missing — required_partitions.partitions not collected"
+}
+
 partition_violations contains violation if {
 	some partition in input.required_partitions.partitions
 	not partition.exists
@@ -61,6 +76,13 @@ partition_violations contains violation if {
 # =============================================================================
 # MOUNT OPTION VIOLATIONS (CIS 1.1.x)
 # =============================================================================
+
+mounts_collected if count(input.mount_options.mounts) > 0
+
+mount_option_violations contains violation if {
+	not mounts_collected
+	violation := "CIS 1.1.x: evidence missing — mount_options.mounts not collected"
+}
 
 mount_option_violations contains violation if {
 	some mount in input.mount_options.mounts
@@ -77,6 +99,13 @@ mount_option_violations contains violation if {
 # STICKY BIT VIOLATIONS (CIS 1.1.22)
 # =============================================================================
 
+sticky_collected if is_array(input.sticky_bit_check.world_writable_dirs)
+
+sticky_bit_violations contains violation if {
+	not sticky_collected
+	violation := "CIS 1.1.22: evidence missing — sticky_bit_check.world_writable_dirs not collected"
+}
+
 sticky_bit_violations contains violation if {
 	some dir in input.sticky_bit_check.world_writable_dirs
 	not dir.has_sticky_bit
@@ -86,6 +115,15 @@ sticky_bit_violations contains violation if {
 # =============================================================================
 # USB STORAGE VIOLATIONS (CIS 1.1.24)
 # =============================================================================
+
+usb_collected if is_boolean(input.usb_storage_disabled.loaded)
+
+usb_collected if is_boolean(input.usb_storage_disabled.disabled)
+
+usb_storage_violation contains violation if {
+	not usb_collected
+	violation := "CIS 1.1.24: evidence missing — usb_storage_disabled not collected"
+}
 
 usb_storage_violation contains violation if {
 	input.usb_storage_disabled.loaded == true

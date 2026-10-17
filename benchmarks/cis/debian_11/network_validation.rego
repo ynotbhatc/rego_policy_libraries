@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 20
+#     checks: 25
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_debian_11.network
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 3.1/3.2/3.3: Network Configuration
@@ -31,12 +31,41 @@ violations := array.concat(
 	array.concat([v | some v in ipv6_violations], [v | some v in network_interface_violations]),
 )
 
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# Missing evidence fails closed.
+sysctl_violations contains msg if {
+	not input.sysctl_parameters.analysis
+	msg := "CIS 3.x: evidence missing — sysctl_parameters.analysis not collected"
+}
+
+ip_forwarding_violations contains msg if {
+	some k in ["ipv4_forwarding", "ipv6_forwarding"]
+	not has_key(object.get(input, "ip_forwarding", {}), k)
+	msg := sprintf("CIS 3.1.1: evidence missing — ip_forwarding.%s not collected", [k])
+}
+
+ipv6_violations contains msg if {
+	not input.ipv6
+	msg := "CIS 3.3.1: evidence missing — ipv6 not collected"
+}
+
+network_interface_violations contains msg if {
+	not has_key(object.get(input, "wireless_interfaces", {}), "compliant")
+	msg := "CIS 3.3.2: evidence missing — wireless_interfaces not collected"
+}
+
+network_interface_violations contains msg if {
+	not has_key(object.get(input, "firewall", {}), "active")
+	msg := "CIS 3.5.x: evidence missing — firewall.active not collected"
+}
+
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.non_compliant_params
-	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [
-		param.parameter, param.current_value, param.expected_value, param.description,
-	])
+	msg := sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [param.parameter, param.current_value, param.expected_value, param.description])
 }
 
 sysctl_violations contains msg if {
@@ -125,7 +154,7 @@ ipv6_violations contains msg if {
 	input.require_ipv6_disabled == true
 	not input.ipv6.disabled
 	input.ipv6.address_count > 0
-	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %s, addresses: %d)", [input.ipv6.status, input.ipv6.address_count])
+	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %v, addresses: %d)", [object.get(input.ipv6, "status", "unknown"), input.ipv6.address_count])
 }
 
 # CIS 3.2.9: IPv6 router advertisements disabled
@@ -146,14 +175,16 @@ network_interface_violations contains msg if {
 }
 
 network_interface_violations contains msg if {
+	has_key(input.wireless_interfaces, "compliant")
 	not input.wireless_interfaces.compliant
-	msg := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [input.wireless_interfaces.count])
+	msg := sprintf("CIS 3.3.2: %v wireless interfaces found on server (should have 0)", [object.get(input.wireless_interfaces, "count", "unknown number of")])
 }
 
 # CIS 3.5.x: Firewall (Ubuntu uses ufw or nftables)
 network_interface_violations contains msg if {
+	has_key(input.firewall, "active")
 	not input.firewall.active
-	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [input.firewall.type])
+	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %v)", [object.get(input.firewall, "type", "unknown")])
 }
 
 network_interface_violations contains msg if {

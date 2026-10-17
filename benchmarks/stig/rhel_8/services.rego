@@ -12,8 +12,8 @@
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package stig.rhel_8.services
 
 # DISA STIG for RHEL 8 - Services Module
@@ -25,10 +25,19 @@ default compliant := false
 
 service_disabled(svc) if { input.services[svc] == "inactive" }
 service_disabled(svc) if { input.services[svc] == "masked" }
-service_disabled(svc) if { not input.services[svc] }
+# A service or package missing from the collected inventory counts as disabled / not
+# installed only when an inventory was actually collected. An absent or empty
+# inventory is missing evidence, not a pass.
+service_disabled(svc) if {
+	count(input.services) > 0
+	not input.services[svc]
+}
 
 pkg_absent(pkg) if { input.packages[pkg] == false }
-pkg_absent(pkg) if { not input.packages[pkg] }
+pkg_absent(pkg) if {
+	count(input.packages) > 0
+	not input.packages[pkg]
+}
 
 # =============================================================================
 # CAT I

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel8.sudo
 
 # CIS RHEL 8 Benchmark v4.0.0 - Section 5.3: Configure privilege escalation
@@ -105,8 +105,7 @@ violations contains msg if {
 # sudoers file permissions
 violations contains msg if {
 	input.sudo.sudoers_mode
-	input.sudo.sudoers_mode != "0440"
-	input.sudo.sudoers_mode != "0400"
+	not mode_within(input.sudo.sudoers_mode, "0440")
 	msg := sprintf("CIS 5.3: /etc/sudoers has mode %s, should be 0440 or 0400", [input.sudo.sudoers_mode])
 }
 
@@ -141,3 +140,15 @@ report := {
 	"section": "5.3 Configure Privilege Escalation",
 	"benchmark": "CIS RHEL 8 v4.0.0",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

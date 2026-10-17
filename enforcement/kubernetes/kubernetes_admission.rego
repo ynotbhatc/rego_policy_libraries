@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [kubernetes]
 #   coverage:
-#     checks: 27
+#     checks: 28
 #     cited: 0
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package kubernetes.admission
 
 # Kubernetes Admission Control — Security and Operations Policy
@@ -47,7 +47,11 @@ default allow := false
 allow if { count(deny) == 0 }
 
 # Expose violations as 'deny' for webhook compatibility and 'violations' for reporting
-deny contains msg if { some msg in violations }
+# DELETE requests carry no object to judge, so they are never denied by object checks
+deny contains msg if {
+	not is_delete
+	some msg in violations
+}
 
 default compliant := false
 
@@ -78,12 +82,44 @@ resource_name := object.get(resource_object, ["metadata", "name"], "unnamed")
 # RESOURCE LIMITS AND REQUESTS
 # =============================================================================
 
+# Every kind that carries a pod template (ReplicaSet / ReplicationController included)
+workload_kinds := {"Pod", "Deployment", "DaemonSet", "StatefulSet", "ReplicaSet", "ReplicationController", "Job", "CronJob"}
+
+# Long-running pod-template kinds
+long_running_kinds := {"Pod", "Deployment", "DaemonSet", "StatefulSet", "ReplicaSet", "ReplicationController"}
+
 pod_spec := resource_object.spec if {
 	resource_kind == "Pod"
 }
 
 pod_spec := resource_object.spec.template.spec if {
-	resource_kind in {"Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
+	resource_kind in {"Deployment", "DaemonSet", "StatefulSet", "ReplicaSet", "ReplicationController", "Job"}
+}
+
+# Main, init and ephemeral containers are all subject to the security checks
+all_containers := array.concat(
+	array.concat(object.get(pod_spec, "containers", []), object.get(pod_spec, "initContainers", [])),
+	object.get(pod_spec, "ephemeralContainers", []),
+)
+
+# Fail closed on a request that carries nothing to judge (DELETE legitimately has no object)
+is_delete if { input.request.operation == "DELETE" }
+
+request_evaluable if { is_delete }
+
+request_evaluable if {
+	is_string(input.request.kind.kind)
+	is_object(input.request.object)
+	count(input.request.object) > 0
+}
+
+violations contains "AdmissionReview: request.kind.kind / request.object missing or empty — request cannot be evaluated" if {
+	not request_evaluable
+}
+
+# Annotation opt-outs apply only when explicitly set to "true"
+annotation_true(name) if {
+	lower(resource_object.metadata.annotations[name]) == "true"
 }
 
 pod_spec := resource_object.spec.jobTemplate.spec.template.spec if {
@@ -91,26 +127,26 @@ pod_spec := resource_object.spec.jobTemplate.spec.template.spec if {
 }
 
 violations contains sprintf("Resources: Container '%s' in %s '%s' has no CPU limit — resource limits required for cluster stability", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	not container.resources.limits.cpu
 }
 
 violations contains sprintf("Resources: Container '%s' in %s '%s' has no memory limit — memory limits required to prevent OOM evictions", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	not container.resources.limits.memory
 }
 
 violations contains sprintf("Resources: Container '%s' in %s '%s' has no CPU request — requests required for scheduler accuracy", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	not container.resources.requests.cpu
 }
 
 violations contains sprintf("Resources: Container '%s' in %s '%s' has no memory request", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	not container.resources.requests.memory
 }
 
@@ -128,8 +164,8 @@ approved_registries := object.get(input, ["policy", "approved_registries"], {
 })
 
 violations contains sprintf("Registry: Container '%s' in %s '%s' uses unapproved image '%s' — only approved registries allowed: %s", [container.name, resource_kind, resource_name, container.image, concat(", ", approved_registries)]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	not from_approved_registry(container.image)
 }
 
@@ -140,6 +176,7 @@ from_approved_registry(image) if {
 }
 
 # Allow images without registry prefix (cluster-local)
+# NOTE: needs_decision (validation 2026-10-17): a bare name such as "nginx:1.25" resolves to Docker Hub.
 from_approved_registry(image) if {
 	not contains(image, "/")
 }
@@ -149,9 +186,9 @@ from_approved_registry(image) if {
 # =============================================================================
 
 violations contains sprintf("ImageTag: Container '%s' in %s '%s' uses 'latest' tag — pin to a specific digest or version tag", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
+	resource_kind in workload_kinds
 	is_production_namespace(namespace)
-	some container in object.get(pod_spec, "containers", [])
+	some container in all_containers
 	is_latest_tag(container.image)
 }
 
@@ -159,10 +196,10 @@ is_latest_tag(image) if { endswith(image, ":latest") }
 is_latest_tag(image) if { not contains(image, ":"); not contains(image, "@") }
 
 violations contains sprintf("ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
 	object.get(input, ["policy", "require_image_digest"], false)
-	some container in object.get(pod_spec, "containers", [])
+	some container in all_containers
 	not contains(container.image, "@sha256:")
 }
 
@@ -189,54 +226,59 @@ violations contains sprintf("Labels: %s '%s' pod template is missing required la
 # =============================================================================
 
 violations contains sprintf("Security: Container '%s' in %s '%s' is privileged — privileged containers are not permitted", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	container.securityContext.privileged == true
 }
 
 violations contains sprintf("Security: %s '%s' shares host PID namespace — hostPID: true is not permitted", [resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	pod_spec.hostPID == true
 }
 
 violations contains sprintf("Security: %s '%s' shares host IPC namespace — hostIPC: true is not permitted", [resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	pod_spec.hostIPC == true
 }
 
 violations contains sprintf("Security: %s '%s' shares host network namespace — hostNetwork: true is not permitted", [resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	not namespace in system_namespaces
 	pod_spec.hostNetwork == true
 }
 
 violations contains sprintf("Security: Container '%s' in %s '%s' allows privilege escalation — set allowPrivilegeEscalation: false", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	container.securityContext.allowPrivilegeEscalation != false
 	not container.securityContext.privileged
 }
 
 violations contains sprintf("Security: Container '%s' in %s '%s' does not set readOnlyRootFilesystem: true — use ephemeral volumes for writes", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
-	some container in object.get(pod_spec, "containers", [])
+	some container in all_containers
 	container.securityContext.readOnlyRootFilesystem != true
-	not resource_object.metadata.annotations["admission.kubernetes.io/skip-readonly-check"]
+	not annotation_true("admission.kubernetes.io/skip-readonly-check")
 }
 
 violations contains sprintf("Security: Container '%s' in %s '%s' runs as root (runAsNonRoot not set or false)", [container.name, resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet", "Job", "CronJob"}
-	some container in object.get(pod_spec, "containers", [])
+	resource_kind in workload_kinds
+	some container in all_containers
 	not pod_spec.securityContext.runAsNonRoot
 	not container.securityContext.runAsNonRoot
 }
 
 violations contains sprintf("Security: Container '%s' drops no capabilities — add 'drop: [\"ALL\"]' to securityContext", [container.name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
-	some container in object.get(pod_spec, "containers", [])
-	not container.securityContext.capabilities.drop
+	some container in all_containers
+	not drops_all_capabilities(container)
+}
+
+drops_all_capabilities(container) if {
+	some d in container.securityContext.capabilities.drop
+	upper(d) == "ALL"
 }
 
 # =============================================================================
@@ -244,22 +286,22 @@ violations contains sprintf("Security: Container '%s' drops no capabilities — 
 # =============================================================================
 
 violations contains sprintf("ServiceAccount: %s '%s' uses default service account — create a dedicated service account with minimal RBAC", [resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
 	not pod_spec.serviceAccountName
 }
 
 violations contains sprintf("ServiceAccount: %s '%s' uses default service account — create a dedicated service account", [resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
 	pod_spec.serviceAccountName == "default"
 }
 
 violations contains sprintf("ServiceAccount: %s '%s' auto-mounts service account token — set automountServiceAccountToken: false if API access not needed", [resource_kind, resource_name]) if {
-	resource_kind in {"Pod", "Deployment", "DaemonSet", "StatefulSet"}
+	resource_kind in long_running_kinds
 	is_production_namespace(namespace)
 	pod_spec.automountServiceAccountToken != false
-	not resource_object.metadata.annotations["admission.kubernetes.io/requires-sa-token"]
+	not annotation_true("admission.kubernetes.io/requires-sa-token")
 }
 
 # =============================================================================
@@ -292,7 +334,7 @@ violations contains sprintf("Service: Service '%s' uses NodePort type in product
 violations contains sprintf("Service: Service '%s' has no selector — services without selectors should be documented with annotation 'admission.kubernetes.io/headless-service: true'", [resource_name]) if {
 	resource_kind == "Service"
 	not resource_object.spec.selector
-	not resource_object.metadata.annotations["admission.kubernetes.io/headless-service"]
+	not annotation_true("admission.kubernetes.io/headless-service")
 }
 
 # =============================================================================
@@ -302,8 +344,11 @@ violations contains sprintf("Service: Service '%s' has no selector — services 
 violations contains sprintf("Ingress: Ingress '%s' has no TLS configuration — all production ingresses must use TLS", [resource_name]) if {
 	resource_kind == "Ingress"
 	is_production_namespace(namespace)
-	not resource_object.spec.tls
+	not has_tls
 }
+
+# a non-empty spec.tls list (an empty list is no TLS)
+has_tls if count(object.get(object.get(resource_object, "spec", {}), "tls", [])) > 0
 
 violations contains sprintf("Ingress: Ingress '%s' does not specify ingressClassName — use explicit class to prevent routing conflicts", [resource_name]) if {
 	resource_kind == "Ingress"

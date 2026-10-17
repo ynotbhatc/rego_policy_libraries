@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 23
+#     checks: 24
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_24_04.user_group
 
 # DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 — applied to Ubuntu 24.04 LTS (see README) - Section 6.2: User and Group Settings
@@ -21,6 +21,23 @@ package cis_ubuntu_24_04.user_group
 import rego.v1
 
 default compliant := false
+
+# Every section below is an offender list or a path fact. An absent section is
+# missing evidence, not an empty offender list, and `user_group: {}` is not evidence.
+required_sections := {
+	"users_without_shadow", "users_with_empty_password", "passwd_groups_not_in_group_file",
+	"duplicate_uids", "duplicate_gids", "duplicate_usernames", "duplicate_groupnames",
+	"root_path", "root_path_dirs", "root_path_writable_dirs",
+	"uid_zero_accounts", "users_without_home_directory", "users_not_owning_home",
+	"home_dirs_too_permissive", "users_with_netrc", "users_with_forward", "users_with_rhosts",
+	"dotfiles_group_or_world_writable",
+}
+
+violations contains msg if {
+	some section in required_sections
+	object.get(object.get(input, "user_group", {}), section, null) == null
+	msg := sprintf("CIS 6.2: evidence missing — user_group.%s not collected", [section])
+}
 
 compliant if {
 	count(violations) == 0

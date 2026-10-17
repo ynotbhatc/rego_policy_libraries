@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 16
+#     checks: 17
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.file_permissions
 
 # CIS Amazon Linux 2023 Section 6.1.x - System File Permissions
@@ -49,7 +49,7 @@ violations := array.concat(
 critical_file_violations contains violation if {
 	some file in input.critical_files.analysis
 	not file.fully_compliant
-	file.exists
+	not file.exists == false
 	violation := sprintf("CIS 6.1.x: Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
 		file.file,
 		file.actual_mode,
@@ -59,6 +59,10 @@ critical_file_violations contains violation if {
 		file.actual_group,
 		file.expected_group,
 	])
+}
+
+critical_file_violations contains "CIS 6.1.x: evidence missing - critical_files.analysis not collected" if {
+	count(object.get(input, ["critical_files", "analysis"], [])) == 0
 }
 
 # Specific checks for highly critical files
@@ -285,7 +289,18 @@ risk_level := "critical" if {
 	input.unowned_files.count > 0
 } else := "medium" if {
 	input.ungrouped_files.count > 0
+} else := "unknown" if {
+	not risk_evidence_present
 } else := "low"
+
+# "low" is only meaningful when every count the risk level reads was collected.
+risk_evidence_present if {
+	is_number(input.world_writable.count)
+	is_number(input.critical_files.non_compliant_count)
+	is_number(input.suid_files.unknown_count)
+	is_number(input.unowned_files.count)
+	is_number(input.ungrouped_files.count)
+}
 
 report := {
 	"compliant": compliant,

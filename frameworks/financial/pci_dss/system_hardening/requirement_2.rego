@@ -16,7 +16,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package pci_dss.system_hardening.requirement_2
 
 import rego.v1
@@ -135,7 +135,7 @@ non_console_admin_access_encrypted if {
 
 wireless_security_configured if {
 	# Only applies if wireless is in-scope for CDE
-	not input.pci.wireless.in_scope_for_cde
+	input.pci.wireless.in_scope_for_cde == false
 } else if {
 	input.pci.wireless.in_scope_for_cde
 	input.pci.wireless.default_settings.changed == true
@@ -145,6 +145,23 @@ wireless_security_configured if {
 	input.pci.wireless.ssid.cde_ssid_not_broadcast == true
 	input.pci.wireless.rogue_detection.implemented == true
 }
+
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default system_hardening_policies_established := false
+default system_hardening_roles_defined := false
+default configuration_standards_maintained := false
+default default_passwords_changed := false
+default unnecessary_functionality_removed := false
+default single_primary_function_enforced := false
+default known_vulnerabilities_mitigated := false
+default hardening_standards_applied := false
+default os_hardening_complete := false
+default database_hardening_complete := false
+default network_device_hardening_complete := false
+default non_console_admin_access_encrypted := false
+default wireless_security_configured := false
+default pci_requirement_2_compliant := false
 
 # =================================================================
 # Scoring
@@ -156,9 +173,12 @@ pci_requirement_2_compliant if {
 	configuration_standards_maintained
 	default_passwords_changed
 	unnecessary_functionality_removed
+	single_primary_function_enforced
 	known_vulnerabilities_mitigated
 	hardening_standards_applied
 	os_hardening_complete
+	database_hardening_complete
+	network_device_hardening_complete
 	non_console_admin_access_encrypted
 	wireless_security_configured
 }

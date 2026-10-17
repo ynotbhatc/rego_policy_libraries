@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 21
+#     checks: 24
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.network
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 3.1/3.2/3.3: Network Configuration
@@ -33,6 +33,14 @@ violations := array.concat(
 	array.concat([v | some v in sysctl_violations], [v | some v in ip_forwarding_violations]),
 	array.concat([v | some v in ipv6_violations], [v | some v in network_interface_violations]),
 )
+
+# Missing evidence fails closed: an empty or absent sysctl analysis is not a pass.
+sysctl_violations contains "CIS 3.x: evidence missing — sysctl_parameters.analysis not collected" if {
+	not has_items(object.get(object.get(input, "sysctl_parameters", {}), "analysis", null))
+}
+
+# true for a non-empty array/object; undefined for absent or empty
+has_items(x) if count(x) > 0
 
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [
@@ -66,6 +74,14 @@ sysctl_violations contains "CIS 3.2.5: Broadcast ICMP not ignored (vulnerable to
 }
 
 # CIS 3.1.1: IP forwarding disabled
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing — ip_forwarding.ipv4_forwarding not collected" if {
+	object.get(object.get(input, "ip_forwarding", {}), "ipv4_forwarding", null) == null
+}
+
+ip_forwarding_violations contains "CIS 3.1.1: evidence missing — ip_forwarding.ipv6_forwarding not collected" if {
+	object.get(object.get(input, "ip_forwarding", {}), "ipv6_forwarding", null) == null
+}
+
 ip_forwarding_violations contains sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv4_forwarding]) if {
 	input.ip_forwarding.ipv4_forwarding != 0
 	not input.ip_forwarding.ipv4_compliant

@@ -6,14 +6,14 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 24
-#     cited: 10
+#     checks: 25
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package nerc_cip.cip_008
 
 import rego.v1
@@ -33,6 +33,21 @@ default nerc_notification_timely := false
 default nerc_reporting_process_defined := false
 default plan_communicated_to_personnel := false
 default reportable_incident_identification := false
+
+# Date normaliser: ISO-8601 strings or epoch nanoseconds; anything else is
+# undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# The incident response team roster must have been supplied.
+ir_team_present if {
+	is_array(input.incident_response_team)
+	count(input.incident_response_team) > 0
+}
 
 # CIP-008-6: Incident Reporting and Response Planning
 # Requirement: Maintain the ability to identify, classify, respond to, and
@@ -95,16 +110,23 @@ incident_response_plan_current if {
 }
 
 # R2.2 - Within 90 days after an actual Reportable Incident, update the plan
+# Conditional applicability: R2.2 applies only when a Reportable Cyber Security
+# Incident has occurred. No reportable_cyber_incidents list means none reported.
+incident_triggered_plan_updates if {
+	not input.reportable_cyber_incidents
+}
+
 incident_triggered_plan_updates if {
 	every incident in input.reportable_cyber_incidents {
 		incident.plan_review_triggered == true
-		update_age_days := (incident.plan_review_completion_date - incident.incident_date) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (date_ns(incident.plan_review_completion_date) - date_ns(incident.incident_date)) / (24 * 60 * 60 * 1000000000)
 		update_age_days <= 90
 	}
 }
 
 # R2.3 - Communicate plan to personnel with incident response roles
 plan_communicated_to_personnel if {
+	ir_team_present
 	violations := [member |
 		member := input.incident_response_team[_]
 		not member.plan_communicated == true
@@ -143,6 +165,7 @@ lessons_learned_incorporated if {
 # =============================================================================
 
 incident_response_team_trained if {
+	ir_team_present
 	violations := [member |
 		member := input.incident_response_team[_]
 		not incident_response_training_current(member)
@@ -152,7 +175,7 @@ incident_response_team_trained if {
 
 incident_response_training_current(member) if {
 	member.training.completed == true
-	training_age_days := (time.now_ns() - member.training.completion_date) / (24 * 60 * 60 * 1000000000)
+	training_age_days := (time.now_ns() - date_ns(member.training.completion_date)) / (24 * 60 * 60 * 1000000000)
 	training_age_days <= 455 # 15 calendar months
 }
 
@@ -178,7 +201,7 @@ nerc_notification_timely if {
 
 notification_within_1_hour(incident) if {
 	incident.nerc_notification.sent == true
-	notification_hours := (incident.nerc_notification.sent_time - incident.reportable_determination_time) / (3600 * 1000000000)
+	notification_hours := (date_ns(incident.nerc_notification.sent_time) - date_ns(incident.reportable_determination_time)) / (3600 * 1000000000)
 	notification_hours <= 1
 }
 
@@ -264,6 +287,17 @@ violations contains v if {
 }
 
 violations contains v if {
+	not incident_triggered_plan_updates
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R2.2",
+		"severity": "high",
+		"description": "Incident Response Plan not reviewed and updated within 90 days of a Reportable Cyber Security Incident",
+		"remediation": "Complete the post-incident plan review and update within 90 days of the incident",
+	}
+}
+
+violations contains v if {
 	not nerc_notification_timely
 	v := {
 		"standard": "CIP-008",
@@ -293,6 +327,8 @@ compliant if {
 	lessons_learned_incorporated
 	incident_response_team_trained
 	reportable_incident_identification
+	incident_triggered_plan_updates
+	nerc_notification_timely
 }
 
 report := {

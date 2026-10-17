@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 11
-#     cited: 8
+#     checks: 12
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_debian_11.sudo
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 5.3: Configure Sudo
@@ -24,6 +24,29 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# Missing evidence fails closed. timestamp_timeout is exempt: sudo's default (5 minutes) passes CIS 5.3.6.
+violations contains msg if {
+	some k in ["nopasswd_entries", "noauthenticate_entries", "sudoers_mode"]
+	not has_key(object.get(input, "sudo", {}), k)
+	msg := sprintf("CIS 5.3.x: evidence missing — sudo.%s not collected", [k])
 }
 
 # CIS 5.3.1: Ensure sudo is installed
@@ -47,14 +70,14 @@ violations contains msg if {
 # CIS 5.3.4: Ensure users must provide password for privilege escalation
 violations contains msg if {
 	some line in input.sudo.nopasswd_entries
-	not startswith(line, "#")
+	not startswith(trim_space(line), "#")
 	msg := sprintf("CIS 5.3.4: NOPASSWD found in sudoers: %s", [line])
 }
 
 # CIS 5.3.5: Ensure re-authentication for privilege escalation is not disabled globally
 violations contains msg if {
 	some line in input.sudo.noauthenticate_entries
-	not startswith(line, "#")
+	not startswith(trim_space(line), "#")
 	msg := sprintf("CIS 5.3.5: !authenticate found in sudoers: %s", [line])
 }
 
@@ -89,7 +112,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	input.sudo.sudoers_mode != "0440"
+	not mode_within(input.sudo.sudoers_mode, "0440")
 	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440", [input.sudo.sudoers_mode])
 }
 

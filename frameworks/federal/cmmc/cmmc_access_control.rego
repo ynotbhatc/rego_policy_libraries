@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 38
-#     cited: 18
+#     checks: 39
+#     cited: 19
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cmmc.access_control
 
 import rego.v1
@@ -221,6 +221,12 @@ violations contains msg if {
     some msg in level_2_violations
 }
 
+# Fail-closed: every Level 2 practice is gated on input.cmmc_level >= 2, so a
+# missing level would silently evaluate Level 1 only and report compliant.
+violations contains "CMMC AC.L2-3.1.1: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+    not input.cmmc_level
+}
+
 # `default` is mandatory (library rule): the fail-closed violations above FIRE
 # on missing input, so count(violations) != 0 and this rule never evaluates --
 # without the default, `compliant` is undefined and the whole report collapses
@@ -228,6 +234,13 @@ violations contains msg if {
 default compliant := false
 
 compliant if { count(violations) == 0 }
+
+# Distinct practices with at least one violation (violations can outnumber practices).
+failing_practices := {id |
+    some msg in violations
+    startswith(msg, "CMMC AC.")
+    id := split(substring(msg, 5, -1), ":")[0]
+}
 
 compliance_report := {
     "domain":          "Access Control (AC)",
@@ -237,5 +250,5 @@ compliance_report := {
     "violations":      violations,
     "level_1_passing": count(level_1_violations) == 0,
     "level_2_passing": count(level_2_violations) == 0,
-    "passing":         22 - count(violations),
+    "passing":         22 - count(failing_practices),
 }

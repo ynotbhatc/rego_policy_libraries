@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 20
+#     checks: 24
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_20_04.network
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -30,6 +30,27 @@ violations := array.concat(
 	array.concat([v | some v in sysctl_violations], [v | some v in ip_forwarding_violations]),
 	array.concat([v | some v in ipv6_violations], [v | some v in network_interface_violations]),
 )
+
+# Missing evidence must not pass: absent collector sections are violations.
+sysctl_violations contains msg if {
+	not is_array(object.get(input, ["sysctl_parameters", "analysis"], null))
+	msg := "CIS 3.x: evidence missing — sysctl_parameters.analysis not collected"
+}
+
+ip_forwarding_violations contains msg if {
+	is_null(object.get(input, ["ip_forwarding", "ipv4_forwarding"], null))
+	msg := "CIS 3.1.1: evidence missing — ip_forwarding.ipv4_forwarding not collected"
+}
+
+network_interface_violations contains msg if {
+	not input.wireless_interfaces
+	msg := "CIS 3.3.2: evidence missing — wireless_interfaces not collected"
+}
+
+network_interface_violations contains msg if {
+	not input.firewall
+	msg := "CIS 3.5.x: evidence missing — firewall not collected"
+}
 
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains msg if {
@@ -146,14 +167,15 @@ network_interface_violations contains msg if {
 }
 
 network_interface_violations contains msg if {
+	input.wireless_interfaces
 	not input.wireless_interfaces.compliant
-	msg := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [input.wireless_interfaces.count])
+	msg := sprintf("CIS 3.3.2: %v wireless interfaces found on server (should have 0)", [object.get(input, ["wireless_interfaces", "count"], "unknown number of")])
 }
 
 # CIS 3.5.x: Firewall (Ubuntu uses ufw or nftables)
 network_interface_violations contains msg if {
 	not input.firewall.active
-	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [input.firewall.type])
+	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [object.get(input, ["firewall", "type"], "unknown")])
 }
 
 network_interface_violations contains msg if {

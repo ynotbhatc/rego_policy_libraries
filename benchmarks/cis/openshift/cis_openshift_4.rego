@@ -13,12 +13,48 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_openshift_4
 
 import rego.v1
 
 default compliant := false
+
+# Permission checks compare octal bit masks, never decimal numbers.
+# perm_max: collected-permission path under input.openshift -> maximum allowed mode.
+# These are rules, not functions: a function in this package would make
+# data.cis_openshift_4 untypeable as an object for callers using object.get.
+perm_max := {
+    "master_node.api_server.permissions": 420, # 0644
+    "master_node.controller_manager.permissions": 420, # 0644
+    "master_node.scheduler.permissions": 420, # 0644
+    "master_node.etcd.permissions": 420, # 0644
+    "master_node.cni.permissions": 420, # 0644
+    "master_node.etcd_data.permissions": 448, # 0700
+    "master_node.admin_conf.permissions": 420, # 0644
+    "master_node.scheduler_conf.permissions": 420, # 0644
+    "master_node.controller_manager_conf.permissions": 420, # 0644
+    "master_node.pki.cert_permissions": 420, # 0644
+    "master_node.pki.key_permissions": 384, # 0600
+    "worker_node.kubelet_service.permissions": 420, # 0644
+    "worker_node.proxy_kubeconfig.permissions": 420, # 0644
+    "worker_node.kubelet_conf.permissions": 420, # 0644
+    "worker_node.ca.permissions": 420, # 0644
+    "worker_node.kubelet_config.permissions": 420, # 0644
+}
+
+# Paths whose collected mode (number 644 or string "0644") is octal and grants nothing beyond the maximum.
+perm_ok contains key if {
+    some key, max in perm_max
+    raw := object.get(input.openshift, split(key, "."), null)
+    raw != null
+    t := trim_prefix(lower(trim_space(sprintf("%v", [raw]))), "0o")
+    regex.match(`^[0-7]{1,4}$`, t)
+    padded := concat("", [substring("0000", 0, 4 - count(t)), t])
+    ds := [to_number(substring(padded, i, 1)) | some i in numbers.range(0, 3)]
+    mode := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+    bits.and(mode, bits.and(bits.negate(max), 4095)) == 0
+}
 
 violations := array.concat(
     master_node_violations,
@@ -51,7 +87,7 @@ violations := array.concat(
 
 compliant if {
     # fail-closed: no facts, no compliance
-    input.openshift
+    count(object.get(input, "openshift", {})) > 0
     count(violations) == 0
 }
 
@@ -291,647 +327,971 @@ secrets_management_violations := [msg |
     msg := m.msg
 ]
 
+default api_server_permissions_secure := false
+
 api_server_permissions_secure if {
-    input.openshift.master_node.api_server.permissions <= 644
+    "master_node.api_server.permissions" in perm_ok
 }
+
+default api_server_ownership_secure := false
 
 api_server_ownership_secure if {
     input.openshift.master_node.api_server.owner == "root"
     input.openshift.master_node.api_server.group == "root"
 }
 
+default controller_manager_permissions_secure := false
+
 controller_manager_permissions_secure if {
-    input.openshift.master_node.controller_manager.permissions <= 644
+    "master_node.controller_manager.permissions" in perm_ok
 }
+
+default controller_manager_ownership_secure := false
 
 controller_manager_ownership_secure if {
     input.openshift.master_node.controller_manager.owner == "root"
     input.openshift.master_node.controller_manager.group == "root"
 }
 
+default scheduler_permissions_secure := false
+
 scheduler_permissions_secure if {
-    input.openshift.master_node.scheduler.permissions <= 644
+    "master_node.scheduler.permissions" in perm_ok
 }
+
+default scheduler_ownership_secure := false
 
 scheduler_ownership_secure if {
     input.openshift.master_node.scheduler.owner == "root"
     input.openshift.master_node.scheduler.group == "root"
 }
 
+default etcd_permissions_secure := false
+
 etcd_permissions_secure if {
-    input.openshift.master_node.etcd.permissions <= 644
+    "master_node.etcd.permissions" in perm_ok
 }
+
+default etcd_ownership_secure := false
 
 etcd_ownership_secure if {
     input.openshift.master_node.etcd.owner == "root"
     input.openshift.master_node.etcd.group == "root"
 }
 
+default cni_permissions_secure := false
+
 cni_permissions_secure if {
-    input.openshift.master_node.cni.permissions <= 644
+    "master_node.cni.permissions" in perm_ok
 }
+
+default cni_ownership_secure := false
 
 cni_ownership_secure if {
     input.openshift.master_node.cni.owner == "root"
     input.openshift.master_node.cni.group == "root"
 }
 
+default etcd_data_permissions_secure := false
+
 etcd_data_permissions_secure if {
-    input.openshift.master_node.etcd_data.permissions <= 700
+    "master_node.etcd_data.permissions" in perm_ok
 }
+
+default etcd_data_ownership_secure := false
 
 etcd_data_ownership_secure if {
     input.openshift.master_node.etcd_data.owner == "etcd"
     input.openshift.master_node.etcd_data.group == "etcd"
 }
 
+default admin_conf_permissions_secure := false
+
 admin_conf_permissions_secure if {
-    input.openshift.master_node.admin_conf.permissions <= 644
+    "master_node.admin_conf.permissions" in perm_ok
 }
+
+default admin_conf_ownership_secure := false
 
 admin_conf_ownership_secure if {
     input.openshift.master_node.admin_conf.owner == "root"
     input.openshift.master_node.admin_conf.group == "root"
 }
 
+default scheduler_conf_permissions_secure := false
+
 scheduler_conf_permissions_secure if {
-    input.openshift.master_node.scheduler_conf.permissions <= 644
+    "master_node.scheduler_conf.permissions" in perm_ok
 }
+
+default scheduler_conf_ownership_secure := false
 
 scheduler_conf_ownership_secure if {
     input.openshift.master_node.scheduler_conf.owner == "root"
     input.openshift.master_node.scheduler_conf.group == "root"
 }
 
+default controller_manager_conf_permissions_secure := false
+
 controller_manager_conf_permissions_secure if {
-    input.openshift.master_node.controller_manager_conf.permissions <= 644
+    "master_node.controller_manager_conf.permissions" in perm_ok
 }
+
+default controller_manager_conf_ownership_secure := false
 
 controller_manager_conf_ownership_secure if {
     input.openshift.master_node.controller_manager_conf.owner == "root"
     input.openshift.master_node.controller_manager_conf.group == "root"
 }
 
+default pki_ownership_secure := false
+
 pki_ownership_secure if {
     input.openshift.master_node.pki.owner == "root"
     input.openshift.master_node.pki.group == "root"
 }
 
+default pki_cert_permissions_secure := false
+
 pki_cert_permissions_secure if {
-    input.openshift.master_node.pki.cert_permissions <= 644
+    "master_node.pki.cert_permissions" in perm_ok
 }
 
+default pki_key_permissions_secure := false
+
 pki_key_permissions_secure if {
-    input.openshift.master_node.pki.key_permissions <= 600
+    "master_node.pki.key_permissions" in perm_ok
 }
+
+default etcd_cert_key_configured := false
 
 etcd_cert_key_configured if {
     input.openshift.etcd.cert_file != ""
     input.openshift.etcd.key_file != ""
 }
 
+default etcd_client_cert_auth := false
+
 etcd_client_cert_auth if {
     input.openshift.etcd.client_cert_auth == true
 }
 
+default etcd_auto_tls_disabled := false
+
 etcd_auto_tls_disabled if {
     input.openshift.etcd.auto_tls != true
 }
+
+default etcd_peer_cert_configured := false
 
 etcd_peer_cert_configured if {
     input.openshift.etcd.peer_cert_file != ""
     input.openshift.etcd.peer_key_file != ""
 }
 
+default etcd_peer_client_cert_auth := false
+
 etcd_peer_client_cert_auth if {
     input.openshift.etcd.peer_client_cert_auth == true
 }
+
+default etcd_peer_auto_tls_disabled := false
 
 etcd_peer_auto_tls_disabled if {
     input.openshift.etcd.peer_auto_tls != true
 }
 
+default etcd_unique_ca := false
+
 etcd_unique_ca if {
     input.openshift.etcd.unique_ca == true
 }
+
+default anonymous_auth_disabled := false
 
 anonymous_auth_disabled if {
     input.openshift.control_plane.anonymous_auth == false
 }
 
+default basic_auth_disabled := false
+
 basic_auth_disabled if {
     input.openshift.control_plane.basic_auth_file == ""
 }
+
+default token_auth_disabled := false
 
 token_auth_disabled if {
     input.openshift.control_plane.token_auth_file == ""
 }
 
+default kubelet_https_enabled := false
+
 kubelet_https_enabled if {
     input.openshift.control_plane.kubelet_https == true
 }
+
+default kubelet_client_cert_configured := false
 
 kubelet_client_cert_configured if {
     input.openshift.control_plane.kubelet_client_certificate != ""
     input.openshift.control_plane.kubelet_client_key != ""
 }
 
+default kubelet_ca_configured := false
+
 kubelet_ca_configured if {
     input.openshift.control_plane.kubelet_certificate_authority != ""
 }
 
-authorization_mode_secure if {
-    input.openshift.control_plane.authorization_mode != "AlwaysAllow"
+# --authorization-mode may arrive as a list or as the comma-separated flag value.
+authorization_modes := modes if {
+    raw := input.openshift.control_plane.authorization_mode
+    is_array(raw)
+    modes := {m | some m in raw}
+} else := modes if {
+    raw := input.openshift.control_plane.authorization_mode
+    is_string(raw)
+    modes := {trim_space(m) | some m in split(raw, ",")}
 }
+
+default authorization_mode_secure := false
+
+authorization_mode_secure if {
+    modes := authorization_modes
+    not "AlwaysAllow" in modes
+}
+
+default authorization_mode_includes_node := false
 
 authorization_mode_includes_node if {
-    "Node" in input.openshift.control_plane.authorization_mode
+    "Node" in authorization_modes
 }
 
+default authorization_mode_includes_rbac := false
+
 authorization_mode_includes_rbac if {
-    "RBAC" in input.openshift.control_plane.authorization_mode
+    "RBAC" in authorization_modes
 }
+
+default event_rate_limit_enabled := false
 
 event_rate_limit_enabled if {
     "EventRateLimit" in input.openshift.control_plane.admission_plugins
 }
 
+default always_admit_disabled := false
+
 always_admit_disabled if {
     not "AlwaysAdmit" in input.openshift.control_plane.admission_plugins
 }
+
+default always_pull_images_enabled := false
 
 always_pull_images_enabled if {
     "AlwaysPullImages" in input.openshift.control_plane.admission_plugins
 }
 
+default security_context_deny_configured := false
+
 security_context_deny_configured if {
     input.openshift.control_plane.security_context_deny_configured == true
 }
+
+default service_account_admission_enabled := false
 
 service_account_admission_enabled if {
     "ServiceAccount" in input.openshift.control_plane.admission_plugins
 }
 
+default namespace_lifecycle_enabled := false
+
 namespace_lifecycle_enabled if {
     "NamespaceLifecycle" in input.openshift.control_plane.admission_plugins
 }
+
+default pod_security_policy_enabled := false
 
 pod_security_policy_enabled if {
     "PodSecurityPolicy" in input.openshift.control_plane.admission_plugins
 }
 
+default node_restriction_enabled := false
+
 node_restriction_enabled if {
     "NodeRestriction" in input.openshift.control_plane.admission_plugins
 }
+
+default insecure_bind_address_disabled := false
 
 insecure_bind_address_disabled if {
     input.openshift.control_plane.insecure_bind_address == ""
 }
 
+default insecure_port_disabled := false
+
 insecure_port_disabled if {
     input.openshift.control_plane.insecure_port == 0
 }
+
+default secure_port_enabled := false
 
 secure_port_enabled if {
     input.openshift.control_plane.secure_port != 0
 }
 
+default profiling_disabled := false
+
 profiling_disabled if {
     input.openshift.control_plane.profiling == false
 }
+
+default audit_log_path_configured := false
 
 audit_log_path_configured if {
     input.openshift.control_plane.audit_log_path != ""
 }
 
+default audit_log_maxage_configured := false
+
 audit_log_maxage_configured if {
     input.openshift.control_plane.audit_log_maxage >= 30
 }
+
+default audit_log_maxbackup_configured := false
 
 audit_log_maxbackup_configured if {
     input.openshift.control_plane.audit_log_maxbackup >= 10
 }
 
+default audit_log_maxsize_configured := false
+
 audit_log_maxsize_configured if {
     input.openshift.control_plane.audit_log_maxsize >= 100
 }
+
+default request_timeout_configured := false
 
 request_timeout_configured if {
     input.openshift.control_plane.request_timeout > 0
     input.openshift.control_plane.request_timeout <= 300
 }
 
+default service_account_lookup_enabled := false
+
 service_account_lookup_enabled if {
     input.openshift.control_plane.service_account_lookup == true
 }
 
+default service_account_key_configured := false
+
 service_account_key_configured if {
     input.openshift.control_plane.service_account_key_file != ""
 }
+
+default etcd_cert_configured := false
 
 etcd_cert_configured if {
     input.openshift.control_plane.etcd_certfile != ""
     input.openshift.control_plane.etcd_keyfile != ""
 }
 
+default tls_cert_configured := false
+
 tls_cert_configured if {
     input.openshift.control_plane.tls_cert_file != ""
     input.openshift.control_plane.tls_private_key_file != ""
 }
 
+default client_ca_configured := false
+
 client_ca_configured if {
     input.openshift.control_plane.client_ca_file != ""
 }
+
+default etcd_ca_configured := false
 
 etcd_ca_configured if {
     input.openshift.control_plane.etcd_cafile != ""
 }
 
+default encryption_provider_configured := false
+
 encryption_provider_configured if {
     input.openshift.control_plane.encryption_provider_config != ""
 }
+
+default encryption_providers_secure := false
 
 encryption_providers_secure if {
     input.openshift.control_plane.encryption_providers_secure == true
 }
 
+default strong_crypto_ciphers := false
+
 strong_crypto_ciphers if {
     input.openshift.control_plane.strong_crypto_ciphers == true
 }
 
+default kubelet_service_permissions_secure := false
+
 kubelet_service_permissions_secure if {
-    input.openshift.worker_node.kubelet_service.permissions <= 644
+    "worker_node.kubelet_service.permissions" in perm_ok
 }
+
+default kubelet_service_ownership_secure := false
 
 kubelet_service_ownership_secure if {
     input.openshift.worker_node.kubelet_service.owner == "root"
     input.openshift.worker_node.kubelet_service.group == "root"
 }
 
+default proxy_kubeconfig_permissions_secure := false
+
 proxy_kubeconfig_permissions_secure if {
-    input.openshift.worker_node.proxy_kubeconfig.permissions <= 644
+    "worker_node.proxy_kubeconfig.permissions" in perm_ok
 }
+
+default proxy_kubeconfig_ownership_secure := false
 
 proxy_kubeconfig_ownership_secure if {
     input.openshift.worker_node.proxy_kubeconfig.owner == "root"
     input.openshift.worker_node.proxy_kubeconfig.group == "root"
 }
 
+default kubelet_conf_permissions_secure := false
+
 kubelet_conf_permissions_secure if {
-    input.openshift.worker_node.kubelet_conf.permissions <= 644
+    "worker_node.kubelet_conf.permissions" in perm_ok
 }
+
+default kubelet_conf_ownership_secure := false
 
 kubelet_conf_ownership_secure if {
     input.openshift.worker_node.kubelet_conf.owner == "root"
     input.openshift.worker_node.kubelet_conf.group == "root"
 }
 
+default ca_permissions_secure := false
+
 ca_permissions_secure if {
-    input.openshift.worker_node.ca.permissions <= 644
+    "worker_node.ca.permissions" in perm_ok
 }
+
+default ca_ownership_secure := false
 
 ca_ownership_secure if {
     input.openshift.worker_node.ca.owner == "root"
     input.openshift.worker_node.ca.group == "root"
 }
 
+default kubelet_config_permissions_secure := false
+
 kubelet_config_permissions_secure if {
-    input.openshift.worker_node.kubelet_config.permissions <= 644
+    "worker_node.kubelet_config.permissions" in perm_ok
 }
+
+default kubelet_config_ownership_secure := false
 
 kubelet_config_ownership_secure if {
     input.openshift.worker_node.kubelet_config.owner == "root"
     input.openshift.worker_node.kubelet_config.group == "root"
 }
 
+default kubelet_anonymous_auth_disabled := false
+
 kubelet_anonymous_auth_disabled if {
     input.openshift.worker_node.kubelet.anonymous_auth == false
 }
+
+default kubelet_authorization_secure := false
 
 kubelet_authorization_secure if {
     input.openshift.worker_node.kubelet.authorization_mode != "AlwaysAllow"
 }
 
+default kubelet_client_ca_configured := false
+
 kubelet_client_ca_configured if {
     input.openshift.worker_node.kubelet.client_ca_file != ""
 }
+
+default kubelet_readonly_port_disabled := false
 
 kubelet_readonly_port_disabled if {
     input.openshift.worker_node.kubelet.read_only_port == 0
 }
 
+default kubelet_streaming_timeout_configured := false
+
 kubelet_streaming_timeout_configured if {
     input.openshift.worker_node.kubelet.streaming_connection_idle_timeout != 0
 }
+
+default kubelet_protect_kernel_defaults := false
 
 kubelet_protect_kernel_defaults if {
     input.openshift.worker_node.kubelet.protect_kernel_defaults == true
 }
 
+default kubelet_iptables_util_chains := false
+
 kubelet_iptables_util_chains if {
     input.openshift.worker_node.kubelet.make_iptables_util_chains == true
 }
+
+default kubelet_hostname_override_disabled := false
 
 kubelet_hostname_override_disabled if {
     input.openshift.worker_node.kubelet.hostname_override == ""
 }
 
+default kubelet_event_qps_configured := false
+
 kubelet_event_qps_configured if {
     input.openshift.worker_node.kubelet.event_qps >= 0
 }
+
+default kubelet_tls_configured := false
 
 kubelet_tls_configured if {
     input.openshift.worker_node.kubelet.tls_cert_file != ""
     input.openshift.worker_node.kubelet.tls_private_key_file != ""
 }
 
+default kubelet_rotate_certificates_enabled := false
+
 kubelet_rotate_certificates_enabled if {
     input.openshift.worker_node.kubelet.rotate_certificates != false
 }
+
+default kubelet_rotate_server_certs := false
 
 kubelet_rotate_server_certs if {
     input.openshift.worker_node.kubelet.rotate_kubelet_server_certificate == true
 }
 
+default kubelet_strong_crypto_ciphers := false
+
 kubelet_strong_crypto_ciphers if {
     input.openshift.worker_node.kubelet.strong_crypto_ciphers == true
 }
+
+default cluster_admin_role_restricted := false
 
 cluster_admin_role_restricted if {
     input.openshift.kubernetes_policies.cluster_admin_restricted == true
 }
 
+default secrets_access_minimized := false
+
 secrets_access_minimized if {
     input.openshift.kubernetes_policies.secrets_access_minimized == true
 }
+
+default wildcard_usage_minimized := false
 
 wildcard_usage_minimized if {
     input.openshift.kubernetes_policies.wildcard_minimized == true
 }
 
+default pod_creation_access_minimized := false
+
 pod_creation_access_minimized if {
     input.openshift.kubernetes_policies.pod_creation_minimized == true
 }
+
+default default_service_accounts_restricted := false
 
 default_service_accounts_restricted if {
     input.openshift.kubernetes_policies.default_sa_restricted == true
 }
 
+default service_account_tokens_restricted := false
+
 service_account_tokens_restricted if {
     input.openshift.kubernetes_policies.sa_tokens_restricted == true
 }
+
+default privileged_containers_minimized := false
 
 privileged_containers_minimized if {
     input.openshift.kubernetes_policies.privileged_containers_minimized == true
 }
 
+default host_pid_sharing_minimized := false
+
 host_pid_sharing_minimized if {
     input.openshift.kubernetes_policies.host_pid_minimized == true
 }
+
+default host_ipc_sharing_minimized := false
 
 host_ipc_sharing_minimized if {
     input.openshift.kubernetes_policies.host_ipc_minimized == true
 }
 
+default host_network_sharing_minimized := false
+
 host_network_sharing_minimized if {
     input.openshift.kubernetes_policies.host_network_minimized == true
 }
+
+default privilege_escalation_minimized := false
 
 privilege_escalation_minimized if {
     input.openshift.kubernetes_policies.privilege_escalation_minimized == true
 }
 
+default root_containers_minimized := false
+
 root_containers_minimized if {
     input.openshift.kubernetes_policies.root_containers_minimized == true
 }
+
+default net_raw_capability_minimized := false
 
 net_raw_capability_minimized if {
     input.openshift.kubernetes_policies.net_raw_minimized == true
 }
 
+default added_capabilities_minimized := false
+
 added_capabilities_minimized if {
     input.openshift.kubernetes_policies.added_capabilities_minimized == true
 }
+
+default capabilities_assignment_minimized := false
 
 capabilities_assignment_minimized if {
     input.openshift.kubernetes_policies.capabilities_minimized == true
 }
 
+default cni_network_policies_supported := false
+
 cni_network_policies_supported if {
     input.openshift.kubernetes_policies.cni_network_policies == true
 }
+
+default namespace_network_policies_defined := false
 
 namespace_network_policies_defined if {
     input.openshift.kubernetes_policies.namespace_network_policies == true
 }
 
+default secrets_as_files_preferred := false
+
 secrets_as_files_preferred if {
     input.openshift.kubernetes_policies.secrets_as_files == true
 }
+
+default external_secret_storage_considered := false
 
 external_secret_storage_considered if {
     input.openshift.kubernetes_policies.external_secret_storage == true
 }
 
+default image_provenance_configured := false
+
 image_provenance_configured if {
     input.openshift.kubernetes_policies.image_provenance == true
 }
+
+default administrative_boundaries_configured := false
 
 administrative_boundaries_configured if {
     input.openshift.kubernetes_policies.admin_boundaries == true
 }
 
+default seccomp_profile_configured := false
+
 seccomp_profile_configured if {
     input.openshift.kubernetes_policies.seccomp_profile == true
 }
+
+default security_context_applied := false
 
 security_context_applied if {
     input.openshift.kubernetes_policies.security_context == true
 }
 
+default default_namespace_avoided := false
+
 default_namespace_avoided if {
     input.openshift.kubernetes_policies.default_namespace_avoided == true
 }
+
+default openshift_network_policies_configured := false
 
 openshift_network_policies_configured if {
     input.openshift.network_policies.openshift_policies == true
 }
 
+default network_segmentation_applied := false
+
 network_segmentation_applied if {
     input.openshift.network_policies.segmentation == true
 }
+
+default node_master_traffic_encrypted := false
 
 node_master_traffic_encrypted if {
     input.openshift.network_policies.node_master_encryption == true
 }
 
+default pod_traffic_encryption_configured := false
+
 pod_traffic_encryption_configured if {
     input.openshift.network_policies.pod_encryption == true
 }
+
+default ingress_controllers_secure := false
 
 ingress_controllers_secure if {
     input.openshift.network_policies.ingress_controllers_secure == true
 }
 
+default routes_security_configured := false
+
 routes_security_configured if {
     input.openshift.network_policies.routes_secure == true
 }
+
+default external_traffic_controlled := false
 
 external_traffic_controlled if {
     input.openshift.network_policies.external_traffic_control == true
 }
 
+default service_mesh_secure := false
+
 service_mesh_secure if {
     input.openshift.network_policies.service_mesh_secure == true
 }
+
+default sidecar_injection_configured := false
 
 sidecar_injection_configured if {
     input.openshift.network_policies.sidecar_injection == true
 }
 
+default identity_providers_configured := false
+
 identity_providers_configured if {
     input.openshift.authentication.identity_providers == true
 }
+
+default ldap_integration_secure := false
 
 ldap_integration_secure if {
     input.openshift.authentication.ldap_secure == true
 }
 
+default oauth_configuration_secure := false
+
 oauth_configuration_secure if {
     input.openshift.authentication.oauth_secure == true
 }
+
+default service_account_auth_configured := false
 
 service_account_auth_configured if {
     input.openshift.authentication.service_account_auth == true
 }
 
+default mfa_enabled := false
+
 mfa_enabled if {
     input.openshift.authentication.mfa_enabled == true
 }
+
+default strong_password_policies := false
 
 strong_password_policies if {
     input.openshift.authentication.strong_passwords == true
 }
 
+default session_timeouts_configured := false
+
 session_timeouts_configured if {
     input.openshift.authentication.session_timeouts == true
 }
+
+default cert_based_auth_configured := false
 
 cert_based_auth_configured if {
     input.openshift.authentication.cert_based_auth == true
 }
 
+default cert_rotation_configured := false
+
 cert_rotation_configured if {
     input.openshift.authentication.cert_rotation == true
 }
+
+default rbac_properly_configured := false
 
 rbac_properly_configured if {
     input.openshift.authorization.rbac_configured == true
 }
 
+default role_bindings_reviewed := false
+
 role_bindings_reviewed if {
     input.openshift.authorization.role_bindings_reviewed == true
 }
+
+default cluster_role_bindings_minimized := false
 
 cluster_role_bindings_minimized if {
     input.openshift.authorization.cluster_role_bindings_minimized == true
 }
 
+default scc_properly_configured := false
+
 scc_properly_configured if {
     input.openshift.authorization.scc_configured == true
 }
+
+default custom_scc_secure := false
 
 custom_scc_secure if {
     input.openshift.authorization.custom_scc_secure == true
 }
 
+default privileged_scc_restricted := false
+
 privileged_scc_restricted if {
     input.openshift.authorization.privileged_scc_restricted == true
 }
+
+default admission_controllers_configured := false
 
 admission_controllers_configured if {
     input.openshift.authorization.admission_controllers == true
 }
 
+default custom_admission_controllers_secure := false
+
 custom_admission_controllers_secure if {
     input.openshift.authorization.custom_admission_secure == true
 }
+
+default audit_logging_enabled := false
 
 audit_logging_enabled if {
     input.openshift.logging.audit_enabled == true
 }
 
+default audit_log_retention_configured := false
+
 audit_log_retention_configured if {
     input.openshift.logging.audit_retention == true
 }
+
+default audit_logs_stored_securely := false
 
 audit_logs_stored_securely if {
     input.openshift.logging.audit_storage_secure == true
 }
 
+default application_logging_configured := false
+
 application_logging_configured if {
     input.openshift.logging.application_logging == true
 }
+
+default log_aggregation_configured := false
 
 log_aggregation_configured if {
     input.openshift.logging.log_aggregation == true
 }
 
+default sensitive_info_logging_prevented := false
+
 sensitive_info_logging_prevented if {
     input.openshift.logging.sensitive_info_prevented == true
 }
+
+default log_monitoring_configured := false
 
 log_monitoring_configured if {
     input.openshift.logging.log_monitoring == true
 }
 
+default security_events_monitored := false
+
 security_events_monitored if {
     input.openshift.logging.security_events_monitored == true
 }
+
+default logs_backed_up := false
 
 logs_backed_up if {
     input.openshift.logging.logs_backed_up == true
 }
 
+default log_integrity_maintained := false
+
 log_integrity_maintained if {
     input.openshift.logging.log_integrity == true
 }
+
+default secrets_not_in_images := false
 
 secrets_not_in_images if {
     input.openshift.secrets_management.secrets_not_in_images == true
 }
 
+default secrets_encrypted_at_rest := false
+
 secrets_encrypted_at_rest if {
     input.openshift.secrets_management.encryption_at_rest == true
 }
+
+default secrets_encrypted_in_transit := false
 
 secrets_encrypted_in_transit if {
     input.openshift.secrets_management.encryption_in_transit == true
 }
 
+default secret_rotation_configured := false
+
 secret_rotation_configured if {
     input.openshift.secrets_management.rotation_configured == true
 }
+
+default secret_access_monitored := false
 
 secret_access_monitored if {
     input.openshift.secrets_management.access_monitored == true
 }
 
+default secret_lifecycle_managed := false
+
 secret_lifecycle_managed if {
     input.openshift.secrets_management.lifecycle_managed == true
 }
+
+default external_secret_management := false
 
 external_secret_management if {
     input.openshift.secrets_management.external_management == true
 }
 
+default secure_secret_injection := false
+
 secure_secret_injection if {
     input.openshift.secrets_management.secure_injection == true
 }
 
+default automated_cert_management := false
+
 automated_cert_management if {
     input.openshift.secrets_management.automated_cert_mgmt == true
 }
+
+default cert_expiration_monitoring := false
 
 cert_expiration_monitoring if {
     input.openshift.secrets_management.cert_expiration_monitoring == true

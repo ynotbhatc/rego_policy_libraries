@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 21
+#     checks: 24
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.boot_security
 
 import rego.v1
@@ -22,6 +22,18 @@ import rego.v1
 # Boot loader, AIDE, and system hardening configuration validation
 
 default compliant := false
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 # CIS 1.3: Filesystem Integrity Checking
 
@@ -55,23 +67,37 @@ violations contains msg if {
 
 violations contains msg if {
     input.boot_security.grub_password_set
-    input.boot_security.grub_password_hashed == false
-    msg := "CIS 1.4.1: GRUB bootloader password is not hashed"
+    not input.boot_security.grub_password_hashed
+    msg := "CIS 1.4.1: GRUB bootloader password is not hashed (or hashing evidence not collected)"
 }
 
 # CIS 1.4.2: Ensure permissions on bootloader config are configured
 violations contains msg if {
-    input.boot_security.grub_cfg_mode
-    input.boot_security.grub_cfg_mode != "0600"
-    input.boot_security.grub_cfg_mode != "0400"
-    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg has mode %s, should be 0600 or 0400",
-        [input.boot_security.grub_cfg_mode])
+    not input.boot_security.grub_cfg_mode
+    msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_mode not collected"
+}
+
+violations contains msg if {
+    mode := input.boot_security.grub_cfg_mode
+    not mode_within(mode, "0600")
+    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg has mode %s, should be 0600 or stricter",
+        [mode])
+}
+
+violations contains msg if {
+    not input.boot_security.grub_cfg_owner
+    msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_owner not collected"
 }
 
 violations contains msg if {
     input.boot_security.grub_cfg_owner != "root"
     msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg owned by %s, should be root",
         [input.boot_security.grub_cfg_owner])
+}
+
+violations contains msg if {
+    not input.boot_security.grub_cfg_group
+    msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_group not collected"
 }
 
 violations contains msg if {

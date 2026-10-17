@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 10
+#     checks: 13
 #     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel9.authorized_keys
 
 import rego.v1
@@ -33,7 +33,7 @@ import rego.v1
 #     user                     string — username who owns this file
 #     expected_owner           string — user the file should be owned by
 #     owner                    string — actual current owner
-#     mode                     string — file permissions as decimal string ("644", "0644")
+#     mode                     string — file permissions as octal string ("644", "0644")
 #     keys                     array  — parsed keys in this file:
 #       type                   string — "ssh-rsa", "ssh-ed25519", "ecdsa-sha2-nistp256", etc.
 #       bits                   number — key size in bits (RSA/EC only)
@@ -48,23 +48,20 @@ default compliant := false
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-# Permission write digits: 2=w--, 3=wx-, 6=rw-, 7=rwx
-write_digit(d) if {
-	write_digits := {2, 3, 6, 7}
-	write_digits[d]
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
 }
 
-group_or_world_writable(mode) if {
-	n := to_number(mode)
-	world_digit := n % 10
-	write_digit(world_digit)
-}
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
-group_or_world_writable(mode) if {
-	n := to_number(mode)
-	group_digit := floor(n / 10) % 10
-	write_digit(group_digit)
-}
+# group (020) or world (002) write bit set
+group_or_world_writable(mode) if bits.and(octal(mode), 18) != 0
 
 deprecated_key_type(t) if {
 	deprecated := {"ssh-dss", "ssh-dsa", "ecdsa-sha2-nistp192"}
@@ -88,6 +85,13 @@ violations contains msg if {
 	)
 }
 
+# An unparsable mode is unverifiable evidence: fail closed
+violations contains msg if {
+	some entry in input.authorized_keys.files
+	not octal(entry.mode)
+	msg := sprintf("STIG RHEL-09-255045: %v has unparsable mode %v — cannot verify it is not group/world writable", [entry.path, entry.mode])
+}
+
 # authorized_keys must be owned by the corresponding user
 violations contains msg if {
 	some entry in input.authorized_keys.files
@@ -101,8 +105,7 @@ violations contains msg if {
 # .ssh directory must be 700 (only owner can access)
 violations contains msg if {
 	some dir in input.authorized_keys.ssh_dirs
-	dir.mode != "0700"
-	dir.mode != "700"
+	not mode_within(dir.mode, "0700")
 	msg := sprintf(
 		"CIS 5.2: .ssh directory %v has mode %v — must be 700 (owner read/write/execute only)",
 		[dir.path, dir.mode],
@@ -193,6 +196,17 @@ violations contains msg if {
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
 violations contains "CIS: FAIL-CLOSED - facts 'input.authorized_keys' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
 	not input.authorized_keys
+}
+
+# An empty object is not evidence: require the collected sections themselves.
+violations contains "CIS 5.2: evidence missing — authorized_keys.files not collected" if {
+	input.authorized_keys
+	not is_array(object.get(input.authorized_keys, "files", null))
+}
+
+violations contains "CIS 5.2: evidence missing — authorized_keys.ssh_dirs not collected" if {
+	input.authorized_keys
+	not is_array(object.get(input.authorized_keys, "ssh_dirs", null))
 }
 
 compliant if {

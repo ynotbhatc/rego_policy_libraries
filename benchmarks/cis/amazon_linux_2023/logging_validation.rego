@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 14
+#     checks: 15
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_amazon_linux_2023.logging
 
 # CIS Amazon Linux 2023 Section 4.2.x - Logging Configuration
@@ -26,6 +26,18 @@ import rego.v1
 # =============================================================================
 
 default compliant := false
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 compliant if {
 	count(violations) == 0
@@ -79,12 +91,14 @@ journald_violations contains violation if {
 # CIS 4.2.1.4 - RSYSLOG FILE PERMISSIONS
 # =============================================================================
 
+rsyslog_violations contains "CIS 4.2.1.4: evidence missing - rsyslog.file_create_mode not collected ($FileCreateMode unset defaults to 0644)" if {
+	not input.rsyslog.file_create_mode
+}
+
 rsyslog_violations contains violation if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
-	violation := sprintf("CIS 4.2.1.4: rsyslog $FileCreateMode is not secure (current: %s, expected: 0640 or 0600)", [
-		input.rsyslog.file_create_mode,
-	])
+	mode := input.rsyslog.file_create_mode
+	not mode_within(mode, "0640")
+	violation := sprintf("CIS 4.2.1.4: rsyslog $FileCreateMode is not secure (current: %s, expected: 0640 or stricter)", [mode])
 }
 
 # =============================================================================

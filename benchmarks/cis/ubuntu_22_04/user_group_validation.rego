@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 23
+#     checks: 24
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
-#     guard: orchestrator
-#     as_of: v2.4.1
+#     guard: self
+#     as_of: v2.4.2
 package cis_ubuntu_22_04.user_group
 
 # CIS Ubuntu 22.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings
@@ -24,6 +24,44 @@ default compliant := false
 
 compliant if {
 	count(violations) == 0
+}
+
+# Evidence: every fact below must have been collected. These are offender lists, but an
+# absent list means "not assessed", not "no offenders" (empty input used to be compliant).
+required_facts := {
+	"users_without_shadow": "6.2.1",
+	"users_with_empty_password": "6.2.2",
+	"passwd_groups_not_in_group_file": "6.2.3",
+	"duplicate_uids": "6.2.4",
+	"duplicate_gids": "6.2.5",
+	"duplicate_usernames": "6.2.6",
+	"duplicate_groupnames": "6.2.7",
+	"root_path": "6.2.8",
+	"root_path_dirs": "6.2.8",
+	"root_path_writable_dirs": "6.2.8",
+	"uid_zero_accounts": "6.2.9",
+	"users_without_home_directory": "6.2.10",
+	"users_not_owning_home": "6.2.11",
+	"home_dirs_too_permissive": "6.2.12",
+	"users_with_netrc": "6.2.13",
+	"users_with_forward": "6.2.14",
+	"users_with_rhosts": "6.2.15",
+	"dotfiles_group_or_world_writable": "6.2.16",
+	"passwd_content": "6.2",
+	"shadow_content": "6.2",
+	"group_content": "6.2",
+}
+
+fact_collected(key) if is_array(input.user_group[key])
+
+fact_collected(key) if is_object(input.user_group[key])
+
+fact_collected(key) if is_string(input.user_group[key])
+
+violations contains msg if {
+	some key, ctl in required_facts
+	not fact_collected(key)
+	msg := sprintf("CIS %s: evidence missing — user_group.%s not collected", [ctl, key])
 }
 
 # CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords

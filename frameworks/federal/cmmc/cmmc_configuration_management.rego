@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 21
+#     checks: 22
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cmmc.configuration_management
 
 import rego.v1
@@ -131,8 +131,15 @@ violations contains msg if { some msg in violation_cm_8 }
 violations contains msg if { some msg in violation_cm_9 }
 
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
-violations contains "CMMC CM.L2-3.4.3: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+violations contains "CMMC CM: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
 	not input.cmmc_level
+}
+
+# The per-system checks (3.4.1, 3.4.2, ...) iterate input.systems; with no systems
+# they never run, so an absent/empty inventory must not read as compliant.
+violations contains "CMMC CM.L2-3.4.1: evidence missing - input.systems not supplied or empty; per-system configuration checks cannot be evaluated" if {
+    input.cmmc_level >= 2
+    count(object.get(input, "systems", [])) == 0
 }
 
 # fail-closed: non-empty violations (including the no-facts notice) make this false, never undefined

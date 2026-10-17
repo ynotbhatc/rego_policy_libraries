@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "fce8c668-7a77-5fd4-9b98-f2536e7249ed",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_rocky_linux_9 (CIS 4.1.1.1: audit package installed)",
+   "title": "Rego Policy Libraries — cis_rocky_linux_9 (Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "cis_rocky_linux_9-auditd_validation",
     "class": "rego-module",
-    "title": "CIS 4.1.1.1: audit package installed",
+    "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
     "props": [
      {
       "name": "rego-package",
@@ -483,7 +483,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-4.1.4.4",
-      "title": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)",
+      "title": "Audit config file %s has incorrect permissions (mode: %s, should be 0640 or less)",
       "props": [
        {
         "name": "label",
@@ -509,7 +509,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-4.1.4.4_stmt",
         "name": "statement",
-        "prose": "Audit config file %s has incorrect permissions (mode: %s, should be 0640)"
+        "prose": "Audit config file %s has incorrect permissions (mode: %s, should be 0640 or less)"
        },
        {
         "id": "cis_rocky_linux_9-CIS-4.1.4.4_obj.1",
@@ -1010,7 +1010,7 @@
    {
     "id": "cis_rocky_linux_9-cron_validation",
     "class": "rego-module",
-    "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
+    "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
     "props": [
      {
       "name": "rego-package",
@@ -1069,7 +1069,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-5.1.2",
-      "title": "/etc/crontab has mode %s, should be 0600",
+      "title": "/etc/crontab has mode %v, should be 0600",
       "props": [
        {
         "name": "label",
@@ -1095,24 +1095,24 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.2_stmt",
         "name": "statement",
-        "prose": "/etc/crontab has mode %s, should be 0600"
+        "prose": "/etc/crontab has mode %v, should be 0600"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/crontab owned by %s, should be root"
+        "prose": "/etc/crontab owned by %v, should be root"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.2_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/crontab group is %s, should be root"
+        "prose": "/etc/crontab group is %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-5.1.3",
-      "title": "/etc/cron.hourly has mode %s, should be 0700",
+      "title": "/etc/cron.hourly has mode %v, should be 0700",
       "props": [
        {
         "name": "label",
@@ -1138,19 +1138,19 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.3_stmt",
         "name": "statement",
-        "prose": "/etc/cron.hourly has mode %s, should be 0700"
+        "prose": "/etc/cron.hourly has mode %v, should be 0700"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/cron.hourly owned by %s, should be root"
+        "prose": "/etc/cron.hourly owned by %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-5.1.4",
-      "title": "/etc/cron.daily has mode %s, should be 0700",
+      "title": "/etc/cron.daily has mode %v, should be 0700",
       "props": [
        {
         "name": "label",
@@ -1176,19 +1176,19 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.4_stmt",
         "name": "statement",
-        "prose": "/etc/cron.daily has mode %s, should be 0700"
+        "prose": "/etc/cron.daily has mode %v, should be 0700"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/cron.daily owned by %s, should be root"
+        "prose": "/etc/cron.daily owned by %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-5.1.5",
-      "title": "/etc/cron.weekly has mode %s, should be 0700",
+      "title": "/etc/cron.weekly has mode %v, should be 0700",
       "props": [
        {
         "name": "label",
@@ -1214,19 +1214,19 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.5_stmt",
         "name": "statement",
-        "prose": "/etc/cron.weekly has mode %s, should be 0700"
+        "prose": "/etc/cron.weekly has mode %v, should be 0700"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/cron.weekly owned by %s, should be root"
+        "prose": "/etc/cron.weekly owned by %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-5.1.6",
-      "title": "/etc/cron.monthly has mode %s, should be 0700",
+      "title": "/etc/cron.monthly has mode %v, should be 0700",
       "props": [
        {
         "name": "label",
@@ -1252,19 +1252,19 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.6_stmt",
         "name": "statement",
-        "prose": "/etc/cron.monthly has mode %s, should be 0700"
+        "prose": "/etc/cron.monthly has mode %v, should be 0700"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/cron.monthly owned by %s, should be root"
+        "prose": "/etc/cron.monthly owned by %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-5.1.7",
-      "title": "/etc/cron.d has mode %s, should be 0700",
+      "title": "/etc/cron.d has mode %v, should be 0700",
       "props": [
        {
         "name": "label",
@@ -1290,12 +1290,12 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.7_stmt",
         "name": "statement",
-        "prose": "/etc/cron.d has mode %s, should be 0700"
+        "prose": "/etc/cron.d has mode %v, should be 0700"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/cron.d owned by %s, should be root"
+        "prose": "/etc/cron.d owned by %v, should be root"
        }
       ],
       "class": "security"
@@ -1338,7 +1338,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.8_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/cron.allow has mode %s, should be 0600"
+        "prose": "/etc/cron.allow has mode %v, should be 0600"
        }
       ],
       "class": "security"
@@ -1381,7 +1381,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.1.9_obj.2",
         "name": "assessment-objective",
-        "prose": "/etc/at.allow has mode %s, should be 0600"
+        "prose": "/etc/at.allow has mode %v, should be 0600"
        }
       ],
       "class": "security"
@@ -1412,7 +1412,7 @@
     "controls": [
      {
       "id": "cis_rocky_linux_9-CIS-6.1.x",
-      "title": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",
+      "title": "evidence missing — critical_files.analysis not collected",
       "props": [
        {
         "name": "label",
@@ -1438,7 +1438,255 @@
        {
         "id": "cis_rocky_linux_9-CIS-6.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — critical_files.analysis not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-1",
+      "title": "SSH Private Keys: evidence missing — ssh_private_keys not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_9.file_permissions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_9.file_permissions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-1_stmt",
+        "name": "statement",
+        "prose": "SSH Private Keys: evidence missing — ssh_private_keys not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-6.1.10",
+      "title": "evidence missing — world_writable not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — world_writable not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d world-writable files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-6.1.11",
+      "title": "evidence missing — unowned_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — unowned_files not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d unowned files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-6.1.12",
+      "title": "evidence missing — ungrouped_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — ungrouped_files not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "%d ungrouped files found on system"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-6.1.13",
+      "title": "evidence missing — suid_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — suid_files not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-6.1.14",
+      "title": "evidence missing — sgid_files not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 6.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sgid_files not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-6.1.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Excessive SGID binaries found (%d files)"
        }
       ],
       "class": "security"
@@ -1576,41 +1824,8 @@
       "class": "security"
      },
      {
-      "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-1",
-      "title": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_rocky_linux_9.file_permissions#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_rocky_linux_9.file_permissions#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-1_stmt",
-        "name": "statement",
-        "prose": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-2",
-      "title": "SSH Private Keys: One or more SSH host keys have insecure permissions",
+      "title": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)",
       "props": [
        {
         "name": "label",
@@ -1636,192 +1851,40 @@
        {
         "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-2_stmt",
         "name": "statement",
+        "prose": "SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-3",
+      "title": "SSH Private Keys: One or more SSH host keys have insecure permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_9.file_permissions#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_9.file_permissions#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-cis_rocky_linux_9.file_permissions-3_stmt",
+        "name": "statement",
         "prose": "SSH Private Keys: One or more SSH host keys have insecure permissions"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-6.1.10",
-      "title": "World-writable file found: %s (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.10_stmt",
-        "name": "statement",
-        "prose": "World-writable file found: %s (mode: %s, owner: %s)"
-       },
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.10_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d world-writable files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-6.1.11",
-      "title": "Unowned file found: %s (UID: %d, mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.11_stmt",
-        "name": "statement",
-        "prose": "Unowned file found: %s (UID: %d, mode: %s)"
-       },
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.11_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d unowned files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-6.1.12",
-      "title": "Ungrouped file found: %s (GID: %d, mode: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.12_stmt",
-        "name": "statement",
-        "prose": "Ungrouped file found: %s (GID: %d, mode: %s)"
-       },
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.12_obj.1",
-        "name": "assessment-objective",
-        "prose": "%d ungrouped files found on system"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-6.1.13",
-      "title": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.13_stmt",
-        "name": "statement",
-        "prose": "Unknown SUID binary requires review: %s (mode: %s, owner: %s)"
-       },
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.13_obj.1",
-        "name": "assessment-objective",
-        "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-6.1.14",
-      "title": "Excessive SGID binaries found (%d files)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 6.1.14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 6.1.14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#768a70ad-d5ff-5829-84dd-d25295fa0b04",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-6.1.14_stmt",
-        "name": "statement",
-        "prose": "Excessive SGID binaries found (%d files)"
        }
       ],
       "class": "security"
@@ -2053,7 +2116,7 @@
    {
     "id": "cis_rocky_linux_9-initial_setup_validation",
     "class": "rego-module",
-    "title": "CIS 1.2: Configure Software Updates",
+    "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
     "props": [
      {
       "name": "rego-package",
@@ -2178,7 +2241,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-1.7.1",
-      "title": "/etc/motd has mode %s, should be 0644",
+      "title": "/etc/motd has mode %v, should be 0644 or less",
       "props": [
        {
         "name": "label",
@@ -2204,7 +2267,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.7.1_stmt",
         "name": "statement",
-        "prose": "/etc/motd has mode %s, should be 0644"
+        "prose": "/etc/motd has mode %v, should be 0644 or less"
        },
        {
         "id": "cis_rocky_linux_9-CIS-1.7.1_obj.1",
@@ -2252,7 +2315,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue has mode %s, should be 0644"
+        "prose": "/etc/issue has mode %v, should be 0644 or less"
        },
        {
         "id": "cis_rocky_linux_9-CIS-1.7.2_obj.2",
@@ -2295,7 +2358,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "/etc/issue.net has mode %s, should be 0644"
+        "prose": "/etc/issue.net has mode %v, should be 0644 or less"
        },
        {
         "id": "cis_rocky_linux_9-CIS-1.7.3_obj.2",
@@ -2307,7 +2370,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-1.7.4",
-      "title": "/etc/motd owned by %s, should be root",
+      "title": "/etc/motd owned by %v, should be root",
       "props": [
        {
         "name": "label",
@@ -2333,14 +2396,14 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.7.4_stmt",
         "name": "statement",
-        "prose": "/etc/motd owned by %s, should be root"
+        "prose": "/etc/motd owned by %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-1.7.5",
-      "title": "/etc/issue owned by %s, should be root",
+      "title": "/etc/issue owned by %v, should be root",
       "props": [
        {
         "name": "label",
@@ -2366,14 +2429,14 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.7.5_stmt",
         "name": "statement",
-        "prose": "/etc/issue owned by %s, should be root"
+        "prose": "/etc/issue owned by %v, should be root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rocky_linux_9-CIS-1.7.6",
-      "title": "/etc/issue.net owned by %s, should be root",
+      "title": "/etc/issue.net owned by %v, should be root",
       "props": [
        {
         "name": "label",
@@ -2399,7 +2462,45 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.7.6_stmt",
         "name": "statement",
-        "prose": "/etc/issue.net owned by %s, should be root"
+        "prose": "/etc/issue.net owned by %v, should be root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-1.8",
+      "title": "evidence missing — initial_setup.gdm_installed not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.initial_setup"
+       }
+      ],
+      "links": [
+       {
+        "href": "#91c27da3-328c-5c45-9db6-c755cea6f735",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-1.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — initial_setup.gdm_installed not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-1.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — initial_setup.gui_required not collected"
        }
       ],
       "class": "security"
@@ -2787,7 +2888,7 @@
    {
     "id": "cis_rocky_linux_9-logging_validation",
     "class": "rego-module",
-    "title": "CIS 4.2.1.1: rsyslog installed",
+    "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
     "props": [
      {
       "name": "rego-package",
@@ -2912,7 +3013,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-4.2.1.4",
-      "title": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)",
+      "title": "rsyslog FileCreateMode not secure (current: %v, expected: 0640 or stricter)",
       "props": [
        {
         "name": "label",
@@ -2938,7 +3039,7 @@
        {
         "id": "cis_rocky_linux_9-CIS-4.2.1.4_stmt",
         "name": "statement",
-        "prose": "rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)"
+        "prose": "rsyslog FileCreateMode not secure (current: %v, expected: 0640 or stricter)"
        }
       ],
       "class": "security"
@@ -3276,7 +3377,7 @@
     "controls": [
      {
       "id": "cis_rocky_linux_9-CIS-3.x",
-      "title": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s",
+      "title": "evidence missing — sysctl_parameters.analysis not collected",
       "props": [
        {
         "name": "label",
@@ -3302,6 +3403,11 @@
        {
         "id": "cis_rocky_linux_9-CIS-3.x_stmt",
         "name": "statement",
+        "prose": "evidence missing — sysctl_parameters.analysis not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-3.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s"
        }
       ],
@@ -3441,7 +3547,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-3.1.1",
-      "title": "IPv4 forwarding is enabled (value: %v, expected: 0)",
+      "title": "evidence missing — ip_forwarding.ipv4_forwarding not collected",
       "props": [
        {
         "name": "label",
@@ -3467,10 +3573,20 @@
        {
         "id": "cis_rocky_linux_9-CIS-3.1.1_stmt",
         "name": "statement",
-        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+        "prose": "evidence missing — ip_forwarding.ipv4_forwarding not collected"
        },
        {
         "id": "cis_rocky_linux_9-CIS-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ip_forwarding.ipv6_forwarding not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-3.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "IPv4 forwarding is enabled (value: %v, expected: 0)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-3.1.1_obj.3",
         "name": "assessment-objective",
         "prose": "IPv6 forwarding is enabled (value: %v, expected: 0)"
        }
@@ -3832,7 +3948,7 @@
    {
     "id": "cis_rocky_linux_9-pam_validation",
     "class": "rego-module",
-    "title": "CIS 5.4.1: pwquality installed",
+    "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
     "props": [
      {
       "name": "rego-package",
@@ -4205,6 +4321,11 @@
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.5.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Inactive password lock is disabled (%s), should be 30 days or less"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-5.5.1.4_obj.2",
         "name": "assessment-objective",
         "prose": "Inactive password lock not configured"
        }
@@ -4887,7 +5008,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-2.2.x",
-      "title": "Unnecessary service '%s' is active (risk: %s)",
+      "title": "evidence missing — unnecessary_services.analysis not collected",
       "props": [
        {
         "name": "label",
@@ -4913,12 +5034,131 @@
        {
         "id": "cis_rocky_linux_9-CIS-2.2.x_stmt",
         "name": "statement",
-        "prose": "Unnecessary service '%s' is active (risk: %s)"
+        "prose": "evidence missing — unnecessary_services.analysis not collected"
        },
        {
         "id": "cis_rocky_linux_9-CIS-2.2.x_obj.1",
         "name": "assessment-objective",
+        "prose": "Unnecessary service '%s' is active (risk: %s)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-2.2.x_obj.2",
+        "name": "assessment-objective",
         "prose": "Unnecessary service '%s' is enabled (risk: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-2.2.12",
+      "title": "evidence missing — webserver.any_installed not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a8e6fdf8-18c6-5b9d-8c2c-a85261148280",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-2.2.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — webserver.any_installed not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-2.2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Web server package installed: %s (%s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-2.3.x",
+      "title": "evidence missing — client_packages.analysis not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.3.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.3.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a8e6fdf8-18c6-5b9d-8c2c-a85261148280",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-2.3.x_stmt",
+        "name": "statement",
+        "prose": "evidence missing — client_packages.analysis not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-2.3.x_obj.1",
+        "name": "assessment-objective",
+        "prose": "Unnecessary client package installed: %s (%s, severity: %s)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-CIS-2.2.1",
+      "title": "evidence missing — x11.any_installed not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a8e6fdf8-18c6-5b9d-8c2c-a85261148280",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-CIS-2.2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — x11.any_installed not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-2.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "X Window System package installed on server: %s (%s)"
        }
       ],
       "class": "security"
@@ -5056,72 +5296,6 @@
       "class": "security"
      },
      {
-      "id": "cis_rocky_linux_9-CIS-2.2.12",
-      "title": "Web server package installed: %s (%s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 2.2.12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 2.2.12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8e6fdf8-18c6-5b9d-8c2c-a85261148280",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-2.2.12_stmt",
-        "name": "statement",
-        "prose": "Web server package installed: %s (%s)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-2.3.x",
-      "title": "Unnecessary client package installed: %s (%s, severity: %s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 2.3.x"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 2.3.x"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8e6fdf8-18c6-5b9d-8c2c-a85261148280",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-2.3.x_stmt",
-        "name": "statement",
-        "prose": "Unnecessary client package installed: %s (%s, severity: %s)"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_rocky_linux_9-CIS-2.3.4",
       "title": "telnet client is installed (CRITICAL: cleartext protocol)",
       "props": [
@@ -5183,39 +5357,6 @@
         "id": "cis_rocky_linux_9-CIS-2.3.2_stmt",
         "name": "statement",
         "prose": "rsh client is installed (CRITICAL: cleartext protocol)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_rocky_linux_9-CIS-2.2.1",
-      "title": "X Window System package installed on server: %s (%s)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 2.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 2.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_rocky_linux_9.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8e6fdf8-18c6-5b9d-8c2c-a85261148280",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_rocky_linux_9-CIS-2.2.1_stmt",
-        "name": "statement",
-        "prose": "X Window System package installed on server: %s (%s)"
        }
       ],
       "class": "security"
@@ -6315,7 +6456,7 @@
    {
     "id": "cis_rocky_linux_9-user_group_validation",
     "class": "rego-module",
-    "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
+    "title": "Missing evidence fails closed. Each offender-list key must be PRESENT in the",
     "props": [
      {
       "name": "rego-package",
@@ -6363,6 +6504,39 @@
         "id": "cis_rocky_linux_9-cis_rocky_linux_9.user_group-1_stmt",
         "name": "statement",
         "prose": "CIS: FAIL-CLOSED - facts 'input.user_group' were not supplied; this module cannot be evaluated and is reported non-compliant"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_rocky_linux_9-cis_rocky_linux_9.user_group-2",
+      "title": "CIS %s: evidence missing — user_group.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_rocky_linux_9.user_group#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_rocky_linux_9.user_group#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_rocky_linux_9.user_group"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28742b36-cfca-5c8c-8c66-64fb8cfc01b5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_rocky_linux_9-cis_rocky_linux_9.user_group-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing — user_group.%s not collected"
        }
       ],
       "class": "security"
@@ -6970,7 +7144,7 @@
    "resources": [
     {
      "uuid": "aff0b7e1-8774-5084-a970-8e6203fcb749",
-     "title": "CIS 4.1.1.1: audit package installed",
+     "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
      "props": [
       {
        "name": "rego-package",
@@ -7004,7 +7178,7 @@
     },
     {
      "uuid": "d05c7c01-3b68-50fe-959d-57a546b248df",
-     "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
+     "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
      "props": [
       {
        "name": "rego-package",
@@ -7055,7 +7229,7 @@
     },
     {
      "uuid": "91c27da3-328c-5c45-9db6-c755cea6f735",
-     "title": "CIS 1.2: Configure Software Updates",
+     "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
      "props": [
       {
        "name": "rego-package",
@@ -7072,7 +7246,7 @@
     },
     {
      "uuid": "348b5fe6-e3a4-51a4-a2fe-19eed2d64408",
-     "title": "CIS 4.2.1.1: rsyslog installed",
+     "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
      "props": [
       {
        "name": "rego-package",
@@ -7106,7 +7280,7 @@
     },
     {
      "uuid": "32cf7cca-d0a5-56f3-b2a2-8b79f86fe857",
-     "title": "CIS 5.4.1: pwquality installed",
+     "title": "Parse an octal permission string (\"644\", \"0644\", \"0o644\") to an integer; undefined if not octal",
      "props": [
       {
        "name": "rego-package",
@@ -7191,7 +7365,7 @@
     },
     {
      "uuid": "28742b36-cfca-5c8c-8c66-64fb8cfc01b5",
-     "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
+     "title": "Missing evidence fails closed. Each offender-list key must be PRESENT in the",
      "props": [
       {
        "name": "rego-package",

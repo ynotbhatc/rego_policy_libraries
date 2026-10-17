@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 20
+#     checks: 24
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.services
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Sections 1.1.23, 2.1.x, 2.2.x, 2.3.x: Service Configuration
@@ -95,6 +95,23 @@ time_sync_violations contains violation if {
 		input.chronyd.servers_configured,
 		input.chronyd.pools_configured,
 	])
+}
+
+# Missing evidence fails closed. Keys are emitted by the gather_service_config role.
+unnecessary_service_violations contains "CIS 2.2.x: evidence missing — unnecessary_services.analysis not collected" if {
+	not is_array(object.get(object.get(input, "unnecessary_services", {}), "analysis", null))
+}
+
+package_violations contains "CIS 2.2.12: evidence missing — webserver.any_installed not collected" if {
+	object.get(object.get(input, "webserver", {}), "any_installed", null) == null
+}
+
+package_violations contains "CIS 2.3.x: evidence missing — client_packages.analysis not collected" if {
+	not is_array(object.get(object.get(input, "client_packages", {}), "analysis", null))
+}
+
+package_violations contains "CIS 2.2.1: evidence missing — x11.any_installed not collected" if {
+	object.get(object.get(input, "x11", {}), "any_installed", null) == null
 }
 
 # CIS 2.2.x: Unnecessary services

@@ -15,7 +15,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package pci_dss.security_testing.requirement_11
 
 import rego.v1
@@ -143,7 +143,7 @@ file_integrity_monitoring if {
 
 payment_page_integrity if {
 	# Only required if e-commerce with hosted payment pages
-	not input.pci.ecommerce.payment_pages.in_scope
+	input.pci.ecommerce.payment_pages.in_scope == false
 } else if {
 	input.pci.ecommerce.payment_pages.in_scope
 	input.pci.ecommerce.payment_pages.integrity_monitoring == true
@@ -153,6 +153,22 @@ payment_page_integrity if {
 	input.pci.ecommerce.payment_pages.content_security_policy.implemented == true
 	input.pci.ecommerce.payment_pages.alerts.configured == true
 }
+
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default security_testing_policies_established := false
+default security_testing_roles_defined := false
+default wireless_access_point_testing := false
+default internal_vulnerability_scanning := false
+default external_vulnerability_scanning := false
+default vulnerability_remediation := false
+default penetration_testing := false
+default pen_test_remediation := false
+default segmentation_testing := false
+default ids_ips_deployed := false
+default file_integrity_monitoring := false
+default payment_page_integrity := false
+default pci_requirement_11_compliant := false
 
 # =================================================================
 # Scoring

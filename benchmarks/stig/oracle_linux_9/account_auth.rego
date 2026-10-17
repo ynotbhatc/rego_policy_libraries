@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.oracle_linux_9.account_auth
 
 # DISA STIG for Oracle Linux 9 - Account and Authentication Module
@@ -78,12 +78,11 @@ finding_ol09_00_003020 := {
 default no_empty_password_hashes := false
 
 no_empty_password_hashes if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.local_accounts_with_empty_passwords)
 	count(input.local_accounts_with_empty_passwords) == 0
 }
 
-no_empty_password_hashes if {
-	not input.local_accounts_with_empty_passwords
-}
 
 status_ol09_00_001130 := "Not_a_Finding" if { no_empty_password_hashes } else := "Open"
 
@@ -237,7 +236,7 @@ finding_ol09_00_002416 := {
 	"vuln_id": "V-271754",
 	"stig_id": "OL09-00-002416",
 	"severity": "CAT II",
-	"rule_title": "OL 9 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period.",
+	"rule_title": "OL 9 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
 	"status": status_ol09_00_002416,
 	"fix_text": "Set INACTIVE=35 in /etc/default/useradd",
 }
@@ -247,12 +246,11 @@ finding_ol09_00_002416 := {
 default no_duplicate_uids := false
 
 no_duplicate_uids if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.duplicate_uids)
 	count(input.duplicate_uids) == 0
 }
 
-no_duplicate_uids if {
-	not input.duplicate_uids
-}
 
 status_ol09_00_003001 := "Not_a_Finding" if { no_duplicate_uids } else := "Open"
 
@@ -270,12 +268,11 @@ finding_ol09_00_003001 := {
 default no_duplicate_gids := false
 
 no_duplicate_gids if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.duplicate_gids)
 	count(input.duplicate_gids) == 0
 }
 
-no_duplicate_gids if {
-	not input.duplicate_gids
-}
 
 status_ol09_00_003006 := "Not_a_Finding" if { no_duplicate_gids } else := "Open"
 

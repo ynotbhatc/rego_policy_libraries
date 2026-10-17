@@ -13,13 +13,25 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rocky_linux_9.auditd
 
 # DERIVED from CIS Rocky Linux 8 Benchmark v3.0.0 — applied to Rocky Linux 9 (provenance: see README) - Section 4.1: Configure System Accounting (auditd)
 # Validates auditd service, configuration, and audit rules
 
 import rego.v1
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 default compliant := false
 
@@ -38,15 +50,18 @@ service_violations contains "CIS 4.1.1.1: audit package not installed" if {
 }
 
 # CIS 4.1.1.2: auditd service enabled and running
-service_violations contains "CIS 4.1.1.2: auditd service not enabled" if {
-	service := input.services["auditd.service"]
-	service.status != "enabled"
-}
+# A missing service fact fails closed: absent evidence is not an enabled service.
+default auditd_enabled := false
 
-service_violations contains "CIS 4.1.1.2: auditd service not running" if {
-	service := input.services["auditd.service"]
-	service.state != "running"
-}
+auditd_enabled if input.services["auditd.service"].status == "enabled"
+
+default auditd_running := false
+
+auditd_running if input.services["auditd.service"].state == "running"
+
+service_violations contains "CIS 4.1.1.2: auditd service not enabled" if not auditd_enabled
+
+service_violations contains "CIS 4.1.1.2: auditd service not running" if not auditd_running
 
 # CIS 4.1.1.3: Auditing for processes prior to auditd
 config_violations contains "CIS 4.1.1.3: audit=1 not set in bootloader configuration" if {
@@ -156,7 +171,7 @@ extract_rule_description(rule) := desc if {
 	contains(rule, "-w")
 	parts := split(rule, " ")
 	desc := parts[1]
-} else := "system call monitoring"
+} else := rule
 
 rules_violations contains sprintf("CIS 4.1.3.x: Missing audit rule for: %s", [rule_desc]) if {
 	some required_rule in required_rules
@@ -172,7 +187,7 @@ rules_violations contains "CIS 4.1.3.21: Audit configuration not set to immutabl
 # CIS 4.1.4.1: Audit log file permissions
 permission_violations contains sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode]) if {
 	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+	not mode_within(mode, "0640")
 }
 
 # CIS 4.1.4.2: Audit log file ownership
@@ -189,15 +204,15 @@ permission_violations contains sprintf("CIS 4.1.4.2: Audit log group not root or
 # CIS 4.1.4.3: Audit log directory permissions
 permission_violations contains sprintf("CIS 4.1.4.3: Audit log directory permissions too permissive (mode: %s)", [mode]) if {
 	mode := input.auditd.log_dir_permissions.mode
-	to_number(mode) > 750
+	not mode_within(mode, "0750")
 }
 
 # CIS 4.1.4.4: Audit config file permissions
-permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has incorrect permissions (mode: %s, should be 0640)", [file, mode]) if {
+permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s has incorrect permissions (mode: %s, should be 0640 or less)", [file, mode]) if {
 	some config_file in input.auditd.config_permissions
 	file := config_file.stat.path
 	mode := config_file.stat.mode
-	mode != "0640"
+	not mode_within(mode, "0640")
 }
 
 permission_violations contains sprintf("CIS 4.1.4.4: Audit config file %s not owned by root (owner: %s)", [file, owner]) if {

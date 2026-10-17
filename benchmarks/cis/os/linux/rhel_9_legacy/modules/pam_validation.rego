@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_rhel9.pam_validation
 
 import rego.v1
@@ -30,6 +30,18 @@ violations contains {
 # CIS RHEL 9 Benchmark v2.0.0 - Section 5.2: PAM (Pluggable Authentication Modules)
 # Validates PAM configuration for secure authentication
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # =============================================================================
 # CIS 5.2.1 - Ensure password creation requirements are configured
 # =============================================================================
@@ -44,13 +56,14 @@ validate_pwquality_complexity if {
 }
 
 validate_pwquality_complexity if {
-    complexity_sum := (
-        abs(to_number(input.pam.pwquality.dcredit)) +
-        abs(to_number(input.pam.pwquality.ucredit)) +
-        abs(to_number(input.pam.pwquality.lcredit)) +
-        abs(to_number(input.pam.pwquality.ocredit))
-    )
-    complexity_sum >= 4
+    # Only negative credits are requirements ("at least N characters of this class");
+    # positive credits are length bonuses and must not count towards complexity.
+    required_chars := [abs(c) |
+        some key in ["dcredit", "ucredit", "lcredit", "ocredit"]
+        c := to_number(input.pam.pwquality[key])
+        c < 0
+    ]
+    sum(required_chars) >= 4
 }
 
 violations contains {
@@ -340,7 +353,7 @@ violations contains {
 # =============================================================================
 
 validate_root_gid if {
-    input.pam.root_user.gid == "0"
+    to_number(input.pam.root_user.gid) == 0
 }
 
 violations contains {
@@ -360,7 +373,8 @@ violations contains {
 # =============================================================================
 
 validate_umask if {
-    input.pam.default_umask in ["027", "077"]
+    # 027 octal is 23: the umask must mask at least every bit 027 masks
+    bits.and(octal(input.pam.default_umask), 23) == 23
 }
 
 violations contains {
@@ -369,7 +383,7 @@ violations contains {
     "severity": "medium",
     "description": "Default umask should be 027 or more restrictive",
     "status": "fail",
-    "finding": sprintf("Default umask: %v (should be 027 or 077)", [input.pam.default_umask]),
+    "finding": sprintf("Default umask: %v (should be 027 or more restrictive)", [input.pam.default_umask]),
     "remediation": "Edit /etc/profile and /etc/bashrc to set umask 027"
 } if {
     not validate_umask

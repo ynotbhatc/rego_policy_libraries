@@ -9,14 +9,14 @@
 #     checks: 5
 #     cited: 0
 #     expected: 5
-#     found: 159
+#     found: 164
 #     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package eu_ai_act.main
 
 import rego.v1

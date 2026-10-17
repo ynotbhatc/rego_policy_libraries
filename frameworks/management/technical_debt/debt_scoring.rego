@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package technical_debt.scoring
 
 import rego.v1
@@ -442,6 +442,22 @@ _violation_as_string(v) := s if {
     s := v.control_id
 }
 
+# Object with neither "control" nor "control_id" (e.g. only description/severity):
+# keep it as an item rather than dropping it silently from debt_items/debt_score.
+_violation_as_string(v) := v.description if {
+    not is_string(v)
+    not v.control
+    not v.control_id
+    v.description
+}
+
+_violation_as_string(v) := json.marshal(v) if {
+    not is_string(v)
+    not v.control
+    not v.control_id
+    not v.description
+}
+
 # ---------------------------------------------------------------------------
 # Framework-specific key extractors
 # Each returns undefined if the violation string doesn't match the pattern.
@@ -472,8 +488,8 @@ _nerc_key(violation) := key if {
     is_string(violation)
     parts      := split(violation, " ")
     count(parts) >= 1
-    startswith(parts[0], "CIP-")
-    key        := trim_right(parts[0], ":")
+    # "CIP-002-5.1a R1: ..." and "CIP-007: ..." both key on the standard id "CIP-NNN"
+    key        := regex.find_n(`^CIP-[0-9]{3}`, parts[0], 1)[0]
 }
 
 # NIST 800-53: "AC-2: ..." → "AC"
@@ -554,6 +570,7 @@ _sec_key(violation) := "Item 1.05" if {
 _sec_key(violation) := "§229.106(c)" if {
     is_string(violation)
     contains(violation, "§229.106(c)")
+    not contains(violation, "Item 1.05")
 }
 
 # SEC Cyber: "SEC Cyber Rule §229.106(b)(1): ..." → "§229.106(b)"
@@ -561,6 +578,7 @@ _sec_key(violation) := "§229.106(b)" if {
     is_string(violation)
     contains(violation, "§229.106(b)")
     not contains(violation, "§229.106(c)")
+    not contains(violation, "Item 1.05")
 }
 
 # NY DFS: "23 NYCRR 500.4(a): ..." → "500.4"
@@ -921,6 +939,15 @@ _norm_severity(s) := upper(s)
 # ---------------------------------------------------------------------------
 # Age multiplier — older unresolved debt scores higher
 # ---------------------------------------------------------------------------
+# Age as a number: numeric strings are converted, anything else counts as 0
+# (OPA orders strings above numbers, so an unconverted "45" would take the >=90 tier).
+_age_num(d) := d if {
+    is_number(d)
+} else := to_number(d) if {
+    is_string(d)
+    regex.match(`^[0-9]+(\.[0-9]+)?$`, d)
+} else := 0
+
 _age_mult(days) := 1.5  if { days >= 90 }
 _age_mult(days) := 1.25 if { days >= 30; days < 90 }
 _age_mult(days) := 1.0  if { days < 30 }
@@ -968,7 +995,7 @@ debt_items contains item if {
     severity := _norm_severity(raw_sev)
 
     weight   := object.get(_severity_weight, severity, 1.0)
-    mult     := _age_mult(age)
+    mult     := _age_mult(_age_num(age))
     pscore   := weight * mult * (estimate.hours / 4.0)
 
     item := {

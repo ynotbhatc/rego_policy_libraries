@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 14
-#     cited: 10
+#     checks: 17
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_debian_11.boot_security
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.3-1.5: Boot Security and Process Hardening
@@ -30,6 +30,18 @@ violations := array.concat(
 	array.concat([v | some v in aide_violations], [v | some v in grub_violations]),
 	array.concat([v | some v in process_hardening_violations], [v | some v in apparmor_boot_violations]),
 )
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 # CIS 1.3.1: AIDE installed
 aide_violations contains msg if {
@@ -59,9 +71,19 @@ grub_violations contains msg if {
 
 # CIS 1.4.2: GRUB config file permissions
 grub_violations contains msg if {
-	input.grub.config_mode != "0400"
-	input.grub.config_mode != "0600"
-	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.grub.config_mode])
+	not has_key(object.get(input, "grub", {}), "config_mode")
+	msg := "CIS 1.4.2: evidence missing — grub.config_mode not collected"
+}
+
+grub_violations contains msg if {
+	mode := input.grub.config_mode
+	not mode_within(mode, "0600")
+	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [mode])
+}
+
+grub_violations contains msg if {
+	not has_key(object.get(input, "grub", {}), "config_owner")
+	msg := "CIS 1.4.2: evidence missing — grub.config_owner not collected"
 }
 
 grub_violations contains msg if {
@@ -75,6 +97,17 @@ grub_violations contains msg if {
 	msg := "CIS 1.4.3: Single user mode does not require authentication (sulogin not configured)"
 }
 
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# CIS 1.5: evidence for each process-hardening fact must be collected
+process_hardening_violations contains msg if {
+	some k in ["core_dumps_enabled", "fs_suid_dumpable", "prelink_installed"]
+	not has_key(object.get(input, "process_hardening", {}), k)
+	msg := sprintf("CIS 1.5: evidence missing — process_hardening.%s not collected", [k])
+}
+
 # CIS 1.5.1: Core dumps restricted
 process_hardening_violations contains msg if {
 	input.process_hardening.core_dumps_enabled
@@ -82,8 +115,9 @@ process_hardening_violations contains msg if {
 }
 
 process_hardening_violations contains msg if {
-	input.process_hardening.fs_suid_dumpable != "0"
-	msg := sprintf("CIS 1.5.1: fs.suid_dumpable is %s, should be 0", [input.process_hardening.fs_suid_dumpable])
+	v := input.process_hardening.fs_suid_dumpable
+	sprintf("%v", [v]) != "0"
+	msg := sprintf("CIS 1.5.1: fs.suid_dumpable is %v, should be 0", [v])
 }
 
 # CIS 1.5.2: ASLR enabled

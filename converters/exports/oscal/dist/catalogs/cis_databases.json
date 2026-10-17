@@ -222,6 +222,69 @@
     ],
     "controls": [
      {
+      "id": "cis_databases-CIS-2.2",
+      "title": "evidence missing — parameters not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.database_parameters"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3e58568d-ed46-5769-8be8-1e1a104956ee",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — parameters not collected"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — parameter %s not collected"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — oracle_version.major not collected"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Unified Auditing is not enabled (recommended for Oracle 12c+)"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "SEC_PROTOCOL_ERROR_FURTHER_ACTION is '%s' (should be 'DROP,3' or 'DELAY,3')"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "Network encryption is not enabled (sqlnet.ora SQLNET.ENCRYPTION_SERVER)"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.6",
+        "name": "assessment-objective",
+        "prose": "Network crypto checksumming is '%s' (should be 'REQUIRED' or 'REQUESTED')"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_databases-CIS-2.2.1",
       "title": "AUDIT_SYS_OPERATIONS is '%s' (should be 'TRUE' to audit SYS/SYSDBA operations)",
       "props": [
@@ -661,54 +724,6 @@
       "class": "security"
      },
      {
-      "id": "cis_databases-CIS-2.2",
-      "title": "Unified Auditing is not enabled (recommended for Oracle 12c+)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_oracle.database_parameters"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3e58568d-ed46-5769-8be8-1e1a104956ee",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_databases-CIS-2.2_stmt",
-        "name": "statement",
-        "prose": "Unified Auditing is not enabled (recommended for Oracle 12c+)"
-       },
-       {
-        "id": "cis_databases-CIS-2.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "SEC_PROTOCOL_ERROR_FURTHER_ACTION is '%s' (should be 'DROP,3' or 'DELAY,3')"
-       },
-       {
-        "id": "cis_databases-CIS-2.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "Network encryption is not enabled (sqlnet.ora SQLNET.ENCRYPTION_SERVER)"
-       },
-       {
-        "id": "cis_databases-CIS-2.2_obj.3",
-        "name": "assessment-objective",
-        "prose": "Network crypto checksumming is '%s' (should be 'REQUIRED' or 'REQUESTED')"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_databases-audit_configuration",
       "title": "Implemented by a Rego rule in benchmarks/cis/databases/oracle_legacy/modules/database_parameters.rego (package cis_oracle.database_parameters); see the rule body.",
       "props": [
@@ -851,25 +866,35 @@
        {
         "id": "cis_databases-CIS-1.1_obj.5",
         "name": "assessment-objective",
-        "prose": "ORACLE_HOME permissions %s are too permissive (should be 755 or stricter)"
+        "prose": "evidence missing — oracle_home.%s not collected"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.6",
         "name": "assessment-objective",
-        "prose": "ORACLE_HOME owner is '%s' (should be 'oracle')"
+        "prose": "evidence missing — oracle_inventory.permissions not collected"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.7",
         "name": "assessment-objective",
-        "prose": "ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')"
+        "prose": "ORACLE_HOME permissions %s are too permissive (should be 755 or stricter, or not parseable as an octal mode)"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.8",
         "name": "assessment-objective",
-        "prose": "Oracle inventory (oraInventory) does not exist or is not accessible"
+        "prose": "ORACLE_HOME owner is '%s' (should be 'oracle')"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.9",
+        "name": "assessment-objective",
+        "prose": "ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.10",
+        "name": "assessment-objective",
+        "prose": "Oracle inventory (oraInventory) does not exist or is not accessible"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.11",
         "name": "assessment-objective",
         "prose": "Oracle inventory permissions %s are too permissive"
        }
@@ -966,6 +991,54 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_databases-CIS-2.1",
+      "title": "evidence missing — listeners not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS 2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS 2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_oracle.listener_configuration"
+       }
+      ],
+      "links": [
+       {
+        "href": "#808e8b6d-4666-5e9b-a0e6-4d3264e95c97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_databases-CIS-2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — listeners not collected"
+       },
+       {
+        "id": "cis_databases-CIS-2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "listener.ora has insecure permissions %s (should be 640 or stricter)"
+       },
+       {
+        "id": "cis_databases-CIS-2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — listener_ora.%s not collected"
+       },
+       {
+        "id": "cis_databases-CIS-2.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "listener.ora owner is '%s' (should be 'oracle')"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_databases-CIS-2.1.1",
       "title": "Listener '%s' has 'extproc' service enabled (CRITICAL: allows arbitrary code execution)",
@@ -1147,6 +1220,11 @@
         "id": "cis_databases-CIS-2.1.5_obj.1",
         "name": "assessment-objective",
         "prose": "Listener '%s' is using insecure protocol '%s'"
+       },
+       {
+        "id": "cis_databases-CIS-2.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Listener '%s' evidence missing — secure_protocol not collected"
        }
       ],
       "class": "security"
@@ -1180,44 +1258,6 @@
         "id": "cis_databases-CIS-2.1.6_stmt",
         "name": "statement",
         "prose": "Listener '%s' does not have VALID_NODE_CHECKING enabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_databases-CIS-2.1",
-      "title": "listener.ora has insecure permissions %s (should be 640 or stricter)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_oracle.listener_configuration"
-       }
-      ],
-      "links": [
-       {
-        "href": "#808e8b6d-4666-5e9b-a0e6-4d3264e95c97",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_databases-CIS-2.1_stmt",
-        "name": "statement",
-        "prose": "listener.ora has insecure permissions %s (should be 640 or stricter)"
-       },
-       {
-        "id": "cis_databases-CIS-2.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "listener.ora owner is '%s' (should be 'oracle')"
        }
       ],
       "class": "security"

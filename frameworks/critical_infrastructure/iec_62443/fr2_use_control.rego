@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package iec_62443.fr2
 
 import rego.v1
@@ -61,6 +61,11 @@ import rego.v1
 # =============================================================================
 
 default compliant := false
+
+# A missing setting fails closed: an unset timeout/retention is a violation.
+lock_timeout_within(system, n) if system.session_lock_timeout_minutes <= n
+
+log_retention_at_least(n) if input.monitoring.ics_log_retention_days >= n
 
 # ---------------------------------------------------------------------------
 # SR 2.1 — Authorization enforcement
@@ -192,20 +197,20 @@ violations contains msg if {
 
 violations contains msg if {
     some system in input.ics_systems
-    system.session_lock_timeout_minutes > 30
+    not lock_timeout_within(system, 30)
     msg := sprintf(
         "IEC 62443 SR 2.5 (UC): ICS system '%v' session lock timeout is %v minutes. Maximum inactivity timeout before lock must be 30 minutes or less.",
-        [system.name, system.session_lock_timeout_minutes]
+        [system.name, object.get(system, "session_lock_timeout_minutes", "not set")]
     )
 }
 
 violations contains msg if {
     input.target_sl >= 2
     some system in input.ics_systems
-    system.session_lock_timeout_minutes > 15
+    not lock_timeout_within(system, 15)
     msg := sprintf(
         "IEC 62443 SR 2.5 RE 1 SL%v (UC): ICS system '%v' session lock timeout is %v minutes. Maximum 15 minutes is required at Security Level 2+.",
-        [input.target_sl, system.name, system.session_lock_timeout_minutes]
+        [input.target_sl, system.name, object.get(system, "session_lock_timeout_minutes", "not set")]
     )
 }
 
@@ -303,10 +308,10 @@ violations contains msg if {
 }
 
 violations contains msg if {
-    input.monitoring.ics_log_retention_days < 90
+    not log_retention_at_least(90)
     msg := sprintf(
         "IEC 62443 SR 2.9 (UC): IACS audit logs are retained for only %v days. Minimum 90-day retention is required (1 year recommended for regulatory compliance).",
-        [input.monitoring.ics_log_retention_days]
+        [object.get(object.get(input, "monitoring", {}), "ics_log_retention_days", "not set")]
     )
 }
 
@@ -368,18 +373,18 @@ compliant if { count(violations) == 0 }
 
 fr2_passing_srs := count([sr |
     sr := [
-        count([v | some v in violations; contains(v, "SR 2.1")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.2")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.3")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.4")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.5")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.6")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.7")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.8")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.9")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.10")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.11")]) == 0,
-        count([v | some v in violations; contains(v, "SR 2.12")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.1 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.2 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.3 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.4 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.5 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.6 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.7 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.8 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.9 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.10 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.11 ")]) == 0,
+        count([v | some v in violations; contains(v, "SR 2.12 ")]) == 0,
     ][_]
     sr == true
 ])

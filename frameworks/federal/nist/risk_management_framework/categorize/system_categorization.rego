@@ -43,6 +43,8 @@ confidentiality_impact_high if {
 	input.system_categorization.confidentiality.loss_scenario_documented == true
 }
 
+default confidentiality_properly_categorized := false
+
 confidentiality_properly_categorized if {
 	confidentiality_impact_low
 }
@@ -73,6 +75,8 @@ integrity_impact_high if {
 	input.system_categorization.integrity.rationale != ""
 	input.system_categorization.integrity.loss_scenario_documented == true
 }
+
+default integrity_properly_categorized := false
 
 integrity_properly_categorized if {
 	integrity_impact_low
@@ -105,6 +109,8 @@ availability_impact_high if {
 	input.system_categorization.availability.loss_scenario_documented == true
 }
 
+default availability_properly_categorized := false
+
 availability_properly_categorized if {
 	availability_impact_low
 }
@@ -118,6 +124,8 @@ availability_properly_categorized if {
 }
 
 # Overall System Security Categorization
+default overall_system_categorization_valid := false
+
 overall_system_categorization_valid if {
 	input.system_categorization.overall_impact_level in ["low", "moderate", "high"]
 	input.system_categorization.high_water_mark_applied == true
@@ -125,6 +133,8 @@ overall_system_categorization_valid if {
 }
 
 # High-water mark rule: System categorization = highest impact level
+default high_water_mark_properly_applied := false
+
 high_water_mark_properly_applied if {
 	input.system_categorization.confidentiality.impact_level == "high"
 	input.system_categorization.overall_impact_level == "high"
@@ -166,6 +176,8 @@ high_water_mark_properly_applied if {
 }
 
 # Information Types and Impact Assessment
+default information_types_identified := false
+
 information_types_identified if {
 	count(input.system_categorization.information_types) > 0
 	every info_type in input.system_categorization.information_types {
@@ -176,6 +188,8 @@ information_types_identified if {
 }
 
 # System Boundary Definition
+default system_boundary_defined := false
+
 system_boundary_defined if {
 	input.system_categorization.system_boundary.clearly_defined == true
 	input.system_categorization.system_boundary.documented == true
@@ -183,6 +197,8 @@ system_boundary_defined if {
 }
 
 # Categorization Documentation Requirements
+default categorization_documentation_complete := false
+
 categorization_documentation_complete if {
 	input.system_categorization.documentation.categorization_results_documented == true
 	input.system_categorization.documentation.rationale_provided == true
@@ -191,6 +207,8 @@ categorization_documentation_complete if {
 }
 
 # Information System Owner Responsibilities
+default system_owner_responsibilities_met := false
+
 system_owner_responsibilities_met if {
 	input.system_categorization.system_owner.identified == true
 	input.system_categorization.system_owner.categorization_approved == true
@@ -198,6 +216,8 @@ system_owner_responsibilities_met if {
 }
 
 # Senior Agency Information Security Officer (SAISO) Review
+default saiso_review_completed := false
+
 saiso_review_completed if {
 	input.system_categorization.saiso_review.completed == true
 	input.system_categorization.saiso_review.approval_documented == true
@@ -205,6 +225,8 @@ saiso_review_completed if {
 }
 
 # Provisional Authorization Consideration
+default provisional_authorization_considered := false
+
 provisional_authorization_considered if {
 	input.system_categorization.provisional_authorization.evaluated == true
 	input.system_categorization.provisional_authorization.rationale_documented == true
@@ -216,6 +238,8 @@ provisional_authorization_considered if {
 }
 
 # External Service Dependencies
+default external_dependencies_identified := false
+
 external_dependencies_identified if {
 	count(input.system_categorization.external_dependencies) >= 0
 	every dependency in input.system_categorization.external_dependencies {
@@ -226,6 +250,8 @@ external_dependencies_identified if {
 }
 
 # Aggregate RMF Categorization compliance
+default rmf_categorization_compliant := false
+
 rmf_categorization_compliant if {
 	confidentiality_properly_categorized
 	integrity_properly_categorized
@@ -257,5 +283,5 @@ rmf_categorization_compliance := {
 	"provisional_authorization_considered": data.nist.rmf.categorize.provisional_authorization_considered,
 	"external_dependencies_identified": data.nist.rmf.categorize.external_dependencies_identified,
 	"overall_compliant": data.nist.rmf.categorize.rmf_categorization_compliant,
-	"system_impact_level": input.system_categorization.overall_impact_level,
+	"system_impact_level": object.get(input, ["system_categorization", "overall_impact_level"], null),
 }

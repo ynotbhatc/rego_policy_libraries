@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [network, pfsense]
 #   coverage:
-#     checks: 21
+#     checks: 22
 #     cited: 19
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_pfsense
 
 # CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0
@@ -159,9 +159,15 @@ any_rule_allows_all_wan if {
     some rule in input.filter.rule
     rule.interface == "wan"
     rule.type == "pass"
-    not rule.source
-    not rule.destination
+    rule_side_is_any(rule, "source")
+    rule_side_is_any(rule, "destination")
 }
+
+# pfSense config.xml renders "any" as a present (empty) element, e.g.
+# <source><any/></source> -> {"any": ""}; an absent side is also unrestricted.
+rule_side_is_any(rule, side) if not rule[side]
+
+rule_side_is_any(rule, side) if "any" in object.keys(rule[side])
 
 # 2.1.4  Firewall logging enabled on at least block rules
 firewall_logging if {
@@ -341,7 +347,7 @@ section_4_violations contains msg if {
 # rather than silently passing.
 no_vulnerable_packages if {
     input.vulnerability_scan.performed == true
-    count(input.vulnerable_packages) == 0
+    count(object.get(input, "vulnerable_packages", null)) == 0
 }
 
 # 5.1.2  Captive portal disabled if not in use
@@ -357,8 +363,14 @@ captive_portal_disabled if {
 
 section_5_violations contains msg if {
     input.vulnerability_scan.performed == true
-    not no_vulnerable_packages
+    count(input.vulnerable_packages) > 0
     msg := "5.1.1 Packages with known vulnerabilities detected — update immediately"
+}
+
+section_5_violations contains msg if {
+    input.vulnerability_scan.performed == true
+    not is_array(object.get(input, "vulnerable_packages", null))
+    msg := "5.1.1 UNABLE TO VERIFY — vulnerability scan performed but input.vulnerable_packages not provided"
 }
 
 section_5_violations contains msg if {

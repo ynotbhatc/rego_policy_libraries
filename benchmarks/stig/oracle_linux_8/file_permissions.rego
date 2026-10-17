@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.oracle_linux_8.file_permissions
 
 # DISA STIG for Oracle Linux 8 - File Permissions Module
@@ -35,11 +35,9 @@ default compliant := false
 default no_unowned_files := false
 
 no_unowned_files if {
+	# Missing evidence is not a pass: the offender list must be collected (empty = none found).
+	is_array(input.file_permissions.unowned_files)
 	count(input.file_permissions.unowned_files) == 0
-}
-
-no_unowned_files if {
-	not input.file_permissions.unowned_files
 }
 
 status_ol08_00_010780 := "Not_a_Finding" if { no_unowned_files } else := "Open"
@@ -58,11 +56,9 @@ finding_ol08_00_010780 := {
 default no_ungrouped_files := false
 
 no_ungrouped_files if {
+	# Missing evidence is not a pass: the offender list must be collected (empty = none found).
+	is_array(input.file_permissions.ungrouped_files)
 	count(input.file_permissions.ungrouped_files) == 0
-}
-
-no_ungrouped_files if {
-	not input.file_permissions.ungrouped_files
 }
 
 status_ol08_00_010790 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
@@ -138,11 +134,9 @@ finding_ol08_00_010300 := {
 default home_dir_permissions_ok := false
 
 home_dir_permissions_ok if {
+	# Missing evidence is not a pass: the offender list must be collected (empty = none found).
+	is_array(input.file_permissions.insecure_home_dirs)
 	count(input.file_permissions.insecure_home_dirs) == 0
-}
-
-home_dir_permissions_ok if {
-	not input.file_permissions.insecure_home_dirs
 }
 
 status_ol08_00_010730 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
@@ -185,7 +179,16 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# Evidence gate: a module with none of its facts collected is unevaluated, not compliant.
+evidence_present if {
+	object.get(input, "file_permissions", null) != null
+}
+
+# NOTE: `compliant` is scoped to CAT I findings only (module convention), and this module carries
+# no CAT I findings. Whether CAT II should also gate it is an open scope decision, see the
+# validation 2026-10-17 report.
 compliant if {
+	evidence_present
 	count(open_cat_i) == 0
 }
 

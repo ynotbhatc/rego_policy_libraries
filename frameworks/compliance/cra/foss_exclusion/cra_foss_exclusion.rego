@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: orchestrator
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cra.foss_exclusion
 
 import rego.v1
@@ -50,7 +50,13 @@ import rego.v1
 # conflicts with commercial markers (mis-claim detection), plus two
 # self-assessment hygiene checks (library practice, not CRA duties).
 
-default compliant := true # default is "no obligation" — exclusion applies
+# `default compliant := true` used to sit here: the rule below could then never make `compliant`
+# false, because when violations existed the default still applied. The default is false; an
+# entity that makes no exemption claim has no mis-claim to report and still reaches compliant via
+# the rule below (the exclusion boundary is conditional-applicability: "no claim" = no obligation).
+# Claimed exemptions with undeclared commercial markers are treated as "marker absent" by design
+# (pinned by tests/test_cra_main.rego); whether that should be a violation is a pending decision.
+default compliant := false
 
 default exempt := false
 
