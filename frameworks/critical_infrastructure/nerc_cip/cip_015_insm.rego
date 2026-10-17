@@ -42,16 +42,22 @@ r1_compliant if {
     r1_annual_review_current
 }
 
-# At least one system must be evaluated for INSM applicability
+# At least one system must be evaluated for INSM applicability. Systems that are
+# explicitly out of scope (low impact, or no External Routable Connectivity) are
+# not judged: listing one must not make R1 false.
 r1_systems_identified if {
     count(input.insm.systems) > 0
-    every system in input.insm.systems {
+    every system in [s | some s in input.insm.systems; not insm_out_of_scope(s)] {
         system.system_id
         system.impact_categorization in ["high", "medium"]
         system.has_external_routable_connectivity == true
         system.esp_name
     }
 }
+
+insm_out_of_scope(system) if system.impact_categorization == "low"
+
+insm_out_of_scope(system) if system.has_external_routable_connectivity == false
 
 r1_annual_review_current if {
     review_ns := time.parse_rfc3339_ns(input.insm.categorization_review_date)
@@ -64,100 +70,86 @@ r1_annual_review_current if {
 # For each system in R1, implement monitoring within each ESP
 # ---------------------------------------------------------------------------
 
+# No INSM system inventory is no evidence: R2 cannot be reported compliant.
+insm_systems_present if {
+    is_array(input.insm.systems)
+    count(input.insm.systems) > 0
+}
+
+# Systems in scope for R2 (High/Medium impact with External Routable Connectivity)
+r2_applicable(system) if {
+    system.impact_categorization in ["high", "medium"]
+    system.has_external_routable_connectivity == true
+}
+
+# Each sub-requirement needs ALL of its elements (they were previously OR-ed, so
+# one satisfied element reported the whole sub-requirement as met).
+r2_1_ok(system) if {
+    system.network_baseline.established == true
+    system.network_baseline.documented == true
+}
+
+r2_2_ok(system) if {
+    system.anomaly_detection.implemented == true
+    system.anomaly_detection.covers_esp == true
+}
+
+r2_3_ok(system) if {
+    system.malicious_comm_detection.capability_documented == true
+    count(system.malicious_comm_detection.tools) > 0
+}
+
+r2_4_ok(system) if {
+    system.response_process.documented == true
+    system.response_process.includes_notification == true
+    system.response_process.includes_investigation == true
+}
+
 r2_compliant if {
+    insm_systems_present
     count(r2_violations) == 0
 }
 
 # R2.1: Network baseline established for each applicable system's ESP
 r2_1_compliant if {
+    insm_systems_present
     violations := [system |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.network_baseline.established == true
-    ]
-    count(violations) == 0
-}
-
-r2_1_compliant if {
-    violations := [system |
-        system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.network_baseline.documented == true
+        r2_applicable(system)
+        not r2_1_ok(system)
     ]
     count(violations) == 0
 }
 
 # R2.2: Anomaly detection implemented within each ESP
 r2_2_compliant if {
+    insm_systems_present
     violations := [system |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.anomaly_detection.implemented == true
-    ]
-    count(violations) == 0
-}
-
-r2_2_compliant if {
-    violations := [system |
-        system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.anomaly_detection.covers_esp == true
+        r2_applicable(system)
+        not r2_2_ok(system)
     ]
     count(violations) == 0
 }
 
 # R2.3: Capability to identify malicious communications within the ESP
 r2_3_compliant if {
+    insm_systems_present
     violations := [system |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.malicious_comm_detection.capability_documented == true
-    ]
-    count(violations) == 0
-}
-
-r2_3_compliant if {
-    violations := [system |
-        system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        count(system.malicious_comm_detection.tools) == 0
+        r2_applicable(system)
+        not r2_3_ok(system)
     ]
     count(violations) == 0
 }
 
 # R2.4: Response process for malicious or anomalous communications
 r2_4_compliant if {
+    insm_systems_present
     violations := [system |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.response_process.documented == true
-    ]
-    count(violations) == 0
-}
-
-r2_4_compliant if {
-    violations := [system |
-        system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.response_process.includes_notification == true
-    ]
-    count(violations) == 0
-}
-
-r2_4_compliant if {
-    violations := [system |
-        system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.response_process.includes_investigation == true
+        r2_applicable(system)
+        not r2_4_ok(system)
     ]
     count(violations) == 0
 }
@@ -166,49 +158,45 @@ r2_4_compliant if {
 r2_violations := violations if {
     r2_1_v := [v |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.network_baseline.established == true
+        r2_applicable(system)
+        not r2_1_ok(system)
         v := {
             "system_id": system.system_id,
             "sub_requirement": "R2.1",
-            "finding": "Network baseline not established for ESP",
+            "finding": "Network baseline not established and documented for ESP",
             "esp": system.esp_name
         }
     ]
     r2_2_v := [v |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.anomaly_detection.implemented == true
+        r2_applicable(system)
+        not r2_2_ok(system)
         v := {
             "system_id": system.system_id,
             "sub_requirement": "R2.2",
-            "finding": "Anomaly detection not implemented within ESP",
+            "finding": "Anomaly detection not implemented across the ESP",
             "esp": system.esp_name
         }
     ]
     r2_3_v := [v |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.malicious_comm_detection.capability_documented == true
+        r2_applicable(system)
+        not r2_3_ok(system)
         v := {
             "system_id": system.system_id,
             "sub_requirement": "R2.3",
-            "finding": "Malicious communication detection capability not documented",
+            "finding": "Malicious communication detection capability not documented or no tools identified",
             "esp": system.esp_name
         }
     ]
     r2_4_v := [v |
         system := input.insm.systems[_]
-        system.impact_categorization in ["high", "medium"]
-        system.has_external_routable_connectivity == true
-        not system.response_process.documented == true
+        r2_applicable(system)
+        not r2_4_ok(system)
         v := {
             "system_id": system.system_id,
             "sub_requirement": "R2.4",
-            "finding": "Response process for anomalous/malicious communications not documented",
+            "finding": "Response process for anomalous/malicious communications not fully documented (documented, notification, investigation)",
             "esp": system.esp_name
         }
     ]
