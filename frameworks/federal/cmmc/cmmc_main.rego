@@ -231,11 +231,22 @@ cmmc_level_1_compliant if {
     si_report.compliant == true
 }
 
+# A domain whose report is undefined contributes [] violations through its
+# default stub, so violations alone cannot fail the aggregate: every domain's own
+# compliant flag must also hold.
+all_domains_compliant if passing_domains == total_domains
+
 default cmmc_level_2_compliant := false
-cmmc_level_2_compliant if count(all_violations) == 0
+cmmc_level_2_compliant if {
+    count(all_violations) == 0
+    all_domains_compliant
+}
 
 default compliant := false
-compliant if count(all_violations) == 0
+compliant if {
+    count(all_violations) == 0
+    all_domains_compliant
+}
 
 # ---------------------------------------------------------------------------
 # Full report
