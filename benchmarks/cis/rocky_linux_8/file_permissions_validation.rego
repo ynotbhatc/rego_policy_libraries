@@ -40,7 +40,11 @@ critical_file_violations contains sprintf("CIS 6.1.x: Critical file '%s' has inc
 ]) if {
 	some file in input.critical_files.analysis
 	not file.fully_compliant
-	file.exists
+	not file.exists == false
+}
+
+critical_file_violations contains "CIS 6.1.x: evidence missing - critical_files.analysis not collected" if {
+	count(object.get(input, ["critical_files", "analysis"], [])) == 0
 }
 
 critical_file_violations contains sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode]) if {
@@ -134,7 +138,17 @@ risk_level := "critical" if {
 	input.suid_files.unknown_count > 5
 } else := "medium" if {
 	input.unowned_files.count > 0
+} else := "unknown" if {
+	not risk_evidence_present
 } else := "low"
+
+# "low" is only meaningful when every count the risk level reads was collected.
+risk_evidence_present if {
+	is_number(input.world_writable.count)
+	is_number(input.critical_files.non_compliant_count)
+	is_number(input.suid_files.unknown_count)
+	is_number(input.unowned_files.count)
+}
 
 report := {
 	"compliant": compliant,
