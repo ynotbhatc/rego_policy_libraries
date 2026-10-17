@@ -10,10 +10,23 @@ import rego.v1
 
 import data.eu_ai_act.main as pkg
 
-# A minimal-risk system that declares the prohibited facts false.
+# A minimal-risk system that declares the prohibited facts false. Every Article 5 practice must
+# be assessed (an unassessed practice is a violation), so each section is declared with explicit
+# false flags (validation 2026-10-17).
 clean_minimal := {"eu_ai_act": {
 	"system_classification": {"risk_tier": "minimal_risk"},
-	"prohibited": {"subliminal_manipulation": {"uses_subliminal_techniques": false}},
+	"prohibited": {
+		"subliminal_manipulation": {"uses_subliminal_techniques": false},
+		"vulnerability_exploitation": {"distorts_behavior": false},
+		"social_scoring": {"deployed_by_public_authority": false},
+		"realtime_biometric_id": {"deployed_in_public_spaces": false},
+		"biometric_categorization": {"infers_race": false},
+		"emotion_recognition": {"deployed_in_workplace": false},
+		"facial_recognition_scraping": {"database_created_by_scraping": false},
+		"predictive_policing": {"assesses_individual_criminal_risk": false},
+		"intimate_imagery": {"can_generate_realistic_intimate_imagery": false},
+		"csam": {"can_generate_csam": false},
+	},
 }}
 
 test_empty_input_is_non_compliant if {

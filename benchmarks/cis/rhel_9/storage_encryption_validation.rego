@@ -71,10 +71,10 @@ violations contains msg if {
 # STIG RHEL-09-672020: Crypto policy must align with FIPS when FIPS is required
 violations contains msg if {
 	input.storage_encryption.fips_mode_required
-	not fips_compliant_policy(input.storage_encryption.crypto_policy)
+	not fips_compliant_policy(object.get(input.storage_encryption, "crypto_policy", ""))
 	msg := sprintf(
 		"STIG RHEL-09-672020: Crypto policy '%v' does not meet FIPS requirements — use FIPS or FUTURE",
-		[input.storage_encryption.crypto_policy],
+		[object.get(input.storage_encryption, "crypto_policy", "not collected")],
 	)
 }
 
@@ -180,6 +180,42 @@ violations contains msg if {
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
 violations contains "STIG RHEL-09-672010: FAIL-CLOSED - facts 'input.storage_encryption' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
 	not input.storage_encryption
+}
+
+# An empty object is not evidence: each collected fact must be present with the right type.
+# (fips_mode_required, data_encryption_required are policy switches, absent = not required.)
+required_arrays := [
+	"unencrypted_data_partitions",
+	"luks_volumes",
+	"crypttab_entries",
+	"crypttab_missing_devices",
+	"fstab_unencrypted_data_mounts",
+]
+
+required_bools := ["fips_enabled", "swap_present"]
+
+violations contains msg if {
+	input.storage_encryption
+	some key in required_arrays
+	not is_array(object.get(input.storage_encryption, key, null))
+	msg := sprintf("STIG RHEL-09-231010: evidence missing — storage_encryption.%s not collected", [key])
+}
+
+violations contains msg if {
+	input.storage_encryption
+	some key in required_bools
+	not is_boolean(object.get(input.storage_encryption, key, null))
+	msg := sprintf("STIG RHEL-09-672010: evidence missing — storage_encryption.%s not collected", [key])
+}
+
+violations contains "STIG RHEL-09-672020: evidence missing — storage_encryption.crypto_policy not collected" if {
+	input.storage_encryption
+	not is_string(object.get(input.storage_encryption, "crypto_policy", null))
+}
+
+violations contains "STIG RHEL-09-231030: evidence missing — storage_encryption.fstab_entries not collected" if {
+	input.storage_encryption.data_encryption_required
+	not is_array(object.get(input.storage_encryption, "fstab_entries", null))
 }
 
 compliant if {

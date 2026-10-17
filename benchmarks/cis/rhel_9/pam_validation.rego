@@ -40,9 +40,17 @@ pwquality_config := {key: value |
     value := trim_space(parts[1])
 }
 
+# Active (non-comment, non-blank) lines of a PAM file; a commented-out directive is not configuration.
+active_pam_lines(filename) := [l |
+    some line in split(input.pam[filename], "\n")
+    l := trim_space(line)
+    l != ""
+    not startswith(l, "#")
+]
+
 # Helper to check PAM files
 check_pam_file(filename, pattern) if {
-    some line in split(input.pam[filename], "\n")
+    some line in active_pam_lines(filename)
     contains(line, pattern)
 }
 
@@ -91,13 +99,13 @@ violations contains msg if {
 
 violations contains msg if {
     check_pam_file("system_auth", "pam_faillock.so")
-    not contains(input.pam.system_auth, "deny=")
+    not check_pam_file("system_auth", "deny=")
     msg := "CIS 5.4.2: Account lockout threshold (deny) not configured"
 }
 
 violations contains msg if {
     check_pam_file("system_auth", "pam_faillock.so")
-    not contains(input.pam.system_auth, "unlock_time=")
+    not check_pam_file("system_auth", "unlock_time=")
     msg := "CIS 5.4.2: Account lockout time (unlock_time) not configured"
 }
 
@@ -111,7 +119,7 @@ violations contains msg if {
 violations contains msg if {
     check_pam_file("system_auth", "remember=")
     system_auth_line := [line |
-        some line in split(input.pam.system_auth, "\n")
+        some line in active_pam_lines("system_auth")
         contains(line, "remember=")
     ][0]
     remember_match := regex.find_n(`remember=(\d+)`, system_auth_line, 1)
@@ -134,6 +142,11 @@ violations contains msg if {
 
 # CIS 5.5.1: Ensure minimum days between password changes is configured
 violations contains msg if {
+    not input.pam.pass_min_days
+    msg := "CIS 5.5.1.1: evidence missing — pam.pass_min_days (PASS_MIN_DAYS) not collected"
+}
+
+violations contains msg if {
     input.pam.pass_min_days
     to_number(input.pam.pass_min_days) < 1
     msg := sprintf("CIS 5.5.1.1: PASS_MIN_DAYS is %s, should be 1 or more", [input.pam.pass_min_days])
@@ -141,12 +154,22 @@ violations contains msg if {
 
 # CIS 5.5.2: Ensure password expiration is 365 days or less
 violations contains msg if {
+    not input.pam.pass_max_days
+    msg := "CIS 5.5.1.2: evidence missing — pam.pass_max_days (PASS_MAX_DAYS) not collected"
+}
+
+violations contains msg if {
     input.pam.pass_max_days
     to_number(input.pam.pass_max_days) > 365
     msg := sprintf("CIS 5.5.1.2: PASS_MAX_DAYS is %s, should be 365 or less", [input.pam.pass_max_days])
 }
 
 # CIS 5.5.3: Ensure password expiration warning days is 7 or more
+violations contains msg if {
+    not input.pam.pass_warn_age
+    msg := "CIS 5.5.1.3: evidence missing — pam.pass_warn_age (PASS_WARN_AGE) not collected"
+}
+
 violations contains msg if {
     input.pam.pass_warn_age
     to_number(input.pam.pass_warn_age) < 7
@@ -180,17 +203,23 @@ violations contains msg if {
 
 # CIS 5.5.3: Ensure default group for root is GID 0
 violations contains msg if {
+    object.get(input.pam, "root_gid", null) == null
+    msg := "CIS 5.5.3: evidence missing — pam.root_gid not collected"
+}
+
+violations contains msg if {
     input.pam.root_gid
     to_number(input.pam.root_gid) != 0
     msg := sprintf("CIS 5.5.3: Root account GID is %s, should be 0", [input.pam.root_gid])
 }
 
 # CIS 5.5.4: Ensure default user umask is 027 or more restrictive
+# 027 octal = 23: the umask must set at least the group-write, other-read/write/execute bits.
+umask_restrictive(u) if bits.and(octal(u), 23) == 23
+
 violations contains msg if {
     input.pam.default_umask
-    umask_value := to_number(input.pam.default_umask)
-    umask_value > 27
-    not umask_value in [77, 177, 277, 377]
+    not umask_restrictive(input.pam.default_umask)
     msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 
@@ -220,4 +249,13 @@ violations contains msg if {
 # Compliance check
 compliant if {
     count(violations) == 0
+}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
 }

@@ -123,3 +123,21 @@ test_violations_populated_on_empty_input if {
 	is_set(result)
 	count(result) > 0
 }
+
+# Validation fixes 2026-10-17: sudoers mode compared as octal bit mask; missing mode is a violation.
+test_5_3_sudoers_mode_stricter_and_unpadded_ok if {
+	every m in ["0440", "440", "0400", "0o440", "0000"] {
+		i := object.union(compliant_sudo, {"sudoers_mode": m})
+		sudo.compliant with input as {"sudo": i}
+	}
+}
+
+test_5_3_sudoers_mode_group_write_flagged if {
+	i := object.union(compliant_sudo, {"sudoers_mode": "0660"})
+	not sudo.compliant with input as {"sudo": i}
+}
+
+test_5_3_sudoers_mode_missing_flagged if {
+	i := json.remove(compliant_sudo, ["/sudoers_mode"])
+	not sudo.compliant with input as {"sudo": i}
+}

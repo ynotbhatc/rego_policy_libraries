@@ -34,12 +34,10 @@ default compliant := false
 # System must not have empty passwords in /etc/shadow
 default no_empty_password_hashes := false
 
+# Missing evidence is not a pass: the offender list must be collected (an empty list = none found).
 no_empty_password_hashes if {
+	is_array(input.local_accounts_with_empty_passwords)
 	count(input.local_accounts_with_empty_passwords) == 0
-}
-
-no_empty_password_hashes if {
-	not input.local_accounts_with_empty_passwords
 }
 
 status_ol08_00_020330 := "Not_a_Finding" if { no_empty_password_hashes } else := "Open"
@@ -162,12 +160,10 @@ finding_ol08_00_020013 := {
 # No duplicate UIDs should exist
 default no_duplicate_uids := false
 
+# Missing evidence is not a pass: the duplicate-UID collection must be present (empty = none found).
 no_duplicate_uids if {
+	object.get(input, "duplicate_uids", null) != null
 	count(input.duplicate_uids) == 0
-}
-
-no_duplicate_uids if {
-	not input.duplicate_uids
 }
 
 status_ol08_00_020240 := "Not_a_Finding" if { no_duplicate_uids } else := "Open"
@@ -309,7 +305,16 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# Evidence gate: a module with none of its facts collected is unevaluated, not compliant.
+evidence_present if {
+	some key in {"password_policy", "pam_config", "local_accounts_with_empty_passwords", "duplicate_uids"}
+	object.get(input, key, null) != null
+}
+
+# NOTE: `compliant` is scoped to CAT I findings only (module convention). Whether CAT II/III
+# should also gate it is an open scope decision, see the validation 2026-10-17 report.
 compliant if {
+	evidence_present
 	count(open_cat_i) == 0
 }
 

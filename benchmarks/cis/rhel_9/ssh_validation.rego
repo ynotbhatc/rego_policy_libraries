@@ -65,9 +65,13 @@ sshd_config := {key: value |
 # CIS 5.2.1 - SSH CONFIG FILE PERMISSIONS
 # =============================================================================
 
-permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config permissions not 0600" if {
+permission_violations contains "CIS 5.2.1: evidence missing — ssh.config_permissions.mode not collected" if {
+	not input.ssh.config_permissions.mode
+}
+
+permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config permissions not 0600 or more restrictive" if {
 	mode := input.ssh.config_permissions.mode
-	mode != "0600"
+	not mode_within(mode, "0600")
 }
 
 permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config not owned by root" if {
@@ -86,7 +90,7 @@ permission_violations contains "CIS 5.2.1: /etc/ssh/sshd_config group not root" 
 
 permission_violations contains sprintf("CIS 5.2.2: SSH private key %s has incorrect permissions (mode: %s, should be 0600)", [key.stat.path, key.stat.mode]) if {
 	some key in input.ssh.private_key_permissions
-	key.stat.mode != "0600"
+	not mode_within(key.stat.mode, "0600")
 }
 
 permission_violations contains sprintf("CIS 5.2.2: SSH private key %s not owned by root (owner: %s)", [key.stat.path, key.stat.pw_name]) if {
@@ -100,8 +104,7 @@ permission_violations contains sprintf("CIS 5.2.2: SSH private key %s not owned 
 
 permission_violations contains sprintf("CIS 5.2.3: SSH public key %s permissions too permissive (mode: %s)", [key.path, key.mode]) if {
 	some key in input.ssh.public_key_permissions
-	mode_num := to_number(key.mode)
-	mode_num > 644
+	not mode_within(key.mode, "0644")
 }
 
 # =============================================================================
@@ -344,3 +347,15 @@ report := {
 	"controls_checked": 21,
 	"section": "5.2 SSH Server Configuration",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
