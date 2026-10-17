@@ -31,27 +31,51 @@ violations := array.concat(
 	array.concat([v | some v in password_aging_violations], [v | some v in account_violations]),
 )
 
+# Active (non-comment, non-blank) lines of a raw config text; absent text yields no lines.
+active_lines(raw) := [t |
+	some line in split(raw, "\n")
+	t := trim_space(line)
+	t != ""
+	not startswith(t, "#")
+]
+
+pwquality_lines := active_lines(object.get(object.get(input, "pam", {}), "pwquality_conf_raw", ""))
+
+# pwquality.conf: [{"i": position, "k": key, "v": value}] for active `key = value` lines
+pwquality_settings := [{"i": i, "k": m[0][1], "v": m[0][2]} |
+	some i in numbers.range(0, count(pwquality_lines) - 1)
+	m := regex.find_all_string_submatch_n(`^([A-Za-z_]+)\s*=\s*(\S+)`, pwquality_lines[i], 1)
+	count(m) == 1
+]
+
+# the last active occurrence of a key wins, as in libpwquality
+pwquality_value(key) := v if {
+	cands := [s | some s in pwquality_settings; s.k == key]
+	count(cands) > 0
+	last := max([s.i | some s in cands])
+	some s in cands
+	s.i == last
+	v := s.v
+}
+
 # CIS 5.4.1: Ensure password creation requirements are configured (pwquality)
 
 # CIS 5.4.1.1: Minimum password length >= 14
 pwquality_violations contains msg if {
-	some line in split(input.pam.pwquality_conf_raw, "\n")
-	startswith(trim_space(line), "minlen")
-	parts := split(trim_space(line), "=")
-	count(parts) >= 2
-	to_number(trim_space(parts[1])) < 14
-	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [trim_space(parts[1])])
+	minlen := pwquality_value("minlen")
+	to_number(minlen) < 14
+	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [minlen])
 }
 
 pwquality_violations contains msg if {
-	not contains(input.pam.pwquality_conf_raw, "minlen")
+	not pwquality_value("minlen")
 	msg := "CIS 5.4.1.1: Password minimum length (minlen) not configured in pwquality.conf"
 }
 
 # CIS 5.4.1.2: Ensure password complexity (minclass or dcredit/ucredit/lcredit/ocredit)
 pwquality_violations contains msg if {
-	not contains(input.pam.pwquality_conf_raw, "minclass")
-	not contains(input.pam.pwquality_conf_raw, "dcredit")
+	not pwquality_value("minclass")
+	not pwquality_value("dcredit")
 	msg := "CIS 5.4.1.2: Password complexity not configured (minclass or dcredit not set)"
 }
 
@@ -87,10 +111,21 @@ faillock_violations contains msg if {
 }
 
 # CIS 5.4.4: Ensure password hashing algorithm is SHA-512 or yescrypt
+hash_algorithm_configured if {
+	some line in active_lines(object.get(object.get(input, "pam", {}), "common_password_raw", ""))
+	regex.match(`\b(sha512|yescrypt)\b`, line)
+}
+
 pwquality_violations contains msg if {
-	not contains(input.pam.common_password_raw, "sha512")
-	not contains(input.pam.common_password_raw, "yescrypt")
+	not hash_algorithm_configured
 	msg := "CIS 5.4.4: Password hashing algorithm is not SHA-512 or yescrypt"
+}
+
+# Evidence gates: login.defs aging values must be collected.
+password_aging_violations contains msg if {
+	some key in ["pass_min_days", "pass_max_days", "pass_warn_age"]
+	object.get(object.get(input, "pam", {}), key, null) == null
+	msg := sprintf("CIS 5.5: evidence missing — %s not collected", [key])
 }
 
 # CIS 5.5.1: Ensure minimum days between password changes
@@ -147,9 +182,13 @@ account_violations contains msg if {
 }
 
 # Default umask
+account_violations contains "CIS 5.5.x: evidence missing — default_umask not collected" if {
+	object.get(object.get(input, "pam", {}), "default_umask", null) == null
+}
+
 account_violations contains msg if {
-	input.pam.default_umask != "027"
-	input.pam.default_umask != "077"
+	# "027 or more restrictive" means every bit of 027 is set (octal compare, not exact strings)
+	bits.and(octal(input.pam.default_umask), 23) != 23
 	msg := sprintf("CIS 5.5.x: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 
@@ -165,3 +204,15 @@ report := {
 	"section": "5.4-5.5 PAM and Password Policies",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

@@ -40,6 +40,12 @@ default compliant := false
 
 compliant if { count(violations) == 0 }
 
+# Evidence gate: a pipeline with no jobs is not evidence of anything. An empty or
+# mis-keyed input (parser failure, wrong top-level key) must not report compliant.
+violations contains "Evidence: no jobs found in pipeline input — nothing was evaluated" if {
+	count(object.get(input, "jobs", {})) == 0
+}
+
 # =============================================================================
 # GITHUB ACTIONS — ACTION VERSION PINNING
 # =============================================================================
@@ -53,7 +59,6 @@ violations contains sprintf("Pinning: Action '%s' in job '%s' uses mutable ref '
 	step.uses
 	ref := split(step.uses, "@")[1]
 	not is_full_sha(ref)
-	not is_sha_prefix_comment(step)
 }
 
 is_full_sha(ref) if {
@@ -61,9 +66,8 @@ is_full_sha(ref) if {
 	regex.match(`^[0-9a-f]{40}$`, ref)
 }
 
-is_sha_prefix_comment(step) if {
-	step["# sha"] != ""
-}
+# Note: a "# sha" annotation next to a mutable tag is only a comment; the `uses:`
+# ref itself must be the full commit SHA, so there is no annotation exemption.
 
 # =============================================================================
 # GITHUB ACTIONS — WORKFLOW PERMISSIONS
@@ -122,8 +126,10 @@ violations contains sprintf("Secrets: Job '%s' passes secret '%s' as a positiona
 	not is_safe_secret_usage(step["run"], secret_ref)
 }
 
+# Only a real `${{ env.NAME }}` context expression counts; the bare substring
+# "env." (".env.example", "venv.") must not suppress the check.
 is_safe_secret_usage(run_script, _) if {
-	contains(run_script, "env.")
+	regex.match(`\$\{\{\s*env\.[A-Za-z0-9_]+\s*\}\}`, run_script)
 }
 
 # =============================================================================
@@ -194,8 +200,13 @@ violations contains sprintf("Deployment: Job '%s' targets production environment
 	is_production_deployment(job)
 	job.environment
 	not job.environment.url
-	not has_required_reviewers(job_name)
+	not has_required_reviewers(environment_name(job))
 }
+
+# The environment a job targets: `environment: name` or `environment: {name: ...}`.
+environment_name(job) := job.environment if is_string(job.environment)
+
+environment_name(job) := job.environment.name if is_object(job.environment)
 
 is_production_deployment(job) if {
 	env_name := lower(object.get(job, ["environment", "name"], object.get(job, "environment", "")))
@@ -208,9 +219,9 @@ is_production_deployment(job) if {
 	lower(step["with"]["environment"]) in {"production", "prod"}
 }
 
-has_required_reviewers(job_name) if {
+has_required_reviewers(env_name) if {
 	some env in input._metadata.environments
-	env.name == job_name
+	env.name == env_name
 	count(env.reviewers) > 0
 }
 
@@ -218,17 +229,32 @@ has_required_reviewers(job_name) if {
 # SELF-HOSTED RUNNER GOVERNANCE
 # =============================================================================
 
+# `runs-on` may be a string, a list of labels, or an object {group, labels}.
+runs_on_labels(job) := [job["runs-on"]] if is_string(job["runs-on"])
+
+runs_on_labels(job) := job["runs-on"] if is_array(job["runs-on"])
+
+runs_on_labels(job) := object.get(job["runs-on"], "labels", []) if is_object(job["runs-on"])
+
+uses_self_hosted(job) if {
+	some label in runs_on_labels(job)
+	lower(label) == "self-hosted"
+}
+
+has_runner_group(job) if {
+	is_object(job["runs-on"])
+	job["runs-on"].group
+}
+
 violations contains sprintf("Runners: Job '%s' uses self-hosted runner without runner group restriction — specify runs-on with a named group", [job_name]) if {
 	some job_name, job in input.jobs
-	some label in job["runs-on"]
-	label == "self-hosted"
-	count(job["runs-on"]) == 1
+	uses_self_hosted(job)
+	not has_runner_group(job)
 }
 
 violations contains sprintf("Runners: Job '%s' uses self-hosted runner for PR from fork — potential privilege escalation (restrict to github-hosted or require approval)", [job_name]) if {
 	some job_name, job in input.jobs
-	some label in job["runs-on"]
-	label == "self-hosted"
+	uses_self_hosted(job)
 	input._metadata.trigger == "pull_request"
 	input._metadata.is_fork_pr
 }
@@ -241,13 +267,23 @@ violations contains sprintf("Images: Job '%s' container '%s' uses 'latest' tag �
 	some job_name, job in input.jobs
 	container_name := object.get(job, ["container", "image"], "")
 	container_name != ""
-	endswith(container_name, ":latest")
+	is_latest_image(container_name)
+}
+
+# `:latest`, or no tag and no digest at all (which resolves to latest).
+is_latest_image(image) if endswith(image, ":latest")
+
+is_latest_image(image) if {
+	not contains(image, "@")
+	segments := split(image, "/")
+	not contains(segments[count(segments) - 1], ":")
 }
 
 violations contains sprintf("Images: Job '%s' service '%s' uses 'latest' tag — pin to digest", [job_name, svc_name]) if {
 	some job_name, job in input.jobs
 	some svc_name, svc in object.get(job, "services", {})
-	endswith(svc.image, ":latest")
+	is_latest_image(object.get(svc, "image", ""))
+	object.get(svc, "image", "") != ""
 }
 
 violations contains sprintf("Images: Job '%s' container image '%s' is from unapproved registry", [job_name, image]) if {
@@ -308,6 +344,7 @@ violations_by_category := {
 	"runners":      [v | some v in violations; contains(v, "Runners:")],
 	"images":       [v | some v in violations; contains(v, "Images:")],
 	"dependencies": [v | some v in violations; contains(v, "Dependencies:")],
+	"evidence":     [v | some v in violations; contains(v, "Evidence:")],
 }
 
 compliance_report := {

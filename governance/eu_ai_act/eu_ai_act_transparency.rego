@@ -25,12 +25,25 @@ compliant if {
 }
 
 # =============================================================================
+# Evidence gate
+# =============================================================================
+
+# Each Article 50 obligation below applies only when its condition holds (a chatbot
+# exists, content is generated, ...), so a section that is absent is read as "not
+# applicable". An assessment that is itself absent or empty is not evidence, though:
+# without it nothing was evaluated, so it must not report compliant.
+violations contains "Article 50: evidence missing — eu_ai_act.transparency assessment not provided" if {
+	count(object.get(object.get(input, "eu_ai_act", {}), "transparency", {})) == 0
+}
+
+# =============================================================================
 # Article 50.1 — Chatbots interacting with natural persons
 # =============================================================================
 
 violations contains msg if {
 	input.eu_ai_act.transparency.chatbot.interacts_with_natural_persons == true
 	not input.eu_ai_act.transparency.chatbot.users_informed_of_ai_nature == true
+	not input.eu_ai_act.transparency.chatbot.disclosure_at_interaction_start == true
 	not input.eu_ai_act.transparency.chatbot.obvious_ai_context == true
 	msg := "Article 50.1: Chatbot or conversational AI system does not inform users they are interacting with an AI and not a human at the start of each interaction"
 }
@@ -149,7 +162,7 @@ violations contains msg if {
 violations contains msg if {
 	input.eu_ai_act.transparency.deployment.high_risk_system == true
 	not input.eu_ai_act.transparency.deployment.registered_in_eu_database == true
-	msg := "Article 50.5: High-risk AI system not registered in the EU database for AI systems as required before deployment"
+	msg := "Article 49: High-risk AI system not registered in the EU database for AI systems as required before deployment"
 }
 
 violations contains msg if {

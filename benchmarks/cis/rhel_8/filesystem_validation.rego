@@ -24,8 +24,7 @@ import rego.v1
 default compliant := false
 
 compliant if {
-	# fail-closed: no facts, no compliance
-	input.mount_options
+	# fail-closed: missing evidence sections are themselves violations
 	count(violations) == 0
 }
 
@@ -36,6 +35,27 @@ violations := array.concat(
 	),
 	array.concat([v | some v in sticky_bit_violations], [v | some v in usb_storage_violation]),
 )
+
+# Evidence gates: a section that was not collected (absent or empty) is a violation, not a pass.
+filesystem_module_violations contains "CIS 1.1.1.x: evidence missing — disabled_filesystem_modules not collected" if {
+	count(object.get(object.get(input, "disabled_filesystem_modules", {}), "modules", [])) == 0
+}
+
+partition_violations contains "CIS 1.1.2.x: evidence missing — separate_partitions not collected" if {
+	count(object.get(object.get(input, "separate_partitions", {}), "analysis", [])) == 0
+}
+
+mount_option_violations contains "CIS 1.1.2.x: evidence missing — mount_options not collected" if {
+	count(object.get(input, "mount_options", {})) == 0
+}
+
+sticky_bit_violations contains "CIS 1.1.22: evidence missing — sticky_bit not collected" if {
+	count(object.get(input, "sticky_bit", {})) == 0
+}
+
+usb_storage_violation contains "CIS 1.1.1.8: evidence missing — usb_storage not collected" if {
+	count(object.get(input, "usb_storage", {})) == 0
+}
 
 # CIS 1.1.1.x: Disabled filesystem modules
 filesystem_module_violations contains sprintf("CIS 1.1.1.x: Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)", [module.module, module.loaded, module.disabled]) if {

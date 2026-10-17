@@ -91,9 +91,9 @@ time_sync_violations contains violation if {
 time_sync_violations contains violation if {
 	input.time_synchronization.active_service == "chronyd"
 	not input.chronyd.has_time_sources
-	violation := sprintf("CIS 2.1.1.1: chronyd has no time sources configured (servers: %d, pools: %d)", [
-		input.chronyd.servers_configured,
-		input.chronyd.pools_configured,
+	violation := sprintf("CIS 2.1.1.1: chronyd has no time sources configured (servers: %v, pools: %v)", [
+		object.get(input.chronyd, "servers_configured", "unknown"),
+		object.get(input.chronyd, "pools_configured", "unknown"),
 	])
 }
 
@@ -103,7 +103,7 @@ unnecessary_service_violations contains violation if {
 	service.active
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is active (risk: %s)", [
 		service.service,
-		service.risk_level,
+		object.get(service, "risk_level", "unknown"),
 	])
 }
 
@@ -113,7 +113,7 @@ unnecessary_service_violations contains violation if {
 	not service.active
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is enabled (risk: %s)", [
 		service.service,
-		service.risk_level,
+		object.get(service, "risk_level", "unknown"),
 	])
 }
 
@@ -152,7 +152,7 @@ package_violations contains violation if {
 	pkg.installed
 	violation := sprintf("CIS 2.2.12: Web server package installed: %s (%s)", [
 		pkg["package"],
-		pkg.version,
+		object.get(pkg, "version", "unknown"),
 	])
 }
 
@@ -162,8 +162,8 @@ package_violations contains violation if {
 	some pkg in input.client_packages.installed_packages
 	violation := sprintf("CIS 2.3.x: Unnecessary client package installed: %s (%s, severity: %s)", [
 		pkg["package"],
-		pkg.version,
-		pkg.severity,
+		object.get(pkg, "version", "unknown"),
+		object.get(pkg, "severity", "unknown"),
 	])
 }
 
@@ -188,7 +188,7 @@ package_violations contains violation if {
 	pkg.installed
 	violation := sprintf("CIS 2.2.1: X Window System package installed on server: %s (%s)", [
 		pkg["package"],
-		pkg.version,
+		object.get(pkg, "version", "unknown"),
 	])
 }
 

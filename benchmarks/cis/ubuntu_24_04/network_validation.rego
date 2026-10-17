@@ -31,6 +31,34 @@ violations := array.concat(
 	array.concat([v | some v in ipv6_violations], [v | some v in network_interface_violations]),
 )
 
+# Required sysctl parameters: each must appear in sysctl_parameters.analysis,
+# otherwise the checks below would silently pass on missing evidence.
+required_sysctls := {
+	"net.ipv4.tcp_syncookies": "CIS 3.2.8",
+	"net.ipv4.conf.all.rp_filter": "CIS 3.2.7",
+	"net.ipv4.conf.all.log_martians": "CIS 3.2.4",
+	"net.ipv4.icmp_echo_ignore_broadcasts": "CIS 3.2.5",
+	"net.ipv4.conf.all.send_redirects": "CIS 3.1.2",
+	"net.ipv4.conf.default.send_redirects": "CIS 3.1.2",
+}
+
+sysctl_collected(name) if {
+	some param in input.sysctl_parameters.analysis
+	param.parameter == name
+}
+
+sysctl_violations contains msg if {
+	some name, cis in required_sysctls
+	not sysctl_collected(name)
+	msg := sprintf("%s: evidence missing — sysctl %s not collected", [cis, name])
+}
+
+ip_forwarding_violations contains msg if {
+	some key in ["ipv4_forwarding", "ipv6_forwarding"]
+	object.get(object.get(input, "ip_forwarding", {}), key, null) == null
+	msg := sprintf("CIS 3.1.1: evidence missing — ip_forwarding.%s not collected", [key])
+}
+
 # CIS 3.x: Kernel sysctl parameters
 sysctl_violations contains msg if {
 	some param in input.sysctl_parameters.non_compliant_params
@@ -69,14 +97,13 @@ sysctl_violations contains msg if {
 
 # CIS 3.1.1: IP forwarding disabled
 ip_forwarding_violations contains msg if {
+	# the measured value decides; a collector-supplied *_compliant flag cannot override it
 	input.ip_forwarding.ipv4_forwarding != 0
-	not input.ip_forwarding.ipv4_compliant
 	msg := sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv4_forwarding])
 }
 
 ip_forwarding_violations contains msg if {
 	input.ip_forwarding.ipv6_forwarding != 0
-	not input.ip_forwarding.ipv6_compliant
 	msg := sprintf("CIS 3.1.1: IPv6 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv6_forwarding])
 }
 
@@ -125,7 +152,7 @@ ipv6_violations contains msg if {
 	input.require_ipv6_disabled == true
 	not input.ipv6.disabled
 	input.ipv6.address_count > 0
-	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %s, addresses: %d)", [input.ipv6.status, input.ipv6.address_count])
+	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %s, addresses: %d)", [object.get(input.ipv6, "status", "unknown"), input.ipv6.address_count])
 }
 
 # CIS 3.2.9: IPv6 router advertisements disabled
@@ -147,13 +174,13 @@ network_interface_violations contains msg if {
 
 network_interface_violations contains msg if {
 	not input.wireless_interfaces.compliant
-	msg := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [input.wireless_interfaces.count])
+	msg := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [object.get(object.get(input, "wireless_interfaces", {}), "count", "unknown")])
 }
 
 # CIS 3.5.x: Firewall (Ubuntu uses ufw or nftables)
 network_interface_violations contains msg if {
 	not input.firewall.active
-	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [input.firewall.type])
+	msg := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [object.get(object.get(input, "firewall", {}), "type", "unknown")])
 }
 
 network_interface_violations contains msg if {
@@ -169,6 +196,11 @@ network_interface_violations contains msg if {
 	input.firewall.default_incoming != "deny"
 	input.firewall.default_incoming != "reject"
 	msg := sprintf("CIS 3.5.1.1: UFW default incoming policy is '%s', should be deny or reject", [input.firewall.default_incoming])
+}
+
+network_interface_violations contains "CIS 3.5.1.1: evidence missing — firewall.default_incoming not collected" if {
+	input.firewall.type == "ufw"
+	object.get(input.firewall, "default_incoming", null) == null
 }
 
 # Risk assessment

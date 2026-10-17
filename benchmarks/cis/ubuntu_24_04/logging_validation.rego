@@ -28,8 +28,21 @@ compliant if {
 
 violations := array.concat(
 	array.concat([v | some v in rsyslog_violations], [v | some v in journald_violations]),
-	[v | some v in log_file_violations],
+	array.concat([v | some v in log_file_violations], [v | some v in logrotate_violations]),
 )
+
+# Evidence gates: journald settings and the rsyslog file mode / rule count must be collected.
+journald_violations contains msg if {
+	some key in ["forward_to_syslog", "compress_enabled", "storage_mode"]
+	object.get(object.get(input, "journald", {}), key, null) == null
+	msg := sprintf("CIS 4.2.2: evidence missing — journald.%s not collected", [key])
+}
+
+rsyslog_violations contains msg if {
+	some key in ["file_create_mode", "logging_rules_count"]
+	object.get(object.get(input, "rsyslog", {}), key, null) == null
+	msg := sprintf("CIS 4.2.1: evidence missing — rsyslog.%s not collected", [key])
+}
 
 # CIS 4.2.1.1: rsyslog installed
 rsyslog_violations contains msg if {
@@ -58,8 +71,8 @@ journald_violations contains msg if {
 
 # CIS 4.2.1.4: rsyslog default file permissions
 rsyslog_violations contains msg if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
+	input.rsyslog.file_create_mode
+	not mode_within(input.rsyslog.file_create_mode, "0640")
 	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode])
 }
 
@@ -107,9 +120,9 @@ log_file_violations contains msg if {
 	file.exists
 	msg := sprintf("CIS 4.2.3: Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
 		file.file,
-		file.actual_mode, file.expected_mode,
-		file.actual_owner, file.expected_owner,
-		file.actual_group, file.expected_group,
+		object.get(file, "actual_mode", "unknown"), object.get(file, "expected_mode", "unknown"),
+		object.get(file, "actual_owner", "unknown"), object.get(file, "expected_owner", "unknown"),
+		object.get(file, "actual_group", "unknown"), object.get(file, "expected_group", "unknown"),
 	])
 }
 
@@ -119,8 +132,8 @@ log_file_violations contains msg if {
 	msg := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [file.file, file.mode, file.issue])
 }
 
-# logrotate installed
-rsyslog_violations contains msg if {
+# logrotate installed (reported in its own section, not under rsyslog)
+logrotate_violations contains msg if {
 	not input.logrotate.installed
 	msg := "CIS 4.2.x: logrotate is not installed (logs may fill disk)"
 }
@@ -132,6 +145,7 @@ report := {
 	"rsyslog_violations": count(rsyslog_violations),
 	"journald_violations": count(journald_violations),
 	"log_file_violations": count(log_file_violations),
+	"logrotate_violations": count(logrotate_violations),
 	"rsyslog": {
 		"installed": object.get(input, ["rsyslog", "installed"], null),
 		"service_active": object.get(input, ["rsyslog", "service_active"], null),
@@ -148,3 +162,15 @@ report := {
 	"section": "4.2 Logging Configuration",
 	"benchmark": "DERIVED from CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0 (applied to Ubuntu 24.04 LTS)",
 }
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0

@@ -31,6 +31,35 @@ violations := array.concat(
 	array.concat([v | some v in ownership_violations], [v | some v in suid_sgid_violations]),
 )
 
+# Evidence gates: a section that was not collected (absent or empty) is a violation, not a pass.
+critical_file_violations contains "CIS 6.1.x: evidence missing — critical_files.analysis not collected" if {
+	count(object.get(object.get(input, "critical_files", {}), "analysis", [])) == 0
+}
+
+critical_file_violations contains "SSH Private Keys: evidence missing — ssh_private_keys not collected" if {
+	count(object.get(input, "ssh_private_keys", {})) == 0
+}
+
+world_writable_violations contains "CIS 6.1.10: evidence missing — world_writable not collected" if {
+	count(object.get(input, "world_writable", {})) == 0
+}
+
+ownership_violations contains "CIS 6.1.11: evidence missing — unowned_files not collected" if {
+	count(object.get(input, "unowned_files", {})) == 0
+}
+
+ownership_violations contains "CIS 6.1.12: evidence missing — ungrouped_files not collected" if {
+	count(object.get(input, "ungrouped_files", {})) == 0
+}
+
+suid_sgid_violations contains "CIS 6.1.13: evidence missing — suid_files not collected" if {
+	count(object.get(input, "suid_files", {})) == 0
+}
+
+suid_sgid_violations contains "CIS 6.1.14: evidence missing — sgid_files not collected" if {
+	count(object.get(input, "sgid_files", {})) == 0
+}
+
 # CIS 6.1.x: Critical system file permissions
 critical_file_violations contains msg if {
 	some file in input.critical_files.analysis
@@ -38,9 +67,9 @@ critical_file_violations contains msg if {
 	file.exists
 	msg := sprintf("CIS 6.1.x: Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)", [
 		file.file,
-		file.actual_mode, file.expected_mode,
-		file.actual_owner, file.expected_owner,
-		file.actual_group, file.expected_group,
+		object.get(file, "actual_mode", "unknown"), object.get(file, "expected_mode", "unknown"),
+		object.get(file, "actual_owner", "unknown"), object.get(file, "expected_owner", "unknown"),
+		object.get(file, "actual_group", "unknown"), object.get(file, "expected_group", "unknown"),
 	])
 }
 
@@ -80,6 +109,7 @@ critical_file_violations contains msg if {
 }
 
 critical_file_violations contains msg if {
+	count(object.get(input, "ssh_private_keys", {})) > 0
 	not input.ssh_private_keys.all_compliant
 	msg := "SSH Private Keys: One or more SSH host keys have insecure permissions"
 }
