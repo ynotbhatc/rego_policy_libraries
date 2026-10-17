@@ -49,6 +49,11 @@ import rego.v1
 
 default compliant := false
 
+# A missing measurement fails closed: an unreported retention/MTTD/MTTR does not meet the limit.
+monitoring_at_most_or_least(key, "min", n) if input.monitoring[key] >= n
+
+monitoring_at_most_or_least(key, "max", n) if input.monitoring[key] <= n
+
 # ---------------------------------------------------------------------------
 # SR 6.1 — Audit log accessibility
 # Ensure audit logs are accessible to authorized personnel in a timely manner.
@@ -60,10 +65,10 @@ violations contains msg if {
 }
 
 violations contains msg if {
-    input.monitoring.ics_log_retention_days < 90
+    not monitoring_at_most_or_least("ics_log_retention_days", "min", 90)
     msg := sprintf(
         "IEC 62443 SR 6.1 (TRE): IACS audit logs are retained for only %v days. Minimum 90-day retention is required to support incident investigations (1 year recommended for regulatory environments).",
-        [input.monitoring.ics_log_retention_days]
+        [object.get(object.get(input, "monitoring", {}), "ics_log_retention_days", "not set")]
     )
 }
 
@@ -118,19 +123,19 @@ violations contains msg if {
 # SR 6.2 RE 1 (SL 2+): Automated monitoring with alert response
 violations contains msg if {
     input.target_sl >= 2
-    input.monitoring.mean_time_to_detect_hours > 24
+    not monitoring_at_most_or_least("mean_time_to_detect_hours", "max", 24)
     msg := sprintf(
         "IEC 62443 SR 6.2 RE 1 SL%v (TRE): Mean time to detect IACS security incidents is %v hours. Target is less than 24 hours at Security Level 2+; real-time detection recommended.",
-        [input.target_sl, input.monitoring.mean_time_to_detect_hours]
+        [input.target_sl, object.get(object.get(input, "monitoring", {}), "mean_time_to_detect_hours", "not set")]
     )
 }
 
 violations contains msg if {
     input.target_sl >= 2
-    input.monitoring.mean_time_to_respond_hours > 4
+    not monitoring_at_most_or_least("mean_time_to_respond_hours", "max", 4)
     msg := sprintf(
         "IEC 62443 SR 6.2 RE 1 SL%v (TRE): Mean time to respond to IACS security incidents is %v hours. Target is less than 4 hours at Security Level 2+.",
-        [input.target_sl, input.monitoring.mean_time_to_respond_hours]
+        [input.target_sl, object.get(object.get(input, "monitoring", {}), "mean_time_to_respond_hours", "not set")]
     )
 }
 
