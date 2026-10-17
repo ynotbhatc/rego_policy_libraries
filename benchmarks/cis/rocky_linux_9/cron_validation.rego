@@ -20,6 +20,18 @@ package cis_rocky_linux_9.cron
 
 import rego.v1
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 default compliant := false
 
 compliant if {
@@ -38,83 +50,39 @@ violations contains msg if {
 	msg := "CIS 5.1.1: cron daemon (crond) is not running"
 }
 
-# CIS 5.1.2: Ensure permissions on /etc/crontab are configured
+# CIS 5.1.2 - 5.1.7: permissions and ownership of the cron files and directories.
+# Missing facts fail closed: an unreported mode/owner/group is a violation, not a pass.
+cron_paths := {
+	"crontab": {"ctl": "5.1.2", "path": "/etc/crontab", "max": "0600", "group": true},
+	"cron_hourly": {"ctl": "5.1.3", "path": "/etc/cron.hourly", "max": "0700", "group": false},
+	"cron_daily": {"ctl": "5.1.4", "path": "/etc/cron.daily", "max": "0700", "group": false},
+	"cron_weekly": {"ctl": "5.1.5", "path": "/etc/cron.weekly", "max": "0700", "group": false},
+	"cron_monthly": {"ctl": "5.1.6", "path": "/etc/cron.monthly", "max": "0700", "group": false},
+	"cron_d": {"ctl": "5.1.7", "path": "/etc/cron.d", "max": "0700", "group": false},
+}
+
+cron_facts := object.get(input, "cron", {})
+
 violations contains msg if {
-	input.cron.crontab_mode
-	input.cron.crontab_mode != "0600"
-	msg := sprintf("CIS 5.1.2: /etc/crontab has mode %s, should be 0600", [input.cron.crontab_mode])
+	some key, spec in cron_paths
+	mode := object.get(cron_facts, concat("", [key, "_mode"]), "<not collected>")
+	not mode_within(mode, spec.max)
+	msg := sprintf("CIS %s: %s has mode %v, should be %s", [spec.ctl, spec.path, mode, spec.max])
 }
 
 violations contains msg if {
-	input.cron.crontab_owner
-	input.cron.crontab_owner != "root"
-	msg := sprintf("CIS 5.1.2: /etc/crontab owned by %s, should be root", [input.cron.crontab_owner])
+	some key, spec in cron_paths
+	owner := object.get(cron_facts, concat("", [key, "_owner"]), "<not collected>")
+	owner != "root"
+	msg := sprintf("CIS %s: %s owned by %v, should be root", [spec.ctl, spec.path, owner])
 }
 
 violations contains msg if {
-	input.cron.crontab_group
-	input.cron.crontab_group != "root"
-	msg := sprintf("CIS 5.1.2: /etc/crontab group is %s, should be root", [input.cron.crontab_group])
-}
-
-# CIS 5.1.3: Ensure permissions on /etc/cron.hourly are configured
-violations contains msg if {
-	input.cron.cron_hourly_mode
-	input.cron.cron_hourly_mode != "0700"
-	msg := sprintf("CIS 5.1.3: /etc/cron.hourly has mode %s, should be 0700", [input.cron.cron_hourly_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_hourly_owner != "root"
-	msg := sprintf("CIS 5.1.3: /etc/cron.hourly owned by %s, should be root", [input.cron.cron_hourly_owner])
-}
-
-# CIS 5.1.4: Ensure permissions on /etc/cron.daily are configured
-violations contains msg if {
-	input.cron.cron_daily_mode
-	input.cron.cron_daily_mode != "0700"
-	msg := sprintf("CIS 5.1.4: /etc/cron.daily has mode %s, should be 0700", [input.cron.cron_daily_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_daily_owner != "root"
-	msg := sprintf("CIS 5.1.4: /etc/cron.daily owned by %s, should be root", [input.cron.cron_daily_owner])
-}
-
-# CIS 5.1.5: Ensure permissions on /etc/cron.weekly are configured
-violations contains msg if {
-	input.cron.cron_weekly_mode
-	input.cron.cron_weekly_mode != "0700"
-	msg := sprintf("CIS 5.1.5: /etc/cron.weekly has mode %s, should be 0700", [input.cron.cron_weekly_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_weekly_owner != "root"
-	msg := sprintf("CIS 5.1.5: /etc/cron.weekly owned by %s, should be root", [input.cron.cron_weekly_owner])
-}
-
-# CIS 5.1.6: Ensure permissions on /etc/cron.monthly are configured
-violations contains msg if {
-	input.cron.cron_monthly_mode
-	input.cron.cron_monthly_mode != "0700"
-	msg := sprintf("CIS 5.1.6: /etc/cron.monthly has mode %s, should be 0700", [input.cron.cron_monthly_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_monthly_owner != "root"
-	msg := sprintf("CIS 5.1.6: /etc/cron.monthly owned by %s, should be root", [input.cron.cron_monthly_owner])
-}
-
-# CIS 5.1.7: Ensure permissions on /etc/cron.d are configured
-violations contains msg if {
-	input.cron.cron_d_mode
-	input.cron.cron_d_mode != "0700"
-	msg := sprintf("CIS 5.1.7: /etc/cron.d has mode %s, should be 0700", [input.cron.cron_d_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_d_owner != "root"
-	msg := sprintf("CIS 5.1.7: /etc/cron.d owned by %s, should be root", [input.cron.cron_d_owner])
+	some key, spec in cron_paths
+	spec.group
+	group := object.get(cron_facts, concat("", [key, "_group"]), "<not collected>")
+	group != "root"
+	msg := sprintf("CIS %s: %s group is %v, should be root", [spec.ctl, spec.path, group])
 }
 
 # CIS 5.1.8: Ensure cron is restricted to authorized users
@@ -130,8 +98,9 @@ violations contains msg if {
 
 violations contains msg if {
 	input.cron.cron_allow_exists
-	input.cron.cron_allow_mode != "0600"
-	msg := sprintf("CIS 5.1.8: /etc/cron.allow has mode %s, should be 0600", [input.cron.cron_allow_mode])
+	mode := object.get(cron_facts, "cron_allow_mode", "<not collected>")
+	not mode_within(mode, "0600")
+	msg := sprintf("CIS 5.1.8: /etc/cron.allow has mode %v, should be 0600", [mode])
 }
 
 # CIS 5.1.9: Ensure at is restricted to authorized users
@@ -147,8 +116,9 @@ violations contains msg if {
 
 violations contains msg if {
 	input.cron.at_allow_exists
-	input.cron.at_allow_mode != "0600"
-	msg := sprintf("CIS 5.1.9: /etc/at.allow has mode %s, should be 0600", [input.cron.at_allow_mode])
+	mode := object.get(cron_facts, "at_allow_mode", "<not collected>")
+	not mode_within(mode, "0600")
+	msg := sprintf("CIS 5.1.9: /etc/at.allow has mode %v, should be 0600", [mode])
 }
 
 report := {
