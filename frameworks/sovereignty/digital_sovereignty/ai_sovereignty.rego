@@ -63,64 +63,88 @@ import rego.v1
 # AI SERVICE SOVEREIGNTY
 # =============================================================================
 
+# NOTE (undefined trap): `not svc.field in list` is compiled with the field
+# reference hoisted outside the negation, so an ABSENT field makes the whole
+# body undefined and the check silently passes. Fields are therefore read with
+# object.get() (absent -> "", which is never an approved jurisdiction) and
+# compared against `approved`, which is [] when input.approved_jurisdictions is
+# missing (fail closed).
+approved := object.get(input, "approved_jurisdictions", [])
+
+regulated_classes := {"sensitive", "restricted", "sovereign"}
+
+# ai_services / ml_models are inventories of in-scope items: an absent
+# inventory means nothing is in scope for these per-item checks.
+ai_services := object.get(input, "ai_services", [])
+
+ml_models := object.get(input, "ml_models", [])
+
 # Regulated data must not be sent to foreign-controlled SaaS AI services
-no_regulated_data_to_foreign_ai if {
-	violations := [svc |
-		svc := input.ai_services[_]
-		svc.deployment_type == "saas"
-		not svc.provider_hq_country in input.approved_jurisdictions
-		svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-		svc.data_sent_for_inference == true
-	]
-	count(violations) == 0
+foreign_ai_offenders contains svc if {
+	some svc in ai_services
+	svc.deployment_type == "saas"
+	not object.get(svc, "provider_hq_country", "") in approved
+	object.get(svc, "data_classification_processed", "") in regulated_classes
+	svc.data_sent_for_inference == true
 }
+
+default no_regulated_data_to_foreign_ai := false
+
+no_regulated_data_to_foreign_ai if count(foreign_ai_offenders) == 0
 
 # Any AI service processing regulated data must be opt-out of training
-training_opt_out_enabled if {
-	violations := [svc |
-		svc := input.ai_services[_]
-		svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-		svc.data_used_for_training == true
-		not svc.opt_out_of_training.enabled == true
-	]
-	count(violations) == 0
+training_offenders contains svc if {
+	some svc in ai_services
+	object.get(svc, "data_classification_processed", "") in regulated_classes
+	svc.data_used_for_training == true
+	not object.get(object.get(svc, "opt_out_of_training", {}), "enabled", false) == true
 }
+
+default training_opt_out_enabled := false
+
+training_opt_out_enabled if count(training_offenders) == 0
 
 # Provider must not retain regulated data beyond session
-no_long_term_ai_data_retention if {
-	violations := [svc |
-		svc := input.ai_services[_]
-		svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-		svc.data_retention_by_provider_days > 0
-	]
-	count(violations) == 0
+retention_offenders contains svc if {
+	some svc in ai_services
+	object.get(svc, "data_classification_processed", "") in regulated_classes
+	svc.data_retention_by_provider_days > 0
 }
 
+default no_long_term_ai_data_retention := false
+
+no_long_term_ai_data_retention if count(retention_offenders) == 0
+
 # AI inference for regulated data must occur in approved jurisdiction
-inference_in_approved_jurisdiction if {
-	violations := [svc |
-		svc := input.ai_services[_]
-		svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-		not svc.inference_location_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+inference_offenders contains svc if {
+	some svc in ai_services
+	object.get(svc, "data_classification_processed", "") in regulated_classes
+	not object.get(svc, "inference_location_country", "") in approved
 }
+
+default inference_in_approved_jurisdiction := false
+
+inference_in_approved_jurisdiction if count(inference_offenders) == 0
 
 # =============================================================================
 # ML TRAINING DATA SOVEREIGNTY
 # =============================================================================
 
-# Training data must remain in approved jurisdiction
+# Training data must remain in approved jurisdiction. Fail closed: the
+# "stays in jurisdiction" flag must be explicitly false AND the data location
+# must be approved (an absent flag is not evidence).
+default training_data_in_jurisdiction := false
+
 training_data_in_jurisdiction if {
-	not input.ml_training.data_leaves_jurisdiction_for_training
-} else if {
 	input.ml_training.data_leaves_jurisdiction_for_training == false
-	input.ml_training.training_data_location_country in input.approved_jurisdictions
+	input.ml_training.training_data_location_country in approved
 }
 
 # Training infrastructure must be in approved jurisdiction
+default training_infra_in_jurisdiction := false
+
 training_infra_in_jurisdiction if {
-	input.ml_training.training_infrastructure_country in input.approved_jurisdictions
+	input.ml_training.training_infrastructure_country in approved
 }
 
 # Sovereign/restricted data must use federated or on-prem training only
@@ -139,33 +163,35 @@ sovereign_data_not_centralised_for_training if {
 # =============================================================================
 
 # Models of foreign government origin must not be deployed
-no_foreign_govt_models if {
-	violations := [m |
-		m := input.ml_models[_]
-		m.origin == "foreign_govt"
-	]
-	count(violations) == 0
+foreign_govt_offenders contains m if {
+	some m in ml_models
+	m.origin == "foreign_govt"
 }
 
-# Models from unapproved countries must be audited
-foreign_models_audited if {
-	violations := [m |
-		m := input.ml_models[_]
-		m.origin_country
-		not m.origin_country in input.approved_jurisdictions
-		not m.audited_for_backdoors == true
-	]
-	count(violations) == 0
+default no_foreign_govt_models := false
+
+no_foreign_govt_models if count(foreign_govt_offenders) == 0
+
+# Models from unapproved (or unknown) countries must be audited
+unaudited_foreign_offenders contains m if {
+	some m in ml_models
+	not object.get(m, "origin_country", "") in approved
+	not m.audited_for_backdoors == true
 }
+
+default foreign_models_audited := false
+
+foreign_models_audited if count(unaudited_foreign_offenders) == 0
 
 # Model weights must be stored in approved jurisdiction
-model_weights_in_jurisdiction if {
-	violations := [m |
-		m := input.ml_models[_]
-		not m.model_weights_location_country in input.approved_jurisdictions
-	]
-	count(violations) == 0
+weights_offenders contains m if {
+	some m in ml_models
+	not object.get(m, "model_weights_location_country", "") in approved
 }
+
+default model_weights_in_jurisdiction := false
+
+model_weights_in_jurisdiction if count(weights_offenders) == 0
 
 # =============================================================================
 # AI GOVERNANCE
@@ -184,6 +210,8 @@ shadow_ai_controlled if {
 }
 
 # Human oversight for automated decisions involving regulated data
+default human_oversight_implemented := false
+
 human_oversight_implemented if {
 	input.ai_governance.human_oversight_for_decisions == true
 }
@@ -193,13 +221,17 @@ human_oversight_implemented if {
 # =============================================================================
 
 # AI outputs must be logged
+default ai_outputs_logged := false
+
 ai_outputs_logged if {
 	input.ai_output_controls.output_logging_enabled == true
 }
 
 # Output logs must be stored in approved jurisdiction
+default ai_output_logs_in_jurisdiction := false
+
 ai_output_logs_in_jurisdiction if {
-	input.ai_output_controls.output_jurisdiction in input.approved_jurisdictions
+	input.ai_output_controls.output_jurisdiction in approved
 }
 
 # =============================================================================
@@ -242,49 +274,37 @@ ai_fairness_controls_implemented if {
 # =============================================================================
 
 violations contains v if {
-	not no_regulated_data_to_foreign_ai
-	svc := input.ai_services[_]
-	svc.deployment_type == "saas"
-	not svc.provider_hq_country in input.approved_jurisdictions
-	svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-	svc.data_sent_for_inference == true
+	some svc in foreign_ai_offenders
 	v := {
 		"domain": "ai_sovereignty",
 		"control": "AI-001",
 		"severity": "critical",
-		"service_id": svc.service_id,
-		"description": concat("", ["Regulated data sent to foreign-controlled AI service: ", svc.service_name, " (", svc.provider_hq_country, ")"]),
+		"service_id": object.get(svc, "service_id", "unknown"),
+		"description": concat("", ["Regulated data sent to foreign-controlled AI service: ", object.get(svc, "service_name", "unknown"), " (", object.get(svc, "provider_hq_country", "unknown"), ")"]),
 		"remediation": "Use self-hosted, on-premises, or approved-jurisdiction AI service; anonymise data before sending",
 	}
 }
 
 violations contains v if {
-	not training_opt_out_enabled
-	svc := input.ai_services[_]
-	svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-	svc.data_used_for_training == true
-	not svc.opt_out_of_training.enabled == true
+	some svc in training_offenders
 	v := {
 		"domain": "ai_sovereignty",
 		"control": "AI-002",
 		"severity": "critical",
-		"service_id": svc.service_id,
-		"description": concat("", ["Regulated data being used to train external AI model: ", svc.service_name]),
+		"service_id": object.get(svc, "service_id", "unknown"),
+		"description": concat("", ["Regulated data being used to train external AI model: ", object.get(svc, "service_name", "unknown")]),
 		"remediation": "Enable training opt-out for this service or cease sending regulated data",
 	}
 }
 
 violations contains v if {
-	not inference_in_approved_jurisdiction
-	svc := input.ai_services[_]
-	svc.data_classification_processed in ["sensitive", "restricted", "sovereign"]
-	not svc.inference_location_country in input.approved_jurisdictions
+	some svc in inference_offenders
 	v := {
 		"domain": "ai_sovereignty",
 		"control": "AI-003",
 		"severity": "high",
-		"service_id": svc.service_id,
-		"description": concat("", ["AI inference on regulated data occurring outside approved jurisdiction: ", svc.inference_location_country]),
+		"service_id": object.get(svc, "service_id", "unknown"),
+		"description": concat("", ["AI inference on regulated data occurring outside approved jurisdiction: ", object.get(svc, "inference_location_country", "unknown")]),
 		"remediation": "Deploy AI inference infrastructure in approved jurisdiction",
 	}
 }
@@ -301,30 +321,25 @@ violations contains v if {
 }
 
 violations contains v if {
-	not no_foreign_govt_models
-	m := input.ml_models[_]
-	m.origin == "foreign_govt"
+	some m in foreign_govt_offenders
 	v := {
 		"domain": "ai_sovereignty",
 		"control": "AI-005",
 		"severity": "critical",
-		"model_id": m.model_id,
-		"description": concat("", ["Model of foreign government origin deployed: ", m.model_name]),
+		"model_id": object.get(m, "model_id", "unknown"),
+		"description": concat("", ["Model of foreign government origin deployed: ", object.get(m, "model_name", "unknown")]),
 		"remediation": "Remove foreign government-origin models; replace with audited open-source or domestically-developed models",
 	}
 }
 
 violations contains v if {
-	not foreign_models_audited
-	m := input.ml_models[_]
-	not m.origin_country in input.approved_jurisdictions
-	not m.audited_for_backdoors == true
+	some m in unaudited_foreign_offenders
 	v := {
 		"domain": "ai_sovereignty",
 		"control": "AI-006",
 		"severity": "high",
-		"model_id": m.model_id,
-		"description": concat("", ["Foreign-origin model deployed without backdoor/bias audit: ", m.model_name, " (", m.origin_country, ")"]),
+		"model_id": object.get(m, "model_id", "unknown"),
+		"description": concat("", ["Foreign-origin (or unknown-origin) model deployed without backdoor/bias audit: ", object.get(m, "model_name", "unknown"), " (", object.get(m, "origin_country", "unknown"), ")"]),
 		"remediation": "Conduct security audit of model weights and training provenance before deployment",
 	}
 }
@@ -373,6 +388,76 @@ violations contains v if {
 	}
 }
 
+# Controls that gate `compliant` and previously had no violation entry
+# (compliant could be false with violation_count 0).
+violations contains v if {
+	some svc in retention_offenders
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-011",
+		"severity": "high",
+		"service_id": object.get(svc, "service_id", "unknown"),
+		"description": concat("", ["AI provider retains regulated data beyond the session: ", object.get(svc, "service_name", "unknown")]),
+		"remediation": "Require zero-retention terms or move the workload to an approved self-hosted service",
+	}
+}
+
+violations contains v if {
+	not training_infra_in_jurisdiction
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-012",
+		"severity": "high",
+		"description": "ML training infrastructure is not in an approved jurisdiction (or its location is not recorded)",
+		"remediation": "Run training in an approved jurisdiction and record training_infrastructure_country",
+	}
+}
+
+violations contains v if {
+	some m in weights_offenders
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-013",
+		"severity": "high",
+		"model_id": object.get(m, "model_id", "unknown"),
+		"description": concat("", ["Model weights not stored in an approved jurisdiction (or location not recorded): ", object.get(m, "model_name", "unknown")]),
+		"remediation": "Store model weights in an approved jurisdiction and record model_weights_location_country",
+	}
+}
+
+violations contains v if {
+	not human_oversight_implemented
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-014",
+		"severity": "high",
+		"description": "No human oversight for automated decisions involving regulated data",
+		"remediation": "Introduce human review for automated decisions that use regulated data",
+	}
+}
+
+violations contains v if {
+	not ai_outputs_logged
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-015",
+		"severity": "medium",
+		"description": "AI outputs are not logged",
+		"remediation": "Enable output logging for AI services",
+	}
+}
+
+violations contains v if {
+	not ai_output_logs_in_jurisdiction
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-016",
+		"severity": "medium",
+		"description": "AI output logs are not stored in an approved jurisdiction",
+		"remediation": "Store AI output logs in an approved jurisdiction",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -412,11 +497,17 @@ report := {
 		"AI-008_shadow_ai_controlled": shadow_ai_controlled,
 		"AI-009_bias_audit_conducted": ai_bias_audit_conducted,
 		"AI-010_fairness_controls_implemented": ai_fairness_controls_implemented,
+		"AI-011_no_long_term_data_retention": no_long_term_ai_data_retention,
+		"AI-012_training_infra_in_jurisdiction": training_infra_in_jurisdiction,
+		"AI-013_model_weights_in_jurisdiction": model_weights_in_jurisdiction,
+		"AI-014_human_oversight": human_oversight_implemented,
+		"AI-015_outputs_logged": ai_outputs_logged,
+		"AI-016_output_logs_in_jurisdiction": ai_output_logs_in_jurisdiction,
 	},
 	"service_summary": {
-		"total_ai_services": count(object.get(input, ["ai_services"], [])),
-		"saas_services": count([s | s := input.ai_services[_]; s.deployment_type == "saas"]),
-		"foreign_saas": count([s | s := input.ai_services[_]; s.deployment_type == "saas"; not s.provider_hq_country in input.approved_jurisdictions]),
+		"total_ai_services": count(ai_services),
+		"saas_services": count([s | some s in ai_services; s.deployment_type == "saas"]),
+		"foreign_saas": count([s | some s in ai_services; s.deployment_type == "saas"; not object.get(s, "provider_hq_country", "") in approved]),
 	},
 	"violations": violations,
 	"violation_count": count(violations),
