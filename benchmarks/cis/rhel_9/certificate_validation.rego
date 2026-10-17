@@ -95,6 +95,27 @@ violations contains msg if {
 	)
 }
 
+# Evidence missing: a cert record without an expiry cannot be judged
+violations contains msg if {
+	some cert in input.certificates.system_certs
+	not is_number(object.get(cert, "days_until_expiry", null))
+	msg := sprintf(
+		"NIST IA-5: evidence missing — Certificate '%v' has no days_until_expiry",
+		[object.get(cert, "subject", "unknown")],
+	)
+}
+
+# Evidence missing: RSA/EC key strength cannot be judged without key_bits
+violations contains msg if {
+	some cert in input.certificates.system_certs
+	cert.key_type in {"RSA", "EC"}
+	not is_number(object.get(cert, "key_bits", null))
+	msg := sprintf(
+		"NIST SC-13: evidence missing — Certificate '%v' has no key_bits",
+		[object.get(cert, "subject", "unknown")],
+	)
+}
+
 # ── Weak Keys ─────────────────────────────────────────────────────────────────
 
 violations contains msg if {
