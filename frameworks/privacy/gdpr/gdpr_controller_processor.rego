@@ -85,7 +85,8 @@ privacy_by_default if {
 # =============================================================================
 
 joint_controller_arrangement if {
-	not input.gdpr.joint_controllers.arrangement_exists
+	# not applicable only when explicitly declared
+	input.gdpr.joint_controllers.arrangement_exists == false
 } else if {
 	input.gdpr.joint_controllers.arrangement_exists
 	input.gdpr.joint_controllers.agreement.documented == true
@@ -203,6 +204,8 @@ compliant if {
 	controller_records
 	processor_records
 	security_of_processing
+	supervisory_authority_cooperation
+	processor_staff_obligations
 }
 
 report := {
