@@ -18,29 +18,86 @@ package cis.network.cisco
 
 import rego.v1
 
+# Every rule used as a value in the report object needs a neutral default,
+# otherwise a single failing check leaves the whole report undefined.
+default aaa_new_model_configured := false
+default aaa_authentication_configured := false
+default aaa_authorization_configured := false
+default aaa_accounting_configured := false
+default local_users_secret_configured := false
+default local_users_not_privilege_15 := false
+default enable_secret_configured := false
+default enable_password_not_configured := false
+default service_password_encryption := false
+default banner_motd_configured := false
+default banner_login_configured := false
+default banner_exec_configured := false
+default ip_source_route_disabled := false
+default ip_proxy_arp_disabled := false
+default ip_unreachables_disabled := false
+default ip_mask_reply_disabled := false
+default ip_redirects_disabled := false
+default ip_directed_broadcast_disabled := false
+default service_pad_disabled := false
+default service_finger_disabled := false
+default udp_small_servers_disabled := false
+default tcp_small_servers_disabled := false
+default cdp_disabled := false
+default lldp_disabled := false
+default logging_enabled := false
+default logging_buffered_configured := false
+default logging_console_configured := false
+default logging_host_configured := false
+default logging_trap_configured := false
+default ntp_authenticate_configured := false
+default ntp_authentication_key_configured := false
+default ntp_trusted_key_configured := false
+default ntp_server_configured := false
+default vty_access_list_configured := false
+default vty_exec_timeout_configured := false
+default vty_transport_ssh_only := false
+default ssh_version_2_configured := false
+default ssh_timeout_configured := false
+default ssh_auth_retries_configured := false
+default service_config_disabled := false
+default boot_network_not_configured := false
+default service_timestamps_debug_configured := false
+default service_timestamps_log_configured := false
+default file_privilege_configured := false
+default cisco_device_compliant := false
+
+# Normalised configuration lines. cisco_config may be a list of lines or one
+# multi-line string; both are handled. Matching is against whole trimmed lines,
+# so "no logging console critical" can never satisfy "logging console critical".
+default cfg_lines := []
+
+cfg_lines := [trim_space(l) | some l in input.cisco_config] if is_array(input.cisco_config)
+
+cfg_lines := [trim_space(l) | some l in split(input.cisco_config, "\n")] if is_string(input.cisco_config)
+
 # CIS Cisco IOS Benchmark
 # Network Device Security Configuration
 
 # CIS 1.1.1 - Ensure 'aaa new-model' is configured
 aaa_new_model_configured if {
-    contains(input.cisco_config, "aaa new-model")
+    "aaa new-model" in cfg_lines
 }
 
 # CIS 1.1.2 - Ensure 'aaa authentication login default group' is configured
 aaa_authentication_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "aaa authentication login default group")
 }
 
 # CIS 1.1.3 - Ensure 'aaa authorization exec default group' is configured
 aaa_authorization_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "aaa authorization exec default group")
 }
 
 # CIS 1.1.4 - Ensure 'aaa accounting exec default start-stop group' is configured
 aaa_accounting_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "aaa accounting exec default start-stop group")
 }
 
@@ -62,44 +119,44 @@ local_users_not_privilege_15 if {
 
 # CIS 1.3.1 - Ensure 'enable secret' is configured
 enable_secret_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "enable secret")
 }
 
 # CIS 1.3.2 - Ensure 'enable password' is not configured
 enable_password_not_configured if {
     count([
-        line | line := input.cisco_config[_]; 
+        line | line := cfg_lines[_]; 
         startswith(line, "enable password")
     ]) == 0
 }
 
 # CIS 1.3.3 - Ensure 'service password-encryption' is configured
 service_password_encryption if {
-    contains(input.cisco_config, "service password-encryption")
+    "service password-encryption" in cfg_lines
 }
 
 # CIS 1.4.1 - Ensure 'banner motd' is configured
 banner_motd_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "banner motd")
 }
 
 # CIS 1.4.2 - Ensure 'banner login' is configured  
 banner_login_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "banner login")
 }
 
 # CIS 1.4.3 - Ensure 'banner exec' is configured
 banner_exec_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "banner exec")
 }
 
 # CIS 2.1.1 - Ensure 'no ip source-route' is configured
 ip_source_route_disabled if {
-    contains(input.cisco_config, "no ip source-route")
+    "no ip source-route" in cfg_lines
 }
 
 # CIS 2.1.2 - Ensure 'no ip proxy-arp' is configured on all interfaces
@@ -139,89 +196,89 @@ ip_directed_broadcast_disabled if {
 
 # CIS 2.2.1 - Ensure 'no service pad' is configured
 service_pad_disabled if {
-    contains(input.cisco_config, "no service pad")
+    "no service pad" in cfg_lines
 }
 
 # CIS 2.2.2 - Ensure 'no service finger' is configured
 service_finger_disabled if {
-    contains(input.cisco_config, "no service finger")
+    "no service finger" in cfg_lines
 }
 
 # CIS 2.2.3 - Ensure 'no service udp-small-servers' is configured
 udp_small_servers_disabled if {
-    contains(input.cisco_config, "no service udp-small-servers")
+    "no service udp-small-servers" in cfg_lines
 }
 
 # CIS 2.2.4 - Ensure 'no service tcp-small-servers' is configured
 tcp_small_servers_disabled if {
-    contains(input.cisco_config, "no service tcp-small-servers")
+    "no service tcp-small-servers" in cfg_lines
 }
 
 # CIS 2.2.5 - Ensure 'no cdp run' is configured if CDP is not required
 cdp_disabled if {
-    contains(input.cisco_config, "no cdp run")
+    "no cdp run" in cfg_lines
 }
 
 # CIS 2.2.6 - Ensure 'no lldp run' is configured if LLDP is not required
 lldp_disabled if {
-    contains(input.cisco_config, "no lldp run")
+    "no lldp run" in cfg_lines
 }
 
 # CIS 2.3.1 - Ensure 'logging on' is configured
 logging_enabled if {
-    contains(input.cisco_config, "logging on")
+    "logging on" in cfg_lines
 }
 
 # CIS 2.3.2 - Ensure 'logging buffered' is configured with appropriate size
 logging_buffered_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "logging buffered")
 }
 
 # CIS 2.3.3 - Ensure 'logging console critical' is configured
 logging_console_configured if {
-    some line in input.cisco_config
-    regex.match("logging console (critical|alerts|emergencies)", line)
+    some line in cfg_lines
+    regex.match(`^logging console (critical|alerts|emergencies)\b`, line)
 }
 
 # CIS 2.3.4 - Ensure 'logging host' is configured
 logging_host_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "logging host")
 }
 
 # CIS 2.3.5 - Ensure 'logging trap informational' is configured
 logging_trap_configured if {
-    some line in input.cisco_config
-    regex.match("logging trap (informational|warnings|notifications|errors|critical|alerts|emergencies)", line)
+    some line in cfg_lines
+    regex.match(`^logging trap (informational|warnings|notifications|errors|critical|alerts|emergencies)\b`, line)
 }
 
 # CIS 2.4.1 - Ensure 'ntp authenticate' is configured
 ntp_authenticate_configured if {
-    contains(input.cisco_config, "ntp authenticate")
+    "ntp authenticate" in cfg_lines
 }
 
 # CIS 2.4.2 - Ensure 'ntp authentication-key' is configured
 ntp_authentication_key_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "ntp authentication-key")
 }
 
 # CIS 2.4.3 - Ensure 'ntp trusted-key' is configured
 ntp_trusted_key_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "ntp trusted-key")
 }
 
 # CIS 2.4.4 - Ensure 'ntp server' is configured
 ntp_server_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "ntp server")
 }
 
 # CIS 2.5.1 - Ensure 'access-list' is configured for vty lines
 vty_access_list_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "line vty")
     # Check if there's an access-class configured for vty
     some vty_line in input.vty_config
@@ -243,12 +300,12 @@ vty_transport_ssh_only if {
 
 # CIS 2.6.1 - Ensure 'ip ssh version 2' is configured
 ssh_version_2_configured if {
-    contains(input.cisco_config, "ip ssh version 2")
+    "ip ssh version 2" in cfg_lines
 }
 
 # CIS 2.6.2 - Ensure 'ip ssh time-out' is configured to 60 seconds or less
 ssh_timeout_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "ip ssh time-out")
     timeout_parts := split(line, " ")
     timeout_value := to_number(timeout_parts[3])
@@ -257,7 +314,7 @@ ssh_timeout_configured if {
 
 # CIS 2.6.3 - Ensure 'ip ssh authentication-retries' is configured to 3 or less
 ssh_auth_retries_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "ip ssh authentication-retries")
     retry_parts := split(line, " ")
     retry_value := to_number(retry_parts[3])
@@ -266,32 +323,32 @@ ssh_auth_retries_configured if {
 
 # CIS 3.1.1 - Ensure 'no service config' is configured
 service_config_disabled if {
-    contains(input.cisco_config, "no service config")
+    "no service config" in cfg_lines
 }
 
 # CIS 3.1.2 - Ensure 'boot network' is not configured
 boot_network_not_configured if {
     count([
-        line | line := input.cisco_config[_]; 
+        line | line := cfg_lines[_]; 
         startswith(line, "boot network")
     ]) == 0
 }
 
 # CIS 3.2.1 - Ensure 'service timestamps debug datetime' is configured
 service_timestamps_debug_configured if {
-    some line in input.cisco_config
-    regex.match("service timestamps debug datetime.*", line)
+    some line in cfg_lines
+    regex.match(`^service timestamps debug datetime\b`, line)
 }
 
 # CIS 3.2.2 - Ensure 'service timestamps log datetime' is configured
 service_timestamps_log_configured if {
-    some line in input.cisco_config
-    regex.match("service timestamps log datetime.*", line)
+    some line in cfg_lines
+    regex.match(`^service timestamps log datetime\b`, line)
 }
 
 # CIS 3.3.1 - Ensure 'file privilege' is configured
 file_privilege_configured if {
-    some line in input.cisco_config
+    some line in cfg_lines
     startswith(line, "file privilege")
 }
 
