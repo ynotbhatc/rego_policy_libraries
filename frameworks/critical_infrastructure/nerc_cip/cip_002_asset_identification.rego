@@ -24,6 +24,11 @@ default all_bes_cyber_systems_identified := false
 default annual_review_performed := false
 default categorization_criteria_documented := false
 default cip_senior_manager_approval := false
+default high_impact_criteria_documented := false
+default medium_impact_criteria_documented := false
+default review_triggered_by_changes := false
+default eacms_classified := false
+default pacs_classified := false
 
 # CIP-002-5.1a: BES Cyber System Categorization
 # Requirement: Identify and categorize BES Cyber Systems and their associated
@@ -113,6 +118,12 @@ annual_review_performed if {
 	review_age_days <= 455 # 15 calendar months
 }
 
+# Conditional applicability: only changes that were reported are judged. No
+# bes_environment_changes list means no change was reported.
+review_triggered_by_changes if {
+	not input.bes_environment_changes
+}
+
 review_triggered_by_changes if {
 	every change in input.bes_environment_changes {
 		change.categorization_impact_assessed == true
@@ -139,6 +150,11 @@ cip_senior_manager_approval if {
 
 # Electronic Access Control or Monitoring Systems (EACMS) and
 # Physical Access Control Systems (PACS) must also be classified
+# Conditional applicability: an entity with no EACMS/PACS lists reports none to classify.
+eacms_classified if {
+	not input.electronic_access_control_systems
+}
+
 eacms_classified if {
 	every eacm in input.electronic_access_control_systems {
 		eacm.associated_bes_system_id
@@ -146,6 +162,10 @@ eacms_classified if {
 		valid_impact_categorization(eacm.impact_categorization)
 		eacm.classification_rationale
 	}
+}
+
+pacs_classified if {
+	not input.physical_access_control_systems
 }
 
 pacs_classified if {
@@ -205,6 +225,61 @@ violations contains v if {
 }
 
 violations contains v if {
+	not high_impact_criteria_documented
+	v := {
+		"standard": "CIP-002",
+		"requirement": "R1",
+		"severity": "high",
+		"description": "High impact (Attachment 1, Criterion 2) criteria not evaluated for the identified high impact BES Cyber Systems",
+		"remediation": "Evaluate every Attachment 1 Section 1 criterion and document the rationale",
+	}
+}
+
+violations contains v if {
+	not medium_impact_criteria_documented
+	v := {
+		"standard": "CIP-002",
+		"requirement": "R1",
+		"severity": "high",
+		"description": "Medium impact (Attachment 1, Criterion 3) criteria not evaluated for the identified medium impact BES Cyber Systems",
+		"remediation": "Evaluate every Attachment 1 Section 2 criterion and document the rationale",
+	}
+}
+
+violations contains v if {
+	not eacms_classified
+	v := {
+		"standard": "CIP-002",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "One or more EACMS are not associated with a BES Cyber System and classified",
+		"remediation": "Classify each EACMS with an associated system, impact categorization and rationale",
+	}
+}
+
+violations contains v if {
+	not pacs_classified
+	v := {
+		"standard": "CIP-002",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "One or more PACS are not associated with a BES Cyber System and classified",
+		"remediation": "Classify each PACS with an associated system and impact categorization",
+	}
+}
+
+violations contains v if {
+	not review_triggered_by_changes
+	v := {
+		"standard": "CIP-002",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "Changes to the BES environment were not assessed for categorization impact",
+		"remediation": "Assess every environment change for categorization impact and update the categorization where needed",
+	}
+}
+
+violations contains v if {
 	not cip_senior_manager_approval
 	v := {
 		"standard": "CIP-002",
@@ -227,6 +302,11 @@ compliant if {
 	categorization_criteria_documented
 	annual_review_performed
 	cip_senior_manager_approval
+	high_impact_criteria_documented
+	medium_impact_criteria_documented
+	eacms_classified
+	pacs_classified
+	review_triggered_by_changes
 }
 
 report := {
@@ -239,6 +319,11 @@ report := {
 		"R1_criteria_documented": categorization_criteria_documented,
 		"R2_annual_review": annual_review_performed,
 		"R3_senior_manager_approval": cip_senior_manager_approval,
+		"R1_high_impact_criteria": high_impact_criteria_documented,
+		"R1_medium_impact_criteria": medium_impact_criteria_documented,
+		"R1_eacms_classified": eacms_classified,
+		"R1_pacs_classified": pacs_classified,
+		"R2_changes_assessed": review_triggered_by_changes,
 	},
 	"systems": {
 		"total": count(object.get(input, ["bes_cyber_systems"], [])),
