@@ -43,13 +43,18 @@ _lwm2m := input.lwm2m
 _obj9 := input.lwm2m.object9
 
 # LwM2M version comparison: "1.1" >= "1.1" and "1.2" >= "1.1"
+# The version may arrive as a string ("1.1") or a number (1.1); both are normalised to text.
+_lwm2m_version_text := _lwm2m.version if is_string(_lwm2m.version)
+
+_lwm2m_version_text := sprintf("%v", [_lwm2m.version]) if is_number(_lwm2m.version)
+
 _lwm2m_version_ok if {
-	parts := split(_lwm2m.version, ".")
+	parts := split(_lwm2m_version_text, ".")
 	to_number(parts[0]) > 1
 }
 
 _lwm2m_version_ok if {
-	parts := split(_lwm2m.version, ".")
+	parts := split(_lwm2m_version_text, ".")
 	to_number(parts[0]) == 1
 	to_number(parts[1]) >= 1
 }
@@ -65,10 +70,20 @@ violations contains "ADM: device is not registered with LwM2M server" if {
 	not _lwm2m.registered == true
 }
 
-violations contains sprintf("ADM: LwM2M version must be >= 1.1, got '%s'", [_lwm2m.version]) if {
+violations contains "ADM: lwm2m.version missing or not a string/number" if {
 	is_object(_lwm2m)
-	is_string(_lwm2m.version)
+	not _lwm2m_version_text
+}
+
+violations contains sprintf("ADM: LwM2M version must be >= 1.1, got '%s'", [_lwm2m_version_text]) if {
+	is_object(_lwm2m)
+	_lwm2m_version_text
 	not _lwm2m_version_ok
+}
+
+violations contains "ADM: lwm2m.registered_objects missing or not an array" if {
+	is_object(_lwm2m)
+	not is_array(object.get(input, ["lwm2m", "registered_objects"], null))
 }
 
 violations contains "ADM: Object /9 (Software Management) must be registered" if {
@@ -82,25 +97,25 @@ violations contains "ADM: lwm2m.object9 missing or not an object" if {
 	not is_object(object.get(input, ["lwm2m", "object9"], null))
 }
 
-violations contains sprintf("ADM: update_result must be 1 (Success), got %v", [_obj9.update_result]) if {
+violations contains sprintf("ADM: update_result must be 1 (Success), got %v", [object.get(_obj9, "update_result", "missing")]) if {
 	is_object(_obj9)
-	_obj9.update_result != 1
+	not _obj9.update_result == 1
 }
 
-violations contains sprintf("ADM: update_state must be 4 (Installed), got %v", [_obj9.update_state]) if {
+violations contains sprintf("ADM: update_state must be 4 (Installed), got %v", [object.get(_obj9, "update_state", "missing")]) if {
 	is_object(_obj9)
-	_obj9.update_state != 4
+	not _obj9.update_state == 4
 }
 
 violations contains "ADM: activation_state must be 1 (Active)" if {
 	is_object(_obj9)
-	_obj9.activation_state != 1
+	not _obj9.activation_state == 1
 }
 
-violations contains sprintf("ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'", [_obj9.pkg_name, input.manifest.applicationId]) if {
+violations contains sprintf("ADM: Object9 pkg_name '%s' does not match manifest applicationId '%s'", [object.get(_obj9, "pkg_name", ""), input.manifest.applicationId]) if {
 	is_object(_obj9)
 	is_string(input.manifest.applicationId)
-	_obj9.pkg_name != input.manifest.applicationId
+	not _obj9.pkg_name == input.manifest.applicationId
 }
 
 # ─── Output ──────────────────────────────────────────────────────────────────
