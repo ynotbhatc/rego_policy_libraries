@@ -247,75 +247,75 @@ age(h) := sprintf("%v h ago", [evaluated_hours(h)]) if evaluated_hours(h)
 
 else := "never"
 
-reason(h, i, "invalid_record") := sprintf(
+reason(_, label, "invalid_record") := sprintf(
 	"AAC estate continuity: %s is malformed (needs a non-empty name and a boolean in_inventory) — it cannot be classified, so it is a finding",
-	[host_label(h, i)],
+	[label],
 )
 
-reason(h, i, "zombie") := sprintf(
+reason(h, label, "zombie") := sprintf(
 	"CIS Controls v8 1.2 / NIST SP 800-53 CM-8: %s is recorded as retired (%s, by %s) but answered an assessment %v h after the retirement — an asset believed gone is still running",
-	[h.name, h.retirement.ref, h.retirement.by, h.retirement.hours_ago - h.last_attempt.hours_ago],
+	[label, h.retirement.ref, h.retirement.by, h.retirement.hours_ago - h.last_attempt.hours_ago],
 )
 
-reason(h, i, "retired") := sprintf(
+reason(h, label, "retired") := sprintf(
 	"%s retired under %s by %s; gone from inventory/provider (%s) — closed out, history kept",
-	[h.name, h.retirement.ref, h.retirement.by, provider_state(h)],
+	[label, h.retirement.ref, h.retirement.by, provider_state(h)],
 )
 
-reason(h, i, "retirement_incomplete") := sprintf(
+reason(h, label, "retirement_incomplete") := sprintf(
 	"%s is recorded as retired (%s) but is still in the inventory — finish the removal or withdraw the record",
-	[h.name, h.retirement.ref],
+	[label, h.retirement.ref],
 )
 
-reason(h, i, "removed_unrecorded") := sprintf(
+reason(h, label, "removed_unrecorded") := sprintf(
 	"NIST SP 800-53 CM-8(1) / CIS Controls v8 1.1: %s was removed by %s (via %v, %v h ago) but there is no decommission record — the removal is unauthorised until one is filed",
-	[h.name, h.removal_event.by, object.get(h.removal_event, "source", "unknown"), object.get(h.removal_event, "hours_ago", "?")],
+	[label, h.removal_event.by, object.get(h.removal_event, "source", "unknown"), object.get(h.removal_event, "hours_ago", "?")],
 )
 
-reason(h, i, "missing") := sprintf(
+reason(h, label, "missing") := sprintf(
 	"NIST SP 800-53 CM-8 / CIS Controls v8 1.1: %s is no longer in the inventory or its provider (in_inventory=%v, provider_state=%s) and there is no record of who removed it or why — unexplained disappearance",
-	[h.name, h.in_inventory, provider_state(h)],
+	[label, h.in_inventory, provider_state(h)],
 )
 
-reason(h, i, "unmanaged_running") := sprintf(
+reason(h, label, "unmanaged_running") := sprintf(
 	"CIS Controls v8 1.1 / NIST SP 800-53 CM-8: %s is running (%v) but is in no inventory being checked — it exists, and nothing is managing or assessing it",
-	[h.name, object.get(h, "provider", "provider")],
+	[label, object.get(h, "provider", "provider")],
 )
 
-reason(h, i, "stopped") := sprintf(
+reason(h, label, "stopped") := sprintf(
 	"%s is powered off (%v) — in scope but not being evaluated; last evaluation: %s",
-	[h.name, object.get(h, "provider", "provider"), age(h)],
+	[label, object.get(h, "provider", "provider"), age(h)],
 )
 
-reason(h, i, "stopped_out_of_scope") := sprintf("%s is powered off; stopped hosts are out of scope here", [h.name])
+reason(_, label, "stopped_out_of_scope") := sprintf("%s is powered off; stopped hosts are out of scope here", [label])
 
-reason(h, i, "active") := sprintf("%s last evaluated %s", [h.name, age(h)])
+reason(h, label, "active") := sprintf("%s last evaluated %s", [label, age(h)])
 
-reason(h, i, "new") := sprintf("%s first seen %v h ago and not yet evaluated", [h.name, first_seen_hours(h)])
+reason(h, label, "new") := sprintf("%s first seen %v h ago and not yet evaluated", [label, first_seen_hours(h)])
 
-reason(h, i, "late") := sprintf(
+reason(h, label, "late") := sprintf(
 	"%s last evaluated %s (expected within %v h; a finding after %v h); last attempt: %s",
-	[h.name, age(h), freshness_hours, stale_after_hours, outcome(h)],
+	[label, age(h), freshness_hours, stale_after_hours, outcome(h)],
 )
 
-reason(h, i, "stale_unreachable") := sprintf(
+reason(h, label, "stale_unreachable") := sprintf(
 	"NIST SP 800-53 CA-7: %s has no evaluation within the last %v h (last evaluation: %s); the last attempt could not reach it — check its address, network path and credentials",
-	[h.name, stale_after_hours, age(h)],
+	[label, stale_after_hours, age(h)],
 )
 
-reason(h, i, "stale_failing") := sprintf(
+reason(h, label, "stale_failing") := sprintf(
 	"NIST SP 800-53 CA-7: %s has no evaluation within the last %v h (last evaluation: %s); the last attempt reached it but failed",
-	[h.name, stale_after_hours, age(h)],
+	[label, stale_after_hours, age(h)],
 )
 
-reason(h, i, "stale_no_evidence") := sprintf(
+reason(h, label, "stale_no_evidence") := sprintf(
 	"NIST SP 800-53 CA-7: %s has no evaluation within the last %v h (last evaluation: %s), although the last attempt succeeded — collection ran but no evidence was stored",
-	[h.name, stale_after_hours, age(h)],
+	[label, stale_after_hours, age(h)],
 )
 
-reason(h, i, "stale_not_targeted") := sprintf(
+reason(h, label, "stale_not_targeted") := sprintf(
 	"NIST SP 800-53 CA-7: %s has no evaluation within the last %v h (last evaluation: %s) and no run has tried to assess it — it is outside every assessment's scope",
-	[h.name, stale_after_hours, age(h)],
+	[label, stale_after_hours, age(h)],
 )
 
 # ── Results ─────────────────────────────────────────────────────────────────
@@ -330,7 +330,7 @@ host_results := [r |
 		"advisory": s in advisory_states,
 		"provider": object.get(h, "provider", "none"),
 		"provider_state": provider_state(h),
-		"reason": reason(h, i, s),
+		"reason": reason(h, host_label(h, i), s),
 	}
 ]
 
