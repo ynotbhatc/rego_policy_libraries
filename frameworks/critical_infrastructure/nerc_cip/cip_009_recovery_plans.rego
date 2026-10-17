@@ -32,6 +32,18 @@ default recovery_plans_current := false
 default recovery_plans_documented := false
 default recovery_testing_performed := false
 
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# Per-system requirements need the BES Cyber System inventory to have been collected.
+bes_inventory_present if is_array(input.bes_cyber_systems)
+
 # CIP-009-6: Recovery Plans for BES Cyber Systems
 # Requirement: Recovery plans for BES Cyber Systems to support the
 # continued stability, operability, and reliability of the Bulk Electric System.
@@ -60,6 +72,7 @@ recovery_plan_roles_defined if {
 # R1.3 - One or more processes for the backup and storage of information
 # required to recover BES Cyber System functionality
 backup_processes_documented if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -93,6 +106,7 @@ network_reconnection_process if {
 
 # Each system must have a recovery plan
 recovery_plans_documented if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -115,29 +129,41 @@ recovery_plan_exists(system) if {
 
 # R2.1 - Review and update recovery plans within 15 calendar months
 recovery_plans_current if {
-	violations := [plan |
-		plan := input.recovery_plans[_]
-		not recovery_plan_current(plan)
+	bes_inventory_present
+	# input.recovery_plans also holds scalar plan-wide settings, so review currency
+	# is judged per high/medium system plan, not over every value in the object.
+	violations := [system |
+		system := input.bes_cyber_systems[_]
+		system.impact_categorization in ["high", "medium"]
+		not recovery_plan_current(input.recovery_plans[system.system_id])
 	]
 	count(violations) == 0
 }
 
 recovery_plan_current(plan) if {
-	plan_age_days := (time.now_ns() - plan.last_review_date) / (24 * 60 * 60 * 1000000000)
+	plan_age_days := (time.now_ns() - date_ns(plan.last_review_date)) / (24 * 60 * 60 * 1000000000)
 	plan_age_days <= 455
 }
 
 # R2.2 - After qualifying event, update plan within 90 days
+# Conditional applicability: R2.2 applies only after a qualifying event; no
+# qualifying_recovery_events list means none occurred.
+post_event_plan_updates if {
+	not input.qualifying_recovery_events
+}
+
 post_event_plan_updates if {
 	every event in input.qualifying_recovery_events {
 		event.plan_review_triggered == true
-		update_age_days := (event.plan_review_completion_date - event.event_date) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (date_ns(event.plan_review_completion_date) - date_ns(event.event_date)) / (24 * 60 * 60 * 1000000000)
 		update_age_days <= 90
 	}
 }
 
 # R2.3 - Communicate the plans to personnel with recovery roles
 plans_communicated if {
+	is_array(input.recovery_team)
+	count(input.recovery_team) > 0
 	violations := [member |
 		member := input.recovery_team[_]
 		not member.plan_communicated == true
@@ -151,6 +177,7 @@ plans_communicated if {
 
 # R3.1 - Test the recovery plan(s) at least once every 15 calendar months
 recovery_testing_performed if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -162,7 +189,7 @@ recovery_testing_performed if {
 recovery_testing_current(system) if {
 	testing := input.recovery_testing[system.system_id]
 	testing.last_test_date
-	test_age_days := (time.now_ns() - testing.last_test_date) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - date_ns(testing.last_test_date)) / (24 * 60 * 60 * 1000000000)
 	test_age_days <= 455
 	testing.test_documented == true
 	testing.issues_resolved == true
@@ -170,6 +197,7 @@ recovery_testing_current(system) if {
 
 # R3.2 - Test each backup and storage process at least once every 15 calendar months
 backup_testing_performed if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -180,7 +208,7 @@ backup_testing_performed if {
 
 backup_test_current(system) if {
 	backup := input.backup_procedures[system.system_id]
-	backup_test_age_days := (time.now_ns() - backup.last_test_date) / (24 * 60 * 60 * 1000000000)
+	backup_test_age_days := (time.now_ns() - date_ns(backup.last_test_date)) / (24 * 60 * 60 * 1000000000)
 	backup_test_age_days <= 455
 	backup.test_documented == true
 	backup.restoration_verified == true
@@ -253,6 +281,17 @@ violations contains v if {
 }
 
 violations contains v if {
+	not post_event_plan_updates
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R2.2",
+		"severity": "medium",
+		"description": "Recovery plan not reviewed and updated within 90 days after a qualifying event",
+		"remediation": "Complete the post-event plan review and update within 90 days",
+	}
+}
+
+violations contains v if {
 	not recovery_testing_performed
 	v := {
 		"standard": "CIP-009",
@@ -292,6 +331,7 @@ compliant if {
 	recovery_testing_performed
 	backup_testing_performed
 	activation_criteria_tested
+	post_event_plan_updates
 }
 
 report := {
