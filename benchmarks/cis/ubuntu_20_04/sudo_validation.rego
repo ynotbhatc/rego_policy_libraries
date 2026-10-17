@@ -26,6 +26,18 @@ compliant if {
 	count(violations) == 0
 }
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # CIS 5.3.1: Ensure sudo is installed
 violations contains msg if {
 	not input.sudo.installed
@@ -89,8 +101,13 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	input.sudo.sudoers_mode != "0440"
-	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440", [input.sudo.sudoers_mode])
+	not mode_within(input.sudo.sudoers_mode, "0440")
+	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440 or more restrictive", [input.sudo.sudoers_mode])
+}
+
+violations contains msg if {
+	not input.sudo.sudoers_mode
+	msg := "CIS 5.3.8: evidence missing — sudo.sudoers_mode not collected"
 }
 
 report := {
