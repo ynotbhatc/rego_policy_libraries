@@ -33,25 +33,47 @@ violations := array.concat(
 
 # CIS 5.4.1: Ensure password creation requirements are configured (pwquality)
 
-# CIS 5.4.1.1: Minimum password length >= 14
-pwquality_violations contains msg if {
-	some line in split(input.pam.pwquality_conf_raw, "\n")
-	startswith(trim_space(line), "minlen")
-	parts := split(trim_space(line), "=")
-	count(parts) >= 2
-	to_number(trim_space(parts[1])) < 14
-	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [trim_space(parts[1])])
+# Config text: only non-comment lines count. A commented default ("# minlen = 8") is not configuration.
+# libpwquality reads the file in order and the last assignment wins.
+pwquality_lines := [trim_space(l) |
+	some l in split(input.pam.pwquality_conf_raw, "\n")
+	trim_space(l) != ""
+	not startswith(trim_space(l), "#")
+]
+
+pwquality_value(key) := v if {
+	vals := [trim_space(m[1]) |
+		some l in pwquality_lines
+		m := regex.find_all_string_submatch_n(sprintf(`^%s\s*=\s*(\S+)`, [key]), l, 1)[0]
+	]
+	count(vals) > 0
+	v := vals[count(vals) - 1]
 }
 
+# CIS 5.4.1.1: Minimum password length >= 14
+minlen_ok if to_number(pwquality_value("minlen")) >= 14
+
 pwquality_violations contains msg if {
-	not contains(input.pam.pwquality_conf_raw, "minlen")
+	minlen := pwquality_value("minlen")
+	not minlen_ok
+	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [minlen])
+}
+
+minlen_configured if pwquality_value("minlen")
+
+pwquality_violations contains msg if {
+	not minlen_configured
 	msg := "CIS 5.4.1.1: Password minimum length (minlen) not configured in pwquality.conf"
 }
 
 # CIS 5.4.1.2: Ensure password complexity (minclass or dcredit/ucredit/lcredit/ocredit)
+complexity_configured if {
+	some key in ["minclass", "dcredit", "ucredit", "lcredit", "ocredit"]
+	pwquality_value(key)
+}
+
 pwquality_violations contains msg if {
-	not contains(input.pam.pwquality_conf_raw, "minclass")
-	not contains(input.pam.pwquality_conf_raw, "dcredit")
+	not complexity_configured
 	msg := "CIS 5.4.1.2: Password complexity not configured (minclass or dcredit not set)"
 }
 
@@ -87,9 +109,16 @@ faillock_violations contains msg if {
 }
 
 # CIS 5.4.4: Ensure password hashing algorithm is SHA-512 or yescrypt
+# a non-comment pam_unix line must name sha512 or yescrypt (as a whole word)
+strong_hash if {
+	some l in split(input.pam.common_password_raw, "\n")
+	not startswith(trim_space(l), "#")
+	contains(l, "pam_unix")
+	regex.match(`(^|[\s=])(sha512|yescrypt)($|[\s])`, l)
+}
+
 pwquality_violations contains msg if {
-	not contains(input.pam.common_password_raw, "sha512")
-	not contains(input.pam.common_password_raw, "yescrypt")
+	not strong_hash
 	msg := "CIS 5.4.4: Password hashing algorithm is not SHA-512 or yescrypt"
 }
 
@@ -147,10 +176,40 @@ account_violations contains msg if {
 }
 
 # Default umask
+# "027 or more restrictive" in octal: group write (020), other r/w/x (007) must be masked
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+umask_ok if bits.and(octal(input.pam.default_umask), 23) == 23
+
 account_violations contains msg if {
-	input.pam.default_umask != "027"
-	input.pam.default_umask != "077"
-	msg := sprintf("CIS 5.5.x: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
+	not umask_ok
+	msg := sprintf("CIS 5.5.x: Default umask is %v, should be 027 or more restrictive (or not collected)", [object.get(input, ["pam", "default_umask"], "<missing>")])
+}
+
+# Evidence: numeric facts must have been collected; an absent number never satisfies a limit.
+num_known(key) if is_number(input.pam[key])
+
+account_violations contains msg if {
+	some key, ctl in {"pass_min_days": "5.5.1", "pass_max_days": "5.5.2", "pass_warn_age": "5.5.3", "inactive_days": "5.5.4"}
+	not num_known(key)
+	msg := sprintf("CIS %s: evidence missing — pam.%s not collected", [ctl, key])
+}
+
+account_violations contains msg if {
+	some key, flag in {"faillock_deny": "faillock_configured", "faillock_unlock_time": "faillock_configured", "remember_count": "remember_configured", "tmout_value": "tmout_configured"}
+	input.pam[flag]
+	not num_known(key)
+	msg := sprintf("CIS 5.4/5.5: evidence missing — pam.%s not collected", [key])
 }
 
 report := {

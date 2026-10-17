@@ -35,6 +35,49 @@ compliant if {
 violations := [v | some v in parameter_violations]
 
 # =============================================================================
+# EVIDENCE: fail closed when the parameter collection (or a required key) is absent
+# =============================================================================
+
+required_parameters := {
+	"AUDIT_SYS_OPERATIONS",
+	"AUDIT_TRAIL",
+	"GLOBAL_NAMES",
+	"OS_ROLES",
+	"REMOTE_LOGIN_PASSWORDFILE",
+	"REMOTE_OS_AUTHENT",
+	"REMOTE_OS_ROLES",
+	"SEC_CASE_SENSITIVE_LOGON",
+	"SEC_RETURN_SERVER_RELEASE_BANNER",
+	"SQL92_SECURITY",
+	"O7_DICTIONARY_ACCESSIBILITY",
+	"SEC_PROTOCOL_ERROR_FURTHER_ACTION",
+}
+
+parameters_present if {
+	is_object(input.parameters)
+	count(input.parameters) > 0
+}
+
+parameter_violations contains violation if {
+	not parameters_present
+	violation := "CIS 2.2: evidence missing — parameters not collected"
+}
+
+parameter_violations contains violation if {
+	parameters_present
+	some key in required_parameters
+	not key in object.keys(input.parameters)
+	violation := sprintf("CIS 2.2: evidence missing — parameter %s not collected", [key])
+}
+
+version_present if is_number(input.oracle_version.major)
+
+parameter_violations contains violation if {
+	not version_present
+	violation := "CIS 2.2: evidence missing — oracle_version.major not collected"
+}
+
+# =============================================================================
 # CIS 2.2.1 - AUDIT_SYS_OPERATIONS
 # =============================================================================
 

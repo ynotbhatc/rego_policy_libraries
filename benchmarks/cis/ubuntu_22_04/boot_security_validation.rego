@@ -58,10 +58,34 @@ grub_violations contains msg if {
 }
 
 # CIS 1.4.2: GRUB config file permissions
+# Modes are octal: compare permission bits ("600", "0600", "0o600" are the same mode;
+# anything granting more than 0600 fails, as does an unparsable value).
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 grub_violations contains msg if {
-	input.grub.config_mode != "0400"
-	input.grub.config_mode != "0600"
+	not input.grub.config_mode
+	msg := "CIS 1.4.2: evidence missing — grub.config_mode not collected"
+}
+
+grub_violations contains msg if {
+	input.grub.config_mode
+	not mode_within(input.grub.config_mode, "0600")
 	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.grub.config_mode])
+}
+
+grub_violations contains msg if {
+	not input.grub.config_owner
+	msg := "CIS 1.4.2: evidence missing — grub.config_owner not collected"
 }
 
 grub_violations contains msg if {
@@ -76,14 +100,23 @@ grub_violations contains msg if {
 }
 
 # CIS 1.5.1: Core dumps restricted
+core_dumps_known if is_boolean(input.process_hardening.core_dumps_enabled)
+
+process_hardening_violations contains msg if {
+	not core_dumps_known
+	msg := "CIS 1.5.1: evidence missing — process_hardening.core_dumps_enabled not collected"
+}
+
 process_hardening_violations contains msg if {
 	input.process_hardening.core_dumps_enabled
 	msg := "CIS 1.5.1: Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
 }
 
+suid_dumpable_zero if sprintf("%v", [input.process_hardening.fs_suid_dumpable]) == "0"
+
 process_hardening_violations contains msg if {
-	input.process_hardening.fs_suid_dumpable != "0"
-	msg := sprintf("CIS 1.5.1: fs.suid_dumpable is %s, should be 0", [input.process_hardening.fs_suid_dumpable])
+	not suid_dumpable_zero
+	msg := sprintf("CIS 1.5.1: fs.suid_dumpable is %v, should be 0 (or was not collected)", [object.get(input, ["process_hardening", "fs_suid_dumpable"], "<missing>")])
 }
 
 # CIS 1.5.2: ASLR enabled
@@ -93,6 +126,13 @@ process_hardening_violations contains msg if {
 }
 
 # CIS 1.5.3: prelink disabled
+prelink_known if is_boolean(input.process_hardening.prelink_installed)
+
+process_hardening_violations contains msg if {
+	not prelink_known
+	msg := "CIS 1.5.3: evidence missing — process_hardening.prelink_installed not collected"
+}
+
 process_hardening_violations contains msg if {
 	input.process_hardening.prelink_installed
 	msg := "CIS 1.5.3: prelink is installed - remove it as it can reduce ASLR effectiveness"
@@ -105,6 +145,9 @@ process_hardening_violations contains msg if {
 }
 
 # AppArmor boot configuration (Ubuntu-specific)
+# grub_cmdline is a plain string; an absent value must not satisfy the check
+apparmor_cmdline_set if contains(input.apparmor.grub_cmdline, "security=apparmor")
+
 apparmor_boot_violations contains msg if {
 	not input.apparmor.bootloader_enabled
 	msg := "CIS 1.6.1.2: AppArmor is not enabled in bootloader configuration"
@@ -112,7 +155,7 @@ apparmor_boot_violations contains msg if {
 
 apparmor_boot_violations contains msg if {
 	input.apparmor.bootloader_enabled
-	not contains(input.apparmor.grub_cmdline, "security=apparmor")
+	not apparmor_cmdline_set
 	msg := "CIS 1.6.1.2: AppArmor security= parameter not set in bootloader"
 }
 

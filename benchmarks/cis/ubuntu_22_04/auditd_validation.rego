@@ -39,16 +39,47 @@ service_violations contains msg if {
 }
 
 # CIS 4.1.1.2: Ensure auditd service is enabled and running
+# A missing service entry (or missing status/state field) is a violation, not a pass.
+auditd_enabled if input.services["auditd.service"].status == "enabled"
+
+auditd_running if input.services["auditd.service"].state == "running"
+
 service_violations contains msg if {
-	service := input.services["auditd.service"]
-	service.status != "enabled"
-	msg := "CIS 4.1.1.2: auditd service not enabled"
+	not auditd_enabled
+	msg := "CIS 4.1.1.2: auditd service not enabled (or service status not collected)"
 }
 
 service_violations contains msg if {
-	service := input.services["auditd.service"]
-	service.state != "running"
-	msg := "CIS 4.1.1.2: auditd service not running"
+	not auditd_running
+	msg := "CIS 4.1.1.2: auditd service not running (or service state not collected)"
+}
+
+# Evidence: the text sections the config checks read must have been collected.
+# (`not contains(input.missing.ref, ...)` is undefined as a whole and would silently pass.)
+config_violations contains msg if {
+	not input.bootloader.grub_config
+	msg := "CIS 4.1.1.3: evidence missing — bootloader.grub_config not collected"
+}
+
+config_violations contains msg if {
+	not input.auditd.config
+	msg := "CIS 4.1.2.1: evidence missing — auditd.config not collected"
+}
+
+# auditd.conf directives: non-comment lines only, "key = value", whole-word key
+conf_lines := [trim_space(l) |
+	some l in split(input.auditd.config, "\n")
+	not startswith(trim_space(l), "#")
+]
+
+conf_sets(key, values) if {
+	some l in conf_lines
+	regex.match(sprintf(`^%s\s*=\s*(%s)\s*$`, [key, concat("|", values)]), l)
+}
+
+conf_sets_any(key) if {
+	some l in conf_lines
+	regex.match(sprintf(`^%s\s*=`, [key]), l)
 }
 
 # CIS 4.1.1.3: Ensure auditing for processes prior to auditd
@@ -65,33 +96,32 @@ config_violations contains msg if {
 
 # CIS 4.1.2.1: Ensure audit log storage size is configured
 config_violations contains msg if {
-	not contains(input.auditd.config, "max_log_file")
+	input.auditd.config
+	not conf_sets_any("max_log_file")
 	msg := "CIS 4.1.2.1: max_log_file not configured in auditd.conf"
 }
 
 # CIS 4.1.2.2: Ensure audit logs are not automatically deleted
 config_violations contains msg if {
-	contains(input.auditd.config, "max_log_file_action = delete")
+	conf_sets("max_log_file_action", ["delete"])
 	msg := "CIS 4.1.2.2: max_log_file_action set to delete (logs will be deleted)"
 }
 
 config_violations contains msg if {
-	contains(input.auditd.config, "max_log_file_action = ignore")
+	conf_sets("max_log_file_action", ["ignore"])
 	msg := "CIS 4.1.2.2: max_log_file_action set to ignore (no action on full logs)"
 }
 
 # CIS 4.1.2.3: Ensure system is disabled when audit logs are full
 config_violations contains msg if {
-	not contains(input.auditd.config, "space_left_action = email")
-	not contains(input.auditd.config, "space_left_action = exec")
-	not contains(input.auditd.config, "space_left_action = single")
-	not contains(input.auditd.config, "space_left_action = halt")
+	input.auditd.config
+	not conf_sets("space_left_action", ["email", "exec", "single", "halt"])
 	msg := "CIS 4.1.2.3: space_left_action not appropriate (should be email, exec, single, or halt)"
 }
 
 config_violations contains msg if {
-	not contains(input.auditd.config, "admin_space_left_action = single")
-	not contains(input.auditd.config, "admin_space_left_action = halt")
+	input.auditd.config
+	not conf_sets("admin_space_left_action", ["single", "halt"])
 	msg := "CIS 4.1.2.3: admin_space_left_action not appropriate (should be single or halt)"
 }
 
@@ -158,11 +188,13 @@ rule_exists(required_rule) if {
 	contains(normalized_active, normalized_required)
 }
 
+# Watch rules are identified by their path; syscall rules by the full rule text
+# (previously every syscall rule produced the same message).
 extract_rule_description(rule) := desc if {
-	contains(rule, "-w")
+	startswith(rule, "-w ")
 	parts := split(rule, " ")
 	desc := parts[1]
-} else := "system call monitoring"
+} else := rule
 
 rules_violations contains msg if {
 	some required_rule in required_rules
@@ -178,9 +210,26 @@ rules_violations contains msg if {
 }
 
 # CIS 4.1.4.1: Audit log file permissions
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+permission_violations contains msg if {
+	not input.auditd.log_permissions
+	msg := "CIS 4.1.4.1: evidence missing — auditd.log_permissions not collected"
+}
+
 permission_violations contains msg if {
 	mode := input.auditd.log_permissions.mode
-	to_number(mode) > 640
+	not mode_within(mode, "0640")
 	msg := sprintf("CIS 4.1.4.1: Audit log permissions too permissive (mode: %s, should be 0640 or less)", [mode])
 }
 

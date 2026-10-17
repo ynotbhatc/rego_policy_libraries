@@ -34,12 +34,17 @@ import rego.v1
 
 required_tags := {"Environment", "Owner", "CostCenter"}
 
+# A tag is present only when it exists and is not null (a null value is as good as missing)
+tag_present(change, tag) if {
+    tags := object.get(change.change.after, "tags", {})
+    tags[tag] != null
+}
+
 violations contains msg if {
     some change in input.resource_changes
     change.change.actions != ["delete"]           # tags don't matter for deletions
     some required_tag in required_tags
-    tags := object.get(change.change.after, "tags", {})
-    not tags[required_tag]
+    not tag_present(change, required_tag)
     msg := sprintf(
         "SENTINEL-TF-001: Resource '%v' (%v) is missing required tag '%v'",
         [change.address, change.type, required_tag]
@@ -52,16 +57,31 @@ violations contains msg if {
 
 sensitive_ports := {22, 3389, 5432, 3306, 1433, 6379, 27017}
 
+# Open to the whole internet over IPv4 or IPv6
+open_to_world(rule) if rule.cidr_blocks[_] == "0.0.0.0/0"
+
+open_to_world(rule) if rule.ipv6_cidr_blocks[_] == "::/0"
+
+# Does the rule cover `port`? Protocol "-1"/"all" covers every port (from_port/to_port are 0
+# for it); tcp/udp use the range; other protocols (icmp...) have no ports. A rule without a
+# protocol is judged by its range.
+covers_port(rule, _) if lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"-1", "all"}
+
+covers_port(rule, port) if {
+    lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"", "tcp", "6", "udp", "17"}
+    rule.from_port <= port
+    rule.to_port >= port
+}
+
 # aws_security_group inline ingress rules
 violations contains msg if {
     some change in input.resource_changes
     change.change.actions != ["delete"]
     change.type == "aws_security_group"
     some rule in object.get(change.change.after, "ingress", [])
-    rule.cidr_blocks[_] == "0.0.0.0/0"
+    open_to_world(rule)
     some port in sensitive_ports
-    rule.from_port <= port
-    rule.to_port >= port
+    covers_port(rule, port)
     msg := sprintf(
         "SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
         [change.address, port]
@@ -74,10 +94,9 @@ violations contains msg if {
     change.change.actions != ["delete"]
     change.type == "aws_security_group_rule"
     object.get(change.change.after, "type", "") == "ingress"
-    change.change.after.cidr_blocks[_] == "0.0.0.0/0"
+    open_to_world(change.change.after)
     some port in sensitive_ports
-    change.change.after.from_port <= port
-    change.change.after.to_port >= port
+    covers_port(change.change.after, port)
     msg := sprintf(
         "SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to 0.0.0.0/0",
         [change.address, port]

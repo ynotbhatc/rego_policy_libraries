@@ -37,6 +37,23 @@ violations := array.concat(
 	),
 )
 
+# Evidence: a section that was not collected is "not assessed", not a pass.
+section_collected(section, key) if is_boolean(input[section][key])
+
+section_collected(section, key) if is_array(input[section][key])
+
+unnecessary_service_violations contains violation if {
+	some section, key in {
+		"autofs": "installed",
+		"unnecessary_services": "analysis",
+		"webserver": "any_installed",
+		"client_packages": "analysis",
+		"x11": "any_installed",
+	}
+	not section_collected(section, key)
+	violation := sprintf("CIS 2.x: evidence missing — %s.%s not collected", [section, key])
+}
+
 # CIS 2.1.x: Disable automounting
 autofs_violations contains violation if {
 	input.autofs.installed
