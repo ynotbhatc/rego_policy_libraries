@@ -18,6 +18,41 @@ package cis.mobile.android
 
 import rego.v1
 
+# Every rule used as a value in the report object needs a neutral default,
+# otherwise a single failing check leaves the whole report undefined.
+default screen_lock_enabled := false
+default password_min_length := false
+default password_complexity := false
+default max_failed_password_attempts := false
+default auto_lock_timeout := false
+default password_history := false
+default password_expiration := false
+default device_encryption_enabled := false
+default sd_card_encryption := false
+default backup_encryption := false
+default unknown_sources_disabled := false
+default app_verification_enabled := false
+default unknown_sources_logging := false
+default play_protect_enabled := false
+default app_permissions_reviewed := false
+default developer_options_disabled := false
+default usb_debugging_disabled := false
+default adb_over_network_disabled := false
+default mock_locations_disabled := false
+default location_services_configured := false
+default bluetooth_secure := false
+default wifi_secure := false
+default nfc_configured := false
+default remote_wipe_enabled := false
+default device_admin_controlled := false
+default google_account_2fa := false
+default automatic_updates_enabled := false
+default safe_browsing_enabled := false
+default organizational_compliance := false
+default privacy_settings_configured := false
+default biometric_auth_secure := false
+default android_device_compliant := false
+
 # CIS Google Android Benchmark
 # Mobile Device Security Configuration
 
