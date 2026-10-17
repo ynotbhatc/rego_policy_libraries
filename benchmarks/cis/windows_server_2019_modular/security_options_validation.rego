@@ -35,6 +35,13 @@ violations := array.concat(
 # Accounts
 # =============================================================================
 
+# The flags below are violations when true, so an absent flag must not read as "disabled".
+account_violations contains msg if {
+	some key in ["administrator_account_enabled", "microsoft_accounts_allowed", "guest_account_enabled"]
+	object.get(input, ["security_options", key], null) == null
+	msg := sprintf("CIS 2.3.1.x: evidence missing - security_options.%s not collected", [key])
+}
+
 # CIS 2.3.1.1: Accounts: Administrator account status = Disabled
 account_violations contains msg if {
 	input.security_options.administrator_account_enabled
@@ -76,6 +83,10 @@ account_violations contains msg if {
 # =============================================================================
 
 # CIS 2.3.7.1: Interactive logon: Do not require CTRL+ALT+DEL = Disabled
+interactive_logon_violations contains "CIS 2.3.7.1: evidence missing - security_options.no_ctrl_alt_del_required not collected" if {
+	object.get(input, ["security_options", "no_ctrl_alt_del_required"], null) == null
+}
+
 interactive_logon_violations contains msg if {
 	input.security_options.no_ctrl_alt_del_required
 	msg := "CIS 2.3.7.1: 'Do not require CTRL+ALT+DEL' should be disabled (CTRL+ALT+DEL should be required)"
@@ -127,13 +138,20 @@ network_violations contains msg if {
 }
 
 # CIS 2.3.11.7: Network security: Minimum session security for NTLM SSP = Require NTLMv2 + 128-bit
+# NTLM SSP minimum session security is a bitmask: 0x00080000 (require NTLMv2 session
+# security) + 0x20000000 (require 128-bit encryption) must both be set. An integer
+# comparison would accept 0x80000000 and similar values with neither bit.
+ntlm_session_security_ok(key) if {
+	bits.and(to_number(input.security_options[key]), 537395200) == 537395200
+}
+
 network_violations contains msg if {
-	input.security_options.ntlm_min_session_security_client < 537395200
+	not ntlm_session_security_ok("ntlm_min_session_security_client")
 	msg := "CIS 2.3.11.7: NTLM SSP minimum session security for NTLM-based clients should require NTLMv2 and 128-bit encryption"
 }
 
 network_violations contains msg if {
-	input.security_options.ntlm_min_session_security_server < 537395200
+	not ntlm_session_security_ok("ntlm_min_session_security_server")
 	msg := "CIS 2.3.11.8: NTLM SSP minimum session security for NTLM-based servers should require NTLMv2 and 128-bit encryption"
 }
 
