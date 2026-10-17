@@ -55,14 +55,14 @@ valid_environments := {"dev", "development", "staging", "stage", "uat", "prod", 
 
 violations contains sprintf("Tagging: Resource '%s' (%s) is missing required tag '%s'", [resource.id, resource.type, tag]) if {
 	some resource in input.resources
-	resource.billable != false
+	object.get(resource, "billable", true) != false
 	some tag in required_tags
 	not resource.tags[tag]
 }
 
 violations contains sprintf("Tagging: Resource '%s' (%s) has empty value for required tag '%s'", [resource.id, resource.type, tag]) if {
 	some resource in input.resources
-	resource.billable != false
+	object.get(resource, "billable", true) != false
 	some tag in required_tags
 	resource.tags[tag]
 	trim_space(resource.tags[tag]) == ""
@@ -153,8 +153,39 @@ violations contains sprintf("Expiry: Resource '%s' expiry date '%s' is in the pa
 violations contains sprintf("Expiry: Resource '%s' expiry date '%s' is invalid — use ISO 8601 format (YYYY-MM-DD)", [resource.id, resource.tags["expiry-date"]]) if {
 	some resource in input.resources
 	resource.tags["expiry-date"]
-	not regex.match(`^[0-9]{4}-[0-9]{2}-[0-9]{2}$`, resource.tags["expiry-date"])
+	not valid_date(resource.tags["expiry-date"])
 }
+
+# A date is valid only if it is shaped YYYY-MM-DD AND is a real calendar date
+# (2025-13-45 matches the pattern but is not a date).
+# (Checked arithmetically rather than with a timestamp parse, which overflows
+# for far-future years such as 9999-12-31.)
+valid_date(date_str) if {
+	regex.match(`^[0-9]{4}-[0-9]{2}-[0-9]{2}$`, date_str)
+	parts := split(date_str, "-")
+	year := to_number(trim_left(parts[0], "0"))
+	month := to_number(trim_left(parts[1], "0"))
+	day := to_number(trim_left(parts[2], "0"))
+	month >= 1
+	month <= 12
+	day >= 1
+	day <= days_in_month(year, month)
+}
+
+days_in_month(_, month) := 31 if month in {1, 3, 5, 7, 8, 10, 12}
+
+days_in_month(_, month) := 30 if month in {4, 6, 9, 11}
+
+days_in_month(year, 2) := 29 if is_leap_year(year)
+
+days_in_month(year, 2) := 28 if not is_leap_year(year)
+
+is_leap_year(year) if {
+	year % 4 == 0
+	year % 100 != 0
+}
+
+is_leap_year(year) if year % 400 == 0
 
 is_past_date(date_str) if {
 	parts := split(date_str, "-")
@@ -169,7 +200,7 @@ is_past_date(date_str) if {
 
 violations contains sprintf("Untagged: Resource '%s' (%s) has no tags at all — add required tags for cost attribution", [resource.id, resource.type]) if {
 	some resource in input.resources
-	resource.billable != false
+	object.get(resource, "billable", true) != false
 	count(object.get(resource, "tags", {})) == 0
 }
 
@@ -216,8 +247,17 @@ violations contains sprintf("Budget: Cost center '%s' has no budget defined in p
 	not input.budget_registry[cost_center]
 }
 
-violations contains sprintf("Budget: Cost center '%s' current spend $%.2f exceeds budget $%.2f (%.0f%% over)", [cost_center, actual, budget, ((actual - budget) / budget) * 100]) if {
+violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)", [cost_center, actual, budget, round(((actual - budget) / budget) * 100)]) if {
 	some cost_center, budget in input.budget_registry
+	budget > 0
+	actual := object.get(input.current_spend, cost_center, 0)
+	actual > budget * 1.1
+}
+
+# A zero (or negative) budget cannot be expressed as a percentage; any spend over it is still a violation.
+violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)", [cost_center, actual, budget]) if {
+	some cost_center, budget in input.budget_registry
+	budget <= 0
 	actual := object.get(input.current_spend, cost_center, 0)
 	actual > budget * 1.1
 }
@@ -230,9 +270,11 @@ total_resources := count(object.get(input, ["resources"], []))
 
 compliant_resources := count([r | some r in input.resources; not resource_has_violation(r.id)])
 
+# Match the quoted id exactly: a bare substring made a violation on 'web-10'
+# mark 'web-1' as non-compliant.
 resource_has_violation(resource_id) if {
 	some v in violations
-	contains(v, resource_id)
+	contains(v, sprintf("'%s'", [resource_id]))
 }
 
 tagging_score := (compliant_resources * 100) / total_resources if {
