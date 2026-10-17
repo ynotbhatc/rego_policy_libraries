@@ -138,12 +138,14 @@ nat_implemented if {
 # =================================================================
 
 # Multi-tenant environment isolation (if applicable)
+# Not applicable (explicitly declared), or applicable with isolation evidence
 multi_tenant_isolation if {
-    input.pci.multi_tenant.applicable == false
-    # OR if applicable:
-    # input.pci.multi_tenant.each_entity_isolated == true
-    # input.pci.multi_tenant.cannot_access_others == true
-    # input.pci.multi_tenant.documented == true
+	input.pci.multi_tenant.applicable == false
+} else if {
+	input.pci.multi_tenant.applicable == true
+	input.pci.multi_tenant.each_entity_isolated == true
+	input.pci.multi_tenant.cannot_access_others == true
+	input.pci.multi_tenant.documented == true
 }
 
 # =================================================================
@@ -302,6 +304,41 @@ pci_requirement_1_compliant if {
 # =================================================================
 # PCI Requirement 1 Score Calculation
 # =================================================================
+
+# Every control referenced by the score, findings and roll-ups has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default network_security_policies_established := false
+default network_security_roles_defined := false
+default network_security_controls_maintained := false
+default firewall_configuration_standards := false
+default firewall_rules_documented := false
+default network_connections_controlled := false
+default inbound_traffic_restricted := false
+default outbound_traffic_restricted := false
+default direct_internet_access_prohibited := false
+default network_segmentation_implemented := false
+default dmz_properly_configured := false
+default nat_implemented := false
+default multi_tenant_isolation := false
+default openshift_network_policies_cde := false
+default service_mesh_pci_security := false
+default container_network_isolation := false
+default openshift_sdn_security := false
+default cloud_security_groups_configured := false
+default vpc_configuration_secure := false
+default cloud_waf_implemented := false
+default network_traffic_monitoring := false
+default network_access_logging := false
+default network_security_correlation := false
+default requirement_1_1_compliant := false
+default requirement_1_2_compliant := false
+default requirement_1_3_compliant := false
+default requirement_1_4_compliant := false
+default requirement_1_5_compliant := false
+default openshift_network_security_compliant := false
+default cloud_network_security_compliant := false
+default network_monitoring_compliant := false
+default pci_requirement_1_compliant := false
 
 default pci_requirement_1_score := 0
 default pci_requirement_1_findings := {}
