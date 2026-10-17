@@ -38,83 +38,64 @@ violations contains msg if {
 	msg := "CIS 5.1.1: cron daemon (cron) is not running"
 }
 
-# CIS 5.1.2: Ensure permissions on /etc/crontab are configured
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+has_key(obj, k) if {
+	_ = obj[k]
+}
+
+# [CIS id, path, input key prefix, max mode, checks group too]
+path_checks := [
+	["5.1.2", "/etc/crontab", "crontab", "0600", true],
+	["5.1.3", "/etc/cron.hourly", "cron_hourly", "0700", false],
+	["5.1.4", "/etc/cron.daily", "cron_daily", "0700", false],
+	["5.1.5", "/etc/cron.weekly", "cron_weekly", "0700", false],
+	["5.1.6", "/etc/cron.monthly", "cron_monthly", "0700", false],
+	["5.1.7", "/etc/cron.d", "cron_d", "0700", false],
+]
+
+# Missing evidence fails closed
 violations contains msg if {
-	input.cron.crontab_mode
-	input.cron.crontab_mode != "0600"
-	msg := sprintf("CIS 5.1.2: /etc/crontab has mode %s, should be 0600", [input.cron.crontab_mode])
+	some c in path_checks
+	some suffix in ["mode", "owner"]
+	not has_key(object.get(input, "cron", {}), sprintf("%s_%s", [c[2], suffix]))
+	msg := sprintf("CIS %s: evidence missing — cron.%s_%s not collected", [c[0], c[2], suffix])
 }
 
 violations contains msg if {
-	input.cron.crontab_owner
-	input.cron.crontab_owner != "root"
-	msg := sprintf("CIS 5.1.2: /etc/crontab owned by %s, should be root", [input.cron.crontab_owner])
+	some c in path_checks
+	c[4]
+	not has_key(object.get(input, "cron", {}), sprintf("%s_group", [c[2]]))
+	msg := sprintf("CIS %s: evidence missing — cron.%s_group not collected", [c[0], c[2]])
 }
 
 violations contains msg if {
-	input.cron.crontab_group
+	some c in path_checks
+	mode := input.cron[sprintf("%s_mode", [c[2]])]
+	not mode_within(mode, c[3])
+	msg := sprintf("CIS %s: %s has mode %s, should be %s", [c[0], c[1], mode, c[3]])
+}
+
+violations contains msg if {
+	some c in path_checks
+	owner := input.cron[sprintf("%s_owner", [c[2]])]
+	owner != "root"
+	msg := sprintf("CIS %s: %s owned by %s, should be root", [c[0], c[1], owner])
+}
+
+violations contains msg if {
 	input.cron.crontab_group != "root"
 	msg := sprintf("CIS 5.1.2: /etc/crontab group is %s, should be root", [input.cron.crontab_group])
-}
-
-# CIS 5.1.3: Ensure permissions on /etc/cron.hourly are configured
-violations contains msg if {
-	input.cron.cron_hourly_mode
-	input.cron.cron_hourly_mode != "0700"
-	msg := sprintf("CIS 5.1.3: /etc/cron.hourly has mode %s, should be 0700", [input.cron.cron_hourly_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_hourly_owner != "root"
-	msg := sprintf("CIS 5.1.3: /etc/cron.hourly owned by %s, should be root", [input.cron.cron_hourly_owner])
-}
-
-# CIS 5.1.4: Ensure permissions on /etc/cron.daily are configured
-violations contains msg if {
-	input.cron.cron_daily_mode
-	input.cron.cron_daily_mode != "0700"
-	msg := sprintf("CIS 5.1.4: /etc/cron.daily has mode %s, should be 0700", [input.cron.cron_daily_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_daily_owner != "root"
-	msg := sprintf("CIS 5.1.4: /etc/cron.daily owned by %s, should be root", [input.cron.cron_daily_owner])
-}
-
-# CIS 5.1.5: Ensure permissions on /etc/cron.weekly are configured
-violations contains msg if {
-	input.cron.cron_weekly_mode
-	input.cron.cron_weekly_mode != "0700"
-	msg := sprintf("CIS 5.1.5: /etc/cron.weekly has mode %s, should be 0700", [input.cron.cron_weekly_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_weekly_owner != "root"
-	msg := sprintf("CIS 5.1.5: /etc/cron.weekly owned by %s, should be root", [input.cron.cron_weekly_owner])
-}
-
-# CIS 5.1.6: Ensure permissions on /etc/cron.monthly are configured
-violations contains msg if {
-	input.cron.cron_monthly_mode
-	input.cron.cron_monthly_mode != "0700"
-	msg := sprintf("CIS 5.1.6: /etc/cron.monthly has mode %s, should be 0700", [input.cron.cron_monthly_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_monthly_owner != "root"
-	msg := sprintf("CIS 5.1.6: /etc/cron.monthly owned by %s, should be root", [input.cron.cron_monthly_owner])
-}
-
-# CIS 5.1.7: Ensure permissions on /etc/cron.d are configured
-violations contains msg if {
-	input.cron.cron_d_mode
-	input.cron.cron_d_mode != "0700"
-	msg := sprintf("CIS 5.1.7: /etc/cron.d has mode %s, should be 0700", [input.cron.cron_d_mode])
-}
-
-violations contains msg if {
-	input.cron.cron_d_owner != "root"
-	msg := sprintf("CIS 5.1.7: /etc/cron.d owned by %s, should be root", [input.cron.cron_d_owner])
 }
 
 # CIS 5.1.8: Ensure cron is restricted to authorized users
@@ -130,7 +111,13 @@ violations contains msg if {
 
 violations contains msg if {
 	input.cron.cron_allow_exists
-	input.cron.cron_allow_mode != "0600"
+	not has_key(input.cron, "cron_allow_mode")
+	msg := "CIS 5.1.8: evidence missing — cron.cron_allow_mode not collected"
+}
+
+violations contains msg if {
+	input.cron.cron_allow_exists
+	not mode_within(input.cron.cron_allow_mode, "0600")
 	msg := sprintf("CIS 5.1.8: /etc/cron.allow has mode %s, should be 0600", [input.cron.cron_allow_mode])
 }
 
@@ -147,7 +134,13 @@ violations contains msg if {
 
 violations contains msg if {
 	input.cron.at_allow_exists
-	input.cron.at_allow_mode != "0600"
+	not has_key(input.cron, "at_allow_mode")
+	msg := "CIS 5.1.9: evidence missing — cron.at_allow_mode not collected"
+}
+
+violations contains msg if {
+	input.cron.at_allow_exists
+	not mode_within(input.cron.at_allow_mode, "0600")
 	msg := sprintf("CIS 5.1.9: /etc/at.allow has mode %s, should be 0600", [input.cron.at_allow_mode])
 }
 
