@@ -36,6 +36,18 @@ default security_patches_applied := false
 default shared_accounts_minimized := false
 default unique_authentication_credentials := false
 
+# Date normaliser: ISO-8601 strings or epoch nanoseconds; anything else is
+# undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# Per-system requirements need the BES Cyber System inventory to have been collected.
+bes_inventory_present if is_array(input.bes_cyber_systems)
+
 # CIP-007-6: Systems Security Management
 # Requirement: Manage system security by specifying select technical, operational,
 # and procedural requirements in support of protecting BES Cyber Systems against
@@ -56,6 +68,7 @@ ports_and_services_policy if {
 
 # R1.2 - Enable only authorized ports and services (disable all others)
 ports_and_services_minimized if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -74,15 +87,17 @@ ports_minimized(system) if {
 
 # R1.3 - Protect physical I/O ports
 physical_io_ports_protected if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
+	bes_inventory_present
+	# Judge only high/medium systems: a low impact system is out of scope and must
+	# not make the whole requirement false.
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		not physical_io_unprotected(system)
 	}
 }
 
+# Missing port-management evidence is a finding, not a pass.
 physical_io_unprotected(system) if {
-	port_mgmt := input.network_port_management[system.system_id]
-	port_mgmt.physical_ports.unused_disabled == false
+	not input.network_port_management[system.system_id].physical_ports.unused_disabled == true
 }
 
 # =============================================================================
@@ -109,12 +124,13 @@ security_patch_evaluation_timely if {
 
 patch_evaluated_timely(patch) if {
 	patch.evaluation.completed == true
-	evaluation_age_days := (patch.evaluation.completion_date - patch.availability_date) / (24 * 60 * 60 * 1000000000)
+	evaluation_age_days := (date_ns(patch.evaluation.completion_date) - date_ns(patch.availability_date)) / (24 * 60 * 60 * 1000000000)
 	evaluation_age_days <= 35
 }
 
 # R2.3 - Install security patches or have documented mitigation if not installable
 security_patches_applied if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -137,6 +153,7 @@ patch_management_adequate(system) if {
 
 # R3.1 - Implement methods to deter, detect, or prevent malicious code
 malicious_code_prevention_implemented if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -171,6 +188,7 @@ malicious_code_mitigation_documented if {
 
 # R4.1 - Log events that might indicate compromise
 security_event_logging_enabled if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -210,6 +228,7 @@ security_log_review_current if {
 
 # R5.1 - Each account must have a unique authentication credential
 unique_authentication_credentials if {
+	bes_inventory_present
 	violations := [system |
 		system := input.bes_cyber_systems[_]
 		system.impact_categorization in ["high", "medium"]
@@ -238,15 +257,15 @@ password_policy_enforced if {
 
 # R5.3 - Change default or generic account passwords before deployment
 default_passwords_changed if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
+	bes_inventory_present
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		not default_password_vulnerability(system)
 	}
 }
 
+# Missing system_configurations evidence is a finding, not a pass.
 default_password_vulnerability(system) if {
-	sys_config := input.system_configurations[system.system_id]
-	sys_config.default_passwords.changed == false
+	not input.system_configurations[system.system_id].default_passwords.changed == true
 }
 
 # R5.4 - Shared accounts prohibited except where technically necessary
@@ -261,10 +280,9 @@ shared_accounts_minimized if {
 
 # R5.5 - Limit number of unsuccessful authentication attempts
 login_attempt_limiting if {
-	every system in input.bes_cyber_systems {
-		system.impact_categorization in ["high", "medium"]
-		sys_config := input.system_access_controls[system.system_id]
-		sys_config.account_lockout_configured == true
+	bes_inventory_present
+	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
+		input.system_access_controls[system.system_id].account_lockout_configured == true
 	}
 }
 
