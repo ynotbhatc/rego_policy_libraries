@@ -57,11 +57,58 @@ required_fact_keys := [
 	"wireless_interfaces",
 ]
 
-missing_facts_violations := [msg |
-	some key in required_fact_keys
-	not input[key]
-	msg := sprintf("CIS 3.x: FAIL-CLOSED - network facts '%s' were not supplied; the section cannot be evaluated and is reported non-compliant", [key])
+# A fact is evidence only when it is a non-empty object: `{}` is truthy but proves nothing.
+fact_present(key) if {
+	v := object.get(input, key, null)
+	is_object(v)
+	count(v) > 0
+}
+
+# Sysctl parameters the specific checks below key on. An analysis entry must exist for each,
+# otherwise the check never fires and the parameter reads as compliant.
+required_sysctl_params := [
+	"net.ipv4.tcp_syncookies",
+	"net.ipv4.conf.all.rp_filter",
+	"net.ipv4.conf.all.log_martians",
+	"net.ipv4.icmp_echo_ignore_broadcasts",
+	"net.ipv4.conf.all.send_redirects",
+	"net.ipv4.conf.default.send_redirects",
+	"net.ipv4.conf.all.accept_source_route",
+	"net.ipv4.conf.all.accept_redirects",
+	"net.ipv4.conf.all.secure_redirects",
 ]
+
+sysctl_param_collected(name) if {
+	some param in input.sysctl_parameters.analysis
+	param.parameter == name
+}
+
+missing_facts_violations := array.concat(
+	array.concat(
+		[msg |
+			some key in required_fact_keys
+			not fact_present(key)
+			msg := sprintf("CIS 3.x: FAIL-CLOSED - network facts '%s' were not supplied; the section cannot be evaluated and is reported non-compliant", [key])
+		],
+		[msg |
+			fact_present("sysctl_parameters")
+			some name in required_sysctl_params
+			not sysctl_param_collected(name)
+			msg := sprintf("CIS 3.x: FAIL-CLOSED - sysctl parameter '%s' was not collected; it cannot be evaluated and is reported non-compliant", [name])
+		],
+	),
+	[msg |
+		fact_present("ip_forwarding")
+		some field in ip_forwarding_required_fields
+		not is_number(object.get(input.ip_forwarding, field, null))
+		msg := sprintf("CIS 3.1.1: FAIL-CLOSED - ip_forwarding.%s was not collected; it cannot be evaluated and is reported non-compliant", [field])
+	],
+)
+
+# IPv6 forwarding is only required while IPv6 is enabled
+ip_forwarding_required_fields := ["ipv4_forwarding", "ipv6_forwarding"] if {
+	not input.ipv6.disabled
+} else := ["ipv4_forwarding"]
 
 # =============================================================================
 # CIS 3.1.x, 3.2.x - KERNEL NETWORK PARAMETERS (SYSCTL)
