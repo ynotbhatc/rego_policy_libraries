@@ -88,9 +88,24 @@ violations contains msg if {
 	msg := "CIS 5.3.8: /etc/sudoers is world-readable"
 }
 
+# Modes are octal: "440", "0440" and anything stricter pass; an absent or unparsable mode fails.
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+sudoers_mode_ok if mode_within(input.sudo.sudoers_mode, "0440")
+
 violations contains msg if {
-	input.sudo.sudoers_mode != "0440"
-	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440", [input.sudo.sudoers_mode])
+	not sudoers_mode_ok
+	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %v, should be 0440 (or mode not collected)", [object.get(input, ["sudo", "sudoers_mode"], "<missing>")])
 }
 
 report := {
