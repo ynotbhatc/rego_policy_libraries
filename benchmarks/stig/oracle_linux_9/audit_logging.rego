@@ -32,10 +32,12 @@ default compliant := false
 
 # Shared helpers (defined in a source block whose rule Oracle Linux 9 does not carry)
 
-# Helper: check if audit rule exists
+# Helper: check if an audit rule exists. The pattern must match on token
+# boundaries: "-S execve" does not match "-S execveat" and "-w /etc/sudoers" does
+# not match "-w /etc/sudoers.d/" or "-w /etc/passwd-".
 audit_rule_exists(pattern) if {
 	some rule in input.audit_rules
-	contains(rule, pattern)
+	regex.match(concat("", [`(^|\s)`, regex.replace(pattern, `([.+*?()|\[\]{}^$\\])`, `\${1}`), `($|[\s,])`]), rule)
 }
 
 # =============================================================================
@@ -225,7 +227,7 @@ audit_privileged_cmds if {
 }
 
 audit_privileged_cmds if {
-	audit_rule_exists("privileged")
+	audit_rule_exists("-k privileged")
 }
 
 status_ol09_00_000670 := "Not_a_Finding" if { audit_privileged_cmds } else := "Open"
