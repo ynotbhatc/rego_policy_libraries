@@ -42,8 +42,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
     - **Two existing tests changed.** The `test_soc2_main.rego` assertions pinned the undefined-score bug and were updated. The `eu_ai_act_main` `clean_minimal` fixture now declares all ten Article 5 sections. No test was deleted.
     - **Placeholder control IDs.** Newly wired Cisco, Juniper and RHEL 10 checks carry `UNMAPPED-<platform>-N` IDs until they are mapped to the CIS benchmark.
   - **Counts:**
-    - The control-level count rises from 19,166 to 19,728. Most of the +562 are the new evidence-missing checks (about 410 new message lines), not new standard coverage.
-    - The OSCAL catalogs go from 16,377 to 16,572 controls.
+    - The control-level count rises from 19,173 to 19,735. Most of the +562 are the new evidence-missing checks (about 410 new message lines), not new standard coverage.
+    - The OSCAL catalogs grow by 195 controls.
     - The test suite grows from 4,713 to 6,669 tests.
   - **84 judgment calls were left unchanged for the maintainer.** Examples: whether STIG `compliant` should count only CAT I findings, whether undeclared applicability means not applicable, and the OIDC token checks.
 - **CIS M365 v7 attestations no longer accept null or blank evidence.** `attestation_validation.rego` tested `attested_by`, `attested_on` and `evidence_ref` by truthiness, which fails only on `false` or undefined, so an attestation with `"evidence_ref": null` (or `""`, or a number) counted as attested and the control left the violation list. Each field must now be a non-empty string, the rule the Windows Server 2022 module already uses. Two regression tests (null evidence; blank, whitespace and non-string provenance) fail on the old rule and pass now.

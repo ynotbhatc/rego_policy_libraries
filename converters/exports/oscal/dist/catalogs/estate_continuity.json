@@ -1,0 +1,324 @@
+{
+ "catalog": {
+  "uuid": "5bc59995-d1b6-52d0-8a6c-e9aeb78fc3d1",
+  "metadata": {
+   "title": "Rego Policy Libraries — estate_continuity (AAC estate continuity: every expected asset is evaluated, explained or retired)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "estate_continuity"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "estate_continuity-estate_continuity_main",
+    "class": "rego-module",
+    "title": "AAC estate continuity: every expected asset is evaluated, explained or retired",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "estate_continuity.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance/estate_continuity/estate_continuity_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "governance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "estate_continuity-estate_continuity.main-1",
+      "title": "Implemented by a Rego rule in governance/estate_continuity/estate_continuity_main.rego (package estate_continuity.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in governance/estate_continuity/estate_continuity_main.rego (package estate_continuity.main); see the rule body."
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "estate_continuity-estate_continuity.main-2",
+      "title": "AAC estate continuity: input.hosts must be an array of host records — nothing can be classified",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-2_stmt",
+        "name": "statement",
+        "prose": "AAC estate continuity: input.hosts must be an array of host records — nothing can be classified"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "estate_continuity-estate_continuity.main-3",
+      "title": "AAC estate continuity: no hosts supplied — the collector returned nothing to classify, which is never a clean estate",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-3_stmt",
+        "name": "statement",
+        "prose": "AAC estate continuity: no hosts supplied — the collector returned nothing to classify, which is never a clean estate"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "estate_continuity-estate_continuity.main-4",
+      "title": "AAC estate continuity: %s appears more than once in the input — each asset must be one record",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-4_stmt",
+        "name": "statement",
+        "prose": "AAC estate continuity: %s appears more than once in the input — each asset must be one record"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "estate_continuity-estate_continuity.main-5",
+      "title": "freshness hours",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-5_stmt",
+        "name": "statement",
+        "prose": "freshness hours"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "estate_continuity-estate_continuity.main-6",
+      "title": "stale after hours",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-6_stmt",
+        "name": "statement",
+        "prose": "stale after hours"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "estate_continuity-estate_continuity.main-7",
+      "title": "stopped in scope",
+      "props": [
+       {
+        "name": "label",
+        "value": "estate_continuity.main#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "estate_continuity.main#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "estate_continuity.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "estate_continuity-estate_continuity.main-7_stmt",
+        "name": "statement",
+        "prose": "stopped in scope"
+       }
+      ],
+      "class": "governance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7e4cd320-8ed6-5857-a0a0-15c971dbc3d6",
+     "title": "AAC estate continuity: every expected asset is evaluated, explained or retired",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "estate_continuity.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/governance/estate_continuity/estate_continuity_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
