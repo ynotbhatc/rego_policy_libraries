@@ -150,6 +150,24 @@ system_application_accounts if {
 	input.pci.system_accounts.review.performed_periodically == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default authentication_policies_established := false
+default authentication_roles_defined := false
+default unique_user_ids := false
+default account_lifecycle_managed := false
+default vendor_accounts_managed := false
+default password_requirements := false
+default first_use_password_change := false
+default authentication_factors_protected := false
+default mfa_for_cde_admin := false
+default mfa_for_remote_access := false
+default mfa_for_all_cde_access := false
+default mfa_system_secure := false
+default mfa_not_susceptible_to_replay := false
+default system_application_accounts := false
+default pci_requirement_8_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
@@ -167,6 +185,7 @@ pci_requirement_8_compliant if {
 	mfa_for_remote_access
 	mfa_for_all_cde_access
 	mfa_system_secure
+	mfa_not_susceptible_to_replay
 	system_application_accounts
 }
 

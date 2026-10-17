@@ -154,7 +154,7 @@ software_inventory_maintained if {
 # Web Application Firewall (WAF) in place
 waf_implemented if {
 	# Only required if public-facing web apps are in scope
-	not input.pci.public_web_apps.in_scope
+	input.pci.public_web_apps.in_scope == false
 } else if {
 	input.pci.public_web_apps.in_scope
 	input.pci.waf.implemented == true
@@ -167,7 +167,7 @@ waf_implemented if {
 
 # Automated technical solution detects and prevents web-based attacks
 automated_attack_detection if {
-	not input.pci.public_web_apps.in_scope
+	input.pci.public_web_apps.in_scope == false
 } else if {
 	input.pci.public_web_apps.in_scope
 	input.pci.automated_detection.waf_or_vapt.implemented == true
@@ -177,7 +177,7 @@ automated_attack_detection if {
 
 # Penetration testing of web applications
 web_app_pen_testing if {
-	not input.pci.public_web_apps.in_scope
+	input.pci.public_web_apps.in_scope == false
 } else if {
 	input.pci.public_web_apps.in_scope
 	input.pci.penetration_testing.web_app.performed == true
@@ -206,6 +206,29 @@ software_composition_analysis if {
 	input.pci.sca.license_compliance.checked == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default secure_development_policies_established := false
+default secure_development_roles_defined := false
+default secure_sdlc_implemented := false
+default developer_security_training := false
+default preproduction_security_testing := false
+default bespoke_code_review := false
+default injection_attacks_prevented := false
+default xss_attacks_prevented := false
+default authentication_attacks_prevented := false
+default memory_corruption_prevented := false
+default automated_attack_detection := false
+default insecure_cryptography_prevented := false
+default security_patch_management := false
+default vulnerability_identification := false
+default software_inventory_maintained := false
+default waf_implemented := false
+default web_app_pen_testing := false
+default sast_dast_implemented := false
+default software_composition_analysis := false
+default pci_requirement_6_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
@@ -220,10 +243,15 @@ pci_requirement_6_compliant if {
 	injection_attacks_prevented
 	xss_attacks_prevented
 	authentication_attacks_prevented
+	memory_corruption_prevented
+	insecure_cryptography_prevented
 	security_patch_management
 	vulnerability_identification
 	software_inventory_maintained
 	waf_implemented
+	web_app_pen_testing
+	sast_dast_implemented
+	software_composition_analysis
 }
 
 default pci_requirement_6_score := 0

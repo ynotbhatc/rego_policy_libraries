@@ -37,6 +37,23 @@ violations := array.concat(
 	),
 )
 
+# Missing evidence fails closed.
+autofs_violations contains violation if {
+	not input.autofs
+	violation := "CIS 2.1.x: evidence missing — autofs not collected"
+}
+
+unnecessary_service_violations contains violation if {
+	not input.unnecessary_services
+	violation := "CIS 2.2.x: evidence missing — unnecessary_services not collected"
+}
+
+package_violations contains violation if {
+	some k in ["webserver", "client_packages", "x11"]
+	not object.get(input, k, null)
+	violation := sprintf("CIS 2.2.x: evidence missing — %s not collected", [k])
+}
+
 # CIS 2.1.x: Disable automounting
 autofs_violations contains violation if {
 	input.autofs.installed
@@ -86,7 +103,7 @@ unnecessary_service_violations contains violation if {
 	service.active
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is active (risk: %s)", [
 		service.service,
-		service.risk_level,
+		object.get(service, "risk_level", "unknown"),
 	])
 }
 
@@ -96,7 +113,7 @@ unnecessary_service_violations contains violation if {
 	not service.active
 	violation := sprintf("CIS 2.2.x: Unnecessary service '%s' is enabled (risk: %s)", [
 		service.service,
-		service.risk_level,
+		object.get(service, "risk_level", "unknown"),
 	])
 }
 
@@ -135,7 +152,7 @@ package_violations contains violation if {
 	pkg.installed
 	violation := sprintf("CIS 2.2.12: Web server package installed: %s (%s)", [
 		pkg["package"],
-		pkg.version,
+		object.get(pkg, "version", "unknown"),
 	])
 }
 
@@ -145,8 +162,8 @@ package_violations contains violation if {
 	some pkg in input.client_packages.installed_packages
 	violation := sprintf("CIS 2.3.x: Unnecessary client package installed: %s (%s, severity: %s)", [
 		pkg["package"],
-		pkg.version,
-		pkg.severity,
+		object.get(pkg, "version", "unknown"),
+		object.get(pkg, "severity", "unknown"),
 	])
 }
 
@@ -178,7 +195,7 @@ package_violations contains violation if {
 	pkg.installed
 	violation := sprintf("CIS 2.2.1: X Window System package installed on server: %s (%s)", [
 		pkg["package"],
-		pkg.version,
+		object.get(pkg, "version", "unknown"),
 	])
 }
 

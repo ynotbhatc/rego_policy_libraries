@@ -152,20 +152,29 @@ oracle_base_permissions_restricted if {
 	oracle_base.mode == "755"
 }
 
+# true when path is the system mount point itself or lies beneath it ("/" matches only "/")
+on_system_partition(path, partitions) if {
+	some p in partitions
+	trim_right(path, "/") == p
+}
+
+on_system_partition(path, partitions) if {
+	some p in partitions
+	p != ""
+	startswith(path, concat("", [p, "/"]))
+}
+
 data_files_non_system_partitions if {
 	data_files := input.oracle.data_files
-	system_partitions := ["/", "/usr", "/var", "/etc"]
-	data_on_system := [df | df := data_files[_]; 
-		partition := system_partitions[_]; 
-		startswith(df.path, partition)]
+	data_on_system := [df | df := data_files[_]
+		on_system_partition(df.path, ["", "/usr", "/var", "/etc"])
+	]
 	count(data_on_system) == 0
 }
 
 software_not_on_system_partitions if {
 	oracle_home := input.oracle.directories.oracle_home.path
-	not startswith(oracle_home, "/")
-	not startswith(oracle_home, "/usr")
-	not startswith(oracle_home, "/var")
+	not on_system_partition(oracle_home, ["", "/usr", "/var"])
 }
 
 oracle_not_root if {
@@ -404,9 +413,15 @@ tns_admin_set_appropriately if {
 names_directory_path_correct if {
 	sqlnet_config := input.oracle.sqlnet_config
 	directory_path := sqlnet_config.names_directory_path
-	"TNSNAMES" in directory_path
-	not "HOSTNAME" in directory_path
+	tokens := names_path_tokens(directory_path)
+	"TNSNAMES" in tokens
+	not "HOSTNAME" in tokens
 }
+
+# NAMES.DIRECTORY_PATH may be a list or a comma separated string
+names_path_tokens(path) := {upper(trim_space(t)) | some t in split(path, ",")} if is_string(path)
+
+names_path_tokens(path) := {upper(trim_space(t)) | some t in path} if is_array(path)
 
 sqlnet_auth_services_correct if {
 	sqlnet_config := input.oracle.sqlnet_config
@@ -489,15 +504,18 @@ audit_sys_operations_true if {
 audit_trail_appropriate if {
 	parameters := input.oracle.init_parameters
 	audit_trail := parameters.audit_trail
-	audit_trail in ["DB", "OS", "DB,EXTENDED", "XML,EXTENDED"]
+	# Oracle reports "DB, EXTENDED"; ignore whitespace and case
+	normalized := upper(regex.replace(audit_trail, `\s+`, ""))
+	normalized in ["DB", "OS", "DB,EXTENDED", "XML,EXTENDED"]
 }
 
 audit_file_dest_dedicated if {
 	parameters := input.oracle.init_parameters
 	audit_file_dest := parameters.audit_file_dest
 	audit_file_dest != ""
-	not audit_file_dest == "/oracle/admin/orcl/adump"
-	startswith(audit_file_dest, "/audit")
+	# any absolute directory other than the default <base>/admin/<sid>/adump
+	startswith(audit_file_dest, "/")
+	not regex.match(`^/.*/admin/[^/]+/adump/?$`, audit_file_dest)
 }
 
 db_ultra_safe_set if {
@@ -560,6 +578,8 @@ sensitive_data_access_auditing if {
 	sensitive_tables := input.oracle.sensitive_tables
 	audited_tables := [policy.table_name | policy := fga_policies[_]]
 	unaudited_sensitive := [table | table := sensitive_tables[_]; not table in audited_tables]
+	# an empty sensitive-table inventory is not evidence of anything: require a declared inventory
+	count(sensitive_tables) > 0
 	count(unaudited_sensitive) == 0
 }
 
@@ -978,7 +998,7 @@ grant_any_role_restricted if {
 	system_privileges := input.oracle.system_privileges
 	grant_any_role_grants := [priv | priv := system_privileges[_]; 
 		priv.privilege == "GRANT ANY ROLE"]
-	count(grant_any_role_grants) <= 1
+	count(grant_any_role_grants) == 0
 }
 
 grant_any_privilege_restricted if {
@@ -1212,6 +1232,7 @@ database_vault_configured if {
 	database_vault.command_rules_configured == true
 }
 
+# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
 database_vault_configured if {
 	database_vault := input.oracle.database_vault
 	database_vault.required == false
@@ -1224,6 +1245,7 @@ ras_implemented if {
 	ras.data_security_policies_active == true
 }
 
+# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
 ras_implemented if {
 	ras := input.oracle.real_application_security
 	ras.required == false
@@ -1452,6 +1474,7 @@ hsm_integration if {
 	hsm.key_management_secure == true
 }
 
+# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
 hsm_integration if {
 	hsm := input.oracle.hsm_integration
 	hsm.required == false
@@ -1534,6 +1557,7 @@ kerberos_auth_configured if {
 	kerberos.realm_configured == true
 }
 
+# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
 kerberos_auth_configured if {
 	kerberos := input.oracle.kerberos_authentication
 	kerberos.required == false

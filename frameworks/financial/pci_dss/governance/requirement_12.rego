@@ -229,6 +229,30 @@ forensic_readiness if {
 	input.pci.forensic_readiness.chain_of_custody.procedures == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default information_security_policy := false
+default security_roles_defined := false
+default acceptable_use_policy := false
+default risk_management_program := false
+default targeted_risk_analysis := false
+default technology_review := false
+default pci_compliance_management := false
+default pci_responsibilities_assigned := false
+default pci_scope_documented := false
+default pan_data_locations := false
+default security_awareness_program := false
+default targeted_security_training := false
+default personnel_screening := false
+default third_party_risk_management := false
+default third_party_acknowledgment := false
+default tpsp_accountability := false
+default incident_response_plan := false
+default incident_response_scope := false
+default incident_response_communication := false
+default forensic_readiness := false
+default pci_requirement_12_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
@@ -238,13 +262,22 @@ pci_requirement_12_compliant if {
 	security_roles_defined
 	acceptable_use_policy
 	risk_management_program
+	targeted_risk_analysis
+	technology_review
 	pci_compliance_management
+	pci_responsibilities_assigned
 	pci_scope_documented
+	pan_data_locations
 	security_awareness_program
+	targeted_security_training
 	personnel_screening
 	third_party_risk_management
+	third_party_acknowledgment
 	tpsp_accountability
 	incident_response_plan
+	incident_response_scope
+	incident_response_communication
+	forensic_readiness
 }
 
 default pci_requirement_12_score := 0

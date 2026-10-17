@@ -120,6 +120,20 @@ access_control_system if {
 	input.pci.acs.settings.restriction_unless_specifically_allowed == true
 }
 
+# Every control referenced by the score, findings and roll-up has a default so a failing
+# control reports false instead of making the whole score/findings undefined.
+default access_control_policies_established := false
+default access_control_roles_defined := false
+default least_privilege_access_model := false
+default rbac_implemented := false
+default job_function_based_access := false
+default privileged_access_managed := false
+default third_party_access_managed := false
+default user_access_reviews := false
+default application_system_accounts_managed := false
+default access_control_system := false
+default pci_requirement_7_compliant := false
+
 # =================================================================
 # Scoring
 # =================================================================
