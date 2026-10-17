@@ -27,8 +27,7 @@ default compliant := false
 
 # Main compliance rule - all controls must pass
 compliant if {
-    # fail-closed: no facts, no compliance
-    input.iam_users
+    # fail-closed: missing evidence sections are themselves violations
     count(violations) == 0
 }
 
@@ -41,10 +40,33 @@ violations := [v |
 		virtual_machines_violations,
 		storage_violations,
 		sql_violations,
-		bigquery_violations
+		bigquery_violations,
+		evidence_violations
 	]
 	v := arrays[_][_]
 ]
+
+# Missing evidence fails closed: a section whose inventory was not collected
+# cannot be judged. An empty list is evidence of "no resources of this kind".
+evidence_sections := {
+	"iam_users": "1",
+	"vpc_networks": "3",
+	"compute_instances": "4",
+	"storage_buckets": "5",
+	"sql_instances": "6",
+	"bigquery_datasets": "7",
+}
+
+evidence_violations contains msg if {
+	some key, ctl in evidence_sections
+	not is_array(object.get(input, key, null))
+	msg := sprintf("%s: evidence missing — %s not collected", [ctl, key])
+}
+
+evidence_violations contains msg if {
+	not is_array(object.get(object.get(input, "audit_config", {}), "services", null))
+	msg := "2.1: evidence missing — audit_config.services not collected"
+}
 
 # Section 1: Identity and Access Management
 identity_access_violations := [
@@ -124,8 +146,9 @@ kms_separation_of_duties_violation(roles) if {
 logging_violations := [
     "2.1: Ensure that Cloud Audit Logging is configured properly across all services and all users from a project" |
     service := input.audit_config.services[_]
-    audit_log_config := service.audit_log_configs[_]
-    audit_log_config.log_type != "ADMIN_READ"
+    required := {"ADMIN_READ", "DATA_READ", "DATA_WRITE"}
+    types := {t | some c in object.get(service, "audit_log_configs", []); t := c.log_type}
+    count(required - types) > 0
 ]
 
 
