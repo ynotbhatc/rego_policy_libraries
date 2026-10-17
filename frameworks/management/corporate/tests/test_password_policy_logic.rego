@@ -12,7 +12,7 @@ old_rfc := "2019-01-01T00:00:00Z"
 
 inp(role, value, changed) := {
 	"user": {"role": role, "last_password_change": changed, "password_history": []},
-	"password": {"value": value, "length": count(split(value, "")), "value_hash": "h"},
+	"password": {"value": value, "length": count(value), "value_hash": "h"},
 }
 
 # 3 days ago, in RFC3339

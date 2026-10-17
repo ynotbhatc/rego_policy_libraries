@@ -182,7 +182,7 @@ octal(s) := n if {
 	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
 	regex.match(`^[0-7]{1,4}$`, t)
 	p := concat("", [substring("0000", 0, 4 - count(t)), t])
-	ds := [to_number(d) | some d in split(p, "")]
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
 	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
 }
 

@@ -184,7 +184,7 @@ contains_company_info if {
 
 # Sequential Character Detection
 contains_sequential_chars if {
-    chars := split(lower(input.password.value), "")
+    chars := regex.find_n(`(?s).`, lower(input.password.value), -1)
     count(chars) >= 3
     some i in numbers.range(0, count(chars) - 3)
     window := concat("", array.slice(chars, i, i + 3))
@@ -194,7 +194,7 @@ contains_sequential_chars if {
 
 # Repeated Character Detection
 contains_repeated_chars if {
-    chars := split(input.password.value, "")
+    chars := regex.find_n(`(?s).`, input.password.value, -1)
     some char in chars
     char_count := count([c | some c in chars; c == char])
     char_count > 3  # More than 3 of the same character
@@ -235,7 +235,7 @@ service_account_entropy_met if {
 # Entropy calculation (simplified approximation)
 # Estimates entropy based on character set size and password length
 password_entropy := entropy if {
-    chars := split(input.password.value, "")
+    chars := regex.find_n(`(?s).`, input.password.value, -1)
     unique_chars := {char | some char in chars}
 
     # Estimate bits per character based on character diversity
@@ -251,7 +251,7 @@ password_entropy := entropy if {
 # Three identical characters in a row. (The old `(.)\1{2,}` back-reference is not
 # valid RE2, so it never matched.)
 contains_predictable_patterns if {
-    chars := split(input.password.value, "")
+    chars := regex.find_n(`(?s).`, input.password.value, -1)
     count(chars) >= 3
     some i in numbers.range(0, count(chars) - 3)
     chars[i] == chars[i + 1]

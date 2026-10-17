@@ -51,7 +51,7 @@ perm_ok contains key if {
     t := trim_prefix(lower(trim_space(sprintf("%v", [raw]))), "0o")
     regex.match(`^[0-7]{1,4}$`, t)
     padded := concat("", [substring("0000", 0, 4 - count(t)), t])
-    ds := [to_number(d) | some d in split(padded, "")]
+    ds := [to_number(substring(padded, i, 1)) | some i in numbers.range(0, 3)]
     mode := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
     bits.and(mode, bits.and(bits.negate(max), 4095)) == 0
 }
