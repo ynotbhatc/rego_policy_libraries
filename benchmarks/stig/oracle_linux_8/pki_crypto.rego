@@ -34,12 +34,10 @@ default compliant := false
 # Crypto policy must not be overridden
 default crypto_policy_not_overridden := false
 
+# Missing evidence is not a pass: the overrides collection must be present (empty = none found).
 crypto_policy_not_overridden if {
+	object.get(input, "crypto_policy_overrides", null) != null
 	count(input.crypto_policy_overrides) == 0
-}
-
-crypto_policy_not_overridden if {
-	not input.crypto_policy_overrides
 }
 
 status_ol08_00_010183 := "Not_a_Finding" if { crypto_policy_not_overridden } else := "Open"
@@ -90,6 +88,7 @@ finding_ol08_00_010400 := {
 default cert_user_mapping := false
 
 cert_user_mapping if {
+	is_string(input.sssd_config.cert_user_mapping)
 	input.sssd_config.cert_user_mapping != ""
 }
 
