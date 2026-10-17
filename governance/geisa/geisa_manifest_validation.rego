@@ -96,11 +96,13 @@ _valid_string_range(val, min, max) if {
 # Integer with bounds
 _valid_int_min(val, min) if {
 	is_number(val)
+	val == floor(val)
 	val >= min
 }
 
 _valid_int_range(val, min, max) if {
 	is_number(val)
+	val == floor(val)
 	val >= min
 	val <= max
 }
@@ -143,7 +145,14 @@ violations contains "geisa-application-manifest: missing required field 'signatu
 violations contains sprintf("geisa-application-manifest.signature: must be a 64-character hex string, got %d characters", [count(_top["signature"])]) if {
 	is_object(_top)
 	_has_key(_top, "signature")
+	is_string(_top["signature"])
 	not _valid_sha256(_top["signature"])
+}
+
+violations contains "geisa-application-manifest.signature: must be a 64-character hex string, got a non-string value" if {
+	is_object(_top)
+	_has_key(_top, "signature")
+	not is_string(_top["signature"])
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -617,8 +626,19 @@ violations contains sprintf("manifest.communication.%s.inbound: '%s' does not ma
 	_has_key(_comm, iface)
 	is_object(_comm[iface])
 	_has_key(_comm[iface], "inbound")
+	is_array(_comm[iface]["inbound"])
 	some tap in _comm[iface]["inbound"]
 	not _valid_tap(tap)
+}
+
+violations contains sprintf("manifest.communication.%s.inbound: must be an array of transport:address:port strings", [iface]) if {
+	is_object(_manifest)
+	is_object(_comm)
+	some iface in _net_ifaces
+	_has_key(_comm, iface)
+	is_object(_comm[iface])
+	_has_key(_comm[iface], "inbound")
+	not is_array(_comm[iface]["inbound"])
 }
 
 violations contains sprintf("manifest.communication.%s.outbound: '%s' does not match transport:address:port pattern", [iface, tap]) if {
@@ -628,8 +648,19 @@ violations contains sprintf("manifest.communication.%s.outbound: '%s' does not m
 	_has_key(_comm, iface)
 	is_object(_comm[iface])
 	_has_key(_comm[iface], "outbound")
+	is_array(_comm[iface]["outbound"])
 	some tap in _comm[iface]["outbound"]
 	not _valid_tap(tap)
+}
+
+violations contains sprintf("manifest.communication.%s.outbound: must be an array of transport:address:port strings", [iface]) if {
+	is_object(_manifest)
+	is_object(_comm)
+	some iface in _net_ifaces
+	_has_key(_comm, iface)
+	is_object(_comm[iface])
+	_has_key(_comm[iface], "outbound")
+	not is_array(_comm[iface]["outbound"])
 }
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -638,13 +669,16 @@ violations contains sprintf("manifest.communication.%s.outbound: '%s' does not m
 
 valid if { count(violations) == 0 }
 
+# The report must exist exactly when the manifest is missing or malformed, so read fields defensively.
+_mf := _manifest if is_object(_manifest) else := {}
+
 validation_report := {
 	"valid": valid,
 	"violation_count": count(violations),
 	"violations": violations,
-	"app_id": _manifest["app-id"],
-	"app_name": _manifest["name"],
-	"author": _manifest["author"],
-	"app_version": _manifest["app-version"],
-	"manifest_version": _manifest["manifest-version"],
+	"app_id": object.get(_mf, "app-id", null),
+	"app_name": object.get(_mf, "name", null),
+	"author": object.get(_mf, "author", null),
+	"app_version": object.get(_mf, "app-version", null),
+	"manifest_version": object.get(_mf, "manifest-version", null),
 }
