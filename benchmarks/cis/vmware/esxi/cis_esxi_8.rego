@@ -210,11 +210,15 @@ compliance_monitoring_violations := [msg |
 ]
 
 # Host Configuration Security Controls
+default host_time_sync_configured := false
+
 host_time_sync_configured if {
 	time_sync := input.esxi.host.time_sync
 	time_sync.ntp_enabled == true
 	time_sync.secure_time_sources == true
 }
+
+default host_ssh_service_secure := false
 
 host_ssh_service_secure if {
 	ssh := input.esxi.host.ssh
@@ -229,12 +233,16 @@ host_ssh_service_secure if {
 	ssh.root_login_disabled == true
 }
 
+default host_firewall_configured := false
+
 host_firewall_configured if {
 	firewall := input.esxi.host.firewall
 	firewall.enabled == true
 	firewall.default_deny == true
 	firewall.rules_reviewed == true
 }
+
+default host_certificate_management_secure := false
 
 host_certificate_management_secure if {
 	certs := input.esxi.host.certificates
@@ -243,12 +251,16 @@ host_certificate_management_secure if {
 	certs.ca_signed == true
 }
 
+default host_password_policies_enforced := false
+
 host_password_policies_enforced if {
 	password := input.esxi.host.password_policy
 	password.complexity_required == true
 	password.min_length >= 8
 	password.max_age_days <= 90
 }
+
+default host_account_lockout_configured := false
 
 host_account_lockout_configured if {
 	lockout := input.esxi.host.account_lockout
@@ -257,11 +269,15 @@ host_account_lockout_configured if {
 	lockout.duration_minutes >= 15
 }
 
+default host_session_timeout_configured := false
+
 host_session_timeout_configured if {
 	session := input.esxi.host.session
 	session.timeout_minutes <= 30
 	session.timeout_minutes > 0
 }
+
+default host_console_access_secured := false
 
 host_console_access_secured if {
 	console := input.esxi.host.console_access
@@ -269,11 +285,15 @@ host_console_access_secured if {
 	console.timeout_configured == true
 }
 
+default host_snmp_configuration_secure := false
+
 host_snmp_configuration_secure if {
 	snmp := input.esxi.host.snmp
 	snmp.v3_only == true
 	snmp.community_strings_removed == true
 }
+
+default host_syslog_configured := false
 
 host_syslog_configured if {
 	syslog := input.esxi.host.syslog
@@ -282,16 +302,22 @@ host_syslog_configured if {
 	syslog.secure_transport == true
 }
 
+default host_kernel_modules_restricted := false
+
 host_kernel_modules_restricted if {
 	kernel := input.esxi.host.kernel_modules
 	kernel.unauthorized_modules_blocked == true
 	kernel.module_loading_restricted == true
 }
 
+default host_hypervisor_scheduler_secure := false
+
 host_hypervisor_scheduler_secure if {
 	scheduler := input.esxi.host.hypervisor_scheduler
 	scheduler.secure_configuration == true
 }
+
+default host_memory_management_secure := false
 
 host_memory_management_secure if {
 	memory := input.esxi.host.memory_management
@@ -299,16 +325,22 @@ host_memory_management_secure if {
 	memory.isolation_enabled == true
 }
 
+default host_cpu_management_configured := false
+
 host_cpu_management_configured if {
 	cpu := input.esxi.host.cpu_management
 	cpu.resource_allocation_controlled == true
 	cpu.hyperthreading_configured_securely == true
 }
 
+default host_power_management_configured := false
+
 host_power_management_configured if {
 	power := input.esxi.host.power_management
 	power.appropriate_policy == true
 }
+
+default host_hardware_monitoring_configured := false
 
 host_hardware_monitoring_configured if {
 	hardware := input.esxi.host.hardware_monitoring
@@ -316,11 +348,15 @@ host_hardware_monitoring_configured if {
 	hardware.alerting_configured == true
 }
 
+default host_patch_management_configured := false
+
 host_patch_management_configured if {
 	patch := input.esxi.host.patch_management
 	patch.automated_updates == true
 	patch.testing_procedures == true
 }
+
+default host_backup_procedures_configured := false
 
 host_backup_procedures_configured if {
 	backup := input.esxi.host.backup_procedures
@@ -328,11 +364,15 @@ host_backup_procedures_configured if {
 	backup.tested_regularly == true
 }
 
+default host_disaster_recovery_configured := false
+
 host_disaster_recovery_configured if {
 	dr := input.esxi.host.disaster_recovery
 	dr.procedures_documented == true
 	dr.tested_regularly == true
 }
+
+default host_compliance_monitoring_enabled := false
 
 host_compliance_monitoring_enabled if {
 	compliance := input.esxi.host.compliance_monitoring
@@ -341,11 +381,15 @@ host_compliance_monitoring_enabled if {
 }
 
 # Network Security Controls
+default network_redundancy_configured := false
+
 network_redundancy_configured if {
 	redundancy := input.esxi.network.redundancy
 	redundancy.configured == true
 	redundancy.critical_traffic_protected == true
 }
+
+default network_security_policies_implemented := false
 
 network_security_policies_implemented if {
 	policies := input.esxi.network.security_policies
@@ -353,11 +397,15 @@ network_security_policies_implemented if {
 	policies.regularly_reviewed == true
 }
 
+default vlan_configuration_secure := false
+
 vlan_configuration_secure if {
 	vlan := input.esxi.network.vlan
 	vlan.properly_configured == true
 	vlan.isolated_appropriately == true
 }
+
+default vswitch_security_policies_configured := false
 
 vswitch_security_policies_configured if {
 	vswitch := input.esxi.network.vswitch
@@ -367,11 +415,15 @@ vswitch_security_policies_configured if {
 	vswitch.forged_transmits_rejected == true
 }
 
+default portgroup_security_policies_configured := false
+
 portgroup_security_policies_configured if {
 	portgroup := input.esxi.network.portgroup
 	portgroup.security_policies_configured == true
 	portgroup.access_controls_implemented == true
 }
+
+default network_io_control_configured := false
 
 network_io_control_configured if {
 	io_control := input.esxi.network.io_control
@@ -379,10 +431,14 @@ network_io_control_configured if {
 	io_control.properly_configured == true
 }
 
+default network_traffic_shaping_configured := false
+
 network_traffic_shaping_configured if {
 	traffic_shaping := input.esxi.network.traffic_shaping
 	traffic_shaping.configured == true
 }
+
+default network_security_monitoring_configured := false
 
 network_security_monitoring_configured if {
 	monitoring := input.esxi.network.security_monitoring
@@ -390,31 +446,43 @@ network_security_monitoring_configured if {
 	monitoring.alerting_configured == true
 }
 
+default network_access_control_configured := false
+
 network_access_control_configured if {
 	access_control := input.esxi.network.access_control
 	access_control.implemented == true
 	access_control.regularly_reviewed == true
 }
 
+default network_encryption_enabled := false
+
 network_encryption_enabled if {
 	encryption := input.esxi.network.encryption
 	encryption.enabled_where_appropriate == true
 }
+
+default network_segmentation_implemented := false
 
 network_segmentation_implemented if {
 	segmentation := input.esxi.network.segmentation
 	segmentation.properly_implemented == true
 }
 
+default virtual_networking_security_enabled := false
+
 virtual_networking_security_enabled if {
 	virtual_security := input.esxi.network.virtual_security
 	virtual_security.features_enabled == true
 }
 
+default network_intrusion_detection_configured := false
+
 network_intrusion_detection_configured if {
 	ids := input.esxi.network.intrusion_detection
 	ids.configured == true
 }
+
+default network_performance_monitoring_configured := false
 
 network_performance_monitoring_configured if {
 	performance := input.esxi.network.performance_monitoring
@@ -422,26 +490,36 @@ network_performance_monitoring_configured if {
 }
 
 # Storage Security Controls
+default storage_access_control_configured := false
+
 storage_access_control_configured if {
 	access_control := input.esxi.storage.access_control
 	access_control.properly_configured == true
 	access_control.regularly_reviewed == true
 }
 
+default storage_encryption_enabled := false
+
 storage_encryption_enabled if {
 	encryption := input.esxi.storage.encryption
 	encryption.enabled_where_appropriate == true
 }
+
+default storage_multipathing_secure := false
 
 storage_multipathing_secure if {
 	multipathing := input.esxi.storage.multipathing
 	multipathing.configured_securely == true
 }
 
+default storage_performance_monitoring_configured := false
+
 storage_performance_monitoring_configured if {
 	performance := input.esxi.storage.performance_monitoring
 	performance.configured == true
 }
+
+default storage_backup_procedures_configured := false
 
 storage_backup_procedures_configured if {
 	backup := input.esxi.storage.backup_procedures
@@ -449,25 +527,35 @@ storage_backup_procedures_configured if {
 	backup.tested_regularly == true
 }
 
+default storage_array_integration_secure := false
+
 storage_array_integration_secure if {
 	array_integration := input.esxi.storage.array_integration
 	array_integration.secure == true
 }
+
+default storage_io_control_configured := false
 
 storage_io_control_configured if {
 	io_control := input.esxi.storage.io_control
 	io_control.configured_appropriately == true
 }
 
+default storage_security_policies_implemented := false
+
 storage_security_policies_implemented if {
 	policies := input.esxi.storage.security_policies
 	policies.implemented == true
 }
 
+default storage_audit_logging_enabled := false
+
 storage_audit_logging_enabled if {
 	audit := input.esxi.storage.audit_logging
 	audit.enabled == true
 }
+
+default storage_compliance_monitoring_configured := false
 
 storage_compliance_monitoring_configured if {
 	compliance := input.esxi.storage.compliance_monitoring
@@ -475,70 +563,98 @@ storage_compliance_monitoring_configured if {
 }
 
 # VM Security Controls
+default vm_configuration_security_enforced := false
+
 vm_configuration_security_enforced if {
 	vm_config := input.esxi.vm.configuration_security
 	vm_config.enforced == true
 }
+
+default vm_resource_allocation_controlled := false
 
 vm_resource_allocation_controlled if {
 	resource_allocation := input.esxi.vm.resource_allocation
 	resource_allocation.properly_controlled == true
 }
 
+default vm_security_policies_implemented := false
+
 vm_security_policies_implemented if {
 	policies := input.esxi.vm.security_policies
 	policies.implemented == true
 }
+
+default vm_network_security_configured := false
 
 vm_network_security_configured if {
 	network_security := input.esxi.vm.network_security
 	network_security.configured == true
 }
 
+default vm_storage_security_configured := false
+
 vm_storage_security_configured if {
 	storage_security := input.esxi.vm.storage_security
 	storage_security.configured == true
 }
+
+default vm_access_control_configured := false
 
 vm_access_control_configured if {
 	access_control := input.esxi.vm.access_control
 	access_control.properly_configured == true
 }
 
+default vm_monitoring_logging_configured := false
+
 vm_monitoring_logging_configured if {
 	monitoring := input.esxi.vm.monitoring_logging
 	monitoring.configured == true
 }
+
+default vm_backup_procedures_configured := false
 
 vm_backup_procedures_configured if {
 	backup := input.esxi.vm.backup_procedures
 	backup.in_place == true
 }
 
+default vm_compliance_monitoring_enabled := false
+
 vm_compliance_monitoring_enabled if {
 	compliance := input.esxi.vm.compliance_monitoring
 	compliance.enabled == true
 }
+
+default vm_security_scanning_configured := false
 
 vm_security_scanning_configured if {
 	security_scanning := input.esxi.vm.security_scanning
 	security_scanning.configured == true
 }
 
+default vm_vulnerability_management_implemented := false
+
 vm_vulnerability_management_implemented if {
 	vulnerability_mgmt := input.esxi.vm.vulnerability_management
 	vulnerability_mgmt.implemented == true
 }
+
+default vm_patch_management_configured := false
 
 vm_patch_management_configured if {
 	patch_mgmt := input.esxi.vm.patch_management
 	patch_mgmt.configured == true
 }
 
+default vm_antivirus_protection_configured := false
+
 vm_antivirus_protection_configured if {
 	antivirus := input.esxi.vm.antivirus_protection
 	antivirus.configured == true
 }
+
+default vm_data_loss_prevention_configured := false
 
 vm_data_loss_prevention_configured if {
 	dlp := input.esxi.vm.data_loss_prevention
@@ -546,51 +662,71 @@ vm_data_loss_prevention_configured if {
 }
 
 # Access Control Security Controls
+default rbac_implemented := false
+
 rbac_implemented if {
 	rbac := input.esxi.access_control.rbac
 	rbac.implemented == true
 	rbac.regularly_reviewed == true
 }
 
+default user_account_management_configured := false
+
 user_account_management_configured if {
 	user_mgmt := input.esxi.access_control.user_account_management
 	user_mgmt.properly_configured == true
 }
+
+default service_account_management_secure := false
 
 service_account_management_secure if {
 	service_mgmt := input.esxi.access_control.service_account_management
 	service_mgmt.secure == true
 }
 
+default privileged_access_management_implemented := false
+
 privileged_access_management_implemented if {
 	pam := input.esxi.access_control.privileged_access_management
 	pam.implemented == true
 }
+
+default authentication_mechanisms_secure := false
 
 authentication_mechanisms_secure if {
 	auth := input.esxi.access_control.authentication_mechanisms
 	auth.secure == true
 }
 
+default authorization_policies_configured := false
+
 authorization_policies_configured if {
 	authz := input.esxi.access_control.authorization_policies
 	authz.properly_configured == true
 }
+
+default access_review_procedures_configured := false
 
 access_review_procedures_configured if {
 	review := input.esxi.access_control.access_review_procedures
 	review.configured == true
 }
 
+default access_provisioning_automated := false
+
 access_provisioning_automated if {
 	provisioning := input.esxi.access_control.access_provisioning
 	provisioning.automated == true
 }
 
+default access_monitoring_configured := false
+
 access_monitoring_configured if {
 	monitoring := input.esxi.access_control.access_monitoring
 	monitoring.configured == true
 }
+
+default emergency_access_procedures_documented := false
 
 emergency_access_procedures_documented if {
 	emergency := input.esxi.access_control.emergency_access_procedures
@@ -598,50 +734,70 @@ emergency_access_procedures_documented if {
 }
 
 # Logging and Audit Security Controls
+default comprehensive_audit_logging_enabled := false
+
 comprehensive_audit_logging_enabled if {
 	audit := input.esxi.logging_audit.comprehensive_audit_logging
 	audit.enabled == true
 }
+
+default log_forwarding_configured_securely := false
 
 log_forwarding_configured_securely if {
 	forwarding := input.esxi.logging_audit.log_forwarding
 	forwarding.configured_securely == true
 }
 
+default log_retention_policies_implemented := false
+
 log_retention_policies_implemented if {
 	retention := input.esxi.logging_audit.log_retention_policies
 	retention.implemented == true
 }
+
+default log_monitoring_alerting_configured := false
 
 log_monitoring_alerting_configured if {
 	monitoring := input.esxi.logging_audit.log_monitoring_alerting
 	monitoring.configured == true
 }
 
+default log_integrity_protection_enabled := false
+
 log_integrity_protection_enabled if {
 	integrity := input.esxi.logging_audit.log_integrity_protection
 	integrity.enabled == true
 }
+
+default security_event_correlation_configured := false
 
 security_event_correlation_configured if {
 	correlation := input.esxi.logging_audit.security_event_correlation
 	correlation.configured == true
 }
 
+default incident_response_procedures_documented := false
+
 incident_response_procedures_documented if {
 	incident_response := input.esxi.logging_audit.incident_response_procedures
 	incident_response.documented == true
 }
+
+default forensic_analysis_capabilities_available := false
 
 forensic_analysis_capabilities_available if {
 	forensic := input.esxi.logging_audit.forensic_analysis_capabilities
 	forensic.available == true
 }
 
+default compliance_reporting_automated := false
+
 compliance_reporting_automated if {
 	reporting := input.esxi.logging_audit.compliance_reporting
 	reporting.automated == true
 }
+
+default audit_trail_review_procedures_configured := false
 
 audit_trail_review_procedures_configured if {
 	review := input.esxi.logging_audit.audit_trail_review_procedures
@@ -649,50 +805,70 @@ audit_trail_review_procedures_configured if {
 }
 
 # System Hardening Security Controls
+default system_hardening_standards_applied := false
+
 system_hardening_standards_applied if {
 	hardening := input.esxi.system_hardening.hardening_standards
 	hardening.applied == true
 }
+
+default security_patches_applied_timely := false
 
 security_patches_applied_timely if {
 	patches := input.esxi.system_hardening.security_patches
 	patches.applied_timely == true
 }
 
+default vulnerability_scanning_configured := false
+
 vulnerability_scanning_configured if {
 	vuln_scan := input.esxi.system_hardening.vulnerability_scanning
 	vuln_scan.configured == true
 }
+
+default penetration_testing_performed_regularly := false
 
 penetration_testing_performed_regularly if {
 	pen_test := input.esxi.system_hardening.penetration_testing
 	pen_test.performed_regularly == true
 }
 
+default security_baseline_compliance_monitored := false
+
 security_baseline_compliance_monitored if {
 	baseline := input.esxi.system_hardening.security_baseline_compliance
 	baseline.monitored == true
 }
+
+default configuration_drift_detection_enabled := false
 
 configuration_drift_detection_enabled if {
 	drift := input.esxi.system_hardening.configuration_drift_detection
 	drift.enabled == true
 }
 
+default security_automation_implemented := false
+
 security_automation_implemented if {
 	automation := input.esxi.system_hardening.security_automation
 	automation.implemented == true
 }
+
+default threat_intelligence_integration_configured := false
 
 threat_intelligence_integration_configured if {
 	threat_intel := input.esxi.system_hardening.threat_intelligence_integration
 	threat_intel.configured == true
 }
 
+default security_metrics_kpis_tracked := false
+
 security_metrics_kpis_tracked if {
 	metrics := input.esxi.system_hardening.security_metrics_kpis
 	metrics.tracked == true
 }
+
+default continuous_security_improvement_processes_configured := false
 
 continuous_security_improvement_processes_configured if {
 	improvement := input.esxi.system_hardening.continuous_security_improvement_processes
@@ -700,40 +876,56 @@ continuous_security_improvement_processes_configured if {
 }
 
 # Compliance Monitoring Security Controls
+default compliance_framework_alignment_documented := false
+
 compliance_framework_alignment_documented if {
 	framework := input.esxi.compliance_monitoring.compliance_framework_alignment
 	framework.documented == true
 }
+
+default regulatory_compliance_monitoring_configured := false
 
 regulatory_compliance_monitoring_configured if {
 	regulatory := input.esxi.compliance_monitoring.regulatory_compliance_monitoring
 	regulatory.configured == true
 }
 
+default compliance_reporting_automated_comprehensive := false
+
 compliance_reporting_automated_comprehensive if {
 	reporting := input.esxi.compliance_monitoring.compliance_reporting
 	reporting.automated_comprehensive == true
 }
+
+default compliance_audit_trails_maintained := false
 
 compliance_audit_trails_maintained if {
 	audit_trails := input.esxi.compliance_monitoring.compliance_audit_trails
 	audit_trails.maintained == true
 }
 
+default compliance_exception_management_implemented := false
+
 compliance_exception_management_implemented if {
 	exception_mgmt := input.esxi.compliance_monitoring.compliance_exception_management
 	exception_mgmt.implemented == true
 }
+
+default compliance_training_awareness_programs_configured := false
 
 compliance_training_awareness_programs_configured if {
 	training := input.esxi.compliance_monitoring.compliance_training_awareness_programs
 	training.configured == true
 }
 
+default compliance_risk_assessment_performed_regularly := false
+
 compliance_risk_assessment_performed_regularly if {
 	risk_assessment := input.esxi.compliance_monitoring.compliance_risk_assessment
 	risk_assessment.performed_regularly == true
 }
+
+default compliance_governance_processes_documented := false
 
 compliance_governance_processes_documented if {
 	governance := input.esxi.compliance_monitoring.compliance_governance_processes
