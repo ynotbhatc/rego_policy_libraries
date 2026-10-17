@@ -731,7 +731,8 @@ _legacy_ok(name) if data.nist.rmf.categorize[name] == true
 
 _legacy_failed(id) := {name |
 	_facts_supplied
-	some name, tid in legacy
+	some name
+	tid := legacy[name]
 	tid == id
 	not _legacy_ok(name)
 }
@@ -778,7 +779,7 @@ else := "not_satisfied"
 
 step_reports[s] := r if {
 	some s, name in sections
-	ids := {id | some id, t in tasks; t.step == s}
+	ids := {id | some id; t := tasks[id]; t.step == s}
 	r := {
 		"name": name,
 		"tasks_total": count(ids),
@@ -795,8 +796,8 @@ compliance_report := {
 	"compliant": compliant,
 	"total_controls": count(tasks),
 	"standard_total": 47, # RMF tasks printed in Chapter 3 (P-1..P-18, C-1..C-3, S-1..S-6, I-1..I-2, A-1..A-6, R-1..R-5, M-1..M-7)
-	"tasks_satisfied": count({id | some id, _ in tasks; _status(id) == "satisfied"}),
-	"tasks_not_applicable": count({id | some id, _ in tasks; _status(id) == "not_applicable"}),
+	"tasks_satisfied": count({id | some id; _ = tasks[id]; _status(id) == "satisfied"}),
+	"tasks_not_applicable": count({id | some id; _ = tasks[id]; _status(id) == "not_applicable"}),
 	"steps": step_reports,
 	"categorization_facts_supplied": _facts_supplied_bool,
 	"violation_count": count(violations),

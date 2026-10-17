@@ -574,7 +574,7 @@ _goal_achieved(g) if {
 process_area_reports[a] := s if {
 	some a, name in process_areas
 	ids := {r.id | some r in practice_rows; r.process_area == a}
-	gs := {g | some g, _ in goals; startswith(g, concat("", [a, ":"]))}
+	gs := {g | some g; _ = goals[g]; startswith(g, concat("", [a, ":"]))}
 	achieved := {g | some g in gs; _goal_achieved(g)}
 	s := {
 		"name": name,
@@ -597,7 +597,7 @@ compliance_report := {
 	"total_controls": count(practice_rows),
 	"practices_attested": count({r.id | some r in practice_rows; _true(r.id)}),
 	"specific_goals_total": count(goals),
-	"specific_goals_achieved": count({g | some g, _ in goals; _goal_achieved(g)}),
+	"specific_goals_achieved": count({g | some g; _ = goals[g]; _goal_achieved(g)}),
 	"process_areas": process_area_reports,
 	"generic_goals": generic_goals,
 	"violation_count": count(violations),

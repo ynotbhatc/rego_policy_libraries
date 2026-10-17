@@ -178,7 +178,8 @@ _check_date_format(playbook) := msg if {
 
 play_violations(playbook) := violations if {
 	violations := {msg |
-		some i, play in playbook.plays
+		some i
+		play := playbook.plays[i]
 		some msg in _play_checks(playbook.path, i, play)
 	}
 }

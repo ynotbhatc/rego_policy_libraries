@@ -8,6 +8,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Engine portability, step 1: no `some k, v in` inside set or array comprehensions.** rego-cpp (regopy) rejects that form with "Invalid collection" and refuses to load the whole module; 87 policy modules were affected; 85 are rewritten here (the other two, `enforcement/aap/extra_vars_control.rego` and `frameworks/financial/mas_trm/mas_trm_main.rego`, fail the per-file pre-commit check on main because they use definitions from sibling files, and follow separately). 244 comprehensions now use equivalent forms: `some v in X` when the key is unused, `some k; _ = X[k]` when the value is unused, `some k; v := X[k]` otherwise. Each form was checked on both engines (objects, arrays, sets, destructured values, indexed call results). The Windows Server 2022 generator and template emit the new forms, and regenerating reproduces the committed files. OPA results are unchanged: 991 evaluations of every affected directory's packages, on 721 inputs harvested from the test files plus empty input, are identical before and after (live timestamps masked), and 4,713/4,713 tests pass. Under regopy 1.5.2, 781 of 797 modules load with this change (was 701). Test files are unchanged; rego-cpp cannot compile the test suite anyway (see docs/ENGINE_COMPATIBILITY.md).
+
 ### Fixed
 
 - **CIS M365 v7 attestations no longer accept null or blank evidence.** `attestation_validation.rego` tested `attested_by`, `attested_on` and `evidence_ref` by truthiness, which fails only on `false` or undefined, so an attestation with `"evidence_ref": null` (or `""`, or a number) counted as attested and the control left the violation list. Each field must now be a non-empty string, the rule the Windows Server 2022 module already uses. Two regression tests (null evidence; blank, whitespace and non-string provenance) fail on the old rule and pass now.

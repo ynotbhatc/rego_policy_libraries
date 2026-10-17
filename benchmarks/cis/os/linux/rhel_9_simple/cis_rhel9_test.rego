@@ -77,8 +77,8 @@ results := {
 }
 
 # Count passed and failed checks
-passed_checks := count([check | some category, checks in results; some check, status in checks; status == true])
-failed_checks := count([check | some category, checks in results; some check, status in checks; status == false])
+passed_checks := count([check | some category; checks := results[category]; some check; status := checks[check]; status == true])
+failed_checks := count([check | some category; checks := results[category]; some check; status := checks[check]; status == false])
 total_checks := passed_checks + failed_checks
 
 # Compliance score

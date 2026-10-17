@@ -567,7 +567,7 @@ violations contains msg if {
 	msg := sprintf("C2M2 V2.1 Input Contract: input.c2m2.target_mil must be 1, 2 or 3; got %v — MIL3 (all practices) is evaluated", [_in.target_mil])
 }
 
-_domain_ids(d) := {id | some id, p in practices; p.domain == d}
+_domain_ids(d) := {id | some id; p := practices[id]; p.domain == d}
 
 # a domain achieves MIL l when every one of its practices at MIL <= l is performed (each domain has MIL1 practices)
 _mil_achieved(d, l) if {
@@ -593,12 +593,12 @@ domain_reports[d] := r if {
 mil_reports[k] := r if {
 	some l in _mils
 	k := sprintf("MIL%v", [l])
-	ids := {id | some id, p in practices; p.mil == l}
+	ids := {id | some id; p := practices[id]; p.mil == l}
 	r := {
 		"practices": count(ids),
 		"evaluated": l <= target_mil,
 		"performed": count({id | some id in ids; _true(id)}),
-		"domains_achieved": sort([d | some d, _ in model_domains; _mil_achieved(d, l)]),
+		"domains_achieved": sort([d | some d; _ = model_domains[d]; _mil_achieved(d, l)]),
 	}
 }
 
@@ -610,7 +610,7 @@ compliance_report := {
 	"standard_total": 356, # "The C2M2 includes 356 cybersecurity practices" (§4.1, p. 21)
 	"target_mil": target_mil,
 	"practices_evaluated": count(applicable),
-	"practices_performed": count({id | some id, _ in applicable; _true(id)}),
+	"practices_performed": count({id | some id; _ = applicable[id]; _true(id)}),
 	"domains": domain_reports,
 	"mils": mil_reports,
 	"violation_count": count(violations),

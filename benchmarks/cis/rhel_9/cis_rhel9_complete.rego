@@ -83,7 +83,7 @@ section_assessed(name) if {
 
 missing_inputs := {name: [k | some k in section_inputs[name]; not input[k]] | some name, _ in section_inputs}
 
-not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
+not_assessed_sections := sort([name | some name; _ = section_inputs[name]; not section_assessed(name)])
 
 assessed_sections := count(section_inputs) - count(not_assessed_sections)
 
@@ -233,7 +233,8 @@ total_sections := 14
 
 # A section counts as compliant only if it was actually assessed (fail-closed).
 compliant_sections := count([name |
-	some name, section in section_compliance
+	some name
+	section := section_compliance[name]
 	section.compliant == true
 	section_assessed(name)
 ])

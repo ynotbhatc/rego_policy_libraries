@@ -333,20 +333,22 @@ _section_report(section, controls) := r if {
 		"name": section.name,
 		"section_total_controls": section.section_total_controls,
 		"results": results,
-		"in_scope": [cid | some cid, s in results; s != "not_applicable"],
-		"assessed": [cid | some cid, s in results; s in {"pass", "fail"}],
-		"passed": [cid | some cid, s in results; s == "pass"],
-		"failed": [cid | some cid, s in results; s == "fail"],
-		"not_assessed": [cid | some cid, s in results; s == "not_assessed"],
+		"in_scope": [cid | some cid; s := results[cid]; s != "not_applicable"],
+		"assessed": [cid | some cid; s := results[cid]; s in {"pass", "fail"}],
+		"passed": [cid | some cid; s := results[cid]; s == "pass"],
+		"failed": [cid | some cid; s := results[cid]; s == "fail"],
+		"not_assessed": [cid | some cid; s := results[cid]; s == "not_assessed"],
 		"missing_inputs": sort({INPUT_KEY[c.kind] |
-			some cid, c in controls
+			some cid
+			c := controls[cid]
 			results[cid] == "not_assessed"
 			not _role_undecided(c.profiles)
 		}),
 		"violations": array.concat(
-			[sprintf("%s -- found: %s", [c.msg, _found(c)]) | some cid, c in controls; results[cid] == "fail"],
+			[sprintf("%s -- found: %s", [c.msg, _found(c)]) | some cid; c := controls[cid]; results[cid] == "fail"],
 			[sprintf("%s -- NOT ASSESSED: %s (counted as failed)", [c.msg, _why_not_assessed(c)]) |
-				some cid, c in controls
+				some cid
+				c := controls[cid]
 				results[cid] == "not_assessed"
 			],
 		),
@@ -389,6 +391,7 @@ results[cid] := status(c) if {
 section_reports[name] := _section_report(_sections[name], _tables[name]) if some name, _ in _tables
 
 attestation_in_scope_ids := {cid |
-	some cid, profiles in data.cis_windows_server_2022.attestation.PROFILES
+	some cid
+	profiles := data.cis_windows_server_2022.attestation.PROFILES[cid]
 	in_scope(profiles)
 }

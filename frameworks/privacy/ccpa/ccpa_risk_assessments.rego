@@ -184,8 +184,8 @@ violations contains msg if {
 compliance_report := {
 	"standard": "CCPA Regulations — Article 10 Risk Assessments (11 CCR §§7150–7157, effective 2026-01-01)",
 	"domain": "Risk Assessments",
-	"activities_in_use": [id | some id, _ in activities; _in_use(id)],
-	"activities_assessed_before_processing": [id | some id, _ in activities; _in_use(id); _in.activities[id].assessment_completed_before_processing == true],
+	"activities_in_use": [id | some id; _ = activities[id]; _in_use(id)],
+	"activities_assessed_before_processing": [id | some id; _ = activities[id]; _in_use(id); _in.activities[id].assessment_completed_before_processing == true],
 	"legacy_assessment_deadline": substring(legacy_assessment_deadline, 0, 10),
 	"first_submission_deadline": substring(first_submission_deadline, 0, 10),
 	"compliant": compliant,

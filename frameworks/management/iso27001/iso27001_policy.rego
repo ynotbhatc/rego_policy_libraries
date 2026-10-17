@@ -1342,7 +1342,7 @@ else := false
 
 theme_reports[name] := r if {
 	some clause, name in themes
-	ids := {id | some id, q in annex_a; q.theme == name}
+	ids := {id | some id; q := annex_a[id]; q.theme == name}
 	ok := {id | some id in ids; _satisfied(id)}
 	r := {
 		"clause": clause,
@@ -1357,7 +1357,7 @@ theme_reports[name] := r if {
 # Annex A ids in numeric order (A.5.2 before A.5.10)
 _in_order(s) := [k[2] | some k in sort([[to_number(p[1]), to_number(p[2]), id] | some id in s; p := split(id, ".")])]
 
-_n_satisfied := count({id | some id, _ in annex_a; _satisfied(id)})
+_n_satisfied := count({id | some id; _ = annex_a[id]; _satisfied(id)})
 
 compliance_report := {
 	"framework": "ISO/IEC 27001:2022",
@@ -1371,7 +1371,7 @@ compliance_report := {
 	"controls_fact_evaluated": count(fact_checks),
 	"controls_attested": count(annex_a) - count(fact_checks),
 	"themes_total": count(themes),
-	"themes_passing": count([t | some t, r in theme_reports; count(r.gaps) == 0]),
+	"themes_passing": count([t | some t; r := theme_reports[t]; count(r.gaps) == 0]),
 	"themes": theme_reports,
 	"annex_a": control_status,
 	"iso27002": iso27002_status,

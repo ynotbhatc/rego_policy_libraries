@@ -138,7 +138,7 @@ violations contains msg if {
 
 group_reports[g] := r if {
 	some g, name in groups
-	ids := {id | some id, it in items; it.g == g}
+	ids := {id | some id; it := items[id]; it.g == g}
 	passed := {id | some id in ids; _attested(id)}
 	r := {
 		"group": g,
@@ -154,9 +154,9 @@ compliance_report := {
 	"standard": "Ministry of Economy, Trade and Industry / IPA, March 2023 (English 31 May 2023) — Appendix A-1 (3 principles, 9 items) and A-2 (10 directions, 40 items)",
 	"source": "meti.go.jp — CSM_Guideline_v3.0_en.pdf",
 	"items_total": count(items),
-	"items_attested": count([id | some id, _ in items; _attested(id)]),
-	"principles_attested": count([id | some id, it in items; startswith(it.g, "P"); _attested(id)]),
-	"directions_attested": count([id | some id, it in items; startswith(it.g, "D"); _attested(id)]),
+	"items_attested": count([id | some id; _ = items[id]; _attested(id)]),
+	"principles_attested": count([id | some id; it := items[id]; startswith(it.g, "P"); _attested(id)]),
+	"directions_attested": count([id | some id; it := items[id]; startswith(it.g, "D"); _attested(id)]),
 	"groups": group_reports,
 	"compliant": compliant,
 	"violation_count": count(violations),

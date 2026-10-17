@@ -75,7 +75,7 @@ all_violations := [v | some r in reports; some v in r.violations]
 attested(id) if input.cis_controls.safeguards[id] == true
 
 # Cumulative IG sets — IG2 includes IG1, IG3 includes IG2.
-ig_ids(max_ig) := {id | some id, m in all_safeguards; m.ig <= max_ig}
+ig_ids(max_ig) := {id | some id; m := all_safeguards[id]; m.ig <= max_ig}
 
 ig_gaps(max_ig) := {id | some id in ig_ids(max_ig); not attested(id)}
 

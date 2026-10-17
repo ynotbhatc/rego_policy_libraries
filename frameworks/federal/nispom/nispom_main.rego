@@ -908,7 +908,7 @@ compliance_report := {
 	"compliant": compliant,
 	"total_controls": 599, # contractor-obligation rows emitted from §§117.7–117.23 (see header)
 	"evaluated": count(applicable),
-	"attested": count([id | some id, _ in applicable; _attested(id)]),
+	"attested": count([id | some id; _ = applicable[id]; _attested(id)]),
 	"flags": {k: object.get(_in, k, "undeclared") | some k, _ in _gates},
 	"sections": section_reports,
 	"violation_count": count(violations),

@@ -100,9 +100,9 @@ all_co_achievements := {
 # Aggregate counts across all 23 COs
 # ---------------------------------------------------------------------------
 
-achieved_cos := [co | some co, status in all_co_achievements; status == "achieved"]
-partially_achieved_cos := [co | some co, status in all_co_achievements; status == "partially_achieved"]
-not_achieved_cos := [co | some co, status in all_co_achievements; status == "not_achieved"]
+achieved_cos := [co | some co; status := all_co_achievements[co]; status == "achieved"]
+partially_achieved_cos := [co | some co; status := all_co_achievements[co]; status == "partially_achieved"]
+not_achieved_cos := [co | some co; status := all_co_achievements[co]; status == "not_achieved"]
 
 achievement_summary := {
     "total_cos_assessed": count(all_co_achievements),

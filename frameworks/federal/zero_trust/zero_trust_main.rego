@@ -82,13 +82,13 @@ _all[id] := {"stage": m.stage, "met": object.get(_attest(spec.key), id, false) =
 
 total_criteria := count(_all)
 
-criteria_met := count([id | some id, c in _all; c.met])
+criteria_met := count([id | some id; c := _all[id]; c.met])
 
 # Coverage per maturity stage present in the model.
 maturity_by_stage[stage] := {"total": total, "met": met} if {
-	some stage in {c.stage | some _, c in _all}
-	total := count([id | some id, c in _all; c.stage == stage])
-	met := count([id | some id, c in _all; c.stage == stage; c.met])
+	some stage in {c.stage | some c in _all}
+	total := count([id | some id; c := _all[id]; c.stage == stage])
+	met := count([id | some id; c := _all[id]; c.stage == stage; c.met])
 }
 
 # Per-pillar rollup, keyed by pillar name.

@@ -92,7 +92,7 @@ _not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collecte
 
 # Share of the control basis carried by unassessed sections, scaled from the
 # per-section controls_covered figures onto the distinct-ID basis.
-_covered_total := sum([section.controls_covered | some _, section in bench.section_compliance])
+_covered_total := sum([section.controls_covered | some section in bench.section_compliance])
 
 _unassessed_covered := sum([bench.section_compliance[name].controls_covered | some name in _not_assessed])
 

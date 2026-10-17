@@ -68,9 +68,9 @@ control_status[ctrl] := "satisfied" if {
 	not ctrl in _gap_controls
 }
 
-satisfied_controls := {c | some c, s in control_status; s == "satisfied"}
+satisfied_controls := {c | some c; s := control_status[c]; s == "satisfied"}
 
-gap_controls := {c | some c, s in control_status; s == "gap"}
+gap_controls := {c | some c; s := control_status[c]; s == "gap"}
 
 # Family rollup — 800-53 controls grouped by their two-letter family.
 _family(ctrl) := split(ctrl, "-")[0]

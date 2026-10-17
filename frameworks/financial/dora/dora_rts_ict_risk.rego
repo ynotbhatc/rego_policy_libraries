@@ -622,7 +622,7 @@ else := "undeclared"
 
 chapter_reports[k] := rpt if {
 	some k, c in chapters
-	ids := {id | some id, r in obligations; r.chapter == k}
+	ids := {id | some id; r := obligations[id]; r.chapter == k}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _attested(id)}
 	rpt := {
@@ -637,7 +637,7 @@ chapter_reports[k] := rpt if {
 	}
 }
 
-rows_by_title := {t: count({id | some id, r in obligations; startswith(r.chapter, concat("", [t, "."]))}) | some t in {"II", "III"}}
+rows_by_title := {t: count({id | some id; r := obligations[id]; startswith(r.chapter, concat("", [t, "."]))}) | some t in {"II", "III"}}
 
 compliance_report := {
 	"family": "ICT risk management framework (Title II) and simplified ICT risk management framework (Title III)",
@@ -651,7 +651,7 @@ compliance_report := {
 	"total_controls": 308,
 	"rows_by_title": rows_by_title,
 	"controls_evaluated": count(applicable),
-	"attested": count({id | some id, _ in applicable; _attested(id)}),
+	"attested": count({id | some id; _ = applicable[id]; _attested(id)}),
 	"chapters": chapter_reports,
 	"violations": violation,
 	"violation_count": count(violation),

@@ -184,7 +184,7 @@ violations contains msg if {
 
 paragraph_rollup[s] := r if {
 	some s, name in sections
-	ids := {id | some id, q in obligations; q.section == s}
+	ids := {id | some id; q := obligations[id]; q.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _true(id)}
 	r := {
@@ -203,7 +203,7 @@ compliance_report := {
 	"role": object.get(_in, "exchange_or_non_exchange_entity", "undeclared"),
 	"standard_total": 35,
 	"rows_evaluated": count(applicable),
-	"rows_attested": count([id | some id, _ in applicable; _true(id)]),
+	"rows_attested": count([id | some id; _ = applicable[id]; _true(id)]),
 	"paragraphs": paragraph_rollup,
 	"penalty": penalty,
 	"compliant": compliant,

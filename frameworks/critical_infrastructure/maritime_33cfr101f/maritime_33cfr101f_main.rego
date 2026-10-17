@@ -308,7 +308,7 @@ compliance_report := {
 	"dated_obligations": dated_obligations,
 	"notification_clocks": notification_clocks,
 	"evaluated": count(applicable),
-	"attested": count([id | some id, _ in applicable; _attested(id)]),
+	"attested": count([id | some id; _ = applicable[id]; _attested(id)]),
 	"sections": section_reports,
 	"violation_count": count(violations),
 	"violations": violations,

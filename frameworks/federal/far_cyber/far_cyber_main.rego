@@ -169,7 +169,7 @@ violations contains msg if {
 
 clause_rollup[s] := r if {
 	some s, c in sections
-	ids := {id | some id, q in requirements; q.section == s}
+	ids := {id | some id; q := requirements[id]; q.section == s}
 	app := {id | some id in ids; applicable[id]}
 	ok := {id | some id in app; _true(id)}
 	r := {
@@ -191,7 +191,7 @@ compliance_report := {
 	"notification_clocks": notification_clocks,
 	"standard_total": 24,
 	"rows_evaluated": count(applicable),
-	"rows_attested": count([id | some id, _ in applicable; _true(id)]),
+	"rows_attested": count([id | some id; _ = applicable[id]; _true(id)]),
 	"clauses": clause_rollup,
 	"compliant": compliant,
 	"violation_count": count(violations),

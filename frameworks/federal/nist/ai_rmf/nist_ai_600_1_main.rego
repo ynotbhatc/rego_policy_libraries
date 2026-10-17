@@ -1526,7 +1526,7 @@ else := "undeclared"
 
 function_rollup[f] := r if {
 	some f in function_names
-	ids := {aid | some aid, a in actions; a.function == f}
+	ids := {aid | some aid; a := actions[aid]; a.function == f}
 	r := {
 		"actions_total": count(ids),
 		"actions_satisfied": count({aid | some aid in ids; _satisfied(aid)}),
@@ -1536,8 +1536,8 @@ function_rollup[f] := r if {
 }
 
 subcategory_rollup[s] := r if {
-	some s in {a.subcategory | some _, a in actions}
-	ids := {aid | some aid, a in actions; a.subcategory == s}
+	some s in {a.subcategory | some a in actions}
+	ids := {aid | some aid; a := actions[aid]; a.subcategory == s}
 	r := {
 		"actions_total": count(ids),
 		"actions_satisfied": count({aid | some aid in ids; _satisfied(aid)}),
@@ -1547,7 +1547,7 @@ subcategory_rollup[s] := r if {
 
 risk_rollup[t] := r if {
 	some t, k in gai_risks
-	ids := {aid | some aid, a in actions; t in a.gai_risks}
+	ids := {aid | some aid; a := actions[aid]; t in a.gai_risks}
 	r := {
 		"number": k.number,
 		"actions_total": count(ids),
@@ -1568,7 +1568,7 @@ compliance_report := {
 	"compliant": compliant,
 	"total_controls": count(actions),
 	"standard_total": 212, # suggested actions in AI 600-1 Section 3
-	"actions_satisfied": count({aid | some aid, _ in actions; _satisfied(aid)}),
+	"actions_satisfied": count({aid | some aid; _ = actions[aid]; _satisfied(aid)}),
 	"gai_risks_total": count(gai_risks),
 	"subcategories_covered": count(subcategory_rollup),
 	"functions": function_rollup,

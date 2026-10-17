@@ -307,12 +307,12 @@ violations contains msg if {
 
 chapter_reports[ch] := r if {
 	some ch, name in chapters
-	ids := {id | some id, p in applicable; p.ch == ch}
+	ids := {id | some id; p := applicable[id]; p.ch == ch}
 	passed := {id | some id in ids; _attested(id)}
 	gaps := sort([id | some id in ids; not id in passed])
 	r := {
 		"chapter": name,
-		"practices_total": count({id | some id, p in practices; p.ch == ch}),
+		"practices_total": count({id | some id; p := practices[id]; p.ch == ch}),
 		"practices_evaluated": count(ids),
 		"practices_attested": count(passed),
 		"gaps": gaps,
@@ -328,7 +328,7 @@ compliance_report := {
 	"flags": {k: object.get(_in, k, "undeclared") | some k, _ in _flags},
 	"practices_total": count(practices),
 	"practices_evaluated": count(applicable),
-	"practices_attested": count([id | some id, _ in applicable; _attested(id)]),
+	"practices_attested": count([id | some id; _ = applicable[id]; _attested(id)]),
 	"chapters": chapter_reports,
 	"compliant": compliant,
 	"violation_count": count(violations),

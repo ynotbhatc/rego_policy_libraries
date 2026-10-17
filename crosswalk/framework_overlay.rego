@@ -68,20 +68,23 @@ _coverage_for(fwmap) := {
 	"controls_satisfied": count(sat),
 } if {
 	sat := sort([fc |
-		some fc, ctrls in fwmap
+		some fc
+		ctrls := fwmap[fc]
 		count(ctrls) > 0
 		every c in ctrls {_control_status[c] == "satisfied"}
 		some c in ctrls
 		_control_status[c] # at least one actually evaluated
 	])
 	gaps := sort([fc |
-		some fc, ctrls in fwmap
+		some fc
+		ctrls := fwmap[fc]
 		some c in ctrls
 		_control_status[c] == "gap"
 	])
 	# not_covered: framework controls whose spine controls were never evaluated
 	notcov := sort([fc |
-		some fc, ctrls in fwmap
+		some fc
+		ctrls := fwmap[fc]
 		not _any_evaluated(ctrls)
 	])
 }
@@ -91,10 +94,11 @@ _any_evaluated(ctrls) if {
 	_control_status[c]
 }
 
-frameworks_reported := sort([fw | some fw, _ in coverage])
+frameworks_reported := sort([fw | some fw; _ = coverage[fw]])
 
 frameworks_pending := sort([fw |
-	some fw, spec in _maps
+	some fw
+	spec := _maps[fw]
 	spec.status == "pending"
 ])
 
