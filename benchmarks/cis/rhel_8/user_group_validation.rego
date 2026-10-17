@@ -27,6 +27,23 @@ violations contains "CIS: FAIL-CLOSED - facts 'input.user_group' were not suppli
 	not input.user_group
 }
 
+# Every section below is an offender list or a path fact. An absent section is
+# missing evidence, not an empty offender list, and `user_group: {}` is not evidence.
+required_sections := {
+	"users_without_shadow", "users_with_empty_password", "passwd_groups_not_in_group_file",
+	"duplicate_uids", "duplicate_gids", "duplicate_usernames", "duplicate_groupnames",
+	"root_path", "root_path_dirs", "root_path_writable_dirs", "root_path_nonexistent_dirs",
+	"uid_zero_accounts", "users_without_home_directory", "users_not_owning_home",
+	"home_dirs_too_permissive", "users_with_netrc", "users_with_forward", "users_with_rhosts",
+	"dotfiles_group_or_world_writable",
+}
+
+violations contains msg if {
+	some section in required_sections
+	object.get(object.get(input, "user_group", {}), section, null) == null
+	msg := sprintf("CIS 6.2: evidence missing — user_group.%s not collected", [section])
+}
+
 compliant if {
 	count(violations) == 0
 }
