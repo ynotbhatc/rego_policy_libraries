@@ -22,8 +22,32 @@ import rego.v1
 # Implements Role-Based Access Control (RBAC), Privileged Access Management (PAM),
 # and Segregation of Duties (SoD) controls
 
+# Date normaliser: RFC3339 string or epoch nanoseconds; anything else is
+# undefined, so callers fail closed (a missing or unparseable date is never a pass).
+date_ns(v) := n if {
+    is_string(v)
+    n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
+# The six roll-up inputs must be false, not undefined: they are used as values
+# in access_control_score, where one undefined check zeroed the whole score.
+default rbac_implemented := false
+default privileged_access_managed := false
+default segregation_of_duties_enforced := false
+default account_lifecycle_managed := false
+default access_monitoring_enabled := false
+default mfa_requirements_met := false
+
+users_present if {
+    count(input.users) > 0
+}
+
 # Main access control compliance evaluation
 access_control_compliant if {
+    # No user data is no evidence: vacuously-true per-user checks must not pass.
+    users_present
     rbac_implemented
     privileged_access_managed
     segregation_of_duties_enforced
@@ -62,7 +86,9 @@ roles_follow_least_privilege if {
 
 excessive_permissions(user) if {
     # User has roles that conflict with their job function
-    user_job_function := user.job_function
+    # A missing job_function is not a pass: with no function to compare against,
+    # every role is inappropriate.
+    user_job_function := object.get(user, "job_function", "")
     inappropriate_roles := [role |
         role = user.roles[_]
         not role_appropriate_for_job_function(role.name, user_job_function)
@@ -153,7 +179,7 @@ role_assignment_justified(_, role) if {
     role.approved_by
     role.approval_date
     # Calculate days since approval using nanosecond timestamps
-    approval_age_days := (time.now_ns() - role.approval_date) / (24 * 60 * 60 * 1000000000)
+    approval_age_days := (time.now_ns() - date_ns(role.approval_date)) / (24 * 60 * 60 * 1000000000)
     approval_age_days <= max_approval_age_days(role.risk_level)
 }
 
@@ -302,9 +328,11 @@ financial_process_separation if {
 
 financial_process_properly_separated(process) if {
     # Financial processes need separate people for different roles
-    preparers := {user | user := process.participants[_].user_id; process.participants[_].role == "preparer"}
-    approvers := {user | user := process.participants[_].user_id; process.participants[_].role == "approver"}
-    reviewers := {user | user := process.participants[_].user_id; process.participants[_].role == "reviewer"}
+    # Pair user_id with the SAME participant's role (independent wildcards put every
+    # participant's id into every role set as soon as anyone held that role).
+    preparers := {p.user_id | some p in process.participants; p.role == "preparer"}
+    approvers := {p.user_id | some p in process.participants; p.role == "approver"}
+    reviewers := {p.user_id | some p in process.participants; p.role == "reviewer"}
 
     # No overlap between preparers and approvers
     count(preparers & approvers) == 0
@@ -334,9 +362,9 @@ it_process_separation if {
 }
 
 it_process_properly_separated(process) if {
-    developers := {user | user := process.participants[_].user_id; process.participants[_].role == "developer"}
-    deployers := {user | user := process.participants[_].user_id; process.participants[_].role == "deployer"}
-    approvers := {user | user := process.participants[_].user_id; process.participants[_].role == "approver"}
+    developers := {p.user_id | some p in process.participants; p.role == "developer"}
+    deployers := {p.user_id | some p in process.participants; p.role == "deployer"}
+    approvers := {p.user_id | some p in process.participants; p.role == "approver"}
 
     # Developers cannot deploy to production
     it_deployment_separation_ok(process, developers, deployers)
@@ -414,9 +442,15 @@ account_maintenance_performed if {
     count(overdue_reviews) == 0
 }
 
+# A review is overdue unless a parseable last_access_review is within the allowed
+# window: a missing or ISO-8601/unparseable date used to make the user "not overdue".
 account_review_overdue(user) if {
-    days_since_review := (time.now_ns() - user.last_access_review) / (24 * 60 * 60 * 1000000000)
-    days_since_review > review_frequency_days(user)
+    not account_review_current(user)
+}
+
+account_review_current(user) if {
+    days_since_review := (time.now_ns() - date_ns(user.last_access_review)) / (24 * 60 * 60 * 1000000000)
+    days_since_review <= review_frequency_days(user)
 }
 
 review_frequency_days(user) := 30 if {
@@ -439,7 +473,7 @@ account_deprovisioning_timely if {
 
 account_deprovisioning_adequate(user) if {
     user.status == "disabled"
-    termination_hours := (time.now_ns() - user.termination_date) / (60 * 60 * 1000000000)
+    termination_hours := (time.now_ns() - date_ns(user.termination_date)) / (60 * 60 * 1000000000)
     termination_hours <= max_deprovisioning_hours(user)
 }
 
@@ -468,6 +502,12 @@ account_is_orphaned(user) if {
 account_is_orphaned(user) if {
     manager := input.users[user.manager_id]
     manager.status != "active"
+}
+
+# A manager_id that names no known user is an orphan too.
+account_is_orphaned(user) if {
+    user.manager_id
+    not input.users[user.manager_id]
 }
 
 # Access Monitoring and Alerting
@@ -580,7 +620,7 @@ rbac_violations := [violation |
         "type": "excessive_permissions",
         "severity": "high",
         "user_id": user.id,
-        "description": sprintf("User %s has excessive permissions for job function %s", [user.id, user.job_function]),
+        "description": sprintf("User %s has excessive permissions for job function %s", [user.id, object.get(user, "job_function", "<not set>")]),
         "remediation": "Review and remove unnecessary role assignments"
     }
 ]
@@ -658,8 +698,8 @@ sox_access_control_compliant if {
     access_control_compliant
     segregation_of_duties_enforced
     # Additional SOX-specific controls
-    every user in input.users {
-        "financial_reporting" in user.system_access
+    # Only users with financial reporting access are in SOX scope.
+    every user in [u | some u in input.users; "financial_reporting" in u.system_access] {
         user.quarterly_access_review == true
     }
 }
@@ -667,8 +707,8 @@ sox_access_control_compliant if {
 pci_dss_access_control_compliant if {
     access_control_compliant
     # Additional PCI DSS requirements
-    every user in input.users {
-        "cardholder_data" in user.data_access
+    # Only users with cardholder data access are in PCI DSS scope.
+    every user in [u | some u in input.users; "cardholder_data" in u.data_access] {
         user.mfa_enabled == true
         user.unique_user_id == true
     }
