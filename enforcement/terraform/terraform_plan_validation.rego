@@ -103,8 +103,7 @@ findings contains f if {
 	some rule in object.get(_after(c), "ingress", [])
 	"0.0.0.0/0" in object.get(rule, "cidr_blocks", [])
 	some port in sensitive_ports
-	rule.from_port <= port
-	rule.to_port >= port
+	_rule_covers_port(rule, port)
 	f := _finding("AAC-TF-006", "critical", c.address, sprintf("Security group %q exposes port %v to 0.0.0.0/0", [c.address, port]))
 }
 
@@ -116,8 +115,7 @@ findings contains f if {
 	object.get(after, "type", "") == "ingress"
 	"0.0.0.0/0" in object.get(after, "cidr_blocks", [])
 	some port in sensitive_ports
-	after.from_port <= port
-	after.to_port >= port
+	_rule_covers_port(after, port)
 	f := _finding("AAC-TF-006", "critical", c.address, sprintf("Security group rule %q exposes port %v to 0.0.0.0/0", [c.address, port]))
 }
 
@@ -167,6 +165,28 @@ findings contains f if {
 	region != ""
 	not region in approved_regions
 	f := _finding("AAC-TF-011", "medium", c.address, sprintf("Resource %q uses unapproved region %q", [c.address, region]))
+}
+
+# AAC-TF-000 — a plan with no recognisable content is not allowed.
+# `terraform show -json` always carries format_version; resource_changes may be
+# omitted when nothing changes. Neither present means the input is not a plan
+# (wrong key, empty body), and an empty gate input must not be a pass.
+findings contains f if {
+	not _plan_recognised
+	f := _finding("AAC-TF-000", "high", "plan", "evidence missing: input has neither resource_changes nor format_version, not a Terraform plan")
+}
+
+_plan_recognised if is_array(object.get(input, "resource_changes", null))
+
+_plan_recognised if is_string(object.get(input, "format_version", null))
+
+# protocol "-1" is all traffic and ignores from/to (which are 0); otherwise the
+# rule covers a port when it lies inside [from_port, to_port].
+_rule_covers_port(rule, _) if rule.protocol in {"-1", -1}
+
+_rule_covers_port(rule, port) if {
+	rule.from_port <= port
+	rule.to_port >= port
 }
 
 # ── helper rules ──────────────────────────────────────────────────────────────
