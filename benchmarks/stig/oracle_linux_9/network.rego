@@ -241,11 +241,15 @@ wireless_disabled if {
 }
 
 wireless_disabled if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.wireless_interfaces)
 	count(input.wireless_interfaces) == 0
 }
 
+# The gather_network_config collector emits an object {interfaces, count, has_wireless}.
 wireless_disabled if {
-	not input.wireless_interfaces
+	is_object(input.wireless_interfaces)
+	input.wireless_interfaces.has_wireless == false
 }
 
 status_ol09_00_006001 := "Not_a_Finding" if { wireless_disabled } else := "Open"
@@ -287,12 +291,11 @@ finding_ol09_00_000046 := {
 default no_promiscuous_interfaces := false
 
 no_promiscuous_interfaces if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.promiscuous_interfaces)
 	count(input.promiscuous_interfaces) == 0
 }
 
-no_promiscuous_interfaces if {
-	not input.promiscuous_interfaces
-}
 
 status_ol09_00_006004 := "Not_a_Finding" if { no_promiscuous_interfaces } else := "Open"
 
