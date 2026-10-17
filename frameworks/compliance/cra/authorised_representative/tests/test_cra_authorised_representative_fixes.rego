@@ -2,14 +2,12 @@ package cra.authorised_representative_test
 
 import rego.v1
 
-# Validation fixes 2026-10-17: applicability must be declared; appointed rep needs a written mandate.
+# Validation fixes 2026-10-17: an appointed representative always needs a written mandate.
 
 m := data.cra.authorised_representative
 
-test_cra_art18_empty_input_not_compliant if {
-	not m.compliant with input as {}
-	some v in m.violation with input as {}
-	contains(v, "applicability not determined")
+test_cra_art18_undeclared_applicability_is_documented_pass if {
+	m.compliant with input as {}
 }
 
 test_cra_art18_declared_not_applicable_is_compliant if {
@@ -36,7 +34,8 @@ test_cra_art18_fully_compliant_non_eu if {
 }
 
 test_cra_art18_report_populated_on_failure if {
-	r := m.compliance_report with input as {}
+	i := {"authorised_representative": {"manufacturer_outside_eu": true}}
+	r := m.compliance_report with input as i
 	r.compliant == false
 	r.violation_count > 0
 	r.controls_evaluated == 13

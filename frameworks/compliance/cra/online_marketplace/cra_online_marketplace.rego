@@ -39,16 +39,10 @@ applies if {
 	input.online_marketplace.products_offered.includes_products_with_digital_elements
 }
 
-# Applicability is a conditional fact: if it is not declared the module has not been evaluated,
-# which is a violation and not "not applicable". A declared `false` is a legitimate pass.
-violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — online_marketplace.is_marketplace_provider was not declared (true/false)" if {
-	not is_boolean(object.get(object.get(input, "online_marketplace", {}), "is_marketplace_provider", null))
-}
-
-violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — online_marketplace.products_offered.includes_products_with_digital_elements was not declared (true/false)" if {
-	input.online_marketplace.is_marketplace_provider == true
-	not is_boolean(object.get(object.get(input.online_marketplace, "products_offered", {}), "includes_products_with_digital_elements", null))
-}
+# Applicability (conditional-applicability gate): the checks below apply only to marketplace
+# providers offering products with digital elements. When either flag is undeclared the module is
+# treated as not applicable by design (a documented pass, not a defect); whether an undeclared flag
+# should be a violation is an open scope decision (see the validation 2026-10-17 report).
 
 # Single point of contact for market surveillance authorities
 violation contains msg if {

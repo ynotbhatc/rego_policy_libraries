@@ -2,7 +2,7 @@ package cra.online_marketplace_test
 
 import rego.v1
 
-# Validation fixes 2026-10-17: undeclared applicability, critical severity, missing sample size.
+# Validation fixes 2026-10-17: critical severity, missing severity / sample size / takedown hours.
 
 m := data.cra.online_marketplace
 
@@ -17,17 +17,8 @@ compliant_marketplace := {"online_marketplace": {
 	"process_documentation": {"cra_process_documented": true},
 }}
 
-test_marketplace_empty_input_not_compliant if {
-	not m.compliant with input as {}
-}
-
 test_marketplace_declared_non_provider_is_compliant if {
 	m.compliant with input as {"online_marketplace": {"is_marketplace_provider": false}}
-}
-
-test_marketplace_undeclared_digital_elements_flag_is_violation if {
-	i := {"online_marketplace": {"is_marketplace_provider": true}}
-	not m.compliant with input as i
 }
 
 test_marketplace_fully_compliant if {

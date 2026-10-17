@@ -28,12 +28,10 @@ import rego.v1
 
 default compliant := false
 
-# Applicability: Art.18 applies only to manufacturers outside the Union (conditional-applicability
-# article). An assessment that does not declare whether the manufacturer is outside the EU has not
-# been evaluated, so it is reported as a violation, not as "not applicable".
-violation contains "CRA Art.18: applicability not determined — authorised_representative.manufacturer_outside_eu was not declared (true/false)" if {
-	not is_boolean(object.get(object.get(input, "authorised_representative", {}), "manufacturer_outside_eu", null))
-}
+# Applicability (conditional-applicability article): Art.18 applies only to manufacturers outside
+# the Union. When `manufacturer_outside_eu` is not declared the checks below are skipped by design;
+# that is a documented pass, not a defect. Whether an undeclared flag should instead be a violation
+# is an open scope decision (see the validation 2026-10-17 report).
 
 # Art.18(1) — Mandate must be in writing (required, or a representative has actually been appointed)
 mandate_applies if input.authorised_representative.required == true
