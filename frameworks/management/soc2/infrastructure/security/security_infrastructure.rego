@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # SOC capabilities and coverage
+default soc_capabilities_comprehensive := false
+
 soc_capabilities_comprehensive if {
     input.security.soc.coverage.twenty_four_seven == true
     input.security.soc.staffing.qualified_analysts == true
@@ -35,6 +37,8 @@ soc_capabilities_comprehensive if {
 }
 
 # Security incident response capabilities
+default incident_response_capabilities := false
+
 incident_response_capabilities if {
     input.security.incident_response.team.dedicated == true
     input.security.incident_response.procedures.tested == true
@@ -44,6 +48,8 @@ incident_response_capabilities if {
 }
 
 # Threat hunting and intelligence
+default threat_hunting_implemented := false
+
 threat_hunting_implemented if {
     input.security.threat_hunting.proactive.enabled == true
     input.security.threat_hunting.intelligence.feeds == true
@@ -56,6 +62,8 @@ threat_hunting_implemented if {
 # =================================================================
 
 # SIEM platform and capabilities
+default siem_platform_comprehensive := false
+
 siem_platform_comprehensive if {
     input.security.siem.platform.enterprise_grade == true
     input.security.siem.log_sources.comprehensive == true
@@ -65,6 +73,8 @@ siem_platform_comprehensive if {
 }
 
 # Security analytics and detection
+default security_analytics_advanced := false
+
 security_analytics_advanced if {
     input.security.analytics.machine_learning.enabled == true
     input.security.analytics.behavioral.analysis == true
@@ -73,6 +83,8 @@ security_analytics_advanced if {
 }
 
 # Security orchestration and automated response (SOAR)
+default soar_capabilities_implemented := false
+
 soar_capabilities_implemented if {
     input.security.soar.playbooks.automated == true
     input.security.soar.integration.comprehensive == true
@@ -85,6 +97,8 @@ soar_capabilities_implemented if {
 # =================================================================
 
 # Vulnerability assessment program
+default vulnerability_assessment_comprehensive := false
+
 vulnerability_assessment_comprehensive if {
     input.security.vulnerability_management.scanning.continuous == true
     input.security.vulnerability_management.coverage.comprehensive == true
@@ -93,6 +107,8 @@ vulnerability_assessment_comprehensive if {
 }
 
 # Penetration testing program
+default penetration_testing_regular := false
+
 penetration_testing_regular if {
     input.security.penetration_testing.frequency.annual == true
     input.security.penetration_testing.scope.comprehensive == true
@@ -101,6 +117,8 @@ penetration_testing_regular if {
 }
 
 # Security assessments and audits
+default security_assessments_regular := false
+
 security_assessments_regular if {
     input.security.assessments.risk_assessments.periodic == true
     input.security.assessments.security_audits.independent == true
@@ -113,6 +131,8 @@ security_assessments_regular if {
 # =================================================================
 
 # Enterprise identity management
+default identity_management_enterprise := false
+
 identity_management_enterprise if {
     input.security.iam.directory_services.centralized == true
     input.security.iam.user_lifecycle.automated == true
@@ -121,6 +141,8 @@ identity_management_enterprise if {
 }
 
 # Multi-factor authentication deployment
+default mfa_deployment_comprehensive := false
+
 mfa_deployment_comprehensive if {
     input.security.iam.mfa.universal.deployed == true
     input.security.iam.mfa.risk_based.enabled == true
@@ -129,6 +151,8 @@ mfa_deployment_comprehensive if {
 }
 
 # Privileged access management (PAM)
+default pam_solution_implemented := false
+
 pam_solution_implemented if {
     input.security.iam.pam.password_vaulting == true
     input.security.iam.pam.session_recording == true
@@ -141,6 +165,8 @@ pam_solution_implemented if {
 # =================================================================
 
 # EDR platform deployment
+default edr_platform_deployed := false
+
 edr_platform_deployed if {
     input.security.edr.coverage.comprehensive == true
     input.security.edr.detection.behavioral == true
@@ -150,6 +176,8 @@ edr_platform_deployed if {
 }
 
 # Endpoint protection platform (EPP)
+default epp_solution_comprehensive := false
+
 epp_solution_comprehensive if {
     input.security.epp.antivirus.next_generation == true
     input.security.epp.firewall.host_based == true
@@ -158,6 +186,8 @@ epp_solution_comprehensive if {
 }
 
 # Mobile device management (MDM)
+default mdm_solution_deployed := false
+
 mdm_solution_deployed if {
     input.security.mdm.enrollment.mandatory == true
     input.security.mdm.policies.enforced == true
@@ -170,6 +200,8 @@ mdm_solution_deployed if {
 # =================================================================
 
 # Network security monitoring
+default network_security_monitoring := false
+
 network_security_monitoring if {
     input.security.network.monitoring.traffic_analysis == true
     input.security.network.monitoring.intrusion_detection == true
@@ -178,6 +210,8 @@ network_security_monitoring if {
 }
 
 # Network access control (NAC)
+default network_access_control_deployed := false
+
 network_access_control_deployed if {
     input.security.network.nac.device_authentication == true
     input.security.network.nac.posture_assessment == true
@@ -186,6 +220,8 @@ network_access_control_deployed if {
 }
 
 # Zero trust network architecture
+default zero_trust_implemented := false
+
 zero_trust_implemented if {
     input.security.network.zero_trust.verification.continuous == true
     input.security.network.zero_trust.least_privilege == true
@@ -198,6 +234,8 @@ zero_trust_implemented if {
 # =================================================================
 
 # Cloud security posture management (CSPM)
+default cspm_implemented := false
+
 cspm_implemented if {
     input.security.cloud.cspm.multi_cloud == true
     input.security.cloud.cspm.continuous_monitoring == true
@@ -206,6 +244,8 @@ cspm_implemented if {
 }
 
 # Cloud workload protection platform (CWPP)
+default cwpp_deployed := false
+
 cwpp_deployed if {
     input.security.cloud.cwpp.container_security == true
     input.security.cloud.cwpp.serverless_security == true
@@ -214,6 +254,8 @@ cwpp_deployed if {
 }
 
 # Cloud access security broker (CASB)
+default casb_solution_implemented := false
+
 casb_solution_implemented if {
     input.security.cloud.casb.shadow_it_discovery == true
     input.security.cloud.casb.data_loss_prevention == true
@@ -226,6 +268,8 @@ casb_solution_implemented if {
 # =================================================================
 
 # Data loss prevention (DLP)
+default dlp_solution_comprehensive := false
+
 dlp_solution_comprehensive if {
     input.security.dlp.coverage.comprehensive == true
     input.security.dlp.policies.data_classification == true
@@ -234,6 +278,8 @@ dlp_solution_comprehensive if {
 }
 
 # Database activity monitoring (DAM)
+default database_activity_monitoring := false
+
 database_activity_monitoring if {
     input.security.dam.monitoring.real_time == true
     input.security.dam.policies.comprehensive == true
@@ -242,6 +288,8 @@ database_activity_monitoring if {
 }
 
 # File integrity monitoring (FIM)
+default file_integrity_monitoring := false
+
 file_integrity_monitoring if {
     input.security.fim.coverage.critical_files == true
     input.security.fim.monitoring.real_time == true
@@ -254,6 +302,8 @@ file_integrity_monitoring if {
 # =================================================================
 
 # Security governance framework
+default security_governance_established := false
+
 security_governance_established if {
     input.security.governance.framework.established == true
     input.security.governance.policies.comprehensive == true
@@ -262,6 +312,8 @@ security_governance_established if {
 }
 
 # Risk management program
+default risk_management_program := false
+
 risk_management_program if {
     input.security.risk_management.framework.implemented == true
     input.security.risk_management.assessment.regular == true
@@ -270,6 +322,8 @@ risk_management_program if {
 }
 
 # Compliance management system
+default compliance_management_automated := false
+
 compliance_management_automated if {
     input.security.compliance.monitoring.continuous == true
     input.security.compliance.reporting.automated == true
@@ -282,6 +336,8 @@ compliance_management_automated if {
 # =================================================================
 
 # Security awareness program
+default security_awareness_comprehensive := false
+
 security_awareness_comprehensive if {
     input.security.awareness.program.established == true
     input.security.awareness.training.mandatory == true
@@ -290,6 +346,8 @@ security_awareness_comprehensive if {
 }
 
 # Security training and certification
+default security_training_program := false
+
 security_training_program if {
     input.security.training.role_based.implemented == true
     input.security.training.technical.provided == true
@@ -298,6 +356,8 @@ security_training_program if {
 }
 
 # Incident response training
+default incident_response_training := false
+
 incident_response_training if {
     input.security.training.incident_response.regular == true
     input.security.training.tabletop_exercises.conducted == true
@@ -309,11 +369,15 @@ incident_response_training if {
 # OVERALL SECURITY INFRASTRUCTURE ASSESSMENT
 # =================================================================
 
+default security_operations_compliant := false
+
 security_operations_compliant if {
     soc_capabilities_comprehensive
     incident_response_capabilities
     threat_hunting_implemented
 }
+
+default security_monitoring_compliant := false
 
 security_monitoring_compliant if {
     siem_platform_comprehensive
@@ -321,11 +385,15 @@ security_monitoring_compliant if {
     soar_capabilities_implemented
 }
 
+default vulnerability_management_compliant := false
+
 vulnerability_management_compliant if {
     vulnerability_assessment_comprehensive
     penetration_testing_regular
     security_assessments_regular
 }
+
+default identity_access_compliant := false
 
 identity_access_compliant if {
     identity_management_enterprise
@@ -333,11 +401,15 @@ identity_access_compliant if {
     pam_solution_implemented
 }
 
+default endpoint_security_compliant := false
+
 endpoint_security_compliant if {
     edr_platform_deployed
     epp_solution_comprehensive
     mdm_solution_deployed
 }
+
+default network_security_compliant := false
 
 network_security_compliant if {
     network_security_monitoring
@@ -345,11 +417,15 @@ network_security_compliant if {
     zero_trust_implemented
 }
 
+default cloud_security_compliant := false
+
 cloud_security_compliant if {
     cspm_implemented
     cwpp_deployed
     casb_solution_implemented
 }
+
+default data_security_compliant := false
 
 data_security_compliant if {
     dlp_solution_comprehensive
@@ -357,17 +433,23 @@ data_security_compliant if {
     file_integrity_monitoring
 }
 
+default security_governance_compliant := false
+
 security_governance_compliant if {
     security_governance_established
     risk_management_program
     compliance_management_automated
 }
 
+default security_training_compliant := false
+
 security_training_compliant if {
     security_awareness_comprehensive
     security_training_program
     incident_response_training
 }
+
+default overall_security_infrastructure_compliant := false
 
 overall_security_infrastructure_compliant if {
     security_operations_compliant

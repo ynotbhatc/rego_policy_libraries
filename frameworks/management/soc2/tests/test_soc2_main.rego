@@ -399,10 +399,14 @@ test_soc2_detailed_findings_undefined_on_empty if {
 	not main.soc2_detailed_findings with input as {}
 }
 
+# Validation fix 2026-10-17: the five Trust Service Criteria modules now default every control
+# to false, so these two rules are DEFINED (score 0) on empty input. The names keep the old
+# "undefined_on_empty" spelling because test names must not change; the assertions pin the fix.
 test_trust_service_criteria_scores_undefined_on_empty if {
-	not main.trust_service_criteria_scores with input as {}
+	scores := main.trust_service_criteria_scores with input as {}
+	scores == {"security": 0, "availability": 0, "processing_integrity": 0, "confidentiality": 0, "privacy": 0}
 }
 
 test_soc2_compliance_score_undefined_on_empty if {
-	not main.soc2_compliance_score with input as {}
+	main.soc2_compliance_score == 0 with input as {}
 }

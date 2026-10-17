@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # Network segmentation is properly implemented
+default network_segmentation_compliant := false
+
 network_segmentation_compliant if {
     input.network.architecture.segmentation.enabled == true
     input.network.architecture.segmentation.dmz.configured == true
@@ -34,6 +36,8 @@ network_segmentation_compliant if {
 }
 
 # Network topology is documented and managed
+default network_topology_managed := false
+
 network_topology_managed if {
     input.network.topology.documentation.current == true
     input.network.topology.documentation.detailed == true
@@ -42,6 +46,8 @@ network_topology_managed if {
 }
 
 # Redundancy and high availability
+default network_redundancy_implemented := false
+
 network_redundancy_implemented if {
     input.network.redundancy.multiple_paths.enabled == true
     input.network.redundancy.failover.automatic == true
@@ -54,6 +60,8 @@ network_redundancy_implemented if {
 # =================================================================
 
 # Firewall configuration and management
+default firewall_controls_compliant := false
+
 firewall_controls_compliant if {
     input.network.firewalls.perimeter.configured == true
     input.network.firewalls.internal.configured == true
@@ -63,6 +71,8 @@ firewall_controls_compliant if {
 }
 
 # Next-generation firewall capabilities
+default ngfw_capabilities_enabled := false
+
 ngfw_capabilities_enabled if {
     input.network.firewalls.ngfw.deep_packet_inspection == true
     input.network.firewalls.ngfw.application_control == true
@@ -71,6 +81,8 @@ ngfw_capabilities_enabled if {
 }
 
 # Web application firewall (WAF)
+default waf_protection_implemented := false
+
 waf_protection_implemented if {
     input.network.waf.enabled == true
     input.network.waf.rules.owasp_top10 == true
@@ -84,6 +96,8 @@ waf_protection_implemented if {
 # =================================================================
 
 # Network access control (NAC)
+default network_access_control_implemented := false
+
 network_access_control_implemented if {
     input.network.access_control.nac.enabled == true
     input.network.access_control.device_authentication.required == true
@@ -92,6 +106,8 @@ network_access_control_implemented if {
 }
 
 # 802.1X authentication
+default dot1x_authentication_enabled := false
+
 dot1x_authentication_enabled if {
     input.network.access_control.dot1x.enabled == true
     input.network.access_control.dot1x.certificate_based == true
@@ -100,6 +116,8 @@ dot1x_authentication_enabled if {
 }
 
 # Wireless network security
+default wireless_security_compliant := false
+
 wireless_security_compliant if {
     input.network.wireless.encryption.wpa3_enabled == true
     input.network.wireless.guest_isolation.enabled == true
@@ -112,6 +130,8 @@ wireless_security_compliant if {
 # =================================================================
 
 # Network monitoring infrastructure
+default network_monitoring_comprehensive := false
+
 network_monitoring_comprehensive if {
     input.network.monitoring.traffic_analysis.enabled == true
     input.network.monitoring.flow_monitoring.netflow_enabled == true
@@ -120,6 +140,8 @@ network_monitoring_comprehensive if {
 }
 
 # Intrusion detection and prevention
+default network_ids_ips_deployed := false
+
 network_ids_ips_deployed if {
     input.network.security.ids.network_based.enabled == true
     input.network.security.ids.host_based.enabled == true
@@ -129,6 +151,8 @@ network_ids_ips_deployed if {
 }
 
 # Security information and event management (SIEM)
+default network_siem_integration := false
+
 network_siem_integration if {
     input.network.monitoring.siem.integration.enabled == true
     input.network.monitoring.siem.log_correlation == true
@@ -140,15 +164,30 @@ network_siem_integration if {
 # NETWORK ENCRYPTION AND VPN
 # =================================================================
 
+# TLS version as a number. Accepts 1.2 / "1.2" / "TLSv1.2" / "TLS 1.3"; a plain `>= 1.2` would
+# let any string through because OPA orders strings above numbers. Undefined when unparsable.
+tls_version_number(v) := v if is_number(v)
+
+tls_version_number(v) := to_number(m[0][1]) if {
+    is_string(v)
+    m := regex.find_all_string_submatch_n(`(\d+\.\d+)`, v, 1)
+}
+
+tls_at_least_1_2(v) if tls_version_number(v) >= 1.2
+
 # Network encryption standards
+default network_encryption_compliant := false
+
 network_encryption_compliant if {
-    input.network.encryption.in_transit.tls_minimum_version >= 1.2
+    tls_at_least_1_2(input.network.encryption.in_transit.tls_minimum_version)
     input.network.encryption.in_transit.perfect_forward_secrecy == true
     input.network.encryption.ipsec.configured == true
     input.network.encryption.macsec.enabled == true
 }
 
 # VPN infrastructure and management
+default vpn_infrastructure_secure := false
+
 vpn_infrastructure_secure if {
     input.network.vpn.multi_factor_authentication.required == true
     input.network.vpn.split_tunneling.disabled == true
@@ -158,6 +197,8 @@ vpn_infrastructure_secure if {
 }
 
 # Remote access security
+default remote_access_controls := false
+
 remote_access_controls if {
     input.network.remote_access.zero_trust.implemented == true
     input.network.remote_access.conditional_access.enabled == true
@@ -170,6 +211,8 @@ remote_access_controls if {
 # =================================================================
 
 # Software-defined networking (SDN)
+default sdn_security_controls := false
+
 sdn_security_controls if {
     input.network.sdn.controller_security.hardened == true
     input.network.sdn.flow_rules.validated == true
@@ -178,6 +221,8 @@ sdn_security_controls if {
 }
 
 # Container networking security
+default container_network_security := false
+
 container_network_security if {
     input.network.containers.network_policies.enabled == true
     input.network.containers.service_mesh.security.enabled == true
@@ -186,6 +231,8 @@ container_network_security if {
 }
 
 # Multi-cloud networking
+default multi_cloud_network_security := false
+
 multi_cloud_network_security if {
     input.network.multi_cloud.consistent_policies == true
     input.network.multi_cloud.encrypted_interconnects == true
@@ -198,6 +245,8 @@ multi_cloud_network_security if {
 # =================================================================
 
 # Network incident detection and response
+default network_incident_response := false
+
 network_incident_response if {
     input.network.incident_response.detection.automated == true
     input.network.incident_response.isolation.automated == true
@@ -206,6 +255,8 @@ network_incident_response if {
 }
 
 # Distributed Denial of Service (DDoS) protection
+default ddos_protection_implemented := false
+
 ddos_protection_implemented if {
     input.network.ddos_protection.detection.enabled == true
     input.network.ddos_protection.mitigation.automatic == true
@@ -214,6 +265,8 @@ ddos_protection_implemented if {
 }
 
 # Network forensics capabilities
+default network_forensics_ready := false
+
 network_forensics_ready if {
     input.network.forensics.packet_capture.continuous == true
     input.network.forensics.flow_analysis.retained == true
@@ -226,6 +279,8 @@ network_forensics_ready if {
 # =================================================================
 
 # OpenShift networking security
+default openshift_network_security := false
+
 openshift_network_security if {
     input.openshift.networking.sdn.security_enabled == true
     input.openshift.networking.network_policies.default_deny == true
@@ -234,6 +289,8 @@ openshift_network_security if {
 }
 
 # Kubernetes network policies
+default k8s_network_policies_comprehensive := false
+
 k8s_network_policies_comprehensive if {
     input.kubernetes.network_policies.ingress_rules.restrictive == true
     input.kubernetes.network_policies.egress_rules.defined == true
@@ -242,6 +299,8 @@ k8s_network_policies_comprehensive if {
 }
 
 # Service mesh security
+default service_mesh_security_controls := false
+
 service_mesh_security_controls if {
     input.service_mesh.mutual_tls.enforced == true
     input.service_mesh.traffic_policies.encryption_required == true
@@ -253,11 +312,15 @@ service_mesh_security_controls if {
 # OVERALL NETWORK INFRASTRUCTURE ASSESSMENT
 # =================================================================
 
+default network_architecture_compliant := false
+
 network_architecture_compliant if {
     network_segmentation_compliant
     network_topology_managed
     network_redundancy_implemented
 }
+
+default network_security_compliant := false
 
 network_security_compliant if {
     firewall_controls_compliant
@@ -268,11 +331,15 @@ network_security_compliant if {
     wireless_security_compliant
 }
 
+default network_monitoring_compliant := false
+
 network_monitoring_compliant if {
     network_monitoring_comprehensive
     network_ids_ips_deployed
     network_siem_integration
 }
+
+default network_encryption_compliant_overall := false
 
 network_encryption_compliant_overall if {
     network_encryption_compliant
@@ -280,11 +347,15 @@ network_encryption_compliant_overall if {
     remote_access_controls
 }
 
+default cloud_network_compliant := false
+
 cloud_network_compliant if {
     sdn_security_controls
     container_network_security
     multi_cloud_network_security
 }
+
+default network_resilience_compliant := false
 
 network_resilience_compliant if {
     network_incident_response
@@ -292,11 +363,15 @@ network_resilience_compliant if {
     network_forensics_ready
 }
 
+default openshift_network_compliant := false
+
 openshift_network_compliant if {
     openshift_network_security
     k8s_network_policies_comprehensive
     service_mesh_security_controls
 }
+
+default overall_network_infrastructure_compliant := false
 
 overall_network_infrastructure_compliant if {
     network_architecture_compliant

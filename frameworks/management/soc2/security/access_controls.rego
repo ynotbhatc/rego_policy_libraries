@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # User access is properly restricted based on job responsibilities
+default user_access_properly_restricted := false
+
 user_access_properly_restricted if {
     input.access_controls.role_based_access == true
     input.access_controls.least_privilege_principle == true
@@ -33,6 +35,8 @@ user_access_properly_restricted if {
 }
 
 # Multi-factor authentication is implemented for privileged access
+default mfa_for_privileged_access := false
+
 mfa_for_privileged_access if {
     count(input.access_controls.privileged_users) > 0
     mfa_enabled_users := [user | user := input.access_controls.privileged_users[_]; user.mfa_enabled == true]
@@ -40,6 +44,8 @@ mfa_for_privileged_access if {
 }
 
 # System access is monitored and logged
+default system_access_monitored := false
+
 system_access_monitored if {
     input.access_controls.access_logging.enabled == true
     input.access_controls.access_logging.includes_failed_attempts == true
@@ -51,6 +57,8 @@ system_access_monitored if {
 # =================================================================
 
 # Network access is properly segmented
+default network_segmentation_implemented := false
+
 network_segmentation_implemented if {
     input.network_security.segmentation.enabled == true
     count(input.network_security.segmentation.zones) >= 2
@@ -58,6 +66,8 @@ network_segmentation_implemented if {
 }
 
 # Remote access is secured
+default remote_access_secured := false
+
 remote_access_secured if {
     input.remote_access.vpn_required == true
     input.remote_access.vpn_encryption.enabled == true
@@ -66,6 +76,8 @@ remote_access_secured if {
 }
 
 # Database access is controlled
+default database_access_controlled := false
+
 database_access_controlled if {
     input.database_security.authentication_required == true
     input.database_security.connection_encryption == true
@@ -79,6 +91,8 @@ database_access_controlled if {
 # =================================================================
 
 # User provisioning and deprovisioning is automated
+default user_lifecycle_managed := false
+
 user_lifecycle_managed if {
     input.user_management.automated_provisioning == true
     input.user_management.automated_deprovisioning == true
@@ -86,6 +100,8 @@ user_lifecycle_managed if {
 }
 
 # Access rights are reviewed regularly
+default access_rights_reviewed := false
+
 access_rights_reviewed if {
     input.access_controls.periodic_reviews.enabled == true
     input.access_controls.periodic_reviews.frequency_days <= 90
@@ -93,6 +109,8 @@ access_rights_reviewed if {
 }
 
 # Shared and service accounts are managed
+default shared_accounts_managed := false
+
 shared_accounts_managed if {
     count(input.access_controls.shared_accounts) == 0
     count([account | 
@@ -107,6 +125,8 @@ shared_accounts_managed if {
 # =================================================================
 
 # RBAC is properly configured in OpenShift
+default openshift_rbac_configured := false
+
 openshift_rbac_configured if {
     input.openshift.rbac.enabled == true
     input.openshift.rbac.cluster_admin_users_limited == true
@@ -115,6 +135,8 @@ openshift_rbac_configured if {
 }
 
 # Pod security standards are enforced
+default pod_security_enforced := false
+
 pod_security_enforced if {
     input.openshift.security.pod_security_standards.enabled == true
     input.openshift.security.pod_security_standards.level in ["restricted", "baseline"]
@@ -122,6 +144,8 @@ pod_security_enforced if {
 }
 
 # Network policies are implemented
+default network_policies_implemented := false
+
 network_policies_implemented if {
     input.openshift.network_policies.enabled == true
     input.openshift.network_policies.default_deny == true
@@ -129,6 +153,8 @@ network_policies_implemented if {
 }
 
 # Container image security is enforced
+default container_security_enforced := false
+
 container_security_enforced if {
     input.openshift.image_security.scanning_enabled == true
     input.openshift.image_security.vulnerability_threshold.critical == 0
@@ -139,6 +165,8 @@ container_security_enforced if {
 # =================================================================
 # Overall Security Assessment
 # =================================================================
+
+default security_controls_compliant := false
 
 security_controls_compliant if {
     user_access_properly_restricted
@@ -152,12 +180,16 @@ security_controls_compliant if {
     shared_accounts_managed
 }
 
+default openshift_security_compliant := false
+
 openshift_security_compliant if {
     openshift_rbac_configured
     pod_security_enforced
     network_policies_implemented
     container_security_enforced
 }
+
+default overall_security_compliant := false
 
 overall_security_compliant if {
     security_controls_compliant

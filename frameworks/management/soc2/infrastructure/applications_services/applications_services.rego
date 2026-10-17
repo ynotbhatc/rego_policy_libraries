@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # Secure application architecture
+default application_architecture_secure := false
+
 application_architecture_secure if {
     input.applications.architecture.security_by_design == true
     input.applications.architecture.microservices.isolated == true
@@ -35,6 +37,8 @@ application_architecture_secure if {
 }
 
 # Application development lifecycle security
+default application_development_secure := false
+
 application_development_secure if {
     input.applications.development.secure_coding.standards == true
     input.applications.development.code_review.mandatory == true
@@ -44,6 +48,8 @@ application_development_secure if {
 }
 
 # Application deployment security
+default application_deployment_secure := false
+
 application_deployment_secure if {
     input.applications.deployment.ci_cd_security.enabled == true
     input.applications.deployment.container_scanning.automated == true
@@ -56,6 +62,8 @@ application_deployment_secure if {
 # =================================================================
 
 # Authentication and authorization
+default application_auth_comprehensive := false
+
 application_auth_comprehensive if {
     input.applications.security.authentication.multi_factor == true
     input.applications.security.authorization.rbac == true
@@ -65,6 +73,8 @@ application_auth_comprehensive if {
 }
 
 # Input validation and output encoding
+default application_input_validation := false
+
 application_input_validation if {
     input.applications.security.input_validation.comprehensive == true
     input.applications.security.output_encoding.implemented == true
@@ -74,6 +84,8 @@ application_input_validation if {
 }
 
 # Application-level encryption
+default application_encryption_implemented := false
+
 application_encryption_implemented if {
     input.applications.security.encryption.data_at_rest == true
     input.applications.security.encryption.data_in_transit == true
@@ -86,6 +98,8 @@ application_encryption_implemented if {
 # =================================================================
 
 # API security framework
+default api_security_comprehensive := false
+
 api_security_comprehensive if {
     input.applications.apis.authentication.required == true
     input.applications.apis.authorization.granular == true
@@ -95,6 +109,8 @@ api_security_comprehensive if {
 }
 
 # API gateway security
+default api_gateway_secure := false
+
 api_gateway_secure if {
     input.applications.apis.gateway.security_policies == true
     input.applications.apis.gateway.threat_protection == true
@@ -103,6 +119,8 @@ api_gateway_secure if {
 }
 
 # API documentation and lifecycle
+default api_lifecycle_managed := false
+
 api_lifecycle_managed if {
     input.applications.apis.documentation.current == true
     input.applications.apis.documentation.security_requirements == true
@@ -115,6 +133,8 @@ api_lifecycle_managed if {
 # =================================================================
 
 # Microservices security architecture
+default microservices_security_implemented := false
+
 microservices_security_implemented if {
     input.applications.microservices.service_isolation == true
     input.applications.microservices.inter_service_auth == true
@@ -123,6 +143,8 @@ microservices_security_implemented if {
 }
 
 # Container security for applications
+default container_application_security := false
+
 container_application_security if {
     input.applications.containers.base_images.minimal == true
     input.applications.containers.vulnerability_scanning == true
@@ -132,6 +154,8 @@ container_application_security if {
 }
 
 # Service-to-service communication security
+default service_communication_secure := false
+
 service_communication_secure if {
     input.applications.communication.mutual_tls.enforced == true
     input.applications.communication.encryption.end_to_end == true
@@ -144,6 +168,8 @@ service_communication_secure if {
 # =================================================================
 
 # Application performance monitoring (APM)
+default application_monitoring_comprehensive := false
+
 application_monitoring_comprehensive if {
     input.applications.monitoring.performance.real_time == true
     input.applications.monitoring.user_experience.tracked == true
@@ -153,6 +179,8 @@ application_monitoring_comprehensive if {
 }
 
 # Security event logging and monitoring
+default application_security_logging := false
+
 application_security_logging if {
     input.applications.logging.security_events.comprehensive == true
     input.applications.logging.authentication_events == true
@@ -162,6 +190,8 @@ application_security_logging if {
 }
 
 # Application observability
+default application_observability_implemented := false
+
 application_observability_implemented if {
     input.applications.observability.metrics.comprehensive == true
     input.applications.observability.logs.structured == true
@@ -174,6 +204,8 @@ application_observability_implemented if {
 # =================================================================
 
 # Data classification and handling
+default application_data_classification := false
+
 application_data_classification if {
     input.applications.data.classification.implemented == true
     input.applications.data.handling.policies.enforced == true
@@ -182,6 +214,8 @@ application_data_classification if {
 }
 
 # Privacy controls in applications
+default application_privacy_controls := false
+
 application_privacy_controls if {
     input.applications.privacy.consent_management == true
     input.applications.privacy.data_minimization == true
@@ -191,6 +225,8 @@ application_privacy_controls if {
 }
 
 # Sensitive data protection
+default sensitive_data_protection := false
+
 sensitive_data_protection if {
     input.applications.data.pii_protection.implemented == true
     input.applications.data.pci_compliance.implemented == true
@@ -203,6 +239,8 @@ sensitive_data_protection if {
 # =================================================================
 
 # High availability design
+default application_high_availability := false
+
 application_high_availability if {
     input.applications.availability.load_balancing.implemented == true
     input.applications.availability.auto_scaling.configured == true
@@ -212,6 +250,8 @@ application_high_availability if {
 }
 
 # Disaster recovery for applications
+default application_disaster_recovery := false
+
 application_disaster_recovery if {
     input.applications.disaster_recovery.backup_strategies == true
     input.applications.disaster_recovery.failover.automated == true
@@ -220,6 +260,8 @@ application_disaster_recovery if {
 }
 
 # Application resilience patterns
+default application_resilience_patterns := false
+
 application_resilience_patterns if {
     input.applications.resilience.bulkhead_pattern.implemented == true
     input.applications.resilience.timeout_handling.configured == true
@@ -232,6 +274,8 @@ application_resilience_patterns if {
 # =================================================================
 
 # Secure DevOps practices
+default devops_security_implemented := false
+
 devops_security_implemented if {
     input.applications.devops.pipeline_security.enabled == true
     input.applications.devops.infrastructure_as_code.secure == true
@@ -240,6 +284,8 @@ devops_security_implemented if {
 }
 
 # CI/CD pipeline security
+default cicd_pipeline_secure := false
+
 cicd_pipeline_secure if {
     input.applications.cicd.source_code.protected == true
     input.applications.cicd.build_security.enabled == true
@@ -249,6 +295,8 @@ cicd_pipeline_secure if {
 }
 
 # Configuration and secrets management
+default config_secrets_management := false
+
 config_secrets_management if {
     input.applications.config.externalized == true
     input.applications.config.encrypted == true
@@ -262,6 +310,8 @@ config_secrets_management if {
 # =================================================================
 
 # Third-party service integration security
+default third_party_integration_secure := false
+
 third_party_integration_secure if {
     input.applications.third_party.security_assessment.conducted == true
     input.applications.third_party.data_sharing.controlled == true
@@ -270,6 +320,8 @@ third_party_integration_secure if {
 }
 
 # Dependency management and security
+default dependency_management_secure := false
+
 dependency_management_secure if {
     input.applications.dependencies.vulnerability_scanning == true
     input.applications.dependencies.license_compliance == true
@@ -278,6 +330,8 @@ dependency_management_secure if {
 }
 
 # Software composition analysis
+default software_composition_analysis := false
+
 software_composition_analysis if {
     input.applications.sca.open_source.scanning == true
     input.applications.sca.license_compliance == true
@@ -290,6 +344,8 @@ software_composition_analysis if {
 # =================================================================
 
 # Serverless security (Functions as a Service)
+default serverless_security_implemented := false
+
 serverless_security_implemented if {
     input.applications.serverless.function_isolation == true
     input.applications.serverless.iam_roles.minimal == true
@@ -298,6 +354,8 @@ serverless_security_implemented if {
 }
 
 # Platform as a Service (PaaS) security
+default paas_security_implemented := false
+
 paas_security_implemented if {
     input.applications.paas.platform_hardening == true
     input.applications.paas.application_isolation == true
@@ -306,6 +364,8 @@ paas_security_implemented if {
 }
 
 # Cloud-native security patterns
+default cloud_native_security_patterns := false
+
 cloud_native_security_patterns if {
     input.applications.cloud_native.twelve_factor.compliance == true
     input.applications.cloud_native.stateless_design == true
@@ -318,6 +378,8 @@ cloud_native_security_patterns if {
 # =================================================================
 
 # Application compliance framework
+default application_compliance_maintained := false
+
 application_compliance_maintained if {
     input.applications.compliance.requirements.identified == true
     input.applications.compliance.controls.implemented == true
@@ -326,6 +388,8 @@ application_compliance_maintained if {
 }
 
 # Application governance processes
+default application_governance_implemented := false
+
 application_governance_implemented if {
     input.applications.governance.architecture.review == true
     input.applications.governance.security.review == true
@@ -334,6 +398,8 @@ application_governance_implemented if {
 }
 
 # Application risk management
+default application_risk_managed := false
+
 application_risk_managed if {
     input.applications.risk.assessment.regular == true
     input.applications.risk.mitigation.implemented == true
@@ -345,11 +411,15 @@ application_risk_managed if {
 # OVERALL APPLICATIONS AND SERVICES ASSESSMENT
 # =================================================================
 
+default application_architecture_compliant := false
+
 application_architecture_compliant if {
     application_architecture_secure
     application_development_secure
     application_deployment_secure
 }
+
+default application_security_compliant := false
 
 application_security_compliant if {
     application_auth_comprehensive
@@ -360,11 +430,15 @@ application_security_compliant if {
     api_lifecycle_managed
 }
 
+default microservices_container_compliant := false
+
 microservices_container_compliant if {
     microservices_security_implemented
     container_application_security
     service_communication_secure
 }
+
+default application_monitoring_compliant := false
 
 application_monitoring_compliant if {
     application_monitoring_comprehensive
@@ -372,11 +446,15 @@ application_monitoring_compliant if {
     application_observability_implemented
 }
 
+default application_data_protection_compliant := false
+
 application_data_protection_compliant if {
     application_data_classification
     application_privacy_controls
     sensitive_data_protection
 }
+
+default application_resilience_compliant := false
 
 application_resilience_compliant if {
     application_high_availability
@@ -384,11 +462,15 @@ application_resilience_compliant if {
     application_resilience_patterns
 }
 
+default devops_security_compliant := false
+
 devops_security_compliant if {
     devops_security_implemented
     cicd_pipeline_secure
     config_secrets_management
 }
+
+default third_party_security_compliant := false
 
 third_party_security_compliant if {
     third_party_integration_secure
@@ -396,17 +478,23 @@ third_party_security_compliant if {
     software_composition_analysis
 }
 
+default cloud_native_compliant := false
+
 cloud_native_compliant if {
     serverless_security_implemented
     paas_security_implemented
     cloud_native_security_patterns
 }
 
+default application_governance_compliant := false
+
 application_governance_compliant if {
     application_compliance_maintained
     application_governance_implemented
     application_risk_managed
 }
+
+default overall_applications_services_compliant := false
 
 overall_applications_services_compliant if {
     application_architecture_compliant

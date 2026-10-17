@@ -33,25 +33,67 @@ violations := array.concat(
 
 # CIS 5.4.1: Ensure password creation requirements are configured (pwquality)
 
-# CIS 5.4.1.1: Minimum password length >= 14
-pwquality_violations contains msg if {
-	some line in split(input.pam.pwquality_conf_raw, "\n")
-	startswith(trim_space(line), "minlen")
-	parts := split(trim_space(line), "=")
-	count(parts) >= 2
-	to_number(trim_space(parts[1])) < 14
-	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [trim_space(parts[1])])
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+# Active (non-comment, non-blank) lines of a config file; undefined when the file was not collected.
+active_lines(raw) := [l |
+	some line in split(raw, "\n")
+	l := trim_space(line)
+	l != ""
+	not startswith(l, "#")
+]
+
+pwq_lines := active_lines(input.pam.pwquality_conf_raw) if is_string(input.pam.pwquality_conf_raw)
+
+# Value of the last active `name = value` line in pwquality.conf (libpwquality: later lines win).
+pwq_value(name) := vals[count(vals) - 1] if {
+	vals := [m[1] |
+		some l in pwq_lines
+		m := regex.find_all_string_submatch_n(sprintf(`^%s\s*=\s*(\S+)`, [name]), l, 1)[0]
+	]
+	count(vals) > 0
 }
 
 pwquality_violations contains msg if {
-	not contains(input.pam.pwquality_conf_raw, "minlen")
+	not input.pam.pwquality_conf_raw
+	msg := "CIS 5.4.1: evidence missing — pam.pwquality_conf_raw not collected"
+}
+
+# CIS 5.4.1.1: Minimum password length >= 14
+pwquality_violations contains msg if {
+	v := pwq_value("minlen")
+	not regex.match(`^\d+$`, v)
+	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [v])
+}
+
+pwquality_violations contains msg if {
+	v := pwq_value("minlen")
+	regex.match(`^\d+$`, v)
+	to_number(v) < 14
+	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be at least 14", [v])
+}
+
+pwquality_violations contains msg if {
+	pwq_lines
+	not pwq_value("minlen")
 	msg := "CIS 5.4.1.1: Password minimum length (minlen) not configured in pwquality.conf"
 }
 
 # CIS 5.4.1.2: Ensure password complexity (minclass or dcredit/ucredit/lcredit/ocredit)
 pwquality_violations contains msg if {
-	not contains(input.pam.pwquality_conf_raw, "minclass")
-	not contains(input.pam.pwquality_conf_raw, "dcredit")
+	pwq_lines
+	not pwq_value("minclass")
+	not pwq_value("dcredit")
 	msg := "CIS 5.4.1.2: Password complexity not configured (minclass or dcredit not set)"
 }
 
@@ -88,8 +130,14 @@ faillock_violations contains msg if {
 
 # CIS 5.4.4: Ensure password hashing algorithm is SHA-512 or yescrypt
 pwquality_violations contains msg if {
-	not contains(input.pam.common_password_raw, "sha512")
-	not contains(input.pam.common_password_raw, "yescrypt")
+	not input.pam.common_password_raw
+	msg := "CIS 5.4.4: evidence missing — pam.common_password_raw not collected"
+}
+
+pwquality_violations contains msg if {
+	lines := active_lines(input.pam.common_password_raw)
+	hashing := [l | some l in lines; regex.match(`\b(sha512|yescrypt)\b`, l)]
+	count(hashing) == 0
 	msg := "CIS 5.4.4: Password hashing algorithm is not SHA-512 or yescrypt"
 }
 
@@ -148,8 +196,12 @@ account_violations contains msg if {
 
 # Default umask
 account_violations contains msg if {
-	input.pam.default_umask != "027"
-	input.pam.default_umask != "077"
+	not input.pam.default_umask
+	msg := "CIS 5.5.x: evidence missing — pam.default_umask not collected"
+}
+
+account_violations contains msg if {
+	not bits.and(octal(input.pam.default_umask), 23) == 23
 	msg := sprintf("CIS 5.5.x: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 

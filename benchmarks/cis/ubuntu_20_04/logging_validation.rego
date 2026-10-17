@@ -31,6 +31,50 @@ violations := array.concat(
 	[v | some v in log_file_violations],
 )
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+# Missing evidence must not pass: fields judged by comparison need to be collected.
+required_journald := {
+	"forward_to_syslog": "4.2.1.3",
+	"compress_enabled": "4.2.2.1",
+	"storage_mode": "4.2.2.2",
+}
+
+journald_violations contains msg if {
+	some key, ctl in required_journald
+	not input.journald[key]
+	msg := sprintf("CIS %s: evidence missing — journald.%s not collected", [ctl, key])
+}
+
+required_rsyslog := {
+	"file_create_mode": "4.2.1.4",
+	"logging_rules_count": "4.2.1.5",
+}
+
+rsyslog_violations contains msg if {
+	some key, ctl in required_rsyslog
+	not is_present(object.get(input, ["rsyslog", key], null))
+	msg := sprintf("CIS %s: evidence missing — rsyslog.%s not collected", [ctl, key])
+}
+
+# 0 is a legitimate value (logging_rules_count), so test for null instead of truthiness
+is_present(v) if v != null
+
+log_file_violations contains msg if {
+	not is_array(object.get(input, ["log_file_permissions", "analysis"], null))
+	msg := "CIS 4.2.3: evidence missing — log_file_permissions.analysis not collected"
+}
+
 # CIS 4.2.1.1: rsyslog installed
 rsyslog_violations contains msg if {
 	not input.rsyslog.installed
@@ -58,9 +102,8 @@ journald_violations contains msg if {
 
 # CIS 4.2.1.4: rsyslog default file permissions
 rsyslog_violations contains msg if {
-	input.rsyslog.file_create_mode != "0640"
-	input.rsyslog.file_create_mode != "0600"
-	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode])
+	not mode_within(input.rsyslog.file_create_mode, "0640")
+	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or more restrictive)", [input.rsyslog.file_create_mode])
 }
 
 # CIS 4.2.1.5: Logging configured
