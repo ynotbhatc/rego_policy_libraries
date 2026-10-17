@@ -24,6 +24,18 @@ import rego.v1
 
 default compliant := false
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -33,12 +45,10 @@ default compliant := false
 default no_world_writable_files := false
 
 no_world_writable_files if {
+	is_array(input.file_permissions.world_writable_files)
 	count(input.file_permissions.world_writable_files) == 0
 }
 
-no_world_writable_files if {
-	not input.file_permissions.world_writable_files
-}
 
 status_rhel_09_232010 := "Not_a_Finding" if { no_world_writable_files } else := "Open"
 
@@ -56,12 +66,10 @@ finding_rhel_09_232010 := {
 default no_unowned_files := false
 
 no_unowned_files if {
+	is_array(input.file_permissions.unowned_files)
 	count(input.file_permissions.unowned_files) == 0
 }
 
-no_unowned_files if {
-	not input.file_permissions.unowned_files
-}
 
 status_rhel_09_232015 := "Not_a_Finding" if { no_unowned_files } else := "Open"
 
@@ -79,12 +87,10 @@ finding_rhel_09_232015 := {
 default no_ungrouped_files := false
 
 no_ungrouped_files if {
+	is_array(input.file_permissions.ungrouped_files)
 	count(input.file_permissions.ungrouped_files) == 0
 }
 
-no_ungrouped_files if {
-	not input.file_permissions.ungrouped_files
-}
 
 status_rhel_09_232020 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
 
@@ -106,18 +112,7 @@ finding_rhel_09_232020 := {
 default passwd_permissions_ok := false
 
 passwd_permissions_ok if {
-	input.file_permissions.etc_passwd.mode
-	mode := input.file_permissions.etc_passwd.mode
-	bits := to_number(mode)
-	bits <= 420 # 0644 octal = 420 decimal
-}
-
-passwd_permissions_ok if {
-	input.file_permissions.etc_passwd.mode == "0644"
-}
-
-passwd_permissions_ok if {
-	input.file_permissions.etc_passwd.mode == "644"
+	mode_within(input.file_permissions.etc_passwd.mode, "0644")
 }
 
 status_rhel_09_232025 := "Not_a_Finding" if { passwd_permissions_ok } else := "Open"
@@ -136,15 +131,7 @@ finding_rhel_09_232025 := {
 default shadow_permissions_ok := false
 
 shadow_permissions_ok if {
-	input.file_permissions.etc_shadow.mode == "0000"
-}
-
-shadow_permissions_ok if {
-	input.file_permissions.etc_shadow.mode == "000"
-}
-
-shadow_permissions_ok if {
-	input.file_permissions.etc_shadow.mode == "0"
+	mode_within(input.file_permissions.etc_shadow.mode, "0000")
 }
 
 status_rhel_09_232030 := "Not_a_Finding" if { shadow_permissions_ok } else := "Open"
@@ -153,7 +140,7 @@ finding_rhel_09_232030 := {
 	"vuln_id": "V-257874",
 	"stig_id": "RHEL-09-232030",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 /etc/shadow file must be owned by root",
+	"rule_title": "RHEL 9 /etc/shadow file must have mode 0000",
 	"status": status_rhel_09_232030,
 	"fix_text": "Fix /etc/shadow permissions: chmod 0000 /etc/shadow",
 }
@@ -163,11 +150,7 @@ finding_rhel_09_232030 := {
 default group_permissions_ok := false
 
 group_permissions_ok if {
-	input.file_permissions.etc_group.mode == "0644"
-}
-
-group_permissions_ok if {
-	input.file_permissions.etc_group.mode == "644"
+	mode_within(input.file_permissions.etc_group.mode, "0644")
 }
 
 status_rhel_09_232035 := "Not_a_Finding" if { group_permissions_ok } else := "Open"
@@ -186,11 +169,7 @@ finding_rhel_09_232035 := {
 default gshadow_permissions_ok := false
 
 gshadow_permissions_ok if {
-	input.file_permissions.etc_gshadow.mode == "0000"
-}
-
-gshadow_permissions_ok if {
-	input.file_permissions.etc_gshadow.mode == "000"
+	mode_within(input.file_permissions.etc_gshadow.mode, "0000")
 }
 
 status_rhel_09_232040 := "Not_a_Finding" if { gshadow_permissions_ok } else := "Open"
@@ -199,7 +178,7 @@ finding_rhel_09_232040 := {
 	"vuln_id": "V-257876",
 	"stig_id": "RHEL-09-232040",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 /etc/gshadow file must be owned by root",
+	"rule_title": "RHEL 9 /etc/gshadow file must have mode 0000",
 	"status": status_rhel_09_232040,
 	"fix_text": "Fix /etc/gshadow permissions: chmod 0000 /etc/gshadow",
 }
@@ -209,12 +188,10 @@ finding_rhel_09_232040 := {
 default suid_files_reviewed := false
 
 suid_files_reviewed if {
+	is_array(input.file_permissions.undocumented_suid_files)
 	count(input.file_permissions.undocumented_suid_files) == 0
 }
 
-suid_files_reviewed if {
-	not input.file_permissions.undocumented_suid_files
-}
 
 status_rhel_09_232045 := "Not_a_Finding" if { suid_files_reviewed } else := "Open"
 
@@ -289,12 +266,10 @@ finding_rhel_09_232060 := {
 default home_dir_permissions_ok := false
 
 home_dir_permissions_ok if {
+	is_array(input.file_permissions.insecure_home_dirs)
 	count(input.file_permissions.insecure_home_dirs) == 0
 }
 
-home_dir_permissions_ok if {
-	not input.file_permissions.insecure_home_dirs
-}
 
 status_rhel_09_232065 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
 
@@ -312,15 +287,13 @@ finding_rhel_09_232065 := {
 default cron_allow_permissions_ok := false
 
 cron_allow_permissions_ok if {
-	input.cron_allow.permissions == "0600"
+	input.cron_allow.file_exists == true
+	mode_within(input.cron_allow.permissions, "0600")
 }
 
+# An absent file is compliant only when the collector explicitly reports it absent.
 cron_allow_permissions_ok if {
-	input.cron_allow.permissions == "600"
-}
-
-cron_allow_permissions_ok if {
-	not input.cron_allow.file_exists
+	input.cron_allow.file_exists == false
 }
 
 status_rhel_09_232070 := "Not_a_Finding" if { cron_allow_permissions_ok } else := "Open"
