@@ -26,6 +26,8 @@ import rego.v1
 # =================================================================
 
 # Personal information collection is governed by policies
+default pi_collection_governed := false
+
 pi_collection_governed if {
     input.privacy.collection.policy_documented == true
     input.privacy.collection.legal_basis_identified == true
@@ -34,6 +36,8 @@ pi_collection_governed if {
 }
 
 # Consent management is implemented
+default consent_management_implemented := false
+
 consent_management_implemented if {
     input.privacy.consent.explicit_consent_required == true
     input.privacy.consent.consent_tracking.enabled == true
@@ -42,6 +46,8 @@ consent_management_implemented if {
 }
 
 # Data subject rights are supported
+default data_subject_rights_supported := false
+
 data_subject_rights_supported if {
     input.privacy.data_subject_rights.access_request.supported == true
     input.privacy.data_subject_rights.rectification.supported == true
@@ -54,6 +60,8 @@ data_subject_rights_supported if {
 # =================================================================
 
 # Personal information use is restricted
+default pi_use_restricted := false
+
 pi_use_restricted if {
     input.privacy.use.purpose_limitation == true
     input.privacy.use.compatible_use_only == true
@@ -62,6 +70,8 @@ pi_use_restricted if {
 }
 
 # Data retention policies are implemented
+default privacy_retention_implemented := false
+
 privacy_retention_implemented if {
     input.privacy.retention.policies_documented == true
     input.privacy.retention.automated_deletion == true
@@ -70,6 +80,8 @@ privacy_retention_implemented if {
 }
 
 # Data accuracy and quality controls
+default data_accuracy_controls := false
+
 data_accuracy_controls if {
     input.privacy.data_quality.accuracy_verification == true
     input.privacy.data_quality.regular_updates == true
@@ -81,6 +93,8 @@ data_accuracy_controls if {
 # =================================================================
 
 # Third-party data sharing is controlled
+default third_party_sharing_controlled := false
+
 third_party_sharing_controlled if {
     input.privacy.third_party_sharing.documented_agreements == true
     input.privacy.third_party_sharing.due_diligence_performed == true
@@ -89,6 +103,8 @@ third_party_sharing_controlled if {
 }
 
 # Cross-border data transfers are managed
+default cross_border_transfers_managed := false
+
 cross_border_transfers_managed if {
     input.privacy.cross_border_transfers.adequacy_decisions.verified == true
     input.privacy.cross_border_transfers.safeguards.implemented == true
@@ -96,6 +112,8 @@ cross_border_transfers_managed if {
 }
 
 # Data breach notification procedures
+default breach_notification_procedures := false
+
 breach_notification_procedures if {
     input.privacy.breach_notification.procedures_documented == true
     input.privacy.breach_notification.timeline_compliance.authorities <= 72  # hours
@@ -108,6 +126,8 @@ breach_notification_procedures if {
 # =================================================================
 
 # Container-level privacy controls
+default container_privacy_controls := false
+
 container_privacy_controls if {
     input.openshift.privacy.data_isolation.namespace_separation == true
     input.openshift.privacy.data_isolation.pod_security_policies == true
@@ -115,6 +135,8 @@ container_privacy_controls if {
 }
 
 # Application-level privacy controls
+default application_privacy_controls := false
+
 application_privacy_controls if {
     input.openshift.applications.privacy.data_anonymization.enabled == true
     input.openshift.applications.privacy.pseudonymization.enabled == true
@@ -122,6 +144,8 @@ application_privacy_controls if {
 }
 
 # Service mesh privacy enforcement
+default service_mesh_privacy := false
+
 service_mesh_privacy if {
     input.openshift.service_mesh.privacy.traffic_encryption == true
     input.openshift.service_mesh.privacy.data_flow_monitoring == true
@@ -133,6 +157,8 @@ service_mesh_privacy if {
 # =================================================================
 
 # Privacy by design principles
+default privacy_by_design := false
+
 privacy_by_design if {
     input.privacy.by_design.default_privacy_settings == true
     input.privacy.by_design.privacy_impact_assessments == true
@@ -141,6 +167,8 @@ privacy_by_design if {
 }
 
 # Technical privacy measures
+default technical_privacy_measures := false
+
 technical_privacy_measures if {
     input.privacy.technical_measures.encryption.personal_data == true
     input.privacy.technical_measures.anonymization.automated == true
@@ -149,6 +177,8 @@ technical_privacy_measures if {
 }
 
 # Organizational privacy measures
+default organizational_privacy_measures := false
+
 organizational_privacy_measures if {
     input.privacy.organizational_measures.policies_documented == true
     input.privacy.organizational_measures.staff_training == true
@@ -161,6 +191,8 @@ organizational_privacy_measures if {
 # =================================================================
 
 # Privacy monitoring systems
+default privacy_monitoring_active := false
+
 privacy_monitoring_active if {
     input.privacy.monitoring.data_processing_activities == true
     input.privacy.monitoring.consent_compliance == true
@@ -169,6 +201,8 @@ privacy_monitoring_active if {
 }
 
 # Privacy compliance reporting
+default privacy_compliance_reporting := false
+
 privacy_compliance_reporting if {
     input.privacy.compliance.regular_reports.generated == true
     input.privacy.compliance.metrics.tracked == true
@@ -177,6 +211,8 @@ privacy_compliance_reporting if {
 }
 
 # Data subject request handling
+default data_subject_request_handling := false
+
 data_subject_request_handling if {
     input.privacy.data_subject_requests.automated_workflow == true
     input.privacy.data_subject_requests.identity_verification == true
@@ -189,6 +225,8 @@ data_subject_request_handling if {
 # =================================================================
 
 # GDPR compliance (EU)
+default gdpr_compliance := false
+
 gdpr_compliance if {
     input.privacy.gdpr.lawful_basis.documented == true
     input.privacy.gdpr.dpo_appointed == true
@@ -197,6 +235,8 @@ gdpr_compliance if {
 }
 
 # CCPA compliance (California)
+default ccpa_compliance := false
+
 ccpa_compliance if {
     input.privacy.ccpa.consumer_rights.supported == true
     input.privacy.ccpa.opt_out_mechanisms.available == true
@@ -205,6 +245,8 @@ ccpa_compliance if {
 }
 
 # Other regional privacy laws
+default regional_privacy_compliance := false
+
 regional_privacy_compliance if {
     input.privacy.regional_laws.identification_completed == true
     input.privacy.regional_laws.compliance_assessment.conducted == true
@@ -215,11 +257,15 @@ regional_privacy_compliance if {
 # Overall Privacy Assessment
 # =================================================================
 
+default privacy_collection_compliant := false
+
 privacy_collection_compliant if {
     pi_collection_governed
     consent_management_implemented
     data_subject_rights_supported
 }
+
+default privacy_processing_compliant := false
 
 privacy_processing_compliant if {
     pi_use_restricted
@@ -227,11 +273,15 @@ privacy_processing_compliant if {
     data_accuracy_controls
 }
 
+default privacy_disclosure_compliant := false
+
 privacy_disclosure_compliant if {
     third_party_sharing_controlled
     cross_border_transfers_managed
     breach_notification_procedures
 }
+
+default openshift_privacy_compliant := false
 
 openshift_privacy_compliant if {
     container_privacy_controls
@@ -239,11 +289,15 @@ openshift_privacy_compliant if {
     service_mesh_privacy
 }
 
+default privacy_governance_compliant := false
+
 privacy_governance_compliant if {
     privacy_by_design
     technical_privacy_measures
     organizational_privacy_measures
 }
+
+default privacy_operations_compliant := false
 
 privacy_operations_compliant if {
     privacy_monitoring_active
@@ -251,11 +305,15 @@ privacy_operations_compliant if {
     data_subject_request_handling
 }
 
+default international_privacy_compliant := false
+
 international_privacy_compliant if {
     gdpr_compliance
     ccpa_compliance
     regional_privacy_compliance
 }
+
+default overall_privacy_compliant := false
 
 overall_privacy_compliant if {
     privacy_collection_compliant
