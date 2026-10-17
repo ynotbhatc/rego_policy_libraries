@@ -26,6 +26,18 @@ import rego.v1
 
 default compliant := false
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(d) | some d in split(p, "")]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
@@ -35,12 +47,11 @@ default compliant := false
 default no_unowned_files := false
 
 no_unowned_files if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.file_permissions.unowned_files)
 	count(input.file_permissions.unowned_files) == 0
 }
 
-no_unowned_files if {
-	not input.file_permissions.unowned_files
-}
 
 status_ol09_00_002512 := "Not_a_Finding" if { no_unowned_files } else := "Open"
 
@@ -58,12 +69,11 @@ finding_ol09_00_002512 := {
 default no_ungrouped_files := false
 
 no_ungrouped_files if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.file_permissions.ungrouped_files)
 	count(input.file_permissions.ungrouped_files) == 0
 }
 
-no_ungrouped_files if {
-	not input.file_permissions.ungrouped_files
-}
 
 status_ol09_00_002511 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
 
@@ -81,18 +91,7 @@ finding_ol09_00_002511 := {
 default passwd_permissions_ok := false
 
 passwd_permissions_ok if {
-	input.file_permissions.etc_passwd.mode
-	mode := input.file_permissions.etc_passwd.mode
-	bits := to_number(mode)
-	bits <= 420 # 0644 octal = 420 decimal
-}
-
-passwd_permissions_ok if {
-	input.file_permissions.etc_passwd.mode == "0644"
-}
-
-passwd_permissions_ok if {
-	input.file_permissions.etc_passwd.mode == "644"
+	mode_within(input.file_permissions.etc_passwd.mode, "0644")
 }
 
 status_ol09_00_002548 := "Not_a_Finding" if { passwd_permissions_ok } else := "Open"
@@ -138,11 +137,7 @@ finding_ol09_00_002552 := {
 default group_permissions_ok := false
 
 group_permissions_ok if {
-	input.file_permissions.etc_group.mode == "0644"
-}
-
-group_permissions_ok if {
-	input.file_permissions.etc_group.mode == "644"
+	mode_within(input.file_permissions.etc_group.mode, "0644")
 }
 
 status_ol09_00_002536 := "Not_a_Finding" if { group_permissions_ok } else := "Open"
@@ -241,12 +236,11 @@ finding_ol09_00_002506 := {
 default home_dir_permissions_ok := false
 
 home_dir_permissions_ok if {
+	# Missing evidence is not a pass: the list must be collected (empty means none found).
+	is_array(input.file_permissions.insecure_home_dirs)
 	count(input.file_permissions.insecure_home_dirs) == 0
 }
 
-home_dir_permissions_ok if {
-	not input.file_permissions.insecure_home_dirs
-}
 
 status_ol09_00_002515 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
 
