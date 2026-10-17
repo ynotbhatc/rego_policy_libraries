@@ -121,6 +121,9 @@ violation contains msg if {
 # which parses a password-AGING policy and holds no credential at all. A rule
 # that flags password policy alongside real passwords trains people to ignore
 # it, so the target is matched specifically.
+# The short keywords (pass, pwd, credential) must be a whole `_`/`.`-delimited
+# segment, as the shell rule requires, so `ansible_ssh_pass` matches and
+# `bypass` does not.
 # The keyword must END the identifier. Allowing a trailing `\w*` matched
 # `password_authentication` and `permit_empty_passwords` -- sshd CONFIG FIELDS,
 # not credentials. Acting on those replaced `| default('not set')` with
@@ -128,7 +131,7 @@ violation contains msg if {
 # defaults, which is most of them. A name that merely CONTAINS "password" is
 # usually a setting about passwords; a name that ENDS with it is the secret.
 secret_assignment(text) if {
-	regex.match(`(?i)^\s*[-\s]*["']?[\w.]*?(password|passwd|secret|token|api_?key)["']?\s*[:=]`, text)
+	regex.match(`(?i)^\s*[-\s]*["']?([\w.]*?(password|passwd|secret|token|api_?key)|([\w.]*[_.])?(pass|pwd|credential))["']?\s*[:=]`, text)
 }
 
 # A purely numeric fallback is a duration, port or retry count, never a
@@ -193,7 +196,12 @@ tracking_violation contains msg if {
 
 default compliant := false
 
-compliant if count(violation) == 0
+# No scan input is not a clean scan: the caller must supply `lines` (an empty
+# array is a legitimately empty file).
+compliant if {
+	is_array(input.lines)
+	count(violation) == 0
+}
 
 compliance_report := {
 	"policy": "Install configuration hygiene",
@@ -206,7 +214,11 @@ compliance_report := {
 
 default tracking_compliant := false
 
-tracking_compliant if count(tracking_violation) == 0
+# AAC-CFG-003 is only evaluated when the caller supplies `tracked_files`.
+tracking_compliant if {
+	is_array(input.tracked_files)
+	count(tracking_violation) == 0
+}
 
 tracking_report := {
 	"policy": "Install configuration hygiene — tracked files",
