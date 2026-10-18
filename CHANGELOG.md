@@ -14,6 +14,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Git playbook documentation audit (`enforcement/git/playbook_documentation.rego`), seven defects from the 2026-10-17 library validation.**
+  - The upper-case placeholders (TODO, FIXME, TBD) were compared against the lower-cased value, so they never matched.
+  - `audit_passed` used `every` over `input.playbooks`. It was true for an empty or missing list, and it ignored the DOC-021 short-task and DOC-030 staleness violations that `non_compliant_playbooks` counts. It is now false without playbooks and agrees with the per-playbook reports.
+  - Staleness was measured from a fixed 2026-03 reference date. It now uses today unless the input pins `audit_year` / `audit_month`.
+  - An empty play name returned `true` instead of the DOC-010 message (`else if` without `:= msg`).
+  - The DOC-020 coverage percentage printed as `%!d(float64=…)`.
+  - Empty or blank metadata strings counted as present for DOC-001, DOC-004 and the metadata score.
+  - Ten regression tests are added; eight of them fail on the old module.
+  - The module is now strict-clean, so CI's strict step covers all of `enforcement/` again.
 - **Library-wide validation and fixes (2026-10-17): 755 defects fixed in 286 policy files, each with a test that fails on the old code.**
   - **How the defects were found:**
     - Every package was evaluated against empty input. 45 packages reported compliant with no evidence, and 18 were wholly undefined.

@@ -97,9 +97,19 @@ _metadata_checks(playbook) := [
 ]
 
 _check_field_present(playbook, field) := msg if {
-	not playbook.metadata[field]
+	not _field_filled(playbook, field)
 	msg := sprintf("DOC-001: Missing required metadata field '%s'", [field])
 } else := null
+
+# A metadata field counts as present only when it is set and not an empty or blank string
+_field_filled(playbook, field) if {
+	value := playbook.metadata[field]
+	not is_string(value)
+}
+
+_field_filled(playbook, field) if {
+	trim_space(playbook.metadata[field]) != ""
+}
 
 # --- Metadata quality ---
 
@@ -123,7 +133,7 @@ _check_placeholder(playbook, field) := msg if {
 	value := playbook.metadata[field]
 	is_string(value)
 	some pattern in placeholder_patterns
-	contains(lower(value), pattern)
+	contains(lower(value), lower(pattern))
 	msg := sprintf(
 		"DOC-002: Metadata field '%s' contains placeholder text ('%s')",
 		[field, value],
@@ -147,8 +157,8 @@ _check_author_contact(playbook) := msg if {
 	author := playbook.metadata.author
 	is_string(author)
 	not contains(author, "@")
-	not playbook.metadata.contact
-	not playbook.metadata.owner_team
+	not _field_filled(playbook, "contact")
+	not _field_filled(playbook, "owner_team")
 	msg := "DOC-004: 'author' has no contact info — include an email (<user@domain>) or set 'contact' / 'owner_team'"
 } else := null
 
@@ -201,7 +211,7 @@ _check_play_named(path, idx, play) := msg if {
 		"DOC-010: Play [%d] in '%s' has no 'name' field — every play must be named",
 		[idx, path],
 	)
-} else if {
+} else := msg if {
 	play.name == ""
 	msg := sprintf(
 		"DOC-010: Play [%d] in '%s' has an empty 'name' field",
@@ -242,7 +252,7 @@ _task_coverage_checks(playbook) := violations if {
 	]
 	unnamed_count := count(unnamed)
 
-	coverage := ((total - unnamed_count) * 100) / total
+	coverage := round(((total - unnamed_count) * 100) / total)
 	coverage < min_task_naming_coverage
 
 	violations := {sprintf(
@@ -276,11 +286,11 @@ staleness_violations(playbook) := violations if {
 	parts := split(date_str, "-")
 	year := to_number(parts[0])
 	month := to_number(parts[1])
-	day := to_number(parts[2])
 
 	# Approximate days since modified (compare against audit date in input)
-	audit_year := object.get(input, "audit_year", 2026)
-	audit_month := object.get(input, "audit_month", 3)
+	now := time.date(time.now_ns())
+	audit_year := object.get(input, "audit_year", now[0])
+	audit_month := object.get(input, "audit_month", now[1])
 
 	age_months := ((audit_year - year) * 12) + (audit_month - month)
 	age_days := age_months * 30
@@ -327,7 +337,7 @@ playbook_report(playbook) := report if {
 
 _metadata_score(playbook) := score if {
 	fields := ["author", "purpose", "version", "date_modified", "owner_team", "contact", "last_reviewed"]
-	present := [f | some f in fields; playbook.metadata[f]]
+	present := [f | some f in fields; _field_filled(playbook, f)]
 	score := (count(present) * 100) / count(fields)
 }
 
@@ -337,13 +347,11 @@ _metadata_score(playbook) := score if {
 
 default audit_passed := false
 
+# Fail closed: an empty or missing playbook list is not evidence of compliance, and the
+# verdict must agree with the per-playbook reports (including DOC-021 and DOC-030).
 audit_passed if {
-	every playbook in input.playbooks {
-		count(metadata_violations(playbook)) == 0
-		count(quality_violations(playbook)) == 0
-		count(play_violations(playbook)) == 0
-		count(task_violations(playbook)) == 0
-	}
+	count(input.playbooks) > 0
+	count(compliant_playbooks) == count(input.playbooks)
 }
 
 # Playbooks that are fully compliant
