@@ -82,9 +82,7 @@ jobs:
 
       - name: Strict mode — unused imports, variables and arguments fail the build
         run: |
-          # enforcement/git is a protected path awaiting its owner's fix for two unused assignments; every other tree is strict-clean
-          opa check --strict benchmarks frameworks governance threat_detection crosswalk \
-            $(find enforcement -mindepth 1 -maxdepth 1 -type d ! -name git)
+          opa check --strict benchmarks frameworks governance threat_detection crosswalk enforcement
 
       - name: Coverage stamps are current (custom.coverage in every module's METADATA)
         run: make check-coverage
