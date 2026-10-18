@@ -20,6 +20,7 @@ on:
       - 'README.md'
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
+      - '.github/workflows/publish-ghcr.yml'   # required check must run on publish-workflow PRs or they stay BLOCKED
       - 'scripts/check_cis_ids.py'
       - 'scripts/check_cis_coverage.py'
       - '**/data/cis_*_index.json'
@@ -42,6 +43,7 @@ on:
       - 'README.md'
       - '**/*.rego'
       - '.github/workflows/opa-test.yml'
+      - '.github/workflows/publish-ghcr.yml'   # required check must run on publish-workflow PRs or they stay BLOCKED
       - 'scripts/check_cis_ids.py'
       - 'scripts/check_cis_coverage.py'
       - '**/data/cis_*_index.json'
