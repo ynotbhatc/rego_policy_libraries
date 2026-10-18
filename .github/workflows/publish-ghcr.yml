@@ -86,16 +86,35 @@ jobs:
           echo "Manifest roots: $(tar -xzf bundle.tar.gz -O /.manifest | python3 -c 'import sys,json;print(len(json.load(sys.stdin)["roots"]))')"
 
       - name: Login to GHCR
+        env:
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # GHCR_PAT preferred: the package predates this workflow (created
-          # by a manual push), and GitHub offers no API to grant a package
-          # Actions write access — GITHUB_TOKEN gets permission_denied even
-          # with packages:write (every run since 2026-08-29 failed this way).
-          # Falls back to GITHUB_TOKEN once the package access is fixed in
-          # the UI (package settings -> Manage Actions access -> add repo).
-          echo "${{ secrets.GHCR_PAT || secrets.GITHUB_TOKEN }}" | oras login ghcr.io \
-            -u "${{ github.actor }}" \
-            --password-stdin
+          # Two credentials, tried in order, each one actually verified:
+          #   1. GHCR_PAT  — a personal access token with write:packages. The
+          #      package predates this workflow (created by a manual push), so
+          #      GITHUB_TOKEN could not write to it; the PAT was the workaround.
+          #      PATs expire: the one set 2026-09-01 stopped working 2026-10-13
+          #      and every run after that failed here with "denied".
+          #   2. GITHUB_TOKEN — works once the package grants this repository
+          #      Actions access (package settings -> Manage Actions access ->
+          #      add ynotbhatc/rego_policy_libraries, role Write). No expiry.
+          # The old `secrets.GHCR_PAT || secrets.GITHUB_TOKEN` only fell back
+          # when the PAT was EMPTY, never when it was dead.
+          try_login() {
+            local label="$1" token="$2"
+            [[ -n "$token" ]] || { echo "::notice::$label not set, skipping"; return 1; }
+            if echo "$token" | oras login ghcr.io -u "${{ github.actor }}" --password-stdin 2>/tmp/login.err; then
+              echo "Logged in to ghcr.io with $label"
+              return 0
+            fi
+            echo "::warning::$label rejected by ghcr.io: $(tr -d '\n' </tmp/login.err)"
+            return 1
+          }
+          try_login GHCR_PAT "$GHCR_PAT" && exit 0
+          try_login GITHUB_TOKEN "$GH_TOKEN" && exit 0
+          echo "::error::Cannot authenticate to ghcr.io. Fix one of: (a) rotate the GHCR_PAT secret with a token that has write:packages; (b) grant this repository Actions write access on the package https://github.com/users/${{ github.repository_owner }}/packages/container/rego_policy_libraries/settings and delete the GHCR_PAT secret."
+          exit 1
 
       - name: Push OPA bundle to GHCR
         run: |
@@ -104,7 +123,7 @@ jobs:
             --artifact-type "application/vnd.opa.bundle" \
             bundle.tar.gz:application/vnd.opa.bundle.layer.v1.tar+gzip \
             --annotation "org.opencontainers.image.title=Rego Policy Libraries" \
-            --annotation "org.opencontainers.image.description=397 production-ready OPA policies: CIS Benchmarks, NERC-CIP, IEC 62443, ISO 27001, SOC 2, NIST, and 50+ frameworks" \
+            --annotation "org.opencontainers.image.description=$(tar -tzf bundle.tar.gz | grep -c '\.rego$') OPA policy files: CIS Benchmarks, DISA STIGs, NERC-CIP, IEC 62443, ISO 27001, SOC 2, NIST, and 50+ frameworks" \
             --annotation "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}" \
             --annotation "org.opencontainers.image.url=${{ github.server_url }}/${{ github.repository }}" \
             --annotation "org.opencontainers.image.version=${{ steps.tag.outputs.tag }}" \
