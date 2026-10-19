@@ -32,3 +32,17 @@ test_al2023_cron_running_enabled_ok if {
 	v := data.cis.amazon_linux_2023.access_auth_violations with input as i
 	count(v) == 0
 }
+
+# Decisions 2026-10-19 (theme D): legacy roll-up is marked deprecated and its counts are derived.
+test_al2023_summary_marks_legacy if {
+	s := data.cis.amazon_linux_2023.compliance_summary with input as {}
+	s.deprecated == true
+	s.superseded_by == "cis_amazon_linux_2023.main"
+}
+
+test_al2023_summary_counts_match_sections if {
+	s := data.cis.amazon_linux_2023.compliance_summary with input as {}
+	s.total_controls == count(s.sections)
+	s.passing_controls + s.failing_controls == s.total_controls
+	s.failing_controls == count([k | some k, sec in s.sections; sec.violations > 0])
+}
