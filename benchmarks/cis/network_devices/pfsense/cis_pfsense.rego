@@ -400,7 +400,21 @@ compliant if {
 
 # ── Compliance report ─────────────────────────────────────────────────────────
 
-total_controls := 22
+# Controls this policy actually evaluates (distinct CIS ids behind the
+# section_N_violations rules above). Totals are computed from this set rather
+# than a hard-coded number, so they cannot drift from the wired checks.
+evaluated_controls := {
+    "1.1.1", "1.1.4", "1.1.6", "1.1.7",
+    "2.1.1", "2.1.2", "2.1.3", "2.1.4", "2.1.5",
+    "3.1.1", "3.1.2", "3.1.3", "3.1.5",
+    "4.1.1", "4.1.2",
+    "5.1.1",
+}
+
+total_controls := count(evaluated_controls)
+
+# Distinct failing controls (a control can emit more than one message).
+failing_controls := {split(v, " ")[0] | some v in violations}
 
 _overall_compliance := "PASS" if { compliant }
 _overall_compliance := "FAIL" if { not compliant }
@@ -409,9 +423,10 @@ compliance_assessment := {
     "compliant": count(violations) == 0,
     "summary": {
         "total_controls":        total_controls,
-        "passing_controls":      total_controls - count(violations),
-        "failing_controls":      count(violations),
-        "compliance_percentage": ((total_controls - count(violations)) * 100) / total_controls,
+        "controls_evaluated":    total_controls,
+        "passing_controls":      total_controls - count(failing_controls),
+        "failing_controls":      count(failing_controls),
+        "compliance_percentage": ((total_controls - count(failing_controls)) * 100) / total_controls,
         "overall_compliance":    _overall_compliance,
     },
     "violations": violations,

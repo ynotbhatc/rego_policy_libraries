@@ -28,11 +28,11 @@ import data.soc2.confidentiality.data_confidentiality
 import data.soc2.privacy.data_privacy
 
 # Infrastructure components
-import data.soc2.infrastructure.network.network_infrastructure
-import data.soc2.infrastructure.security.security_infrastructure
-import data.soc2.infrastructure.systems.systems_infrastructure
-import data.soc2.infrastructure.storage.storage_infrastructure
-import data.soc2.infrastructure.applications_services.applications_services
+import data.soc2.infrastructure.network as network_infrastructure
+import data.soc2.infrastructure.security as security_infrastructure
+import data.soc2.infrastructure.systems as systems_infrastructure
+import data.soc2.infrastructure.storage as storage_infrastructure
+import data.soc2.infrastructure.applications_services
 
 # =================================================================
 # SOC 2 TRUST SERVICE CRITERIA AGGREGATION

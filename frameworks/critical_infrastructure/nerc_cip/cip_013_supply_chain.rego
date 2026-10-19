@@ -103,10 +103,19 @@ vendor_risk_assessments_performed if {
 	count(violations) == 0
 }
 
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
 vendor_risk_assessment_current(vendor) if {
 	assessment := input.vendor_risk_assessments[vendor.vendor_id]
 	assessment.completed == true
-	assessment_age_days := (time.now_ns() - assessment.completion_date) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
 	assessment_age_days <= 1095 # 3 years
 	assessment.risks_identified == true
 	assessment.mitigation_plan_exists == true
@@ -169,7 +178,7 @@ vendor_notification_monitoring if {
 # Review the supply chain cyber security risk management plan within
 # 15 calendar months of the last review and after triggered events
 supply_chain_plan_review_current if {
-	last_review_ns := time.parse_rfc3339_ns(input.supply_chain_plan.last_review_date)
+	last_review_ns := date_ns(input.supply_chain_plan.last_review_date)
 	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
 	review_age_days <= 455
 }
@@ -177,7 +186,7 @@ supply_chain_plan_review_current if {
 # CIP Senior Manager must approve the plan
 cip_senior_manager_approved if {
 	input.supply_chain_plan.cip_senior_manager_approved == true
-	approval_ns := time.parse_rfc3339_ns(input.supply_chain_plan.approval_date)
+	approval_ns := date_ns(input.supply_chain_plan.approval_date)
 	approval_age_days := (time.now_ns() - approval_ns) / (24 * 60 * 60 * 1000000000)
 	approval_age_days <= 455
 }

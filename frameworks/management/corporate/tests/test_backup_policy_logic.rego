@@ -45,9 +45,9 @@ test_missing_data_types_not_adequate if {
 
 test_missing_test_success_rate_fails if {
 	s := sys({})
-	not b.test_success_rates_adequate with input as {"systems": [s]}
+	not b.restore_test_success_rates_adequate with input as {"systems": [s]}
 	ok := sys({"backup_config": {"test_success_rate": 99}})
-	b.test_success_rates_adequate with input as {"systems": [ok]}
+	b.restore_test_success_rates_adequate with input as {"systems": [ok]}
 }
 
 test_iso_dr_test_date_current_and_violation_listed_when_old if {
@@ -86,4 +86,16 @@ test_sox_only_financial_systems_in_scope if {
 test_performance_score_defined_for_empty_systems if {
 	b.backup_performance_score == 0 with input as {"systems": []}
 	b.backup_performance_score == 0 with input as {}
+}
+
+# Decisions 2026-10-19: policy rules must not be named test_* (opa test would run them as tests).
+test_policy_rules_not_discovered_as_tests if {
+	rules := {r | some r, _ in data.corporate.backup; startswith(r, "test_")}
+	count(rules) == 0
+}
+
+test_renamed_restore_test_rules_gate_backup_testing if {
+	s := sys({})
+	not b.restore_test_documentation_complete with input as {"systems": [s]}
+	b.restore_test_documentation_complete with input as {"systems": [object.union(s, {"backup_config": {"test_documentation": {"complete": true}}})]}
 }

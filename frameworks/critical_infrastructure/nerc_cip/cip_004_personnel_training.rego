@@ -145,10 +145,20 @@ requires_risk_assessment(person) if {
 	person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access", "authorized_cyber_asset_access"]
 }
 
+# DATA_SOURCES.md documents flat risk_assessment_completed / risk_assessment_date;
+# the older nested risk_assessment.completed / completion_date form is also accepted.
+risk_assessment_current(person) if {
+	person.risk_assessment_completed == true
+	risk_assessment_age_ok(date_ns(person.risk_assessment_date))
+}
+
 risk_assessment_current(person) if {
 	person.risk_assessment.completed == true
-	assessment_age_days := (time.now_ns() - date_ns(person.risk_assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
-	assessment_age_days <= 2555 # 7 years
+	risk_assessment_age_ok(date_ns(person.risk_assessment.completion_date))
+}
+
+risk_assessment_age_ok(assessed_ns) if {
+	(time.now_ns() - assessed_ns) / (24 * 60 * 60 * 1000000000) <= 2555 # 7 years
 }
 
 # PRA must include criminal history check and 7-year look-back
