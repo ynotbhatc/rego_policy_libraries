@@ -224,7 +224,11 @@ data_portability_in_open_formats if {
 	input.exit_strategy.data_portability_format_open == true
 }
 
-# Migration should be achievable within acceptable timeframe
+# Migration must be achievable within the acceptable timeframe (90 days).
+# decisions 2026-10-19: wired into compliant/violations as IS-019; an undeclared
+# estimate fails closed.
+default migration_timeline_acceptable := false
+
 migration_timeline_acceptable if {
 	input.exit_strategy.estimated_migration_days <= 90
 }
@@ -448,12 +452,23 @@ violations contains v if {
 }
 
 violations contains v if {
+	not migration_timeline_acceptable
+	v := {
+		"domain": "infrastructure_sovereignty",
+		"control": "IS-019",
+		"severity": "medium",
+		"description": "Estimated migration/exit time not declared or exceeds the acceptable 90 days",
+		"remediation": "Document an exit plan with an estimated migration time of 90 days or less",
+	}
+}
+
+violations contains v if {
 	not proprietary_apis_have_mitigations
 	dep := input.vendor_lock_in_assessment.proprietary_api_dependencies[_]
 	not dep.mitigation_documented == true
 	v := {
 		"domain": "infrastructure_sovereignty",
-		"control": "IS-013",
+		"control": "IS-018", # decisions 2026-10-19: was IS-013 (shared with vendor lock-in cost)
 		"severity": "medium",
 		"service_id": dep.service_id,
 		"description": concat("", ["Proprietary API dependency with no documented migration mitigation: ", dep.service_id]),
@@ -532,6 +547,7 @@ compliant if {
 	fisa_702_response_procedure_documented
 	vendor_lockin_cost_assessed
 	proprietary_apis_have_mitigations
+	migration_timeline_acceptable
 }
 
 report := {
@@ -555,6 +571,8 @@ report := {
 		"IS-015_dns_in_jurisdiction": dns_in_jurisdiction,
 		"IS-016_cdn_in_approved_regions": cdn_in_approved_regions,
 		"IS-017_components_classified": all_components_classified,
+		"IS-018_proprietary_api_mitigations": proprietary_apis_have_mitigations,
+		"IS-019_migration_timeline": migration_timeline_acceptable,
 	},
 	"provider_summary": {
 		"total_providers": count(object.get(input, ["cloud_providers"], [])),

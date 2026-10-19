@@ -81,3 +81,32 @@ test_firmware_unapproved_has_violation if {
 	inp := {"approved_jurisdictions": ["DE"], "hardware_components": [{"component_type": "server", "firmware_origin_country": "CN"}]}
 	has_control(inf.violations, "IS-014") with input as inp
 }
+
+# decisions 2026-10-19: proprietary-API violation has its own id; migration timeline is enforced.
+test_proprietary_api_violation_uses_is018 if {
+	inp := {"vendor_lock_in_assessment": {"proprietary_api_dependencies": [{"service_id": "svc1", "mitigation_documented": false}]}}
+	has_control(inf.violations, "IS-018") with input as inp
+	vs := [v | some v in inf.violations with input as inp; v.service_id == "svc1"]
+	count(vs) == 1
+	every v in vs {
+		v.control == "IS-018"
+	}
+}
+
+test_long_migration_violates_is019 if {
+	inp := {"exit_strategy": {"documented": true, "portability_tested": true, "estimated_migration_days": 120}}
+	not inf.migration_timeline_acceptable with input as inp
+	has_control(inf.violations, "IS-019") with input as inp
+	not inf.compliant with input as inp
+}
+
+test_short_migration_ok if {
+	inf.migration_timeline_acceptable with input as {"exit_strategy": {"estimated_migration_days": 60}}
+}
+
+test_undeclared_migration_estimate_fails_closed if {
+	not inf.migration_timeline_acceptable with input as {}
+	has_control(inf.violations, "IS-019") with input as {}
+	r := inf.report with input as {}
+	r.controls["IS-019_migration_timeline"] == false
+}

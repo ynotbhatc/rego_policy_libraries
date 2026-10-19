@@ -373,6 +373,51 @@ violations contains v if {
 	}
 }
 
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not training_records_maintained
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "CIP-004 R2: training records maintained requirement not met",
+		"remediation": "Satisfy and evidence the training records maintained requirement (CIP-004 R2)",
+	}
+}
+
+violations contains v if {
+	not access_authorization_documented
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-004 R4: access authorization documented requirement not met",
+		"remediation": "Satisfy and evidence the access authorization documented requirement (CIP-004 R4)",
+	}
+}
+
+violations contains v if {
+	not access_based_on_need_to_know
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-004 R4: access based on need to know requirement not met",
+		"remediation": "Satisfy and evidence the access based on need to know requirement (CIP-004 R4)",
+	}
+}
+
+violations contains v if {
+	not shared_accounts_managed
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R5",
+		"severity": "medium",
+		"description": "CIP-004 R5: shared accounts managed requirement not met",
+		"remediation": "Satisfy and evidence the shared accounts managed requirement (CIP-004 R5)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================

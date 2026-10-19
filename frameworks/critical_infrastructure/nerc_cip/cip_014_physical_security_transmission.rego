@@ -86,6 +86,8 @@ risk_assessment_current if {
 }
 
 # Update assessment within 60 days of qualifying changes to transmission topology
+default assessment_updated_after_changes := false
+
 assessment_updated_after_changes if {
 	every change in input.transmission_topology_changes {
 		change.assessment_triggered == true
@@ -381,6 +383,17 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not assessment_updated_after_changes
+	v := {
+		"standard": "CIP-014",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "Transmission risk assessment not updated within 60 days of a qualifying topology change",
+		"remediation": "Re-perform the risk assessment within 60 days of any qualifying change to transmission topology",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -389,6 +402,7 @@ default compliant := false
 
 compliant if {
 	no_applicable_stations # No applicable stations = fully compliant
+	assessment_updated_after_changes
 }
 
 compliant if {
@@ -427,6 +441,7 @@ report := {
 		"R5_1_plans_reviewed": security_plans_reviewed,
 		"R5_2_updated_after_changes": plan_updated_after_topology_changes,
 		"R6_third_party_review": physical_security_plan_third_party_reviewed,
+		"R1_assessment_updated_after_changes": assessment_updated_after_changes,
 	},
 	"station_summary": {
 		"total_applicable_stations": count(object.get(input, ["applicable_transmission_stations"], [])),

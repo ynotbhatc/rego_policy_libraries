@@ -130,6 +130,20 @@ vendor_assessment_comprehensive(vendor) if {
 	assessment.covers.third_party_dependencies == true
 }
 
+# Every high/medium criticality vendor's assessment covers all four supply chain
+# factors (decisions 2026-10-19: wired into compliant and violations).
+default vendor_assessments_comprehensive := false
+
+vendor_assessments_comprehensive if {
+	is_array(input.vendors)
+	violations := [vendor |
+		vendor := input.vendors[_]
+		vendor.criticality_level in ["high", "medium"]
+		not vendor_assessment_comprehensive(vendor)
+	]
+	count(violations) == 0
+}
+
 # =============================================================================
 # R3: Plan Implementation and Vendor Engagement
 # =============================================================================
@@ -283,6 +297,84 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not vendor_assessments_comprehensive
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "Vendor risk assessment does not cover vulnerability disclosure, incident response, software development practices and third-party dependencies for every high/medium vendor",
+		"remediation": "Extend each vendor risk assessment to cover all four supply chain factors",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not vendor_incident_notification_process
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R1.2.2",
+		"severity": "medium",
+		"description": "CIP-013 R1.2.2: vendor incident notification process requirement not met",
+		"remediation": "Satisfy and evidence the vendor incident notification process requirement (CIP-013 R1.2.2)",
+	}
+}
+
+violations contains v if {
+	not incident_coordination_process
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R1.2.4",
+		"severity": "medium",
+		"description": "CIP-013 R1.2.4: incident coordination process requirement not met",
+		"remediation": "Satisfy and evidence the incident coordination process requirement (CIP-013 R1.2.4)",
+	}
+}
+
+violations contains v if {
+	not supply_chain_monitoring_implemented
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-013 R4: supply chain monitoring implemented requirement not met",
+		"remediation": "Satisfy and evidence the supply chain monitoring implemented requirement (CIP-013 R4)",
+	}
+}
+
+violations contains v if {
+	not vendor_notification_monitoring
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "CIP-013 R1: vendor notification monitoring requirement not met",
+		"remediation": "Satisfy and evidence the vendor notification monitoring requirement (CIP-013 R1)",
+	}
+}
+
+violations contains v if {
+	not cip_senior_manager_approved
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R5",
+		"severity": "medium",
+		"description": "CIP-013 R5: cip senior manager approved requirement not met",
+		"remediation": "Satisfy and evidence the cip senior manager approved requirement (CIP-013 R5)",
+	}
+}
+
+violations contains v if {
+	not incident_response_coordination_established
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R6",
+		"severity": "medium",
+		"description": "CIP-013 R6: incident response coordination established requirement not met",
+		"remediation": "Satisfy and evidence the incident response coordination established requirement (CIP-013 R6)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -303,6 +395,7 @@ compliant if {
 	supply_chain_plan_review_current
 	cip_senior_manager_approved
 	incident_response_coordination_established
+	vendor_assessments_comprehensive
 }
 
 report := {
@@ -322,6 +415,7 @@ report := {
 		"R5_plan_review_current": supply_chain_plan_review_current,
 		"R5_senior_manager_approved": cip_senior_manager_approved,
 		"R6_ir_coordination": incident_response_coordination_established,
+		"R2_vendor_assessments_comprehensive": vendor_assessments_comprehensive,
 	},
 	"vendor_summary": {
 		"total_vendors": count(object.get(input, ["vendors"], [])),

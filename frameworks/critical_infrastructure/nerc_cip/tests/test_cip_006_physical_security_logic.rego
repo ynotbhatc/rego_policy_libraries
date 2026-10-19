@@ -40,3 +40,30 @@ test_standalone_low_asset_out_of_scope if {
 	]
 	c.standalone_assets_protected with input as {"standalone_bes_cyber_assets": assets}
 }
+
+# decisions 2026-10-19: PCA and standalone-asset protection are required and produce violations.
+test_pca_unprotected_violation_and_not_compliant if {
+	i := {"protected_cyber_assets": [{"physical_protection": {"in_psp": true, "access_logged": false}}]}
+	not c.pca_physically_protected with input as i
+	count([x | some x in c.violations with input as i; x.requirement == "R2"; contains(x.description, "Protected Cyber Assets")]) == 1
+	not c.compliant with input as i
+}
+
+test_pca_explicit_false_not_applicable if {
+	c.pca_physically_protected with input as {"protected_cyber_assets": false}
+}
+
+test_standalone_unprotected_violation if {
+	i := {"standalone_bes_cyber_assets": [{"impact_categorization": "high", "physical_protection_documented": false, "access_controlled": true}]}
+	count([x | some x in c.violations with input as i; x.requirement == "R1.5"]) == 1
+}
+
+test_standalone_explicit_false_not_applicable if {
+	c.standalone_assets_protected with input as {"standalone_bes_cyber_assets": false}
+}
+
+test_report_lists_pca_and_standalone if {
+	r := c.report with input as {}
+	r.requirements.R2_pca_protected == false
+	r.requirements.R1_5_standalone_protected == false
+}

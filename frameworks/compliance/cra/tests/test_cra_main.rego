@@ -467,9 +467,11 @@ test_foss_exclusion_module_appears if {
 }
 
 test_non_commercial_oss_is_exempt if {
+	# decisions 2026-10-19: "no claim" must be declared explicitly
 	inp := {"foss": {
 		"is_open_source_product": true,
 		"not_made_available_in_course_of_commercial_activity": true,
+		"claimed_exemption": false,
 	}}
 	r := main.compliance_report with input as inp
 	r.module_summary.foss_exclusion.exempt == true
@@ -525,7 +527,8 @@ test_donation_funded_development_stays_exempt if {
 		"is_open_source_product": true,
 		"not_made_available_in_course_of_commercial_activity": true,
 		"claimed_exemption": true,
-		"revenue": {"donations_received": true},
+		"revenue": {"donations_received": true, "paid_support_offered": false, "license_fees_collected": false, "commercial_saas_hosting": false, "use_conditioned_on_personal_data": false},
+		"distribution": {"claimant_integrates_into_own_commercial_product": false, "distributed_in_eu_market": false},
 		"process": {
 			"exemption_basis_documented": true,
 			"exemption_basis_reviewed_annually": true,
@@ -673,7 +676,8 @@ test_donations_alone_do_not_create_misclaim if {
 		"claimed_exemption": true,
 		"is_open_source_product": true,
 		"outside_course_of_commercial_activity": true,
-		"revenue": {"donations_received": true},
+		"revenue": {"donations_received": true, "paid_support_offered": false, "license_fees_collected": false, "commercial_saas_hosting": false, "use_conditioned_on_personal_data": false},
+		"distribution": {"claimant_integrates_into_own_commercial_product": false, "distributed_in_eu_market": false},
 		"process": {
 			"exemption_basis_documented": true,
 			"exemption_basis_reviewed_annually": true,
@@ -768,7 +772,8 @@ test_cost_recovery_support_not_misclaim if {
 		"is_open_source_product": true,
 		"not_made_available_in_course_of_commercial_activity": true,
 		"claimed_exemption": true,
-		"revenue": {"paid_support_offered": true, "paid_support_cost_recovery_only": true},
+		"revenue": {"paid_support_offered": true, "paid_support_cost_recovery_only": true, "license_fees_collected": false, "commercial_saas_hosting": false, "use_conditioned_on_personal_data": false},
+		"distribution": {"claimant_integrates_into_own_commercial_product": false, "distributed_in_eu_market": false},
 		"process": {
 			"exemption_basis_documented": true,
 			"exemption_basis_reviewed_annually": true,

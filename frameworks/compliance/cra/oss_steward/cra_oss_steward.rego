@@ -65,9 +65,34 @@ default compliant := false
 # Threshold — Art. 3(14). A steward classification applies only if ALL
 # definition elements hold; entities below the threshold have no
 # Article 24 obligations (most open-source projects have no steward).
-# Conditional-applicability article: an undeclared threshold element reads as "not a steward" and the
-# Art. 24 checks are skipped by design (pinned by tests/test_cra_main.rego). Whether an undeclared
-# element should instead be a violation is an open scope decision (validation 2026-10-17 report).
+# Conditional-applicability article. Decisions 2026-10-19: an undeclared threshold element is
+# "applicability not determined" (violation), not "not a steward". The classification is determined
+# when ALL five elements are declared, or when any one is declared false (that alone rules out a
+# steward, so the others need not be known).
+threshold_elements := [
+	"is_legal_person",
+	"not_manufacturer_of_product",
+	"provides_systematic_sustained_support",
+	"ensures_product_viability",
+	"oss_product_intended_for_commercial_activities",
+]
+
+undeclared_elements := {e |
+	some e in threshold_elements
+	not is_boolean(object.get(object.get(input, "oss_steward", {}), e, null))
+}
+
+declared_false if {
+	some e in threshold_elements
+	object.get(object.get(input, "oss_steward", {}), e, null) == false
+}
+
+violation contains msg if {
+	count(undeclared_elements) > 0
+	not declared_false
+	msg := sprintf("CRA Art.3(14): applicability not determined — threshold facts not declared: %s", [concat(", ", sort(undeclared_elements))])
+}
+
 applies_to_entity if {
 	input.oss_steward.is_legal_person
 	input.oss_steward.not_manufacturer_of_product

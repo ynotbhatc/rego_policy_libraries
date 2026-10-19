@@ -32,6 +32,9 @@ base := {
 		"approval_date": now_rfc,
 	},
 	"attachment1": attachment1,
+	"electronic_access_control_systems": false,
+	"physical_access_control_systems": false,
+	"bes_environment_changes": false,
 }
 
 test_complete_evidence_is_compliant if {
@@ -58,4 +61,32 @@ test_report_fully_populated_on_empty_input if {
 	r := c.report with input as {}
 	r.compliant == false
 	r.requirements.R1_high_impact_criteria == false
+}
+
+# decisions 2026-10-19: undeclared applicability fails closed; explicit false passes.
+test_undeclared_eacms_not_compliant if {
+	i := json.remove(base, ["electronic_access_control_systems"])
+	not c.compliant with input as i
+	count([v | some v in c.violations with input as i; contains(v.description, "applicability not determined — electronic_access_control_systems")]) == 1
+}
+
+test_undeclared_pacs_not_compliant if {
+	i := json.remove(base, ["physical_access_control_systems"])
+	not c.compliant with input as i
+	count([v | some v in c.violations with input as i; contains(v.description, "applicability not determined — physical_access_control_systems")]) == 1
+}
+
+test_undeclared_changes_not_compliant if {
+	i := json.remove(base, ["bes_environment_changes"])
+	not c.compliant with input as i
+	count([v | some v in c.violations with input as i; contains(v.description, "applicability not determined — bes_environment_changes")]) == 1
+}
+
+test_empty_lists_are_not_applicable if {
+	i := json.patch(base, [
+		{"op": "replace", "path": "/electronic_access_control_systems", "value": []},
+		{"op": "replace", "path": "/physical_access_control_systems", "value": []},
+		{"op": "replace", "path": "/bes_environment_changes", "value": []},
+	])
+	c.compliant with input as i
 }

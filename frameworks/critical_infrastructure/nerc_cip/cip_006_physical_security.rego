@@ -27,7 +27,9 @@ default physical_access_controls_implemented := false
 default physical_access_monitoring_enabled := false
 default physical_security_perimeters_defined := false
 default physical_security_plan_current := false
+default pca_physically_protected := false
 default physical_security_plan_documented := false
+default standalone_assets_protected := false
 default visitor_control_program_established := false
 
 # Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
@@ -116,12 +118,6 @@ visitor_control_program_established if {
 	input.visitor_control_program.visitor_log_maintained == true
 }
 
-visitor_log_reviewed if {
-	last_review_ns := time.parse_rfc3339_ns(input.visitor_control_program.last_log_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
-	review_age_days <= 90
-}
-
 # =============================================================================
 # R1.4 - Physical Access Monitoring and Alerting
 # =============================================================================
@@ -146,6 +142,11 @@ physical_access_alerting_configured if {
 # =============================================================================
 # R1.5 - Protection of Non-Networked (Standalone) Cyber Assets
 # =============================================================================
+
+# An explicit `false` declares that the entity has no standalone assets.
+standalone_assets_protected if {
+	input.standalone_bes_cyber_assets == false
+}
 
 standalone_assets_protected if {
 	is_array(input.standalone_bes_cyber_assets)
@@ -177,6 +178,10 @@ pacs_physically_protected if {
 }
 
 # Protected Cyber Assets physically protected
+pca_physically_protected if {
+	input.protected_cyber_assets == false
+}
+
 pca_physically_protected if {
 	every pca in input.protected_cyber_assets {
 		pca.physical_protection.in_psp == true
@@ -295,6 +300,61 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not physical_access_alerting_configured
+	v := {
+		"standard": "CIP-006",
+		"requirement": "R1.4",
+		"severity": "high",
+		"description": "Physical access alerting (unauthorized attempts, after-hours) not configured",
+		"remediation": "Enable alerting for unauthorized and after-hours physical access with documented response procedures",
+	}
+}
+
+violations contains v if {
+	not eacms_physically_protected
+	v := {
+		"standard": "CIP-006",
+		"requirement": "R2",
+		"severity": "high",
+		"description": "EACMS not physically protected within a PSP with access control",
+		"remediation": "Place every EACMS in a PSP and control access to it",
+	}
+}
+
+violations contains v if {
+	not pacs_physically_protected
+	v := {
+		"standard": "CIP-006",
+		"requirement": "R2",
+		"severity": "high",
+		"description": "PACS not physically protected (access control and tamper detection)",
+		"remediation": "Control access to every PACS and enable tamper detection",
+	}
+}
+
+violations contains v if {
+	not pca_physically_protected
+	v := {
+		"standard": "CIP-006",
+		"requirement": "R2",
+		"severity": "high",
+		"description": "Protected Cyber Assets not physically protected within a PSP with access logging",
+		"remediation": "Place every PCA in a PSP and log access",
+	}
+}
+
+violations contains v if {
+	not standalone_assets_protected
+	v := {
+		"standard": "CIP-006",
+		"requirement": "R1.5",
+		"severity": "high",
+		"description": "Standalone (non-networked) high/medium BES Cyber Assets lack documented physical protection",
+		"remediation": "Document physical protection and access control for each standalone asset, or declare standalone_bes_cyber_assets as false",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -311,6 +371,8 @@ compliant if {
 	physical_access_alerting_configured
 	eacms_physically_protected
 	pacs_physically_protected
+	pca_physically_protected
+	standalone_assets_protected
 	physical_access_authorization_reviewed
 }
 
@@ -328,6 +390,8 @@ report := {
 		"R1_alerting_configured": physical_access_alerting_configured,
 		"R2_eacms_protected": eacms_physically_protected,
 		"R2_pacs_protected": pacs_physically_protected,
+		"R2_pca_protected": pca_physically_protected,
+		"R1_5_standalone_protected": standalone_assets_protected,
 		"R3_access_authorization_reviewed": physical_access_authorization_reviewed,
 	},
 	"violations": violations,

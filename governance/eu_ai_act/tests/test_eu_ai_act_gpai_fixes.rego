@@ -55,3 +55,26 @@ test_non_eu_provider_without_representative_violates if {
 	i := {"eu_ai_act": {"gpai": {"article_54": {"provider_established_outside_eu": true}}}}
 	has_msg(i, "has not designated an authorized representative")
 }
+
+# decisions 2026-10-19: Commission designation (Art. 51(1)(b)) triggers Art. 55 obligations.
+test_commission_designation_triggers_art55_below_flops_threshold if {
+	i := {"eu_ai_act": {"gpai": {
+		"article_54": {"provider_established_outside_eu": false},
+		"article_55": {"training_flops": 1e24, "systemic_risk_model": false, "commission_designated": true},
+	}}}
+	has_msg(i, "Article 55.1(a): Model evaluation")
+	has_msg(i, "Article 51(1)(b)")
+}
+
+test_commission_designation_counts_as_classification_evidence if {
+	i := {"eu_ai_act": {"gpai": {"article_55": {"commission_designated": true}}}}
+	not has_msg(i, "evidence missing — article_55.training_flops")
+}
+
+test_no_designation_flag_leaves_classification_unchanged if {
+	i := {"eu_ai_act": {"gpai": {
+		"article_54": {"provider_established_outside_eu": false},
+		"article_55": {"training_flops": 1e24, "systemic_risk_model": false},
+	}}}
+	not has_msg(i, "Article 55")
+}

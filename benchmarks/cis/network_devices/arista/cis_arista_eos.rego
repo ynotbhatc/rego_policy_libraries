@@ -80,39 +80,11 @@ aaa_accounting_configured if {
 }
 
 
-
-
-
-
-
-
-vty_ssh_only_configured if {
-    management_console := input.eos_config.management.console
-    management_console.idle_timeout
-}
-
-
 vty_timeout_configured if {
     console := input.eos_config.management.console
     console.idle_timeout
     console.idle_timeout <= 10
 }
-
-
-
-
-
-weak_ssh_algorithm(algorithm) if {
-    weak_algorithms := ["ssh-dss", "ssh-rsa-sha1", "ecdsa-sha2-nistp256"]
-    algorithm in weak_algorithms
-}
-
-
-
-
-
-
-
 
 
 # Section 2: Control Plane Security
@@ -139,16 +111,6 @@ control_plane_violations := array.concat(
         ),
     ),
 )
-
-
-
-
-
-
-
-
-
-
 
 
 control_plane_protection_configured if {
@@ -204,12 +166,6 @@ anti_spoofing_acl_configured if {
 }
 
 
-
-
-
-
-
-
 dhcp_snooping_configured if {
     input.eos_config.ip.dhcp.snooping == true
 }
@@ -221,18 +177,6 @@ dynamic_arp_inspection_configured if {
     vlan.enabled == true
 }
 
-
-
-interface_in_use(interface_name) if {
-    used_interface := input.used_interfaces[_]
-    used_interface == interface_name
-}
-
-
-vlan_in_use(vlan_id) if {
-    used_vlan := input.used_vlans[_]
-    used_vlan == vlan_id
-}
 
 # Section 4: Logging and Monitoring
 logging_violations := array.concat(
@@ -247,16 +191,9 @@ logging_violations := array.concat(
 )
 
 
-
-
-
-
-
 event_monitoring_configured if {
     input.eos_config.event_monitor.enabled == true
 }
-
-
 
 
 # Compliance summary for reporting

@@ -180,7 +180,9 @@ vulnerability_remediation_tracked if {
 	}
 }
 
-# R3.3 - Where possible, perform authenticated scanning
+# R3.3 - Where possible, perform authenticated scanning.
+# ADVISORY (decisions 2026-10-19): "where possible" is not a "shall", so this is
+# reported in `requirements` but deliberately does not feed `compliant`.
 authenticated_scanning_used if {
 	bes_inventory_present
 	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
@@ -288,6 +290,51 @@ violations contains v if {
 		"severity": "high",
 		"description": "Identified vulnerabilities not being tracked and remediated",
 		"remediation": "Track all identified vulnerabilities with remediation status; document accepted risks",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not active_vulnerability_monitoring
+	v := {
+		"standard": "CIP-010",
+		"requirement": "R1.5",
+		"severity": "medium",
+		"description": "CIP-010 R1.5: active vulnerability monitoring requirement not met",
+		"remediation": "Satisfy and evidence the active vulnerability monitoring requirement (CIP-010 R1.5)",
+	}
+}
+
+violations contains v if {
+	not software_integrity_verification
+	v := {
+		"standard": "CIP-010",
+		"requirement": "R1.6",
+		"severity": "medium",
+		"description": "CIP-010 R1.6: software integrity verification requirement not met",
+		"remediation": "Satisfy and evidence the software integrity verification requirement (CIP-010 R1.6)",
+	}
+}
+
+violations contains v if {
+	not post_change_assessment
+	v := {
+		"standard": "CIP-010",
+		"requirement": "R3.4",
+		"severity": "medium",
+		"description": "CIP-010 R3.4: post change assessment requirement not met",
+		"remediation": "Satisfy and evidence the post change assessment requirement (CIP-010 R3.4)",
+	}
+}
+
+violations contains v if {
+	not transient_asset_config_managed
+	v := {
+		"standard": "CIP-010",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-010 R4: transient asset config managed requirement not met",
+		"remediation": "Satisfy and evidence the transient asset config managed requirement (CIP-010 R4)",
 	}
 }
 

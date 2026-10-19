@@ -118,10 +118,11 @@ annual_review_performed if {
 	review_age_days <= 455 # 15 calendar months
 }
 
-# Conditional applicability: only changes that were reported are judged. No
-# bes_environment_changes list means no change was reported.
+# Applicability must be declared (decisions 2026-10-19): an explicit
+# bes_environment_changes == false (or an empty list) means no change occurred;
+# an absent key is "applicability not determined" and fails closed.
 review_triggered_by_changes if {
-	not input.bes_environment_changes
+	input.bes_environment_changes == false
 }
 
 review_triggered_by_changes if {
@@ -150,9 +151,10 @@ cip_senior_manager_approval if {
 
 # Electronic Access Control or Monitoring Systems (EACMS) and
 # Physical Access Control Systems (PACS) must also be classified
-# Conditional applicability: an entity with no EACMS/PACS lists reports none to classify.
+# Applicability must be declared (decisions 2026-10-19): an explicit
+# `false` means the entity has none (not applicable); an absent key fails closed.
 eacms_classified if {
-	not input.electronic_access_control_systems
+	input.electronic_access_control_systems == false
 }
 
 eacms_classified if {
@@ -165,7 +167,7 @@ eacms_classified if {
 }
 
 pacs_classified if {
-	not input.physical_access_control_systems
+	input.physical_access_control_systems == false
 }
 
 pacs_classified if {
@@ -248,6 +250,7 @@ violations contains v if {
 
 violations contains v if {
 	not eacms_classified
+	object.get(input, "electronic_access_control_systems", null) != null
 	v := {
 		"standard": "CIP-002",
 		"requirement": "R1",
@@ -259,6 +262,7 @@ violations contains v if {
 
 violations contains v if {
 	not pacs_classified
+	object.get(input, "physical_access_control_systems", null) != null
 	v := {
 		"standard": "CIP-002",
 		"requirement": "R1",
@@ -270,6 +274,7 @@ violations contains v if {
 
 violations contains v if {
 	not review_triggered_by_changes
+	object.get(input, "bes_environment_changes", null) != null
 	v := {
 		"standard": "CIP-002",
 		"requirement": "R2",
@@ -287,6 +292,24 @@ violations contains v if {
 		"severity": "medium",
 		"description": "CIP Senior Manager has not approved categorizations within the past calendar year",
 		"remediation": "Obtain CIP Senior Manager or delegate approval of categorizations annually",
+	}
+}
+
+undeclared := {
+	"electronic_access_control_systems": "R1",
+	"physical_access_control_systems": "R1",
+	"bes_environment_changes": "R2",
+}
+
+violations contains v if {
+	some fact, req in undeclared
+	object.get(input, fact, null) == null
+	v := {
+		"standard": "CIP-002",
+		"requirement": req,
+		"severity": "medium",
+		"description": sprintf("CIP-002 %s: applicability not determined — %s not declared", [req, fact]),
+		"remediation": sprintf("Declare %s as a list of items, or set it to false when not applicable", [fact]),
 	}
 }
 

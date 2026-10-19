@@ -332,11 +332,6 @@ audit_rule_exists(rule) if {
 
 
 
-log_file_permissions_secure(log_file) if {
-    log_file.mode <= "640"
-    log_file.owner == "root"
-}
-
 # Section 5: Access, Authentication and Authorization
 access_auth_violations := [
     "5.1.1: Ensure cron daemon is enabled and running" |

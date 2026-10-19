@@ -6,8 +6,14 @@ import rego.v1
 
 m := data.cra.authorised_representative
 
+# decisions 2026-10-19: (name kept for test discovery) undeclared applicability is no longer a pass.
 test_cra_art18_undeclared_applicability_is_documented_pass if {
-	m.compliant with input as {}
+	not m.compliant with input as {}
+	"CRA Art.18: applicability not determined — manufacturer_outside_eu not declared" in m.violation with input as {}
+}
+
+test_cra_art18_applicability_violation_only_when_undeclared if {
+	not "CRA Art.18: applicability not determined — manufacturer_outside_eu not declared" in m.violation with input as {"authorised_representative": {"manufacturer_outside_eu": false}}
 }
 
 test_cra_art18_declared_not_applicable_is_compliant if {
