@@ -162,8 +162,16 @@ violations contains msg if {
 
 # CA bundle modified outside package management
 violations contains msg if {
-	not input.certificates.ca_bundle_intact
+	input.certificates.ca_bundle_intact == false
 	msg := "NIST SC-17: System CA bundle (/etc/pki/ca-trust) has been modified outside of package management — audit for unauthorized CAs"
+}
+
+# Absent or non-boolean is missing evidence, not a modified bundle.
+ca_bundle_state_collected if is_boolean(input.certificates.ca_bundle_intact)
+
+violations contains msg if {
+	not ca_bundle_state_collected
+	msg := "NIST SC-17: evidence missing — certificates.ca_bundle_intact not collected"
 }
 
 # ── Crypto Policy ─────────────────────────────────────────────────────────────

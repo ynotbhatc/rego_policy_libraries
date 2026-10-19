@@ -65,7 +65,7 @@ section_inputs := {
 	"section_1_3_1_4_1_5_boot_security": ["boot_security"],
 	"section_1_6_selinux": ["selinux"],
 	"section_2_services": ["unnecessary_services", "time_synchronization", "chronyd", "client_packages", "autofs"],
-	"section_3_network": ["sysctl_parameters", "ip_forwarding", "ipv", "firewall", "wireless_interfaces"],
+	"section_3_network": ["sysctl_parameters", "ip_forwarding", "ipv6", "firewall", "wireless_interfaces"],
 	"section_4_1_auditd": ["auditd"],
 	"section_4_2_logging": ["rsyslog", "journald"],
 	"section_5_1_cron": ["cron"],

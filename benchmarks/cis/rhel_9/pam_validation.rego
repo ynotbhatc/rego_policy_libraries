@@ -177,11 +177,16 @@ violations contains msg if {
 }
 
 # CIS 5.5.4: Ensure inactive password lock is 30 days or less
+# -1 (and any negative value) disables the inactive lock, so it fails like a value over 30.
 violations contains msg if {
     input.pam.inactive_days
-    to_number(input.pam.inactive_days) > 30
-    to_number(input.pam.inactive_days) >= 0
-    msg := sprintf("CIS 5.5.1.4: Inactive password lock is %s days, should be 30 or less", [input.pam.inactive_days])
+    not inactive_within_30(to_number(input.pam.inactive_days))
+    msg := sprintf("CIS 5.5.1.4: Inactive password lock is %v days, should be 0 to 30 (-1 disables it)", [input.pam.inactive_days])
+}
+
+inactive_within_30(n) if {
+    n >= 0
+    n <= 30
 }
 
 violations contains msg if {
