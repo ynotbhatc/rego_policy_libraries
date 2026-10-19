@@ -200,6 +200,14 @@ media_sanitization_verified if {
 }
 
 # Before redeployment, verify BCSI removed
+# Declared lists only: `system_redeployments: false` means none occurred; an
+# absent key fails closed (decisions 2026-10-19).
+default redeployment_bcsi_cleared := false
+
+redeployment_bcsi_cleared if {
+	input.system_redeployments == false
+}
+
 redeployment_bcsi_cleared if {
 	every redeployment in input.system_redeployments {
 		redeployment.bcsi_cleared == true
@@ -212,7 +220,14 @@ redeployment_bcsi_cleared if {
 # =============================================================================
 
 # BCSI shared with third parties must have appropriate agreements
+default third_party_bcsi_agreements := false
+
 third_party_bcsi_agreements if {
+	input.bcsi_third_party_sharing == false
+}
+
+third_party_bcsi_agreements if {
+	is_array(input.bcsi_third_party_sharing)
 	violations := [sharing |
 		sharing := input.bcsi_third_party_sharing[_]
 		not third_party_agreement_in_place(sharing)
@@ -308,6 +323,28 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not redeployment_bcsi_cleared
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R2",
+		"severity": "high",
+		"description": "BCSI not verified as cleared before system redeployment or release for reuse (or system_redeployments not declared)",
+		"remediation": "Clear BCSI and document the clearing method before redeployment; declare system_redeployments (false when none)",
+	}
+}
+
+violations contains v if {
+	not third_party_bcsi_agreements
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R1",
+		"severity": "high",
+		"description": "BCSI shared with a third party without an agreement, security requirements, documented need and sharing log (or bcsi_third_party_sharing not declared)",
+		"remediation": "Put an agreement with security requirements in place and log every BCSI sharing; declare bcsi_third_party_sharing (false when none)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -327,6 +364,8 @@ compliant if {
 	bcsi_transmission_protected
 	information_disposal_procedures_implemented
 	media_sanitization_verified
+	redeployment_bcsi_cleared
+	third_party_bcsi_agreements
 }
 
 report := {
@@ -346,6 +385,8 @@ report := {
 		"R_transmission_protected": bcsi_transmission_protected,
 		"R3_disposal_procedures": information_disposal_procedures_implemented,
 		"R3_media_sanitization": media_sanitization_verified,
+		"R2_redeployment_bcsi_cleared": redeployment_bcsi_cleared,
+		"R_third_party_agreements": third_party_bcsi_agreements,
 	},
 	"violations": violations,
 	"violation_count": count(violations),
