@@ -180,7 +180,9 @@ vulnerability_remediation_tracked if {
 	}
 }
 
-# R3.3 - Where possible, perform authenticated scanning
+# R3.3 - Where possible, perform authenticated scanning.
+# ADVISORY (decisions 2026-10-19): "where possible" is not a "shall", so this is
+# reported in `requirements` but deliberately does not feed `compliant`.
 authenticated_scanning_used if {
 	bes_inventory_present
 	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
