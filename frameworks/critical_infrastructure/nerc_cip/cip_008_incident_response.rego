@@ -332,6 +332,62 @@ violations contains v if {
 	}
 }
 
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not incident_classification_process
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R1.5",
+		"severity": "medium",
+		"description": "CIP-008 R1.5: incident classification process requirement not met",
+		"remediation": "Satisfy and evidence the incident classification process requirement (CIP-008 R1.5)",
+	}
+}
+
+violations contains v if {
+	not plan_communicated_to_personnel
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R2.3",
+		"severity": "medium",
+		"description": "CIP-008 R2.3: plan communicated to personnel requirement not met",
+		"remediation": "Satisfy and evidence the plan communicated to personnel requirement (CIP-008 R2.3)",
+	}
+}
+
+violations contains v if {
+	not incident_response_test_documented
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R3.1",
+		"severity": "medium",
+		"description": "CIP-008 R3.1: incident response test documented requirement not met",
+		"remediation": "Satisfy and evidence the incident response test documented requirement (CIP-008 R3.1)",
+	}
+}
+
+violations contains v if {
+	not lessons_learned_incorporated
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R3.2",
+		"severity": "medium",
+		"description": "CIP-008 R3.2: lessons learned incorporated requirement not met",
+		"remediation": "Satisfy and evidence the lessons learned incorporated requirement (CIP-008 R3.2)",
+	}
+}
+
+violations contains v if {
+	not reportable_incident_identification
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R5",
+		"severity": "medium",
+		"description": "CIP-008 R5: reportable incident identification requirement not met",
+		"remediation": "Satisfy and evidence the reportable incident identification requirement (CIP-008 R5)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
