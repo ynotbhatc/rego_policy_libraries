@@ -83,7 +83,7 @@ default _sections := {}
 
 _sections := bench.compliance_assessment
 
-_total_controls := 22
+_total_controls := bench.total_controls
 
 _violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_supplied
 
@@ -92,7 +92,7 @@ _violations := _bench_violations if _facts_supplied
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
 
-_failed := count(_bench_violations) if _facts_supplied
+_failed := count(bench.failing_controls) if _facts_supplied
 
 # Clamp: more violations than known controls must not yield a negative count.
 _passed := max([0, _total_controls - _failed])
