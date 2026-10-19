@@ -67,3 +67,42 @@ test_single_grant_any_role_fails if {
 test_no_grant_any_role_ok if {
 	p.grant_any_role_restricted with input as {"oracle": {"system_privileges": [{"privilege": "CREATE SESSION", "grantee": "APP"}]}}
 }
+
+# Decisions 2026-10-19: file modes compared as octal bit sets, not exact strings.
+dir_inp(m) := {"oracle": {"directories": {"oracle_home": {"owner": "oracle", "group": "oinstall", "mode": m}}}}
+
+test_oracle_home_mode_exact_ok if {
+	p.oracle_home_permissions_restricted with input as dir_inp("755")
+}
+
+test_oracle_home_stricter_mode_ok if {
+	p.oracle_home_permissions_restricted with input as dir_inp("0750")
+}
+
+test_oracle_home_group_writable_fails if {
+	not p.oracle_home_permissions_restricted with input as dir_inp("775")
+}
+
+test_oracle_home_unparsable_mode_fails if {
+	not p.oracle_home_permissions_restricted with input as dir_inp("rwxr-xr-x")
+}
+
+test_tnsnames_mode_640_ok_664_fails if {
+	n := {"oracle": {"network_config": {"tnsnames_ora": {"owner": "oracle", "group": "oinstall", "mode": "640"}}}}
+	p.tnsnames_secured with input as n
+	not p.tnsnames_secured with input as {"oracle": {"network_config": {"tnsnames_ora": {"owner": "oracle", "group": "oinstall", "mode": "664"}}}}
+}
+
+test_audit_files_mode_600_ok_644_fails if {
+	p.audit_files_protected with input as {"oracle": {"audit_files": {"owner": "oracle", "group": "oinstall", "mode": "600"}}}
+	not p.audit_files_protected with input as {"oracle": {"audit_files": {"owner": "oracle", "group": "oinstall", "mode": "644"}}}
+}
+
+# Conditional attestation (documented, kept): required == false passes; absent does not.
+test_database_vault_attested_not_required_passes if {
+	p.database_vault_configured with input as {"oracle": {"database_vault": {"required": false}}}
+}
+
+test_database_vault_without_attestation_fails if {
+	not p.database_vault_configured with input as {"oracle": {"database_vault": {"enabled": false}}}
+}
