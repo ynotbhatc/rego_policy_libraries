@@ -123,14 +123,30 @@ violations contains sprintf("Secrets: Job '%s' passes secret '%s' as a positiona
 	step["run"]
 	secret_ref := regex.find_all_string_submatch_n(`\$\{\{\s*secrets\.[A-Za-z0-9_]+\s*\}\}`, step["run"], -1)[_][0]
 	contains(step["run"], secret_ref)
-	not is_safe_secret_usage(step["run"], secret_ref)
+	not is_safe_secret_usage(job, step, secret_ref)
 }
 
-# Only a real `${{ env.NAME }}` context expression counts; the bare substring
-# "env." (".env.example", "venv.") must not suppress the check.
-is_safe_secret_usage(run_script, _) if {
-	regex.match(`\$\{\{\s*env\.[A-Za-z0-9_]+\s*\}\}`, run_script)
+# A `${{ env.X }}` expression in the script exempts a secret ONLY when X is
+# bound (step, job or workflow env) to that same `${{ secrets.Y }}` expression
+# (decisions 2026-10-19). An unrelated env expression, or the bare substring
+# "env." (".env.example", "venv."), no longer suppresses the check.
+is_safe_secret_usage(job, step, secret_ref) if {
+	some x in env_names_in_script(step["run"])
+	bound := env_binding(job, step, x)
+	normalise_expr(bound) == normalise_expr(secret_ref)
 }
+
+env_names_in_script(script) := {m[1] | some m in regex.find_all_string_submatch_n(`\$\{\{\s*env\.([A-Za-z0-9_]+)\s*\}\}`, script, -1)}
+
+env_binding(job, step, x) := v if {
+	v := step.env[x]
+} else := v if {
+	v := job.env[x]
+} else := v if {
+	v := input.env[x]
+}
+
+normalise_expr(e) := regex.replace(sprintf("%v", [e]), `\s+`, "")
 
 # =============================================================================
 # SHELL INJECTION AND DANGEROUS PATTERNS
