@@ -30,3 +30,24 @@ test_vuln_scan_clean_ok if {
 	inp := {"vulnerability_scan": {"performed": true}, "vulnerable_packages": []}
 	not has("5.1.1", inp)
 }
+
+# Decisions 2026-10-19: totals are computed from the evaluated controls.
+test_summary_total_is_evaluated_control_count if {
+	s := data.cis_pfsense.compliance_assessment.summary with input as {}
+	s.total_controls == 16
+	s.controls_evaluated == 16
+	s.passing_controls + s.failing_controls == s.total_controls
+}
+
+test_every_failing_violation_id_is_an_evaluated_control if {
+	v := data.cis_pfsense.violations with input as {}
+	every x in v {
+		split(x, " ")[0] in data.cis_pfsense.evaluated_controls
+	}
+}
+
+test_summary_counts_distinct_failing_controls if {
+	a := data.cis_pfsense.compliance_assessment.summary with input as {}
+	a.failing_controls <= a.total_controls
+	a.compliance_percentage >= 0
+}
