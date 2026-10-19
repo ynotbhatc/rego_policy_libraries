@@ -53,7 +53,10 @@ violations := [v |
 # Generate compliance report
 compliance_report := {
 	"benchmark": "CIS Microsoft Windows 11 Enterprise Benchmark v5.0.1",
-	"timestamp": time.now_ns(),
+	# Decision 2026-10-19: the wall-clock time lives only in assessed_at, so every other field of the
+	# report is a pure function of the input. `timestamp` is the collector's own time (input.timestamp_ns), null if absent.
+	"timestamp": object.get(input, "timestamp_ns", null),
+	"assessed_at": time.now_ns(),
 	"total_controls": 267,
 	"compliant": compliant,
 	"violations_count": count(violations),
