@@ -51,3 +51,13 @@ test_log_permission_sections_absent_violate if {
 	v := pkg.log_file_violations with input as object.remove(object.remove(good, ["log_file_permissions"]), ["excessive_permissions"])
 	count(v) == 2
 }
+
+# Decisions 2026-10-19: logrotate has its own count, not counted under rsyslog.
+test_logrotate_missing_counted_in_own_section if {
+	i := object.union(object.remove(good, ["logrotate"]), {"logrotate": {"installed": false}})
+	r := pkg.report with input as i
+	r.rsyslog_violations == 0
+	r.logrotate_violations == 1
+	r.total_violations == 1
+	not pkg.compliant with input as i
+}
