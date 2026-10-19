@@ -71,3 +71,22 @@ test_fully_tagged_resource_allowed if {
 test_empty_plan_gate_allows if {
 	pkg.allow with input as {"resource_changes": []}
 }
+
+# Decisions 2026-10-19: the message names the CIDR actually exposed.
+test_tf002_message_names_ipv6_cidr if {
+	inp := sg([{"protocol": "tcp", "from_port": 22, "to_port": 22, "ipv6_cidr_blocks": ["::/0"]}])
+	ms := port22_msgs(inp)
+	count(ms) == 1
+	every m in ms {
+		contains(m, "to ::/0")
+		not contains(m, "0.0.0.0/0")
+	}
+}
+
+test_tf002_message_names_ipv4_cidr if {
+	inp := sgr({"protocol": "tcp", "from_port": 22, "to_port": 22, "cidr_blocks": ["0.0.0.0/0"]})
+	every m in port22_msgs(inp) {
+		endswith(m, "to 0.0.0.0/0")
+	}
+	count(port22_msgs(inp)) == 1
+}
