@@ -171,8 +171,8 @@ automated_deletion_configured if {
 # Corporate Policy: "Monthly restore tests for critical systems, quarterly for others"
 backup_testing_compliant if {
     all_systems_tested_regularly
-    test_success_rates_adequate
-    test_documentation_complete
+    restore_test_success_rates_adequate
+    restore_test_documentation_complete
 }
 
 all_systems_tested_regularly if {
@@ -201,7 +201,7 @@ restore_testing_frequent_enough(system) if {
     days_since_last_test <= 90
 }
 
-test_success_rates_adequate if {
+restore_test_success_rates_adequate if {
     violations := [system |
         system := input.systems[_]
         # A missing test_success_rate is not a pass.
@@ -226,7 +226,7 @@ minimum_success_rate(system) := 90 if {
     system.criticality_level in ["standard", "low"]
 }
 
-test_documentation_complete if {
+restore_test_documentation_complete if {
     violations := [system |
         system := input.systems[_]
         not system.backup_config.test_documentation.complete
