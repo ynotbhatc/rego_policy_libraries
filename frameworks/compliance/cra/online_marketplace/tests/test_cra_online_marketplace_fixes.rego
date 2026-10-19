@@ -56,3 +56,19 @@ test_marketplace_takedown_without_hours_is_violation if {
 	i := json.patch(compliant_marketplace, [{"op": "add", "path": "/online_marketplace/authority_takedown_order_received", "value": true}])
 	not m.compliant with input as i
 }
+
+# decisions 2026-10-19: undeclared applicability fails closed; explicit false stays not-applicable.
+test_marketplace_undeclared_provider_flag_is_violation if {
+	not m.compliant with input as {}
+	"Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — is_marketplace_provider not declared" in m.violation with input as {}
+}
+
+test_marketplace_provider_without_products_flag_is_violation if {
+	i := {"online_marketplace": {"is_marketplace_provider": true}}
+	not m.compliant with input as i
+	"Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — products_offered.includes_products_with_digital_elements not declared" in m.violation with input as i
+}
+
+test_marketplace_provider_without_digital_products_declared_false_is_compliant if {
+	m.compliant with input as {"online_marketplace": {"is_marketplace_provider": true, "products_offered": {"includes_products_with_digital_elements": false}}}
+}
