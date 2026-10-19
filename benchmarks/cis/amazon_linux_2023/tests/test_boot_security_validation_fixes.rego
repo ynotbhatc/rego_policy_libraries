@@ -42,3 +42,13 @@ test_boot_grub_cfg_mode_0400_ok if {
 	v := data.cis_amazon_linux_2023.boot_security.violations with input as object.union(base, {"boot_security": {"grub_cfg_mode": "0400"}})
 	not has("CIS 1.4.2", v)
 }
+
+# Decision 2026-10-19: CIS does not require kdump off, so an enabled kdump is not a violation.
+test_boot_kdump_enabled_is_not_a_violation if {
+	i := object.union(base, {"boot_security": object.union(base.boot_security, {"kdump_enabled": true})})
+	v := data.cis_amazon_linux_2023.boot_security.violations with input as i
+	every m in v {
+		not contains(lower(m), "kdump")
+	}
+	some m in v
+}

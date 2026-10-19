@@ -182,11 +182,8 @@ violations contains msg if {
     msg := "CIS 1.5: kernel.dmesg_restrict should be 1 to restrict dmesg access"
 }
 
-# Check for kdump
-violations contains msg if {
-    input.boot_security.kdump_enabled
-    msg := "CIS 1.5: kdump service is enabled - consider disabling on production systems unless needed for troubleshooting"
-}
+# kdump: CIS does not require kdump to be disabled, so there is no violation for it
+# (decision 2026-10-19: the former advisory violation was dropped).
 
 # Compliance check
 compliant if {
