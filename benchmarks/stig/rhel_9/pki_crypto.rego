@@ -339,7 +339,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# `compliant`: no open finding at ANY category (CAT I, II or III).
+# `cat_i_compliant`: the former CAT-I-only meaning, for gating on the critical subset.
+default cat_i_compliant := false
+
+open_all_findings := [f | some f in findings; f.status == "Open"]
+
 compliant if {
+	count(open_all_findings) == 0
+}
+
+cat_i_compliant if {
 	count(open_cat_i) == 0
 }
 
@@ -350,4 +360,5 @@ compliance_report := {
 	"cat_i_open": count(open_cat_i),
 	"findings": findings,
 	"compliant": compliant,
+	"cat_i_compliant": cat_i_compliant,
 }
