@@ -76,3 +76,25 @@ test_termination_revocation_within_24h_iso if {
 	p2 := json.patch(p, [{"op": "replace", "path": "/access_revocation/completion_date", "value": "2026-01-03T10:00:00Z"}])
 	not c.access_revoked_timely_on_termination with input as with_person(p2)
 }
+
+# Decisions 2026-10-19: documented flat risk_assessment_completed / _date contract.
+flat_person := {
+	"person_id": "p2",
+	"access_level": "authorized_electronic_access",
+	"risk_assessment_completed": true,
+	"risk_assessment_date": now_rfc,
+}
+
+test_flat_risk_assessment_contract_is_current if {
+	c.personnel_risk_assessments_current with input as with_person(flat_person)
+}
+
+test_flat_risk_assessment_not_completed_fails if {
+	p := json.patch(flat_person, [{"op": "replace", "path": "/risk_assessment_completed", "value": false}])
+	not c.personnel_risk_assessments_current with input as with_person(p)
+}
+
+test_flat_risk_assessment_old_date_fails if {
+	p := json.patch(flat_person, [{"op": "replace", "path": "/risk_assessment_date", "value": "2010-01-01T00:00:00Z"}])
+	not c.personnel_risk_assessments_current with input as with_person(p)
+}
