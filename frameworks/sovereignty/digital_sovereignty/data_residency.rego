@@ -67,6 +67,11 @@ flows := object.get(input, "data_flows", [])
 
 regulated_classes := {"sensitive", "restricted", "sovereign"}
 
+# Evidence sections (decisions 2026-10-19): a per-control boolean may only report
+# true when its input section was declared (an empty list is a declaration of none).
+# An absent section is not read as "zero offenders".
+section_declared(name) if is_array(object.get(input, name, null))
+
 # All resources storing regulated or sensitive data must be in approved regions
 region_offenders contains r if {
 	some r in resources
@@ -76,7 +81,10 @@ region_offenders contains r if {
 
 default regulated_data_in_approved_regions := false
 
-regulated_data_in_approved_regions if count(region_offenders) == 0
+regulated_data_in_approved_regions if {
+	section_declared("cloud_resources")
+	count(region_offenders) == 0
+}
 
 # All resources storing regulated data must be in approved jurisdictions
 country_offenders contains r if {
@@ -87,7 +95,10 @@ country_offenders contains r if {
 
 default regulated_data_in_approved_jurisdictions := false
 
-regulated_data_in_approved_jurisdictions if count(country_offenders) == 0
+regulated_data_in_approved_jurisdictions if {
+	section_declared("cloud_resources")
+	count(country_offenders) == 0
+}
 
 # Sovereign/restricted data must not be placed in public cloud at all
 public_cloud_offenders contains r if {
@@ -98,7 +109,10 @@ public_cloud_offenders contains r if {
 
 default sovereign_data_not_in_public_cloud := false
 
-sovereign_data_not_in_public_cloud if count(public_cloud_offenders) == 0
+sovereign_data_not_in_public_cloud if {
+	section_declared("cloud_resources")
+	count(public_cloud_offenders) == 0
+}
 
 # =============================================================================
 # DATA RESIDENCY — BACKUPS
@@ -128,7 +142,10 @@ backup_offenders contains b if {
 
 default backups_in_approved_jurisdictions := false
 
-backups_in_approved_jurisdictions if count(backup_offenders) == 0
+backups_in_approved_jurisdictions if {
+	section_declared("backup_configurations")
+	count(backup_offenders) == 0
+}
 
 # Offsite backups must also remain in approved jurisdictions (offsite_country is
 # optional: only a recorded offsite country is checked)
@@ -141,7 +158,10 @@ offsite_offenders contains b if {
 
 default offsite_backups_in_jurisdiction := false
 
-offsite_backups_in_jurisdiction if count(offsite_offenders) == 0
+offsite_backups_in_jurisdiction if {
+	section_declared("backup_configurations")
+	count(offsite_offenders) == 0
+}
 
 # =============================================================================
 # DATA RESIDENCY — DISASTER RECOVERY
@@ -156,7 +176,10 @@ dr_offenders contains dr if {
 
 default dr_in_approved_jurisdictions := false
 
-dr_in_approved_jurisdictions if count(dr_offenders) == 0
+dr_in_approved_jurisdictions if {
+	section_declared("dr_configurations")
+	count(dr_offenders) == 0
+}
 
 # =============================================================================
 # DATA RESIDENCY — METADATA AND TELEMETRY
@@ -354,6 +377,18 @@ violations contains v if {
 		"severity": "medium",
 		"description": "Data flow inventory not maintained or not reviewed within 12 months",
 		"remediation": "Maintain and annually review a complete inventory of all regulated data flows",
+	}
+}
+
+violations contains v if {
+	some section, control in {"cloud_resources": "DR-001", "backup_configurations": "DR-003", "dr_configurations": "DR-004"}
+	not section_declared(section)
+	v := {
+		"domain": "data_residency",
+		"control": control,
+		"severity": "high",
+		"description": sprintf("%s: evidence missing — %s not declared", [control, section]),
+		"remediation": sprintf("Provide %s (an empty list when there is none) so residency can be assessed", [section]),
 	}
 }
 
