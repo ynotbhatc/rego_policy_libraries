@@ -5,6 +5,8 @@
 #   framework: cis_rhel_9
 #   source: cis
 #   domains: [linux, rhel]
+#   deprecated: true
+#   superseded_by: cis_rhel9.main
 #   coverage:
 #     checks: 6
 #     cited: 6
@@ -16,6 +18,13 @@
 #     as_of: v2.4.2
 package cis.rhel_9
 
+# LEGACY SUMMARY -- DEPRECATED (decisions 2026-10-19). This package implements only
+# 6 of the 278 CIS RHEL 9 controls (one per section). Its summary is scoped to those
+# 6 controls and must not be read as benchmark coverage. Use the sectioned cis_rhel9.*
+# modules and their roll-up package `cis_rhel9.main` (cis_rhel9_main.rego) instead.
+# Kept (not deleted) while consumers may still query data.cis.rhel_9; delete once the
+# compliance repo stops querying it.
+#
 # CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0
 # Center for Internet Security (CIS) Red Hat Enterprise Linux 9 Benchmark
 # This policy implements comprehensive RHEL 9 security controls

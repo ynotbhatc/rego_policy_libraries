@@ -70,3 +70,11 @@ test_rhel9_summary_counts_distinct_controls if {
 	s := data.cis.rhel_9.compliance_summary with input as i
 	s.failing_controls == 1
 }
+
+# Decisions 2026-10-19: legacy stub summary is honest about its scope.
+test_legacy_summary_counts_only_evaluated_controls if {
+	s := data.cis.rhel_9.compliance_summary with input as {}
+	s.total_controls == 6
+	sum([x.total | some x in s.sections]) == s.total_controls
+	s.passing_controls + s.failing_controls == s.total_controls
+}
