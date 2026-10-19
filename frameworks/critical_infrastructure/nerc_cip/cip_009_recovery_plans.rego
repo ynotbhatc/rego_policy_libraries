@@ -303,6 +303,62 @@ violations contains v if {
 	}
 }
 
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not recovery_plan_roles_defined
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R1.2",
+		"severity": "medium",
+		"description": "CIP-009 R1.2: recovery plan roles defined requirement not met",
+		"remediation": "Satisfy and evidence the recovery plan roles defined requirement (CIP-009 R1.2)",
+	}
+}
+
+violations contains v if {
+	not log_preservation_process
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R1.4",
+		"severity": "medium",
+		"description": "CIP-009 R1.4: log preservation process requirement not met",
+		"remediation": "Satisfy and evidence the log preservation process requirement (CIP-009 R1.4)",
+	}
+}
+
+violations contains v if {
+	not network_reconnection_process
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R1.5",
+		"severity": "medium",
+		"description": "CIP-009 R1.5: network reconnection process requirement not met",
+		"remediation": "Satisfy and evidence the network reconnection process requirement (CIP-009 R1.5)",
+	}
+}
+
+violations contains v if {
+	not plans_communicated
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R2.3",
+		"severity": "medium",
+		"description": "CIP-009 R2.3: plans communicated requirement not met",
+		"remediation": "Satisfy and evidence the plans communicated requirement (CIP-009 R2.3)",
+	}
+}
+
+violations contains v if {
+	not activation_criteria_tested
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R3.3",
+		"severity": "medium",
+		"description": "CIP-009 R3.3: activation criteria tested requirement not met",
+		"remediation": "Satisfy and evidence the activation criteria tested requirement (CIP-009 R3.3)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
