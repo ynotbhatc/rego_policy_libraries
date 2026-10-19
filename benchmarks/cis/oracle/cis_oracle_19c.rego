@@ -138,18 +138,30 @@ latest_patches_applied if {
 	patches.security_patches_current == true
 }
 
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings). Decisions 2026-10-19: replaces exact-string mode compares.
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
 oracle_home_permissions_restricted if {
 	oracle_home := input.oracle.directories.oracle_home
 	oracle_home.owner == "oracle"
 	oracle_home.group == "oinstall"
-	oracle_home.mode == "755"
+	mode_within(oracle_home.mode, "755")
 }
 
 oracle_base_permissions_restricted if {
 	oracle_base := input.oracle.directories.oracle_base
 	oracle_base.owner == "oracle"
 	oracle_base.group == "oinstall"
-	oracle_base.mode == "755"
+	mode_within(oracle_base.mode, "755")
 }
 
 # true when path is the system mount point itself or lies beneath it ("/" matches only "/")
@@ -194,28 +206,28 @@ oracle_inventory_secured if {
 	inventory := input.oracle.inventory
 	inventory.owner == "oracle"
 	inventory.group == "oinstall"
-	inventory.mode == "644"
+	mode_within(inventory.mode, "644")
 }
 
 tnsnames_secured if {
 	tnsnames := input.oracle.network_config.tnsnames_ora
 	tnsnames.owner == "oracle"
 	tnsnames.group == "oinstall"
-	tnsnames.mode == "644"
+	mode_within(tnsnames.mode, "644")
 }
 
 sqlnet_secured if {
 	sqlnet := input.oracle.network_config.sqlnet_ora
 	sqlnet.owner == "oracle"
 	sqlnet.group == "oinstall"
-	sqlnet.mode == "644"
+	mode_within(sqlnet.mode, "644")
 }
 
 listener_ora_secured if {
 	listener := input.oracle.network_config.listener_ora
 	listener.owner == "oracle"
 	listener.group == "oinstall"
-	listener.mode == "644"
+	mode_within(listener.mode, "644")
 }
 
 default_accounts_secured if {
@@ -389,7 +401,7 @@ listener_log_files_protected if {
 	log_files := input.oracle.listener_log_files
 	log_files.owner == "oracle"
 	log_files.group == "oinstall"
-	log_files.mode == "640"
+	mode_within(log_files.mode, "640")
 }
 
 connection_rate_limiting_configured if {
@@ -527,7 +539,7 @@ audit_files_protected if {
 	audit_files := input.oracle.audit_files
 	audit_files.owner == "oracle"
 	audit_files.group == "oinstall"
-	audit_files.mode == "640"
+	mode_within(audit_files.mode, "640")
 }
 
 audit_destinations_secured if {
@@ -1232,7 +1244,8 @@ database_vault_configured if {
 	database_vault.command_rules_configured == true
 }
 
-# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
+# Conditional applicability (decision 2026-10-19: kept as a documented reviewer attestation): passes only when the reviewer
+# declares the control not required (CIS "if applicable"). The attestation is the reviewer's; the policy does not verify it.
 database_vault_configured if {
 	database_vault := input.oracle.database_vault
 	database_vault.required == false
@@ -1245,7 +1258,8 @@ ras_implemented if {
 	ras.data_security_policies_active == true
 }
 
-# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
+# Conditional applicability (decision 2026-10-19: kept as a documented reviewer attestation): passes only when the reviewer
+# declares the control not required (CIS "if applicable"). The attestation is the reviewer's; the policy does not verify it.
 ras_implemented if {
 	ras := input.oracle.real_application_security
 	ras.required == false
@@ -1474,7 +1488,8 @@ hsm_integration if {
 	hsm.key_management_secure == true
 }
 
-# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
+# Conditional applicability (decision 2026-10-19: kept as a documented reviewer attestation): passes only when the reviewer
+# declares the control not required (CIS "if applicable"). The attestation is the reviewer's; the policy does not verify it.
 hsm_integration if {
 	hsm := input.oracle.hsm_integration
 	hsm.required == false
@@ -1557,7 +1572,8 @@ kerberos_auth_configured if {
 	kerberos.realm_configured == true
 }
 
-# Conditional applicability: passes only when the reviewer declares the control not required (CIS "if applicable").
+# Conditional applicability (decision 2026-10-19: kept as a documented reviewer attestation): passes only when the reviewer
+# declares the control not required (CIS "if applicable"). The attestation is the reviewer's; the policy does not verify it.
 kerberos_auth_configured if {
 	kerberos := input.oracle.kerberos_authentication
 	kerberos.required == false

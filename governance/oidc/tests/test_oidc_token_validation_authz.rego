@@ -4,9 +4,19 @@ import rego.v1
 
 # Behavioural tests for the role/framework decisions (replaces reliance on the
 # load-only smoke test). Token-claim checks (iss/aud/exp/signature) are NOT
-# covered here: they are an open decision, see the validation report.
+# covered by the base tok() helper, which builds a fully valid token; claim
+# checks are in test_oidc_token_validation_claims.rego.
 
-tok(roles) := {"claims": {"sub": "u1", "preferred_username": "u1", "realm_access": {"roles": roles}}}
+tok(roles) := {
+	"issuer": "https://sso.example.com/realms/aac",
+	"client_id": "aac-portal",
+	"claims": {
+		"sub": "u1", "preferred_username": "u1",
+		"iss": "https://sso.example.com/realms/aac", "aud": "aac-portal",
+		"exp": 4102444800,
+		"realm_access": {"roles": roles},
+	},
+}
 
 test_viewer_can_read_results if {
 	data.governance.oidc.authorized with input as {"token": tok(["viewer"]), "resource": {"type": "results", "framework": "cis_rhel9"}}

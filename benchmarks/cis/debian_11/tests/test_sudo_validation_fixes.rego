@@ -42,3 +42,8 @@ test_mode_forms if {
 test_missing_nopasswd_evidence_violates if {
 	not data.cis_debian_11.sudo.compliant with input as json.patch(good, [{"op": "remove", "path": "/sudo/nopasswd_entries"}])
 }
+
+# Decision 2026-10-19: absent timestamp_timeout passes (sudo default 5 min).
+test_timestamp_timeout_absent_passes_by_decision if {
+	data.cis_debian_11.sudo.compliant with input as {"sudo": object.remove(good.sudo, ["timestamp_timeout"])}
+}

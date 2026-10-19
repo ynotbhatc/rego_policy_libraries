@@ -62,6 +62,13 @@ open_to_world(rule) if rule.cidr_blocks[_] == "0.0.0.0/0"
 
 open_to_world(rule) if rule.ipv6_cidr_blocks[_] == "::/0"
 
+# Which world-open CIDR(s) the rule exposes, for the finding message.
+world_cidrs(rule) := concat(" and ", [c | some c in ["0.0.0.0/0", "::/0"]; world_cidr_present(rule, c)])
+
+world_cidr_present(rule, "0.0.0.0/0") if rule.cidr_blocks[_] == "0.0.0.0/0"
+
+world_cidr_present(rule, "::/0") if rule.ipv6_cidr_blocks[_] == "::/0"
+
 # Does the rule cover `port`? Protocol "-1"/"all" covers every port (from_port/to_port are 0
 # for it); tcp/udp use the range; other protocols (icmp...) have no ports. A rule without a
 # protocol is judged by its range.
@@ -83,8 +90,8 @@ violations contains msg if {
     some port in sensitive_ports
     covers_port(rule, port)
     msg := sprintf(
-        "SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
-        [change.address, port]
+        "SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to %v",
+        [change.address, port, world_cidrs(rule)]
     )
 }
 
@@ -98,8 +105,8 @@ violations contains msg if {
     some port in sensitive_ports
     covers_port(change.change.after, port)
     msg := sprintf(
-        "SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to 0.0.0.0/0",
-        [change.address, port]
+        "SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to %v",
+        [change.address, port, world_cidrs(change.change.after)]
     )
 }
 

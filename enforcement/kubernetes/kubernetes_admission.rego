@@ -175,11 +175,24 @@ from_approved_registry(image) if {
 	startswith(image, concat("", [trim_suffix(registry, "/"), "/"]))
 }
 
-# Allow images without registry prefix (cluster-local)
-# NOTE: needs_decision (validation 2026-10-17): a bare name such as "nginx:1.25" resolves to Docker Hub.
+# An image with no registry host (nginx:1.25, myorg/app:1) is resolved by the
+# container runtime to docker.io. It is therefore admitted only when docker.io
+# is on the approved list (decisions 2026-10-19; previously treated as
+# cluster-local). A registry host is a first path component containing "." or
+# ":" or equal to "localhost".
 from_approved_registry(image) if {
-	not contains(image, "/")
+	not has_registry_host(image)
+	some registry in approved_registries
+	trim_suffix(registry, "/") in {"docker.io", "index.docker.io"}
 }
+
+has_registry_host(image) if {
+	contains(image, "/")
+	first := split(image, "/")[0]
+	regex.match(`[.:]`, first)
+}
+
+has_registry_host(image) if startswith(image, "localhost/")
 
 # =============================================================================
 # IMAGE TAG POLICY

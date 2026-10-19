@@ -28,7 +28,7 @@ compliant if {
 
 violations := array.concat(
 	array.concat([v | some v in rsyslog_violations], [v | some v in journald_violations]),
-	[v | some v in log_file_violations],
+	array.concat([v | some v in log_file_violations], [v | some v in logrotate_violations]),
 )
 
 # Helpers. Absent facts must not satisfy a check (fail closed).
@@ -157,8 +157,8 @@ log_file_violations contains msg if {
 	msg := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [file.file, file.mode, file.issue])
 }
 
-# logrotate installed
-rsyslog_violations contains msg if {
+# logrotate installed (reported in its own section, not under rsyslog; decisions 2026-10-19)
+logrotate_violations contains msg if {
 	not input.logrotate.installed
 	msg := "CIS 4.2.x: logrotate is not installed (logs may fill disk)"
 }
@@ -170,6 +170,7 @@ report := {
 	"rsyslog_violations": count(rsyslog_violations),
 	"journald_violations": count(journald_violations),
 	"log_file_violations": count(log_file_violations),
+	"logrotate_violations": count(logrotate_violations),
 	"rsyslog": {
 		"installed": object.get(input, ["rsyslog", "installed"], null),
 		"service_active": object.get(input, ["rsyslog", "service_active"], null),

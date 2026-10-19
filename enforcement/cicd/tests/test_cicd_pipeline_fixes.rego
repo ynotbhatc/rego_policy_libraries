@@ -107,3 +107,19 @@ test_cicd_report_has_evidence_category if {
 	r := data.cicd.pipeline.compliance_report with input as {}
 	count(object.get(r.violations_by_category, "evidence", [])) == 1
 }
+
+# Theme F (decisions 2026-10-19): an env expression exempts only the secret it wraps.
+test_cicd_unrelated_env_expression_does_not_exempt_secret if {
+	i := with_job("b2", {"runs-on": "ubuntu-latest", "steps": [{"env": {"REGION": "us-east-1"}, "run": "echo ${{ env.REGION }} && curl -H \"A: ${{ secrets.TOKEN }}\" https://x"}]})
+	has_prefix(i, "Secrets:")
+}
+
+test_cicd_env_wrapping_same_secret_exempts if {
+	i := with_job("b2", {"runs-on": "ubuntu-latest", "steps": [{"env": {"TOKEN": "${{ secrets.TOKEN }}"}, "run": "curl -H \"A: ${{ env.TOKEN }}\" https://x && echo ${{ secrets.TOKEN }}"}]})
+	not has_prefix(i, "Secrets:")
+}
+
+test_cicd_env_wrapping_other_secret_does_not_exempt if {
+	i := with_job("b2", {"runs-on": "ubuntu-latest", "steps": [{"env": {"A": "${{ secrets.OTHER }}"}, "run": "echo ${{ env.A }} ${{ secrets.TOKEN }}"}]})
+	has_prefix(i, "Secrets:")
+}

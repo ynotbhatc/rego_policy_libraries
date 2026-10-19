@@ -42,7 +42,7 @@ has_key(obj, k) if {
 	_ = obj[k]
 }
 
-# Missing evidence fails closed. timestamp_timeout is exempt: sudo's default (5 minutes) passes CIS 5.3.6.
+# Missing evidence fails closed. timestamp_timeout is exempt: sudo's default (5 minutes) passes CIS 5.3.6 (decision 2026-10-19).
 violations contains msg if {
 	some k in ["nopasswd_entries", "noauthenticate_entries", "sudoers_mode"]
 	not has_key(object.get(input, "sudo", {}), k)
