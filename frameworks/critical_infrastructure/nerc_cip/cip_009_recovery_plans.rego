@@ -6,8 +6,8 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 20
-#     cited: 8
+#     checks: 25
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
@@ -223,16 +223,6 @@ activation_criteria_tested if {
 }
 
 # =============================================================================
-# R4: Incident Response Coordination
-# =============================================================================
-
-# Recovery plans aligned with incident response plans
-recovery_ir_coordination if {
-	input.recovery_plans.incident_response_coordination.aligned == true
-	input.recovery_plans.incident_response_coordination.handoff_procedures_documented == true
-}
-
-# =============================================================================
 # VIOLATIONS
 # =============================================================================
 
@@ -310,6 +300,62 @@ violations contains v if {
 		"severity": "high",
 		"description": "Backup restoration not tested within 15 calendar months for some systems",
 		"remediation": "Test backup restoration for all applicable systems within 15 calendar months",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not recovery_plan_roles_defined
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R1.2",
+		"severity": "medium",
+		"description": "CIP-009 R1.2: recovery plan roles defined requirement not met",
+		"remediation": "Satisfy and evidence the recovery plan roles defined requirement (CIP-009 R1.2)",
+	}
+}
+
+violations contains v if {
+	not log_preservation_process
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R1.4",
+		"severity": "medium",
+		"description": "CIP-009 R1.4: log preservation process requirement not met",
+		"remediation": "Satisfy and evidence the log preservation process requirement (CIP-009 R1.4)",
+	}
+}
+
+violations contains v if {
+	not network_reconnection_process
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R1.5",
+		"severity": "medium",
+		"description": "CIP-009 R1.5: network reconnection process requirement not met",
+		"remediation": "Satisfy and evidence the network reconnection process requirement (CIP-009 R1.5)",
+	}
+}
+
+violations contains v if {
+	not plans_communicated
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R2.3",
+		"severity": "medium",
+		"description": "CIP-009 R2.3: plans communicated requirement not met",
+		"remediation": "Satisfy and evidence the plans communicated requirement (CIP-009 R2.3)",
+	}
+}
+
+violations contains v if {
+	not activation_criteria_tested
+	v := {
+		"standard": "CIP-009",
+		"requirement": "R3.3",
+		"severity": "medium",
+		"description": "CIP-009 R3.3: activation criteria tested requirement not met",
+		"remediation": "Satisfy and evidence the activation criteria tested requirement (CIP-009 R3.3)",
 	}
 }
 

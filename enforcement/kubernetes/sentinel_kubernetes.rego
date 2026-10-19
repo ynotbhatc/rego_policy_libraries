@@ -359,6 +359,9 @@ all_violations := array.concat(
     )
 )
 
+# Gate exception (b), kept by decision 2026-10-19: a manifest with no `kind` (or a kind outside
+# workload_kinds) is not judged and passes; the gate judges only what is present. Callers that
+# must reject unidentifiable manifests need to check input.kind themselves.
 # Gate semantics: judges only what is present in the manifest, so a manifest with no
 # workload containers has nothing to violate. A failing manifest still yields a result.
 default compliant := false

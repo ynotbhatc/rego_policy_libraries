@@ -31,3 +31,12 @@ test_mode_absent_violates if {
 test_nopasswd_still_violates if {
 	not pkg.compliant with input as {"sudo": object.union(good, {"nopasswd_entries": ["%wheel ALL=(ALL) NOPASSWD: ALL"]})}
 }
+
+# Decision 2026-10-19: absent timestamp_timeout passes (sudo default 5 min); explicit >15 fails.
+test_timestamp_timeout_absent_passes if {
+	pkg.compliant with input as {"sudo": object.remove(good, ["timestamp_timeout"])}
+}
+
+test_timestamp_timeout_over_15_violates if {
+	not pkg.compliant with input as {"sudo": object.union(good, {"timestamp_timeout": 30})}
+}

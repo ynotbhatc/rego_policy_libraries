@@ -228,6 +228,18 @@ passing_count := count([p | some p in practices; p.compliant == true])
 default compliant := false
 compliant if count(all_violations) == 0
 
+# Level 1 practices only (FAR 52.204-21 subset). Used by cmmc_main for
+# cmmc_level_1_compliant so Level 2 practices in this domain do not gate Level 1.
+default level_1_passing := false
+
+level_1_passing if {
+    level_1_practices := [p | some p in practices; p.level == 1]
+    count(level_1_practices) > 0
+    every p in level_1_practices {
+        p.compliant == true
+    }
+}
+
 compliance_report := {
     "domain": "System and Information Integrity",
     "domain_id": "3.14",
@@ -236,4 +248,5 @@ compliance_report := {
     "failing": 7 - passing_count,
     "compliant": compliant,
     "violations": all_violations,
+    "level_1_passing": level_1_passing,
 }

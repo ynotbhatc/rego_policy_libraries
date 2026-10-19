@@ -48,7 +48,7 @@ num_at_least(section, name, min) if flag_num(section, name) >= min
 
 num_equals(section, name, value) if flag_num(section, name) == value
 
-# CIS 1.2.19: --insecure-port was removed in Kubernetes 1.24; with a collected flag set,
+# Decision 2026-10-19: keep (absent passes). CIS 1.2.19: --insecure-port was removed in Kubernetes 1.24; with a collected flag set,
 # an absent flag means the insecure port is not served. A present, non-zero value fails.
 insecure_port_not_zero if {
 	input.api_server_flags["insecure-port"]
@@ -195,9 +195,15 @@ violations contains "CIS L2 4.2.6: Kubelet --protect-kernel-defaults set to true
 	not flag_is("kubelet_flags", "protect-kernel-defaults", "true")
 }
 
-violations contains "CIS L2 4.2.9: Kubelet --event-qps must be set to 0 (event rate limiting disabled)" if {
-	not num_equals("kubelet_flags", "event-qps", 0)
+# CIS 4.2.9: "0 or a level which ensures appropriate event capture". Decision 2026-10-19:
+# accept 0, or >= 5 (the kubelet default) as the documented floor. An unset flag is not evidence.
+violations contains "CIS L2 4.2.9: Kubelet --event-qps must be 0 or at least 5 (appropriate event capture)" if {
+	not event_qps_ok
 }
+
+event_qps_ok if num_equals("kubelet_flags", "event-qps", 0)
+
+event_qps_ok if num_at_least("kubelet_flags", "event-qps", 5)
 
 violations contains "CIS L2 4.2.10: Kubelet --tls-cert-file and --tls-private-key-file set" if {
 	not input.kubelet_flags["tls-cert-file"]

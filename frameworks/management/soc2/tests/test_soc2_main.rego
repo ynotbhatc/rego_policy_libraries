@@ -410,3 +410,18 @@ test_trust_service_criteria_scores_undefined_on_empty if {
 test_soc2_compliance_score_undefined_on_empty if {
 	main.soc2_compliance_score == 0 with input as {}
 }
+
+# Decisions 2026-10-19: infrastructure imports point at the packages the files
+# actually declare (soc2.infrastructure.<x>), so the scores resolve.
+test_infrastructure_scores_resolve_for_all_five_components if {
+	s := main.infrastructure_scores with input as {}
+	count(s) == 5
+	every k in ["network", "security", "systems", "storage", "applications_services"] {
+		is_number(s[k])
+	}
+}
+
+test_infrastructure_compliance_rules_reach_their_packages if {
+	not main.network_infrastructure_compliant with input as {}
+	not main.applications_services_compliant with input as {}
+}

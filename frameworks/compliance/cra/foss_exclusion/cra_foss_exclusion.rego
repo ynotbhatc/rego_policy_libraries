@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 7
-#     cited: 2
+#     checks: 9
+#     cited: 4
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
+#     guard: self
 #     as_of: v2.4.2
 package cra.foss_exclusion
 
@@ -54,8 +54,8 @@ import rego.v1
 # false, because when violations existed the default still applied. The default is false; an
 # entity that makes no exemption claim has no mis-claim to report and still reaches compliant via
 # the rule below (the exclusion boundary is conditional-applicability: "no claim" = no obligation).
-# Claimed exemptions with undeclared commercial markers are treated as "marker absent" by design
-# (pinned by tests/test_cra_main.rego); whether that should be a violation is a pending decision.
+# Decisions 2026-10-19: `claimed_exemption` must be declared (false = no claim, no obligation), and a
+# claimed exemption must declare every commercial marker (an undeclared marker is not "false").
 default compliant := false
 
 default exempt := false
@@ -65,6 +65,28 @@ default exempt := false
 exempt if {
 	input.foss.is_open_source_product
 	input.foss.not_made_available_in_course_of_commercial_activity
+}
+
+# ── Applicability and marker declarations ──────────────────────────────────
+
+violation contains "CRA Art.3(22): applicability not determined — foss.claimed_exemption not declared" if {
+	not is_boolean(object.get(object.get(input, "foss", {}), "claimed_exemption", null))
+}
+
+commercial_markers := [
+	["revenue", "paid_support_offered"],
+	["revenue", "license_fees_collected"],
+	["revenue", "commercial_saas_hosting"],
+	["revenue", "use_conditioned_on_personal_data"],
+	["distribution", "claimant_integrates_into_own_commercial_product"],
+	["distribution", "distributed_in_eu_market"],
+]
+
+violation contains msg if {
+	input.foss.claimed_exemption == true
+	some m in commercial_markers
+	not is_boolean(object.get(input.foss, m, null))
+	msg := sprintf("CRA Art.3(22) (evidence missing): exclusion claimed but commercial marker foss.%s not declared", [concat(".", m)])
 }
 
 # ── Mis-claim: asserted exclusion vs commercial markers ────────────────────

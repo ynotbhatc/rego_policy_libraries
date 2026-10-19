@@ -248,6 +248,9 @@ password_entropy := entropy if {
     entropy := bits_per_char * count(chars)
 }
 
+# Service-account-only restriction (decisions 2026-10-19): the corporate policy gives
+# service accounts "additional restrictions", so predictable patterns are deliberately
+# NOT part of contains_forbidden_patterns for ordinary users.
 # Three identical characters in a row. (The old `(.)\1{2,}` back-reference is not
 # valid RE2, so it never matched.)
 contains_predictable_patterns if {

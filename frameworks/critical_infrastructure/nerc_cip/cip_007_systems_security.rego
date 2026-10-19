@@ -6,8 +6,8 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 25
-#     cited: 9
+#     checks: 32
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
@@ -375,6 +375,84 @@ violations contains v if {
 		"severity": "high",
 		"description": "Password policy does not meet minimum requirements",
 		"remediation": "Enforce password policy with minimum length, complexity, expiration, and lockout requirements",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not ports_and_services_policy
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R1.1",
+		"severity": "medium",
+		"description": "CIP-007 R1.1: ports and services policy requirement not met",
+		"remediation": "Satisfy and evidence the ports and services policy requirement (CIP-007 R1.1)",
+	}
+}
+
+violations contains v if {
+	not physical_io_ports_protected
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R1.3",
+		"severity": "medium",
+		"description": "CIP-007 R1.3: physical io ports protected requirement not met",
+		"remediation": "Satisfy and evidence the physical io ports protected requirement (CIP-007 R1.3)",
+	}
+}
+
+violations contains v if {
+	not malicious_code_response_documented
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R3.2",
+		"severity": "medium",
+		"description": "CIP-007 R3.2: malicious code response documented requirement not met",
+		"remediation": "Satisfy and evidence the malicious code response documented requirement (CIP-007 R3.2)",
+	}
+}
+
+violations contains v if {
+	not security_event_alerting
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R4.2",
+		"severity": "medium",
+		"description": "CIP-007 R4.2: security event alerting requirement not met",
+		"remediation": "Satisfy and evidence the security event alerting requirement (CIP-007 R4.2)",
+	}
+}
+
+violations contains v if {
+	not default_passwords_changed
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R5.3",
+		"severity": "medium",
+		"description": "CIP-007 R5.3: default passwords changed requirement not met",
+		"remediation": "Satisfy and evidence the default passwords changed requirement (CIP-007 R5.3)",
+	}
+}
+
+violations contains v if {
+	not shared_accounts_minimized
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R5.4",
+		"severity": "medium",
+		"description": "CIP-007 R5.4: shared accounts minimized requirement not met",
+		"remediation": "Satisfy and evidence the shared accounts minimized requirement (CIP-007 R5.4)",
+	}
+}
+
+violations contains v if {
+	not login_attempt_limiting
+	v := {
+		"standard": "CIP-007",
+		"requirement": "R5.5",
+		"severity": "medium",
+		"description": "CIP-007 R5.5: login attempt limiting requirement not met",
+		"remediation": "Satisfy and evidence the login attempt limiting requirement (CIP-007 R5.5)",
 	}
 }
 

@@ -333,31 +333,55 @@ admin_port_in_rule(rule) if {
 
 
 
+# Controls actually evaluated by this module, per section. Totals below are
+# computed from these sets (not the benchmark's nominal size), so the summary
+# only counts controls the policy really checks.
+identity_access_controls := {"1.1"}
+
+storage_controls := {"2.1.1"}
+
+logging_controls := {"3.1"}
+
+monitoring_control_ids := {control_id(c.msg) | some c in monitoring_controls}
+
+networking_controls := {"5.1"}
+
+control_id(msg) := split(msg, ":")[0]
+
+# Distinct failing controls (one control can emit several violation messages,
+# e.g. one per offending bucket or NACL).
+failing_control_ids(section_violations) := {control_id(v) | some v in section_violations}
+
+evaluated_controls := (((identity_access_controls | storage_controls) | logging_controls) | monitoring_control_ids) | networking_controls
+
+failing_controls := (((failing_control_ids(identity_access_violations) | failing_control_ids(storage_violations)) | failing_control_ids(logging_violations)) | failing_control_ids(monitoring_violations)) | failing_control_ids(networking_violations)
+
 # Compliance summary for reporting
 compliance_summary := {
-    "total_controls": 69,
-    "passing_controls": 69 - count(violations),
-    "failing_controls": count(violations),
-    "compliance_percentage": ((69 - count(violations)) * 100) / 69,
+    "total_controls": count(evaluated_controls),
+    "controls_evaluated": count(evaluated_controls),
+    "passing_controls": count(evaluated_controls) - count(failing_controls),
+    "failing_controls": count(failing_controls),
+    "compliance_percentage": ((count(evaluated_controls) - count(failing_controls)) * 100) / count(evaluated_controls),
     "sections": {
         "identity_access": {
-            "total": 21,
+            "total": count(identity_access_controls),
             "violations": count(identity_access_violations)
         },
         "storage": {
-            "total": 8,
+            "total": count(storage_controls),
             "violations": count(storage_violations)
         },
         "logging": {
-            "total": 11,
+            "total": count(logging_controls),
             "violations": count(logging_violations)
         },
         "monitoring": {
-            "total": 15,
+            "total": count(monitoring_control_ids),
             "violations": count(monitoring_violations)
         },
         "networking": {
-            "total": 4,
+            "total": count(networking_controls),
             "violations": count(networking_violations)
         }
     }

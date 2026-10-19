@@ -1180,7 +1180,7 @@
      },
      {
       "id": "cis_kubernetes-CIS-L2-4.2.9",
-      "title": "Kubelet --event-qps must be set to 0 (event rate limiting disabled)",
+      "title": "Kubelet --event-qps must be 0 or at least 5 (appropriate event capture)",
       "props": [
        {
         "name": "label",
@@ -1206,7 +1206,7 @@
        {
         "id": "cis_kubernetes-CIS-L2-4.2.9_stmt",
         "name": "statement",
-        "prose": "Kubelet --event-qps must be set to 0 (event rate limiting disabled)"
+        "prose": "Kubelet --event-qps must be 0 or at least 5 (appropriate event capture)"
        }
       ],
       "class": "security"

@@ -81,3 +81,27 @@ test_empty_input_report_populated if {
 	r.l2_compliant == false
 	r.l2_violations > 0
 }
+
+# Decisions 2026-10-19: 4.2.9 accepts 0 or >= 5; 1.2.19 absent flag still passes.
+with_qps(q) := object.union(object.remove(good, ["kubelet_flags"]), {"kubelet_flags": object.union(good.kubelet_flags, {"event-qps": q})})
+
+test_event_qps_default_5_accepted if {
+	data.cis_kubernetes.l2.compliant with input as with_qps("5")
+}
+
+test_event_qps_high_accepted if {
+	data.cis_kubernetes.l2.compliant with input as with_qps("50")
+}
+
+test_event_qps_between_zero_and_five_violates if {
+	not data.cis_kubernetes.l2.compliant with input as with_qps("3")
+}
+
+test_event_qps_unset_violates if {
+	i := object.union(object.remove(good, ["kubelet_flags"]), {"kubelet_flags": object.remove(good.kubelet_flags, ["event-qps"])})
+	not data.cis_kubernetes.l2.compliant with input as i
+}
+
+test_insecure_port_absent_still_passes if {
+	not "CIS L2 1.2.19: API server --insecure-port set to 0" in data.cis_kubernetes.l2.violations with input as good
+}

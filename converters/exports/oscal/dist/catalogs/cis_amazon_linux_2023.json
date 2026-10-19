@@ -964,11 +964,6 @@
         "id": "cis_amazon_linux_2023-CIS-1.5_obj.1",
         "name": "assessment-objective",
         "prose": "kernel.dmesg_restrict should be 1 to restrict dmesg access"
-       },
-       {
-        "id": "cis_amazon_linux_2023-CIS-1.5_obj.2",
-        "name": "assessment-objective",
-        "prose": "kdump service is enabled - consider disabling on production systems unless needed for troubleshooting"
        }
       ],
       "class": "security"
@@ -1464,7 +1459,7 @@
    {
     "id": "cis_amazon_linux_2023-cis_amazon_linux_2023",
     "class": "rego-module",
-    "title": "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0",
+    "title": "CIS Amazon Linux 2023 Benchmark - legacy six-control roll-up (deprecated)",
     "props": [
      {
       "name": "rego-package",
@@ -7829,7 +7824,7 @@
     },
     {
      "uuid": "e7f721d0-c366-5b05-8f57-4d757e24c77b",
-     "title": "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0",
+     "title": "CIS Amazon Linux 2023 Benchmark - legacy six-control roll-up (deprecated)",
      "props": [
       {
        "name": "rego-package",

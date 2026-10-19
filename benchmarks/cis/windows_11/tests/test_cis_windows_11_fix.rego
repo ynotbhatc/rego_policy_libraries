@@ -34,3 +34,17 @@ any_with_prefix(v, prefix) if {
 	some m in v
 	startswith(m, prefix)
 }
+
+# Decision 2026-10-19: wall-clock time is isolated in assessed_at; the rest of the report is reproducible.
+test_report_is_reproducible_apart_from_assessed_at if {
+	i := {"system": {}, "timestamp_ns": 123}
+	ra := data.cis.windows_11.compliance_report with input as i with time.now_ns as 1
+	rb := data.cis.windows_11.compliance_report with input as i with time.now_ns as 2
+	object.remove(ra, ["assessed_at"]) == object.remove(rb, ["assessed_at"])
+	ra.timestamp == 123
+}
+
+test_report_has_assessed_at if {
+	r := data.cis.windows_11.compliance_report with input as {"system": {}} with time.now_ns as 42
+	r.assessed_at == 42
+}

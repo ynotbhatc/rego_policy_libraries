@@ -6,14 +6,14 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 24
+#     checks: 26
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package nerc_cip.cip_014
 
 import rego.v1
@@ -69,18 +69,29 @@ risk_assessment_methodology_adequate if {
 	input.transmission_risk_assessment.methodology.cascading_potential_assessed == true
 }
 
+# Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
+# are also accepted. Anything else is undefined, so the caller fails closed.
+date_ns(v) := n if {
+	is_string(v)
+	n := time.parse_rfc3339_ns(v)
+}
+
+date_ns(v) := v if is_number(v)
+
 # Re-perform the assessment within 30 calendar months of last assessment
 risk_assessment_current if {
-	last_assessment_ns := time.parse_rfc3339_ns(input.transmission_risk_assessment.last_assessment_date)
+	last_assessment_ns := date_ns(input.transmission_risk_assessment.last_assessment_date)
 	assessment_age_days := (time.now_ns() - last_assessment_ns) / (24 * 60 * 60 * 1000000000)
 	assessment_age_days <= 912 # 30 calendar months
 }
 
 # Update assessment within 60 days of qualifying changes to transmission topology
+default assessment_updated_after_changes := false
+
 assessment_updated_after_changes if {
 	every change in input.transmission_topology_changes {
 		change.assessment_triggered == true
-		update_age_days := (change.assessment_completion_date - change.change_date) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (date_ns(change.assessment_completion_date) - date_ns(change.change_date)) / (24 * 60 * 60 * 1000000000)
 		update_age_days <= 60
 	}
 }
@@ -103,7 +114,7 @@ third_party_verification_performed if {
 # initial risk assessment and within 60 days of updates
 third_party_verification_timely if {
 	input.transmission_risk_assessment.third_party_verification.timely == true
-	last_verify_ns := time.parse_rfc3339_ns(input.transmission_risk_assessment.third_party_verification.last_verification_date)
+	last_verify_ns := date_ns(input.transmission_risk_assessment.third_party_verification.last_verification_date)
 	verify_age_days := (time.now_ns() - last_verify_ns) / (24 * 60 * 60 * 1000000000)
 	verify_age_days <= 912 # aligned with assessment frequency
 }
@@ -216,7 +227,7 @@ plan_implementation_timely if {
 plan_implemented_timely(station) if {
 	plan := input.station_security_plans[station.station_id]
 	plan.implementation_completed == true
-	implementation_months := (plan.implementation_date - input.transmission_risk_assessment.third_party_verification.last_verification_date) / (30 * 24 * 60 * 60 * 1000000000)
+	implementation_months := (date_ns(plan.implementation_date) - date_ns(input.transmission_risk_assessment.third_party_verification.last_verification_date)) / (30 * 24 * 60 * 60 * 1000000000)
 	implementation_months <= 12
 }
 
@@ -240,7 +251,7 @@ security_plans_reviewed if {
 plan_review_current(station) if {
 	plan := input.station_security_plans[station.station_id]
 	plan.last_review_date
-	review_age_days := (time.now_ns() - plan.last_review_date) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - date_ns(plan.last_review_date)) / (24 * 60 * 60 * 1000000000)
 	review_age_days <= 1095 # 36 calendar months
 }
 
@@ -276,7 +287,7 @@ plan_third_party_reviewed(station) if {
 	plan.third_party_review.relevant_expertise == true
 	plan.third_party_review.documented == true
 	# Review must occur within 60 days of plan completion
-	review_age_days := (plan.third_party_review.date - plan.initial_completion_date) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (date_ns(plan.third_party_review.date) - date_ns(plan.initial_completion_date)) / (24 * 60 * 60 * 1000000000)
 	review_age_days <= 60
 }
 
@@ -372,6 +383,17 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not assessment_updated_after_changes
+	v := {
+		"standard": "CIP-014",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "Transmission risk assessment not updated within 60 days of a qualifying topology change",
+		"remediation": "Re-perform the risk assessment within 60 days of any qualifying change to transmission topology",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -380,6 +402,7 @@ default compliant := false
 
 compliant if {
 	no_applicable_stations # No applicable stations = fully compliant
+	assessment_updated_after_changes
 }
 
 compliant if {
@@ -418,6 +441,7 @@ report := {
 		"R5_1_plans_reviewed": security_plans_reviewed,
 		"R5_2_updated_after_changes": plan_updated_after_topology_changes,
 		"R6_third_party_review": physical_security_plan_third_party_reviewed,
+		"R1_assessment_updated_after_changes": assessment_updated_after_changes,
 	},
 	"station_summary": {
 		"total_applicable_stations": count(object.get(input, ["applicable_transmission_stations"], [])),

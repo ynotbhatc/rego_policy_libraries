@@ -6,8 +6,8 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 21
-#     cited: 10
+#     checks: 24
+#     cited: 12
 #     density: sized
 #     basis: size
 #     tested: true
@@ -282,6 +282,40 @@ violations contains v if {
 		"severity": "high",
 		"description": "ESP monitoring not enabled or alerting not configured",
 		"remediation": "Enable monitoring, logging, and alerting for all ESP access attempts",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not unused_ports_disabled
+	v := {
+		"standard": "CIP-005",
+		"requirement": "R1.5",
+		"severity": "medium",
+		"description": "CIP-005 R1.5: unused ports disabled requirement not met",
+		"remediation": "Satisfy and evidence the unused ports disabled requirement (CIP-005 R1.5)",
+	}
+}
+
+violations contains v if {
+	not remote_access_managed
+	v := {
+		"standard": "CIP-005",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "CIP-005 R1: remote access managed requirement not met",
+		"remediation": "Satisfy and evidence the remote access managed requirement (CIP-005 R1)",
+	}
+}
+
+violations contains v if {
+	not access_attempt_logging
+	v := {
+		"standard": "CIP-005",
+		"requirement": "R3",
+		"severity": "medium",
+		"description": "CIP-005 R3: access attempt logging requirement not met",
+		"remediation": "Satisfy and evidence the access attempt logging requirement (CIP-005 R3)",
 	}
 }
 

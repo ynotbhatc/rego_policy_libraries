@@ -329,6 +329,7 @@ rmf_step_6_authorize_compliant if {
 	authorization_package_complete
 	risk_assessment_conducted
 	authorization_decision_documented
+	authorization_granted
 	terms_conditions_established
 }
 
@@ -347,10 +348,20 @@ risk_assessment_conducted if {
 	input.fisma.authorize.risk_assessment.residual_risk_acceptable == true
 }
 
+# A decision of any kind (including "deny") that is documented and issued
+# completes the paperwork; it does not authorize the system.
 authorization_decision_documented if {
 	input.fisma.authorize.decision.authorizing_official_decision in ["authorize", "deny", "interim_authorize"]
 	input.fisma.authorize.decision.decision_rationale_documented == true
 	input.fisma.authorize.decision.authorization_letter_issued == true
+}
+
+# Decision 2026-10-19: the system is authorized only by an "authorize" or
+# "interim_authorize" decision. A documented denial leaves RMF-R non-compliant.
+default authorization_granted := false
+
+authorization_granted if {
+	input.fisma.authorize.decision.authorizing_official_decision in ["authorize", "interim_authorize"]
 }
 
 terms_conditions_established if {

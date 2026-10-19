@@ -71,3 +71,20 @@ test_network_report_defined_on_partial_input if {
 	r.ip_forwarding_disabled == true
 	r.overall_compliant == false
 }
+
+# Decision 2026-10-19: keep IPv6 "hardened or disabled" (CIS 3.1.1 disabling is not mandatory).
+test_ipv6_hardened_when_disabled if {
+	data.cis.network.ipv6_hardened with input as {"ipv6_disabled": true}
+}
+
+test_ipv6_hardened_when_settings_locked_down if {
+	data.cis.network.ipv6_hardened with input as {
+		"net_ipv6_conf_all_accept_source_route": 0, "net_ipv6_conf_default_accept_source_route": 0,
+		"net_ipv6_conf_all_accept_redirects": 0, "net_ipv6_conf_default_accept_redirects": 0,
+		"net_ipv6_conf_all_accept_ra": 0, "net_ipv6_conf_default_accept_ra": 0,
+	}
+}
+
+test_ipv6_not_hardened_when_neither if {
+	not data.cis.network.ipv6_hardened with input as {"ipv6_disabled": false}
+}

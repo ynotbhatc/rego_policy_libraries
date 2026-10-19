@@ -59,6 +59,7 @@ violations contains msg if {
 }
 
 # CIS 5.3.6: Ensure sudo authentication timeout is configured correctly
+# Decision 2026-10-19: an absent timestamp_timeout passes (sudo's default of 5 minutes satisfies <= 15).
 violations contains msg if {
 	input.sudo.timestamp_timeout > 15
 	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %d minutes, should be 15 or less", [input.sudo.timestamp_timeout])

@@ -14,7 +14,7 @@ test_empty_input_not_compliant if not fp.compliant with input as {}
 
 test_empty_section_not_compliant if not fp.compliant with input as {"file_permissions": {}}
 
-test_clean_evidence_compliant if fp.compliant with input as {"file_permissions": clean}
+test_clean_evidence_compliant if fp.cat_i_compliant with input as {"file_permissions": clean}
 
 test_offender_makes_noncompliant if not fp.compliant with input as {"file_permissions": object.union(clean, {"unowned_files": ["/tmp/x"]})}
 

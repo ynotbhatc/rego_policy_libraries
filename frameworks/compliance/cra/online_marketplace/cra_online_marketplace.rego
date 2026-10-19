@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 16
+#     checks: 18
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
+#     guard: self
 #     as_of: v2.4.2
 package cra.online_marketplace
 
@@ -40,9 +40,21 @@ applies if {
 }
 
 # Applicability (conditional-applicability gate): the checks below apply only to marketplace
-# providers offering products with digital elements. When either flag is undeclared the module is
-# treated as not applicable by design (a documented pass, not a defect); whether an undeclared flag
-# should be a violation is an open scope decision (see the validation 2026-10-17 report).
+# providers offering products with digital elements. Decisions 2026-10-19: both flags must be
+# declared. An explicit `false` is "not applicable" (pass); an undeclared flag is "applicability
+# not determined" (violation).
+declared(name) if is_boolean(object.get(object.get(input, "online_marketplace", {}), name, null))
+
+declared_in_products(name) if is_boolean(object.get(object.get(object.get(input, "online_marketplace", {}), "products_offered", {}), name, null))
+
+violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — is_marketplace_provider not declared" if {
+	not declared("is_marketplace_provider")
+}
+
+violation contains "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — products_offered.includes_products_with_digital_elements not declared" if {
+	input.online_marketplace.is_marketplace_provider == true
+	not declared_in_products("includes_products_with_digital_elements")
+}
 
 # Single point of contact for market surveillance authorities
 violation contains msg if {

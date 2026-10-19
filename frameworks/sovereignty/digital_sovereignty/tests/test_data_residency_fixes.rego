@@ -104,3 +104,26 @@ test_report_defined_with_failing_controls if {
 	r.controls["DR-001_regulated_data_in_approved_regions"] == false
 	r.controls["DR-011_regulated_data_in_approved_jurisdictions"] == false
 }
+
+# decisions 2026-10-19: per-control booleans no longer report true on absent evidence sections.
+test_empty_input_controls_fail_closed if {
+	r := dr.report with input as {}
+	r.controls["DR-001_regulated_data_in_approved_regions"] == false
+	r.controls["DR-002_sovereign_data_not_in_public_cloud"] == false
+	r.controls["DR-003_backups_in_jurisdiction"] == false
+	r.controls["DR-004_dr_in_jurisdiction"] == false
+}
+
+test_empty_input_reports_evidence_missing if {
+	vs := dr.violations with input as {}
+	has_control(vs, "DR-001")
+	has_control(vs, "DR-003")
+	has_control(vs, "DR-004")
+}
+
+test_declared_empty_sections_are_not_missing_evidence if {
+	inp := object.union(good, {"cloud_resources": [], "backup_configurations": [], "dr_configurations": []})
+	dr.regulated_data_in_approved_regions with input as inp
+	dr.backups_in_approved_jurisdictions with input as inp
+	dr.dr_in_approved_jurisdictions with input as inp
+}

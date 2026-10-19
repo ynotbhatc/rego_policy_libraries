@@ -3850,7 +3850,7 @@
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-1",
-      "title": "DR-002 sovereign data not in public cloud",
+      "title": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/data_residency.rego (package digital_sovereignty.data_residency); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -3876,14 +3876,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-1_stmt",
         "name": "statement",
-        "prose": "DR-002 sovereign data not in public cloud"
+        "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/data_residency.rego (package digital_sovereignty.data_residency); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-2",
-      "title": "DR-003 backups in jurisdiction",
+      "title": "DR-002 sovereign data not in public cloud",
       "props": [
        {
         "name": "label",
@@ -3909,14 +3909,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-2_stmt",
         "name": "statement",
-        "prose": "DR-003 backups in jurisdiction"
+        "prose": "DR-002 sovereign data not in public cloud"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-3",
-      "title": "DR-004 dr in jurisdiction",
+      "title": "DR-003 backups in jurisdiction",
       "props": [
        {
         "name": "label",
@@ -3942,14 +3942,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-3_stmt",
         "name": "statement",
-        "prose": "DR-004 dr in jurisdiction"
+        "prose": "DR-003 backups in jurisdiction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-4",
-      "title": "DR-005 metadata in jurisdiction",
+      "title": "DR-004 dr in jurisdiction",
       "props": [
        {
         "name": "label",
@@ -3975,14 +3975,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-4_stmt",
         "name": "statement",
-        "prose": "DR-005 metadata in jurisdiction"
+        "prose": "DR-004 dr in jurisdiction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-5",
-      "title": "DR-006 telemetry in jurisdiction",
+      "title": "DR-005 metadata in jurisdiction",
       "props": [
        {
         "name": "label",
@@ -4008,14 +4008,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-5_stmt",
         "name": "statement",
-        "prose": "DR-006 telemetry in jurisdiction"
+        "prose": "DR-005 metadata in jurisdiction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-6",
-      "title": "DR-007 no vendor log access",
+      "title": "DR-006 telemetry in jurisdiction",
       "props": [
        {
         "name": "label",
@@ -4041,14 +4041,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-6_stmt",
         "name": "statement",
-        "prose": "DR-007 no vendor log access"
+        "prose": "DR-006 telemetry in jurisdiction"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-7",
-      "title": "DR-008 cross border transfers controlled",
+      "title": "DR-007 no vendor log access",
       "props": [
        {
         "name": "label",
@@ -4074,14 +4074,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-7_stmt",
         "name": "statement",
-        "prose": "DR-008 cross border transfers controlled"
+        "prose": "DR-007 no vendor log access"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-8",
-      "title": "DR-009 no regulated data to unapproved",
+      "title": "DR-008 cross border transfers controlled",
       "props": [
        {
         "name": "label",
@@ -4107,14 +4107,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-8_stmt",
         "name": "statement",
-        "prose": "DR-009 no regulated data to unapproved"
+        "prose": "DR-008 cross border transfers controlled"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-9",
-      "title": "DR-010 data flow inventory",
+      "title": "DR-009 no regulated data to unapproved",
       "props": [
        {
         "name": "label",
@@ -4140,14 +4140,14 @@
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-9_stmt",
         "name": "statement",
-        "prose": "DR-010 data flow inventory"
+        "prose": "DR-009 no regulated data to unapproved"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "digital_sovereignty-digital_sovereignty.data_residency-10",
-      "title": "DR-012 offsite backups in jurisdiction",
+      "title": "DR-010 data flow inventory",
       "props": [
        {
         "name": "label",
@@ -4172,6 +4172,39 @@
       "parts": [
        {
         "id": "digital_sovereignty-digital_sovereignty.data_residency-10_stmt",
+        "name": "statement",
+        "prose": "DR-010 data flow inventory"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.data_residency-11",
+      "title": "DR-012 offsite backups in jurisdiction",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.data_residency#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.data_residency#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.data_residency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#dd2a6232-5d69-580e-b9e7-e98ed2673cd5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.data_residency-11_stmt",
         "name": "statement",
         "prose": "DR-012 offsite backups in jurisdiction"
        }
@@ -6288,6 +6321,72 @@
       "class": "compliance"
      },
      {
+      "id": "digital_sovereignty-IS-019",
+      "title": "Estimated migration/exit time not declared or exceeds the acceptable 90 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "IS-019"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IS-019"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5edc3064-566b-5d48-8417-c79d4a3a86c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-IS-019_stmt",
+        "name": "statement",
+        "prose": "Estimated migration/exit time not declared or exceeds the acceptable 90 days"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-IS-018",
+      "title": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego (package digital_sovereignty.infrastructure_sovereignty); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IS-018"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IS-018"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5edc3064-566b-5d48-8417-c79d4a3a86c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-IS-018_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego (package digital_sovereignty.infrastructure_sovereignty); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "digital_sovereignty-IS-014",
       "title": "Firmware originates outside approved jurisdictions without a supply-chain audit",
       "props": [
@@ -6910,6 +7009,72 @@
         "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-15_stmt",
         "name": "statement",
         "prose": "IS-017 components classified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-16",
+      "title": "IS-018 proprietary api mitigations",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5edc3064-566b-5d48-8417-c79d4a3a86c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-16_stmt",
+        "name": "statement",
+        "prose": "IS-018 proprietary api mitigations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-17",
+      "title": "IS-019 migration timeline",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.infrastructure_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.infrastructure_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.infrastructure_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5edc3064-566b-5d48-8417-c79d4a3a86c9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "IS-019 migration timeline"
        }
       ],
       "class": "compliance"
@@ -8967,6 +9132,72 @@
       "class": "compliance"
      },
      {
+      "id": "digital_sovereignty-SS-017",
+      "title": "One or more critical OS/middleware components are neither source-available nor independently audited",
+      "props": [
+       {
+        "name": "label",
+        "value": "SS-017"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SS-017"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b238b5ab-3606-5b0e-831a-f9d0fc5258d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-SS-017_stmt",
+        "name": "statement",
+        "prose": "One or more critical OS/middleware components are neither source-available nor independently audited"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-SS-018",
+      "title": "One or more open source components have not had their license reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "SS-018"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SS-018"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b238b5ab-3606-5b0e-831a-f9d0fc5258d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-SS-018_stmt",
+        "name": "statement",
+        "prose": "One or more open source components have not had their license reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-1",
       "title": "SS-001 sbom maintained",
       "props": [
@@ -9490,6 +9721,72 @@
         "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-16_stmt",
         "name": "statement",
         "prose": "SS-016 repo access controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-17",
+      "title": "SS-017 critical software auditable",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b238b5ab-3606-5b0e-831a-f9d0fc5258d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-17_stmt",
+        "name": "statement",
+        "prose": "SS-017 critical software auditable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-18",
+      "title": "SS-018 open source license reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "digital_sovereignty.software_sovereignty#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "digital_sovereignty.software_sovereignty#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "digital_sovereignty.software_sovereignty"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b238b5ab-3606-5b0e-831a-f9d0fc5258d8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "digital_sovereignty-digital_sovereignty.software_sovereignty-18_stmt",
+        "name": "statement",
+        "prose": "SS-018 open source license reviewed"
        }
       ],
       "class": "compliance"

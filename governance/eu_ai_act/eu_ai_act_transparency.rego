@@ -6,7 +6,7 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 20
+#     checks: 21
 #     cited: 7
 #     density: sized
 #     basis: size
@@ -29,11 +29,31 @@ compliant if {
 # =============================================================================
 
 # Each Article 50 obligation below applies only when its condition holds (a chatbot
-# exists, content is generated, ...), so a section that is absent is read as "not
-# applicable". An assessment that is itself absent or empty is not evidence, though:
-# without it nothing was evaluated, so it must not report compliant.
+# exists, content is generated, ...). Decisions 2026-10-19: silence is NOT read as "not
+# applicable". Every Article 50 section must be present, with explicit false flags
+# (e.g. chatbot.interacts_with_natural_persons: false) where an obligation does not
+# apply; a missing section is "applicability not determined". An assessment that is
+# itself absent or empty is not evidence either: without it nothing was evaluated.
 violations contains "Article 50: evidence missing — eu_ai_act.transparency assessment not provided" if {
 	count(object.get(object.get(input, "eu_ai_act", {}), "transparency", {})) == 0
+}
+
+required_sections := {
+	"chatbot": "Article 50.1",
+	"emotion_recognition": "Article 50.2",
+	"biometric_categorization": "Article 50.2",
+	"deep_fake": "Article 50.3",
+	"public_interest_text": "Article 50.4",
+	"deployment": "Article 50.5",
+}
+
+section_declared(name) if count(object.get(object.get(object.get(input, "eu_ai_act", {}), "transparency", {}), name, {})) > 0
+
+violations contains msg if {
+	count(object.get(object.get(input, "eu_ai_act", {}), "transparency", {})) > 0
+	some name, article in required_sections
+	not section_declared(name)
+	msg := sprintf("%s: applicability not determined — transparency.%s not declared (use explicit false flags where not applicable)", [article, name])
 }
 
 # =============================================================================

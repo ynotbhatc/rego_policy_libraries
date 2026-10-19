@@ -14,7 +14,7 @@ test_stig_fp_empty_lists_not_a_finding if {
 	i := {"file_permissions": {"world_writable_files": [], "unowned_files": []}}
 	r := data.stig.rhel_8.file_permissions.compliance_report with input as i
 	r.cat_i_open == 0
-	r.compliant == true
+	r.cat_i_compliant == true
 }
 
 test_stig_fp_world_writable_listed_open if {

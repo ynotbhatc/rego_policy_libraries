@@ -100,7 +100,7 @@
      },
      {
       "id": "enforcement_terraform-SENTINEL-TF-002",
-      "title": "Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
+      "title": "Security group '%v' exposes sensitive port %v to %v",
       "props": [
        {
         "name": "label",
@@ -126,12 +126,12 @@
        {
         "id": "enforcement_terraform-SENTINEL-TF-002_stmt",
         "name": "statement",
-        "prose": "Security group '%v' exposes sensitive port %v to 0.0.0.0/0"
+        "prose": "Security group '%v' exposes sensitive port %v to %v"
        },
        {
         "id": "enforcement_terraform-SENTINEL-TF-002_obj.1",
         "name": "assessment-objective",
-        "prose": "Security group rule '%v' exposes sensitive port %v to 0.0.0.0/0"
+        "prose": "Security group rule '%v' exposes sensitive port %v to %v"
        }
       ],
       "class": "enforcement"

@@ -206,6 +206,7 @@ compliant if {
 	security_of_processing
 	supervisory_authority_cooperation
 	processor_staff_obligations
+	joint_controller_arrangement # Art. 26; N/A only on explicit arrangement_exists == false (decisions 2026-10-19)
 }
 
 report := {

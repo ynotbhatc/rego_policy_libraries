@@ -6,8 +6,8 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 17
-#     cited: 4
+#     checks: 22
+#     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
@@ -226,6 +226,61 @@ violations contains v if {
 		"severity": "medium",
 		"description": "Information sharing plan missing or contacts not current",
 		"remediation": "Maintain current information sharing plan with NERC and Regional Entity contacts",
+	}
+}
+
+violations contains v if {
+	not low_impact_plan_implemented
+	v := {
+		"standard": "CIP-003",
+		"requirement": "R3",
+		"severity": "high",
+		"description": "Low impact cybersecurity plan not documented, approved and implemented (R3)",
+		"remediation": "Document and implement a low impact plan covering physical security, electronic access, incident response and transient cyber assets",
+	}
+}
+
+violations contains v if {
+	not low_impact_plan_reviewed
+	v := {
+		"standard": "CIP-003",
+		"requirement": "R3",
+		"severity": "medium",
+		"description": "Low impact cybersecurity plan not reviewed within 15 calendar months (R3)",
+		"remediation": "Review the low impact plan within 15 calendar months",
+	}
+}
+
+violations contains v if {
+	not transient_cyber_asset_policy
+	v := {
+		"standard": "CIP-003",
+		"requirement": "R4",
+		"severity": "high",
+		"description": "Transient Cyber Asset policy or asset management not in place (R4)",
+		"remediation": "Document the TCA policy, keep an inventory and require authorization",
+	}
+}
+
+violations contains v if {
+	not transient_asset_security_controls
+	v := {
+		"standard": "CIP-003",
+		"requirement": "R4",
+		"severity": "high",
+		"description": "Transient Cyber Asset security controls (malicious code prevention, patching) not in place (R4)",
+		"remediation": "Apply and document malicious code prevention and security patching for TCAs",
+	}
+}
+
+violations contains v if {
+	not removable_media_controls
+	v := {
+		"standard": "CIP-003",
+		"requirement": "R4",
+		"severity": "high",
+		"description": "Removable media controls (authorization, scanning before use, encryption) not in place (R4)",
+		"remediation": "Document and enforce removable media authorization, scanning before use and encryption",
 	}
 }
 

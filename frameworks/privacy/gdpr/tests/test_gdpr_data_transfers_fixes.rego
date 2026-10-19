@@ -58,3 +58,31 @@ test_absent_flags_are_not_applicability_declarations if {
 	not data.gdpr.data_transfers.derogation_if_used with input as {}
 	not data.gdpr.data_transfers.supplementary_measures with input as {}
 }
+
+# decisions 2026-10-19: the SCC + TIA route requires supplementary measures when the TIA says so.
+scc_tia := {"gdpr": {"transfers": {
+	"scc": {"used": true, "eu_commission_approved_version": true, "signed_by_parties": true, "not_amended_invalidly": true, "transfer_impact_assessment": {"performed": true}},
+	"tia": {"performed": true, "destination_country_laws": {"assessed": true}, "public_authority_access": {"assessed": true}, "documented": true, "supplementary_measures": {"identified_if_needed": true}},
+}}}
+
+measures := {"gdpr": {"transfers": {"supplementary_measures": {"technical": {"end_to_end_encryption": true, "pseudonymisation": true}, "contractual": {"additional_commitments": true}, "effective": true}}}}
+
+test_scc_tia_with_required_but_missing_measures_is_not_a_mechanism if {
+	i := object.union(object.union(base, scc_tia), {"gdpr": {"transfers": {"tia": {"supplementary_measures_required": true}}}})
+	not data.gdpr.data_transfers.transfer_mechanism_in_place with input as i
+	not data.gdpr.data_transfers.compliant with input as i
+}
+
+test_scc_tia_with_required_and_effective_measures_is_a_mechanism if {
+	i := object.union(object.union(object.union(base, scc_tia), measures), {"gdpr": {"transfers": {"tia": {"supplementary_measures_required": true}}}})
+	data.gdpr.data_transfers.transfer_mechanism_in_place with input as i
+}
+
+test_scc_tia_with_measures_not_required_is_a_mechanism if {
+	i := object.union(object.union(base, scc_tia), {"gdpr": {"transfers": {"tia": {"supplementary_measures_required": false}}}})
+	data.gdpr.data_transfers.transfer_mechanism_in_place with input as i
+}
+
+test_scc_tia_without_measures_declaration_fails_closed if {
+	not data.gdpr.data_transfers.transfer_mechanism_in_place with input as object.union(base, scc_tia)
+}

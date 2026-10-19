@@ -6,8 +6,8 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 34
-#     cited: 18
+#     checks: 38
+#     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
@@ -110,6 +110,8 @@ critical_software_provenance_acceptable if {
 }
 
 # All critical components must be auditable (open source or source escrow)
+default critical_software_auditable := false
+
 critical_software_auditable if {
 	violations := [c |
 		c := input.software_components[_]
@@ -253,6 +255,8 @@ repo_access_controls_adequate if {
 # =============================================================================
 
 # Open source components must have compatible licenses
+default open_source_license_reviewed := false
+
 open_source_license_reviewed if {
 	violations := [c |
 		c := input.software_components[_]
@@ -463,6 +467,28 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not critical_software_auditable
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-017",
+		"severity": "high",
+		"description": "One or more critical OS/middleware components are neither source-available nor independently audited",
+		"remediation": "Use open-source or source-escrow components for critical software, or commission an independent audit",
+	}
+}
+
+violations contains v if {
+	not open_source_license_reviewed
+	v := {
+		"domain": "software_sovereignty",
+		"control": "SS-018",
+		"severity": "medium",
+		"description": "One or more open source components have not had their license reviewed",
+		"remediation": "Review and record the license of every open source component",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -486,6 +512,8 @@ compliant if {
 	dependency_vulnerability_scanning
 	code_repos_in_jurisdiction
 	repo_access_controls_adequate
+	critical_software_auditable
+	open_source_license_reviewed
 }
 
 report := {
@@ -508,6 +536,8 @@ report := {
 		"SS-014_integrity_verified_on_deploy": integrity_verified_on_deploy,
 		"SS-015_dependencies_pinned": dependencies_pinned,
 		"SS-016_repo_access_controls": repo_access_controls_adequate,
+		"SS-017_critical_software_auditable": critical_software_auditable,
+		"SS-018_open_source_license_reviewed": open_source_license_reviewed,
 	},
 	"sbom_summary": {
 		"maintained": object.get(input, ["sbom", "maintained"], false),

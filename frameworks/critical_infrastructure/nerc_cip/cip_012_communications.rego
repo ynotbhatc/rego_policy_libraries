@@ -6,7 +6,7 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 19
+#     checks: 24
 #     cited: 7
 #     density: sized
 #     basis: size
@@ -240,6 +240,62 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not communication_log_review
+	v := {
+		"standard": "CIP-012",
+		"requirement": "R3",
+		"severity": "medium",
+		"description": "Communication link logs not reviewed within 35 days",
+		"remediation": "Review communication monitoring logs at least every 35 days",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not communication_encryption
+	v := {
+		"standard": "CIP-012",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "CIP-012 R2: communication encryption requirement not met",
+		"remediation": "Satisfy and evidence the communication encryption requirement (CIP-012 R2)",
+	}
+}
+
+violations contains v if {
+	not communication_authentication
+	v := {
+		"standard": "CIP-012",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "CIP-012 R2: communication authentication requirement not met",
+		"remediation": "Satisfy and evidence the communication authentication requirement (CIP-012 R2)",
+	}
+}
+
+violations contains v if {
+	not backup_communication_protected
+	v := {
+		"standard": "CIP-012",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-012 R4: backup communication protected requirement not met",
+		"remediation": "Satisfy and evidence the backup communication protected requirement (CIP-012 R4)",
+	}
+}
+
+violations contains v if {
+	not communication_protection_tested
+	v := {
+		"standard": "CIP-012",
+		"requirement": "R5",
+		"severity": "medium",
+		"description": "CIP-012 R5: communication protection tested requirement not met",
+		"remediation": "Satisfy and evidence the communication protection tested requirement (CIP-012 R5)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -257,6 +313,7 @@ compliant if {
 	backup_communication_protected
 	communication_plan_current
 	communication_protection_tested
+	communication_log_review
 }
 
 report := {

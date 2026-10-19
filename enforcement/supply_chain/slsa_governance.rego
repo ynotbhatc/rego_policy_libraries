@@ -233,6 +233,8 @@ violations contains "Provenance: Build source URI missing from provenance (canno
 	not input.provenance.build_definition.external_parameters.source_uri
 }
 
+# Decision 2026-10-19: keep. A missing expected source means the check is
+# unconfigured, which is a violation rather than a silent skip.
 violations contains "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)" if {
 	input.provenance.exists
 	not input.policy.expected_source_uri_prefix

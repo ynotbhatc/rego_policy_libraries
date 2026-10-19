@@ -36,3 +36,23 @@ test_low_system_with_plan_passes if {
 	}
 	c.low_impact_plan_implemented with input as i
 }
+
+# decisions 2026-10-19: every requirement that gates compliant also yields a violation.
+test_failing_r3_r4_produce_violations if {
+	vs := c.violations with input as {}
+	reqs := {v.requirement | some v in vs}
+	"R3" in reqs
+	"R4" in reqs
+	count([v | some v in vs; v.requirement == "R4"]) == 3
+	count([v | some v in vs; v.requirement == "R3"]) == 2
+}
+
+test_r4_removable_media_violation_alone if {
+	i := {"transient_cyber_assets": {
+		"policy_documented": true,
+		"asset_management": {"inventory_maintained": true, "authorization_required": true},
+		"controls": {"malicious_code_prevention": true, "security_patches": {"applied": true, "documented": true}},
+	}}
+	vs := c.violations with input as i
+	count([v | some v in vs; v.requirement == "R4"]) == 1
+}

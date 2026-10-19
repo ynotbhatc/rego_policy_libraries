@@ -80,3 +80,28 @@ test_every_failed_control_has_a_violation_on_empty_input if {
 		explained(k, passed, r.violations)
 	}
 }
+
+# decisions 2026-10-19: auditable critical software and OSS license review gate compliant.
+test_unauditable_critical_software_violates_ss017 if {
+	inp := {"software_components": [{"component_id": "c1", "component_type": "os", "vendor_country": "DE"}]}
+	not ss.critical_software_auditable with input as inp
+	has_control(ss.violations, "SS-017") with input as inp
+	r := ss.report with input as inp
+	r.controls["SS-017_critical_software_auditable"] == false
+	r.compliant == false
+}
+
+test_auditable_critical_software_ok if {
+	inp := {"software_components": [{"component_id": "c1", "component_type": "os", "source_available": true}]}
+	ss.critical_software_auditable with input as inp
+}
+
+test_unreviewed_oss_license_violates_ss018 if {
+	inp := {"software_components": [{"component_id": "c1", "license_type": "open_source", "license_reviewed": false}]}
+	not ss.open_source_license_reviewed with input as inp
+	has_control(ss.violations, "SS-018") with input as inp
+}
+
+test_reviewed_oss_license_ok if {
+	ss.open_source_license_reviewed with input as {"software_components": [{"component_id": "c1", "license_type": "open_source", "license_reviewed": true}]}
+}

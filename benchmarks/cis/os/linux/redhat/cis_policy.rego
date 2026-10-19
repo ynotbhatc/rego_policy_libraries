@@ -43,18 +43,23 @@ selinux_enabled if {
 }
 
 # CIS Control 5.2.2 - Ensure SSH access is limited
+# Decision 2026-10-19: the control is about restricting WHO may log in, not the port. SSH is
+# hardened when sshd_config (input.ssh_config, a list of lines) sets AllowUsers, AllowGroups,
+# DenyUsers or DenyGroups with at least one entry. Comment lines are ignored; absent config fails closed.
 default ssh_hardened := false
 
 ssh_hardened if {
-    input.ssh_port != 22
+    some line in ssh_config_lines
+    regex.match(`(?i)^(allowusers|allowgroups|denyusers|denygroups) +\S`, line)
 }
 
-ssh_hardened if {
-    input.ssh_port == 22
-    # Additional SSH hardening could be checked here
-    # For demo purposes, we'll allow default SSH port
-    true
-}
+ssh_config_lines := [norm |
+    is_array(input.ssh_config)
+    some raw in input.ssh_config
+    norm := regex.replace(trim_space(raw), `\s+`, " ")
+    norm != ""
+    not startswith(norm, "#")
+]
 
 # CIS Control 3.5.1 - Ensure firewall is active
 default firewall_configured := false
@@ -89,7 +94,7 @@ compliance_details := {
     "ssh": {
         "status": ssh_hardened,
         "current_port": object.get(input, "ssh_port", null),
-        "requirement": "non-default port recommended"
+        "requirement": "SSH access limited via AllowUsers/AllowGroups/DenyUsers/DenyGroups (CIS 5.2.2)"
     },
     "firewall": {
         "status": firewall_configured,

@@ -1,6 +1,8 @@
 # METADATA
-# title: "CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0"
+# title: "CIS Amazon Linux 2023 Benchmark - legacy six-control roll-up (deprecated)"
 # custom:
+#   deprecated: true
+#   superseded_by: cis_amazon_linux_2023.main
 #   class: security
 #   framework: cis_amazon_linux_2023
 #   source: cis
@@ -16,9 +18,12 @@
 #     as_of: v2.4.2
 package cis.amazon_linux_2023
 
-# CIS Red Hat Enterprise Linux 9 Benchmark v1.0.0
-# Center for Internet Security (CIS) Red Hat Enterprise Linux 9 Benchmark
-# This policy implements comprehensive Amazon Linux 2023 security controls
+# LEGACY / DEPRECATED (decisions 2026-10-19). This is an early six-control sampler for Amazon Linux 2023,
+# NOT the full benchmark. It is superseded by the per-section modules in this directory, rolled up by the
+# package `cis_amazon_linux_2023.main` (cis_amazon_linux_2023_main.rego). New consumers must query that
+# package. This module is kept (not deleted or renamed) because the compliance repo still queries
+# `cis/amazon_linux_2023/compliance_summary`; remove it once that query is migrated.
+# Its summary counts are computed from the six controls it actually evaluates, and say so.
 
 import rego.v1
 
@@ -223,6 +228,8 @@ ipv6_enabled if {
     count(interface.ipv6) > 0
 }
 
+# CIS 3.1.1 is an identification control (decision 2026-10-19: left as is). It flags a host that has
+# IPv6 addresses on interfaces while disable_ipv6 is not 0, i.e. an inconsistent IPv6 configuration.
 ipv6_properly_configured if {
     sysctl := input.ansible_facts.ansible_sysctl
     sysctl["net.ipv6.conf.all.disable_ipv6"] == "0"
@@ -324,11 +331,6 @@ audit_rule_exists(rule) if {
 
 
 
-
-log_file_permissions_secure(log_file) if {
-    log_file.mode <= "640"
-    log_file.owner == "root"
-}
 
 # Section 5: Access, Authentication and Authorization
 access_auth_violations := [
@@ -554,14 +556,27 @@ directory_exists(path) if {
 
 
 
-# Compliance summary for reporting.
-# Only the six controls wired into `violations` are evaluated by this module;
-# the totals below count those, not the full benchmark.
-evaluated_controls := 6
+# Compliance summary for reporting (LEGACY, see header).
+# Only the controls wired into `violations` are evaluated by this module; the totals count
+# those, not the full benchmark, and are derived from the section table below.
+section_violation_counts := {
+    "initial_setup": count(initial_setup_violations),
+    "services": count(services_violations),
+    "network": count(network_violations),
+    "logging": count(logging_violations),
+    "access_auth": count(access_auth_violations),
+    "system_maintenance": count(system_maintenance_violations),
+}
 
-failing_control_count := count({v | some v in violations})
+# One control per section (each section rule emits at most its single control message).
+evaluated_controls := count(section_violation_counts)
+
+failing_control_count := count([s | some s, n in section_violation_counts; n > 0])
 
 compliance_summary := {
+    "deprecated": true,
+    "superseded_by": "cis_amazon_linux_2023.main",
+    "scope": "legacy six-control sampler, not the full CIS Amazon Linux 2023 benchmark",
     "total_controls": evaluated_controls,
     "controls_evaluated": evaluated_controls,
     "passing_controls": evaluated_controls - failing_control_count,

@@ -6,7 +6,7 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 22
+#     checks: 26
 #     cited: 7
 #     density: sized
 #     basis: size
@@ -145,10 +145,20 @@ requires_risk_assessment(person) if {
 	person.access_level in ["authorized_electronic_access", "authorized_unescorted_physical_access", "authorized_cyber_asset_access"]
 }
 
+# DATA_SOURCES.md documents flat risk_assessment_completed / risk_assessment_date;
+# the older nested risk_assessment.completed / completion_date form is also accepted.
+risk_assessment_current(person) if {
+	person.risk_assessment_completed == true
+	risk_assessment_age_ok(date_ns(person.risk_assessment_date))
+}
+
 risk_assessment_current(person) if {
 	person.risk_assessment.completed == true
-	assessment_age_days := (time.now_ns() - date_ns(person.risk_assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
-	assessment_age_days <= 2555 # 7 years
+	risk_assessment_age_ok(date_ns(person.risk_assessment.completion_date))
+}
+
+risk_assessment_age_ok(assessed_ns) if {
+	(time.now_ns() - assessed_ns) / (24 * 60 * 60 * 1000000000) <= 2555 # 7 years
 }
 
 # PRA must include criminal history check and 7-year look-back
@@ -360,6 +370,51 @@ violations contains v if {
 		"severity": "critical",
 		"description": "Access not revoked within 24 hours of termination for one or more personnel",
 		"remediation": "Implement automated access revocation process triggered by HR termination events",
+	}
+}
+
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not training_records_maintained
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "CIP-004 R2: training records maintained requirement not met",
+		"remediation": "Satisfy and evidence the training records maintained requirement (CIP-004 R2)",
+	}
+}
+
+violations contains v if {
+	not access_authorization_documented
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-004 R4: access authorization documented requirement not met",
+		"remediation": "Satisfy and evidence the access authorization documented requirement (CIP-004 R4)",
+	}
+}
+
+violations contains v if {
+	not access_based_on_need_to_know
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R4",
+		"severity": "medium",
+		"description": "CIP-004 R4: access based on need to know requirement not met",
+		"remediation": "Satisfy and evidence the access based on need to know requirement (CIP-004 R4)",
+	}
+}
+
+violations contains v if {
+	not shared_accounts_managed
+	v := {
+		"standard": "CIP-004",
+		"requirement": "R5",
+		"severity": "medium",
+		"description": "CIP-004 R5: shared accounts managed requirement not met",
+		"remediation": "Satisfy and evidence the shared accounts managed requirement (CIP-004 R5)",
 	}
 }
 
