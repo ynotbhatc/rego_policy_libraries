@@ -95,10 +95,19 @@ is_systemic if exceeds_threshold
 
 is_systemic if input.eu_ai_act.gpai.article_55.systemic_risk_model == true
 
+# Art. 51(1)(b): the Commission may designate a model as having high-impact capabilities
+# ex officio or after a qualified alert, irrespective of the FLOPs presumption.
+# (decisions 2026-10-19) A designation can only add to the classification.
+commission_designated if input.eu_ai_act.gpai.article_55.commission_designated == true
+
+is_systemic if commission_designated
+
 # Classification evidence must exist: a FLOPs figure or an explicit self-declaration
 classification_evidenced if has_key(object.get(object.get(object.get(input, "eu_ai_act", {}), "gpai", {}), "article_55", {}), "training_flops")
 
 classification_evidenced if has_key(object.get(object.get(object.get(input, "eu_ai_act", {}), "gpai", {}), "article_55", {}), "training_flops_exceeds_threshold")
+
+classification_evidenced if commission_designated
 
 violations contains msg if {
 	not classification_evidenced
@@ -109,6 +118,12 @@ violations contains msg if {
 	flops_exceed_threshold
 	input.eu_ai_act.gpai.article_55.systemic_risk_model == false
 	msg := "Article 51: training computation exceeds 10^25 FLOPs but the model is declared not systemic-risk; classification is presumed under Art. 51(2)"
+}
+
+violations contains msg if {
+	commission_designated
+	input.eu_ai_act.gpai.article_55.systemic_risk_model == false
+	msg := "Article 51(1)(b): the Commission has designated the model as systemic-risk but it is declared not systemic-risk; the designation takes precedence"
 }
 
 # =============================================================================
