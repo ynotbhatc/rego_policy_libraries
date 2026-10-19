@@ -4629,7 +4629,7 @@ cis_rhel_9,CIS 5.4.4,cis_rhel_9-CIS-5.4.4,Password hashing algorithm not set to 
 cis_rhel_9,CIS 5.5.1.1,cis_rhel_9-CIS-5.5.1.1,evidence missing — pam.pass_min_days (PASS_MIN_DAYS) not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
 cis_rhel_9,CIS 5.5.1.2,cis_rhel_9-CIS-5.5.1.2,evidence missing — pam.pass_max_days (PASS_MAX_DAYS) not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
 cis_rhel_9,CIS 5.5.1.3,cis_rhel_9-CIS-5.5.1.3,evidence missing — pam.pass_warn_age (PASS_WARN_AGE) not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.1.4,cis_rhel_9-CIS-5.5.1.4,"Inactive password lock is %s days, should be 30 or less",security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,CIS 5.5.1.4,cis_rhel_9-CIS-5.5.1.4,"Inactive password lock is %v days, should be 0 to 30 (-1 disables it)",security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
 cis_rhel_9,CIS 5.5.1.5,cis_rhel_9-CIS-5.5.1.5,User %s has password change date in the future,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
 cis_rhel_9,CIS 5.5.2,cis_rhel_9-CIS-5.5.2,System account %s has a login shell,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
 cis_rhel_9,CIS 5.5.3,cis_rhel_9-CIS-5.5.3,evidence missing — pam.root_gid not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
