@@ -25,7 +25,11 @@ import rego.v1
 #
 # Input schema:
 #   input.token.claims       — decoded JWT payload (sub, email, realm_access, etc.)
-#   input.token.issuer       — expected issuer (e.g. "https://sso.example.com/realms/aac")
+#   input.token.issuer       — trusted issuer (e.g. "https://sso.example.com/realms/aac")
+#   input.token.trusted_issuers — optional list of further trusted issuers
+#   input.token.client_id    — expected audience (this client's id)
+#   input.token.jwt / .jwks  — optional raw token + JWKS/PEM; when both are given
+#                              the signature is verified here, otherwise a gateway must
 #   input.resource.type      — what is being accessed: "assessment" | "report" | "remediation"
 #   input.resource.framework — framework key, e.g. "cis_rhel9", "nerc_cip"
 #   input.resource.hostname  — target host
@@ -46,9 +50,90 @@ admin_roles   := {"admin"}
 
 default token_valid := false
 
+# A token is valid only when ALL of these hold (fail closed on any missing fact):
+#   - sub present and at least one role
+#   - iss is one of the configured trusted issuers
+#   - aud contains the expected client id
+#   - exp is in the future and nbf (when present) is not in the future
+#   - signature verified, when verification material is supplied (see below)
 token_valid if {
-    count(input.token.claims.sub) > 0
-    count(user_roles) > 0
+	count(input.token.claims.sub) > 0
+	count(user_roles) > 0
+	issuer_trusted
+	audience_ok
+	not_expired
+	not_before_ok
+	signature_ok
+}
+
+# Trusted issuers: input.token.issuer (single, the historical field) and/or
+# input.token.trusted_issuers (list). An empty set trusts nothing.
+trusted_issuers := ({i | i := input.token.issuer; is_string(i); i != ""} | {i | some i in input.token.trusted_issuers; is_string(i); i != ""})
+
+issuer_trusted if input.token.claims.iss in trusted_issuers
+
+# Expected client: input.token.client_id. aud may be a string or a list.
+audience_ok if {
+	is_string(input.token.client_id)
+	input.token.client_id != ""
+	aud_values[input.token.client_id]
+}
+
+aud_values[a] if {
+	is_string(input.token.claims.aud)
+	a := input.token.claims.aud
+}
+
+aud_values[a] if {
+	some a in input.token.claims.aud
+}
+
+# JWT numeric dates are seconds; time.now_ns() is nanoseconds.
+not_expired if {
+	is_number(input.token.claims.exp)
+	input.token.claims.exp * 1000000000 > time.now_ns()
+}
+
+not_before_ok if {
+	not has_nbf
+}
+
+not_before_ok if {
+	is_number(input.token.claims.nbf)
+	input.token.claims.nbf * 1000000000 <= time.now_ns()
+}
+
+has_nbf if "nbf" in object.keys(input.token.claims)
+
+# Signature. When the caller supplies the raw token (input.token.jwt) together
+# with verification material (input.token.jwks, a JWKS document or PEM cert),
+# the signature, issuer, audience and expiry are verified with
+# io.jwt.decode_verify and the decoded claims must match the supplied claims.
+# When NO verification material is supplied this policy cannot check the
+# signature: an API gateway / the MCP server MUST verify it before calling OPA.
+# Supplying input.token.jwt without material is not accepted as verified.
+# decode_verify wants the key material as text (PEM or JSON JWKS string).
+jwks_text := input.token.jwks if is_string(input.token.jwks)
+
+jwks_text := json.marshal(input.token.jwks) if not is_string(input.token.jwks)
+
+default signature_ok := false
+
+signature_ok if {
+	not input.token.jwt
+	not input.token.jwks
+}
+
+signature_ok if {
+	input.token.jwt
+	input.token.jwks
+	[verified, _, payload] := io.jwt.decode_verify(input.token.jwt, {
+		"cert": jwks_text,
+		"iss": input.token.claims.iss,
+		"aud": input.token.client_id,
+	})
+	verified
+	payload.sub == input.token.claims.sub
 }
 
 user_roles := roles if {
