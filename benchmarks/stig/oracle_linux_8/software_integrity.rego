@@ -104,10 +104,18 @@ evidence_present if {
 	object.get(input, key, null) != null
 }
 
-# NOTE: `compliant` is scoped to CAT I findings only (module convention), and this module carries
-# no CAT I findings. Whether CAT II/III should also gate it is an open scope decision, see the
-# validation 2026-10-17 report.
+# `compliant`: no open finding at ANY category (CAT I, II or III) and evidence present.
+# `cat_i_compliant`: the former CAT-I-only meaning, for gating on the critical subset.
+default cat_i_compliant := false
+
+open_all_findings := [f | some f in findings; f.status == "Open"]
+
 compliant if {
+	evidence_present
+	count(open_all_findings) == 0
+}
+
+cat_i_compliant if {
 	evidence_present
 	count(open_cat_i) == 0
 }
@@ -119,4 +127,5 @@ compliance_report := {
 	"cat_i_open": count(open_cat_i),
 	"findings": findings,
 	"compliant": compliant,
+	"cat_i_compliant": cat_i_compliant,
 }
