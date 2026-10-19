@@ -345,6 +345,62 @@ violations contains v if {
 	}
 }
 
+# decisions 2026-10-19: every rule that gates compliant has a matching violation.
+violations contains v if {
+	not bcsi_categories_addressed
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R1.1",
+		"severity": "medium",
+		"description": "CIP-011 R1.1: bcsi categories addressed requirement not met",
+		"remediation": "Satisfy and evidence the bcsi categories addressed requirement (CIP-011 R1.1)",
+	}
+}
+
+violations contains v if {
+	not bcsi_access_need_to_know
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "CIP-011 R2: bcsi access need to know requirement not met",
+		"remediation": "Satisfy and evidence the bcsi access need to know requirement (CIP-011 R2)",
+	}
+}
+
+violations contains v if {
+	not bcsi_electronic_access_controlled
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "CIP-011 R1: bcsi electronic access controlled requirement not met",
+		"remediation": "Satisfy and evidence the bcsi electronic access controlled requirement (CIP-011 R1)",
+	}
+}
+
+violations contains v if {
+	not bcsi_physical_access_controlled
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R1",
+		"severity": "medium",
+		"description": "CIP-011 R1: bcsi physical access controlled requirement not met",
+		"remediation": "Satisfy and evidence the bcsi physical access controlled requirement (CIP-011 R1)",
+	}
+}
+
+violations contains v if {
+	not media_sanitization_verified
+	v := {
+		"standard": "CIP-011",
+		"requirement": "R3",
+		"severity": "medium",
+		"description": "CIP-011 R3: media sanitization verified requirement not met",
+		"remediation": "Satisfy and evidence the media sanitization verified requirement (CIP-011 R3)",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
