@@ -239,6 +239,12 @@ compliant if {
 	consent_records
 	email_marketing_consent
 	local_storage_compliant
+	# decisions 2026-10-19: N/A branches pass only on an explicit `used == false` flag
+	fingerprinting_controlled
+	tracking_pixels_compliant
+	automated_decision_making
+	behavioural_advertising
+	childrens_data
 }
 
 report := {
