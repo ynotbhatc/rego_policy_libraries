@@ -223,16 +223,6 @@ activation_criteria_tested if {
 }
 
 # =============================================================================
-# R4: Incident Response Coordination
-# =============================================================================
-
-# Recovery plans aligned with incident response plans
-recovery_ir_coordination if {
-	input.recovery_plans.incident_response_coordination.aligned == true
-	input.recovery_plans.incident_response_coordination.handoff_procedures_documented == true
-}
-
-# =============================================================================
 # VIOLATIONS
 # =============================================================================
 
