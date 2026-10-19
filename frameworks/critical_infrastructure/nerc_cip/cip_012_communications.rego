@@ -240,6 +240,17 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not communication_log_review
+	v := {
+		"standard": "CIP-012",
+		"requirement": "R3",
+		"severity": "medium",
+		"description": "Communication link logs not reviewed within 35 days",
+		"remediation": "Review communication monitoring logs at least every 35 days",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -257,6 +268,7 @@ compliant if {
 	backup_communication_protected
 	communication_plan_current
 	communication_protection_tested
+	communication_log_review
 }
 
 report := {
