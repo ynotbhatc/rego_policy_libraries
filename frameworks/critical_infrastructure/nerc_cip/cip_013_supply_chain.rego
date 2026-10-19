@@ -121,6 +121,20 @@ vendor_assessment_comprehensive(vendor) if {
 	assessment.covers.third_party_dependencies == true
 }
 
+# Every high/medium criticality vendor's assessment covers all four supply chain
+# factors (decisions 2026-10-19: wired into compliant and violations).
+default vendor_assessments_comprehensive := false
+
+vendor_assessments_comprehensive if {
+	is_array(input.vendors)
+	violations := [vendor |
+		vendor := input.vendors[_]
+		vendor.criticality_level in ["high", "medium"]
+		not vendor_assessment_comprehensive(vendor)
+	]
+	count(violations) == 0
+}
+
 # =============================================================================
 # R3: Plan Implementation and Vendor Engagement
 # =============================================================================
@@ -274,6 +288,17 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not vendor_assessments_comprehensive
+	v := {
+		"standard": "CIP-013",
+		"requirement": "R2",
+		"severity": "medium",
+		"description": "Vendor risk assessment does not cover vulnerability disclosure, incident response, software development practices and third-party dependencies for every high/medium vendor",
+		"remediation": "Extend each vendor risk assessment to cover all four supply chain factors",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -294,6 +319,7 @@ compliant if {
 	supply_chain_plan_review_current
 	cip_senior_manager_approved
 	incident_response_coordination_established
+	vendor_assessments_comprehensive
 }
 
 report := {
@@ -313,6 +339,7 @@ report := {
 		"R5_plan_review_current": supply_chain_plan_review_current,
 		"R5_senior_manager_approved": cip_senior_manager_approved,
 		"R6_ir_coordination": incident_response_coordination_established,
+		"R2_vendor_assessments_comprehensive": vendor_assessments_comprehensive,
 	},
 	"vendor_summary": {
 		"total_vendors": count(object.get(input, ["vendors"], [])),
