@@ -110,13 +110,15 @@ incident_response_plan_current if {
 }
 
 # R2.2 - Within 90 days after an actual Reportable Incident, update the plan
-# Conditional applicability: R2.2 applies only when a Reportable Cyber Security
-# Incident has occurred. No reportable_cyber_incidents list means none reported.
+# Applicability must be declared (decisions 2026-10-19): R2.2 applies only when a
+# Reportable Cyber Security Incident has occurred. `reportable_cyber_incidents: false`
+# (or an empty list) declares none; an absent key is "applicability not determined".
 incident_triggered_plan_updates if {
-	not input.reportable_cyber_incidents
+	input.reportable_cyber_incidents == false
 }
 
 incident_triggered_plan_updates if {
+	is_array(input.reportable_cyber_incidents)
 	every incident in input.reportable_cyber_incidents {
 		incident.plan_review_triggered == true
 		update_age_days := (date_ns(incident.plan_review_completion_date) - date_ns(incident.incident_date)) / (24 * 60 * 60 * 1000000000)
@@ -192,6 +194,11 @@ reportable_incident_identification if {
 # Notification to NERC E-ISAC for Reportable Cyber Security Incidents
 # within 1 hour of determination that an incident is reportable
 nerc_notification_timely if {
+	input.reportable_cyber_incidents == false
+}
+
+nerc_notification_timely if {
+	is_array(input.reportable_cyber_incidents)
 	violations := [incident |
 		incident := input.reportable_cyber_incidents[_]
 		not notification_within_1_hour(incident)
@@ -288,6 +295,7 @@ violations contains v if {
 
 violations contains v if {
 	not incident_triggered_plan_updates
+	is_array(input.reportable_cyber_incidents)
 	v := {
 		"standard": "CIP-008",
 		"requirement": "R2.2",
@@ -297,8 +305,24 @@ violations contains v if {
 	}
 }
 
+incidents_declared if input.reportable_cyber_incidents == false
+
+incidents_declared if is_array(input.reportable_cyber_incidents)
+
+violations contains v if {
+	not incidents_declared
+	v := {
+		"standard": "CIP-008",
+		"requirement": "R2.2",
+		"severity": "high",
+		"description": "CIP-008 R2.2/R5: applicability not determined — reportable_cyber_incidents not declared",
+		"remediation": "Declare reportable_cyber_incidents as a list of incidents, or false when none occurred",
+	}
+}
+
 violations contains v if {
 	not nerc_notification_timely
+	is_array(input.reportable_cyber_incidents)
 	v := {
 		"standard": "CIP-008",
 		"requirement": "R5",

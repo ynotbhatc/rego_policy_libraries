@@ -46,10 +46,29 @@ good := {
 	},
 	"incident_response_team": [member],
 	"incident_identification": {"criteria_documented": true, "decision_process_documented": true},
+	"reportable_cyber_incidents": false,
 }
 
 test_baseline_compliant if {
 	c.compliant with input as good
+}
+
+# decisions 2026-10-19: an undeclared incident list fails closed.
+test_undeclared_incident_list_fails_closed if {
+	i := json.remove(good, ["reportable_cyber_incidents"])
+	not c.incident_triggered_plan_updates with input as i
+	not c.nerc_notification_timely with input as i
+	not c.compliant with input as i
+	count([v | some v in c.violations with input as i; contains(v.description, "applicability not determined — reportable_cyber_incidents")]) == 1
+}
+
+test_explicit_false_incident_list_is_not_applicable if {
+	i := object.union(good, {"reportable_cyber_incidents": false})
+	c.compliant with input as i
+}
+
+test_empty_incident_list_is_not_applicable if {
+	c.compliant with input as object.union(good, {"reportable_cyber_incidents": []})
 }
 
 test_late_nerc_notification_breaks_compliance if {
