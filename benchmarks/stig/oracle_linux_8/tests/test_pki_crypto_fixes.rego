@@ -21,7 +21,7 @@ test_pki_crypto_overrides_present_is_open if {
 }
 
 test_pki_crypto_compliant_with_overrides_collected_empty if {
-	data.stig.oracle_linux_8.pki_crypto.compliant with input as {"crypto_policy_overrides": []}
+	data.stig.oracle_linux_8.pki_crypto.cat_i_compliant with input as {"crypto_policy_overrides": []}
 }
 
 test_pki_crypto_null_cert_mapping_is_open if {

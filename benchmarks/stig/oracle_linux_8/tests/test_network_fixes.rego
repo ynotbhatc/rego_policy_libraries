@@ -33,7 +33,7 @@ test_network_promiscuous_interface_is_open if {
 }
 
 test_network_compliant_when_facts_collected_and_no_cat_i_open if {
-	data.stig.oracle_linux_8.network.compliant with input as {"kernel_params": {}}
+	data.stig.oracle_linux_8.network.cat_i_compliant with input as {"kernel_params": {}}
 }
 
 test_network_report_populated_on_empty_input if {

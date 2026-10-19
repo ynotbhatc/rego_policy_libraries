@@ -36,4 +36,4 @@ test_service_inactive_ok if sv.status_rhel_09_291035 == "Not_a_Finding" with inp
 
 test_service_active_open if sv.status_rhel_09_291035 == "Open" with input as {"services": {"autofs": "active"}}
 
-test_all_cat_i_absent_compliant if sv.compliant with input as {"packages": {"telnet-server": false, "rsh-server": false, "ypserv": false, "tftp-server": false, "vsftpd": false}}
+test_all_cat_i_absent_compliant if sv.cat_i_compliant with input as {"packages": {"telnet-server": false, "rsh-server": false, "ypserv": false, "tftp-server": false, "vsftpd": false}}
