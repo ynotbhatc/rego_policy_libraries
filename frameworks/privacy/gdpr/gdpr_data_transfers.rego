@@ -225,6 +225,9 @@ transfer_mechanism_in_place if {
 } else if {
 	standard_contractual_clauses
 	transfer_impact_assessment
+	# decisions 2026-10-19: when the TIA says supplementary measures are required they must
+	# be in place; the TIA must declare supplementary_measures_required (true/false).
+	supplementary_measures
 } else if {
 	input.gdpr.transfers.bcr.used == true
 	binding_corporate_rules
