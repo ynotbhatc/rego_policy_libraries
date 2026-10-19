@@ -728,6 +728,39 @@
       "class": "governance"
      },
      {
+      "id": "eu_ai_act-Article-51-1-b",
+      "title": "the Commission has designated the model as systemic-risk but it is declared not systemic-risk; the designation takes precedence",
+      "props": [
+       {
+        "name": "label",
+        "value": "Article 51(1)(b)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "Article 51(1)(b)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.gpai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f92803fd-fc35-5af5-a20d-883f4cd1e912",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-Article-51-1-b_stmt",
+        "name": "statement",
+        "prose": "the Commission has designated the model as systemic-risk but it is declared not systemic-risk; the designation takes precedence"
+       }
+      ],
+      "class": "governance"
+     },
+     {
       "id": "eu_ai_act-Article-54",
       "title": "evidence missing — article_54.provider_established_outside_eu not declared, so the authorised-representative obligation cannot be ruled out",
       "props": [
@@ -2362,6 +2395,39 @@
         "id": "eu_ai_act-Article-50_stmt",
         "name": "statement",
         "prose": "evidence missing — eu_ai_act.transparency assessment not provided"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "eu_ai_act-eu_ai_act.transparency-1",
+      "title": "%s: applicability not determined — transparency.%s not declared (use explicit false flags where not applicable)",
+      "props": [
+       {
+        "name": "label",
+        "value": "eu_ai_act.transparency#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eu_ai_act.transparency#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "eu_ai_act.transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eaa2b578-1361-5b5c-accb-d58d5485dc25",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "eu_ai_act-eu_ai_act.transparency-1_stmt",
+        "name": "statement",
+        "prose": "%s: applicability not determined — transparency.%s not declared (use explicit false flags where not applicable)"
        }
       ],
       "class": "governance"

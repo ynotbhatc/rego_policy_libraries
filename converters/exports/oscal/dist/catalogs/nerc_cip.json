@@ -121,6 +121,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#cc76098c-e881-5065-858a-5c7976493035",
+        "rel": "implementation"
+       },
+       {
         "href": "#d5751acb-5889-5fc1-8a5e-f572cee372dc",
         "rel": "implementation"
        },
@@ -192,57 +196,87 @@
        {
         "id": "nerc_cip-R1_obj.11",
         "name": "assessment-objective",
-        "prose": "Physical Security Plan not documented or approved"
+        "prose": "CIP-005 R1: remote access managed requirement not met"
        },
        {
         "id": "nerc_cip-R1_obj.12",
         "name": "assessment-objective",
-        "prose": "Physical Security Plan not reviewed within 15 calendar months"
+        "prose": "Physical Security Plan not documented or approved"
        },
        {
         "id": "nerc_cip-R1_obj.13",
         "name": "assessment-objective",
-        "prose": "Unnecessary ports or services enabled on one or more BES Cyber Systems"
+        "prose": "Physical Security Plan not reviewed within 15 calendar months"
        },
        {
         "id": "nerc_cip-R1_obj.14",
         "name": "assessment-objective",
-        "prose": "Cyber Security Incident Response Plan not documented or approved"
+        "prose": "Unnecessary ports or services enabled on one or more BES Cyber Systems"
        },
        {
         "id": "nerc_cip-R1_obj.15",
         "name": "assessment-objective",
-        "prose": "Recovery plans not documented for one or more High/Medium Impact BES Cyber Systems"
+        "prose": "Cyber Security Incident Response Plan not documented or approved"
        },
        {
         "id": "nerc_cip-R1_obj.16",
         "name": "assessment-objective",
-        "prose": "Configuration change management process not documented"
+        "prose": "Recovery plans not documented for one or more High/Medium Impact BES Cyber Systems"
        },
        {
         "id": "nerc_cip-R1_obj.17",
         "name": "assessment-objective",
-        "prose": "Control Center communications links not identified or inventory not maintained"
+        "prose": "Configuration change management process not documented"
        },
        {
         "id": "nerc_cip-R1_obj.18",
         "name": "assessment-objective",
-        "prose": "Data types on communication links not classified (real-time assessment vs monitoring)"
+        "prose": "BCSI shared with a third party without an agreement, security requirements, documented need and sharing log (or bcsi_third_party_sharing not declared)"
        },
        {
         "id": "nerc_cip-R1_obj.19",
         "name": "assessment-objective",
-        "prose": "Supply chain cyber security risk management plan not documented or not CIP Senior Manager approved"
+        "prose": "CIP-011 R1: bcsi electronic access controlled requirement not met"
        },
        {
         "id": "nerc_cip-R1_obj.20",
         "name": "assessment-objective",
-        "prose": "Transmission station risk assessment not performed or not documented"
+        "prose": "CIP-011 R1: bcsi physical access controlled requirement not met"
        },
        {
         "id": "nerc_cip-R1_obj.21",
         "name": "assessment-objective",
+        "prose": "Control Center communications links not identified or inventory not maintained"
+       },
+       {
+        "id": "nerc_cip-R1_obj.22",
+        "name": "assessment-objective",
+        "prose": "Data types on communication links not classified (real-time assessment vs monitoring)"
+       },
+       {
+        "id": "nerc_cip-R1_obj.23",
+        "name": "assessment-objective",
+        "prose": "Supply chain cyber security risk management plan not documented or not CIP Senior Manager approved"
+       },
+       {
+        "id": "nerc_cip-R1_obj.24",
+        "name": "assessment-objective",
+        "prose": "CIP-013 R1: vendor notification monitoring requirement not met"
+       },
+       {
+        "id": "nerc_cip-R1_obj.25",
+        "name": "assessment-objective",
+        "prose": "Transmission station risk assessment not performed or not documented"
+       },
+       {
+        "id": "nerc_cip-R1_obj.26",
+        "name": "assessment-objective",
         "prose": "Transmission risk assessment not updated within 30 calendar months"
+       },
+       {
+        "id": "nerc_cip-R1_obj.27",
+        "name": "assessment-objective",
+        "prose": "Transmission risk assessment not updated within 60 days of a qualifying topology change"
        }
       ],
       "class": "ot"
@@ -276,6 +310,10 @@
        },
        {
         "href": "#8b0bbde7-a228-5899-9018-32aab4b8fb01",
+        "rel": "implementation"
+       },
+       {
+        "href": "#cc9d6531-c733-50a2-a8ef-8e2ae00ab189",
         "rel": "implementation"
        },
        {
@@ -338,30 +376,75 @@
        {
         "id": "nerc_cip-R2_obj.7",
         "name": "assessment-objective",
-        "prose": "Configuration monitoring review not performed within 35 days for some systems"
+        "prose": "CIP-004 R2: training records maintained requirement not met"
        },
        {
         "id": "nerc_cip-R2_obj.8",
         "name": "assessment-objective",
-        "prose": "Access controls for BCSI inadequate or unauthorized access possible"
+        "prose": "EACMS not physically protected within a PSP with access control"
        },
        {
         "id": "nerc_cip-R2_obj.9",
         "name": "assessment-objective",
-        "prose": "BCSI access authorization not reviewed within 15 calendar months"
+        "prose": "PACS not physically protected (access control and tamper detection)"
        },
        {
         "id": "nerc_cip-R2_obj.10",
         "name": "assessment-objective",
-        "prose": "One or more Control Center communication links lack adequate encryption and integrity protection"
+        "prose": "Protected Cyber Assets not physically protected within a PSP with access logging"
        },
        {
         "id": "nerc_cip-R2_obj.11",
         "name": "assessment-objective",
-        "prose": "Vendor risk assessments not current for one or more high/medium criticality vendors"
+        "prose": "Configuration monitoring review not performed within 35 days for some systems"
        },
        {
         "id": "nerc_cip-R2_obj.12",
+        "name": "assessment-objective",
+        "prose": "Access controls for BCSI inadequate or unauthorized access possible"
+       },
+       {
+        "id": "nerc_cip-R2_obj.13",
+        "name": "assessment-objective",
+        "prose": "BCSI access authorization not reviewed within 15 calendar months"
+       },
+       {
+        "id": "nerc_cip-R2_obj.14",
+        "name": "assessment-objective",
+        "prose": "BCSI not verified as cleared before system redeployment or release for reuse (or system_redeployments not declared)"
+       },
+       {
+        "id": "nerc_cip-R2_obj.15",
+        "name": "assessment-objective",
+        "prose": "CIP-011 R2: bcsi access need to know requirement not met"
+       },
+       {
+        "id": "nerc_cip-R2_obj.16",
+        "name": "assessment-objective",
+        "prose": "One or more Control Center communication links lack adequate encryption and integrity protection"
+       },
+       {
+        "id": "nerc_cip-R2_obj.17",
+        "name": "assessment-objective",
+        "prose": "CIP-012 R2: communication encryption requirement not met"
+       },
+       {
+        "id": "nerc_cip-R2_obj.18",
+        "name": "assessment-objective",
+        "prose": "CIP-012 R2: communication authentication requirement not met"
+       },
+       {
+        "id": "nerc_cip-R2_obj.19",
+        "name": "assessment-objective",
+        "prose": "Vendor risk assessments not current for one or more high/medium criticality vendors"
+       },
+       {
+        "id": "nerc_cip-R2_obj.20",
+        "name": "assessment-objective",
+        "prose": "Vendor risk assessment does not cover vulnerability disclosure, incident response, software development practices and third-party dependencies for every high/medium vendor"
+       },
+       {
+        "id": "nerc_cip-R2_obj.21",
         "name": "assessment-objective",
         "prose": "Unaffiliated third-party verification of risk assessment not performed"
        }
@@ -392,7 +475,15 @@
         "rel": "implementation"
        },
        {
+        "href": "#78040e49-1e69-573a-9cd2-43494d5a2d82",
+        "rel": "implementation"
+       },
+       {
         "href": "#8b0bbde7-a228-5899-9018-32aab4b8fb01",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d05cfa2d-5d4c-5304-b0f5-4e437a9d5ddd",
         "rel": "implementation"
        },
        {
@@ -429,42 +520,109 @@
        {
         "id": "nerc_cip-R3_obj.1",
         "name": "assessment-objective",
-        "prose": "Personnel risk assessments not current for one or more authorized personnel"
+        "prose": "Low impact cybersecurity plan not documented, approved and implemented (R3)"
        },
        {
         "id": "nerc_cip-R3_obj.2",
         "name": "assessment-objective",
-        "prose": "Access granted to personnel before PRA was completed"
+        "prose": "Low impact cybersecurity plan not reviewed within 15 calendar months (R3)"
        },
        {
         "id": "nerc_cip-R3_obj.3",
         "name": "assessment-objective",
-        "prose": "Physical access authorizations not reviewed within 15 calendar months"
+        "prose": "Personnel risk assessments not current for one or more authorized personnel"
        },
        {
         "id": "nerc_cip-R3_obj.4",
         "name": "assessment-objective",
-        "prose": "Malicious code prevention not implemented on one or more BES Cyber Systems"
+        "prose": "Access granted to personnel before PRA was completed"
        },
        {
         "id": "nerc_cip-R3_obj.5",
         "name": "assessment-objective",
-        "prose": "BCSI disposal procedures not documented or media sanitization not implemented"
+        "prose": "CIP-005 R3: access attempt logging requirement not met"
        },
        {
         "id": "nerc_cip-R3_obj.6",
         "name": "assessment-objective",
-        "prose": "Communication link monitoring not enabled or alerting not configured"
+        "prose": "Physical access authorizations not reviewed within 15 calendar months"
        },
        {
         "id": "nerc_cip-R3_obj.7",
         "name": "assessment-objective",
-        "prose": "Vendor contracts missing required security requirements for critical vendors"
+        "prose": "Malicious code prevention not implemented on one or more BES Cyber Systems"
        },
        {
         "id": "nerc_cip-R3_obj.8",
         "name": "assessment-objective",
+        "prose": "BCSI disposal procedures not documented or media sanitization not implemented"
+       },
+       {
+        "id": "nerc_cip-R3_obj.9",
+        "name": "assessment-objective",
+        "prose": "CIP-011 R3: media sanitization verified requirement not met"
+       },
+       {
+        "id": "nerc_cip-R3_obj.10",
+        "name": "assessment-objective",
+        "prose": "Communication link monitoring not enabled or alerting not configured"
+       },
+       {
+        "id": "nerc_cip-R3_obj.11",
+        "name": "assessment-objective",
+        "prose": "Communication link logs not reviewed within 35 days"
+       },
+       {
+        "id": "nerc_cip-R3_obj.12",
+        "name": "assessment-objective",
+        "prose": "Vendor contracts missing required security requirements for critical vendors"
+       },
+       {
+        "id": "nerc_cip-R3_obj.13",
+        "name": "assessment-objective",
         "prose": "Physical security plan not in place for one or more applicable Transmission stations"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-CIP-002",
+      "title": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego (package nerc_cip.cip_002); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIP-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIP-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_002"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4da685be-a0ea-57a0-a6f4-f6bec3fbe7f5",
+        "rel": "implementation"
+       },
+       {
+        "href": "#6cba11fc-e664-5177-a433-44ac5ea315d2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-CIP-002_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego (package nerc_cip.cip_002); see the rule body."
+       },
+       {
+        "id": "nerc_cip-CIP-002_obj.1",
+        "name": "assessment-objective",
+        "prose": "BES Cyber System Categorization"
        }
       ],
       "class": "ot"
@@ -1027,17 +1185,158 @@
        {
         "id": "nerc_cip-R5_obj.2",
         "name": "assessment-objective",
-        "prose": "NERC E-ISAC not notified within 1 hour of reportable incident determination"
+        "prose": "CIP-004 R5: shared accounts managed requirement not met"
        },
        {
         "id": "nerc_cip-R5_obj.3",
         "name": "assessment-objective",
-        "prose": "Communication security plan not reviewed within 15 calendar months"
+        "prose": "NERC E-ISAC not notified within 1 hour of reportable incident determination"
        },
        {
         "id": "nerc_cip-R5_obj.4",
         "name": "assessment-objective",
+        "prose": "CIP-008 R5: reportable incident identification requirement not met"
+       },
+       {
+        "id": "nerc_cip-R5_obj.5",
+        "name": "assessment-objective",
+        "prose": "Communication security plan not reviewed within 15 calendar months"
+       },
+       {
+        "id": "nerc_cip-R5_obj.6",
+        "name": "assessment-objective",
+        "prose": "CIP-012 R5: communication protection tested requirement not met"
+       },
+       {
+        "id": "nerc_cip-R5_obj.7",
+        "name": "assessment-objective",
         "prose": "Supply chain cyber security risk management plan not reviewed within 15 calendar months"
+       },
+       {
+        "id": "nerc_cip-R5_obj.8",
+        "name": "assessment-objective",
+        "prose": "CIP-013 R5: cip senior manager approved requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R4",
+      "title": "Transient Cyber Asset policy or asset management not in place (R4)",
+      "props": [
+       {
+        "name": "label",
+        "value": "R4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_003"
+       }
+      ],
+      "links": [
+       {
+        "href": "#78040e49-1e69-573a-9cd2-43494d5a2d82",
+        "rel": "implementation"
+       },
+       {
+        "href": "#8b0bbde7-a228-5899-9018-32aab4b8fb01",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       },
+       {
+        "href": "#89af5dd6-df1d-50a2-83a1-8bae52a10e4c",
+        "rel": "implementation"
+       },
+       {
+        "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d5751acb-5889-5fc1-8a5e-f572cee372dc",
+        "rel": "implementation"
+       },
+       {
+        "href": "#57ab366f-c544-59d6-8e18-2b80f91aa744",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R4_stmt",
+        "name": "statement",
+        "prose": "Transient Cyber Asset policy or asset management not in place (R4)"
+       },
+       {
+        "id": "nerc_cip-R4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Transient Cyber Asset security controls (malicious code prevention, patching) not in place (R4)"
+       },
+       {
+        "id": "nerc_cip-R4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Removable media controls (authorization, scanning before use, encryption) not in place (R4)"
+       },
+       {
+        "id": "nerc_cip-R4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Access authorizations not reviewed within 15 calendar months"
+       },
+       {
+        "id": "nerc_cip-R4_obj.4",
+        "name": "assessment-objective",
+        "prose": "CIP-004 R4: access authorization documented requirement not met"
+       },
+       {
+        "id": "nerc_cip-R4_obj.5",
+        "name": "assessment-objective",
+        "prose": "CIP-004 R4: access based on need to know requirement not met"
+       },
+       {
+        "id": "nerc_cip-R4_obj.6",
+        "name": "assessment-objective",
+        "prose": "Security event logging not enabled or log retention insufficient (less than 90 days)"
+       },
+       {
+        "id": "nerc_cip-R4_obj.7",
+        "name": "assessment-objective",
+        "prose": "One or more incident response team members lack current training"
+       },
+       {
+        "id": "nerc_cip-R4_obj.8",
+        "name": "assessment-objective",
+        "prose": "CIP-010 R4: transient asset config managed requirement not met"
+       },
+       {
+        "id": "nerc_cip-R4_obj.9",
+        "name": "assessment-objective",
+        "prose": "Communication contingency plans not documented or backup communications not established"
+       },
+       {
+        "id": "nerc_cip-R4_obj.10",
+        "name": "assessment-objective",
+        "prose": "CIP-012 R4: backup communication protected requirement not met"
+       },
+       {
+        "id": "nerc_cip-R4_obj.11",
+        "name": "assessment-objective",
+        "prose": "CIP-013 R4: supply chain monitoring implemented requirement not met"
+       },
+       {
+        "id": "nerc_cip-R4_obj.12",
+        "name": "assessment-objective",
+        "prose": "Physical security plan does not meet R4 requirements for one or more applicable stations"
        }
       ],
       "class": "ot"
@@ -1429,75 +1728,6 @@
      }
     ],
     "controls": [
-     {
-      "id": "nerc_cip-R4",
-      "title": "Access authorizations not reviewed within 15 calendar months",
-      "props": [
-       {
-        "name": "label",
-        "value": "R4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "R4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip.cip_004"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8b0bbde7-a228-5899-9018-32aab4b8fb01",
-        "rel": "implementation"
-       },
-       {
-        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
-        "rel": "implementation"
-       },
-       {
-        "href": "#89af5dd6-df1d-50a2-83a1-8bae52a10e4c",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d5751acb-5889-5fc1-8a5e-f572cee372dc",
-        "rel": "implementation"
-       },
-       {
-        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-R4_stmt",
-        "name": "statement",
-        "prose": "Access authorizations not reviewed within 15 calendar months"
-       },
-       {
-        "id": "nerc_cip-R4_obj.1",
-        "name": "assessment-objective",
-        "prose": "Security event logging not enabled or log retention insufficient (less than 90 days)"
-       },
-       {
-        "id": "nerc_cip-R4_obj.2",
-        "name": "assessment-objective",
-        "prose": "One or more incident response team members lack current training"
-       },
-       {
-        "id": "nerc_cip-R4_obj.3",
-        "name": "assessment-objective",
-        "prose": "Communication contingency plans not documented or backup communications not established"
-       },
-       {
-        "id": "nerc_cip-R4_obj.4",
-        "name": "assessment-objective",
-        "prose": "Physical security plan does not meet R4 requirements for one or more applicable stations"
-       }
-      ],
-      "class": "ot"
-     },
      {
       "id": "nerc_cip-nerc_cip.cip_004-1",
       "title": "R1 awareness current",
@@ -1979,6 +2209,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       },
+       {
         "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
         "rel": "implementation"
        },
@@ -2001,12 +2235,22 @@
        {
         "id": "nerc_cip-R1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Recovery plan activation criteria not documented"
+        "prose": "CIP-007 R1.1: ports and services policy requirement not met"
        },
        {
         "id": "nerc_cip-R1.1_obj.3",
         "name": "assessment-objective",
+        "prose": "Recovery plan activation criteria not documented"
+       },
+       {
+        "id": "nerc_cip-R1.1_obj.4",
+        "name": "assessment-objective",
         "prose": "BES Cyber System Information not identified or classified"
+       },
+       {
+        "id": "nerc_cip-R1.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "CIP-011 R1.1: bcsi categories addressed requirement not met"
        }
       ],
       "class": "ot"
@@ -2043,6 +2287,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
+        "rel": "implementation"
+       },
+       {
         "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
         "rel": "implementation"
        },
@@ -2070,20 +2318,25 @@
        {
         "id": "nerc_cip-R1.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Baseline configurations not established for one or more High/Medium Impact BES Cyber Systems"
+        "prose": "CIP-009 R1.2: recovery plan roles defined requirement not met"
        },
        {
         "id": "nerc_cip-R1.2_obj.4",
         "name": "assessment-objective",
-        "prose": "Information protection program not documented or inadequate"
+        "prose": "Baseline configurations not established for one or more High/Medium Impact BES Cyber Systems"
        },
        {
         "id": "nerc_cip-R1.2_obj.5",
         "name": "assessment-objective",
-        "prose": "BCSI in storage not adequately protected (encryption, access controls, physical protection)"
+        "prose": "Information protection program not documented or inadequate"
        },
        {
         "id": "nerc_cip-R1.2_obj.6",
+        "name": "assessment-objective",
+        "prose": "BCSI in storage not adequately protected (encryption, access controls, physical protection)"
+       },
+       {
+        "id": "nerc_cip-R1.2_obj.7",
         "name": "assessment-objective",
         "prose": "BCSI transmitted outside ESP is not encrypted or recipient not authorized"
        }
@@ -2118,6 +2371,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       },
+       {
         "href": "#89af5dd6-df1d-50a2-83a1-8bae52a10e4c",
         "rel": "implementation"
        },
@@ -2144,15 +2401,20 @@
        {
         "id": "nerc_cip-R1.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Incident handling processes not fully defined (classification, containment, eradication, recovery)"
+        "prose": "CIP-007 R1.3: physical io ports protected requirement not met"
        },
        {
         "id": "nerc_cip-R1.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Backup procedures not documented or missing required elements for some systems"
+        "prose": "Incident handling processes not fully defined (classification, containment, eradication, recovery)"
        },
        {
         "id": "nerc_cip-R1.3_obj.4",
+        "name": "assessment-objective",
+        "prose": "Backup procedures not documented or missing required elements for some systems"
+       },
+       {
+        "id": "nerc_cip-R1.3_obj.5",
         "name": "assessment-objective",
         "prose": "Unauthorized configuration changes detected or change control process inadequate"
        }
@@ -2191,6 +2453,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
+        "rel": "implementation"
+       },
+       {
         "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
         "rel": "implementation"
        }
@@ -2209,10 +2475,20 @@
        {
         "id": "nerc_cip-R1.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Process for reporting Cyber Security Incidents to NERC E-ISAC not documented"
+        "prose": "Physical access alerting (unauthorized attempts, after-hours) not configured"
        },
        {
         "id": "nerc_cip-R1.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Process for reporting Cyber Security Incidents to NERC E-ISAC not documented"
+       },
+       {
+        "id": "nerc_cip-R1.4_obj.4",
+        "name": "assessment-objective",
+        "prose": "CIP-009 R1.4: log preservation process requirement not met"
+       },
+       {
+        "id": "nerc_cip-R1.4_obj.5",
         "name": "assessment-objective",
         "prose": "Unauthorized change monitoring not implemented for all applicable systems"
        }
@@ -2334,6 +2610,11 @@
        {
         "id": "nerc_cip-R2.2_obj.3",
         "name": "assessment-objective",
+        "prose": "CIP-008 R2.2/R5: applicability not determined — reportable_cyber_incidents not declared"
+       },
+       {
+        "id": "nerc_cip-R2.2_obj.4",
+        "name": "assessment-objective",
         "prose": "Recovery plan not reviewed and updated within 90 days after a qualifying event"
        }
       ],
@@ -2365,6 +2646,14 @@
        {
         "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
         "rel": "implementation"
+       },
+       {
+        "href": "#89af5dd6-df1d-50a2-83a1-8bae52a10e4c",
+        "rel": "implementation"
+       },
+       {
+        "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -2377,6 +2666,85 @@
         "id": "nerc_cip-R2.3_obj.1",
         "name": "assessment-objective",
         "prose": "Security patches not applied or missing documented mitigation for applicable BES Cyber Systems"
+       },
+       {
+        "id": "nerc_cip-R2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "CIP-008 R2.3: plan communicated to personnel requirement not met"
+       },
+       {
+        "id": "nerc_cip-R2.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "CIP-009 R2.3: plans communicated requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R1.5",
+      "title": "CIP-005 R1.5: unused ports disabled requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_005"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d05cfa2d-5d4c-5304-b0f5-4e437a9d5ddd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#cc9d6531-c733-50a2-a8ef-8e2ae00ab189",
+        "rel": "implementation"
+       },
+       {
+        "href": "#89af5dd6-df1d-50a2-83a1-8bae52a10e4c",
+        "rel": "implementation"
+       },
+       {
+        "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
+        "rel": "implementation"
+       },
+       {
+        "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R1.5_stmt",
+        "name": "statement",
+        "prose": "CIP-005 R1.5: unused ports disabled requirement not met"
+       },
+       {
+        "id": "nerc_cip-R1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Standalone (non-networked) high/medium BES Cyber Assets lack documented physical protection"
+       },
+       {
+        "id": "nerc_cip-R1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "CIP-008 R1.5: incident classification process requirement not met"
+       },
+       {
+        "id": "nerc_cip-R1.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "CIP-009 R1.5: network reconnection process requirement not met"
+       },
+       {
+        "id": "nerc_cip-R1.5_obj.4",
+        "name": "assessment-objective",
+        "prose": "CIP-010 R1.5: active vulnerability monitoring requirement not met"
        }
       ],
       "class": "ot"
@@ -2935,7 +3303,7 @@
      },
      {
       "id": "nerc_cip-nerc_cip.cip_006-5",
-      "title": "R1 alerting configured",
+      "title": "R1 5 standalone protected",
       "props": [
        {
         "name": "label",
@@ -2961,14 +3329,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_006-5_stmt",
         "name": "statement",
-        "prose": "R1 alerting configured"
+        "prose": "R1 5 standalone protected"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_006-6",
-      "title": "R1 plan current",
+      "title": "R1 alerting configured",
       "props": [
        {
         "name": "label",
@@ -2994,14 +3362,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_006-6_stmt",
         "name": "statement",
-        "prose": "R1 plan current"
+        "prose": "R1 alerting configured"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_006-7",
-      "title": "R1 plan documented",
+      "title": "R1 plan current",
       "props": [
        {
         "name": "label",
@@ -3027,14 +3395,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_006-7_stmt",
         "name": "statement",
-        "prose": "R1 plan documented"
+        "prose": "R1 plan current"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_006-8",
-      "title": "R2 eacms protected",
+      "title": "R1 plan documented",
       "props": [
        {
         "name": "label",
@@ -3060,14 +3428,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_006-8_stmt",
         "name": "statement",
-        "prose": "R2 eacms protected"
+        "prose": "R1 plan documented"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_006-9",
-      "title": "R2 pacs protected",
+      "title": "R2 eacms protected",
       "props": [
        {
         "name": "label",
@@ -3093,14 +3461,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_006-9_stmt",
         "name": "statement",
-        "prose": "R2 pacs protected"
+        "prose": "R2 eacms protected"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_006-10",
-      "title": "R3 access authorization reviewed",
+      "title": "R2 pacs protected",
       "props": [
        {
         "name": "label",
@@ -3125,6 +3493,72 @@
       "parts": [
        {
         "id": "nerc_cip-nerc_cip.cip_006-10_stmt",
+        "name": "statement",
+        "prose": "R2 pacs protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-11",
+      "title": "R2 pca protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc9d6531-c733-50a2-a8ef-8e2ae00ab189",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-11_stmt",
+        "name": "statement",
+        "prose": "R2 pca protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_006-12",
+      "title": "R3 access authorization reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_006#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_006#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_006"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc9d6531-c733-50a2-a8ef-8e2ae00ab189",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_006-12_stmt",
         "name": "statement",
         "prose": "R3 access authorization reviewed"
        }
@@ -3226,6 +3660,207 @@
         "id": "nerc_cip-R5.2_stmt",
         "name": "statement",
         "prose": "Password policy does not meet minimum requirements"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R3.2",
+      "title": "CIP-007 R3.2: malicious code response documented requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       },
+       {
+        "href": "#89af5dd6-df1d-50a2-83a1-8bae52a10e4c",
+        "rel": "implementation"
+       },
+       {
+        "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
+        "rel": "implementation"
+       },
+       {
+        "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R3.2_stmt",
+        "name": "statement",
+        "prose": "CIP-007 R3.2: malicious code response documented requirement not met"
+       },
+       {
+        "id": "nerc_cip-R3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "CIP-008 R3.2: lessons learned incorporated requirement not met"
+       },
+       {
+        "id": "nerc_cip-R3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Backup restoration not tested within 15 calendar months for some systems"
+       },
+       {
+        "id": "nerc_cip-R3.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Identified vulnerabilities not being tracked and remediated"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R4.2",
+      "title": "CIP-007 R4.2: security event alerting requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R4.2_stmt",
+        "name": "statement",
+        "prose": "CIP-007 R4.2: security event alerting requirement not met"
+       },
+       {
+        "id": "nerc_cip-R4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Physical threat assessment not performed by qualified subject matter expert"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R5.3",
+      "title": "CIP-007 R5.3: default passwords changed requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R5.3_stmt",
+        "name": "statement",
+        "prose": "CIP-007 R5.3: default passwords changed requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R5.4",
+      "title": "CIP-007 R5.4: shared accounts minimized requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R5.4_stmt",
+        "name": "statement",
+        "prose": "CIP-007 R5.4: shared accounts minimized requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R5.5",
+      "title": "CIP-007 R5.5: login attempt limiting requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_007"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b1cb668a-8c71-5c80-b722-0e20fd73e0fe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R5.5_stmt",
+        "name": "statement",
+        "prose": "CIP-007 R5.5: login attempt limiting requirement not met"
        }
       ],
       "class": "ot"
@@ -3823,10 +4458,15 @@
        {
         "id": "nerc_cip-R3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Recovery plan not tested within 15 calendar months for one or more systems"
+        "prose": "CIP-008 R3.1: incident response test documented requirement not met"
        },
        {
         "id": "nerc_cip-R3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Recovery plan not tested within 15 calendar months for one or more systems"
+       },
+       {
+        "id": "nerc_cip-R3.1_obj.3",
         "name": "assessment-objective",
         "prose": "Vulnerability assessments not performed within 15 calendar months for some systems"
        }
@@ -4353,16 +4993,16 @@
     ],
     "controls": [
      {
-      "id": "nerc_cip-R3.2",
-      "title": "Backup restoration not tested within 15 calendar months for some systems",
+      "id": "nerc_cip-R3.3",
+      "title": "CIP-009 R3.3: activation criteria tested requirement not met",
       "props": [
        {
         "name": "label",
-        "value": "R3.2"
+        "value": "R3.3"
        },
        {
         "name": "alt-identifier",
-        "value": "R3.2"
+        "value": "R3.3"
        },
        {
         "name": "rego-package",
@@ -4374,22 +5014,13 @@
        {
         "href": "#7b165a3e-f792-545f-95c5-a940f7da3ba9",
         "rel": "implementation"
-       },
-       {
-        "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "nerc_cip-R3.2_stmt",
+        "id": "nerc_cip-R3.3_stmt",
         "name": "statement",
-        "prose": "Backup restoration not tested within 15 calendar months for some systems"
-       },
-       {
-        "id": "nerc_cip-R3.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "Identified vulnerabilities not being tracked and remediated"
+        "prose": "CIP-009 R3.3: activation criteria tested requirement not met"
        }
       ],
       "class": "ot"
@@ -4814,6 +5445,72 @@
      }
     ],
     "controls": [
+     {
+      "id": "nerc_cip-R1.6",
+      "title": "CIP-010 R1.6: software integrity verification requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R1.6_stmt",
+        "name": "statement",
+        "prose": "CIP-010 R1.6: software integrity verification requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R3.4",
+      "title": "CIP-010 R3.4: post change assessment requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_010"
+       }
+      ],
+      "links": [
+       {
+        "href": "#99260bce-e26a-5815-a495-0c00082f0b98",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R3.4_stmt",
+        "name": "statement",
+        "prose": "CIP-010 R3.4: post change assessment requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
      {
       "id": "nerc_cip-nerc_cip.cip_010-1",
       "title": "R1 2 baselines established",
@@ -5401,7 +6098,7 @@
      },
      {
       "id": "nerc_cip-nerc_cip.cip_011-7",
-      "title": "R3 disposal procedures",
+      "title": "R2 redeployment bcsi cleared",
       "props": [
        {
         "name": "label",
@@ -5427,14 +6124,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_011-7_stmt",
         "name": "statement",
-        "prose": "R3 disposal procedures"
+        "prose": "R2 redeployment bcsi cleared"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_011-8",
-      "title": "R3 media sanitization",
+      "title": "R3 disposal procedures",
       "props": [
        {
         "name": "label",
@@ -5460,14 +6157,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_011-8_stmt",
         "name": "statement",
-        "prose": "R3 media sanitization"
+        "prose": "R3 disposal procedures"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_011-9",
-      "title": "R electronic access controlled",
+      "title": "R3 media sanitization",
       "props": [
        {
         "name": "label",
@@ -5493,14 +6190,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_011-9_stmt",
         "name": "statement",
-        "prose": "R electronic access controlled"
+        "prose": "R3 media sanitization"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_011-10",
-      "title": "R physical access controlled",
+      "title": "R electronic access controlled",
       "props": [
        {
         "name": "label",
@@ -5526,14 +6223,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_011-10_stmt",
         "name": "statement",
-        "prose": "R physical access controlled"
+        "prose": "R electronic access controlled"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_011-11",
-      "title": "R storage protected",
+      "title": "R physical access controlled",
       "props": [
        {
         "name": "label",
@@ -5559,14 +6256,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_011-11_stmt",
         "name": "statement",
-        "prose": "R storage protected"
+        "prose": "R physical access controlled"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_011-12",
-      "title": "R transmission protected",
+      "title": "R storage protected",
       "props": [
        {
         "name": "label",
@@ -5591,6 +6288,72 @@
       "parts": [
        {
         "id": "nerc_cip-nerc_cip.cip_011-12_stmt",
+        "name": "statement",
+        "prose": "R storage protected"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-13",
+      "title": "R third party agreements",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc76098c-e881-5065-858a-5c7976493035",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-13_stmt",
+        "name": "statement",
+        "prose": "R third party agreements"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_011-14",
+      "title": "R transmission protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_011#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_011#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_011"
+       }
+      ],
+      "links": [
+       {
+        "href": "#cc76098c-e881-5065-858a-5c7976493035",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_011-14_stmt",
         "name": "statement",
         "prose": "R transmission protected"
        }
@@ -6141,6 +6904,114 @@
       "class": "ot"
      },
      {
+      "id": "nerc_cip-R1.2.2",
+      "title": "CIP-013 R1.2.2: vendor incident notification process requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ab366f-c544-59d6-8e18-2b80f91aa744",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R1.2.2_stmt",
+        "name": "statement",
+        "prose": "CIP-013 R1.2.2: vendor incident notification process requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R1.2.4",
+      "title": "CIP-013 R1.2.4: incident coordination process requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R1.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R1.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ab366f-c544-59d6-8e18-2b80f91aa744",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R1.2.4_stmt",
+        "name": "statement",
+        "prose": "CIP-013 R1.2.4: incident coordination process requirement not met"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-R6",
+      "title": "CIP-013 R6: incident response coordination established requirement not met",
+      "props": [
+       {
+        "name": "label",
+        "value": "R6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "R6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ab366f-c544-59d6-8e18-2b80f91aa744",
+        "rel": "implementation"
+       },
+       {
+        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-R6_stmt",
+        "name": "statement",
+        "prose": "CIP-013 R6: incident response coordination established requirement not met"
+       },
+       {
+        "id": "nerc_cip-R6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Physical security plan not reviewed by unaffiliated third party"
+       }
+      ],
+      "class": "ot"
+     },
+     {
       "id": "nerc_cip-nerc_cip.cip_013-1",
       "title": "R1 2 1 vuln notification",
       "props": [
@@ -6340,7 +7211,7 @@
      },
      {
       "id": "nerc_cip-nerc_cip.cip_013-7",
-      "title": "R2 vendor risk assessments",
+      "title": "R2 vendor assessments comprehensive",
       "props": [
        {
         "name": "label",
@@ -6366,14 +7237,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_013-7_stmt",
         "name": "statement",
-        "prose": "R2 vendor risk assessments"
+        "prose": "R2 vendor assessments comprehensive"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_013-8",
-      "title": "R3 vendor contracts",
+      "title": "R2 vendor risk assessments",
       "props": [
        {
         "name": "label",
@@ -6399,14 +7270,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_013-8_stmt",
         "name": "statement",
-        "prose": "R3 vendor contracts"
+        "prose": "R2 vendor risk assessments"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_013-9",
-      "title": "R4 supply chain monitoring",
+      "title": "R3 vendor contracts",
       "props": [
        {
         "name": "label",
@@ -6432,14 +7303,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_013-9_stmt",
         "name": "statement",
-        "prose": "R4 supply chain monitoring"
+        "prose": "R3 vendor contracts"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_013-10",
-      "title": "R5 plan review current",
+      "title": "R4 supply chain monitoring",
       "props": [
        {
         "name": "label",
@@ -6465,14 +7336,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_013-10_stmt",
         "name": "statement",
-        "prose": "R5 plan review current"
+        "prose": "R4 supply chain monitoring"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_013-11",
-      "title": "R6 ir coordination",
+      "title": "R5 plan review current",
       "props": [
        {
         "name": "label",
@@ -6497,6 +7368,39 @@
       "parts": [
        {
         "id": "nerc_cip-nerc_cip.cip_013-11_stmt",
+        "name": "statement",
+        "prose": "R5 plan review current"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_013-12",
+      "title": "R6 ir coordination",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_013#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_013#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_013"
+       }
+      ],
+      "links": [
+       {
+        "href": "#57ab366f-c544-59d6-8e18-2b80f91aa744",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_013-12_stmt",
         "name": "statement",
         "prose": "R6 ir coordination"
        }
@@ -6561,72 +7465,6 @@
     ],
     "controls": [
      {
-      "id": "nerc_cip-R4.2",
-      "title": "Physical threat assessment not performed by qualified subject matter expert",
-      "props": [
-       {
-        "name": "label",
-        "value": "R4.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "R4.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip.cip_014"
-       }
-      ],
-      "links": [
-       {
-        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-R4.2_stmt",
-        "name": "statement",
-        "prose": "Physical threat assessment not performed by qualified subject matter expert"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-R6",
-      "title": "Physical security plan not reviewed by unaffiliated third party",
-      "props": [
-       {
-        "name": "label",
-        "value": "R6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "R6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip.cip_014"
-       }
-      ],
-      "links": [
-       {
-        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-R6_stmt",
-        "name": "statement",
-        "prose": "Physical security plan not reviewed by unaffiliated third party"
-       }
-      ],
-      "class": "ot"
-     },
-     {
       "id": "nerc_cip-nerc_cip.cip_014-1",
       "title": "R1 assessment current",
       "props": [
@@ -6661,7 +7499,7 @@
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-2",
-      "title": "R1 methodology adequate",
+      "title": "R1 assessment updated after changes",
       "props": [
        {
         "name": "label",
@@ -6687,14 +7525,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-2_stmt",
         "name": "statement",
-        "prose": "R1 methodology adequate"
+        "prose": "R1 assessment updated after changes"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-3",
-      "title": "R1 risk assessment performed",
+      "title": "R1 methodology adequate",
       "props": [
        {
         "name": "label",
@@ -6720,14 +7558,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-3_stmt",
         "name": "statement",
-        "prose": "R1 risk assessment performed"
+        "prose": "R1 methodology adequate"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-4",
-      "title": "R2 rc notified",
+      "title": "R1 risk assessment performed",
       "props": [
        {
         "name": "label",
@@ -6753,14 +7591,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-4_stmt",
         "name": "statement",
-        "prose": "R2 rc notified"
+        "prose": "R1 risk assessment performed"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-5",
-      "title": "R2 third party verification",
+      "title": "R2 rc notified",
       "props": [
        {
         "name": "label",
@@ -6786,14 +7624,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-5_stmt",
         "name": "statement",
-        "prose": "R2 third party verification"
+        "prose": "R2 rc notified"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-6",
-      "title": "R2 verification timely",
+      "title": "R2 third party verification",
       "props": [
        {
         "name": "label",
@@ -6819,14 +7657,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-6_stmt",
         "name": "statement",
-        "prose": "R2 verification timely"
+        "prose": "R2 third party verification"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-7",
-      "title": "R3 security plans in place",
+      "title": "R2 verification timely",
       "props": [
        {
         "name": "label",
@@ -6852,14 +7690,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-7_stmt",
         "name": "statement",
-        "prose": "R3 security plans in place"
+        "prose": "R2 verification timely"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-8",
-      "title": "R3 stations identified",
+      "title": "R3 security plans in place",
       "props": [
        {
         "name": "label",
@@ -6885,14 +7723,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-8_stmt",
         "name": "statement",
-        "prose": "R3 stations identified"
+        "prose": "R3 security plans in place"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-9",
-      "title": "R4 2 threat assessments",
+      "title": "R3 stations identified",
       "props": [
        {
         "name": "label",
@@ -6918,14 +7756,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-9_stmt",
         "name": "statement",
-        "prose": "R4 2 threat assessments"
+        "prose": "R3 stations identified"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-10",
-      "title": "R4 3 implementation timely",
+      "title": "R4 2 threat assessments",
       "props": [
        {
         "name": "label",
@@ -6951,14 +7789,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-10_stmt",
         "name": "statement",
-        "prose": "R4 3 implementation timely"
+        "prose": "R4 2 threat assessments"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-11",
-      "title": "R4 security plans adequate",
+      "title": "R4 3 implementation timely",
       "props": [
        {
         "name": "label",
@@ -6984,14 +7822,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-11_stmt",
         "name": "statement",
-        "prose": "R4 security plans adequate"
+        "prose": "R4 3 implementation timely"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-12",
-      "title": "R5 1 plans reviewed",
+      "title": "R4 security plans adequate",
       "props": [
        {
         "name": "label",
@@ -7017,14 +7855,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-12_stmt",
         "name": "statement",
-        "prose": "R5 1 plans reviewed"
+        "prose": "R4 security plans adequate"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-13",
-      "title": "R5 2 updated after changes",
+      "title": "R5 1 plans reviewed",
       "props": [
        {
         "name": "label",
@@ -7050,14 +7888,14 @@
        {
         "id": "nerc_cip-nerc_cip.cip_014-13_stmt",
         "name": "statement",
-        "prose": "R5 2 updated after changes"
+        "prose": "R5 1 plans reviewed"
        }
       ],
       "class": "ot"
      },
      {
       "id": "nerc_cip-nerc_cip.cip_014-14",
-      "title": "R6 third party review",
+      "title": "R5 2 updated after changes",
       "props": [
        {
         "name": "label",
@@ -7082,6 +7920,39 @@
       "parts": [
        {
         "id": "nerc_cip-nerc_cip.cip_014-14_stmt",
+        "name": "statement",
+        "prose": "R5 2 updated after changes"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "nerc_cip-nerc_cip.cip_014-15",
+      "title": "R6 third party review",
+      "props": [
+       {
+        "name": "label",
+        "value": "nerc_cip.cip_014#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nerc_cip.cip_014#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nerc_cip.cip_014"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b94735a3-b596-5aa0-88ff-08c78e45e292",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nerc_cip-nerc_cip.cip_014-15_stmt",
         "name": "statement",
         "prose": "R6 third party review"
        }
@@ -7984,39 +8855,6 @@
         "id": "nerc_cip-CIP-013_obj.3",
         "name": "assessment-objective",
         "prose": "Supply Chain Risk Management"
-       }
-      ],
-      "class": "ot"
-     },
-     {
-      "id": "nerc_cip-CIP-002",
-      "title": "BES Cyber System Categorization",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIP-002"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIP-002"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "nerc_cip_main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#6cba11fc-e664-5177-a433-44ac5ea315d2",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "nerc_cip-CIP-002_stmt",
-        "name": "statement",
-        "prose": "BES Cyber System Categorization"
        }
       ],
       "class": "ot"

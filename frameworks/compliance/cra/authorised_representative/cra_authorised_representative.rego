@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 13
-#     cited: 8
+#     checks: 14
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
+#     guard: self
 #     as_of: v2.4.2
 package cra.authorised_representative
 

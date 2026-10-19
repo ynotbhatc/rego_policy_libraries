@@ -6,8 +6,8 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 25
-#     cited: 11
+#     checks: 31
+#     cited: 14
 #     density: sized
 #     basis: size
 #     tested: true

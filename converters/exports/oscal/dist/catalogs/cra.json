@@ -66,6 +66,39 @@
     ],
     "controls": [
      {
+      "id": "cra-CRA-Art.18",
+      "title": "applicability not determined — manufacturer_outside_eu not declared",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRA Art.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRA Art.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.authorised_representative"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ebe26305-d02b-5df3-bea3-cdf6353349c8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-CRA-Art.18_stmt",
+        "name": "statement",
+        "prose": "applicability not determined — manufacturer_outside_eu not declared"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cra-CRA-Art.18-1",
       "title": "Written mandate from the manufacturer to the authorised representative not in place",
       "props": [
@@ -2535,6 +2568,72 @@
     ],
     "controls": [
      {
+      "id": "cra-CRA-Art.3-22",
+      "title": "applicability not determined — foss.claimed_exemption not declared",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRA Art.3(22)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRA Art.3(22)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.foss_exclusion"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ca8dd89-aa56-5b88-a8e3-230352d062b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-CRA-Art.3-22_stmt",
+        "name": "statement",
+        "prose": "applicability not determined — foss.claimed_exemption not declared"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-CRA-Art.3-22-evidence-missing",
+      "title": "exclusion claimed but commercial marker foss.%s not declared",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRA Art.3(22) (evidence missing)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRA Art.3(22) (evidence missing)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.foss_exclusion"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ca8dd89-aa56-5b88-a8e3-230352d062b6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-CRA-Art.3-22-evidence-missing_stmt",
+        "name": "statement",
+        "prose": "exclusion claimed but commercial marker foss.%s not declared"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cra-CRA-Art.3-22-recital-15-mis-claim",
       "title": "exclusion claimed, but paid technical support exceeds recuperation of actual costs — a commercial activity",
       "props": [
@@ -3921,7 +4020,7 @@
     "controls": [
      {
       "id": "cra-cra.online_marketplace-1",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for market surveillance authorities",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — is_marketplace_provider not declared",
       "props": [
        {
         "name": "label",
@@ -3947,14 +4046,14 @@
        {
         "id": "cra-cra.online_marketplace-1_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for market surveillance authorities"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — is_marketplace_provider not declared"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-2",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for end users on cybersecurity matters",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — products_offered.includes_products_with_digital_elements not declared",
       "props": [
        {
         "name": "label",
@@ -3980,14 +4079,14 @@
        {
         "id": "cra-cra.online_marketplace-2_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for end users on cybersecurity matters"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — products_offered.includes_products_with_digital_elements not declared"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-3",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace's cooperation process with national authorities not documented",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for market surveillance authorities",
       "props": [
        {
         "name": "label",
@@ -4013,14 +4112,14 @@
        {
         "id": "cra-cra.online_marketplace-3_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace's cooperation process with national authorities not documented"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for market surveillance authorities"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-4",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for end users on cybersecurity matters",
       "props": [
        {
         "name": "label",
@@ -4046,14 +4145,14 @@
        {
         "id": "cra-cra.online_marketplace-4_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for end users on cybersecurity matters"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-5",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace's cooperation process with national authorities not documented",
       "props": [
        {
         "name": "label",
@@ -4079,14 +4178,14 @@
        {
         "id": "cra-cra.online_marketplace-5_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace's cooperation process with national authorities not documented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-6",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not verified the identity of traders offering products with digital elements",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)",
       "props": [
        {
         "name": "label",
@@ -4112,14 +4211,14 @@
        {
         "id": "cra-cra.online_marketplace-6_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not verified the identity of traders offering products with digital elements"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-7",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not obtained trader attestation of CRA compliance before listing",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared",
       "props": [
        {
         "name": "label",
@@ -4145,14 +4244,14 @@
        {
         "id": "cra-cra.online_marketplace-7_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not obtained trader attestation of CRA compliance before listing"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-8",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not implemented random checks for CRA non-compliance among offered products",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not verified the identity of traders offering products with digital elements",
       "props": [
        {
         "name": "label",
@@ -4178,14 +4277,14 @@
        {
         "id": "cra-cra.online_marketplace-8_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not implemented random checks for CRA non-compliance among offered products"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not verified the identity of traders offering products with digital elements"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-9",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not obtained trader attestation of CRA compliance before listing",
       "props": [
        {
         "name": "label",
@@ -4211,14 +4310,14 @@
        {
         "id": "cra-cra.online_marketplace-9_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not obtained trader attestation of CRA compliance before listing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-10",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not implemented random checks for CRA non-compliance among offered products",
       "props": [
        {
         "name": "label",
@@ -4244,14 +4343,14 @@
        {
         "id": "cra-cra.online_marketplace-10_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not implemented random checks for CRA non-compliance among offered products"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-11",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace identified non-compliant listing but did not notify the manufacturer/seller",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)",
       "props": [
        {
         "name": "label",
@@ -4277,14 +4376,14 @@
        {
         "id": "cra-cra.online_marketplace-11_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace identified non-compliant listing but did not notify the manufacturer/seller"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-12",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared",
       "props": [
        {
         "name": "label",
@@ -4310,14 +4409,14 @@
        {
         "id": "cra-cra.online_marketplace-12_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-13",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace identified non-compliant listing but did not notify the manufacturer/seller",
       "props": [
        {
         "name": "label",
@@ -4343,14 +4442,14 @@
        {
         "id": "cra-cra.online_marketplace-13_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace identified non-compliant listing but did not notify the manufacturer/seller"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-14",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not notified buyers affected by a previously-sold non-compliant product",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing",
       "props": [
        {
         "name": "label",
@@ -4376,14 +4475,14 @@
        {
         "id": "cra-cra.online_marketplace-14_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not notified buyers affected by a previously-sold non-compliant product"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-15",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has no published channel for consumers to report suspected CRA non-compliance",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared",
       "props": [
        {
         "name": "label",
@@ -4409,14 +4508,14 @@
        {
         "id": "cra-cra.online_marketplace-15_stmt",
         "name": "statement",
-        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has no published channel for consumers to report suspected CRA non-compliance"
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cra-cra.online_marketplace-16",
-      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not documented its CRA-compliance process for traders + products",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not notified buyers affected by a previously-sold non-compliant product",
       "props": [
        {
         "name": "label",
@@ -4441,6 +4540,72 @@
       "parts": [
        {
         "id": "cra-cra.online_marketplace-16_stmt",
+        "name": "statement",
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not notified buyers affected by a previously-sold non-compliant product"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.online_marketplace-17",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has no published channel for consumers to report suspected CRA non-compliance",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.online_marketplace#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.online_marketplace#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.online_marketplace"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb116238-ff3e-5b5c-bbb4-1d5c563c2f42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.online_marketplace-17_stmt",
+        "name": "statement",
+        "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has no published channel for consumers to report suspected CRA non-compliance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cra-cra.online_marketplace-18",
+      "title": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not documented its CRA-compliance process for traders + products",
+      "props": [
+       {
+        "name": "label",
+        "value": "cra.online_marketplace#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cra.online_marketplace#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.online_marketplace"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fb116238-ff3e-5b5c-bbb4-1d5c563c2f42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-cra.online_marketplace-18_stmt",
         "name": "statement",
         "prose": "Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not documented its CRA-compliance process for traders + products"
        }
@@ -4471,6 +4636,39 @@
      }
     ],
     "controls": [
+     {
+      "id": "cra-CRA-Art.3-14",
+      "title": "applicability not determined — threshold facts not declared: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "CRA Art.3(14)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CRA Art.3(14)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cra.oss_steward"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1cfa5c39-f24d-5517-a8f5-ab8be14634a3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cra-CRA-Art.3-14_stmt",
+        "name": "statement",
+        "prose": "applicability not determined — threshold facts not declared: %s"
+       }
+      ],
+      "class": "compliance"
+     },
      {
       "id": "cra-CRA-Art.24-1",
       "title": "OSS steward has not put in place and documented, in a verifiable manner, a cybersecurity policy (publication is the typical fulfilment; the obligation is verifiable documentation)",

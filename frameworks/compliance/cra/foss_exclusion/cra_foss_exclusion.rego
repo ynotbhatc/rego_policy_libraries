@@ -6,13 +6,13 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 7
-#     cited: 2
+#     checks: 9
+#     cited: 4
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
-#     guard: orchestrator
+#     guard: self
 #     as_of: v2.4.2
 package cra.foss_exclusion
 

@@ -62436,7 +62436,7 @@
        {
         "uuid": "4c352de8-0c0a-59b0-a427-e346c86b4096",
         "control-id": "cis_kubernetes-CIS-L2-4.2.9",
-        "description": "Evaluated by Rego package cis_kubernetes.l2 (benchmarks/cis/kubernetes/l2_validation.rego): Kubelet --event-qps must be set to 0 (event rate limiting disabled)",
+        "description": "Evaluated by Rego package cis_kubernetes.l2 (benchmarks/cis/kubernetes/l2_validation.rego): Kubelet --event-qps must be 0 or at least 5 (appropriate event capture)",
         "props": [
          {
           "name": "label",
@@ -187820,7 +187820,7 @@
      {
       "uuid": "ece47ea4-5490-5d46-a2b4-60a21b56ef7d",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/cra.json",
-      "description": "Controls of cra evaluated by the Rego Policy Libraries (180 controls, 17 Rego modules).",
+      "description": "Controls of cra evaluated by the Rego Policy Libraries (186 controls, 17 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -187829,6 +187829,31 @@
        }
       ],
       "implemented-requirements": [
+       {
+        "uuid": "c2bbf5b6-da13-56f6-be7f-075c8935c049",
+        "control-id": "cra-CRA-Art.18",
+        "description": "Evaluated by Rego package cra.authorised_representative (frameworks/compliance/cra/authorised_representative/cra_authorised_representative.rego): applicability not determined — manufacturer_outside_eu not declared",
+        "props": [
+         {
+          "name": "label",
+          "value": "CRA Art.18"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cra.authorised_representative"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/compliance/cra/authorised_representative/cra_authorised_representative.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
        {
         "uuid": "9a3219ce-27a9-50b5-82cd-6767e5938d31",
         "control-id": "cra-CRA-Art.18-1",
@@ -189480,6 +189505,56 @@
         ]
        },
        {
+        "uuid": "e3f25d88-642d-56db-93d5-76f954ef2f50",
+        "control-id": "cra-CRA-Art.3-22",
+        "description": "Evaluated by Rego package cra.foss_exclusion (frameworks/compliance/cra/foss_exclusion/cra_foss_exclusion.rego): applicability not determined — foss.claimed_exemption not declared",
+        "props": [
+         {
+          "name": "label",
+          "value": "CRA Art.3(22)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cra.foss_exclusion"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/compliance/cra/foss_exclusion/cra_foss_exclusion.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "beaefb47-13d6-5c96-9859-cfb1df29d52f",
+        "control-id": "cra-CRA-Art.3-22-evidence-missing",
+        "description": "Evaluated by Rego package cra.foss_exclusion (frameworks/compliance/cra/foss_exclusion/cra_foss_exclusion.rego): exclusion claimed but commercial marker foss.%s not declared",
+        "props": [
+         {
+          "name": "label",
+          "value": "CRA Art.3(22) (evidence missing)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cra.foss_exclusion"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/compliance/cra/foss_exclusion/cra_foss_exclusion.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "ca14a255-016d-50b3-9a5c-24da5f886b3f",
         "control-id": "cra-CRA-Art.3-22-recital-15-mis-claim",
         "description": "Evaluated by Rego package cra.foss_exclusion (frameworks/compliance/cra/foss_exclusion/cra_foss_exclusion.rego): exclusion claimed, but paid technical support exceeds recuperation of actual costs — a commercial activity",
@@ -190407,7 +190482,7 @@
        {
         "uuid": "dcc8f5d0-10fb-5aa6-81a2-5023b6e45daa",
         "control-id": "cra-cra.online_marketplace-1",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for market surveillance authorities",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — is_marketplace_provider not declared",
         "props": [
          {
           "name": "label",
@@ -190432,7 +190507,7 @@
        {
         "uuid": "2c3225d1-4a95-56b1-93c8-63ea0d404305",
         "control-id": "cra-cra.online_marketplace-2",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for end users on cybersecurity matters",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): applicability not determined — products_offered.includes_products_with_digital_elements not declared",
         "props": [
          {
           "name": "label",
@@ -190457,7 +190532,7 @@
        {
         "uuid": "f7fc6d67-b504-50f3-850a-4aed5dd1b43e",
         "control-id": "cra-cra.online_marketplace-3",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace's cooperation process with national authorities not documented",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for market surveillance authorities",
         "props": [
          {
           "name": "label",
@@ -190482,7 +190557,7 @@
        {
         "uuid": "e86558f3-330e-5aa4-a99c-e2bc01b50dc6",
         "control-id": "cra-cra.online_marketplace-4",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Online marketplace has not designated a single point of contact for end users on cybersecurity matters",
         "props": [
          {
           "name": "label",
@@ -190507,7 +190582,7 @@
        {
         "uuid": "3cc33d3d-03d6-5fc3-bd02-f0596fa36943",
         "control-id": "cra-cra.online_marketplace-5",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace's cooperation process with national authorities not documented",
         "props": [
          {
           "name": "label",
@@ -190532,7 +190607,7 @@
        {
         "uuid": "0d5e4bc0-038d-5640-86e3-07491c82d5b8",
         "control-id": "cra-cra.online_marketplace-6",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not verified the identity of traders offering products with digital elements",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)",
         "props": [
          {
           "name": "label",
@@ -190557,7 +190632,7 @@
        {
         "uuid": "f22e3ebe-5867-51ea-9562-370e91d55894",
         "control-id": "cra-cra.online_marketplace-7",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not obtained trader attestation of CRA compliance before listing",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a takedown order was received but authority_takedown_order_hours_pending was not declared",
         "props": [
          {
           "name": "label",
@@ -190582,7 +190657,7 @@
        {
         "uuid": "de599794-7c22-52fc-83ca-32ce51822411",
         "control-id": "cra-cra.online_marketplace-8",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not implemented random checks for CRA non-compliance among offered products",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not verified the identity of traders offering products with digital elements",
         "props": [
          {
           "name": "label",
@@ -190607,7 +190682,7 @@
        {
         "uuid": "eacaf447-ce8f-50c9-be52-1e38d659caa7",
         "control-id": "cra-cra.online_marketplace-9",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not obtained trader attestation of CRA compliance before listing",
         "props": [
          {
           "name": "label",
@@ -190632,7 +190707,7 @@
        {
         "uuid": "e3f7e779-e9fb-5f6e-8e51-5dc7f51c6407",
         "control-id": "cra-cra.online_marketplace-10",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not implemented random checks for CRA non-compliance among offered products",
         "props": [
          {
           "name": "label",
@@ -190657,7 +190732,7 @@
        {
         "uuid": "f1fdd151-8de6-5921-97c2-3b594c4d019a",
         "control-id": "cra-cra.online_marketplace-11",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace identified non-compliant listing but did not notify the manufacturer/seller",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)",
         "props": [
          {
           "name": "label",
@@ -190682,7 +190757,7 @@
        {
         "uuid": "1a202170-7eee-5b31-ae80-ae1962558436",
         "control-id": "cra-cra.online_marketplace-12",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — random_checks.performed is true but sample_size_pct was not declared",
         "props": [
          {
           "name": "label",
@@ -190707,7 +190782,7 @@
        {
         "uuid": "105bbd3a-b283-5ae3-8eb8-04f49c47f931",
         "control-id": "cra-cra.online_marketplace-13",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace identified non-compliant listing but did not notify the manufacturer/seller",
         "props": [
          {
           "name": "label",
@@ -190732,7 +190807,7 @@
        {
         "uuid": "43a409ae-6b68-5a17-b78d-cb6df1bb0f63",
         "control-id": "cra-cra.online_marketplace-14",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not notified buyers affected by a previously-sold non-compliant product",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not removed a high-severity non-compliant listing",
         "props": [
          {
           "name": "label",
@@ -190757,7 +190832,7 @@
        {
         "uuid": "6a7d1c70-453d-5986-847c-3a6f45ff8291",
         "control-id": "cra-cra.online_marketplace-15",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has no published channel for consumers to report suspected CRA non-compliance",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): evidence missing — a non-compliant listing was identified but its severity was not declared",
         "props": [
          {
           "name": "label",
@@ -190782,7 +190857,7 @@
        {
         "uuid": "62b7ff05-1235-5c61-911f-307167f3f60e",
         "control-id": "cra-cra.online_marketplace-16",
-        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not documented its CRA-compliance process for traders + products",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not notified buyers affected by a previously-sold non-compliant product",
         "props": [
          {
           "name": "label",
@@ -190797,6 +190872,81 @@
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fcb457a3-d193-5f37-9b77-9de86da5c951",
+        "control-id": "cra-cra.online_marketplace-17",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has no published channel for consumers to report suspected CRA non-compliance",
+        "props": [
+         {
+          "name": "label",
+          "value": "cra.online_marketplace#17"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cra.online_marketplace"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f94ed729-8d6a-520b-abd4-16e7d7298c1d",
+        "control-id": "cra-cra.online_marketplace-18",
+        "description": "Evaluated by Rego package cra.online_marketplace (frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego): Marketplace due diligence (DSA/GPSR-derived, non-CRA): marketplace has not documented its CRA-compliance process for traders + products",
+        "props": [
+         {
+          "name": "label",
+          "value": "cra.online_marketplace#18"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cra.online_marketplace"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/compliance/cra/online_marketplace/cra_online_marketplace.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ff68adf5-7b21-5b57-91cd-faea6d652c71",
+        "control-id": "cra-CRA-Art.3-14",
+        "description": "Evaluated by Rego package cra.oss_steward (frameworks/compliance/cra/oss_steward/cra_oss_steward.rego): applicability not determined — threshold facts not declared: %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "CRA Art.3(14)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cra.oss_steward"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/compliance/cra/oss_steward/cra_oss_steward.rego"
          },
          {
           "name": "implementation-status",
@@ -202979,7 +203129,7 @@
      {
       "uuid": "584036ed-720e-5b2e-a018-8427ea8de9b7",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/digital_sovereignty.json",
-      "description": "Controls of digital_sovereignty evaluated by the Rego Policy Libraries (276 controls, 12 Rego modules).",
+      "description": "Controls of digital_sovereignty evaluated by the Rego Policy Libraries (285 controls, 12 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -205716,7 +205866,7 @@
        {
         "uuid": "304db579-6c70-54bf-b467-02af76212d20",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-1",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-002 sovereign data not in public cloud",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/data_residency.rego (package digital_sovereignty.data_residency); see the rule body.",
         "props": [
          {
           "name": "label",
@@ -205741,7 +205891,7 @@
        {
         "uuid": "15e64969-d2af-57e9-9df6-4303351e0357",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-2",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-003 backups in jurisdiction",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-002 sovereign data not in public cloud",
         "props": [
          {
           "name": "label",
@@ -205766,7 +205916,7 @@
        {
         "uuid": "69453ea6-bb23-58e4-a230-4614eb5507cf",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-3",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-004 dr in jurisdiction",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-003 backups in jurisdiction",
         "props": [
          {
           "name": "label",
@@ -205791,7 +205941,7 @@
        {
         "uuid": "593446f7-88da-5338-ba47-a4eb0a501813",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-4",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-005 metadata in jurisdiction",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-004 dr in jurisdiction",
         "props": [
          {
           "name": "label",
@@ -205816,7 +205966,7 @@
        {
         "uuid": "554a9794-840d-5348-8413-af2006a8a4f7",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-5",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-006 telemetry in jurisdiction",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-005 metadata in jurisdiction",
         "props": [
          {
           "name": "label",
@@ -205841,7 +205991,7 @@
        {
         "uuid": "576bf572-3bf7-5d1c-8408-a879764b5d3e",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-6",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-007 no vendor log access",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-006 telemetry in jurisdiction",
         "props": [
          {
           "name": "label",
@@ -205866,7 +206016,7 @@
        {
         "uuid": "921ccc1c-180e-5714-bc49-030e08d401f5",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-7",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-008 cross border transfers controlled",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-007 no vendor log access",
         "props": [
          {
           "name": "label",
@@ -205891,7 +206041,7 @@
        {
         "uuid": "4921f051-2460-5533-b999-ab136c9b3c9d",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-8",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-009 no regulated data to unapproved",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-008 cross border transfers controlled",
         "props": [
          {
           "name": "label",
@@ -205916,7 +206066,7 @@
        {
         "uuid": "cfd30c41-e9e4-5cda-aa55-388e1ecddaba",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-9",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-010 data flow inventory",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-009 no regulated data to unapproved",
         "props": [
          {
           "name": "label",
@@ -205941,11 +206091,36 @@
        {
         "uuid": "efda074e-8fcd-50fc-bba9-3893ae99ca06",
         "control-id": "digital_sovereignty-digital_sovereignty.data_residency-10",
-        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-012 offsite backups in jurisdiction",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-010 data flow inventory",
         "props": [
          {
           "name": "label",
           "value": "digital_sovereignty.data_residency#10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.data_residency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/data_residency.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "001ccbcb-453c-5462-a9fc-ef05cf6c70f7",
+        "control-id": "digital_sovereignty-digital_sovereignty.data_residency-11",
+        "description": "Evaluated by Rego package digital_sovereignty.data_residency (frameworks/sovereignty/digital_sovereignty/data_residency.rego): DR-012 offsite backups in jurisdiction",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.data_residency#11"
          },
          {
           "name": "rego-package",
@@ -207489,6 +207664,56 @@
         ]
        },
        {
+        "uuid": "7cc5c2f1-e4be-54ab-bda4-e7f6da81d52d",
+        "control-id": "digital_sovereignty-IS-019",
+        "description": "Evaluated by Rego package digital_sovereignty.infrastructure_sovereignty (frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego): Estimated migration/exit time not declared or exceeds the acceptable 90 days",
+        "props": [
+         {
+          "name": "label",
+          "value": "IS-019"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.infrastructure_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c65e1bd5-8423-53fa-9e5a-8ff76d26cd81",
+        "control-id": "digital_sovereignty-IS-018",
+        "description": "Evaluated by Rego package digital_sovereignty.infrastructure_sovereignty (frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego (package digital_sovereignty.infrastructure_sovereignty); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "IS-018"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.infrastructure_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "55e33b74-bc2c-56bf-8ac3-04a74a9c20a1",
         "control-id": "digital_sovereignty-IS-014",
         "description": "Evaluated by Rego package digital_sovereignty.infrastructure_sovereignty (frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego): Firmware originates outside approved jurisdictions without a supply-chain audit",
@@ -207946,6 +208171,56 @@
          {
           "name": "label",
           "value": "digital_sovereignty.infrastructure_sovereignty#15"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.infrastructure_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ec92b170-58b1-522e-8317-6a0816625664",
+        "control-id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-16",
+        "description": "Evaluated by Rego package digital_sovereignty.infrastructure_sovereignty (frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego): IS-018 proprietary api mitigations",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.infrastructure_sovereignty#16"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.infrastructure_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "49ee1aac-ad2b-5919-afaf-4816af8dc45b",
+        "control-id": "digital_sovereignty-digital_sovereignty.infrastructure_sovereignty-17",
+        "description": "Evaluated by Rego package digital_sovereignty.infrastructure_sovereignty (frameworks/sovereignty/digital_sovereignty/infrastructure_sovereignty.rego): IS-019 migration timeline",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.infrastructure_sovereignty#17"
          },
          {
           "name": "rego-package",
@@ -209464,6 +209739,56 @@
         ]
        },
        {
+        "uuid": "a2fcb695-a862-5ab1-ac72-e1e0c6845215",
+        "control-id": "digital_sovereignty-SS-017",
+        "description": "Evaluated by Rego package digital_sovereignty.software_sovereignty (frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego): One or more critical OS/middleware components are neither source-available nor independently audited",
+        "props": [
+         {
+          "name": "label",
+          "value": "SS-017"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.software_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "91b29878-c672-546c-85e8-dd0c80742b01",
+        "control-id": "digital_sovereignty-SS-018",
+        "description": "Evaluated by Rego package digital_sovereignty.software_sovereignty (frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego): One or more open source components have not had their license reviewed",
+        "props": [
+         {
+          "name": "label",
+          "value": "SS-018"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.software_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "b875b65c-be6f-59a0-8eca-9e30e62a5734",
         "control-id": "digital_sovereignty-digital_sovereignty.software_sovereignty-1",
         "description": "Evaluated by Rego package digital_sovereignty.software_sovereignty (frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego): SS-001 sbom maintained",
@@ -209846,6 +210171,56 @@
          {
           "name": "label",
           "value": "digital_sovereignty.software_sovereignty#16"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.software_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e400a800-dc5c-5023-9f01-33fc9a4a53c8",
+        "control-id": "digital_sovereignty-digital_sovereignty.software_sovereignty-17",
+        "description": "Evaluated by Rego package digital_sovereignty.software_sovereignty (frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego): SS-017 critical software auditable",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.software_sovereignty#17"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.software_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "55d98ec4-1f8b-50e2-9340-b53fd945a609",
+        "control-id": "digital_sovereignty-digital_sovereignty.software_sovereignty-18",
+        "description": "Evaluated by Rego package digital_sovereignty.software_sovereignty (frameworks/sovereignty/digital_sovereignty/software_sovereignty.rego): SS-018 open source license reviewed",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.software_sovereignty#18"
          },
          {
           "name": "rego-package",
@@ -225345,7 +225720,7 @@
        {
         "uuid": "d5708af6-bfe1-5413-aba5-a4edda4f9b6a",
         "control-id": "enforcement_terraform-SENTINEL-TF-002",
-        "description": "Evaluated by Rego package sentinel.terraform (enforcement/terraform/sentinel_terraform.rego): Security group '%v' exposes sensitive port %v to 0.0.0.0/0",
+        "description": "Evaluated by Rego package sentinel.terraform (enforcement/terraform/sentinel_terraform.rego): Security group '%v' exposes sensitive port %v to %v",
         "props": [
          {
           "name": "label",
@@ -229864,7 +230239,7 @@
      {
       "uuid": "4b3fb586-5674-54cd-a0b2-483eae3e9ae9",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/eu_ai_act.json",
-      "description": "Controls of eu_ai_act evaluated by the Rego Policy Libraries (58 controls, 6 Rego modules).",
+      "description": "Controls of eu_ai_act evaluated by the Rego Policy Libraries (60 controls, 6 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -230256,6 +230631,31 @@
          {
           "name": "label",
           "value": "Article 51"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "eu_ai_act.gpai"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/eu_ai_act/eu_ai_act_gpai.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "dfaf6417-70ac-55ec-a9a7-4b6f5616c1f9",
+        "control-id": "eu_ai_act-Article-51-1-b",
+        "description": "Evaluated by Rego package eu_ai_act.gpai (governance/eu_ai_act/eu_ai_act_gpai.rego): the Commission has designated the model as systemic-risk but it is declared not systemic-risk; the designation takes precedence",
+        "props": [
+         {
+          "name": "label",
+          "value": "Article 51(1)(b)"
          },
          {
           "name": "rego-package",
@@ -231156,6 +231556,31 @@
          {
           "name": "label",
           "value": "Article 50"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "eu_ai_act.transparency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/eu_ai_act/eu_ai_act_transparency.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2126349a-ee49-582b-91d7-d9c4671730bc",
+        "control-id": "eu_ai_act-eu_ai_act.transparency-1",
+        "description": "Evaluated by Rego package eu_ai_act.transparency (governance/eu_ai_act/eu_ai_act_transparency.rego): %s: applicability not determined — transparency.%s not declared (use explicit false flags where not applicable)",
+        "props": [
+         {
+          "name": "label",
+          "value": "eu_ai_act.transparency#1"
          },
          {
           "name": "rego-package",
@@ -272628,7 +273053,7 @@
      {
       "uuid": "1d84acff-096b-5d96-ad02-b33fb76a37c8",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/nerc_cip.json",
-      "description": "Controls of nerc_cip evaluated by the Rego Policy Libraries (207 controls, 15 Rego modules).",
+      "description": "Controls of nerc_cip evaluated by the Rego Policy Libraries (222 controls, 15 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -272695,6 +273120,31 @@
          {
           "name": "label",
           "value": "R3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_002"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cb76c461-ef88-587f-82ed-b3b039d43414",
+        "control-id": "nerc_cip-CIP-002",
+        "description": "Evaluated by Rego package nerc_cip.cip_002 (frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego): Implemented by a Rego rule in frameworks/critical_infrastructure/nerc_cip/cip_002_asset_identification.rego (package nerc_cip.cip_002); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIP-002"
          },
          {
           "name": "rego-package",
@@ -273013,6 +273463,31 @@
         ]
        },
        {
+        "uuid": "9d3bced6-ee92-5782-925b-36a9c893948b",
+        "control-id": "nerc_cip-R4",
+        "description": "Evaluated by Rego package nerc_cip.cip_003 (frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego): Transient Cyber Asset policy or asset management not in place (R4)",
+        "props": [
+         {
+          "name": "label",
+          "value": "R4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_003"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "c69098f0-f098-57ac-b412-780f9e17aa46",
         "control-id": "nerc_cip-nerc_cip.cip_003-1",
         "description": "Evaluated by Rego package nerc_cip.cip_003 (frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego): R1 cip senior manager",
@@ -273280,31 +273755,6 @@
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "frameworks/critical_infrastructure/nerc_cip/cip_003_security_management.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "9d3bced6-ee92-5782-925b-36a9c893948b",
-        "control-id": "nerc_cip-R4",
-        "description": "Evaluated by Rego package nerc_cip.cip_004 (frameworks/critical_infrastructure/nerc_cip/cip_004_personnel_training.rego): Access authorizations not reviewed within 15 calendar months",
-        "props": [
-         {
-          "name": "label",
-          "value": "R4"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nerc_cip.cip_004"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/critical_infrastructure/nerc_cip/cip_004_personnel_training.rego"
          },
          {
           "name": "implementation-status",
@@ -273813,6 +274263,31 @@
         ]
        },
        {
+        "uuid": "d2fb7ec9-4776-5be4-853a-7510ff59e4f0",
+        "control-id": "nerc_cip-R1.5",
+        "description": "Evaluated by Rego package nerc_cip.cip_005 (frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego): CIP-005 R1.5: unused ports disabled requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R1.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_005"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "7ab11af9-e893-5f12-9d61-fc1919d5fde3",
         "control-id": "nerc_cip-nerc_cip.cip_005-1",
         "description": "Evaluated by Rego package nerc_cip.cip_005 (frameworks/critical_infrastructure/nerc_cip/cip_005_electronic_security.rego): R1 1 systems in esp",
@@ -274215,7 +274690,7 @@
        {
         "uuid": "ede97996-d06d-56d7-84ce-bcb5826c91fe",
         "control-id": "nerc_cip-nerc_cip.cip_006-5",
-        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 alerting configured",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 5 standalone protected",
         "props": [
          {
           "name": "label",
@@ -274240,7 +274715,7 @@
        {
         "uuid": "5622c990-ca87-5671-81da-d887cb4fb173",
         "control-id": "nerc_cip-nerc_cip.cip_006-6",
-        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 plan current",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 alerting configured",
         "props": [
          {
           "name": "label",
@@ -274265,7 +274740,7 @@
        {
         "uuid": "3f1eb04c-e632-5dd1-b001-0670a20b9264",
         "control-id": "nerc_cip-nerc_cip.cip_006-7",
-        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 plan documented",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 plan current",
         "props": [
          {
           "name": "label",
@@ -274290,7 +274765,7 @@
        {
         "uuid": "13ac894e-3948-5e51-ac0f-bf6f9bc32ac0",
         "control-id": "nerc_cip-nerc_cip.cip_006-8",
-        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R2 eacms protected",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R1 plan documented",
         "props": [
          {
           "name": "label",
@@ -274315,7 +274790,7 @@
        {
         "uuid": "962f9a2a-87b2-53f7-a3e5-8ac3e2148bf3",
         "control-id": "nerc_cip-nerc_cip.cip_006-9",
-        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R2 pacs protected",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R2 eacms protected",
         "props": [
          {
           "name": "label",
@@ -274340,11 +274815,61 @@
        {
         "uuid": "6da59233-d4d5-558e-ad37-07ef71a988fe",
         "control-id": "nerc_cip-nerc_cip.cip_006-10",
-        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R3 access authorization reviewed",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R2 pacs protected",
         "props": [
          {
           "name": "label",
           "value": "nerc_cip.cip_006#10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_006"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2e11bfb9-c60b-5e8f-b408-df2598ed088d",
+        "control-id": "nerc_cip-nerc_cip.cip_006-11",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R2 pca protected",
+        "props": [
+         {
+          "name": "label",
+          "value": "nerc_cip.cip_006#11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_006"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5e00d075-686e-5036-a91c-913d0ad3a1c5",
+        "control-id": "nerc_cip-nerc_cip.cip_006-12",
+        "description": "Evaluated by Rego package nerc_cip.cip_006 (frameworks/critical_infrastructure/nerc_cip/cip_006_physical_security.rego): R3 access authorization reviewed",
+        "props": [
+         {
+          "name": "label",
+          "value": "nerc_cip.cip_006#12"
          },
          {
           "name": "rego-package",
@@ -274395,6 +274920,131 @@
          {
           "name": "label",
           "value": "R5.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_007"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4783552e-b0b2-5c46-bd08-a3a49a1a4fa9",
+        "control-id": "nerc_cip-R3.2",
+        "description": "Evaluated by Rego package nerc_cip.cip_007 (frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego): CIP-007 R3.2: malicious code response documented requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R3.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_007"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d0545e1b-53a9-5e61-bbc3-2371efe1ecbd",
+        "control-id": "nerc_cip-R4.2",
+        "description": "Evaluated by Rego package nerc_cip.cip_007 (frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego): CIP-007 R4.2: security event alerting requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R4.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_007"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ba541b21-f580-582d-81c5-1a411a030416",
+        "control-id": "nerc_cip-R5.3",
+        "description": "Evaluated by Rego package nerc_cip.cip_007 (frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego): CIP-007 R5.3: default passwords changed requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R5.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_007"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4e246cc4-af88-5356-a3a6-e11b52ffc5cf",
+        "control-id": "nerc_cip-R5.4",
+        "description": "Evaluated by Rego package nerc_cip.cip_007 (frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego): CIP-007 R5.4: shared accounts minimized requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R5.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_007"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7ead8322-f455-5c78-b24e-2c77585d80b9",
+        "control-id": "nerc_cip-R5.5",
+        "description": "Evaluated by Rego package nerc_cip.cip_007 (frameworks/critical_infrastructure/nerc_cip/cip_007_systems_security.rego): CIP-007 R5.5: login attempt limiting requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R5.5"
          },
          {
           "name": "rego-package",
@@ -275213,13 +275863,13 @@
         ]
        },
        {
-        "uuid": "4783552e-b0b2-5c46-bd08-a3a49a1a4fa9",
-        "control-id": "nerc_cip-R3.2",
-        "description": "Evaluated by Rego package nerc_cip.cip_009 (frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego): Backup restoration not tested within 15 calendar months for some systems",
+        "uuid": "a63760d6-1cac-54b4-946d-80d5e6c0133a",
+        "control-id": "nerc_cip-R3.3",
+        "description": "Evaluated by Rego package nerc_cip.cip_009 (frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego): CIP-009 R3.3: activation criteria tested requirement not met",
         "props": [
          {
           "name": "label",
-          "value": "R3.2"
+          "value": "R3.3"
          },
          {
           "name": "rego-package",
@@ -275530,6 +276180,56 @@
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "frameworks/critical_infrastructure/nerc_cip/cip_009_recovery_plans.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8ca7bb65-3c17-5456-ae93-4e810388fe56",
+        "control-id": "nerc_cip-R1.6",
+        "description": "Evaluated by Rego package nerc_cip.cip_010 (frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego): CIP-010 R1.6: software integrity verification requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R1.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_010"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6f40ed57-0ddb-5538-b23f-7eee8a280efc",
+        "control-id": "nerc_cip-R3.4",
+        "description": "Evaluated by Rego package nerc_cip.cip_010 (frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego): CIP-010 R3.4: post change assessment requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R3.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_010"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_010_configuration_management.rego"
          },
          {
           "name": "implementation-status",
@@ -275965,7 +276665,7 @@
        {
         "uuid": "13418a96-1117-5fc5-927a-43319fa86ec2",
         "control-id": "nerc_cip-nerc_cip.cip_011-7",
-        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R3 disposal procedures",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R2 redeployment bcsi cleared",
         "props": [
          {
           "name": "label",
@@ -275990,7 +276690,7 @@
        {
         "uuid": "40e078ef-394a-5fdb-ba68-765a475fec3a",
         "control-id": "nerc_cip-nerc_cip.cip_011-8",
-        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R3 media sanitization",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R3 disposal procedures",
         "props": [
          {
           "name": "label",
@@ -276015,7 +276715,7 @@
        {
         "uuid": "6511ce14-883c-5ba3-b8a8-8008a2f4fcb1",
         "control-id": "nerc_cip-nerc_cip.cip_011-9",
-        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R electronic access controlled",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R3 media sanitization",
         "props": [
          {
           "name": "label",
@@ -276040,7 +276740,7 @@
        {
         "uuid": "8753ed64-09ad-531a-a614-8a3bd7cbcf47",
         "control-id": "nerc_cip-nerc_cip.cip_011-10",
-        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R physical access controlled",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R electronic access controlled",
         "props": [
          {
           "name": "label",
@@ -276065,7 +276765,7 @@
        {
         "uuid": "a9b6cb0a-a339-5850-8bde-3a6de02bd8d5",
         "control-id": "nerc_cip-nerc_cip.cip_011-11",
-        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R storage protected",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R physical access controlled",
         "props": [
          {
           "name": "label",
@@ -276090,11 +276790,61 @@
        {
         "uuid": "e436df81-f4f8-5c7b-b4fe-25861fb42595",
         "control-id": "nerc_cip-nerc_cip.cip_011-12",
-        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R transmission protected",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R storage protected",
         "props": [
          {
           "name": "label",
           "value": "nerc_cip.cip_011#12"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_011"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "47b49184-8a4b-5dd4-92ed-885821867142",
+        "control-id": "nerc_cip-nerc_cip.cip_011-13",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R third party agreements",
+        "props": [
+         {
+          "name": "label",
+          "value": "nerc_cip.cip_011#13"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_011"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "87aebfe5-4277-51ce-8516-571295f2d72f",
+        "control-id": "nerc_cip-nerc_cip.cip_011-14",
+        "description": "Evaluated by Rego package nerc_cip.cip_011 (frameworks/critical_infrastructure/nerc_cip/cip_011_information_protection.rego): R transmission protected",
+        "props": [
+         {
+          "name": "label",
+          "value": "nerc_cip.cip_011#14"
          },
          {
           "name": "rego-package",
@@ -276488,6 +277238,81 @@
         ]
        },
        {
+        "uuid": "4307533e-9d72-5575-a782-014f374b3ffa",
+        "control-id": "nerc_cip-R1.2.2",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): CIP-013 R1.2.2: vendor incident notification process requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R1.2.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_013"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1e5fee1b-d387-56a2-8613-412fe2aa91b0",
+        "control-id": "nerc_cip-R1.2.4",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): CIP-013 R1.2.4: incident coordination process requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R1.2.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_013"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4507aa34-3139-5337-86d3-0e6b848cef0d",
+        "control-id": "nerc_cip-R6",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): CIP-013 R6: incident response coordination established requirement not met",
+        "props": [
+         {
+          "name": "label",
+          "value": "R6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_013"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "586f3d68-cd0c-55bb-8eb3-840da7e5ebed",
         "control-id": "nerc_cip-nerc_cip.cip_013-1",
         "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R1 2 1 vuln notification",
@@ -276640,7 +277465,7 @@
        {
         "uuid": "4d0214fd-a1d8-5f8c-af4c-6ee7c82b04a9",
         "control-id": "nerc_cip-nerc_cip.cip_013-7",
-        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R2 vendor risk assessments",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R2 vendor assessments comprehensive",
         "props": [
          {
           "name": "label",
@@ -276665,7 +277490,7 @@
        {
         "uuid": "7cefb907-3a1e-5c3b-b3ff-569bceec5368",
         "control-id": "nerc_cip-nerc_cip.cip_013-8",
-        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R3 vendor contracts",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R2 vendor risk assessments",
         "props": [
          {
           "name": "label",
@@ -276690,7 +277515,7 @@
        {
         "uuid": "6f7ded3f-26b0-5b9c-b42e-4b4388315b13",
         "control-id": "nerc_cip-nerc_cip.cip_013-9",
-        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R4 supply chain monitoring",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R3 vendor contracts",
         "props": [
          {
           "name": "label",
@@ -276715,7 +277540,7 @@
        {
         "uuid": "ca301fa9-64ff-560f-b590-74bfd29fa0ac",
         "control-id": "nerc_cip-nerc_cip.cip_013-10",
-        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R5 plan review current",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R4 supply chain monitoring",
         "props": [
          {
           "name": "label",
@@ -276740,11 +277565,36 @@
        {
         "uuid": "80bee0b6-649a-5352-9bae-58524d46151d",
         "control-id": "nerc_cip-nerc_cip.cip_013-11",
-        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R6 ir coordination",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R5 plan review current",
         "props": [
          {
           "name": "label",
           "value": "nerc_cip.cip_013#11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_013"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "70834706-44ed-580c-b004-e6cb8b86ac26",
+        "control-id": "nerc_cip-nerc_cip.cip_013-12",
+        "description": "Evaluated by Rego package nerc_cip.cip_013 (frameworks/critical_infrastructure/nerc_cip/cip_013_supply_chain.rego): R6 ir coordination",
+        "props": [
+         {
+          "name": "label",
+          "value": "nerc_cip.cip_013#12"
          },
          {
           "name": "rego-package",
@@ -276788,56 +277638,6 @@
         ]
        },
        {
-        "uuid": "d0545e1b-53a9-5e61-bbc3-2371efe1ecbd",
-        "control-id": "nerc_cip-R4.2",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): Physical threat assessment not performed by qualified subject matter expert",
-        "props": [
-         {
-          "name": "label",
-          "value": "R4.2"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nerc_cip.cip_014"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "4507aa34-3139-5337-86d3-0e6b848cef0d",
-        "control-id": "nerc_cip-R6",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): Physical security plan not reviewed by unaffiliated third party",
-        "props": [
-         {
-          "name": "label",
-          "value": "R6"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nerc_cip.cip_014"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "1e9f3d1b-e4d4-50db-890b-0d6834b2325d",
         "control-id": "nerc_cip-nerc_cip.cip_014-1",
         "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R1 assessment current",
@@ -276865,7 +277665,7 @@
        {
         "uuid": "008eef50-1a86-5721-a848-56226a1b7577",
         "control-id": "nerc_cip-nerc_cip.cip_014-2",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R1 methodology adequate",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R1 assessment updated after changes",
         "props": [
          {
           "name": "label",
@@ -276890,7 +277690,7 @@
        {
         "uuid": "c773f473-44d6-5cf3-b7e1-53bc54b8aeb8",
         "control-id": "nerc_cip-nerc_cip.cip_014-3",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R1 risk assessment performed",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R1 methodology adequate",
         "props": [
          {
           "name": "label",
@@ -276915,7 +277715,7 @@
        {
         "uuid": "ad1291c2-fa5d-5057-abcd-c06539c118b7",
         "control-id": "nerc_cip-nerc_cip.cip_014-4",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R2 rc notified",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R1 risk assessment performed",
         "props": [
          {
           "name": "label",
@@ -276940,7 +277740,7 @@
        {
         "uuid": "d3226812-d8ba-51f1-9b96-efd38889f345",
         "control-id": "nerc_cip-nerc_cip.cip_014-5",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R2 third party verification",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R2 rc notified",
         "props": [
          {
           "name": "label",
@@ -276965,7 +277765,7 @@
        {
         "uuid": "4a0104c7-2e53-5128-9e1a-199727dc4544",
         "control-id": "nerc_cip-nerc_cip.cip_014-6",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R2 verification timely",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R2 third party verification",
         "props": [
          {
           "name": "label",
@@ -276990,7 +277790,7 @@
        {
         "uuid": "b2ce3176-77a5-5391-8962-82e3802ea232",
         "control-id": "nerc_cip-nerc_cip.cip_014-7",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R3 security plans in place",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R2 verification timely",
         "props": [
          {
           "name": "label",
@@ -277015,7 +277815,7 @@
        {
         "uuid": "bfb62057-5577-5f0f-8a50-f7138a4363e2",
         "control-id": "nerc_cip-nerc_cip.cip_014-8",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R3 stations identified",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R3 security plans in place",
         "props": [
          {
           "name": "label",
@@ -277040,7 +277840,7 @@
        {
         "uuid": "38cbee25-932f-534c-b314-5ee9c8515a83",
         "control-id": "nerc_cip-nerc_cip.cip_014-9",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R4 2 threat assessments",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R3 stations identified",
         "props": [
          {
           "name": "label",
@@ -277065,7 +277865,7 @@
        {
         "uuid": "63a76ff3-cc3a-5c82-8a38-787f63af9eb3",
         "control-id": "nerc_cip-nerc_cip.cip_014-10",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R4 3 implementation timely",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R4 2 threat assessments",
         "props": [
          {
           "name": "label",
@@ -277090,7 +277890,7 @@
        {
         "uuid": "f20a0982-cd0b-5af8-a773-c3209f94f615",
         "control-id": "nerc_cip-nerc_cip.cip_014-11",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R4 security plans adequate",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R4 3 implementation timely",
         "props": [
          {
           "name": "label",
@@ -277115,7 +277915,7 @@
        {
         "uuid": "7036dfbb-a4c1-5742-b767-3e569b605597",
         "control-id": "nerc_cip-nerc_cip.cip_014-12",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R5 1 plans reviewed",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R4 security plans adequate",
         "props": [
          {
           "name": "label",
@@ -277140,7 +277940,7 @@
        {
         "uuid": "4523b0c9-938e-55e7-876c-81e74989cb83",
         "control-id": "nerc_cip-nerc_cip.cip_014-13",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R5 2 updated after changes",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R5 1 plans reviewed",
         "props": [
          {
           "name": "label",
@@ -277165,11 +277965,36 @@
        {
         "uuid": "ef3ab615-2ec3-5e66-8053-2ce9a06ca3fd",
         "control-id": "nerc_cip-nerc_cip.cip_014-14",
-        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R6 third party review",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R5 2 updated after changes",
         "props": [
          {
           "name": "label",
           "value": "nerc_cip.cip_014#14"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nerc_cip.cip_014"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c7393067-ce92-5399-bbe6-7920898f7a6c",
+        "control-id": "nerc_cip-nerc_cip.cip_014-15",
+        "description": "Evaluated by Rego package nerc_cip.cip_014 (frameworks/critical_infrastructure/nerc_cip/cip_014_physical_security_transmission.rego): R6 third party review",
+        "props": [
+         {
+          "name": "label",
+          "value": "nerc_cip.cip_014#15"
          },
          {
           "name": "rego-package",
@@ -277695,31 +278520,6 @@
          {
           "name": "label",
           "value": "CIP-013"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nerc_cip_main"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "cb76c461-ef88-587f-82ed-b3b039d43414",
-        "control-id": "nerc_cip-CIP-002",
-        "description": "Evaluated by Rego package nerc_cip_main (frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego): BES Cyber System Categorization",
-        "props": [
-         {
-          "name": "label",
-          "value": "CIP-002"
          },
          {
           "name": "rego-package",

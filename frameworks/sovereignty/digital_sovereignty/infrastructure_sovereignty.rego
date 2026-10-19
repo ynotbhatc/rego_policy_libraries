@@ -6,8 +6,8 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 35
-#     cited: 19
+#     checks: 38
+#     cited: 21
 #     density: sized
 #     basis: size
 #     tested: true
