@@ -184,7 +184,7 @@ evaluation output, validated against the OSCAL 1.2.3 schemas in CI, and committe
 
 | OSCAL object | What it holds | Where |
 |---|---|---|
-| catalog | one per framework, 180 catalogs, 18,036 controls with the Rego file that evaluates each | `dist/catalogs/` |
+| catalog | one per framework, 180 catalogs, 18,015 controls with the Rego file that evaluates each | `dist/catalogs/` |
 | profile | NIST SP 800-53 Rev 5 Low / Moderate / High / Privacy and FedRAMP Rev 5 Low / Moderate / High / LI-SaaS, imported from NIST's and FedRAMP's own files at pinned commits | `dist/profiles/` |
 | component-definition | the library as one component: an implemented-requirement per catalog control, plus one per baseline control the library evaluates | `dist/component-definition.json` |
 | assessment-results | built from any `compliance_report` run, one finding per violation targeting the catalog statement | `build_assessment_results.py` |
