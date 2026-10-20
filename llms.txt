@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 21,404 control-level checks in 833 policy files, mapped to 176 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 22,092 control-level checks in 856 policy files, mapped to 179 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -71,6 +71,7 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [SOX](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-financial-sox.html): 4 policy files
 - [Suse 16](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-suse-16.html): 24 policy files
 - [TSA Pipeline](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-tsa-pipeline.html): 13 policy files
+- [Ubuntu 26 04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-26-04.html): 23 policy files
 - [Windows 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-11.html): 5 policy files
 - [Windows Server 2019 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2019-modular.html): 11 policy files
 - [Windows Server 2022](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2022.html): 5 policy files

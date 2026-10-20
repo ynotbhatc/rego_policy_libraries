@@ -40,6 +40,11 @@ tests.
   336 recommendations across 22 section packages in the rhel_9 layout. Aborts on any count, status
   or logic mismatch with the workbook.
 
+- `gen_ubuntu_26_04.py <workbook.xlsx> [fields.json]`: CIS Ubuntu Linux 26.04 LTS Benchmark v1.0.0,
+  350 recommendations across 21 section packages, adapted from `gen_suse_16.py` (apt/dpkg, AppArmor,
+  ufw, Ubuntu unit names). Each logic entry carries a title keyword; the run aborts on any count, status,
+  logic or keyword mismatch with the workbook.
+
 - `gen_sql_server_2025.py <workbook.xlsx> <repo root>`: CIS Microsoft SQL Server 2025 Benchmark v1.0.0,
   49 recommendations; Database Engine and AWS RDS profiles (`input.cis_profile.platform`).
 
