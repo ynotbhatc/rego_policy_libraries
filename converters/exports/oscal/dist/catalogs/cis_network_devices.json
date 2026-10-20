@@ -431,6 +431,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
         "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
         "rel": "implementation"
        },
@@ -448,15 +452,20 @@
        {
         "id": "cis_network_devices-1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Backup count is set to 5 or more."
+        "prose": "Ensure intra-zone traffic is not always allowed"
        },
        {
         "id": "cis_network_devices-1.2_obj.2",
         "name": "assessment-objective",
-        "prose": "configuration backup count is below 5"
+        "prose": "Ensure Backup count is set to 5 or more."
        },
        {
         "id": "cis_network_devices-1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "configuration backup count is below 5"
+       },
+       {
+        "id": "cis_network_devices-1.2_obj.4",
         "name": "assessment-objective",
         "prose": "Ensure AutoConfigBackup is enable"
        }
@@ -487,6 +496,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
         "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
@@ -499,6 +512,11 @@
        },
        {
         "id": "cis_network_devices-2.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Pre-Login Banner' is set"
+       },
+       {
+        "id": "cis_network_devices-2.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "Telnet service enabled — disable immediately"
        }
@@ -529,6 +547,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
         "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
@@ -541,6 +563,11 @@
        },
        {
         "id": "cis_network_devices-2.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Post-Login-Banner' is set"
+       },
+       {
+        "id": "cis_network_devices-2.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "HTTP management service enabled — use HTTPS only"
        }
@@ -571,6 +598,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
         "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
@@ -583,6 +614,11 @@
        },
        {
         "id": "cis_network_devices-2.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure timezone is properly configured"
+       },
+       {
+        "id": "cis_network_devices-2.1.3_obj.2",
         "name": "assessment-objective",
         "prose": "SNMP v1/v2c community configured — use SNMPv3 or disable SNMP"
        }
@@ -613,6 +649,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
         "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
@@ -625,6 +665,11 @@
        },
        {
         "id": "cis_network_devices-2.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure correct system time is configured through NTP"
+       },
+       {
+        "id": "cis_network_devices-2.1.4_obj.2",
         "name": "assessment-objective",
         "prose": "NTP not configured — time synchronization required"
        }
@@ -653,6 +698,10 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
+       },
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -660,6 +709,11 @@
         "id": "cis_network_devices-2.3.1_stmt",
         "name": "statement",
         "prose": "Roles"
+       },
+       {
+        "id": "cis_network_devices-2.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure only SNMPv3 is enabled"
        }
       ],
       "class": "security"
@@ -686,6 +740,10 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
+       },
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -693,6 +751,11 @@
         "id": "cis_network_devices-2.4.1_stmt",
         "name": "statement",
         "prose": "Idle Timeout"
+       },
+       {
+        "id": "cis_network_devices-2.4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Remove default admin user and create one with other name"
        }
       ],
       "class": "security"
@@ -719,6 +782,10 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
+       },
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -726,6 +793,11 @@
         "id": "cis_network_devices-2.4.2_stmt",
         "name": "statement",
         "prose": "Emergency Console Access"
+       },
+       {
+        "id": "cis_network_devices-2.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure all the login accounts having specific trusted hosts enabled"
        }
       ],
       "class": "security"
@@ -752,6 +824,10 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
+       },
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -759,6 +835,11 @@
         "id": "cis_network_devices-2.5.1_stmt",
         "name": "statement",
         "prose": "Configure TACACS+/RADIUS server"
+       },
+       {
+        "id": "cis_network_devices-2.5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure High Availability configuration is enabled"
        }
       ],
       "class": "security"
@@ -785,6 +866,10 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
+       },
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -792,6 +877,11 @@
         "id": "cis_network_devices-2.5.2_stmt",
         "name": "statement",
         "prose": "Server Groups"
+       },
+       {
+        "id": "cis_network_devices-2.5.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure \"Monitor Interfaces\" for High Availability devices is enabled"
        }
       ],
       "class": "security"
@@ -818,6 +908,10 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
+       },
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -825,6 +919,11 @@
         "id": "cis_network_devices-2.5.3_stmt",
         "name": "statement",
         "prose": "Authentication, Authorization, and Accounting"
+       },
+       {
+        "id": "cis_network_devices-2.5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure HA Reserved Management Interface is configured"
        }
       ],
       "class": "security"
@@ -2982,7 +3081,7 @@
    {
     "id": "cis_network_devices-cis_fortinet_fortigate",
     "class": "rego-module",
-    "title": "CIS Fortinet FortiGate Benchmark v1.3.0",
+    "title": "CIS FortiGate 7.4.x Benchmark v1.0.1",
     "props": [
      {
       "name": "rego-package",
@@ -3001,6 +3100,2028 @@
      }
     ],
     "controls": [
+     {
+      "id": "cis_network_devices-1.1",
+      "title": "Ensure DNS server is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure DNS server is configured"
+       },
+       {
+        "id": "cis_network_devices-1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SSH warning banner is configured"
+       },
+       {
+        "id": "cis_network_devices-1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSH login banner not configured (no Banner directive, or Banner none)"
+       },
+       {
+        "id": "cis_network_devices-1.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure SSH warning banner is configured"
+       },
+       {
+        "id": "cis_network_devices-1.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "SSH login banner not configured (no Banner directive, or Banner none)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3",
+      "title": "Disable all management related services on WAN port",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3_stmt",
+        "name": "statement",
+        "prose": "Disable all management related services on WAN port"
+       },
+       {
+        "id": "cis_network_devices-1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Message Of The Day (MOTD)' is set"
+       },
+       {
+        "id": "cis_network_devices-1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "message of the day is empty or still the stock OPNsense greeting"
+       },
+       {
+        "id": "cis_network_devices-1.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Message Of The Day (MOTD)' is set"
+       },
+       {
+        "id": "cis_network_devices-1.3_obj.4",
+        "name": "assessment-objective",
+        "prose": "message of the day is empty or still the stock FreeBSD text"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.10",
+      "title": "Ensure management GUI listens on secure TLS version",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure management GUI listens on secure TLS version"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.11",
+      "title": "Ensure CDN is enabled for improved GUI performance",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure CDN is enabled for improved GUI performance"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.12",
+      "title": "Ensure single CPU core overloaded event is logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure single CPU core overloaded event is logged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.13",
+      "title": "Ensure Hostname is Not Displayed On Login GUI",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.13_stmt",
+        "name": "statement",
+        "prose": "Ensure Hostname is Not Displayed On Login GUI"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.5",
+      "title": "Ensure hostname is set",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure hostname is set"
+       },
+       {
+        "id": "cis_network_devices-2.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Remote syslog not configured — logs must be sent off-device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.6",
+      "title": "Ensure the latest firmware is installed",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure the latest firmware is installed"
+       },
+       {
+        "id": "cis_network_devices-2.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "No DNS name-servers configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.7",
+      "title": "Disable USB Firmware and configuration installation",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.7_stmt",
+        "name": "statement",
+        "prose": "Disable USB Firmware and configuration installation"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.8",
+      "title": "Disable static keys for TLS",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.8_stmt",
+        "name": "statement",
+        "prose": "Disable static keys for TLS"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.9",
+      "title": "Enable Global Strong Encryption",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.9_stmt",
+        "name": "statement",
+        "prose": "Enable Global Strong Encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.2.1",
+      "title": "Ensure 'Password Policy' is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Password Policy' is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.2.2",
+      "title": "Ensure administrator password retries and lockout time are configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.2.2_stmt",
+        "name": "statement",
+        "prose": "Ensure administrator password retries and lockout time are configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.3.2",
+      "title": "Allow only trusted hosts in SNMPv3",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.3.2_stmt",
+        "name": "statement",
+        "prose": "Allow only trusted hosts in SNMPv3"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.3.3",
+      "title": "Disable SNMPv3 Query Per User",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.3.3_stmt",
+        "name": "statement",
+        "prose": "Disable SNMPv3 Query Per User"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.3.4",
+      "title": "Enabling SNMP trap for memory usage",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.3.4_stmt",
+        "name": "statement",
+        "prose": "Enabling SNMP trap for memory usage"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.3",
+      "title": "Ensure admin accounts with different privileges have their correct profiles assigned",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure admin accounts with different privileges have their correct profiles assigned"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.4",
+      "title": "Ensure Admin idle timeout time is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.4_stmt",
+        "name": "statement",
+        "prose": "Ensure Admin idle timeout time is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.5",
+      "title": "Ensure only encrypted access channels are enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.5_stmt",
+        "name": "statement",
+        "prose": "Ensure only encrypted access channels are enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.6",
+      "title": "Apply Local-in Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.6_stmt",
+        "name": "statement",
+        "prose": "Apply Local-in Policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.7",
+      "title": "Ensure default Admin ports are changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.7_stmt",
+        "name": "statement",
+        "prose": "Ensure default Admin ports are changed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.8",
+      "title": "Virtual patching on the local-in management interface",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.8_stmt",
+        "name": "statement",
+        "prose": "Virtual patching on the local-in management interface"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.5.4",
+      "title": "Ensure High Availability Group-ID is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.5.4_stmt",
+        "name": "statement",
+        "prose": "Ensure High Availability Group-ID is configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.1",
+      "title": "Ensure that unused policies are reviewed regularly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that unused policies are reviewed regularly"
+       },
+       {
+        "id": "cis_network_devices-3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Local Account status' is set to 'Disabled'"
+       },
+       {
+        "id": "cis_network_devices-3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Local Account status' is set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.2",
+      "title": "Ensure that policies do not use \"ALL\" as Service",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure that policies do not use \"ALL\" as Service"
+       },
+       {
+        "id": "cis_network_devices-3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Login Protection methods are enabled."
+       },
+       {
+        "id": "cis_network_devices-3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.system not collected"
+       },
+       {
+        "id": "cis_network_devices-3.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "no TOTP authentication server (two-factor login) configured"
+       },
+       {
+        "id": "cis_network_devices-3.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "Ensure Login Protection Threshold is set to 30 or less"
+       },
+       {
+        "id": "cis_network_devices-3.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "login protection threshold is above 30 or not a positive number"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.3",
+      "title": "Ensure firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB"
+       },
+       {
+        "id": "cis_network_devices-3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure default password of admin is changed"
+       },
+       {
+        "id": "cis_network_devices-3.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Allow access again after time is set to 300 or more second"
+       },
+       {
+        "id": "cis_network_devices-3.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "login protection block time is unset (120 s default) or under 300 seconds"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.4",
+      "title": "Ensure logging is enabled on all firewall policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure logging is enabled on all firewall policies"
+       },
+       {
+        "id": "cis_network_devices-3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure default password of admin is changed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.1.1",
+      "title": "Detect Botnet connections",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1.1_stmt",
+        "name": "statement",
+        "prose": "Detect Botnet connections"
+       },
+       {
+        "id": "cis_network_devices-4.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Default Deny is Enforced on All Internal Interfaces"
+       },
+       {
+        "id": "cis_network_devices-4.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure no Allow Rule with Any in Destination Field present in the Firewall Rules"
+       },
+       {
+        "id": "cis_network_devices-4.1.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "allow rule %s has Any as destination"
+       },
+       {
+        "id": "cis_network_devices-4.1.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "Default 'vyos' user present with potentially default credentials"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.1.2",
+      "title": "Apply IPS Security Profile to Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Apply IPS Security Profile to Policies"
+       },
+       {
+        "id": "cis_network_devices-4.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Least Privilege is Applied to All Permit Rules"
+       },
+       {
+        "id": "cis_network_devices-4.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "allow rule %s is broad (any source, destination or service) and its justification is not attested (input.attest.broad_permit_rules_justified)"
+       },
+       {
+        "id": "cis_network_devices-4.1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure no Allow Rule with Any in Source field present in the Firewall Rules"
+       },
+       {
+        "id": "cis_network_devices-4.1.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "allow rule %s has Any as source"
+       },
+       {
+        "id": "cis_network_devices-4.1.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "One or more user accounts use plaintext passwords"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.1",
+      "title": "Ensure Antivirus Definition Push Updates are Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Antivirus Definition Push Updates are Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.2",
+      "title": "Apply Antivirus Security Profile to Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.2_stmt",
+        "name": "statement",
+        "prose": "Apply Antivirus Security Profile to Policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.3",
+      "title": "Enable Outbreak Prevention Database",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.3_stmt",
+        "name": "statement",
+        "prose": "Enable Outbreak Prevention Database"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.4",
+      "title": "Enable AI /heuristic based malware detection",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.4_stmt",
+        "name": "statement",
+        "prose": "Enable AI /heuristic based malware detection"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.5",
+      "title": "Enable grayware detection on antivirus",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.5_stmt",
+        "name": "statement",
+        "prose": "Enable grayware detection on antivirus"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.6",
+      "title": "Ensure inline scanning with FortiGuard AI-Based Sandbox Service is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.6_stmt",
+        "name": "statement",
+        "prose": "Ensure inline scanning with FortiGuard AI-Based Sandbox Service is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2.7",
+      "title": "Enable CDR for proxy mode on XLSB, OpenOffice, and RTF files",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2.7_stmt",
+        "name": "statement",
+        "prose": "Enable CDR for proxy mode on XLSB, OpenOffice, and RTF files"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.3.1",
+      "title": "Enable Botnet C&C Domain Blocking DNS Filter",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.3.1_stmt",
+        "name": "statement",
+        "prose": "Enable Botnet C&C Domain Blocking DNS Filter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.3.2",
+      "title": "Ensure DNS Filter logs all DNS queries and responses",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.3.2_stmt",
+        "name": "statement",
+        "prose": "Ensure DNS Filter logs all DNS queries and responses"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.3.3",
+      "title": "Apply DNS Filter Security Profile to Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.3.3_stmt",
+        "name": "statement",
+        "prose": "Apply DNS Filter Security Profile to Policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.4.1",
+      "title": "Create a Web Filtering Profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.4.1_stmt",
+        "name": "statement",
+        "prose": "Create a Web Filtering Profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.5.1",
+      "title": "Block high risk categories on Application Control",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.5.1_stmt",
+        "name": "statement",
+        "prose": "Block high risk categories on Application Control"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.5.2",
+      "title": "Block applications running on non-default ports",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.5.2_stmt",
+        "name": "statement",
+        "prose": "Block applications running on non-default ports"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.5.3",
+      "title": "Ensure all Application Control related traffic is logged",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.5.3_stmt",
+        "name": "statement",
+        "prose": "Ensure all Application Control related traffic is logged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.5.4",
+      "title": "Apply Application Control Security Profile to Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.5.4_stmt",
+        "name": "statement",
+        "prose": "Apply Application Control Security Profile to Policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.1.1",
+      "title": "Enable Compromised Host Quarantine",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Enable Compromised Host Quarantine"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure time zone is properly configured"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.system not collected"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ntpd not collected"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "time zone unset, no NTP servers, or no NTP server marked prefer"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "Ensure SNMP traps receivers is set"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.6",
+        "name": "assessment-objective",
+        "prose": "SNMP traps are off or no trap receiver is configured"
+       },
+       {
+        "id": "cis_network_devices-5.1.1_obj.7",
+        "name": "assessment-objective",
+        "prose": "Default hostname 'vyos' not changed — device not identifiable"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.2.1.1",
+      "title": "Ensure Security Fabric is Configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.2.1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Security Fabric is Configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.1.1",
+      "title": "Apply a Trusted Signed Certificate for VPN Portal",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.1.1_stmt",
+        "name": "statement",
+        "prose": "Apply a Trusted Signed Certificate for VPN Portal"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.1.2",
+      "title": "Enable Limited TLS Versions for SSL VPN",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Enable Limited TLS Versions for SSL VPN"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.1.1",
+      "title": "Enable Event Logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.1.1_stmt",
+        "name": "statement",
+        "prose": "Enable Event Logging"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.2.1",
+      "title": "Centralized Logging and Reporting",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Centralized Logging and Reporting"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.3.1",
+      "title": "Encrypt Log Transmission to FortiAnalyzer / FortiManager",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.3.1_stmt",
+        "name": "statement",
+        "prose": "Encrypt Log Transmission to FortiAnalyzer / FortiManager"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.3.2",
+      "title": "Encrypt Log Transmission to Syslog",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.3.2_stmt",
+        "name": "statement",
+        "prose": "Encrypt Log Transmission to Syslog"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.3.3",
+      "title": "Encrypt Log Transmission to Syslog",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.3.3_stmt",
+        "name": "statement",
+        "prose": "Encrypt Log Transmission to Syslog"
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "cis_network_devices-administration",
       "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
@@ -3169,6 +5290,39 @@
       "parts": [
        {
         "id": "cis_network_devices-security_fabric_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-security_profiles",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "security_profiles"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "security_profiles"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-security_profiles_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
        }
@@ -3520,110 +5674,6 @@
      }
     ],
     "controls": [
-     {
-      "id": "cis_network_devices-1.1",
-      "title": "Ensure SSH warning banner is configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-1.1_stmt",
-        "name": "statement",
-        "prose": "Ensure SSH warning banner is configured"
-       },
-       {
-        "id": "cis_network_devices-1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "SSH login banner not configured (no Banner directive, or Banner none)"
-       },
-       {
-        "id": "cis_network_devices-1.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "Ensure SSH warning banner is configured"
-       },
-       {
-        "id": "cis_network_devices-1.1_obj.3",
-        "name": "assessment-objective",
-        "prose": "SSH login banner not configured (no Banner directive, or Banner none)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-1.3",
-      "title": "Ensure 'Message Of The Day (MOTD)' is set",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-1.3_stmt",
-        "name": "statement",
-        "prose": "Ensure 'Message Of The Day (MOTD)' is set"
-       },
-       {
-        "id": "cis_network_devices-1.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "message of the day is empty or still the stock OPNsense greeting"
-       },
-       {
-        "id": "cis_network_devices-1.3_obj.2",
-        "name": "assessment-objective",
-        "prose": "Ensure 'Message Of The Day (MOTD)' is set"
-       },
-       {
-        "id": "cis_network_devices-1.3_obj.3",
-        "name": "assessment-objective",
-        "prose": "message of the day is empty or still the stock FreeBSD text"
-       }
-      ],
-      "class": "security"
-     },
      {
       "id": "cis_network_devices-1.4",
       "title": "hostname is unset or still the factory default 'OPNsense'",
@@ -4088,269 +6138,6 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-3.1",
-      "title": "Ensure 'Local Account status' is set to 'Disabled'",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-3.1_stmt",
-        "name": "statement",
-        "prose": "Ensure 'Local Account status' is set to 'Disabled'"
-       },
-       {
-        "id": "cis_network_devices-3.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "Ensure 'Local Account status' is set to 'Disabled'"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-3.2",
-      "title": "Ensure Login Protection methods are enabled.",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-3.2_stmt",
-        "name": "statement",
-        "prose": "Ensure Login Protection methods are enabled."
-       },
-       {
-        "id": "cis_network_devices-3.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing — input.system not collected"
-       },
-       {
-        "id": "cis_network_devices-3.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "no TOTP authentication server (two-factor login) configured"
-       },
-       {
-        "id": "cis_network_devices-3.2_obj.3",
-        "name": "assessment-objective",
-        "prose": "Ensure Login Protection Threshold is set to 30 or less"
-       },
-       {
-        "id": "cis_network_devices-3.2_obj.4",
-        "name": "assessment-objective",
-        "prose": "login protection threshold is above 30 or not a positive number"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-3.3",
-      "title": "Ensure default password of admin is changed",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-3.3_stmt",
-        "name": "statement",
-        "prose": "Ensure default password of admin is changed"
-       },
-       {
-        "id": "cis_network_devices-3.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "Ensure Allow access again after time is set to 300 or more second"
-       },
-       {
-        "id": "cis_network_devices-3.3_obj.2",
-        "name": "assessment-objective",
-        "prose": "login protection block time is unset (120 s default) or under 300 seconds"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-4.1.1",
-      "title": "Ensure Default Deny is Enforced on All Internal Interfaces",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-4.1.1_stmt",
-        "name": "statement",
-        "prose": "Ensure Default Deny is Enforced on All Internal Interfaces"
-       },
-       {
-        "id": "cis_network_devices-4.1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "Ensure no Allow Rule with Any in Destination Field present in the Firewall Rules"
-       },
-       {
-        "id": "cis_network_devices-4.1.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "allow rule %s has Any as destination"
-       },
-       {
-        "id": "cis_network_devices-4.1.1_obj.3",
-        "name": "assessment-objective",
-        "prose": "Default 'vyos' user present with potentially default credentials"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-4.1.2",
-      "title": "Ensure Least Privilege is Applied to All Permit Rules",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-4.1.2_stmt",
-        "name": "statement",
-        "prose": "Ensure Least Privilege is Applied to All Permit Rules"
-       },
-       {
-        "id": "cis_network_devices-4.1.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "allow rule %s is broad (any source, destination or service) and its justification is not attested (input.attest.broad_permit_rules_justified)"
-       },
-       {
-        "id": "cis_network_devices-4.1.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "Ensure no Allow Rule with Any in Source field present in the Firewall Rules"
-       },
-       {
-        "id": "cis_network_devices-4.1.2_obj.3",
-        "name": "assessment-objective",
-        "prose": "allow rule %s has Any as source"
-       },
-       {
-        "id": "cis_network_devices-4.1.2_obj.4",
-        "name": "assessment-objective",
-        "prose": "One or more user accounts use plaintext passwords"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_network_devices-4.1.3",
       "title": "Ensure “Any → Any” Rules are Prohibited",
       "props": [
@@ -4615,77 +6402,6 @@
         "id": "cis_network_devices-4.1.8_obj.1",
         "name": "assessment-objective",
         "prose": "floating rule %s is in use and its justification is not attested (input.attest.floating_rules_justified)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-5.1.1",
-      "title": "Ensure time zone is properly configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "5.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "5.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_opnsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#1b0a7d24-3b68-5517-8a56-661305e96d5a",
-        "rel": "implementation"
-       },
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-5.1.1_stmt",
-        "name": "statement",
-        "prose": "Ensure time zone is properly configured"
-       },
-       {
-        "id": "cis_network_devices-5.1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing — input.system not collected"
-       },
-       {
-        "id": "cis_network_devices-5.1.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "evidence missing — input.ntpd not collected"
-       },
-       {
-        "id": "cis_network_devices-5.1.1_obj.3",
-        "name": "assessment-objective",
-        "prose": "time zone unset, no NTP servers, or no NTP server marked prefer"
-       },
-       {
-        "id": "cis_network_devices-5.1.1_obj.4",
-        "name": "assessment-objective",
-        "prose": "Ensure SNMP traps receivers is set"
-       },
-       {
-        "id": "cis_network_devices-5.1.1_obj.5",
-        "name": "assessment-objective",
-        "prose": "SNMP traps are off or no trap receiver is configured"
-       },
-       {
-        "id": "cis_network_devices-5.1.1_obj.6",
-        "name": "assessment-objective",
-        "prose": "Default hostname 'vyos' not changed — device not identifiable"
        }
       ],
       "class": "security"
@@ -5494,39 +7210,6 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-3.4",
-      "title": "Ensure default password of admin is changed",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_pfsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-3.4_stmt",
-        "name": "statement",
-        "prose": "Ensure default password of admin is changed"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_network_devices-5.1.2",
       "title": "Ensure SNMP traps is enabled",
       "props": [
@@ -6056,72 +7739,6 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-2.1.5",
-      "title": "Remote syslog not configured — logs must be sent off-device",
-      "props": [
-       {
-        "name": "label",
-        "value": "2.1.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "2.1.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_vyos"
-       }
-      ],
-      "links": [
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-2.1.5_stmt",
-        "name": "statement",
-        "prose": "Remote syslog not configured — logs must be sent off-device"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-2.1.6",
-      "title": "No DNS name-servers configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "2.1.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "2.1.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_vyos"
-       }
-      ],
-      "links": [
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-2.1.6_stmt",
-        "name": "statement",
-        "prose": "No DNS name-servers configured"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_network_devices-3.1.3",
       "title": "No ruleset has default-action drop — default-permit is insecure",
       "props": [
@@ -6327,7 +7944,7 @@
     },
     {
      "uuid": "5c7a4a89-2421-52b3-8752-4654658f21cd",
-     "title": "CIS Fortinet FortiGate Benchmark v1.3.0",
+     "title": "CIS FortiGate 7.4.x Benchmark v1.0.1",
      "props": [
       {
        "name": "rego-package",

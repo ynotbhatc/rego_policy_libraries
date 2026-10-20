@@ -95,6 +95,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -110,6 +114,11 @@
        },
        {
         "id": "cis_postgresql-1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure packages are obtained from authorized repositories"
+       },
+       {
+        "id": "cis_postgresql-1.1_obj.3",
         "name": "assessment-objective",
         "prose": "Ensure packages are obtained from authorized repositories"
        }
@@ -146,6 +155,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -163,6 +176,11 @@
         "id": "cis_postgresql-1.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure systemd service files are enabled"
+       },
+       {
+        "id": "cis_postgresql-1.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure only required packages are installed"
        }
       ],
       "class": "security"
@@ -197,6 +215,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -214,6 +236,11 @@
         "id": "cis_postgresql-1.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure data cluster initialized successfully"
+       },
+       {
+        "id": "cis_postgresql-1.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure systemd Service Files Are Enabled"
        }
       ],
       "class": "security"
@@ -248,6 +275,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -265,6 +296,11 @@
         "id": "cis_postgresql-1.4_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the installation is up to date"
+       },
+       {
+        "id": "cis_postgresql-1.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure Data Cluster Initialized Successfully"
        }
       ],
       "class": "security"
@@ -299,6 +335,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -316,6 +356,11 @@
         "id": "cis_postgresql-1.5_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure PostgreSQL is not running as root"
+       },
+       {
+        "id": "cis_postgresql-1.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure the Latest Security Patches are Applied"
        }
       ],
       "class": "security"
@@ -350,6 +395,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -367,6 +416,11 @@
         "id": "cis_postgresql-1.6_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure PostgreSQL installation directories are secured"
+       },
+       {
+        "id": "cis_postgresql-1.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "Verify that 'PGPASSWORD' is not set in Users' Profiles"
        }
       ],
       "class": "security"
@@ -401,6 +455,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -418,6 +476,11 @@
         "id": "cis_postgresql-1.7_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure PostgreSQL configuration files are secured"
+       },
+       {
+        "id": "cis_postgresql-1.7_obj.3",
+        "name": "assessment-objective",
+        "prose": "Verify that the 'PGPASSWORD' Environment Variable is not in use"
        }
       ],
       "class": "security"
@@ -707,6 +770,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -722,6 +789,11 @@
        },
        {
         "id": "cis_postgresql-2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure the file permissions mask is correct"
+       },
+       {
+        "id": "cis_postgresql-2.1_obj.3",
         "name": "assessment-objective",
         "prose": "Ensure the file permissions mask is correct"
        }
@@ -758,6 +830,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -775,6 +851,11 @@
         "id": "cis_postgresql-2.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the PostgreSQL Data Cluster is initialized"
+       },
+       {
+        "id": "cis_postgresql-2.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure extension directory has appropriate ownership and permissions"
        }
       ],
       "class": "security"
@@ -809,6 +890,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -826,6 +911,11 @@
         "id": "cis_postgresql-2.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the data directory has appropriate permissions"
+       },
+       {
+        "id": "cis_postgresql-2.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Disable PostgreSQL Command History"
        }
       ],
       "class": "security"
@@ -860,6 +950,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -877,6 +971,11 @@
         "id": "cis_postgresql-2.4_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the configuration files have appropriate permissions"
+       },
+       {
+        "id": "cis_postgresql-2.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure Passwords are not stored in the service file"
        }
       ],
       "class": "security"
@@ -1676,6 +1775,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -1693,6 +1796,11 @@
         "id": "cis_postgresql-3.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the logging collector is enabled"
+       },
+       {
+        "id": "cis_postgresql-3.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure the PostgreSQL Audit Extension (pgAudit) is enabled"
        }
       ],
       "class": "security"
@@ -2849,6 +2957,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -2866,6 +2978,11 @@
         "id": "cis_postgresql-4.1_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure sudo is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-4.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure Interactive Login is Disabled"
        }
       ],
       "class": "security"
@@ -2900,6 +3017,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -2917,6 +3038,11 @@
         "id": "cis_postgresql-4.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure excessive administrative privileges are revoked"
+       },
+       {
+        "id": "cis_postgresql-4.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure sudo is configured correctly"
        }
       ],
       "class": "security"
@@ -2951,6 +3077,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -2968,6 +3098,11 @@
         "id": "cis_postgresql-4.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure excessive function privileges are revoked"
+       },
+       {
+        "id": "cis_postgresql-4.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure excessive administrative privileges are revoked"
        }
       ],
       "class": "security"
@@ -3002,6 +3137,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3019,6 +3158,11 @@
         "id": "cis_postgresql-4.4_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure excessive DML privileges are revoked"
+       },
+       {
+        "id": "cis_postgresql-4.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Lock Out Accounts if Not Currently in Use"
        }
       ],
       "class": "security"
@@ -3053,6 +3197,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3070,6 +3218,11 @@
         "id": "cis_postgresql-4.5_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure row level security is enabled when supported"
+       },
+       {
+        "id": "cis_postgresql-4.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure excessive function privileges are revoked"
        }
       ],
       "class": "security"
@@ -3104,6 +3257,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3121,6 +3278,11 @@
         "id": "cis_postgresql-4.6_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the PostgreSQL default administrative database 'postgres' is protected"
+       },
+       {
+        "id": "cis_postgresql-4.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure excessive DML privileges are revoked"
        }
       ],
       "class": "security"
@@ -3155,6 +3317,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3172,6 +3338,11 @@
         "id": "cis_postgresql-4.7_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure database names are not descriptive or default"
+       },
+       {
+        "id": "cis_postgresql-4.7_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure Row Level Security (RLS) is configured correctly"
        }
       ],
       "class": "security"
@@ -3206,6 +3377,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3223,6 +3398,11 @@
         "id": "cis_postgresql-4.8_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the PostgreSQL version is not easily identifiable"
+       },
+       {
+        "id": "cis_postgresql-4.8_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure the set_user extension is installed"
        }
       ],
       "class": "security"
@@ -3257,6 +3437,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3274,6 +3458,11 @@
         "id": "cis_postgresql-4.9_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure role-based authentication is configured"
+       },
+       {
+        "id": "cis_postgresql-4.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "Make use of predefined roles"
        }
       ],
       "class": "security"
@@ -3308,6 +3497,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3325,6 +3518,11 @@
         "id": "cis_postgresql-4.10_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure password authentication is required for local connections"
+       },
+       {
+        "id": "cis_postgresql-4.10_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure all accounts that can log in have passwords"
        }
       ],
       "class": "security"
@@ -4277,6 +4475,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -4294,6 +4496,11 @@
         "id": "cis_postgresql-5.1_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure login via 'local' socket is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-5.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Do Not Specify Passwords in the Command Line"
        }
       ],
       "class": "security"
@@ -4328,6 +4535,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -4345,6 +4556,11 @@
         "id": "cis_postgresql-5.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure login via 'host' TCP/IP socket is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-5.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL is Bound to an IP Address"
        }
       ],
       "class": "security"
@@ -4379,6 +4595,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -4396,6 +4616,11 @@
         "id": "cis_postgresql-5.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure SSL is enabled and configured correctly"
+       },
+       {
+        "id": "cis_postgresql-5.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure login via \"local\" UNIX Domain Socket is configured correctly"
        }
       ],
       "class": "security"
@@ -4430,6 +4655,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -4447,6 +4676,11 @@
         "id": "cis_postgresql-5.4_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure SSL certificate and key files are correctly configured"
+       },
+       {
+        "id": "cis_postgresql-5.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure login via \"host\" TCP/IP Socket is configured correctly"
        }
       ],
       "class": "security"
@@ -4481,6 +4715,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -4498,6 +4736,11 @@
         "id": "cis_postgresql-5.5_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure SSL certificate authority file is correctly configured"
+       },
+       {
+        "id": "cis_postgresql-5.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure per-account connection limits are used"
        }
       ],
       "class": "security"
@@ -4532,6 +4775,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -4549,6 +4796,11 @@
         "id": "cis_postgresql-5.6_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure SSL certificate revocation list is configured"
+       },
+       {
+        "id": "cis_postgresql-5.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure password complexity is configured"
        }
       ],
       "class": "security"
@@ -5399,6 +5651,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5416,6 +5672,11 @@
         "id": "cis_postgresql-6.1_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'backend' runtime parameters are configured correctly"
+       },
+       {
+        "id": "cis_postgresql-6.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Understanding attack vectors and runtime parameters"
        }
       ],
       "class": "security"
@@ -5450,6 +5711,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5467,6 +5732,11 @@
         "id": "cis_postgresql-6.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'postgresql.conf' file is secured"
+       },
+       {
+        "id": "cis_postgresql-6.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure 'backend' runtime parameters are configured correctly"
        }
       ],
       "class": "security"
@@ -5501,6 +5771,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5518,6 +5792,11 @@
         "id": "cis_postgresql-6.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'FIPS 140-2' OpenSSL Cryptography Is Used"
+       },
+       {
+        "id": "cis_postgresql-6.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Postmaster' Runtime Parameters are Configured"
        }
       ],
       "class": "security"
@@ -5552,6 +5831,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5569,6 +5852,11 @@
         "id": "cis_postgresql-6.4_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'ssl_renegotiation_limit' is disabled"
+       },
+       {
+        "id": "cis_postgresql-6.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SIGHUP' Runtime Parameters are Configured"
        }
       ],
       "class": "security"
@@ -5603,6 +5891,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5620,6 +5912,11 @@
         "id": "cis_postgresql-6.5_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'shared_preload_libraries' is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-6.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Superuser' Runtime Parameters are Configured"
        }
       ],
       "class": "security"
@@ -5654,6 +5951,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5671,6 +5972,11 @@
         "id": "cis_postgresql-6.6_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'dynamic_library_path' is empty"
+       },
+       {
+        "id": "cis_postgresql-6.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure 'User' Runtime Parameters are Configured"
        }
       ],
       "class": "security"
@@ -5705,6 +6011,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5722,6 +6032,11 @@
         "id": "cis_postgresql-6.7_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'local_preload_libraries' is empty"
+       },
+       {
+        "id": "cis_postgresql-6.7_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure FIPS 140-2 OpenSSL Cryptography Is Used"
        }
       ],
       "class": "security"
@@ -5756,6 +6071,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5773,6 +6092,11 @@
         "id": "cis_postgresql-6.8_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'session_preload_libraries' is empty"
+       },
+       {
+        "id": "cis_postgresql-6.8_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure TLS is enabled and configured correctly"
        }
       ],
       "class": "security"
@@ -5807,6 +6131,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5824,6 +6152,11 @@
         "id": "cis_postgresql-6.9_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'shared_buffers' is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-6.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure the TLSv1.0 and TLSv1.1 Protocols are Disabled"
        }
       ],
       "class": "security"
@@ -5858,6 +6191,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5875,6 +6212,11 @@
         "id": "cis_postgresql-6.10_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'max_connections' is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-6.10_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure Weak SSL/TLS Ciphers Are Disabled"
        }
       ],
       "class": "security"
@@ -5909,6 +6251,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5926,6 +6272,11 @@
         "id": "cis_postgresql-6.11_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure 'work_mem' is configured correctly"
+       },
+       {
+        "id": "cis_postgresql-6.11_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure the pgcrypto extension is installed and configured correctly"
        }
       ],
       "class": "security"
@@ -7337,6 +7688,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -7354,6 +7709,11 @@
         "id": "cis_postgresql-7.1_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure a backup and recovery policy is in place"
+       },
+       {
+        "id": "cis_postgresql-7.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure a replication-only user is created and used for streaming replication"
        }
       ],
       "class": "security"
@@ -7388,6 +7748,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -7405,6 +7769,11 @@
         "id": "cis_postgresql-7.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure the backup is done using pg_basebackup or similar tools"
+       },
+       {
+        "id": "cis_postgresql-7.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure logging of replication commands is configured"
        }
       ],
       "class": "security"
@@ -7439,6 +7808,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -7456,6 +7829,11 @@
         "id": "cis_postgresql-7.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure that WAL archiving is configured and functional"
+       },
+       {
+        "id": "cis_postgresql-7.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure base backups are configured and functional"
        }
       ],
       "class": "security"
@@ -7490,6 +7868,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -7507,6 +7889,11 @@
         "id": "cis_postgresql-7.4_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure streaming replication is configured securely"
+       },
+       {
+        "id": "cis_postgresql-7.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure WAL archiving is configured and functional"
        }
       ],
       "class": "security"
@@ -7541,6 +7928,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -7558,6 +7949,11 @@
         "id": "cis_postgresql-7.5_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure replication user accounts are properly secured"
+       },
+       {
+        "id": "cis_postgresql-7.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure streaming replication parameters are configured correctly"
        }
       ],
       "class": "security"
@@ -7979,6 +8375,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -7996,6 +8396,11 @@
         "id": "cis_postgresql-8.1_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure PostgreSQL version is supported"
+       },
+       {
+        "id": "cis_postgresql-8.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure PostgreSQL subdirectory locations are outside the data cluster"
        }
       ],
       "class": "security"
@@ -8030,6 +8435,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -8047,6 +8456,11 @@
         "id": "cis_postgresql-8.2_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure security updates are applied promptly"
+       },
+       {
+        "id": "cis_postgresql-8.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure the backup and restore tool, 'pgBackRest', is installed and configured"
        }
       ],
       "class": "security"
@@ -8081,6 +8495,10 @@
        {
         "href": "#f56433b4-38a2-50b0-bed3-69dd73d322ac",
         "rel": "implementation"
+       },
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -8098,6 +8516,11 @@
         "id": "cis_postgresql-8.3_obj.2",
         "name": "assessment-objective",
         "prose": "Ensure database server is in a protected network segment"
+       },
+       {
+        "id": "cis_postgresql-8.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Ensure miscellaneous configuration settings are correct"
        }
       ],
       "class": "security"
@@ -8970,6 +9393,1119 @@
       "class": "security"
      }
     ]
+   },
+   {
+    "id": "cis_postgresql-cis_postgresql_17",
+    "class": "rego-module",
+    "title": "CIS PostgreSQL 17 Benchmark v1.1.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.postgresql_17"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/postgresql/cis_postgresql_17.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_postgresql-3.1.10",
+      "title": "Ensure the correct Syslog facility is selected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.10_stmt",
+        "name": "statement",
+        "prose": "Ensure the correct Syslog facility is selected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.11",
+      "title": "Ensure Syslog messages are not suppressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.11_stmt",
+        "name": "statement",
+        "prose": "Ensure Syslog messages are not suppressed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.12",
+      "title": "Ensure Syslog messages are not lost due to size",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.12_stmt",
+        "name": "statement",
+        "prose": "Ensure Syslog messages are not lost due to size"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.13",
+      "title": "Ensure the program name for PostgreSQL Syslog messages is correct",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.13_stmt",
+        "name": "statement",
+        "prose": "Ensure the program name for PostgreSQL Syslog messages is correct"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.14",
+      "title": "Ensure the correct messages are written to the server log",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.14_stmt",
+        "name": "statement",
+        "prose": "Ensure the correct messages are written to the server log"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.15",
+      "title": "Ensure the correct SQL statements generating errors are recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.15_stmt",
+        "name": "statement",
+        "prose": "Ensure the correct SQL statements generating errors are recorded"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.16",
+      "title": "Ensure 'debug_print_parse' is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.16_stmt",
+        "name": "statement",
+        "prose": "Ensure 'debug_print_parse' is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.17",
+      "title": "Ensure 'debug_print_rewritten' is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.17_stmt",
+        "name": "statement",
+        "prose": "Ensure 'debug_print_rewritten' is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.18",
+      "title": "Ensure 'debug_print_plan' is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.18_stmt",
+        "name": "statement",
+        "prose": "Ensure 'debug_print_plan' is disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.19",
+      "title": "Ensure 'debug_pretty_print' is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.19_stmt",
+        "name": "statement",
+        "prose": "Ensure 'debug_pretty_print' is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.2",
+      "title": "Ensure the log destinations are set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the log destinations are set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.20",
+      "title": "Ensure 'log_connections' is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.20_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_connections' is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.21",
+      "title": "Ensure 'log_disconnections' is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.21_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_disconnections' is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.22",
+      "title": "Ensure 'log_error_verbosity' is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.22_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_error_verbosity' is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.23",
+      "title": "Ensure 'log_hostname' is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.23_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_hostname' is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.24",
+      "title": "Ensure 'log_line_prefix' is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.24_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_line_prefix' is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.25",
+      "title": "Ensure 'log_statement' is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.25_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_statement' is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.26",
+      "title": "Ensure 'log_timezone' is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.26_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_timezone' is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.3",
+      "title": "Ensure the logging collector is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure the logging collector is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.4",
+      "title": "Ensure the log file destination directory is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure the log file destination directory is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.5",
+      "title": "Ensure the filename pattern for log files is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure the filename pattern for log files is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.6",
+      "title": "Ensure the log file permissions are set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure the log file permissions are set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.7",
+      "title": "Ensure 'log_truncate_on_rotation' is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.7_stmt",
+        "name": "statement",
+        "prose": "Ensure 'log_truncate_on_rotation' is enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.8",
+      "title": "Ensure the maximum log file lifetime is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.8_stmt",
+        "name": "statement",
+        "prose": "Ensure the maximum log file lifetime is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3.1.9",
+      "title": "Ensure the maximum log file size is set correctly",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3.1.9_stmt",
+        "name": "statement",
+        "prose": "Ensure the maximum log file size is set correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-1",
+      "title": "Installation and Patches",
+      "props": [
+       {
+        "name": "label",
+        "value": "1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-1_stmt",
+        "name": "statement",
+        "prose": "Installation and Patches"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-2",
+      "title": "Directory and File Permissions",
+      "props": [
+       {
+        "name": "label",
+        "value": "2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-2_stmt",
+        "name": "statement",
+        "prose": "Directory and File Permissions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-3",
+      "title": "Logging And Auditing",
+      "props": [
+       {
+        "name": "label",
+        "value": "3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-3_stmt",
+        "name": "statement",
+        "prose": "Logging And Auditing"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-4",
+      "title": "User Access and Authorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-4_stmt",
+        "name": "statement",
+        "prose": "User Access and Authorization"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-5",
+      "title": "Connection and Login",
+      "props": [
+       {
+        "name": "label",
+        "value": "5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-5_stmt",
+        "name": "statement",
+        "prose": "Connection and Login"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-6",
+      "title": "PostgreSQL Settings",
+      "props": [
+       {
+        "name": "label",
+        "value": "6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-6_stmt",
+        "name": "statement",
+        "prose": "PostgreSQL Settings"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-7",
+      "title": "Replication",
+      "props": [
+       {
+        "name": "label",
+        "value": "7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-7_stmt",
+        "name": "statement",
+        "prose": "Replication"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_postgresql-8",
+      "title": "Special Configuration Considerations",
+      "props": [
+       {
+        "name": "label",
+        "value": "8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.postgresql_17"
+       }
+      ],
+      "links": [
+       {
+        "href": "#62db870e-6993-5ab1-b2f5-a5242b864a47",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_postgresql-8_stmt",
+        "name": "statement",
+        "prose": "Special Configuration Considerations"
+       }
+      ],
+      "class": "security"
+     }
+    ]
    }
   ],
   "back-matter": {
@@ -9021,6 +10557,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/postgresql/cis_postgresql_15.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "62db870e-6993-5ab1-b2f5-a5242b864a47",
+     "title": "CIS PostgreSQL 17 Benchmark v1.1.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.postgresql_17"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/postgresql/cis_postgresql_17.rego",
        "media-type": "text/plain"
       }
      ]
