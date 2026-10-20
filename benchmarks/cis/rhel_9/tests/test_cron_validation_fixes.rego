@@ -3,18 +3,10 @@ package cis_rhel9.cron_test
 import rego.v1
 
 # Validation fixes 2026-10-17: missing owner/group/mode evidence is a violation; octal modes.
+# Re-pointed to CIS RHEL 9 v3.0.0 (2026-10-20): same test names, v3 recommendation ids.
+# v2 5.1.x -> v3 2.4.x.
 
-good := {"cron": {
-	"crond_enabled": true, "crond_running": true,
-	"crontab_mode": "0600", "crontab_owner": "root", "crontab_group": "root",
-	"cron_hourly_mode": "0700", "cron_hourly_owner": "root",
-	"cron_daily_mode": "0700", "cron_daily_owner": "root",
-	"cron_weekly_mode": "0700", "cron_weekly_owner": "root",
-	"cron_monthly_mode": "0700", "cron_monthly_owner": "root",
-	"cron_d_mode": "0700", "cron_d_owner": "root",
-	"cron_allow_exists": true, "cron_allow_mode": "0600",
-	"at_allow_exists": true, "at_allow_mode": "0600",
-}}
+good := {"cron": {"crond_enabled": true, "crond_running": true, "crontab_mode": "0600", "crontab_owner": "root", "crontab_group": "root", "cron_hourly_mode": "0700", "cron_hourly_owner": "root", "cron_hourly_group": "root", "cron_daily_mode": "0700", "cron_daily_owner": "root", "cron_daily_group": "root", "cron_weekly_mode": "0700", "cron_weekly_owner": "root", "cron_weekly_group": "root", "cron_monthly_mode": "0700", "cron_monthly_owner": "root", "cron_monthly_group": "root", "cron_yearly_mode": "0700", "cron_yearly_owner": "root", "cron_yearly_group": "root", "cron_d_mode": "0700", "cron_d_owner": "root", "cron_d_group": "root", "cron_allow_exists": true, "cron_allow_mode": "0640", "cron_allow_owner": "root", "cron_allow_group": "root", "cron_deny_exists": false, "at_allow_exists": true, "at_allow_mode": "0640", "at_allow_owner": "root", "at_allow_group": "root", "at_deny_exists": false}}
 
 test_cron_good_input_compliant if {
 	data.cis_rhel9.cron.compliant with input as good

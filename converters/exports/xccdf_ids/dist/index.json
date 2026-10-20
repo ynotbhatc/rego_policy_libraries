@@ -1,20 +1,33 @@
 {
- "rows": 1896,
+ "rows": 4156,
  "platforms": {
   "amazon_linux_2023": 179,
   "aws": 41,
   "azure": 44,
   "databases": 28,
   "debian_11": 162,
+  "eks": 47,
+  "gcp": 93,
+  "intune_defender_antivirus": 55,
   "kubernetes": 42,
+  "mcp_server": 55,
+  "network_devices": 113,
+  "nginx": 44,
+  "oracle": 94,
+  "postgresql": 72,
   "rhel_8": 190,
-  "rhel_9": 205,
+  "rhel_9": 353,
   "rocky_linux_8": 163,
   "rocky_linux_9": 164,
   "saas": 152,
+  "sql_server_2025": 49,
+  "suse_16": 336,
   "ubuntu_20_04": 157,
   "ubuntu_22_04": 185,
-  "ubuntu_24_04": 184
+  "ubuntu_24_04": 184,
+  "ubuntu_26_04": 350,
+  "windows_server_2019_modular": 398,
+  "windows_server_2022_modular": 406
  },
  "join": "CIS-CAT rule id startswith xccdf_rule_id_prefix, same platform and benchmark version"
 }

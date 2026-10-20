@@ -46,8 +46,8 @@ m = sum(len(g2["controls"]) for g in combined["groups"] for g2 in g["groups"])
 assert m == got_total, f"all.json holds {m}, per-framework catalogs hold {got_total}"
 # a known control survives with its text
 rhel = json.loads((tmp / "catalogs" / "cis_rhel_9.json").read_text())["catalog"]
-hit = [c for g in rhel["groups"] for c in g["controls"] if c["id"] == "cis_rhel_9-CIS-1.3.1"]
-assert hit and "AIDE" in hit[0]["parts"][0]["prose"], "CIS RHEL 9 1.3.1 did not round-trip"
+hit = [c for g in rhel["groups"] for c in g["controls"] if c["id"] == "cis_rhel_9-6.3.1"]
+assert hit and any("AIDE" in p.get("prose", "") for p in hit[0]["parts"]), "CIS RHEL 9 6.3.1 (AIDE installed, v3.0.0) did not round-trip"
 print(f"PASS roundtrip: {idx['frameworks']} catalogs, {got_total} controls, all.json {m}, every control linked to an existing Rego file")
 PY
 # component-definition: one implemented-requirement per catalog control, every control-id resolves

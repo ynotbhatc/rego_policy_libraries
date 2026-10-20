@@ -23,6 +23,32 @@ from _lib.findings import token          # noqa: E402
 BENCH = re.compile(r'"benchmark":\s*"([^"]+)"')
 VER = re.compile(r'"version":\s*"(v?[0-9][^"]*)"')
 SECTION = re.compile(r"^CIS\s+(?:L[12]\s+)?(\d+(?:\.\d+)*)\b")
+# Workbook-generated packages cite the bare recommendation number ("6.2.1.1"). Accept that only as the whole id
+# and only in modules whose ids were checked against the CIS workbook (2026-10-20); elsewhere a bare number may
+# be an invented id, and joining it to a CIS-CAT rule would be wrong.
+BARE = re.compile(r"^(\d+(?:\.\d+)+)$")
+WORKBOOK_VERIFIED = (
+    "benchmarks/cis/rhel_9/", "benchmarks/cis/suse_16/", "benchmarks/cis/ubuntu_26_04/",
+    "benchmarks/cis/windows_server_2019_modular/", "benchmarks/cis/windows_server_2022_modular/",
+    "benchmarks/cis/gcp/", "benchmarks/cis/eks/", "benchmarks/cis/nginx/", "benchmarks/cis/mcp_server/",
+    "benchmarks/cis/sql_server_2025/", "benchmarks/cis/intune_defender_antivirus/",
+    "benchmarks/cis/oracle/cis_oracle_23ai.rego", "benchmarks/cis/oracle/cis_oracle_26ai.rego",
+    "benchmarks/cis/postgresql/cis_postgresql_17.rego",
+    "benchmarks/cis/network_devices/arista/", "benchmarks/cis/network_devices/pfsense/",
+    "benchmarks/cis/network_devices/opnsense/", "benchmarks/cis/network_devices/fortinet/",
+)
+
+
+def section_of(file, cid):
+    """CIS section number for a cited control id, or None."""
+    m = SECTION.match(cid)
+    if m:
+        return m.group(1)
+    if file.startswith(WORKBOOK_VERIFIED):
+        m = BARE.match(cid)
+        if m:
+            return m.group(1)
+    return None
 DERIVED = re.compile(r"DERIVED from (CIS [^(—]+?)\s*(?:\(|—)")
 
 
@@ -63,10 +89,9 @@ def main():
                     name, version = n, v; break
         derived = DERIVED.search(name)
         for c in e["controls"]:
-            m = SECTION.match(c["id"])
-            if not m:
+            sec = section_of(e["file"], c["id"])
+            if not sec:
                 continue
-            sec = m.group(1)
             key = (platform, sec)
             if key in seen:
                 continue

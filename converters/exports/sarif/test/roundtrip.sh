@@ -35,8 +35,8 @@ for r in run["results"]:
     assert r["message"]["text"], "empty message"
 mapped = sum(1 for r in run["results"] if r["properties"]["mapped"])
 assert mapped / want >= 0.6, f"only {mapped}/{want} results mapped to inventory controls"
-cis = [r for r in run["results"] if r["ruleId"] == "cis_rhel_9-CIS-1.3.1"]
-assert cis and "AIDE" in cis[0]["message"]["text"], "CIS 1.3.1 did not round-trip under its OSCAL id"
+cis = [r for r in run["results"] if r["ruleId"] == "cis_rhel_9-6.3.1"]
+assert cis and "aide" in cis[0]["message"]["text"].lower(), "CIS RHEL 9 6.3.1 did not round-trip under its OSCAL id"
 stig = [r for r in run["results"] if r["ruleId"] == "stig_oracle_linux_9-OL09-00-002413"]
 assert stig and "Ctrl-Alt-Delete" in stig[0]["message"]["text"] and stig[0]["properties"]["mapped"], "STIG object finding did not map to its catalog control"
 assert stig[0]["properties"]["severity"] == "CAT I", "STIG finding lost its severity"
