@@ -46,6 +46,14 @@ test_opnsense_report_populated if { count(data.cis_opnsense.main.compliance_repo
 
 test_gcp_report_populated if { count(data.cis_gcp.main.compliance_report) > 0 }
 
+test_eks_report_populated if { count(data.cis_eks.main.compliance_report) > 0 }
+
+test_suse16_report_populated if { count(data.cis_suse16.main.compliance_report) > 0 }
+
+test_sql_server_2025_report_populated if { count(data.cis.sql_server_2025.main.compliance_report) > 0 }
+
+test_intune_defender_av_report_populated if { count(data.cis.intune_defender_antivirus.main.compliance_report) > 0 }
+
 # --- counts are internally consistent and non-negative ----------------------
 
 reports := [
@@ -64,6 +72,10 @@ reports := [
 	data.cis_pfsense.main.compliance_report,
 	data.cis_opnsense.main.compliance_report,
 	data.cis_gcp.main.compliance_report,
+	data.cis_eks.main.compliance_report,
+	data.cis_suse16.main.compliance_report,
+	data.cis.sql_server_2025.main.compliance_report,
+	data.cis.intune_defender_antivirus.main.compliance_report,
 ]
 
 test_no_negative_counts if {

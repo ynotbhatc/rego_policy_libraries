@@ -1,0 +1,2173 @@
+{
+ "catalog": {
+  "uuid": "b9ccece7-ae9b-5905-b858-f83acdbc7e32",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_sql_server_2025 (CIS Microsoft SQL Server 2025 Benchmark v1.0.0)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_sql_server_2025"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_sql_server_2025-cis_sql_server_2025",
+    "class": "rego-module",
+    "title": "CIS Microsoft SQL Server 2025 Benchmark v1.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.sql_server_2025"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/sql_server_2025/cis_sql_server_2025.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_sql_server_2025-1.1",
+      "title": "Ensure Latest SQL Server Cumulative and Security Updates are Installed (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-1.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Latest SQL Server Cumulative and Security Updates are Installed (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Latest SQL Server Cumulative and Security Updates are Installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-1.2",
+      "title": "Ensure Single-Function Member Servers are Used (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure Single-Function Member Servers are Used (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Single-Function Member Servers are Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.1",
+      "title": "evidence missing — sql.configurations['ad hoc distributed queries'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['ad hoc distributed queries'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Ad Hoc Distributed Queries' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Ad Hoc Distributed Queries' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.2",
+      "title": "evidence missing — sql.configurations['clr enabled'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['clr enabled'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CLR Enabled' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CLR Enabled' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.3",
+      "title": "evidence missing — sql.configurations['cross db ownership chaining'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['cross db ownership chaining'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Cross DB Ownership Chaining' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Cross DB Ownership Chaining' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.4",
+      "title": "evidence missing — sql.configurations['database mail xps'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['database mail xps'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Database Mail XPs' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Database Mail XPs' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.5",
+      "title": "evidence missing — sql.configurations['ole automation procedures'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['ole automation procedures'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Ole Automation Procedures' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Ole Automation Procedures' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.6",
+      "title": "evidence missing — sql.configurations['remote access'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['remote access'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Access' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Access' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.7",
+      "title": "evidence missing — sql.is_clustered / sql.configurations['remote admin connections'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.is_clustered / sql.configurations['remote admin connections'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Admin Connections' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Admin Connections' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.8",
+      "title": "evidence missing — sql.configurations['scan for startup procs'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['scan for startup procs'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Scan For Startup Procs' Server Configuration Option is set to '0'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Scan For Startup Procs' Server Configuration Option is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.9",
+      "title": "evidence missing — sql.databases_trustworthy_on not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.databases_trustworthy_on not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Trustworthy' Database Property is set to 'Off'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Trustworthy' Database Property is set to 'Off'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.10",
+      "title": "Ensure Unnecessary SQL Server Protocols are set to 'Disabled' (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.10_stmt",
+        "name": "statement",
+        "prose": "Ensure Unnecessary SQL Server Protocols are set to 'Disabled' (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-2.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Unnecessary SQL Server Protocols are set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.11",
+      "title": "evidence missing — sql.tcp_port_1433_count not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.tcp_port_1433_count not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SQL Server is configured to use non-standard ports"
+       },
+       {
+        "id": "cis_sql_server_2025-2.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure SQL Server is configured to use non-standard ports"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.12",
+      "title": "evidence missing — sql.hide_instance not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.hide_instance not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Hide Instance' option is set to 'Yes' for Production SQL Server instances"
+       },
+       {
+        "id": "cis_sql_server_2025-2.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Hide Instance' option is set to 'Yes' for Production SQL Server instances"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.13",
+      "title": "evidence missing — sql.sa_account_disabled not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.sa_account_disabled not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'sa' Login Account is set to 'Disabled'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'sa' Login Account is set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.14",
+      "title": "evidence missing — sql.sa_login_name not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.sa_login_name not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'sa' Login Account has been renamed"
+       },
+       {
+        "id": "cis_sql_server_2025-2.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'sa' Login Account has been renamed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.15",
+      "title": "evidence missing — sql.contained_databases_auto_close_on not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.15_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.contained_databases_auto_close_on not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'AUTO_CLOSE' is set to 'OFF' on contained databases"
+       },
+       {
+        "id": "cis_sql_server_2025-2.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'AUTO_CLOSE' is set to 'OFF' on contained databases"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.16",
+      "title": "evidence missing — sql.logins_named_sa not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.16_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.logins_named_sa not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure no login exists with the name 'sa'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.16_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure no login exists with the name 'sa'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-2.17",
+      "title": "evidence missing — sql.configurations['clr strict security'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-2.17_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['clr strict security'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-2.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'clr strict security' Server Configuration Option is set to '1'"
+       },
+       {
+        "id": "cis_sql_server_2025-2.17_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'clr strict security' Server Configuration Option is set to '1'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.1",
+      "title": "evidence missing — sql.is_integrated_security_only not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.is_integrated_security_only not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Server Authentication' Property is set to 'Windows Authentication Mode'"
+       },
+       {
+        "id": "cis_sql_server_2025-3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Server Authentication' Property is set to 'Windows Authentication Mode'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.2",
+      "title": "evidence missing — sql.guest_connect_grants not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.guest_connect_grants not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure CONNECT permissions on the 'guest' user is Revoked within all SQL Server databases"
+       },
+       {
+        "id": "cis_sql_server_2025-3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure CONNECT permissions on the 'guest' user is Revoked within all SQL Server databases"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.3",
+      "title": "evidence missing — sql.orphaned_users not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.orphaned_users not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Orphaned Users' are Dropped From SQL Server Databases"
+       },
+       {
+        "id": "cis_sql_server_2025-3.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Orphaned Users' are Dropped From SQL Server Databases"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.4",
+      "title": "evidence missing — sql.contained_db_sql_auth_users not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.contained_db_sql_auth_users not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure SQL Authentication is not used in contained databases"
+       },
+       {
+        "id": "cis_sql_server_2025-3.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure SQL Authentication is not used in contained databases"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.5",
+      "title": "Ensure the SQL Server’s MSSQL Service Account is Not an Administrator (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.5_stmt",
+        "name": "statement",
+        "prose": "Ensure the SQL Server’s MSSQL Service Account is Not an Administrator (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-3.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the SQL Server’s MSSQL Service Account is Not an Administrator"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.6",
+      "title": "Ensure the SQL Server’s SQLAgent Service Account is Not an Administrator (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure the SQL Server’s SQLAgent Service Account is Not an Administrator (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the SQL Server’s SQLAgent Service Account is Not an Administrator"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.7",
+      "title": "Ensure the SQL Server’s Full-Text Service Account is Not an Administrator (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.7_stmt",
+        "name": "statement",
+        "prose": "Ensure the SQL Server’s Full-Text Service Account is Not an Administrator (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the SQL Server’s Full-Text Service Account is Not an Administrator"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.8",
+      "title": "evidence missing — sql.public_role_extra_permissions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.public_role_extra_permissions not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure only the default permissions specified by Microsoft are granted to the public server role"
+       },
+       {
+        "id": "cis_sql_server_2025-3.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure only the default permissions specified by Microsoft are granted to the public server role"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.9",
+      "title": "evidence missing — sql.builtin_logins not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.builtin_logins not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Windows BUILTIN groups are not SQL Logins"
+       },
+       {
+        "id": "cis_sql_server_2025-3.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Windows BUILTIN groups are not SQL Logins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.10",
+      "title": "evidence missing — sql.local_group_logins not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.local_group_logins not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Windows local groups are not SQL Logins"
+       },
+       {
+        "id": "cis_sql_server_2025-3.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Windows local groups are not SQL Logins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.11",
+      "title": "evidence missing — sql.msdb_public_proxy_grants not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.msdb_public_proxy_grants not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the public role in the msdb database is not granted access to SQL Agent proxies"
+       },
+       {
+        "id": "cis_sql_server_2025-3.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure the public role in the msdb database is not granted access to SQL Agent proxies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.12",
+      "title": "Ensure the 'SYSADMIN' Role is Limited to Administrative or Built-in Accounts (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.12_stmt",
+        "name": "statement",
+        "prose": "Ensure the 'SYSADMIN' Role is Limited to Administrative or Built-in Accounts (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-3.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'SYSADMIN' Role is Limited to Administrative or Built-in Accounts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.13",
+      "title": "evidence missing — sql.msdb_admin_role_members not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.msdb_admin_role_members not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-3.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure no admin role membership in MSDB database"
+       },
+       {
+        "id": "cis_sql_server_2025-3.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure no admin role membership in MSDB database"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.14",
+      "title": "Ensure 'Control Server' permission is not granted (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.14_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Control Server' permission is not granted (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-3.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Control Server' permission is not granted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-3.15",
+      "title": "Ensure access to 'sp_invoke_external_rest_endpoint' is limited to trusted accounts only (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-3.15_stmt",
+        "name": "statement",
+        "prose": "Ensure access to 'sp_invoke_external_rest_endpoint' is limited to trusted accounts only (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-3.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure access to 'sp_invoke_external_rest_endpoint' is limited to trusted accounts only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-4.1",
+      "title": "Ensure 'MUST_CHANGE' Option is set to 'ON' for All SQL Authenticated Logins (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'MUST_CHANGE' Option is set to 'ON' for All SQL Authenticated Logins (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'MUST_CHANGE' Option is set to 'ON' for All SQL Authenticated Logins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-4.2",
+      "title": "evidence missing — sql.sysadmin_logins_without_expiration_check not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-4.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.sysadmin_logins_without_expiration_check not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CHECK_EXPIRATION' Option is set to 'ON' for All SQL Authenticated Logins Within the Sysadmin Role"
+       },
+       {
+        "id": "cis_sql_server_2025-4.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CHECK_EXPIRATION' Option is set to 'ON' for All SQL Authenticated Logins Within the Sysadmin Role"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-4.3",
+      "title": "evidence missing — sql.sql_logins_without_check_policy not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-4.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.sql_logins_without_check_policy not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CHECK_POLICY' Option is set to 'ON' for All SQL Authenticated Logins"
+       },
+       {
+        "id": "cis_sql_server_2025-4.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CHECK_POLICY' Option is set to 'ON' for All SQL Authenticated Logins"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-5.1",
+      "title": "evidence missing — sql.num_error_logs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-5.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.num_error_logs not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Maximum number of error log files' is set to greater than or equal to '12'"
+       },
+       {
+        "id": "cis_sql_server_2025-5.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Maximum number of error log files' is set to greater than or equal to '12'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-5.2",
+      "title": "evidence missing — sql.configurations['default trace enabled'] not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-5.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.configurations['default trace enabled'] not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-5.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Default Trace Enabled' Server Configuration Option is set to '1'"
+       },
+       {
+        "id": "cis_sql_server_2025-5.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Default Trace Enabled' Server Configuration Option is set to '1'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-5.3",
+      "title": "evidence missing — sql.login_audit_level not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-5.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.login_audit_level not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Login Auditing' is set to 'failed logins'"
+       },
+       {
+        "id": "cis_sql_server_2025-5.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Login Auditing' is set to 'failed logins'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-5.4",
+      "title": "evidence missing — sql.server_audit_actions / sql.has_contained_databases not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-5.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.server_audit_actions / sql.has_contained_databases not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-5.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQL Server Audit' is set to capture both 'failed' and 'successful logins'"
+       },
+       {
+        "id": "cis_sql_server_2025-5.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQL Server Audit' is set to capture both 'failed' and 'successful logins'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-6.1",
+      "title": "Ensure Database and Application User Input is Sanitized (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Database and Application User Input is Sanitized (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Database and Application User Input is Sanitized"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-6.2",
+      "title": "evidence missing — sql.user_assemblies not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-6.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.user_assemblies not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CLR Assembly Permission Set' is set to 'SAFE_ACCESS' for All CLR Assemblies"
+       },
+       {
+        "id": "cis_sql_server_2025-6.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CLR Assembly Permission Set' is set to 'SAFE_ACCESS' for All CLR Assemblies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-7.1",
+      "title": "evidence missing — sql.symmetric_keys not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-7.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.symmetric_keys not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Symmetric Key encryption algorithm' is set to 'AES_128' or higher in non-system databases"
+       },
+       {
+        "id": "cis_sql_server_2025-7.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Symmetric Key encryption algorithm' is set to 'AES_128' or higher in non-system databases"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-7.2",
+      "title": "evidence missing — sql.asymmetric_keys not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-7.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.asymmetric_keys not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-7.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Asymmetric Key Size is set to 'greater than or equal to 2048' in non-system databases"
+       },
+       {
+        "id": "cis_sql_server_2025-7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Asymmetric Key Size is set to 'greater than or equal to 2048' in non-system databases"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-7.3",
+      "title": "evidence missing — sql.unencrypted_backups not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-7.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.unencrypted_backups not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-7.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Database Backups are Encrypted"
+       },
+       {
+        "id": "cis_sql_server_2025-7.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Database Backups are Encrypted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-7.4",
+      "title": "evidence missing — sql.connection_encrypt_options not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-7.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.connection_encrypt_options not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-7.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Network Encryption is Configured and Enabled"
+       },
+       {
+        "id": "cis_sql_server_2025-7.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Network Encryption is Configured and Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-7.5",
+      "title": "evidence missing — sql.databases_without_tde not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-7.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — sql.databases_without_tde not collected"
+       },
+       {
+        "id": "cis_sql_server_2025-7.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Databases are Encrypted with TDE"
+       },
+       {
+        "id": "cis_sql_server_2025-7.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Databases are Encrypted with TDE"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-8.1",
+      "title": "Ensure 'SQL Server Browser Service' is configured correctly (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'SQL Server Browser Service' is configured correctly (manual review not attested)"
+       },
+       {
+        "id": "cis_sql_server_2025-8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQL Server Browser Service' is configured correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_sql_server_2025-CIS-SQL-Server-2025",
+      "title": "FAIL-CLOSED - facts 'input.sql' were not supplied; the instance was not evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS SQL Server 2025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS SQL Server 2025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.sql_server_2025"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c1d29ce8-205d-566c-b453-43126dfc0349",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_sql_server_2025-CIS-SQL-Server-2025_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.sql' were not supplied; the instance was not evaluated"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "c1d29ce8-205d-566c-b453-43126dfc0349",
+     "title": "CIS Microsoft SQL Server 2025 Benchmark v1.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.sql_server_2025"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/sql_server_2025/cis_sql_server_2025.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

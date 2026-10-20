@@ -1,0 +1,2491 @@
+{
+ "catalog": {
+  "uuid": "2c6de594-d4cb-55a7-83fe-c34e3ba4c586",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_intune_defender_antivirus (CIS Microsoft Intune for Microsoft Defender Antivirus Benchmark v1.0.0)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_intune_defender_antivirus"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_intune_defender_antivirus-cis_intune_defender_antivirus",
+    "class": "rego-module",
+    "title": "CIS Microsoft Intune for Microsoft Defender Antivirus Benchmark v1.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.intune_defender_antivirus"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/intune_defender_antivirus/cis_intune_defender_antivirus.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_intune_defender_antivirus-1.3.1",
+      "title": "evidence missing — intune_defender.settings.Spynet_LocalSettingOverrideSpynetReporting not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-1.3.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.Spynet_LocalSettingOverrideSpynetReporting not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Configure local setting override for reporting to Microsoft MAPS' is set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-1.3.2",
+      "title": "evidence missing — intune_defender.settings.DisableBlockAtFirstSeen not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-1.3.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.DisableBlockAtFirstSeen not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Configure the 'Block at First Sight' feature' is set to 'Enabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Configure the 'Block at First Sight' feature' is set to 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-1.8.1",
+      "title": "evidence missing — intune_defender.settings.RealtimeProtection_DisableScanOnRealtimeEnable not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-1.8.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.RealtimeProtection_DisableScanOnRealtimeEnable not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Turn on process scanning whenever real-time protection is enabled' is set to 'Enabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.8.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Turn on process scanning whenever real-time protection is enabled' is set to 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-1.10.1",
+      "title": "evidence missing — intune_defender.settings.Reporting_DisablegenericrePorts not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-1.10.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.Reporting_DisablegenericrePorts not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.10.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Configure Watson events' is set to 'Disabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.10.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Configure Watson events' is set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-1.14",
+      "title": "evidence missing — intune_defender.settings.DisableRoutinelyTakingAction not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-1.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.DisableRoutinelyTakingAction not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Turn off routine remediation' is set to 'Disabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-1.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Turn off routine remediation' is set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.1",
+      "title": "evidence missing — intune_defender.settings.AllowArchiveScanning not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowArchiveScanning not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Archive Scanning' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Archive Scanning' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.2",
+      "title": "evidence missing — intune_defender.settings.AllowBehaviorMonitoring not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowBehaviorMonitoring not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Behavior Monitoring' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Behavior Monitoring' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.3",
+      "title": "evidence missing — intune_defender.settings not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Cloud Protection' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Cloud Protection' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.4",
+      "title": "evidence missing — intune_defender.settings.AllowEmailScanning not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowEmailScanning not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Email Scanning' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Email Scanning' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.5",
+      "title": "evidence missing — intune_defender.settings.AllowFullScanRemovableDriveScanning not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowFullScanRemovableDriveScanning not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Full Scan Removable Drive Scanning' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Full Scan Removable Drive Scanning' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.6",
+      "title": "evidence missing — intune_defender.settings.AllowOnAccessProtection not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowOnAccessProtection not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow On Access Protection' is set to 'Allow'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow On Access Protection' is set to 'Allow'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.7",
+      "title": "evidence missing — intune_defender.settings.AllowRealtimeMonitoring not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowRealtimeMonitoring not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Realtime Monitoring' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Realtime Monitoring' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.8",
+      "title": "evidence missing — intune_defender.settings.AllowIOAVProtection not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowIOAVProtection not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow scanning of all downloaded files and attachments' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow scanning of all downloaded files and attachments' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.9",
+      "title": "evidence missing — intune_defender.settings.AllowScriptScanning not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AllowScriptScanning not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Script Scanning' is set to 'Allowed'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Allow Script Scanning' is set to 'Allowed'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.10",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block abuse of exploited vulnerable signed drivers' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block abuse of exploited vulnerable signed drivers' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.11",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Adobe Reader from creating child processes' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Adobe Reader from creating child processes' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.12",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block all Office applications from creating child processes' is set to 'Audit' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block all Office applications from creating child processes' is set to 'Audit' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.13",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block credential stealing from the Windows local security authority subsystem' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block credential stealing from the Windows local security authority subsystem' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.14",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block executable content from email client and webmail' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block executable content from email client and webmail' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.15",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.15_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block executable files from running unless they meet a prevalence, age, or trusted list criterion' is set to 'Audit' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block executable files from running unless they meet a prevalence, age, or trusted list criterion' is set to 'Audit' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.16",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.16_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block execution of potentially obfuscated scripts' is set to 'Audit' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.16_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block execution of potentially obfuscated scripts' is set to 'Audit' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.17",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.17_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block JavaScript or VBScript from launching downloaded executable content' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.17_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block JavaScript or VBScript from launching downloaded executable content' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.18",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.18_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Office applications from creating executable content' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.18_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Office applications from creating executable content' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.19",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.19_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.19_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Office applications from injecting code into other processes' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.19_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Office applications from injecting code into other processes' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.20",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.20_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.20_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Office communication application from creating child processes' is set to 'Audit' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.20_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Office communication application from creating child processes' is set to 'Audit' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.21",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.21_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.21_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block persistence through WMI event subscription' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.21_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block persistence through WMI event subscription' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.22",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.22_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.22_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block process creations originating from PSExec and WMI commands' is set to 'Audit' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.22_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block process creations originating from PSExec and WMI commands' is set to 'Audit' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.23",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.23_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.23_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block rebooting machine in Safe Mode' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.23_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block rebooting machine in Safe Mode' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.24",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.24_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.24_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block untrusted and unsigned processes that run from USB' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.24_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block untrusted and unsigned processes that run from USB' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.25",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.25_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.25_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Win32 API calls from Office macros' is set to 'Block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.25_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Block Win32 API calls from Office macros' is set to 'Block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.26",
+      "title": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.26_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.AttackSurfaceReductionRules not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.26_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Use advanced protection against ransomware' is set to 'Audit' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.26_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ASR: Use advanced protection against ransomware' is set to 'Audit' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.27",
+      "title": "evidence missing — intune_defender.settings.CheckForSignaturesBeforeRunningScan not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.27_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.CheckForSignaturesBeforeRunningScan not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.27_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Check For Signatures Before Running Scan' is set to 'Enabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.27_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Check For Signatures Before Running Scan' is set to 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.28",
+      "title": "evidence missing — intune_defender.settings.CloudBlockLevel not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.28_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.CloudBlockLevel not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.28_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Cloud Block Level' is set to Enabled: High blocking level' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.28_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Cloud Block Level' is set to Enabled: High blocking level' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.29",
+      "title": "evidence missing — intune_defender.settings.CloudExtendedTimeout not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.29_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.CloudExtendedTimeout not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.29_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure ‘Cloud Extended Timeout’ is set to '1 or higher, but not 0'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.29_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure ‘Cloud Extended Timeout’ is set to '1 or higher, but not 0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.30",
+      "title": "evidence missing — intune_defender.settings.DaysUntilAggressiveCatchupQuickScan not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.30_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.DaysUntilAggressiveCatchupQuickScan not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.30_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Days Until Aggressive Catchup Quick Scan' is set to '7' days"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.30_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Days Until Aggressive Catchup Quick Scan' is set to '7' days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.31",
+      "title": "evidence missing — intune_defender.settings.EnableConvertWarnToBlock not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.31_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.EnableConvertWarnToBlock not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.31_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable Convert Warn To Block' is set to 'Warn verdicts are converted to block'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.31_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable Convert Warn To Block' is set to 'Warn verdicts are converted to block'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.32",
+      "title": "evidence missing — intune_defender.settings.EnableDynamicSignatureDroppedEventReporting not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.32_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.EnableDynamicSignatureDroppedEventReporting not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.32_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable Dynamic Signature Dropped Event Reporting' is set to 'Dynamic Security intelligence update events will be reported.'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.32_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable Dynamic Signature Dropped Event Reporting' is set to 'Dynamic Security intelligence update events will be reported.'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.33",
+      "title": "evidence missing — intune_defender.settings.EnableFileHashComputation not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.33"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.33"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.33_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.EnableFileHashComputation not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.33_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable File Hash Computation' is set to 'Enable'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.33_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable File Hash Computation' is set to 'Enable'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.34",
+      "title": "evidence missing — intune_defender.settings.EnableNetworkProtection not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.34"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.34"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.34_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.EnableNetworkProtection not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.34_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable Network Protection' is set to 'Enabled (block mode)'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.34_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Enable Network Protection' is set to 'Enabled (block mode)'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.35",
+      "title": "evidence missing — intune_defender.settings.HideExclusionsFromLocalUsers not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.35"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.35"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.35_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.HideExclusionsFromLocalUsers not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.35_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Hide Exclusions From Local Users' is set to 'Enabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.35_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Hide Exclusions From Local Users' is set to 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.36",
+      "title": "evidence missing — intune_defender.settings.OobeEnableRtpAndSigUpdate not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.36"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.36"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.36_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.OobeEnableRtpAndSigUpdate not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.36_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Oobe Enable Rtp And Sig Update' is set to 'Enabled'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.36_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Oobe Enable Rtp And Sig Update' is set to 'Enabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.37",
+      "title": "evidence missing — intune_defender.settings.PUAProtection not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.37"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.37"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.37_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.PUAProtection not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.37_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PUA Protection' is set to 'PUA Protection on'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.37_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PUA Protection' is set to 'PUA Protection on'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.38",
+      "title": "evidence missing — intune_defender.settings.QuickScanIncludeExclusions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.38"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.38"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.38_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.QuickScanIncludeExclusions not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.38_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Quick Scan Include Exclusions' is set to '1'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.38_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Quick Scan Include Exclusions' is set to '1'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.39",
+      "title": "evidence missing — intune_defender.settings.RealTimeScanDirection not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.39"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.39"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.39_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.RealTimeScanDirection not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.39_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Real Time Scan Direction' is set to 'Monitor all files bi-directional'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.39_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Real Time Scan Direction' is set to 'Monitor all files bi-directional'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.40",
+      "title": "evidence missing — intune_defender.settings.RemoteEncryptionProtectionAggressiveness not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.40"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.40"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.40_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.RemoteEncryptionProtectionAggressiveness not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.40_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Encryption Protection Aggressiveness' is set to 'Medium' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.40_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Encryption Protection Aggressiveness' is set to 'Medium' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.41",
+      "title": "evidence missing — intune_defender.settings.RemoteEncryptionProtectionConfiguredState not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.41"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.41"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.41_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.RemoteEncryptionProtectionConfiguredState not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.41_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Encryption Protection Configured State' is set to 'Audit: Generate EDR detections without blocking' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.41_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remote Encryption Protection Configured State' is set to 'Audit: Generate EDR detections without blocking' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.42",
+      "title": "evidence missing — intune_defender.settings.ScanParameter not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.42"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.42"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.42_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ScanParameter not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.42_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Scan Parameter' is set to 'Quick Scan' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.42_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Scan Parameter' is set to 'Quick Scan' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.43",
+      "title": "evidence missing — intune_defender.settings.ScheduleQuickScanTime not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.43"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.43"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.43_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ScheduleQuickScanTime not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.43_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Schedule Quick Scan Time' is set to '1' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.43_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Schedule Quick Scan Time' is set to '1' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.44",
+      "title": "evidence missing — intune_defender.settings.ScheduleScanTime not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.44"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.44"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.44_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ScheduleScanTime not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.44_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Schedule Scan Time' is set to '1' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.44_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Schedule Scan Time' is set to '1' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.45",
+      "title": "evidence missing — intune_defender.settings.ScheduleScanDay not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.45"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.45"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.45_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ScheduleScanDay not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.45_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Schedule Scan Day' is set to 'Enabled: 0' or higher, but not '8'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.45_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Schedule Scan Day' is set to 'Enabled: 0' or higher, but not '8'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.46",
+      "title": "evidence missing — intune_defender.settings.SignatureUpdateInterval not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.46"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.46"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.46_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.SignatureUpdateInterval not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.46_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Signature Update Interval' is set to '4' or fewer, but not '0'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.46_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Signature Update Interval' is set to '4' or fewer, but not '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.47",
+      "title": "evidence missing — intune_defender.settings.SubmitSamplesConsent not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.47"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.47"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.47_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.SubmitSamplesConsent not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.47_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Submit Samples Consent' is set to 'Enabled: Send safe samples automatically' or higher"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.47_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Submit Samples Consent' is set to 'Enabled: Send safe samples automatically' or higher"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.48",
+      "title": "evidence missing — intune_defender.settings.ThreatSeverityDefaultAction not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.48"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.48"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.48_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ThreatSeverityDefaultAction not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.48_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remediation action for Moderate severity threats' is set to 'Quarantine or Remove'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.48_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remediation action for Moderate severity threats' is set to 'Quarantine or Remove'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.49",
+      "title": "evidence missing — intune_defender.settings.ThreatSeverityDefaultAction not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.49"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.49"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.49_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ThreatSeverityDefaultAction not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.49_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remediation action for High severity threats' is set to 'Quarantine or Remove'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.49_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remediation action for High severity threats' is set to 'Quarantine or Remove'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-2.50",
+      "title": "evidence missing — intune_defender.settings.ThreatSeverityDefaultAction not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.50"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.50"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-2.50_stmt",
+        "name": "statement",
+        "prose": "evidence missing — intune_defender.settings.ThreatSeverityDefaultAction not collected"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.50_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remediation action for Severe threats' is set to 'Quarantine or Remove'"
+       },
+       {
+        "id": "cis_intune_defender_antivirus-2.50_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'Remediation action for Severe threats' is set to 'Quarantine or Remove'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_intune_defender_antivirus-cis.intune_defender_antivirus-1",
+      "title": "CIS Intune Defender Antivirus: FAIL-CLOSED - facts 'input.intune_defender' were not supplied; the policy was not evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis.intune_defender_antivirus#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis.intune_defender_antivirus#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.intune_defender_antivirus"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_intune_defender_antivirus-cis.intune_defender_antivirus-1_stmt",
+        "name": "statement",
+        "prose": "CIS Intune Defender Antivirus: FAIL-CLOSED - facts 'input.intune_defender' were not supplied; the policy was not evaluated"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "6ce3797c-9bd3-5ad3-9d5a-d988da32a4aa",
+     "title": "CIS Microsoft Intune for Microsoft Defender Antivirus Benchmark v1.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.intune_defender_antivirus"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/intune_defender_antivirus/cis_intune_defender_antivirus.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

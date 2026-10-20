@@ -1,847 +1,2099 @@
 # METADATA
-# title: "Cis Nginx 1 20"
+# title: "CIS NGINX Benchmark v3.1.0"
 # custom:
 #   class: security
 #   framework: cis_nginx
 #   source: cis
 #   domains: [web-server]
 #   coverage:
-#     checks: 97
-#     cited: 97
-#     density: sized
-#     basis: size
+#     checks: 44
+#     cited: 44
+#     expected: 44
+#     found: 44
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
-#     entrypoint: none
+#     entrypoint: compliance_report
 #     guard: self
 #     as_of: v2.4.2
 package cis_nginx_1_20
+
+# CIS NGINX Benchmark v3.1.0
+# The package name (cis_nginx_1_20) is kept so existing callers keep working; it no longer refers to NGINX 1.20.
+# 44 recommendations, every one in the benchmark; ids, titles, levels, profiles and assessment status read from the
+# CIS workbook. Every recommendation in v3.1.0 is assessed "Manual" by CIS.
+# - 39 of them are decided from collected configuration facts, because the audit is a directive or
+#   value comparison (the cis.oracle_26ai precedent): 1.1.1, 1.2.2, 2.2.1, 2.2.2, 2.2.3, 2.3.1, 2.3.2, 2.3.3, 2.4.1, 2.4.2, 2.4.3, 2.4.4, 2.5.1, 2.5.2, 2.5.3, 2.5.4, 3.1, 3.2, 3.3, 3.4, 4.1.1, 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.6, 4.1.7, 4.1.8, 4.1.9, 4.1.10, 4.1.11, 4.1.12, 5.1.2, 5.2.1, 5.2.2, 5.2.3, 5.3.1, 5.3.2, 5.3.3.
+#   They fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
+# - 5 need a human judgement and use an attestation boolean under input.nginx.attest
+#   (not attested => violation): 1.2.1, 2.1.1, 5.1.1, 5.2.4, 5.2.5.
+# - 5.2.3 passes on the default (absent or "4 8k"); any other value needs
+#   input.nginx.attest.large_client_header_buffers_documented == true.
+#
+# Profiles: CIS defines Webserver, Proxy and Loadbalancer profiles (Level 1 and Level 2). input.nginx.profiles
+# (any of "webserver", "proxy", "loadbalancer") selects the roles this server plays; a recommendation is evaluated
+# when one of its profiles is selected. When input.nginx.profiles is absent, empty or names no known profile, every profile applies
+# (strictest). All levels are evaluated; `recommendations` lists each id's level and profiles.
+#
+# Input contract (input.nginx):
+#   version                         : installed version, "1.28.0" (from nginx -v)
+#   package.update_available        : bool, package manager reports a newer nginx package
+#   user.{name,uid,groups[],sudo_allowed,password_locked,shell} : the account in the `user` directive
+#   files.not_root_owned[]          : paths under the config dir not owned by root:root
+#   files.dir_modes / file_modes    : {path: octal mode} for directories / files under the config dir
+#   pid_file.{owner,group,mode}     : the PID file
+#   listen_ports[]                  : ports in `listen` directives; authorized_ports[] (optional, default 80, 443)
+#   default_server.{present,return_code,ssl_reject_handshake} : the catch-all default_server block
+#   directives{name: [values]}      : every occurrence of each directive in `nginx -T` (arguments as one string)
+#   probe.error_page_mentions_nginx : bool, an error page body names nginx
+#   hidden_files_denied             : bool, a `location ~ /\.` block denies hidden files
+#   access_log_off_outside_location : bool, `access_log off` appears in the http or a server block
+#   servers[].{ssl,redirects_to_https} : one entry per server block
+#   certificates[].chain_trusted    : bool per ssl_certificate, chain verifies to a trusted root
+#   private_keys{path: octal mode}  : every ssl_certificate_key file
+#   request_method_filter           : bool (optional), an `if ($request_method ...)` filter is used instead of limit_except
+#   attest.*                        : attestation booleans for the judgement recommendations
 
 import rego.v1
 
 default compliant := false
 
+compliant if {
+	# fail-closed: no facts, no compliance
+	input.nginx
+	count(violations) == 0
+}
 
 violations := array.concat(
-    installation_violations,
-    array.concat(
-        configuration_violations,
-        array.concat(
-            logging_violations,
-            array.concat(
-                ssl_tls_violations,
-                array.concat(
-                    modules_violations,
-                    array.concat(
-                        access_control_violations,
-                        performance_violations
-                    )
-                )
-            )
-        )
-    )
+	installation_violations,
+	array.concat(
+		configuration_violations,
+		array.concat(
+			logging_violations,
+			array.concat(
+				ssl_tls_violations,
+				array.concat(
+					modules_violations,
+					array.concat(access_control_violations, performance_violations),
+				),
+			),
+		),
+	),
 )
 
-compliant if {
-    # fail-closed: no facts, no compliance
-    input.nginx
-    count(violations) == 0
-}
-
-installation_violations := [msg |
-    msgs := [
-        {"msg": "1.1.1 Ensure NGINX is installed with minimal required modules", "condition": nginx_minimal_modules},
-        {"msg": "1.1.2 Ensure NGINX is compiled with security flags", "condition": nginx_security_flags},
-        {"msg": "1.1.3 Ensure NGINX version is up to date", "condition": nginx_current_version},
-        {"msg": "1.2.1 Ensure NGINX runs as a non-privileged user", "condition": nginx_non_privileged_user},
-        {"msg": "1.2.2 Ensure NGINX service account has minimal privileges", "condition": nginx_minimal_privileges},
-        {"msg": "1.3.1 Ensure NGINX configuration files have appropriate ownership", "condition": nginx_config_ownership},
-        {"msg": "1.3.2 Ensure NGINX configuration files have appropriate permissions", "condition": nginx_config_permissions},
-        {"msg": "1.3.3 Ensure NGINX binary has appropriate ownership and permissions", "condition": nginx_binary_permissions},
-        {"msg": "1.4.1 Ensure NGINX process runs in a chroot environment", "condition": nginx_chroot_enabled},
-        {"msg": "1.4.2 Ensure NGINX directories have appropriate permissions", "condition": nginx_directory_permissions},
-        {"msg": "1.5.1 Ensure unnecessary NGINX modules are disabled", "condition": nginx_unnecessary_modules_disabled},
-        {"msg": "1.5.2 Ensure debug and test modules are removed in production", "condition": nginx_debug_modules_removed}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
-
-configuration_violations := [msg |
-    msgs := [
-        {"msg": "2.1.1 Ensure server_tokens directive is set to off", "condition": server_tokens_disabled},
-        {"msg": "2.1.2 Ensure server signature is not exposed in error pages", "condition": server_signature_hidden},
-        {"msg": "2.1.3 Ensure NGINX version information is not disclosed", "condition": version_info_hidden},
-        {"msg": "2.2.1 Ensure default NGINX configuration is removed", "condition": default_config_removed},
-        {"msg": "2.2.2 Ensure default document root is changed", "condition": default_docroot_changed},
-        {"msg": "2.2.3 Ensure default error pages are customized", "condition": default_error_pages_changed},
-        {"msg": "2.3.1 Ensure worker_processes is set appropriately", "condition": worker_processes_configured},
-        {"msg": "2.3.2 Ensure worker_connections is configured properly", "condition": worker_connections_configured},
-        {"msg": "2.3.3 Ensure worker_rlimit_nofile is set appropriately", "condition": worker_rlimit_configured},
-        {"msg": "2.4.1 Ensure client_max_body_size is configured", "condition": client_max_body_size_configured},
-        {"msg": "2.4.2 Ensure client_body_timeout is set", "condition": client_body_timeout_configured},
-        {"msg": "2.4.3 Ensure client_header_timeout is set", "condition": client_header_timeout_configured},
-        {"msg": "2.4.4 Ensure keepalive_timeout is configured", "condition": keepalive_timeout_configured},
-        {"msg": "2.4.5 Ensure send_timeout is configured", "condition": send_timeout_configured},
-        {"msg": "2.5.1 Ensure server_name is explicitly defined", "condition": server_name_configured},
-        {"msg": "2.5.2 Ensure listen directive is properly configured", "condition": listen_directive_configured},
-        {"msg": "2.5.3 Ensure default server is properly configured", "condition": default_server_configured},
-        {"msg": "2.6.1 Ensure HTTP methods are restricted", "condition": http_methods_restricted},
-        {"msg": "2.6.2 Ensure dangerous HTTP methods are disabled", "condition": dangerous_methods_disabled},
-        {"msg": "2.6.3 Ensure HTTP trace method is disabled", "condition": trace_method_disabled}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
-
-logging_violations := [msg |
-    msgs := [
-        {"msg": "3.1.1 Ensure access logging is enabled", "condition": access_logging_enabled},
-        {"msg": "3.1.2 Ensure error logging is enabled", "condition": error_logging_enabled},
-        {"msg": "3.1.3 Ensure log files have appropriate permissions", "condition": log_file_permissions},
-        {"msg": "3.1.4 Ensure log files are rotated regularly", "condition": log_rotation_configured},
-        {"msg": "3.2.1 Ensure access logs capture sufficient information", "condition": access_log_format_configured},
-        {"msg": "3.2.2 Ensure error logs capture appropriate detail level", "condition": error_log_level_configured},
-        {"msg": "3.2.3 Ensure sensitive information is not logged", "condition": sensitive_info_filtered},
-        {"msg": "3.3.1 Ensure log files are stored securely", "condition": log_storage_secure},
-        {"msg": "3.3.2 Ensure log files are backed up regularly", "condition": log_backup_configured},
-        {"msg": "3.3.3 Ensure log files are monitored for security events", "condition": log_monitoring_enabled},
-        {"msg": "3.4.1 Ensure syslog integration is configured when required", "condition": syslog_integration},
-        {"msg": "3.4.2 Ensure remote logging is secured", "condition": remote_logging_secure}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
-
-ssl_tls_violations := [msg |
-    msgs := [
-        {"msg": "4.1.1 Ensure SSL/TLS is enabled for all sensitive communications", "condition": ssl_enabled},
-        {"msg": "4.1.2 Ensure strong SSL/TLS protocols are used", "condition": strong_ssl_protocols},
-        {"msg": "4.1.3 Ensure weak SSL/TLS protocols are disabled", "condition": weak_protocols_disabled},
-        {"msg": "4.2.1 Ensure strong cipher suites are configured", "condition": strong_ciphers_configured},
-        {"msg": "4.2.2 Ensure weak cipher suites are disabled", "condition": weak_ciphers_disabled},
-        {"msg": "4.2.3 Ensure cipher order is server-preferred", "condition": server_cipher_order},
-        {"msg": "4.3.1 Ensure SSL certificates are valid and trusted", "condition": valid_ssl_certificates},
-        {"msg": "4.3.2 Ensure SSL certificates are not expired", "condition": certificates_not_expired},
-        {"msg": "4.3.3 Ensure SSL certificate chain is complete", "condition": certificate_chain_complete},
-        {"msg": "4.3.4 Ensure private keys are protected", "condition": private_keys_protected},
-        {"msg": "4.4.1 Ensure HSTS is enabled", "condition": hsts_enabled},
-        {"msg": "4.4.2 Ensure SSL session caching is configured securely", "condition": ssl_session_cache_secure},
-        {"msg": "4.4.3 Ensure SSL session timeout is appropriate", "condition": ssl_session_timeout_configured},
-        {"msg": "4.5.1 Ensure OCSP stapling is enabled", "condition": ocsp_stapling_enabled},
-        {"msg": "4.5.2 Ensure certificate transparency is configured", "condition": certificate_transparency},
-        {"msg": "4.6.1 Ensure HTTP is redirected to HTTPS", "condition": http_to_https_redirect},
-        {"msg": "4.6.2 Ensure secure cookies are used", "condition": secure_cookies_configured}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
-
-modules_violations := [msg |
-    msgs := [
-        {"msg": "5.1.1 Ensure only required modules are loaded", "condition": required_modules_only},
-        {"msg": "5.1.2 Ensure dangerous modules are not loaded", "condition": dangerous_modules_disabled},
-        {"msg": "5.2.1 Ensure realip module is configured securely", "condition": realip_module_secure},
-        {"msg": "5.2.2 Ensure geoip module restrictions are in place", "condition": geoip_restrictions},
-        {"msg": "5.3.1 Ensure auth modules are configured properly", "condition": auth_modules_configured},
-        {"msg": "5.3.2 Ensure rate limiting modules are enabled", "condition": rate_limiting_enabled},
-        {"msg": "5.3.3 Ensure security headers module is configured", "condition": security_headers_configured},
-        {"msg": "5.4.1 Ensure ModSecurity or similar WAF is enabled", "condition": waf_enabled},
-        {"msg": "5.4.2 Ensure anti-DDoS modules are configured", "condition": anti_ddos_configured},
-        {"msg": "5.5.1 Ensure compression modules are configured securely", "condition": compression_secure},
-        {"msg": "5.5.2 Ensure caching modules are configured appropriately", "condition": caching_configured}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
-
-access_control_violations := [msg |
-    msgs := [
-        {"msg": "6.1.1 Ensure access controls are implemented", "condition": access_controls_implemented},
-        {"msg": "6.1.2 Ensure IP-based access restrictions are configured", "condition": ip_restrictions_configured},
-        {"msg": "6.1.3 Ensure geographic access restrictions are in place", "condition": geo_restrictions_configured},
-        {"msg": "6.2.1 Ensure authentication is required for administrative access", "condition": admin_auth_required},
-        {"msg": "6.2.2 Ensure strong authentication mechanisms are used", "condition": strong_auth_mechanisms},
-        {"msg": "6.2.3 Ensure authentication bypass vulnerabilities are addressed", "condition": auth_bypass_protected},
-        {"msg": "6.3.1 Ensure directory browsing is disabled", "condition": directory_browsing_disabled},
-        {"msg": "6.3.2 Ensure file access permissions are restrictive", "condition": file_access_restrictive},
-        {"msg": "6.3.3 Ensure symbolic links are handled securely", "condition": symlinks_secure},
-        {"msg": "6.4.1 Ensure request size limits are configured", "condition": request_size_limits},
-        {"msg": "6.4.2 Ensure request rate limits are configured", "condition": request_rate_limits},
-        {"msg": "6.4.3 Ensure connection limits are configured", "condition": connection_limits_configured},
-        {"msg": "6.5.1 Ensure security headers are implemented", "condition": security_headers_implemented},
-        {"msg": "6.5.2 Ensure CSP headers are configured", "condition": csp_headers_configured},
-        {"msg": "6.5.3 Ensure XSS protection headers are set", "condition": xss_protection_enabled}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
 
-performance_violations := [msg |
-    msgs := [
-        {"msg": "7.1.1 Ensure buffer sizes are configured appropriately", "condition": buffer_sizes_configured},
-        {"msg": "7.1.2 Ensure timeout values are set securely", "condition": timeout_values_secure},
-        {"msg": "7.1.3 Ensure resource limits prevent DoS attacks", "condition": resource_limits_configured},
-        {"msg": "7.2.1 Ensure connection pooling is configured", "condition": connection_pooling_configured},
-        {"msg": "7.2.2 Ensure upstream server configurations are secure", "condition": upstream_servers_secure},
-        {"msg": "7.2.3 Ensure load balancing is configured securely", "condition": load_balancing_secure},
-        {"msg": "7.3.1 Ensure caching is configured securely", "condition": caching_secure},
-        {"msg": "7.3.2 Ensure proxy caching headers are appropriate", "condition": proxy_cache_headers},
-        {"msg": "7.4.1 Ensure monitoring and health checks are enabled", "condition": monitoring_enabled},
-        {"msg": "7.4.2 Ensure performance metrics are collected securely", "condition": metrics_secure}
-    ]
-    m := msgs[_]
-    not m.condition
-    msg := m.msg
-]
+# 1 Initial Setup
+installation_violations := sort([m | some m in _v_installation])
 
-default nginx_minimal_modules := false
+# 2.2-2.5 Basic Configuration (account, permissions, network, information disclosure)
+configuration_violations := sort([m | some m in _v_configuration])
 
-nginx_minimal_modules if {
-    input.nginx.modules_minimal == true
+# 3 Logging
+logging_violations := sort([m | some m in _v_logging])
+
+# 4 Encryption
+ssl_tls_violations := sort([m | some m in _v_ssl_tls])
+
+# 2.1 Minimize NGINX Modules
+modules_violations := sort([m | some m in _v_modules])
+
+# 5.1/5.3 Access control and browser security
+access_control_violations := sort([m | some m in _v_access_control])
+
+# 5.2 Request limits
+performance_violations := sort([m | some m in _v_performance])
+
+# ── helpers ──────────────────────────────────────────────────────────────────
+default _selected_profiles := {"webserver", "proxy", "loadbalancer"}
+
+_known_profiles := {"webserver", "proxy", "loadbalancer"}
+
+# only known profile names select; an unknown or empty selection falls back to every profile (fail closed)
+_selected_profiles := sel if {
+	is_array(input.nginx.profiles)
+	sel := {lower(p) | some p in input.nginx.profiles; is_string(p)} & _known_profiles
+	count(sel) > 0
+}
+
+_applies(id) if {
+	some p in recommendations[id].applies_to
+	p in _selected_profiles
+}
+
+default _config_collected := false
+
+_config_collected if {
+	is_object(input.nginx.directives)
+	count(input.nginx.directives) > 0
+}
+
+# every occurrence of a directive, as trimmed strings (a lone string counts as one occurrence)
+_dv(name) := [trim_space(sprintf("%v", [x])) | some x in r] if {
+	r := object.get(input.nginx.directives, name, [])
+	is_array(r)
+}
+
+_dv(name) := [trim_space(r)] if {
+	r := object.get(input.nginx.directives, name, [])
+	is_string(r)
+}
+
+_tokens(s) := [t | some t in regex.split(`\s+`, trim_space(s)); t != ""]
+
+_first(s) := _tokens(s)[0]
+
+# nginx time value to seconds ("10", "10s", "1m", "500ms"); undefined otherwise
+_secs(v) := to_number(trim_suffix(lower(v), "s")) if regex.match(`^[0-9]+s?$`, lower(v))
+
+_secs(v) := to_number(trim_suffix(lower(v), "m")) * 60 if regex.match(`^[0-9]+m$`, lower(v))
+
+_secs(v) := to_number(trim_suffix(lower(v), "ms")) / 1000 if regex.match(`^[0-9]+ms$`, lower(v))
+
+# present, and every occurrence is above 0 and at most max seconds (absent = nginx default, which is longer)
+_all_secs_within(name, max) if {
+	vs := _dv(name)
+	count(vs) > 0
+	every v in vs {
+		_secs(_first(v)) > 0
+		_secs(_first(v)) <= max
+	}
+}
+
+# set explicitly to a low value somewhere (http/server level); location overrides for uploads are allowed
+_some_secs_within(name, max) if {
+	some v in _dv(name)
+	_secs(_first(v)) > 0
+	_secs(_first(v)) <= max
+}
+
+_all_on(name) if {
+	vs := _dv(name)
+	count(vs) > 0
+	every v in vs { lower(v) == "on" }
+}
+
+_tls13_only(name) if {
+	vs := _dv(name)
+	count(vs) > 0
+	every v in vs {
+		count(_tokens(v)) > 0
+		every t in _tokens(v) { t == "TLSv1.3" }
+	}
+}
+
+# a proxy that sets proxy_ssl_protocols must also use TLS 1.3 only
+default _proxy_protocols_ok := false
+
+_proxy_protocols_ok if count(_dv("proxy_ssl_protocols")) == 0
+
+_proxy_protocols_ok if _tls13_only("proxy_ssl_protocols")
+
+_nologin_shells := {"/sbin/nologin", "/usr/sbin/nologin", "/bin/nologin", "/bin/false", "/usr/bin/false"}
+
+default _authorized_ports := {80, 443}
+
+_authorized_ports := {to_number(p) | some p in input.nginx.authorized_ports} if is_array(input.nginx.authorized_ports)
+
+# 3.1: a log format carrying who/what/when; nginx's built-in "combined" format qualifies
+_detailed_format(f) if {
+	every v in ["$remote_addr", "$remote_user", "$request", "$status", "$http_user_agent"] { contains(f, v) }
+	regex.match(`\$time_(iso8601|local)`, f)
+}
+
+_builtin_detailed_formats := {"combined"}
+
+_access_log_uses(fmt) if {
+	some a in _dv("access_log")
+	toks := _tokens(a)
+	count(toks) >= 2
+	toks[1] == fmt
+}
+
+_error_log_ok(e) if {
+	toks := _tokens(e)
+	count(toks) > 0
+	toks[0] != "/dev/null"
+	not _error_log_level_too_high(toks)
+}
+
+_error_log_level_too_high(toks) if {
+	count(toks) > 1
+	lower(toks[1]) in {"crit", "alert", "emerg"}
+}
+
+_https_or_redirect(s) if s.ssl == true
+
+_https_or_redirect(s) if s.redirects_to_https == true
+
+_header_name(h) := lower(_first(h))
+
+_header_always(h) if {
+	toks := _tokens(h)
+	lower(toks[count(toks) - 1]) == "always"
+}
+
+_hsts_ok(h) if {
+	_header_name(h) == "strict-transport-security"
+	l := lower(h)
+	m := regex.find_all_string_submatch_n(`max-age=([0-9]+)`, l, 1)
+	to_number(m[0][1]) >= 31536000
+	contains(l, "includesubdomains")
+	_header_always(h)
+}
+
+_csp_ok(h) if {
+	_header_name(h) == "content-security-policy"
+	l := lower(h)
+	contains(l, "default-src")
+	contains(l, "frame-ancestors")
+	not contains(l, "unsafe-inline")
+	not contains(l, "unsafe-eval")
+	_header_always(h)
+}
+
+_good_referrer_policies := {"no-referrer", "same-origin", "strict-origin", "strict-origin-when-cross-origin"}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
+
+
+# 1.1.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_1_1_1 := false
+
+r_1_1_1 if {
+	semver.compare(input.nginx.version, "1.28.0") >= 0
+}
+
+default e_1_1_1 := false
+
+e_1_1_1 if {
+	is_string(input.nginx.version)
+	semver.is_valid(input.nginx.version)
+}
+
+_v_installation contains "1.1.1: evidence missing — nginx.version not collected" if {
+	_applies("1.1.1")
+	not e_1_1_1
+}
+
+_v_installation contains "1.1.1: Ensure NGINX is installed" if {
+	_applies("1.1.1")
+	e_1_1_1
+	not r_1_1_1
+}
+
+# 1.2.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer)
+default r_1_2_1 := false
+
+r_1_2_1 if {
+	input.nginx.attest.package_repositories_reviewed == true
+}
+
+_v_installation contains "1.2.1: Ensure package manager repositories are properly configured (manual review not attested)" if {
+	_applies("1.2.1")
+	not r_1_2_1
+}
+
+# 1.2.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_1_2_2 := false
+
+r_1_2_2 if {
+	input.nginx.package.update_available == false
+}
+
+default e_1_2_2 := false
+
+e_1_2_2 if {
+	is_boolean(input.nginx.package.update_available)
+}
+
+_v_installation contains "1.2.2: evidence missing — nginx.package.update_available not collected" if {
+	_applies("1.2.2")
+	not e_1_2_2
+}
+
+_v_installation contains "1.2.2: Ensure the latest software package is installed" if {
+	_applies("1.2.2")
+	e_1_2_2
+	not r_1_2_2
+}
+
+# 2.1.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer)
+default r_2_1_1 := false
+
+r_2_1_1 if {
+	input.nginx.attest.dynamic_modules_reviewed == true
+}
+
+_v_modules contains "2.1.1: Ensure only required dynamic modules are loaded (manual review not attested)" if {
+	_applies("2.1.1")
+	not r_2_1_1
+}
+
+# 2.2.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_2_1 := false
+
+r_2_2_1 if {
+	not input.nginx.user.name in {"", "root"}
+	input.nginx.user.uid != 0
+	count({lower(g) | some g in input.nginx.user.groups} & {"root", "wheel", "sudo"}) == 0
+	input.nginx.user.sudo_allowed == false
+}
+
+default e_2_2_1 := false
+
+e_2_2_1 if {
+	is_string(input.nginx.user.name)
+	is_number(input.nginx.user.uid)
+	is_array(input.nginx.user.groups)
+	is_boolean(input.nginx.user.sudo_allowed)
 }
 
-default nginx_security_flags := false
+_v_configuration contains "2.2.1: evidence missing — nginx.user.{name,uid,groups,sudo_allowed} not collected" if {
+	_applies("2.2.1")
+	not e_2_2_1
+}
+
+_v_configuration contains "2.2.1: Ensure that NGINX is run using a non-privileged, dedicated service account" if {
+	_applies("2.2.1")
+	e_2_2_1
+	not r_2_2_1
+}
+
+# 2.2.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_2_2 := false
+
+r_2_2_2 if {
+	input.nginx.user.password_locked == true
+}
+
+default e_2_2_2 := false
+
+e_2_2_2 if {
+	is_boolean(input.nginx.user.password_locked)
+}
+
+_v_configuration contains "2.2.2: evidence missing — nginx.user.password_locked not collected" if {
+	_applies("2.2.2")
+	not e_2_2_2
+}
+
+_v_configuration contains "2.2.2: Ensure the NGINX service account is locked" if {
+	_applies("2.2.2")
+	e_2_2_2
+	not r_2_2_2
+}
+
+# 2.2.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_2_3 := false
+
+r_2_2_3 if {
+	input.nginx.user.shell in _nologin_shells
+}
+
+default e_2_2_3 := false
+
+e_2_2_3 if {
+	is_string(input.nginx.user.shell)
+}
+
+_v_configuration contains "2.2.3: evidence missing — nginx.user.shell not collected" if {
+	_applies("2.2.3")
+	not e_2_2_3
+}
+
+_v_configuration contains "2.2.3: Ensure the NGINX service account has an invalid shell" if {
+	_applies("2.2.3")
+	e_2_2_3
+	not r_2_2_3
+}
 
-nginx_security_flags if {
-    input.nginx.security_flags_enabled == true
+# 2.3.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_3_1 := false
+
+r_2_3_1 if {
+	count(input.nginx.files.not_root_owned) == 0
+}
+
+default e_2_3_1 := false
+
+e_2_3_1 if {
+	is_array(input.nginx.files.not_root_owned)
+}
+
+_v_configuration contains "2.3.1: evidence missing — nginx.files.not_root_owned not collected" if {
+	_applies("2.3.1")
+	not e_2_3_1
+}
+
+_v_configuration contains "2.3.1: Ensure NGINX directories and files are owned by root" if {
+	_applies("2.3.1")
+	e_2_3_1
+	not r_2_3_1
+}
+
+# 2.3.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_3_2 := false
+
+r_2_3_2 if {
+	every _, m in input.nginx.files.dir_modes { mode_within(m, "750") }
+	every _, m in input.nginx.files.file_modes { mode_within(m, "640") }
+}
+
+default e_2_3_2 := false
+
+e_2_3_2 if {
+	is_object(input.nginx.files.dir_modes)
+	count(input.nginx.files.dir_modes) > 0
+	is_object(input.nginx.files.file_modes)
+	count(input.nginx.files.file_modes) > 0
+}
+
+_v_configuration contains "2.3.2: evidence missing — nginx.files.{dir_modes,file_modes} not collected" if {
+	_applies("2.3.2")
+	not e_2_3_2
+}
+
+_v_configuration contains "2.3.2: Ensure access to NGINX directories and files is restricted" if {
+	_applies("2.3.2")
+	e_2_3_2
+	not r_2_3_2
 }
 
-default nginx_current_version := false
+# 2.3.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_3_3 := false
 
-nginx_current_version if {
-    input.nginx.version_current == true
+r_2_3_3 if {
+	input.nginx.pid_file.owner == "root"
+	input.nginx.pid_file.group == "root"
+	mode_within(input.nginx.pid_file.mode, "644")
 }
 
-default nginx_non_privileged_user := false
+default e_2_3_3 := false
 
-nginx_non_privileged_user if {
-    input.nginx.user != "root"
-    input.nginx.user != ""
+e_2_3_3 if {
+	is_object(input.nginx.pid_file)
+	is_string(input.nginx.pid_file.owner)
+	is_string(input.nginx.pid_file.group)
+	_ = input.nginx.pid_file.mode
 }
 
-default nginx_minimal_privileges := false
+_v_configuration contains "2.3.3: evidence missing — nginx.pid_file.{owner,group,mode} not collected" if {
+	_applies("2.3.3")
+	not e_2_3_3
+}
+
+_v_configuration contains "2.3.3: Ensure the NGINX process ID (PID) file is secured" if {
+	_applies("2.3.3")
+	e_2_3_3
+	not r_2_3_3
+}
 
-nginx_minimal_privileges if {
-    input.nginx.privileges_minimal == true
+# 2.4.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_4_1 := false
+
+r_2_4_1 if {
+	every p in input.nginx.listen_ports { to_number(p) in _authorized_ports }
 }
 
-default nginx_config_ownership := false
+default e_2_4_1 := false
+
+e_2_4_1 if {
+	is_array(input.nginx.listen_ports)
+	count(input.nginx.listen_ports) > 0
+}
 
-nginx_config_ownership if {
-    input.nginx.config.owner == "root"
-    input.nginx.config.group == "root"
+_v_configuration contains "2.4.1: evidence missing — nginx.listen_ports not collected" if {
+	_applies("2.4.1")
+	not e_2_4_1
 }
 
-# config_mode: octal permission string ("644", "0644", "0o644") parsed to an integer; undefined if not octal.
-# NOTE: no helper functions in this package: a function in the package makes `data.cis_nginx_1_20`
-# ill-typed as an argument to object.get (see tests/test_cis_nginx_1_20_fail_closed.rego), so the
-# octal parse is repeated per path as a plain rule.
-config_mode := n if {
-    t := trim_prefix(lower(trim_space(sprintf("%v", [input.nginx.config.permissions]))), "0o")
-    regex.match(`^[0-7]{1,4}$`, t)
-    p := concat("", [substring("0000", 0, 4 - count(t)), t])
-    ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
-    n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+_v_configuration contains "2.4.1: Ensure NGINX only listens for network connections on authorized ports" if {
+	_applies("2.4.1")
+	e_2_4_1
+	not r_2_4_1
 }
 
-default nginx_config_permissions := false
+# 2.4.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_4_2 := false
 
-nginx_config_permissions if {
-    bits.and(config_mode, bits.and(bits.negate(420), 4095)) == 0 # 0644
+r_2_4_2 if {
+	input.nginx.default_server.present == true
+	rc := to_number(input.nginx.default_server.return_code)
+	rc >= 400
+	rc <= 499
+	input.nginx.default_server.ssl_reject_handshake == true
 }
 
-# binary_mode: octal permission string parsed to an integer; undefined if not octal.
-binary_mode := n if {
-    t := trim_prefix(lower(trim_space(sprintf("%v", [input.nginx.binary.permissions]))), "0o")
-    regex.match(`^[0-7]{1,4}$`, t)
-    p := concat("", [substring("0000", 0, 4 - count(t)), t])
-    ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
-    n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+default e_2_4_2 := false
+
+e_2_4_2 if {
+	is_object(input.nginx.default_server)
+	is_boolean(input.nginx.default_server.present)
 }
 
-default nginx_binary_permissions := false
+_v_configuration contains "2.4.2: evidence missing — nginx.default_server not collected" if {
+	_applies("2.4.2")
+	not e_2_4_2
+}
 
-nginx_binary_permissions if {
-    bits.and(binary_mode, bits.and(bits.negate(493), 4095)) == 0 # 0755
-    input.nginx.binary.owner == "root"
+_v_configuration contains "2.4.2: Ensure requests for unknown host names are rejected" if {
+	_applies("2.4.2")
+	e_2_4_2
+	not r_2_4_2
 }
 
-default nginx_chroot_enabled := false
+# 2.4.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_4_3 := false
 
-nginx_chroot_enabled if {
-    input.nginx.chroot.enabled == true
+r_2_4_3 if {
+	_all_secs_within("keepalive_timeout", 10)
 }
 
-default nginx_directory_permissions := false
+default e_2_4_3 := false
 
-nginx_directory_permissions if {
-    input.nginx.directories.permissions_secure == true
+e_2_4_3 if {
+	_config_collected
 }
 
-default nginx_unnecessary_modules_disabled := false
+_v_configuration contains "2.4.3: evidence missing — nginx.directives not collected" if {
+	_applies("2.4.3")
+	not e_2_4_3
+}
 
-nginx_unnecessary_modules_disabled if {
-    count(input.nginx.modules.unnecessary) == 0
+_v_configuration contains "2.4.3: Ensure keepalive_timeout is 10 seconds or less, but not 0" if {
+	_applies("2.4.3")
+	e_2_4_3
+	not r_2_4_3
 }
 
-default nginx_debug_modules_removed := false
+# 2.4.4 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_4_4 := false
 
-nginx_debug_modules_removed if {
-    count(input.nginx.modules.debug) == 0
+r_2_4_4 if {
+	_all_secs_within("send_timeout", 10)
 }
 
-default server_tokens_disabled := false
+default e_2_4_4 := false
 
-server_tokens_disabled if {
-    input.nginx.config.server_tokens == "off"
+e_2_4_4 if {
+	_config_collected
 }
 
-default server_signature_hidden := false
+_v_configuration contains "2.4.4: evidence missing — nginx.directives not collected" if {
+	_applies("2.4.4")
+	not e_2_4_4
+}
 
-server_signature_hidden if {
-    input.nginx.config.server_signature_hidden == true
+_v_configuration contains "2.4.4: Ensure send_timeout is set to 10 seconds or less, but not 0" if {
+	_applies("2.4.4")
+	e_2_4_4
+	not r_2_4_4
 }
 
-default version_info_hidden := false
+# 2.5.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_5_1 := false
 
-version_info_hidden if {
-    input.nginx.config.version_disclosure == false
+r_2_5_1 if {
+	vs := _dv("server_tokens")
+	count(vs) > 0
+	every v in vs { lower(v) == "off" }
 }
 
-default default_config_removed := false
+default e_2_5_1 := false
 
-default_config_removed if {
-    input.nginx.config.default_removed == true
+e_2_5_1 if {
+	_config_collected
 }
 
-default default_docroot_changed := false
+_v_configuration contains "2.5.1: evidence missing — nginx.directives not collected" if {
+	_applies("2.5.1")
+	not e_2_5_1
+}
 
-default_docroot_changed if {
-    input.nginx.config.default_docroot_changed == true
+_v_configuration contains "2.5.1: Ensure server_tokens directive is set to `off`" if {
+	_applies("2.5.1")
+	e_2_5_1
+	not r_2_5_1
 }
 
-default default_error_pages_changed := false
+# 2.5.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_5_2 := false
 
-default_error_pages_changed if {
-    input.nginx.config.custom_error_pages == true
+r_2_5_2 if {
+	input.nginx.probe.error_page_mentions_nginx == false
 }
 
-default worker_processes_configured := false
+default e_2_5_2 := false
 
-worker_processes_configured if {
-    input.nginx.config.worker_processes > 0
-    input.nginx.config.worker_processes <= input.system.cpu_cores * 2
+e_2_5_2 if {
+	is_boolean(input.nginx.probe.error_page_mentions_nginx)
 }
 
-default worker_connections_configured := false
+_v_configuration contains "2.5.2: evidence missing — nginx.probe.error_page_mentions_nginx not collected" if {
+	_applies("2.5.2")
+	not e_2_5_2
+}
 
-worker_connections_configured if {
-    input.nginx.config.worker_connections > 0
-    input.nginx.config.worker_connections <= 4096
+_v_configuration contains "2.5.2: Ensure default error and index.html pages do not reference NGINX" if {
+	_applies("2.5.2")
+	e_2_5_2
+	not r_2_5_2
 }
 
-default worker_rlimit_configured := false
+# 2.5.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_5_3 := false
 
-worker_rlimit_configured if {
-    input.nginx.config.worker_rlimit_nofile > 0
+r_2_5_3 if {
+	input.nginx.hidden_files_denied == true
 }
 
-default client_max_body_size_configured := false
+default e_2_5_3 := false
 
-client_max_body_size_configured if {
-    input.nginx.config.client_max_body_size != ""
+e_2_5_3 if {
+	is_boolean(input.nginx.hidden_files_denied)
 }
 
-default client_body_timeout_configured := false
+_v_configuration contains "2.5.3: evidence missing — nginx.hidden_files_denied not collected" if {
+	_applies("2.5.3")
+	not e_2_5_3
+}
 
-client_body_timeout_configured if {
-    input.nginx.config.client_body_timeout > 0
-    input.nginx.config.client_body_timeout <= 60
+_v_configuration contains "2.5.3: Ensure hidden file serving is disabled" if {
+	_applies("2.5.3")
+	e_2_5_3
+	not r_2_5_3
 }
 
-default client_header_timeout_configured := false
+# 2.5.4 (Manual, Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_2_5_4 := false
 
-client_header_timeout_configured if {
-    input.nginx.config.client_header_timeout > 0
-    input.nginx.config.client_header_timeout <= 60
+r_2_5_4 if {
+	hidden := {lower(_first(v)) | some n in ["proxy_hide_header", "fastcgi_hide_header"]; some v in _dv(n)}
+	"x-powered-by" in hidden
+	"server" in hidden
 }
 
-default keepalive_timeout_configured := false
+default e_2_5_4 := false
 
-keepalive_timeout_configured if {
-    input.nginx.config.keepalive_timeout > 0
-    input.nginx.config.keepalive_timeout <= 30
+e_2_5_4 if {
+	_config_collected
 }
 
-default send_timeout_configured := false
+_v_configuration contains "2.5.4: evidence missing — nginx.directives not collected" if {
+	_applies("2.5.4")
+	not e_2_5_4
+}
 
-send_timeout_configured if {
-    input.nginx.config.send_timeout > 0
-    input.nginx.config.send_timeout <= 60
+_v_configuration contains "2.5.4: Ensure the NGINX reverse proxy does not enable information disclosure" if {
+	_applies("2.5.4")
+	e_2_5_4
+	not r_2_5_4
 }
 
-default server_name_configured := false
+# 3.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_3_1 := false
 
-server_name_configured if {
-    count(input.nginx.config.server_blocks) > 0
-    count([block | block := input.nginx.config.server_blocks[_]; block.server_name == "_"]) == 0
+r_3_1 if {
+	some f in _dv("log_format")
+	_detailed_format(f)
+	_access_log_uses(_first(f))
 }
 
-default listen_directive_configured := false
+r_3_1 if {
+	some n in _builtin_detailed_formats
+	_access_log_uses(n)
+}
 
-listen_directive_configured if {
-    count([block | block := input.nginx.config.server_blocks[_]; block.listen_configured != true]) == 0
-    count(input.nginx.config.server_blocks) > 0
+default e_3_1 := false
+
+e_3_1 if {
+	_config_collected
 }
 
-default default_server_configured := false
+_v_logging contains "3.1: evidence missing — nginx.directives not collected" if {
+	_applies("3.1")
+	not e_3_1
+}
 
-default_server_configured if {
-    input.nginx.config.default_server_secure == true
+_v_logging contains "3.1: Ensure detailed logging is enabled" if {
+	_applies("3.1")
+	e_3_1
+	not r_3_1
 }
 
-default http_methods_restricted := false
+# 3.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_3_2 := false
 
-http_methods_restricted if {
-    input.nginx.config.allowed_methods != null
-    count(input.nginx.config.allowed_methods) <= 5
+r_3_2 if {
+	some a in _dv("access_log")
+	p := _first(a)
+	lower(p) != "off"
+	p != "/dev/null"
+	input.nginx.access_log_off_outside_location == false
 }
 
-default dangerous_methods_disabled := false
+default e_3_2 := false
 
-dangerous_methods_disabled if {
-    is_array(input.nginx.config.allowed_methods)
-    count([method | method := input.nginx.config.allowed_methods[_]; method in ["TRACE", "CONNECT", "DELETE", "PATCH"]]) == 0
+e_3_2 if {
+	_config_collected
+	is_boolean(input.nginx.access_log_off_outside_location)
 }
 
-default trace_method_disabled := false
+_v_logging contains "3.2: evidence missing — nginx.directives / nginx.access_log_off_outside_location not collected" if {
+	_applies("3.2")
+	not e_3_2
+}
 
-trace_method_disabled if {
-    is_array(input.nginx.config.allowed_methods)
-    not "TRACE" in input.nginx.config.allowed_methods
+_v_logging contains "3.2: Ensure access logging is enabled" if {
+	_applies("3.2")
+	e_3_2
+	not r_3_2
 }
 
-default access_logging_enabled := false
+# 3.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_3_3 := false
 
-access_logging_enabled if {
-    input.nginx.logging.access_log_enabled == true
+r_3_3 if {
+	es := _dv("error_log")
+	count(es) > 0
+	every e in es { _error_log_ok(e) }
 }
 
-default error_logging_enabled := false
+default e_3_3 := false
+
+e_3_3 if {
+	_config_collected
+}
 
-error_logging_enabled if {
-    input.nginx.logging.error_log_enabled == true
+_v_logging contains "3.3: evidence missing — nginx.directives not collected" if {
+	_applies("3.3")
+	not e_3_3
 }
 
-# log_mode: octal permission string parsed to an integer; undefined if not octal.
-log_mode := n if {
-    t := trim_prefix(lower(trim_space(sprintf("%v", [input.nginx.logging.log_permissions]))), "0o")
-    regex.match(`^[0-7]{1,4}$`, t)
-    p := concat("", [substring("0000", 0, 4 - count(t)), t])
-    ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
-    n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+_v_logging contains "3.3: Ensure error logging is enabled and set to the info logging level" if {
+	_applies("3.3")
+	e_3_3
+	not r_3_3
 }
 
-default log_file_permissions := false
+# 3.4 (Manual, Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_3_4 := false
 
-log_file_permissions if {
-    bits.and(log_mode, bits.and(bits.negate(416), 4095)) == 0 # 0640
+r_3_4 if {
+	set_hdrs := {lower(_first(v)) | some v in _dv("proxy_set_header")}
+	"x-forwarded-for" in set_hdrs
+	"x-real-ip" in set_hdrs
 }
 
-default log_rotation_configured := false
+default e_3_4 := false
 
-log_rotation_configured if {
-    input.nginx.logging.rotation_configured == true
+e_3_4 if {
+	_config_collected
 }
 
-default access_log_format_configured := false
+_v_logging contains "3.4: evidence missing — nginx.directives not collected" if {
+	_applies("3.4")
+	not e_3_4
+}
 
-access_log_format_configured if {
-    input.nginx.logging.access_log_format != ""
+_v_logging contains "3.4: Ensure proxies pass source IP information" if {
+	_applies("3.4")
+	e_3_4
+	not r_3_4
 }
 
-default error_log_level_configured := false
+# 4.1.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_1 := false
 
-error_log_level_configured if {
-    input.nginx.logging.error_log_level in ["error", "crit", "alert", "emerg"]
+r_4_1_1 if {
+	every s in input.nginx.servers { _https_or_redirect(s) }
 }
 
-default sensitive_info_filtered := false
+default e_4_1_1 := false
 
-sensitive_info_filtered if {
-    input.nginx.logging.sensitive_data_filtered == true
+e_4_1_1 if {
+	is_array(input.nginx.servers)
+	count(input.nginx.servers) > 0
 }
 
-default log_storage_secure := false
+_v_ssl_tls contains "4.1.1: evidence missing — nginx.servers not collected" if {
+	_applies("4.1.1")
+	not e_4_1_1
+}
 
-log_storage_secure if {
-    input.nginx.logging.storage_secure == true
+_v_ssl_tls contains "4.1.1: Ensure HTTP is redirected to HTTPS" if {
+	_applies("4.1.1")
+	e_4_1_1
+	not r_4_1_1
 }
 
-default log_backup_configured := false
+# 4.1.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_2 := false
 
-log_backup_configured if {
-    input.nginx.logging.backup_configured == true
+r_4_1_2 if {
+	every c in input.nginx.certificates { c.chain_trusted == true }
 }
 
-default log_monitoring_enabled := false
+default e_4_1_2 := false
 
-log_monitoring_enabled if {
-    input.nginx.logging.monitoring_enabled == true
+e_4_1_2 if {
+	is_array(input.nginx.certificates)
+	count(input.nginx.certificates) > 0
 }
 
-default syslog_integration := false
+_v_ssl_tls contains "4.1.2: evidence missing — nginx.certificates not collected" if {
+	_applies("4.1.2")
+	not e_4_1_2
+}
 
-syslog_integration if {
-    input.nginx.logging.syslog_enabled == true
+_v_ssl_tls contains "4.1.2: Ensure a trusted certificate and trust chain is installed" if {
+	_applies("4.1.2")
+	e_4_1_2
+	not r_4_1_2
 }
 
-default remote_logging_secure := false
+# 4.1.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_3 := false
 
-remote_logging_secure if {
-    input.nginx.logging.remote_logging_secure == true
+r_4_1_3 if {
+	every _, m in input.nginx.private_keys { mode_within(m, "400") }
 }
 
-default ssl_enabled := false
+default e_4_1_3 := false
 
-ssl_enabled if {
-    input.nginx.ssl.enabled == true
+e_4_1_3 if {
+	is_object(input.nginx.private_keys)
+	count(input.nginx.private_keys) > 0
 }
 
-default strong_ssl_protocols := false
+_v_ssl_tls contains "4.1.3: evidence missing — nginx.private_keys not collected" if {
+	_applies("4.1.3")
+	not e_4_1_3
+}
 
-strong_ssl_protocols if {
-    allowed_protocols := {"TLSv1.2", "TLSv1.3"}
-    is_array(input.nginx.ssl.protocols)
-    count(input.nginx.ssl.protocols) > 0
-    count([protocol | protocol := input.nginx.ssl.protocols[_]; protocol in allowed_protocols]) == count(input.nginx.ssl.protocols)
+_v_ssl_tls contains "4.1.3: Ensure private key permissions are restricted" if {
+	_applies("4.1.3")
+	e_4_1_3
+	not r_4_1_3
 }
 
-default weak_protocols_disabled := false
+# 4.1.4 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_4 := false
 
-weak_protocols_disabled if {
-    weak_protocols := {"SSLv2", "SSLv3", "TLSv1", "TLSv1.1"}
-    is_array(input.nginx.ssl.protocols)
-    count(input.nginx.ssl.protocols) > 0
-    count([protocol | protocol := input.nginx.ssl.protocols[_]; protocol in weak_protocols]) == 0
+r_4_1_4 if {
+	_tls13_only("ssl_protocols")
+	_proxy_protocols_ok
 }
 
-default strong_ciphers_configured := false
+default e_4_1_4 := false
 
-strong_ciphers_configured if {
-    input.nginx.ssl.strong_ciphers == true
+e_4_1_4 if {
+	_config_collected
 }
 
-default weak_ciphers_disabled := false
+_v_ssl_tls contains "4.1.4: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.4")
+	not e_4_1_4
+}
 
-weak_ciphers_disabled if {
-    input.nginx.ssl.weak_ciphers_disabled == true
+_v_ssl_tls contains "4.1.4: Ensure only modern TLS protocols are used" if {
+	_applies("4.1.4")
+	e_4_1_4
+	not r_4_1_4
 }
 
-default server_cipher_order := false
+# 4.1.5 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_5 := false
 
-server_cipher_order if {
-    input.nginx.ssl.prefer_server_ciphers == true
+r_4_1_5 if {
+	_tls13_only("ssl_protocols")
 }
 
-default valid_ssl_certificates := false
+default e_4_1_5 := false
 
-valid_ssl_certificates if {
-    input.nginx.ssl.certificates_valid == true
+e_4_1_5 if {
+	_config_collected
 }
 
-default certificates_not_expired := false
+_v_ssl_tls contains "4.1.5: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.5")
+	not e_4_1_5
+}
 
-certificates_not_expired if {
-    input.nginx.ssl.certificates_expired == false
+_v_ssl_tls contains "4.1.5: Disable weak ciphers" if {
+	_applies("4.1.5")
+	e_4_1_5
+	not r_4_1_5
 }
 
-default certificate_chain_complete := false
+# 4.1.6 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_6 := false
 
-certificate_chain_complete if {
-    input.nginx.ssl.certificate_chain_complete == true
+r_4_1_6 if {
+	_tls13_only("ssl_protocols")
 }
 
-default private_keys_protected := false
+r_4_1_6 if {
+	count(_dv("ssl_dhparam")) > 0
+}
 
-private_keys_protected if {
-    input.nginx.ssl.private_keys_protected == true
+default e_4_1_6 := false
+
+e_4_1_6 if {
+	_config_collected
 }
 
-default hsts_enabled := false
+_v_ssl_tls contains "4.1.6: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.6")
+	not e_4_1_6
+}
 
-hsts_enabled if {
-    input.nginx.ssl.hsts_enabled == true
+_v_ssl_tls contains "4.1.6: Ensure awareness of TLS 1.3 new Diffie-Hellman parameters" if {
+	_applies("4.1.6")
+	e_4_1_6
+	not r_4_1_6
 }
 
-default ssl_session_cache_secure := false
+# 4.1.7 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_7 := false
 
-ssl_session_cache_secure if {
-    input.nginx.ssl.session_cache_secure == true
+r_4_1_7 if {
+	_all_on("ssl_stapling")
+	_all_on("ssl_stapling_verify")
+	count(_dv("ssl_trusted_certificate")) > 0
+	count(_dv("resolver")) > 0
 }
 
-default ssl_session_timeout_configured := false
+default e_4_1_7 := false
 
-ssl_session_timeout_configured if {
-    input.nginx.ssl.session_timeout > 0
-    input.nginx.ssl.session_timeout <= 600
+e_4_1_7 if {
+	_config_collected
 }
 
-default ocsp_stapling_enabled := false
+_v_ssl_tls contains "4.1.7: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.7")
+	not e_4_1_7
+}
 
-ocsp_stapling_enabled if {
-    input.nginx.ssl.ocsp_stapling == true
+_v_ssl_tls contains "4.1.7: Ensure Online Certificate Status Protocol (OCSP) stapling is enabled" if {
+	_applies("4.1.7")
+	e_4_1_7
+	not r_4_1_7
 }
 
-default certificate_transparency := false
+# 4.1.8 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_8 := false
 
-certificate_transparency if {
-    input.nginx.ssl.certificate_transparency == true
+r_4_1_8 if {
+	some h in _dv("add_header")
+	_hsts_ok(h)
 }
 
-default http_to_https_redirect := false
+default e_4_1_8 := false
 
-http_to_https_redirect if {
-    input.nginx.ssl.http_redirect_enabled == true
+e_4_1_8 if {
+	_config_collected
 }
 
-default secure_cookies_configured := false
+_v_ssl_tls contains "4.1.8: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.8")
+	not e_4_1_8
+}
 
-secure_cookies_configured if {
-    input.nginx.ssl.secure_cookies == true
+_v_ssl_tls contains "4.1.8: Ensure HTTP Strict Transport Security (HSTS) is enabled" if {
+	_applies("4.1.8")
+	e_4_1_8
+	not r_4_1_8
 }
 
-default required_modules_only := false
+# 4.1.9 (Manual, Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_9 := false
 
-required_modules_only if {
-    input.nginx.modules.only_required_loaded == true
+r_4_1_9 if {
+	count(_dv("proxy_ssl_certificate")) > 0
+	count(_dv("proxy_ssl_certificate_key")) > 0
 }
 
-default dangerous_modules_disabled := false
+default e_4_1_9 := false
 
-dangerous_modules_disabled if {
-    dangerous_modules := {"debug", "status", "info", "autoindex"}
-    is_array(input.nginx.modules.loaded)
-    count([module | module := input.nginx.modules.loaded[_]; module in dangerous_modules]) == 0
+e_4_1_9 if {
+	_config_collected
 }
 
-default realip_module_secure := false
+_v_ssl_tls contains "4.1.9: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.9")
+	not e_4_1_9
+}
 
-realip_module_secure if {
-    input.nginx.modules.realip.configured_securely == true
+_v_ssl_tls contains "4.1.9: Ensure upstream server traffic is authenticated with a client certificate" if {
+	_applies("4.1.9")
+	e_4_1_9
+	not r_4_1_9
 }
 
-default geoip_restrictions := false
+# 4.1.10 (Manual, Level 2 - Proxy; Level 2 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_10 := false
 
-geoip_restrictions if {
-    input.nginx.modules.geoip.restrictions_enabled == true
+r_4_1_10 if {
+	_all_on("proxy_ssl_verify")
+	count(_dv("proxy_ssl_trusted_certificate")) > 0
+	count(_dv("proxy_ssl_name")) > 0
 }
 
-default auth_modules_configured := false
+default e_4_1_10 := false
 
-auth_modules_configured if {
-    input.nginx.modules.auth.properly_configured == true
+e_4_1_10 if {
+	_config_collected
 }
 
-default rate_limiting_enabled := false
+_v_ssl_tls contains "4.1.10: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.10")
+	not e_4_1_10
+}
 
-rate_limiting_enabled if {
-    input.nginx.modules.rate_limiting.enabled == true
+_v_ssl_tls contains "4.1.10: Ensure the upstream traffic server certificate is trusted" if {
+	_applies("4.1.10")
+	e_4_1_10
+	not r_4_1_10
 }
 
-default security_headers_configured := false
+# 4.1.11 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_11 := false
 
-security_headers_configured if {
-    input.nginx.modules.security_headers.configured == true
+r_4_1_11 if {
+	every v in _dv("ssl_session_tickets") { lower(v) != "off" }
 }
 
-default waf_enabled := false
+default e_4_1_11 := false
 
-waf_enabled if {
-    input.nginx.modules.waf.enabled == true
+e_4_1_11 if {
+	_config_collected
 }
 
-default anti_ddos_configured := false
+_v_ssl_tls contains "4.1.11: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.11")
+	not e_4_1_11
+}
 
-anti_ddos_configured if {
-    input.nginx.modules.anti_ddos.configured == true
+_v_ssl_tls contains "4.1.11: Ensure Secure Session Resumption is Enabled" if {
+	_applies("4.1.11")
+	e_4_1_11
+	not r_4_1_11
 }
 
-default compression_secure := false
+# 4.1.12 (Manual, Level 2 - Webserver) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_4_1_12 := false
 
-compression_secure if {
-    input.nginx.modules.compression.secure_config == true
+r_4_1_12 if {
+	_all_on("http2")
+	some l in _dv("listen")
+	"quic" in _tokens(l)
+	some h in _dv("add_header")
+	_header_name(h) == "alt-svc"
 }
 
-default caching_configured := false
+default e_4_1_12 := false
 
-caching_configured if {
-    input.nginx.modules.caching.properly_configured == true
+e_4_1_12 if {
+	_config_collected
 }
 
-default access_controls_implemented := false
+_v_ssl_tls contains "4.1.12: evidence missing — nginx.directives not collected" if {
+	_applies("4.1.12")
+	not e_4_1_12
+}
 
-access_controls_implemented if {
-    input.nginx.access_control.implemented == true
+_v_ssl_tls contains "4.1.12: Ensure HTTP/3.0 is used" if {
+	_applies("4.1.12")
+	e_4_1_12
+	not r_4_1_12
 }
 
-default ip_restrictions_configured := false
+# 5.1.1 (Manual, Level 2 - Webserver; Level 2 - Proxy; Level 2 - Loadbalancer)
+default r_5_1_1 := false
 
-ip_restrictions_configured if {
-    input.nginx.access_control.ip_restrictions == true
+r_5_1_1 if {
+	input.nginx.attest.ip_allow_deny_reviewed == true
 }
 
-default geo_restrictions_configured := false
+_v_access_control contains "5.1.1: Ensure allow and deny filters limit access to specific IP addresses (manual review not attested)" if {
+	_applies("5.1.1")
+	not r_5_1_1
+}
+
+# 5.1.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_1_2 := false
+
+r_5_1_2 if {
+	count(_dv("limit_except")) > 0
+}
 
-geo_restrictions_configured if {
-    input.nginx.access_control.geo_restrictions == true
+r_5_1_2 if {
+	input.nginx.request_method_filter == true
 }
 
-default admin_auth_required := false
+default e_5_1_2 := false
 
-admin_auth_required if {
-    input.nginx.access_control.admin_auth_required == true
+e_5_1_2 if {
+	_config_collected
 }
 
-default strong_auth_mechanisms := false
+_v_access_control contains "5.1.2: evidence missing — nginx.directives not collected" if {
+	_applies("5.1.2")
+	not e_5_1_2
+}
 
-strong_auth_mechanisms if {
-    input.nginx.access_control.strong_auth == true
+_v_access_control contains "5.1.2: Ensure only approved HTTP methods are allowed" if {
+	_applies("5.1.2")
+	e_5_1_2
+	not r_5_1_2
 }
 
-default auth_bypass_protected := false
+# 5.2.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_2_1 := false
 
-auth_bypass_protected if {
-    input.nginx.access_control.auth_bypass_protected == true
+r_5_2_1 if {
+	_some_secs_within("client_header_timeout", 20)
+	_some_secs_within("client_body_timeout", 20)
 }
 
-default directory_browsing_disabled := false
+default e_5_2_1 := false
 
-directory_browsing_disabled if {
-    input.nginx.access_control.autoindex == "off"
+e_5_2_1 if {
+	_config_collected
 }
 
-default file_access_restrictive := false
+_v_performance contains "5.2.1: evidence missing — nginx.directives not collected" if {
+	_applies("5.2.1")
+	not e_5_2_1
+}
 
-file_access_restrictive if {
-    input.nginx.access_control.file_access_restrictive == true
+_v_performance contains "5.2.1: Ensure timeout values for reading the client header and body are set correctly" if {
+	_applies("5.2.1")
+	e_5_2_1
+	not r_5_2_1
 }
 
-default symlinks_secure := false
+# 5.2.2 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_2_2 := false
 
-symlinks_secure if {
-    input.nginx.access_control.symlinks_secure == true
+r_5_2_2 if {
+	count(_dv("client_max_body_size")) > 0
 }
 
-default request_size_limits := false
+default e_5_2_2 := false
 
-request_size_limits if {
-    input.nginx.access_control.request_size_limits == true
+e_5_2_2 if {
+	_config_collected
 }
 
-default request_rate_limits := false
+_v_performance contains "5.2.2: evidence missing — nginx.directives not collected" if {
+	_applies("5.2.2")
+	not e_5_2_2
+}
 
-request_rate_limits if {
-    input.nginx.access_control.rate_limits == true
+_v_performance contains "5.2.2: Ensure the maximum request body size is set correctly" if {
+	_applies("5.2.2")
+	e_5_2_2
+	not r_5_2_2
 }
 
-default connection_limits_configured := false
+# 5.2.3 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_2_3 := false
+
+r_5_2_3 if {
+	every v in _dv("large_client_header_buffers") { _tokens(v) == ["4", "8k"] }
+}
 
-connection_limits_configured if {
-    input.nginx.access_control.connection_limits == true
+r_5_2_3 if {
+	input.nginx.attest.large_client_header_buffers_documented == true
 }
 
-default security_headers_implemented := false
+default e_5_2_3 := false
 
-security_headers_implemented if {
-    input.nginx.headers.security_headers == true
+e_5_2_3 if {
+	_config_collected
 }
 
-default csp_headers_configured := false
+_v_performance contains "5.2.3: evidence missing — nginx.directives not collected" if {
+	_applies("5.2.3")
+	not e_5_2_3
+}
 
-csp_headers_configured if {
-    input.nginx.headers.csp_configured == true
+_v_performance contains "5.2.3: Ensure the maximum buffer size for URIs is defined" if {
+	_applies("5.2.3")
+	e_5_2_3
+	not r_5_2_3
 }
 
-default xss_protection_enabled := false
+# 5.2.4 (Manual, Level 2 - Webserver; Level 2 - Proxy; Level 2 - Loadbalancer)
+default r_5_2_4 := false
+
+r_5_2_4 if {
+	input.nginx.attest.connection_limits_reviewed == true
+}
 
-xss_protection_enabled if {
-    input.nginx.headers.xss_protection == true
+_v_performance contains "5.2.4: Ensure the number of connections per IP address is limited (manual review not attested)" if {
+	_applies("5.2.4")
+	not r_5_2_4
 }
 
-default buffer_sizes_configured := false
+# 5.2.5 (Manual, Level 2 - Webserver; Level 2 - Proxy; Level 2 - Loadbalancer)
+default r_5_2_5 := false
 
-buffer_sizes_configured if {
-    input.nginx.performance.buffer_sizes_secure == true
+r_5_2_5 if {
+	input.nginx.attest.rate_limits_reviewed == true
 }
 
-default timeout_values_secure := false
+_v_performance contains "5.2.5: Ensure rate limits by IP address are set (manual review not attested)" if {
+	_applies("5.2.5")
+	not r_5_2_5
+}
 
-timeout_values_secure if {
-    input.nginx.performance.timeout_values_secure == true
+# 5.3.1 (Manual, Level 1 - Webserver) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_3_1 := false
+
+r_5_3_1 if {
+	some h in _dv("add_header")
+	_header_name(h) == "x-content-type-options"
+	contains(lower(h), "nosniff")
+	_header_always(h)
 }
 
-default resource_limits_configured := false
+default e_5_3_1 := false
 
-resource_limits_configured if {
-    input.nginx.performance.resource_limits == true
+e_5_3_1 if {
+	_config_collected
 }
 
-default connection_pooling_configured := false
+_v_access_control contains "5.3.1: evidence missing — nginx.directives not collected" if {
+	_applies("5.3.1")
+	not e_5_3_1
+}
 
-connection_pooling_configured if {
-    input.nginx.performance.connection_pooling == true
+_v_access_control contains "5.3.1: Ensure X-Content-Type-Options header is configured and enabled" if {
+	_applies("5.3.1")
+	e_5_3_1
+	not r_5_3_1
 }
 
-default upstream_servers_secure := false
+# 5.3.2 (Manual, Level 2 - Webserver) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_3_2 := false
 
-upstream_servers_secure if {
-    input.nginx.performance.upstream_secure == true
+r_5_3_2 if {
+	some h in _dv("add_header")
+	_csp_ok(h)
 }
 
-default load_balancing_secure := false
+default e_5_3_2 := false
 
-load_balancing_secure if {
-    input.nginx.performance.load_balancing_secure == true
+e_5_3_2 if {
+	_config_collected
 }
 
-default caching_secure := false
+_v_access_control contains "5.3.2: evidence missing — nginx.directives not collected" if {
+	_applies("5.3.2")
+	not e_5_3_2
+}
 
-caching_secure if {
-    input.nginx.performance.caching_secure == true
+_v_access_control contains "5.3.2: Ensure that Content Security Policy (CSP) is enabled and configured properly" if {
+	_applies("5.3.2")
+	e_5_3_2
+	not r_5_3_2
 }
 
-default proxy_cache_headers := false
+# 5.3.3 (Manual, Level 2 - Webserver) -- Manual in the workbook; decidable from configuration, so checked like Automated
+default r_5_3_3 := false
 
-proxy_cache_headers if {
-    input.nginx.performance.proxy_cache_headers == true
+r_5_3_3 if {
+	some h in _dv("add_header")
+	_header_name(h) == "referrer-policy"
+	trim(_tokens(h)[1], "\"'") in _good_referrer_policies
+	_header_always(h)
 }
 
-default monitoring_enabled := false
+default e_5_3_3 := false
 
-monitoring_enabled if {
-    input.nginx.performance.monitoring_enabled == true
+e_5_3_3 if {
+	_config_collected
 }
 
-default metrics_secure := false
+_v_access_control contains "5.3.3: evidence missing — nginx.directives not collected" if {
+	_applies("5.3.3")
+	not e_5_3_3
+}
 
-metrics_secure if {
-    input.nginx.performance.metrics_secure == true
+_v_access_control contains "5.3.3: Ensure the Referrer Policy is enabled and configured properly" if {
+	_applies("5.3.3")
+	e_5_3_3
+	not r_5_3_3
 }
 
-findings := [
-    {
-        "title": "NGINX Installation and Configuration Security",
-        "description": "Comprehensive security assessment of NGINX web server installation, configuration, and operational security controls",
-        "severity": "HIGH",
-        "details": sprintf("Found %d configuration violations across NGINX security domains", [count(violations)]),
-        "violations": violations,
-        "remediation": "Review and implement the recommended NGINX security configurations including proper installation, secure configuration directives, comprehensive logging, SSL/TLS hardening, module security, access controls, and performance security settings"
-    }
-]
+# Every recommendation in the benchmark: title, level, assessment status, CIS profiles, roles it applies to.
+recommendations := {
+	"1.1.1": {
+		"title": "Ensure NGINX is installed",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "installation"
+	},
+	"1.2.1": {
+		"title": "Ensure package manager repositories are properly configured",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "attestation",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "installation"
+	},
+	"1.2.2": {
+		"title": "Ensure the latest software package is installed",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "installation"
+	},
+	"2.1.1": {
+		"title": "Ensure only required dynamic modules are loaded",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "attestation",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "modules"
+	},
+	"2.2.1": {
+		"title": "Ensure that NGINX is run using a non-privileged, dedicated service account",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.2.2": {
+		"title": "Ensure the NGINX service account is locked",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.2.3": {
+		"title": "Ensure the NGINX service account has an invalid shell",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.3.1": {
+		"title": "Ensure NGINX directories and files are owned by root",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.3.2": {
+		"title": "Ensure access to NGINX directories and files is restricted",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.3.3": {
+		"title": "Ensure the NGINX process ID (PID) file is secured",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.4.1": {
+		"title": "Ensure NGINX only listens for network connections on authorized ports",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.4.2": {
+		"title": "Ensure requests for unknown host names are rejected",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.4.3": {
+		"title": "Ensure keepalive_timeout is 10 seconds or less, but not 0",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.4.4": {
+		"title": "Ensure send_timeout is set to 10 seconds or less, but not 0",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.5.1": {
+		"title": "Ensure server_tokens directive is set to `off`",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.5.2": {
+		"title": "Ensure default error and index.html pages do not reference NGINX",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.5.3": {
+		"title": "Ensure hidden file serving is disabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "configuration"
+	},
+	"2.5.4": {
+		"title": "Ensure the NGINX reverse proxy does not enable information disclosure",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy"
+		],
+		"section": "configuration"
+	},
+	"3.1": {
+		"title": "Ensure detailed logging is enabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "logging"
+	},
+	"3.2": {
+		"title": "Ensure access logging is enabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "logging"
+	},
+	"3.3": {
+		"title": "Ensure error logging is enabled and set to the info logging level",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "logging"
+	},
+	"3.4": {
+		"title": "Ensure proxies pass source IP information",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy"
+		],
+		"section": "logging"
+	},
+	"4.1.1": {
+		"title": "Ensure HTTP is redirected to HTTPS",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.2": {
+		"title": "Ensure a trusted certificate and trust chain is installed",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.3": {
+		"title": "Ensure private key permissions are restricted",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.4": {
+		"title": "Ensure only modern TLS protocols are used",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.5": {
+		"title": "Disable weak ciphers",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.6": {
+		"title": "Ensure awareness of TLS 1.3 new Diffie-Hellman parameters",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.7": {
+		"title": "Ensure Online Certificate Status Protocol (OCSP) stapling is enabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.8": {
+		"title": "Ensure HTTP Strict Transport Security (HSTS) is enabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.9": {
+		"title": "Ensure upstream server traffic is authenticated with a client certificate",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.10": {
+		"title": "Ensure the upstream traffic server certificate is trusted",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Proxy",
+			"Level 2 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.11": {
+		"title": "Ensure Secure Session Resumption is Enabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"4.1.12": {
+		"title": "Ensure HTTP/3.0 is used",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Webserver"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"webserver"
+		],
+		"section": "ssl_tls"
+	},
+	"5.1.1": {
+		"title": "Ensure allow and deny filters limit access to specific IP addresses",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Webserver",
+			"Level 2 - Proxy",
+			"Level 2 - Loadbalancer"
+		],
+		"check": "attestation",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "access_control"
+	},
+	"5.1.2": {
+		"title": "Ensure only approved HTTP methods are allowed",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "access_control"
+	},
+	"5.2.1": {
+		"title": "Ensure timeout values for reading the client header and body are set correctly",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "performance"
+	},
+	"5.2.2": {
+		"title": "Ensure the maximum request body size is set correctly",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "performance"
+	},
+	"5.2.3": {
+		"title": "Ensure the maximum buffer size for URIs is defined",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver",
+			"Level 1 - Proxy",
+			"Level 1 - Loadbalancer"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "performance"
+	},
+	"5.2.4": {
+		"title": "Ensure the number of connections per IP address is limited",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Webserver",
+			"Level 2 - Proxy",
+			"Level 2 - Loadbalancer"
+		],
+		"check": "attestation",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "performance"
+	},
+	"5.2.5": {
+		"title": "Ensure rate limits by IP address are set",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Webserver",
+			"Level 2 - Proxy",
+			"Level 2 - Loadbalancer"
+		],
+		"check": "attestation",
+		"applies_to": [
+			"loadbalancer",
+			"proxy",
+			"webserver"
+		],
+		"section": "performance"
+	},
+	"5.3.1": {
+		"title": "Ensure X-Content-Type-Options header is configured and enabled",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Webserver"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"webserver"
+		],
+		"section": "access_control"
+	},
+	"5.3.2": {
+		"title": "Ensure that Content Security Policy (CSP) is enabled and configured properly",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Webserver"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"webserver"
+		],
+		"section": "access_control"
+	},
+	"5.3.3": {
+		"title": "Ensure the Referrer Policy is enabled and configured properly",
+		"level": 2,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Webserver"
+		],
+		"check": "configuration",
+		"applies_to": [
+			"webserver"
+		],
+		"section": "access_control"
+	}
+}
+
+
+default _applicable_ids := set()
+
+_applicable_ids := {id | some id, _ in recommendations; _applies(id)}
+
+_failed_ids := {id | some v in violations; id := split(v, ":")[0]}
+
+findings := [{
+	"title": "NGINX Installation and Configuration Security",
+	"description": "CIS NGINX Benchmark v3.1.0 assessment of installation, service account, file permissions, network and information-disclosure settings, logging, TLS, and request filtering",
+	"severity": "HIGH",
+	"details": sprintf("Found %d violations across %d recommendations", [count(violations), count(_failed_ids)]),
+	"violations": violations,
+	"remediation": "Apply the CIS NGINX Benchmark v3.1.0 recommendation named in each violation; collect the missing facts where a violation reports evidence missing",
+}]
+
+compliance_report := {
+	"benchmark": "CIS NGINX Benchmark v3.1.0",
+	"total_controls": count(recommendations),
+	"standard_total": 44,
+	"standard_total_source": "CIS NGINX Benchmark v3.1.0, recommendations counted from the CIS workbook",
+	"applicable_controls": count(_applicable_ids),
+	"profiles": sort([p | some p in _selected_profiles]),
+	"failed_controls": count(_failed_ids),
+	"passed_controls": count(_applicable_ids) - count(_failed_ids),
+	"compliant": compliant,
+	"violation_count": count(violations),
+	"violations": violations,
+}

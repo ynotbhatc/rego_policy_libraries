@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 176,
- "controls": 17029,
+ "frameworks": 179,
+ "controls": 17556,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -119,7 +119,7 @@
   {
    "framework": "cis_cloud",
    "file": "catalogs/cis_cloud.json",
-   "controls": 95,
+   "controls": 39,
    "modules": 3,
    "uuid": "db3790da-dd2b-592c-8667-72134f78ec9f"
   },
@@ -161,14 +161,14 @@
   {
    "framework": "cis_eks",
    "file": "catalogs/cis_eks.json",
-   "controls": 49,
+   "controls": 67,
    "modules": 1,
    "uuid": "783aa8e7-7ef3-5c10-a19b-aa6f5825db71"
   },
   {
    "framework": "cis_gcp",
    "file": "catalogs/cis_gcp.json",
-   "controls": 54,
+   "controls": 149,
    "modules": 2,
    "uuid": "eaec1905-e7b2-5918-acfb-f0ceff118414"
   },
@@ -178,6 +178,13 @@
    "controls": 40,
    "modules": 1,
    "uuid": "6b268515-b05c-5572-9fa3-35ba14b07041"
+  },
+  {
+   "framework": "cis_intune_defender_antivirus",
+   "file": "catalogs/cis_intune_defender_antivirus.json",
+   "controls": 56,
+   "modules": 1,
+   "uuid": "2c6de594-d4cb-55a7-83fe-c34e3ba4c586"
   },
   {
    "framework": "cis_kubernetes",
@@ -217,14 +224,14 @@
   {
    "framework": "cis_network_devices",
    "file": "catalogs/cis_network_devices.json",
-   "controls": 161,
+   "controls": 204,
    "modules": 8,
    "uuid": "18754cce-562a-5674-b09a-9c4c56203ef2"
   },
   {
    "framework": "cis_nginx",
    "file": "catalogs/cis_nginx.json",
-   "controls": 97,
+   "controls": 44,
    "modules": 1,
    "uuid": "12556f71-1c36-536a-9017-c0f1985a8af7"
   },
@@ -273,8 +280,8 @@
   {
    "framework": "cis_postgresql",
    "file": "catalogs/cis_postgresql.json",
-   "controls": 180,
-   "modules": 3,
+   "controls": 213,
+   "modules": 4,
    "uuid": "09f366fe-c973-5aed-baa3-9138923a1743"
   },
   {
@@ -318,6 +325,20 @@
    "controls": 295,
    "modules": 17,
    "uuid": "fcff48cb-353d-5b2d-80ce-b481e207b6ac"
+  },
+  {
+   "framework": "cis_sql_server_2025",
+   "file": "catalogs/cis_sql_server_2025.json",
+   "controls": 50,
+   "modules": 1,
+   "uuid": "b9ccece7-ae9b-5905-b858-f83acdbc7e32"
+  },
+  {
+   "framework": "cis_suse_16",
+   "file": "catalogs/cis_suse_16.json",
+   "controls": 341,
+   "modules": 23,
+   "uuid": "4999359d-c8db-5646-a1ff-4e22c3193127"
   },
   {
    "framework": "cis_ubuntu_20_04",
