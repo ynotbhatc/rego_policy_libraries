@@ -139,7 +139,10 @@ _collected("ureg") if count(_user_hives) > 0
 
 # auditpol /backup facts are keyed by subcategory GUID; anything else (the raw auditpol text the 2019 playbook
 # sends today) is not evidence for section 17
-_collected("auditpol") if {
+_collected("auditpol") if _auditpol_collected
+
+# a rule, not inlined in the function, so OPA evaluates the regex scan once per query
+_auditpol_collected if {
 	some k, _ in object.get(input, "audit_policy", {})
 	regex.match(`^\{[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\}$`, lower(k))
 }

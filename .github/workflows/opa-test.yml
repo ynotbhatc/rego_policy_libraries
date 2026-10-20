@@ -167,7 +167,9 @@ jobs:
           # --ignore .github because opa otherwise tries to parse the YAML
           # in the .github directory that lives inside the benchmarks tree.
           echo "Running tests ..."
-          opa test . --ignore .github --ignore converters
+          # --timeout: the whole-benchmark report tests (Windows 2019/2022, 400 controls) take ~1 s
+          # locally and several times that on shared runners; OPA's 5 s default made them flaky.
+          opa test . --ignore .github --ignore converters --timeout 30s
 
       - name: Guard against silent test-discovery loss
         run: |
@@ -179,7 +181,7 @@ jobs:
           # than the current total, so that a branch which does not carry
           # this tree's tests still passes. Ratchet it upward deliberately.
           MIN_TESTS=3000
-          count=$(opa test . --ignore .github --ignore converters 2>&1 | grep -oE 'PASS: [0-9]+' | grep -oE '[0-9]+')
+          count=$(opa test . --ignore .github --ignore converters --timeout 30s 2>&1 | grep -oE 'PASS: [0-9]+' | grep -oE '[0-9]+')
           echo "tests run: ${count:-0} (floor: $MIN_TESTS)"
           if [ "${count:-0}" -lt "$MIN_TESTS" ]; then
             echo "ERROR: expected at least $MIN_TESTS tests, ran ${count:-0}."
