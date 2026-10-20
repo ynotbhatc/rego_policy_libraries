@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 20,120 control-level checks in 802 policy files, mapped to 175 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 20,387 control-level checks in 804 policy files, mapped to 176 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -26,7 +26,7 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [CIS Amazon Linux 2023](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-amazon-linux-2023.html): 17 policy files
 - [CIS Debian 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-debian-11.html): 16 policy files
 - [CIS Microsoft 365](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-saas.html): 18 policy files
-- [CIS Network Devices](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-network-devices.html): 9 policy files
+- [CIS Network Devices](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-network-devices.html): 11 policy files
 - [CIS RHEL 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rhel-8.html): 16 policy files
 - [CIS RHEL 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rhel-9.html): 21 policy files
 - [CIS Rocky Linux 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rocky-linux-8.html): 15 policy files

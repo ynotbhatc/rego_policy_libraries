@@ -42,6 +42,8 @@ test_vyos_report_populated if { count(data.cis_vyos.main.compliance_report) > 0 
 
 test_pfsense_report_populated if { count(data.cis_pfsense.main.compliance_report) > 0 }
 
+test_opnsense_report_populated if { count(data.cis_opnsense.main.compliance_report) > 0 }
+
 test_gcp_report_populated if { count(data.cis_gcp.main.compliance_report) > 0 }
 
 # --- counts are internally consistent and non-negative ----------------------
@@ -60,6 +62,7 @@ reports := [
 	data.cis_debian_11.main.compliance_report,
 	data.cis_vyos.main.compliance_report,
 	data.cis_pfsense.main.compliance_report,
+	data.cis_opnsense.main.compliance_report,
 	data.cis_gcp.main.compliance_report,
 ]
 
