@@ -79,6 +79,7 @@ reports := [
 	data.cis_ubuntu_26_04.main.compliance_report,
 	data.cis.sql_server_2025.main.compliance_report,
 	data.cis.intune_defender_antivirus.main.compliance_report,
+	data.cis_postgresql.main.compliance_report,
 ]
 
 test_no_negative_counts if {
