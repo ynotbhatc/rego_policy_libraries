@@ -152,10 +152,9 @@ unbound_collected if nonempty_object(input.unbound)
 
 hasync_collected if nonempty_object(input.hasync)
 
-filter_collected if {
-	is_object(input.filter)
-	"rule" in object.keys(input.filter)
-}
+# The collector defaults filter to {"rule": []} when config.xml is not read, so an empty
+# rule list is not evidence: it reports as missing, never as a pass.
+filter_collected if count(all_rules) > 0
 
 openvpn_collected if {
 	is_object(input.openvpn)

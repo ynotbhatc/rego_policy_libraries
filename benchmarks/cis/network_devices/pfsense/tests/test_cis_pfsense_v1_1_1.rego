@@ -516,3 +516,6 @@ test_6_1_fail_2 if {
 }
 
 test_6_1_evidence_missing if missing("6.1", json.remove(good_input, ["syslogd"]))
+
+# The collector default {"rule": []} is not evidence.
+test_4_1_1_empty_rule_list_is_missing if missing("4.1.1", json.patch(good_input, [{"op": "replace", "path": "/filter", "value": {"rule": []}}]))

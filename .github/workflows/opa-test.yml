@@ -200,6 +200,9 @@ jobs:
           python3 scripts/check_cis_ids.py \
             --enumeration benchmarks/cis/windows_server_2022_modular/data/cis_windows_server_2022_v5_1_index.json \
             --policy-dir benchmarks/cis/windows_server_2022_modular
+          python3 scripts/check_cis_ids.py \
+            --enumeration benchmarks/cis/windows_server_2019_modular/data/cis_windows_server_2019_v5_0_index.json \
+            --policy-dir benchmarks/cis/windows_server_2019_modular
 
       - name: Verify every recommendation is accounted for exactly once
         run: |
@@ -221,6 +224,10 @@ jobs:
             --enumeration benchmarks/cis/windows_server_2022_modular/data/cis_windows_server_2022_v5_1_index.json \
             --policy-dir benchmarks/cis/windows_server_2022_modular \
             --package cis_windows_server_2022
+          python3 scripts/check_cis_coverage.py \
+            --enumeration benchmarks/cis/windows_server_2019_modular/data/cis_windows_server_2019_v5_0_index.json \
+            --policy-dir benchmarks/cis/windows_server_2019_modular \
+            --package cis_windows_server_2019
 
       - name: Assert the guard still rejects the deprecated m365 tree
         run: |
