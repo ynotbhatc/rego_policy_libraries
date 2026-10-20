@@ -7578,27 +7578,6 @@ cis_web_servers,cis.server.mysql#29,cis_web_servers-cis.server.mysql-29,ssl enab
 cis_web_servers,cis.server.mysql#30,cis_web_servers-cis.server.mysql-30,ssl key permissions restrictive,security,cis,database mysql,cis.server.mysql,benchmarks/cis/web_servers/mysql/mysql_security.rego
 cis_web_servers,cis.server.mysql#31,cis_web_servers-cis.server.mysql-31,ssl required remote users,security,cis,database mysql,cis.server.mysql,benchmarks/cis/web_servers/mysql/mysql_security.rego
 cis_web_servers,cis.server.mysql#32,cis_web_servers-cis.server.mysql-32,users appropriate privileges,security,cis,database mysql,cis.server.mysql,benchmarks/cis/web_servers/mysql/mysql_security.rego
-cis_web_servers,cis.server.nginx#1,cis_web_servers-cis.server.nginx-1,access logging enabled,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#2,cis_web_servers-cis.server.nginx-2,buffer overflow prevention,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#3,cis_web_servers-cis.server.nginx-3,client timeouts configured,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#4,cis_web_servers-cis.server.nginx-4,custom error pages,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#5,cis_web_servers-cis.server.nginx-5,detailed logging enabled,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#6,cis_web_servers-cis.server.nginx-6,error logging configured,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#7,cis_web_servers-cis.server.nginx-7,hidden files disabled,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#8,cis_web_servers-cis.server.nginx-8,http methods restricted,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#9,cis_web_servers-cis.server.nginx-9,http redirected to https,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#10,cis_web_servers-cis.server.nginx-10,log rotation configured,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#11,cis_web_servers-cis.server.nginx-11,max body size configured,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#12,cis_web_servers-cis.server.nginx-12,modern tls protocols,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#13,cis_web_servers-cis.server.nginx-13,nginx non privileged user,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#14,cis_web_servers-cis.server.nginx-14,nginx properly installed,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#15,cis_web_servers-cis.server.nginx-15,nginx service account locked,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#16,cis_web_servers-cis.server.nginx-16,private key permissions restricted,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#17,cis_web_servers-cis.server.nginx-17,proxy headers secure,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#18,cis_web_servers-cis.server.nginx-18,secure cipher suites,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#19,cis_web_servers-cis.server.nginx-19,server tokens disabled,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#20,cis_web_servers-cis.server.nginx-20,trusted certificate installed,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
-cis_web_servers,cis.server.nginx#21,cis_web_servers-cis.server.nginx-21,webdav module not installed,security,cis,web-server,cis.server.nginx,benchmarks/cis/web_servers/nginx/nginx_security.rego
 cis_windows_10,account_policies,cis_windows_10-account_policies,,security,cis,windows,cis_windows_10,benchmarks/cis/windows_10/cis_windows_10.rego
 cis_windows_10,administrative_templates,cis_windows_10-administrative_templates,,security,cis,windows,cis_windows_10,benchmarks/cis/windows_10/cis_windows_10.rego
 cis_windows_10,advanced_audit,cis_windows_10-advanced_audit,,security,cis,windows,cis_windows_10,benchmarks/cis/windows_10/cis_windows_10.rego
