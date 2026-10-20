@@ -1,6 +1,8 @@
 # METADATA
-# title: "CIS Oracle Database 23ai Benchmark v1.0.0"
+# title: "CIS Oracle Database 23ai Benchmark v1.0.0 (deprecated)"
 # custom:
+#   deprecated: true
+#   superseded_by: cis.oracle_26ai
 #   class: security
 #   framework: cis_oracle_23ai
 #   source: cis
@@ -16,10 +18,13 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.oracle_23ai
 
-# CIS Oracle Database 23ai Benchmark v1.0.0 (CIS lists v1.1.0 as current; a typo/version-text update)
+# DEPRECATED: CIS renamed this benchmark to Oracle Database 26ai. New consumers must query the package
+# cis.oracle_26ai (cis_oracle_26ai.rego, CIS Oracle Database 26ai Benchmark v1.0.0). This module is kept,
+# unchanged in behaviour, so existing callers of cis.oracle_23ai keep working.
+# CIS Oracle Database 23ai Benchmark v1.0.0
 # 87 recommendations, every one in the benchmark; ids and titles read from the benchmark text and the
 # logic written from each recommendation's own audit SQL (tools/cis_generators/gen_oracle_db_23ai.py).
 # 7 recommendations are Manual reviews and carry an attestation boolean.

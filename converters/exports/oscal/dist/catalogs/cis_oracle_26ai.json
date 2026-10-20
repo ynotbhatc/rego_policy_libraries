@@ -1,0 +1,4113 @@
+{
+ "catalog": {
+  "uuid": "bb69b557-c2dc-5149-b16f-406e1981292b",
+  "metadata": {
+   "title": "Rego Policy Libraries — cis_oracle_26ai (CIS Oracle Database 26ai Benchmark v1.0.0)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "cis_oracle_26ai"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "cis_oracle_26ai-cis_oracle_26ai",
+    "class": "rego-module",
+    "title": "CIS Oracle Database 26ai Benchmark v1.0.0",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis.oracle_26ai"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/oracle/cis_oracle_26ai.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_oracle_26ai-1.1",
+      "title": "evidence missing — oracle.patches.latest_cpu_applied not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-1.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.patches.latest_cpu_applied not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure That Appropriate Version/Patches For Oracle Software Are Installed"
+       },
+       {
+        "id": "cis_oracle_26ai-1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure That Appropriate Version/Patches For Oracle Software Are Installed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.1.1",
+      "title": "evidence missing — oracle.listener.extproc_configured not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.1.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.listener.extproc_configured not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'extproc' Is Not Present In 'listener.ora'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'extproc' Is Not Present In 'listener.ora'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.1.2",
+      "title": "evidence missing — oracle.listener_ora not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.1.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.listener_ora not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.1.3",
+      "title": "evidence missing — oracle.listener_ora not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.1.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.listener_ora not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.1.4",
+      "title": "evidence missing — oracle.listener_ora not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.1.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.listener_ora not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set."
+       },
+       {
+        "id": "cis_oracle_26ai-2.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.1",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.2",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.3",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.4",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.5",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.6",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.7",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.8",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.9",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.10",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.11",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.2.12",
+      "title": "evidence missing — oracle.sqlnet not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.2.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.sqlnet not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.2.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.1",
+      "title": "evidence missing — oracle.parameters not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.2",
+      "title": "evidence missing — oracle.parameters not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.3",
+      "title": "evidence missing — oracle.parameters.mle_prog_languages not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.mle_prog_languages not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.4",
+      "title": "evidence missing — oracle.parameters.allow_group_access_to_sga not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.allow_group_access_to_sga not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.5",
+      "title": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.5_stmt",
+        "name": "statement",
+        "prose": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.6",
+      "title": "evidence missing — oracle.parameters.os_roles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.os_roles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'OS_ROLES' Is Set To 'FALSE'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'OS_ROLES' Is Set To 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.7",
+      "title": "evidence missing — oracle.parameters.remote_os_roles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.remote_os_roles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.8",
+      "title": "evidence missing — oracle.parameters.sec_max_failed_login_attempts not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.sec_max_failed_login_attempts not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.9",
+      "title": "evidence missing — oracle.parameters.sec_protocol_error_further_action not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.sec_protocol_error_further_action not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.10",
+      "title": "evidence missing — oracle.parameters.sec_protocol_error_trace_action not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.sec_protocol_error_trace_action not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.11",
+      "title": "evidence missing — oracle.parameters.sec_return_server_release_banner not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.sec_return_server_release_banner not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.12",
+      "title": "evidence missing — oracle.parameters.remote_login_passwordfile not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.remote_login_passwordfile not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.13",
+      "title": "evidence missing — oracle.parameters not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'REMOTE_LISTENER' Is Empty"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'REMOTE_LISTENER' Is Empty"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-2.3.14",
+      "title": "evidence missing — oracle.parameters.resource_limit not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-2.3.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.parameters.resource_limit not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'"
+       },
+       {
+        "id": "cis_oracle_26ai-2.3.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.1",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'"
+       },
+       {
+        "id": "cis_oracle_26ai-3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.2",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'"
+       },
+       {
+        "id": "cis_oracle_26ai-3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.3",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' Is Less Than Or Equal To '365'"
+       },
+       {
+        "id": "cis_oracle_26ai-3.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' Is Less Than Or Equal To '365'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.4",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'"
+       },
+       {
+        "id": "cis_oracle_26ai-3.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.5",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles"
+       },
+       {
+        "id": "cis_oracle_26ai-3.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.6",
+      "title": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.6_stmt",
+        "name": "statement",
+        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-3.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.7",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'"
+       },
+       {
+        "id": "cis_oracle_26ai-3.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-3.8",
+      "title": "evidence missing — oracle.profiles not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-3.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.profiles not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-3.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'"
+       },
+       {
+        "id": "cis_oracle_26ai-3.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.1",
+      "title": "evidence missing — oracle.users_with_default_password not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.users_with_default_password not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure All Default Passwords Are Changed"
+       },
+       {
+        "id": "cis_oracle_26ai-4.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure All Default Passwords Are Changed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.2",
+      "title": "evidence missing — oracle.custom_oracle_maintained_users not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.custom_oracle_maintained_users not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist"
+       },
+       {
+        "id": "cis_oracle_26ai-4.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.3",
+      "title": "Review The Users Created Through Real Application Security (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.3_stmt",
+        "name": "statement",
+        "prose": "Review The Users Created Through Real Application Security (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Review The Users Created Through Real Application Security"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.4",
+      "title": "evidence missing — oracle.users_with_old_password_versions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.users_with_old_password_versions not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Old Password Versions Are Not Used"
+       },
+       {
+        "id": "cis_oracle_26ai-4.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Old Password Versions Are Not Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.5",
+      "title": "evidence missing — oracle.password_file_format not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.password_file_format not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure The Latest Version of The Password File Is Used"
+       },
+       {
+        "id": "cis_oracle_26ai-4.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure The Latest Version of The Password File Is Used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.6",
+      "title": "evidence missing — oracle.pwfile_users_not_on_all_instances not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.pwfile_users_not_on_all_instances not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure That Users In Different RAC Instances Are Identical In PW Files"
+       },
+       {
+        "id": "cis_oracle_26ai-4.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure That Users In Different RAC Instances Are Identical In PW Files"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.7",
+      "title": "evidence missing — oracle.public_db_links not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.public_db_links not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure No Public Database Links Exist"
+       },
+       {
+        "id": "cis_oracle_26ai-4.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure No Public Database Links Exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-4.8",
+      "title": "evidence missing — oracle.db_links_with_legacy_password_encryption not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-4.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.db_links_with_legacy_password_encryption not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-4.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure That Database Link Passwords Are Using The Latest Encryption"
+       },
+       {
+        "id": "cis_oracle_26ai-4.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure That Database Link Passwords Are Using The Latest Encryption"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-5.1",
+      "title": "evidence missing — oracle.audit.unaudited_system_actions not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-5.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.audit.unaudited_system_actions not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure All Auditable System Actions Commands Are Audited"
+       },
+       {
+        "id": "cis_oracle_26ai-5.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure All Auditable System Actions Commands Are Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-5.2",
+      "title": "evidence missing — oracle.audit.enabled_options not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-5.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.audit.enabled_options not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-5.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled"
+       },
+       {
+        "id": "cis_oracle_26ai-5.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-5.3",
+      "title": "evidence missing — oracle.audit.audited_packages not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-5.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.audit.audited_packages not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Critical Packages Are Audited"
+       },
+       {
+        "id": "cis_oracle_26ai-5.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Critical Packages Are Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-5.4",
+      "title": "evidence missing — oracle.audit.enabled_options not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-5.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.audit.enabled_options not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-5.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure All Export Activities Are Audited"
+       },
+       {
+        "id": "cis_oracle_26ai-5.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure All Export Activities Are Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-5.5",
+      "title": "evidence missing — oracle.audit.all_actions_audited_users not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-5.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.audit.all_actions_audited_users not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-5.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure The Use Of SYS* Privileges Is Audited"
+       },
+       {
+        "id": "cis_oracle_26ai-5.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure The Use Of SYS* Privileges Is Audited"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.1",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.2",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.3",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.4",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.5",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.6",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.7",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.8",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.9",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.10",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.1.11",
+      "title": "evidence missing — oracle.grants.sys_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.1.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.sys_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.1.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.1",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.2",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.2_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.3",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.3_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.4",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.4_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.5",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.5_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.6",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.6_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.7",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.7_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.8",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.8_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.9",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.9_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.10",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.10_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.11",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.11_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.11_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.12",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.12_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.12_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.13",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.13_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.13_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.14",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.14_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.15",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.15_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.16",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.16_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.16_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.17",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.17_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.17_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.17_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.18",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.18_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.18_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.19",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.19_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.19_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.19_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.20",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.20_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.20_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.20_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.21",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.21_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.21_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.21_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.2.22",
+      "title": "evidence missing — oracle.grants.role_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.2.22_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.role_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.22_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'"
+       },
+       {
+        "id": "cis_oracle_26ai-6.2.22_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.3.1",
+      "title": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.4.1",
+      "title": "evidence missing — oracle.grants.tab_privs not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.4.1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — oracle.grants.tab_privs not collected"
+       },
+       {
+        "id": "cis_oracle_26ai-6.4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables"
+       },
+       {
+        "id": "cis_oracle_26ai-6.4.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.5.1",
+      "title": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE' (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE' (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.6.1",
+      "title": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.7.1",
+      "title": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.7.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.8.1",
+      "title": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’ (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’ (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.8.2",
+      "title": "Review Directory Objects Privileges (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.8.2_stmt",
+        "name": "statement",
+        "prose": "Review Directory Objects Privileges (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.8.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Review Directory Objects Privileges"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.8.3",
+      "title": "Review External Tables With Preprocessor (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.8.3_stmt",
+        "name": "statement",
+        "prose": "Review External Tables With Preprocessor (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.8.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Review External Tables With Preprocessor"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-6.8.4",
+      "title": "Review External Tables (manual review not attested)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-6.8.4_stmt",
+        "name": "statement",
+        "prose": "Review External Tables (manual review not attested)"
+       },
+       {
+        "id": "cis_oracle_26ai-6.8.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Review External Tables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_oracle_26ai-CIS-Oracle-26ai",
+      "title": "FAIL-CLOSED - facts 'input.oracle' were not supplied; the database was not evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CIS Oracle 26ai"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CIS Oracle 26ai"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.oracle_26ai"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38a455a1-49bb-528d-aa42-8a9a2d42878c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_oracle_26ai-CIS-Oracle-26ai_stmt",
+        "name": "statement",
+        "prose": "FAIL-CLOSED - facts 'input.oracle' were not supplied; the database was not evaluated"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "38a455a1-49bb-528d-aa42-8a9a2d42878c",
+     "title": "CIS Oracle Database 26ai Benchmark v1.0.0",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis.oracle_26ai"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/oracle/cis_oracle_26ai.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

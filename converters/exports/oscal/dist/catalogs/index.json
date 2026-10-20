@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 175,
- "controls": 16611,
+ "frameworks": 176,
+ "controls": 16796,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -189,8 +189,8 @@
   {
    "framework": "cis_mcp_server",
    "file": "catalogs/cis_mcp_server.json",
-   "controls": 53,
-   "modules": 7,
+   "controls": 85,
+   "modules": 10,
    "uuid": "df815612-1496-53b2-8e9e-a538aadf1211"
   },
   {
@@ -217,7 +217,7 @@
   {
    "framework": "cis_network_devices",
    "file": "catalogs/cis_network_devices.json",
-   "controls": 94,
+   "controls": 152,
    "modules": 7,
    "uuid": "18754cce-562a-5674-b09a-9c4c56203ef2"
   },
@@ -255,6 +255,13 @@
    "controls": 88,
    "modules": 1,
    "uuid": "a645cf52-f6ad-5736-a097-8a615e68023a"
+  },
+  {
+   "framework": "cis_oracle_26ai",
+   "file": "catalogs/cis_oracle_26ai.json",
+   "controls": 95,
+   "modules": 1,
+   "uuid": "bb69b557-c2dc-5149-b16f-406e1981292b"
   },
   {
    "framework": "cis_os",

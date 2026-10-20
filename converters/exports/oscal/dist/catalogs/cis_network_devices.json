@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "18754cce-562a-5674-b09a-9c4c56203ef2",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_network_devices (CIS Arista EOS Benchmark v1.2.0)",
+   "title": "Rego Policy Libraries — cis_network_devices (CIS Arista EOS Benchmark v1.0.0)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "cis_network_devices-cis_arista_eos",
     "class": "rego-module",
-    "title": "CIS Arista EOS Benchmark v1.2.0",
+    "title": "CIS Arista EOS Benchmark v1.0.0",
     "props": [
      {
       "name": "rego-package",
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "cis_network_devices-control_plane",
-      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "id": "cis_network_devices-1.1.1.1",
+      "title": "Ensure the Management VRF Exists",
       "props": [
        {
         "name": "label",
-        "value": "control_plane"
+        "value": "1.1.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "control_plane"
+        "value": "1.1.1.1"
        },
        {
         "name": "rego-package",
@@ -87,46 +87,28 @@
        {
         "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
         "rel": "implementation"
-       },
-       {
-        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
-        "rel": "implementation"
-       },
-       {
-        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-control_plane_stmt",
+        "id": "cis_network_devices-1.1.1.1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
-       },
-       {
-        "id": "cis_network_devices-control_plane_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
-       },
-       {
-        "id": "cis_network_devices-control_plane_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+        "prose": "Ensure the Management VRF Exists"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-data_plane",
-      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "id": "cis_network_devices-1.1.2",
+      "title": "Control Plane ACL",
       "props": [
        {
         "name": "label",
-        "value": "data_plane"
+        "value": "1.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "data_plane"
+        "value": "1.1.2"
        },
        {
         "name": "rego-package",
@@ -140,44 +122,35 @@
         "rel": "implementation"
        },
        {
-        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
-        "rel": "implementation"
-       },
-       {
-        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-data_plane_stmt",
+        "id": "cis_network_devices-1.1.2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+        "prose": "Control Plane ACL"
        },
        {
-        "id": "cis_network_devices-data_plane_obj.1",
+        "id": "cis_network_devices-1.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
-       },
-       {
-        "id": "cis_network_devices-data_plane_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+        "prose": "SSH v1 explicitly enabled — disable immediately"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-logging",
-      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "id": "cis_network_devices-1.1.3",
+      "title": "Control Plane Policy Map",
       "props": [
        {
         "name": "label",
-        "value": "logging"
+        "value": "1.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "logging"
+        "value": "1.1.3"
        },
        {
         "name": "rego-package",
@@ -191,44 +164,35 @@
         "rel": "implementation"
        },
        {
-        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
-        "rel": "implementation"
-       },
-       {
-        "href": "#9fba6276-4d02-58e5-9cd4-2febe9cd56bc",
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-logging_stmt",
+        "id": "cis_network_devices-1.1.3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+        "prose": "Control Plane Policy Map"
        },
        {
-        "id": "cis_network_devices-logging_obj.1",
+        "id": "cis_network_devices-1.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
-       },
-       {
-        "id": "cis_network_devices-logging_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+        "prose": "SSH password authentication enabled — require key-based auth"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-management_plane",
-      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "id": "cis_network_devices-1.1.4",
+      "title": "Network Time Protocol",
       "props": [
        {
         "name": "label",
-        "value": "management_plane"
+        "value": "1.1.4"
        },
        {
         "name": "alt-identifier",
-        "value": "management_plane"
+        "value": "1.1.4"
        },
        {
         "name": "rego-package",
@@ -242,29 +206,1157 @@
         "rel": "implementation"
        },
        {
-        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
-        "rel": "implementation"
-       },
-       {
-        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-management_plane_stmt",
+        "id": "cis_network_devices-1.1.4_stmt",
+        "name": "statement",
+        "prose": "Network Time Protocol"
+       },
+       {
+        "id": "cis_network_devices-1.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH client-keepalive-interval not set or exceeds 300s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.1.5",
+      "title": "NTP authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.1.5_stmt",
+        "name": "statement",
+        "prose": "NTP authentication"
+       },
+       {
+        "id": "cis_network_devices-1.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH root login not explicitly disabled"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.1.6",
+      "title": "DNS Configuration",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.1.6_stmt",
+        "name": "statement",
+        "prose": "DNS Configuration"
+       },
+       {
+        "id": "cis_network_devices-1.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "Login banner not configured (required for legal notice)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.1.7",
+      "title": "Logging",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.1.7_stmt",
+        "name": "statement",
+        "prose": "Logging"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.1.8",
+      "title": "VLAN Management",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.1.8_stmt",
+        "name": "statement",
+        "prose": "VLAN Management"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.1.9",
+      "title": "Syslog with TLS support",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.1.9_stmt",
+        "name": "statement",
+        "prose": "Syslog with TLS support"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.2",
+      "title": "Enable AES-GCM Encryption of EOS Secrets",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.2_stmt",
+        "name": "statement",
+        "prose": "Enable AES-GCM Encryption of EOS Secrets"
+       },
+       {
+        "id": "cis_network_devices-1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Ensure AutoConfigBackup is enable"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.1",
+      "title": "Do not allow remote login without a password",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.1_stmt",
+        "name": "statement",
+        "prose": "Do not allow remote login without a password"
+       },
+       {
+        "id": "cis_network_devices-2.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Telnet service enabled — disable immediately"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.2",
+      "title": "Configure an enable password",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.2_stmt",
+        "name": "statement",
+        "prose": "Configure an enable password"
+       },
+       {
+        "id": "cis_network_devices-2.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "HTTP management service enabled — use HTTPS only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.3",
+      "title": "Create a password complexity policy",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.3_stmt",
+        "name": "statement",
+        "prose": "Create a password complexity policy"
+       },
+       {
+        "id": "cis_network_devices-2.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "SNMP v1/v2c community configured — use SNMPv3 or disable SNMP"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.1.4",
+      "title": "Verify root login is disabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.1.4_stmt",
+        "name": "statement",
+        "prose": "Verify root login is disabled"
+       },
+       {
+        "id": "cis_network_devices-2.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "NTP not configured — time synchronization required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.3.1",
+      "title": "Roles",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.3.1_stmt",
+        "name": "statement",
+        "prose": "Roles"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.1",
+      "title": "Idle Timeout",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.1_stmt",
+        "name": "statement",
+        "prose": "Idle Timeout"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.4.2",
+      "title": "Emergency Console Access",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.4.2_stmt",
+        "name": "statement",
+        "prose": "Emergency Console Access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.5.1",
+      "title": "Configure TACACS+/RADIUS server",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.5.1_stmt",
+        "name": "statement",
+        "prose": "Configure TACACS+/RADIUS server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.5.2",
+      "title": "Server Groups",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.5.2_stmt",
+        "name": "statement",
+        "prose": "Server Groups"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.5.3",
+      "title": "Authentication, Authorization, and Accounting",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.5.3_stmt",
+        "name": "statement",
+        "prose": "Authentication, Authorization, and Accounting"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.6.1",
+      "title": "Limit SSH Access Only To The Network Management Segment",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.6.1_stmt",
+        "name": "statement",
+        "prose": "Limit SSH Access Only To The Network Management Segment"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.6.2",
+      "title": "Set Idle Timeout for SSH to 10 Minutes or Less",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.6.2_stmt",
+        "name": "statement",
+        "prose": "Set Idle Timeout for SSH to 10 Minutes or Less"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.6.3",
+      "title": "Remove cryptographically weak algorithms",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.6.3_stmt",
+        "name": "statement",
+        "prose": "Remove cryptographically weak algorithms"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.7.1",
+      "title": "Limit SNMP Access To Management VRF",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.7.1_stmt",
+        "name": "statement",
+        "prose": "Limit SNMP Access To Management VRF"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.7.2",
+      "title": "Ensure SNMP Community",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.7.2_stmt",
+        "name": "statement",
+        "prose": "Ensure SNMP Community"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.7.3",
+      "title": "Use SNMPv3 Instead of Earlier Versions",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.7.3_stmt",
+        "name": "statement",
+        "prose": "Use SNMPv3 Instead of Earlier Versions"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.8",
+      "title": "Telnet access",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.8_stmt",
+        "name": "statement",
+        "prose": "Telnet access"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.9",
+      "title": "API access using https",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.9_stmt",
+        "name": "statement",
+        "prose": "API access using https"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.9.1",
+      "title": "Login Banner",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.9.1_stmt",
+        "name": "statement",
+        "prose": "Login Banner"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.1.1",
+      "title": "OSPF Interface Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.1.1_stmt",
+        "name": "statement",
+        "prose": "OSPF Interface Authentication"
+       },
+       {
+        "id": "cis_network_devices-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "No firewall rulesets defined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.1.2",
+      "title": "ISIS Interface and Instance Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.1.2_stmt",
+        "name": "statement",
+        "prose": "ISIS Interface and Instance Authentication"
+       },
+       {
+        "id": "cis_network_devices-3.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "WAN interface has no inbound/local firewall ruleset applied"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.2.1",
+      "title": "BGP Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.2.1_stmt",
+        "name": "statement",
+        "prose": "BGP Authentication"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.2.2",
+      "title": "BGP TCP Authentication Option (TCP-AO)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.2.2_stmt",
+        "name": "statement",
+        "prose": "BGP TCP Authentication Option (TCP-AO)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-eos_config",
+      "title": "CIS Arista EOS: evidence missing — eos_config not collected; the device was not evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "eos_config"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "eos_config"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-eos_config_stmt",
+        "name": "statement",
+        "prose": "CIS Arista EOS: evidence missing — eos_config not collected; the device was not evaluated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_arista_eos-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_arista_eos#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_arista_eos#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_arista_eos-1_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_arista_eos-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_arista_eos#2"
        },
        {
-        "id": "cis_network_devices-management_plane_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+        "name": "alt-identifier",
+        "value": "cis_arista_eos#2"
        },
        {
-        "id": "cis_network_devices-management_plane_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_arista_eos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#22cda051-84c8-5f6d-8555-43e5b963b04d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_arista_eos-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/arista/cis_arista_eos.rego (package cis_arista_eos); see the rule body."
        }
       ],
       "class": "security"
@@ -1744,6 +2836,132 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_network_devices-control_plane",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "control_plane"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "control_plane"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-control_plane_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-control_plane_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-data_plane",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "data_plane"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "data_plane"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-data_plane_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-data_plane_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-management_plane",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "management_plane"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "management_plane"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_cisco_ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f38ddf90-7d8c-5918-ad20-d5e1708a53d4",
+        "rel": "implementation"
+       },
+       {
+        "href": "#84f57b74-b673-5056-995c-4033ba1f2356",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-management_plane_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/cisco/cis_cisco_ios.rego (package cis_cisco_ios); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-management_plane_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/juniper/cis_juniper_junos.rego (package cis_juniper_junos); see the rule body."
+       }
+      ],
+      "class": "security"
      }
     ]
    },
@@ -1831,6 +3049,48 @@
         "id": "cis_network_devices-firewall_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-logging",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "logging"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "logging"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_fortinet_fortigate"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5c7a4a89-2421-52b3-8752-4654658f21cd",
+        "rel": "implementation"
+       },
+       {
+        "href": "#9fba6276-4d02-58e5-9cd4-2febe9cd56bc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-logging_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-logging_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
       ],
       "class": "security"
@@ -2449,7 +3709,7 @@
    {
     "id": "cis_network_devices-cis_pfsense",
     "class": "rego-module",
-    "title": "CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0",
+    "title": "CIS pfSense Firewall Benchmark v1.1.1",
     "props": [
      {
       "name": "rego-package",
@@ -2469,16 +3729,16 @@
     ],
     "controls": [
      {
-      "id": "cis_network_devices-1.1.1",
-      "title": "WebGUI not using HTTPS — admin credentials transmitted in plaintext",
+      "id": "cis_network_devices-1.1",
+      "title": "Ensure SSH warning banner is configured",
       "props": [
        {
         "name": "label",
-        "value": "1.1.1"
+        "value": "1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "1.1.1"
+        "value": "1.1"
        },
        {
         "name": "rego-package",
@@ -2490,37 +3750,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-1.1.1_stmt",
+        "id": "cis_network_devices-1.1_stmt",
         "name": "statement",
-        "prose": "WebGUI not using HTTPS — admin credentials transmitted in plaintext"
+        "prose": "Ensure SSH warning banner is configured"
        },
        {
-        "id": "cis_network_devices-1.1.1_obj.1",
+        "id": "cis_network_devices-1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "SSH service not configured — telnet or no remote access"
+        "prose": "SSH login banner not configured (no Banner directive, or Banner none)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-1.1.4",
-      "title": "No management interface (SSH or WebGUI) configured",
+      "id": "cis_network_devices-1.3",
+      "title": "Ensure 'Message Of The Day (MOTD)' is set",
       "props": [
        {
         "name": "label",
-        "value": "1.1.4"
+        "value": "1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "1.1.4"
+        "value": "1.3"
        },
        {
         "name": "rego-package",
@@ -2532,42 +3788,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-1.1.4_stmt",
+        "id": "cis_network_devices-1.3_stmt",
         "name": "statement",
-        "prose": "No management interface (SSH or WebGUI) configured"
+        "prose": "Ensure 'Message Of The Day (MOTD)' is set"
        },
        {
-        "id": "cis_network_devices-1.1.4_obj.1",
+        "id": "cis_network_devices-1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "SSH enabled with password-only auth — enable key authentication"
-       },
-       {
-        "id": "cis_network_devices-1.1.4_obj.2",
-        "name": "assessment-objective",
-        "prose": "SSH client-keepalive-interval not set or exceeds 300s"
+        "prose": "message of the day is empty or still the stock FreeBSD text"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-1.1.6",
-      "title": "Login protection (brute-force lockout) disabled",
+      "id": "cis_network_devices-1.4",
+      "title": "hostname is unset or still the factory default 'pfSense'",
       "props": [
        {
         "name": "label",
-        "value": "1.1.6"
+        "value": "1.4"
        },
        {
         "name": "alt-identifier",
-        "value": "1.1.6"
+        "value": "1.4"
        },
        {
         "name": "rego-package",
@@ -2579,37 +3826,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-1.1.6_stmt",
+        "id": "cis_network_devices-1.4_stmt",
         "name": "statement",
-        "prose": "Login protection (brute-force lockout) disabled"
+        "prose": "hostname is unset or still the factory default 'pfSense'"
        },
        {
-        "id": "cis_network_devices-1.1.6_obj.1",
+        "id": "cis_network_devices-1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Login banner not configured (required for legal notice)"
+        "prose": "Ensure Hostname is set"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-1.1.7",
-      "title": "WebGUI session timeout not configured or exceeds 240 minutes",
+      "id": "cis_network_devices-1.5",
+      "title": "Ensure DNS server is configured",
       "props": [
        {
         "name": "label",
-        "value": "1.1.7"
+        "value": "1.5"
        },
        {
         "name": "alt-identifier",
-        "value": "1.1.7"
+        "value": "1.5"
        },
        {
         "name": "rego-package",
@@ -2625,24 +3868,29 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-1.1.7_stmt",
+        "id": "cis_network_devices-1.5_stmt",
         "name": "statement",
-        "prose": "WebGUI session timeout not configured or exceeds 240 minutes"
+        "prose": "Ensure DNS server is configured"
+       },
+       {
+        "id": "cis_network_devices-1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "no DNS server configured under System > General Setup"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-2.1.1",
-      "title": "RFC1918 private addresses not blocked on WAN interface",
+      "id": "cis_network_devices-1.6",
+      "title": "Ensure IPv6 is disabled if not used",
       "props": [
        {
         "name": "label",
-        "value": "2.1.1"
+        "value": "1.6"
        },
        {
         "name": "alt-identifier",
-        "value": "2.1.1"
+        "value": "1.6"
        },
        {
         "name": "rego-package",
@@ -2654,37 +3902,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-2.1.1_stmt",
+        "id": "cis_network_devices-1.6_stmt",
         "name": "statement",
-        "prose": "RFC1918 private addresses not blocked on WAN interface"
+        "prose": "Ensure IPv6 is disabled if not used"
        },
        {
-        "id": "cis_network_devices-2.1.1_obj.1",
+        "id": "cis_network_devices-1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Telnet service enabled — disable immediately"
+        "prose": "IPv6 is allowed and IPv6 use is not attested (input.attest.ipv6_required)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-2.1.2",
-      "title": "Bogon networks not blocked on WAN interface",
+      "id": "cis_network_devices-1.7",
+      "title": "Ensure 'DNS Rebind Check' is unchecked",
       "props": [
        {
         "name": "label",
-        "value": "2.1.2"
+        "value": "1.7"
        },
        {
         "name": "alt-identifier",
-        "value": "2.1.2"
+        "value": "1.7"
        },
        {
         "name": "rego-package",
@@ -2696,37 +3940,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-2.1.2_stmt",
+        "id": "cis_network_devices-1.7_stmt",
         "name": "statement",
-        "prose": "Bogon networks not blocked on WAN interface"
+        "prose": "Ensure 'DNS Rebind Check' is unchecked"
        },
        {
-        "id": "cis_network_devices-2.1.2_obj.1",
+        "id": "cis_network_devices-1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "HTTP management service enabled — use HTTPS only"
+        "prose": "DNS rebinding checks are disabled on the webConfigurator"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-2.1.3",
-      "title": "Allow-all rule exists on WAN — firewall is effectively disabled",
+      "id": "cis_network_devices-1.8",
+      "title": "Ensure Web Management is Set to use HTTPS",
       "props": [
        {
         "name": "label",
-        "value": "2.1.3"
+        "value": "1.8"
        },
        {
         "name": "alt-identifier",
-        "value": "2.1.3"
+        "value": "1.8"
        },
        {
         "name": "rego-package",
@@ -2738,37 +3978,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-2.1.3_stmt",
+        "id": "cis_network_devices-1.8_stmt",
         "name": "statement",
-        "prose": "Allow-all rule exists on WAN — firewall is effectively disabled"
+        "prose": "Ensure Web Management is Set to use HTTPS"
        },
        {
-        "id": "cis_network_devices-2.1.3_obj.1",
+        "id": "cis_network_devices-1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "SNMP v1/v2c community configured — use SNMPv3 or disable SNMP"
+        "prose": "webConfigurator does not use HTTPS"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-2.1.4",
-      "title": "No logging on block rules — denied traffic not auditable",
+      "id": "cis_network_devices-1.9",
+      "title": "Ensure a synchronized High Availability peer is configured",
       "props": [
        {
         "name": "label",
-        "value": "2.1.4"
+        "value": "1.9"
        },
        {
         "name": "alt-identifier",
-        "value": "2.1.4"
+        "value": "1.9"
        },
        {
         "name": "rego-package",
@@ -2780,37 +4016,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-2.1.4_stmt",
+        "id": "cis_network_devices-1.9_stmt",
         "name": "statement",
-        "prose": "No logging on block rules — denied traffic not auditable"
+        "prose": "Ensure a synchronized High Availability peer is configured"
        },
        {
-        "id": "cis_network_devices-2.1.4_obj.1",
+        "id": "cis_network_devices-1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "NTP not configured — time synchronization required"
+        "prose": "no High Availability sync peer (synchronizetoip) configured"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-2.1.5",
-      "title": "Packet scrubbing (normalisation) disabled — fragmentation attacks possible",
+      "id": "cis_network_devices-2.1",
+      "title": "Ensure Sessions Timeout is set to less than or equal to 10 Minutes",
       "props": [
        {
         "name": "label",
-        "value": "2.1.5"
+        "value": "2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "2.1.5"
+        "value": "2.1"
        },
        {
         "name": "rego-package",
@@ -2822,37 +4054,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-2.1.5_stmt",
+        "id": "cis_network_devices-2.1_stmt",
         "name": "statement",
-        "prose": "Packet scrubbing (normalisation) disabled — fragmentation attacks possible"
+        "prose": "Ensure Sessions Timeout is set to less than or equal to 10 Minutes"
        },
        {
-        "id": "cis_network_devices-2.1.5_obj.1",
+        "id": "cis_network_devices-2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Remote syslog not configured — logs must be sent off-device"
+        "prose": "webConfigurator session timeout is blank (240 min default), 0 (never) or over 10 minutes"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-3.1.1",
-      "title": "SNMP v1/v2c enabled with community string — use SNMPv3 or disable",
+      "id": "cis_network_devices-2.2",
+      "title": "Ensure LDAP or RADIUS server configured",
       "props": [
        {
         "name": "label",
-        "value": "3.1.1"
+        "value": "2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "3.1.1"
+        "value": "2.2"
        },
        {
         "name": "rego-package",
@@ -2864,37 +4092,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-3.1.1_stmt",
+        "id": "cis_network_devices-2.2_stmt",
         "name": "statement",
-        "prose": "SNMP v1/v2c enabled with community string — use SNMPv3 or disable"
+        "prose": "Ensure LDAP or RADIUS server configured"
        },
        {
-        "id": "cis_network_devices-3.1.1_obj.1",
+        "id": "cis_network_devices-2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "No firewall rulesets defined"
+        "prose": "no LDAP or RADIUS authentication server configured"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-3.1.2",
-      "title": "NTP not configured — accurate timestamps required for log correlation",
+      "id": "cis_network_devices-2.3",
+      "title": "Ensure Console Menu is Password Protected",
       "props": [
        {
         "name": "label",
-        "value": "3.1.2"
+        "value": "2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "3.1.2"
+        "value": "2.3"
        },
        {
         "name": "rego-package",
@@ -2906,37 +4130,33 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-3.1.2_stmt",
+        "id": "cis_network_devices-2.3_stmt",
         "name": "statement",
-        "prose": "NTP not configured — accurate timestamps required for log correlation"
+        "prose": "Ensure Console Menu is Password Protected"
        },
        {
-        "id": "cis_network_devices-3.1.2_obj.1",
+        "id": "cis_network_devices-2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "WAN interface has no inbound/local firewall ruleset applied"
+        "prose": "console menu is not password protected"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-3.1.3",
-      "title": "Remote syslog not configured — logs lost if device is compromised",
+      "id": "cis_network_devices-2.4",
+      "title": "Ensure all default accounts are either disabled or utilize strong passwords",
       "props": [
        {
         "name": "label",
-        "value": "3.1.3"
+        "value": "2.4"
        },
        {
         "name": "alt-identifier",
-        "value": "3.1.3"
+        "value": "2.4"
        },
        {
         "name": "rego-package",
@@ -2948,37 +4168,28 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-3.1.3_stmt",
+        "id": "cis_network_devices-2.4_stmt",
         "name": "statement",
-        "prose": "Remote syslog not configured — logs lost if device is compromised"
-       },
-       {
-        "id": "cis_network_devices-3.1.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "No ruleset has default-action drop — default-permit is insecure"
+        "prose": "Ensure all default accounts are either disabled or utilize strong passwords"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-3.1.5",
-      "title": "UPnP/miniupnpd enabled — allows internal hosts to open firewall ports",
+      "id": "cis_network_devices-3.1",
+      "title": "Ensure 'Local Account status' is set to 'Disabled'",
       "props": [
        {
         "name": "label",
-        "value": "3.1.5"
+        "value": "3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "3.1.5"
+        "value": "3.1"
        },
        {
         "name": "rego-package",
@@ -2990,29 +4201,129 @@
        {
         "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'Local Account status' is set to 'Disabled'"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.2",
+      "title": "Ensure Login Protection Threshold is set to 30 or less",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
        },
        {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_network_devices-3.1.5_stmt",
+        "id": "cis_network_devices-3.2_stmt",
         "name": "statement",
-        "prose": "UPnP/miniupnpd enabled — allows internal hosts to open firewall ports"
+        "prose": "Ensure Login Protection Threshold is set to 30 or less"
        },
        {
-        "id": "cis_network_devices-3.1.5_obj.1",
+        "id": "cis_network_devices-3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "No logging on deny rules — blocked traffic not auditable"
+        "prose": "login protection threshold is above 30 or not a positive number"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.3",
+      "title": "Ensure Allow access again after time is set to 300 or more second",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.3_stmt",
+        "name": "statement",
+        "prose": "Ensure Allow access again after time is set to 300 or more second"
+       },
+       {
+        "id": "cis_network_devices-3.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "login protection block time is unset (120 s default) or under 300 seconds"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.4",
+      "title": "Ensure default password of admin is changed",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.4_stmt",
+        "name": "statement",
+        "prose": "Ensure default password of admin is changed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_network_devices-4.1.1",
-      "title": "Default hostname 'pfSense' or 'OPNsense' not changed",
+      "title": "Ensure no Allow Rule with Any in Destination Field present in the Firewall Rules",
       "props": [
        {
         "name": "label",
@@ -3042,10 +4353,15 @@
        {
         "id": "cis_network_devices-4.1.1_stmt",
         "name": "statement",
-        "prose": "Default hostname 'pfSense' or 'OPNsense' not changed"
+        "prose": "Ensure no Allow Rule with Any in Destination Field present in the Firewall Rules"
        },
        {
         "id": "cis_network_devices-4.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "allow rule %s has Any as destination"
+       },
+       {
+        "id": "cis_network_devices-4.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "Default 'vyos' user present with potentially default credentials"
        }
@@ -3054,7 +4370,7 @@
      },
      {
       "id": "cis_network_devices-4.1.2",
-      "title": "Default domain 'localdomain' not changed — use a proper domain name",
+      "title": "Ensure no Allow Rule with Any in Source field present in the Firewall Rules",
       "props": [
        {
         "name": "label",
@@ -3084,10 +4400,15 @@
        {
         "id": "cis_network_devices-4.1.2_stmt",
         "name": "statement",
-        "prose": "Default domain 'localdomain' not changed — use a proper domain name"
+        "prose": "Ensure no Allow Rule with Any in Source field present in the Firewall Rules"
        },
        {
         "id": "cis_network_devices-4.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "allow rule %s has Any as source"
+       },
+       {
+        "id": "cis_network_devices-4.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "One or more user accounts use plaintext passwords"
        }
@@ -3095,8 +4416,155 @@
       "class": "security"
      },
      {
+      "id": "cis_network_devices-4.1.3",
+      "title": "Ensure no Allow Rule with Any in Services field present in the Firewall Rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure no Allow Rule with Any in Services field present in the Firewall Rules"
+       },
+       {
+        "id": "cis_network_devices-4.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "allow rule %s permits any service (no protocol, or TCP/UDP with no destination port)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.1.4",
+      "title": "Ensure there are no Unused Policies",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1.4_stmt",
+        "name": "statement",
+        "prose": "Ensure there are no Unused Policies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.1.5",
+      "title": "Ensure Logging is Enable for All Firewall Rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1.5_stmt",
+        "name": "statement",
+        "prose": "Ensure Logging is Enable for All Firewall Rules"
+       },
+       {
+        "id": "cis_network_devices-4.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "rule %s does not log matched packets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.1.6",
+      "title": "Ensure ICMP Request is securely configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1.6_stmt",
+        "name": "statement",
+        "prose": "Ensure ICMP Request is securely configured"
+       },
+       {
+        "id": "cis_network_devices-4.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "ICMP allow rule %s does not restrict ICMP types"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_network_devices-5.1.1",
-      "title": "Packages with known vulnerabilities detected — update immediately",
+      "title": "Ensure SNMP traps receivers is set",
       "props": [
        {
         "name": "label",
@@ -3126,22 +4594,618 @@
        {
         "id": "cis_network_devices-5.1.1_stmt",
         "name": "statement",
-        "prose": "Packages with known vulnerabilities detected — update immediately"
+        "prose": "Ensure SNMP traps receivers is set"
        },
        {
         "id": "cis_network_devices-5.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "UNABLE TO VERIFY — vulnerability scan performed but input.vulnerable_packages not provided"
+        "prose": "SNMP traps are off or no trap receiver is configured"
        },
        {
         "id": "cis_network_devices-5.1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "UNABLE TO VERIFY — vulnerability scan facts not provided (input.vulnerability_scan.performed is not true)"
+        "prose": "Default hostname 'vyos' not changed — device not identifiable"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.1.2",
+      "title": "Ensure SNMP traps is enabled",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
        },
        {
-        "id": "cis_network_devices-5.1.1_obj.3",
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Ensure SNMP traps is enabled"
+       },
+       {
+        "id": "cis_network_devices-5.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Default hostname 'vyos' not changed — device not identifiable"
+        "prose": "SNMP traps are not enabled"
+       },
+       {
+        "id": "cis_network_devices-5.1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "Timezone not configured — timestamps unreliable for forensics"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.1.3",
+      "title": "Ensure that the add-on package NET-SNMP is installed and configured securely",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.1.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that the add-on package NET-SNMP is installed and configured securely"
+       },
+       {
+        "id": "cis_network_devices-5.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Console login timeout not configured or exceeds 300 seconds"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.2.1",
+      "title": "Ensure time zone is properly configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Ensure time zone is properly configured"
+       },
+       {
+        "id": "cis_network_devices-5.2.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.system not collected"
+       },
+       {
+        "id": "cis_network_devices-5.2.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "time zone or NTP time servers not configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.3.1",
+      "title": "Ensure 'DNSSEC' is Enable on DNS Service",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.3.1_stmt",
+        "name": "statement",
+        "prose": "Ensure 'DNSSEC' is Enable on DNS Service"
+       },
+       {
+        "id": "cis_network_devices-5.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.unbound not collected"
+       },
+       {
+        "id": "cis_network_devices-5.3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "DNSSEC is not enabled on the DNS Resolver"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.4.1",
+      "title": "Ensure RADIUS or LDAP are being used for VPN Authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.4.1_stmt",
+        "name": "statement",
+        "prose": "Ensure RADIUS or LDAP are being used for VPN Authentication"
+       },
+       {
+        "id": "cis_network_devices-5.4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "OpenVPN server %s authenticates users without an LDAP/RADIUS server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.4.2",
+      "title": "Apply a Trusted Signed Certificate for VPN Portal",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.4.2_stmt",
+        "name": "statement",
+        "prose": "Apply a Trusted Signed Certificate for VPN Portal"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.4.3",
+      "title": "Ensure that OpenVPN is configured to use TLS encryption for secure communications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.4.3_stmt",
+        "name": "statement",
+        "prose": "Ensure that OpenVPN is configured to use TLS encryption for secure communications."
+       },
+       {
+        "id": "cis_network_devices-5.4.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "OpenVPN server %s does not use a TLS mode"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.5.1",
+      "title": "Ensure that OpenVPN use strong ciphers or hashing algorithms",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.5.1_stmt",
+        "name": "statement",
+        "prose": "Ensure that OpenVPN use strong ciphers or hashing algorithms"
+       },
+       {
+        "id": "cis_network_devices-5.5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "OpenVPN server %s allows a non-AEAD data cipher or none is set"
+       },
+       {
+        "id": "cis_network_devices-5.5.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "OpenVPN server %s uses a weak or unset auth digest"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.1",
+      "title": "Ensure syslog is configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure syslog is configured"
+       },
+       {
+        "id": "cis_network_devices-6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.syslog / input.syslogd not collected"
+       },
+       {
+        "id": "cis_network_devices-6.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "remote syslog is not enabled or has no remote server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-3",
+      "title": "%s: evidence missing — input.system not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-3_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — input.system not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-4",
+      "title": "%s: evidence missing — input.filter.rule not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-4_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — input.filter.rule not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-5",
+      "title": "%s: evidence missing — input.snmpd not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-5_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — input.snmpd not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-6",
+      "title": "%s: evidence missing — input.openvpn not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-6_stmt",
+        "name": "statement",
+        "prose": "%s: evidence missing — input.openvpn not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-cis_pfsense-7",
+      "title": "%s: not attested — manual review required, set input.attest.%s to true",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_pfsense#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_pfsense#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_pfsense"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-cis_pfsense-7_stmt",
+        "name": "statement",
+        "prose": "%s: not attested — manual review required, set input.attest.%s to true"
        }
       ],
       "class": "security"
@@ -3182,48 +5246,6 @@
        },
        {
         "id": "cis_network_devices-device_info_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-section_compliance",
-      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "section_compliance"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "section_compliance"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_pfsense"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-        "rel": "implementation"
-       },
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-section_compliance_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/pfsense/cis_pfsense.rego (package cis_pfsense); see the rule body."
-       },
-       {
-        "id": "cis_network_devices-section_compliance_obj.1",
         "name": "assessment-objective",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body."
        }
@@ -3297,16 +5319,16 @@
     ],
     "controls": [
      {
-      "id": "cis_network_devices-1.1.2",
-      "title": "SSH v1 explicitly enabled — disable immediately",
+      "id": "cis_network_devices-1.1.1",
+      "title": "SSH service not configured — telnet or no remote access",
       "props": [
        {
         "name": "label",
-        "value": "1.1.2"
+        "value": "1.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "1.1.2"
+        "value": "1.1.1"
        },
        {
         "name": "rego-package",
@@ -3322,24 +5344,24 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-1.1.2_stmt",
+        "id": "cis_network_devices-1.1.1_stmt",
         "name": "statement",
-        "prose": "SSH v1 explicitly enabled — disable immediately"
+        "prose": "SSH service not configured — telnet or no remote access"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_network_devices-1.1.3",
-      "title": "SSH password authentication enabled — require key-based auth",
+      "id": "cis_network_devices-2.1.5",
+      "title": "Remote syslog not configured — logs must be sent off-device",
       "props": [
        {
         "name": "label",
-        "value": "1.1.3"
+        "value": "2.1.5"
        },
        {
         "name": "alt-identifier",
-        "value": "1.1.3"
+        "value": "2.1.5"
        },
        {
         "name": "rego-package",
@@ -3355,42 +5377,9 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-1.1.3_stmt",
+        "id": "cis_network_devices-2.1.5_stmt",
         "name": "statement",
-        "prose": "SSH password authentication enabled — require key-based auth"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-1.1.5",
-      "title": "SSH root login not explicitly disabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_vyos"
-       }
-      ],
-      "links": [
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-1.1.5_stmt",
-        "name": "statement",
-        "prose": "SSH root login not explicitly disabled"
+        "prose": "Remote syslog not configured — logs must be sent off-device"
        }
       ],
       "class": "security"
@@ -3429,6 +5418,39 @@
       "class": "security"
      },
      {
+      "id": "cis_network_devices-3.1.3",
+      "title": "No ruleset has default-action drop — default-permit is insecure",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_vyos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.1.3_stmt",
+        "name": "statement",
+        "prose": "No ruleset has default-action drop — default-permit is insecure"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_network_devices-3.1.4",
       "title": "No stateful connection tracking rules (ESTABLISHED/RELATED accept)",
       "props": [
@@ -3457,6 +5479,39 @@
         "id": "cis_network_devices-3.1.4_stmt",
         "name": "statement",
         "prose": "No stateful connection tracking rules (ESTABLISHED/RELATED accept)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-3.1.5",
+      "title": "No logging on deny rules — blocked traffic not auditable",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_vyos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-3.1.5_stmt",
+        "name": "statement",
+        "prose": "No logging on deny rules — blocked traffic not auditable"
        }
       ],
       "class": "security"
@@ -3495,16 +5550,16 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-5.1.2",
-      "title": "Timezone not configured — timestamps unreliable for forensics",
+      "id": "cis_network_devices-section_compliance",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "5.1.2"
+        "value": "section_compliance"
        },
        {
         "name": "alt-identifier",
-        "value": "5.1.2"
+        "value": "section_compliance"
        },
        {
         "name": "rego-package",
@@ -3520,42 +5575,9 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-5.1.2_stmt",
+        "id": "cis_network_devices-section_compliance_stmt",
         "name": "statement",
-        "prose": "Timezone not configured — timestamps unreliable for forensics"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_network_devices-5.1.3",
-      "title": "Console login timeout not configured or exceeds 300 seconds",
-      "props": [
-       {
-        "name": "label",
-        "value": "5.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "5.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_vyos"
-       }
-      ],
-      "links": [
-       {
-        "href": "#92f0ade0-7cb4-5a6c-a171-3cb374a30cac",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_network_devices-5.1.3_stmt",
-        "name": "statement",
-        "prose": "Console login timeout not configured or exceeds 300 seconds"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/vyos/cis_vyos.rego (package cis_vyos); see the rule body."
        }
       ],
       "class": "security"
@@ -3567,7 +5589,7 @@
    "resources": [
     {
      "uuid": "22cda051-84c8-5f6d-8555-43e5b963b04d",
-     "title": "CIS Arista EOS Benchmark v1.2.0",
+     "title": "CIS Arista EOS Benchmark v1.0.0",
      "props": [
       {
        "name": "rego-package",
@@ -3652,7 +5674,7 @@
     },
     {
      "uuid": "d43cb095-d8e6-5241-a87b-34ac73cd0e1d",
-     "title": "CIS pfSense / OPNsense Firewall Hardening Benchmark v1.0.0",
+     "title": "CIS pfSense Firewall Benchmark v1.1.1",
      "props": [
       {
        "name": "rego-package",

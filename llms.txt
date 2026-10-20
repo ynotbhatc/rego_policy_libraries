@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 19,817 control-level checks in 798 policy files, mapped to 175 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 20,120 control-level checks in 802 policy files, mapped to 175 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -55,7 +55,7 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [Irs 1075](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-irs-1075.html): 9 policy files
 - [Iso27701](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-privacy-iso27701.html): 5 policy files
 - [M365](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-scuba-m365.html): 8 policy files
-- [Mcp Server](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-mcp-server.html): 8 policy files
+- [Mcp Server](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-mcp-server.html): 11 policy files
 - [NCSC CAF](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-compliance-ncsc-caf.html): 8 policy files
 - [NERC-CIP](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-nerc-cip.html): 16 policy files
 - [NIST](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-nist.html): 41 policy files

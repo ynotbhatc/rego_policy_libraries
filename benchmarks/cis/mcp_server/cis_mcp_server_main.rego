@@ -1,15 +1,13 @@
 # CIS MCP Server Benchmark v1.0.0 — master orchestrator
 #
-# Aggregates the implemented sections of the CIS MCP Server Benchmark
-# (released 2026-09) into one fail-closed compliance report with per-section
-# and per-level (L1/L2) rollups.
+# Aggregates all 10 sections of the CIS MCP Server Benchmark v1.0.0 into one
+# fail-closed compliance report with per-section and per-level (L1/L2) rollups.
 #
-# COVERAGE — stated, never implied: 46 of 55 recommendations across 7 of 10
-# sections, implemented from the recommendation set verifiable in public
-# sources (the Astrix CIS-MCP-Benchmark-Prober published check docs).
-# Sections 6 (Data Protection and Privacy), 8 (Supply Chain Security) and
-# 9 (Isolation and Execution Safety) are NOT implemented pending the
-# benchmark PDF; the report carries this in its coverage object.
+# COVERAGE: 55 of 55 recommendations across 10 of 10 sections. Ids, titles,
+# levels (Level 1 / Level 2 profile sheets) and Automated/Manual status come
+# from the official CIS workbook. Automated recommendations are judged from
+# collected evidence (input.cis_mcp_server.<section>.evidence); Manual ones
+# from attestation (input.cis_mcp_server.<section>.requirements).
 #
 # Entry point: data.cis_mcp_server.main.compliance_report
 
@@ -28,17 +26,20 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_mcp_server.main
 
 import rego.v1
 
 import data.cis_mcp_server.authn_authz
 import data.cis_mcp_server.client_host_config
+import data.cis_mcp_server.data_protection_privacy
 import data.cis_mcp_server.governance_versioning
+import data.cis_mcp_server.isolation_execution_safety
 import data.cis_mcp_server.observability_audit
 import data.cis_mcp_server.resource_limits_caching
 import data.cis_mcp_server.server_config
+import data.cis_mcp_server.supply_chain_security
 import data.cis_mcp_server.transport_connectivity
 
 # Per-section reports, in benchmark section order.
@@ -48,36 +49,33 @@ section_reports := [
 	authn_authz.compliance_report,
 	client_host_config.compliance_report,
 	server_config.compliance_report,
+	data_protection_privacy.compliance_report,
 	observability_audit.compliance_report,
+	supply_chain_security.compliance_report,
+	isolation_execution_safety.compliance_report,
 	resource_limits_caching.compliance_report,
 ]
 
 all_violations := [v | some r in section_reports; some v in r.violations]
 
-# Attestation object for a section, defaulted to {} so the report is robust
-# to entirely-absent input (the standard bare `opa eval` verify command) and
-# to a malformed non-object `requirements` value, which would otherwise make
-# object.get undefined and silently drop the section's ids from _all.
-default _attest(_) := {}
-
-_attest(section) := req if {
-	req := input.cis_mcp_server[section].requirements
-	is_object(req)
-}
-
+# Each section module decides which of its recommendations are met (Manual:
+# attested; Automated: evidence present and every check passing).
 _specs := [
-	{"key": "governance_versioning", "req": governance_versioning.requirements},
-	{"key": "transport_connectivity", "req": transport_connectivity.requirements},
-	{"key": "authn_authz", "req": authn_authz.requirements},
-	{"key": "client_host_config", "req": client_host_config.requirements},
-	{"key": "server_config", "req": server_config.requirements},
-	{"key": "observability_audit", "req": observability_audit.requirements},
-	{"key": "resource_limits_caching", "req": resource_limits_caching.requirements},
+	{"req": governance_versioning.requirements, "met": governance_versioning.met},
+	{"req": transport_connectivity.requirements, "met": transport_connectivity.met},
+	{"req": authn_authz.requirements, "met": authn_authz.met},
+	{"req": client_host_config.requirements, "met": client_host_config.met},
+	{"req": server_config.requirements, "met": server_config.met},
+	{"req": data_protection_privacy.requirements, "met": data_protection_privacy.met},
+	{"req": observability_audit.requirements, "met": observability_audit.met},
+	{"req": supply_chain_security.requirements, "met": supply_chain_security.met},
+	{"req": isolation_execution_safety.requirements, "met": isolation_execution_safety.met},
+	{"req": resource_limits_caching.requirements, "met": resource_limits_caching.met},
 ]
 
 # id -> {level, met}. Recommendation ids are unique across sections (the
 # benchmark numbers them globally).
-_all[id] := {"level": m.level, "met": object.get(_attest(spec.key), id, false) == true} if {
+_all[id] := {"level": m.level, "met": id in spec.met} if {
 	some spec in _specs
 	some id, m in spec.req
 }
@@ -86,9 +84,7 @@ total_requirements := count(_all)
 
 requirements_met := count([id | some id; c := _all[id]; c.met])
 
-# Level rollups. Requirements whose level the public sources did not state
-# carry level "unspecified" and are excluded from the L1/L2 floors (but
-# always count toward overall compliance).
+# Level rollups. Every recommendation is Level 1 or Level 2 per the workbook.
 l1_total := count([id | some id; c := _all[id]; c.level == "L1"])
 
 l1_met := count([id | some id; c := _all[id]; c.level == "L1"; c.met])
@@ -127,11 +123,7 @@ compliance_report := {
 		"sections_total": 10,
 		"recommendations_implemented": total_requirements,
 		"recommendations_total": 55,
-		"missing_sections": {
-			"6": "Data Protection and Privacy",
-			"8": "Supply Chain Security",
-			"9": "Isolation and Execution Safety",
-		},
+		"missing_sections": {},
 	},
 	"sections_evaluated": count(section_reports),
 	"total_requirements": total_requirements,
