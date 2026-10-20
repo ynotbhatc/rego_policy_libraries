@@ -12,7 +12,17 @@ tests.
   parameter and profile checks read the queried value, privilege checks read the
   rows the query returns, audit checks read the enabled unified-audit options; the
   nine Manual recommendations are attestation booleans. The input contract is the
-  Oracle Database 19c STIG module's, so one collector feeds both.
+  Oracle Database 19c STIG module's, so one collector feeds both. Deprecated:
+  CIS renamed the benchmark to 26ai (below).
+
+- `gen_oracle_db_26ai.py <workbook.xlsx>` — CIS Oracle Database 26ai Benchmark v1.0.0,
+  all 94 recommendations (81 Automated, 13 Manual), from the CIS workbook (needs
+  openpyxl). Ids, titles, Automated/Manual status and the three Level 1 profiles
+  (RDBMS; RDBMS on Linux / Windows host) are read from the workbook; the logic table
+  carries over the 23ai logic plus the seven new recommendations. Automated checks
+  fail closed with an "evidence missing" message per recommendation, and the
+  generated tests give every recommendation a pass, a fail and (Automated) an
+  evidence-missing case. Same input contract as 23ai.
 
 - `gen_windows_server_2022.py <workbook.xlsx>` — CIS Microsoft Windows Server 2022 Benchmark v5.1.0, all
   408 recommendations, from the benchmark's Excel workbook (Combined Profiles sheet, read with the standard

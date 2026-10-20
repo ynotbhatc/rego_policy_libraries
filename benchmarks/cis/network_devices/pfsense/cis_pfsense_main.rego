@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_pfsense.main
 
 # Bridge: expose cis_pfsense under the /v1/data/<framework>/main/compliance_report
@@ -28,9 +28,9 @@ package cis_pfsense.main
 #    error. See library rule #5 in CLAUDE.md.
 #
 # 2. total_controls is the number of DISTINCT CIS control IDs this policy set
-#    actually evaluates (counted from the violation messages), NOT the size of
-#    the published CIS benchmark. Reporting the benchmark's headline number
-#    would overstate coverage. See "controls_basis" in the report.
+#    actually evaluates (cis_pfsense.controls). For v1.1.1 that is every one of
+#    the 33 recommendations; it is still counted, never hard-coded, so it
+#    cannot overstate coverage. See "controls_basis" in the report.
 
 import rego.v1
 import data.cis_pfsense as bench
@@ -103,10 +103,10 @@ _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_cont
 
 compliance_report := {
 	"framework": "cis_pfsense",
-	"benchmark": "CIS pfSense Benchmark v1.0.0",
-	"version": "v1.0.0",
+	"benchmark": "CIS pfSense Firewall Benchmark v1.1.1",
+	"version": "v1.1.1",
 	"total_controls": _total_controls,
-	"controls_basis": "controls implemented in this device policy set",
+	"controls_basis": "all recommendations in CIS pfSense Firewall Benchmark v1.1.1",
 	"passed_controls": _passed,
 	"failed_controls": _failed,
 	"compliance_percentage": _percentage,

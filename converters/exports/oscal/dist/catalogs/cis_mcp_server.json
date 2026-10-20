@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-3.1.1",
-      "title": "stdio server credentials are sourced from the environment or OS credential store",
+      "title": "Ensure stdio server credentials are sourced from the environment or OS credential store",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_mcp_server-3.1.1_stmt",
         "name": "statement",
-        "prose": "stdio server credentials are sourced from the environment or OS credential store"
+        "prose": "Ensure stdio server credentials are sourced from the environment or OS credential store"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.1.2",
-      "title": "OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers",
+      "title": "Ensure OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_mcp_server-3.1.2_stmt",
         "name": "statement",
-        "prose": "OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers"
+        "prose": "Ensure OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.2.1",
-      "title": "Per-tool authorization policies are enforced",
+      "title": "Ensure per-tool authorization policies are enforced",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_mcp_server-3.2.1_stmt",
         "name": "statement",
-        "prose": "Per-tool authorization policies are enforced"
+        "prose": "Ensure per-tool authorization policies are enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.2.2",
-      "title": "Token passthrough to downstream APIs is forbidden",
+      "title": "Ensure token passthrough to downstream APIs is forbidden",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_mcp_server-3.2.2_stmt",
         "name": "statement",
-        "prose": "Token passthrough to downstream APIs is forbidden"
+        "prose": "Ensure token passthrough to downstream APIs is forbidden"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.2.3",
-      "title": "Server-provided tool annotations are not relied upon for authorization or human-in-the-loop gating",
+      "title": "Ensure server-provided tool annotations are not relied upon for authorization or HITL gating decisions",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_mcp_server-3.2.3_stmt",
         "name": "statement",
-        "prose": "Server-provided tool annotations are not relied upon for authorization or human-in-the-loop gating"
+        "prose": "Ensure server-provided tool annotations are not relied upon for authorization or HITL gating decisions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.1",
-      "title": "OAuth tokens are audience-bound to the MCP server using Resource Indicators",
+      "title": "Ensure OAuth tokens are audience-bound to the MCP server using Resource Indicators",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_mcp_server-3.3.1_stmt",
         "name": "statement",
-        "prose": "OAuth tokens are audience-bound to the MCP server using Resource Indicators"
+        "prose": "Ensure OAuth tokens are audience-bound to the MCP server using Resource Indicators"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.2",
-      "title": "OAuth discovery metadata is served over TLS and validated against the approved list",
+      "title": "Ensure OAuth discovery metadata is served over TLS and validated against the approved authorization server list",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_mcp_server-3.3.2_stmt",
         "name": "statement",
-        "prose": "OAuth discovery metadata is served over TLS and validated against the approved list"
+        "prose": "Ensure OAuth discovery metadata is served over TLS and validated against the approved authorization server list"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.3",
-      "title": "Shared downstream service account identities are prohibited across tools and servers",
+      "title": "Ensure shared downstream service account identities are prohibited across multiple MCP tools or servers",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_mcp_server-3.3.3_stmt",
         "name": "statement",
-        "prose": "Shared downstream service account identities are prohibited across tools and servers"
+        "prose": "Ensure shared downstream service account identities are prohibited across multiple MCP tools or servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.4",
-      "title": "OAuth scopes are minimized and elevated progressively",
+      "title": "Ensure OAuth scopes are minimized and elevated progressively",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_mcp_server-3.3.4_stmt",
         "name": "statement",
-        "prose": "OAuth scopes are minimized and elevated progressively"
+        "prose": "Ensure OAuth scopes are minimized and elevated progressively"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.5",
-      "title": "Confused-deputy safeguards are applied for static OAuth client IDs",
+      "title": "Ensure confused-deputy safeguards are applied for static OAuth client IDs",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_mcp_server-3.3.5_stmt",
         "name": "statement",
-        "prose": "Confused-deputy safeguards are applied for static OAuth client IDs"
+        "prose": "Ensure confused-deputy safeguards are applied for static OAuth client IDs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.authn_authz-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -423,7 +423,73 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.authn_authz-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.authn_authz-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.authn_authz#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.authn_authz#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d930e30-be37-56c4-9dd0-ef324ca9dac0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.authn_authz-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.authn_authz-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.authn_authz#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.authn_authz#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.authn_authz"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0d930e30-be37-56c4-9dd0-ef324ca9dac0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.authn_authz-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -454,7 +520,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-4.1.1",
-      "title": "Tool invocation requires per-tool consent or a pre-approved allowlist",
+      "title": "Ensure per-tool consent or pre-approved allowlists are required",
       "props": [
        {
         "name": "label",
@@ -480,14 +546,14 @@
        {
         "id": "cis_mcp_server-4.1.1_stmt",
         "name": "statement",
-        "prose": "Tool invocation requires per-tool consent or a pre-approved allowlist"
+        "prose": "Ensure per-tool consent or pre-approved allowlists are required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.2",
-      "title": "Server definitions are project-scoped",
+      "title": "Ensure project-scoped MCP server definitions are not enabled or executed without explicit user approval",
       "props": [
        {
         "name": "label",
@@ -513,14 +579,14 @@
        {
         "id": "cis_mcp_server-4.1.2_stmt",
         "name": "statement",
-        "prose": "Server definitions are project-scoped"
+        "prose": "Ensure project-scoped MCP server definitions are not enabled or executed without explicit user approval"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.3",
-      "title": "Elicitation responses require consent and are redacted",
+      "title": "Ensure Elicitation requests are consented, redacted, and identity-bound",
       "props": [
        {
         "name": "label",
@@ -546,14 +612,14 @@
        {
         "id": "cis_mcp_server-4.1.3_stmt",
         "name": "statement",
-        "prose": "Elicitation responses require consent and are redacted"
+        "prose": "Ensure Elicitation requests are consented, redacted, and identity-bound"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.4",
-      "title": "Sampling requests require consent and are redacted",
+      "title": "Ensure Sampling consent and redaction controls are implemented where Sampling is in use",
       "props": [
        {
         "name": "label",
@@ -579,14 +645,14 @@
        {
         "id": "cis_mcp_server-4.1.4_stmt",
         "name": "statement",
-        "prose": "Sampling requests require consent and are redacted"
+        "prose": "Ensure Sampling consent and redaction controls are implemented where Sampling is in use"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.5",
-      "title": "Human denial of tool invocations is honored and recorded",
+      "title": "Ensure a human can deny tool invocations and sensitive or high-impact operations require confirmation",
       "props": [
        {
         "name": "label",
@@ -612,14 +678,14 @@
        {
         "id": "cis_mcp_server-4.1.5_stmt",
         "name": "statement",
-        "prose": "Human denial of tool invocations is honored and recorded"
+        "prose": "Ensure a human can deny tool invocations and sensitive or high-impact operations require confirmation"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.2.1",
-      "title": "Filesystem scope available to servers is restricted",
+      "title": "Ensure filesystem scope is restricted to least privilege and enforced by OS-level controls",
       "props": [
        {
         "name": "label",
@@ -645,14 +711,14 @@
        {
         "id": "cis_mcp_server-4.2.1_stmt",
         "name": "statement",
-        "prose": "Filesystem scope available to servers is restricted"
+        "prose": "Ensure filesystem scope is restricted to least privilege and enforced by OS-level controls"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.2.2",
-      "title": "The stdio subprocess environment is restricted",
+      "title": "Ensure MCP stdio server subprocess environment is restricted to the minimum required variables",
       "props": [
        {
         "name": "label",
@@ -678,14 +744,14 @@
        {
         "id": "cis_mcp_server-4.2.2_stmt",
         "name": "statement",
-        "prose": "The stdio subprocess environment is restricted"
+        "prose": "Ensure MCP stdio server subprocess environment is restricted to the minimum required variables"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.2.3",
-      "title": "Untrusted Resource URIs are not dereferenced directly by the host",
+      "title": "Ensure untrusted Resource URIs are not directly dereferenced outside MCP without scheme and destination policy",
       "props": [
        {
         "name": "label",
@@ -711,14 +777,14 @@
        {
         "id": "cis_mcp_server-4.2.3_stmt",
         "name": "statement",
-        "prose": "Untrusted Resource URIs are not dereferenced directly by the host"
+        "prose": "Ensure untrusted Resource URIs are not directly dereferenced outside MCP without scheme and destination policy"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.3.1",
-      "title": "MCP Apps are sandboxed with a Content Security Policy",
+      "title": "Ensure MCP Apps content is rendered in sandboxed isolation with Content Security Policy enforced from declared metadata",
       "props": [
        {
         "name": "label",
@@ -744,14 +810,14 @@
        {
         "id": "cis_mcp_server-4.3.1_stmt",
         "name": "statement",
-        "prose": "MCP Apps are sandboxed with a Content Security Policy"
+        "prose": "Ensure MCP Apps content is rendered in sandboxed isolation with Content Security Policy enforced from declared metadata"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.3.2",
-      "title": "MCP Apps permissions are constrained and their activity logged",
+      "title": "Ensure MCP Apps permission requests default-deny, all app-to-host messages are logged, and high-risk channels are consented",
       "props": [
        {
         "name": "label",
@@ -777,14 +843,14 @@
        {
         "id": "cis_mcp_server-4.3.2_stmt",
         "name": "statement",
-        "prose": "MCP Apps permissions are constrained and their activity logged"
+        "prose": "Ensure MCP Apps permission requests default-deny, all app-to-host messages are logged, and high-risk channels are consented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.client_host_config-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -810,7 +876,295 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.client_host_config-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.client_host_config-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.client_host_config#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.client_host_config#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5610ee2b-d5e7-5aea-96f4-31e3e58cd357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.client_host_config-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.client_host_config-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.client_host_config#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.client_host_config#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.client_host_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5610ee2b-d5e7-5aea-96f4-31e3e58cd357",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.client_host_config-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-data_protection_privacy",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 6: Data Protection and Privacy",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.data_protection_privacy"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/data_protection_privacy.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-6.1",
+      "title": "Ensure model context is minimized and MIME handling is honored",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.data_protection_privacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-6.1_stmt",
+        "name": "statement",
+        "prose": "Ensure model context is minimized and MIME handling is honored"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-6.2",
+      "title": "Ensure tokens and keys are protected in clients and servers",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.data_protection_privacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-6.2_stmt",
+        "name": "statement",
+        "prose": "Ensure tokens and keys are protected in clients and servers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-6.3",
+      "title": "Ensure outbound proxy and DNS controls are applied for resource fetchers",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.data_protection_privacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-6.3_stmt",
+        "name": "statement",
+        "prose": "Ensure outbound proxy and DNS controls are applied for resource fetchers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.data_protection_privacy-1",
+      "title": "CIS MCP %s: %s — not attested%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.data_protection_privacy#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.data_protection_privacy#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.data_protection_privacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.data_protection_privacy-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.data_protection_privacy-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.data_protection_privacy#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.data_protection_privacy#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.data_protection_privacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.data_protection_privacy-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.data_protection_privacy-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.data_protection_privacy#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.data_protection_privacy#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.data_protection_privacy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.data_protection_privacy-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -841,7 +1195,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-1.1",
-      "title": "Served protocol revisions are pinned and malformed version assertions are rejected",
+      "title": "Ensure MCP protocol version is pinned and logged",
       "props": [
        {
         "name": "label",
@@ -867,14 +1221,14 @@
        {
         "id": "cis_mcp_server-1.1_stmt",
         "name": "statement",
-        "prose": "Served protocol revisions are pinned and malformed version assertions are rejected"
+        "prose": "Ensure MCP protocol version is pinned and logged"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-1.2",
-      "title": "Advertised capability configuration matches the recorded baseline",
+      "title": "Ensure server capability baseline is established and documented",
       "props": [
        {
         "name": "label",
@@ -900,14 +1254,14 @@
        {
         "id": "cis_mcp_server-1.2_stmt",
         "name": "statement",
-        "prose": "Advertised capability configuration matches the recorded baseline"
+        "prose": "Ensure server capability baseline is established and documented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-1.3",
-      "title": "A capability advertised beyond the baseline is denied until re-approved",
+      "title": "Ensure newly advertised server capabilities are re-validated before invocation",
       "props": [
        {
         "name": "label",
@@ -933,14 +1287,14 @@
        {
         "id": "cis_mcp_server-1.3_stmt",
         "name": "statement",
-        "prose": "A capability advertised beyond the baseline is denied until re-approved"
+        "prose": "Ensure newly advertised server capabilities are re-validated before invocation"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-1.4",
-      "title": "Server name and version match the recorded identity",
+      "title": "Ensure MCP client and server identity metadata is captured and validated against the asset inventory",
       "props": [
        {
         "name": "label",
@@ -966,14 +1320,14 @@
        {
         "id": "cis_mcp_server-1.4_stmt",
         "name": "statement",
-        "prose": "Server name and version match the recorded identity"
+        "prose": "Ensure MCP client and server identity metadata is captured and validated against the asset inventory"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.governance_versioning-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -999,7 +1353,295 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.governance_versioning-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.governance_versioning-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.governance_versioning#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.governance_versioning#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7457353-b055-5c07-a23d-11b977217b95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.governance_versioning-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.governance_versioning-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.governance_versioning#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.governance_versioning#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.governance_versioning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b7457353-b055-5c07-a23d-11b977217b95",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.governance_versioning-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-isolation_execution_safety",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 9: Isolation and Execution Safety",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.isolation_execution_safety"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/isolation_execution_safety.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-9.1",
+      "title": "Ensure remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.isolation_execution_safety"
+       }
+      ],
+      "links": [
+       {
+        "href": "#48364ce7-d4de-5f68-b1df-b9d88da72877",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-9.1_stmt",
+        "name": "statement",
+        "prose": "Ensure remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-9.2",
+      "title": "Ensure the MCP server process is confined to its working set by OS-level kernel-enforced controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.isolation_execution_safety"
+       }
+      ],
+      "links": [
+       {
+        "href": "#48364ce7-d4de-5f68-b1df-b9d88da72877",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-9.2_stmt",
+        "name": "statement",
+        "prose": "Ensure the MCP server process is confined to its working set by OS-level kernel-enforced controls"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-9.3",
+      "title": "Ensure local stdio MCP servers run under least-privilege identities with sandbox or container isolation",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.isolation_execution_safety"
+       }
+      ],
+      "links": [
+       {
+        "href": "#48364ce7-d4de-5f68-b1df-b9d88da72877",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-9.3_stmt",
+        "name": "statement",
+        "prose": "Ensure local stdio MCP servers run under least-privilege identities with sandbox or container isolation"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.isolation_execution_safety-1",
+      "title": "CIS MCP %s: %s — not attested%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.isolation_execution_safety#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.isolation_execution_safety#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.isolation_execution_safety"
+       }
+      ],
+      "links": [
+       {
+        "href": "#48364ce7-d4de-5f68-b1df-b9d88da72877",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.isolation_execution_safety-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.isolation_execution_safety-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.isolation_execution_safety#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.isolation_execution_safety#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.isolation_execution_safety"
+       }
+      ],
+      "links": [
+       {
+        "href": "#48364ce7-d4de-5f68-b1df-b9d88da72877",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.isolation_execution_safety-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.isolation_execution_safety-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.isolation_execution_safety#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.isolation_execution_safety#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.isolation_execution_safety"
+       }
+      ],
+      "links": [
+       {
+        "href": "#48364ce7-d4de-5f68-b1df-b9d88da72877",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.isolation_execution_safety-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -1030,7 +1672,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-7.1.1",
-      "title": "Lifecycle and invocation metadata is recorded to a central audit log",
+      "title": "Ensure lifecycle and invocation metadata is recorded",
       "props": [
        {
         "name": "label",
@@ -1056,14 +1698,14 @@
        {
         "id": "cis_mcp_server-7.1.1_stmt",
         "name": "statement",
-        "prose": "Lifecycle and invocation metadata is recorded to a central audit log"
+        "prose": "Ensure lifecycle and invocation metadata is recorded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.1.2",
-      "title": "Non-null JSON-RPC request IDs are enforced and included in audit logs",
+      "title": "Ensure non-null JSON-RPC request IDs are enforced and included in audit logs",
       "props": [
        {
         "name": "label",
@@ -1089,14 +1731,14 @@
        {
         "id": "cis_mcp_server-7.1.2_stmt",
         "name": "statement",
-        "prose": "Non-null JSON-RPC request IDs are enforced and included in audit logs"
+        "prose": "Ensure non-null JSON-RPC request IDs are enforced and included in audit logs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.1.3",
-      "title": "Audit records carry accurate, monotonic timestamps",
+      "title": "Ensure MCP audit records carry accurate, monotonic timestamps",
       "props": [
        {
         "name": "label",
@@ -1122,14 +1764,14 @@
        {
         "id": "cis_mcp_server-7.1.3_stmt",
         "name": "statement",
-        "prose": "Audit records carry accurate, monotonic timestamps"
+        "prose": "Ensure MCP audit records carry accurate, monotonic timestamps"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.2.1",
-      "title": "Alerts are generated on audience and issuer validation failures",
+      "title": "Ensure alerts are generated on audience and issuer validation failures",
       "props": [
        {
         "name": "label",
@@ -1155,14 +1797,14 @@
        {
         "id": "cis_mcp_server-7.2.1_stmt",
         "name": "statement",
-        "prose": "Alerts are generated on audience and issuer validation failures"
+        "prose": "Ensure alerts are generated on audience and issuer validation failures"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.2.2",
-      "title": "Cancellation and progress notifications are monitored for behavioral anomalies",
+      "title": "Ensure notifications/cancelled and notifications/progress messages are monitored for behavioral anomalies",
       "props": [
        {
         "name": "label",
@@ -1188,14 +1830,14 @@
        {
         "id": "cis_mcp_server-7.2.2_stmt",
         "name": "statement",
-        "prose": "Cancellation and progress notifications are monitored for behavioral anomalies"
+        "prose": "Ensure notifications/cancelled and notifications/progress messages are monitored for behavioral anomalies"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.observability_audit-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -1221,7 +1863,73 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.observability_audit-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.observability_audit-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.observability_audit#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.observability_audit#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b55b4ea-927d-5608-832d-3cdb199406f5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.observability_audit-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.observability_audit-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.observability_audit#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.observability_audit#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.observability_audit"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2b55b4ea-927d-5608-832d-3cdb199406f5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.observability_audit-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -1252,7 +1960,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-10.1",
-      "title": "Static resources are cached with freshness limits; per-user data is never shared-cached",
+      "title": "Ensure safe, static resources are cached with freshness limits and per-user data is never shared-cached",
       "props": [
        {
         "name": "label",
@@ -1278,14 +1986,14 @@
        {
         "id": "cis_mcp_server-10.1_stmt",
         "name": "statement",
-        "prose": "Static resources are cached with freshness limits; per-user data is never shared-cached"
+        "prose": "Ensure safe, static resources are cached with freshness limits and per-user data is never shared-cached"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-10.2",
-      "title": "Request/response body size limits, token budgets, and per-principal quotas are enforced",
+      "title": "Ensure request and response body size limits, token budgets, and per-principal quotas are enforced",
       "props": [
        {
         "name": "label",
@@ -1311,14 +2019,14 @@
        {
         "id": "cis_mcp_server-10.2_stmt",
         "name": "statement",
-        "prose": "Request/response body size limits, token budgets, and per-principal quotas are enforced"
+        "prose": "Ensure request and response body size limits, token budgets, and per-principal quotas are enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -1344,7 +2052,73 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.resource_limits_caching#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.resource_limits_caching#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.resource_limits_caching"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed4d9e56-8555-5598-b3fe-1c0884419853",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.resource_limits_caching#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.resource_limits_caching#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.resource_limits_caching"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ed4d9e56-8555-5598-b3fe-1c0884419853",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.resource_limits_caching-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -1375,7 +2149,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-5.1.1",
-      "title": "Tool schemas and argument types are validated",
+      "title": "Ensure tool schemas and argument types are validated",
       "props": [
        {
         "name": "label",
@@ -1401,14 +2175,14 @@
        {
         "id": "cis_mcp_server-5.1.1_stmt",
         "name": "statement",
-        "prose": "Tool schemas and argument types are validated"
+        "prose": "Ensure tool schemas and argument types are validated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.1.2",
-      "title": "Resource templates declare explicit URI patterns and MIME types",
+      "title": "Ensure resource templates with explicit URI patterns and MIME types are used",
       "props": [
        {
         "name": "label",
@@ -1434,14 +2208,14 @@
        {
         "id": "cis_mcp_server-5.1.2_stmt",
         "name": "statement",
-        "prose": "Resource templates declare explicit URI patterns and MIME types"
+        "prose": "Ensure resource templates with explicit URI patterns and MIME types are used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.1.3",
-      "title": "Prompt templates declare and validate their arguments",
+      "title": "Ensure prompt templates declare and validate their arguments",
       "props": [
        {
         "name": "label",
@@ -1467,14 +2241,14 @@
        {
         "id": "cis_mcp_server-5.1.3_stmt",
         "name": "statement",
-        "prose": "Prompt templates declare and validate their arguments"
+        "prose": "Ensure prompt templates declare and validate their arguments"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.2.1",
-      "title": "listChanged notifications are rate limited",
+      "title": "Ensure listChanged notifications are rate-limited to prevent client flooding",
       "props": [
        {
         "name": "label",
@@ -1500,14 +2274,14 @@
        {
         "id": "cis_mcp_server-5.2.1_stmt",
         "name": "statement",
-        "prose": "listChanged notifications are rate limited"
+        "prose": "Ensure listChanged notifications are rate-limited to prevent client flooding"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.2.2",
-      "title": "Sessions are not used as authentication",
+      "title": "Ensure sessions are not used as authentication and, where present, are bound to user identity",
       "props": [
        {
         "name": "label",
@@ -1533,14 +2307,14 @@
        {
         "id": "cis_mcp_server-5.2.2_stmt",
         "name": "statement",
-        "prose": "Sessions are not used as authentication"
+        "prose": "Ensure sessions are not used as authentication and, where present, are bound to user identity"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.2.3",
-      "title": "Legacy Streamable HTTP session and stream resumption surfaces are disabled",
+      "title": "Ensure legacy Streamable HTTP session and stream-resumption mechanisms are disabled",
       "props": [
        {
         "name": "label",
@@ -1566,14 +2340,14 @@
        {
         "id": "cis_mcp_server-5.2.3_stmt",
         "name": "statement",
-        "prose": "Legacy Streamable HTTP session and stream resumption surfaces are disabled"
+        "prose": "Ensure legacy Streamable HTTP session and stream-resumption mechanisms are disabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.3.1",
-      "title": "Logs are separated from protocol output in stdio mode",
+      "title": "Ensure logs are separated from the protocol stream in stdio mode",
       "props": [
        {
         "name": "label",
@@ -1599,14 +2373,14 @@
        {
         "id": "cis_mcp_server-5.3.1_stmt",
         "name": "statement",
-        "prose": "Logs are separated from protocol output in stdio mode"
+        "prose": "Ensure logs are separated from the protocol stream in stdio mode"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.4.1",
-      "title": "Path traversal and arbitrary filesystem access are prevented",
+      "title": "Ensure path traversal and arbitrary filesystem access are prevented",
       "props": [
        {
         "name": "label",
@@ -1632,14 +2406,14 @@
        {
         "id": "cis_mcp_server-5.4.1_stmt",
         "name": "statement",
-        "prose": "Path traversal and arbitrary filesystem access are prevented"
+        "prose": "Ensure path traversal and arbitrary filesystem access are prevented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.5.1",
-      "title": "Task authorization is enforced across identities",
+      "title": "Ensure authorization, scope, and expiry controls are enforced on MCP Tasks",
       "props": [
        {
         "name": "label",
@@ -1665,14 +2439,14 @@
        {
         "id": "cis_mcp_server-5.5.1_stmt",
         "name": "statement",
-        "prose": "Task authorization is enforced across identities"
+        "prose": "Ensure authorization, scope, and expiry controls are enforced on MCP Tasks"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.6.1",
-      "title": "Idempotency keys are required for side-effecting tools",
+      "title": "Ensure idempotency keys are required for side-effecting tool calls and duplicate side effects are prevented",
       "props": [
        {
         "name": "label",
@@ -1698,14 +2472,14 @@
        {
         "id": "cis_mcp_server-5.6.1_stmt",
         "name": "statement",
-        "prose": "Idempotency keys are required for side-effecting tools"
+        "prose": "Ensure idempotency keys are required for side-effecting tool calls and duplicate side effects are prevented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.server_config-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -1731,7 +2505,295 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.server_config-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.server_config-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.server_config#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.server_config#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a44aa90d-76ca-5897-9ed3-45c96837a3dc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.server_config-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.server_config-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.server_config#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.server_config#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.server_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a44aa90d-76ca-5897-9ed3-45c96837a3dc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.server_config-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "cis_mcp_server-supply_chain_security",
+    "class": "rego-module",
+    "title": "CIS MCP Server Benchmark v1.0.0 — Section 8: Supply Chain Security",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "cis_mcp_server.supply_chain_security"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/cis/mcp_server/supply_chain_security.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "cis_mcp_server-8.1",
+      "title": "Ensure third-party MCP servers and connectors are vetted and allowlists are enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.supply_chain_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e03bf5c9-1690-5fdc-b487-71405e034938",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-8.1_stmt",
+        "name": "statement",
+        "prose": "Ensure third-party MCP servers and connectors are vetted and allowlists are enforced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-8.2",
+      "title": "Ensure third-party MCP servers are pinned to a verified content hash and re-vetted before updates",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.supply_chain_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e03bf5c9-1690-5fdc-b487-71405e034938",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-8.2_stmt",
+        "name": "statement",
+        "prose": "Ensure third-party MCP servers are pinned to a verified content hash and re-vetted before updates"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-8.3",
+      "title": "Ensure third-party MCP server artifacts are served exclusively from an internal private mirror",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.supply_chain_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e03bf5c9-1690-5fdc-b487-71405e034938",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-8.3_stmt",
+        "name": "statement",
+        "prose": "Ensure third-party MCP server artifacts are served exclusively from an internal private mirror"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.supply_chain_security-1",
+      "title": "CIS MCP %s: %s — not attested%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.supply_chain_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.supply_chain_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.supply_chain_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e03bf5c9-1690-5fdc-b487-71405e034938",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.supply_chain_security-1_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.supply_chain_security-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.supply_chain_security#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.supply_chain_security#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.supply_chain_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e03bf5c9-1690-5fdc-b487-71405e034938",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.supply_chain_security-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.supply_chain_security-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.supply_chain_security#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.supply_chain_security#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.supply_chain_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e03bf5c9-1690-5fdc-b487-71405e034938",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.supply_chain_security-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -1762,7 +2824,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-2.1",
-      "title": "stdio transport is preferred for local, single-user servers over network transports",
+      "title": "Ensure stdio is preferred for local, single-user servers",
       "props": [
        {
         "name": "label",
@@ -1788,14 +2850,14 @@
        {
         "id": "cis_mcp_server-2.1_stmt",
         "name": "statement",
-        "prose": "stdio transport is preferred for local, single-user servers over network transports"
+        "prose": "Ensure stdio is preferred for local, single-user servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.2",
-      "title": "TLS is required: plaintext refused, obsolete TLS versions refused, certificate valid",
+      "title": "Ensure TLS is required for HTTP and plaintext is disallowed",
       "props": [
        {
         "name": "label",
@@ -1821,14 +2883,14 @@
        {
         "id": "cis_mcp_server-2.2_stmt",
         "name": "statement",
-        "prose": "TLS is required: plaintext refused, obsolete TLS versions refused, certificate valid"
+        "prose": "Ensure TLS is required for HTTP and plaintext is disallowed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.3",
-      "title": "Authentication is enforced before a streamed (SSE) response is established, including through proxies",
+      "title": "Ensure authentication propagates through proxies to request-scoped SSE responses",
       "props": [
        {
         "name": "label",
@@ -1854,14 +2916,14 @@
        {
         "id": "cis_mcp_server-2.3_stmt",
         "name": "statement",
-        "prose": "Authentication is enforced before a streamed (SSE) response is established, including through proxies"
+        "prose": "Ensure authentication propagates through proxies to request-scoped SSE responses"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.4",
-      "title": "Required request metadata headers are present and consistent with the body",
+      "title": "Ensure required MCP request metadata headers are present and consistent with the request body",
       "props": [
        {
         "name": "label",
@@ -1887,14 +2949,14 @@
        {
         "id": "cis_mcp_server-2.4_stmt",
         "name": "statement",
-        "prose": "Required request metadata headers are present and consistent with the body"
+        "prose": "Ensure required MCP request metadata headers are present and consistent with the request body"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.5",
-      "title": "The Origin header is validated on all requests; hostile origins are refused",
+      "title": "Ensure Origin header is validated on all Streamable HTTP requests to prevent DNS rebinding attacks",
       "props": [
        {
         "name": "label",
@@ -1920,14 +2982,14 @@
        {
         "id": "cis_mcp_server-2.5_stmt",
         "name": "statement",
-        "prose": "The Origin header is validated on all requests; hostile origins are refused"
+        "prose": "Ensure Origin header is validated on all Streamable HTTP requests to prevent DNS rebinding attacks"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-1",
-      "title": "CIS MCP %s: %s — not met",
+      "title": "CIS MCP %s: %s — not attested%s",
       "props": [
        {
         "name": "label",
@@ -1953,7 +3015,73 @@
        {
         "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-1_stmt",
         "name": "statement",
-        "prose": "CIS MCP %s: %s — not met"
+        "prose": "CIS MCP %s: %s — not attested%s"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-2",
+      "title": "CIS MCP %s: evidence missing — evidence.%s not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.transport_connectivity#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.transport_connectivity#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a3d3f9a2-40c3-5f60-8f88-b2d285db4666",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-2_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: evidence missing — evidence.%s not collected"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-3",
+      "title": "CIS MCP %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_mcp_server.transport_connectivity#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_mcp_server.transport_connectivity#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_mcp_server.transport_connectivity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a3d3f9a2-40c3-5f60-8f88-b2d285db4666",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mcp_server-cis_mcp_server.transport_connectivity-3_stmt",
+        "name": "statement",
+        "prose": "CIS MCP %s: %s"
        }
       ],
       "class": "security"
@@ -1998,6 +3126,23 @@
      ]
     },
     {
+     "uuid": "d3a9aa2f-58aa-554c-ac0d-6a773b19320b",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 6: Data Protection and Privacy",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.data_protection_privacy"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/mcp_server/data_protection_privacy.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
      "uuid": "b7457353-b055-5c07-a23d-11b977217b95",
      "title": "CIS MCP Server Benchmark v1.0.0 — Section 1: Governance and Versioning",
      "props": [
@@ -2010,6 +3155,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/mcp_server/governance_versioning.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "48364ce7-d4de-5f68-b1df-b9d88da72877",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 9: Isolation and Execution Safety",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.isolation_execution_safety"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/mcp_server/isolation_execution_safety.rego",
        "media-type": "text/plain"
       }
      ]
@@ -2061,6 +3223,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/mcp_server/server_config.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "e03bf5c9-1690-5fdc-b487-71405e034938",
+     "title": "CIS MCP Server Benchmark v1.0.0 — Section 8: Supply Chain Security",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "cis_mcp_server.supply_chain_security"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/cis/mcp_server/supply_chain_security.rego",
        "media-type": "text/plain"
       }
      ]
