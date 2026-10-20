@@ -28,7 +28,7 @@ package cis_arista_eos
 #
 # Input contract:
 #   input.eos_config.attest.<key>                              : attestation booleans, one per recommendation
-#   input.eos_config.management.security.password_encryption_reversible : "aes-256-gcm" expected     (1.2)
+#   input.eos_config.management.security.password_encryption_reversible : cipher name, aes-256-gcm (1.2)
 #   input.eos_config.control_plane.service_policy.input         : CoPP policy map name             (1.1.3)
 #   input.eos_config.logging.hosts[]                            : syslog hosts                      (1.1.7)
 #   input.eos_config.aaa.allow_nopassword_remote_login          : boolean                           (2.1.1)
