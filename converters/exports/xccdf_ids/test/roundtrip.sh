@@ -10,8 +10,9 @@ import sys, csv, re, pathlib
 root, tmp = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "scripts"))
 from inventory_controls import inventory
-sec = re.compile(r"^CIS\s+(?:L[12]\s+)?(\d+(?:\.\d+)*)\b")
-want = {(e["file"].split("/")[2], sec.match(c["id"]).group(1)) for e in inventory(root) if e["file"].startswith("benchmarks/cis/") for c in e["controls"] if sec.match(c["id"])}
+sys.path.insert(0, str(root / "converters" / "exports" / "xccdf_ids"))
+from build import section_of
+want = {(e["file"].split("/")[2], section_of(e["file"], c["id"])) for e in inventory(root) if e["file"].startswith("benchmarks/cis/") for c in e["controls"] if section_of(e["file"], c["id"])}
 with (tmp / "cis_xccdf_ids.csv").open(newline="") as f:
     rows = list(csv.DictReader(f))
 got = {(r["platform"], r["section"]) for r in rows}
@@ -21,10 +22,10 @@ assert all(re.fullmatch(r"xccdf_org\.cisecurity\.benchmarks_rule_\d+(\.\d+)*_", 
 assert all((root / r["rego_file"]).exists() for r in rows)
 named = sum(1 for r in rows if r["benchmark"])
 assert named / len(rows) >= 0.9, f"only {named}/{len(rows)} rows carry a benchmark name"
-hit = [r for r in rows if r["platform"] == "rhel_9" and r["section"] == "1.3.1"]
-assert hit and "xccdf_org.cisecurity.benchmarks_rule_1.3.1_Ensure_AIDE_is_installed".startswith(hit[0]["xccdf_rule_id_prefix"]), "RHEL 9 1.3.1 does not join"
+hit = [r for r in rows if r["platform"] == "rhel_9" and r["section"] == "6.3.1"]
+assert hit and "xccdf_org.cisecurity.benchmarks_rule_6.3.1_Ensure_AIDE_is_installed".startswith(hit[0]["xccdf_rule_id_prefix"]), "RHEL 9 6.3.1 (v3.0.0: AIDE installed) does not join"
 assert hit[0]["benchmark"].startswith("CIS Red Hat Enterprise Linux 9"), hit[0]["benchmark"]
 deb = [r for r in rows if r["platform"] == "debian_11"]
 assert deb and all(r["derived_from"].startswith("CIS Ubuntu") for r in deb), "Debian 11 rows must say they derive from the Ubuntu benchmark"
-print(f"PASS roundtrip: {len(rows)} CIS sections on {len({r['platform'] for r in rows})} platforms; {named} with a benchmark name; RHEL 9 1.3.1 joins CIS-CAT by prefix")
+print(f"PASS roundtrip: {len(rows)} CIS sections on {len({r['platform'] for r in rows})} platforms; {named} with a benchmark name; RHEL 9 6.3.1 joins CIS-CAT by prefix")
 PY

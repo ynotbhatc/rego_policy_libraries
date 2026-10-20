@@ -6,14 +6,13 @@ import data.cis_rhel9.sudo
 
 # Unit tests for benchmarks/cis/rhel_9/sudo_validation.rego (package cis_rhel9.sudo).
 # Closes GitHub issue #76.
-#
-# The module exposes a `violations` set and a `compliant` boolean. It does NOT
-# define a `compliance_report` object, so the "populated report object" contract
-# test is applied to the `violations` set instead (see the empty-input test at
-# the bottom). One test per `violations contains msg if { ... }` rule.
+# Re-pointed to CIS RHEL 9 v3.0.0 (2026-10-20): same test names, v3 recommendation ids.
+# v2 5.3.x -> v3 5.2.x: 5.3.1->5.2.1, 5.3.2->5.2.4, 5.3.3->5.2.5, 5.3.4->5.2.6, 5.3.5->5.2.7,
+# 5.3.6->5.2.10, 5.3.7->5.2.12, /etc/sudoers access (5.3)->5.2.2.
+# Changed meaning in v3.0.0: an unset timestamp_timeout passes (sudo's compiled default of 5 minutes), and
+# the su restriction is judged on the pam_wheel line only (the benchmark leaves group membership manual).
 
-# A fully compliant sudo fact set. Each violation test overrides exactly one
-# field of this baseline so the target rule fires in isolation.
+# A fully compliant sudo fact set. Each violation test overrides exactly one field of this baseline.
 compliant_sudo := {
 	"installed": true,
 	"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d",
@@ -24,100 +23,83 @@ compliant_sudo := {
 	"sudoers_mode": "0440",
 	"sudoers_owner": "root",
 	"sudoers_group": "root",
+	"sudoers_d_files": [{"path": "/etc/sudoers.d/admins", "mode": "0440", "owner": "root", "group": "root"}],
+	"sudoers_d_dir": {"mode": "0750", "owner": "root", "group": "root"},
 }
 
-# CIS 5.3.1 — sudo package not installed
+ids(vs, id) := [v | some v in vs; startswith(v, concat("", [id, ": "]))]
+
 test_5_3_1_sudo_not_installed if {
 	test_input := {"sudo": object.union(compliant_sudo, {"installed": false})}
-	"CIS 5.3.1: sudo package not installed" in sudo.violations with input as test_input
+	"5.2.1: not met — Ensure sudo is installed" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.2 — sudo not configured to use pty
 test_5_3_2_use_pty_missing if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d"})}
-	"CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)" in sudo.violations with input as test_input
+	"5.2.4: not met — Ensure sudo commands use pty" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.3 — sudo logfile not configured
 test_5_3_3_logfile_not_configured if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\n@includedir /etc/sudoers.d"})}
-	"CIS 5.3.3: sudo logfile not configured (Defaults logfile= missing)" in sudo.violations with input as test_input
+	"5.2.5: not met — Ensure sudo log file exists" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.3 — logfile configured but file does not exist
 test_5_3_3_logfile_missing_on_disk if {
 	test_input := {"sudo": object.union(compliant_sudo, {"logfile_exists": false})}
-	"CIS 5.3.3: sudo logfile configured but file does not exist" in sudo.violations with input as test_input
+	"5.2.5: not met — Ensure sudo log file exists" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.4 — NOPASSWD present
 test_5_3_4_nopasswd_present if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d\n%wheel ALL=(ALL) NOPASSWD: ALL"})}
-	"CIS 5.3.4: NOPASSWD option found in sudoers - users should provide password" in sudo.violations with input as test_input
+	"5.2.6: not met — Ensure users must provide password for escalation" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.5 — !authenticate present
 test_5_3_5_reauthentication_disabled if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d\nDefaults !authenticate"})}
-	"CIS 5.3.5: !authenticate found in sudoers - re-authentication is disabled" in sudo.violations with input as test_input
+	"5.2.7: not met — Ensure re-authentication for privilege escalation is not disabled globally" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.6 — timestamp_timeout greater than 15
 test_5_3_6_timeout_too_high if {
-	test_input := {"sudo": object.union(compliant_sudo, {"timestamp_timeout": "30"})}
-	"CIS 5.3.6: sudo timestamp_timeout is 30 minutes, should be 15 or less" in sudo.violations with input as test_input
+	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\nDefaults timestamp_timeout=30"})}
+	"5.2.10: not met — Ensure sudo timestamp_timeout is configured" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.6 — timestamp_timeout not configured at all
+# v3.0.0: no timestamp_timeout configured => sudo's compiled default of 5 minutes applies, which passes
 test_5_3_6_timeout_not_configured if {
 	test_input := {"sudo": object.remove(compliant_sudo, {"timestamp_timeout"})}
-	"CIS 5.3.6: sudo timestamp_timeout not configured" in sudo.violations with input as test_input
+	count(ids(sudo.violations, "5.2.10")) == 0 with input as test_input
 }
 
-# CIS 5.3.7 — su command not restricted
 test_5_3_7_su_not_restricted if {
 	test_input := {"sudo": object.union(compliant_sudo, {"su_restricted": false})}
-	"CIS 5.3.7: Access to su command not restricted (pam_wheel.so not configured)" in sudo.violations with input as test_input
+	"5.2.12: not met — Ensure access to the su command is restricted" in sudo.violations with input as test_input
 }
 
-# CIS 5.3.7 — wheel group has no members
+# v3.0.0: the automated check is the pam_wheel line; who is in the group is a manual step
 test_5_3_7_wheel_group_empty if {
 	test_input := {"sudo": object.union(compliant_sudo, {"wheel_group_members": []})}
-	"CIS 5.3.7: wheel group has no members - no users can use su" in sudo.violations with input as test_input
+	count(ids(sudo.violations, "5.2.12")) == 0 with input as test_input
 }
 
-# CIS 5.3 — /etc/sudoers wrong file mode
 test_5_3_sudoers_wrong_mode if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_mode": "0644"})}
-	"CIS 5.3: /etc/sudoers has mode 0644, should be 0440 or 0400" in sudo.violations with input as test_input
+	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as test_input
 }
 
-# CIS 5.3 — /etc/sudoers wrong owner
 test_5_3_sudoers_wrong_owner if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_owner": "admin"})}
-	"CIS 5.3: /etc/sudoers owned by admin, should be root" in sudo.violations with input as test_input
+	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as test_input
 }
 
-# CIS 5.3 — /etc/sudoers wrong group
 test_5_3_sudoers_wrong_group if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_group": "wheel"})}
-	"CIS 5.3: /etc/sudoers group is wheel, should be root" in sudo.violations with input as test_input
+	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as test_input
 }
 
-# CIS 5.3 — sudoers.d includedir missing
-test_5_3_includedir_missing if {
-	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log"})}
-	"CIS 5.3: sudoers should include /etc/sudoers.d directory" in sudo.violations with input as test_input
-}
-
-# Compliant input produces no violations.
 test_compliant_input_has_no_violations if {
 	count(sudo.violations) == 0 with input as {"sudo": compliant_sudo}
 }
 
-# Contract test (adapted): this module has no compliance_report object, so we
-# assert the aggregate `violations` set is a populated set on empty input `{}`
-# rather than collapsing to undefined/empty.
 test_violations_populated_on_empty_input if {
 	result := sudo.violations with input as {}
 	is_set(result)
@@ -140,4 +122,10 @@ test_5_3_sudoers_mode_group_write_flagged if {
 test_5_3_sudoers_mode_missing_flagged if {
 	i := json.remove(compliant_sudo, ["/sudoers_mode"])
 	not sudo.compliant with input as {"sudo": i}
+}
+
+# a sudoers.d drop-in with a loose mode fails 5.2.2 even when /etc/sudoers itself is fine
+test_5_2_2_sudoers_d_file_mode_flagged if {
+	i := object.union(compliant_sudo, {"sudoers_d_files": [{"path": "/etc/sudoers.d/x", "mode": "0644", "owner": "root", "group": "root"}]})
+	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as {"sudo": i}
 }

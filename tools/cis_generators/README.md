@@ -58,5 +58,10 @@ tests.
   `gen_fortigate.py <out.json> benchmarks/cis/network_devices/fortinet`: CIS NGINX Benchmark v3.1.0
   (44 recommendations) and CIS FortiGate 7.4.x Benchmark v1.0.1 (64). Shared emitter: `cis_genlib.py`.
 
+- `gen_rhel_9.py <workbook.xlsx> [fields.json]`: CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0,
+  352 recommendations, written into the existing rhel_9 package paths (14 section packages, roll-up
+  `cis_rhel9`, bridge `cis_rhel9.main`, Level 2 view `cis_rhel9.l2`) on the shared Linux mapper
+  contract. Aborts on any count, status, logic or title-keyword mismatch with the workbook.
+
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.

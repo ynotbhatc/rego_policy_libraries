@@ -4871,19 +4871,61 @@ cis_rhel_8,CIS 6.2.13,cis_rhel_8-CIS-6.2.13,User %s has .netrc file: %s,security
 cis_rhel_8,CIS 6.2.14,cis_rhel_8-CIS-6.2.14,User %s has .forward file: %s,security,cis,linux rhel,cis_rhel8.user_group,benchmarks/cis/rhel_8/user_group_validation.rego
 cis_rhel_8,CIS 6.2.15,cis_rhel_8-CIS-6.2.15,User %s has .rhosts file: %s,security,cis,linux rhel,cis_rhel8.user_group,benchmarks/cis/rhel_8/user_group_validation.rego
 cis_rhel_8,CIS 6.2.16,cis_rhel_8-CIS-6.2.16,User %s has group/world writable dot file: %s (mode: %s),security,cis,linux rhel,cis_rhel8.user_group,benchmarks/cis/rhel_8/user_group_validation.rego
-cis_rhel_9,CIS 4.1.1.1,cis_rhel_9-CIS-4.1.1.1,audit package not installed,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.1.2,cis_rhel_9-CIS-4.1.1.2,evidence missing — auditd.service not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.1.3,cis_rhel_9-CIS-4.1.1.3,audit=1 not set in bootloader configuration,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.1.4,cis_rhel_9-CIS-4.1.1.4,audit_backlog_limit not sufficient (should be 8192 or higher),security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.2.1,cis_rhel_9-CIS-4.1.2.1,max_log_file not configured in auditd.conf,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.2.2,cis_rhel_9-CIS-4.1.2.2,max_log_file_action set to delete (logs will be deleted),security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.2.3,cis_rhel_9-CIS-4.1.2.3,"space_left_action not appropriate (should be email, exec, single, or halt)",security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.3.x,cis_rhel_9-CIS-4.1.3.x,Missing or incomplete audit rule for: %s,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.3.21,cis_rhel_9-CIS-4.1.3.21,Audit configuration not set to immutable (missing '-e 2'),security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.4.1,cis_rhel_9-CIS-4.1.4.1,"Audit log permissions too permissive (mode: %s, should be 0640 or less)",security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.4.2,cis_rhel_9-CIS-4.1.4.2,Audit log not owned by root (owner: %s),security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.4.3,cis_rhel_9-CIS-4.1.4.3,Audit log directory permissions too permissive (mode: %s),security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
-cis_rhel_9,CIS 4.1.4.4,cis_rhel_9-CIS-4.1.4.4,"Audit config file %s has incorrect permissions (mode: %s, should be 0640 or more restrictive)",security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.1.1,cis_rhel_9-6.2.1.1,"evidence missing — packages[audit,audit-libs] not collected",security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.1.2,cis_rhel_9-6.2.1.2,evidence missing — bootloader.grub_config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.1.3,cis_rhel_9-6.2.1.3,evidence missing — bootloader.grub_config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.1.4,cis_rhel_9-6.2.1.4,evidence missing — services not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.2.1,cis_rhel_9-6.2.2.1,evidence missing — auditd.config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.2.2,cis_rhel_9-6.2.2.2,evidence missing — auditd.config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.2.3,cis_rhel_9-6.2.2.3,evidence missing — auditd.config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.2.4,cis_rhel_9-6.2.2.4,evidence missing — auditd.config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.1,cis_rhel_9-6.2.3.1,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.2,cis_rhel_9-6.2.3.2,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.3,cis_rhel_9-6.2.3.3,evidence missing — auditd.active_rules/sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.4,cis_rhel_9-6.2.3.4,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.5,cis_rhel_9-6.2.3.5,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.6,cis_rhel_9-6.2.3.6,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.7,cis_rhel_9-6.2.3.7,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.8,cis_rhel_9-6.2.3.8,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.9,cis_rhel_9-6.2.3.9,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.10,cis_rhel_9-6.2.3.10,evidence missing — auditd.active_rules/privileged_commands not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.11,cis_rhel_9-6.2.3.11,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.12,cis_rhel_9-6.2.3.12,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.13,cis_rhel_9-6.2.3.13,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.14,cis_rhel_9-6.2.3.14,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.15,cis_rhel_9-6.2.3.15,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.16,cis_rhel_9-6.2.3.16,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.17,cis_rhel_9-6.2.3.17,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.18,cis_rhel_9-6.2.3.18,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.19,cis_rhel_9-6.2.3.19,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.20,cis_rhel_9-6.2.3.20,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.21,cis_rhel_9-6.2.3.21,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.22,cis_rhel_9-6.2.3.22,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.23,cis_rhel_9-6.2.3.23,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.24,cis_rhel_9-6.2.3.24,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.25,cis_rhel_9-6.2.3.25,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.26,cis_rhel_9-6.2.3.26,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.27,cis_rhel_9-6.2.3.27,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.28,cis_rhel_9-6.2.3.28,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.29,cis_rhel_9-6.2.3.29,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.30,cis_rhel_9-6.2.3.30,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.31,cis_rhel_9-6.2.3.31,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.32,cis_rhel_9-6.2.3.32,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.33,cis_rhel_9-6.2.3.33,evidence missing — auditd.active_rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.34,cis_rhel_9-6.2.3.34,evidence missing — auditd.rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.35,cis_rhel_9-6.2.3.35,evidence missing — auditd.rules not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.3.36,cis_rhel_9-6.2.3.36,evidence missing — auditd.augenrules_check not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.1,cis_rhel_9-6.2.4.1,evidence missing — auditd.log_dir_permissions.mode not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.2,cis_rhel_9-6.2.4.2,evidence missing — auditd.log_permissions.mode not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.3,cis_rhel_9-6.2.4.3,evidence missing — auditd.log_permissions.pw_name not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.4,cis_rhel_9-6.2.4.4,evidence missing — auditd.log_permissions.gr_name/auditd.config not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.5,cis_rhel_9-6.2.4.5,evidence missing — auditd.config_permissions[].stat.mode not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.6,cis_rhel_9-6.2.4.6,evidence missing — auditd.config_permissions[].stat.pw_name not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.7,cis_rhel_9-6.2.4.7,evidence missing — auditd.config_permissions[].stat.gr_name not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.8,cis_rhel_9-6.2.4.8,evidence missing — auditd.tools_permissions[].stat.mode not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.9,cis_rhel_9-6.2.4.9,evidence missing — auditd.tools_permissions[].stat.pw_name not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
+cis_rhel_9,6.2.4.10,cis_rhel_9-6.2.4.10,evidence missing — auditd.tools_permissions[].stat.gr_name not collected,security,cis,linux rhel,cis_rhel9.auditd,benchmarks/cis/rhel_9/auditd_validation.rego
 cis_rhel_9,STIG RHEL-09-255045,cis_rhel_9-STIG-RHEL-09-255045,%v has permissions %v — group/world writable allows unauthorized key injection,security,cis,linux rhel,cis_rhel9.authorized_keys,benchmarks/cis/rhel_9/authorized_keys_validation.rego
 cis_rhel_9,STIG RHEL-09-255050,cis_rhel_9-STIG-RHEL-09-255050,"%v owned by '%v', expected '%v' — ownership mismatch allows key substitution",security,cis,linux rhel,cis_rhel9.authorized_keys,benchmarks/cis/rhel_9/authorized_keys_validation.rego
 cis_rhel_9,CIS 5.2,cis_rhel_9-CIS-5.2,.ssh directory %v has mode %v — must be 700 (owner read/write/execute only),security,cis,linux rhel,cis_rhel9.authorized_keys,benchmarks/cis/rhel_9/authorized_keys_validation.rego
@@ -4891,34 +4933,35 @@ cis_rhel_9,NIST SC-13,cis_rhel_9-NIST-SC-13,%v contains deprecated key type '%v'
 cis_rhel_9,NIST IA-3,cis_rhel_9-NIST-IA-3,Key %v in %v has no comment — key ownership cannot be determined during audit (user: %v),security,cis,linux rhel,cis_rhel9.authorized_keys,benchmarks/cis/rhel_9/authorized_keys_validation.rego
 cis_rhel_9,STIG RHEL-09-255060,cis_rhel_9-STIG-RHEL-09-255060,Key %v in %v (user: %v) is not in the approved fingerprint list,security,cis,linux rhel,cis_rhel9.authorized_keys,benchmarks/cis/rhel_9/authorized_keys_validation.rego
 cis_rhel_9,cis_rhel9.authorized_keys#1,cis_rhel_9-cis_rhel9.authorized_keys-1,CIS: FAIL-CLOSED - facts 'input.authorized_keys' were not supplied; this module cannot be evaluated and is reported non-compliant,security,cis,linux rhel,cis_rhel9.authorized_keys,benchmarks/cis/rhel_9/authorized_keys_validation.rego
-cis_rhel_9,CIS 1.3.1,cis_rhel_9-CIS-1.3.1,AIDE is not installed,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.3.2,cis_rhel_9-CIS-1.3.2,AIDE filesystem integrity checks are not scheduled (no cron job or systemd timer),security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.4.1,cis_rhel_9-CIS-1.4.1,GRUB bootloader password is not set,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.4.2,cis_rhel_9-CIS-1.4.2,evidence missing — boot_security.grub_cfg_mode not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.4.3,cis_rhel_9-CIS-1.4.3,Authentication not required for single user mode,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.5.1,cis_rhel_9-CIS-1.5.1,Core dumps not disabled via sysctl (fs.suid_dumpable should be 0),security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.5.2,cis_rhel_9-CIS-1.5.2,"kernel.randomize_va_space is %s, should be 2",security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.5.3,cis_rhel_9-CIS-1.5.3,prelink is installed - should be removed,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.5.4,cis_rhel_9-CIS-1.5.4,Automatic Bug Reporting Tool (abrtd) is enabled - should be disabled,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
-cis_rhel_9,CIS 1.5,cis_rhel_9-CIS-1.5,"kernel.kptr_restrict is %s, should be 1 for additional hardening",security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.4.1,cis_rhel_9-1.4.1,evidence missing — boot_security.grub_password_set/grub_password_hashed not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.4.2,cis_rhel_9-1.4.2,evidence missing — boot_security.grub_cfg_mode/grub_cfg_owner/grub_cfg_group/grub_files not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.4.3,cis_rhel_9-1.4.3,evidence missing — boot_security.rescue_auth_required (or single_user_auth_required) not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.4.4,cis_rhel_9-1.4.4,evidence missing — boot_security.emergency_auth_required (or single_user_auth_required) not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.4.5,cis_rhel_9-1.4.5,evidence missing — boot_security.kernel_args (or bootloader.grub_config) not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.1,cis_rhel_9-1.5.1,evidence missing — sysctl_parameters.analysis/persisted[fs.protected_hardlinks] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.2,cis_rhel_9-1.5.2,evidence missing — sysctl_parameters.analysis/persisted[fs.protected_symlinks] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.3,cis_rhel_9-1.5.3,evidence missing — sysctl_parameters.analysis/persisted[fs.suid_dumpable] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.4,cis_rhel_9-1.5.4,evidence missing — sysctl_parameters.analysis/persisted[kernel.dmesg_restrict] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.5,cis_rhel_9-1.5.5,evidence missing — sysctl_parameters.analysis/persisted[kernel.kptr_restrict] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.6,cis_rhel_9-1.5.6,evidence missing — sysctl_parameters.analysis/persisted[kernel.randomize_va_space] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.7,cis_rhel_9-1.5.7,evidence missing — sysctl_parameters.analysis/persisted[kernel.yama.ptrace_scope] not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.8,cis_rhel_9-1.5.8,evidence missing — boot_security.core_dumps_disabled_limits not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.9,cis_rhel_9-1.5.9,evidence missing — boot_security.systemd_coredump_process_size_max not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,1.5.10,cis_rhel_9-1.5.10,evidence missing — boot_security.systemd_coredump_storage not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,6.3.1,cis_rhel_9-6.3.1,evidence missing — boot_security.aide_installed not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,6.3.2,cis_rhel_9-6.3.2,evidence missing — boot_security.aide_cron_configured/aide_timer_configured not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,6.3.3,cis_rhel_9-6.3.3,evidence missing — boot_security.aide_audit_tool_options not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
+cis_rhel_9,6.3.4,cis_rhel_9-6.3.4,evidence missing — boot_security.aide_report_urls not collected,security,cis,linux rhel,cis_rhel9.boot_security,benchmarks/cis/rhel_9/boot_security_validation.rego
 cis_rhel_9,NIST IA-5,cis_rhel_9-NIST-IA-5,Certificate '%v' EXPIRED %v days ago — replace immediately,security,cis,linux rhel,cis_rhel9.certificate_validation,benchmarks/cis/rhel_9/certificate_validation.rego
 cis_rhel_9,NIST SC-13,cis_rhel_9-NIST-SC-13,evidence missing — Certificate '%v' has no key_bits,security,cis,linux rhel,cis_rhel9.certificate_validation,benchmarks/cis/rhel_9/certificate_validation.rego
 cis_rhel_9,NIST SC-17,cis_rhel_9-NIST-SC-17,Self-signed certificate '%v' in trust store has not been explicitly approved,security,cis,linux rhel,cis_rhel9.certificate_validation,benchmarks/cis/rhel_9/certificate_validation.rego
 cis_rhel_9,CIS 1.8.1,cis_rhel_9-CIS-1.8.1,"System crypto policy is LEGACY — permits MD5, RC4, and DES. Upgrade to DEFAULT or FUTURE.",security,cis,linux rhel,cis_rhel9.certificate_validation,benchmarks/cis/rhel_9/certificate_validation.rego
-cis_rhel_9,section_1_1_filesystem,cis_rhel_9-section_1_1_filesystem,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_1_2_1_7_1_8_initial_setup,cis_rhel_9-section_1_2_1_7_1_8_initial_setup,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_1_3_1_4_1_5_boot_security,cis_rhel_9-section_1_3_1_4_1_5_boot_security,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_1_6_selinux,cis_rhel_9-section_1_6_selinux,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_2_services,cis_rhel_9-section_2_services,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_3_network,cis_rhel_9-section_3_network,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_4_1_auditd,cis_rhel_9-section_4_1_auditd,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_4_2_logging,cis_rhel_9-section_4_2_logging,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_5_1_cron,cis_rhel_9-section_5_1_cron,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_5_2_ssh,cis_rhel_9-section_5_2_ssh,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_5_3_sudo,cis_rhel_9-section_5_3_sudo,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_5_4_5_5_pam,cis_rhel_9-section_5_4_5_5_pam,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_6_1_file_permissions,cis_rhel_9-section_6_1_file_permissions,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
-cis_rhel_9,section_6_2_user_group,cis_rhel_9-section_6_2_user_group,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
+cis_rhel_9,levels,cis_rhel_9-levels,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
+cis_rhel_9,level1_server,cis_rhel_9-level1_server,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
+cis_rhel_9,level1_workstation,cis_rhel_9-level1_workstation,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
+cis_rhel_9,level2_server,cis_rhel_9-level2_server,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
+cis_rhel_9,level2_workstation,cis_rhel_9-level2_workstation,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
 cis_rhel_9,authorized_keys,cis_rhel_9-authorized_keys,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
 cis_rhel_9,certificate_validation,cis_rhel_9-certificate_validation,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
 cis_rhel_9,storage_encryption,cis_rhel_9-storage_encryption,,security,cis,linux rhel,cis_rhel9,benchmarks/cis/rhel_9/cis_rhel9_complete.rego
@@ -4928,179 +4971,275 @@ cis_rhel_9,logging,cis_rhel_9-logging,,security,cis,linux rhel,cis.rhel_9,benchm
 cis_rhel_9,network,cis_rhel_9-network,,security,cis,linux rhel,cis.rhel_9,benchmarks/cis/rhel_9/cis_rhel_9.rego
 cis_rhel_9,services,cis_rhel_9-services,,security,cis,linux rhel,cis.rhel_9,benchmarks/cis/rhel_9/cis_rhel_9.rego
 cis_rhel_9,system_maintenance,cis_rhel_9-system_maintenance,,security,cis,linux rhel,cis.rhel_9,benchmarks/cis/rhel_9/cis_rhel_9.rego
-cis_rhel_9,CIS 5.1.1,cis_rhel_9-CIS-5.1.1,cron daemon (crond) is not enabled,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.2,cis_rhel_9-CIS-5.1.2,evidence missing — cron.crontab_mode not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.3,cis_rhel_9-CIS-5.1.3,evidence missing — cron.cron_hourly_mode not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.4,cis_rhel_9-CIS-5.1.4,evidence missing — cron.cron_daily_mode not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.5,cis_rhel_9-CIS-5.1.5,evidence missing — cron.cron_weekly_mode not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.6,cis_rhel_9-CIS-5.1.6,evidence missing — cron.cron_monthly_mode not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.7,cis_rhel_9-CIS-5.1.7,evidence missing — cron.cron_d_mode not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.8,cis_rhel_9-CIS-5.1.8,/etc/cron.deny exists - should be removed,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 5.1.9,cis_rhel_9-CIS-5.1.9,/etc/at.deny exists - should be removed,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
-cis_rhel_9,CIS 6.1.x,cis_rhel_9-CIS-6.1.x,"Critical file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.6,cis_rhel_9-CIS-6.1.6,"/etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.8,cis_rhel_9-CIS-6.1.8,"/etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.2,cis_rhel_9-CIS-6.1.2,"/etc/passwd has incorrect permissions (mode: %s, expected: 0644)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.4,cis_rhel_9-CIS-6.1.4,"/etc/group has incorrect permissions (mode: %s, expected: 0644)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.10,cis_rhel_9-CIS-6.1.10,"World-writable file found: %s (mode: %s, owner: %s)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.11,cis_rhel_9-CIS-6.1.11,"Unowned file found: %s (UID: %d, mode: %s)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.12,cis_rhel_9-CIS-6.1.12,"Ungrouped file found: %s (GID: %d, mode: %s)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.13,cis_rhel_9-CIS-6.1.13,"Unknown SUID binary requires review: %s (mode: %s, owner: %s)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 6.1.14,cis_rhel_9-CIS-6.1.14,Excessive SGID binaries found (%d files),security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,cis_rhel9.file_permissions#1,cis_rhel_9-cis_rhel9.file_permissions-1,"SSH Private Key: %s has insecure permissions (mode: %s, owner: %s)",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,cis_rhel9.file_permissions#2,cis_rhel_9-cis_rhel9.file_permissions-2,SSH Private Keys: One or more SSH host keys have insecure permissions,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,cis_rhel9.file_permissions#3,cis_rhel_9-cis_rhel9.file_permissions-3,SSH Private Keys: evidence missing — ssh_private_keys.all_compliant not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
-cis_rhel_9,CIS 1.1.1.x,cis_rhel_9-CIS-1.1.1.x,"Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)",security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.x,cis_rhel_9-CIS-1.1.2.x,Required partition '%s' is not a separate partition,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.1.2,cis_rhel_9-CIS-1.1.2.1.2,/tmp partition does not have 'nodev' option set,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.1.4,cis_rhel_9-CIS-1.1.2.1.4,/tmp partition does not have 'nosuid' option set,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.1.3,cis_rhel_9-CIS-1.1.2.1.3,/tmp partition does not have 'noexec' option set,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.2.2,cis_rhel_9-CIS-1.1.2.2.2,/dev/shm does not have 'nodev' option set,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.2.4,cis_rhel_9-CIS-1.1.2.2.4,/dev/shm does not have 'nosuid' option set,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.2.2.3,cis_rhel_9-CIS-1.1.2.2.3,/dev/shm does not have 'noexec' option set,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.1.22,cis_rhel_9-CIS-1.1.22,Directory '%s' is world-writable without sticky bit (mode: %s),security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
-cis_rhel_9,CIS 1.2.1,cis_rhel_9-CIS-1.2.1,evidence missing — initial_setup.gpg_keys not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.2.2,cis_rhel_9-CIS-1.2.2,evidence missing — initial_setup.enabled_repos not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.2.3,cis_rhel_9-CIS-1.2.3,Global gpgcheck is not enabled in /etc/dnf/dnf.conf,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.7.1,cis_rhel_9-CIS-1.7.1,/etc/motd does not exist,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.7.2,cis_rhel_9-CIS-1.7.2,/etc/issue does not exist,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.7.3,cis_rhel_9-CIS-1.7.3,/etc/issue.net does not exist,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.7.4,cis_rhel_9-CIS-1.7.4,evidence missing — initial_setup.motd_owner not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.7.5,cis_rhel_9-CIS-1.7.5,evidence missing — initial_setup.issue_owner not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.7.6,cis_rhel_9-CIS-1.7.6,evidence missing — initial_setup.issue_net_owner not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.1,cis_rhel_9-CIS-1.8.1,GNOME Display Manager (GDM) installed on server without GUI requirement,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.2,cis_rhel_9-CIS-1.8.2,GDM login banner is not configured,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.3,cis_rhel_9-CIS-1.8.3,GDM user list is not disabled,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.4,cis_rhel_9-CIS-1.8.4,GDM automatic screen lock is not enabled,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.5,cis_rhel_9-CIS-1.8.5,GDM screen lock can be overridden by users,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.6,cis_rhel_9-CIS-1.8.6,GDM automatic mounting of removable media is not disabled,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.7,cis_rhel_9-CIS-1.8.7,GDM automount settings can be overridden by users,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.8,cis_rhel_9-CIS-1.8.8,GDM autorun-never is not enabled,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.9,cis_rhel_9-CIS-1.8.9,GDM autorun-never can be overridden by users,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.8.10,cis_rhel_9-CIS-1.8.10,GDM XDMCP is enabled - should be disabled for security,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS 1.9,cis_rhel_9-CIS-1.9,"System-wide crypto policy is set to LEGACY - should use DEFAULT, FUTURE, or FIPS",security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
-cis_rhel_9,CIS L2 1.1.1.2,cis_rhel_9-CIS-L2-1.1.1.2,freevxfs filesystem module not disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.1.3,cis_rhel_9-CIS-L2-1.1.1.3,jffs2 filesystem module not disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.1.4,cis_rhel_9-CIS-L2-1.1.1.4,hfs filesystem module not disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.1.5,cis_rhel_9-CIS-L2-1.1.1.5,hfsplus filesystem module not disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.1.6,cis_rhel_9-CIS-L2-1.1.1.6,squashfs filesystem module not disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.1.7,cis_rhel_9-CIS-L2-1.1.1.7,udf filesystem module not disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.2.1,cis_rhel_9-CIS-L2-1.1.2.1,/tmp is not on a separate partition,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.2.2,cis_rhel_9-CIS-L2-1.1.2.2,/tmp not mounted with nodev,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.2.3,cis_rhel_9-CIS-L2-1.1.2.3,/tmp not mounted with nosuid,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.2.4,cis_rhel_9-CIS-L2-1.1.2.4,/tmp not mounted with noexec,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.3.1,cis_rhel_9-CIS-L2-1.1.3.1,/var is not on a separate partition,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.4.1,cis_rhel_9-CIS-L2-1.1.4.1,/var/tmp is not on a separate partition,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.5.1,cis_rhel_9-CIS-L2-1.1.5.1,/var/log is not on a separate partition,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.6.1,cis_rhel_9-CIS-L2-1.1.6.1,/var/log/audit is not on a separate partition,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.7.1,cis_rhel_9-CIS-L2-1.1.7.1,/home is not on a separate partition,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.1.7.2,cis_rhel_9-CIS-L2-1.1.7.2,/home not mounted with nodev,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 1.5.4,cis_rhel_9-CIS-L2-1.5.4,Core dumps not restricted (fs.suid_dumpable != 0),security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 2.3.1,cis_rhel_9-CIS-L2-2.3.1,ftp client is installed,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 2.3.2,cis_rhel_9-CIS-L2-2.3.2,openldap-clients is installed,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 2.3.3,cis_rhel_9-CIS-L2-2.3.3,ypbind (NIS client) is installed,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 2.3.4,cis_rhel_9-CIS-L2-2.3.4,telnet client is installed,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 3.1.2,cis_rhel_9-CIS-L2-3.1.2,Wireless interfaces are active (should be disabled on servers),security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 3.3.1,cis_rhel_9-CIS-L2-3.3.1,IPv6 router advertisements not disabled (net.ipv6.conf.all.accept_ra != 0),security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 3.3.2,cis_rhel_9-CIS-L2-3.3.2,IPv6 redirects accepted (net.ipv6.conf.all.accept_redirects != 0),security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.3.1,cis_rhel_9-CIS-L2-4.1.3.1,Audit rule for /usr/bin/chsh not configured,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.3.2,cis_rhel_9-CIS-L2-4.1.3.2,Audit rule for /usr/bin/newgrp not configured,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.3.3,cis_rhel_9-CIS-L2-4.1.3.3,Audit rule for /usr/bin/chage not configured,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.3.4,cis_rhel_9-CIS-L2-4.1.3.4,Audit rule for /usr/sbin/usermod not configured,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.3.5,cis_rhel_9-CIS-L2-4.1.3.5,Audit rule for /usr/bin/gpasswd not configured,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.4.1,cis_rhel_9-CIS-L2-4.1.4.1,"File deletion events (unlink, rename, rmdir) not audited",security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 4.1.5,cis_rhel_9-CIS-L2-4.1.5,Changes to sudoers not audited (/etc/sudoers),security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 5.2.7,cis_rhel_9-CIS-L2-5.2.7,AllowTcpForwarding is not set to 'no' — TCP forwarding should be disabled,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 5.2.8,cis_rhel_9-CIS-L2-5.2.8,LoginGraceTime not configured or exceeds 60 seconds,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 5.2.22,cis_rhel_9-CIS-L2-5.2.22,MaxSessions exceeds 10,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 5.4.1.5,cis_rhel_9-CIS-L2-5.4.1.5,INACTIVE password lock not set (useradd -D -f 30),security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 6.1.11,cis_rhel_9-CIS-L2-6.1.11,Unowned files or directories found on the filesystem,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 6.1.12,cis_rhel_9-CIS-L2-6.1.12,Ungrouped files or directories found on the filesystem,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 6.1.13,cis_rhel_9-CIS-L2-6.1.13,Unexpected SUID executables found — review required,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS L2 6.1.14,cis_rhel_9-CIS-L2-6.1.14,Unexpected SGID executables found — review required,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
-cis_rhel_9,CIS 4.2.1.1,cis_rhel_9-CIS-4.2.1.1,rsyslog is not installed,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.1.2,cis_rhel_9-CIS-4.2.1.2,rsyslog service is not active,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.1.3,cis_rhel_9-CIS-4.2.1.3,journald is not configured to forward to rsyslog (ForwardToSyslog: %s),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.1.4,cis_rhel_9-CIS-4.2.1.4,evidence missing — rsyslog.file_create_mode not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.1.5,cis_rhel_9-CIS-4.2.1.5,No rsyslog logging rules configured,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.1.6,cis_rhel_9-CIS-4.2.1.6,rsyslog is not configured to send logs to remote host,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.2.1,cis_rhel_9-CIS-4.2.2.1,journald compression is not enabled (Compress: %s),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.2.2,cis_rhel_9-CIS-4.2.2.2,journald is not configured for persistent storage (Storage: %s),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.2.3,cis_rhel_9-CIS-4.2.2.3,systemd-journald service is not active,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.3,cis_rhel_9-CIS-4.2.3,"Log file '%s' has incorrect permissions (mode: %s/%s, owner: %s/%s, group: %s/%s)",security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 4.2.x,cis_rhel_9-CIS-4.2.x,logrotate is not installed (logs may fill disk),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
-cis_rhel_9,CIS 3.x,cis_rhel_9-CIS-3.x,"Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s",security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.8,cis_rhel_9-CIS-3.2.8,TCP SYN cookies not enabled (vulnerable to SYN flood attacks),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.7,cis_rhel_9-CIS-3.2.7,Reverse path filtering not enabled (vulnerable to IP spoofing),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.4,cis_rhel_9-CIS-3.2.4,Martian packet logging not enabled (won't detect spoofing attempts),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.5,cis_rhel_9-CIS-3.2.5,Broadcast ICMP not ignored (vulnerable to Smurf attacks),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.1.1,cis_rhel_9-CIS-3.1.1,"IPv4 forwarding is enabled (value: %v, expected: 0)",security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.1.2,cis_rhel_9-CIS-3.1.2,Sending ICMP redirects is enabled (man-in-the-middle risk),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.1,cis_rhel_9-CIS-3.2.1,Source routed packets accepted on %s (firewall bypass risk),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.2,cis_rhel_9-CIS-3.2.2,ICMP redirects accepted on %s (man-in-the-middle risk),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.3,cis_rhel_9-CIS-3.2.3,Secure ICMP redirects accepted on %s,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.3.1,cis_rhel_9-CIS-3.3.1,"IPv6 is enabled but should be disabled (status: %s, addresses: %d)",security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.2.9,cis_rhel_9-CIS-3.2.9,IPv6 router advertisements accepted on %s (rogue router risk),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.3.2,cis_rhel_9-CIS-3.3.2,Wireless interface detected on server: %s,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 3.5.x,cis_rhel_9-CIS-3.5.x,No active firewall detected (type: %s),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
-cis_rhel_9,CIS 5.4.1,cis_rhel_9-CIS-5.4.1,pwquality package not installed,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.4.1.1,cis_rhel_9-CIS-5.4.1.1,Password minimum length not configured in pwquality.conf,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.4.1.2,cis_rhel_9-CIS-5.4.1.2,Password complexity requirements not configured,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.4.2,cis_rhel_9-CIS-5.4.2,pam_faillock not configured in PAM,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.4.3,cis_rhel_9-CIS-5.4.3,Password reuse limitation not configured (remember parameter missing),security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.4.4,cis_rhel_9-CIS-5.4.4,Password hashing algorithm not set to SHA-512 or yescrypt,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.1.1,cis_rhel_9-CIS-5.5.1.1,evidence missing — pam.pass_min_days (PASS_MIN_DAYS) not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.1.2,cis_rhel_9-CIS-5.5.1.2,evidence missing — pam.pass_max_days (PASS_MAX_DAYS) not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.1.3,cis_rhel_9-CIS-5.5.1.3,evidence missing — pam.pass_warn_age (PASS_WARN_AGE) not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.1.4,cis_rhel_9-CIS-5.5.1.4,"Inactive password lock is %v days, should be 0 to 30 (-1 disables it)",security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.1.5,cis_rhel_9-CIS-5.5.1.5,User %s has password change date in the future,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.2,cis_rhel_9-CIS-5.5.2,System account %s has a login shell,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.3,cis_rhel_9-CIS-5.5.3,evidence missing — pam.root_gid not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.4,cis_rhel_9-CIS-5.5.4,"Default umask is %s, should be 027 or more restrictive",security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 5.5.5,cis_rhel_9-CIS-5.5.5,"TMOUT is %s seconds, should be 900 or less",security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
-cis_rhel_9,CIS 1.6.1.1,cis_rhel_9-CIS-1.6.1.1,SELinux (libselinux) not installed,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.2,cis_rhel_9-CIS-1.6.1.2,SELinux is disabled in bootloader configuration (selinux=0),security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.3,cis_rhel_9-CIS-1.6.1.3,SELinux policy not configured,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.4,cis_rhel_9-CIS-1.6.1.4,SELinux is not enabled,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.5,cis_rhel_9-CIS-1.6.1.5,"SELinux mode is %s, should be enforcing",security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.6,cis_rhel_9-CIS-1.6.1.6,Found %d unconfined services: %s,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.7,cis_rhel_9-CIS-1.6.1.7,SETroubleshoot is installed - should be removed on production systems,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6.1.8,cis_rhel_9-CIS-1.6.1.8,MCS Translation Service (mcstrans) is installed - should be removed,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.6,cis_rhel_9-CIS-1.6,Found %d files with incorrect SELinux context,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
-cis_rhel_9,CIS 1.1.23,cis_rhel_9-CIS-1.1.23,autofs service is active (should be disabled),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.1.1,cis_rhel_9-CIS-2.1.1,No time synchronization service is active,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.1.1.1,cis_rhel_9-CIS-2.1.1.1,chronyd is selected but not active,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.2.x,cis_rhel_9-CIS-2.2.x,Unnecessary service '%s' is active (risk: %s),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.2.14,cis_rhel_9-CIS-2.2.14,telnet server is active (CRITICAL: uses cleartext authentication),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.3.1,cis_rhel_9-CIS-2.3.1,rsh server is active (CRITICAL: uses cleartext authentication),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.2.11,cis_rhel_9-CIS-2.2.11,FTP server is active (WARNING: may use cleartext authentication),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.2.2,cis_rhel_9-CIS-2.2.2,Avahi server is active (WARNING: broadcasts system information),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.2.12,cis_rhel_9-CIS-2.2.12,Web server package installed: %s (%s),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.3.x,cis_rhel_9-CIS-2.3.x,"Unnecessary client package installed: %s (%s, severity: %s)",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.3.4,cis_rhel_9-CIS-2.3.4,telnet client is installed (CRITICAL: cleartext protocol),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.3.2,cis_rhel_9-CIS-2.3.2,rsh client is installed (CRITICAL: cleartext protocol),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 2.2.1,cis_rhel_9-CIS-2.2.1,X Window System package installed on server: %s (%s),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
-cis_rhel_9,CIS 5.2.1,cis_rhel_9-CIS-5.2.1,evidence missing — ssh.config_permissions.mode not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.2,cis_rhel_9-CIS-5.2.2,"SSH private key %s has incorrect permissions (mode: %s, should be 0600)",security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.3,cis_rhel_9-CIS-5.2.3,SSH public key %s permissions too permissive (mode: %s),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.4,cis_rhel_9-CIS-5.2.4,SSH LogLevel not set to appropriate value (should be INFO or VERBOSE),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.5,cis_rhel_9-CIS-5.2.5,SSH X11Forwarding is enabled (should be 'no'),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.6,cis_rhel_9-CIS-5.2.6,SSH MaxAuthTries is %v (should be 4 or less),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.7,cis_rhel_9-CIS-5.2.7,SSH IgnoreRhosts not enabled,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.8,cis_rhel_9-CIS-5.2.8,SSH HostbasedAuthentication is enabled (should be 'no'),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.9,cis_rhel_9-CIS-5.2.9,SSH PermitRootLogin is '%v' (should be 'no'),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.10,cis_rhel_9-CIS-5.2.10,SSH PermitEmptyPasswords is enabled (should be 'no'),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.11,cis_rhel_9-CIS-5.2.11,SSH PermitUserEnvironment is enabled (should be 'no'),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.12,cis_rhel_9-CIS-5.2.12,Weak SSH cipher '%s' is allowed,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.13,cis_rhel_9-CIS-5.2.13,Weak SSH MAC '%s' is allowed,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.14,cis_rhel_9-CIS-5.2.14,Weak SSH KexAlgorithm '%s' is allowed,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.15,cis_rhel_9-CIS-5.2.15,SSH ClientAliveInterval is %v seconds (should be 300 or less),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.16,cis_rhel_9-CIS-5.2.16,SSH LoginGraceTime is %v seconds (should be 60 or less),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.17,cis_rhel_9-CIS-5.2.17,SSH Banner not configured,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.18,cis_rhel_9-CIS-5.2.18,SSH UsePAM not enabled,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.19,cis_rhel_9-CIS-5.2.19,SSH AllowTcpForwarding is enabled (should be 'no'),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.20,cis_rhel_9-CIS-5.2.20,SSH MaxStartups not configured,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
-cis_rhel_9,CIS 5.2.21,cis_rhel_9-CIS-5.2.21,SSH MaxSessions is %v (should be 10 or less),security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.1,cis_rhel_9-2.4.1.1,evidence missing — cron.crond_enabled/crond_running not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.2,cis_rhel_9-2.4.1.2,evidence missing — cron.crontab_mode/cron.crontab_owner/cron.crontab_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.3,cis_rhel_9-2.4.1.3,evidence missing — cron.cron_hourly_mode/cron.cron_hourly_owner/cron.cron_hourly_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.4,cis_rhel_9-2.4.1.4,evidence missing — cron.cron_daily_mode/cron.cron_daily_owner/cron.cron_daily_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.5,cis_rhel_9-2.4.1.5,evidence missing — cron.cron_weekly_mode/cron.cron_weekly_owner/cron.cron_weekly_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.6,cis_rhel_9-2.4.1.6,evidence missing — cron.cron_monthly_mode/cron.cron_monthly_owner/cron.cron_monthly_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.7,cis_rhel_9-2.4.1.7,evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.8,cis_rhel_9-2.4.1.8,evidence missing — cron.cron_d_mode/cron.cron_d_owner/cron.cron_d_group not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.1.9,cis_rhel_9-2.4.1.9,evidence missing — cron.cron_allow_*/cron_deny_* (or packages.cronie) not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,2.4.2.1,cis_rhel_9-2.4.2.1,evidence missing — cron.at_allow_*/at_deny_* (or packages.at) not collected,security,cis,linux rhel,cis_rhel9.cron,benchmarks/cis/rhel_9/cron_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.1,cis_rhel_9-7.1.1,evidence missing — critical_files.analysis[/etc/passwd] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.2,cis_rhel_9-7.1.2,evidence missing — critical_files.analysis[/etc/passwd-] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.3,cis_rhel_9-7.1.3,evidence missing — critical_files.analysis[/etc/group] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.4,cis_rhel_9-7.1.4,evidence missing — critical_files.analysis[/etc/group-] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.5,cis_rhel_9-7.1.5,evidence missing — critical_files.analysis[/etc/shadow] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.6,cis_rhel_9-7.1.6,evidence missing — critical_files.analysis[/etc/shadow-] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.7,cis_rhel_9-7.1.7,evidence missing — critical_files.analysis[/etc/gshadow] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.8,cis_rhel_9-7.1.8,evidence missing — critical_files.analysis[/etc/gshadow-] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.9,cis_rhel_9-7.1.9,evidence missing — critical_files.analysis[/etc/shells] not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.10,cis_rhel_9-7.1.10,"evidence missing — critical_files.analysis[/etc/security/opasswd, /etc/security/opasswd.old] not collected",security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.11,cis_rhel_9-7.1.11,evidence missing — world_writable.files/sticky_bit.world_writable_without_sticky not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.12,cis_rhel_9-7.1.12,evidence missing — unowned_files.files/ungrouped_files.files not collected,security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,7.1.13,cis_rhel_9-7.1.13,manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (Ensure SUID and SGID files are reviewed),security,cis,linux rhel,cis_rhel9.file_permissions,benchmarks/cis/rhel_9/file_permissions_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.1,cis_rhel_9-1.1.1.1,evidence missing — disabled_filesystem_modules.modules[cramfs] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.2,cis_rhel_9-1.1.1.2,evidence missing — disabled_filesystem_modules.modules[freevxfs] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.3,cis_rhel_9-1.1.1.3,evidence missing — disabled_filesystem_modules.modules[hfs] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.4,cis_rhel_9-1.1.1.4,evidence missing — disabled_filesystem_modules.modules[hfsplus] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.5,cis_rhel_9-1.1.1.5,evidence missing — disabled_filesystem_modules.modules[jffs2] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.6,cis_rhel_9-1.1.1.6,evidence missing — disabled_filesystem_modules.modules[overlay] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.7,cis_rhel_9-1.1.1.7,evidence missing — disabled_filesystem_modules.modules[squashfs] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.8,cis_rhel_9-1.1.1.8,evidence missing — disabled_filesystem_modules.modules[udf] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.9,cis_rhel_9-1.1.1.9,evidence missing — disabled_filesystem_modules.modules[firewire-core] not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.10,cis_rhel_9-1.1.1.10,evidence missing — disabled_filesystem_modules.modules[usb-storage] (or usb_storage.disabled/loaded) not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.1.11,cis_rhel_9-1.1.1.11,manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (Ensure unused filesystems kernel modules are not available),security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.1.1,cis_rhel_9-1.1.2.1.1,evidence missing — mount_options.tmp.exists not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.1.2,cis_rhel_9-1.1.2.1.2,evidence missing — mount_options.tmp.has_nodev not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.1.3,cis_rhel_9-1.1.2.1.3,evidence missing — mount_options.tmp.has_nosuid not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.1.4,cis_rhel_9-1.1.2.1.4,evidence missing — mount_options.tmp.has_noexec not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.2.1,cis_rhel_9-1.1.2.2.1,evidence missing — mount_options.dev_shm.exists not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.2.2,cis_rhel_9-1.1.2.2.2,evidence missing — mount_options.dev_shm.has_nodev not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.2.3,cis_rhel_9-1.1.2.2.3,evidence missing — mount_options.dev_shm.has_nosuid not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.2.4,cis_rhel_9-1.1.2.2.4,evidence missing — mount_options.dev_shm.has_noexec not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.3.1,cis_rhel_9-1.1.2.3.1,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.3.2,cis_rhel_9-1.1.2.3.2,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.3.3,cis_rhel_9-1.1.2.3.3,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.4.1,cis_rhel_9-1.1.2.4.1,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.4.2,cis_rhel_9-1.1.2.4.2,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.4.3,cis_rhel_9-1.1.2.4.3,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.5.1,cis_rhel_9-1.1.2.5.1,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.5.2,cis_rhel_9-1.1.2.5.2,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.5.3,cis_rhel_9-1.1.2.5.3,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.5.4,cis_rhel_9-1.1.2.5.4,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.6.1,cis_rhel_9-1.1.2.6.1,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.6.2,cis_rhel_9-1.1.2.6.2,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.6.3,cis_rhel_9-1.1.2.6.3,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.6.4,cis_rhel_9-1.1.2.6.4,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.7.1,cis_rhel_9-1.1.2.7.1,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.7.2,cis_rhel_9-1.1.2.7.2,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.7.3,cis_rhel_9-1.1.2.7.3,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,1.1.2.7.4,cis_rhel_9-1.1.2.7.4,evidence missing — ansible_facts.ansible_mounts not collected,security,cis,linux rhel,cis_rhel9.filesystem,benchmarks/cis/rhel_9/filesystem_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.2.1.1,cis_rhel_9-1.2.1.1,manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (Ensure GPG keys are configured),security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.2.1.2,cis_rhel_9-1.2.1.2,evidence missing — initial_setup.global_gpgcheck_enabled/repos_without_gpgcheck/enabled_repos not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.2.1.3,cis_rhel_9-1.2.1.3,evidence missing — initial_setup.dnf_conf_raw not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.2.1.4,cis_rhel_9-1.2.1.4,manual review not attested — set attest.repositories_reviewed to true once reviewed (Ensure package manager repositories are configured),security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.2.1.5,cis_rhel_9-1.2.1.5,evidence missing — initial_setup.dnf_conf_raw not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.2.2.1,cis_rhel_9-1.2.2.1,"manual review not attested — set attest.updates_installed to true once reviewed (Ensure updates, patches, and additional security software are installed)",security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.1,cis_rhel_9-1.6.1,evidence missing — initial_setup.crypto_policy not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.2,cis_rhel_9-1.6.2,evidence missing — crypto_policy.current_pol_raw not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.3,cis_rhel_9-1.6.3,evidence missing — crypto_policy.current_pol_raw not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.4,cis_rhel_9-1.6.4,evidence missing — crypto_policy.current_pol_raw not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.5,cis_rhel_9-1.6.5,manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables chacha20-poly1305 for ssh),security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.6,cis_rhel_9-1.6.6,manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables EtM for ssh),security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.6.7,cis_rhel_9-1.6.7,evidence missing — crypto_policy.pq_module_available/initial_setup.crypto_policy not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.7.1,cis_rhel_9-1.7.1,evidence missing — initial_setup.motd_exists/motd_contains_sensitive_info not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.7.2,cis_rhel_9-1.7.2,evidence missing — initial_setup.issue_exists/issue_contains_sensitive_info not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.7.3,cis_rhel_9-1.7.3,evidence missing — initial_setup.issue_net_exists/issue_net_contains_sensitive_info not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.7.4,cis_rhel_9-1.7.4,evidence missing — initial_setup.motd_mode/initial_setup.motd_owner/initial_setup.motd_group/initial_setup.motd_exists not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.7.5,cis_rhel_9-1.7.5,evidence missing — initial_setup.issue_mode/initial_setup.issue_owner/initial_setup.issue_group/initial_setup.issue_exists not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.7.6,cis_rhel_9-1.7.6,evidence missing — initial_setup.issue_net_mode/initial_setup.issue_net_owner/initial_setup.issue_net_group/initial_setup.issue_net_exists not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.1,cis_rhel_9-1.8.1,evidence missing — initial_setup.gdm_installed/gdm_banner_configured/gdm_banner_override_allowed not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.2,cis_rhel_9-1.8.2,evidence missing — initial_setup.gdm_installed/gdm_disable_user_list/gdm_disable_user_list_override_allowed not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.3,cis_rhel_9-1.8.3,evidence missing — initial_setup.gdm_installed/gdm_idle_delay/gdm_lock_delay/gdm_lock_override_allowed not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.4,cis_rhel_9-1.8.4,evidence missing — initial_setup.gdm_installed/gdm_automount_disabled/gdm_automount_open_disabled/gdm_automount_override_allowed not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.5,cis_rhel_9-1.8.5,evidence missing — initial_setup.gdm_installed/gdm_autorun_never_enabled/gdm_autorun_override_allowed not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.6,cis_rhel_9-1.8.6,evidence missing — initial_setup.gdm_installed/gdm_xdmcp_enabled not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,1.8.7,cis_rhel_9-1.8.7,evidence missing — initial_setup.gdm_installed/gdm_wayland_disabled not collected,security,cis,linux rhel,cis_rhel9.initial_setup,benchmarks/cis/rhel_9/initial_setup_validation.rego
+cis_rhel_9,cis_rhel9.l2#1,cis_rhel_9-cis_rhel9.l2-1,,security,cis,linux rhel,cis_rhel9.l2,benchmarks/cis/rhel_9/l2_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.1.1,cis_rhel_9-6.1.1.1,evidence missing — journald.service_active not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.1.2,cis_rhel_9-6.1.1.2,"evidence missing — services[systemd-journal-remote.socket,systemd-journal-remote.service] not collected",security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.1.3,cis_rhel_9-6.1.1.3,evidence missing — journald.forward_to_syslog not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.1.4,cis_rhel_9-6.1.1.4,manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (Ensure journald log file rotation is configured),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.1.5,cis_rhel_9-6.1.1.5,manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (Ensure journald log file access is configured),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.1,cis_rhel_9-6.1.2.1,evidence missing — rsyslog.installed not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.2,cis_rhel_9-6.1.2.2,evidence missing — rsyslog.service_enabled/service_active not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.3,cis_rhel_9-6.1.2.3,evidence missing — rsyslog.installed/file_create_mode not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.4,cis_rhel_9-6.1.2.4,evidence missing — rsyslog.config_files (or rsyslog.installed) not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.5,cis_rhel_9-6.1.2.5,evidence missing — rsyslog.d_dir.mode/rsyslog.d_dir.owner/rsyslog.d_dir.group (or rsyslog.installed) not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.6,cis_rhel_9-6.1.2.6,evidence missing — rsyslog.work_dir.mode/rsyslog.work_dir.owner/rsyslog.work_dir.group (or rsyslog.installed) not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.7,cis_rhel_9-6.1.2.7,evidence missing — rsyslog.config_raw (or rsyslog.installed) not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.8,cis_rhel_9-6.1.2.8,manual review not attested — set attest.rsyslog_logging_rules_reviewed to true once reviewed (Ensure rsyslog logging rules are configured),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.9,cis_rhel_9-6.1.2.9,manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (Ensure rsyslog is configured to send logs to a remote log host),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.10,cis_rhel_9-6.1.2.10,"evidence missing — packages[rsyslog-gnutls,rsyslog-openssl] not collected",security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.11,cis_rhel_9-6.1.2.11,evidence missing — rsyslog.config_raw not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.12,cis_rhel_9-6.1.2.12,manual review not attested — set attest.rsyslog_tls_ca_configured to true once reviewed (Ensure rsyslog TLS CA certificate is configured),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.13,cis_rhel_9-6.1.2.13,manual review not attested — set attest.rsyslog_tls_client_cert_configured to true once reviewed (Ensure rsyslog TLS client certificate is configured),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.2.14,cis_rhel_9-6.1.2.14,manual review not attested — set attest.logrotate_reviewed to true once reviewed (Ensure logrotate is configured),security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,6.1.3.1,cis_rhel_9-6.1.3.1,evidence missing — log_file_permissions.analysis not collected,security,cis,linux rhel,cis_rhel9.logging,benchmarks/cis/rhel_9/logging_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.1.1,cis_rhel_9-3.1.1,manual review not attested — set attest.ipv6_status_identified to true once reviewed (Ensure IPv6 status is identified),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.1.2,cis_rhel_9-3.1.2,evidence missing — wireless_interfaces.has_wireless/modules not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.1.3,cis_rhel_9-3.1.3,evidence missing — packages[bluez] / services[bluetooth.service] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.2.1,cis_rhel_9-3.2.1,evidence missing — disabled_network_modules.modules[dccp] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.2.2,cis_rhel_9-3.2.2,evidence missing — disabled_network_modules.modules[tipc] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.2.3,cis_rhel_9-3.2.3,evidence missing — disabled_network_modules.modules[rds] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.2.4,cis_rhel_9-3.2.4,evidence missing — disabled_network_modules.modules[sctp] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.2.5,cis_rhel_9-3.2.5,evidence missing — disabled_network_modules.modules[atm] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.2.6,cis_rhel_9-3.2.6,evidence missing — disabled_network_modules.modules[can] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.1,cis_rhel_9-3.3.1.1,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.ip_forward] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.2,cis_rhel_9-3.3.1.2,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.forwarding] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.3,cis_rhel_9-3.3.1.3,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.forwarding] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.4,cis_rhel_9-3.3.1.4,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.send_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.5,cis_rhel_9-3.3.1.5,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.send_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.6,cis_rhel_9-3.3.1.6,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.icmp_ignore_bogus_error_responses] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.7,cis_rhel_9-3.3.1.7,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.icmp_echo_ignore_broadcasts] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.8,cis_rhel_9-3.3.1.8,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.accept_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.9,cis_rhel_9-3.3.1.9,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.accept_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.10,cis_rhel_9-3.3.1.10,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.secure_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.11,cis_rhel_9-3.3.1.11,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.secure_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.12,cis_rhel_9-3.3.1.12,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.rp_filter] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.13,cis_rhel_9-3.3.1.13,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.rp_filter] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.14,cis_rhel_9-3.3.1.14,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.accept_source_route] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.15,cis_rhel_9-3.3.1.15,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.accept_source_route] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.16,cis_rhel_9-3.3.1.16,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.log_martians] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.17,cis_rhel_9-3.3.1.17,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.log_martians] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.18,cis_rhel_9-3.3.1.18,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.tcp_syncookies] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.19,cis_rhel_9-3.3.1.19,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.route_localnet] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.1.20,cis_rhel_9-3.3.1.20,evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.route_localnet] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.1,cis_rhel_9-3.3.2.1,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.forwarding] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.2,cis_rhel_9-3.3.2.2,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.forwarding] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.3,cis_rhel_9-3.3.2.3,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.accept_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.4,cis_rhel_9-3.3.2.4,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.accept_redirects] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.5,cis_rhel_9-3.3.2.5,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.accept_source_route] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.6,cis_rhel_9-3.3.2.6,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.accept_source_route] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.7,cis_rhel_9-3.3.2.7,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.accept_ra] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,3.3.2.8,cis_rhel_9-3.3.2.8,evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.accept_ra] not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.1,cis_rhel_9-4.1.1,evidence missing — packages.firewalld (or firewall.type=firewalld (active)) not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.2,cis_rhel_9-4.1.2,evidence missing — firewall.backend not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.3,cis_rhel_9-4.1.3,evidence missing — services not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.4,cis_rhel_9-4.1.4,evidence missing — firewall.zones not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.5,cis_rhel_9-4.1.5,manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (Ensure firewalld loopback traffic is configured),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.6,cis_rhel_9-4.1.6,manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (Ensure firewalld loopback source address traffic is configured),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.7,cis_rhel_9-4.1.7,manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (Ensure firewalld services and ports are configured),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.8,cis_rhel_9-4.1.8,manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (Ensure firewalld default zone is set to drop),security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.9,cis_rhel_9-4.1.9,"evidence missing — services[nftables.service]/packages[iptables-services,ufw] not collected",security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.10,cis_rhel_9-4.1.10,evidence missing — firewall.log_denied not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,4.1.11,cis_rhel_9-4.1.11,evidence missing — firewall.zones not collected,security,cis,linux rhel,cis_rhel9.network,benchmarks/cis/rhel_9/network_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.1.1,cis_rhel_9-5.3.1.1,evidence missing — pam.package_versions[pam] not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.1.2,cis_rhel_9-5.3.1.2,evidence missing — pam.package_versions[authselect] not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.1.3,cis_rhel_9-5.3.1.3,evidence missing — pam.package_versions[libpwquality] not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.2.1,cis_rhel_9-5.3.2.1,evidence missing — pam.authselect_profile/authselect_check_valid not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.2.2,cis_rhel_9-5.3.2.2,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.2.3,cis_rhel_9-5.3.2.3,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.2.4,cis_rhel_9-5.3.2.4,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.2.5,cis_rhel_9-5.3.2.5,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.1.1,cis_rhel_9-5.3.3.1.1,evidence missing — pam.faillock_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.1.2,cis_rhel_9-5.3.3.1.2,evidence missing — pam.faillock_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.1.3,cis_rhel_9-5.3.3.1.3,evidence missing — pam.faillock_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.1,cis_rhel_9-5.3.3.2.1,evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.2,cis_rhel_9-5.3.3.2.2,evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.3,cis_rhel_9-5.3.3.2.3,manual review not attested — set attest.password_complexity_reviewed to true once reviewed (Ensure password complexity is configured),security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.4,cis_rhel_9-5.3.3.2.4,evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.5,cis_rhel_9-5.3.3.2.5,evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.6,cis_rhel_9-5.3.3.2.6,evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.2.7,cis_rhel_9-5.3.3.2.7,evidence missing — pam.pwquality_conf_raw not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.3.1,cis_rhel_9-5.3.3.3.1,evidence missing — pam.pwhistory_conf_raw/pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.3.2,cis_rhel_9-5.3.3.3.2,evidence missing — pam.pwhistory_conf_raw not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.3.3,cis_rhel_9-5.3.3.3.3,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.4.1,cis_rhel_9-5.3.3.4.1,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.4.2,cis_rhel_9-5.3.3.4.2,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.4.3,cis_rhel_9-5.3.3.4.3,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.3.3.4.4,cis_rhel_9-5.3.3.4.4,evidence missing — pam.system_auth/password_auth not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.1.1,cis_rhel_9-5.4.1.1,evidence missing — pam.pass_max_days/user_group.shadow_entries not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.1.2,cis_rhel_9-5.4.1.2,manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (Ensure minimum password days is configured),security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.1.3,cis_rhel_9-5.4.1.3,evidence missing — pam.pass_warn_age/user_group.shadow_entries not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.1.4,cis_rhel_9-5.4.1.4,evidence missing — pam.encrypt_method not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.1.5,cis_rhel_9-5.4.1.5,evidence missing — pam.inactive_days/user_group.shadow_entries not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.1.6,cis_rhel_9-5.4.1.6,evidence missing — user_group.shadow_entries not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.1,cis_rhel_9-5.4.2.1,evidence missing — user_group.uid_zero_accounts not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.2,cis_rhel_9-5.4.2.2,evidence missing — user_group.gid_zero_accounts not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.3,cis_rhel_9-5.4.2.3,evidence missing — user_group.gid_zero_groups not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.4,cis_rhel_9-5.4.2.4,evidence missing — user_group.root_password_status not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.5,cis_rhel_9-5.4.2.5,evidence missing — user_group.root_path/root_path_nonexistent_dirs/root_path_writable_dirs/root_path_entries not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.6,cis_rhel_9-5.4.2.6,evidence missing — user_group.root_umask not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.7,cis_rhel_9-5.4.2.7,evidence missing — pam.system_accounts_with_login_shell not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.2.8,cis_rhel_9-5.4.2.8,evidence missing — user_group.unlocked_accounts_without_shell not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.3.1,cis_rhel_9-5.4.3.1,evidence missing — user_group.shells_content not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.3.2,cis_rhel_9-5.4.3.2,evidence missing — pam.tmout/tmout_readonly_exported not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.3.3,cis_rhel_9-5.4.3.3,evidence missing — pam.login_defs_umask not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,5.4.3.4,cis_rhel_9-5.4.3.4,evidence missing — pam.default_umask not collected,security,cis,linux rhel,cis_rhel9.pam,benchmarks/cis/rhel_9/pam_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.1,cis_rhel_9-1.3.1.1,evidence missing — selinux.installed not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.2,cis_rhel_9-1.3.1.2,evidence missing — selinux.grub_cmdline not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.3,cis_rhel_9-1.3.1.3,evidence missing — selinux.policy not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.4,cis_rhel_9-1.3.1.4,evidence missing — selinux.mode/selinux.config_mode not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.5,cis_rhel_9-1.3.1.5,evidence missing — selinux.mode/selinux.config_mode not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.6,cis_rhel_9-1.3.1.6,manual review not attested — set attest.no_unconfined_services to true once reviewed (Ensure no unconfined services exist),security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.7,cis_rhel_9-1.3.1.7,evidence missing — selinux.mcstrans_installed not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,1.3.1.8,cis_rhel_9-1.3.1.8,evidence missing — selinux.setroubleshoot_installed not collected,security,cis,linux rhel,cis_rhel9.selinux,benchmarks/cis/rhel_9/selinux_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.1,cis_rhel_9-2.1.1,evidence missing — packages[autofs] / services[autofs.service] (or autofs.installed/active/enabled) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.2,cis_rhel_9-2.1.2,"evidence missing — packages[avahi] / services[avahi-daemon.socket,avahi-daemon.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.3,cis_rhel_9-2.1.3,"evidence missing — packages[cockpit-ws] / services[cockpit.socket,cockpit.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.4,cis_rhel_9-2.1.4,"evidence missing — packages[dhcp-server] / services[dhcpd.service,dhcpd6.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.5,cis_rhel_9-2.1.5,evidence missing — packages[bind] / services[named.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.6,cis_rhel_9-2.1.6,evidence missing — packages[dnsmasq] / services[dnsmasq.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.7,cis_rhel_9-2.1.7,evidence missing — packages[samba] / services[smb.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.8,cis_rhel_9-2.1.8,evidence missing — packages[vsftpd] / services[vsftpd.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.9,cis_rhel_9-2.1.9,"evidence missing — packages[dovecot,cyrus-imapd] / services[dovecot.socket,dovecot.service,cyrus-imapd.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.10,cis_rhel_9-2.1.10,evidence missing — packages[nfs-utils] / services[nfs-server.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.11,cis_rhel_9-2.1.11,"evidence missing — packages[cups] / services[cups.socket,cups.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.12,cis_rhel_9-2.1.12,"evidence missing — packages[rpcbind] / services[rpcbind.socket,rpcbind.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.13,cis_rhel_9-2.1.13,"evidence missing — packages[rsync-daemon] / services[rsyncd.socket,rsyncd.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.14,cis_rhel_9-2.1.14,evidence missing — packages[net-snmp] / services[snmpd.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.15,cis_rhel_9-2.1.15,evidence missing — packages[telnet-server] / services[telnet.socket] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.16,cis_rhel_9-2.1.16,"evidence missing — packages[tftp-server] / services[tftp.socket,tftp.service] not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.17,cis_rhel_9-2.1.17,evidence missing — packages[squid] / services[squid.service] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.18,cis_rhel_9-2.1.18,"evidence missing — packages[httpd,nginx] / services[httpd.socket,httpd.service,nginx.service] (or webserver.any_installed) not collected",security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.19,cis_rhel_9-2.1.19,evidence missing — mta.has_mta (or mta.non_loopback_listeners/inet_interfaces) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.20,cis_rhel_9-2.1.20,evidence missing — gui.environment_installed/default_target not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.21,cis_rhel_9-2.1.21,evidence missing — packages[xorg-x11-server-common] (or x11.any_installed) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.22,cis_rhel_9-2.1.22,evidence missing — packages[xorg-x11-server-Xwayland] not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.1.23,cis_rhel_9-2.1.23,manual review not attested — set attest.listening_services_approved to true once reviewed (Ensure only approved services are listening on a network interface),security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.2.1,cis_rhel_9-2.2.1,evidence missing — packages[ftp] (or client_packages.analysis) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.2.2,cis_rhel_9-2.2.2,evidence missing — packages[openldap-clients] (or client_packages.analysis) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.2.3,cis_rhel_9-2.2.3,evidence missing — packages[telnet] (or client_packages.analysis) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.2.4,cis_rhel_9-2.2.4,evidence missing — packages[tftp] (or client_packages.analysis) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.3.1,cis_rhel_9-2.3.1,evidence missing — chronyd.installed (or packages.chrony) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.3.2,cis_rhel_9-2.3.2,evidence missing — chronyd.servers_configured/pools_configured not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,2.3.3,cis_rhel_9-2.3.3,evidence missing — chronyd.sysconfig_options (or chronyd.installed) not collected,security,cis,linux rhel,cis_rhel9.services,benchmarks/cis/rhel_9/service_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.1,cis_rhel_9-5.1.1,evidence missing — ssh.config_permissions/dropin_permissions not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.2,cis_rhel_9-5.1.2,evidence missing — ssh.dropin_dir_permissions not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.3,cis_rhel_9-5.1.3,evidence missing — ssh.private_key_permissions not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.4,cis_rhel_9-5.1.4,evidence missing — ssh.public_key_permissions not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.5,cis_rhel_9-5.1.5,evidence missing — ssh.sshd_config_raw (effective ciphers) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.6,cis_rhel_9-5.1.6,evidence missing — ssh.sshd_config_raw (effective kexalgorithms) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.7,cis_rhel_9-5.1.7,evidence missing — ssh.sshd_config_raw (effective macs) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.8,cis_rhel_9-5.1.8,evidence missing — ssh.sshd_config_raw not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.9,cis_rhel_9-5.1.9,evidence missing — ssh.sshd_config_raw (effective banner)/ssh.banner_contains_sensitive_info not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.10,cis_rhel_9-5.1.10,evidence missing — ssh.sshd_config_raw (effective clientaliveinterval/clientalivecountmax) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.11,cis_rhel_9-5.1.11,evidence missing — ssh.sshd_config_raw (effective disableforwarding) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.12,cis_rhel_9-5.1.12,evidence missing — ssh.sshd_config_raw (effective gssapiauthentication) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.13,cis_rhel_9-5.1.13,evidence missing — ssh.sshd_config_raw (effective hostbasedauthentication) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.14,cis_rhel_9-5.1.14,evidence missing — ssh.sshd_config_raw (effective ignorerhosts) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.15,cis_rhel_9-5.1.15,evidence missing — ssh.sshd_config_raw (effective logingracetime) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.16,cis_rhel_9-5.1.16,evidence missing — ssh.sshd_config_raw (effective loglevel) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.17,cis_rhel_9-5.1.17,evidence missing — ssh.sshd_config_raw (effective maxauthtries) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.18,cis_rhel_9-5.1.18,evidence missing — ssh.sshd_config_raw (effective maxstartups) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.19,cis_rhel_9-5.1.19,evidence missing — ssh.sshd_config_raw (effective maxsessions) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.20,cis_rhel_9-5.1.20,evidence missing — ssh.sshd_config_raw (effective permitemptypasswords) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.21,cis_rhel_9-5.1.21,evidence missing — ssh.sshd_config_raw (effective permitrootlogin) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.22,cis_rhel_9-5.1.22,evidence missing — ssh.sshd_config_raw (effective permituserenvironment) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
+cis_rhel_9,5.1.23,cis_rhel_9-5.1.23,evidence missing — ssh.sshd_config_raw (effective usepam) not collected,security,cis,linux rhel,cis_rhel9.ssh,benchmarks/cis/rhel_9/ssh_validation.rego
 cis_rhel_9,STIG RHEL-09-672010,cis_rhel_9-STIG-RHEL-09-672010,FIPS 140-2/140-3 mode is not enabled (/proc/sys/crypto/fips_enabled != 1),security,cis,linux rhel,cis_rhel9.storage_encryption,benchmarks/cis/rhel_9/storage_encryption_validation.rego
 cis_rhel_9,STIG RHEL-09-672020,cis_rhel_9-STIG-RHEL-09-672020,Crypto policy '%v' does not meet FIPS requirements — use FIPS or FUTURE,security,cis,linux rhel,cis_rhel9.storage_encryption,benchmarks/cis/rhel_9/storage_encryption_validation.rego
 cis_rhel_9,NIST SC-13,cis_rhel_9-NIST-SC-13,"System crypto policy is LEGACY — permits MD5, RC4, DES. Upgrade to DEFAULT or FUTURE.",security,cis,linux rhel,cis_rhel9.storage_encryption,benchmarks/cis/rhel_9/storage_encryption_validation.rego
@@ -5109,31 +5248,29 @@ cis_rhel_9,NIST SC-28,cis_rhel_9-NIST-SC-28,LUKS volume %v uses LUKS v1 (depreca
 cis_rhel_9,STIG RHEL-09-231020,cis_rhel_9-STIG-RHEL-09-231020,/etc/crypttab entry '%v' references missing device %v,security,cis,linux rhel,cis_rhel9.storage_encryption,benchmarks/cis/rhel_9/storage_encryption_validation.rego
 cis_rhel_9,STIG RHEL-09-231030,cis_rhel_9-STIG-RHEL-09-231030,fstab mount %v at %v holds data but is not backed by a LUKS device,security,cis,linux rhel,cis_rhel9.storage_encryption,benchmarks/cis/rhel_9/storage_encryption_validation.rego
 cis_rhel_9,STIG RHEL-09-231040,cis_rhel_9-STIG-RHEL-09-231040,Swap is not encrypted — sensitive in-memory data may persist at rest,security,cis,linux rhel,cis_rhel9.storage_encryption,benchmarks/cis/rhel_9/storage_encryption_validation.rego
-cis_rhel_9,CIS 5.3.1,cis_rhel_9-CIS-5.3.1,sudo package not installed,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3.2,cis_rhel_9-CIS-5.3.2,sudo not configured to use pty (Defaults use_pty missing),security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3.3,cis_rhel_9-CIS-5.3.3,sudo logfile not configured (Defaults logfile= missing),security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3.4,cis_rhel_9-CIS-5.3.4,NOPASSWD option found in sudoers - users should provide password,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3.5,cis_rhel_9-CIS-5.3.5,!authenticate found in sudoers - re-authentication is disabled,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3.6,cis_rhel_9-CIS-5.3.6,"sudo timestamp_timeout is %s minutes, should be 15 or less",security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3.7,cis_rhel_9-CIS-5.3.7,Access to su command not restricted (pam_wheel.so not configured),security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 5.3,cis_rhel_9-CIS-5.3,evidence missing — sudo.sudoers_mode not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
-cis_rhel_9,CIS 6.2,cis_rhel_9-CIS-6.2,FAIL-CLOSED - user_group facts were not supplied; the section cannot be evaluated and is reported non-compliant,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.8,cis_rhel_9-CIS-6.2.8,evidence missing — user_group.root_path not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.1,cis_rhel_9-CIS-6.2.1,User %s in /etc/passwd does not use shadowed passwords,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.2,cis_rhel_9-CIS-6.2.2,User %s has an empty password field in /etc/shadow,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.3,cis_rhel_9-CIS-6.2.3,Group %s from /etc/passwd does not exist in /etc/group,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.4,cis_rhel_9-CIS-6.2.4,Duplicate UID %s found for users: %s,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.5,cis_rhel_9-CIS-6.2.5,Duplicate GID %s found for groups: %s,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.6,cis_rhel_9-CIS-6.2.6,Duplicate username %s found %d times,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.7,cis_rhel_9-CIS-6.2.7,Duplicate group name %s found %d times,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.9,cis_rhel_9-CIS-6.2.9,Account %s has UID 0 - only root should have UID 0,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.10,cis_rhel_9-CIS-6.2.10,User %s home directory does not exist,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.11,cis_rhel_9-CIS-6.2.11,User %s does not own their home directory %s,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.12,cis_rhel_9-CIS-6.2.12,User %s home directory %s has permissions %s (should be 750 or more restrictive),security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.13,cis_rhel_9-CIS-6.2.13,User %s has .netrc file: %s,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.14,cis_rhel_9-CIS-6.2.14,User %s has .forward file: %s,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.15,cis_rhel_9-CIS-6.2.15,User %s has .rhosts file: %s,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
-cis_rhel_9,CIS 6.2.16,cis_rhel_9-CIS-6.2.16,User %s has group/world writable dot file: %s (mode: %s),security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.1,cis_rhel_9-5.2.1,evidence missing — sudo.installed not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.2,cis_rhel_9-5.2.2,evidence missing — sudo.sudoers_mode/sudoers_owner/sudoers_group/sudoers_d_files not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.3,cis_rhel_9-5.2.3,evidence missing — sudo.sudoers_d_dir.mode/sudo.sudoers_d_dir.owner/sudo.sudoers_d_dir.group not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.4,cis_rhel_9-5.2.4,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.5,cis_rhel_9-5.2.5,evidence missing — sudo.sudoers_content/logfile_exists not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.6,cis_rhel_9-5.2.6,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.7,cis_rhel_9-5.2.7,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.8,cis_rhel_9-5.2.8,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.9,cis_rhel_9-5.2.9,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.10,cis_rhel_9-5.2.10,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.11,cis_rhel_9-5.2.11,evidence missing — sudo.sudoers_content not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,5.2.12,cis_rhel_9-5.2.12,evidence missing — sudo.su_restricted not collected,security,cis,linux rhel,cis_rhel9.sudo,benchmarks/cis/rhel_9/sudo_validation.rego
+cis_rhel_9,compliance_summary,cis_rhel_9-compliance_summary,,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.1,cis_rhel_9-7.2.1,evidence missing — user_group.users_without_shadow not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.2,cis_rhel_9-7.2.2,evidence missing — user_group.users_with_empty_password not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.3,cis_rhel_9-7.2.3,evidence missing — user_group.passwd_groups_not_in_group_file not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.4,cis_rhel_9-7.2.4,evidence missing — user_group.duplicate_uids not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.5,cis_rhel_9-7.2.5,evidence missing — user_group.duplicate_gids not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.6,cis_rhel_9-7.2.6,evidence missing — user_group.duplicate_usernames not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.7,cis_rhel_9-7.2.7,evidence missing — user_group.duplicate_groupnames not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.8,cis_rhel_9-7.2.8,evidence missing — user_group.users_without_home_directory/users_not_owning_home/home_dirs_too_permissive not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
+cis_rhel_9,7.2.9,cis_rhel_9-7.2.9,evidence missing — user_group.users_with_netrc/users_with_forward/users_with_rhosts/dotfiles_group_or_world_writable not collected,security,cis,linux rhel,cis_rhel9.user_group,benchmarks/cis/rhel_9/user_group_validation.rego
 cis_rocky_linux_8,CIS 4.1.1.1,cis_rocky_linux_8-CIS-4.1.1.1,audit package not installed,security,cis,linux rocky,cis_rocky_linux_8.auditd,benchmarks/cis/rocky_linux_8/auditd_validation.rego
 cis_rocky_linux_8,CIS 4.1.1.2,cis_rocky_linux_8-CIS-4.1.1.2,evidence missing - auditd.service not collected,security,cis,linux rocky,cis_rocky_linux_8.auditd,benchmarks/cis/rocky_linux_8/auditd_validation.rego
 cis_rocky_linux_8,CIS 4.1.1.3,cis_rocky_linux_8-CIS-4.1.1.3,audit=1 not set in bootloader configuration,security,cis,linux rocky,cis_rocky_linux_8.auditd,benchmarks/cis/rocky_linux_8/auditd_validation.rego
