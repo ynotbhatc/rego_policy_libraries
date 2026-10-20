@@ -1,4 +1,4 @@
-package cis_gcp.v5_reports_test
+package cis_gcp_v5_reports_test
 
 import rego.v1
 
@@ -8,16 +8,8 @@ now_ns := 1790812800000000000
 
 good := data.cis_gcp_foundations_v5_test.good
 
-main_report(inp) := r if {
-	r := data.cis_gcp.main.compliance_report with input as inp with time.now_ns as now_ns
-}
-
-l2_report(inp) := r if {
-	r := data.cis_gcp.l2.compliance_report with input as inp with time.now_ns as now_ns
-}
-
 test_main_report_all_pass if {
-	r := main_report(good)
+	r := data.cis_gcp.main.compliance_report with input as good with time.now_ns as now_ns
 	r.compliant == true
 	r.version == "v5.0.0"
 	r.total_controls == 93
@@ -29,7 +21,7 @@ test_main_report_all_pass if {
 }
 
 test_main_report_empty_input_fails_everything if {
-	r := main_report({})
+	r := data.cis_gcp.main.compliance_report with input as {} with time.now_ns as now_ns
 	r.failed_controls == 93
 	r.passed_controls == 0
 	some v in r.violations
@@ -41,7 +33,7 @@ test_main_messages_prefixed_and_bucketed if {
 		{"op": "replace", "path": "/dataproc_clusters/0/config", "value": {}},
 		{"op": "replace", "path": "/compute_instances/0/canIpForward", "value": true},
 	])
-	r := main_report(inp)
+	r := data.cis_gcp.main.compliance_report with input as inp with time.now_ns as now_ns
 	r.failed_controls == 2
 	r.violation_count == 2
 	r.passed_controls == 91
@@ -54,14 +46,14 @@ test_main_messages_prefixed_and_bucketed if {
 
 test_main_failed_counts_controls_not_messages if {
 	inp := json.patch(good, [{"op": "add", "path": "/compute_disks/-", "value": {"name": "d2"}}, {"op": "add", "path": "/compute_disks/-", "value": {"name": "d3"}}])
-	r := main_report(inp)
+	r := data.cis_gcp.main.compliance_report with input as inp with time.now_ns as now_ns
 	count(r.violations) == 2
 	r.failed_controls == 1
 	r.passed_controls + r.failed_controls == r.total_controls
 }
 
 test_l2_report_counts if {
-	r := l2_report(good)
+	r := data.cis_gcp.l2.compliance_report with input as good with time.now_ns as now_ns
 	r.l2_controls == 39
 	r.l2_violations == 0
 	r.l2_compliant == true
