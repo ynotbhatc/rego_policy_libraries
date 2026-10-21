@@ -107,6 +107,7 @@ TABLE: dict[str, tuple[str, list[str]]] = {
     "benchmarks/stig/postgresql_16": ("disa", ["database", "postgresql"]),
     "benchmarks/stig/rhel_8": ("disa", ["linux", "rhel"]),
     "benchmarks/stig/rhel_9": ("disa", ["linux", "rhel"]),
+    "benchmarks/stig/rke2": ("disa", ["kubernetes", "container"]),
     "benchmarks/stig/sles_15": ("disa", ["linux", "sles"]),
     "benchmarks/stig/ubuntu_20_04": ("disa", ["linux", "ubuntu"]),
     "benchmarks/stig/ubuntu_22_04": ("disa", ["linux", "ubuntu"]),

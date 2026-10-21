@@ -13,7 +13,8 @@ Per-platform STIG implementations. Every platform directory carries:
 
 **Rule IDs are verified against the current DISA SRG-STIG Library
 Compilation before stamping** (July 2026 library, verified 2026-09-03; the
-four Oracle platforms against the October 2026 library, verified 2026-10-13).
+four Oracle platforms against the October 2026 library, verified 2026-10-13; Kubernetes V2R6 and
+RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21).
 Coverage per platform is stated honestly in each aggregator header —
 implemented-of-total; the remainder is tracked follow-up, not silent absence.
 STIGs ride a quarterly release cycle — see `STANDARDS_UPDATE_REGISTRY.md`.
@@ -33,6 +34,18 @@ All four join the 800-53 spine (`crosswalk/stig_800_53/data.json`, every catalog
 the current RHEL 9 catalog for 108 of 143 findings (the title next to the logic names a
 different DISA rule than the id does). The Oracle derivation keys on the title, not the id,
 for exactly this reason. Re-stamping the RHEL 9 ids by title is the next STIG item.
+
+## Kubernetes and RKE2 (every rule, verified 2026-10-21)
+
+| Platform | Rules | How it was built |
+|---|---|---|
+| `kubernetes` (CNTR-K8, V2R6, 01 Apr 2026) | 92 of 92 | Every rule (`tools/stig_generators/gen_k8s.py`, two-way catalog gate): 84 machine-checked from manifest flags, kubelet args and KubeletConfiguration, file modes/ownership, cluster state (images, namespaces, dashboard pods, host ports, kubectl versions); 1 flag check plus an attestation; 7 attestations (PPSM CAL reviews, sensitive data, Secret access, user pods in system namespaces). |
+| `rke2` (CNTR-R2, V2R7, 01 Jul 2026) | 21 of 21 | Same generator, RKE2's own contract: `/etc/rancher/rke2/config.yaml`, the component args RKE2 renders, the audit and Pod Security admission files, and the file table under `/etc/rancher/rke2` and `/var/lib/rancher/rke2`. 15 machine-checked, 1 machine plus attestation, 5 attestations (Carbide image signatures, essential components, PPSM CAL, sensitive env values, supported version). |
+
+Both fail closed rule by rule: a finding whose evidence was not collected is Open with
+`detail` "<STIG-ID>: evidence missing — <field> not collected", and an attestation is Open until
+`input.attest.<key>` is true. Both join the 800-53 spine (K8: 92 of 92; R2: 20 of 21 — CNTR-R2-000460's
+CCI has no Rev 5 mapping in the CCI list). `openshift_4` remains partial (CAT I + selected CAT II).
 
 ## Platforms with no official DISA STIG (deliberately not invented here)
 

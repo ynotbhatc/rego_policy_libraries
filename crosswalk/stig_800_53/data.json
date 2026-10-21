@@ -1,15 +1,17 @@
 {
 "meta": {
-"source": "DISA SRG-STIG Library Compilation, July 2026; CCI List 2025-01-23; Oracle platforms from the October 2026 compilation",
+"source": "DISA SRG-STIG Library Compilation, July 2026; CCI List 2025-01-23; Oracle platforms from the October 2026 compilation; Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21)",
 "join": "stig_id -> CCI (from XCCDF <ident>) -> NIST SP 800-53 (from U_CCI_List.xml)",
-"generated": "2026-10-13",
-"rule_count": 3787,
+"generated": "2026-10-21",
+"rule_count": 3807,
 "note": "Regenerate with tools/stig_generators/parse_xccdf.py + gen_crosswalk.py (per platform) from the current SRG-STIG Library compilation.",
 "platforms": {
 "OL09": "Oracle Linux 9 Security Technical Implementation Guide V1R7 (30 Sep 2026)",
 "OL08": "Oracle Linux 8 Security Technical Implementation Guide V2R10 (30 Sep 2026)",
 "O19C": "Oracle Database 19c Security Technical Implementation Guide V1R6 (30 Sep 2026)",
-"MYS8": "Oracle MySQL 8.0 Security Technical Implementation Guide V2R3 (30 Sep 2026)"
+"MYS8": "Oracle MySQL 8.0 Security Technical Implementation Guide V2R3 (30 Sep 2026)",
+"CNTR-K8": "Kubernetes Security Technical Implementation Guide V2R6 (01 Apr 2026)",
+"CNTR-R2": "Rancher Government Solutions RKE2 Security Technical Implementation Guide V2R7 (01 Jul 2026)"
 },
 "cci_list": "2025-01-23"
 },
@@ -12274,6 +12276,83 @@
 ],
 "MYS8-00-012600": [
 "SA-22"
+],
+"CNTR-R2-000010": [
+"AC-17",
+"CM-7",
+"IA-5",
+"IA-7",
+"SC-13",
+"SC-23",
+"SC-8"
+],
+"CNTR-R2-000030": [
+"AC-2"
+],
+"CNTR-R2-000060": [
+"AC-2",
+"AC-6",
+"AU-12",
+"AU-14",
+"AU-3",
+"AU-4",
+"AU-8",
+"CM-5",
+"CM-6",
+"MA-4"
+],
+"CNTR-R2-000100": [
+"AC-3"
+],
+"CNTR-R2-000110": [
+"AC-3"
+],
+"CNTR-R2-000130": [
+"AC-3"
+],
+"CNTR-R2-000150": [
+"AC-3"
+],
+"CNTR-R2-000160": [
+"AC-3"
+],
+"CNTR-R2-000320": [
+"AU-3"
+],
+"CNTR-R2-000520": [
+"CM-5"
+],
+"CNTR-R2-000550": [
+"CM-7"
+],
+"CNTR-R2-000580": [
+"CM-7"
+],
+"CNTR-R2-000800": [
+"IA-5"
+],
+"CNTR-R2-000890": [
+"SC-10"
+],
+"CNTR-R2-000940": [
+"SC-3"
+],
+"CNTR-R2-000970": [
+"SC-2",
+"SC-39",
+"SC-4"
+],
+"CNTR-R2-001130": [
+"AC-6"
+],
+"CNTR-R2-001270": [
+"CM-11"
+],
+"CNTR-R2-001580": [
+"SI-2"
+],
+"CNTR-R2-001620": [
+"SI-2"
 ]
 }
 }

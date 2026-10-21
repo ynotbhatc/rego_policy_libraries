@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 180,
- "controls": 18015,
+ "frameworks": 181,
+ "controls": 18107,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -1057,7 +1057,7 @@
   {
    "framework": "stig_kubernetes",
    "file": "catalogs/stig_kubernetes.json",
-   "controls": 25,
+   "controls": 94,
    "modules": 2,
    "uuid": "532251ea-b047-5615-be57-f03665af60f3"
   },
@@ -1123,6 +1123,13 @@
    "controls": 155,
    "modules": 10,
    "uuid": "efe6b747-8770-5ce3-8a83-6476bcc428ba"
+  },
+  {
+   "framework": "stig_rke2",
+   "file": "catalogs/stig_rke2.json",
+   "controls": 23,
+   "modules": 2,
+   "uuid": "0604d28f-06fd-5b2f-93d1-b84847449626"
   },
   {
    "framework": "stig_sles_15",

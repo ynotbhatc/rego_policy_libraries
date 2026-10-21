@@ -1,0 +1,893 @@
+{
+ "catalog": {
+  "uuid": "0604d28f-06fd-5b2f-93d1-b84847449626",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_rke2 (DISA STIG — Rancher Government Solutions RKE2 Security Technical Implementation Guide)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_rke2"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_rke2-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Rancher Government Solutions RKE2 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rke2.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rke2/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rke2-CNTR-R2-000010",
+      "title": "Rancher RKE2 must protect authenticity of communications sessions with the use of FIPS-validated 140-2 or 140-3 security requirements for cryptographic modules.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000010_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must protect authenticity of communications sessions with the use of FIPS-validated 140-2 or 140-3 security requirements for cryptographic modules."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000030",
+      "title": "RKE2 must use a centralized user management solution to support account management functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000030_stmt",
+        "name": "statement",
+        "prose": "RKE2 must use a centralized user management solution to support account management functions."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000060",
+      "title": "Rancher RKE2 components must be configured in accordance with the security configuration settings based on DOD security configuration or implementation guidance, including SRGs, STIGs, NSA configurati",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000060_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 components must be configured in accordance with the security configuration settings based on DOD security configuration or implementation guidance, including SRGs, STIGs, NSA configuration guides, CTOs, and"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000100",
+      "title": "The Kubernetes Controller Manager must have secure binding.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000100_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Controller Manager must have secure binding."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000110",
+      "title": "The Kubernetes Kubelet must have anonymous authentication disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000110_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Kubelet must have anonymous authentication disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000130",
+      "title": "The Kubernetes Kubelet must have the read-only port flag disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000130_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Kubelet must have the read-only port flag disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000150",
+      "title": "The Kubernetes kubelet must enable explicit authorization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000150_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubelet must enable explicit authorization."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000160",
+      "title": "The Kubernetes API server must have anonymous authentication disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000160_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API server must have anonymous authentication disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000320",
+      "title": "All audit records must identify any containers associated with the event within Rancher RKE2.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000320_stmt",
+        "name": "statement",
+        "prose": "All audit records must identify any containers associated with the event within Rancher RKE2."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000460",
+      "title": "Rancher RKE2 must be built from verified packages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000460_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must be built from verified packages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000520",
+      "title": "Configuration and authentication files for Rancher RKE2 must be protected.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000520_stmt",
+        "name": "statement",
+        "prose": "Configuration and authentication files for Rancher RKE2 must be protected."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000550",
+      "title": "Rancher RKE2 must be configured with only essential configurations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000550"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000550"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000550_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must be configured with only essential configurations."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000580",
+      "title": "Rancher RKE2 runtime must enforce ports, protocols, and services that adhere to the PPSM CAL.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000580"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000580"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000580_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 runtime must enforce ports, protocols, and services that adhere to the PPSM CAL."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000800",
+      "title": "Rancher RKE2 must store only cryptographic representations of passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000800_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must store only cryptographic representations of passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000890",
+      "title": "Rancher RKE2 must terminate all network connections associated with a communications session at the end of the session, or as follows: for in-band management sessions (privileged sessions), the sessio",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000890"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000890"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000890_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must terminate all network connections associated with a communications session at the end of the session, or as follows: for in-band management sessions (privileged sessions), the session must be terminated"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000940",
+      "title": "Rancher RKE2 runtime must isolate security functions from nonsecurity functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000940"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000940"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000940_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 runtime must isolate security functions from nonsecurity functions."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-000970",
+      "title": "Rancher RKE2 runtime must maintain separate execution domains for each container by assigning each container a separate address space to prevent unauthorized and unintended information transfer via sh",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-000970"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-000970"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-000970_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 runtime must maintain separate execution domains for each container by assigning each container a separate address space to prevent unauthorized and unintended information transfer via shared system resource"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-001130",
+      "title": "Rancher RKE2 must prevent nonprivileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-001130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-001130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-001130_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must prevent nonprivileged users from executing privileged functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-001270",
+      "title": "Rancher RKE2 must prohibit the installation of patches, updates, and instantiation of container images without explicit privileged status.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-001270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-001270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-001270_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must prohibit the installation of patches, updates, and instantiation of container images without explicit privileged status."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-001580",
+      "title": "Rancher RKE2 must remove old components after updated versions have been installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-001580"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-001580"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-001580_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 must remove old components after updated versions have been installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-CNTR-R2-001620",
+      "title": "Rancher RKE2 registry must contain the latest images with most recent updates and execute within Rancher RKE2 runtime as authorized by IAVM, CTOs, DTMs, and STIGs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-R2-001620"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-R2-001620"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-CNTR-R2-001620_stmt",
+        "name": "statement",
+        "prose": "Rancher RKE2 registry must contain the latest images with most recent updates and execute within Rancher RKE2 runtime as authorized by IAVM, CTOs, DTMs, and STIGs."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rke2-stig_rke2_complete",
+    "class": "rego-module",
+    "title": "DISA STIG — Rancher Government Solutions RKE2 Security Technical Implementation Guide — Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rke2"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rke2/stig_rke2_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rke2-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rke2/stig_rke2_complete.rego (package stig.rke2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9d52750-acdb-5021-9147-123fdff8ba5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rke2/stig_rke2_complete.rego (package stig.rke2); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rke2-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rke2/stig_rke2_complete.rego (package stig.rke2); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rke2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9d52750-acdb-5021-9147-123fdff8ba5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rke2-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rke2/stig_rke2_complete.rego (package stig.rke2); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "833b5e60-ae1d-55ca-97e6-9c3849bb0c9e",
+     "title": "DISA STIG — Rancher Government Solutions RKE2 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rke2.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rke2/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "d9d52750-acdb-5021-9147-123fdff8ba5e",
+     "title": "DISA STIG — Rancher Government Solutions RKE2 Security Technical Implementation Guide — Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rke2"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rke2/stig_rke2_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

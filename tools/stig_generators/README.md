@@ -36,8 +36,14 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   stig_id — see the RHEL 9 id defect in `benchmarks/stig/README.md`). Every
   fuzzy pair is printed; reviewed overrides and refusals live in `PLATFORMS`.
 - `gen_oracle_db.py` — Oracle Database 19c and MySQL 8.0, every rule in the
-  catalog (query-backed facts or named attestations). Aborts if a catalog rule
+  catalog (query-backed facts or named attestations).
+- **Move `catalogs/` out of the tree before `opa test .`** — OPA loads every JSON file it finds, and two
+  catalogs at the same data path fail with a merge error. CI never sees them (gitignored). Aborts if a catalog rule
   has no logic entry or a logic entry has no catalog rule.
+- `gen_k8s.py [kubernetes] [rke2]` (rewritten 2026-10-21) — every rule of Kubernetes V2R6 and RGS RKE2 V2R7,
+  with the same two-way gate. Each logic entry carries its evidence paths, a pass fixture and a fail
+  mutation, so the tests (pass / fail / evidence-missing per rule) are generated with the module.
+  `openshift_4` is no longer generated (hand-maintained; its old table is in git history).
 - `gen_crosswalk.py <U_CCI_List.xml> <key> …` — stig_id → CCI → 800-53 Rev 5
   join for the given catalogs, merged into `crosswalk/stig_800_53/data.json`.
 
