@@ -98,8 +98,19 @@ green_fixture := {
 				"registry.k8s.io/etcd:3.5.12-0"
 			]
 		},
+		"collection_status": {
+			"namespace_resources": "ok",
+			"worker_nodes": "ok",
+			"dashboard_pods": "ok",
+			"kubectl_client_versions": "ok",
+			"user_pod_host_ports": "ok",
+			"secret_env_scan": "ok",
+			"images": "ok"
+		},
 		"kubelet": {
-			"flags": {},
+			"flags": {
+				"config": "/var/lib/kubelet/config.yaml"
+			},
 			"config": {
 				"readOnlyPort": 0,
 				"authentication": {
@@ -138,6 +149,24 @@ green_fixture := {
 					"mode": "0600",
 					"owner": "root",
 					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/manifests/kube-apiserver.yaml",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/manifests/kube-controller-manager.yaml",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/manifests/kube-scheduler.yaml",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
 				}
 			],
 			"kubelet_config_file": [
@@ -159,6 +188,24 @@ green_fixture := {
 			"control_plane_confs": [
 				{
 					"path": "/etc/kubernetes/admin.conf",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/admin.conf",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/scheduler.conf",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/controller-manager.conf",
 					"mode": "0600",
 					"owner": "root",
 					"group": "root"
@@ -192,9 +239,27 @@ green_fixture := {
 					"mode": "0600",
 					"owner": "root",
 					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/pki/apiserver.crt",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
+				{
+					"path": "/etc/kubernetes/pki/apiserver.key",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
 				}
 			],
 			"kubelet_kubeconfig": [
+				{
+					"path": "/etc/kubernetes/kubelet.conf",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
 				{
 					"path": "/etc/kubernetes/kubelet.conf",
 					"mode": "0600",
@@ -211,6 +276,12 @@ green_fixture := {
 				}
 			],
 			"kubelet_config_yaml": [
+				{
+					"path": "/var/lib/kubelet/config.yaml",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root"
+				},
 				{
 					"path": "/var/lib/kubelet/config.yaml",
 					"mode": "0600",
@@ -2546,5 +2617,180 @@ test_differential_30_r_cntr_k8_000890 if {
 	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"kubelet_config_file": [{"path": "/var/lib/kubelet/config.yaml", "mode": 420, "owner": "root", "group": "root"}]}})
 	some f in fs
 	f.stig_id == "CNTR-K8-000890"
+	f.status == "Open"
+}
+
+test_differential_31_r_cntr_k8_002010 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["cluster/version"])
+	some f in fs
+	f.stig_id == "CNTR-K8-002010"
+	f.status == "Open"
+}
+
+test_differential_32_r_cntr_k8_002010 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": ["v1.30.2"]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002010"
+	f.status == "Open"
+}
+
+test_differential_33_r_cntr_k8_002010 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "latest"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002010"
+	f.status == "Open"
+}
+
+test_differential_34_r_cntr_k8_002010 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "v2.0.0"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002010"
+	f.status == "Open"
+}
+
+test_differential_35_r_cntr_k8_002010 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "1.30.2+rke2r1"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002010"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_36_r_cntr_k8_002010 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": 1.3}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002010"
+	f.status == "Open"
+}
+
+test_differential_37_r_cntr_k8_002000 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["cluster/version", "api_server/flags/enable-admission-plugins"])
+	some f in fs
+	f.stig_id == "CNTR-K8-002000"
+	f.status == "Open"
+}
+
+test_differential_38_r_cntr_k8_002000 if {
+	fs := kubernetes.core.findings with input as object.union(json.remove(green_fixture, ["api_server/flags/enable-admission-plugins"]), {"cluster": {"version": "v1.24.9"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002000"
+	f.status == "Open"
+}
+
+test_differential_39_r_cntr_k8_002001 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["cluster/version"])
+	some f in fs
+	f.stig_id == "CNTR-K8-002001"
+	f.status == "Open"
+}
+
+test_differential_40_r_cntr_k8_002001 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "v1.22.4"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002001"
+	f.status == "Open"
+}
+
+test_differential_41_r_cntr_k8_002001 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "v1.24.0"}, "api_server": {"flags": {"feature-gates": "PodSecurity=true"}}, "controller_manager": {"flags": {"feature-gates": "PodSecurity=true"}}, "scheduler": {"flags": {"feature-gates": "PodSecurity=true"}}, "kubelet": {"config": {"featureGates": {"PodSecurity": true}}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002001"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_42_r_cntr_k8_000330 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["kubelet/flags/config"])
+	some f in fs
+	f.stig_id == "CNTR-K8-000330"
+	f.status == "Open"
+}
+
+test_differential_43_r_cntr_k8_000330 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["kubelet/config/readOnlyPort"])
+	some f in fs
+	f.stig_id == "CNTR-K8-000330"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_44_r_cntr_k8_000440 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["kubelet/flags/config"])
+	some f in fs
+	f.stig_id == "CNTR-K8-000440"
+	f.status == "Open"
+}
+
+test_differential_45_r_cntr_k8_003130 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"control_plane_confs": [{"path": "/etc/kubernetes/admin.conf", "mode": "0600", "owner": "root", "group": "root"}]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-003130"
+	f.status == "Open"
+}
+
+test_differential_46_r_cntr_k8_003270 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"control_plane_confs": [{"path": "/etc/kubernetes/admin.conf", "mode": "0600", "owner": "root", "group": "root"}, {"path": "/etc/kubernetes/scheduler.conf", "mode": "0600", "owner": "root", "group": "root"}, {"path": "/etc/kubernetes/controller-manager.conf", "mode": "0600", "owner": "root", "group": "root"}, {"path": "/etc/kubernetes/admin.conf", "mode": "0666", "owner": "root", "group": "root"}]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-003270"
+	f.status == "Open"
+}
+
+test_differential_47_r_cntr_k8_000900 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"manifests": [{"path": "/etc/kubernetes/manifests/kube-apiserver.yaml", "mode": 600, "owner": "root", "group": "root"}]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000900"
+	f.status == "Open"
+}
+
+test_differential_48_r_cntr_k8_003180 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"pki": []}})
+	some f in fs
+	f.stig_id == "CNTR-K8-003180"
+	f.status == "Open"
+}
+
+test_differential_49_r_cntr_k8_003340 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"pki": [{"path": "/etc/kubernetes/pki/ca.key", "mode": "0600", "owner": "root", "group": "root"}]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-003340"
+	f.status == "Open"
+}
+
+test_differential_50_r_cntr_k8_000420 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["collection_status/dashboard_pods"])
+	some f in fs
+	f.stig_id == "CNTR-K8-000420"
+	f.status == "Open"
+}
+
+test_differential_51_r_cntr_k8_000960 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["collection_status/user_pod_host_ports"])
+	some f in fs
+	f.stig_id == "CNTR-K8-000960"
+	f.status == "Open"
+}
+
+test_differential_52_r_cntr_k8_000290 if {
+	fs := kubernetes.core.findings with input as json.remove(green_fixture, ["collection_status/namespace_resources"])
+	some f in fs
+	f.stig_id == "CNTR-K8-000290"
+	f.status == "Open"
+}
+
+test_differential_53_r_cntr_k8_000400 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"collection_status": {"worker_nodes": "partial"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000400"
+	f.status == "Open"
+}
+
+test_differential_54_r_cntr_k8_002700 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"images": []}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002700"
+	f.status == "Open"
+}
+
+test_differential_55_r_cntr_k8_001160 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"secrets": {"env_var_usage_count": "0"}})
+	some f in fs
+	f.stig_id == "CNTR-K8-001160"
 	f.status == "Open"
 }

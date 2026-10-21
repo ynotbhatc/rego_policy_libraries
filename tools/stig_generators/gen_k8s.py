@@ -45,10 +45,18 @@ for a checked gate fails. Config files are given as the component decodes them (
   input.secrets.env_var_usage_count        : number of secretKeyRef env vars in workloads (0 = none)
   input.pod_security.policies              : PodSecurityPolicies (only read for clusters older than 1.25)
   input.kube_proxy.running                 : bool
+  input.collection_status.<query>          : "ok" when the cluster query ran to completion — required before an
+                                             empty or partial list counts (namespace_resources, worker_nodes,
+                                             dashboard_pods, kubectl_client_versions, user_pod_host_ports,
+                                             secret_env_scan, images)
+  KubeletConfiguration values (and defaults) count only when input.kubelet.flags has --config.
   input.files.<group>                      : [{path, mode ("0644"), owner, group}] for groups manifests,
                                              kubelet_config_file, kubelet_client_ca, kube_proxy_kubeconfig,
                                              etcd_data, control_plane_confs, pki, kubelet_kubeconfig,
-                                             kubeadm_conf, kubelet_config_yaml
+                                             kubeadm_conf, kubelet_config_yaml. Modes are octal STRINGS;
+                                             every entry is checked (duplicates included) and named paths
+                                             (control-plane manifests and confs, kubelet.conf, config.yaml, PKI
+                                             ca/apiserver crt+key, etcd member) must be present
   input.attest.<key>                       : organizational attestations (see each rule)
 
 RKE2 input contract (one evaluation per RKE2 server node):
@@ -60,7 +68,10 @@ RKE2 input contract (one evaluation per RKE2 server node):
   input.rke2.pss_defaults                  : `defaults` of the pod-security-admission-config-file
   input.rke2.files.<group>                 : [{name, mode, owner, group}] for groups etc (/etc/rancher/rke2),
                                              root (/var/lib/rancher/rke2), agent, bin, data, server
-  input.cluster.namespace_resources / input.cluster.images : as for Kubernetes
+  The rendered args are authoritative, and every <component>-arg entry in the effective config for a
+  checked flag must carry the same value (a stale or conflicting entry fails); files must include the
+  entries DISA names (config.yaml; agent, bin, data, server; cred, db, tls, manifests, logs, token; ...).
+  input.cluster.namespace_resources / input.cluster.images / input.collection_status : as for Kubernetes
   input.attest.<key>                       : organizational attestations
 """
 import json, os, re, sys
@@ -151,6 +162,28 @@ def R(alts, ev, green, bad, expect, kind="machine"):
     return {"alts": alts, "ev": [tuple(e) for e in ev], "green": green, "bad": bad, "expect": expect, "kind": kind}
 
 
+def with_line(spec, line, ev=None, green=None):
+    spec["alts"] = [a + [line] for a in spec["alts"]]
+    for e in (ev or []):
+        if tuple(e) not in spec["ev"]:
+            spec["ev"].append(tuple(e))
+    if green:
+        deep_merge(spec["green"], green)
+    return spec
+
+
+KUBELET_CONFIG_FLAG = {"kubelet": {"flags": {"config": "/var/lib/kubelet/config.yaml"}}}
+
+
+def kc(spec):                           # a KubeletConfiguration value counts only if the kubelet runs with --config
+    return with_line(spec, "_kubelet_config_in_use", [("kubelet", "flags")], KUBELET_CONFIG_FLAG)
+
+
+def ran(spec, name):                    # an empty list is compliant only if the collector reports the query ran
+    return with_line(spec, f'input.collection_status["{name}"] == "ok"', [("collection_status", name)],
+                     {"collection_status": {name: "ok"}})
+
+
 def nest(dotted, val):
     d = val
     for p in reversed(dotted.split(".")):
@@ -227,52 +260,52 @@ def kcfg(path, val, default=None, bad=None):
     d = "null" if default is None else json.dumps(default)
     if bad is None:
         bad = (not val) if isinstance(val, bool) else "__wrong__"
-    return R([["is_object(input.kubelet.config)", f"object.get(input.kubelet.config, {p}, {d}) == {v}"]],
+    return kc(R([["is_object(input.kubelet.config)", f"object.get(input.kubelet.config, {p}, {d}) == {v}"]],
              [("kubelet", "config")], nest("kubelet.config." + path, val), nest("kubelet.config." + path, bad),
-             f"kubelet config {path} must be {v}" + ("" if default is None else " (or unset)"))
+             f"kubelet config {path} must be {v}" + ("" if default is None else " (or unset)")))
 
 
 def kcfg_set(path, green):
     p = json.dumps(path.split("."))
-    return R([[f'_nonempty(object.get(input.kubelet.config, {p}, ""))']], [("kubelet", "config")],
+    return kc(R([[f'_nonempty(object.get(input.kubelet.config, {p}, ""))']], [("kubelet", "config")],
              nest("kubelet.config." + path, green), nest("kubelet.config." + path, ""),
-             f"kubelet config {path} must be set to a non-empty value")
+             f"kubelet config {path} must be set to a non-empty value"))
 
 
 def kcfg_absent(path):
     p = json.dumps(path.split("."))
-    return R([["is_object(input.kubelet.config)", f"object.get(input.kubelet.config, {p}, null) == null"]],
+    return kc(R([["is_object(input.kubelet.config)", f"object.get(input.kubelet.config, {p}, null) == null"]],
              [("kubelet", "config")], {"kubelet": {"config": {}}}, nest("kubelet.config." + path, "/etc/kubernetes/manifests"),
-             f"kubelet config {path} must not be set")
+             f"kubelet config {path} must not be set"))
 
 
 def kcfg_duration_ge(path, dur, green, bad):
     p = json.dumps(path.split("."))
-    return R([[f'_nonempty(object.get(input.kubelet.config, {p}, ""))',
+    return kc(R([[f'_nonempty(object.get(input.kubelet.config, {p}, ""))',
                f'_duration_ge(object.get(input.kubelet.config, {p}, ""), "{dur}")']], [("kubelet", "config")],
              nest("kubelet.config." + path, green), nest("kubelet.config." + path, bad),
-             f"kubelet config {path} must be at least {dur}")
+             f"kubelet config {path} must be at least {dur}"))
 
 
 def kgate_not(gate, val):              # kubelet config featureGates.<gate> must not be <val>
-    return R([["is_object(input.kubelet.config)",
+    return kc(R([["is_object(input.kubelet.config)",
                f'object.get(input.kubelet.config, ["featureGates", "{gate}"], null) in {{null, {json.dumps(not val)}}}']],
              [("kubelet", "config")], {"kubelet": {"config": {}}}, {"kubelet": {"config": {"featureGates": {gate: val}}}},
-             f"kubelet config featureGates.{gate} must not be {json.dumps(val)}")
+             f"kubelet config featureGates.{gate} must not be {json.dumps(val)}"))
 
 
 FILE_ROOT = {"path": "/etc/kubernetes/x", "mode": "0600", "owner": "root", "group": "root"}
 
 
-def files_owned(key, owner, group, sample, base="files", name_key="path"):
-    ent = [{name_key: sample, "mode": "0600", "owner": owner, "group": group}]
+def files_owned(key, owner, group, sample, base="files", name_key="path", required=()):
+    ent = [{name_key: x, "mode": "0600", "owner": owner, "group": group} for x in (sample, *required)]
     return R([[f'_files_owned(input.{base}["{key}"], "{owner}", "{group}")']], [(*base.split("."), key)],
              nest(base, {key: ent}), nest(base, {key: [{name_key: sample, "mode": "0600", "owner": "nobody", "group": group}]}),
              f"every {key} file must be owned by {owner}:{group}")
 
 
-def files_mode(key, mx, sample, owner="root", group="root", base="files", name_key="path"):
-    ent = [{name_key: sample, "mode": "0600", "owner": owner, "group": group}]
+def files_mode(key, mx, sample, owner="root", group="root", base="files", name_key="path", required=()):
+    ent = [{name_key: x, "mode": "0600", "owner": owner, "group": group} for x in (sample, *required)]
     return R([[f'_files_mode_le(input.{base}["{key}"], "{mx}")']], [(*base.split("."), key)],
              nest(base, {key: ent}), nest(base, {key: [{name_key: sample, "mode": "0666", "owner": owner, "group": group}]}),
              f"every {key} file must have mode {mx} or more restrictive")
@@ -350,7 +383,8 @@ _nonempty(s) if {
 # "--basic-auth-file" and "basic-auth-file" are the same flag. A check reads a flag only when exactly one
 # key normalises to its name; two spellings (or a repeated flag collected as a list) leave it undefined,
 # so the check fails rather than passing on whichever spelling it happened to read.
-_norm(k) := replace(trim_left(k, "-"), "_", "-")
+# (a trailing "+" is RKE2's config.yaml.d append marker: "kube-apiserver-arg+" is the same key)
+_norm(k) := replace(trim_suffix(trim_left(k, "-"), "+"), "_", "-")
 
 _flag_count(flags, name) := count([k | some k in object.keys(flags); _norm(k) == name])
 
@@ -448,7 +482,8 @@ _allowed_bits := {
 }
 
 _mode_le(mode, mx) if {
-	m := sprintf("%v", [mode])
+	is_string(mode) # a number is ambiguous (644 decimal or the octal 0644 = 420?): collect modes as strings
+	m := mode
 	n := count(m)
 	n >= 3
 	# per-character split (split(m, "") does not terminate on OPA 1.10)
@@ -511,6 +546,57 @@ _named_ok(f, names, mx) if {
 	_mode_le(f.mode, mx)
 }
 
+# every required path is present in the collected list (a partial listing must not pass)
+_has_paths(fs, paths) if {
+	is_array(fs)
+	every p in paths {
+		some f in fs
+		f.path == p
+	}
+}
+
+_has_names(fs, names) if {
+	is_array(fs)
+	every n in names {
+		some f in fs
+		f.name == n
+	}
+}
+
+# KubeletConfiguration values (and their defaults) apply only when the kubelet runs with --config;
+# without a config file the kubelet's command-line defaults apply (e.g. read-only port 10255).
+_kubelet_config_in_use if _nonempty(_flag(input.kubelet.flags, "config"))
+
+# RKE2: every "<flag>=<value>" entry under <cfgkey> (or "<cfgkey>+") in the effective config must carry
+# the value the running component shows. Entries are a string or a list of strings; anything else fails.
+_rke2_arg_agrees(args, cfgkey, name) if {
+	running := _flag(args, name)
+	is_object(input.rke2.config)
+	entries := [e |
+		some k in object.keys(input.rke2.config)
+		_norm(k) == cfgkey
+		some e in _as_list(input.rke2.config[k])
+	]
+	every e in entries {
+		is_string(e)
+		_arg_ok(e, name, running)
+	}
+}
+
+_as_list(x) := x if is_array(x)
+
+_as_list(x) := [x] if not is_array(x)
+
+# an entry for another flag is irrelevant; an entry for this flag must carry the running value
+_arg_ok(e, name, _) if _norm(split(e, "=")[0]) != name
+
+_arg_ok(e, name, running) if {
+	p := split(e, "=")
+	_norm(p[0]) == name
+	count(p) >= 2
+	concat("=", array.slice(p, 1, count(p))) == running
+}
+
 # version "v1.30.2" -> numbers
 _ver_part(v, i) := to_number(regex.find_n(`^[0-9]+`, split(trim_prefix(v, "v"), ".")[i], 1)[0])
 
@@ -571,16 +657,26 @@ def k8_ppsm(component):
                   f"{component} ports, protocols and services reviewed against the PPSM CAL and system documentation")
 
 
-def files_pair(key, sample, mode="644"):
-    return files_owned(key, "root", "root", sample), files_mode(key, mode, sample)
+def files_pair(key, sample, mode="644", required=()):
+    """required: paths that must be in the collected list (a partial list must not pass)."""
+    a, b = files_owned(key, "root", "root", sample, required=required), files_mode(key, mode, sample, required=required)
+    if required:
+        line = f'_has_paths(input.files["{key}"], {json.dumps(list(required))})'
+        a, b = with_line(a, line), with_line(b, line)
+        a["expect"] += f" (must include {', '.join(required)})"
+        b["expect"] += f" (must include {', '.join(required)})"
+    return a, b
 
 
-MANIFESTS_OWN, MANIFESTS_MODE = files_pair("manifests", "/etc/kubernetes/manifests/kube-apiserver.yaml")
+MANIFESTS_OWN, MANIFESTS_MODE = files_pair("manifests", "/etc/kubernetes/manifests/kube-apiserver.yaml", required=(
+    "/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml",
+    "/etc/kubernetes/manifests/kube-scheduler.yaml"))
 KCF_OWN, KCF_MODE = files_pair("kubelet_config_file", "/var/lib/kubelet/config.yaml")
-CONFS_OWN, CONFS_MODE = files_pair("control_plane_confs", "/etc/kubernetes/admin.conf")
-KKC_OWN, KKC_MODE = files_pair("kubelet_kubeconfig", "/etc/kubernetes/kubelet.conf")
+CONFS_OWN, CONFS_MODE = files_pair("control_plane_confs", "/etc/kubernetes/admin.conf", required=(
+    "/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"))
+KKC_OWN, KKC_MODE = files_pair("kubelet_kubeconfig", "/etc/kubernetes/kubelet.conf", required=("/etc/kubernetes/kubelet.conf",))
 KADM_OWN, KADM_MODE = files_pair("kubeadm_conf", "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf")
-KCY_OWN, KCY_MODE = files_pair("kubelet_config_yaml", "/var/lib/kubelet/config.yaml")
+KCY_OWN, KCY_MODE = files_pair("kubelet_config_yaml", "/var/lib/kubelet/config.yaml", required=("/var/lib/kubelet/config.yaml",))
 KCA_OWN, KCA_MODE = files_pair("kubelet_client_ca", "/etc/kubernetes/pki/ca.crt")
 
 
@@ -594,6 +690,19 @@ def kube_proxy(spec):
 
 
 KP_OWN, KP_MODE = files_pair("kube_proxy_kubeconfig", "/var/lib/kube-proxy/kubeconfig.conf")
+
+PKI_REQ = ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt",
+           "/etc/kubernetes/pki/apiserver.key"]
+ETCD_REQ = ["/var/lib/etcd/member"]
+
+
+def need(spec, key, paths, owner="root", group="root"):
+    """the collected list for <key> must include <paths> (a partial listing must not pass)"""
+    spec = with_line(spec, f'_has_paths(input.files["{key}"], {json.dumps(paths)})', [],
+                     {"files": {key: [{"path": x, "mode": "0600", "owner": owner, "group": group} for x in paths]}})
+    spec["expect"] += f" (must include {', '.join(paths)})"
+    return spec
+
 
 AUDIT_POLICY_RR = {"apiVersion": "audit.k8s.io/v1", "kind": "Policy", "rules": [{"level": "RequestResponse"}]}
 
@@ -611,11 +720,11 @@ K8_RULES = {
                            [("api_server", "flags")], {"api_server": {"flags": {"authorization-mode": "Node,RBAC"}}},
                            {"api_server": {"flags": {"authorization-mode": "AlwaysAllow"}}},
                            "api_server --authorization-mode must include Node and RBAC and not AlwaysAllow"),
-    "CNTR-K8-000290": fact(["_only_kubernetes_service(input.cluster.namespace_resources)"],
+    "CNTR-K8-000290": ran(fact(["_only_kubernetes_service(input.cluster.namespace_resources)"],
                            [("cluster", "namespace_resources")],
                            {"cluster": {"namespace_resources": {"default": ["service/kubernetes"], "kube-public": [], "kube-node-lease": []}}},
                            {"cluster": {"namespace_resources": {"default": ["service/kubernetes", "deployment.apps/web"]}}},
-                           "default, kube-public and kube-node-lease must hold nothing but service/kubernetes"),
+                           "default, kube-public and kube-node-lease must hold nothing but service/kubernetes"), "namespace_resources"),
     "CNTR-K8-000300": flag_eq(SC, "bind-address", "127.0.0.1", "0.0.0.0"),
     "CNTR-K8-000310": flag_eq(CM, "bind-address", "127.0.0.1", "0.0.0.0"),
     "CNTR-K8-000330": allof(flag_absent(KL, "read-only-port"), kcfg("readOnlyPort", 0, default=0, bad=10255)),
@@ -637,25 +746,25 @@ K8_RULES = {
                                   kcfg("authorization_mode", "Webhook")),
                             bad={"kubelet": {"config": {"authorization": {"mode": "AlwaysAllow"}}}},
                             expect="kubelet authorization mode must be Webhook"),
-    "CNTR-K8-000400": fact(["is_array(input.worker_nodes)", "count(input.worker_nodes) > 0",
+    "CNTR-K8-000400": ran(fact(["is_array(input.worker_nodes)", "count(input.worker_nodes) > 0",
                             "every n in input.worker_nodes {\n\t\tn.sshd_active == false\n\t}"],
                            [("worker_nodes",)], {"worker_nodes": [{"name": "worker-1", "sshd_active": False, "sshd_enabled": False}]},
                            {"worker_nodes": [{"name": "worker-1", "sshd_active": True, "sshd_enabled": False}]},
-                           "sshd must not be running on any worker node"),
-    "CNTR-K8-000410": fact(["is_array(input.worker_nodes)", "count(input.worker_nodes) > 0",
+                           "sshd must not be running on any worker node"), "worker_nodes"),
+    "CNTR-K8-000410": ran(fact(["is_array(input.worker_nodes)", "count(input.worker_nodes) > 0",
                             "every n in input.worker_nodes {\n\t\tn.sshd_enabled == false\n\t}"],
                            [("worker_nodes",)], {"worker_nodes": [{"name": "worker-1", "sshd_active": False, "sshd_enabled": False}]},
                            {"worker_nodes": [{"name": "worker-1", "sshd_active": False, "sshd_enabled": True}]},
-                           "sshd must not be enabled on any worker node"),
-    "CNTR-K8-000420": fact(["is_array(input.cluster.dashboard_pods)", "count(input.cluster.dashboard_pods) == 0"],
+                           "sshd must not be enabled on any worker node"), "worker_nodes"),
+    "CNTR-K8-000420": ran(fact(["is_array(input.cluster.dashboard_pods)", "count(input.cluster.dashboard_pods) == 0"],
                            [("cluster", "dashboard_pods")], {"cluster": {"dashboard_pods": []}},
                            {"cluster": {"dashboard_pods": ["kubernetes-dashboard/kubernetes-dashboard-7b5d"]}},
-                           "no pods labelled k8s-app=kubernetes-dashboard may run"),
-    "CNTR-K8-000430": fact(["is_array(input.kubectl.client_versions)", "count(input.kubectl.client_versions) > 0",
+                           "no pods labelled k8s-app=kubernetes-dashboard may run"), "dashboard_pods"),
+    "CNTR-K8-000430": ran(fact(["is_array(input.kubectl.client_versions)", "count(input.kubectl.client_versions) > 0",
                             "every v in input.kubectl.client_versions {\n\t\t_ver_at_least(v, 1, 12, 9)\n\t}"],
                            [("kubectl", "client_versions")], {"kubectl": {"client_versions": ["v1.30.2"]}},
                            {"kubectl": {"client_versions": ["v1.30.2", "v1.12.8"]}},
-                           "kubectl must be 1.12.9 or newer on the control plane and every node"),
+                           "kubectl must be 1.12.9 or newer on the control plane and every node"), "kubectl_client_versions"),
     "CNTR-K8-000440": allof(kcfg_absent("staticPodPath"), flag_absent(KL, "pod-manifest-path")),
     "CNTR-K8-000450": allof(gate_not(AS, "DynamicAuditing", "true"), flag_absent(KL, "feature-gates"),
                             kgate_not("DynamicAuditing", True)),
@@ -688,14 +797,14 @@ K8_RULES = {
     "CNTR-K8-000930": k8_ppsm("scheduler"),
     "CNTR-K8-000940": k8_ppsm("controller_manager"),
     "CNTR-K8-000950": k8_ppsm("etcd"),
-    "CNTR-K8-000960": fact(["is_array(input.workloads.user_pod_host_ports)",
+    "CNTR-K8-000960": ran(fact(["is_array(input.workloads.user_pod_host_ports)",
                             "every p in input.workloads.user_pod_host_ports {\n\t\tto_number(p) >= 1024\n\t}"],
                            [("workloads", "user_pod_host_ports")], {"workloads": {"user_pod_host_ports": [30080]}},
                            {"workloads": {"user_pod_host_ports": [30080, 443]}},
-                           "pods in user namespaces must not use privileged (<1024) host ports"),
-    "CNTR-K8-001160": fact(["input.secrets.env_var_usage_count == 0"], [("secrets", "env_var_usage_count")],
+                           "pods in user namespaces must not use privileged (<1024) host ports"), "user_pod_host_ports"),
+    "CNTR-K8-001160": ran(fact(["input.secrets.env_var_usage_count == 0"], [("secrets", "env_var_usage_count")],
                            {"secrets": {"env_var_usage_count": 0}}, {"secrets": {"env_var_usage_count": 2}},
-                           "no workload may load a Secret into an environment variable"),
+                           "no workload may load a Secret into an environment variable"), "secret_env_scan"),
     "CNTR-K8-001161": attest("sensitive_data_only_in_secrets",
                              "manual review of all resources and ConfigMaps found no sensitive information outside Secrets or an external store"),
     "CNTR-K8-001162": allof(flag_set(AS, "encryption-provider-config", "/etc/kubernetes/enc/encryption-config.yaml"),
@@ -747,7 +856,12 @@ K8_RULES = {
     # PodSecurity feature gate: GA in 1.25 and removed in 1.28, so an absent gate is not a finding; =false is.
     "CNTR-K8-002001": allof(gate_not(AS, "PodSecurity", "false"), gate_not(CM, "PodSecurity", "false"),
                             gate_not(SC, "PodSecurity", "false"), flag_absent(KL, "feature-gates"),
-                            kgate_not("PodSecurity", False)),
+                            kgate_not("PodSecurity", False),
+                            anyof(R([["_k8s_minor >= 25"]], [("cluster", "version")], GREEN_VERSION, {}, ""),
+                                  R([["_k8s_minor < 25",
+                                      "every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {\n\t\t_gate_all(c, \"PodSecurity\", \"true\")\n\t}",
+                                      'object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) == true']], [], {}, {}, ""),
+                                  bad={}, expect="")),
     "CNTR-K8-002010": anyof(R([["_k8s_minor >= 25"]], [("cluster", "version")], GREEN_VERSION, {}, ""),
                             R([["_k8s_minor < 25", "count(input.pod_security.policies) > 0",
                                 "every p in input.pod_security.policies {\n\t\tp.runAsUser.rule == \"MustRunAsNonRoot\"\n\t\tcount(p.supplementalGroups.ranges) > 0\n\t\tevery g in p.supplementalGroups.ranges {\n\t\t\tg.min > 0\n\t\t}\n\t\tcount(p.fsGroup.ranges) > 0\n\t\tevery g in p.fsGroup.ranges {\n\t\t\tg.min > 0\n\t\t}\n\t}"]],
@@ -765,31 +879,31 @@ K8_RULES = {
     "CNTR-K8-002630": flag_absent(AS, "token-auth-file"),
     "CNTR-K8-002640": allof(flag_set(AS, "kubelet-client-certificate", "/etc/kubernetes/pki/apiserver-kubelet-client.crt"),
                             flag_set(AS, "kubelet-client-key", "/etc/kubernetes/pki/apiserver-kubelet-client.key")),
-    "CNTR-K8-002700": fact(["_single_version_per_image(input.cluster.images)"], [("cluster", "images")],
+    "CNTR-K8-002700": ran(fact(["_single_version_per_image(input.cluster.images)"], [("cluster", "images")],
                            {"cluster": {"images": ["registry.k8s.io/kube-apiserver:v1.30.2", "registry.k8s.io/etcd:3.5.12-0"]}},
                            {"cluster": {"images": ["registry.k8s.io/kube-apiserver:v1.30.2", "registry.k8s.io/kube-apiserver:v1.29.6"]}},
-                           "only one version of each image may run"),
-    "CNTR-K8-002720": fact(["count(input.kubectl.client_versions) > 0",
+                           "only one version of each image may run"), "images"),
+    "CNTR-K8-002720": ran(fact(["count(input.kubectl.client_versions) > 0",
                             "every v in input.kubectl.client_versions {\n\t\t_ver_part(v, 0) == 1\n\t\tabs(_ver_part(v, 1) - _k8s_minor) <= 1\n\t}"],
                            [("cluster", "version"), ("kubectl", "client_versions")],
                            {"cluster": {"version": "v1.30.2"}, "kubectl": {"client_versions": ["v1.30.2"]}},
                            {"kubectl": {"client_versions": ["v1.27.0"]}},
-                           "kubectl must be within one minor version of the cluster (version skew policy)"),
+                           "kubectl must be within one minor version of the cluster (version skew policy)"), "kubectl_client_versions"),
     "CNTR-K8-003110": MANIFESTS_OWN,
-    "CNTR-K8-003120": files_owned("etcd_data", "etcd", "etcd", "/var/lib/etcd/member"),
+    "CNTR-K8-003120": need(files_owned("etcd_data", "etcd", "etcd", "/var/lib/etcd/member"), "etcd_data", ETCD_REQ, "etcd", "etcd"),
     "CNTR-K8-003130": CONFS_OWN,
     "CNTR-K8-003140": kube_proxy(KP_MODE),
     "CNTR-K8-003150": kube_proxy(KP_OWN),
     "CNTR-K8-003160": allof(flag_absent(KL, "client-ca-file"), KCA_MODE),
     "CNTR-K8-003170": allof(flag_absent(KL, "client-ca-file"), KCA_OWN),
-    "CNTR-K8-003180": files_owned("pki", "root", "root", "/etc/kubernetes/pki/ca.crt"),
+    "CNTR-K8-003180": need(files_owned("pki", "root", "root", "/etc/kubernetes/pki/ca.crt"), "pki", PKI_REQ),
     "CNTR-K8-003190": KKC_MODE,
     "CNTR-K8-003200": KKC_OWN,
     "CNTR-K8-003210": KADM_OWN,
     "CNTR-K8-003220": KADM_MODE,
     "CNTR-K8-003230": KCY_MODE,
     "CNTR-K8-003240": KCY_OWN,
-    "CNTR-K8-003260": files_mode("etcd_data", "644", "/var/lib/etcd/member", owner="etcd", group="etcd"),
+    "CNTR-K8-003260": need(files_mode("etcd_data", "644", "/var/lib/etcd/member", owner="etcd", group="etcd"), "etcd_data", ETCD_REQ, "etcd", "etcd"),
     "CNTR-K8-003270": CONFS_MODE,
     "CNTR-K8-003280": allof(flag_set(AS, "audit-policy-file", "/etc/kubernetes/audit-policy.yaml"),
                             fact(['input.api_server.audit_policy.kind == "Policy"', "count(input.api_server.audit_policy.rules) > 0"],
@@ -801,8 +915,8 @@ K8_RULES = {
     "CNTR-K8-003300": flag_num_ge(AS, "audit-log-maxbackup", 10, 10),
     "CNTR-K8-003310": flag_num_ge(AS, "audit-log-maxage", 30, 30),
     "CNTR-K8-003320": flag_path(AS, "audit-log-path", "/var/log/kubernetes/audit/audit.log"),
-    "CNTR-K8-003330": files_suffix_mode("pki", ".crt", "644", "/etc/kubernetes/pki/ca.crt"),
-    "CNTR-K8-003340": files_suffix_mode("pki", ".key", "600", "/etc/kubernetes/pki/ca.key"),
+    "CNTR-K8-003330": need(files_suffix_mode("pki", ".crt", "644", "/etc/kubernetes/pki/ca.crt"), "pki", PKI_REQ),
+    "CNTR-K8-003340": need(files_suffix_mode("pki", ".key", "600", "/etc/kubernetes/pki/ca.key"), "pki", PKI_REQ),
 }
 
 
@@ -847,15 +961,31 @@ R2_000520_LINES = [
     f'_named_mode_le({F}.server, {{"manifests", "logs"}}, "750")',
     f'_named_mode_le({F}.server, {{"token"}}, "600")',
     '_flag(input.rke2.config, "write-kubeconfig-mode") in {"0600", "600"}',
+    # a partial listing must not pass: the entries DISA names (that every server has) must be present
+    f'_has_names({F}.etc, ["config.yaml"])',
+    f'_has_names({F}.root, ["agent", "bin", "data", "server"])',
+    f'_has_names({F}.agent, ["kubelet.kubeconfig", "client-ca.crt", "client-kubelet.key", "pod-manifests", "etc"])',
+    f'_has_names({F}.server, ["cred", "db", "tls", "manifests", "logs", "token"])',
 ]
 
+def agree(spec, *pairs):
+    """pairs of (args object, flag): every `<component>-arg` entry in the effective config.yaml for that
+    flag must carry the value the running component shows; a stale or conflicting entry fails."""
+    for obj, name in pairs:
+        comp = obj.split(".")[-1]
+        cfgkey = comp.replace("_", "-") + "-arg"
+        spec = with_line(spec, f'_rke2_arg_agrees(input.{obj}, "{cfgkey}", "{name}")', [("rke2", "config")], {"rke2": {"config": {}}})
+    spec["expect"] += "; config.yaml *-arg entries must match the running value"
+    return spec
+
+
 RKE2_RULES = {
-    "CNTR-R2-000010": allof(*[flag_in(c, "tls-min-version", TLS, "VersionTLS12", "VersionTLS11") for c in (RA, RCM, RSC)],
+    "CNTR-R2-000010": agree(allof(*[flag_in(c, "tls-min-version", TLS, "VersionTLS12", "VersionTLS11") for c in (RA, RCM, RSC)],
                             *[flag_has_all(c, "tls-cipher-suites", R2_CIPHERS, "TLS_RSA_WITH_AES_128_GCM_SHA256") for c in (RA, RCM, RSC)],
                             expect="kube-apiserver, kube-controller-manager and kube-scheduler: --tls-min-version VersionTLS12+ and "
-                                   "--tls-cipher-suites including " + ", ".join(R2_CIPHERS)),
-    "CNTR-R2-000030": flag_eq(RCM, "use-service-account-credentials", "true"),
-    "CNTR-R2-000060": allof(flag_set(RA, "audit-policy-file", "/etc/rancher/rke2/audit-policy.yaml"),
+                                   "--tls-cipher-suites including " + ", ".join(R2_CIPHERS)), (RA, "tls-min-version"), (RA, "tls-cipher-suites"), (RCM, "tls-min-version"), (RCM, "tls-cipher-suites"), (RSC, "tls-min-version"), (RSC, "tls-cipher-suites")),
+    "CNTR-R2-000030": agree(flag_eq(RCM, "use-service-account-credentials", "true"), (RCM, "use-service-account-credentials")),
+    "CNTR-R2-000060": agree(allof(flag_set(RA, "audit-policy-file", "/etc/rancher/rke2/audit-policy.yaml"),
                             flag_eq(RA, "audit-log-mode", "blocking-strict", "batch"),
                             fact(['_flag(input.rke2.config, "profile") in {"cis", "cis-1.23", "cis-1.6"}'], [("rke2", "config")],
                                  {"rke2": {"config": {"profile": "cis"}}}, {"rke2": {"config": {"profile": ""}}},
@@ -867,13 +997,13 @@ RKE2_RULES = {
                                  [("rke2", "audit_policy")], {"rke2": {"audit_policy": RKE2_AUDIT_POLICY}},
                                  {"rke2": {"audit_policy": {"rules": [{"level": "None"}]}}},
                                  "audit policy rule 1 logs secrets at Metadata, rule 2 all resources at RequestResponse (first match wins)"),
-                            expect="--audit-policy-file set, --audit-log-mode blocking-strict, profile cis, audit policy as DISA lists"),
-    "CNTR-R2-000100": flag_eq(RCM, "bind-address", "127.0.0.1", "0.0.0.0"),
-    "CNTR-R2-000110": flag_eq(RKL, "anonymous-auth", "false"),
-    "CNTR-R2-000130": flag_eq(RKL, "read-only-port", "0", "10255"),
-    "CNTR-R2-000150": flag_eq(RKL, "authorization-mode", "Webhook", "AlwaysAllow"),
-    "CNTR-R2-000160": flag_eq(RA, "anonymous-auth", "false"),
-    "CNTR-R2-000320": flag_num_ge(RA, "audit-log-maxage", 30, 30),
+                            expect="--audit-policy-file set, --audit-log-mode blocking-strict, profile cis, audit policy as DISA lists"), (RA, "audit-policy-file"), (RA, "audit-log-mode")),
+    "CNTR-R2-000100": agree(flag_eq(RCM, "bind-address", "127.0.0.1", "0.0.0.0"), (RCM, "bind-address")),
+    "CNTR-R2-000110": agree(flag_eq(RKL, "anonymous-auth", "false"), (RKL, "anonymous-auth")),
+    "CNTR-R2-000130": agree(flag_eq(RKL, "read-only-port", "0", "10255"), (RKL, "read-only-port")),
+    "CNTR-R2-000150": agree(flag_eq(RKL, "authorization-mode", "Webhook", "AlwaysAllow"), (RKL, "authorization-mode")),
+    "CNTR-R2-000160": agree(flag_eq(RA, "anonymous-auth", "false"), (RA, "anonymous-auth")),
+    "CNTR-R2-000320": agree(flag_num_ge(RA, "audit-log-maxage", 30, 30), (RA, "audit-log-maxage")),
     "CNTR-R2-000460": attest("rke2_images_signature_verified",
                              "every RKE2 image was obtained with Hauler and its signature verified against the RGS (Carbide) key"),
     "CNTR-R2-000520": fact(R2_000520_LINES, [("rke2", "files"), ("rke2", "config")],
@@ -887,13 +1017,14 @@ RKE2_RULES = {
                              "RKE2 ports, protocols and services reviewed against the PPSM CAL or approved by the ISSO"),
     "CNTR-R2-000800": attest("no_sensitive_values_in_workload_env",
                              "review of pods, jobs and cronjobs found no sensitive values in environment variables"),
-    "CNTR-R2-000890": flag_duration_ge(RKL, "streaming-connection-idle-timeout", "5m", "5m", "30s"),
-    "CNTR-R2-000940": flag_eq(RKL, "protect-kernel-defaults", "true"),
-    "CNTR-R2-000970": allof(fact(["_only_kubernetes_service(input.cluster.namespace_resources)"],
+    "CNTR-R2-000890": agree(flag_duration_ge(RKL, "streaming-connection-idle-timeout", "5m", "5m", "30s"), (RKL, "streaming-connection-idle-timeout")),
+    "CNTR-R2-000940": agree(flag_eq(RKL, "protect-kernel-defaults", "true"), (RKL, "protect-kernel-defaults")),
+    "CNTR-R2-000970": allof(ran(fact(["_only_kubernetes_service(input.cluster.namespace_resources)"],
                                  [("cluster", "namespace_resources")],
                                  {"cluster": {"namespace_resources": {"default": ["service/kubernetes"], "kube-public": [], "kube-node-lease": []}}},
                                  {"cluster": {"namespace_resources": {"kube-public": ["pod/web-1"]}}},
                                  "default, kube-public and kube-node-lease hold nothing but service/kubernetes"),
+                                "namespace_resources"),
                             attest("kube_system_resources_approved",
                                    "kube-system holds only the RKE2 system components DISA lists or ISSO-approved services")),
     "CNTR-R2-001130": fact(['_nonempty(_flag(input.rke2.config, "pod-security-admission-config-file"))',
@@ -904,15 +1035,15 @@ RKE2_RULES = {
                                      "pss_defaults": PSS_DEFAULTS}},
                            {"rke2": {"pss_defaults": {"enforce": "baseline"}}},
                            "pod-security-admission-config-file set; defaults audit/enforce/warn = restricted, versions = latest"),
-    "CNTR-R2-001270": fact([f'_nonempty({ref(RA, "authorization-mode")})',
+    "CNTR-R2-001270": agree(fact([f'_nonempty({ref(RA, "authorization-mode")})',
                             f'{{trim_space(m) | some m in split({ref(RA, "authorization-mode")}, ",")}} == {{"Node", "RBAC"}}'],
                            [RA.split(".")], nest(RA, {"authorization-mode": "Node,RBAC"}),
                            nest(RA, {"authorization-mode": "AlwaysAllow"}),
-                           "kube-apiserver --authorization-mode must be RBAC,Node (either order)"),
-    "CNTR-R2-001580": fact(["_single_version_per_image(input.cluster.images)"], [("cluster", "images")],
+                           "kube-apiserver --authorization-mode must be RBAC,Node (either order)"), (RA, "authorization-mode")),
+    "CNTR-R2-001580": ran(fact(["_single_version_per_image(input.cluster.images)"], [("cluster", "images")],
                            {"cluster": {"images": ["rancher/hardened-kubernetes:v1.30.2-rke2r1-build20240611", "rancher/hardened-etcd:v3.5.13-k3s1-build20240531"]}},
                            {"cluster": {"images": ["rancher/hardened-coredns:v1.11.1-build20240305", "rancher/hardened-coredns:v1.10.1-build20230607"]}},
-                           "only one version of each image may run"),
+                           "only one version of each image may run"), "images"),
     "CNTR-R2-001620": attest("rke2_supported_version_and_current_images",
                              "every node runs a supported RKE2 release and every running image is the latest patched version"),
 }
@@ -978,6 +1109,41 @@ K8_PROBES = [
                                                              "owner": "root", "group": "root"}]}}), "Open"),
     ("CNTR-K8-000890", U({"files": {"kubelet_config_file": [{"path": "/var/lib/kubelet/config.yaml", "mode": 420,
                                                              "owner": "root", "group": "root"}]}}), "Open"),
+    # round 2: version-gated passes, defaults, partial collections
+    ("CNTR-K8-002010", RM(["cluster/version"]), "Open"),
+    ("CNTR-K8-002010", U({"cluster": {"version": ["v1.30.2"]}}), "Open"),
+    ("CNTR-K8-002010", U({"cluster": {"version": "latest"}}), "Open"),
+    ("CNTR-K8-002010", U({"cluster": {"version": "v2.0.0"}}), "Open"),
+    ("CNTR-K8-002010", U({"cluster": {"version": "1.30.2+rke2r1"}}), "Not_a_Finding"),
+    ("CNTR-K8-002010", U({"cluster": {"version": 1.30}}), "Open"),
+    ("CNTR-K8-002000", RM(["cluster/version", "api_server/flags/enable-admission-plugins"]), "Open"),
+    ("CNTR-K8-002000", RM(["api_server/flags/enable-admission-plugins"], {"cluster": {"version": "v1.24.9"}}), "Open"),
+    ("CNTR-K8-002001", RM(["cluster/version"]), "Open"),
+    ("CNTR-K8-002001", U({"cluster": {"version": "v1.22.4"}}), "Open"),
+    ("CNTR-K8-002001", U({"cluster": {"version": "v1.24.0"},
+                          "api_server": {"flags": {"feature-gates": "PodSecurity=true"}},
+                          "controller_manager": {"flags": {"feature-gates": "PodSecurity=true"}},
+                          "scheduler": {"flags": {"feature-gates": "PodSecurity=true"}},
+                          "kubelet": {"config": {"featureGates": {"PodSecurity": True}}}}), "Not_a_Finding"),
+    ("CNTR-K8-000330", RM(["kubelet/flags/config"]), "Open"),             # no --config: CLI default 10255 applies
+    ("CNTR-K8-000330", RM(["kubelet/config/readOnlyPort"]), "Not_a_Finding"),
+    ("CNTR-K8-000440", RM(["kubelet/flags/config"]), "Open"),
+    ("CNTR-K8-003130", U({"files": {"control_plane_confs": [{"path": "/etc/kubernetes/admin.conf", "mode": "0600",
+                                                             "owner": "root", "group": "root"}]}}), "Open"),   # partial list
+    ("CNTR-K8-003270", U({"files": {"control_plane_confs": [
+        {"path": p, "mode": "0600", "owner": "root", "group": "root"} for p in
+        ("/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf")] + [
+        {"path": "/etc/kubernetes/admin.conf", "mode": "0666", "owner": "root", "group": "root"}]}}), "Open"),  # duplicate entry
+    ("CNTR-K8-000900", U({"files": {"manifests": [{"path": "/etc/kubernetes/manifests/kube-apiserver.yaml", "mode": 600,
+                                                   "owner": "root", "group": "root"}]}}), "Open"),                 # numeric mode
+    ("CNTR-K8-003180", U({"files": {"pki": []}}), "Open"),
+    ("CNTR-K8-003340", U({"files": {"pki": [{"path": "/etc/kubernetes/pki/ca.key", "mode": "0600", "owner": "root", "group": "root"}]}}), "Open"),
+    ("CNTR-K8-000420", RM(["collection_status/dashboard_pods"]), "Open"),  # empty list without proof the query ran
+    ("CNTR-K8-000960", RM(["collection_status/user_pod_host_ports"]), "Open"),
+    ("CNTR-K8-000290", RM(["collection_status/namespace_resources"]), "Open"),
+    ("CNTR-K8-000400", U({"collection_status": {"worker_nodes": "partial"}}), "Open"),
+    ("CNTR-K8-002700", U({"cluster": {"images": []}}), "Open"),
+    ("CNTR-K8-001160", U({"secrets": {"env_var_usage_count": "0"}}), "Open"),
 ]
 
 RKE2_PROBES = [
@@ -994,6 +1160,20 @@ RKE2_PROBES = [
     ("CNTR-R2-001270", U({"rke2": {"args": {"kube_apiserver": {"authorization-mode": "RBAC, Node"}}}}), "Not_a_Finding"),
     ("CNTR-R2-000890", U({"rke2": {"args": {"kubelet": {"streaming-connection-idle-timeout": "0"}}}}), "Open"),
     ("CNTR-R2-001130", U({"rke2": {"pss_defaults": {"enforce": "Restricted"}}}), "Open"),
+    # round 2: config.yaml *-arg entries vs the running value, partial file tables, collection status
+    ("CNTR-R2-000160", U({"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth=true"]}}}), "Open"),
+    ("CNTR-R2-000160", U({"rke2": {"config": {"kube-apiserver-arg+": ["anonymous-auth=true"]}}}), "Open"),
+    ("CNTR-R2-000160", U({"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth=false", "anonymous_auth=true"]}}}), "Open"),
+    ("CNTR-R2-000160", U({"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth"]}}}), "Open"),
+    ("CNTR-R2-000160", U({"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth=false", "audit-log-maxage=30"]}}}), "Not_a_Finding"),
+    ("CNTR-R2-000110", U({"rke2": {"config": {"kubelet-arg": "anonymous-auth=true"}}}), "Open"),
+    ("CNTR-R2-000890", U({"rke2": {"config": {"kubelet-arg": [{"streaming-connection-idle-timeout": "5m"}]}}}), "Open"),
+    ("CNTR-R2-000060", U({"rke2": {"config": {"profile+": "cis"}}}), "Open"),
+    ("CNTR-R2-000520", U({"rke2": {"files": {"server": [rf("cred", "0700"), rf("db", "0700"), rf("tls", "0700")]}}}), "Open"),
+    ("CNTR-R2-000520", U({"rke2": {"files": {"etc": [rf("config.yaml"), rf("config.yaml", "0644")]}}}), "Open"),
+    ("CNTR-R2-000520", U({"rke2": {"files": {"bin": [rf("kubectl", 488)]}}}), "Open"),
+    ("CNTR-R2-000970", RM(["collection_status/namespace_resources"]), "Open"),
+    ("CNTR-R2-001580", RM(["collection_status/images"]), "Open"),
 ]
 
 PLATFORMS = {

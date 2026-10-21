@@ -54,10 +54,18 @@ package stig.kubernetes.core
 #     input.secrets.env_var_usage_count        : number of secretKeyRef env vars in workloads (0 = none)
 #     input.pod_security.policies              : PodSecurityPolicies (only read for clusters older than 1.25)
 #     input.kube_proxy.running                 : bool
+#     input.collection_status.<query>          : "ok" when the cluster query ran to completion — required before an
+#                                                empty or partial list counts (namespace_resources, worker_nodes,
+#                                                dashboard_pods, kubectl_client_versions, user_pod_host_ports,
+#                                                secret_env_scan, images)
+#     KubeletConfiguration values (and defaults) count only when input.kubelet.flags has --config.
 #     input.files.<group>                      : [{path, mode ("0644"), owner, group}] for groups manifests,
 #                                                kubelet_config_file, kubelet_client_ca, kube_proxy_kubeconfig,
 #                                                etcd_data, control_plane_confs, pki, kubelet_kubeconfig,
-#                                                kubeadm_conf, kubelet_config_yaml
+#                                                kubeadm_conf, kubelet_config_yaml. Modes are octal STRINGS;
+#                                                every entry is checked (duplicates included) and named paths
+#                                                (control-plane manifests and confs, kubelet.conf, config.yaml, PKI
+#                                                ca/apiserver crt+key, etcd member) must be present
 #     input.attest.<key>                       : organizational attestations (see each rule)
 #   
 
@@ -77,7 +85,8 @@ _nonempty(s) if {
 # "--basic-auth-file" and "basic-auth-file" are the same flag. A check reads a flag only when exactly one
 # key normalises to its name; two spellings (or a repeated flag collected as a list) leave it undefined,
 # so the check fails rather than passing on whichever spelling it happened to read.
-_norm(k) := replace(trim_left(k, "-"), "_", "-")
+# (a trailing "+" is RKE2's config.yaml.d append marker: "kube-apiserver-arg+" is the same key)
+_norm(k) := replace(trim_suffix(trim_left(k, "-"), "+"), "_", "-")
 
 _flag_count(flags, name) := count([k | some k in object.keys(flags); _norm(k) == name])
 
@@ -175,7 +184,8 @@ _allowed_bits := {
 }
 
 _mode_le(mode, mx) if {
-	m := sprintf("%v", [mode])
+	is_string(mode) # a number is ambiguous (644 decimal or the octal 0644 = 420?): collect modes as strings
+	m := mode
 	n := count(m)
 	n >= 3
 	# per-character split (split(m, "") does not terminate on OPA 1.10)
@@ -236,6 +246,57 @@ _named_ok(f, names, _) if not f.name in names
 _named_ok(f, names, mx) if {
 	f.name in names
 	_mode_le(f.mode, mx)
+}
+
+# every required path is present in the collected list (a partial listing must not pass)
+_has_paths(fs, paths) if {
+	is_array(fs)
+	every p in paths {
+		some f in fs
+		f.path == p
+	}
+}
+
+_has_names(fs, names) if {
+	is_array(fs)
+	every n in names {
+		some f in fs
+		f.name == n
+	}
+}
+
+# KubeletConfiguration values (and their defaults) apply only when the kubelet runs with --config;
+# without a config file the kubelet's command-line defaults apply (e.g. read-only port 10255).
+_kubelet_config_in_use if _nonempty(_flag(input.kubelet.flags, "config"))
+
+# RKE2: every "<flag>=<value>" entry under <cfgkey> (or "<cfgkey>+") in the effective config must carry
+# the value the running component shows. Entries are a string or a list of strings; anything else fails.
+_rke2_arg_agrees(args, cfgkey, name) if {
+	running := _flag(args, name)
+	is_object(input.rke2.config)
+	entries := [e |
+		some k in object.keys(input.rke2.config)
+		_norm(k) == cfgkey
+		some e in _as_list(input.rke2.config[k])
+	]
+	every e in entries {
+		is_string(e)
+		_arg_ok(e, name, running)
+	}
+}
+
+_as_list(x) := x if is_array(x)
+
+_as_list(x) := [x] if not is_array(x)
+
+# an entry for another flag is irrelevant; an entry for this flag must carry the running value
+_arg_ok(e, name, _) if _norm(split(e, "=")[0]) != name
+
+_arg_ok(e, name, running) if {
+	p := split(e, "=")
+	_norm(p[0]) == name
+	count(p) >= 2
+	concat("=", array.slice(p, 1, count(p))) == running
 }
 
 # version "v1.30.2" -> numbers
@@ -532,13 +593,14 @@ status_r_cntr_k8_000270 := "Not_a_Finding" if r_cntr_k8_000270
 status_r_cntr_k8_000270 := "Open" if not r_cntr_k8_000270
 
 # CNTR-K8-000290 | V-242383 | CAT I | machine
-missing_r_cntr_k8_000290 := [concat(".", p) | some p in [["cluster", "namespace_resources"]]; not _collected(p)]
+missing_r_cntr_k8_000290 := [concat(".", p) | some p in [["cluster", "namespace_resources"], ["collection_status", "namespace_resources"]]; not _collected(p)]
 
 default r_cntr_k8_000290 := false
 
 r_cntr_k8_000290 if {
 	count(missing_r_cntr_k8_000290) == 0
 	_only_kubernetes_service(input.cluster.namespace_resources)
+	input.collection_status["namespace_resources"] == "ok"
 }
 
 default detail_r_cntr_k8_000290 := ""
@@ -647,6 +709,7 @@ r_cntr_k8_000330 if {
 	_flag_count(input.kubelet.flags, "read-only-port") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["readOnlyPort"], 0) == 0
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_000330 := ""
@@ -757,6 +820,7 @@ r_cntr_k8_000370 if {
 	_flag_count(input.kubelet.flags, "anonymous-auth") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authentication", "anonymous", "enabled"], null) == false
+	_kubelet_config_in_use
 }
 
 r_cntr_k8_000370 if {
@@ -766,6 +830,7 @@ r_cntr_k8_000370 if {
 	object.get(input.kubelet.config, ["authentication", "anonymous", "enabled"], null) == null
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authentication_anonymous_enabled"], null) == false
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_000370 := ""
@@ -804,6 +869,7 @@ r_cntr_k8_000380 if {
 	_flag_count(input.kubelet.flags, "authorization-mode") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authorization", "mode"], null) == "Webhook"
+	_kubelet_config_in_use
 }
 
 r_cntr_k8_000380 if {
@@ -818,6 +884,7 @@ r_cntr_k8_000380 if {
 	object.get(input.kubelet.config, ["authorization", "mode"], null) == null
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authorization_mode"], null) == "Webhook"
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_000380 := ""
@@ -846,7 +913,7 @@ status_r_cntr_k8_000380 := "Not_a_Finding" if r_cntr_k8_000380
 status_r_cntr_k8_000380 := "Open" if not r_cntr_k8_000380
 
 # CNTR-K8-000400 | V-242393 | CAT II | machine
-missing_r_cntr_k8_000400 := [concat(".", p) | some p in [["worker_nodes"]]; not _collected(p)]
+missing_r_cntr_k8_000400 := [concat(".", p) | some p in [["worker_nodes"], ["collection_status", "worker_nodes"]]; not _collected(p)]
 
 default r_cntr_k8_000400 := false
 
@@ -857,6 +924,7 @@ r_cntr_k8_000400 if {
 	every n in input.worker_nodes {
 		n.sshd_active == false
 	}
+	input.collection_status["worker_nodes"] == "ok"
 }
 
 default detail_r_cntr_k8_000400 := ""
@@ -885,7 +953,7 @@ status_r_cntr_k8_000400 := "Not_a_Finding" if r_cntr_k8_000400
 status_r_cntr_k8_000400 := "Open" if not r_cntr_k8_000400
 
 # CNTR-K8-000410 | V-242394 | CAT II | machine
-missing_r_cntr_k8_000410 := [concat(".", p) | some p in [["worker_nodes"]]; not _collected(p)]
+missing_r_cntr_k8_000410 := [concat(".", p) | some p in [["worker_nodes"], ["collection_status", "worker_nodes"]]; not _collected(p)]
 
 default r_cntr_k8_000410 := false
 
@@ -896,6 +964,7 @@ r_cntr_k8_000410 if {
 	every n in input.worker_nodes {
 		n.sshd_enabled == false
 	}
+	input.collection_status["worker_nodes"] == "ok"
 }
 
 default detail_r_cntr_k8_000410 := ""
@@ -924,7 +993,7 @@ status_r_cntr_k8_000410 := "Not_a_Finding" if r_cntr_k8_000410
 status_r_cntr_k8_000410 := "Open" if not r_cntr_k8_000410
 
 # CNTR-K8-000420 | V-242395 | CAT II | machine
-missing_r_cntr_k8_000420 := [concat(".", p) | some p in [["cluster", "dashboard_pods"]]; not _collected(p)]
+missing_r_cntr_k8_000420 := [concat(".", p) | some p in [["cluster", "dashboard_pods"], ["collection_status", "dashboard_pods"]]; not _collected(p)]
 
 default r_cntr_k8_000420 := false
 
@@ -932,6 +1001,7 @@ r_cntr_k8_000420 if {
 	count(missing_r_cntr_k8_000420) == 0
 	is_array(input.cluster.dashboard_pods)
 	count(input.cluster.dashboard_pods) == 0
+	input.collection_status["dashboard_pods"] == "ok"
 }
 
 default detail_r_cntr_k8_000420 := ""
@@ -960,7 +1030,7 @@ status_r_cntr_k8_000420 := "Not_a_Finding" if r_cntr_k8_000420
 status_r_cntr_k8_000420 := "Open" if not r_cntr_k8_000420
 
 # CNTR-K8-000430 | V-242396 | CAT II | machine
-missing_r_cntr_k8_000430 := [concat(".", p) | some p in [["kubectl", "client_versions"]]; not _collected(p)]
+missing_r_cntr_k8_000430 := [concat(".", p) | some p in [["kubectl", "client_versions"], ["collection_status", "kubectl_client_versions"]]; not _collected(p)]
 
 default r_cntr_k8_000430 := false
 
@@ -971,6 +1041,7 @@ r_cntr_k8_000430 if {
 	every v in input.kubectl.client_versions {
 		_ver_at_least(v, 1, 12, 9)
 	}
+	input.collection_status["kubectl_client_versions"] == "ok"
 }
 
 default detail_r_cntr_k8_000430 := ""
@@ -1007,6 +1078,7 @@ r_cntr_k8_000440 if {
 	count(missing_r_cntr_k8_000440) == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["staticPodPath"], null) == null
+	_kubelet_config_in_use
 	is_object(input.kubelet.flags)
 	_flag_count(input.kubelet.flags, "pod-manifest-path") == 0
 }
@@ -1049,6 +1121,7 @@ r_cntr_k8_000450 if {
 	_flag_count(input.kubelet.flags, "feature-gates") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["featureGates", "DynamicAuditing"], null) in {null, false}
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_000450 := ""
@@ -1277,13 +1350,14 @@ default r_cntr_k8_000860 := false
 r_cntr_k8_000860 if {
 	count(missing_r_cntr_k8_000860) == 0
 	_files_owned(input.files["manifests"], "root", "root")
+	_has_paths(input.files["manifests"], ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
 }
 
 default detail_r_cntr_k8_000860 := ""
 
 detail_r_cntr_k8_000860 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-000860", concat(", ", missing_r_cntr_k8_000860)]) if count(missing_r_cntr_k8_000860) > 0
 
-detail_r_cntr_k8_000860 := "CNTR-K8-000860: check failed — every manifests file must be owned by root:root" if {
+detail_r_cntr_k8_000860 := "CNTR-K8-000860: check failed — every manifests file must be owned by root:root (must include /etc/kubernetes/manifests/kube-apiserver.yaml, /etc/kubernetes/manifests/kube-controller-manager.yaml, /etc/kubernetes/manifests/kube-scheduler.yaml)" if {
 	count(missing_r_cntr_k8_000860) == 0
 	not r_cntr_k8_000860
 }
@@ -1382,13 +1456,14 @@ default r_cntr_k8_000900 := false
 r_cntr_k8_000900 if {
 	count(missing_r_cntr_k8_000900) == 0
 	_files_mode_le(input.files["manifests"], "644")
+	_has_paths(input.files["manifests"], ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
 }
 
 default detail_r_cntr_k8_000900 := ""
 
 detail_r_cntr_k8_000900 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-000900", concat(", ", missing_r_cntr_k8_000900)]) if count(missing_r_cntr_k8_000900) > 0
 
-detail_r_cntr_k8_000900 := "CNTR-K8-000900: check failed — every manifests file must have mode 644 or more restrictive" if {
+detail_r_cntr_k8_000900 := "CNTR-K8-000900: check failed — every manifests file must have mode 644 or more restrictive (must include /etc/kubernetes/manifests/kube-apiserver.yaml, /etc/kubernetes/manifests/kube-controller-manager.yaml, /etc/kubernetes/manifests/kube-scheduler.yaml)" if {
 	count(missing_r_cntr_k8_000900) == 0
 	not r_cntr_k8_000900
 }
@@ -1585,7 +1660,7 @@ status_r_cntr_k8_000950 := "Not_a_Finding" if r_cntr_k8_000950
 status_r_cntr_k8_000950 := "Open" if not r_cntr_k8_000950
 
 # CNTR-K8-000960 | V-242414 | CAT II | machine
-missing_r_cntr_k8_000960 := [concat(".", p) | some p in [["workloads", "user_pod_host_ports"]]; not _collected(p)]
+missing_r_cntr_k8_000960 := [concat(".", p) | some p in [["workloads", "user_pod_host_ports"], ["collection_status", "user_pod_host_ports"]]; not _collected(p)]
 
 default r_cntr_k8_000960 := false
 
@@ -1595,6 +1670,7 @@ r_cntr_k8_000960 if {
 	every p in input.workloads.user_pod_host_ports {
 		to_number(p) >= 1024
 	}
+	input.collection_status["user_pod_host_ports"] == "ok"
 }
 
 default detail_r_cntr_k8_000960 := ""
@@ -1623,13 +1699,14 @@ status_r_cntr_k8_000960 := "Not_a_Finding" if r_cntr_k8_000960
 status_r_cntr_k8_000960 := "Open" if not r_cntr_k8_000960
 
 # CNTR-K8-001160 | V-242415 | CAT I | machine
-missing_r_cntr_k8_001160 := [concat(".", p) | some p in [["secrets", "env_var_usage_count"]]; not _collected(p)]
+missing_r_cntr_k8_001160 := [concat(".", p) | some p in [["secrets", "env_var_usage_count"], ["collection_status", "secret_env_scan"]]; not _collected(p)]
 
 default r_cntr_k8_001160 := false
 
 r_cntr_k8_001160 if {
 	count(missing_r_cntr_k8_001160) == 0
 	input.secrets.env_var_usage_count == 0
+	input.collection_status["secret_env_scan"] == "ok"
 }
 
 default detail_r_cntr_k8_001160 := ""
@@ -1776,6 +1853,7 @@ r_cntr_k8_001300 if {
 	_flag_count(input.kubelet.flags, "streaming-connection-idle-timeout") == 0
 	_nonempty(object.get(input.kubelet.config, ["streamingConnectionIdleTimeout"], ""))
 	_duration_ge(object.get(input.kubelet.config, ["streamingConnectionIdleTimeout"], ""), "5m")
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_001300 := ""
@@ -1919,6 +1997,7 @@ r_cntr_k8_001420 if {
 	is_object(input.kubelet.flags)
 	_flag_count(input.kubelet.flags, "client-ca-file") == 0
 	_nonempty(object.get(input.kubelet.config, ["authentication", "x509", "clientCAFile"], ""))
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_001420 := ""
@@ -2062,6 +2141,7 @@ r_cntr_k8_001460 if {
 	is_object(input.kubelet.flags)
 	_flag_count(input.kubelet.flags, "tls-private-key-file") == 0
 	_nonempty(object.get(input.kubelet.config, ["tlsPrivateKeyFile"], ""))
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_001460 := ""
@@ -2099,6 +2179,7 @@ r_cntr_k8_001470 if {
 	is_object(input.kubelet.flags)
 	_flag_count(input.kubelet.flags, "tls-cert-file") == 0
 	_nonempty(object.get(input.kubelet.config, ["tlsCertFile"], ""))
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_001470 := ""
@@ -2417,6 +2498,7 @@ r_cntr_k8_001620 if {
 	_flag_count(input.kubelet.flags, "protect-kernel-defaults") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["protectKernelDefaults"], null) == true
+	_kubelet_config_in_use
 }
 
 default detail_r_cntr_k8_001620 := ""
@@ -2490,7 +2572,7 @@ status_r_cntr_k8_002000 := "Not_a_Finding" if r_cntr_k8_002000
 status_r_cntr_k8_002000 := "Open" if not r_cntr_k8_002000
 
 # CNTR-K8-002001 | V-254801 | CAT I | machine
-missing_r_cntr_k8_002001 := [concat(".", p) | some p in [["api_server", "flags"], ["controller_manager", "flags"], ["scheduler", "flags"], ["kubelet", "flags"], ["kubelet", "config"]]; not _collected(p)]
+missing_r_cntr_k8_002001 := [concat(".", p) | some p in [["api_server", "flags"], ["controller_manager", "flags"], ["scheduler", "flags"], ["kubelet", "flags"], ["kubelet", "config"], ["cluster", "version"]]; not _collected(p)]
 
 default r_cntr_k8_002001 := false
 
@@ -2506,13 +2588,35 @@ r_cntr_k8_002001 if {
 	_flag_count(input.kubelet.flags, "feature-gates") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) in {null, true}
+	_kubelet_config_in_use
+	_k8s_minor >= 25
+}
+
+r_cntr_k8_002001 if {
+	count(missing_r_cntr_k8_002001) == 0
+	is_object(input.api_server.flags)
+	_gate_never(input.api_server.flags, "PodSecurity", "false")
+	is_object(input.controller_manager.flags)
+	_gate_never(input.controller_manager.flags, "PodSecurity", "false")
+	is_object(input.scheduler.flags)
+	_gate_never(input.scheduler.flags, "PodSecurity", "false")
+	is_object(input.kubelet.flags)
+	_flag_count(input.kubelet.flags, "feature-gates") == 0
+	is_object(input.kubelet.config)
+	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) in {null, true}
+	_kubelet_config_in_use
+	_k8s_minor < 25
+	every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {
+		_gate_all(c, "PodSecurity", "true")
+	}
+	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) == true
 }
 
 default detail_r_cntr_k8_002001 := ""
 
 detail_r_cntr_k8_002001 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-002001", concat(", ", missing_r_cntr_k8_002001)]) if count(missing_r_cntr_k8_002001) > 0
 
-detail_r_cntr_k8_002001 := "CNTR-K8-002001: check failed — api_server.flags --feature-gates must not set PodSecurity=false; controller_manager.flags --feature-gates must not set PodSecurity=false; scheduler.flags --feature-gates must not set PodSecurity=false; kubelet.flags --feature-gates must not be set; kubelet config featureGates.PodSecurity must not be false" if {
+detail_r_cntr_k8_002001 := "CNTR-K8-002001: check failed — api_server.flags --feature-gates must not set PodSecurity=false; controller_manager.flags --feature-gates must not set PodSecurity=false; scheduler.flags --feature-gates must not set PodSecurity=false; kubelet.flags --feature-gates must not be set; kubelet config featureGates.PodSecurity must not be false; " if {
 	count(missing_r_cntr_k8_002001) == 0
 	not r_cntr_k8_002001
 }
@@ -2766,13 +2870,14 @@ status_r_cntr_k8_002640 := "Not_a_Finding" if r_cntr_k8_002640
 status_r_cntr_k8_002640 := "Open" if not r_cntr_k8_002640
 
 # CNTR-K8-002700 | V-242442 | CAT II | machine
-missing_r_cntr_k8_002700 := [concat(".", p) | some p in [["cluster", "images"]]; not _collected(p)]
+missing_r_cntr_k8_002700 := [concat(".", p) | some p in [["cluster", "images"], ["collection_status", "images"]]; not _collected(p)]
 
 default r_cntr_k8_002700 := false
 
 r_cntr_k8_002700 if {
 	count(missing_r_cntr_k8_002700) == 0
 	_single_version_per_image(input.cluster.images)
+	input.collection_status["images"] == "ok"
 }
 
 default detail_r_cntr_k8_002700 := ""
@@ -2801,7 +2906,7 @@ status_r_cntr_k8_002700 := "Not_a_Finding" if r_cntr_k8_002700
 status_r_cntr_k8_002700 := "Open" if not r_cntr_k8_002700
 
 # CNTR-K8-002720 | V-242443 | CAT II | machine
-missing_r_cntr_k8_002720 := [concat(".", p) | some p in [["cluster", "version"], ["kubectl", "client_versions"]]; not _collected(p)]
+missing_r_cntr_k8_002720 := [concat(".", p) | some p in [["cluster", "version"], ["kubectl", "client_versions"], ["collection_status", "kubectl_client_versions"]]; not _collected(p)]
 
 default r_cntr_k8_002720 := false
 
@@ -2812,6 +2917,7 @@ r_cntr_k8_002720 if {
 		_ver_part(v, 0) == 1
 		abs(_ver_part(v, 1) - _k8s_minor) <= 1
 	}
+	input.collection_status["kubectl_client_versions"] == "ok"
 }
 
 default detail_r_cntr_k8_002720 := ""
@@ -2847,13 +2953,14 @@ default r_cntr_k8_003110 := false
 r_cntr_k8_003110 if {
 	count(missing_r_cntr_k8_003110) == 0
 	_files_owned(input.files["manifests"], "root", "root")
+	_has_paths(input.files["manifests"], ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
 }
 
 default detail_r_cntr_k8_003110 := ""
 
 detail_r_cntr_k8_003110 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003110", concat(", ", missing_r_cntr_k8_003110)]) if count(missing_r_cntr_k8_003110) > 0
 
-detail_r_cntr_k8_003110 := "CNTR-K8-003110: check failed — every manifests file must be owned by root:root" if {
+detail_r_cntr_k8_003110 := "CNTR-K8-003110: check failed — every manifests file must be owned by root:root (must include /etc/kubernetes/manifests/kube-apiserver.yaml, /etc/kubernetes/manifests/kube-controller-manager.yaml, /etc/kubernetes/manifests/kube-scheduler.yaml)" if {
 	count(missing_r_cntr_k8_003110) == 0
 	not r_cntr_k8_003110
 }
@@ -2882,13 +2989,14 @@ default r_cntr_k8_003120 := false
 r_cntr_k8_003120 if {
 	count(missing_r_cntr_k8_003120) == 0
 	_files_owned(input.files["etcd_data"], "etcd", "etcd")
+	_has_paths(input.files["etcd_data"], ["/var/lib/etcd/member"])
 }
 
 default detail_r_cntr_k8_003120 := ""
 
 detail_r_cntr_k8_003120 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003120", concat(", ", missing_r_cntr_k8_003120)]) if count(missing_r_cntr_k8_003120) > 0
 
-detail_r_cntr_k8_003120 := "CNTR-K8-003120: check failed — every etcd_data file must be owned by etcd:etcd" if {
+detail_r_cntr_k8_003120 := "CNTR-K8-003120: check failed — every etcd_data file must be owned by etcd:etcd (must include /var/lib/etcd/member)" if {
 	count(missing_r_cntr_k8_003120) == 0
 	not r_cntr_k8_003120
 }
@@ -2917,13 +3025,14 @@ default r_cntr_k8_003130 := false
 r_cntr_k8_003130 if {
 	count(missing_r_cntr_k8_003130) == 0
 	_files_owned(input.files["control_plane_confs"], "root", "root")
+	_has_paths(input.files["control_plane_confs"], ["/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"])
 }
 
 default detail_r_cntr_k8_003130 := ""
 
 detail_r_cntr_k8_003130 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003130", concat(", ", missing_r_cntr_k8_003130)]) if count(missing_r_cntr_k8_003130) > 0
 
-detail_r_cntr_k8_003130 := "CNTR-K8-003130: check failed — every control_plane_confs file must be owned by root:root" if {
+detail_r_cntr_k8_003130 := "CNTR-K8-003130: check failed — every control_plane_confs file must be owned by root:root (must include /etc/kubernetes/admin.conf, /etc/kubernetes/scheduler.conf, /etc/kubernetes/controller-manager.conf)" if {
 	count(missing_r_cntr_k8_003130) == 0
 	not r_cntr_k8_003130
 }
@@ -3108,13 +3217,14 @@ default r_cntr_k8_003180 := false
 r_cntr_k8_003180 if {
 	count(missing_r_cntr_k8_003180) == 0
 	_files_owned(input.files["pki"], "root", "root")
+	_has_paths(input.files["pki"], ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
 }
 
 default detail_r_cntr_k8_003180 := ""
 
 detail_r_cntr_k8_003180 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003180", concat(", ", missing_r_cntr_k8_003180)]) if count(missing_r_cntr_k8_003180) > 0
 
-detail_r_cntr_k8_003180 := "CNTR-K8-003180: check failed — every pki file must be owned by root:root" if {
+detail_r_cntr_k8_003180 := "CNTR-K8-003180: check failed — every pki file must be owned by root:root (must include /etc/kubernetes/pki/ca.crt, /etc/kubernetes/pki/ca.key, /etc/kubernetes/pki/apiserver.crt, /etc/kubernetes/pki/apiserver.key)" if {
 	count(missing_r_cntr_k8_003180) == 0
 	not r_cntr_k8_003180
 }
@@ -3143,13 +3253,14 @@ default r_cntr_k8_003190 := false
 r_cntr_k8_003190 if {
 	count(missing_r_cntr_k8_003190) == 0
 	_files_mode_le(input.files["kubelet_kubeconfig"], "644")
+	_has_paths(input.files["kubelet_kubeconfig"], ["/etc/kubernetes/kubelet.conf"])
 }
 
 default detail_r_cntr_k8_003190 := ""
 
 detail_r_cntr_k8_003190 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003190", concat(", ", missing_r_cntr_k8_003190)]) if count(missing_r_cntr_k8_003190) > 0
 
-detail_r_cntr_k8_003190 := "CNTR-K8-003190: check failed — every kubelet_kubeconfig file must have mode 644 or more restrictive" if {
+detail_r_cntr_k8_003190 := "CNTR-K8-003190: check failed — every kubelet_kubeconfig file must have mode 644 or more restrictive (must include /etc/kubernetes/kubelet.conf)" if {
 	count(missing_r_cntr_k8_003190) == 0
 	not r_cntr_k8_003190
 }
@@ -3178,13 +3289,14 @@ default r_cntr_k8_003200 := false
 r_cntr_k8_003200 if {
 	count(missing_r_cntr_k8_003200) == 0
 	_files_owned(input.files["kubelet_kubeconfig"], "root", "root")
+	_has_paths(input.files["kubelet_kubeconfig"], ["/etc/kubernetes/kubelet.conf"])
 }
 
 default detail_r_cntr_k8_003200 := ""
 
 detail_r_cntr_k8_003200 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003200", concat(", ", missing_r_cntr_k8_003200)]) if count(missing_r_cntr_k8_003200) > 0
 
-detail_r_cntr_k8_003200 := "CNTR-K8-003200: check failed — every kubelet_kubeconfig file must be owned by root:root" if {
+detail_r_cntr_k8_003200 := "CNTR-K8-003200: check failed — every kubelet_kubeconfig file must be owned by root:root (must include /etc/kubernetes/kubelet.conf)" if {
 	count(missing_r_cntr_k8_003200) == 0
 	not r_cntr_k8_003200
 }
@@ -3283,13 +3395,14 @@ default r_cntr_k8_003230 := false
 r_cntr_k8_003230 if {
 	count(missing_r_cntr_k8_003230) == 0
 	_files_mode_le(input.files["kubelet_config_yaml"], "644")
+	_has_paths(input.files["kubelet_config_yaml"], ["/var/lib/kubelet/config.yaml"])
 }
 
 default detail_r_cntr_k8_003230 := ""
 
 detail_r_cntr_k8_003230 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003230", concat(", ", missing_r_cntr_k8_003230)]) if count(missing_r_cntr_k8_003230) > 0
 
-detail_r_cntr_k8_003230 := "CNTR-K8-003230: check failed — every kubelet_config_yaml file must have mode 644 or more restrictive" if {
+detail_r_cntr_k8_003230 := "CNTR-K8-003230: check failed — every kubelet_config_yaml file must have mode 644 or more restrictive (must include /var/lib/kubelet/config.yaml)" if {
 	count(missing_r_cntr_k8_003230) == 0
 	not r_cntr_k8_003230
 }
@@ -3318,13 +3431,14 @@ default r_cntr_k8_003240 := false
 r_cntr_k8_003240 if {
 	count(missing_r_cntr_k8_003240) == 0
 	_files_owned(input.files["kubelet_config_yaml"], "root", "root")
+	_has_paths(input.files["kubelet_config_yaml"], ["/var/lib/kubelet/config.yaml"])
 }
 
 default detail_r_cntr_k8_003240 := ""
 
 detail_r_cntr_k8_003240 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003240", concat(", ", missing_r_cntr_k8_003240)]) if count(missing_r_cntr_k8_003240) > 0
 
-detail_r_cntr_k8_003240 := "CNTR-K8-003240: check failed — every kubelet_config_yaml file must be owned by root:root" if {
+detail_r_cntr_k8_003240 := "CNTR-K8-003240: check failed — every kubelet_config_yaml file must be owned by root:root (must include /var/lib/kubelet/config.yaml)" if {
 	count(missing_r_cntr_k8_003240) == 0
 	not r_cntr_k8_003240
 }
@@ -3353,13 +3467,14 @@ default r_cntr_k8_003260 := false
 r_cntr_k8_003260 if {
 	count(missing_r_cntr_k8_003260) == 0
 	_files_mode_le(input.files["etcd_data"], "644")
+	_has_paths(input.files["etcd_data"], ["/var/lib/etcd/member"])
 }
 
 default detail_r_cntr_k8_003260 := ""
 
 detail_r_cntr_k8_003260 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003260", concat(", ", missing_r_cntr_k8_003260)]) if count(missing_r_cntr_k8_003260) > 0
 
-detail_r_cntr_k8_003260 := "CNTR-K8-003260: check failed — every etcd_data file must have mode 644 or more restrictive" if {
+detail_r_cntr_k8_003260 := "CNTR-K8-003260: check failed — every etcd_data file must have mode 644 or more restrictive (must include /var/lib/etcd/member)" if {
 	count(missing_r_cntr_k8_003260) == 0
 	not r_cntr_k8_003260
 }
@@ -3388,13 +3503,14 @@ default r_cntr_k8_003270 := false
 r_cntr_k8_003270 if {
 	count(missing_r_cntr_k8_003270) == 0
 	_files_mode_le(input.files["control_plane_confs"], "644")
+	_has_paths(input.files["control_plane_confs"], ["/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"])
 }
 
 default detail_r_cntr_k8_003270 := ""
 
 detail_r_cntr_k8_003270 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003270", concat(", ", missing_r_cntr_k8_003270)]) if count(missing_r_cntr_k8_003270) > 0
 
-detail_r_cntr_k8_003270 := "CNTR-K8-003270: check failed — every control_plane_confs file must have mode 644 or more restrictive" if {
+detail_r_cntr_k8_003270 := "CNTR-K8-003270: check failed — every control_plane_confs file must have mode 644 or more restrictive (must include /etc/kubernetes/admin.conf, /etc/kubernetes/scheduler.conf, /etc/kubernetes/controller-manager.conf)" if {
 	count(missing_r_cntr_k8_003270) == 0
 	not r_cntr_k8_003270
 }
@@ -3604,13 +3720,14 @@ default r_cntr_k8_003330 := false
 r_cntr_k8_003330 if {
 	count(missing_r_cntr_k8_003330) == 0
 	_files_suffix_mode_le(input.files["pki"], ".crt", "644")
+	_has_paths(input.files["pki"], ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
 }
 
 default detail_r_cntr_k8_003330 := ""
 
 detail_r_cntr_k8_003330 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003330", concat(", ", missing_r_cntr_k8_003330)]) if count(missing_r_cntr_k8_003330) > 0
 
-detail_r_cntr_k8_003330 := "CNTR-K8-003330: check failed — every .crt file under pki must have mode 644 or more restrictive" if {
+detail_r_cntr_k8_003330 := "CNTR-K8-003330: check failed — every .crt file under pki must have mode 644 or more restrictive (must include /etc/kubernetes/pki/ca.crt, /etc/kubernetes/pki/ca.key, /etc/kubernetes/pki/apiserver.crt, /etc/kubernetes/pki/apiserver.key)" if {
 	count(missing_r_cntr_k8_003330) == 0
 	not r_cntr_k8_003330
 }
@@ -3639,13 +3756,14 @@ default r_cntr_k8_003340 := false
 r_cntr_k8_003340 if {
 	count(missing_r_cntr_k8_003340) == 0
 	_files_suffix_mode_le(input.files["pki"], ".key", "600")
+	_has_paths(input.files["pki"], ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
 }
 
 default detail_r_cntr_k8_003340 := ""
 
 detail_r_cntr_k8_003340 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-003340", concat(", ", missing_r_cntr_k8_003340)]) if count(missing_r_cntr_k8_003340) > 0
 
-detail_r_cntr_k8_003340 := "CNTR-K8-003340: check failed — every .key file under pki must have mode 600 or more restrictive" if {
+detail_r_cntr_k8_003340 := "CNTR-K8-003340: check failed — every .key file under pki must have mode 600 or more restrictive (must include /etc/kubernetes/pki/ca.crt, /etc/kubernetes/pki/ca.key, /etc/kubernetes/pki/apiserver.crt, /etc/kubernetes/pki/apiserver.key)" if {
 	count(missing_r_cntr_k8_003340) == 0
 	not r_cntr_k8_003340
 }

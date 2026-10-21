@@ -236,6 +236,10 @@ green_fixture := {
 				"rancher/hardened-kubernetes:v1.30.2-rke2r1-build20240611",
 				"rancher/hardened-etcd:v3.5.13-k3s1-build20240531"
 			]
+		},
+		"collection_status": {
+			"namespace_resources": "ok",
+			"images": "ok"
 		}
 	}
 
@@ -800,5 +804,96 @@ test_differential_12_r_cntr_r2_001130 if {
 	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"pss_defaults": {"enforce": "Restricted"}}})
 	some f in fs
 	f.stig_id == "CNTR-R2-001130"
+	f.status == "Open"
+}
+
+test_differential_13_r_cntr_r2_000160 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth=true"]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000160"
+	f.status == "Open"
+}
+
+test_differential_14_r_cntr_r2_000160 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kube-apiserver-arg+": ["anonymous-auth=true"]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000160"
+	f.status == "Open"
+}
+
+test_differential_15_r_cntr_r2_000160 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth=false", "anonymous_auth=true"]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000160"
+	f.status == "Open"
+}
+
+test_differential_16_r_cntr_r2_000160 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth"]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000160"
+	f.status == "Open"
+}
+
+test_differential_17_r_cntr_r2_000160 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kube-apiserver-arg": ["anonymous-auth=false", "audit-log-maxage=30"]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000160"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_18_r_cntr_r2_000110 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kubelet-arg": "anonymous-auth=true"}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000110"
+	f.status == "Open"
+}
+
+test_differential_19_r_cntr_r2_000890 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"kubelet-arg": [{"streaming-connection-idle-timeout": "5m"}]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000890"
+	f.status == "Open"
+}
+
+test_differential_20_r_cntr_r2_000060 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"profile+": "cis"}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000060"
+	f.status == "Open"
+}
+
+test_differential_21_r_cntr_r2_000520 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"files": {"server": [{"name": "cred", "mode": "0700", "owner": "root", "group": "root"}, {"name": "db", "mode": "0700", "owner": "root", "group": "root"}, {"name": "tls", "mode": "0700", "owner": "root", "group": "root"}]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000520"
+	f.status == "Open"
+}
+
+test_differential_22_r_cntr_r2_000520 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"files": {"etc": [{"name": "config.yaml", "mode": "0600", "owner": "root", "group": "root"}, {"name": "config.yaml", "mode": "0644", "owner": "root", "group": "root"}]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000520"
+	f.status == "Open"
+}
+
+test_differential_23_r_cntr_r2_000520 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"files": {"bin": [{"name": "kubectl", "mode": 488, "owner": "root", "group": "root"}]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000520"
+	f.status == "Open"
+}
+
+test_differential_24_r_cntr_r2_000970 if {
+	fs := rke2.core.findings with input as json.remove(green_fixture, ["collection_status/namespace_resources"])
+	some f in fs
+	f.stig_id == "CNTR-R2-000970"
+	f.status == "Open"
+}
+
+test_differential_25_r_cntr_r2_001580 if {
+	fs := rke2.core.findings with input as json.remove(green_fixture, ["collection_status/images"])
+	some f in fs
+	f.stig_id == "CNTR-R2-001580"
 	f.status == "Open"
 }
