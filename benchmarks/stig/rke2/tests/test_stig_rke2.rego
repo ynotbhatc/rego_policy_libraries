@@ -718,3 +718,87 @@ test_r_cntr_r2_001620_fail if {
 	f.status == "Open"
 	contains(f.detail, "not attested")
 }
+
+test_differential_01_r_cntr_r2_000110 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"args": {"kubelet": {"anonymous_auth": "true"}}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000110"
+	f.status == "Open"
+}
+
+test_differential_02_r_cntr_r2_000160 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"args": {"kube_apiserver": {"anonymous-auth": ["false", "true"]}}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000160"
+	f.status == "Open"
+}
+
+test_differential_03_r_cntr_r2_000940 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"args": {"kubelet": {"protect-kernel-defaults": "True"}}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000940"
+	f.status == "Open"
+}
+
+test_differential_04_r_cntr_r2_000060 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"profile": ["cis"]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000060"
+	f.status == "Open"
+}
+
+test_differential_05_r_cntr_r2_000060 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"--profile": ""}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000060"
+	f.status == "Open"
+}
+
+test_differential_06_r_cntr_r2_000060 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"audit_policy": {"rules": [{"level": "None", "resources": [{"group": "", "resources": ["*"]}]}, {"level": "Metadata", "resources": [{"group": "", "resources": ["secrets"]}]}, {"level": "RequestResponse", "resources": [{"group": "", "resources": ["*"]}]}]}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000060"
+	f.status == "Open"
+}
+
+test_differential_07_r_cntr_r2_000520 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"write-kubeconfig-mode": 384}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000520"
+	f.status == "Open"
+}
+
+test_differential_08_r_cntr_r2_000520 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"config": {"write_kubeconfig_mode": "0644"}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000520"
+	f.status == "Open"
+}
+
+test_differential_09_r_cntr_r2_001270 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"args": {"kube_apiserver": {"authorization-mode": "Node,RBAC,AlwaysAllow"}}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-001270"
+	f.status == "Open"
+}
+
+test_differential_10_r_cntr_r2_001270 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"args": {"kube_apiserver": {"authorization-mode": "RBAC, Node"}}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-001270"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_11_r_cntr_r2_000890 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"args": {"kubelet": {"streaming-connection-idle-timeout": "0"}}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-000890"
+	f.status == "Open"
+}
+
+test_differential_12_r_cntr_r2_001130 if {
+	fs := rke2.core.findings with input as object.union(green_fixture, {"rke2": {"pss_defaults": {"enforce": "Restricted"}}})
+	some f in fs
+	f.stig_id == "CNTR-R2-001130"
+	f.status == "Open"
+}

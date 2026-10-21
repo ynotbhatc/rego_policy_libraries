@@ -16,9 +16,13 @@ Rules whose DISA check is a documentation review or human judgment read `input.a
 (Open "not attested" otherwise). Every finding carries `check_type` (machine / attestation /
 machine+attestation) and `detail`.
 
-Kubernetes input contract (one evaluation per control-plane node; kubelet facts are that node's):
+Kubernetes input contract (one evaluation per control-plane node; kubelet facts are that node's).
+Flag maps hold the flags as the component was started with them: name -> string value. Spellings are
+normalised the way the components do ("--a_b" == "a-b"); a flag present under two spellings, or given
+twice (collect it as a list), is ambiguous and fails its check. Booleans compare as the exact strings
+"true"/"false"; --feature-gates entries are parsed like Go's strconv.ParseBool and any unparseable entry
+for a checked gate fails. Config files are given as the component decodes them (typed YAML values).
   input.api_server.flags[<flag>]           : string value of --<flag> from the kube-apiserver manifest
-  input.api_server.admission_plugins       : list (--enable-admission-plugins, split)
   input.api_server.audit_policy            : parsed --audit-policy-file {apiVersion, kind, rules[{level, ...}]}
   input.api_server.encryption_config       : parsed --encryption-provider-config
                                              {resources: [{resources: ["secrets"], providers: ["aescbc", "identity"]}]}
@@ -48,7 +52,8 @@ Kubernetes input contract (one evaluation per control-plane node; kubelet facts 
   input.attest.<key>                       : organizational attestations (see each rule)
 
 RKE2 input contract (one evaluation per RKE2 server node):
-  input.rke2.config                        : /etc/rancher/rke2/config.yaml as parsed YAML
+  input.rke2.config                        : the EFFECTIVE RKE2 config: /etc/rancher/rke2/config.yaml merged with
+                                             config.yaml.d/*.yaml drop-ins in RKE2's order (same spelling rules)
   input.rke2.args.kube_apiserver / kube_controller_manager / kube_scheduler / kubelet
                                            : the component args RKE2 renders (ps -ef), flag -> value
   input.rke2.audit_policy                  : parsed audit policy file {rules[{level, resources[{group, resources}]}]}
@@ -153,8 +158,8 @@ def nest(dotted, val):
     return d
 
 
-def ref(obj, key):                      # input.<obj>["key"]
-    return f'input.{obj}["{key}"]'
+def ref(obj, key):                      # the one value of --key (normalised spelling); undefined if absent or ambiguous
+    return f'_flag(input.{obj}, "{key}")'
 
 
 def flag_eq(obj, name, val, bad=None):
@@ -187,7 +192,7 @@ def flag_set_not(obj, name, forbidden, green):
 
 
 def flag_absent(obj, name):
-    return R([[f"is_object(input.{obj})", f'object.get(input.{obj}, "{name}", null) == null']],
+    return R([[f"is_object(input.{obj})", f'_flag_count(input.{obj}, "{name}") == 0']],
              [obj.split(".")], nest(obj, {}), nest(obj, {name: "/set/by/test"}),
              f"{obj} --{name} must not be set")
 
@@ -210,8 +215,8 @@ def flag_has_all(obj, name, items, bad):
              f"{obj} --{name} must include {', '.join(items)}")
 
 
-def gate_not(obj, gate, val):          # feature gate <gate> must not be set to <val> in --feature-gates
-    return R([[f"is_object(input.{obj})", f'_gate_count(input.{obj}, "{gate}", "{val}") == 0']], [obj.split(".")],
+def gate_not(obj, gate, val):          # no --feature-gates entry for <gate> may parse to <val> or be unparseable
+    return R([[f"is_object(input.{obj})", f'_gate_never(input.{obj}, "{gate}", "{val}")']], [obj.split(".")],
              nest(obj, {}), nest(obj, {"feature-gates": f"{gate}={val}"}),
              f"{obj} --feature-gates must not set {gate}={val}")
 
@@ -251,7 +256,7 @@ def kcfg_duration_ge(path, dur, green, bad):
 
 def kgate_not(gate, val):              # kubelet config featureGates.<gate> must not be <val>
     return R([["is_object(input.kubelet.config)",
-               f'object.get(input.kubelet.config, ["featureGates", "{gate}"], null) != {json.dumps(val)}']],
+               f'object.get(input.kubelet.config, ["featureGates", "{gate}"], null) in {{null, {json.dumps(not val)}}}']],
              [("kubelet", "config")], {"kubelet": {"config": {}}}, {"kubelet": {"config": {"featureGates": {gate: val}}}},
              f"kubelet config featureGates.{gate} must not be {json.dumps(val)}")
 
@@ -340,14 +345,87 @@ _nonempty(s) if {
 	trim_space(s) != ""
 }
 
-# --feature-gates "A=true,B=false": how many entries set <name> to <val> (0 when the flag is unset)
-_gate_count(flags, name, val) := count([1 |
-	some kv in split(object.get(flags, "feature-gates", ""), ",")
+# ── flag lookup, robust to the ways one flag can be spelled ─────────────────────────────────────
+# Components normalise flag names (pflag WordSepNormalizeFunc: "_" == "-"), so "basic_auth_file",
+# "--basic-auth-file" and "basic-auth-file" are the same flag. A check reads a flag only when exactly one
+# key normalises to its name; two spellings (or a repeated flag collected as a list) leave it undefined,
+# so the check fails rather than passing on whichever spelling it happened to read.
+_norm(k) := replace(trim_left(k, "-"), "_", "-")
+
+_flag_count(flags, name) := count([k | some k in object.keys(flags); _norm(k) == name])
+
+_flag(flags, name) := flags[k] if {
+	ks := [k | some k in object.keys(flags); _norm(k) == name]
+	count(ks) == 1
+	k := ks[0]
+}
+
+_flag_or_empty(flags, name) := "" if _flag_count(flags, name) == 0
+
+_flag_or_empty(flags, name) := v if {
+	_flag_count(flags, name) == 1
+	v := _flag(flags, name)
+	is_string(v)
+}
+
+# comma-separated flag as a trimmed set ({} when unset; undefined when ambiguous or not a string)
+_csv_set(flags, name) := {trim_space(x) | some x in split(_flag_or_empty(flags, name), ","); trim_space(x) != ""}
+
+# --feature-gates "A=true,B=false": every entry for <name>, parsed the way Go's strconv.ParseBool does
+# ("1", "t", "T", "TRUE", "true", "True" are true); anything else is "invalid" and fails the check.
+_gate_vals(flags, name) := [_boolish(p) |
+	some kv in split(_flag_or_empty(flags, "feature-gates"), ",")
 	p := split(trim_space(kv), "=")
-	count(p) == 2
 	trim_space(p[0]) == name
-	lower(trim_space(p[1])) == val
-])
+]
+
+_boolish(p) := "true" if {
+	count(p) == 2
+	lower(trim_space(p[1])) in {"1", "t", "true"}
+}
+
+_boolish(p) := "false" if {
+	count(p) == 2
+	lower(trim_space(p[1])) in {"0", "f", "false"}
+}
+
+_boolish(p) := "invalid" if count(p) != 2
+
+_boolish(p) := "invalid" if {
+	count(p) == 2
+	not lower(trim_space(p[1])) in {"0", "f", "false", "1", "t", "true"}
+}
+
+# the gate is never set to <val> (and never unparseable): unset passes
+_gate_never(flags, name, val) if {
+	vals := _gate_vals(flags, name)
+	every v in vals {
+		v != val
+		v != "invalid"
+	}
+}
+
+# the gate is set, and every entry for it is <val>
+_gate_all(flags, name, val) if {
+	vals := _gate_vals(flags, name)
+	count(vals) > 0
+	every v in vals {
+		v == val
+	}
+}
+
+# EncryptionConfiguration is first-match per resource: the first entry naming secrets (or a wildcard
+# covering them) decides which provider writes Secrets.
+_first_secrets_entry(resources) := resources[i] if {
+	idx := [j | some j in numbers.range(0, count(resources) - 1); _covers_secrets(resources[j])]
+	count(idx) > 0
+	i := idx[0]
+}
+
+_covers_secrets(r) if {
+	some n in r.resources
+	n in {"secrets", "secrets.", "*.", "*.*"}
+}
 
 _list_has_all(csv, items) if {
 	have := {trim_space(x) | some x in split(csv, ",")}
@@ -528,7 +606,8 @@ K8_RULES = {
     "CNTR-K8-000220": flag_eq(CM, "use-service-account-credentials", "true"),
     "CNTR-K8-000270": fact([f'_nonempty({ref(AS, "authorization-mode")})',
                             f'_list_has_all({ref(AS, "authorization-mode")}, ["Node", "RBAC"])',
-                            f'not "AlwaysAllow" in split({ref(AS, "authorization-mode")}, ",")'],
+                            f'modes := _csv_set(input.{AS}, "authorization-mode")',
+                            'not "AlwaysAllow" in modes'],
                            [("api_server", "flags")], {"api_server": {"flags": {"authorization-mode": "Node,RBAC"}}},
                            {"api_server": {"flags": {"authorization-mode": "AlwaysAllow"}}},
                            "api_server --authorization-mode must include Node and RBAC and not AlwaysAllow"),
@@ -540,16 +619,22 @@ K8_RULES = {
     "CNTR-K8-000300": flag_eq(SC, "bind-address", "127.0.0.1", "0.0.0.0"),
     "CNTR-K8-000310": flag_eq(CM, "bind-address", "127.0.0.1", "0.0.0.0"),
     "CNTR-K8-000330": allof(flag_absent(KL, "read-only-port"), kcfg("readOnlyPort", 0, default=0, bad=10255)),
-    "CNTR-K8-000350": flag_set_not(AS, "secure-port", "0", "6443"),
+    "CNTR-K8-000350": fact([f'_nonempty({ref(AS, "secure-port")})', f'to_number({ref(AS, "secure-port")}) > 0',
+                            f'to_number({ref(AS, "secure-port")}) <= 65535'], [("api_server", "flags")],
+                           {"api_server": {"flags": {"secure-port": "6443"}}}, {"api_server": {"flags": {"secure-port": "00"}}},
+                           "api_server --secure-port must be set to a port other than 0"),
     "CNTR-K8-000360": flag_eq(AS, "anonymous-auth", "false"),
     "CNTR-K8-000370": allof(flag_absent(KL, "anonymous-auth"),
                             anyof(kcfg("authentication.anonymous.enabled", False),
-                                  kcfg("authentication_anonymous_enabled", False),
+                                  allof(R([['object.get(input.kubelet.config, ["authentication", "anonymous", "enabled"], null) == null']], [], {}, {}, ""),
+                                        kcfg("authentication_anonymous_enabled", False)),
                                   bad={"kubelet": {"config": {"authentication": {"anonymous": {"enabled": True}}}}},
                                   expect="kubelet config authentication.anonymous.enabled must be false")),
     "CNTR-K8-000380": anyof(allof(flag_absent(KL, "authorization-mode"), kcfg("authorization.mode", "Webhook")),
                             flag_eq(KL, "authorization-mode", "Webhook"),
-                            allof(flag_absent(KL, "authorization-mode"), kcfg("authorization_mode", "Webhook")),
+                            allof(flag_absent(KL, "authorization-mode"),
+                                  R([['object.get(input.kubelet.config, ["authorization", "mode"], null) == null']], [], {}, {}, ""),
+                                  kcfg("authorization_mode", "Webhook")),
                             bad={"kubelet": {"config": {"authorization": {"mode": "AlwaysAllow"}}}},
                             expect="kubelet authorization mode must be Webhook"),
     "CNTR-K8-000400": fact(["is_array(input.worker_nodes)", "count(input.worker_nodes) > 0",
@@ -577,9 +662,9 @@ K8_RULES = {
     # applicable only to Kubernetes 1.25 and older: newer clusters pass on the version fact alone
     "CNTR-K8-000460": anyof(R([["_k8s_minor > 25"]], [("cluster", "version")], GREEN_VERSION, {}, ""),
                             R([["_k8s_minor <= 25",
-                                "every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {\n\t\t_gate_count(c, \"DynamicKubeletConfig\", \"false\") > 0\n\t}",
+                                "every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {\n\t\t_gate_all(c, \"DynamicKubeletConfig\", \"false\")\n\t}",
                                 'object.get(input.kubelet.config, ["featureGates", "DynamicKubeletConfig"], null) == false',
-                                'object.get(input.kubelet.flags, "feature-gates", null) == null']], [], {}, {}, ""),
+                                '_flag_count(input.kubelet.flags, "feature-gates") == 0']], [], {}, {}, ""),
                             bad={"cluster": {"version": "v1.25.4"}},
                             expect="Kubernetes 1.25 and older: DynamicKubeletConfig=false in every manifest and the kubelet config"),
     "CNTR-K8-000470": gate_not(AS, "AllAlpha", "true"),
@@ -614,12 +699,12 @@ K8_RULES = {
     "CNTR-K8-001161": attest("sensitive_data_only_in_secrets",
                              "manual review of all resources and ConfigMaps found no sensitive information outside Secrets or an external store"),
     "CNTR-K8-001162": allof(flag_set(AS, "encryption-provider-config", "/etc/kubernetes/enc/encryption-config.yaml"),
-                            fact(["some r in input.api_server.encryption_config.resources",
-                                  '"secrets" in r.resources', 'r.providers[0] != "identity"'],
+                            fact(["first := _first_secrets_entry(input.api_server.encryption_config.resources)",
+                                  'is_string(first.providers[0])', 'first.providers[0] != "identity"'],
                                  [("api_server", "encryption_config")],
                                  {"api_server": {"encryption_config": {"resources": [{"resources": ["secrets"], "providers": ["aescbc", "identity"]}]}}},
                                  {"api_server": {"encryption_config": {"resources": [{"resources": ["secrets"], "providers": ["identity", "aescbc"]}]}}},
-                                 "the encryption config must cover secrets with a non-identity first provider"),
+                                 "the first encryption-config entry matching secrets (secrets, secrets., *., *.*) must not start with identity"),
                             expect="--encryption-provider-config set; secrets covered; identity not the first provider"),
     "CNTR-K8-001163": attest("secret_access_need_to_know",
                              "read access to Secrets and Secrets attached to workloads are limited to documented requirements"),
@@ -647,13 +732,17 @@ K8_RULES = {
     "CNTR-K8-001550": flag_set(ET, "peer-key-file", "/etc/kubernetes/pki/etcd/peer.key"),
     "CNTR-K8-001620": allof(flag_absent(KL, "protect-kernel-defaults"), kcfg("protectKernelDefaults", True)),
     # The check text is a pre-1.25 check; the plugin is on by default since 1.21, so 1.25+ passes unless disabled.
-    "CNTR-K8-002000": anyof(R([['"ValidatingAdmissionWebhook" in input.api_server.admission_plugins']], [("api_server", "flags")],
-                              {"api_server": {"admission_plugins": ["NodeRestriction", "ValidatingAdmissionWebhook", "PodSecurity"]}}, {}, ""),
+    "CNTR-K8-002000": anyof(R([[f'enabled := _csv_set(input.{AS}, "enable-admission-plugins")',
+                                '"ValidatingAdmissionWebhook" in enabled',
+                                f'disabled := _csv_set(input.{AS}, "disable-admission-plugins")',
+                                'not "ValidatingAdmissionWebhook" in disabled']], [("api_server", "flags")],
+                              {"api_server": {"flags": {"enable-admission-plugins": "NodeRestriction,ValidatingAdmissionWebhook,PodSecurity"}}}, {}, ""),
                             R([["_k8s_minor >= 25",
-                                f'not "ValidatingAdmissionWebhook" in split(object.get(input.{AS}, "disable-admission-plugins", ""), ",")']],
+                                f'disabled := _csv_set(input.{AS}, "disable-admission-plugins")',
+                                'not "ValidatingAdmissionWebhook" in disabled']],
                               [], {}, {}, ""),
-                            bad={"api_server": {"admission_plugins": ["NodeRestriction"],
-                                                "flags": {"disable-admission-plugins": "ValidatingAdmissionWebhook"}}},
+                            bad={"api_server": {"flags": {"enable-admission-plugins": "NodeRestriction",
+                                                          "disable-admission-plugins": "ValidatingAdmissionWebhook"}}},
                             expect="ValidatingAdmissionWebhook must be enabled (in --enable-admission-plugins, or 1.25+ and not disabled)"),
     # PodSecurity feature gate: GA in 1.25 and removed in 1.28, so an absent gate is not a finding; =false is.
     "CNTR-K8-002001": allof(gate_not(AS, "PodSecurity", "false"), gate_not(CM, "PodSecurity", "false"),
@@ -668,7 +757,10 @@ K8_RULES = {
     "CNTR-K8-002011": allof(flag_set(AS, "admission-control-config-file", "/etc/kubernetes/psa/admission.yaml"),
                             attest("pod_security_admission_least_privilege",
                                    "the PodSecurity admission configuration represents least privilege")),
-    "CNTR-K8-002600": flag_set_not(AS, "request-timeout", "0", "60s"),
+    "CNTR-K8-002600": fact([f'_nonempty({ref(AS, "request-timeout")})', f'time.parse_duration_ns({ref(AS, "request-timeout")}) > 0'],
+                           [("api_server", "flags")], {"api_server": {"flags": {"request-timeout": "60s"}}},
+                           {"api_server": {"flags": {"request-timeout": "0s"}}},
+                           "api_server --request-timeout must be set to a non-zero duration"),
     "CNTR-K8-002620": flag_absent(AS, "basic-auth-file"),
     "CNTR-K8-002630": flag_absent(AS, "token-auth-file"),
     "CNTR-K8-002640": allof(flag_set(AS, "kubelet-client-certificate", "/etc/kubernetes/pki/apiserver-kubelet-client.crt"),
@@ -754,7 +846,7 @@ R2_000520_LINES = [
     f'_named_mode_le({F}.server, {{"cred", "db", "tls"}}, "700")',
     f'_named_mode_le({F}.server, {{"manifests", "logs"}}, "750")',
     f'_named_mode_le({F}.server, {{"token"}}, "600")',
-    'input.rke2.config["write-kubeconfig-mode"] in {"0600", "600"}',
+    '_flag(input.rke2.config, "write-kubeconfig-mode") in {"0600", "600"}',
 ]
 
 RKE2_RULES = {
@@ -765,16 +857,16 @@ RKE2_RULES = {
     "CNTR-R2-000030": flag_eq(RCM, "use-service-account-credentials", "true"),
     "CNTR-R2-000060": allof(flag_set(RA, "audit-policy-file", "/etc/rancher/rke2/audit-policy.yaml"),
                             flag_eq(RA, "audit-log-mode", "blocking-strict", "batch"),
-                            fact(['input.rke2.config.profile in {"cis", "cis-1.23", "cis-1.6"}'], [("rke2", "config")],
+                            fact(['_flag(input.rke2.config, "profile") in {"cis", "cis-1.23", "cis-1.6"}'], [("rke2", "config")],
                                  {"rke2": {"config": {"profile": "cis"}}}, {"rke2": {"config": {"profile": ""}}},
                                  "config.yaml profile must be cis (or cis-1.23 / cis-1.6)"),
-                            fact(["some r1 in input.rke2.audit_policy.rules", 'r1.level == "Metadata"',
+                            fact(["r1 := input.rke2.audit_policy.rules[0]", 'r1.level == "Metadata"',
                                   "some g1 in r1.resources", 'g1.group == ""', '"secrets" in g1.resources',
-                                  "some r2 in input.rke2.audit_policy.rules", 'r2.level == "RequestResponse"',
+                                  "r2 := input.rke2.audit_policy.rules[1]", 'r2.level == "RequestResponse"',
                                   "some g2 in r2.resources", '"*" in g2.resources'],
                                  [("rke2", "audit_policy")], {"rke2": {"audit_policy": RKE2_AUDIT_POLICY}},
                                  {"rke2": {"audit_policy": {"rules": [{"level": "None"}]}}},
-                                 "the audit policy must log secrets at Metadata and all resources at RequestResponse"),
+                                 "audit policy rule 1 logs secrets at Metadata, rule 2 all resources at RequestResponse (first match wins)"),
                             expect="--audit-policy-file set, --audit-log-mode blocking-strict, profile cis, audit policy as DISA lists"),
     "CNTR-R2-000100": flag_eq(RCM, "bind-address", "127.0.0.1", "0.0.0.0"),
     "CNTR-R2-000110": flag_eq(RKL, "anonymous-auth", "false"),
@@ -804,7 +896,7 @@ RKE2_RULES = {
                                  "default, kube-public and kube-node-lease hold nothing but service/kubernetes"),
                             attest("kube_system_resources_approved",
                                    "kube-system holds only the RKE2 system components DISA lists or ISSO-approved services")),
-    "CNTR-R2-001130": fact(['_nonempty(input.rke2.config["pod-security-admission-config-file"])',
+    "CNTR-R2-001130": fact(['_nonempty(_flag(input.rke2.config, "pod-security-admission-config-file"))',
                             "is_object(input.rke2.pss_defaults)",
                             "every k, v in " + json.dumps(PSS_DEFAULTS) + " {\n\t\tinput.rke2.pss_defaults[k] == v\n\t}"],
                            [("rke2", "config"), ("rke2", "pss_defaults")],
@@ -825,11 +917,90 @@ RKE2_RULES = {
                              "every node runs a supported RKE2 release and every running image is the latest patched version"),
 }
 
+# ── parser-differential probes: inputs a collector can legitimately produce where the component and a
+# naive check would read different values. Each is (stig_id, Rego input expression, expected status);
+# `G` is the green fixture. Ambiguous, duplicated, conflicting or oddly typed evidence must never pass.
+def U(patch):
+    return f"object.union(green_fixture, {json.dumps(patch)})"
+
+
+def RM(paths, patch=None):
+    base = f"json.remove(green_fixture, {json.dumps(paths)})"
+    return base if patch is None else f"object.union({base}, {json.dumps(patch)})"
+
+
+K8_PROBES = [
+    ("CNTR-K8-000360", U({"api_server": {"flags": {"anonymous_auth": "true"}}}), "Open"),        # two spellings
+    ("CNTR-K8-000360", U({"api_server": {"flags": {"--anonymous-auth": "true"}}}), "Open"),
+    ("CNTR-K8-000360", U({"api_server": {"flags": {"anonymous-auth": ["false", "true"]}}}), "Open"),  # repeated flag
+    ("CNTR-K8-000360", U({"api_server": {"flags": {"anonymous-auth": False}}}), "Open"),        # non-string
+    ("CNTR-K8-002620", U({"api_server": {"flags": {"basic_auth_file": "/etc/kubernetes/basic.csv"}}}), "Open"),
+    ("CNTR-K8-002630", U({"api_server": {"flags": {"--token-auth-file": "/etc/kubernetes/tokens.csv"}}}), "Open"),
+    ("CNTR-K8-000850", U({"kubelet": {"flags": {"hostname_override": "node-x"}}}), "Open"),
+    ("CNTR-K8-000270", U({"api_server": {"flags": {"authorization-mode": "Node,RBAC, AlwaysAllow"}}}), "Open"),
+    ("CNTR-K8-000470", U({"api_server": {"flags": {"feature-gates": "AllAlpha=1"}}}), "Open"),   # ParseBool true
+    ("CNTR-K8-000470", U({"api_server": {"flags": {"feature-gates": "AllAlpha=false,AllAlpha=true"}}}), "Open"),
+    ("CNTR-K8-000470", U({"api_server": {"flags": {"feature-gates": "AllAlpha"}}}), "Open"),     # unparseable
+    ("CNTR-K8-000470", U({"api_server": {"flags": {"feature-gates": "AllAlpha=false"}}}), "Not_a_Finding"),
+    ("CNTR-K8-002001", U({"scheduler": {"flags": {"feature-gates": "PodSecurity=f"}}}), "Open"),
+    ("CNTR-K8-002001", U({"kubelet": {"config": {"featureGates": {"PodSecurity": "false"}}}}), "Open"),
+    ("CNTR-K8-000450", U({"kubelet": {"config": {"featureGates": {"DynamicAuditing": "true"}}}}), "Open"),
+    ("CNTR-K8-000460", U({"cluster": {"version": "v1.25.4"},
+                          "api_server": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}},
+                          "controller_manager": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}},
+                          "scheduler": {"flags": {"feature-gates": "DynamicKubeletConfig=false,DynamicKubeletConfig=true"}},
+                          "kubelet": {"config": {"featureGates": {"DynamicKubeletConfig": False}}}}), "Open"),
+    ("CNTR-K8-000460", U({"cluster": {"version": "v1.25.4"},
+                          "api_server": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}},
+                          "controller_manager": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}},
+                          "scheduler": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}},
+                          "kubelet": {"config": {"featureGates": {"DynamicKubeletConfig": False}}}}), "Not_a_Finding"),
+    ("CNTR-K8-000370", U({"kubelet": {"config": {"authentication": {"anonymous": {"enabled": True}},
+                                                 "authentication_anonymous_enabled": False}}}), "Open"),
+    ("CNTR-K8-000370", RM(["kubelet/config/authentication"], {"kubelet": {"config": {"authentication_anonymous_enabled": False}}}),
+     "Not_a_Finding"),
+    ("CNTR-K8-000380", U({"kubelet": {"config": {"authorization": {"mode": "AlwaysAllow"}, "authorization_mode": "Webhook"}}}), "Open"),
+    ("CNTR-K8-000330", U({"kubelet": {"config": {"readOnlyPort": "0"}}}), "Open"),
+    ("CNTR-K8-000350", U({"api_server": {"flags": {"secure-port": "0"}}}), "Open"),
+    ("CNTR-K8-002600", U({"api_server": {"flags": {"request-timeout": "0s"}}}), "Open"),
+    ("CNTR-K8-002600", U({"api_server": {"flags": {"request_timeout": "0"}}}), "Open"),
+    ("CNTR-K8-001162", U({"api_server": {"encryption_config": {"resources": [
+        {"resources": ["secrets"], "providers": ["identity", "aescbc"]},
+        {"resources": ["secrets"], "providers": ["aescbc", "identity"]}]}}}), "Open"),           # first match wins
+    ("CNTR-K8-001162", U({"api_server": {"encryption_config": {"resources": [
+        {"resources": ["*."], "providers": ["identity"]},
+        {"resources": ["secrets"], "providers": ["aescbc"]}]}}}), "Open"),                      # wildcard first
+    ("CNTR-K8-001162", U({"api_server": {"encryption_config": {"resources": [
+        {"resources": ["configmaps"], "providers": ["identity"]},
+        {"resources": ["secrets"], "providers": ["aescbc", "identity"]}]}}}), "Not_a_Finding"),
+    ("CNTR-K8-002000", U({"api_server": {"flags": {"disable-admission-plugins": "NodeRestriction, ValidatingAdmissionWebhook"}}}), "Open"),
+    ("CNTR-K8-000890", U({"files": {"kubelet_config_file": [{"path": "/var/lib/kubelet/config.yaml", "mode": "0460",
+                                                             "owner": "root", "group": "root"}]}}), "Open"),
+    ("CNTR-K8-000890", U({"files": {"kubelet_config_file": [{"path": "/var/lib/kubelet/config.yaml", "mode": 420,
+                                                             "owner": "root", "group": "root"}]}}), "Open"),
+]
+
+RKE2_PROBES = [
+    ("CNTR-R2-000110", U({"rke2": {"args": {"kubelet": {"anonymous_auth": "true"}}}}), "Open"),
+    ("CNTR-R2-000160", U({"rke2": {"args": {"kube_apiserver": {"anonymous-auth": ["false", "true"]}}}}), "Open"),
+    ("CNTR-R2-000940", U({"rke2": {"args": {"kubelet": {"protect-kernel-defaults": "True"}}}}), "Open"),
+    ("CNTR-R2-000060", U({"rke2": {"config": {"profile": ["cis"]}}}), "Open"),
+    ("CNTR-R2-000060", U({"rke2": {"config": {"--profile": ""}}}), "Open"),
+    ("CNTR-R2-000060", U({"rke2": {"audit_policy": {"rules": [
+        {"level": "None", "resources": [{"group": "", "resources": ["*"]}]}] + RKE2_AUDIT_POLICY["rules"]}}}), "Open"),
+    ("CNTR-R2-000520", U({"rke2": {"config": {"write-kubeconfig-mode": 384}}}), "Open"),
+    ("CNTR-R2-000520", U({"rke2": {"config": {"write_kubeconfig_mode": "0644"}}}), "Open"),
+    ("CNTR-R2-001270", U({"rke2": {"args": {"kube_apiserver": {"authorization-mode": "Node,RBAC,AlwaysAllow"}}}}), "Open"),
+    ("CNTR-R2-001270", U({"rke2": {"args": {"kube_apiserver": {"authorization-mode": "RBAC, Node"}}}}), "Not_a_Finding"),
+    ("CNTR-R2-000890", U({"rke2": {"args": {"kubelet": {"streaming-connection-idle-timeout": "0"}}}}), "Open"),
+    ("CNTR-R2-001130", U({"rke2": {"pss_defaults": {"enforce": "Restricted"}}}), "Open"),
+]
+
 PLATFORMS = {
     "kubernetes": {"pkg": "kubernetes", "platform": "Kubernetes", "domains": "[kubernetes, container]",
-                   "full": True, "rules": K8_RULES, "main": "kubernetes"},
+                   "full": True, "rules": K8_RULES, "main": "kubernetes", "probes": K8_PROBES},
     "rke2": {"pkg": "rke2", "platform": "Rancher Government Solutions RKE2", "domains": "[kubernetes, container]",
-             "full": True, "rules": RKE2_RULES},
+             "full": True, "rules": RKE2_RULES, "probes": RKE2_PROBES},
 }
 
 
@@ -1063,6 +1234,11 @@ def emit(key, cfg):
          "test_main_partial_input_is_not_compliant if {",
          f'\trep := data.stig.{pkg}.main.compliance_report with input as {{"cluster": {{"version": "v1.30.2"}}}}',
          "\trep.compliant == false", "\trep.facts_supplied == true", "}", ""] + tests
+    for n, (sid, expr, want) in enumerate(cfg.get("probes", []), 1):
+        if sid not in rules:
+            raise SystemExit(f"{key}: probe for unknown rule {sid}")
+        t += [f"test_differential_{n:02d}_{rego_ident(sid)} if {{", f"\tfs := {pkg}.core.findings with input as {expr}",
+              "\tsome f in fs", f'\tf.stig_id == "{sid}"', f'\tf.status == "{want}"', "}", ""]
     open(os.path.join(outdir, "tests", f"test_stig_{key}.rego"), "w").write("\n".join(t).rstrip() + "\n")
     if "main" not in cfg:   # kubernetes keeps its hand-maintained bridge
         mmeta = "\n".join(meta[:1] + [f'# title: "Wrapper exposing the {cfg["platform"]} STIG compliance report at the package path"'] + meta[2:])

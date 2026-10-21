@@ -25,9 +25,13 @@ package stig.kubernetes.core
 # FAIL-CLOSED: a rule whose evidence is absent is Open with detail
 # "<STIG-ID>: evidence missing — <field> not collected"; attestations are Open until
 # input.attest.<key> is true. Input contract: gen_k8s.py docstring, summarised here:
-#   Kubernetes input contract (one evaluation per control-plane node; kubelet facts are that node's):
+#   Kubernetes input contract (one evaluation per control-plane node; kubelet facts are that node's).
+#   Flag maps hold the flags as the component was started with them: name -> string value. Spellings are
+#   normalised the way the components do ("--a_b" == "a-b"); a flag present under two spellings, or given
+#   twice (collect it as a list), is ambiguous and fails its check. Booleans compare as the exact strings
+#   "true"/"false"; --feature-gates entries are parsed like Go's strconv.ParseBool and any unparseable entry
+#   for a checked gate fails. Config files are given as the component decodes them (typed YAML values).
 #     input.api_server.flags[<flag>]           : string value of --<flag> from the kube-apiserver manifest
-#     input.api_server.admission_plugins       : list (--enable-admission-plugins, split)
 #     input.api_server.audit_policy            : parsed --audit-policy-file {apiVersion, kind, rules[{level, ...}]}
 #     input.api_server.encryption_config       : parsed --encryption-provider-config
 #                                                {resources: [{resources: ["secrets"], providers: ["aescbc", "identity"]}]}
@@ -68,14 +72,87 @@ _nonempty(s) if {
 	trim_space(s) != ""
 }
 
-# --feature-gates "A=true,B=false": how many entries set <name> to <val> (0 when the flag is unset)
-_gate_count(flags, name, val) := count([1 |
-	some kv in split(object.get(flags, "feature-gates", ""), ",")
+# ── flag lookup, robust to the ways one flag can be spelled ─────────────────────────────────────
+# Components normalise flag names (pflag WordSepNormalizeFunc: "_" == "-"), so "basic_auth_file",
+# "--basic-auth-file" and "basic-auth-file" are the same flag. A check reads a flag only when exactly one
+# key normalises to its name; two spellings (or a repeated flag collected as a list) leave it undefined,
+# so the check fails rather than passing on whichever spelling it happened to read.
+_norm(k) := replace(trim_left(k, "-"), "_", "-")
+
+_flag_count(flags, name) := count([k | some k in object.keys(flags); _norm(k) == name])
+
+_flag(flags, name) := flags[k] if {
+	ks := [k | some k in object.keys(flags); _norm(k) == name]
+	count(ks) == 1
+	k := ks[0]
+}
+
+_flag_or_empty(flags, name) := "" if _flag_count(flags, name) == 0
+
+_flag_or_empty(flags, name) := v if {
+	_flag_count(flags, name) == 1
+	v := _flag(flags, name)
+	is_string(v)
+}
+
+# comma-separated flag as a trimmed set ({} when unset; undefined when ambiguous or not a string)
+_csv_set(flags, name) := {trim_space(x) | some x in split(_flag_or_empty(flags, name), ","); trim_space(x) != ""}
+
+# --feature-gates "A=true,B=false": every entry for <name>, parsed the way Go's strconv.ParseBool does
+# ("1", "t", "T", "TRUE", "true", "True" are true); anything else is "invalid" and fails the check.
+_gate_vals(flags, name) := [_boolish(p) |
+	some kv in split(_flag_or_empty(flags, "feature-gates"), ",")
 	p := split(trim_space(kv), "=")
-	count(p) == 2
 	trim_space(p[0]) == name
-	lower(trim_space(p[1])) == val
-])
+]
+
+_boolish(p) := "true" if {
+	count(p) == 2
+	lower(trim_space(p[1])) in {"1", "t", "true"}
+}
+
+_boolish(p) := "false" if {
+	count(p) == 2
+	lower(trim_space(p[1])) in {"0", "f", "false"}
+}
+
+_boolish(p) := "invalid" if count(p) != 2
+
+_boolish(p) := "invalid" if {
+	count(p) == 2
+	not lower(trim_space(p[1])) in {"0", "f", "false", "1", "t", "true"}
+}
+
+# the gate is never set to <val> (and never unparseable): unset passes
+_gate_never(flags, name, val) if {
+	vals := _gate_vals(flags, name)
+	every v in vals {
+		v != val
+		v != "invalid"
+	}
+}
+
+# the gate is set, and every entry for it is <val>
+_gate_all(flags, name, val) if {
+	vals := _gate_vals(flags, name)
+	count(vals) > 0
+	every v in vals {
+		v == val
+	}
+}
+
+# EncryptionConfiguration is first-match per resource: the first entry naming secrets (or a wildcard
+# covering them) decides which provider writes Secrets.
+_first_secrets_entry(resources) := resources[i] if {
+	idx := [j | some j in numbers.range(0, count(resources) - 1); _covers_secrets(resources[j])]
+	count(idx) > 0
+	i := idx[0]
+}
+
+_covers_secrets(r) if {
+	some n in r.resources
+	n in {"secrets", "secrets.", "*.", "*.*"}
+}
 
 _list_has_all(csv, items) if {
 	have := {trim_space(x) | some x in split(csv, ",")}
@@ -213,7 +290,7 @@ default r_cntr_k8_000150 := false
 
 r_cntr_k8_000150 if {
 	count(missing_r_cntr_k8_000150) == 0
-	input.controller_manager.flags["tls-min-version"] in {"VersionTLS12", "VersionTLS13"}
+	_flag(input.controller_manager.flags, "tls-min-version") in {"VersionTLS12", "VersionTLS13"}
 }
 
 default detail_r_cntr_k8_000150 := ""
@@ -248,7 +325,7 @@ default r_cntr_k8_000160 := false
 
 r_cntr_k8_000160 if {
 	count(missing_r_cntr_k8_000160) == 0
-	input.scheduler.flags["tls-min-version"] in {"VersionTLS12", "VersionTLS13"}
+	_flag(input.scheduler.flags, "tls-min-version") in {"VersionTLS12", "VersionTLS13"}
 }
 
 default detail_r_cntr_k8_000160 := ""
@@ -283,7 +360,7 @@ default r_cntr_k8_000170 := false
 
 r_cntr_k8_000170 if {
 	count(missing_r_cntr_k8_000170) == 0
-	input.api_server.flags["tls-min-version"] in {"VersionTLS12", "VersionTLS13"}
+	_flag(input.api_server.flags, "tls-min-version") in {"VersionTLS12", "VersionTLS13"}
 }
 
 default detail_r_cntr_k8_000170 := ""
@@ -318,7 +395,7 @@ default r_cntr_k8_000180 := false
 
 r_cntr_k8_000180 if {
 	count(missing_r_cntr_k8_000180) == 0
-	input.etcd.flags["auto-tls"] == "false"
+	_flag(input.etcd.flags, "auto-tls") == "false"
 }
 
 default detail_r_cntr_k8_000180 := ""
@@ -353,7 +430,7 @@ default r_cntr_k8_000190 := false
 
 r_cntr_k8_000190 if {
 	count(missing_r_cntr_k8_000190) == 0
-	input.etcd.flags["peer-auto-tls"] == "false"
+	_flag(input.etcd.flags, "peer-auto-tls") == "false"
 }
 
 default detail_r_cntr_k8_000190 := ""
@@ -388,7 +465,7 @@ default r_cntr_k8_000220 := false
 
 r_cntr_k8_000220 if {
 	count(missing_r_cntr_k8_000220) == 0
-	input.controller_manager.flags["use-service-account-credentials"] == "true"
+	_flag(input.controller_manager.flags, "use-service-account-credentials") == "true"
 }
 
 default detail_r_cntr_k8_000220 := ""
@@ -423,9 +500,10 @@ default r_cntr_k8_000270 := false
 
 r_cntr_k8_000270 if {
 	count(missing_r_cntr_k8_000270) == 0
-	_nonempty(input.api_server.flags["authorization-mode"])
-	_list_has_all(input.api_server.flags["authorization-mode"], ["Node", "RBAC"])
-	not "AlwaysAllow" in split(input.api_server.flags["authorization-mode"], ",")
+	_nonempty(_flag(input.api_server.flags, "authorization-mode"))
+	_list_has_all(_flag(input.api_server.flags, "authorization-mode"), ["Node", "RBAC"])
+	modes := _csv_set(input.api_server.flags, "authorization-mode")
+	not "AlwaysAllow" in modes
 }
 
 default detail_r_cntr_k8_000270 := ""
@@ -495,7 +573,7 @@ default r_cntr_k8_000300 := false
 
 r_cntr_k8_000300 if {
 	count(missing_r_cntr_k8_000300) == 0
-	input.scheduler.flags["bind-address"] == "127.0.0.1"
+	_flag(input.scheduler.flags, "bind-address") == "127.0.0.1"
 }
 
 default detail_r_cntr_k8_000300 := ""
@@ -530,7 +608,7 @@ default r_cntr_k8_000310 := false
 
 r_cntr_k8_000310 if {
 	count(missing_r_cntr_k8_000310) == 0
-	input.controller_manager.flags["bind-address"] == "127.0.0.1"
+	_flag(input.controller_manager.flags, "bind-address") == "127.0.0.1"
 }
 
 default detail_r_cntr_k8_000310 := ""
@@ -566,7 +644,7 @@ default r_cntr_k8_000330 := false
 r_cntr_k8_000330 if {
 	count(missing_r_cntr_k8_000330) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "read-only-port", null) == null
+	_flag_count(input.kubelet.flags, "read-only-port") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["readOnlyPort"], 0) == 0
 }
@@ -603,15 +681,16 @@ default r_cntr_k8_000350 := false
 
 r_cntr_k8_000350 if {
 	count(missing_r_cntr_k8_000350) == 0
-	_nonempty(input.api_server.flags["secure-port"])
-	input.api_server.flags["secure-port"] != "0"
+	_nonempty(_flag(input.api_server.flags, "secure-port"))
+	to_number(_flag(input.api_server.flags, "secure-port")) > 0
+	to_number(_flag(input.api_server.flags, "secure-port")) <= 65535
 }
 
 default detail_r_cntr_k8_000350 := ""
 
 detail_r_cntr_k8_000350 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-000350", concat(", ", missing_r_cntr_k8_000350)]) if count(missing_r_cntr_k8_000350) > 0
 
-detail_r_cntr_k8_000350 := "CNTR-K8-000350: check failed — api_server.flags --secure-port must be set and not \"0\"" if {
+detail_r_cntr_k8_000350 := "CNTR-K8-000350: check failed — api_server --secure-port must be set to a port other than 0" if {
 	count(missing_r_cntr_k8_000350) == 0
 	not r_cntr_k8_000350
 }
@@ -639,7 +718,7 @@ default r_cntr_k8_000360 := false
 
 r_cntr_k8_000360 if {
 	count(missing_r_cntr_k8_000360) == 0
-	input.api_server.flags["anonymous-auth"] == "false"
+	_flag(input.api_server.flags, "anonymous-auth") == "false"
 }
 
 default detail_r_cntr_k8_000360 := ""
@@ -675,7 +754,7 @@ default r_cntr_k8_000370 := false
 r_cntr_k8_000370 if {
 	count(missing_r_cntr_k8_000370) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "anonymous-auth", null) == null
+	_flag_count(input.kubelet.flags, "anonymous-auth") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authentication", "anonymous", "enabled"], null) == false
 }
@@ -683,7 +762,8 @@ r_cntr_k8_000370 if {
 r_cntr_k8_000370 if {
 	count(missing_r_cntr_k8_000370) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "anonymous-auth", null) == null
+	_flag_count(input.kubelet.flags, "anonymous-auth") == 0
+	object.get(input.kubelet.config, ["authentication", "anonymous", "enabled"], null) == null
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authentication_anonymous_enabled"], null) == false
 }
@@ -721,20 +801,21 @@ default r_cntr_k8_000380 := false
 r_cntr_k8_000380 if {
 	count(missing_r_cntr_k8_000380) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "authorization-mode", null) == null
+	_flag_count(input.kubelet.flags, "authorization-mode") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authorization", "mode"], null) == "Webhook"
 }
 
 r_cntr_k8_000380 if {
 	count(missing_r_cntr_k8_000380) == 0
-	input.kubelet.flags["authorization-mode"] == "Webhook"
+	_flag(input.kubelet.flags, "authorization-mode") == "Webhook"
 }
 
 r_cntr_k8_000380 if {
 	count(missing_r_cntr_k8_000380) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "authorization-mode", null) == null
+	_flag_count(input.kubelet.flags, "authorization-mode") == 0
+	object.get(input.kubelet.config, ["authorization", "mode"], null) == null
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["authorization_mode"], null) == "Webhook"
 }
@@ -927,7 +1008,7 @@ r_cntr_k8_000440 if {
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["staticPodPath"], null) == null
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "pod-manifest-path", null) == null
+	_flag_count(input.kubelet.flags, "pod-manifest-path") == 0
 }
 
 default detail_r_cntr_k8_000440 := ""
@@ -963,11 +1044,11 @@ default r_cntr_k8_000450 := false
 r_cntr_k8_000450 if {
 	count(missing_r_cntr_k8_000450) == 0
 	is_object(input.api_server.flags)
-	_gate_count(input.api_server.flags, "DynamicAuditing", "true") == 0
+	_gate_never(input.api_server.flags, "DynamicAuditing", "true")
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "feature-gates", null) == null
+	_flag_count(input.kubelet.flags, "feature-gates") == 0
 	is_object(input.kubelet.config)
-	object.get(input.kubelet.config, ["featureGates", "DynamicAuditing"], null) != true
+	object.get(input.kubelet.config, ["featureGates", "DynamicAuditing"], null) in {null, false}
 }
 
 default detail_r_cntr_k8_000450 := ""
@@ -1009,10 +1090,10 @@ r_cntr_k8_000460 if {
 	count(missing_r_cntr_k8_000460) == 0
 	_k8s_minor <= 25
 	every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {
-		_gate_count(c, "DynamicKubeletConfig", "false") > 0
+		_gate_all(c, "DynamicKubeletConfig", "false")
 	}
 	object.get(input.kubelet.config, ["featureGates", "DynamicKubeletConfig"], null) == false
-	object.get(input.kubelet.flags, "feature-gates", null) == null
+	_flag_count(input.kubelet.flags, "feature-gates") == 0
 }
 
 default detail_r_cntr_k8_000460 := ""
@@ -1048,7 +1129,7 @@ default r_cntr_k8_000470 := false
 r_cntr_k8_000470 if {
 	count(missing_r_cntr_k8_000470) == 0
 	is_object(input.api_server.flags)
-	_gate_count(input.api_server.flags, "AllAlpha", "true") == 0
+	_gate_never(input.api_server.flags, "AllAlpha", "true")
 }
 
 default detail_r_cntr_k8_000470 := ""
@@ -1083,7 +1164,7 @@ default r_cntr_k8_000610 := false
 
 r_cntr_k8_000610 if {
 	count(missing_r_cntr_k8_000610) == 0
-	_nonempty(input.api_server.flags["audit-log-path"])
+	_nonempty(_flag(input.api_server.flags, "audit-log-path"))
 }
 
 default detail_r_cntr_k8_000610 := ""
@@ -1118,7 +1199,7 @@ default r_cntr_k8_000700 := false
 
 r_cntr_k8_000700 if {
 	count(missing_r_cntr_k8_000700) == 0
-	_nonempty(input.api_server.flags["audit-policy-file"])
+	_nonempty(_flag(input.api_server.flags, "audit-policy-file"))
 	startswith(input.api_server.audit_policy.apiVersion, "audit.k8s.io/")
 	input.api_server.audit_policy.kind == "Policy"
 	count(input.api_server.audit_policy.rules) > 0
@@ -1160,7 +1241,7 @@ default r_cntr_k8_000850 := false
 r_cntr_k8_000850 if {
 	count(missing_r_cntr_k8_000850) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "hostname-override", null) == null
+	_flag_count(input.kubelet.flags, "hostname-override") == 0
 }
 
 default detail_r_cntr_k8_000850 := ""
@@ -1335,7 +1416,7 @@ default r_cntr_k8_000910 := false
 
 r_cntr_k8_000910 if {
 	count(missing_r_cntr_k8_000910) == 0
-	input.controller_manager.flags["profiling"] == "false"
+	_flag(input.controller_manager.flags, "profiling") == "false"
 }
 
 default detail_r_cntr_k8_000910 := ""
@@ -1618,10 +1699,10 @@ default r_cntr_k8_001162 := false
 
 r_cntr_k8_001162 if {
 	count(missing_r_cntr_k8_001162) == 0
-	_nonempty(input.api_server.flags["encryption-provider-config"])
-	some r in input.api_server.encryption_config.resources
-	"secrets" in r.resources
-	r.providers[0] != "identity"
+	_nonempty(_flag(input.api_server.flags, "encryption-provider-config"))
+	first := _first_secrets_entry(input.api_server.encryption_config.resources)
+	is_string(first.providers[0])
+	first.providers[0] != "identity"
 }
 
 default detail_r_cntr_k8_001162 := ""
@@ -1692,7 +1773,7 @@ default r_cntr_k8_001300 := false
 r_cntr_k8_001300 if {
 	count(missing_r_cntr_k8_001300) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "streaming-connection-idle-timeout", null) == null
+	_flag_count(input.kubelet.flags, "streaming-connection-idle-timeout") == 0
 	_nonempty(object.get(input.kubelet.config, ["streamingConnectionIdleTimeout"], ""))
 	_duration_ge(object.get(input.kubelet.config, ["streamingConnectionIdleTimeout"], ""), "5m")
 }
@@ -1764,8 +1845,8 @@ default r_cntr_k8_001400 := false
 
 r_cntr_k8_001400 if {
 	count(missing_r_cntr_k8_001400) == 0
-	_nonempty(input.api_server.flags["tls-cipher-suites"])
-	_list_has_all(input.api_server.flags["tls-cipher-suites"], ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
+	_nonempty(_flag(input.api_server.flags, "tls-cipher-suites"))
+	_list_has_all(_flag(input.api_server.flags, "tls-cipher-suites"), ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
 }
 
 default detail_r_cntr_k8_001400 := ""
@@ -1800,7 +1881,7 @@ default r_cntr_k8_001410 := false
 
 r_cntr_k8_001410 if {
 	count(missing_r_cntr_k8_001410) == 0
-	_nonempty(input.api_server.flags["client-ca-file"])
+	_nonempty(_flag(input.api_server.flags, "client-ca-file"))
 }
 
 default detail_r_cntr_k8_001410 := ""
@@ -1836,7 +1917,7 @@ default r_cntr_k8_001420 := false
 r_cntr_k8_001420 if {
 	count(missing_r_cntr_k8_001420) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "client-ca-file", null) == null
+	_flag_count(input.kubelet.flags, "client-ca-file") == 0
 	_nonempty(object.get(input.kubelet.config, ["authentication", "x509", "clientCAFile"], ""))
 }
 
@@ -1872,7 +1953,7 @@ default r_cntr_k8_001430 := false
 
 r_cntr_k8_001430 if {
 	count(missing_r_cntr_k8_001430) == 0
-	_nonempty(input.controller_manager.flags["root-ca-file"])
+	_nonempty(_flag(input.controller_manager.flags, "root-ca-file"))
 }
 
 default detail_r_cntr_k8_001430 := ""
@@ -1907,8 +1988,8 @@ default r_cntr_k8_001440 := false
 
 r_cntr_k8_001440 if {
 	count(missing_r_cntr_k8_001440) == 0
-	_nonempty(input.api_server.flags["tls-cert-file"])
-	_nonempty(input.api_server.flags["tls-private-key-file"])
+	_nonempty(_flag(input.api_server.flags, "tls-cert-file"))
+	_nonempty(_flag(input.api_server.flags, "tls-private-key-file"))
 }
 
 default detail_r_cntr_k8_001440 := ""
@@ -1943,7 +2024,7 @@ default r_cntr_k8_001450 := false
 
 r_cntr_k8_001450 if {
 	count(missing_r_cntr_k8_001450) == 0
-	input.etcd.flags["client-cert-auth"] == "true"
+	_flag(input.etcd.flags, "client-cert-auth") == "true"
 }
 
 default detail_r_cntr_k8_001450 := ""
@@ -1979,7 +2060,7 @@ default r_cntr_k8_001460 := false
 r_cntr_k8_001460 if {
 	count(missing_r_cntr_k8_001460) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "tls-private-key-file", null) == null
+	_flag_count(input.kubelet.flags, "tls-private-key-file") == 0
 	_nonempty(object.get(input.kubelet.config, ["tlsPrivateKeyFile"], ""))
 }
 
@@ -2016,7 +2097,7 @@ default r_cntr_k8_001470 := false
 r_cntr_k8_001470 if {
 	count(missing_r_cntr_k8_001470) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "tls-cert-file", null) == null
+	_flag_count(input.kubelet.flags, "tls-cert-file") == 0
 	_nonempty(object.get(input.kubelet.config, ["tlsCertFile"], ""))
 }
 
@@ -2052,7 +2133,7 @@ default r_cntr_k8_001480 := false
 
 r_cntr_k8_001480 if {
 	count(missing_r_cntr_k8_001480) == 0
-	input.etcd.flags["peer-client-cert-auth"] == "true"
+	_flag(input.etcd.flags, "peer-client-cert-auth") == "true"
 }
 
 default detail_r_cntr_k8_001480 := ""
@@ -2087,7 +2168,7 @@ default r_cntr_k8_001490 := false
 
 r_cntr_k8_001490 if {
 	count(missing_r_cntr_k8_001490) == 0
-	_nonempty(input.etcd.flags["key-file"])
+	_nonempty(_flag(input.etcd.flags, "key-file"))
 }
 
 default detail_r_cntr_k8_001490 := ""
@@ -2122,7 +2203,7 @@ default r_cntr_k8_001500 := false
 
 r_cntr_k8_001500 if {
 	count(missing_r_cntr_k8_001500) == 0
-	_nonempty(input.etcd.flags["cert-file"])
+	_nonempty(_flag(input.etcd.flags, "cert-file"))
 }
 
 default detail_r_cntr_k8_001500 := ""
@@ -2157,7 +2238,7 @@ default r_cntr_k8_001510 := false
 
 r_cntr_k8_001510 if {
 	count(missing_r_cntr_k8_001510) == 0
-	_nonempty(input.api_server.flags["etcd-cafile"])
+	_nonempty(_flag(input.api_server.flags, "etcd-cafile"))
 }
 
 default detail_r_cntr_k8_001510 := ""
@@ -2192,7 +2273,7 @@ default r_cntr_k8_001520 := false
 
 r_cntr_k8_001520 if {
 	count(missing_r_cntr_k8_001520) == 0
-	_nonempty(input.api_server.flags["etcd-certfile"])
+	_nonempty(_flag(input.api_server.flags, "etcd-certfile"))
 }
 
 default detail_r_cntr_k8_001520 := ""
@@ -2227,7 +2308,7 @@ default r_cntr_k8_001530 := false
 
 r_cntr_k8_001530 if {
 	count(missing_r_cntr_k8_001530) == 0
-	_nonempty(input.api_server.flags["etcd-keyfile"])
+	_nonempty(_flag(input.api_server.flags, "etcd-keyfile"))
 }
 
 default detail_r_cntr_k8_001530 := ""
@@ -2262,7 +2343,7 @@ default r_cntr_k8_001540 := false
 
 r_cntr_k8_001540 if {
 	count(missing_r_cntr_k8_001540) == 0
-	_nonempty(input.etcd.flags["peer-cert-file"])
+	_nonempty(_flag(input.etcd.flags, "peer-cert-file"))
 }
 
 default detail_r_cntr_k8_001540 := ""
@@ -2297,7 +2378,7 @@ default r_cntr_k8_001550 := false
 
 r_cntr_k8_001550 if {
 	count(missing_r_cntr_k8_001550) == 0
-	_nonempty(input.etcd.flags["peer-key-file"])
+	_nonempty(_flag(input.etcd.flags, "peer-key-file"))
 }
 
 default detail_r_cntr_k8_001550 := ""
@@ -2333,7 +2414,7 @@ default r_cntr_k8_001620 := false
 r_cntr_k8_001620 if {
 	count(missing_r_cntr_k8_001620) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "protect-kernel-defaults", null) == null
+	_flag_count(input.kubelet.flags, "protect-kernel-defaults") == 0
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["protectKernelDefaults"], null) == true
 }
@@ -2370,13 +2451,17 @@ default r_cntr_k8_002000 := false
 
 r_cntr_k8_002000 if {
 	count(missing_r_cntr_k8_002000) == 0
-	"ValidatingAdmissionWebhook" in input.api_server.admission_plugins
+	enabled := _csv_set(input.api_server.flags, "enable-admission-plugins")
+	"ValidatingAdmissionWebhook" in enabled
+	disabled := _csv_set(input.api_server.flags, "disable-admission-plugins")
+	not "ValidatingAdmissionWebhook" in disabled
 }
 
 r_cntr_k8_002000 if {
 	count(missing_r_cntr_k8_002000) == 0
 	_k8s_minor >= 25
-	not "ValidatingAdmissionWebhook" in split(object.get(input.api_server.flags, "disable-admission-plugins", ""), ",")
+	disabled := _csv_set(input.api_server.flags, "disable-admission-plugins")
+	not "ValidatingAdmissionWebhook" in disabled
 }
 
 default detail_r_cntr_k8_002000 := ""
@@ -2412,15 +2497,15 @@ default r_cntr_k8_002001 := false
 r_cntr_k8_002001 if {
 	count(missing_r_cntr_k8_002001) == 0
 	is_object(input.api_server.flags)
-	_gate_count(input.api_server.flags, "PodSecurity", "false") == 0
+	_gate_never(input.api_server.flags, "PodSecurity", "false")
 	is_object(input.controller_manager.flags)
-	_gate_count(input.controller_manager.flags, "PodSecurity", "false") == 0
+	_gate_never(input.controller_manager.flags, "PodSecurity", "false")
 	is_object(input.scheduler.flags)
-	_gate_count(input.scheduler.flags, "PodSecurity", "false") == 0
+	_gate_never(input.scheduler.flags, "PodSecurity", "false")
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "feature-gates", null) == null
+	_flag_count(input.kubelet.flags, "feature-gates") == 0
 	is_object(input.kubelet.config)
-	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) != false
+	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) in {null, true}
 }
 
 default detail_r_cntr_k8_002001 := ""
@@ -2507,7 +2592,7 @@ default r_cntr_k8_002011 := false
 
 r_cntr_k8_002011 if {
 	count(missing_r_cntr_k8_002011) == 0
-	_nonempty(input.api_server.flags["admission-control-config-file"])
+	_nonempty(_flag(input.api_server.flags, "admission-control-config-file"))
 	input.attest.pod_security_admission_least_privilege == true
 }
 
@@ -2543,15 +2628,15 @@ default r_cntr_k8_002600 := false
 
 r_cntr_k8_002600 if {
 	count(missing_r_cntr_k8_002600) == 0
-	_nonempty(input.api_server.flags["request-timeout"])
-	input.api_server.flags["request-timeout"] != "0"
+	_nonempty(_flag(input.api_server.flags, "request-timeout"))
+	time.parse_duration_ns(_flag(input.api_server.flags, "request-timeout")) > 0
 }
 
 default detail_r_cntr_k8_002600 := ""
 
 detail_r_cntr_k8_002600 := sprintf("%s: evidence missing — %s not collected", ["CNTR-K8-002600", concat(", ", missing_r_cntr_k8_002600)]) if count(missing_r_cntr_k8_002600) > 0
 
-detail_r_cntr_k8_002600 := "CNTR-K8-002600: check failed — api_server.flags --request-timeout must be set and not \"0\"" if {
+detail_r_cntr_k8_002600 := "CNTR-K8-002600: check failed — api_server --request-timeout must be set to a non-zero duration" if {
 	count(missing_r_cntr_k8_002600) == 0
 	not r_cntr_k8_002600
 }
@@ -2580,7 +2665,7 @@ default r_cntr_k8_002620 := false
 r_cntr_k8_002620 if {
 	count(missing_r_cntr_k8_002620) == 0
 	is_object(input.api_server.flags)
-	object.get(input.api_server.flags, "basic-auth-file", null) == null
+	_flag_count(input.api_server.flags, "basic-auth-file") == 0
 }
 
 default detail_r_cntr_k8_002620 := ""
@@ -2616,7 +2701,7 @@ default r_cntr_k8_002630 := false
 r_cntr_k8_002630 if {
 	count(missing_r_cntr_k8_002630) == 0
 	is_object(input.api_server.flags)
-	object.get(input.api_server.flags, "token-auth-file", null) == null
+	_flag_count(input.api_server.flags, "token-auth-file") == 0
 }
 
 default detail_r_cntr_k8_002630 := ""
@@ -2651,8 +2736,8 @@ default r_cntr_k8_002640 := false
 
 r_cntr_k8_002640 if {
 	count(missing_r_cntr_k8_002640) == 0
-	_nonempty(input.api_server.flags["kubelet-client-certificate"])
-	_nonempty(input.api_server.flags["kubelet-client-key"])
+	_nonempty(_flag(input.api_server.flags, "kubelet-client-certificate"))
+	_nonempty(_flag(input.api_server.flags, "kubelet-client-key"))
 }
 
 default detail_r_cntr_k8_002640 := ""
@@ -2949,7 +3034,7 @@ default r_cntr_k8_003160 := false
 r_cntr_k8_003160 if {
 	count(missing_r_cntr_k8_003160) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "client-ca-file", null) == null
+	_flag_count(input.kubelet.flags, "client-ca-file") == 0
 	_files_mode_le(input.files["kubelet_client_ca"], "644")
 }
 
@@ -2986,7 +3071,7 @@ default r_cntr_k8_003170 := false
 r_cntr_k8_003170 if {
 	count(missing_r_cntr_k8_003170) == 0
 	is_object(input.kubelet.flags)
-	object.get(input.kubelet.flags, "client-ca-file", null) == null
+	_flag_count(input.kubelet.flags, "client-ca-file") == 0
 	_files_owned(input.files["kubelet_client_ca"], "root", "root")
 }
 
@@ -3337,7 +3422,7 @@ default r_cntr_k8_003280 := false
 
 r_cntr_k8_003280 if {
 	count(missing_r_cntr_k8_003280) == 0
-	_nonempty(input.api_server.flags["audit-policy-file"])
+	_nonempty(_flag(input.api_server.flags, "audit-policy-file"))
 	input.api_server.audit_policy.kind == "Policy"
 	count(input.api_server.audit_policy.rules) > 0
 }
@@ -3374,8 +3459,8 @@ default r_cntr_k8_003290 := false
 
 r_cntr_k8_003290 if {
 	count(missing_r_cntr_k8_003290) == 0
-	_nonempty(input.api_server.flags["audit-log-maxsize"])
-	to_number(input.api_server.flags["audit-log-maxsize"]) >= 100
+	_nonempty(_flag(input.api_server.flags, "audit-log-maxsize"))
+	to_number(_flag(input.api_server.flags, "audit-log-maxsize")) >= 100
 }
 
 default detail_r_cntr_k8_003290 := ""
@@ -3410,8 +3495,8 @@ default r_cntr_k8_003300 := false
 
 r_cntr_k8_003300 if {
 	count(missing_r_cntr_k8_003300) == 0
-	_nonempty(input.api_server.flags["audit-log-maxbackup"])
-	to_number(input.api_server.flags["audit-log-maxbackup"]) >= 10
+	_nonempty(_flag(input.api_server.flags, "audit-log-maxbackup"))
+	to_number(_flag(input.api_server.flags, "audit-log-maxbackup")) >= 10
 }
 
 default detail_r_cntr_k8_003300 := ""
@@ -3446,8 +3531,8 @@ default r_cntr_k8_003310 := false
 
 r_cntr_k8_003310 if {
 	count(missing_r_cntr_k8_003310) == 0
-	_nonempty(input.api_server.flags["audit-log-maxage"])
-	to_number(input.api_server.flags["audit-log-maxage"]) >= 30
+	_nonempty(_flag(input.api_server.flags, "audit-log-maxage"))
+	to_number(_flag(input.api_server.flags, "audit-log-maxage")) >= 30
 }
 
 default detail_r_cntr_k8_003310 := ""
@@ -3482,8 +3567,8 @@ default r_cntr_k8_003320 := false
 
 r_cntr_k8_003320 if {
 	count(missing_r_cntr_k8_003320) == 0
-	_nonempty(input.api_server.flags["audit-log-path"])
-	startswith(input.api_server.flags["audit-log-path"], "/")
+	_nonempty(_flag(input.api_server.flags, "audit-log-path"))
+	startswith(_flag(input.api_server.flags, "audit-log-path"), "/")
 }
 
 default detail_r_cntr_k8_003320 := ""

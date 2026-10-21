@@ -39,6 +39,7 @@ green_fixture := {
 				"etcd-cafile": "/etc/kubernetes/pki/etcd/ca.crt",
 				"etcd-certfile": "/etc/kubernetes/pki/apiserver-etcd-client.crt",
 				"etcd-keyfile": "/etc/kubernetes/pki/apiserver-etcd-client.key",
+				"enable-admission-plugins": "NodeRestriction,ValidatingAdmissionWebhook,PodSecurity",
 				"admission-control-config-file": "/etc/kubernetes/psa/admission.yaml",
 				"request-timeout": "60s",
 				"kubelet-client-certificate": "/etc/kubernetes/pki/apiserver-kubelet-client.crt",
@@ -68,12 +69,7 @@ green_fixture := {
 						]
 					}
 				]
-			},
-			"admission_plugins": [
-				"NodeRestriction",
-				"ValidatingAdmissionWebhook",
-				"PodSecurity"
-			]
+			}
 		},
 		"etcd": {
 			"flags": {
@@ -544,7 +540,7 @@ test_r_cntr_k8_000350_pass if {
 }
 
 test_r_cntr_k8_000350_fail if {
-	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"secure-port": "0"}}})
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"secure-port": "00"}}})
 	some f in fs
 	f.stig_id == "CNTR-K8-000350"
 	f.status == "Open"
@@ -1592,7 +1588,7 @@ test_r_cntr_k8_002000_pass if {
 }
 
 test_r_cntr_k8_002000_fail if {
-	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"admission_plugins": ["NodeRestriction"], "flags": {"disable-admission-plugins": "ValidatingAdmissionWebhook"}}})
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"enable-admission-plugins": "NodeRestriction", "disable-admission-plugins": "ValidatingAdmissionWebhook"}}})
 	some f in fs
 	f.stig_id == "CNTR-K8-002000"
 	f.status == "Open"
@@ -1684,7 +1680,7 @@ test_r_cntr_k8_002600_pass if {
 }
 
 test_r_cntr_k8_002600_fail if {
-	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"request-timeout": "0"}}})
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"request-timeout": "0s"}}})
 	some f in fs
 	f.stig_id == "CNTR-K8-002600"
 	f.status == "Open"
@@ -2341,4 +2337,214 @@ test_r_cntr_k8_003340_evidence_missing if {
 	f.stig_id == "CNTR-K8-003340"
 	f.status == "Open"
 	contains(f.detail, "evidence missing")
+}
+
+test_differential_01_r_cntr_k8_000360 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"anonymous_auth": "true"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000360"
+	f.status == "Open"
+}
+
+test_differential_02_r_cntr_k8_000360 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"--anonymous-auth": "true"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000360"
+	f.status == "Open"
+}
+
+test_differential_03_r_cntr_k8_000360 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"anonymous-auth": ["false", "true"]}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000360"
+	f.status == "Open"
+}
+
+test_differential_04_r_cntr_k8_000360 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"anonymous-auth": false}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000360"
+	f.status == "Open"
+}
+
+test_differential_05_r_cntr_k8_002620 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"basic_auth_file": "/etc/kubernetes/basic.csv"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002620"
+	f.status == "Open"
+}
+
+test_differential_06_r_cntr_k8_002630 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"--token-auth-file": "/etc/kubernetes/tokens.csv"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002630"
+	f.status == "Open"
+}
+
+test_differential_07_r_cntr_k8_000850 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"kubelet": {"flags": {"hostname_override": "node-x"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000850"
+	f.status == "Open"
+}
+
+test_differential_08_r_cntr_k8_000270 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"authorization-mode": "Node,RBAC, AlwaysAllow"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000270"
+	f.status == "Open"
+}
+
+test_differential_09_r_cntr_k8_000470 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"feature-gates": "AllAlpha=1"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000470"
+	f.status == "Open"
+}
+
+test_differential_10_r_cntr_k8_000470 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"feature-gates": "AllAlpha=false,AllAlpha=true"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000470"
+	f.status == "Open"
+}
+
+test_differential_11_r_cntr_k8_000470 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"feature-gates": "AllAlpha"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000470"
+	f.status == "Open"
+}
+
+test_differential_12_r_cntr_k8_000470 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"feature-gates": "AllAlpha=false"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000470"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_13_r_cntr_k8_002001 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"scheduler": {"flags": {"feature-gates": "PodSecurity=f"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002001"
+	f.status == "Open"
+}
+
+test_differential_14_r_cntr_k8_002001 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"kubelet": {"config": {"featureGates": {"PodSecurity": "false"}}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002001"
+	f.status == "Open"
+}
+
+test_differential_15_r_cntr_k8_000450 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"kubelet": {"config": {"featureGates": {"DynamicAuditing": "true"}}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000450"
+	f.status == "Open"
+}
+
+test_differential_16_r_cntr_k8_000460 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "v1.25.4"}, "api_server": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}}, "controller_manager": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}}, "scheduler": {"flags": {"feature-gates": "DynamicKubeletConfig=false,DynamicKubeletConfig=true"}}, "kubelet": {"config": {"featureGates": {"DynamicKubeletConfig": false}}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000460"
+	f.status == "Open"
+}
+
+test_differential_17_r_cntr_k8_000460 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"cluster": {"version": "v1.25.4"}, "api_server": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}}, "controller_manager": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}}, "scheduler": {"flags": {"feature-gates": "DynamicKubeletConfig=false"}}, "kubelet": {"config": {"featureGates": {"DynamicKubeletConfig": false}}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000460"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_18_r_cntr_k8_000370 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"kubelet": {"config": {"authentication": {"anonymous": {"enabled": true}}, "authentication_anonymous_enabled": false}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000370"
+	f.status == "Open"
+}
+
+test_differential_19_r_cntr_k8_000370 if {
+	fs := kubernetes.core.findings with input as object.union(json.remove(green_fixture, ["kubelet/config/authentication"]), {"kubelet": {"config": {"authentication_anonymous_enabled": false}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000370"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_20_r_cntr_k8_000380 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"kubelet": {"config": {"authorization": {"mode": "AlwaysAllow"}, "authorization_mode": "Webhook"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000380"
+	f.status == "Open"
+}
+
+test_differential_21_r_cntr_k8_000330 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"kubelet": {"config": {"readOnlyPort": "0"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000330"
+	f.status == "Open"
+}
+
+test_differential_22_r_cntr_k8_000350 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"secure-port": "0"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000350"
+	f.status == "Open"
+}
+
+test_differential_23_r_cntr_k8_002600 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"request-timeout": "0s"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002600"
+	f.status == "Open"
+}
+
+test_differential_24_r_cntr_k8_002600 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"request_timeout": "0"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002600"
+	f.status == "Open"
+}
+
+test_differential_25_r_cntr_k8_001162 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"encryption_config": {"resources": [{"resources": ["secrets"], "providers": ["identity", "aescbc"]}, {"resources": ["secrets"], "providers": ["aescbc", "identity"]}]}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-001162"
+	f.status == "Open"
+}
+
+test_differential_26_r_cntr_k8_001162 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"encryption_config": {"resources": [{"resources": ["*."], "providers": ["identity"]}, {"resources": ["secrets"], "providers": ["aescbc"]}]}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-001162"
+	f.status == "Open"
+}
+
+test_differential_27_r_cntr_k8_001162 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"encryption_config": {"resources": [{"resources": ["configmaps"], "providers": ["identity"]}, {"resources": ["secrets"], "providers": ["aescbc", "identity"]}]}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-001162"
+	f.status == "Not_a_Finding"
+}
+
+test_differential_28_r_cntr_k8_002000 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"api_server": {"flags": {"disable-admission-plugins": "NodeRestriction, ValidatingAdmissionWebhook"}}})
+	some f in fs
+	f.stig_id == "CNTR-K8-002000"
+	f.status == "Open"
+}
+
+test_differential_29_r_cntr_k8_000890 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"kubelet_config_file": [{"path": "/var/lib/kubelet/config.yaml", "mode": "0460", "owner": "root", "group": "root"}]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000890"
+	f.status == "Open"
+}
+
+test_differential_30_r_cntr_k8_000890 if {
+	fs := kubernetes.core.findings with input as object.union(green_fixture, {"files": {"kubelet_config_file": [{"path": "/var/lib/kubelet/config.yaml", "mode": 420, "owner": "root", "group": "root"}]}})
+	some f in fs
+	f.stig_id == "CNTR-K8-000890"
+	f.status == "Open"
 }

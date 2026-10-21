@@ -26,7 +26,8 @@ package stig.rke2.core
 # "<STIG-ID>: evidence missing — <field> not collected"; attestations are Open until
 # input.attest.<key> is true. Input contract: gen_k8s.py docstring, summarised here:
 #   RKE2 input contract (one evaluation per RKE2 server node):
-#     input.rke2.config                        : /etc/rancher/rke2/config.yaml as parsed YAML
+#     input.rke2.config                        : the EFFECTIVE RKE2 config: /etc/rancher/rke2/config.yaml merged with
+#                                                config.yaml.d/*.yaml drop-ins in RKE2's order (same spelling rules)
 #     input.rke2.args.kube_apiserver / kube_controller_manager / kube_scheduler / kubelet
 #                                              : the component args RKE2 renders (ps -ef), flag -> value
 #     input.rke2.audit_policy                  : parsed audit policy file {rules[{level, resources[{group, resources}]}]}
@@ -48,14 +49,87 @@ _nonempty(s) if {
 	trim_space(s) != ""
 }
 
-# --feature-gates "A=true,B=false": how many entries set <name> to <val> (0 when the flag is unset)
-_gate_count(flags, name, val) := count([1 |
-	some kv in split(object.get(flags, "feature-gates", ""), ",")
+# ── flag lookup, robust to the ways one flag can be spelled ─────────────────────────────────────
+# Components normalise flag names (pflag WordSepNormalizeFunc: "_" == "-"), so "basic_auth_file",
+# "--basic-auth-file" and "basic-auth-file" are the same flag. A check reads a flag only when exactly one
+# key normalises to its name; two spellings (or a repeated flag collected as a list) leave it undefined,
+# so the check fails rather than passing on whichever spelling it happened to read.
+_norm(k) := replace(trim_left(k, "-"), "_", "-")
+
+_flag_count(flags, name) := count([k | some k in object.keys(flags); _norm(k) == name])
+
+_flag(flags, name) := flags[k] if {
+	ks := [k | some k in object.keys(flags); _norm(k) == name]
+	count(ks) == 1
+	k := ks[0]
+}
+
+_flag_or_empty(flags, name) := "" if _flag_count(flags, name) == 0
+
+_flag_or_empty(flags, name) := v if {
+	_flag_count(flags, name) == 1
+	v := _flag(flags, name)
+	is_string(v)
+}
+
+# comma-separated flag as a trimmed set ({} when unset; undefined when ambiguous or not a string)
+_csv_set(flags, name) := {trim_space(x) | some x in split(_flag_or_empty(flags, name), ","); trim_space(x) != ""}
+
+# --feature-gates "A=true,B=false": every entry for <name>, parsed the way Go's strconv.ParseBool does
+# ("1", "t", "T", "TRUE", "true", "True" are true); anything else is "invalid" and fails the check.
+_gate_vals(flags, name) := [_boolish(p) |
+	some kv in split(_flag_or_empty(flags, "feature-gates"), ",")
 	p := split(trim_space(kv), "=")
-	count(p) == 2
 	trim_space(p[0]) == name
-	lower(trim_space(p[1])) == val
-])
+]
+
+_boolish(p) := "true" if {
+	count(p) == 2
+	lower(trim_space(p[1])) in {"1", "t", "true"}
+}
+
+_boolish(p) := "false" if {
+	count(p) == 2
+	lower(trim_space(p[1])) in {"0", "f", "false"}
+}
+
+_boolish(p) := "invalid" if count(p) != 2
+
+_boolish(p) := "invalid" if {
+	count(p) == 2
+	not lower(trim_space(p[1])) in {"0", "f", "false", "1", "t", "true"}
+}
+
+# the gate is never set to <val> (and never unparseable): unset passes
+_gate_never(flags, name, val) if {
+	vals := _gate_vals(flags, name)
+	every v in vals {
+		v != val
+		v != "invalid"
+	}
+}
+
+# the gate is set, and every entry for it is <val>
+_gate_all(flags, name, val) if {
+	vals := _gate_vals(flags, name)
+	count(vals) > 0
+	every v in vals {
+		v == val
+	}
+}
+
+# EncryptionConfiguration is first-match per resource: the first entry naming secrets (or a wildcard
+# covering them) decides which provider writes Secrets.
+_first_secrets_entry(resources) := resources[i] if {
+	idx := [j | some j in numbers.range(0, count(resources) - 1); _covers_secrets(resources[j])]
+	count(idx) > 0
+	i := idx[0]
+}
+
+_covers_secrets(r) if {
+	some n in r.resources
+	n in {"secrets", "secrets.", "*.", "*.*"}
+}
 
 _list_has_all(csv, items) if {
 	have := {trim_space(x) | some x in split(csv, ",")}
@@ -193,15 +267,15 @@ default r_cntr_r2_000010 := false
 
 r_cntr_r2_000010 if {
 	count(missing_r_cntr_r2_000010) == 0
-	input.rke2.args.kube_apiserver["tls-min-version"] in {"VersionTLS12", "VersionTLS13"}
-	input.rke2.args.kube_controller_manager["tls-min-version"] in {"VersionTLS12", "VersionTLS13"}
-	input.rke2.args.kube_scheduler["tls-min-version"] in {"VersionTLS12", "VersionTLS13"}
-	_nonempty(input.rke2.args.kube_apiserver["tls-cipher-suites"])
-	_list_has_all(input.rke2.args.kube_apiserver["tls-cipher-suites"], ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
-	_nonempty(input.rke2.args.kube_controller_manager["tls-cipher-suites"])
-	_list_has_all(input.rke2.args.kube_controller_manager["tls-cipher-suites"], ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
-	_nonempty(input.rke2.args.kube_scheduler["tls-cipher-suites"])
-	_list_has_all(input.rke2.args.kube_scheduler["tls-cipher-suites"], ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
+	_flag(input.rke2.args.kube_apiserver, "tls-min-version") in {"VersionTLS12", "VersionTLS13"}
+	_flag(input.rke2.args.kube_controller_manager, "tls-min-version") in {"VersionTLS12", "VersionTLS13"}
+	_flag(input.rke2.args.kube_scheduler, "tls-min-version") in {"VersionTLS12", "VersionTLS13"}
+	_nonempty(_flag(input.rke2.args.kube_apiserver, "tls-cipher-suites"))
+	_list_has_all(_flag(input.rke2.args.kube_apiserver, "tls-cipher-suites"), ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
+	_nonempty(_flag(input.rke2.args.kube_controller_manager, "tls-cipher-suites"))
+	_list_has_all(_flag(input.rke2.args.kube_controller_manager, "tls-cipher-suites"), ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
+	_nonempty(_flag(input.rke2.args.kube_scheduler, "tls-cipher-suites"))
+	_list_has_all(_flag(input.rke2.args.kube_scheduler, "tls-cipher-suites"), ["TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"])
 }
 
 default detail_r_cntr_r2_000010 := ""
@@ -236,7 +310,7 @@ default r_cntr_r2_000030 := false
 
 r_cntr_r2_000030 if {
 	count(missing_r_cntr_r2_000030) == 0
-	input.rke2.args.kube_controller_manager["use-service-account-credentials"] == "true"
+	_flag(input.rke2.args.kube_controller_manager, "use-service-account-credentials") == "true"
 }
 
 default detail_r_cntr_r2_000030 := ""
@@ -271,15 +345,15 @@ default r_cntr_r2_000060 := false
 
 r_cntr_r2_000060 if {
 	count(missing_r_cntr_r2_000060) == 0
-	_nonempty(input.rke2.args.kube_apiserver["audit-policy-file"])
-	input.rke2.args.kube_apiserver["audit-log-mode"] == "blocking-strict"
-	input.rke2.config.profile in {"cis", "cis-1.23", "cis-1.6"}
-	some r1 in input.rke2.audit_policy.rules
+	_nonempty(_flag(input.rke2.args.kube_apiserver, "audit-policy-file"))
+	_flag(input.rke2.args.kube_apiserver, "audit-log-mode") == "blocking-strict"
+	_flag(input.rke2.config, "profile") in {"cis", "cis-1.23", "cis-1.6"}
+	r1 := input.rke2.audit_policy.rules[0]
 	r1.level == "Metadata"
 	some g1 in r1.resources
 	g1.group == ""
 	"secrets" in g1.resources
-	some r2 in input.rke2.audit_policy.rules
+	r2 := input.rke2.audit_policy.rules[1]
 	r2.level == "RequestResponse"
 	some g2 in r2.resources
 	"*" in g2.resources
@@ -317,7 +391,7 @@ default r_cntr_r2_000100 := false
 
 r_cntr_r2_000100 if {
 	count(missing_r_cntr_r2_000100) == 0
-	input.rke2.args.kube_controller_manager["bind-address"] == "127.0.0.1"
+	_flag(input.rke2.args.kube_controller_manager, "bind-address") == "127.0.0.1"
 }
 
 default detail_r_cntr_r2_000100 := ""
@@ -352,7 +426,7 @@ default r_cntr_r2_000110 := false
 
 r_cntr_r2_000110 if {
 	count(missing_r_cntr_r2_000110) == 0
-	input.rke2.args.kubelet["anonymous-auth"] == "false"
+	_flag(input.rke2.args.kubelet, "anonymous-auth") == "false"
 }
 
 default detail_r_cntr_r2_000110 := ""
@@ -387,7 +461,7 @@ default r_cntr_r2_000130 := false
 
 r_cntr_r2_000130 if {
 	count(missing_r_cntr_r2_000130) == 0
-	input.rke2.args.kubelet["read-only-port"] == "0"
+	_flag(input.rke2.args.kubelet, "read-only-port") == "0"
 }
 
 default detail_r_cntr_r2_000130 := ""
@@ -422,7 +496,7 @@ default r_cntr_r2_000150 := false
 
 r_cntr_r2_000150 if {
 	count(missing_r_cntr_r2_000150) == 0
-	input.rke2.args.kubelet["authorization-mode"] == "Webhook"
+	_flag(input.rke2.args.kubelet, "authorization-mode") == "Webhook"
 }
 
 default detail_r_cntr_r2_000150 := ""
@@ -457,7 +531,7 @@ default r_cntr_r2_000160 := false
 
 r_cntr_r2_000160 if {
 	count(missing_r_cntr_r2_000160) == 0
-	input.rke2.args.kube_apiserver["anonymous-auth"] == "false"
+	_flag(input.rke2.args.kube_apiserver, "anonymous-auth") == "false"
 }
 
 default detail_r_cntr_r2_000160 := ""
@@ -492,8 +566,8 @@ default r_cntr_r2_000320 := false
 
 r_cntr_r2_000320 if {
 	count(missing_r_cntr_r2_000320) == 0
-	_nonempty(input.rke2.args.kube_apiserver["audit-log-maxage"])
-	to_number(input.rke2.args.kube_apiserver["audit-log-maxage"]) >= 30
+	_nonempty(_flag(input.rke2.args.kube_apiserver, "audit-log-maxage"))
+	to_number(_flag(input.rke2.args.kube_apiserver, "audit-log-maxage")) >= 30
 }
 
 default detail_r_cntr_r2_000320 := ""
@@ -580,7 +654,7 @@ r_cntr_r2_000520 if {
 	_named_mode_le(input.rke2.files.server, {"cred", "db", "tls"}, "700")
 	_named_mode_le(input.rke2.files.server, {"manifests", "logs"}, "750")
 	_named_mode_le(input.rke2.files.server, {"token"}, "600")
-	input.rke2.config["write-kubeconfig-mode"] in {"0600", "600"}
+	_flag(input.rke2.config, "write-kubeconfig-mode") in {"0600", "600"}
 }
 
 default detail_r_cntr_r2_000520 := ""
@@ -720,8 +794,8 @@ default r_cntr_r2_000890 := false
 
 r_cntr_r2_000890 if {
 	count(missing_r_cntr_r2_000890) == 0
-	_nonempty(input.rke2.args.kubelet["streaming-connection-idle-timeout"])
-	_duration_ge(input.rke2.args.kubelet["streaming-connection-idle-timeout"], "5m")
+	_nonempty(_flag(input.rke2.args.kubelet, "streaming-connection-idle-timeout"))
+	_duration_ge(_flag(input.rke2.args.kubelet, "streaming-connection-idle-timeout"), "5m")
 }
 
 default detail_r_cntr_r2_000890 := ""
@@ -756,7 +830,7 @@ default r_cntr_r2_000940 := false
 
 r_cntr_r2_000940 if {
 	count(missing_r_cntr_r2_000940) == 0
-	input.rke2.args.kubelet["protect-kernel-defaults"] == "true"
+	_flag(input.rke2.args.kubelet, "protect-kernel-defaults") == "true"
 }
 
 default detail_r_cntr_r2_000940 := ""
@@ -827,7 +901,7 @@ default r_cntr_r2_001130 := false
 
 r_cntr_r2_001130 if {
 	count(missing_r_cntr_r2_001130) == 0
-	_nonempty(input.rke2.config["pod-security-admission-config-file"])
+	_nonempty(_flag(input.rke2.config, "pod-security-admission-config-file"))
 	is_object(input.rke2.pss_defaults)
 	every k, v in {"audit": "restricted", "audit-version": "latest", "enforce": "restricted", "enforce-version": "latest", "warn": "restricted", "warn-version": "latest"} {
 		input.rke2.pss_defaults[k] == v
@@ -866,8 +940,8 @@ default r_cntr_r2_001270 := false
 
 r_cntr_r2_001270 if {
 	count(missing_r_cntr_r2_001270) == 0
-	_nonempty(input.rke2.args.kube_apiserver["authorization-mode"])
-	{trim_space(m) | some m in split(input.rke2.args.kube_apiserver["authorization-mode"], ",")} == {"Node", "RBAC"}
+	_nonempty(_flag(input.rke2.args.kube_apiserver, "authorization-mode"))
+	{trim_space(m) | some m in split(_flag(input.rke2.args.kube_apiserver, "authorization-mode"), ",")} == {"Node", "RBAC"}
 }
 
 default detail_r_cntr_r2_001270 := ""
