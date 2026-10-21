@@ -13,13 +13,14 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.kubernetes
 
 # DISA STIG — Kubernetes Security Technical Implementation Guide — Master Aggregator
 # V2R6 | Release: 6 Benchmark Date: 01 Apr 2026
-# Coverage: 23 of 92 rules (18 of 18 CAT I).
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# Coverage: 92 of 92 rules (18 CAT I): 84 machine-checked,
+# 1 machine-checked plus an attestation, 7 attestation-only.
+# Rule IDs verified against the DISA XCCDF on 2026-10-21.
 
 import rego.v1
 
@@ -28,11 +29,15 @@ import data.stig.kubernetes.core
 all_findings := core.findings
 
 open_findings := [f | some f in all_findings; f.status == "Open"]
+
 cat_i_open := [f | some f in open_findings; f.severity == "CAT I"]
 
 default overall_compliant := false
+
 overall_compliant if count(cat_i_open) == 0
+
 default fully_compliant := false
+
 fully_compliant if count(open_findings) == 0
 
 stig_assessment := {

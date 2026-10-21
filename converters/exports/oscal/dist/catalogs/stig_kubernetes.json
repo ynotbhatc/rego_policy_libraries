@@ -66,6 +66,39 @@
     ],
     "controls": [
      {
+      "id": "stig_kubernetes-CNTR-K8-000150",
+      "title": "The Kubernetes Controller Manager must use TLS 1.2, at a minimum, to protect the confidentiality of sensitive data during electronic dissemination.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000150_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Controller Manager must use TLS 1.2, at a minimum, to protect the confidentiality of sensitive data during electronic dissemination."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-000160",
       "title": "The Kubernetes Scheduler must use TLS 1.2, at a minimum, to protect the confidentiality of sensitive data during electronic dissemination.",
       "props": [
@@ -132,6 +165,72 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-000180",
+      "title": "The Kubernetes etcd must use TLS to protect the confidentiality of sensitive data during electronic dissemination.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000180_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes etcd must use TLS to protect the confidentiality of sensitive data during electronic dissemination."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000190",
+      "title": "The Kubernetes etcd must use TLS to protect the confidentiality of sensitive data during electronic dissemination.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000190_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes etcd must use TLS to protect the confidentiality of sensitive data during electronic dissemination."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-000220",
       "title": "The Kubernetes Controller Manager must create unique service accounts for each work payload.",
       "props": [
@@ -160,6 +259,39 @@
         "id": "stig_kubernetes-CNTR-K8-000220_stmt",
         "name": "statement",
         "prose": "The Kubernetes Controller Manager must create unique service accounts for each work payload."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000270",
+      "title": "The Kubernetes API Server must enable Node,RBAC as the authorization mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000270_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server must enable Node,RBAC as the authorization mode."
        }
       ],
       "class": "security"
@@ -198,6 +330,72 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-000300",
+      "title": "The Kubernetes Scheduler must have secure binding.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000300_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Scheduler must have secure binding."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000310",
+      "title": "The Kubernetes Controller Manager must have secure binding.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000310_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Controller Manager must have secure binding."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-000330",
       "title": "The Kubernetes Kubelet must have the \"readOnlyPort\" flag disabled.",
       "props": [
@@ -226,6 +424,39 @@
         "id": "stig_kubernetes-CNTR-K8-000330_stmt",
         "name": "statement",
         "prose": "The Kubernetes Kubelet must have the \"readOnlyPort\" flag disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000350",
+      "title": "The Kubernetes API server must have the secure port set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000350_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API server must have the secure port set."
        }
       ],
       "class": "security"
@@ -330,6 +561,138 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-000400",
+      "title": "Kubernetes Worker Nodes must not have sshd service running.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000400_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Worker Nodes must not have sshd service running."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000410",
+      "title": "Kubernetes Worker Nodes must not have the sshd service enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000410_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Worker Nodes must not have the sshd service enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000420",
+      "title": "Kubernetes dashboard must not be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000420_stmt",
+        "name": "statement",
+        "prose": "Kubernetes dashboard must not be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000430",
+      "title": "Kubernetes Kubectl cp command must give expected access and results.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000430_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Kubectl cp command must give expected access and results."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-000440",
       "title": "The Kubernetes kubelet staticPodPath must not enable static pods.",
       "props": [
@@ -363,6 +726,171 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-000450",
+      "title": "Kubernetes DynamicAuditing must not be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000450_stmt",
+        "name": "statement",
+        "prose": "Kubernetes DynamicAuditing must not be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000460",
+      "title": "Kubernetes DynamicKubeletConfig must not be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000460_stmt",
+        "name": "statement",
+        "prose": "Kubernetes DynamicKubeletConfig must not be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000470",
+      "title": "The Kubernetes API server must have Alpha APIs disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000470_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API server must have Alpha APIs disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000610",
+      "title": "The Kubernetes API Server must have an audit log path set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000610"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000610"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000610_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server must have an audit log path set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000700",
+      "title": "Kubernetes API Server must generate audit records that identify what type of event has occurred, identify the source of the event, contain the event results, identify any users, and identify any conta",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000700_stmt",
+        "name": "statement",
+        "prose": "Kubernetes API Server must generate audit records that identify what type of event has occurred, identify the source of the event, contain the event results, identify any users, and identify any containers associated wit"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-000850",
       "title": "Kubernetes Kubelet must deny hostname override.",
       "props": [
@@ -391,6 +919,336 @@
         "id": "stig_kubernetes-CNTR-K8-000850_stmt",
         "name": "statement",
         "prose": "Kubernetes Kubelet must deny hostname override."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000860",
+      "title": "The Kubernetes manifests must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000860"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000860"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000860_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes manifests must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000880",
+      "title": "The Kubernetes KubeletConfiguration file must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000880"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000880"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000880_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes KubeletConfiguration file must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000890",
+      "title": "The Kubernetes KubeletConfiguration files must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000890"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000890"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000890_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes KubeletConfiguration files must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000900",
+      "title": "The Kubernetes manifest files must have least privileges.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000900"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000900"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000900_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes manifest files must have least privileges."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000910",
+      "title": "Kubernetes Controller Manager must disable profiling.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000910"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000910"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000910_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Controller Manager must disable profiling."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000920",
+      "title": "The Kubernetes API Server must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000920"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000920"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000920_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000930",
+      "title": "The Kubernetes Scheduler must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000930"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000930"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000930_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Scheduler must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000940",
+      "title": "The Kubernetes Controllers must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000940"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000940"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000940_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Controllers must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000950",
+      "title": "The Kubernetes etcd must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000950"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000950"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000950_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes etcd must enforce ports, protocols, and services (PPS) that adhere to the Ports, Protocols, and Services Management Category Assurance List (PPSM CAL)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-000960",
+      "title": "The Kubernetes cluster must use non-privileged host ports for user pods.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-000960"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-000960"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-000960_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes cluster must use non-privileged host ports for user pods."
        }
       ],
       "class": "security"
@@ -495,6 +1353,369 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-001163",
+      "title": "Kubernetes must limit Secret access on a need-to-know basis.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001163"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001163"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001163_stmt",
+        "name": "statement",
+        "prose": "Kubernetes must limit Secret access on a need-to-know basis."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001300",
+      "title": "Kubernetes Kubelet must not disable timeouts.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001300_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Kubelet must not disable timeouts."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001360",
+      "title": "Kubernetes must separate user functionality.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001360_stmt",
+        "name": "statement",
+        "prose": "Kubernetes must separate user functionality."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001400",
+      "title": "The Kubernetes API server must use approved cipher suites.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001400_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API server must use approved cipher suites."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001410",
+      "title": "Kubernetes API Server must have the SSL Certificate Authority set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001410_stmt",
+        "name": "statement",
+        "prose": "Kubernetes API Server must have the SSL Certificate Authority set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001420",
+      "title": "Kubernetes Kubelet must have the SSL Certificate Authority set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001420_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Kubelet must have the SSL Certificate Authority set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001430",
+      "title": "Kubernetes Controller Manager must have the SSL Certificate Authority set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001430_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Controller Manager must have the SSL Certificate Authority set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001440",
+      "title": "Kubernetes API Server must have a certificate for communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001440_stmt",
+        "name": "statement",
+        "prose": "Kubernetes API Server must have a certificate for communication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001450",
+      "title": "Kubernetes etcd must enable client authentication to secure service.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001450_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must enable client authentication to secure service."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001460",
+      "title": "Kubernetes Kubelet must enable tlsPrivateKeyFile for client authentication to secure service.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001460_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Kubelet must enable tlsPrivateKeyFile for client authentication to secure service."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001470",
+      "title": "Kubernetes Kubelet must enable tlsCertFile for client authentication to secure service.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001470_stmt",
+        "name": "statement",
+        "prose": "Kubernetes Kubelet must enable tlsCertFile for client authentication to secure service."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-001480",
       "title": "Kubernetes etcd must enable client authentication to secure service.",
       "props": [
@@ -523,6 +1744,237 @@
         "id": "stig_kubernetes-CNTR-K8-001480_stmt",
         "name": "statement",
         "prose": "Kubernetes etcd must enable client authentication to secure service."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001490",
+      "title": "Kubernetes etcd must have a key file for secure communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001490"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001490"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001490_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have a key file for secure communication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001500",
+      "title": "Kubernetes etcd must have a certificate for communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001500_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have a certificate for communication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001510",
+      "title": "Kubernetes etcd must have the SSL Certificate Authority set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001510_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have the SSL Certificate Authority set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001520",
+      "title": "Kubernetes etcd must have a certificate for communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001520_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have a certificate for communication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001530",
+      "title": "Kubernetes etcd must have a key file for secure communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001530_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have a key file for secure communication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001540",
+      "title": "Kubernetes etcd must have peer-cert-file set for secure communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001540"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001540"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001540_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have peer-cert-file set for secure communication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-001550",
+      "title": "Kubernetes etcd must have a peer-key-file set for secure communication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-001550"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-001550"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-001550_stmt",
+        "name": "statement",
+        "prose": "Kubernetes etcd must have a peer-key-file set for secure communication."
        }
       ],
       "class": "security"
@@ -693,6 +2145,39 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-002600",
+      "title": "Kubernetes API Server must configure timeouts to limit attack surface.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002600"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002600"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002600_stmt",
+        "name": "statement",
+        "prose": "Kubernetes API Server must configure timeouts to limit attack surface."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-002620",
       "title": "Kubernetes API Server must disable basic authentication to protect information in transit.",
       "props": [
@@ -792,6 +2277,72 @@
       "class": "security"
      },
      {
+      "id": "stig_kubernetes-CNTR-K8-002700",
+      "title": "Kubernetes must remove old components after updated versions have been installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002700"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002700"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002700_stmt",
+        "name": "statement",
+        "prose": "Kubernetes must remove old components after updated versions have been installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-002720",
+      "title": "Kubernetes must contain the latest updates as authorized by IAVMs, CTOs, DTMs, and STIGs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-002720"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-002720"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-002720_stmt",
+        "name": "statement",
+        "prose": "Kubernetes must contain the latest updates as authorized by IAVMs, CTOs, DTMs, and STIGs."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_kubernetes-CNTR-K8-003110",
       "title": "The Kubernetes component manifests must be owned by root.",
       "props": [
@@ -820,6 +2371,732 @@
         "id": "stig_kubernetes-CNTR-K8-003110_stmt",
         "name": "statement",
         "prose": "The Kubernetes component manifests must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003120",
+      "title": "The Kubernetes component etcd must be owned by etcd.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003120_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes component etcd must be owned by etcd."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003130",
+      "title": "The Kubernetes conf files must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003130_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes conf files must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003140",
+      "title": "The Kubernetes Kube Proxy kubeconfig must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003140_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Kube Proxy kubeconfig must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003150",
+      "title": "The Kubernetes Kube Proxy kubeconfig must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003150_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Kube Proxy kubeconfig must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003160",
+      "title": "The Kubernetes Kubelet certificate authority file must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003160_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Kubelet certificate authority file must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003170",
+      "title": "The Kubernetes Kubelet certificate authority must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003170_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes Kubelet certificate authority must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003180",
+      "title": "The Kubernetes component PKI must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003180_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes component PKI must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003190",
+      "title": "The Kubernetes kubelet KubeConfig must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003190_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubelet KubeConfig must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003200",
+      "title": "The Kubernetes kubelet KubeConfig file must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003200_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubelet KubeConfig file must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003210",
+      "title": "The Kubernetes kubeadm.conf must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003210_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubeadm.conf must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003220",
+      "title": "The Kubernetes kubeadm.conf must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003220_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubeadm.conf must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003230",
+      "title": "The Kubernetes kubelet config must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003230_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubelet config must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003240",
+      "title": "The Kubernetes kubelet config must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003240_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes kubelet config must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003260",
+      "title": "The Kubernetes etcd must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003260_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes etcd must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003270",
+      "title": "The Kubernetes admin kubeconfig must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003270_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes admin kubeconfig must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003280",
+      "title": "Kubernetes API Server audit logs must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003280_stmt",
+        "name": "statement",
+        "prose": "Kubernetes API Server audit logs must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003290",
+      "title": "The Kubernetes API Server must be set to audit log max size.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003290_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server must be set to audit log max size."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003300",
+      "title": "The Kubernetes API Server must be set to audit log maximum backup.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003300_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server must be set to audit log maximum backup."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003310",
+      "title": "The Kubernetes API Server audit log retention must be set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003310_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server audit log retention must be set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003320",
+      "title": "The Kubernetes API Server audit log path must be set.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003320_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes API Server audit log path must be set."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003330",
+      "title": "The Kubernetes PKI CRT must have file permissions set to 644 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003330_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes PKI CRT must have file permissions set to 644 or more restrictive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_kubernetes-CNTR-K8-003340",
+      "title": "The Kubernetes PKI keys must have file permissions set to 600 or more restrictive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-K8-003340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-K8-003340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.kubernetes.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f86ddecc-1b17-529a-9514-03f2d04c1bbb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_kubernetes-CNTR-K8-003340_stmt",
+        "name": "statement",
+        "prose": "The Kubernetes PKI keys must have file permissions set to 600 or more restrictive."
        }
       ],
       "class": "security"

@@ -38,7 +38,7 @@ OVERRIDES = {
     "windows_server_2019_modular": "Windows Server 2019", "windows_server_2025": "Windows Server 2025",
     "windows_11": "Windows 11", "windows_10": "Windows 10", "sles_15": "SLES 15",
     "vmware_vsphere_8": "vSphere 8 ESXi", "ms_sql_2016": "SQL Server 2016",
-    "postgresql_16": "PostgreSQL 16", "openshift_4": "OpenShift 4",
+    "postgresql_16": "PostgreSQL 16", "openshift_4": "OpenShift 4", "rke2": "RGS RKE2",
     "cisco_ios_xe_router": "Cisco IOS-XE", "apache_2_4_unix": "Apache 2.4",
     "network_devices": "Network Devices", "saas": "SaaS (M365, Google WS)",
     "nist_ir7628": "NIST IR 7628 (AMI)", "rocky_linux_9": "Rocky Linux 9",
