@@ -134,12 +134,12 @@ test_2_4_1_7_pass if {
 test_2_4_1_7_fail if {
 	vs := data.cis_rhel9.cron.violations with input as {"cron": {"cron_yearly_mode": "0777", "cron_yearly_owner": "root", "cron_yearly_group": "root"}}
 	count([v | some v in vs; startswith(v, "2.4.1.7: ")]) > 0
-	not "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group not collected" in vs
+	not "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists not collected" in vs
 }
 
 test_2_4_1_7_evidence_missing if {
 	vs := data.cis_rhel9.cron.violations with input as {}
-	"2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group not collected" in vs
+	"2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists not collected" in vs
 }
 
 test_2_4_1_7_hollow_evidence_not_a_pass if {

@@ -534,12 +534,12 @@ e_6_2_3_3 if {
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 	text_collected(input.sudo.sudoers_content)
-	count(sudo_logfiles) > 0
 }
 
 default p_6_2_3_3 := false
 
 p_6_2_3_3 if {
+	count(sudo_logfiles) > 0
 	every f in sudo_logfiles { audit_watch(f, "wa") }
 }
 
@@ -1280,7 +1280,7 @@ e_6_2_3_36 if {
 default p_6_2_3_36 := false
 
 p_6_2_3_36 if {
-	regex.match(`(?i)^\s*/usr/sbin/augenrules:\s*no change\s*$`, input.auditd.augenrules_check)
+	regex.match(`(?i)^\s*(/usr)?/sbin/augenrules:\s*no change\s*$`, input.auditd.augenrules_check)
 }
 
 violations contains "6.2.3.36: evidence missing — auditd.augenrules_check not collected" if not e_6_2_3_36
