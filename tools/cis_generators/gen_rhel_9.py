@@ -988,8 +988,16 @@ put("2.4.1.2", "/etc/crontab", access(["cron", "crontab_mode"], ["cron", "cronta
                                       "0600", ["root"], ["root"]))
 for rid, d, kw in [("2.4.1.3", "cron_hourly", "/etc/cron.hourly"), ("2.4.1.4", "cron_daily", "/etc/cron.daily"),
                    ("2.4.1.5", "cron_weekly", "/etc/cron.weekly"), ("2.4.1.6", "cron_monthly", "/etc/cron.monthly"),
-                   ("2.4.1.7", "cron_yearly", "/etc/cron.yearly"), ("2.4.1.8", "cron_d", "access to /etc/cron.d ")]:
+                   ("2.4.1.8", "cron_d", "access to /etc/cron.d ")]:
     put(rid, kw, access(["cron", f"{d}_mode"], ["cron", f"{d}_owner"], ["cron", f"{d}_group"], "0700", ["root"], ["root"]))
+# stock RHEL 9 cronie ships no /etc/cron.yearly (seen on a RHEL 9.8 host): an absent directory has nothing to
+# secure, so a collected cron_yearly_exists == false passes; a present one is checked like the others
+_cy = access(["cron", "cron_yearly_mode"], ["cron", "cron_yearly_owner"], ["cron", "cron_yearly_group"], "0700", ["root"], ["root"])
+_cy.ev_alts = _cy.ev_alts + [[f'{CR}cron_yearly_exists == false']]
+_cy.passes = _cy.passes + [[f'{CR}cron_yearly_exists == false']]
+_cy.reads = _cy.reads + [["cron", "cron_yearly_exists"]]
+_cy.field = _cy.field + "/cron.cron_yearly_exists"
+put("2.4.1.7", "/etc/cron.yearly", _cy)
 
 
 def allow_deny(svc, groups):
@@ -1532,8 +1540,9 @@ SU_ = ["sudo", "sudoers_content"]
 put("6.2.3.1", "/etc/sudoers file", audit([("/etc/sudoers", "wa"), ("/etc/sudoers.d", "wa")]))
 put("6.2.3.2", "actions as another user", audit(syscalls=[(["execve", "execveat"], ["euid"])]))
 put("6.2.3.3", "modify the sudo log file", custom(
-    [f'is_array({ref(AR)})', f'count({ref(AR)}) > 0', f'text_collected({ref(SU_)})', 'count(sudo_logfiles) > 0'],
-    [['every f in sudo_logfiles { audit_watch(f, "wa") }']],
+    # sudoers collected with no `Defaults logfile` is a finding (nothing to watch), not missing evidence
+    [f'is_array({ref(AR)})', f'count({ref(AR)}) > 0', f'text_collected({ref(SU_)})'],
+    [['count(sudo_logfiles) > 0', 'every f in sudo_logfiles { audit_watch(f, "wa") }']],
     "auditd.active_rules/sudo.sudoers_content",
     merge(nest(AR, [W.format(p="/var/log/sudo.log", perm="wa")]), nest(SU_, 'Defaults logfile="/var/log/sudo.log"')),
     merge(nest(AR, [W.format(p="/var/log/other.log", perm="wa")]), nest(SU_, 'Defaults logfile="/var/log/sudo.log"')),
@@ -1588,8 +1597,8 @@ put("6.2.3.35", "immutable", custom([f'is_array({ref(ARD)})', f'count({ref(ARD)}
 # nothing: the on-disk/running comparison is its own collected fact (`augenrules --check`)
 AG = ["auditd", "augenrules_check"]
 put("6.2.3.36", "running and on disk", custom(
-    [f'text_collected({ref(AG)})'], [[f'regex.match(`(?i)^\\s*/usr/sbin/augenrules:\\s*no change\\s*$`, {ref(AG)})']],
-    dotted(AG), nest(AG, "/usr/sbin/augenrules: No change"), nest(AG, "/usr/sbin/augenrules: Rules have changed and should be updated"),
+    [f'text_collected({ref(AG)})'], [[f'regex.match(`(?i)^\\s*(/usr)?/sbin/augenrules:\\s*no change\\s*$`, {ref(AG)})']],
+    dotted(AG), nest(AG, "/sbin/augenrules: No change"), nest(AG, "/usr/sbin/augenrules: Rules have changed and should be updated"),
     reads=[AG]))
 put("6.2.4.1", "log file directory mode", custom(
     ['input.auditd.log_dir_permissions.mode != null'], [['mode_within(input.auditd.log_dir_permissions.mode, "0750")']],
