@@ -171,6 +171,21 @@ echo "✅ Sentinel ALLOW"
 
 ---
 
+## Provider change gate — aac.tfprovider resource changes
+
+**File:** `provider/provider_change.rego`  
+**Package:** `provider_change.main`  
+**OPA container:** `:8182` (opa-compliance), `opa_framework_map` key `provider_change`
+
+Evaluates one planned change to one resource, as the Terraform provider planned it through the
+`aac.tfprovider` `resource` module (no Terraform CLI, no plan JSON: the input is the module's
+planned-diff document). Denies public S3 ACLs, S3 public-access-block protections turned off,
+ingress from the whole internet (AWS, Azure, GCP), replace or delete of a `protected = "true"`
+resource, missing `owner` / `environment` tags, and IAM user console access; fails closed on a
+malformed document. Input, decision shape, rules and fixtures: [`provider/README.md`](provider/README.md).
+
+---
+
 ## Related AAP Job Templates
 
 | Template | Purpose |

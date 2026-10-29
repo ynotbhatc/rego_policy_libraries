@@ -1,0 +1,62 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "azurerm_network_security_rule.block",
+  "resource_type": "azurerm_network_security_rule",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/azurerm",
+    "version": "4.30.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "name": "block",
+    "priority": 4096,
+    "direction": "Inbound",
+    "access": "Deny",
+    "protocol": "*",
+    "source_port_range": "*",
+    "destination_port_range": "*",
+    "source_address_prefix": "*",
+    "source_address_prefixes": [],
+    "destination_address_prefix": "*",
+    "resource_group_name": "rg-example",
+    "network_security_group_name": "nsg-example",
+    "id": null
+  },
+  "config": {
+    "name": "block",
+    "priority": 4096,
+    "direction": "Inbound",
+    "access": "Deny",
+    "protocol": "*",
+    "source_port_range": "*",
+    "destination_port_range": "*",
+    "source_address_prefix": "*",
+    "source_address_prefixes": [],
+    "destination_address_prefix": "*",
+    "resource_group_name": "rg-example",
+    "network_security_group_name": "nsg-example"
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

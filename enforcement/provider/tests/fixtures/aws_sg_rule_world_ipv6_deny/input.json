@@ -1,0 +1,56 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_security_group_rule.ssh",
+  "resource_type": "aws_security_group_rule",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "type": "ingress",
+    "from_port": 22,
+    "to_port": 22,
+    "protocol": "tcp",
+    "security_group_id": "sg-0example",
+    "cidr_blocks": [],
+    "ipv6_cidr_blocks": [
+      "::/0"
+    ],
+    "id": null
+  },
+  "config": {
+    "type": "ingress",
+    "from_port": 22,
+    "to_port": 22,
+    "protocol": "tcp",
+    "security_group_id": "sg-0example",
+    "cidr_blocks": [],
+    "ipv6_cidr_blocks": [
+      "::/0"
+    ]
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

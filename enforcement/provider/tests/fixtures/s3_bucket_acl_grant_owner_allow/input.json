@@ -1,0 +1,82 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_s3_bucket_acl.evidence",
+  "resource_type": "aws_s3_bucket_acl",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "bucket": "evidence",
+    "acl": null,
+    "id": null,
+    "access_control_policy": [
+      {
+        "owner": [
+          {
+            "id": "owner-canonical-id"
+          }
+        ],
+        "grant": [
+          {
+            "permission": "FULL_CONTROL",
+            "grantee": [
+              {
+                "type": "CanonicalUser",
+                "id": "owner-canonical-id"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "config": {
+    "bucket": "evidence",
+    "acl": null,
+    "access_control_policy": [
+      {
+        "owner": [
+          {
+            "id": "owner-canonical-id"
+          }
+        ],
+        "grant": [
+          {
+            "permission": "FULL_CONTROL",
+            "grantee": [
+              {
+                "type": "CanonicalUser",
+                "id": "owner-canonical-id"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

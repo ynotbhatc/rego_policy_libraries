@@ -260098,6 +260098,220 @@
       ]
      },
      {
+      "uuid": "9a244dfb-25e1-5eb6-b0d1-61cbf4f84cf6",
+      "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/enforcement_provider.json",
+      "description": "Controls of enforcement_provider evaluated by the Rego Policy Libraries (8 controls, 1 Rego modules).",
+      "props": [
+       {
+        "name": "framework",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "enforcement_provider"
+       }
+      ],
+      "implemented-requirements": [
+       {
+        "uuid": "63e982fe-123a-5085-aa55-929d043e52d0",
+        "control-id": "enforcement_provider-PC-000",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): Document is a well-formed provider_change v1",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-000"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8ad824ea-b83b-5b40-a6ad-254cf8ff8fd6",
+        "control-id": "enforcement_provider-PC-001",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): %s %s grants public access through its ACL (acl=%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-001"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a69514ab-f50d-58bd-b9a2-705cd32f4e45",
+        "control-id": "enforcement_provider-PC-002",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): S3 public access block keeps all four protections on",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-002"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "310c0cdf-a597-5892-8e11-5c7d6173dc68",
+        "control-id": "enforcement_provider-PC-003",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): No ingress from the whole internet",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-003"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "bab84076-0973-5ff2-8d34-147b94aa0377",
+        "control-id": "enforcement_provider-PC-004",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): A protected resource is not replaced or deleted",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-004"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8cf274a0-17bd-58db-a009-98857f7119df",
+        "control-id": "enforcement_provider-PC-005",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): Taggable resources carry owner and environment",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-005"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "73b9f9a2-338d-568c-9d48-0c6f5e8550f5",
+        "control-id": "enforcement_provider-PC-006",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): No IAM user console access",
+        "props": [
+         {
+          "name": "label",
+          "value": "PC-006"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f41059d5-d3b7-5ac4-9ffc-c77bc2b2aebb",
+        "control-id": "enforcement_provider-provider_change.main-1",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): %s: %s %s cannot evaluate: %s unknown at plan time",
+        "props": [
+         {
+          "name": "label",
+          "value": "provider_change.main#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       }
+      ]
+     },
+     {
       "uuid": "94c9bec5-019f-58e3-8e4f-aaac4f9fb3cc",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/enforcement_repo.json",
       "description": "Controls of enforcement_repo evaluated by the Rego Policy Libraries (3 controls, 1 Rego modules).",

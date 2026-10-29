@@ -1,0 +1,70 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "google_compute_firewall.ssh",
+  "resource_type": "google_compute_firewall",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/google",
+    "version": "6.40.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "name": "allow-ssh",
+    "network": "default",
+    "direction": "INGRESS",
+    "disabled": false,
+    "source_ranges": [
+      "0.0.0.0/0"
+    ],
+    "allow": [
+      {
+        "protocol": "tcp",
+        "ports": [
+          "22"
+        ]
+      }
+    ],
+    "deny": [],
+    "id": null
+  },
+  "config": {
+    "name": "allow-ssh",
+    "network": "default",
+    "direction": "INGRESS",
+    "disabled": false,
+    "source_ranges": [
+      "0.0.0.0/0"
+    ],
+    "allow": [
+      {
+        "protocol": "tcp",
+        "ports": [
+          "22"
+        ]
+      }
+    ],
+    "deny": []
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

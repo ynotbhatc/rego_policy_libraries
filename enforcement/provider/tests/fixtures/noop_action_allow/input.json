@@ -1,0 +1,43 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_instance.web",
+  "resource_type": "aws_instance",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "no-op",
+  "requires_replace": [],
+  "prior_state": {
+    "id": "i-0example",
+    "tags": {},
+    "tags_all": {}
+  },
+  "planned_state": {
+    "id": "i-0example",
+    "tags": {},
+    "tags_all": {}
+  },
+  "config": {
+    "tags": {}
+  },
+  "changes": [],
+  "unknown_paths": [],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

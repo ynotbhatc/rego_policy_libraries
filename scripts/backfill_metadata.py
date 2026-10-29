@@ -222,6 +222,7 @@ TABLE: dict[str, tuple[str, list[str]]] = {
     "enforcement/dockerfile": ("aac", ["container"]),
     "enforcement/git": ("aac", ["git"]),
     "enforcement/kubernetes": ("aac", ["kubernetes"]),
+    "enforcement/provider": ("aac", ["iac", "terraform", "cloud", "aws", "azure", "gcp"]),
     "enforcement/repo": ("aac", ["git"]),
     "enforcement/supply_chain": ("aac", ["supply-chain"]),
     "enforcement/terraform": ("aac", ["iac", "terraform"]),

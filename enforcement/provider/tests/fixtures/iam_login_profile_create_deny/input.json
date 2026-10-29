@@ -1,0 +1,48 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_iam_user_login_profile.alice",
+  "resource_type": "aws_iam_user_login_profile",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "user": "alice",
+    "password_length": 20,
+    "password_reset_required": true,
+    "password": "__SENSITIVE__",
+    "id": null
+  },
+  "config": {
+    "user": "alice",
+    "password_length": 20,
+    "password_reset_required": true,
+    "password": "__SENSITIVE__"
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [
+    "password"
+  ],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

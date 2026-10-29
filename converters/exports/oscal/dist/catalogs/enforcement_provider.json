@@ -1,0 +1,447 @@
+{
+ "catalog": {
+  "uuid": "9ff20f5f-7bc2-54b2-827a-4d68af730ccf",
+  "metadata": {
+   "title": "Rego Policy Libraries — enforcement_provider (PC-006: No IAM user console access (aws_iam_user declaring a login profile))",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "enforcement_provider"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "enforcement_provider-provider_change",
+    "class": "rego-module",
+    "title": "PC-006: No IAM user console access (aws_iam_user declaring a login profile)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "provider_change.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement/provider/provider_change.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "enforcement"
+     }
+    ],
+    "controls": [
+     {
+      "id": "enforcement_provider-PC-000",
+      "title": "Document is a well-formed provider_change v1",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-000_stmt",
+        "name": "statement",
+        "prose": "Document is a well-formed provider_change v1"
+       },
+       {
+        "id": "enforcement_provider-PC-000_obj.1",
+        "name": "assessment-objective",
+        "prose": "malformed input — kind must be \"provider_change\""
+       },
+       {
+        "id": "enforcement_provider-PC-000_obj.2",
+        "name": "assessment-objective",
+        "prose": "malformed input — version must be one of %v"
+       },
+       {
+        "id": "enforcement_provider-PC-000_obj.3",
+        "name": "assessment-objective",
+        "prose": "malformed input — action must be one of create, update, replace, delete, no-op"
+       },
+       {
+        "id": "enforcement_provider-PC-000_obj.4",
+        "name": "assessment-objective",
+        "prose": "malformed input — resource_type must be a non-empty string"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-PC-001",
+      "title": "%s %s grants public access through its ACL (acl=%s)",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-001_stmt",
+        "name": "statement",
+        "prose": "%s %s grants public access through its ACL (acl=%s)"
+       },
+       {
+        "id": "enforcement_provider-PC-001_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s %s grants public access through an ACL grant to %s"
+       },
+       {
+        "id": "enforcement_provider-PC-001_obj.2",
+        "name": "assessment-objective",
+        "prose": "No public S3 bucket ACL"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-PC-002",
+      "title": "S3 public access block keeps all four protections on",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-002_stmt",
+        "name": "statement",
+        "prose": "S3 public access block keeps all four protections on"
+       },
+       {
+        "id": "enforcement_provider-PC-002_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s %s leaves public access protection off (%s is false or not set)"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-PC-003",
+      "title": "No ingress from the whole internet",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-003"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-003"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-003_stmt",
+        "name": "statement",
+        "prose": "No ingress from the whole internet"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s %s allows ingress from the whole internet (%s)"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.2",
+        "name": "assessment-objective",
+        "prose": "%s %s allows ingress from the whole internet (%s)"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.3",
+        "name": "assessment-objective",
+        "prose": "%s %s allows ingress from the whole internet (%s)"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.4",
+        "name": "assessment-objective",
+        "prose": "%s %s allows inbound traffic from the whole internet (source %s)"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.5",
+        "name": "assessment-objective",
+        "prose": "%s %s allows ingress from the whole internet (source range %s)"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.6",
+        "name": "assessment-objective",
+        "prose": "%s %s allows ingress from the whole internet (no source_ranges, source_tags or source_service_accounts; GCP defaults to 0.0.0.0/0)"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-PC-004",
+      "title": "A protected resource is not replaced or deleted",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-004_stmt",
+        "name": "statement",
+        "prose": "A protected resource is not replaced or deleted"
+       },
+       {
+        "id": "enforcement_provider-PC-004_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s %s is tagged protected=true and the plan would %s it"
+       },
+       {
+        "id": "enforcement_provider-PC-004_obj.2",
+        "name": "assessment-objective",
+        "prose": "%s %s protected tag is masked; cannot prove the resource is unprotected"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-PC-005",
+      "title": "Taggable resources carry owner and environment",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-005_stmt",
+        "name": "statement",
+        "prose": "Taggable resources carry owner and environment"
+       },
+       {
+        "id": "enforcement_provider-PC-005_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s %s is missing required tag %q (looked in tags, tags_all and labels)"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-PC-006",
+      "title": "No IAM user console access",
+      "props": [
+       {
+        "name": "label",
+        "value": "PC-006"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PC-006"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-PC-006_stmt",
+        "name": "statement",
+        "prose": "No IAM user console access"
+       },
+       {
+        "id": "enforcement_provider-PC-006_obj.1",
+        "name": "assessment-objective",
+        "prose": "creating %s %s grants an IAM user console access"
+       },
+       {
+        "id": "enforcement_provider-PC-006_obj.2",
+        "name": "assessment-objective",
+        "prose": "creating %s %s with a login profile grants console access"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-provider_change.main-1",
+      "title": "%s: %s %s cannot evaluate: %s unknown at plan time",
+      "props": [
+       {
+        "name": "label",
+        "value": "provider_change.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "provider_change.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-provider_change.main-1_stmt",
+        "name": "statement",
+        "prose": "%s: %s %s cannot evaluate: %s unknown at plan time"
+       }
+      ],
+      "class": "enforcement"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "09f4e645-165a-520e-8ffa-7c6644de1ef1",
+     "title": "PC-006: No IAM user console access (aws_iam_user declaring a login profile)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "provider_change.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/enforcement/provider/provider_change.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

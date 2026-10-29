@@ -1,0 +1,51 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_db_instance.ledger",
+  "resource_type": "aws_db_instance",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "delete",
+  "requires_replace": [],
+  "prior_state": {
+    "id": "ledger",
+    "identifier": "ledger",
+    "password": "__SENSITIVE__",
+    "tags": {
+      "owner": "__SENSITIVE__",
+      "environment": "test",
+      "protected": "true"
+    },
+    "tags_all": {
+      "owner": "__SENSITIVE__",
+      "environment": "test",
+      "protected": "true"
+    }
+  },
+  "planned_state": null,
+  "config": {},
+  "changes": [],
+  "unknown_paths": [],
+  "sensitive_paths": [
+    "password",
+    "tags.owner",
+    "tags_all.owner"
+  ],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}
