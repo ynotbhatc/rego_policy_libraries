@@ -20,8 +20,11 @@
 #   {"allow": bool, "reasons": [string], "policy_version": "1.0.0", "evaluated_rules": int}
 #
 # Fail closed: `allow` defaults to false and is true only when `deny` is empty; a document
-# without kind, version, action or resource_type is denied with a PC-000 reason. Every deny
-# rule contributes a human-readable reason that names the rule, the resource and the finding.
+# without kind, version, action or resource_type is denied with a PC-000 reason; a rule whose
+# governing attribute is listed in `unknown_paths` denies ("cannot evaluate: <attribute> unknown
+# at plan time") instead of passing, while a null or absent attribute is the provider default
+# and is judged as such. Every deny rule contributes a human-readable reason that names the
+# rule, the resource and the finding.
 
 # METADATA
 # title: "Provider change gate — allow or deny one planned Terraform-provider resource change"
@@ -31,7 +34,7 @@
 #   source: aac
 #   domains: [iac, terraform, cloud, aws, azure, gcp]
 #   coverage:
-#     checks: 21
+#     checks: 26
 #     cited: 7
 #     density: gate
 #     basis: role
@@ -113,23 +116,16 @@ evaluated_rules := count(applicable_rules)
 
 _in_scope(scope, _) if scope == "*"
 
+# A scope is a set in the package, but a site override (`with data...taggable_resource_types as`)
+# may arrive as a JSON/YAML array; both are normalised to a set.
 _in_scope(scope, value) if {
-	is_set(scope)
-	value in scope
+	scope != "*"
+	value in {x | some x in scope}
 }
 
 # ---------------------------------------------------------------------------
 # PC-000 — well-formed input. Missing or wrong kind, version, action or resource_type is a deny.
 # ---------------------------------------------------------------------------
-
-default well_formed := false
-
-well_formed if {
-	_kind_ok
-	_version_ok
-	_action_ok
-	_resource_type_ok
-}
 
 _kind_ok if input.kind == "provider_change"
 
@@ -250,6 +246,54 @@ _tags_of(state) := object.union(
 )
 
 _visible(v) if v != sensitive_marker
+
+# ---------------------------------------------------------------------------
+# Unknown-until-apply attributes. `unknown_paths` lists dotted paths ("acl", "ingress.0.cidr_blocks")
+# whose planned value the provider cannot know before apply. A rule whose governing attribute is
+# unknown cannot be evaluated, so the change is denied; a null or absent attribute that is NOT
+# listed is the provider default and is judged by the rule as usual.
+# ---------------------------------------------------------------------------
+
+_unknown_paths := {p |
+	some p in object.get(input, "unknown_paths", [])
+	is_string(p)
+}
+
+_unknown(attr) if attr in _unknown_paths
+
+_unknown(attr) if {
+	some p in _unknown_paths
+	startswith(p, concat("", [attr, "."]))
+}
+
+# The attributes each rule's decision rests on, per resource type.
+governing_attributes := {
+	"PC-001": {
+		"aws_s3_bucket": {"acl", "access_control_policy"},
+		"aws_s3_bucket_acl": {"acl", "access_control_policy"},
+	},
+	"PC-003": {
+		"aws_security_group": {"ingress"},
+		"aws_security_group_rule": {"type", "cidr_blocks", "ipv6_cidr_blocks"},
+		"aws_vpc_security_group_ingress_rule": {"cidr_ipv4", "cidr_ipv6"},
+		"azurerm_network_security_rule": {"direction", "access", "source_address_prefix", "source_address_prefixes"},
+		"google_compute_firewall": {"direction", "disabled", "allow", "source_ranges", "source_tags", "source_service_accounts"},
+	},
+}
+
+# METADATA
+# scope: rule
+# title: "PC-001/PC-003: a governing attribute unknown at plan time cannot be evaluated"
+# custom:
+#   resource_types: [see governing_attributes]
+deny contains reason if {
+	some id
+	by_type := governing_attributes[id]
+	id in applicable_rules
+	some attr in by_type[_type]
+	_unknown(attr)
+	reason := sprintf("%s: %s %s cannot evaluate: %s unknown at plan time", [id, _type, _address, attr])
+}
 
 # ---------------------------------------------------------------------------
 # PC-001 — public S3 bucket ACL
@@ -400,6 +444,18 @@ _gcp_egress if _attr("direction") == "EGRESS"
 
 _gcp_disabled if _attr("disabled") == true
 
+_gcp_source_fields := {"source_ranges", "source_tags", "source_service_accounts"}
+
+_gcp_has_source if {
+	some field in _gcp_source_fields
+	count(_strings(object.get(_effective, field, []))) > 0
+}
+
+_gcp_source_unknown if {
+	some field in _gcp_source_fields
+	_unknown(field)
+}
+
 # METADATA
 # scope: rule
 # title: "PC-003: No ingress from the whole internet (google_compute_firewall)"
@@ -414,6 +470,22 @@ deny contains reason if {
 	some range in _strings(object.get(_effective, "source_ranges", []))
 	range in world_cidrs
 	reason := sprintf("PC-003: %s %s allows ingress from the whole internet (source range %s)", [_type, _address, range])
+}
+
+# METADATA
+# scope: rule
+# title: "PC-003: No ingress from the whole internet (google_compute_firewall without a source restriction)"
+# custom:
+#   resource_types: [google_compute_firewall]
+deny contains reason if {
+	"PC-003" in applicable_rules
+	_type == "google_compute_firewall"
+	not _gcp_egress
+	not _gcp_disabled
+	count(_blocks(object.get(_effective, "allow", []))) > 0
+	not _gcp_has_source
+	not _gcp_source_unknown
+	reason := sprintf("PC-003: %s %s allows ingress from the whole internet (no source_ranges, source_tags or source_service_accounts; GCP defaults to 0.0.0.0/0)", [_type, _address])
 }
 
 # ---------------------------------------------------------------------------
@@ -435,6 +507,13 @@ _protected(tags) if {
 	_truthy(value)
 }
 
+# A masked protected tag cannot prove the resource is unprotected.
+_protected_masked(tags) if {
+	some key
+	tags[key] == sensitive_marker
+	lower(key) == "protected"
+}
+
 # METADATA
 # scope: rule
 # title: "PC-004: A resource tagged protected=true is not replaced or deleted"
@@ -446,6 +525,17 @@ deny contains reason if {
 	reason := sprintf("PC-004: %s %s is tagged protected=true and the plan would %s it", [_type, _address, input.action])
 }
 
+# METADATA
+# scope: rule
+# title: "PC-004: A masked protected tag cannot prove the resource is unprotected"
+# custom:
+#   resource_types: ["*"]
+deny contains reason if {
+	"PC-004" in applicable_rules
+	_protected_masked(_tags_of(_prior))
+	reason := sprintf("PC-004: %s %s protected tag is masked; cannot prove the resource is unprotected", [_type, _address])
+}
+
 # ---------------------------------------------------------------------------
 # PC-005 — required tags on taggable resources
 # ---------------------------------------------------------------------------
@@ -453,7 +543,8 @@ deny contains reason if {
 required_tags := {"owner", "environment"}
 
 # Resource types whose tags (AWS, Azure) or labels (GCP) the organisation requires. The set is
-# data: extend it here, or override it with `with data.provider_change.main.taggable_resource_types`.
+# data: extend it here, or override it with `with data.provider_change.main.taggable_resource_types`
+# (a set or a JSON/YAML array; `_in_scope` normalises both).
 taggable_resource_types := {
 	# AWS — tags / tags_all
 	"aws_instance",

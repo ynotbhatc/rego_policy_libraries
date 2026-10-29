@@ -260100,7 +260100,7 @@
      {
       "uuid": "9a244dfb-25e1-5eb6-b0d1-61cbf4f84cf6",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/enforcement_provider.json",
-      "description": "Controls of enforcement_provider evaluated by the Rego Policy Libraries (7 controls, 1 Rego modules).",
+      "description": "Controls of enforcement_provider evaluated by the Rego Policy Libraries (8 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -260267,6 +260267,31 @@
          {
           "name": "label",
           "value": "PC-006"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "provider_change.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/provider/provider_change.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f41059d5-d3b7-5ac4-9ffc-c77bc2b2aebb",
+        "control-id": "enforcement_provider-provider_change.main-1",
+        "description": "Evaluated by Rego package provider_change.main (enforcement/provider/provider_change.rego): %s: %s %s cannot evaluate: %s unknown at plan time",
+        "props": [
+         {
+          "name": "label",
+          "value": "provider_change.main#1"
          },
          {
           "name": "rego-package",

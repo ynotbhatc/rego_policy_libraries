@@ -51,9 +51,16 @@ read only to find out what the resource is today (protected tags).
 **Sensitive values.** The module replaces every value at `sensitive_paths` with the string
 `"__SENSITIVE__"` in `prior_state`, `planned_state`, `config` and `changes`. This package never
 compares a masked value with an expectation and never writes one into a reason: a masked tag
-counts as *present* (the value exists, it is only not visible here), a masked `protected` value
-does not make a resource protected, and a masked CIDR or ACL cannot match a public one. Tests
-assert that no reason, for any fixture, contains the marker.
+counts as *present* (the value exists, it is only not visible here), a masked `protected` tag on
+a replace or delete is a deny (it cannot prove the resource is unprotected), and a masked CIDR
+or ACL cannot match a public one. Tests assert that no reason, for any fixture, contains the
+marker.
+
+**Unknown values.** `unknown_paths` lists the dotted paths (`acl`, `ingress.0.cidr_blocks`)
+whose planned value the provider cannot know until apply. A rule whose governing attribute is
+listed there denies with `cannot evaluate: <attribute> unknown at plan time`. A `null` or absent
+attribute that is *not* listed is the provider default and is judged as such (no `acl` is
+private, no `ingress` is no ingress).
 
 ## Output: the decision
 
@@ -87,9 +94,17 @@ framework-map validator read this package like any other. `decision` is the cont
   gives four reasons and `allow: false`.
 - A flag whose safe value is `true` (the four S3 public-access-block protections) is denied when
   it is absent or unknown, not only when it is `false`.
-- A rule that cannot see what it needs (a masked `protected` tag) does not invent a finding, but
-  it also never turns a deny into an allow: a masked tag can satisfy a presence check, it cannot
-  satisfy a value check.
+- A rule whose governing attribute is unknown at plan time (its path is in `unknown_paths`) is
+  denied with `PC-00n: <type> <address> cannot evaluate: <attribute> unknown at plan time`. The
+  `governing_attributes` table in the package names them per rule and resource type: `acl` and
+  `access_control_policy` for PC-001; `ingress`, the rule CIDR fields, `direction` / `access` /
+  source prefixes, and the GCP `direction` / `disabled` / `allow` / source fields for PC-003.
+  A `null` or absent attribute that is not listed as unknown is the provider default and is
+  judged normally.
+- A rule that cannot see what it needs never turns a deny into an allow. A masked tag can
+  satisfy a presence check (PC-005) but cannot satisfy a value check; a masked `protected` tag
+  on a replace or delete is denied with `protected tag is masked; cannot prove the resource is
+  unprotected` (PC-004).
 
 ## Rules
 
@@ -100,17 +115,19 @@ single list of rule ids, titles, resource types and actions, and is what `evalua
 | Id | Resource types | Actions | Denies when |
 |---|---|---|---|
 | PC-000 | any | any | `kind` is not `provider_change`; `version` is not 1; `action` is not one of create, update, replace, delete, no-op; `resource_type` is missing or empty |
-| PC-001 | `aws_s3_bucket`, `aws_s3_bucket_acl` | create, update, replace | `acl` is `public-read`, `public-read-write` or `authenticated-read`; or an `access_control_policy` grant names the AllUsers or AuthenticatedUsers group |
+| PC-001 | `aws_s3_bucket`, `aws_s3_bucket_acl` | create, update, replace | `acl` is `public-read`, `public-read-write` or `authenticated-read`; or an `access_control_policy` grant names the AllUsers or AuthenticatedUsers group; or `acl` / `access_control_policy` is unknown at plan time |
 | PC-002 | `aws_s3_bucket_public_access_block` | create, update, replace | any of `block_public_acls`, `block_public_policy`, `ignore_public_acls`, `restrict_public_buckets` is false, absent or unknown (one reason per flag) |
-| PC-003 | `aws_security_group` (inline `ingress`), `aws_security_group_rule` (`type: ingress`), `aws_vpc_security_group_ingress_rule` (`cidr_ipv4` / `cidr_ipv6`), `azurerm_network_security_rule` (`direction: Inbound`, `access: Allow`, source `*`, `Internet`, `0.0.0.0/0` or `::/0` in `source_address_prefix` or `source_address_prefixes`), `google_compute_firewall` (not EGRESS, not disabled, `source_ranges` holds a world CIDR and `allow` is non-empty) | create, update, replace | ingress is open to `0.0.0.0/0` or `::/0` |
-| PC-004 | any | replace, delete | `prior_state.tags`, `tags_all` or `labels` carries `protected` = `"true"` (case-insensitive key and value, boolean `true` accepted) |
+| PC-003 | `aws_security_group` (inline `ingress`), `aws_security_group_rule` (`type: ingress`), `aws_vpc_security_group_ingress_rule` (`cidr_ipv4` / `cidr_ipv6`), `azurerm_network_security_rule` (`direction: Inbound`, `access: Allow`, source `*`, `Internet`, `0.0.0.0/0` or `::/0` in `source_address_prefix` or `source_address_prefixes`), `google_compute_firewall` (not EGRESS, not disabled, `allow` is non-empty, and `source_ranges` holds a world CIDR or none of `source_ranges`, `source_tags`, `source_service_accounts` is set, which GCP treats as `0.0.0.0/0`) | create, update, replace | ingress is open to `0.0.0.0/0` or `::/0`; or the governing attribute (`ingress`, the CIDR fields, direction / access / sources) is unknown at plan time |
+| PC-004 | any | replace, delete | `prior_state.tags`, `tags_all` or `labels` carries `protected` = `"true"` (case-insensitive key and value, boolean `true` accepted), or carries a masked (`"__SENSITIVE__"`) `protected` value |
 | PC-005 | the `taggable_resource_types` set (AWS `tags` / `tags_all`, Azure `tags`, GCP `labels`) | create, update, replace | `owner` or `environment` is absent or empty across `tags`, `tags_all` and `labels` of the effective resource (keys matched case-insensitively; one reason per missing tag) |
 | PC-006 | `aws_iam_user_login_profile`, `aws_iam_user` | create | an `aws_iam_user_login_profile` is created, or an `aws_iam_user` is created with a non-empty `login_profile` in its config |
 
 `taggable_resource_types` is data, not logic: extend the set in the package, or override it per
-site with `with data.provider_change.main.taggable_resource_types as {...}` (an OPA data
-document at that path does the same thing at runtime). `required_tags`, `world_cidrs`,
-`public_acls` and `azure_internet_sources` are the same kind of table.
+site with `with data.provider_change.main.taggable_resource_types as [...]`; the override may be
+a set or an array (a JSON/YAML document is an array), both are normalised. The rule is defined in
+the package, so a data document loaded *at that path* conflicts with it; override through `with`
+(tests, `opa eval`) or edit the set. `required_tags`, `world_cidrs`, `public_acls`,
+`azure_internet_sources` and `governing_attributes` are the same kind of table.
 
 ## How AAC routes to it
 
@@ -144,7 +161,12 @@ opa check --strict enforcement
 opa test enforcement/provider -v
 opa test . --ignore .github --ignore converters --timeout 30s    # what CI runs
 opa fmt --diff enforcement/provider
+make wasm                                                       # CI builds enforcement/ to wasm, tests included
 ```
+
+The fixture decisions are a partial object rule (`decisions[name]`), not a function: `opa build
+-t wasm` cannot plan a function whose body carries `with input as`, and `make wasm` compiles the
+test files along with the package.
 
 `test_every_fixture_decides_as_named` evaluates every fixture against its suffix, so a new
 fixture is tested the moment it exists; the per-rule tests pin the exact reason text.
@@ -155,6 +177,8 @@ fixture is tested the moment it exists; the per-rule tests pin the exact reason 
 2. Write the `deny contains reason if` rule with its `# METADATA` block; guard it with
    `"PC-00n" in applicable_rules`; start the reason with the id; name `_type` and `_address`;
    read attributes through `_attr` / `_effective` (planned, then config) and never echo a value
-   you have not checked with `_visible`.
+   you have not checked with `_visible`. If the rule's decision rests on an attribute the
+   provider may not know at plan time, add it to `governing_attributes` so an unknown value
+   fails closed.
 3. Add an allow and a deny fixture and a test that pins the reason.
 4. Bump `policy_version` when a decision can change for an input that already exists.

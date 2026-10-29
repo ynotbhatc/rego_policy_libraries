@@ -253,6 +253,11 @@
         "id": "enforcement_provider-PC-003_obj.5",
         "name": "assessment-objective",
         "prose": "%s %s allows ingress from the whole internet (source range %s)"
+       },
+       {
+        "id": "enforcement_provider-PC-003_obj.6",
+        "name": "assessment-objective",
+        "prose": "%s %s allows ingress from the whole internet (no source_ranges, source_tags or source_service_accounts; GCP defaults to 0.0.0.0/0)"
        }
       ],
       "class": "enforcement"
@@ -291,6 +296,11 @@
         "id": "enforcement_provider-PC-004_obj.1",
         "name": "assessment-objective",
         "prose": "%s %s is tagged protected=true and the plan would %s it"
+       },
+       {
+        "id": "enforcement_provider-PC-004_obj.2",
+        "name": "assessment-objective",
+        "prose": "%s %s protected tag is masked; cannot prove the resource is unprotected"
        }
       ],
       "class": "enforcement"
@@ -372,6 +382,39 @@
         "id": "enforcement_provider-PC-006_obj.2",
         "name": "assessment-objective",
         "prose": "creating %s %s with a login profile grants console access"
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_provider-provider_change.main-1",
+      "title": "%s: %s %s cannot evaluate: %s unknown at plan time",
+      "props": [
+       {
+        "name": "label",
+        "value": "provider_change.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "provider_change.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "provider_change.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#09f4e645-165a-520e-8ffa-7c6644de1ef1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_provider-provider_change.main-1_stmt",
+        "name": "statement",
+        "prose": "%s: %s %s cannot evaluate: %s unknown at plan time"
        }
       ],
       "class": "enforcement"
