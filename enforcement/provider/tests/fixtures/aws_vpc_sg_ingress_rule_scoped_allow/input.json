@@ -1,0 +1,60 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_vpc_security_group_ingress_rule.rdp",
+  "resource_type": "aws_vpc_security_group_ingress_rule",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "security_group_id": "sg-0example",
+    "ip_protocol": "tcp",
+    "from_port": 3389,
+    "to_port": 3389,
+    "cidr_ipv4": "192.0.2.0/24",
+    "cidr_ipv6": null,
+    "id": null,
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test"
+    },
+    "tags_all": null
+  },
+  "config": {
+    "security_group_id": "sg-0example",
+    "ip_protocol": "tcp",
+    "from_port": 3389,
+    "to_port": 3389,
+    "cidr_ipv4": "192.0.2.0/24",
+    "cidr_ipv6": null,
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test"
+    }
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id",
+    "tags_all"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

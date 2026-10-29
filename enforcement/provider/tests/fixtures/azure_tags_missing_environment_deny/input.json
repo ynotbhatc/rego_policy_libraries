@@ -1,0 +1,54 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "azurerm_storage_account.evidence",
+  "resource_type": "azurerm_storage_account",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/azurerm",
+    "version": "4.30.0",
+    "protocol": 6
+  },
+  "action": "create",
+  "requires_replace": [],
+  "prior_state": null,
+  "planned_state": {
+    "name": "stevidence",
+    "resource_group_name": "rg-example",
+    "location": "westeurope",
+    "account_tier": "Standard",
+    "account_replication_type": "LRS",
+    "tags": {
+      "owner": "platform-team"
+    },
+    "id": null
+  },
+  "config": {
+    "name": "stevidence",
+    "resource_group_name": "rg-example",
+    "location": "westeurope",
+    "account_tier": "Standard",
+    "account_replication_type": "LRS",
+    "tags": {
+      "owner": "platform-team"
+    }
+  },
+  "changes": [],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

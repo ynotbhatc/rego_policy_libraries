@@ -1,0 +1,77 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_instance.bastion",
+  "resource_type": "aws_instance",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "replace",
+  "requires_replace": [
+    "ami"
+  ],
+  "prior_state": {
+    "id": "i-0example",
+    "ami": "ami-0old",
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test",
+      "protected": "true"
+    },
+    "tags_all": {
+      "owner": "platform-team",
+      "environment": "test",
+      "protected": "true"
+    }
+  },
+  "planned_state": {
+    "id": null,
+    "ami": "ami-0new",
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test",
+      "protected": "true"
+    },
+    "tags_all": {
+      "owner": "platform-team",
+      "environment": "test",
+      "protected": "true"
+    }
+  },
+  "config": {
+    "ami": "ami-0new",
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test",
+      "protected": "true"
+    }
+  },
+  "changes": [
+    {
+      "path": "ami",
+      "before": "ami-0old",
+      "after": "ami-0new",
+      "unknown": false
+    }
+  ],
+  "unknown_paths": [
+    "id"
+  ],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

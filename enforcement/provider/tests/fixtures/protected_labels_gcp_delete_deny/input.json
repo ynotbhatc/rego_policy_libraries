@@ -1,0 +1,41 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "google_storage_bucket.ledger",
+  "resource_type": "google_storage_bucket",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/google",
+    "version": "6.40.0",
+    "protocol": 6
+  },
+  "action": "delete",
+  "requires_replace": [],
+  "prior_state": {
+    "id": "ledger",
+    "name": "ledger",
+    "labels": {
+      "owner": "platform-team",
+      "environment": "test",
+      "protected": "true"
+    }
+  },
+  "planned_state": null,
+  "config": {},
+  "changes": [],
+  "unknown_paths": [],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}

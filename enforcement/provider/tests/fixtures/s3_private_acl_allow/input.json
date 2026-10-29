@@ -1,0 +1,71 @@
+{
+  "kind": "provider_change",
+  "version": 1,
+  "environment": "test",
+  "address": "aws_s3_bucket.evidence",
+  "resource_type": "aws_s3_bucket",
+  "provider": {
+    "source": "registry.terraform.io/hashicorp/aws",
+    "version": "6.70.0",
+    "protocol": 6
+  },
+  "action": "update",
+  "requires_replace": [],
+  "prior_state": {
+    "id": "evidence",
+    "bucket": "evidence",
+    "acl": "public-read",
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test"
+    },
+    "tags_all": {
+      "owner": "platform-team",
+      "environment": "test"
+    }
+  },
+  "planned_state": {
+    "id": "evidence",
+    "bucket": "evidence",
+    "acl": "private",
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test"
+    },
+    "tags_all": {
+      "owner": "platform-team",
+      "environment": "test"
+    }
+  },
+  "config": {
+    "bucket": "evidence",
+    "acl": "private",
+    "tags": {
+      "owner": "platform-team",
+      "environment": "test"
+    }
+  },
+  "changes": [
+    {
+      "path": "acl",
+      "before": "public-read",
+      "after": "private",
+      "unknown": false
+    }
+  ],
+  "unknown_paths": [],
+  "sensitive_paths": [],
+  "tainted": false,
+  "options": {
+    "force_replace": false,
+    "prevent_destroy": false,
+    "ignore_changes": [],
+    "create_before_destroy": false
+  },
+  "context": {
+    "job_id": "1",
+    "operator": "test",
+    "playbook": "provider_apply.yml",
+    "task": "fixture"
+  }
+}
