@@ -70,6 +70,7 @@ if "--check-readme" in sys.argv:
     rows = {
         "CIS Benchmarks + DISA STIGs": under("benchmarks/cis", "benchmarks/stig"),
         "Federal & K8s hardening baselines": under("benchmarks/scuba", "benchmarks/nsa_cisa", "benchmarks/pss", "benchmarks/supply_chain"),
+        "Application suite baselines": under("benchmarks/sap"),
         "Regulatory Frameworks": under("frameworks"),
         "Enforcement": under("enforcement"),
         "Governance": under("governance"),
@@ -96,4 +97,4 @@ if "--check-readme" in sys.argv:
     if problems:
         print("README.md numbers drifted from the tree:"); [print("  - " + x) for x in problems]
         print("Fix the README (or the row map in scripts/count_controls.py if a directory moved)."); sys.exit(1)
-    print(f"README.md figures match the tree: {len(rels)} policies, {all_rego} .rego files, {len(stig_dirs)} STIG platforms, {rows['CIS Benchmarks + DISA STIGs']}/{rows['Federal & K8s hardening baselines']}/{rows['Regulatory Frameworks']}/{rows['Enforcement']}/{rows['Governance']}/{rows['Crosswalks']}/{rows['Threat Detection']} per category, OSCAL catalogs as published.")
+    print(f"README.md figures match the tree: {len(rels)} policies, {all_rego} .rego files, {len(stig_dirs)} STIG platforms, {rows['CIS Benchmarks + DISA STIGs']}/{rows['Federal & K8s hardening baselines']}/{rows['Application suite baselines']}/{rows['Regulatory Frameworks']}/{rows['Enforcement']}/{rows['Governance']}/{rows['Crosswalks']}/{rows['Threat Detection']} per category, OSCAL catalogs as published.")

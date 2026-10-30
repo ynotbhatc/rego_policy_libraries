@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>trivy-checks (Aqua) vs Rego Policy Libraries — size, scope and whether it is an alternative</title>
-<meta name="description" content="trivy-checks (Aqua): 563 Rego checks, cloud, Kubernetes and Docker misconfiguration. Rego Policy Libraries: 22,512 control-level checks across 60 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
+<meta name="description" content="trivy-checks (Aqua): 563 Rego checks, cloud, Kubernetes and Docker misconfiguration. Rego Policy Libraries: 22,654 control-level checks across 61 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
 <link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/compare/trivy-checks.html">
 <meta property="og:title" content="trivy-checks (Aqua) vs Rego Policy Libraries — size, scope and whether it is an alternative">
-<meta property="og:description" content="trivy-checks (Aqua): 563 Rego checks, cloud, Kubernetes and Docker misconfiguration. Rego Policy Libraries: 22,512 control-level checks across 60 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
+<meta property="og:description" content="trivy-checks (Aqua): 563 Rego checks, cloud, Kubernetes and Docker misconfiguration. Rego Policy Libraries: 22,654 control-level checks across 61 standards in OPA Rego, covering hosts, cloud, SaaS, Kubernetes, IaC, AI governance and regulators on four continents. Measured side by side, with the counting method and what each one does not do.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/compare/trivy-checks.html">
 <style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
@@ -48,8 +48,8 @@
 <body>
 <h1>trivy-checks (Aqua) vs Rego Policy Libraries</h1>
 <table><tr><th></th><th>trivy-checks (Aqua)</th><th>Rego Policy Libraries</th></tr>
-<tr><td>Size</td><td>563 Rego checks</td><td>22,512 control-level checks, 860 policy files</td></tr>
-<tr><td>Scope</td><td>cloud, Kubernetes and Docker misconfiguration</td><td>hosts (CIS, STIG), cloud, SaaS, Kubernetes, IaC, AI governance, 60 regulatory and management standards</td></tr>
+<tr><td>Size</td><td>563 Rego checks</td><td>22,654 control-level checks, 867 policy files</td></tr>
+<tr><td>Scope</td><td>cloud, Kubernetes and Docker misconfiguration</td><td>hosts (CIS, STIG), cloud, SaaS, Kubernetes, IaC, AI governance, 61 regulatory and management standards</td></tr>
 <tr><td>Language</td><td>Rego</td><td>OPA Rego v1, Apache 2.0</td></tr></table>
 <p>Trivy executes Rego; our enforcement gates run under it with a thin adapter. Trivy does not evaluate regulatory frameworks.</p>
 <p>Counts were taken from each project's public repository on 2026-10-12; ours is <code>make count</code>, re-verified by CI.

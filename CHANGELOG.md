@@ -8,6 +8,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — SAP Security Baseline Template v2.6, ABAP stack (`benchmarks/sap/abap/`)
+
+- **First application-suite baseline.** SAP publishes its Baseline Template checks as Focused Run CSA policies
+  (`SAP-samples/frun-csa-policies-best-practices`, Apache-2.0); `scripts/import_sap_baseline.py` reads the
+  v2.6 ABAP set (43 policies, 355 distinct check ids, pinned to commit `888f3c53`) and writes the registry
+  (`sap_abap_baseline_registry.rego`, every check with level, requirement and whether this library assesses
+  it) and one translated rule per host-decidable check (`sap_abap_baseline_checks.rego`): 127 profile,
+  transport, kernel and CommonCryptoLib parameter conditions compiled from SAP's own expressions (equality,
+  case-folded equality, numeric and between, enumerations, SQL LIKE and regex, wildcard parameter names,
+  dotted versions). 11 more are hand-written (`sap_abap_baseline_manual.rego`): the three gateway ACL files
+  and the message-server ACL, kernel and CommonCryptoLib age, kernel patch level per release (Note 2083594).
+  The other 217 checks need user tables, authorizations, audit slots or RFC destinations and are listed as
+  not assessable with the store named — the report's coverage is the registry's, never implied.
+- **Canonical id = SAP's check id.** `PWDPOL-A_a.1`, `RFCGW-A_a secinfo.2` ... are public, stable and what
+  an SAP auditor recognises. Profiles `critical` / `standard` / `extended` follow SAP's p1/p2/p3 priorities.
+  An absent parameter fails its check ("not set in the collected facts"): the kernel default is not evidence.
+- **One catalog, three views.** `compliance_report.projections` derives per-framework views from the same
+  results through data-only mapping tables: the Baseline's own requirements (from the registry), the DSAG
+  S/4HANA audit guide (section numbers only — the guide is all-rights-reserved; 26 parameters placed by
+  where the guide names them, 11 requirements by subject) and NIST CSF 2.0 (all 106 subcategories listed;
+  the assignment is this library's reading). A reference with nothing assessable is listed as
+  `not_assessable`, never dropped.
+- Input contract (`input.sap.abap.*`) and regeneration steps in `benchmarks/sap/abap/README.md`; 62 tests;
+  vocabulary gains source `sap` and domains `sap`, `erp`.
+
 ### Changed
 
 - **Engine portability, step 1: no `some k, v in` inside set or array comprehensions.** rego-cpp (regopy) rejects that form with "Invalid collection" and refuses to load the whole module; 87 policy modules were affected; 85 are rewritten here (the other two, `enforcement/aap/extra_vars_control.rego` and `frameworks/financial/mas_trm/mas_trm_main.rego`, fail the per-file pre-commit check on main because they use definitions from sibling files, and follow separately). 244 comprehensions now use equivalent forms: `some v in X` when the key is unused, `some k; _ = X[k]` when the value is unused, `some k; v := X[k]` otherwise. Each form was checked on both engines (objects, arrays, sets, destructured values, indexed call results). The Windows Server 2022 generator and template emit the new forms, and regenerating reproduces the committed files. OPA results are unchanged: 991 evaluations of every affected directory's packages, on 721 inputs harvested from the test files plus empty input, are identical before and after (live timestamps masked), and 4,713/4,713 tests pass. Under regopy 1.5.2, 781 of 797 modules load with this change (was 701). Test files are unchanged; rego-cpp cannot compile the test suite anyway (see docs/ENGINE_COMPATIBILITY.md).

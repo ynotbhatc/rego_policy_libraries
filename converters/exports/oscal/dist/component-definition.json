@@ -395438,6 +395438,3495 @@
       ]
      },
      {
+      "uuid": "d4c26da0-885e-5d87-9310-a9dbd43bd0c4",
+      "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/sap_abap_baseline.json",
+      "description": "Controls of sap_abap_baseline evaluated by the Rego Policy Libraries (139 controls, 3 Rego modules).",
+      "props": [
+       {
+        "name": "framework",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "sap_abap_baseline"
+       }
+      ],
+      "implemented-requirements": [
+       {
+        "uuid": "d91b9680-b7ea-5aec-926a-b0f84f2c458c",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline.rego): SAP-INPUT: unrecognized profile %v — must be one of critical, standard, extended (evaluated as extended)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0fa1c1a0-699b-5a64-92ac-58453cb547ff",
+        "control-id": "sap_abap_baseline-summary",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline.rego): Implemented by a Rego rule in benchmarks/sap/abap/sap_abap_baseline.rego (package sap_abap_baseline.main); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "summary"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "085b4257-89c1-5dba-a467-153a7817f819",
+        "control-id": "sap_abap_baseline-MSGSRV-A_d.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ms/acl_info path is maintained (Message Server Security, pointing to access control list file for Message Server (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "MSGSRV-A_d.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1718b7bf-ffd7-54ab-9bd5-cb6241140483",
+        "control-id": "sap_abap_baseline-PWDPOL-A_a.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_lng ≥ 12 (Password Policy) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_a.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5ec4c4b7-8787-53dc-9547-dbbf7ad73ffa",
+        "control-id": "sap_abap_baseline-PWDPOL-A_b.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_max_idle_initial between 1 and 14 (recommended 1 to 7) (Password Policy) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_b.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2d70ce85-140e-51d2-9eed-5d1cf738e809",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): PWDPOL-A_d: Profile parameter: login/password_downwards_compatibility = 0 (disable downward compatible passwords, see Note 1023437) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "105ce62d-8799-53f9-9c84-008c7f5c1d40",
+        "control-id": "sap_abap_baseline-RFCGW-A_b-secinfo.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: gw/sec_info (mount path defined to ACL file) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_b secinfo.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cc4bd966-ba26-54b1-a371-36ab1668616f",
+        "control-id": "sap_abap_baseline-RFCGW-A_b-reginfo.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: gw/reg_info (mount path defined to ACL file) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_b reginfo.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9c9d82ff-1c25-5dcf-b279-384b09166618",
+        "control-id": "sap_abap_baseline-RFCGW-A_c.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: gw/reg_no_conn_info as recommended (Gateway security options Kernel lt 7.40) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_c.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "80d92ef2-e101-51ba-b59e-e03cdb9d6ebf",
+        "control-id": "sap_abap_baseline-RFCGW-A_c.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: gw/reg_no_conn_info = 255 (recommended) or uneven (Gateway security options Kernel ≥ 7.40, see Note 2776748) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_c.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e974454e-2da0-54e9-acdd-489858063a06",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): RFCGW-A_d: Profile parameter: gw/acl_mode = 1 (Mode for non existing ACL file) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "51d047f1-d4df-51eb-b29b-5bde23f69250",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-4",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): RFCGW-A_e: Profile parameter: gw/monitor = 1 (Enable gateway monitor commands) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "40f56224-5d87-5739-89e0-2412431e57ea",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-5",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): RFCGW-A_f: Profile parameter: gw/sim_mode = 0 (Disable simulation mode for reg_info and sec_info) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f5f58b72-703a-5fdf-8112-63b8e6580b18",
+        "control-id": "sap_abap_baseline-SECUPD-A_a.5",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): CRYPTOLIB version ≥ 8.5.39 (see SAP Note 3051787) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SECUPD-A_a.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "40db5032-9542-57e7-99da-45dfd8d9d567",
+        "control-id": "sap_abap_baseline-STDUSR-A_a.6",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/no_automatic_user_sapstar = 1 (no login with hardcoded automatic user SAP*) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "STDUSR-A_a.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c4b6ef4f-732b-5bde-8da6-30b7d0464d24",
+        "control-id": "sap_abap_baseline-STDUSR-A_a.7",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/create_virtual_user_sapstar = 1 (Kernel ≥ 790) (see Note 3303172, 3633474) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "STDUSR-A_a.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ac964429-c004-57ed-9b68-bc7ee1b88bc9",
+        "control-id": "sap_abap_baseline-AUDIT-A_a.1p",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameters: rsau/enable = 1 (lt 740) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_a.1p"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1fe58e80-b2fb-5c55-8faa-cdfb669a2c8b",
+        "control-id": "sap_abap_baseline-AUDIT-A_a.3p",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rsau/selection_slots ≥ 10 (lt 740) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_a.3p"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "17e236ba-0240-54f2-b1b1-13dc902d8aca",
+        "control-id": "sap_abap_baseline-AUDIT-A_a.4p",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rsau/integrity = 1 (lt 740) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_a.4p"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "17bcedb0-1319-5835-a0d1-a261b520bcc7",
+        "control-id": "sap_abap_baseline-AUDIT-A_a.5p",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rsau/log_peer_address = 1 (lt 740) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_a.5p"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "633825af-930a-51b0-b7d8-846ca32eb1ef",
+        "control-id": "sap_abap_baseline-AUDIT-A_a.6p",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rsau/user_selection = 1 (lt 740) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_a.6p"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5a5ec156-04a0-5f40-a6b4-1dd014b2d549",
+        "control-id": "sap_abap_baseline-AUDIT-A_c.1a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/HTTP/logging_0 exists (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_c.1a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "97225961-f191-572e-99c0-d61b6ea48752",
+        "control-id": "sap_abap_baseline-AUDIT-A_c.1b",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/HTTP/logging_0 set as expected (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_c.1b"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a375f249-c488-51f4-8205-2141d8bf57c0",
+        "control-id": "sap_abap_baseline-AUDIT-A_c.2a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/HTTP/logging_client_0 exists (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_c.2a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "170518a0-0d2a-5326-8bf1-f477d8e455f4",
+        "control-id": "sap_abap_baseline-AUDIT-A_c.2b",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/HTTP/logging_client_0 set as expected (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_c.2b"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5a5a6107-6360-58cf-b843-6b948553cf1a",
+        "control-id": "sap_abap_baseline-AUDIT-A_c.3a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/security_log exists (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_c.3a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6723f485-bb4d-52bb-b20f-100e55c1e2ea",
+        "control-id": "sap_abap_baseline-AUDIT-A_c.3b",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_c.3b"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "97c49fb9-17aa-5959-8c9f-d532ddc34d64",
+        "control-id": "sap_abap_baseline-AUDIT-A_d.1a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ms/HTTP/logging_0 exists (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_d.1a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ad9bba9a-ba66-523a-bbdd-28831d058de2",
+        "control-id": "sap_abap_baseline-AUDIT-A_d.1b",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ms/HTTP/logging_0 set as expected (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_d.1b"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7102504a-2d0a-560a-91bb-20bb5b9a5ac5",
+        "control-id": "sap_abap_baseline-AUDIT-A_d.2a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ms/http_logging = 1 (monitoring of the Message Server active) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "AUDIT-A_d.2a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5ab295b7-3e3f-5939-882f-89bbb4c11816",
+        "control-id": "sap_abap_baseline-CHANGE-A_c.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rec/client maintained and != OFF (for client-specific tables, see Note 1916) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_c.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1f5ee128-046c-5ef1-99d4-6fd560149b18",
+        "control-id": "sap_abap_baseline-CHANGE-A_c.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rec/client = ALL (recommended value) (see Note 1916) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_c.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "319c2ad5-5ce3-5c6e-b8b6-709aef1527cc",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-6",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): CHANGE-A_h: Profile parameter: abap/ext_debugging_possible = 2 (requests of other users cannot be debugged using external debugging) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "01c4cb7e-6a2c-5fa4-8aba-04149030c397",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-7",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): CHANGE-A_i: Profile parameter: dbs/dba/ccms_maintenance = 1 (for DBA Cockpit: CCMS Maintenance Enabling respective S_RZL_ADM) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8b7c9a65-004b-59c2-8fc1-e19dc1264c4b",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-8",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): CHANGE-A_j: Profile parameter: dbs/dba/ccms_security_level = 1 (for DBA Cockpit: Granularity of CCMS Maintenance Security Check respective S_DBCON) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "db2c2fe0-0041-5ad1-9684-a1a306abc6bc",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-9",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): CHANGE-A_f: Transport Parameter: TLOGOCHECK = 1 (activated to validate the content of transport files) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b8193e68-f345-5d71-9377-e523e6ef6b2e",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-10",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-A_a: Profile parameter: login/show_detailed_errors = 0 (disclosure of unnecessary information about versions or from errors) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "31ef6b34-7b3d-50fb-ba5a-00ca05204407",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-11",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-A_c: Profile parameter: service/protectedwebmethods = SDEFAULT or ALL (disclosure of unnecessary information with limited list of exceptions, see Note 1439348) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7f2f63b3-2ae0-5b22-9f94-1db630a97210",
+        "control-id": "sap_abap_baseline-DISCL-O_a.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: is/HTTP/show_server_header = FALSE or 0 (see Note 1329326) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "DISCL-O_a.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "aa0c155e-e9e1-58c7-8c0b-ce0b370c71b3",
+        "control-id": "sap_abap_baseline-DISCL-O_a.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: is/HTTP/show_detailed_errors = FALSE or 0 (see Note 1616535) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "DISCL-O_a.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1a533385-2dcd-50e4-98f8-bf941d1f4c7a",
+        "control-id": "sap_abap_baseline-DISCL-O_a.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/SMTP/show_server_header = FALSE or 0 (see Note 2045861) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "DISCL-O_a.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fb92b320-3a74-57f8-af70-d89bfec87a35",
+        "control-id": "sap_abap_baseline-DISCL-O_b.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/HTTP/auth_NN includes PREFIX=/, FILTER=SAP and PERMFILE (SAP_BASIS ≥ 7.40) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "DISCL-O_b.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ea187557-07da-5fe3-b929-8fbde4d3b37d",
+        "control-id": "sap_abap_baseline-DISCL-O_b.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: wdisp/permission_table has path to permission table file (SAP_BASIS lower 7.40) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "DISCL-O_b.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a51c622b-c1e0-573c-bc5c-15493718e01a",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-12",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-O_c: Profile parameter: icm/HTTP/admin_NN contains CLIENTHOST and ALLOWPUB=FALSE (see Note 2260323) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#12"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "54241d44-7b45-589a-974a-c2afc54cd043",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-13",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-O_d: Profile parameter: icm/HTTP/error_templ_path set as required for individual error pages for preventing disclosure of unnecessary information (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#13"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ab5d5cf7-cf2b-5bb6-9aca-a86a67a3b51d",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-14",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-O_e: Profile parameter: rdisp/TRACE_HIDE_SEC_DATA = on (see Note 2012562) (SAP Kernel lt 916) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#14"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ad6b2ed5-7f71-5a11-86c3-abf985c6b54a",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-15",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-O_f: Profile parameter: icm/trace_secured_data = FALSE or 0 (see Note 634262) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#15"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "482c473b-02c5-5b6a-b2a3-5a12debe8d53",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-16",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-O_g: Profile parameter: icm/accept_forwarded_cert_via_http = FALSE or 0 (see Note 2656696) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#16"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d13da24c-cb04-5e1d-a9da-5df546503282",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-17",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): DISCL-O_h: Profile parameter: icm/trusted_reverse_proxy_NN, no wildcards (see Note 2052899) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#17"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4a5ed466-427e-5a16-b943-dcba7ea9721c",
+        "control-id": "sap_abap_baseline-FILE-A_a.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: abap/path_normalization != off (Directory Traversal Protection, see Notes 1497003, 2551541, 2562089) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "FILE-A_a.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9c746093-056a-56a1-ba0b-aa8e83cf0f54",
+        "control-id": "sap_abap_baseline-FILE-A_a.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: abap/path_norm_Windows = 0 (Directory Traversal Protection, see Note 2634476) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "FILE-A_a.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b52ea3eb-c9d4-53e9-abe7-146df44e82cb",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-18",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): MSGSRV-A_a: Profile parameter: rdisp/msserv_internal maintained (Message Server Security, for internal port for server communication) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#18"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5c6a49a9-407c-5752-8b88-7da22ab64feb",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-19",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): MSGSRV-A_b: Profile parameter: ms/monitor = 0 (Message Server Security, to prohibit external monitor) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#19"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e0a854be-54d8-5f63-b34c-4245fbd481a9",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-20",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): MSGSRV-A_c: Profile parameter: ms/admin_port = 0 (Message Server Security, deactivated administration port for external clients) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#20"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e7ee90d6-dd43-5af5-a002-6a7702c7a094",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-21",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETCF-A_a: Profile parameter: auth/rfc_authority_check = 1 6 or 9 (Secure Network Configuration, execution option for the RFC authority check, see Note 2216306) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#21"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a716c51b-1e3d-5088-9029-08b24e7ec86a",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-22",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETCF-A_b: Profile parameter: rfc/callback_security_method = 3 (Secure Network Configuration, block unauthorized remote RFC callbacks, see Note 2678501) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#22"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b16f61b4-b14d-5c55-9625-5891d9127827",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-23",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETCF-A_c: Profile parameter: rfc/selftrust = 0 (Secure Network Configuration, see Notes 2449757, 2614667) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#23"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e8aafbb1-6185-536e-acc2-93a26178081a",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-24",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETCF-A_e: Profile parameter: ixml/dtd_restriction = expansion or prohibited (Secure Network Configuration) (see Notes 2308217, 1712860) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#24"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "436f1e2b-ba71-5125-82be-da216f97e900",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-25",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETCF-A_f: Profile parameter: login/disable_cpic = 1 (Secure Network Configuration, see Note 2926224) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#25"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e57f1081-74df-5bf9-873b-34393cb1c730",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-26",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETCF-A_g: Profile parameter: wdisp/add_xforwardedfor_header = 1 or TRUE (Secure Network Configuration, see Note 2788140) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#26"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "aa9b1fb5-dc89-5aeb-8da0-3487ea575dfd",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-27",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETENC-A_a: Profile parameter: snc/enable = 1 (enable SNC-Module) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#27"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b529b910-19e7-5737-8608-77e945ca8a98",
+        "control-id": "sap_abap_baseline-NETENC-A_b.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/data_protection/min = 3 (enforce encryption for SNC) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_b.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cdc19cf2-4539-510c-b40d-61ba9f9a66df",
+        "control-id": "sap_abap_baseline-NETENC-A_b.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/data_protection/max = 3 (enforce encryption for SNC) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_b.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4216a028-3885-5ced-a7b4-f1638216b0f3",
+        "control-id": "sap_abap_baseline-NETENC-A_b.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/data_protection/use = 3 or 9 (enforce encryption for SNC) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_b.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "83274471-7bcb-5b3d-b60c-342e9a03da09",
+        "control-id": "sap_abap_baseline-NETENC-O_b.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/HTTP/admin_nn has PORT defined (allow ICM Web Dispatcher administration only on certain port) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-O_b.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "626bc533-0005-53a8-8932-8ead34c4d8a0",
+        "control-id": "sap_abap_baseline-PWDPOL-A_e.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_compliance_to_current_policy = 1 (compliance with current password policy must be enforced) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_e.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9bf56eb9-fd73-54b9-94b4-3890d9c9700d",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-28",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): PWDPOL-A_g: Profile parameter: icf/reject_expired_passwd = 1 (http(s) calls with expired passwords must be rejected, see Note 2579165) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#28"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5020fad9-2e98-530e-a814-b73e6e2a8683",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-29",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): PWDPOL-A_h: Profile parameter: rfc/reject_expired_passwd = 1 (RFC calls with expired passwords must be rejected, see Note 1591259) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#29"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "618c174e-c63e-57fb-b0d7-a63f93034746",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-30",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): SSO-A_a: Profile parameter: login/ticket_only_by_https = 1 (to generate ticket only via https, see Notes 1531399 and 2068872) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#30"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "60d3dd84-b4cb-50a3-b1fd-d96abd222d6d",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-31",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): SSO-A_b: Profile parameter: login/ticket_only_to_host = 1 (ticket only back to creating host) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#31"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e7252e91-d2ac-54ce-8f87-ee4c9cbcbbfd",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-32",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): SSO-A_c: Profile parameter: icf/set_HTTPonly_flag_on_cookies != 1 or 3 (recommended 0) (to set HTTPonly-Flag for Cookies, see Notes 2068872 and 1277022) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#32"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "97284561-d972-5f6e-ada9-2f8a934e0d36",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-33",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): SSO-A_d: Profile parameter: login/accept_sso2_ticket = 2 or 1 if SAP Kernel lt 916 (to accept SAP Assertion Tickets but reject SAP Logon Tickets, see Note 3584984) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#33"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "af4910d5-eac6-5bab-831b-0a36e7a345b8",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-34",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): TRUST-A_f: Profile parameter: rfc/selftrust = 0 (block implicit self-trust, see Notes 2449757, 2614667) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#34"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "71d90e19-afdd-5e7d-8880-0a2705d00f24",
+        "control-id": "sap_abap_baseline-USRCTR-A_a.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: dynp/checkskip1screen value = ALL and dynp/confirmskip1screen value = OFF or not set (User Control of Action) (see Note 2999707) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "USRCTR-A_a.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4570a81d-741b-5e9b-a35d-d3d76b6b492d",
+        "control-id": "sap_abap_baseline-USRCTR-A_a.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: dynp/checkskip1screen value != ALL IF dynp/confirmskip1screen value = 'ALL' (User Control of Action) (see Note 2999707) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "USRCTR-A_a.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "82db54b3-0a7c-59a9-99cd-c388ad192b1f",
+        "control-id": "sap_abap_baseline-USRCTR-A_a.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: dynp/confirmskip1screen value = ALL and dynp/checkskip1screen value = OFF or not set (User Control of Action) (see Note 1956086) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "USRCTR-A_a.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "db207a16-e556-5fd0-9e10-2489f171ed1a",
+        "control-id": "sap_abap_baseline-USRCTR-A_a.4",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: dynp/confirmskip1screen value != ALL IF dynp/checkskip1screen value = 'ALL' (User Control of Action) (see Note 1956086) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "USRCTR-A_a.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "dd416766-cf59-5dfc-a754-949fd0e33418",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-35",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): USRCTR-A_b: Profile parameter: auth/check/calltransaction = 2 or 3 (recommended) (User Control of Action) (see Note 515130) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#35"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "55b876cb-72a7-5ad6-b96c-b0252bbffbfa",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-36",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): USRCTR-A_c: Profile parameter: auth/no_check_in_some_cases = Y (User Control of Action) (see Note 1723881) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#36"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "57be31c1-a589-5918-b776-c49b6d8e9292",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-37",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): USRCTR-A_d: Profile parameter: auth/object_disabling_active = N (User Control of Action) (see Note 2926224) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#37"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5286d2d7-b79d-56d0-bbfb-b331f5900291",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-38",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): USRCTR-A_e: Profile parameter: rdisp/gui_auto_logout ≤ 3600 seconds (User Control of Action) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#38"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a8b7a535-fa33-5d06-b10d-1eccf9f40e27",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-39",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): USRCTR-A_f: Profile parameter: rdisp/vbdelete ≥ 400 days (User Control of Action) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#39"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1c12d5d4-1486-51fb-9563-5f1f4a5684aa",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-40",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): USRCTR-A_j: Profile parameter: rfc/authCheckInPlayback = 2 (User Control of Action) (see Notes 3674774, 3717541, 3676372) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#40"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cd268e8b-b2c1-5ecc-aaa9-91f297b9112a",
+        "control-id": "sap_abap_baseline-CHANGE-A_d.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Transport Parameter: RECCLIENT maintained and != OFF (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_d.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e0d714ca-55f5-5c33-8729-ec688bbbe97c",
+        "control-id": "sap_abap_baseline-CHANGE-A_d.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Transport Parameter: RECCLIENT = ALL (recommended value) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_d.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1f910f0f-eff2-5581-a87f-9d2cd2156569",
+        "control-id": "sap_abap_baseline-CHANGE-A_e.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Transport Parameter: VERS_AT_EXP is activated in DEV (see Note 2296271) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_e.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b48a9ed4-066c-5846-b252-8ca477b15bae",
+        "control-id": "sap_abap_baseline-CHANGE-A_e.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Transport Parameter: VERS_AT_IMP is activated in PROD (see Note 1784800) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_e.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "74f3b341-bcaa-520d-87e7-f0a322cd5c14",
+        "control-id": "sap_abap_baseline-CHANGE-A_g.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Transport Parameter: TP_RELEASE ≥ 380.44.90 (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_g.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cc9d4895-e750-56a9-b83e-e22e6067ad57",
+        "control-id": "sap_abap_baseline-CHANGE-A_g.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Transport Parameter: TP_VERSION ≥ 380 (see Note 2671160) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_g.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e8260478-45b7-58b2-9b86-e26257e855d8",
+        "control-id": "sap_abap_baseline-CHANGE-A_g.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Kernel versions in maintenance as per Note 2083594 (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_g.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "98bf44a3-a0b5-5c19-b4e0-f21517854f05",
+        "control-id": "sap_abap_baseline-MSGSRV-A_d.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ms/acl_info is maintained (Message Server Security, pointing to access control list file for Message Server (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "MSGSRV-A_d.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ab1a806b-6bae-53f7-af15-911cf26ec8e2",
+        "control-id": "sap_abap_baseline-NETENC-A_c.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/accept_insecure_gui = U (or 0) (accept insecure SAPGUI logins to SNC-enabled Server) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_c.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "dcea37fa-79f8-555f-aba7-c20eafc57d16",
+        "control-id": "sap_abap_baseline-NETENC-A_c.2a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/accept_insecure_rfc = U (or 0) (accept insecure incoming RFC-connections on SNC-enabled Server) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_c.2a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3fce6858-f5f7-5fd4-a53a-0cb165f5f321",
+        "control-id": "sap_abap_baseline-NETENC-A_c.2b",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/accept_insecure_r3int_rfc = 0 or 1 (accept insecure internal RFC-connections on SNC-enabled Server) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_c.2b"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "53019718-39ef-55fe-8ef5-643f53609334",
+        "control-id": "sap_abap_baseline-NETENC-A_c.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/only_encrypted_gui = 1 (accept only encrypted GUI connections to SNC-enabled Server) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_c.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "86f68b1a-b1ee-5745-94fa-763d417540d9",
+        "control-id": "sap_abap_baseline-NETENC-A_c.4",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: snc/only_encrypted_rfc = 1 (accept only encrypted RFC connections to SNC-enabled Server) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_c.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fed2d07b-4193-5ce3-a213-52370f6ca4cf",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-41",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETENC-A_d: Profile parameter: snc/log_unencrypted_rfc = 2 (Security Audit Logging for unencrypted RFC connections) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#41"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e7b0ac02-d4c9-52a4-8ad6-20a7c429d8df",
+        "control-id": "sap_abap_baseline-NETENC-A_f.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ssl/ciphersuites set as recommended (server inbound default SSL/TLS server ciphersuites, see Notes 3346659, 510007) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_f.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3b6a221a-78b1-5ca3-bfb8-0f9722f019d1",
+        "control-id": "sap_abap_baseline-NETENC-A_g.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: ssl/client_ciphersuites set as recommended (client outbound default SSL/TLS client cipher suites, see Notes 3346659, 510007) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "NETENC-A_g.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d4a37552-b316-5f86-87cc-0acc07335b7b",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-42",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): NETENC-A_h: Profile parameter: snc/permit_insecure_start = 0 (permit to start insecure programs when SNC is enabled) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#42"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "94453e6d-8d9d-5e47-8d66-68f02ad2c6da",
+        "control-id": "sap_abap_baseline-PWDPOL-A_c.1a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_expiration_time between 1 and 183 (rule for validity period of passwords in days) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_c.1a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1dab3952-d6b0-59af-92c1-cc75068a294b",
+        "control-id": "sap_abap_baseline-PWDPOL-A_i.1a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_digits ≥ 1 (rule for password complexity, digits) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_i.1a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b219c4d4-ac75-5d0e-ad16-0b1327d28872",
+        "control-id": "sap_abap_baseline-PWDPOL-A_i.2a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_letters ≥ 1 (rule for password complexity, letters) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_i.2a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "53aa0b0c-a38f-5eaf-bad9-d4c5aa577dc0",
+        "control-id": "sap_abap_baseline-PWDPOL-A_i.3a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_lowercase ≥ 1 (rule for password complexity, lowercase) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_i.3a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fe25dedb-869f-57e3-9bd5-acf4ab86c3d4",
+        "control-id": "sap_abap_baseline-PWDPOL-A_i.4a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_uppercase ≥ 1 (rule for password complexity, uppercase) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_i.4a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4790c725-e5d5-5a59-972b-575663af2b5c",
+        "control-id": "sap_abap_baseline-PWDPOL-A_i.5a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_specials ≥ 1 (rule for password complexity, special characters) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_i.5a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "810136b7-9d84-572a-9047-81be1059240e",
+        "control-id": "sap_abap_baseline-PWDPOL-A_i.6a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/min_password_diff ≥ 3 (rule for number of different characters in new passwords) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_i.6a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3388e0e8-0866-50de-81c5-f736b93e1387",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.1a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/disable_password_logon must be set (rule for disabling password logon) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.1a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9e7d36d4-e0c5-50a1-90b4-29371e6efd36",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.2a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/fails_to_user_lock between 1 and 5 (rule for maximum failed logon attempts) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.2a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8b9c3b88-fd71-5ab0-ae3e-90faa26f9371",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.3a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/failed_user_auto_unlock = 0 (rule for automatic user unlock after failed logins) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.3a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "83ed3007-8955-520e-8ecd-85baae3d8af2",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.4a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_max_idle_productive between 1 and 180 (rule for maximum idle time of productive passwords) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.4a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "488e2452-5a0a-5fa9-9857-b676b992076c",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.5a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_change_waittime must be set (rule for password change wait time) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.5a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6ae5138f-37f6-54f1-8555-4e0d4be35150",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.6a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_change_for_SSO = 1 (rule for password change for SSO) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.6a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "349546ba-f08f-5475-bca8-3aa38a8a0492",
+        "control-id": "sap_abap_baseline-PWDPOL-A_j.7a",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: login/password_history_size ≥ 5 (rule for password history size) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "PWDPOL-A_j.7a"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "563020ac-58ec-5778-9a56-e4b83b87ac87",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-43",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): PWDPOL-A_k: Profile parameter: login/password_hash_algorithm set as required (see Note 2140269) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#43"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8fe99185-62f6-5bbf-9b55-6c6e228dcd4b",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-44",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): PWDPOL-A_l: Profile parameter: login/password_logon_usergroup maintained if login/disable_password_logon = 1 (rule for groups allowed to logon with passwords) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#44"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5a6c7e27-7b76-5915-9da0-37c42116c5ee",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-45",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): RFCGW-A_g: Profile parameter: gw/rem_start = DISABLED or SSH_SHELL (acceptable method to start programs via the RFC Gateway, see Note 2776748) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#45"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fa3fe5b3-0bab-5953-8d61-9237ed06e19c",
+        "control-id": "sap_abap_baseline-RFCGW-A_h.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: gw/acl_mode_proxy = 1 (activates the default content of this ACL, if there is no such file already) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_h.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fa12dfa0-7c93-5d4d-88eb-00b00b7f4752",
+        "control-id": "sap_abap_baseline-RFCGW-A_h.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: gw/prxy_info (global path defined to central directory) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_h.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5538049e-a31f-5b9b-8e9d-83a23dfdd757",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: sapgui/nwbc_scripting = FALSE (Scripting Protection, see Note 1816392) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "81117448-504b-5e8d-9015-bc827a11a193",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: sapgui/user_scripting = FALSE (Scripting Protection) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f76af883-00e6-5934-9c72-c44956a2f70c",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): SAP GUI Scripting Security (IF scripting necessary then sapgui/user_scripting_per_user = TRUE, see Note 2715519, 2565390) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "82227deb-e1fd-58a0-8ad8-cbd519cf6a56",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.4",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: sapgui/user_scripting_per_user = TRUE (Scripting Protection) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5b07a302-569b-5f08-aedb-015a20279ce7",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.5",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: sapgui/user_scripting_disable_recording = TRUE (Scripting Protection) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "855cb403-5f57-5abc-a58e-9596cec0aa83",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.6",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: sapgui/user_scripting_force_notification = TRUE (Scripting Protection) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a94e8bbd-2695-5238-b482-0ff276961f6d",
+        "control-id": "sap_abap_baseline-SCRIPT-A_a.7",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: sapgui/user_scripting_set_readonly = TRUE (Scripting Protection) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SCRIPT-A_a.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "dd4810fb-830f-5266-9fcf-bcaf235473f2",
+        "control-id": "sap_abap_baseline-SECSTO-A_a.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: rsec/securestorage/keyfile set as expected (SecStoreDBKey.pse key file location, see Note 1902611) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SECSTO-A_a.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "26d6b74e-7a4d-58c0-a248-c7c69dc0d835",
+        "control-id": "sap_abap_baseline-sap_abap_baseline.main-46",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): TRUST-A_j: Profile parameter: rfc/allowoldticket4tt = no (to block old trusted tickets, see Note 3157268) (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "sap_abap_baseline.main#46"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_checks.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a41bd657-fa54-529a-ab49-1a5a63e3983f",
+        "control-id": "sap_abap_baseline-RFCGW-A_a-secinfo.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): RFC Gateway ACL: gw/sec_info file not found (secinfo file absent or unreadable on the host)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_a secinfo.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "34dc85a5-d830-5d36-9f01-eed986f9d759",
+        "control-id": "sap_abap_baseline-RFCGW-A_a-secinfo.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): RFC gateway ACL: secinfo file entries not fully generic (RFC Gateway hardening) (%d fully generic permit line(s): %v)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_a secinfo.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0df31a8f-31b2-59ab-bb12-6199a7b18678",
+        "control-id": "sap_abap_baseline-RFCGW-A_a-reginfo.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): RFC Gateway ACL: gw/reg_info file not found (reginfo file absent or unreadable on the host)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_a reginfo.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7698c468-38b7-550a-80e4-66d2db381cf2",
+        "control-id": "sap_abap_baseline-RFCGW-A_a-reginfo.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): RFC gateway ACL: reginfo file entries not fully generic (RFC Gateway hardening) (%d fully generic permit line(s): %v)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_a reginfo.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b8522cfa-84d5-50cc-ab9c-3759589ba47f",
+        "control-id": "sap_abap_baseline-RFCGW-A_h-prxinfo.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): RFC Gateway ACL: gw/prxy_info file not found (prxyinfo file absent or unreadable on the host)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_h prxinfo.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fae2ac3f-17a0-5180-b9cd-c1044bd922eb",
+        "control-id": "sap_abap_baseline-RFCGW-A_h-prxinfo.2",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): RFC gateway ACL: prxyinfo file entries not fully generic (RFC Gateway hardening) (%d fully generic permit line(s): %v)",
+        "props": [
+         {
+          "name": "label",
+          "value": "RFCGW-A_h prxinfo.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "98865ced-4fe4-5202-8923-3ba8a193e4d9",
+        "control-id": "sap_abap_baseline-MSGSRV-A_e.1",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): Message Server ACL should not contain generic entries, such as HOST=* (ACL file, Message Server Security) (ms_acl_info file absent or unreadable on the host)",
+        "props": [
+         {
+          "name": "label",
+          "value": "MSGSRV-A_e.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "963a7956-5d7a-5ba4-89d3-58372fa4d771",
+        "control-id": "sap_abap_baseline-MSGSRV-A_e.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): Message Server ACL should not contain generic entries (ACL file, Message Server Security) (ms_acl_info file absent or unreadable on the host)",
+        "props": [
+         {
+          "name": "label",
+          "value": "MSGSRV-A_e.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5b8d32d8-b1d2-58de-92df-63d309d70de9",
+        "control-id": "sap_abap_baseline-SECUPD-A_a.3",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): SAP Kernel date not older than 365 days (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SECUPD-A_a.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "02a20435-e8c0-5a0c-8abd-a801c9e11c25",
+        "control-id": "sap_abap_baseline-SECUPD-A_a.4",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): CRYPTOLIB date not older than 365 days (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "SECUPD-A_a.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "30dbf03d-62d5-56c4-8e42-6654a94c4209",
+        "control-id": "sap_abap_baseline-CHANGE-A_g.4",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_manual.rego): Minimum Kernel patchlevel which Note 2083594 recommends (%s)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CHANGE-A_g.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sap_abap_baseline.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/sap/abap/sap_abap_baseline_manual.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       }
+      ]
+     },
+     {
       "uuid": "1f3887aa-bca0-50d9-b61c-f084b704b267",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/scuba_m365.json",
       "description": "Controls of scuba_m365 evaluated by the Rego Policy Libraries (104 controls, 7 Rego modules).",

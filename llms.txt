@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 22,512 control-level checks in 860 policy files, mapped to 182 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 22,654 control-level checks in 867 policy files, mapped to 183 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -21,6 +21,7 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [AI Governance](https://ynotbhatc.github.io/rego_policy_libraries/standard/governance-ai.html): 4 policy files
 - [AMI / NIST IR 7628](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html): 9 policy files
 - [Aap](https://ynotbhatc.github.io/rego_policy_libraries/standard/enforcement-aap.html): 5 policy files
+- [Abap](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-sap-abap.html): 7 policy files
 - [Bsi C5](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-regional-bsi-c5.html): 18 policy files
 - [CCPA / CPRA](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-privacy-ccpa.html): 8 policy files
 - [CIS Amazon Linux 2023](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-amazon-linux-2023.html): 17 policy files
