@@ -234,12 +234,15 @@ def derive(key, cfg):
               "# =============================================================================", ""]
         for k2, var in (("CAT I", "cat_i_findings"), ("CAT II", "cat_ii_findings"), ("CAT III", "cat_iii_findings")):
             names = by_sev[k2]
-            if names:
-                o.append(f"{var} := [\n" + "".join(f"\t{n},\n" for n in names) + "]\n")
+            if names or k2 != "CAT I":
+                o.append(f"{var} := [" + ("\n" + "".join(f"\t{n},\n" for n in names) if names else "") + "]\n")
             else:
-                # A bare [] is a closed empty array. OPA 1.22 rejects `some f in`
-                # it. array.concat([], []) is still [] and has an open array type.
-                o.append(f"{var} := array.concat([], [])\n")
+                # Only cat_i_findings is iterated (`some f in cat_i_findings` below); array.concat rather than the
+                # literal `[]` because OPA >= 1.22 rejects iterating a literal empty array (scripts/check_per_file_load.py).
+                o.append(f"# No {k2} rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22\n"
+                         f"# types a literal empty array as having no members and rejects `some f in {var}`\n"
+                         f"# as an undefined ref, so the module fails to compile when it is loaded on its own\n"
+                         f"# (scripts/check_per_file_load.py).\n{var} := array.concat([], [])\n")
         o += ["findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))", "",
               "violations contains finding.stig_id if {", "\tsome finding in findings", '\tfinding.status == "Open"', "}", "",
               "open_cat_i contains f if {", "\tsome f in cat_i_findings", '\tf.status == "Open"', "}", "",

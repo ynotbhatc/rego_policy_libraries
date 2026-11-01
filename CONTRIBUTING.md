@@ -7,6 +7,12 @@ Thank you for contributing! This library grows by community submissions. Whether
 ## Three rules CI enforces
 
 1. **Rego v1 only.** Every file carries `import rego.v1` and passes `opa check --strict`.
+   Every module must also compile **on its own**: the product uploads one file at a time into an empty OPA
+   server, so a rule used by a module lives in that module (or in a package loaded before its directory),
+   and an empty table is written `object.union({}, {})`, `set() | set()` or `array.concat([], [])`, never a
+   literal `{}` / `set()` / `[]` that is later indexed or iterated (OPA >= 1.22 rejects that as an undefined
+   ref). `make check-per-file-load` proves it (`OPA_IMAGE=docker.io/openpolicyagent/opa:latest` runs the
+   server from the product's image with podman).
 2. **Fail closed.** A framework given no facts, or facts it cannot interpret, reports `compliant: false` with an
    explicit `FAIL-CLOSED` reason. Silence is never a pass; a lack of facts is non-compliance.
 3. **Metadata is the source of the documentation.** The `# METADATA` block on every package feeds the counts,
@@ -123,6 +129,7 @@ The CI pipeline (`.github/workflows/opa-test.yml`) runs all tests on every PR.
 - [ ] `compliance_report` rule exported
 - [ ] Violation messages include a control identifier
 - [ ] Tests added for new controls (or existing tests still pass)
+- [ ] `make check-per-file-load` passes (every module uploads on its own into an empty OPA server)
 - [ ] PR title follows the pattern: `feat(<framework>): add <description>` or `fix(<framework>): <description>`
 - [ ] `make check-converters` passes (the OSCAL, SARIF and crosswalk exports rebuild and validate; commit the regenerated `dist/` files)
 

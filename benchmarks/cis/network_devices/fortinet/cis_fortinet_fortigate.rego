@@ -103,16 +103,13 @@ firewall_violations := sort([m | some m in _v_firewall])
 vpn_violations := sort([m | some m in _v_vpn])
 
 # no wireless recommendations in the 7.4.x benchmark (kept so the report shape is unchanged)
-wireless_violations := sort([m | some m in _v_wireless])
+wireless_violations := []
 
 # 5 Security fabric
 security_fabric_violations := sort([m | some m in _v_security_fabric])
 
 # 4 Security profiles
 security_profiles_violations := sort([m | some m in _v_security_profiles])
-
-# set() | set() is empty. OPA 1.22 rejects iteration of a bare set().
-_v_wireless := set() | set()
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 default _global_collected := false

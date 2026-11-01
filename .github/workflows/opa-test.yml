@@ -98,6 +98,14 @@ jobs:
         run: |
           opa check --strict benchmarks frameworks governance threat_detection crosswalk enforcement
 
+      - name: Per-file load — every module must compile on its own when uploaded one file at a time
+        run: |
+          # The product loads the library with one PUT /v1/policies per non-test file
+          # into an empty OPA server. `opa check <dir>` compiles a directory as a unit
+          # and cannot see a module that only compiles next to its siblings (HIPAA
+          # Part 160/162 were silently absent from the product's OPA, 2026-11-01).
+          python3 scripts/check_per_file_load.py --quiet
+
       - name: Coverage stamps are current (custom.coverage in every module's METADATA)
         run: make check-coverage
 

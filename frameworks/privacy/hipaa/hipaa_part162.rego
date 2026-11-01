@@ -180,12 +180,14 @@ dated_obligations := {
 	"162.1902(c)": "2028-04-14 - Medicaid pharmacy subrogation: the paragraph (b) standard (the 2025 text says \"paragraph (b)\", which includes (b)(1))",
 }
 
-# No fact checks exist for these paragraphs: every row is attested.
-# Unions stay empty. A bare {} or set() is closed, and OPA 1.22 rejects a
-# dynamic ref into it — which also drops the else-rule that reads it.
+# No fact checks exist for these paragraphs: every row is attested. Built with
+# object.union rather than a literal `{}`: OPA >= 1.22 types a literal empty
+# object as having no keys and rejects every `fact_basis[id]` below as an
+# undefined ref, so the module fails to compile when it is loaded on its own
+# (scripts/check_per_file_load.py). The value is still the empty object.
 fact_basis := object.union({}, {})
 
-_fact_pass := set() | set()
+_fact_pass := {id | some id, _ in fact_basis}
 
 # -----------------------------------------------------------------------------
 # Evaluation (fail-closed). Shared shape across the CFR-keyed HIPAA modules.
