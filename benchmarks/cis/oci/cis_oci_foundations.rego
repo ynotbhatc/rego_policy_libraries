@@ -266,12 +266,12 @@ violations contains "3.1: Compute Instance Legacy Metadata service endpoint must
 	not i.legacy_imds_endpoints_disabled
 }
 
-violations contains "3.2: Secure Boot must be turned on on Compute Instance" if {
+violations contains "3.2: Secure Boot must be turned on for Compute Instance" if {
 	some i in input.oci.compute.instances
 	not i.secure_boot_enabled
 }
 
-violations contains "3.3: In-transit Encryption must be turned on on Compute Instance" if {
+violations contains "3.3: In-transit Encryption must be turned on for Compute Instance" if {
 	some i in input.oci.compute.instances
 	not i.in_transit_encryption_enabled
 }

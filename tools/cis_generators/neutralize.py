@@ -134,7 +134,9 @@ def _fmt(template: str, groups: dict[str, str]) -> str:
     out = template
     for key, val in groups.items():
         out = out.replace("{" + key + "}", val if val else "")
-    return re.sub(r"[ \t]{2,}", " ", out).strip()
+    out = re.sub(r"[ \t]{2,}", " ", out).strip()
+    # "<x> is enabled on <y>" would otherwise render as "turned on on <y>"
+    return out.replace(" must be turned on on ", " must be turned on for ")
 
 
 # Applied to the clause with a leading "Ensure [that]" already removed.

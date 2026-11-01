@@ -30,7 +30,7 @@ compliant if { count(violations) == 0 }
 # Section 1 - Identity and Access Management (L2)
 # ---------------------------------------------------------------------------
 
-violations contains "CIS L2 1.1.1: Security Defaults must be turned on on Azure Active Directory" if {
+violations contains "CIS L2 1.1.1: Security Defaults must be turned on for Azure Active Directory" if {
 	not input.aad.security_defaults_enabled
 }
 

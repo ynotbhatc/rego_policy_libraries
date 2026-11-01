@@ -1078,14 +1078,14 @@ test_3_4_pass if {
 test_3_4_fail if {
 	inp := json.patch(green, [{"op": "add", "path": "/fortigate_config/firewall/policy/0/logtraffic", "value": "disable"}])
 	vs := b.violations with input as inp
-	"3.4: logging must be turned on on all firewall policies" in vs
+	"3.4: logging must be turned on for all firewall policies" in vs
 }
 
 test_3_4_evidence_missing if {
 	inp := json.patch(green, [{"op": "remove", "path": "/fortigate_config/firewall/policy"}])
 	vs := b.violations with input as inp
 	"3.4: evidence missing — fortigate_config.firewall.policy not collected" in vs
-	not "3.4: logging must be turned on on all firewall policies" in vs
+	not "3.4: logging must be turned on for all firewall policies" in vs
 }
 
 test_4_1_1_pass if {

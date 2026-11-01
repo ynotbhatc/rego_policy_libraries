@@ -76,7 +76,7 @@ support_role_exists if {
 
 # Section 2: Storage
 storage_violations := [
-    "2.1.1: S3 bucket access logging must be turned on on the CloudTrail S3 bucket" |
+    "2.1.1: S3 bucket access logging must be turned on for the CloudTrail S3 bucket" |
     bucket := input.s3_buckets[_]
     bucket.is_cloudtrail_bucket == true
     not bucket.access_logging_enabled

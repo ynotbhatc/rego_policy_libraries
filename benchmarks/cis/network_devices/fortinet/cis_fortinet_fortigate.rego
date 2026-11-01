@@ -1062,7 +1062,7 @@ _v_firewall contains "3.4: evidence missing — fortigate_config.firewall.policy
 	not e_3_4
 }
 
-_v_firewall contains "3.4: logging must be turned on on all firewall policies" if {
+_v_firewall contains "3.4: logging must be turned on for all firewall policies" if {
 	e_3_4
 	not r_3_4
 }
@@ -2053,7 +2053,7 @@ recommendations := {
 		"section": "firewall"
 	},
 	"3.4": {
-		"title": "logging must be turned on on all firewall policies",
+		"title": "logging must be turned on for all firewall policies",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
