@@ -268,7 +268,8 @@ finding_ol09_00_000690 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := []
+# array.concat([], []) is []. OPA 1.22 rejects `some f in` a bare [].
+cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
 	finding_ol09_00_000441,

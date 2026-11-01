@@ -234,7 +234,12 @@ def derive(key, cfg):
               "# =============================================================================", ""]
         for k2, var in (("CAT I", "cat_i_findings"), ("CAT II", "cat_ii_findings"), ("CAT III", "cat_iii_findings")):
             names = by_sev[k2]
-            o.append(f"{var} := [" + ("\n" + "".join(f"\t{n},\n" for n in names) if names else "") + "]\n")
+            if names:
+                o.append(f"{var} := [\n" + "".join(f"\t{n},\n" for n in names) + "]\n")
+            else:
+                # A bare [] is a closed empty array. OPA 1.22 rejects `some f in`
+                # it. array.concat([], []) is still [] and has an open array type.
+                o.append(f"{var} := array.concat([], [])\n")
         o += ["findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))", "",
               "violations contains finding.stig_id if {", "\tsome finding in findings", '\tfinding.status == "Open"', "}", "",
               "open_cat_i contains f if {", "\tsome f in cat_i_findings", '\tf.status == "Open"', "}", "",

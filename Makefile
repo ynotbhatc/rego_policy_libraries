@@ -1,5 +1,5 @@
 # Rego Policy Libraries — Makefile
-# Requires: opa (v0.60+), curl
+# Requires: opa (CI tests 1.10.0 and 1.22.0), curl
 
 OPA ?= opa
 
@@ -7,7 +7,7 @@ OPA ?= opa
 
 help:
 	@echo "Targets:"
-	@echo "  make test          Run all opa tests (policy + test files)"
+	@echo "  make test          Run the full opa test suite (same as CI)"
 	@echo "  make lint          Check syntax of all .rego files"
 	@echo "  make metadata      Verify every package carries a conforming METADATA block"
 	@echo "  make check         lint + test + metadata"
@@ -29,14 +29,11 @@ lint:
 	done; \
 	exit $$RC
 
+# Same suite CI runs. The previous recipe only globbed *_test.rego, which
+# skipped the test_*.rego files this repo actually uses.
 test:
-	@echo "=== Running OPA tests ==="
-	@RC=0; \
-	for f in $$(find . -name "*_test.rego" -not -path "./.git/*"); do \
-	  dir=$$(dirname $$f); \
-	  $(OPA) test $$dir -v 2>&1 || RC=1; \
-	done; \
-	exit $$RC
+	@echo "=== Running OPA tests (same suite as .github/workflows/opa-test.yml) ==="
+	$(OPA) test . --ignore .github --ignore converters --timeout 30s
 
 count:
 	@echo "=== Control-level check count (scripts/count_controls.py) — also restamps docs/metrics.json ==="

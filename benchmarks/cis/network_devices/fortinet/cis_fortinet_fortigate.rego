@@ -111,7 +111,8 @@ security_fabric_violations := sort([m | some m in _v_security_fabric])
 # 4 Security profiles
 security_profiles_violations := sort([m | some m in _v_security_profiles])
 
-_v_wireless := set()
+# set() | set() is empty. OPA 1.22 rejects iteration of a bare set().
+_v_wireless := set() | set()
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 default _global_collected := false

@@ -1520,7 +1520,7 @@ status_r_cntr_k8_000910 := "Not_a_Finding" if r_cntr_k8_000910
 status_r_cntr_k8_000910 := "Open" if not r_cntr_k8_000910
 
 # CNTR-K8-000920 | V-242410 | CAT II | attestation
-missing_r_cntr_k8_000920 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_000920 := []
 
 default r_cntr_k8_000920 := false
 
@@ -1555,7 +1555,7 @@ status_r_cntr_k8_000920 := "Not_a_Finding" if r_cntr_k8_000920
 status_r_cntr_k8_000920 := "Open" if not r_cntr_k8_000920
 
 # CNTR-K8-000930 | V-242411 | CAT II | attestation
-missing_r_cntr_k8_000930 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_000930 := []
 
 default r_cntr_k8_000930 := false
 
@@ -1590,7 +1590,7 @@ status_r_cntr_k8_000930 := "Not_a_Finding" if r_cntr_k8_000930
 status_r_cntr_k8_000930 := "Open" if not r_cntr_k8_000930
 
 # CNTR-K8-000940 | V-242412 | CAT II | attestation
-missing_r_cntr_k8_000940 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_000940 := []
 
 default r_cntr_k8_000940 := false
 
@@ -1625,7 +1625,7 @@ status_r_cntr_k8_000940 := "Not_a_Finding" if r_cntr_k8_000940
 status_r_cntr_k8_000940 := "Open" if not r_cntr_k8_000940
 
 # CNTR-K8-000950 | V-242413 | CAT II | attestation
-missing_r_cntr_k8_000950 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_000950 := []
 
 default r_cntr_k8_000950 := false
 
@@ -1735,7 +1735,7 @@ status_r_cntr_k8_001160 := "Not_a_Finding" if r_cntr_k8_001160
 status_r_cntr_k8_001160 := "Open" if not r_cntr_k8_001160
 
 # CNTR-K8-001161 | V-274883 | CAT I | attestation
-missing_r_cntr_k8_001161 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_001161 := []
 
 default r_cntr_k8_001161 := false
 
@@ -1808,7 +1808,7 @@ status_r_cntr_k8_001162 := "Not_a_Finding" if r_cntr_k8_001162
 status_r_cntr_k8_001162 := "Open" if not r_cntr_k8_001162
 
 # CNTR-K8-001163 | V-274884 | CAT II | attestation
-missing_r_cntr_k8_001163 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_001163 := []
 
 default r_cntr_k8_001163 := false
 
@@ -1882,7 +1882,7 @@ status_r_cntr_k8_001300 := "Not_a_Finding" if r_cntr_k8_001300
 status_r_cntr_k8_001300 := "Open" if not r_cntr_k8_001300
 
 # CNTR-K8-001360 | V-242417 | CAT II | attestation
-missing_r_cntr_k8_001360 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_k8_001360 := []
 
 default r_cntr_k8_001360 := false
 

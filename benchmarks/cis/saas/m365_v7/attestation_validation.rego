@@ -96,7 +96,9 @@ UNRESOLVED := {
 # digest -- CIS titles are not reproduced verbatim (see README).
 #
 #   "<id>": {"subject": "...", "collector": "the call that would close it"}
-NOT_IMPLEMENTED := {}
+
+# object.union({}, {}) is {}. A bare {} cannot be iterated on OPA 1.22.
+NOT_IMPLEMENTED := object.union({}, {})
 
 attestations := object.get(input, "attestations", [])
 

@@ -489,7 +489,8 @@ _quarantine_stitch(s) if {
 parts = [HEADER]
 for s in SECTIONS:
     parts.append(f"# {STITLE[s]}\n{s}_violations := sort([m | some m in _v_{s}])\n")
-parts.append("_v_wireless := set()\n")
+# set() | set() is empty. A bare set() cannot be iterated on OPA 1.22.
+parts.append("_v_wireless := set() | set()\n")
 parts.append(HELPERS)
 for c in C:
     parts.append(emit_control(c, WB, f"_v_{section(c['id'])}"))

@@ -181,9 +181,11 @@ dated_obligations := {
 }
 
 # No fact checks exist for these paragraphs: every row is attested.
-fact_basis := {}
+# Unions stay empty. A bare {} or set() is closed, and OPA 1.22 rejects a
+# dynamic ref into it — which also drops the else-rule that reads it.
+fact_basis := object.union({}, {})
 
-_fact_pass := set()
+_fact_pass := set() | set()
 
 # -----------------------------------------------------------------------------
 # Evaluation (fail-closed). Shared shape across the CFR-keyed HIPAA modules.

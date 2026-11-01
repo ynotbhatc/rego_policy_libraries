@@ -24,6 +24,7 @@ on:
       - 'scripts/check_cis_ids.py'
       - 'scripts/check_cis_coverage.py'
       - '**/data/cis_*_index.json'
+      - 'docs/ENGINE_COMPATIBILITY.md'
   pull_request:
     branches: [main]
     paths:
@@ -47,27 +48,38 @@ on:
       - 'scripts/check_cis_ids.py'
       - 'scripts/check_cis_coverage.py'
       - '**/data/cis_*_index.json'
+      - 'docs/ENGINE_COMPATIBILITY.md'
 
 permissions:
   contents: read
 
 jobs:
   validate:
-    name: Check and Test Rego Policies
+    # Matrix legs show up as "Check and Test Rego Policies (OPA <version>)".
+    # The validate-all job below keeps the historical check name so a required
+    # status check pinned to it still fires, and it fails unless every leg passed.
+    name: Check and Test Rego Policies (OPA ${{ matrix.opa }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 1.10.0 is the floor this library ships against. 1.22.0 is the newest
+        # stable release as of 2026-11-01; bump the second entry on a new OPA release.
+        opa: ["1.10.0", "1.22.0"]
 
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
 
-      - name: Install OPA
+      - name: Install OPA ${{ matrix.opa }}
+        env:
+          OPA_VERSION: ${{ matrix.opa }}
         run: |
-          OPA_VERSION=v1.10.0
           # Download under the original filename so sha256sum -c can find it
           curl -L -o opa_linux_amd64_static \
-            "https://github.com/open-policy-agent/opa/releases/download/${OPA_VERSION}/opa_linux_amd64_static"
+            "https://github.com/open-policy-agent/opa/releases/download/v${OPA_VERSION}/opa_linux_amd64_static"
           curl -L -o opa.sha256 \
-            "https://github.com/open-policy-agent/opa/releases/download/${OPA_VERSION}/opa_linux_amd64_static.sha256"
+            "https://github.com/open-policy-agent/opa/releases/download/v${OPA_VERSION}/opa_linux_amd64_static.sha256"
           sha256sum -c opa.sha256
           chmod +x opa_linux_amd64_static
           sudo mv opa_linux_amd64_static /usr/local/bin/opa
@@ -255,3 +267,18 @@ jobs:
             count=$(find $domain -name "*.rego" 2>/dev/null | wc -l)
             echo "  $domain: $count"
           done
+
+  # Same display name the branch protection rule already requires. A matrix
+  # leg replaces that name, so this job is the one that stays required: it
+  # passes only when every OPA version in the matrix passed.
+  validate-all:
+    name: Check and Test Rego Policies
+    needs: validate
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every OPA version
+        run: |
+          result="${{ needs.validate.result }}"
+          echo "OPA matrix result: ${result}"
+          [ "${result}" = "success" ]

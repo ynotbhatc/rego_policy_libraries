@@ -52,7 +52,9 @@ _ev := e if {
 
 # Manual recommendations whose CIS scope has several components take a
 # structured attestation (every listed part true); a bare `true` is not enough.
-_parts := {}
+# object.union({}, {}) is {}. A bare {} is a closed object, and OPA 1.22
+# rejects a dynamic ref into it.
+_parts := object.union({}, {})
 
 attested(id) if {
 	requirements[id].assessment == "Manual"
@@ -126,9 +128,10 @@ _get(o, k) := object.get(o, k, null) if is_object(o)
 
 # ── Automated checks ─────────────────────────────────────────────────────────
 # All recommendations in this section are Manual.
-_evidence_key := {}
+# Unions stay empty. A bare {} or set() cannot be indexed on OPA 1.22.
+_evidence_key := object.union({}, {})
 
-fail := set()
+fail := set() | set()
 
 # ── report ───────────────────────────────────────────────────────────────────
 default section_compliant := false

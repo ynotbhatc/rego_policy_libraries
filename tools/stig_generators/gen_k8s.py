@@ -1330,8 +1330,14 @@ def emit(key, cfg):
         ident, sev = rego_ident(sid), SEV[r["severity"]]
         deep_merge(green, spec["green"], sid)
         evs = ", ".join(json.dumps(list(e)) for e in spec["ev"])
+        # OPA 1.22 rejects `some p in []` (a closed empty array has no index).
+        # No evidence paths means nothing is missing, which is exactly [].
+        if spec["ev"]:
+            missing = f"missing_{ident} := [concat(\".\", p) | some p in [{evs}]; not _collected(p)]"
+        else:
+            missing = f"missing_{ident} := []"
         lines += [f"# {sid} | {r['vuln_id']} | {sev} | {spec['kind']}",
-                  f"missing_{ident} := [concat(\".\", p) | some p in [{evs}]; not _collected(p)]", "",
+                  missing, "",
                   f"default {ident} := false", ""]
         for alt in spec["alts"]:
             lines += [ident + " if {", f"\tcount(missing_{ident}) == 0"] + rego_lines(alt) + ["}", ""]

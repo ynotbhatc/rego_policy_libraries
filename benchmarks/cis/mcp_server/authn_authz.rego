@@ -59,7 +59,9 @@ _ev := e if {
 
 # Manual recommendations whose CIS scope has several components take a
 # structured attestation (every listed part true); a bare `true` is not enough.
-_parts := {}
+# object.union({}, {}) is {}. A bare {} is a closed object, and OPA 1.22
+# rejects a dynamic ref into it.
+_parts := object.union({}, {})
 
 attested(id) if {
 	requirements[id].assessment == "Manual"
