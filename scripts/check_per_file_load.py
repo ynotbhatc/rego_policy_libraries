@@ -32,19 +32,30 @@ What it does
 Non-test means: not under a ``tests/`` directory, not ``test_*.rego``, not
 ``*_test.rego``. Test modules are never uploaded by the product.
 
+Store scope and cost
+--------------------
+OPA recompiles the whole store on every upload, so loading N files into one
+store costs O(N^2): the whole library (865 files) takes about 90 minutes on a
+GitHub runner. By default the store is emptied before each directory
+(``--store-scope dir``), which is also the product's own unit of loading, and
+the run takes a few minutes. This hides nothing that matters: a module's
+siblings are still present, and a reference into a package that is *absent*
+from the store is never an error in OPA (only a missing rule of a package
+that is present is), so a cross-directory reference can only fail with a
+bigger store, and that case is already covered by ``opa check --strict`` over
+the whole tree in CI. ``--store-scope tree`` empties the store once per
+top-level tree, ``--store-scope all`` never does (the exhaustive run).
+
 Limitation
 ----------
-The product's real loader uploads one framework directory at a time, and the
-order of files *within* a directory is the ``find`` order of the host it runs
-on. This script uploads the whole tree set into one server in sorted order, so
-it proves the sorted order works and catches every module that can never load
-(mutual references, unsatisfiable bodies). It does not prove every possible
-``find`` order works: a module that only loads because a sibling sorts before
-it is still a latent failure. Make each module self-contained (every rule it
-refers to lives in the same file, or in a package that is loaded before the
-directory is) and the order stops mattering. Use ``--restart-per-dir`` to load
-each top-level directory into a fresh store and remove the cross-tree ordering
-from the picture.
+The order of files *within* a directory is the ``find`` order of the host the
+product's loader runs on. This script uploads in sorted order, so it proves
+the sorted order works and catches every module that can never load (mutual
+references, unsatisfiable bodies). It does not prove every possible ``find``
+order works: a module that only loads because a sibling sorts before it is
+still a latent failure. Make each module self-contained (every rule it refers
+to lives in the same file, or in a package that is loaded before the
+directory is) and the order stops mattering.
 
 Usage
 -----
@@ -115,6 +126,7 @@ class OpaServer:
                 sys.exit("error: no `opa` binary on PATH; pass --opa <path> or --podman-image <image>")
             self.cmd = [binary, "run", "--server", "--addr", f"127.0.0.1:{port}", "--log-level", "error"]
         self.proc: subprocess.Popen | None = None
+        self.loaded: list[str] = []
 
     def __enter__(self) -> "OpaServer":
         self._log = open(self.log, "ab")
@@ -148,6 +160,7 @@ class OpaServer:
         )
         try:
             with urllib.request.urlopen(req, timeout=120) as r:
+                self.loaded.append(pid)
                 return r.status, ""
         except urllib.error.HTTPError as e:
             raw = e.read().decode("utf-8", "replace")
@@ -169,15 +182,24 @@ class OpaServer:
                      f"(the whole store is recompiled on every upload). See {self.log}")
 
     def delete_all(self) -> None:
-        with urllib.request.urlopen(f"{self.base}/v1/policies", timeout=60) as r:
-            ids = [p["id"] for p in json.load(r).get("result", [])]
-        for pid in ids:
-            req = urllib.request.Request(f"{self.base}/v1/policies/{pid}", method="DELETE")
-            try:
-                urllib.request.urlopen(req, timeout=60).close()
-            except urllib.error.HTTPError as e:
-                print(f"  warning: could not delete {pid}: {e.code}", file=sys.stderr)
-
+        """Empty the store. A module that a still-present module refers to cannot be
+        deleted (400), so delete in reverse upload order and retry leftovers."""
+        pending = list(reversed(self.loaded))
+        while pending:
+            left = []
+            for pid in pending:
+                req = urllib.request.Request(f"{self.base}/v1/policies/{pid}", method="DELETE")
+                try:
+                    urllib.request.urlopen(req, timeout=60).close()
+                except urllib.error.HTTPError as e:
+                    if e.code == 404:
+                        continue
+                    left.append(pid)
+            if len(left) == len(pending):
+                print(f"  warning: could not empty the store, {len(left)} modules left: {' '.join(left)}", file=sys.stderr)
+                break
+            pending = left
+        self.loaded = []
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n", 1)[0])
@@ -188,8 +210,9 @@ def main() -> int:
     ap.add_argument("--opa", help="path to the opa binary (default: `opa` on PATH)")
     ap.add_argument("--podman-image", help="run OPA from this container image with podman instead of a local binary")
     ap.add_argument("--port", type=int, default=0, help="port for the throwaway server (default: a free one)")
-    ap.add_argument("--restart-per-dir", action="store_true",
-                    help="empty the store before each top-level tree so trees do not see each other")
+    ap.add_argument("--store-scope", choices=["dir", "tree", "all"], default="dir",
+                    help="empty the store before each directory (default; the product's unit of loading), "
+                         "before each top-level tree, or never (exhaustive, O(N^2) in the library size)")
     ap.add_argument("--quiet", action="store_true", help="print failures only")
     args = ap.parse_args()
 
@@ -205,11 +228,16 @@ def main() -> int:
             if not files:
                 print(f"warning: no policy files under {tree}", file=sys.stderr)
                 continue
-            if args.restart_per_dir:
+            if args.store_scope != "all":
                 srv.delete_all()
             if not args.quiet:
                 print(f"== {tree}: {len(files)} policy files")
+            current_dir = None
             for rel in files:
+                if args.store_scope == "dir" and rel.parent != current_dir:
+                    if current_dir is not None:
+                        srv.delete_all()
+                    current_dir = rel.parent
                 status, msg = srv.put_policy(policy_id(rel), (root / rel).read_bytes())
                 uploaded += 1
                 if status != 200:
