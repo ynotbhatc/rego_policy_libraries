@@ -154,7 +154,11 @@ finding_ol08_00_010730 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := []
+# No CAT I rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22
+# types a literal empty array as having no members and rejects `some f in cat_i_findings`
+# as an undefined ref, so the module fails to compile when it is loaded on its own
+# (scripts/check_per_file_load.py).
+cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
 	finding_ol08_00_010780,

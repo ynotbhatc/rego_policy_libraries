@@ -667,7 +667,7 @@ status_r_cntr_r2_000320 := "Not_a_Finding" if r_cntr_r2_000320
 status_r_cntr_r2_000320 := "Open" if not r_cntr_r2_000320
 
 # CNTR-R2-000460 | V-268321 | CAT II | attestation
-missing_r_cntr_r2_000460 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_r2_000460 := []
 
 default r_cntr_r2_000460 := false
 
@@ -758,7 +758,7 @@ status_r_cntr_r2_000520 := "Not_a_Finding" if r_cntr_r2_000520
 status_r_cntr_r2_000520 := "Open" if not r_cntr_r2_000520
 
 # CNTR-R2-000550 | V-254565 | CAT II | attestation
-missing_r_cntr_r2_000550 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_r2_000550 := []
 
 default r_cntr_r2_000550 := false
 
@@ -793,7 +793,7 @@ status_r_cntr_r2_000550 := "Not_a_Finding" if r_cntr_r2_000550
 status_r_cntr_r2_000550 := "Open" if not r_cntr_r2_000550
 
 # CNTR-R2-000580 | V-254566 | CAT II | attestation
-missing_r_cntr_r2_000580 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_r2_000580 := []
 
 default r_cntr_r2_000580 := false
 
@@ -828,7 +828,7 @@ status_r_cntr_r2_000580 := "Not_a_Finding" if r_cntr_r2_000580
 status_r_cntr_r2_000580 := "Open" if not r_cntr_r2_000580
 
 # CNTR-R2-000800 | V-254567 | CAT II | attestation
-missing_r_cntr_r2_000800 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_r2_000800 := []
 
 default r_cntr_r2_000800 := false
 
@@ -1085,7 +1085,7 @@ status_r_cntr_r2_001580 := "Not_a_Finding" if r_cntr_r2_001580
 status_r_cntr_r2_001580 := "Open" if not r_cntr_r2_001580
 
 # CNTR-R2-001620 | V-254575 | CAT II | attestation
-missing_r_cntr_r2_001620 := [concat(".", p) | some p in []; not _collected(p)]
+missing_r_cntr_r2_001620 := []
 
 default r_cntr_r2_001620 := false
 

@@ -52,7 +52,11 @@ _ev := e if {
 
 # Manual recommendations whose CIS scope has several components take a
 # structured attestation (every listed part true); a bare `true` is not enough.
-_parts := {}
+# This section has none. Built with object.union rather than a literal `{}`:
+# OPA >= 1.22 types a literal empty object as having no keys and rejects every
+# `_parts[id]` below as an undefined ref, so the module fails to compile when
+# it is loaded on its own (scripts/check_per_file_load.py).
+_parts := object.union({}, {})
 
 attested(id) if {
 	requirements[id].assessment == "Manual"
@@ -125,10 +129,14 @@ default _get(_, _) := null
 _get(o, k) := object.get(o, k, null) if is_object(o)
 
 # ── Automated checks ─────────────────────────────────────────────────────────
-# All recommendations in this section are Manual.
-_evidence_key := {}
+# All recommendations in this section are Manual. Both tables are built with a
+# builtin rather than the literal `{}` / `set()`: OPA >= 1.22 types a literal empty
+# object or set as having no members and rejects every iteration or index over it
+# as an undefined ref, so the module fails to compile when it is loaded on its own
+# (scripts/check_per_file_load.py).
+_evidence_key := object.union({}, {})
 
-fail := set()
+fail := set() | set()
 
 # ── report ───────────────────────────────────────────────────────────────────
 default section_compliant := false
