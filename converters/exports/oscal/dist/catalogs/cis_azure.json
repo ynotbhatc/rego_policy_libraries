@@ -388,7 +388,7 @@
     "controls": [
      {
       "id": "cis_azure-CIS-L2-1.1.1",
-      "title": "Ensure Security Defaults is enabled on Azure Active Directory",
+      "title": "Security Defaults must be turned on on Azure Active Directory",
       "props": [
        {
         "name": "label",
@@ -414,14 +414,14 @@
        {
         "id": "cis_azure-CIS-L2-1.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Security Defaults is enabled on Azure Active Directory"
+        "prose": "Security Defaults must be turned on on Azure Active Directory"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.1.4",
-      "title": "Ensure Guest Users Are Reviewed on a Regular Basis",
+      "title": "Guest Users must be Reviewed on a Regular Basis",
       "props": [
        {
         "name": "label",
@@ -447,14 +447,14 @@
        {
         "id": "cis_azure-CIS-L2-1.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure Guest Users Are Reviewed on a Regular Basis"
+        "prose": "Guest Users must be Reviewed on a Regular Basis"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.2.1",
-      "title": "Ensure that Microsoft Authenticator is configured to show geographic location",
+      "title": "Microsoft Authenticator must be explicitly configured to show geographic location",
       "props": [
        {
         "name": "label",
@@ -480,14 +480,14 @@
        {
         "id": "cis_azure-CIS-L2-1.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure that Microsoft Authenticator is configured to show geographic location"
+        "prose": "Microsoft Authenticator must be explicitly configured to show geographic location"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.2.2",
-      "title": "Ensure that multi-factor authentication is required for all users",
+      "title": "multi-factor authentication must be required for all users",
       "props": [
        {
         "name": "label",
@@ -513,14 +513,14 @@
        {
         "id": "cis_azure-CIS-L2-1.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure that multi-factor authentication is required for all users"
+        "prose": "multi-factor authentication must be required for all users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.3.2",
-      "title": "Ensure that 'Users can add gallery apps to My Apps' is set to 'No'",
+      "title": "required value of 'Users can add gallery apps to My Apps' is 'No'",
       "props": [
        {
         "name": "label",
@@ -546,14 +546,14 @@
        {
         "id": "cis_azure-CIS-L2-1.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Users can add gallery apps to My Apps' is set to 'No'"
+        "prose": "required value of 'Users can add gallery apps to My Apps' is 'No'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.4.1",
-      "title": "Ensure that 'Restrict access to Azure AD administration portal' is set to 'Yes'",
+      "title": "required value of 'Restrict access to Azure AD administration portal' is 'Yes'",
       "props": [
        {
         "name": "label",
@@ -579,14 +579,14 @@
        {
         "id": "cis_azure-CIS-L2-1.4.1_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Restrict access to Azure AD administration portal' is set to 'Yes'"
+        "prose": "required value of 'Restrict access to Azure AD administration portal' is 'Yes'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.5.1",
-      "title": "Ensure that 'Number of methods required to reset' is set to '2'",
+      "title": "required value of 'Number of methods required to reset' is '2'",
       "props": [
        {
         "name": "label",
@@ -612,14 +612,14 @@
        {
         "id": "cis_azure-CIS-L2-1.5.1_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Number of methods required to reset' is set to '2'"
+        "prose": "required value of 'Number of methods required to reset' is '2'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.6.1",
-      "title": "Ensure Privileged Identity Management is used to manage role assignments",
+      "title": "Privileged Identity Management must be used to manage role assignments",
       "props": [
        {
         "name": "label",
@@ -645,14 +645,14 @@
        {
         "id": "cis_azure-CIS-L2-1.6.1_stmt",
         "name": "statement",
-        "prose": "Ensure Privileged Identity Management is used to manage role assignments"
+        "prose": "Privileged Identity Management must be used to manage role assignments"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.7",
-      "title": "Ensure that Custom Subscription Administrator Roles are not created",
+      "title": "Custom Subscription Administrator Roles must be not created",
       "props": [
        {
         "name": "label",
@@ -678,14 +678,14 @@
        {
         "id": "cis_azure-CIS-L2-1.7_stmt",
         "name": "statement",
-        "prose": "Ensure that Custom Subscription Administrator Roles are not created"
+        "prose": "Custom Subscription Administrator Roles must be not created"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-1.8",
-      "title": "Ensure that external users with Owner role are removed",
+      "title": "external users with Owner role must be removed",
       "props": [
        {
         "name": "label",
@@ -711,14 +711,14 @@
        {
         "id": "cis_azure-CIS-L2-1.8_stmt",
         "name": "statement",
-        "prose": "Ensure that external users with Owner role are removed"
+        "prose": "external users with Owner role must be removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.1",
-      "title": "Ensure Microsoft Defender for Servers is set to 'On'",
+      "title": "required value of Microsoft Defender for Servers is 'On'",
       "props": [
        {
         "name": "label",
@@ -744,14 +744,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for Servers is set to 'On'"
+        "prose": "required value of Microsoft Defender for Servers is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.2",
-      "title": "Ensure Microsoft Defender for Databases is set to 'On'",
+      "title": "required value of Microsoft Defender for Databases is 'On'",
       "props": [
        {
         "name": "label",
@@ -777,14 +777,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for Databases is set to 'On'"
+        "prose": "required value of Microsoft Defender for Databases is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.3",
-      "title": "Ensure Microsoft Defender for Azure SQL is set to 'On'",
+      "title": "required value of Microsoft Defender for Azure SQL is 'On'",
       "props": [
        {
         "name": "label",
@@ -810,14 +810,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for Azure SQL is set to 'On'"
+        "prose": "required value of Microsoft Defender for Azure SQL is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.4",
-      "title": "Ensure Microsoft Defender for SQL Servers is set to 'On'",
+      "title": "required value of Microsoft Defender for SQL Servers is 'On'",
       "props": [
        {
         "name": "label",
@@ -843,14 +843,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for SQL Servers is set to 'On'"
+        "prose": "required value of Microsoft Defender for SQL Servers is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.5",
-      "title": "Ensure Microsoft Defender for Storage is set to 'On'",
+      "title": "required value of Microsoft Defender for Storage is 'On'",
       "props": [
        {
         "name": "label",
@@ -876,14 +876,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.5_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for Storage is set to 'On'"
+        "prose": "required value of Microsoft Defender for Storage is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.6",
-      "title": "Ensure Microsoft Defender for Containers is set to 'On'",
+      "title": "required value of Microsoft Defender for Containers is 'On'",
       "props": [
        {
         "name": "label",
@@ -909,14 +909,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.6_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for Containers is set to 'On'"
+        "prose": "required value of Microsoft Defender for Containers is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.1.7",
-      "title": "Ensure Microsoft Defender for Key Vault is set to 'On'",
+      "title": "required value of Microsoft Defender for Key Vault is 'On'",
       "props": [
        {
         "name": "label",
@@ -942,14 +942,14 @@
        {
         "id": "cis_azure-CIS-L2-2.1.7_stmt",
         "name": "statement",
-        "prose": "Ensure Microsoft Defender for Key Vault is set to 'On'"
+        "prose": "required value of Microsoft Defender for Key Vault is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.2.1",
-      "title": "Ensure Defender for Cloud's auto-provisioning of Log Analytics agent is enabled",
+      "title": "Defender for Cloud's auto-provisioning of Log Analytics agent must be turned on",
       "props": [
        {
         "name": "label",
@@ -975,14 +975,14 @@
        {
         "id": "cis_azure-CIS-L2-2.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure Defender for Cloud's auto-provisioning of Log Analytics agent is enabled"
+        "prose": "Defender for Cloud's auto-provisioning of Log Analytics agent must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-2.10",
-      "title": "Ensure that Microsoft Defender for Cloud integration with Microsoft Defender for Endpoint is selected",
+      "title": "Microsoft Defender for Cloud integration with Microsoft Defender for Endpoint must be selected",
       "props": [
        {
         "name": "label",
@@ -1008,14 +1008,14 @@
        {
         "id": "cis_azure-CIS-L2-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure that Microsoft Defender for Cloud integration with Microsoft Defender for Endpoint is selected"
+        "prose": "Microsoft Defender for Cloud integration with Microsoft Defender for Endpoint must be selected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.1.1",
-      "title": "Ensure that 'Secure transfer required' is set to 'Enabled'",
+      "title": "required value of 'Secure transfer required' is 'Enabled'",
       "props": [
        {
         "name": "label",
@@ -1041,14 +1041,14 @@
        {
         "id": "cis_azure-CIS-L2-3.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Secure transfer required' is set to 'Enabled'"
+        "prose": "required value of 'Secure transfer required' is 'Enabled'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.1.2",
-      "title": "Ensure that storage account access keys are periodically regenerated",
+      "title": "storage account access keys must be periodically regenerated",
       "props": [
        {
         "name": "label",
@@ -1074,14 +1074,14 @@
        {
         "id": "cis_azure-CIS-L2-3.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure that storage account access keys are periodically regenerated"
+        "prose": "storage account access keys must be periodically regenerated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.1.3",
-      "title": "Ensure Storage logging is enabled for Queue service read/write/delete requests",
+      "title": "Storage logging must be turned on for Queue service read/write/delete requests",
       "props": [
        {
         "name": "label",
@@ -1107,14 +1107,14 @@
        {
         "id": "cis_azure-CIS-L2-3.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure Storage logging is enabled for Queue service read/write/delete requests"
+        "prose": "Storage logging must be turned on for Queue service read/write/delete requests"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.1.4",
-      "title": "Ensure that shared access signature tokens expire within an hour",
+      "title": "checked condition — shared access signature tokens expire within an hour",
       "props": [
        {
         "name": "label",
@@ -1140,14 +1140,14 @@
        {
         "id": "cis_azure-CIS-L2-3.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure that shared access signature tokens expire within an hour"
+        "prose": "checked condition — shared access signature tokens expire within an hour"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.1.6",
-      "title": "Ensure that 'Public access level' is set to Private for blob containers",
+      "title": "required value of 'Public access level' is Private for blob containers",
       "props": [
        {
         "name": "label",
@@ -1173,14 +1173,14 @@
        {
         "id": "cis_azure-CIS-L2-3.1.6_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Public access level' is set to Private for blob containers"
+        "prose": "required value of 'Public access level' is Private for blob containers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.2.1",
-      "title": "Ensure soft-delete is enabled for Azure Blobs",
+      "title": "soft-delete must be turned on for Azure Blobs",
       "props": [
        {
         "name": "label",
@@ -1206,14 +1206,14 @@
        {
         "id": "cis_azure-CIS-L2-3.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure soft-delete is enabled for Azure Blobs"
+        "prose": "soft-delete must be turned on for Azure Blobs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-3.2.2",
-      "title": "Ensure soft-delete is enabled for Azure File Shares",
+      "title": "soft-delete must be turned on for Azure File Shares",
       "props": [
        {
         "name": "label",
@@ -1239,14 +1239,14 @@
        {
         "id": "cis_azure-CIS-L2-3.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure soft-delete is enabled for Azure File Shares"
+        "prose": "soft-delete must be turned on for Azure File Shares"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-4.1.1",
-      "title": "Ensure 'Auditing' is set to 'On' for Azure SQL Server",
+      "title": "required value of 'Auditing' is 'On' for Azure SQL Server",
       "props": [
        {
         "name": "label",
@@ -1272,14 +1272,14 @@
        {
         "id": "cis_azure-CIS-L2-4.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'Auditing' is set to 'On' for Azure SQL Server"
+        "prose": "required value of 'Auditing' is 'On' for Azure SQL Server"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-4.1.2",
-      "title": "Ensure that 'Data encryption' is set to 'On' for SQL Server",
+      "title": "required value of 'Data encryption' is 'On' for SQL Server",
       "props": [
        {
         "name": "label",
@@ -1305,14 +1305,14 @@
        {
         "id": "cis_azure-CIS-L2-4.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Data encryption' is set to 'On' for SQL Server"
+        "prose": "required value of 'Data encryption' is 'On' for SQL Server"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-4.1.3",
-      "title": "Ensure that 'Threat Detection' is set to 'On' for SQL Server",
+      "title": "required value of 'Threat Detection' is 'On' for SQL Server",
       "props": [
        {
         "name": "label",
@@ -1338,14 +1338,14 @@
        {
         "id": "cis_azure-CIS-L2-4.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Threat Detection' is set to 'On' for SQL Server"
+        "prose": "required value of 'Threat Detection' is 'On' for SQL Server"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-4.2.1",
-      "title": "Ensure 'Enforce SSL connection' is enabled for PostgreSQL",
+      "title": "'Enforce SSL connection' must be turned on for PostgreSQL",
       "props": [
        {
         "name": "label",
@@ -1371,14 +1371,14 @@
        {
         "id": "cis_azure-CIS-L2-4.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'Enforce SSL connection' is enabled for PostgreSQL"
+        "prose": "'Enforce SSL connection' must be turned on for PostgreSQL"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-4.3.1",
-      "title": "Ensure 'Enforce SSL connection' is enabled for MySQL",
+      "title": "'Enforce SSL connection' must be turned on for MySQL",
       "props": [
        {
         "name": "label",
@@ -1404,14 +1404,14 @@
        {
         "id": "cis_azure-CIS-L2-4.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'Enforce SSL connection' is enabled for MySQL"
+        "prose": "'Enforce SSL connection' must be turned on for MySQL"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.1.1",
-      "title": "Ensure audit profile captures all activities",
+      "title": "checked condition — audit profile captures all activities",
       "props": [
        {
         "name": "label",
@@ -1437,14 +1437,14 @@
        {
         "id": "cis_azure-CIS-L2-5.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure audit profile captures all activities"
+        "prose": "checked condition — audit profile captures all activities"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.1.2",
-      "title": "Ensure diagnostic logging retention policy is set to 365 days or more",
+      "title": "required value of diagnostic logging retention policy is 365 days or more",
       "props": [
        {
         "name": "label",
@@ -1470,14 +1470,14 @@
        {
         "id": "cis_azure-CIS-L2-5.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure diagnostic logging retention policy is set to 365 days or more"
+        "prose": "required value of diagnostic logging retention policy is 365 days or more"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.2.1",
-      "title": "Ensure activity log alert exists for Create Policy Assignment",
+      "title": "checked condition — activity log alert exists for Create Policy Assignment",
       "props": [
        {
         "name": "label",
@@ -1503,14 +1503,14 @@
        {
         "id": "cis_azure-CIS-L2-5.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure activity log alert exists for Create Policy Assignment"
+        "prose": "checked condition — activity log alert exists for Create Policy Assignment"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.2.2",
-      "title": "Ensure activity log alert exists for Delete Policy Assignment",
+      "title": "checked condition — activity log alert exists for Delete Policy Assignment",
       "props": [
        {
         "name": "label",
@@ -1536,14 +1536,14 @@
        {
         "id": "cis_azure-CIS-L2-5.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure activity log alert exists for Delete Policy Assignment"
+        "prose": "checked condition — activity log alert exists for Delete Policy Assignment"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.2.4",
-      "title": "Ensure activity log alert exists for Create or Update Network Security Group",
+      "title": "checked condition — activity log alert exists for Create or Update Network Security Group",
       "props": [
        {
         "name": "label",
@@ -1569,14 +1569,14 @@
        {
         "id": "cis_azure-CIS-L2-5.2.4_stmt",
         "name": "statement",
-        "prose": "Ensure activity log alert exists for Create or Update Network Security Group"
+        "prose": "checked condition — activity log alert exists for Create or Update Network Security Group"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.2.5",
-      "title": "Ensure activity log alert exists for Delete Network Security Group",
+      "title": "checked condition — activity log alert exists for Delete Network Security Group",
       "props": [
        {
         "name": "label",
@@ -1602,14 +1602,14 @@
        {
         "id": "cis_azure-CIS-L2-5.2.5_stmt",
         "name": "statement",
-        "prose": "Ensure activity log alert exists for Delete Network Security Group"
+        "prose": "checked condition — activity log alert exists for Delete Network Security Group"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-5.2.7",
-      "title": "Ensure activity log alert exists for Create or Update Security Solution",
+      "title": "checked condition — activity log alert exists for Create or Update Security Solution",
       "props": [
        {
         "name": "label",
@@ -1635,14 +1635,14 @@
        {
         "id": "cis_azure-CIS-L2-5.2.7_stmt",
         "name": "statement",
-        "prose": "Ensure activity log alert exists for Create or Update Security Solution"
+        "prose": "checked condition — activity log alert exists for Create or Update Security Solution"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-6.3",
-      "title": "Ensure that Network Watcher is 'Enabled'",
+      "title": "required value of Network Watcher is 'Enabled'",
       "props": [
        {
         "name": "label",
@@ -1668,14 +1668,14 @@
        {
         "id": "cis_azure-CIS-L2-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure that Network Watcher is 'Enabled'"
+        "prose": "required value of Network Watcher is 'Enabled'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-6.4",
-      "title": "Ensure that Network Security Group Flow Log retention is greater than 90 days",
+      "title": "Network Security Group Flow Log retention must be greater than 90 days",
       "props": [
        {
         "name": "label",
@@ -1701,14 +1701,14 @@
        {
         "id": "cis_azure-CIS-L2-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure that Network Security Group Flow Log retention is greater than 90 days"
+        "prose": "Network Security Group Flow Log retention must be greater than 90 days"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-6.5",
-      "title": "Ensure that Network Security Group Flow logs are captured and sent to Log Analytics",
+      "title": "Network Security Group Flow logs must be captured and sent to Log Analytics",
       "props": [
        {
         "name": "label",
@@ -1734,14 +1734,14 @@
        {
         "id": "cis_azure-CIS-L2-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure that Network Security Group Flow logs are captured and sent to Log Analytics"
+        "prose": "Network Security Group Flow logs must be captured and sent to Log Analytics"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-7.1",
-      "title": "Ensure Virtual Machines are utilizing Managed Disks",
+      "title": "Virtual Machines must be utilizing Managed Disks",
       "props": [
        {
         "name": "label",
@@ -1767,14 +1767,14 @@
        {
         "id": "cis_azure-CIS-L2-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure Virtual Machines are utilizing Managed Disks"
+        "prose": "Virtual Machines must be utilizing Managed Disks"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-7.2",
-      "title": "Ensure that 'OS disk' are encrypted with Customer Managed Key (CMK)",
+      "title": "'OS disk' must be encrypted with Customer Managed Key (CMK)",
       "props": [
        {
         "name": "label",
@@ -1800,14 +1800,14 @@
        {
         "id": "cis_azure-CIS-L2-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure that 'OS disk' are encrypted with Customer Managed Key (CMK)"
+        "prose": "'OS disk' must be encrypted with Customer Managed Key (CMK)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_azure-CIS-L2-7.3",
-      "title": "Ensure that 'Data disks' are encrypted with Customer Managed Key (CMK)",
+      "title": "'Data disks' must be encrypted with Customer Managed Key (CMK)",
       "props": [
        {
         "name": "label",
@@ -1833,7 +1833,7 @@
        {
         "id": "cis_azure-CIS-L2-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure that 'Data disks' are encrypted with Customer Managed Key (CMK)"
+        "prose": "'Data disks' must be encrypted with Customer Managed Key (CMK)"
        }
       ],
       "class": "security"

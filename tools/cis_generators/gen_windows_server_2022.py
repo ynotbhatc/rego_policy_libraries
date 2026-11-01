@@ -32,6 +32,8 @@ import sys
 import xml.etree.ElementTree as ET
 import zipfile
 
+from neutralize import neutralize_title
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 OUT = ROOT / "benchmarks" / "cis" / "windows_server_2022_modular"
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -429,7 +431,7 @@ def section_module(sec, name, recs, checks):
         rec, check = recs[rid], checks[rid]
         if check["kind"] == "manual":
             continue
-        row = {"msg": f"CIS {rid}: {rec['title']}", "profiles": rec["profiles"], **check}
+        row = {"msg": f"CIS {rid}: {neutralize_title(rec['title'])}", "profiles": rec["profiles"], **check}
         body = ", ".join(f"{rego(k)}: {rego(v)}" for k, v in row.items())
         rows.append(f"\t{rego(rid)}: {{{body}}},")
     title = f"{BENCHMARK} v{VERSION} - Section {sec}: {name}"

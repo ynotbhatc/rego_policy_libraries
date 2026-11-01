@@ -11,7 +11,7 @@ shadow_ok := [{"user": "alice", "has_password": true, "inactive": 30}]
 # CIS 5.4.1.5 (v2 5.5.1.4): -1 disables the inactive lock and must fail.
 test_inactive_days_minus_one_is_violation if {
 	some v in data.cis_rhel9.pam.violations with input as {"pam": {"inactive_days": -1}, "user_group": {"shadow_entries": shadow_ok}}
-	startswith(v, "5.4.1.5: not met — Ensure inactive password lock is configured")
+	startswith(v, "5.4.1.5: not met — inactive password lock must be explicitly configured")
 }
 
 test_inactive_days_30_passes if {

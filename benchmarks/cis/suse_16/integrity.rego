@@ -197,7 +197,7 @@ aide_opts_ok(s) if {
 }
 
 # 6.3.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure AIDE is installed
+# AIDE must be present
 default e_6_3_1 := false
 
 e_6_3_1 if {
@@ -212,13 +212,13 @@ p_6_3_1 if {
 
 violations contains "6.3.1: evidence missing — boot_security.aide_installed not collected" if not e_6_3_1
 
-violations contains "6.3.1: not met — Ensure AIDE is installed" if {
+violations contains "6.3.1: not met — AIDE must be present" if {
 	e_6_3_1
 	not p_6_3_1
 }
 
 # 6.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure filesystem integrity is regularly checked
+# filesystem integrity must be regularly checked
 default e_6_3_2 := false
 
 e_6_3_2 if {
@@ -238,13 +238,13 @@ p_6_3_2 if {
 
 violations contains "6.3.2: evidence missing — boot_security.aide_cron_configured/aide_timer_configured not collected" if not e_6_3_2
 
-violations contains "6.3.2: not met — Ensure filesystem integrity is regularly checked" if {
+violations contains "6.3.2: not met — filesystem integrity must be regularly checked" if {
 	e_6_3_2
 	not p_6_3_2
 }
 
 # 6.3.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure cryptographic mechanisms are used to protect the integrity of audit tools
+# cryptographic mechanisms must be used to protect the integrity of audit tools
 default e_6_3_3 := false
 
 e_6_3_3 if {
@@ -259,7 +259,7 @@ p_6_3_3 if {
 
 violations contains "6.3.3: evidence missing — aide.audit_tool_options not collected" if not e_6_3_3
 
-violations contains "6.3.3: not met — Ensure cryptographic mechanisms are used to protect the integrity of audit tools" if {
+violations contains "6.3.3: not met — cryptographic mechanisms must be used to protect the integrity of audit tools" if {
 	e_6_3_3
 	not p_6_3_3
 }

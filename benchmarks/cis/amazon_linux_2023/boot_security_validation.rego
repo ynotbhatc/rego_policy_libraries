@@ -37,13 +37,13 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # CIS 1.3: Filesystem Integrity Checking
 
-# CIS 1.3.1: Ensure AIDE is installed
+# CIS 1.3.1: AIDE must be present
 violations contains msg if {
     not input.boot_security.aide_installed
     msg := "CIS 1.3.1: AIDE is not installed"
 }
 
-# CIS 1.3.2: Ensure filesystem integrity is regularly checked
+# CIS 1.3.2: filesystem integrity must be regularly checked
 violations contains msg if {
     input.boot_security.aide_installed
     not input.boot_security.aide_cron_configured
@@ -59,7 +59,7 @@ violations contains msg if {
 
 # CIS 1.4: Secure Boot Settings
 
-# CIS 1.4.1: Ensure bootloader password is set
+# CIS 1.4.1: bootloader password must be set
 violations contains msg if {
     not input.boot_security.grub_password_set
     msg := "CIS 1.4.1: GRUB bootloader password is not set"
@@ -71,7 +71,7 @@ violations contains msg if {
     msg := "CIS 1.4.1: GRUB bootloader password is not hashed (or hashing evidence not collected)"
 }
 
-# CIS 1.4.2: Ensure permissions on bootloader config are configured
+# CIS 1.4.2: owner, group, and mode of bootloader config must be tightened
 violations contains msg if {
     not input.boot_security.grub_cfg_mode
     msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_mode not collected"
@@ -106,7 +106,7 @@ violations contains msg if {
         [input.boot_security.grub_cfg_group])
 }
 
-# CIS 1.4.3: Ensure authentication required for single user mode
+# CIS 1.4.3: checked condition — authentication required for single user mode
 violations contains msg if {
     not input.boot_security.single_user_auth_required
     msg := "CIS 1.4.3: Authentication not required for single user mode"
@@ -114,7 +114,7 @@ violations contains msg if {
 
 # CIS 1.5: Additional Process Hardening
 
-# CIS 1.5.1: Ensure core dumps are restricted
+# CIS 1.5.1: core dumps must be restricted
 violations contains msg if {
     not input.boot_security.core_dumps_disabled_sysctl
     msg := "CIS 1.5.1: Core dumps not disabled via sysctl (fs.suid_dumpable should be 0)"
@@ -138,7 +138,7 @@ violations contains msg if {
     msg := "CIS 1.5.1: systemd-coredump ProcessSizeMax should be 0"
 }
 
-# CIS 1.5.2: Ensure address space layout randomization (ASLR) is enabled
+# CIS 1.5.2: address space layout randomization (ASLR) must be turned on
 violations contains msg if {
     input.boot_security.aslr_value
     to_number(input.boot_security.aslr_value) != 2
@@ -151,13 +151,13 @@ violations contains msg if {
     msg := "CIS 1.5.2: kernel.randomize_va_space not configured (should be 2)"
 }
 
-# CIS 1.5.3: Ensure prelink is not installed
+# CIS 1.5.3: prelink must not be present
 violations contains msg if {
     input.boot_security.prelink_installed
     msg := "CIS 1.5.3: prelink is installed - should be removed"
 }
 
-# CIS 1.5.4: Ensure Automatic Error Reporting is not enabled
+# CIS 1.5.4: Automatic Error Reporting must stay off
 violations contains msg if {
     input.boot_security.abrtd_enabled
     msg := "CIS 1.5.4: Automatic Bug Reporting Tool (abrtd) is enabled - should be disabled"

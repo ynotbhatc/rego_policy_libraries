@@ -209,7 +209,7 @@ chrony_only if {
 }
 
 # 2.3.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure a single time synchronization daemon is in use
+# a single time synchronization daemon must be in use
 default e_2_3_1_1 := false
 
 e_2_3_1_1 if {
@@ -229,13 +229,13 @@ p_2_3_1_1 if {
 
 violations contains "2.3.1.1: evidence missing — services[systemd-timesyncd.service,chrony.service] not collected" if not e_2_3_1_1
 
-violations contains "2.3.1.1: not met — Ensure a single time synchronization daemon is in use" if {
+violations contains "2.3.1.1: not met — a single time synchronization daemon must be in use" if {
 	e_2_3_1_1
 	not p_2_3_1_1
 }
 
 # 2.3.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-timesyncd configured with authorized timeserver
+# checked condition — systemd-timesyncd configured with authorized timeserver
 default e_2_3_2_1 := false
 
 e_2_3_2_1 if {
@@ -258,13 +258,13 @@ p_2_3_2_1 if {
 
 violations contains "2.3.2.1: evidence missing — timesyncd.config_raw not collected" if not e_2_3_2_1
 
-violations contains "2.3.2.1: not met — Ensure systemd-timesyncd configured with authorized timeserver" if {
+violations contains "2.3.2.1: not met — checked condition — systemd-timesyncd configured with authorized timeserver" if {
 	e_2_3_2_1
 	not p_2_3_2_1
 }
 
 # 2.3.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-timesyncd is enabled and running
+# systemd-timesyncd must be turned on and running
 default e_2_3_2_2 := false
 
 e_2_3_2_2 if {
@@ -283,13 +283,13 @@ p_2_3_2_2 if {
 
 violations contains "2.3.2.2: evidence missing — services[systemd-timesyncd.service] not collected" if not e_2_3_2_2
 
-violations contains "2.3.2.2: not met — Ensure systemd-timesyncd is enabled and running" if {
+violations contains "2.3.2.2: not met — systemd-timesyncd must be turned on and running" if {
 	e_2_3_2_2
 	not p_2_3_2_2
 }
 
 # 2.3.3.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is configured
+# chrony must be explicitly configured
 default e_2_3_3_1 := false
 
 e_2_3_3_1 if {
@@ -317,13 +317,13 @@ p_2_3_3_1 if {
 
 violations contains "2.3.3.1: evidence missing — chronyd.servers_configured/pools_configured not collected" if not e_2_3_3_1
 
-violations contains "2.3.3.1: not met — Ensure chrony is configured" if {
+violations contains "2.3.3.1: not met — chrony must be explicitly configured" if {
 	e_2_3_3_1
 	not p_2_3_3_1
 }
 
 # 2.3.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is running as user _chrony
+# chrony must be running as user _chrony
 default e_2_3_3_2 := false
 
 e_2_3_3_2 if {
@@ -347,13 +347,13 @@ p_2_3_3_2 if {
 
 violations contains "2.3.3.2: evidence missing — chronyd.process_users not collected" if not e_2_3_3_2
 
-violations contains "2.3.3.2: not met — Ensure chrony is running as user _chrony" if {
+violations contains "2.3.3.2: not met — chrony must be running as user _chrony" if {
 	e_2_3_3_2
 	not p_2_3_3_2
 }
 
 # 2.3.3.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is enabled and running
+# chrony must be turned on and running
 default e_2_3_3_3 := false
 
 e_2_3_3_3 if {
@@ -372,7 +372,7 @@ p_2_3_3_3 if {
 
 violations contains "2.3.3.3: evidence missing — services[chrony.service] not collected" if not e_2_3_3_3
 
-violations contains "2.3.3.3: not met — Ensure chrony is enabled and running" if {
+violations contains "2.3.3.3: not met — chrony must be turned on and running" if {
 	e_2_3_3_3
 	not p_2_3_3_3
 }

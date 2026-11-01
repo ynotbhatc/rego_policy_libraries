@@ -31,7 +31,7 @@ allow if {
     os_supported
 }
 
-# CIS Control 1.6.1 - Ensure SELinux is enabled
+# CIS Control 1.6.1 - SELinux must be turned on
 default selinux_enabled := false
 
 selinux_enabled if {
@@ -42,7 +42,7 @@ selinux_enabled if {
     input.selinux_status == "permissive"
 }
 
-# CIS Control 5.2.2 - Ensure SSH access is limited
+# CIS Control 5.2.2 - SSH access must be limited to named principals
 # Decision 2026-10-19: the control is about restricting WHO may log in, not the port. SSH is
 # hardened when sshd_config (input.ssh_config, a list of lines) sets AllowUsers, AllowGroups,
 # DenyUsers or DenyGroups with at least one entry. Comment lines are ignored; absent config fails closed.
@@ -61,7 +61,7 @@ ssh_config_lines := [norm |
     not startswith(norm, "#")
 ]
 
-# CIS Control 3.5.1 - Ensure firewall is active
+# CIS Control 3.5.1 - firewall must be active
 default firewall_configured := false
 
 firewall_configured if {

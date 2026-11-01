@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_postgresql-1.1",
-      "title": "Ensure packages are obtained from authorized repositories",
+      "title": "packages must be obtained from authorized repositories",
       "props": [
        {
         "name": "label",
@@ -105,29 +105,29 @@
        {
         "id": "cis_postgresql-1.1_stmt",
         "name": "statement",
-        "prose": "Ensure packages are obtained from authorized repositories"
+        "prose": "packages must be obtained from authorized repositories"
        },
        {
         "id": "cis_postgresql-1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure packages are obtained from authorized repositories"
+        "prose": "packages must be obtained from authorized repositories"
        },
        {
         "id": "cis_postgresql-1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure packages are obtained from authorized repositories"
+        "prose": "packages must be obtained from authorized repositories"
        },
        {
         "id": "cis_postgresql-1.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure packages are obtained from authorized repositories"
+        "prose": "packages must be obtained from authorized repositories"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.2",
-      "title": "Ensure systemd service files are enabled",
+      "title": "systemd service files must be turned on",
       "props": [
        {
         "name": "label",
@@ -165,29 +165,29 @@
        {
         "id": "cis_postgresql-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure systemd service files are enabled"
+        "prose": "systemd service files must be turned on"
        },
        {
         "id": "cis_postgresql-1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure systemd service files are enabled"
+        "prose": "systemd service files must be turned on"
        },
        {
         "id": "cis_postgresql-1.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure systemd service files are enabled"
+        "prose": "systemd service files must be turned on"
        },
        {
         "id": "cis_postgresql-1.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure only required packages are installed"
+        "prose": "only required packages must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.3",
-      "title": "Ensure data cluster initialized successfully",
+      "title": "checked condition — data cluster initialized successfully",
       "props": [
        {
         "name": "label",
@@ -225,29 +225,29 @@
        {
         "id": "cis_postgresql-1.3_stmt",
         "name": "statement",
-        "prose": "Ensure data cluster initialized successfully"
+        "prose": "checked condition — data cluster initialized successfully"
        },
        {
         "id": "cis_postgresql-1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure data cluster initialized successfully"
+        "prose": "checked condition — data cluster initialized successfully"
        },
        {
         "id": "cis_postgresql-1.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure data cluster initialized successfully"
+        "prose": "checked condition — data cluster initialized successfully"
        },
        {
         "id": "cis_postgresql-1.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure systemd Service Files Are Enabled"
+        "prose": "systemd Service Files must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.4",
-      "title": "Ensure the installation is up to date",
+      "title": "the installation must be up to date",
       "props": [
        {
         "name": "label",
@@ -285,29 +285,29 @@
        {
         "id": "cis_postgresql-1.4_stmt",
         "name": "statement",
-        "prose": "Ensure the installation is up to date"
+        "prose": "the installation must be up to date"
        },
        {
         "id": "cis_postgresql-1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the installation is up to date"
+        "prose": "the installation must be up to date"
        },
        {
         "id": "cis_postgresql-1.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the installation is up to date"
+        "prose": "the installation must be up to date"
        },
        {
         "id": "cis_postgresql-1.4_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure Data Cluster Initialized Successfully"
+        "prose": "checked condition — Data Cluster Initialized Successfully"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.5",
-      "title": "Ensure PostgreSQL is not running as root",
+      "title": "PostgreSQL must be not running as root",
       "props": [
        {
         "name": "label",
@@ -345,29 +345,29 @@
        {
         "id": "cis_postgresql-1.5_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL is not running as root"
+        "prose": "PostgreSQL must be not running as root"
        },
        {
         "id": "cis_postgresql-1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL is not running as root"
+        "prose": "PostgreSQL must be not running as root"
        },
        {
         "id": "cis_postgresql-1.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL is not running as root"
+        "prose": "PostgreSQL must be not running as root"
        },
        {
         "id": "cis_postgresql-1.5_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the Latest Security Patches are Applied"
+        "prose": "the Latest Security Patches must be Applied"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.6",
-      "title": "Ensure PostgreSQL installation directories are secured",
+      "title": "PostgreSQL installation directories must be secured",
       "props": [
        {
         "name": "label",
@@ -405,29 +405,29 @@
        {
         "id": "cis_postgresql-1.6_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL installation directories are secured"
+        "prose": "PostgreSQL installation directories must be secured"
        },
        {
         "id": "cis_postgresql-1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL installation directories are secured"
+        "prose": "PostgreSQL installation directories must be secured"
        },
        {
         "id": "cis_postgresql-1.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL installation directories are secured"
+        "prose": "PostgreSQL installation directories must be secured"
        },
        {
         "id": "cis_postgresql-1.6_obj.3",
         "name": "assessment-objective",
-        "prose": "Verify that 'PGPASSWORD' is not set in Users' Profiles"
+        "prose": "'PGPASSWORD' is not set in Users' Profiles must be confirmed from collected state"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.7",
-      "title": "Ensure PostgreSQL configuration files are secured",
+      "title": "PostgreSQL configuration files must be secured",
       "props": [
        {
         "name": "label",
@@ -465,29 +465,29 @@
        {
         "id": "cis_postgresql-1.7_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL configuration files are secured"
+        "prose": "PostgreSQL configuration files must be secured"
        },
        {
         "id": "cis_postgresql-1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL configuration files are secured"
+        "prose": "PostgreSQL configuration files must be secured"
        },
        {
         "id": "cis_postgresql-1.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL configuration files are secured"
+        "prose": "PostgreSQL configuration files must be secured"
        },
        {
         "id": "cis_postgresql-1.7_obj.3",
         "name": "assessment-objective",
-        "prose": "Verify that the 'PGPASSWORD' Environment Variable is not in use"
+        "prose": "Verify that the 'PGPASSWORD' Environment Variable must not be running"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.8",
-      "title": "Ensure PostgreSQL subdirectory locations are outside system directories",
+      "title": "PostgreSQL subdirectory locations must be outside system directories",
       "props": [
        {
         "name": "label",
@@ -521,24 +521,24 @@
        {
         "id": "cis_postgresql-1.8_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL subdirectory locations are outside system directories"
+        "prose": "PostgreSQL subdirectory locations must be outside system directories"
        },
        {
         "id": "cis_postgresql-1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL subdirectory locations are outside system directories"
+        "prose": "PostgreSQL subdirectory locations must be outside system directories"
        },
        {
         "id": "cis_postgresql-1.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL subdirectory locations are outside system directories"
+        "prose": "PostgreSQL subdirectory locations must be outside system directories"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.9",
-      "title": "Ensure PostgreSQL backup and recovery procedures are in place",
+      "title": "PostgreSQL backup and recovery procedures must be in place",
       "props": [
        {
         "name": "label",
@@ -572,24 +572,24 @@
        {
         "id": "cis_postgresql-1.9_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL backup and recovery procedures are in place"
+        "prose": "PostgreSQL backup and recovery procedures must be in place"
        },
        {
         "id": "cis_postgresql-1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL backup and recovery procedures are in place"
+        "prose": "PostgreSQL backup and recovery procedures must be in place"
        },
        {
         "id": "cis_postgresql-1.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL backup and recovery procedures are in place"
+        "prose": "PostgreSQL backup and recovery procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.10",
-      "title": "Ensure PostgreSQL monitoring is configured",
+      "title": "PostgreSQL monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -623,24 +623,24 @@
        {
         "id": "cis_postgresql-1.10_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL monitoring is configured"
+        "prose": "PostgreSQL monitoring must be explicitly configured"
        },
        {
         "id": "cis_postgresql-1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL monitoring is configured"
+        "prose": "PostgreSQL monitoring must be explicitly configured"
        },
        {
         "id": "cis_postgresql-1.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL monitoring is configured"
+        "prose": "PostgreSQL monitoring must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.11",
-      "title": "Ensure PostgreSQL timezone is set appropriately",
+      "title": "PostgreSQL timezone must match the approved value",
       "props": [
        {
         "name": "label",
@@ -674,24 +674,24 @@
        {
         "id": "cis_postgresql-1.11_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL timezone is set appropriately"
+        "prose": "PostgreSQL timezone must match the approved value"
        },
        {
         "id": "cis_postgresql-1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL timezone is set appropriately"
+        "prose": "PostgreSQL timezone must match the approved value"
        },
        {
         "id": "cis_postgresql-1.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL timezone is set appropriately"
+        "prose": "PostgreSQL timezone must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-1.12",
-      "title": "Ensure PostgreSQL locale settings are configured",
+      "title": "PostgreSQL locale settings must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -725,24 +725,24 @@
        {
         "id": "cis_postgresql-1.12_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL locale settings are configured"
+        "prose": "PostgreSQL locale settings must be explicitly configured"
        },
        {
         "id": "cis_postgresql-1.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL locale settings are configured"
+        "prose": "PostgreSQL locale settings must be explicitly configured"
        },
        {
         "id": "cis_postgresql-1.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL locale settings are configured"
+        "prose": "PostgreSQL locale settings must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.1",
-      "title": "Ensure the file permissions mask is correct",
+      "title": "the file permissions mask must be correct",
       "props": [
        {
         "name": "label",
@@ -780,29 +780,29 @@
        {
         "id": "cis_postgresql-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure the file permissions mask is correct"
+        "prose": "the file permissions mask must be correct"
        },
        {
         "id": "cis_postgresql-2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the file permissions mask is correct"
+        "prose": "the file permissions mask must be correct"
        },
        {
         "id": "cis_postgresql-2.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the file permissions mask is correct"
+        "prose": "the file permissions mask must be correct"
        },
        {
         "id": "cis_postgresql-2.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the file permissions mask is correct"
+        "prose": "the file permissions mask must be correct"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.2",
-      "title": "Ensure the PostgreSQL Data Cluster is initialized",
+      "title": "the PostgreSQL Data Cluster must be initialized",
       "props": [
        {
         "name": "label",
@@ -840,29 +840,29 @@
        {
         "id": "cis_postgresql-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure the PostgreSQL Data Cluster is initialized"
+        "prose": "the PostgreSQL Data Cluster must be initialized"
        },
        {
         "id": "cis_postgresql-2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL Data Cluster is initialized"
+        "prose": "the PostgreSQL Data Cluster must be initialized"
        },
        {
         "id": "cis_postgresql-2.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL Data Cluster is initialized"
+        "prose": "the PostgreSQL Data Cluster must be initialized"
        },
        {
         "id": "cis_postgresql-2.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure extension directory has appropriate ownership and permissions"
+        "prose": "extension directory must have appropriate ownership and permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.3",
-      "title": "Ensure the data directory has appropriate permissions",
+      "title": "owner and mode of the data directory must be restrictive",
       "props": [
        {
         "name": "label",
@@ -900,29 +900,29 @@
        {
         "id": "cis_postgresql-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure the data directory has appropriate permissions"
+        "prose": "owner and mode of the data directory must be restrictive"
        },
        {
         "id": "cis_postgresql-2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the data directory has appropriate permissions"
+        "prose": "owner and mode of the data directory must be restrictive"
        },
        {
         "id": "cis_postgresql-2.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the data directory has appropriate permissions"
+        "prose": "owner and mode of the data directory must be restrictive"
        },
        {
         "id": "cis_postgresql-2.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Disable PostgreSQL Command History"
+        "prose": "PostgreSQL Command History must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.4",
-      "title": "Ensure the configuration files have appropriate permissions",
+      "title": "the configuration files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -960,29 +960,29 @@
        {
         "id": "cis_postgresql-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure the configuration files have appropriate permissions"
+        "prose": "the configuration files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the configuration files have appropriate permissions"
+        "prose": "the configuration files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the configuration files have appropriate permissions"
+        "prose": "the configuration files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.4_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure Passwords are not stored in the service file"
+        "prose": "Passwords must be not stored in the service file"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.5",
-      "title": "Ensure the log files have appropriate permissions",
+      "title": "the log files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1016,24 +1016,24 @@
        {
         "id": "cis_postgresql-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure the log files have appropriate permissions"
+        "prose": "the log files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the log files have appropriate permissions"
+        "prose": "the log files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the log files have appropriate permissions"
+        "prose": "the log files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.6",
-      "title": "Ensure the backup files have appropriate permissions",
+      "title": "the backup files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1067,24 +1067,24 @@
        {
         "id": "cis_postgresql-2.6_stmt",
         "name": "statement",
-        "prose": "Ensure the backup files have appropriate permissions"
+        "prose": "the backup files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the backup files have appropriate permissions"
+        "prose": "the backup files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the backup files have appropriate permissions"
+        "prose": "the backup files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.7",
-      "title": "Ensure WAL archive files have appropriate permissions",
+      "title": "WAL archive files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1118,24 +1118,24 @@
        {
         "id": "cis_postgresql-2.7_stmt",
         "name": "statement",
-        "prose": "Ensure WAL archive files have appropriate permissions"
+        "prose": "WAL archive files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure WAL archive files have appropriate permissions"
+        "prose": "WAL archive files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure WAL archive files have appropriate permissions"
+        "prose": "WAL archive files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.8",
-      "title": "Ensure temporary files have appropriate permissions",
+      "title": "temporary files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1169,24 +1169,24 @@
        {
         "id": "cis_postgresql-2.8_stmt",
         "name": "statement",
-        "prose": "Ensure temporary files have appropriate permissions"
+        "prose": "temporary files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure temporary files have appropriate permissions"
+        "prose": "temporary files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure temporary files have appropriate permissions"
+        "prose": "temporary files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.9",
-      "title": "Ensure tablespace files have appropriate permissions",
+      "title": "tablespace files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1220,24 +1220,24 @@
        {
         "id": "cis_postgresql-2.9_stmt",
         "name": "statement",
-        "prose": "Ensure tablespace files have appropriate permissions"
+        "prose": "tablespace files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure tablespace files have appropriate permissions"
+        "prose": "tablespace files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure tablespace files have appropriate permissions"
+        "prose": "tablespace files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.10",
-      "title": "Ensure socket files have appropriate permissions",
+      "title": "socket files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1271,24 +1271,24 @@
        {
         "id": "cis_postgresql-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure socket files have appropriate permissions"
+        "prose": "socket files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure socket files have appropriate permissions"
+        "prose": "socket files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure socket files have appropriate permissions"
+        "prose": "socket files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.11",
-      "title": "Ensure certificate files have appropriate permissions",
+      "title": "certificate files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1322,24 +1322,24 @@
        {
         "id": "cis_postgresql-2.11_stmt",
         "name": "statement",
-        "prose": "Ensure certificate files have appropriate permissions"
+        "prose": "certificate files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure certificate files have appropriate permissions"
+        "prose": "certificate files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure certificate files have appropriate permissions"
+        "prose": "certificate files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.12",
-      "title": "Ensure private key files have appropriate permissions",
+      "title": "private key files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1373,24 +1373,24 @@
        {
         "id": "cis_postgresql-2.12_stmt",
         "name": "statement",
-        "prose": "Ensure private key files have appropriate permissions"
+        "prose": "private key files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure private key files have appropriate permissions"
+        "prose": "private key files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure private key files have appropriate permissions"
+        "prose": "private key files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.13",
-      "title": "Ensure SSL CRL files have appropriate permissions",
+      "title": "SSL CRL files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1424,24 +1424,24 @@
        {
         "id": "cis_postgresql-2.13_stmt",
         "name": "statement",
-        "prose": "Ensure SSL CRL files have appropriate permissions"
+        "prose": "SSL CRL files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL CRL files have appropriate permissions"
+        "prose": "SSL CRL files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL CRL files have appropriate permissions"
+        "prose": "SSL CRL files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.14",
-      "title": "Ensure external configuration files have appropriate permissions",
+      "title": "external configuration files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1475,24 +1475,24 @@
        {
         "id": "cis_postgresql-2.14_stmt",
         "name": "statement",
-        "prose": "Ensure external configuration files have appropriate permissions"
+        "prose": "external configuration files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure external configuration files have appropriate permissions"
+        "prose": "external configuration files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure external configuration files have appropriate permissions"
+        "prose": "external configuration files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.15",
-      "title": "Ensure pgpass files have appropriate permissions",
+      "title": "pgpass files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1526,24 +1526,24 @@
        {
         "id": "cis_postgresql-2.15_stmt",
         "name": "statement",
-        "prose": "Ensure pgpass files have appropriate permissions"
+        "prose": "pgpass files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure pgpass files have appropriate permissions"
+        "prose": "pgpass files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure pgpass files have appropriate permissions"
+        "prose": "pgpass files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.16",
-      "title": "Ensure service files have appropriate permissions",
+      "title": "service files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1577,24 +1577,24 @@
        {
         "id": "cis_postgresql-2.16_stmt",
         "name": "statement",
-        "prose": "Ensure service files have appropriate permissions"
+        "prose": "service files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure service files have appropriate permissions"
+        "prose": "service files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure service files have appropriate permissions"
+        "prose": "service files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.17",
-      "title": "Ensure script files have appropriate permissions",
+      "title": "script files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1628,24 +1628,24 @@
        {
         "id": "cis_postgresql-2.17_stmt",
         "name": "statement",
-        "prose": "Ensure script files have appropriate permissions"
+        "prose": "script files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure script files have appropriate permissions"
+        "prose": "script files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure script files have appropriate permissions"
+        "prose": "script files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-2.18",
-      "title": "Ensure extension files have appropriate permissions",
+      "title": "extension files must have appropriate permissions",
       "props": [
        {
         "name": "label",
@@ -1679,24 +1679,24 @@
        {
         "id": "cis_postgresql-2.18_stmt",
         "name": "statement",
-        "prose": "Ensure extension files have appropriate permissions"
+        "prose": "extension files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure extension files have appropriate permissions"
+        "prose": "extension files must have appropriate permissions"
        },
        {
         "id": "cis_postgresql-2.18_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure extension files have appropriate permissions"
+        "prose": "extension files must have appropriate permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1",
-      "title": "Ensure the log destinations are set correctly",
+      "title": "the log destinations must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1730,24 +1730,24 @@
        {
         "id": "cis_postgresql-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure the log destinations are set correctly"
+        "prose": "the log destinations must match the approved value"
        },
        {
         "id": "cis_postgresql-3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the log destinations are set correctly"
+        "prose": "the log destinations must match the approved value"
        },
        {
         "id": "cis_postgresql-3.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the log destinations are set correctly"
+        "prose": "the log destinations must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.2",
-      "title": "Ensure the logging collector is enabled",
+      "title": "the logging collector must be turned on",
       "props": [
        {
         "name": "label",
@@ -1785,29 +1785,29 @@
        {
         "id": "cis_postgresql-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure the logging collector is enabled"
+        "prose": "the logging collector must be turned on"
        },
        {
         "id": "cis_postgresql-3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the logging collector is enabled"
+        "prose": "the logging collector must be turned on"
        },
        {
         "id": "cis_postgresql-3.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the logging collector is enabled"
+        "prose": "the logging collector must be turned on"
        },
        {
         "id": "cis_postgresql-3.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL Audit Extension (pgAudit) is enabled"
+        "prose": "the PostgreSQL Audit Extension (pgAudit) must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.3",
-      "title": "Ensure the log file destination directory is set correctly",
+      "title": "the log file destination directory must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1841,24 +1841,24 @@
        {
         "id": "cis_postgresql-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure the log file destination directory is set correctly"
+        "prose": "the log file destination directory must match the approved value"
        },
        {
         "id": "cis_postgresql-3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the log file destination directory is set correctly"
+        "prose": "the log file destination directory must match the approved value"
        },
        {
         "id": "cis_postgresql-3.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the log file destination directory is set correctly"
+        "prose": "the log file destination directory must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.4",
-      "title": "Ensure the filename pattern for log files is set correctly",
+      "title": "the filename pattern for log files must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1892,24 +1892,24 @@
        {
         "id": "cis_postgresql-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure the filename pattern for log files is set correctly"
+        "prose": "the filename pattern for log files must match the approved value"
        },
        {
         "id": "cis_postgresql-3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the filename pattern for log files is set correctly"
+        "prose": "the filename pattern for log files must match the approved value"
        },
        {
         "id": "cis_postgresql-3.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the filename pattern for log files is set correctly"
+        "prose": "the filename pattern for log files must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.5",
-      "title": "Ensure the log file permissions are set correctly",
+      "title": "the log file permissions must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1943,24 +1943,24 @@
        {
         "id": "cis_postgresql-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure the log file permissions are set correctly"
+        "prose": "the log file permissions must match the approved value"
        },
        {
         "id": "cis_postgresql-3.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the log file permissions are set correctly"
+        "prose": "the log file permissions must match the approved value"
        },
        {
         "id": "cis_postgresql-3.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the log file permissions are set correctly"
+        "prose": "the log file permissions must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.6",
-      "title": "Ensure log_truncate_on_rotation is disabled",
+      "title": "log_truncate_on_rotation must be turned off",
       "props": [
        {
         "name": "label",
@@ -1994,24 +1994,24 @@
        {
         "id": "cis_postgresql-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure log_truncate_on_rotation is disabled"
+        "prose": "log_truncate_on_rotation must be turned off"
        },
        {
         "id": "cis_postgresql-3.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure log_truncate_on_rotation is disabled"
+        "prose": "log_truncate_on_rotation must be turned off"
        },
        {
         "id": "cis_postgresql-3.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure log_truncate_on_rotation is disabled"
+        "prose": "log_truncate_on_rotation must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.7",
-      "title": "Ensure the maximum log file lifetime is set correctly",
+      "title": "the maximum log file lifetime must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2045,24 +2045,24 @@
        {
         "id": "cis_postgresql-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure the maximum log file lifetime is set correctly"
+        "prose": "the maximum log file lifetime must match the approved value"
        },
        {
         "id": "cis_postgresql-3.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the maximum log file lifetime is set correctly"
+        "prose": "the maximum log file lifetime must match the approved value"
        },
        {
         "id": "cis_postgresql-3.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the maximum log file lifetime is set correctly"
+        "prose": "the maximum log file lifetime must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.8",
-      "title": "Ensure the maximum log file size is set correctly",
+      "title": "the maximum log file size must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2096,24 +2096,24 @@
        {
         "id": "cis_postgresql-3.8_stmt",
         "name": "statement",
-        "prose": "Ensure the maximum log file size is set correctly"
+        "prose": "the maximum log file size must match the approved value"
        },
        {
         "id": "cis_postgresql-3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the maximum log file size is set correctly"
+        "prose": "the maximum log file size must match the approved value"
        },
        {
         "id": "cis_postgresql-3.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the maximum log file size is set correctly"
+        "prose": "the maximum log file size must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.9",
-      "title": "Ensure the appropriate syslog facility is selected",
+      "title": "the appropriate syslog facility must be selected",
       "props": [
        {
         "name": "label",
@@ -2147,24 +2147,24 @@
        {
         "id": "cis_postgresql-3.9_stmt",
         "name": "statement",
-        "prose": "Ensure the appropriate syslog facility is selected"
+        "prose": "the appropriate syslog facility must be selected"
        },
        {
         "id": "cis_postgresql-3.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the appropriate syslog facility is selected"
+        "prose": "the appropriate syslog facility must be selected"
        },
        {
         "id": "cis_postgresql-3.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the appropriate syslog facility is selected"
+        "prose": "the appropriate syslog facility must be selected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.10",
-      "title": "Ensure the program name for PostgreSQL syslog messages is correct",
+      "title": "the program name for PostgreSQL syslog messages must be correct",
       "props": [
        {
         "name": "label",
@@ -2198,24 +2198,24 @@
        {
         "id": "cis_postgresql-3.10_stmt",
         "name": "statement",
-        "prose": "Ensure the program name for PostgreSQL syslog messages is correct"
+        "prose": "the program name for PostgreSQL syslog messages must be correct"
        },
        {
         "id": "cis_postgresql-3.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the program name for PostgreSQL syslog messages is correct"
+        "prose": "the program name for PostgreSQL syslog messages must be correct"
        },
        {
         "id": "cis_postgresql-3.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the program name for PostgreSQL syslog messages is correct"
+        "prose": "the program name for PostgreSQL syslog messages must be correct"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.11",
-      "title": "Ensure the correct syslog sequence numbers are logged",
+      "title": "the correct syslog sequence numbers must be logged",
       "props": [
        {
         "name": "label",
@@ -2249,24 +2249,24 @@
        {
         "id": "cis_postgresql-3.11_stmt",
         "name": "statement",
-        "prose": "Ensure the correct syslog sequence numbers are logged"
+        "prose": "the correct syslog sequence numbers must be logged"
        },
        {
         "id": "cis_postgresql-3.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the correct syslog sequence numbers are logged"
+        "prose": "the correct syslog sequence numbers must be logged"
        },
        {
         "id": "cis_postgresql-3.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the correct syslog sequence numbers are logged"
+        "prose": "the correct syslog sequence numbers must be logged"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.12",
-      "title": "Ensure the correct syslog split messages are logged",
+      "title": "the correct syslog split messages must be logged",
       "props": [
        {
         "name": "label",
@@ -2300,24 +2300,24 @@
        {
         "id": "cis_postgresql-3.12_stmt",
         "name": "statement",
-        "prose": "Ensure the correct syslog split messages are logged"
+        "prose": "the correct syslog split messages must be logged"
        },
        {
         "id": "cis_postgresql-3.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the correct syslog split messages are logged"
+        "prose": "the correct syslog split messages must be logged"
        },
        {
         "id": "cis_postgresql-3.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the correct syslog split messages are logged"
+        "prose": "the correct syslog split messages must be logged"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.13",
-      "title": "Ensure 'log_connections' is enabled",
+      "title": "'log_connections' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2351,24 +2351,24 @@
        {
         "id": "cis_postgresql-3.13_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_connections' is enabled"
+        "prose": "'log_connections' must be turned on"
        },
        {
         "id": "cis_postgresql-3.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_connections' is enabled"
+        "prose": "'log_connections' must be turned on"
        },
        {
         "id": "cis_postgresql-3.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_connections' is enabled"
+        "prose": "'log_connections' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.14",
-      "title": "Ensure 'log_disconnections' is enabled",
+      "title": "'log_disconnections' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2402,24 +2402,24 @@
        {
         "id": "cis_postgresql-3.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_disconnections' is enabled"
+        "prose": "'log_disconnections' must be turned on"
        },
        {
         "id": "cis_postgresql-3.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_disconnections' is enabled"
+        "prose": "'log_disconnections' must be turned on"
        },
        {
         "id": "cis_postgresql-3.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_disconnections' is enabled"
+        "prose": "'log_disconnections' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.15",
-      "title": "Ensure 'log_error_verbosity' is set correctly",
+      "title": "'log_error_verbosity' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2453,24 +2453,24 @@
        {
         "id": "cis_postgresql-3.15_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_error_verbosity' is set correctly"
+        "prose": "'log_error_verbosity' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_error_verbosity' is set correctly"
+        "prose": "'log_error_verbosity' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_error_verbosity' is set correctly"
+        "prose": "'log_error_verbosity' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.16",
-      "title": "Ensure 'log_hostname' is set correctly",
+      "title": "'log_hostname' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2504,24 +2504,24 @@
        {
         "id": "cis_postgresql-3.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_hostname' is set correctly"
+        "prose": "'log_hostname' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_hostname' is set correctly"
+        "prose": "'log_hostname' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_hostname' is set correctly"
+        "prose": "'log_hostname' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.17",
-      "title": "Ensure 'log_line_prefix' is set correctly",
+      "title": "'log_line_prefix' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2555,24 +2555,24 @@
        {
         "id": "cis_postgresql-3.17_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_line_prefix' is set correctly"
+        "prose": "'log_line_prefix' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_line_prefix' is set correctly"
+        "prose": "'log_line_prefix' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_line_prefix' is set correctly"
+        "prose": "'log_line_prefix' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.18",
-      "title": "Ensure 'log_statement' is set correctly",
+      "title": "'log_statement' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2606,24 +2606,24 @@
        {
         "id": "cis_postgresql-3.18_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_statement' is set correctly"
+        "prose": "'log_statement' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_statement' is set correctly"
+        "prose": "'log_statement' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.18_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_statement' is set correctly"
+        "prose": "'log_statement' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.19",
-      "title": "Ensure 'log_timezone' is set correctly",
+      "title": "'log_timezone' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2657,24 +2657,24 @@
        {
         "id": "cis_postgresql-3.19_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_timezone' is set correctly"
+        "prose": "'log_timezone' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_timezone' is set correctly"
+        "prose": "'log_timezone' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.19_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_timezone' is set correctly"
+        "prose": "'log_timezone' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.20",
-      "title": "Ensure 'shared_preload_libraries' is set correctly",
+      "title": "'shared_preload_libraries' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2708,24 +2708,24 @@
        {
         "id": "cis_postgresql-3.20_stmt",
         "name": "statement",
-        "prose": "Ensure 'shared_preload_libraries' is set correctly"
+        "prose": "'shared_preload_libraries' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.20_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'shared_preload_libraries' is set correctly"
+        "prose": "'shared_preload_libraries' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.20_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'shared_preload_libraries' is set correctly"
+        "prose": "'shared_preload_libraries' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.21",
-      "title": "Ensure 'pgaudit.log' is set correctly",
+      "title": "'pgaudit.log' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2759,24 +2759,24 @@
        {
         "id": "cis_postgresql-3.21_stmt",
         "name": "statement",
-        "prose": "Ensure 'pgaudit.log' is set correctly"
+        "prose": "'pgaudit.log' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.21_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log' is set correctly"
+        "prose": "'pgaudit.log' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.21_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log' is set correctly"
+        "prose": "'pgaudit.log' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.22",
-      "title": "Ensure 'pgaudit.log_catalog' is enabled",
+      "title": "'pgaudit.log_catalog' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2810,24 +2810,24 @@
        {
         "id": "cis_postgresql-3.22_stmt",
         "name": "statement",
-        "prose": "Ensure 'pgaudit.log_catalog' is enabled"
+        "prose": "'pgaudit.log_catalog' must be turned on"
        },
        {
         "id": "cis_postgresql-3.22_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log_catalog' is enabled"
+        "prose": "'pgaudit.log_catalog' must be turned on"
        },
        {
         "id": "cis_postgresql-3.22_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log_catalog' is enabled"
+        "prose": "'pgaudit.log_catalog' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.23",
-      "title": "Ensure 'pgaudit.log_parameter' is enabled",
+      "title": "'pgaudit.log_parameter' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2861,24 +2861,24 @@
        {
         "id": "cis_postgresql-3.23_stmt",
         "name": "statement",
-        "prose": "Ensure 'pgaudit.log_parameter' is enabled"
+        "prose": "'pgaudit.log_parameter' must be turned on"
        },
        {
         "id": "cis_postgresql-3.23_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log_parameter' is enabled"
+        "prose": "'pgaudit.log_parameter' must be turned on"
        },
        {
         "id": "cis_postgresql-3.23_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log_parameter' is enabled"
+        "prose": "'pgaudit.log_parameter' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.24",
-      "title": "Ensure 'pgaudit.log_level' is set correctly",
+      "title": "'pgaudit.log_level' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2912,24 +2912,24 @@
        {
         "id": "cis_postgresql-3.24_stmt",
         "name": "statement",
-        "prose": "Ensure 'pgaudit.log_level' is set correctly"
+        "prose": "'pgaudit.log_level' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.24_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log_level' is set correctly"
+        "prose": "'pgaudit.log_level' must match the approved value"
        },
        {
         "id": "cis_postgresql-3.24_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'pgaudit.log_level' is set correctly"
+        "prose": "'pgaudit.log_level' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.1",
-      "title": "Ensure sudo is configured correctly",
+      "title": "sudo must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -2967,29 +2967,29 @@
        {
         "id": "cis_postgresql-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure sudo is configured correctly"
+        "prose": "sudo must match the approved configuration"
        },
        {
         "id": "cis_postgresql-4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure sudo is configured correctly"
+        "prose": "sudo must match the approved configuration"
        },
        {
         "id": "cis_postgresql-4.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure sudo is configured correctly"
+        "prose": "sudo must match the approved configuration"
        },
        {
         "id": "cis_postgresql-4.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure Interactive Login is Disabled"
+        "prose": "Interactive Login must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.2",
-      "title": "Ensure excessive administrative privileges are revoked",
+      "title": "excessive administrative privileges must be revoked",
       "props": [
        {
         "name": "label",
@@ -3027,29 +3027,29 @@
        {
         "id": "cis_postgresql-4.2_stmt",
         "name": "statement",
-        "prose": "Ensure excessive administrative privileges are revoked"
+        "prose": "excessive administrative privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure excessive administrative privileges are revoked"
+        "prose": "excessive administrative privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure excessive administrative privileges are revoked"
+        "prose": "excessive administrative privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure sudo is configured correctly"
+        "prose": "sudo must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.3",
-      "title": "Ensure excessive function privileges are revoked",
+      "title": "excessive function privileges must be revoked",
       "props": [
        {
         "name": "label",
@@ -3087,29 +3087,29 @@
        {
         "id": "cis_postgresql-4.3_stmt",
         "name": "statement",
-        "prose": "Ensure excessive function privileges are revoked"
+        "prose": "excessive function privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure excessive function privileges are revoked"
+        "prose": "excessive function privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure excessive function privileges are revoked"
+        "prose": "excessive function privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure excessive administrative privileges are revoked"
+        "prose": "excessive administrative privileges must be revoked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.4",
-      "title": "Ensure excessive DML privileges are revoked",
+      "title": "excessive DML privileges must be revoked",
       "props": [
        {
         "name": "label",
@@ -3147,29 +3147,29 @@
        {
         "id": "cis_postgresql-4.4_stmt",
         "name": "statement",
-        "prose": "Ensure excessive DML privileges are revoked"
+        "prose": "excessive DML privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure excessive DML privileges are revoked"
+        "prose": "excessive DML privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure excessive DML privileges are revoked"
+        "prose": "excessive DML privileges must be revoked"
        },
        {
         "id": "cis_postgresql-4.4_obj.3",
         "name": "assessment-objective",
-        "prose": "Lock Out Accounts if Not Currently in Use"
+        "prose": "Accounts if Not Currently in Use must be locked when unused"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.5",
-      "title": "Ensure row level security is enabled when supported",
+      "title": "row level security must be turned on when supported",
       "props": [
        {
         "name": "label",
@@ -3207,29 +3207,29 @@
        {
         "id": "cis_postgresql-4.5_stmt",
         "name": "statement",
-        "prose": "Ensure row level security is enabled when supported"
+        "prose": "row level security must be turned on when supported"
        },
        {
         "id": "cis_postgresql-4.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure row level security is enabled when supported"
+        "prose": "row level security must be turned on when supported"
        },
        {
         "id": "cis_postgresql-4.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure row level security is enabled when supported"
+        "prose": "row level security must be turned on when supported"
        },
        {
         "id": "cis_postgresql-4.5_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure excessive function privileges are revoked"
+        "prose": "excessive function privileges must be revoked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.6",
-      "title": "Ensure the PostgreSQL default administrative database 'postgres' is protected",
+      "title": "the PostgreSQL default administrative database 'postgres' must be protected",
       "props": [
        {
         "name": "label",
@@ -3267,29 +3267,29 @@
        {
         "id": "cis_postgresql-4.6_stmt",
         "name": "statement",
-        "prose": "Ensure the PostgreSQL default administrative database 'postgres' is protected"
+        "prose": "the PostgreSQL default administrative database 'postgres' must be protected"
        },
        {
         "id": "cis_postgresql-4.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL default administrative database 'postgres' is protected"
+        "prose": "the PostgreSQL default administrative database 'postgres' must be protected"
        },
        {
         "id": "cis_postgresql-4.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL default administrative database 'postgres' is protected"
+        "prose": "the PostgreSQL default administrative database 'postgres' must be protected"
        },
        {
         "id": "cis_postgresql-4.6_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure excessive DML privileges are revoked"
+        "prose": "excessive DML privileges must be revoked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.7",
-      "title": "Ensure database names are not descriptive or default",
+      "title": "database names must be not descriptive or default",
       "props": [
        {
         "name": "label",
@@ -3327,29 +3327,29 @@
        {
         "id": "cis_postgresql-4.7_stmt",
         "name": "statement",
-        "prose": "Ensure database names are not descriptive or default"
+        "prose": "database names must be not descriptive or default"
        },
        {
         "id": "cis_postgresql-4.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure database names are not descriptive or default"
+        "prose": "database names must be not descriptive or default"
        },
        {
         "id": "cis_postgresql-4.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure database names are not descriptive or default"
+        "prose": "database names must be not descriptive or default"
        },
        {
         "id": "cis_postgresql-4.7_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure Row Level Security (RLS) is configured correctly"
+        "prose": "Row Level Security (RLS) must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.8",
-      "title": "Ensure the PostgreSQL version is not easily identifiable",
+      "title": "the PostgreSQL version must be not easily identifiable",
       "props": [
        {
         "name": "label",
@@ -3387,29 +3387,29 @@
        {
         "id": "cis_postgresql-4.8_stmt",
         "name": "statement",
-        "prose": "Ensure the PostgreSQL version is not easily identifiable"
+        "prose": "the PostgreSQL version must be not easily identifiable"
        },
        {
         "id": "cis_postgresql-4.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL version is not easily identifiable"
+        "prose": "the PostgreSQL version must be not easily identifiable"
        },
        {
         "id": "cis_postgresql-4.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the PostgreSQL version is not easily identifiable"
+        "prose": "the PostgreSQL version must be not easily identifiable"
        },
        {
         "id": "cis_postgresql-4.8_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the set_user extension is installed"
+        "prose": "the set_user extension must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.9",
-      "title": "Ensure role-based authentication is configured",
+      "title": "role-based authentication must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3447,29 +3447,29 @@
        {
         "id": "cis_postgresql-4.9_stmt",
         "name": "statement",
-        "prose": "Ensure role-based authentication is configured"
+        "prose": "role-based authentication must be explicitly configured"
        },
        {
         "id": "cis_postgresql-4.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure role-based authentication is configured"
+        "prose": "role-based authentication must be explicitly configured"
        },
        {
         "id": "cis_postgresql-4.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure role-based authentication is configured"
+        "prose": "role-based authentication must be explicitly configured"
        },
        {
         "id": "cis_postgresql-4.9_obj.3",
         "name": "assessment-objective",
-        "prose": "Make use of predefined roles"
+        "prose": "predefined roles must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.10",
-      "title": "Ensure password authentication is required for local connections",
+      "title": "password authentication must be required for local connections",
       "props": [
        {
         "name": "label",
@@ -3507,29 +3507,29 @@
        {
         "id": "cis_postgresql-4.10_stmt",
         "name": "statement",
-        "prose": "Ensure password authentication is required for local connections"
+        "prose": "password authentication must be required for local connections"
        },
        {
         "id": "cis_postgresql-4.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure password authentication is required for local connections"
+        "prose": "password authentication must be required for local connections"
        },
        {
         "id": "cis_postgresql-4.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure password authentication is required for local connections"
+        "prose": "password authentication must be required for local connections"
        },
        {
         "id": "cis_postgresql-4.10_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure all accounts that can log in have passwords"
+        "prose": "all accounts that can log in must have passwords"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.11",
-      "title": "Ensure password complexity rules are configured",
+      "title": "password complexity rules must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3563,24 +3563,24 @@
        {
         "id": "cis_postgresql-4.11_stmt",
         "name": "statement",
-        "prose": "Ensure password complexity rules are configured"
+        "prose": "password complexity rules must be explicitly configured"
        },
        {
         "id": "cis_postgresql-4.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure password complexity rules are configured"
+        "prose": "password complexity rules must be explicitly configured"
        },
        {
         "id": "cis_postgresql-4.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure password complexity rules are configured"
+        "prose": "password complexity rules must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.12",
-      "title": "Ensure password expiration is enforced",
+      "title": "password expiration must be enforced",
       "props": [
        {
         "name": "label",
@@ -3614,24 +3614,24 @@
        {
         "id": "cis_postgresql-4.12_stmt",
         "name": "statement",
-        "prose": "Ensure password expiration is enforced"
+        "prose": "password expiration must be enforced"
        },
        {
         "id": "cis_postgresql-4.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure password expiration is enforced"
+        "prose": "password expiration must be enforced"
        },
        {
         "id": "cis_postgresql-4.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure password expiration is enforced"
+        "prose": "password expiration must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.13",
-      "title": "Ensure account lockout policies are enforced",
+      "title": "account lockout policies must be enforced",
       "props": [
        {
         "name": "label",
@@ -3665,24 +3665,24 @@
        {
         "id": "cis_postgresql-4.13_stmt",
         "name": "statement",
-        "prose": "Ensure account lockout policies are enforced"
+        "prose": "account lockout policies must be enforced"
        },
        {
         "id": "cis_postgresql-4.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure account lockout policies are enforced"
+        "prose": "account lockout policies must be enforced"
        },
        {
         "id": "cis_postgresql-4.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure account lockout policies are enforced"
+        "prose": "account lockout policies must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.14",
-      "title": "Ensure minimum password age is enforced",
+      "title": "minimum password age must be enforced",
       "props": [
        {
         "name": "label",
@@ -3716,24 +3716,24 @@
        {
         "id": "cis_postgresql-4.14_stmt",
         "name": "statement",
-        "prose": "Ensure minimum password age is enforced"
+        "prose": "minimum password age must be enforced"
        },
        {
         "id": "cis_postgresql-4.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure minimum password age is enforced"
+        "prose": "minimum password age must be enforced"
        },
        {
         "id": "cis_postgresql-4.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure minimum password age is enforced"
+        "prose": "minimum password age must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.15",
-      "title": "Ensure password history is enforced",
+      "title": "password history must be enforced",
       "props": [
        {
         "name": "label",
@@ -3767,24 +3767,24 @@
        {
         "id": "cis_postgresql-4.15_stmt",
         "name": "statement",
-        "prose": "Ensure password history is enforced"
+        "prose": "password history must be enforced"
        },
        {
         "id": "cis_postgresql-4.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure password history is enforced"
+        "prose": "password history must be enforced"
        },
        {
         "id": "cis_postgresql-4.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure password history is enforced"
+        "prose": "password history must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.16",
-      "title": "Ensure login events are monitored",
+      "title": "login events must be monitored",
       "props": [
        {
         "name": "label",
@@ -3818,24 +3818,24 @@
        {
         "id": "cis_postgresql-4.16_stmt",
         "name": "statement",
-        "prose": "Ensure login events are monitored"
+        "prose": "login events must be monitored"
        },
        {
         "id": "cis_postgresql-4.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure login events are monitored"
+        "prose": "login events must be monitored"
        },
        {
         "id": "cis_postgresql-4.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure login events are monitored"
+        "prose": "login events must be monitored"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.17",
-      "title": "Ensure superuser account usage is limited",
+      "title": "superuser account usage must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -3869,24 +3869,24 @@
        {
         "id": "cis_postgresql-4.17_stmt",
         "name": "statement",
-        "prose": "Ensure superuser account usage is limited"
+        "prose": "superuser account usage must be limited to named principals"
        },
        {
         "id": "cis_postgresql-4.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure superuser account usage is limited"
+        "prose": "superuser account usage must be limited to named principals"
        },
        {
         "id": "cis_postgresql-4.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure superuser account usage is limited"
+        "prose": "superuser account usage must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.18",
-      "title": "Ensure role membership is controlled",
+      "title": "role membership must be controlled",
       "props": [
        {
         "name": "label",
@@ -3920,24 +3920,24 @@
        {
         "id": "cis_postgresql-4.18_stmt",
         "name": "statement",
-        "prose": "Ensure role membership is controlled"
+        "prose": "role membership must be controlled"
        },
        {
         "id": "cis_postgresql-4.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure role membership is controlled"
+        "prose": "role membership must be controlled"
        },
        {
         "id": "cis_postgresql-4.18_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure role membership is controlled"
+        "prose": "role membership must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.19",
-      "title": "Ensure object ownership is controlled",
+      "title": "object ownership must be controlled",
       "props": [
        {
         "name": "label",
@@ -3971,24 +3971,24 @@
        {
         "id": "cis_postgresql-4.19_stmt",
         "name": "statement",
-        "prose": "Ensure object ownership is controlled"
+        "prose": "object ownership must be controlled"
        },
        {
         "id": "cis_postgresql-4.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure object ownership is controlled"
+        "prose": "object ownership must be controlled"
        },
        {
         "id": "cis_postgresql-4.19_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure object ownership is controlled"
+        "prose": "object ownership must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.20",
-      "title": "Ensure schema usage is controlled",
+      "title": "schema usage must be controlled",
       "props": [
        {
         "name": "label",
@@ -4022,24 +4022,24 @@
        {
         "id": "cis_postgresql-4.20_stmt",
         "name": "statement",
-        "prose": "Ensure schema usage is controlled"
+        "prose": "schema usage must be controlled"
        },
        {
         "id": "cis_postgresql-4.20_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure schema usage is controlled"
+        "prose": "schema usage must be controlled"
        },
        {
         "id": "cis_postgresql-4.20_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure schema usage is controlled"
+        "prose": "schema usage must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.21",
-      "title": "Ensure table access is controlled",
+      "title": "table access must be controlled",
       "props": [
        {
         "name": "label",
@@ -4073,24 +4073,24 @@
        {
         "id": "cis_postgresql-4.21_stmt",
         "name": "statement",
-        "prose": "Ensure table access is controlled"
+        "prose": "table access must be controlled"
        },
        {
         "id": "cis_postgresql-4.21_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure table access is controlled"
+        "prose": "table access must be controlled"
        },
        {
         "id": "cis_postgresql-4.21_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure table access is controlled"
+        "prose": "table access must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.22",
-      "title": "Ensure column-level security is implemented",
+      "title": "column-level security must be implemented",
       "props": [
        {
         "name": "label",
@@ -4124,24 +4124,24 @@
        {
         "id": "cis_postgresql-4.22_stmt",
         "name": "statement",
-        "prose": "Ensure column-level security is implemented"
+        "prose": "column-level security must be implemented"
        },
        {
         "id": "cis_postgresql-4.22_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure column-level security is implemented"
+        "prose": "column-level security must be implemented"
        },
        {
         "id": "cis_postgresql-4.22_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure column-level security is implemented"
+        "prose": "column-level security must be implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.23",
-      "title": "Ensure function execution is controlled",
+      "title": "function execution must be controlled",
       "props": [
        {
         "name": "label",
@@ -4175,24 +4175,24 @@
        {
         "id": "cis_postgresql-4.23_stmt",
         "name": "statement",
-        "prose": "Ensure function execution is controlled"
+        "prose": "function execution must be controlled"
        },
        {
         "id": "cis_postgresql-4.23_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure function execution is controlled"
+        "prose": "function execution must be controlled"
        },
        {
         "id": "cis_postgresql-4.23_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure function execution is controlled"
+        "prose": "function execution must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.24",
-      "title": "Ensure sequence access is controlled",
+      "title": "sequence access must be controlled",
       "props": [
        {
         "name": "label",
@@ -4226,24 +4226,24 @@
        {
         "id": "cis_postgresql-4.24_stmt",
         "name": "statement",
-        "prose": "Ensure sequence access is controlled"
+        "prose": "sequence access must be controlled"
        },
        {
         "id": "cis_postgresql-4.24_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure sequence access is controlled"
+        "prose": "sequence access must be controlled"
        },
        {
         "id": "cis_postgresql-4.24_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure sequence access is controlled"
+        "prose": "sequence access must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.25",
-      "title": "Ensure foreign data wrapper access is controlled",
+      "title": "foreign data wrapper access must be controlled",
       "props": [
        {
         "name": "label",
@@ -4277,24 +4277,24 @@
        {
         "id": "cis_postgresql-4.25_stmt",
         "name": "statement",
-        "prose": "Ensure foreign data wrapper access is controlled"
+        "prose": "foreign data wrapper access must be controlled"
        },
        {
         "id": "cis_postgresql-4.25_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure foreign data wrapper access is controlled"
+        "prose": "foreign data wrapper access must be controlled"
        },
        {
         "id": "cis_postgresql-4.25_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure foreign data wrapper access is controlled"
+        "prose": "foreign data wrapper access must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.26",
-      "title": "Ensure language usage is controlled",
+      "title": "language usage must be controlled",
       "props": [
        {
         "name": "label",
@@ -4328,24 +4328,24 @@
        {
         "id": "cis_postgresql-4.26_stmt",
         "name": "statement",
-        "prose": "Ensure language usage is controlled"
+        "prose": "language usage must be controlled"
        },
        {
         "id": "cis_postgresql-4.26_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure language usage is controlled"
+        "prose": "language usage must be controlled"
        },
        {
         "id": "cis_postgresql-4.26_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure language usage is controlled"
+        "prose": "language usage must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.27",
-      "title": "Ensure large object access is controlled",
+      "title": "large object access must be controlled",
       "props": [
        {
         "name": "label",
@@ -4379,24 +4379,24 @@
        {
         "id": "cis_postgresql-4.27_stmt",
         "name": "statement",
-        "prose": "Ensure large object access is controlled"
+        "prose": "large object access must be controlled"
        },
        {
         "id": "cis_postgresql-4.27_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure large object access is controlled"
+        "prose": "large object access must be controlled"
        },
        {
         "id": "cis_postgresql-4.27_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure large object access is controlled"
+        "prose": "large object access must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.28",
-      "title": "Ensure tablespace usage is controlled",
+      "title": "tablespace usage must be controlled",
       "props": [
        {
         "name": "label",
@@ -4430,24 +4430,24 @@
        {
         "id": "cis_postgresql-4.28_stmt",
         "name": "statement",
-        "prose": "Ensure tablespace usage is controlled"
+        "prose": "tablespace usage must be controlled"
        },
        {
         "id": "cis_postgresql-4.28_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure tablespace usage is controlled"
+        "prose": "tablespace usage must be controlled"
        },
        {
         "id": "cis_postgresql-4.28_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure tablespace usage is controlled"
+        "prose": "tablespace usage must be controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.1",
-      "title": "Ensure login via 'local' socket is configured correctly",
+      "title": "login via 'local' socket must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -4485,29 +4485,29 @@
        {
         "id": "cis_postgresql-5.1_stmt",
         "name": "statement",
-        "prose": "Ensure login via 'local' socket is configured correctly"
+        "prose": "login via 'local' socket must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure login via 'local' socket is configured correctly"
+        "prose": "login via 'local' socket must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure login via 'local' socket is configured correctly"
+        "prose": "login via 'local' socket must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Do Not Specify Passwords in the Command Line"
+        "prose": "Specify Passwords in the Command Line is prohibited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.2",
-      "title": "Ensure login via 'host' TCP/IP socket is configured correctly",
+      "title": "login via 'host' TCP/IP socket must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -4545,29 +4545,29 @@
        {
         "id": "cis_postgresql-5.2_stmt",
         "name": "statement",
-        "prose": "Ensure login via 'host' TCP/IP socket is configured correctly"
+        "prose": "login via 'host' TCP/IP socket must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure login via 'host' TCP/IP socket is configured correctly"
+        "prose": "login via 'host' TCP/IP socket must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure login via 'host' TCP/IP socket is configured correctly"
+        "prose": "login via 'host' TCP/IP socket must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL is Bound to an IP Address"
+        "prose": "PostgreSQL must be Bound to an IP Address"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.3",
-      "title": "Ensure SSL is enabled and configured correctly",
+      "title": "SSL must be turned on and configured correctly",
       "props": [
        {
         "name": "label",
@@ -4605,29 +4605,29 @@
        {
         "id": "cis_postgresql-5.3_stmt",
         "name": "statement",
-        "prose": "Ensure SSL is enabled and configured correctly"
+        "prose": "SSL must be turned on and configured correctly"
        },
        {
         "id": "cis_postgresql-5.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL is enabled and configured correctly"
+        "prose": "SSL must be turned on and configured correctly"
        },
        {
         "id": "cis_postgresql-5.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL is enabled and configured correctly"
+        "prose": "SSL must be turned on and configured correctly"
        },
        {
         "id": "cis_postgresql-5.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure login via \"local\" UNIX Domain Socket is configured correctly"
+        "prose": "login via \"local\" UNIX Domain Socket must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.4",
-      "title": "Ensure SSL certificate and key files are correctly configured",
+      "title": "SSL certificate and key files must be correctly configured",
       "props": [
        {
         "name": "label",
@@ -4665,29 +4665,29 @@
        {
         "id": "cis_postgresql-5.4_stmt",
         "name": "statement",
-        "prose": "Ensure SSL certificate and key files are correctly configured"
+        "prose": "SSL certificate and key files must be correctly configured"
        },
        {
         "id": "cis_postgresql-5.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL certificate and key files are correctly configured"
+        "prose": "SSL certificate and key files must be correctly configured"
        },
        {
         "id": "cis_postgresql-5.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL certificate and key files are correctly configured"
+        "prose": "SSL certificate and key files must be correctly configured"
        },
        {
         "id": "cis_postgresql-5.4_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure login via \"host\" TCP/IP Socket is configured correctly"
+        "prose": "login via \"host\" TCP/IP Socket must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.5",
-      "title": "Ensure SSL certificate authority file is correctly configured",
+      "title": "SSL certificate authority file must be correctly configured",
       "props": [
        {
         "name": "label",
@@ -4725,29 +4725,29 @@
        {
         "id": "cis_postgresql-5.5_stmt",
         "name": "statement",
-        "prose": "Ensure SSL certificate authority file is correctly configured"
+        "prose": "SSL certificate authority file must be correctly configured"
        },
        {
         "id": "cis_postgresql-5.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL certificate authority file is correctly configured"
+        "prose": "SSL certificate authority file must be correctly configured"
        },
        {
         "id": "cis_postgresql-5.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL certificate authority file is correctly configured"
+        "prose": "SSL certificate authority file must be correctly configured"
        },
        {
         "id": "cis_postgresql-5.5_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure per-account connection limits are used"
+        "prose": "per-account connection limits must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.6",
-      "title": "Ensure SSL certificate revocation list is configured",
+      "title": "SSL certificate revocation list must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4785,29 +4785,29 @@
        {
         "id": "cis_postgresql-5.6_stmt",
         "name": "statement",
-        "prose": "Ensure SSL certificate revocation list is configured"
+        "prose": "SSL certificate revocation list must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL certificate revocation list is configured"
+        "prose": "SSL certificate revocation list must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL certificate revocation list is configured"
+        "prose": "SSL certificate revocation list must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.6_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure password complexity is configured"
+        "prose": "password complexity must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.7",
-      "title": "Ensure SSL ciphers are configured appropriately",
+      "title": "SSL ciphers must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -4841,24 +4841,24 @@
        {
         "id": "cis_postgresql-5.7_stmt",
         "name": "statement",
-        "prose": "Ensure SSL ciphers are configured appropriately"
+        "prose": "SSL ciphers must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-5.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL ciphers are configured appropriately"
+        "prose": "SSL ciphers must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-5.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL ciphers are configured appropriately"
+        "prose": "SSL ciphers must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.8",
-      "title": "Ensure SSL key exchange is configured appropriately",
+      "title": "SSL key exchange must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -4892,24 +4892,24 @@
        {
         "id": "cis_postgresql-5.8_stmt",
         "name": "statement",
-        "prose": "Ensure SSL key exchange is configured appropriately"
+        "prose": "SSL key exchange must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-5.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSL key exchange is configured appropriately"
+        "prose": "SSL key exchange must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-5.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SSL key exchange is configured appropriately"
+        "prose": "SSL key exchange must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.9",
-      "title": "Ensure connection_limit is configured",
+      "title": "connection_limit must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4943,24 +4943,24 @@
        {
         "id": "cis_postgresql-5.9_stmt",
         "name": "statement",
-        "prose": "Ensure connection_limit is configured"
+        "prose": "connection_limit must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure connection_limit is configured"
+        "prose": "connection_limit must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure connection_limit is configured"
+        "prose": "connection_limit must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.10",
-      "title": "Ensure connection timeout is configured",
+      "title": "connection timeout must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4994,24 +4994,24 @@
        {
         "id": "cis_postgresql-5.10_stmt",
         "name": "statement",
-        "prose": "Ensure connection timeout is configured"
+        "prose": "connection timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure connection timeout is configured"
+        "prose": "connection timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure connection timeout is configured"
+        "prose": "connection timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.11",
-      "title": "Ensure superuser connection restrictions are configured",
+      "title": "superuser connection restrictions must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5045,24 +5045,24 @@
        {
         "id": "cis_postgresql-5.11_stmt",
         "name": "statement",
-        "prose": "Ensure superuser connection restrictions are configured"
+        "prose": "superuser connection restrictions must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure superuser connection restrictions are configured"
+        "prose": "superuser connection restrictions must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure superuser connection restrictions are configured"
+        "prose": "superuser connection restrictions must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.12",
-      "title": "Ensure database connection restrictions are configured",
+      "title": "database connection restrictions must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5096,24 +5096,24 @@
        {
         "id": "cis_postgresql-5.12_stmt",
         "name": "statement",
-        "prose": "Ensure database connection restrictions are configured"
+        "prose": "database connection restrictions must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure database connection restrictions are configured"
+        "prose": "database connection restrictions must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure database connection restrictions are configured"
+        "prose": "database connection restrictions must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.13",
-      "title": "Ensure IP address restrictions are configured",
+      "title": "IP address restrictions must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5147,24 +5147,24 @@
        {
         "id": "cis_postgresql-5.13_stmt",
         "name": "statement",
-        "prose": "Ensure IP address restrictions are configured"
+        "prose": "IP address restrictions must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure IP address restrictions are configured"
+        "prose": "IP address restrictions must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure IP address restrictions are configured"
+        "prose": "IP address restrictions must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.14",
-      "title": "Ensure authentication timeout is configured",
+      "title": "authentication timeout must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5198,24 +5198,24 @@
        {
         "id": "cis_postgresql-5.14_stmt",
         "name": "statement",
-        "prose": "Ensure authentication timeout is configured"
+        "prose": "authentication timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure authentication timeout is configured"
+        "prose": "authentication timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure authentication timeout is configured"
+        "prose": "authentication timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.15",
-      "title": "Ensure TCP keepalives are configured",
+      "title": "TCP keepalives must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5249,24 +5249,24 @@
        {
         "id": "cis_postgresql-5.15_stmt",
         "name": "statement",
-        "prose": "Ensure TCP keepalives are configured"
+        "prose": "TCP keepalives must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure TCP keepalives are configured"
+        "prose": "TCP keepalives must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure TCP keepalives are configured"
+        "prose": "TCP keepalives must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.16",
-      "title": "Ensure statement timeout is configured",
+      "title": "statement timeout must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5300,24 +5300,24 @@
        {
         "id": "cis_postgresql-5.16_stmt",
         "name": "statement",
-        "prose": "Ensure statement timeout is configured"
+        "prose": "statement timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure statement timeout is configured"
+        "prose": "statement timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure statement timeout is configured"
+        "prose": "statement timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.17",
-      "title": "Ensure idle timeout is configured",
+      "title": "idle timeout must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5351,24 +5351,24 @@
        {
         "id": "cis_postgresql-5.17_stmt",
         "name": "statement",
-        "prose": "Ensure idle timeout is configured"
+        "prose": "idle timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure idle timeout is configured"
+        "prose": "idle timeout must be explicitly configured"
        },
        {
         "id": "cis_postgresql-5.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure idle timeout is configured"
+        "prose": "idle timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.18",
-      "title": "Ensure connection encryption is required",
+      "title": "connection encryption must be required",
       "props": [
        {
         "name": "label",
@@ -5402,24 +5402,24 @@
        {
         "id": "cis_postgresql-5.18_stmt",
         "name": "statement",
-        "prose": "Ensure connection encryption is required"
+        "prose": "connection encryption must be required"
        },
        {
         "id": "cis_postgresql-5.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure connection encryption is required"
+        "prose": "connection encryption must be required"
        },
        {
         "id": "cis_postgresql-5.18_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure connection encryption is required"
+        "prose": "connection encryption must be required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.19",
-      "title": "Ensure client authentication is properly configured",
+      "title": "client authentication must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -5453,24 +5453,24 @@
        {
         "id": "cis_postgresql-5.19_stmt",
         "name": "statement",
-        "prose": "Ensure client authentication is properly configured"
+        "prose": "client authentication must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure client authentication is properly configured"
+        "prose": "client authentication must match the approved configuration"
        },
        {
         "id": "cis_postgresql-5.19_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure client authentication is properly configured"
+        "prose": "client authentication must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.20",
-      "title": "Ensure trust authentication is not used",
+      "title": "trust authentication must be not used",
       "props": [
        {
         "name": "label",
@@ -5504,24 +5504,24 @@
        {
         "id": "cis_postgresql-5.20_stmt",
         "name": "statement",
-        "prose": "Ensure trust authentication is not used"
+        "prose": "trust authentication must be not used"
        },
        {
         "id": "cis_postgresql-5.20_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure trust authentication is not used"
+        "prose": "trust authentication must be not used"
        },
        {
         "id": "cis_postgresql-5.20_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure trust authentication is not used"
+        "prose": "trust authentication must be not used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.21",
-      "title": "Ensure peer authentication is used appropriately",
+      "title": "peer authentication must be used appropriately",
       "props": [
        {
         "name": "label",
@@ -5555,24 +5555,24 @@
        {
         "id": "cis_postgresql-5.21_stmt",
         "name": "statement",
-        "prose": "Ensure peer authentication is used appropriately"
+        "prose": "peer authentication must be used appropriately"
        },
        {
         "id": "cis_postgresql-5.21_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure peer authentication is used appropriately"
+        "prose": "peer authentication must be used appropriately"
        },
        {
         "id": "cis_postgresql-5.21_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure peer authentication is used appropriately"
+        "prose": "peer authentication must be used appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.22",
-      "title": "Ensure certificate authentication is configured for appropriate connections",
+      "title": "certificate authentication must be explicitly configured for appropriate connections",
       "props": [
        {
         "name": "label",
@@ -5606,24 +5606,24 @@
        {
         "id": "cis_postgresql-5.22_stmt",
         "name": "statement",
-        "prose": "Ensure certificate authentication is configured for appropriate connections"
+        "prose": "certificate authentication must be explicitly configured for appropriate connections"
        },
        {
         "id": "cis_postgresql-5.22_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure certificate authentication is configured for appropriate connections"
+        "prose": "certificate authentication must be explicitly configured for appropriate connections"
        },
        {
         "id": "cis_postgresql-5.22_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure certificate authentication is configured for appropriate connections"
+        "prose": "certificate authentication must be explicitly configured for appropriate connections"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.1",
-      "title": "Ensure 'backend' runtime parameters are configured correctly",
+      "title": "'backend' runtime parameters must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -5661,29 +5661,29 @@
        {
         "id": "cis_postgresql-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'backend' runtime parameters are configured correctly"
+        "prose": "'backend' runtime parameters must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'backend' runtime parameters are configured correctly"
+        "prose": "'backend' runtime parameters must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'backend' runtime parameters are configured correctly"
+        "prose": "'backend' runtime parameters must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Understanding attack vectors and runtime parameters"
+        "prose": "attack vectors and runtime parameters must be reviewed before the service is treated as configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.2",
-      "title": "Ensure 'postgresql.conf' file is secured",
+      "title": "'postgresql.conf' file must be secured",
       "props": [
        {
         "name": "label",
@@ -5721,29 +5721,29 @@
        {
         "id": "cis_postgresql-6.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'postgresql.conf' file is secured"
+        "prose": "'postgresql.conf' file must be secured"
        },
        {
         "id": "cis_postgresql-6.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'postgresql.conf' file is secured"
+        "prose": "'postgresql.conf' file must be secured"
        },
        {
         "id": "cis_postgresql-6.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'postgresql.conf' file is secured"
+        "prose": "'postgresql.conf' file must be secured"
        },
        {
         "id": "cis_postgresql-6.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure 'backend' runtime parameters are configured correctly"
+        "prose": "'backend' runtime parameters must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.3",
-      "title": "Ensure 'FIPS 140-2' OpenSSL Cryptography Is Used",
+      "title": "'FIPS 140-2' OpenSSL Cryptography must be Used",
       "props": [
        {
         "name": "label",
@@ -5781,29 +5781,29 @@
        {
         "id": "cis_postgresql-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'FIPS 140-2' OpenSSL Cryptography Is Used"
+        "prose": "'FIPS 140-2' OpenSSL Cryptography must be Used"
        },
        {
         "id": "cis_postgresql-6.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'FIPS 140-2' OpenSSL Cryptography Is Used"
+        "prose": "'FIPS 140-2' OpenSSL Cryptography must be Used"
        },
        {
         "id": "cis_postgresql-6.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'FIPS 140-2' OpenSSL Cryptography Is Used"
+        "prose": "'FIPS 140-2' OpenSSL Cryptography must be Used"
        },
        {
         "id": "cis_postgresql-6.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure 'Postmaster' Runtime Parameters are Configured"
+        "prose": "'Postmaster' Runtime Parameters must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.4",
-      "title": "Ensure 'ssl_renegotiation_limit' is disabled",
+      "title": "'ssl_renegotiation_limit' must be turned off",
       "props": [
        {
         "name": "label",
@@ -5841,29 +5841,29 @@
        {
         "id": "cis_postgresql-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'ssl_renegotiation_limit' is disabled"
+        "prose": "'ssl_renegotiation_limit' must be turned off"
        },
        {
         "id": "cis_postgresql-6.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ssl_renegotiation_limit' is disabled"
+        "prose": "'ssl_renegotiation_limit' must be turned off"
        },
        {
         "id": "cis_postgresql-6.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ssl_renegotiation_limit' is disabled"
+        "prose": "'ssl_renegotiation_limit' must be turned off"
        },
        {
         "id": "cis_postgresql-6.4_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure 'SIGHUP' Runtime Parameters are Configured"
+        "prose": "'SIGHUP' Runtime Parameters must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.5",
-      "title": "Ensure 'shared_preload_libraries' is configured correctly",
+      "title": "'shared_preload_libraries' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -5901,29 +5901,29 @@
        {
         "id": "cis_postgresql-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'shared_preload_libraries' is configured correctly"
+        "prose": "'shared_preload_libraries' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'shared_preload_libraries' is configured correctly"
+        "prose": "'shared_preload_libraries' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'shared_preload_libraries' is configured correctly"
+        "prose": "'shared_preload_libraries' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.5_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure 'Superuser' Runtime Parameters are Configured"
+        "prose": "'Superuser' Runtime Parameters must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.6",
-      "title": "Ensure 'dynamic_library_path' is empty",
+      "title": "'dynamic_library_path' must be blank",
       "props": [
        {
         "name": "label",
@@ -5961,29 +5961,29 @@
        {
         "id": "cis_postgresql-6.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'dynamic_library_path' is empty"
+        "prose": "'dynamic_library_path' must be blank"
        },
        {
         "id": "cis_postgresql-6.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'dynamic_library_path' is empty"
+        "prose": "'dynamic_library_path' must be blank"
        },
        {
         "id": "cis_postgresql-6.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'dynamic_library_path' is empty"
+        "prose": "'dynamic_library_path' must be blank"
        },
        {
         "id": "cis_postgresql-6.6_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure 'User' Runtime Parameters are Configured"
+        "prose": "'User' Runtime Parameters must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.7",
-      "title": "Ensure 'local_preload_libraries' is empty",
+      "title": "'local_preload_libraries' must be blank",
       "props": [
        {
         "name": "label",
@@ -6021,29 +6021,29 @@
        {
         "id": "cis_postgresql-6.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'local_preload_libraries' is empty"
+        "prose": "'local_preload_libraries' must be blank"
        },
        {
         "id": "cis_postgresql-6.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'local_preload_libraries' is empty"
+        "prose": "'local_preload_libraries' must be blank"
        },
        {
         "id": "cis_postgresql-6.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'local_preload_libraries' is empty"
+        "prose": "'local_preload_libraries' must be blank"
        },
        {
         "id": "cis_postgresql-6.7_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure FIPS 140-2 OpenSSL Cryptography Is Used"
+        "prose": "FIPS 140-2 OpenSSL Cryptography must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.8",
-      "title": "Ensure 'session_preload_libraries' is empty",
+      "title": "'session_preload_libraries' must be blank",
       "props": [
        {
         "name": "label",
@@ -6081,29 +6081,29 @@
        {
         "id": "cis_postgresql-6.8_stmt",
         "name": "statement",
-        "prose": "Ensure 'session_preload_libraries' is empty"
+        "prose": "'session_preload_libraries' must be blank"
        },
        {
         "id": "cis_postgresql-6.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'session_preload_libraries' is empty"
+        "prose": "'session_preload_libraries' must be blank"
        },
        {
         "id": "cis_postgresql-6.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'session_preload_libraries' is empty"
+        "prose": "'session_preload_libraries' must be blank"
        },
        {
         "id": "cis_postgresql-6.8_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure TLS is enabled and configured correctly"
+        "prose": "TLS must be turned on and configured correctly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.9",
-      "title": "Ensure 'shared_buffers' is configured correctly",
+      "title": "'shared_buffers' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6141,29 +6141,29 @@
        {
         "id": "cis_postgresql-6.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'shared_buffers' is configured correctly"
+        "prose": "'shared_buffers' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'shared_buffers' is configured correctly"
+        "prose": "'shared_buffers' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'shared_buffers' is configured correctly"
+        "prose": "'shared_buffers' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.9_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the TLSv1.0 and TLSv1.1 Protocols are Disabled"
+        "prose": "the TLSv1.0 and TLSv1.1 Protocols must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.10",
-      "title": "Ensure 'max_connections' is configured correctly",
+      "title": "'max_connections' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6201,29 +6201,29 @@
        {
         "id": "cis_postgresql-6.10_stmt",
         "name": "statement",
-        "prose": "Ensure 'max_connections' is configured correctly"
+        "prose": "'max_connections' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_connections' is configured correctly"
+        "prose": "'max_connections' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_connections' is configured correctly"
+        "prose": "'max_connections' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.10_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure Weak SSL/TLS Ciphers Are Disabled"
+        "prose": "Weak SSL/TLS Ciphers must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.11",
-      "title": "Ensure 'work_mem' is configured correctly",
+      "title": "'work_mem' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6261,29 +6261,29 @@
        {
         "id": "cis_postgresql-6.11_stmt",
         "name": "statement",
-        "prose": "Ensure 'work_mem' is configured correctly"
+        "prose": "'work_mem' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'work_mem' is configured correctly"
+        "prose": "'work_mem' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'work_mem' is configured correctly"
+        "prose": "'work_mem' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.11_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the pgcrypto extension is installed and configured correctly"
+        "prose": "the pgcrypto extension must be installed and configured correctly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.12",
-      "title": "Ensure 'maintenance_work_mem' is configured correctly",
+      "title": "'maintenance_work_mem' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6317,24 +6317,24 @@
        {
         "id": "cis_postgresql-6.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'maintenance_work_mem' is configured correctly"
+        "prose": "'maintenance_work_mem' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'maintenance_work_mem' is configured correctly"
+        "prose": "'maintenance_work_mem' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'maintenance_work_mem' is configured correctly"
+        "prose": "'maintenance_work_mem' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.13",
-      "title": "Ensure 'effective_cache_size' is configured correctly",
+      "title": "'effective_cache_size' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6368,24 +6368,24 @@
        {
         "id": "cis_postgresql-6.13_stmt",
         "name": "statement",
-        "prose": "Ensure 'effective_cache_size' is configured correctly"
+        "prose": "'effective_cache_size' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'effective_cache_size' is configured correctly"
+        "prose": "'effective_cache_size' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'effective_cache_size' is configured correctly"
+        "prose": "'effective_cache_size' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.14",
-      "title": "Ensure 'checkpoint_completion_target' is configured correctly",
+      "title": "'checkpoint_completion_target' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6419,24 +6419,24 @@
        {
         "id": "cis_postgresql-6.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'checkpoint_completion_target' is configured correctly"
+        "prose": "'checkpoint_completion_target' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'checkpoint_completion_target' is configured correctly"
+        "prose": "'checkpoint_completion_target' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'checkpoint_completion_target' is configured correctly"
+        "prose": "'checkpoint_completion_target' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.15",
-      "title": "Ensure 'wal_buffers' is configured correctly",
+      "title": "'wal_buffers' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6470,24 +6470,24 @@
        {
         "id": "cis_postgresql-6.15_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_buffers' is configured correctly"
+        "prose": "'wal_buffers' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_buffers' is configured correctly"
+        "prose": "'wal_buffers' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_buffers' is configured correctly"
+        "prose": "'wal_buffers' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.16",
-      "title": "Ensure 'max_wal_senders' is configured correctly",
+      "title": "'max_wal_senders' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6521,24 +6521,24 @@
        {
         "id": "cis_postgresql-6.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'max_wal_senders' is configured correctly"
+        "prose": "'max_wal_senders' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_wal_senders' is configured correctly"
+        "prose": "'max_wal_senders' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_wal_senders' is configured correctly"
+        "prose": "'max_wal_senders' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.17",
-      "title": "Ensure 'max_replication_slots' is configured correctly",
+      "title": "'max_replication_slots' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6572,24 +6572,24 @@
        {
         "id": "cis_postgresql-6.17_stmt",
         "name": "statement",
-        "prose": "Ensure 'max_replication_slots' is configured correctly"
+        "prose": "'max_replication_slots' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_replication_slots' is configured correctly"
+        "prose": "'max_replication_slots' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_replication_slots' is configured correctly"
+        "prose": "'max_replication_slots' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.18",
-      "title": "Ensure 'hot_standby' is set correctly",
+      "title": "'hot_standby' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -6623,24 +6623,24 @@
        {
         "id": "cis_postgresql-6.18_stmt",
         "name": "statement",
-        "prose": "Ensure 'hot_standby' is set correctly"
+        "prose": "'hot_standby' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'hot_standby' is set correctly"
+        "prose": "'hot_standby' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.18_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'hot_standby' is set correctly"
+        "prose": "'hot_standby' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.19",
-      "title": "Ensure 'wal_level' is configured correctly",
+      "title": "'wal_level' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6674,24 +6674,24 @@
        {
         "id": "cis_postgresql-6.19_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_level' is configured correctly"
+        "prose": "'wal_level' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_level' is configured correctly"
+        "prose": "'wal_level' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.19_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_level' is configured correctly"
+        "prose": "'wal_level' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.20",
-      "title": "Ensure 'archive_mode' is enabled",
+      "title": "'archive_mode' must be turned on",
       "props": [
        {
         "name": "label",
@@ -6725,24 +6725,24 @@
        {
         "id": "cis_postgresql-6.20_stmt",
         "name": "statement",
-        "prose": "Ensure 'archive_mode' is enabled"
+        "prose": "'archive_mode' must be turned on"
        },
        {
         "id": "cis_postgresql-6.20_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'archive_mode' is enabled"
+        "prose": "'archive_mode' must be turned on"
        },
        {
         "id": "cis_postgresql-6.20_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'archive_mode' is enabled"
+        "prose": "'archive_mode' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.21",
-      "title": "Ensure 'archive_command' is set correctly",
+      "title": "'archive_command' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -6776,24 +6776,24 @@
        {
         "id": "cis_postgresql-6.21_stmt",
         "name": "statement",
-        "prose": "Ensure 'archive_command' is set correctly"
+        "prose": "'archive_command' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.21_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'archive_command' is set correctly"
+        "prose": "'archive_command' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.21_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'archive_command' is set correctly"
+        "prose": "'archive_command' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.22",
-      "title": "Ensure 'archive_timeout' is configured correctly",
+      "title": "'archive_timeout' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6827,24 +6827,24 @@
        {
         "id": "cis_postgresql-6.22_stmt",
         "name": "statement",
-        "prose": "Ensure 'archive_timeout' is configured correctly"
+        "prose": "'archive_timeout' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.22_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'archive_timeout' is configured correctly"
+        "prose": "'archive_timeout' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.22_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'archive_timeout' is configured correctly"
+        "prose": "'archive_timeout' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.23",
-      "title": "Ensure 'max_wal_size' is set correctly",
+      "title": "'max_wal_size' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -6878,24 +6878,24 @@
        {
         "id": "cis_postgresql-6.23_stmt",
         "name": "statement",
-        "prose": "Ensure 'max_wal_size' is set correctly"
+        "prose": "'max_wal_size' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.23_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_wal_size' is set correctly"
+        "prose": "'max_wal_size' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.23_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_wal_size' is set correctly"
+        "prose": "'max_wal_size' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.24",
-      "title": "Ensure 'min_wal_size' is set correctly",
+      "title": "'min_wal_size' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -6929,24 +6929,24 @@
        {
         "id": "cis_postgresql-6.24_stmt",
         "name": "statement",
-        "prose": "Ensure 'min_wal_size' is set correctly"
+        "prose": "'min_wal_size' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.24_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'min_wal_size' is set correctly"
+        "prose": "'min_wal_size' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.24_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'min_wal_size' is set correctly"
+        "prose": "'min_wal_size' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.25",
-      "title": "Ensure 'wal_keep_segments' is configured correctly",
+      "title": "'wal_keep_segments' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -6980,24 +6980,24 @@
        {
         "id": "cis_postgresql-6.25_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_keep_segments' is configured correctly"
+        "prose": "'wal_keep_segments' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.25_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_keep_size' is configured correctly"
+        "prose": "'wal_keep_size' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.25_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_keep_size' is configured correctly"
+        "prose": "'wal_keep_size' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.26",
-      "title": "Ensure 'wal_compression' is enabled",
+      "title": "'wal_compression' must be turned on",
       "props": [
        {
         "name": "label",
@@ -7031,24 +7031,24 @@
        {
         "id": "cis_postgresql-6.26_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_compression' is enabled"
+        "prose": "'wal_compression' must be turned on"
        },
        {
         "id": "cis_postgresql-6.26_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_compression' is enabled"
+        "prose": "'wal_compression' must be turned on"
        },
        {
         "id": "cis_postgresql-6.26_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_compression' is enabled"
+        "prose": "'wal_compression' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.27",
-      "title": "Ensure 'fsync' is enabled",
+      "title": "'fsync' must be turned on",
       "props": [
        {
         "name": "label",
@@ -7082,24 +7082,24 @@
        {
         "id": "cis_postgresql-6.27_stmt",
         "name": "statement",
-        "prose": "Ensure 'fsync' is enabled"
+        "prose": "'fsync' must be turned on"
        },
        {
         "id": "cis_postgresql-6.27_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'fsync' is enabled"
+        "prose": "'fsync' must be turned on"
        },
        {
         "id": "cis_postgresql-6.27_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'fsync' is enabled"
+        "prose": "'fsync' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.28",
-      "title": "Ensure 'synchronous_commit' is enabled",
+      "title": "'synchronous_commit' must be turned on",
       "props": [
        {
         "name": "label",
@@ -7133,24 +7133,24 @@
        {
         "id": "cis_postgresql-6.28_stmt",
         "name": "statement",
-        "prose": "Ensure 'synchronous_commit' is enabled"
+        "prose": "'synchronous_commit' must be turned on"
        },
        {
         "id": "cis_postgresql-6.28_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'synchronous_commit' is enabled"
+        "prose": "'synchronous_commit' must be turned on"
        },
        {
         "id": "cis_postgresql-6.28_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'synchronous_commit' is enabled"
+        "prose": "'synchronous_commit' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.29",
-      "title": "Ensure 'full_page_writes' is enabled",
+      "title": "'full_page_writes' must be turned on",
       "props": [
        {
         "name": "label",
@@ -7184,24 +7184,24 @@
        {
         "id": "cis_postgresql-6.29_stmt",
         "name": "statement",
-        "prose": "Ensure 'full_page_writes' is enabled"
+        "prose": "'full_page_writes' must be turned on"
        },
        {
         "id": "cis_postgresql-6.29_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'full_page_writes' is enabled"
+        "prose": "'full_page_writes' must be turned on"
        },
        {
         "id": "cis_postgresql-6.29_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'full_page_writes' is enabled"
+        "prose": "'full_page_writes' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.30",
-      "title": "Ensure 'wal_sync_method' is set correctly",
+      "title": "'wal_sync_method' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -7235,24 +7235,24 @@
        {
         "id": "cis_postgresql-6.30_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_sync_method' is set correctly"
+        "prose": "'wal_sync_method' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.30_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_sync_method' is set correctly"
+        "prose": "'wal_sync_method' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.30_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'wal_sync_method' is set correctly"
+        "prose": "'wal_sync_method' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.31",
-      "title": "Ensure 'random_page_cost' is set correctly",
+      "title": "'random_page_cost' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -7286,24 +7286,24 @@
        {
         "id": "cis_postgresql-6.31_stmt",
         "name": "statement",
-        "prose": "Ensure 'random_page_cost' is set correctly"
+        "prose": "'random_page_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.31_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'random_page_cost' is set correctly"
+        "prose": "'random_page_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.31_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'random_page_cost' is set correctly"
+        "prose": "'random_page_cost' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.32",
-      "title": "Ensure 'seq_page_cost' is set correctly",
+      "title": "'seq_page_cost' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -7337,24 +7337,24 @@
        {
         "id": "cis_postgresql-6.32_stmt",
         "name": "statement",
-        "prose": "Ensure 'seq_page_cost' is set correctly"
+        "prose": "'seq_page_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.32_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'seq_page_cost' is set correctly"
+        "prose": "'seq_page_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.32_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'seq_page_cost' is set correctly"
+        "prose": "'seq_page_cost' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.33",
-      "title": "Ensure 'cpu_tuple_cost' is set correctly",
+      "title": "'cpu_tuple_cost' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -7388,24 +7388,24 @@
        {
         "id": "cis_postgresql-6.33_stmt",
         "name": "statement",
-        "prose": "Ensure 'cpu_tuple_cost' is set correctly"
+        "prose": "'cpu_tuple_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.33_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'cpu_tuple_cost' is set correctly"
+        "prose": "'cpu_tuple_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.33_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'cpu_tuple_cost' is set correctly"
+        "prose": "'cpu_tuple_cost' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.34",
-      "title": "Ensure 'cpu_index_tuple_cost' is set correctly",
+      "title": "'cpu_index_tuple_cost' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -7439,24 +7439,24 @@
        {
         "id": "cis_postgresql-6.34_stmt",
         "name": "statement",
-        "prose": "Ensure 'cpu_index_tuple_cost' is set correctly"
+        "prose": "'cpu_index_tuple_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.34_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'cpu_index_tuple_cost' is set correctly"
+        "prose": "'cpu_index_tuple_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.34_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'cpu_index_tuple_cost' is set correctly"
+        "prose": "'cpu_index_tuple_cost' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.35",
-      "title": "Ensure 'cpu_operator_cost' is set correctly",
+      "title": "'cpu_operator_cost' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -7490,24 +7490,24 @@
        {
         "id": "cis_postgresql-6.35_stmt",
         "name": "statement",
-        "prose": "Ensure 'cpu_operator_cost' is set correctly"
+        "prose": "'cpu_operator_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.35_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'cpu_operator_cost' is set correctly"
+        "prose": "'cpu_operator_cost' must match the approved value"
        },
        {
         "id": "cis_postgresql-6.35_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'cpu_operator_cost' is set correctly"
+        "prose": "'cpu_operator_cost' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.36",
-      "title": "Ensure 'vacuum_cost_delay' is configured correctly",
+      "title": "'vacuum_cost_delay' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -7541,24 +7541,24 @@
        {
         "id": "cis_postgresql-6.36_stmt",
         "name": "statement",
-        "prose": "Ensure 'vacuum_cost_delay' is configured correctly"
+        "prose": "'vacuum_cost_delay' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.36_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'vacuum_cost_delay' is configured correctly"
+        "prose": "'vacuum_cost_delay' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.36_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'vacuum_cost_delay' is configured correctly"
+        "prose": "'vacuum_cost_delay' must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.37",
-      "title": "Ensure 'autovacuum' is enabled",
+      "title": "'autovacuum' must be turned on",
       "props": [
        {
         "name": "label",
@@ -7592,24 +7592,24 @@
        {
         "id": "cis_postgresql-6.37_stmt",
         "name": "statement",
-        "prose": "Ensure 'autovacuum' is enabled"
+        "prose": "'autovacuum' must be turned on"
        },
        {
         "id": "cis_postgresql-6.37_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'autovacuum' is enabled"
+        "prose": "'autovacuum' must be turned on"
        },
        {
         "id": "cis_postgresql-6.37_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'autovacuum' is enabled"
+        "prose": "'autovacuum' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.38",
-      "title": "Ensure 'track_counts' is enabled",
+      "title": "'track_counts' must be turned on",
       "props": [
        {
         "name": "label",
@@ -7643,24 +7643,24 @@
        {
         "id": "cis_postgresql-6.38_stmt",
         "name": "statement",
-        "prose": "Ensure 'track_counts' is enabled"
+        "prose": "'track_counts' must be turned on"
        },
        {
         "id": "cis_postgresql-6.38_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'track_counts' is enabled"
+        "prose": "'track_counts' must be turned on"
        },
        {
         "id": "cis_postgresql-6.38_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'track_counts' is enabled"
+        "prose": "'track_counts' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.1",
-      "title": "Ensure a backup and recovery policy is in place",
+      "title": "a backup and recovery policy must be in place",
       "props": [
        {
         "name": "label",
@@ -7698,29 +7698,29 @@
        {
         "id": "cis_postgresql-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure a backup and recovery policy is in place"
+        "prose": "a backup and recovery policy must be in place"
        },
        {
         "id": "cis_postgresql-7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure a backup and recovery policy is in place"
+        "prose": "a backup and recovery policy must be in place"
        },
        {
         "id": "cis_postgresql-7.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure a backup and recovery policy is in place"
+        "prose": "a backup and recovery policy must be in place"
        },
        {
         "id": "cis_postgresql-7.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure a replication-only user is created and used for streaming replication"
+        "prose": "a replication-only user must be created and used for streaming replication"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.2",
-      "title": "Ensure the backup is done using the pg_dump utility",
+      "title": "the backup must be done using the pg_dump utility",
       "props": [
        {
         "name": "label",
@@ -7758,29 +7758,29 @@
        {
         "id": "cis_postgresql-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure the backup is done using the pg_dump utility"
+        "prose": "the backup must be done using the pg_dump utility"
        },
        {
         "id": "cis_postgresql-7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the backup is done using pg_basebackup or similar tools"
+        "prose": "the backup must be done using pg_basebackup or similar tools"
        },
        {
         "id": "cis_postgresql-7.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the backup is done using pg_basebackup or similar tools"
+        "prose": "the backup must be done using pg_basebackup or similar tools"
        },
        {
         "id": "cis_postgresql-7.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure logging of replication commands is configured"
+        "prose": "logging of replication commands must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.3",
-      "title": "Ensure that WAL archiving is configured and functional",
+      "title": "WAL archiving must be explicitly configured and functional",
       "props": [
        {
         "name": "label",
@@ -7818,29 +7818,29 @@
        {
         "id": "cis_postgresql-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure that WAL archiving is configured and functional"
+        "prose": "WAL archiving must be explicitly configured and functional"
        },
        {
         "id": "cis_postgresql-7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure that WAL archiving is configured and functional"
+        "prose": "WAL archiving must be explicitly configured and functional"
        },
        {
         "id": "cis_postgresql-7.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure that WAL archiving is configured and functional"
+        "prose": "WAL archiving must be explicitly configured and functional"
        },
        {
         "id": "cis_postgresql-7.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure base backups are configured and functional"
+        "prose": "base backups must be explicitly configured and functional"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.4",
-      "title": "Ensure streaming replication is configured securely",
+      "title": "streaming replication must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -7878,29 +7878,29 @@
        {
         "id": "cis_postgresql-7.4_stmt",
         "name": "statement",
-        "prose": "Ensure streaming replication is configured securely"
+        "prose": "streaming replication must be explicitly configured securely"
        },
        {
         "id": "cis_postgresql-7.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure streaming replication is configured securely"
+        "prose": "streaming replication must be explicitly configured securely"
        },
        {
         "id": "cis_postgresql-7.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure streaming replication is configured securely"
+        "prose": "streaming replication must be explicitly configured securely"
        },
        {
         "id": "cis_postgresql-7.4_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure WAL archiving is configured and functional"
+        "prose": "WAL archiving must be explicitly configured and functional"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.5",
-      "title": "Ensure replication user accounts are properly secured",
+      "title": "replication user accounts must be properly secured",
       "props": [
        {
         "name": "label",
@@ -7938,29 +7938,29 @@
        {
         "id": "cis_postgresql-7.5_stmt",
         "name": "statement",
-        "prose": "Ensure replication user accounts are properly secured"
+        "prose": "replication user accounts must be properly secured"
        },
        {
         "id": "cis_postgresql-7.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure replication user accounts are properly secured"
+        "prose": "replication user accounts must be properly secured"
        },
        {
         "id": "cis_postgresql-7.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure replication user accounts are properly secured"
+        "prose": "replication user accounts must be properly secured"
        },
        {
         "id": "cis_postgresql-7.5_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure streaming replication parameters are configured correctly"
+        "prose": "streaming replication parameters must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.6",
-      "title": "Ensure replication connections are authenticated",
+      "title": "replication connections must be authenticated",
       "props": [
        {
         "name": "label",
@@ -7994,24 +7994,24 @@
        {
         "id": "cis_postgresql-7.6_stmt",
         "name": "statement",
-        "prose": "Ensure replication connections are authenticated"
+        "prose": "replication connections must be authenticated"
        },
        {
         "id": "cis_postgresql-7.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure replication connections are authenticated"
+        "prose": "replication connections must be authenticated"
        },
        {
         "id": "cis_postgresql-7.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure replication connections are authenticated"
+        "prose": "replication connections must be authenticated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.7",
-      "title": "Ensure replication traffic is encrypted",
+      "title": "replication traffic must be encrypted",
       "props": [
        {
         "name": "label",
@@ -8045,24 +8045,24 @@
        {
         "id": "cis_postgresql-7.7_stmt",
         "name": "statement",
-        "prose": "Ensure replication traffic is encrypted"
+        "prose": "replication traffic must be encrypted"
        },
        {
         "id": "cis_postgresql-7.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure replication traffic is encrypted"
+        "prose": "replication traffic must be encrypted"
        },
        {
         "id": "cis_postgresql-7.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure replication traffic is encrypted"
+        "prose": "replication traffic must be encrypted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.8",
-      "title": "Ensure standby servers are configured appropriately",
+      "title": "standby servers must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -8096,24 +8096,24 @@
        {
         "id": "cis_postgresql-7.8_stmt",
         "name": "statement",
-        "prose": "Ensure standby servers are configured appropriately"
+        "prose": "standby servers must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-7.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure standby servers are configured appropriately"
+        "prose": "standby servers must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-7.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure standby servers are configured appropriately"
+        "prose": "standby servers must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.9",
-      "title": "Ensure synchronous replication is used for critical data",
+      "title": "synchronous replication must be used for critical data",
       "props": [
        {
         "name": "label",
@@ -8147,24 +8147,24 @@
        {
         "id": "cis_postgresql-7.9_stmt",
         "name": "statement",
-        "prose": "Ensure synchronous replication is used for critical data"
+        "prose": "synchronous replication must be used for critical data"
        },
        {
         "id": "cis_postgresql-7.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure synchronous replication is used for critical data"
+        "prose": "synchronous replication must be used for critical data"
        },
        {
         "id": "cis_postgresql-7.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure synchronous replication is used for critical data"
+        "prose": "synchronous replication must be used for critical data"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.10",
-      "title": "Ensure replication lag monitoring is in place",
+      "title": "replication lag monitoring must be in place",
       "props": [
        {
         "name": "label",
@@ -8198,24 +8198,24 @@
        {
         "id": "cis_postgresql-7.10_stmt",
         "name": "statement",
-        "prose": "Ensure replication lag monitoring is in place"
+        "prose": "replication lag monitoring must be in place"
        },
        {
         "id": "cis_postgresql-7.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure replication lag monitoring is in place"
+        "prose": "replication lag monitoring must be in place"
        },
        {
         "id": "cis_postgresql-7.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure replication lag monitoring is in place"
+        "prose": "replication lag monitoring must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.11",
-      "title": "Ensure failover procedures are documented and tested",
+      "title": "failover procedures must be documented and tested",
       "props": [
        {
         "name": "label",
@@ -8241,14 +8241,14 @@
        {
         "id": "cis_postgresql-7.11_stmt",
         "name": "statement",
-        "prose": "Ensure failover procedures are documented and tested"
+        "prose": "failover procedures must be documented and tested"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.12",
-      "title": "Ensure point-in-time recovery is configured",
+      "title": "point-in-time recovery must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -8274,14 +8274,14 @@
        {
         "id": "cis_postgresql-7.12_stmt",
         "name": "statement",
-        "prose": "Ensure point-in-time recovery is configured"
+        "prose": "point-in-time recovery must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.13",
-      "title": "Ensure backup encryption is configured",
+      "title": "backup encryption must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -8307,14 +8307,14 @@
        {
         "id": "cis_postgresql-7.13_stmt",
         "name": "statement",
-        "prose": "Ensure backup encryption is configured"
+        "prose": "backup encryption must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-7.14",
-      "title": "Ensure backup retention policy is enforced",
+      "title": "backup retention policy must be enforced",
       "props": [
        {
         "name": "label",
@@ -8340,14 +8340,14 @@
        {
         "id": "cis_postgresql-7.14_stmt",
         "name": "statement",
-        "prose": "Ensure backup retention policy is enforced"
+        "prose": "backup retention policy must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.1",
-      "title": "Ensure PostgreSQL version is supported",
+      "title": "PostgreSQL version must be supported",
       "props": [
        {
         "name": "label",
@@ -8385,29 +8385,29 @@
        {
         "id": "cis_postgresql-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL version is supported"
+        "prose": "PostgreSQL version must be supported"
        },
        {
         "id": "cis_postgresql-8.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL version is supported"
+        "prose": "PostgreSQL version must be supported"
        },
        {
         "id": "cis_postgresql-8.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL version is supported"
+        "prose": "PostgreSQL version must be supported"
        },
        {
         "id": "cis_postgresql-8.1_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL subdirectory locations are outside the data cluster"
+        "prose": "PostgreSQL subdirectory locations must be outside the data cluster"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.2",
-      "title": "Ensure security updates are applied promptly",
+      "title": "security updates must be applied promptly",
       "props": [
        {
         "name": "label",
@@ -8445,29 +8445,29 @@
        {
         "id": "cis_postgresql-8.2_stmt",
         "name": "statement",
-        "prose": "Ensure security updates are applied promptly"
+        "prose": "security updates must be applied promptly"
        },
        {
         "id": "cis_postgresql-8.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure security updates are applied promptly"
+        "prose": "security updates must be applied promptly"
        },
        {
         "id": "cis_postgresql-8.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure security updates are applied promptly"
+        "prose": "security updates must be applied promptly"
        },
        {
         "id": "cis_postgresql-8.2_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure the backup and restore tool, 'pgBackRest', is installed and configured"
+        "prose": "the backup and restore tool, 'pgBackRest', must be installed and configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.3",
-      "title": "Ensure database server is in a protected network segment",
+      "title": "database server must be in a protected network segment",
       "props": [
        {
         "name": "label",
@@ -8505,29 +8505,29 @@
        {
         "id": "cis_postgresql-8.3_stmt",
         "name": "statement",
-        "prose": "Ensure database server is in a protected network segment"
+        "prose": "database server must be in a protected network segment"
        },
        {
         "id": "cis_postgresql-8.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure database server is in a protected network segment"
+        "prose": "database server must be in a protected network segment"
        },
        {
         "id": "cis_postgresql-8.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure database server is in a protected network segment"
+        "prose": "database server must be in a protected network segment"
        },
        {
         "id": "cis_postgresql-8.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Ensure miscellaneous configuration settings are correct"
+        "prose": "miscellaneous configuration settings must be correct"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.4",
-      "title": "Ensure unnecessary PostgreSQL extensions are disabled",
+      "title": "unnecessary PostgreSQL extensions must be turned off",
       "props": [
        {
         "name": "label",
@@ -8561,24 +8561,24 @@
        {
         "id": "cis_postgresql-8.4_stmt",
         "name": "statement",
-        "prose": "Ensure unnecessary PostgreSQL extensions are disabled"
+        "prose": "unnecessary PostgreSQL extensions must be turned off"
        },
        {
         "id": "cis_postgresql-8.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure unnecessary PostgreSQL extensions are disabled"
+        "prose": "unnecessary PostgreSQL extensions must be turned off"
        },
        {
         "id": "cis_postgresql-8.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure unnecessary PostgreSQL extensions are disabled"
+        "prose": "unnecessary PostgreSQL extensions must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.5",
-      "title": "Ensure PostgreSQL processes run with minimal privileges",
+      "title": "checked condition — PostgreSQL processes run with minimal privileges",
       "props": [
        {
         "name": "label",
@@ -8608,19 +8608,19 @@
        {
         "id": "cis_postgresql-8.5_stmt",
         "name": "statement",
-        "prose": "Ensure PostgreSQL processes run with minimal privileges"
+        "prose": "checked condition — PostgreSQL processes run with minimal privileges"
        },
        {
         "id": "cis_postgresql-8.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL processes run with minimal privileges"
+        "prose": "checked condition — PostgreSQL processes run with minimal privileges"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.6",
-      "title": "Ensure resource limits are configured",
+      "title": "resource limits must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -8650,19 +8650,19 @@
        {
         "id": "cis_postgresql-8.6_stmt",
         "name": "statement",
-        "prose": "Ensure resource limits are configured"
+        "prose": "resource limits must be explicitly configured"
        },
        {
         "id": "cis_postgresql-8.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure resource limits are configured"
+        "prose": "resource limits must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.7",
-      "title": "Ensure security monitoring is implemented",
+      "title": "security monitoring must be implemented",
       "props": [
        {
         "name": "label",
@@ -8692,19 +8692,19 @@
        {
         "id": "cis_postgresql-8.7_stmt",
         "name": "statement",
-        "prose": "Ensure security monitoring is implemented"
+        "prose": "security monitoring must be implemented"
        },
        {
         "id": "cis_postgresql-8.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure security monitoring is implemented"
+        "prose": "security monitoring must be implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-8.8",
-      "title": "Ensure compliance requirements are met",
+      "title": "compliance requirements must be met",
       "props": [
        {
         "name": "label",
@@ -8734,12 +8734,12 @@
        {
         "id": "cis_postgresql-8.8_stmt",
         "name": "statement",
-        "prose": "Ensure compliance requirements are met"
+        "prose": "compliance requirements must be met"
        },
        {
         "id": "cis_postgresql-8.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure compliance requirements are met"
+        "prose": "compliance requirements must be met"
        }
       ],
       "class": "security"
@@ -8770,7 +8770,7 @@
     "controls": [
      {
       "id": "cis_postgresql-3.25",
-      "title": "Ensure 'log_checkpoints' is enabled",
+      "title": "'log_checkpoints' must be turned on",
       "props": [
        {
         "name": "label",
@@ -8800,19 +8800,19 @@
        {
         "id": "cis_postgresql-3.25_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_checkpoints' is enabled"
+        "prose": "'log_checkpoints' must be turned on"
        },
        {
         "id": "cis_postgresql-3.25_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_checkpoints' is enabled"
+        "prose": "'log_checkpoints' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.26",
-      "title": "Ensure 'log_lock_waits' is enabled",
+      "title": "'log_lock_waits' must be turned on",
       "props": [
        {
         "name": "label",
@@ -8842,19 +8842,19 @@
        {
         "id": "cis_postgresql-3.26_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_lock_waits' is enabled"
+        "prose": "'log_lock_waits' must be turned on"
        },
        {
         "id": "cis_postgresql-3.26_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'log_lock_waits' is enabled"
+        "prose": "'log_lock_waits' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.29",
-      "title": "Ensure publication and subscription security",
+      "title": "checked condition — publication and subscription security",
       "props": [
        {
         "name": "label",
@@ -8884,19 +8884,19 @@
        {
         "id": "cis_postgresql-4.29_stmt",
         "name": "statement",
-        "prose": "Ensure publication and subscription security"
+        "prose": "checked condition — publication and subscription security"
        },
        {
         "id": "cis_postgresql-4.29_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure publication and subscription security"
+        "prose": "checked condition — publication and subscription security"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.30",
-      "title": "Ensure parallel query security is configured",
+      "title": "parallel query security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -8926,19 +8926,19 @@
        {
         "id": "cis_postgresql-4.30_stmt",
         "name": "statement",
-        "prose": "Ensure parallel query security is configured"
+        "prose": "parallel query security must be explicitly configured"
        },
        {
         "id": "cis_postgresql-4.30_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure parallel query security is configured"
+        "prose": "parallel query security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.23",
-      "title": "Ensure GSSAPI authentication is configured securely",
+      "title": "GSSAPI authentication must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -8968,19 +8968,19 @@
        {
         "id": "cis_postgresql-5.23_stmt",
         "name": "statement",
-        "prose": "Ensure GSSAPI authentication is configured securely"
+        "prose": "GSSAPI authentication must be explicitly configured securely"
        },
        {
         "id": "cis_postgresql-5.23_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure GSSAPI authentication is configured securely"
+        "prose": "GSSAPI authentication must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.24",
-      "title": "Ensure SCRAM-SHA-256 is preferred over MD5",
+      "title": "SCRAM-SHA-256 must be preferred over MD5",
       "props": [
        {
         "name": "label",
@@ -9010,19 +9010,19 @@
        {
         "id": "cis_postgresql-5.24_stmt",
         "name": "statement",
-        "prose": "Ensure SCRAM-SHA-256 is preferred over MD5"
+        "prose": "SCRAM-SHA-256 must be preferred over MD5"
        },
        {
         "id": "cis_postgresql-5.24_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SCRAM-SHA-256 is preferred over MD5"
+        "prose": "SCRAM-SHA-256 must be preferred over MD5"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.39",
-      "title": "Ensure 'huge_pages' is configured appropriately",
+      "title": "'huge_pages' must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -9052,19 +9052,19 @@
        {
         "id": "cis_postgresql-6.39_stmt",
         "name": "statement",
-        "prose": "Ensure 'huge_pages' is configured appropriately"
+        "prose": "'huge_pages' must be explicitly configured appropriately"
        },
        {
         "id": "cis_postgresql-6.39_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'huge_pages' is configured appropriately"
+        "prose": "'huge_pages' must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.40",
-      "title": "Ensure 'max_parallel_workers' is configured correctly",
+      "title": "'max_parallel_workers' must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -9094,12 +9094,12 @@
        {
         "id": "cis_postgresql-6.40_stmt",
         "name": "statement",
-        "prose": "Ensure 'max_parallel_workers' is configured correctly"
+        "prose": "'max_parallel_workers' must match the approved configuration"
        },
        {
         "id": "cis_postgresql-6.40_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'max_parallel_workers' is configured correctly"
+        "prose": "'max_parallel_workers' must match the approved configuration"
        }
       ],
       "class": "security"
@@ -9130,7 +9130,7 @@
     "controls": [
      {
       "id": "cis_postgresql-3.27",
-      "title": "Ensure 'log_recovery_conflict_waits' is enabled",
+      "title": "'log_recovery_conflict_waits' must be turned on",
       "props": [
        {
         "name": "label",
@@ -9156,14 +9156,14 @@
        {
         "id": "cis_postgresql-3.27_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_recovery_conflict_waits' is enabled"
+        "prose": "'log_recovery_conflict_waits' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.28",
-      "title": "Ensure 'log_parameter_max_length' is set appropriately",
+      "title": "'log_parameter_max_length' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9189,14 +9189,14 @@
        {
         "id": "cis_postgresql-3.28_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_parameter_max_length' is set appropriately"
+        "prose": "'log_parameter_max_length' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.31",
-      "title": "Ensure predefined roles are used appropriately",
+      "title": "predefined roles must be used appropriately",
       "props": [
        {
         "name": "label",
@@ -9222,14 +9222,14 @@
        {
         "id": "cis_postgresql-4.31_stmt",
         "name": "statement",
-        "prose": "Ensure predefined roles are used appropriately"
+        "prose": "predefined roles must be used appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-4.32",
-      "title": "Ensure security definer functions are reviewed",
+      "title": "security definer functions must be reviewed",
       "props": [
        {
         "name": "label",
@@ -9255,14 +9255,14 @@
        {
         "id": "cis_postgresql-4.32_stmt",
         "name": "statement",
-        "prose": "Ensure security definer functions are reviewed"
+        "prose": "security definer functions must be reviewed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.25",
-      "title": "Ensure SSL passphrase command is configured securely",
+      "title": "SSL passphrase command must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -9288,14 +9288,14 @@
        {
         "id": "cis_postgresql-5.25_stmt",
         "name": "statement",
-        "prose": "Ensure SSL passphrase command is configured securely"
+        "prose": "SSL passphrase command must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-5.26",
-      "title": "Ensure ssl_library is set appropriately",
+      "title": "ssl_library must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9321,14 +9321,14 @@
        {
         "id": "cis_postgresql-5.26_stmt",
         "name": "statement",
-        "prose": "Ensure ssl_library is set appropriately"
+        "prose": "ssl_library must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.41",
-      "title": "Ensure 'wal_init_zero' is enabled for security",
+      "title": "'wal_init_zero' must be turned on for security",
       "props": [
        {
         "name": "label",
@@ -9354,14 +9354,14 @@
        {
         "id": "cis_postgresql-6.41_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_init_zero' is enabled for security"
+        "prose": "'wal_init_zero' must be turned on for security"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-6.42",
-      "title": "Ensure 'wal_recycle' is disabled for security",
+      "title": "'wal_recycle' must be turned off for security",
       "props": [
        {
         "name": "label",
@@ -9387,7 +9387,7 @@
        {
         "id": "cis_postgresql-6.42_stmt",
         "name": "statement",
-        "prose": "Ensure 'wal_recycle' is disabled for security"
+        "prose": "'wal_recycle' must be turned off for security"
        }
       ],
       "class": "security"
@@ -9418,7 +9418,7 @@
     "controls": [
      {
       "id": "cis_postgresql-3.1.10",
-      "title": "Ensure the correct Syslog facility is selected",
+      "title": "the correct Syslog facility must be selected",
       "props": [
        {
         "name": "label",
@@ -9444,14 +9444,14 @@
        {
         "id": "cis_postgresql-3.1.10_stmt",
         "name": "statement",
-        "prose": "Ensure the correct Syslog facility is selected"
+        "prose": "the correct Syslog facility must be selected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.11",
-      "title": "Ensure Syslog messages are not suppressed",
+      "title": "Syslog messages must be not suppressed",
       "props": [
        {
         "name": "label",
@@ -9477,14 +9477,14 @@
        {
         "id": "cis_postgresql-3.1.11_stmt",
         "name": "statement",
-        "prose": "Ensure Syslog messages are not suppressed"
+        "prose": "Syslog messages must be not suppressed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.12",
-      "title": "Ensure Syslog messages are not lost due to size",
+      "title": "Syslog messages must be not lost due to size",
       "props": [
        {
         "name": "label",
@@ -9510,14 +9510,14 @@
        {
         "id": "cis_postgresql-3.1.12_stmt",
         "name": "statement",
-        "prose": "Ensure Syslog messages are not lost due to size"
+        "prose": "Syslog messages must be not lost due to size"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.13",
-      "title": "Ensure the program name for PostgreSQL Syslog messages is correct",
+      "title": "the program name for PostgreSQL Syslog messages must be correct",
       "props": [
        {
         "name": "label",
@@ -9543,14 +9543,14 @@
        {
         "id": "cis_postgresql-3.1.13_stmt",
         "name": "statement",
-        "prose": "Ensure the program name for PostgreSQL Syslog messages is correct"
+        "prose": "the program name for PostgreSQL Syslog messages must be correct"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.14",
-      "title": "Ensure the correct messages are written to the server log",
+      "title": "the correct messages must be written to the server log",
       "props": [
        {
         "name": "label",
@@ -9576,14 +9576,14 @@
        {
         "id": "cis_postgresql-3.1.14_stmt",
         "name": "statement",
-        "prose": "Ensure the correct messages are written to the server log"
+        "prose": "the correct messages must be written to the server log"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.15",
-      "title": "Ensure the correct SQL statements generating errors are recorded",
+      "title": "the correct SQL statements generating errors must be recorded",
       "props": [
        {
         "name": "label",
@@ -9609,14 +9609,14 @@
        {
         "id": "cis_postgresql-3.1.15_stmt",
         "name": "statement",
-        "prose": "Ensure the correct SQL statements generating errors are recorded"
+        "prose": "the correct SQL statements generating errors must be recorded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.16",
-      "title": "Ensure 'debug_print_parse' is disabled",
+      "title": "'debug_print_parse' must be turned off",
       "props": [
        {
         "name": "label",
@@ -9642,14 +9642,14 @@
        {
         "id": "cis_postgresql-3.1.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'debug_print_parse' is disabled"
+        "prose": "'debug_print_parse' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.17",
-      "title": "Ensure 'debug_print_rewritten' is disabled",
+      "title": "'debug_print_rewritten' must be turned off",
       "props": [
        {
         "name": "label",
@@ -9675,14 +9675,14 @@
        {
         "id": "cis_postgresql-3.1.17_stmt",
         "name": "statement",
-        "prose": "Ensure 'debug_print_rewritten' is disabled"
+        "prose": "'debug_print_rewritten' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.18",
-      "title": "Ensure 'debug_print_plan' is disabled",
+      "title": "'debug_print_plan' must be turned off",
       "props": [
        {
         "name": "label",
@@ -9708,14 +9708,14 @@
        {
         "id": "cis_postgresql-3.1.18_stmt",
         "name": "statement",
-        "prose": "Ensure 'debug_print_plan' is disabled"
+        "prose": "'debug_print_plan' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.19",
-      "title": "Ensure 'debug_pretty_print' is enabled",
+      "title": "'debug_pretty_print' must be turned on",
       "props": [
        {
         "name": "label",
@@ -9741,14 +9741,14 @@
        {
         "id": "cis_postgresql-3.1.19_stmt",
         "name": "statement",
-        "prose": "Ensure 'debug_pretty_print' is enabled"
+        "prose": "'debug_pretty_print' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.2",
-      "title": "Ensure the log destinations are set correctly",
+      "title": "the log destinations must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9774,14 +9774,14 @@
        {
         "id": "cis_postgresql-3.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure the log destinations are set correctly"
+        "prose": "the log destinations must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.20",
-      "title": "Ensure 'log_connections' is enabled",
+      "title": "'log_connections' must be turned on",
       "props": [
        {
         "name": "label",
@@ -9807,14 +9807,14 @@
        {
         "id": "cis_postgresql-3.1.20_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_connections' is enabled"
+        "prose": "'log_connections' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.21",
-      "title": "Ensure 'log_disconnections' is enabled",
+      "title": "'log_disconnections' must be turned on",
       "props": [
        {
         "name": "label",
@@ -9840,14 +9840,14 @@
        {
         "id": "cis_postgresql-3.1.21_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_disconnections' is enabled"
+        "prose": "'log_disconnections' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.22",
-      "title": "Ensure 'log_error_verbosity' is set correctly",
+      "title": "'log_error_verbosity' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9873,14 +9873,14 @@
        {
         "id": "cis_postgresql-3.1.22_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_error_verbosity' is set correctly"
+        "prose": "'log_error_verbosity' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.23",
-      "title": "Ensure 'log_hostname' is set correctly",
+      "title": "'log_hostname' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9906,14 +9906,14 @@
        {
         "id": "cis_postgresql-3.1.23_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_hostname' is set correctly"
+        "prose": "'log_hostname' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.24",
-      "title": "Ensure 'log_line_prefix' is set correctly",
+      "title": "'log_line_prefix' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9939,14 +9939,14 @@
        {
         "id": "cis_postgresql-3.1.24_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_line_prefix' is set correctly"
+        "prose": "'log_line_prefix' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.25",
-      "title": "Ensure 'log_statement' is set correctly",
+      "title": "'log_statement' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -9972,14 +9972,14 @@
        {
         "id": "cis_postgresql-3.1.25_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_statement' is set correctly"
+        "prose": "'log_statement' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.26",
-      "title": "Ensure 'log_timezone' is set correctly",
+      "title": "'log_timezone' must match the approved value",
       "props": [
        {
         "name": "label",
@@ -10005,14 +10005,14 @@
        {
         "id": "cis_postgresql-3.1.26_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_timezone' is set correctly"
+        "prose": "'log_timezone' must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.3",
-      "title": "Ensure the logging collector is enabled",
+      "title": "the logging collector must be turned on",
       "props": [
        {
         "name": "label",
@@ -10038,14 +10038,14 @@
        {
         "id": "cis_postgresql-3.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure the logging collector is enabled"
+        "prose": "the logging collector must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.4",
-      "title": "Ensure the log file destination directory is set correctly",
+      "title": "the log file destination directory must match the approved value",
       "props": [
        {
         "name": "label",
@@ -10071,14 +10071,14 @@
        {
         "id": "cis_postgresql-3.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure the log file destination directory is set correctly"
+        "prose": "the log file destination directory must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.5",
-      "title": "Ensure the filename pattern for log files is set correctly",
+      "title": "the filename pattern for log files must match the approved value",
       "props": [
        {
         "name": "label",
@@ -10104,14 +10104,14 @@
        {
         "id": "cis_postgresql-3.1.5_stmt",
         "name": "statement",
-        "prose": "Ensure the filename pattern for log files is set correctly"
+        "prose": "the filename pattern for log files must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.6",
-      "title": "Ensure the log file permissions are set correctly",
+      "title": "the log file permissions must match the approved value",
       "props": [
        {
         "name": "label",
@@ -10137,14 +10137,14 @@
        {
         "id": "cis_postgresql-3.1.6_stmt",
         "name": "statement",
-        "prose": "Ensure the log file permissions are set correctly"
+        "prose": "the log file permissions must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.7",
-      "title": "Ensure 'log_truncate_on_rotation' is enabled",
+      "title": "'log_truncate_on_rotation' must be turned on",
       "props": [
        {
         "name": "label",
@@ -10170,14 +10170,14 @@
        {
         "id": "cis_postgresql-3.1.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_truncate_on_rotation' is enabled"
+        "prose": "'log_truncate_on_rotation' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.8",
-      "title": "Ensure the maximum log file lifetime is set correctly",
+      "title": "the maximum log file lifetime must match the approved value",
       "props": [
        {
         "name": "label",
@@ -10203,14 +10203,14 @@
        {
         "id": "cis_postgresql-3.1.8_stmt",
         "name": "statement",
-        "prose": "Ensure the maximum log file lifetime is set correctly"
+        "prose": "the maximum log file lifetime must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_postgresql-3.1.9",
-      "title": "Ensure the maximum log file size is set correctly",
+      "title": "the maximum log file size must match the approved value",
       "props": [
        {
         "name": "label",
@@ -10236,7 +10236,7 @@
        {
         "id": "cis_postgresql-3.1.9_stmt",
         "name": "statement",
-        "prose": "Ensure the maximum log file size is set correctly"
+        "prose": "the maximum log file size must match the approved value"
        }
       ],
       "class": "security"

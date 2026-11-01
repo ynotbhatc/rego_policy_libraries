@@ -48,44 +48,44 @@ evidence_violations := [
 
 # Section 1: Management Plane
 management_plane_checks := [
-	{"msg": "UNMAPPED-CISCO-1.2: Ensure aaa authentication login is configured", "ok": aaa_authentication_login_configured},
-	{"msg": "UNMAPPED-CISCO-1.3: Ensure aaa authorization exec is configured", "ok": aaa_authorization_exec_configured},
-	{"msg": "UNMAPPED-CISCO-1.4: Ensure aaa accounting exec is configured", "ok": aaa_accounting_exec_configured},
-	{"msg": "UNMAPPED-CISCO-1.5: Ensure aaa accounting commands is configured", "ok": aaa_accounting_commands_configured},
-	{"msg": "UNMAPPED-CISCO-1.6: Ensure aaa accounting connection is configured", "ok": aaa_accounting_connection_configured},
-	{"msg": "UNMAPPED-CISCO-1.7: Ensure aaa accounting system is configured", "ok": aaa_accounting_system_configured},
-	{"msg": "UNMAPPED-CISCO-1.8: Ensure enable secret is configured", "ok": enable_secret_configured},
-	{"msg": "UNMAPPED-CISCO-1.9: Ensure service password encryption is configured", "ok": service_password_encryption_configured},
-	{"msg": "UNMAPPED-CISCO-1.10: Ensure banner motd is configured", "ok": banner_motd_configured},
-	{"msg": "UNMAPPED-CISCO-1.11: Ensure banner login is configured", "ok": banner_login_configured},
-	{"msg": "UNMAPPED-CISCO-1.12: Ensure banner exec is configured", "ok": banner_exec_configured},
-	{"msg": "UNMAPPED-CISCO-1.13: Ensure vty transport ssh only", "ok": vty_transport_ssh_only},
-	{"msg": "UNMAPPED-CISCO-1.14: Ensure vty exec timeout is configured", "ok": vty_exec_timeout_configured},
-	{"msg": "UNMAPPED-CISCO-1.15: Ensure vty logging synchronous is configured", "ok": vty_logging_synchronous_configured},
-	{"msg": "UNMAPPED-CISCO-1.16: Ensure vty access class is configured", "ok": vty_access_class_configured},
-	{"msg": "UNMAPPED-CISCO-1.17: Ensure console exec timeout is configured", "ok": console_exec_timeout_configured},
-	{"msg": "UNMAPPED-CISCO-1.18: Ensure console logging synchronous is configured", "ok": console_logging_synchronous_configured},
-	{"msg": "UNMAPPED-CISCO-1.19: Ensure ssh version 2 is configured", "ok": ssh_version_2_configured},
-	{"msg": "UNMAPPED-CISCO-1.20: Ensure ssh timeout is configured", "ok": ssh_timeout_configured},
-	{"msg": "UNMAPPED-CISCO-1.21: Ensure ssh auth retries is configured", "ok": ssh_auth_retries_configured},
-	{"msg": "UNMAPPED-CISCO-1.22: Ensure logging on is configured", "ok": logging_on_configured},
-	{"msg": "UNMAPPED-CISCO-1.23: Ensure logging buffered is configured", "ok": logging_buffered_configured},
-	{"msg": "UNMAPPED-CISCO-1.24: Ensure logging console is configured", "ok": logging_console_configured},
-	{"msg": "UNMAPPED-CISCO-1.25: Ensure logging host is configured", "ok": logging_host_configured},
-	{"msg": "UNMAPPED-CISCO-1.26: Ensure logging trap is configured", "ok": logging_trap_configured},
-	{"msg": "UNMAPPED-CISCO-1.27: Ensure service timestamps log is configured", "ok": service_timestamps_log_configured},
-	{"msg": "UNMAPPED-CISCO-1.28: Ensure service timestamps debug is configured", "ok": service_timestamps_debug_configured},
-	{"msg": "UNMAPPED-CISCO-1.29: Ensure ntp authenticate is configured", "ok": ntp_authenticate_configured},
-	{"msg": "UNMAPPED-CISCO-1.30: Ensure ntp authentication key is configured", "ok": ntp_authentication_key_configured},
-	{"msg": "UNMAPPED-CISCO-1.31: Ensure ntp trusted key is configured", "ok": ntp_trusted_key_configured},
-	{"msg": "UNMAPPED-CISCO-1.32: Ensure ntp server with key is configured", "ok": ntp_server_with_key_configured},
-	{"msg": "UNMAPPED-CISCO-1.33: Ensure snmp server location is configured", "ok": snmp_server_location_configured},
-	{"msg": "UNMAPPED-CISCO-1.34: Ensure snmp server contact is configured", "ok": snmp_server_contact_configured},
+	{"msg": "UNMAPPED-CISCO-1.2: aaa authentication login must be explicitly configured", "ok": aaa_authentication_login_configured},
+	{"msg": "UNMAPPED-CISCO-1.3: aaa authorization exec must be explicitly configured", "ok": aaa_authorization_exec_configured},
+	{"msg": "UNMAPPED-CISCO-1.4: aaa accounting exec must be explicitly configured", "ok": aaa_accounting_exec_configured},
+	{"msg": "UNMAPPED-CISCO-1.5: aaa accounting commands must be explicitly configured", "ok": aaa_accounting_commands_configured},
+	{"msg": "UNMAPPED-CISCO-1.6: aaa accounting connection must be explicitly configured", "ok": aaa_accounting_connection_configured},
+	{"msg": "UNMAPPED-CISCO-1.7: aaa accounting system must be explicitly configured", "ok": aaa_accounting_system_configured},
+	{"msg": "UNMAPPED-CISCO-1.8: enable secret must be explicitly configured", "ok": enable_secret_configured},
+	{"msg": "UNMAPPED-CISCO-1.9: service password encryption must be explicitly configured", "ok": service_password_encryption_configured},
+	{"msg": "UNMAPPED-CISCO-1.10: banner motd must be explicitly configured", "ok": banner_motd_configured},
+	{"msg": "UNMAPPED-CISCO-1.11: banner login must be explicitly configured", "ok": banner_login_configured},
+	{"msg": "UNMAPPED-CISCO-1.12: banner exec must be explicitly configured", "ok": banner_exec_configured},
+	{"msg": "UNMAPPED-CISCO-1.13: checked condition — vty transport ssh only", "ok": vty_transport_ssh_only},
+	{"msg": "UNMAPPED-CISCO-1.14: vty exec timeout must be explicitly configured", "ok": vty_exec_timeout_configured},
+	{"msg": "UNMAPPED-CISCO-1.15: vty logging synchronous must be explicitly configured", "ok": vty_logging_synchronous_configured},
+	{"msg": "UNMAPPED-CISCO-1.16: vty access class must be explicitly configured", "ok": vty_access_class_configured},
+	{"msg": "UNMAPPED-CISCO-1.17: console exec timeout must be explicitly configured", "ok": console_exec_timeout_configured},
+	{"msg": "UNMAPPED-CISCO-1.18: console logging synchronous must be explicitly configured", "ok": console_logging_synchronous_configured},
+	{"msg": "UNMAPPED-CISCO-1.19: ssh version 2 must be explicitly configured", "ok": ssh_version_2_configured},
+	{"msg": "UNMAPPED-CISCO-1.20: ssh timeout must be explicitly configured", "ok": ssh_timeout_configured},
+	{"msg": "UNMAPPED-CISCO-1.21: ssh auth retries must be explicitly configured", "ok": ssh_auth_retries_configured},
+	{"msg": "UNMAPPED-CISCO-1.22: logging on must be explicitly configured", "ok": logging_on_configured},
+	{"msg": "UNMAPPED-CISCO-1.23: logging buffered must be explicitly configured", "ok": logging_buffered_configured},
+	{"msg": "UNMAPPED-CISCO-1.24: logging console must be explicitly configured", "ok": logging_console_configured},
+	{"msg": "UNMAPPED-CISCO-1.25: logging host must be explicitly configured", "ok": logging_host_configured},
+	{"msg": "UNMAPPED-CISCO-1.26: logging trap must be explicitly configured", "ok": logging_trap_configured},
+	{"msg": "UNMAPPED-CISCO-1.27: service timestamps log must be explicitly configured", "ok": service_timestamps_log_configured},
+	{"msg": "UNMAPPED-CISCO-1.28: service timestamps debug must be explicitly configured", "ok": service_timestamps_debug_configured},
+	{"msg": "UNMAPPED-CISCO-1.29: ntp authenticate must be explicitly configured", "ok": ntp_authenticate_configured},
+	{"msg": "UNMAPPED-CISCO-1.30: ntp authentication key must be explicitly configured", "ok": ntp_authentication_key_configured},
+	{"msg": "UNMAPPED-CISCO-1.31: ntp trusted key must be explicitly configured", "ok": ntp_trusted_key_configured},
+	{"msg": "UNMAPPED-CISCO-1.32: ntp server with key must be explicitly configured", "ok": ntp_server_with_key_configured},
+	{"msg": "UNMAPPED-CISCO-1.33: snmp server location must be explicitly configured", "ok": snmp_server_location_configured},
+	{"msg": "UNMAPPED-CISCO-1.34: snmp server contact must be explicitly configured", "ok": snmp_server_contact_configured},
 ]
 
 management_plane_violations := array.concat(
 [
-    "1.1.1: Ensure 'aaa new-model' is configured" |
+    "1.1.1: 'aaa new-model' must be explicitly configured" |
     not aaa_new_model_configured
 ],
 [c.msg | some c in management_plane_checks; not c.ok],
@@ -371,22 +371,22 @@ snmp_server_contact_configured if {
 
 # Section 2: Control Plane
 control_plane_checks := [
-	{"msg": "UNMAPPED-CISCO-2.2: Ensure service pad is disabled", "ok": service_pad_disabled},
-	{"msg": "UNMAPPED-CISCO-2.3: Ensure service udp small servers is disabled", "ok": service_udp_small_servers_disabled},
-	{"msg": "UNMAPPED-CISCO-2.4: Ensure service tcp small servers is disabled", "ok": service_tcp_small_servers_disabled},
-	{"msg": "UNMAPPED-CISCO-2.5: Ensure cdp is disabled", "ok": cdp_disabled},
-	{"msg": "UNMAPPED-CISCO-2.6: Ensure lldp is disabled", "ok": lldp_disabled},
-	{"msg": "UNMAPPED-CISCO-2.7: Ensure service dhcp is disabled", "ok": service_dhcp_disabled},
-	{"msg": "UNMAPPED-CISCO-2.8: Ensure ip bootp server is disabled", "ok": ip_bootp_server_disabled},
-	{"msg": "UNMAPPED-CISCO-2.9: Ensure ip http server is disabled", "ok": ip_http_server_disabled},
-	{"msg": "UNMAPPED-CISCO-2.10: Ensure ip http secure server is disabled", "ok": ip_http_secure_server_disabled},
-	{"msg": "UNMAPPED-CISCO-2.11: Ensure infrastructure acl is configured", "ok": infrastructure_acl_configured},
-	{"msg": "UNMAPPED-CISCO-2.12: Ensure control plane is configured", "ok": control_plane_configured},
+	{"msg": "UNMAPPED-CISCO-2.2: service pad must be turned off", "ok": service_pad_disabled},
+	{"msg": "UNMAPPED-CISCO-2.3: service udp small servers must be turned off", "ok": service_udp_small_servers_disabled},
+	{"msg": "UNMAPPED-CISCO-2.4: service tcp small servers must be turned off", "ok": service_tcp_small_servers_disabled},
+	{"msg": "UNMAPPED-CISCO-2.5: cdp must be turned off", "ok": cdp_disabled},
+	{"msg": "UNMAPPED-CISCO-2.6: lldp must be turned off", "ok": lldp_disabled},
+	{"msg": "UNMAPPED-CISCO-2.7: service dhcp must be turned off", "ok": service_dhcp_disabled},
+	{"msg": "UNMAPPED-CISCO-2.8: ip bootp server must be turned off", "ok": ip_bootp_server_disabled},
+	{"msg": "UNMAPPED-CISCO-2.9: ip http server must be turned off", "ok": ip_http_server_disabled},
+	{"msg": "UNMAPPED-CISCO-2.10: ip http secure server must be turned off", "ok": ip_http_secure_server_disabled},
+	{"msg": "UNMAPPED-CISCO-2.11: infrastructure acl must be explicitly configured", "ok": infrastructure_acl_configured},
+	{"msg": "UNMAPPED-CISCO-2.12: control plane must be explicitly configured", "ok": control_plane_configured},
 ]
 
 control_plane_violations := array.concat(
 [
-    "2.1.1: Ensure 'no service finger' is configured" |
+    "2.1.1: 'no service finger' must be explicitly configured" |
     not service_finger_disabled
 ],
 [c.msg | some c in control_plane_checks; not c.ok],
@@ -477,7 +477,7 @@ control_plane_configured if {
 
 # Section 3: Data Plane
 data_plane_violations := [
-    "3.1.1: Ensure 'no ip source-route' is configured" |
+    "3.1.1: 'no ip source-route' must be explicitly configured" |
     not ip_source_route_disabled
 ]
 

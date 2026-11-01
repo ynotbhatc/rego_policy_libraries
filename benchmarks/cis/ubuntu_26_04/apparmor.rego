@@ -202,7 +202,7 @@ grub_linux_lines := [l |
 apparmor_grub_d_disabled if regex_in_text(input.apparmor.grub_d_cfg_raw, `(^|[\s"])apparmor=0\b`)
 
 # 1.3.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure apparmor packages are installed
+# apparmor packages must be present
 default e_1_3_1_1 := false
 
 e_1_3_1_1 if {
@@ -219,13 +219,13 @@ p_1_3_1_1 if {
 
 violations contains "1.3.1.1: evidence missing — packages[apparmor,apparmor-utils] not collected" if not e_1_3_1_1
 
-violations contains "1.3.1.1: not met — Ensure apparmor packages are installed" if {
+violations contains "1.3.1.1: not met — apparmor packages must be present" if {
 	e_1_3_1_1
 	not p_1_3_1_1
 }
 
 # 1.3.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure AppArmor is enabled
+# AppArmor must be turned on
 default e_1_3_1_2 := false
 
 e_1_3_1_2 if {
@@ -246,13 +246,13 @@ p_1_3_1_2 if {
 
 violations contains "1.3.1.2: evidence missing — boot_security.grub_cfg_linux_lines/services[apparmor.service]/apparmor.profiles.loaded not collected" if not e_1_3_1_2
 
-violations contains "1.3.1.2: not met — Ensure AppArmor is enabled" if {
+violations contains "1.3.1.2: not met — AppArmor must be turned on" if {
 	e_1_3_1_2
 	not p_1_3_1_2
 }
 
 # 1.3.1.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure all AppArmor Profiles are enforcing
+# all AppArmor Profiles must be enforcing
 default e_1_3_1_3 := false
 
 e_1_3_1_3 if {
@@ -272,13 +272,13 @@ p_1_3_1_3 if {
 
 violations contains "1.3.1.3: evidence missing — apparmor.profiles/apparmor.processes not collected" if not e_1_3_1_3
 
-violations contains "1.3.1.3: not met — Ensure all AppArmor Profiles are enforcing" if {
+violations contains "1.3.1.3: not met — all AppArmor Profiles must be enforcing" if {
 	e_1_3_1_3
 	not p_1_3_1_3
 }
 
 # 1.3.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.apparmor_restrict_unprivileged_unconfined is enabled
+# kernel.apparmor_restrict_unprivileged_unconfined must be turned on
 default e_1_3_1_4 := false
 
 e_1_3_1_4 if {
@@ -295,7 +295,7 @@ p_1_3_1_4 if {
 
 violations contains "1.3.1.4: evidence missing — sysctl/sysctl_persisted[kernel.apparmor_restrict_unprivileged_unconfined] not collected" if not e_1_3_1_4
 
-violations contains "1.3.1.4: not met — Ensure kernel.apparmor_restrict_unprivileged_unconfined is enabled" if {
+violations contains "1.3.1.4: not met — kernel.apparmor_restrict_unprivileged_unconfined must be turned on" if {
 	e_1_3_1_4
 	not p_1_3_1_4
 }

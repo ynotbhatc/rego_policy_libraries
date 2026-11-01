@@ -34,7 +34,7 @@ octal(s) := n if {
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 # =============================================================================
-# CIS 5.3.1 - Ensure sudo is installed
+# CIS 5.3.1 - sudo must be present
 # =============================================================================
 
 validate_sudo_installed if {
@@ -43,7 +43,7 @@ validate_sudo_installed if {
 
 violations contains {
     "control_id": "5.3.1",
-    "title": "Ensure sudo is installed",
+    "title": "sudo must be present",
     "severity": "high",
     "description": "sudo package should be installed for privilege escalation",
     "status": "fail",
@@ -54,7 +54,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.3.2 - Ensure sudo commands use pty
+# CIS 5.3.2 - sudo commands must allocate a pseudo-terminal
 # =============================================================================
 
 validate_sudo_use_pty if {
@@ -63,7 +63,7 @@ validate_sudo_use_pty if {
 
 violations contains {
     "control_id": "5.3.2",
-    "title": "Ensure sudo commands use pty",
+    "title": "sudo commands must allocate a pseudo-terminal",
     "severity": "medium",
     "description": "sudo should require use of a pseudo terminal",
     "status": "fail",
@@ -74,7 +74,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.3.3 - Ensure sudo log file exists
+# CIS 5.3.3 - a log file for sudo must exist
 # =============================================================================
 
 validate_sudo_logfile if {
@@ -83,7 +83,7 @@ validate_sudo_logfile if {
 
 violations contains {
     "control_id": "5.3.3",
-    "title": "Ensure sudo log file exists",
+    "title": "a log file for sudo must exist",
     "severity": "medium",
     "description": "sudo commands should be logged to a dedicated log file",
     "status": "fail",
@@ -94,7 +94,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.3.4 - Ensure users must provide password for privilege escalation
+# CIS 5.3.4 - checked condition — users must provide password for privilege escalation
 # =============================================================================
 
 validate_sudo_nopasswd if {
@@ -103,7 +103,7 @@ validate_sudo_nopasswd if {
 
 violations contains {
     "control_id": "5.3.4",
-    "title": "Ensure users must provide password for privilege escalation",
+    "title": "checked condition — users must provide password for privilege escalation",
     "severity": "high",
     "description": "sudo should require password authentication (no NOPASSWD)",
     "status": "fail",
@@ -114,7 +114,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.3.5 - Ensure re-authentication for privilege escalation is not disabled
+# CIS 5.3.5 - re-authentication for privilege escalation must stay in effect
 # =============================================================================
 
 validate_sudo_authenticate if {
@@ -123,7 +123,7 @@ validate_sudo_authenticate if {
 
 violations contains {
     "control_id": "5.3.5",
-    "title": "Ensure re-authentication for privilege escalation is not disabled",
+    "title": "re-authentication for privilege escalation must stay in effect",
     "severity": "high",
     "description": "sudo should not have !authenticate flag set",
     "status": "fail",
@@ -134,7 +134,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.3.6 - Ensure sudo authentication timeout is configured correctly
+# CIS 5.3.6 - sudo authentication timeout must match the approved configuration
 # =============================================================================
 
 validate_sudo_timeout if {
@@ -145,7 +145,7 @@ validate_sudo_timeout if {
 
 violations contains {
     "control_id": "5.3.6",
-    "title": "Ensure sudo authentication timeout is configured correctly",
+    "title": "sudo authentication timeout must match the approved configuration",
     "severity": "medium",
     "description": "sudo timestamp timeout should be 15 minutes or less",
     "status": "fail",
@@ -156,7 +156,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.3.7 - Ensure access to the su command is restricted
+# CIS 5.3.7 - access to the su command must be restricted
 # =============================================================================
 
 validate_su_restricted if {
@@ -165,7 +165,7 @@ validate_su_restricted if {
 
 violations contains {
     "control_id": "5.3.7",
-    "title": "Ensure access to the su command is restricted",
+    "title": "access to the su command must be restricted",
     "severity": "high",
     "description": "Access to su should be restricted to wheel group via pam_wheel",
     "status": "fail",
@@ -176,7 +176,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.1 - Ensure accounts in /etc/passwd use shadowed passwords
+# CIS 6.2.1 - password hashes must be stored outside /etc/passwd
 # =============================================================================
 
 validate_shadowed_passwords if {
@@ -185,7 +185,7 @@ validate_shadowed_passwords if {
 
 violations contains {
     "control_id": "6.2.1",
-    "title": "Ensure accounts in /etc/passwd use shadowed passwords",
+    "title": "password hashes must be stored outside /etc/passwd",
     "severity": "critical",
     "description": "All accounts should use shadowed passwords (x in password field)",
     "status": "fail",
@@ -196,7 +196,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.2 - Ensure password fields are not empty
+# CIS 6.2.2 - password fields must be populated
 # =============================================================================
 
 validate_no_empty_passwords if {
@@ -205,7 +205,7 @@ validate_no_empty_passwords if {
 
 violations contains {
     "control_id": "6.2.2",
-    "title": "Ensure password fields are not empty",
+    "title": "password fields must be populated",
     "severity": "critical",
     "description": "No user should have an empty password field",
     "status": "fail",
@@ -216,7 +216,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.3 - Ensure all groups in /etc/passwd exist in /etc/group
+# CIS 6.2.3 - every group named in /etc/passwd must also exist in /etc/group
 # =============================================================================
 
 validate_passwd_groups_exist if {
@@ -225,7 +225,7 @@ validate_passwd_groups_exist if {
 
 violations contains {
     "control_id": "6.2.3",
-    "title": "Ensure all groups in /etc/passwd exist in /etc/group",
+    "title": "every group named in /etc/passwd must also exist in /etc/group",
     "severity": "medium",
     "description": "All group IDs in /etc/passwd should have corresponding entries in /etc/group",
     "status": "fail",
@@ -236,7 +236,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.4 - Ensure shadow group is empty
+# CIS 6.2.4 - shadow group must be blank
 # =============================================================================
 
 validate_shadow_group_empty if {
@@ -245,7 +245,7 @@ validate_shadow_group_empty if {
 
 violations contains {
     "control_id": "6.2.4",
-    "title": "Ensure shadow group is empty",
+    "title": "shadow group must be blank",
     "severity": "medium",
     "description": "The shadow group should not contain any users",
     "status": "fail",
@@ -256,7 +256,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.5 - Ensure no duplicate UIDs exist
+# CIS 6.2.5 - the local account database must not contain duplicate UIDs
 # =============================================================================
 
 validate_no_duplicate_uids if {
@@ -265,7 +265,7 @@ validate_no_duplicate_uids if {
 
 violations contains {
     "control_id": "6.2.5",
-    "title": "Ensure no duplicate UIDs exist",
+    "title": "the local account database must not contain duplicate UIDs",
     "severity": "high",
     "description": "All user UIDs should be unique",
     "status": "fail",
@@ -276,7 +276,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.6 - Ensure no duplicate GIDs exist
+# CIS 6.2.6 - the local account database must not contain duplicate GIDs
 # =============================================================================
 
 validate_no_duplicate_gids if {
@@ -285,7 +285,7 @@ validate_no_duplicate_gids if {
 
 violations contains {
     "control_id": "6.2.6",
-    "title": "Ensure no duplicate GIDs exist",
+    "title": "the local account database must not contain duplicate GIDs",
     "severity": "high",
     "description": "All group GIDs should be unique",
     "status": "fail",
@@ -296,7 +296,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.7 - Ensure no duplicate user names exist
+# CIS 6.2.7 - the local account database must not contain duplicate user names
 # =============================================================================
 
 validate_no_duplicate_usernames if {
@@ -305,7 +305,7 @@ validate_no_duplicate_usernames if {
 
 violations contains {
     "control_id": "6.2.7",
-    "title": "Ensure no duplicate user names exist",
+    "title": "the local account database must not contain duplicate user names",
     "severity": "high",
     "description": "All usernames should be unique",
     "status": "fail",
@@ -316,7 +316,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.8 - Ensure no duplicate group names exist
+# CIS 6.2.8 - the local account database must not contain duplicate group names
 # =============================================================================
 
 validate_no_duplicate_groupnames if {
@@ -325,7 +325,7 @@ validate_no_duplicate_groupnames if {
 
 violations contains {
     "control_id": "6.2.8",
-    "title": "Ensure no duplicate group names exist",
+    "title": "the local account database must not contain duplicate group names",
     "severity": "high",
     "description": "All group names should be unique",
     "status": "fail",
@@ -336,7 +336,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.9 - Ensure root PATH Integrity
+# CIS 6.2.9 - checked condition — root PATH Integrity
 # =============================================================================
 
 validate_root_path if {
@@ -348,7 +348,7 @@ validate_root_path if {
 
 violations contains {
     "control_id": "6.2.9",
-    "title": "Ensure root PATH Integrity",
+    "title": "checked condition — root PATH Integrity",
     "severity": "high",
     "description": "root's PATH should not contain empty entries, '.', or writable directories",
     "status": "fail",
@@ -364,7 +364,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.10 - Ensure root is the only UID 0 account
+# CIS 6.2.10 - uid 0 must belong only to root
 # =============================================================================
 
 validate_only_root_uid_0 if {
@@ -374,7 +374,7 @@ validate_only_root_uid_0 if {
 
 violations contains {
     "control_id": "6.2.10",
-    "title": "Ensure root is the only UID 0 account",
+    "title": "uid 0 must belong only to root",
     "severity": "critical",
     "description": "Only the root account should have UID 0",
     "status": "fail",
@@ -385,7 +385,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.11 - Ensure local interactive user home directories exist
+# CIS 6.2.11 - checked condition — local interactive user home directories exist
 # =============================================================================
 
 validate_home_directories_exist if {
@@ -394,7 +394,7 @@ validate_home_directories_exist if {
 
 violations contains {
     "control_id": "6.2.11",
-    "title": "Ensure local interactive user home directories exist",
+    "title": "checked condition — local interactive user home directories exist",
     "severity": "medium",
     "description": "All local interactive users should have a home directory that exists",
     "status": "fail",
@@ -405,7 +405,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.12 - Ensure local interactive user home directories are configured
+# CIS 6.2.12 - local interactive user home directories must be explicitly configured
 # =============================================================================
 
 validate_home_directory_permissions(user) if {
@@ -415,7 +415,7 @@ validate_home_directory_permissions(user) if {
 
 violations contains {
     "control_id": "6.2.12",
-    "title": "Ensure local interactive user home directories are configured",
+    "title": "local interactive user home directories must be explicitly configured",
     "severity": "medium",
     "description": "User home directories should be mode 750 or more restrictive and owned by the user",
     "status": "fail",
@@ -437,7 +437,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.13 - Ensure local interactive user dot files access is configured
+# CIS 6.2.13 - local interactive user dot files access must be explicitly configured
 # =============================================================================
 
 validate_user_dot_files(user) if {
@@ -447,7 +447,7 @@ validate_user_dot_files(user) if {
 
 violations contains {
     "control_id": "6.2.13",
-    "title": "Ensure local interactive user dot files access is configured",
+    "title": "local interactive user dot files access must be explicitly configured",
     "severity": "medium",
     "description": "User dot files should not be group or world writable",
     "status": "fail",
@@ -463,7 +463,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.14 - Ensure no local interactive user has .netrc files
+# CIS 6.2.14 - local interactive users must not have .netrc files
 # =============================================================================
 
 validate_no_netrc_files if {
@@ -472,7 +472,7 @@ validate_no_netrc_files if {
 
 violations contains {
     "control_id": "6.2.14",
-    "title": "Ensure no local interactive user has .netrc files",
+    "title": "local interactive users must not have .netrc files",
     "severity": "medium",
     "description": ".netrc files can contain passwords and should not be used",
     "status": "fail",
@@ -483,7 +483,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.15 - Ensure no local interactive user has .forward files
+# CIS 6.2.15 - local interactive users must not have .forward files
 # =============================================================================
 
 validate_no_forward_files if {
@@ -492,7 +492,7 @@ validate_no_forward_files if {
 
 violations contains {
     "control_id": "6.2.15",
-    "title": "Ensure no local interactive user has .forward files",
+    "title": "local interactive users must not have .forward files",
     "severity": "low",
     "description": ".forward files can be used to forward mail and should be removed",
     "status": "fail",
@@ -503,7 +503,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 6.2.16 - Ensure no local interactive user has .rhosts files
+# CIS 6.2.16 - local interactive users must not have .rhosts files
 # =============================================================================
 
 validate_no_rhosts_files if {
@@ -512,7 +512,7 @@ validate_no_rhosts_files if {
 
 violations contains {
     "control_id": "6.2.16",
-    "title": "Ensure no local interactive user has .rhosts files",
+    "title": "local interactive users must not have .rhosts files",
     "severity": "high",
     "description": ".rhosts files allow remote access without authentication and should be removed",
     "status": "fail",

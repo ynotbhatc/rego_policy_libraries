@@ -3,7 +3,7 @@
 # Aggregates all 10 sections of the CIS MCP Server Benchmark v1.0.0 into one
 # fail-closed compliance report with per-section and per-level (L1/L2) rollups.
 #
-# COVERAGE: 55 of 55 recommendations across 10 of 10 sections. Ids, titles,
+# COVERAGE: 55 of 55 recommendations across 10 of 10 sections. Ids,
 # levels (Level 1 / Level 2 profile sheets) and Automated/Manual status come
 # from the official CIS workbook. Automated recommendations are judged from
 # collected evidence (input.cis_mcp_server.<section>.evidence); Manual ones

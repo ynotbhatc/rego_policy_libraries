@@ -199,7 +199,7 @@ pam_motd_ok(l) if {
 }
 
 # 1.7.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/motd is configured
+# /etc/motd must be explicitly configured
 default e_1_7_1 := false
 
 e_1_7_1 if {
@@ -224,13 +224,13 @@ p_1_7_1 if {
 
 violations contains "1.7.1: evidence missing — initial_setup.motd_exists/motd_content not collected" if not e_1_7_1
 
-violations contains "1.7.1: not met — Ensure /etc/motd is configured" if {
+violations contains "1.7.1: not met — /etc/motd must be explicitly configured" if {
 	e_1_7_1
 	not p_1_7_1
 }
 
 # 1.7.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/issue is configured
+# /etc/issue must be explicitly configured
 default e_1_7_2 := false
 
 e_1_7_2 if {
@@ -251,13 +251,13 @@ p_1_7_2 if {
 
 violations contains "1.7.2: evidence missing — initial_setup.issue_exists/issue_content not collected" if not e_1_7_2
 
-violations contains "1.7.2: not met — Ensure /etc/issue is configured" if {
+violations contains "1.7.2: not met — /etc/issue must be explicitly configured" if {
 	e_1_7_2
 	not p_1_7_2
 }
 
 # 1.7.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/issue.net is configured
+# /etc/issue.net must be explicitly configured
 default e_1_7_3 := false
 
 e_1_7_3 if {
@@ -278,13 +278,13 @@ p_1_7_3 if {
 
 violations contains "1.7.3: evidence missing — initial_setup.issue_net_exists/issue_net_content not collected" if not e_1_7_3
 
-violations contains "1.7.3: not met — Ensure /etc/issue.net is configured" if {
+violations contains "1.7.3: not met — /etc/issue.net must be explicitly configured" if {
 	e_1_7_3
 	not p_1_7_3
 }
 
 # 1.7.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_motd is configured
+# pam_motd must be explicitly configured
 default e_1_7_4 := false
 
 e_1_7_4 if {
@@ -299,13 +299,13 @@ p_1_7_4 if {
 
 violations contains "1.7.4: evidence missing — pam.pam_d_raw not collected" if not e_1_7_4
 
-violations contains "1.7.4: not met — Ensure pam_motd is configured" if {
+violations contains "1.7.4: not met — pam_motd must be explicitly configured" if {
 	e_1_7_4
 	not p_1_7_4
 }
 
 # 1.7.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd warning Banner is configured
+# sshd warning Banner must be explicitly configured
 default e_1_7_5 := false
 
 e_1_7_5 if {
@@ -330,13 +330,13 @@ p_1_7_5 if {
 
 violations contains "1.7.5: evidence missing — ssh.sshd_config_raw/ssh.banner_content not collected" if not e_1_7_5
 
-violations contains "1.7.5: not met — Ensure sshd warning Banner is configured" if {
+violations contains "1.7.5: not met — sshd warning Banner must be explicitly configured" if {
 	e_1_7_5
 	not p_1_7_5
 }
 
 # 1.7.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/motd is configured
+# access to /etc/motd must be explicitly configured
 default e_1_7_6 := false
 
 e_1_7_6 if {
@@ -365,13 +365,13 @@ p_1_7_6 if {
 
 violations contains "1.7.6: evidence missing — initial_setup.motd_mode/initial_setup.motd_owner/initial_setup.motd_group/initial_setup.motd_exists not collected" if not e_1_7_6
 
-violations contains "1.7.6: not met — Ensure access to /etc/motd is configured" if {
+violations contains "1.7.6: not met — access to /etc/motd must be explicitly configured" if {
 	e_1_7_6
 	not p_1_7_6
 }
 
 # 1.7.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/issue is configured
+# access to /etc/issue must be explicitly configured
 default e_1_7_7 := false
 
 e_1_7_7 if {
@@ -396,13 +396,13 @@ p_1_7_7 if {
 
 violations contains "1.7.7: evidence missing — initial_setup.issue_mode/initial_setup.issue_owner/initial_setup.issue_group/initial_setup.issue_exists not collected" if not e_1_7_7
 
-violations contains "1.7.7: not met — Ensure access to /etc/issue is configured" if {
+violations contains "1.7.7: not met — access to /etc/issue must be explicitly configured" if {
 	e_1_7_7
 	not p_1_7_7
 }
 
 # 1.7.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/issue.net is configured
+# access to /etc/issue.net must be explicitly configured
 default e_1_7_8 := false
 
 e_1_7_8 if {
@@ -427,13 +427,13 @@ p_1_7_8 if {
 
 violations contains "1.7.8: evidence missing — initial_setup.issue_net_mode/initial_setup.issue_net_owner/initial_setup.issue_net_group/initial_setup.issue_net_exists not collected" if not e_1_7_8
 
-violations contains "1.7.8: not met — Ensure access to /etc/issue.net is configured" if {
+violations contains "1.7.8: not met — access to /etc/issue.net must be explicitly configured" if {
 	e_1_7_8
 	not p_1_7_8
 }
 
 # 1.7.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to sshd warning banner is configured
+# access to sshd warning banner must be explicitly configured
 default e_1_7_9 := false
 
 e_1_7_9 if {
@@ -460,7 +460,7 @@ p_1_7_9 if {
 
 violations contains "1.7.9: evidence missing — ssh.banner_permissions not collected" if not e_1_7_9
 
-violations contains "1.7.9: not met — Ensure access to sshd warning banner is configured" if {
+violations contains "1.7.9: not met — access to sshd warning banner must be explicitly configured" if {
 	e_1_7_9
 	not p_1_7_9
 }

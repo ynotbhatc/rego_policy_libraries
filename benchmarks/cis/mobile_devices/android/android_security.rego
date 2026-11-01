@@ -56,18 +56,18 @@ default android_device_compliant := false
 # CIS Google Android Benchmark
 # Mobile Device Security Configuration
 
-# CIS 1.1 - Ensure screen lock is enabled
+# CIS 1.1 - screen lock must be turned on
 screen_lock_enabled if {
     input.device_config.screen_lock.enabled == true
     input.device_config.screen_lock.type in ["pattern", "pin", "password", "fingerprint", "face"]
 }
 
-# CIS 1.2 - Ensure minimum password length is set to 6 or greater
+# CIS 1.2 - required value of minimum password length is 6 or greater
 password_min_length if {
     input.device_config.password_policy.min_length >= 6
 }
 
-# CIS 1.3 - Ensure password complexity requirements are enabled
+# CIS 1.3 - password complexity requirements must be turned on
 password_complexity if {
     input.device_config.password_policy.require_alphabetic == true
     input.device_config.password_policy.require_numeric == true
@@ -76,36 +76,36 @@ password_complexity if {
     input.device_config.password_policy.require_lowercase == true
 }
 
-# CIS 1.4 - Ensure maximum failed password attempts is set to 10 or less
+# CIS 1.4 - required value of maximum failed password attempts is 10 or less
 max_failed_password_attempts if {
     input.device_config.password_policy.max_failed_attempts <= 10
     input.device_config.password_policy.max_failed_attempts > 0
 }
 
-# CIS 1.5 - Ensure auto-lock timeout is set to 5 minutes or less
+# CIS 1.5 - required value of auto-lock timeout is 5 minutes or less
 auto_lock_timeout if {
     input.device_config.screen_lock.timeout_minutes <= 5
     input.device_config.screen_lock.timeout_minutes > 0
 }
 
-# CIS 1.6 - Ensure password history is enabled
+# CIS 1.6 - password history must be turned on
 password_history if {
     input.device_config.password_policy.history_length >= 4
 }
 
-# CIS 1.7 - Ensure password expiration is set to 90 days or less
+# CIS 1.7 - required value of password expiration is 90 days or less
 password_expiration if {
     input.device_config.password_policy.expiration_days <= 90
     input.device_config.password_policy.expiration_days > 0
 }
 
-# CIS 2.1 - Ensure device encryption is enabled
+# CIS 2.1 - device encryption must be turned on
 device_encryption_enabled if {
     input.device_config.encryption.device_encrypted == true
     input.device_config.encryption.encryption_algorithm in ["AES-256", "AES-128"]
 }
 
-# CIS 2.2 - Ensure SD card encryption is enabled
+# CIS 2.2 - SD card encryption must be turned on
 sd_card_encryption if {
     input.device_config.encryption.sd_card_encrypted == true
 }
@@ -115,58 +115,58 @@ sd_card_encryption if {
     input.device_config.sd_card_present == false
 }
 
-# CIS 2.3 - Ensure backup encryption is enabled
+# CIS 2.3 - backup encryption must be turned on
 backup_encryption if {
     input.device_config.backup_settings.encryption_enabled == true
 }
 
-# CIS 3.1 - Ensure unknown sources installation is disabled
+# CIS 3.1 - unknown sources installation must be turned off
 unknown_sources_disabled if {
     input.device_config.app_settings.allow_unknown_sources == false
 }
 
-# CIS 3.2 - Ensure app verification is enabled
+# CIS 3.2 - app verification must be turned on
 app_verification_enabled if {
     input.device_config.app_settings.verify_apps == true
 }
 
-# CIS 3.3 - Ensure installation of apps from unknown sources is logged
+# CIS 3.3 - installation of apps from unknown sources must be logged
 unknown_sources_logging if {
     input.device_config.app_settings.log_unknown_sources == true
 }
 
-# CIS 3.4 - Ensure Google Play Protect is enabled
+# CIS 3.4 - Google Play Protect must be turned on
 play_protect_enabled if {
     input.device_config.google_services.play_protect_enabled == true
     input.device_config.google_services.play_protect_scan_apps == true
 }
 
-# CIS 3.5 - Ensure app permissions are reviewed regularly
+# CIS 3.5 - app permissions must be reviewed regularly
 app_permissions_reviewed if {
     input.device_config.app_settings.permission_review_enabled == true
 }
 
-# CIS 4.1 - Ensure developer options are disabled
+# CIS 4.1 - developer options must be turned off
 developer_options_disabled if {
     input.device_config.developer_settings.enabled == false
 }
 
-# CIS 4.2 - Ensure USB debugging is disabled
+# CIS 4.2 - USB debugging must be turned off
 usb_debugging_disabled if {
     input.device_config.developer_settings.usb_debugging == false
 }
 
-# CIS 4.3 - Ensure ADB over network is disabled
+# CIS 4.3 - ADB over network must be turned off
 adb_over_network_disabled if {
     input.device_config.developer_settings.adb_over_network == false
 }
 
-# CIS 4.4 - Ensure mock locations are disabled
+# CIS 4.4 - mock locations must be turned off
 mock_locations_disabled if {
     input.device_config.developer_settings.allow_mock_locations == false
 }
 
-# CIS 5.1 - Ensure location services are configured appropriately
+# CIS 5.1 - location services must be explicitly configured appropriately
 location_services_configured if {
     input.device_config.location_settings.enabled == true
     input.device_config.location_settings.high_accuracy_mode == false
@@ -174,7 +174,7 @@ location_services_configured if {
     input.device_config.location_settings.google_location_sharing == false
 }
 
-# CIS 5.2 - Ensure Bluetooth is configured securely
+# CIS 5.2 - Bluetooth must be explicitly configured securely
 bluetooth_secure if {
     input.device_config.bluetooth_settings.enabled == true
     input.device_config.bluetooth_settings.discoverable == false
@@ -186,14 +186,14 @@ bluetooth_secure if {
     input.device_config.bluetooth_settings.enabled == false
 }
 
-# CIS 5.3 - Ensure Wi-Fi is configured securely
+# CIS 5.3 - Wi-Fi must be explicitly configured securely
 wifi_secure if {
     input.device_config.wifi_settings.auto_connect_open_networks == false
     input.device_config.wifi_settings.wifi_scanning_always_on == false
     input.device_config.wifi_settings.network_notification == false
 }
 
-# CIS 5.4 - Ensure NFC is disabled when not needed
+# CIS 5.4 - NFC must be turned off when not needed
 nfc_configured if {
     input.device_config.nfc_settings.enabled == false
 }
@@ -205,48 +205,48 @@ nfc_configured if {
     input.device_config.nfc_settings.secure_element_access == true
 }
 
-# CIS 6.1 - Ensure remote wipe capability is enabled
+# CIS 6.1 - remote wipe capability must be turned on
 remote_wipe_enabled if {
     input.device_config.mdm_settings.remote_wipe_enabled == true
 }
 
-# CIS 6.2 - Ensure device administrator apps are controlled
+# CIS 6.2 - device administrator apps must be controlled
 device_admin_controlled if {
     every admin in input.device_config.device_administrators {
         admin.authorized == true
     }
 }
 
-# CIS 6.3 - Ensure Google account two-factor authentication is enabled
+# CIS 6.3 - Google account two-factor authentication must be turned on
 google_account_2fa if {
     input.device_config.google_account.two_factor_enabled == true
 }
 
-# CIS 6.4 - Ensure automatic updates are enabled
+# CIS 6.4 - automatic updates must be turned on
 automatic_updates_enabled if {
     input.device_config.update_settings.auto_download == true
     input.device_config.update_settings.auto_install_security == true
 }
 
-# CIS 6.5 - Ensure Google Safe Browsing is enabled
+# CIS 6.5 - Google Safe Browsing must be turned on
 safe_browsing_enabled if {
     input.device_config.browser_settings.safe_browsing == true
 }
 
-# CIS 7.1 - Ensure device compliance with organizational policies
+# CIS 7.1 - checked condition — device compliance with organizational policies
 organizational_compliance if {
     input.device_config.mdm_settings.enrolled == true
     input.device_config.mdm_settings.policy_compliant == true
 }
 
-# CIS 7.2 - Ensure privacy settings are configured appropriately
+# CIS 7.2 - privacy settings must be explicitly configured appropriately
 privacy_settings_configured if {
     input.device_config.privacy_settings.ad_personalization == false
     input.device_config.privacy_settings.usage_reporting == false
     input.device_config.privacy_settings.crash_reporting == false
 }
 
-# CIS 7.3 - Ensure biometric authentication is configured securely
+# CIS 7.3 - biometric authentication must be explicitly configured securely
 biometric_auth_secure if {
     input.device_config.biometric_settings.fallback_enabled == true
     input.device_config.biometric_settings.require_confirmation == true

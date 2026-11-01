@@ -47,15 +47,15 @@ violations := [v |
 
 # Section 1: Management Plane Security
 management_plane_checks := [
-	{"msg": "UNMAPPED-JUNOS-1.1: Ensure remote AAA (RADIUS or TACACS+) is configured", "ok": remote_aaa_configured},
-	{"msg": "UNMAPPED-JUNOS-1.2: Ensure SSH is configured securely (protocol v2, root login denied)", "ok": ssh_configured_securely},
-	{"msg": "UNMAPPED-JUNOS-1.3: Ensure security syslog is configured", "ok": security_syslog_configured},
-	{"msg": "UNMAPPED-JUNOS-1.4: Ensure ntp authentication is configured", "ok": ntp_authentication_configured},
+	{"msg": "UNMAPPED-JUNOS-1.1: remote AAA (RADIUS or TACACS+) must be explicitly configured", "ok": remote_aaa_configured},
+	{"msg": "UNMAPPED-JUNOS-1.2: SSH must be explicitly configured securely (protocol v2, root login denied)", "ok": ssh_configured_securely},
+	{"msg": "UNMAPPED-JUNOS-1.3: security syslog must be explicitly configured", "ok": security_syslog_configured},
+	{"msg": "UNMAPPED-JUNOS-1.4: ntp authentication must be explicitly configured", "ok": ntp_authentication_configured},
 ]
 
 management_plane_violations := array.concat(
 [
-    "1.1.1: Ensure root authentication is configured" |
+    "1.1.1: root authentication must be explicitly configured" |
     not root_authentication_configured
 ],
 [c.msg | some c in management_plane_checks; not c.ok],
@@ -131,11 +131,11 @@ tacplus_configured if {
 # Section 2: Control Plane Security
 control_plane_violations := array.concat(
     [
-        "2.1.1: Ensure control plane traffic is protected with a filter" |
+        "2.1.1: control plane traffic must be protected with a filter" |
         not control_plane_filter_configured
     ],
     [
-        "2.2.1: Ensure routing protocol (OSPF/BGP) authentication is configured" |
+        "2.2.1: routing protocol (OSPF/BGP) authentication must be explicitly configured" |
         routing_protocol_in_use
         not routing_protocol_auth_configured
     ],
@@ -186,13 +186,13 @@ routing_protocol_auth_configured if {
 
 # Section 3: Data Plane Security
 data_plane_checks := [
-	{"msg": "UNMAPPED-JUNOS-3.2: Ensure anti spoofing is configured", "ok": anti_spoofing_configured},
-	{"msg": "UNMAPPED-JUNOS-3.3: Ensure spanning tree protection is configured", "ok": spanning_tree_protection_configured},
+	{"msg": "UNMAPPED-JUNOS-3.2: anti spoofing must be explicitly configured", "ok": anti_spoofing_configured},
+	{"msg": "UNMAPPED-JUNOS-3.3: spanning tree protection must be explicitly configured", "ok": spanning_tree_protection_configured},
 ]
 
 data_plane_violations := array.concat(
 [
-    "3.1.1: Ensure ingress filtering is applied on all external interfaces" |
+    "3.1.1: ingress filtering must be applied on all external interfaces" |
     interface := input.external_interfaces[_]
     not ingress_filter_applied(interface)
 ]

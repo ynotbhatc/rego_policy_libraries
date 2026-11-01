@@ -536,8 +536,8 @@ rules if you want a single section rather than the whole framework:
     "overall_compliance": "FAIL"
   },
   "violations": [
-    "1.1.1 Ensure mounting of cramfs filesystems is disabled",
-    "5.2.4 Ensure SSH X11 forwarding is disabled"
+    "1.1.1 mounting of cramfs filesystems must be turned off",
+    "5.2.4 SSH X11 forwarding must be turned off"
   ],
   "section_compliance": {
     "1_filesystem": true,

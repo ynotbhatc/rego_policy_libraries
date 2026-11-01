@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 1.3.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure SELinux is installed
+# SELinux must be present
 default e_1_3_1_1 := false
 
 e_1_3_1_1 if {
@@ -207,13 +207,13 @@ p_1_3_1_1 if {
 
 violations contains "1.3.1.1: evidence missing — selinux.installed not collected" if not e_1_3_1_1
 
-violations contains "1.3.1.1: not met — Ensure SELinux is installed" if {
+violations contains "1.3.1.1: not met — SELinux must be present" if {
 	e_1_3_1_1
 	not p_1_3_1_1
 }
 
 # 1.3.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure SELinux is not disabled in bootloader configuration
+# SELinux must stay in effect in bootloader configuration
 default e_1_3_1_2 := false
 
 e_1_3_1_2 if {
@@ -228,13 +228,13 @@ p_1_3_1_2 if {
 
 violations contains "1.3.1.2: evidence missing — selinux.grub_cmdline not collected" if not e_1_3_1_2
 
-violations contains "1.3.1.2: not met — Ensure SELinux is not disabled in bootloader configuration" if {
+violations contains "1.3.1.2: not met — SELinux must stay in effect in bootloader configuration" if {
 	e_1_3_1_2
 	not p_1_3_1_2
 }
 
 # 1.3.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure SELinux policy is configured
+# SELinux policy must be explicitly configured
 default e_1_3_1_3 := false
 
 e_1_3_1_3 if {
@@ -249,13 +249,13 @@ p_1_3_1_3 if {
 
 violations contains "1.3.1.3: evidence missing — selinux.policy not collected" if not e_1_3_1_3
 
-violations contains "1.3.1.3: not met — Ensure SELinux policy is configured" if {
+violations contains "1.3.1.3: not met — SELinux policy must be explicitly configured" if {
 	e_1_3_1_3
 	not p_1_3_1_3
 }
 
 # 1.3.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure the MCS Translation Service (mcstrans) is not installed
+# the MCS Translation Service (mcstrans) must not be present
 default e_1_3_1_4 := false
 
 e_1_3_1_4 if {
@@ -270,13 +270,13 @@ p_1_3_1_4 if {
 
 violations contains "1.3.1.4: evidence missing — selinux.mcstrans_installed not collected" if not e_1_3_1_4
 
-violations contains "1.3.1.4: not met — Ensure the MCS Translation Service (mcstrans) is not installed" if {
+violations contains "1.3.1.4: not met — the MCS Translation Service (mcstrans) must not be present" if {
 	e_1_3_1_4
 	not p_1_3_1_4
 }
 
 # 1.3.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure the SELinux mode is not disabled
+# the SELinux mode must stay in effect
 default e_1_3_1_5 := false
 
 e_1_3_1_5 if {
@@ -291,13 +291,13 @@ p_1_3_1_5 if {
 
 violations contains "1.3.1.5: evidence missing — selinux.mode not collected" if not e_1_3_1_5
 
-violations contains "1.3.1.5: not met — Ensure the SELinux mode is not disabled" if {
+violations contains "1.3.1.5: not met — the SELinux mode must stay in effect" if {
 	e_1_3_1_5
 	not p_1_3_1_5
 }
 
 # 1.3.1.6 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure the SELinux mode is enforcing
+# the SELinux mode must be enforcing
 default e_1_3_1_6 := false
 
 e_1_3_1_6 if {
@@ -312,13 +312,13 @@ p_1_3_1_6 if {
 
 violations contains "1.3.1.6: evidence missing — selinux.mode not collected" if not e_1_3_1_6
 
-violations contains "1.3.1.6: not met — Ensure the SELinux mode is enforcing" if {
+violations contains "1.3.1.6: not met — the SELinux mode must be enforcing" if {
 	e_1_3_1_6
 	not p_1_3_1_6
 }
 
 # 1.3.1.7 (Automated; Level 1 - Server)
-# Ensure SETroubleshoot is not installed
+# SETroubleshoot must not be present
 default e_1_3_1_7 := false
 
 e_1_3_1_7 if {
@@ -333,17 +333,17 @@ p_1_3_1_7 if {
 
 violations contains "1.3.1.7: evidence missing — selinux.setroubleshoot_installed not collected" if not e_1_3_1_7
 
-violations contains "1.3.1.7: not met — Ensure SETroubleshoot is not installed" if {
+violations contains "1.3.1.7: not met — SETroubleshoot must not be present" if {
 	e_1_3_1_7
 	not p_1_3_1_7
 }
 
 # 1.3.1.8 (Manual; Level 2 - Server, Level 2 - Workstation)
-# Ensure no unconfined services exist
+# checked condition — no unconfined services exist
 default p_1_3_1_8 := false
 
 p_1_3_1_8 if {
 	input.attest.no_unconfined_services == true
 }
 
-violations contains "1.3.1.8: manual review not attested — set attest.no_unconfined_services to true once reviewed (Ensure no unconfined services exist)" if not p_1_3_1_8
+violations contains "1.3.1.8: manual review not attested — set attest.no_unconfined_services to true once reviewed (checked condition — no unconfined services exist)" if not p_1_3_1_8

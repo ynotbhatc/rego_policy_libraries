@@ -31,37 +31,37 @@ ids(vs, id) := [v | some v in vs; startswith(v, concat("", [id, ": "]))]
 
 test_5_3_1_sudo_not_installed if {
 	test_input := {"sudo": object.union(compliant_sudo, {"installed": false})}
-	"5.2.1: not met — Ensure sudo is installed" in sudo.violations with input as test_input
+	"5.2.1: not met — sudo must be present" in sudo.violations with input as test_input
 }
 
 test_5_3_2_use_pty_missing if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d"})}
-	"5.2.4: not met — Ensure sudo commands use pty" in sudo.violations with input as test_input
+	"5.2.4: not met — sudo commands must allocate a pseudo-terminal" in sudo.violations with input as test_input
 }
 
 test_5_3_3_logfile_not_configured if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\n@includedir /etc/sudoers.d"})}
-	"5.2.5: not met — Ensure sudo log file exists" in sudo.violations with input as test_input
+	"5.2.5: not met — a log file for sudo must exist" in sudo.violations with input as test_input
 }
 
 test_5_3_3_logfile_missing_on_disk if {
 	test_input := {"sudo": object.union(compliant_sudo, {"logfile_exists": false})}
-	"5.2.5: not met — Ensure sudo log file exists" in sudo.violations with input as test_input
+	"5.2.5: not met — a log file for sudo must exist" in sudo.violations with input as test_input
 }
 
 test_5_3_4_nopasswd_present if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d\n%wheel ALL=(ALL) NOPASSWD: ALL"})}
-	"5.2.6: not met — Ensure users must provide password for escalation" in sudo.violations with input as test_input
+	"5.2.6: not met — checked condition — users must provide password for escalation" in sudo.violations with input as test_input
 }
 
 test_5_3_5_reauthentication_disabled if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\n@includedir /etc/sudoers.d\nDefaults !authenticate"})}
-	"5.2.7: not met — Ensure re-authentication for privilege escalation is not disabled globally" in sudo.violations with input as test_input
+	"5.2.7: not met — re-authentication for privilege escalation must stay in effect globally" in sudo.violations with input as test_input
 }
 
 test_5_3_6_timeout_too_high if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_content": "Defaults use_pty\nDefaults logfile=/var/log/sudo.log\nDefaults timestamp_timeout=30"})}
-	"5.2.10: not met — Ensure sudo timestamp_timeout is configured" in sudo.violations with input as test_input
+	"5.2.10: not met — sudo timestamp_timeout must be explicitly configured" in sudo.violations with input as test_input
 }
 
 # v3.0.0: no timestamp_timeout configured => sudo's compiled default of 5 minutes applies, which passes
@@ -72,7 +72,7 @@ test_5_3_6_timeout_not_configured if {
 
 test_5_3_7_su_not_restricted if {
 	test_input := {"sudo": object.union(compliant_sudo, {"su_restricted": false})}
-	"5.2.12: not met — Ensure access to the su command is restricted" in sudo.violations with input as test_input
+	"5.2.12: not met — access to the su command must be restricted" in sudo.violations with input as test_input
 }
 
 # v3.0.0: the automated check is the pam_wheel line; who is in the group is a manual step
@@ -83,17 +83,17 @@ test_5_3_7_wheel_group_empty if {
 
 test_5_3_sudoers_wrong_mode if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_mode": "0644"})}
-	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as test_input
+	"5.2.2: not met — access on sudoers configuration files must be explicitly configured" in sudo.violations with input as test_input
 }
 
 test_5_3_sudoers_wrong_owner if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_owner": "admin"})}
-	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as test_input
+	"5.2.2: not met — access on sudoers configuration files must be explicitly configured" in sudo.violations with input as test_input
 }
 
 test_5_3_sudoers_wrong_group if {
 	test_input := {"sudo": object.union(compliant_sudo, {"sudoers_group": "wheel"})}
-	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as test_input
+	"5.2.2: not met — access on sudoers configuration files must be explicitly configured" in sudo.violations with input as test_input
 }
 
 test_compliant_input_has_no_violations if {
@@ -127,5 +127,5 @@ test_5_3_sudoers_mode_missing_flagged if {
 # a sudoers.d drop-in with a loose mode fails 5.2.2 even when /etc/sudoers itself is fine
 test_5_2_2_sudoers_d_file_mode_flagged if {
 	i := object.union(compliant_sudo, {"sudoers_d_files": [{"path": "/etc/sudoers.d/x", "mode": "0644", "owner": "root", "group": "root"}]})
-	"5.2.2: not met — Ensure access on sudoers configuration files is configured" in sudo.violations with input as {"sudo": i}
+	"5.2.2: not met — access on sudoers configuration files must be explicitly configured" in sudo.violations with input as {"sudo": i}
 }

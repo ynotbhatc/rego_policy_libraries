@@ -17,6 +17,8 @@ human review are attestation booleans. Input contract matches the Oracle Databas
 """
 import json, re, sys, pathlib
 
+from neutralize import publish_titles
+
 HERE = pathlib.Path(__file__).resolve().parent
 OUT = HERE.parent.parent / "benchmarks" / "cis" / "oracle"
 
@@ -212,6 +214,7 @@ def main(txt):
     extra = sorted(set(RULES) - set(recs))
     if missing or extra:
         raise SystemExit(f"logic table out of step with the benchmark text: missing {missing} extra {extra}")
+    recs = publish_titles(recs)
     key = lambda x: [int(p) for p in x.split(".")]
     ids = sorted(RULES, key=key)
     L = ["# METADATA", '# title: "CIS Oracle Database 23ai Benchmark v1.0.0 (deprecated)"', "# custom:", "#   deprecated: true",
@@ -221,7 +224,7 @@ def main(txt):
          "# cis.oracle_26ai (cis_oracle_26ai.rego, CIS Oracle Database 26ai Benchmark v1.0.0). This module is kept,",
          "# unchanged in behaviour, so existing callers of cis.oracle_23ai keep working.",
          "# CIS Oracle Database 23ai Benchmark v1.0.0",
-         f"# {len(ids)} recommendations, every one in the benchmark; ids and titles read from the benchmark text and the",
+         f"# {len(ids)} recommendations, every one in the benchmark; ids read from the benchmark text (wording in this file is original) and the",
          "# logic written from each recommendation's own audit SQL (tools/cis_generators/gen_oracle_db_23ai.py).",
          f"# {sum(1 for r in RULES.values() if any('.attest.' in l for l in r[0]))} recommendations are Manual reviews and carry an attestation boolean.",
          "#",

@@ -19,7 +19,7 @@ package cis_mcp_server.transport_connectivity
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 2: Transport and Connectivity.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,11 +30,11 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"2.1": {"section": 2, "level": "L1", "assessment": "Manual", "title": "Ensure stdio is preferred for local, single-user servers"},
-	"2.2": {"section": 2, "level": "L1", "assessment": "Automated", "title": "Ensure TLS is required for HTTP and plaintext is disallowed"},
-	"2.3": {"section": 2, "level": "L2", "assessment": "Manual", "title": "Ensure authentication propagates through proxies to request-scoped SSE responses"},
-	"2.4": {"section": 2, "level": "L1", "assessment": "Automated", "title": "Ensure required MCP request metadata headers are present and consistent with the request body"},
-	"2.5": {"section": 2, "level": "L1", "assessment": "Automated", "title": "Ensure Origin header is validated on all Streamable HTTP requests to prevent DNS rebinding attacks"},
+	"2.1": {"section": 2, "level": "L1", "assessment": "Manual", "title": "stdio must be preferred for local, single-user servers"},
+	"2.2": {"section": 2, "level": "L1", "assessment": "Automated", "title": "TLS must be required for HTTP and plaintext is disallowed"},
+	"2.3": {"section": 2, "level": "L2", "assessment": "Manual", "title": "checked condition — authentication propagates through proxies to request-scoped SSE responses"},
+	"2.4": {"section": 2, "level": "L1", "assessment": "Automated", "title": "required MCP request metadata headers must be present and consistent with the request body"},
+	"2.5": {"section": 2, "level": "L1", "assessment": "Automated", "title": "Origin header must be validated on all Streamable HTTP requests to prevent DNS rebinding attacks"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

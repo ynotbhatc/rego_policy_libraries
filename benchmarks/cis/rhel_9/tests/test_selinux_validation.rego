@@ -13,17 +13,17 @@ import data.cis_rhel9.selinux
 
 test_1_6_1_1_selinux_not_installed if {
 	violations := selinux.violations with input as {"selinux": {"installed": false}}
-	"1.3.1.1: not met — Ensure SELinux is installed" in violations
+	"1.3.1.1: not met — SELinux must be present" in violations
 }
 
 test_1_6_1_2_selinux_disabled_in_grub if {
 	violations := selinux.violations with input as {"selinux": {"installed": true, "grub_cmdline": "ro crashkernel=1G quiet selinux=0"}}
-	"1.3.1.2: not met — Ensure SELinux is not disabled in bootloader configuration" in violations
+	"1.3.1.2: not met — SELinux must stay in effect in bootloader configuration" in violations
 }
 
 test_1_6_1_2_enforcing_disabled_in_grub if {
 	violations := selinux.violations with input as {"selinux": {"installed": true, "grub_cmdline": "ro quiet enforcing=0"}}
-	"1.3.1.2: not met — Ensure SELinux is not disabled in bootloader configuration" in violations
+	"1.3.1.2: not met — SELinux must stay in effect in bootloader configuration" in violations
 }
 
 test_1_6_1_3_policy_not_configured if {
@@ -33,23 +33,23 @@ test_1_6_1_3_policy_not_configured if {
 
 test_1_6_1_3_policy_not_targeted_or_mls if {
 	violations := selinux.violations with input as {"selinux": {"installed": true, "status": "enabled", "mode": "enforcing", "policy": "minimum"}}
-	"1.3.1.3: not met — Ensure SELinux policy is configured" in violations
+	"1.3.1.3: not met — SELinux policy must be explicitly configured" in violations
 }
 
 test_1_6_1_4_selinux_not_enabled if {
 	violations := selinux.violations with input as {"selinux": {"installed": true, "status": "disabled", "mode": "disabled", "config_mode": "disabled", "policy": "targeted"}}
-	"1.3.1.4: not met — Ensure the SELinux mode is not disabled" in violations
+	"1.3.1.4: not met — the SELinux mode must stay in effect" in violations
 }
 
 test_1_6_1_4_mode_disabled if {
 	violations := selinux.violations with input as {"selinux": {"installed": true, "status": "enabled", "mode": "disabled", "config_mode": "enforcing", "policy": "targeted"}}
-	"1.3.1.4: not met — Ensure the SELinux mode is not disabled" in violations
+	"1.3.1.4: not met — the SELinux mode must stay in effect" in violations
 }
 
 test_1_6_1_5_mode_not_enforcing if {
 	violations := selinux.violations with input as {"selinux": {"installed": true, "status": "enabled", "mode": "permissive", "config_mode": "permissive", "policy": "targeted"}}
-	"1.3.1.5: not met — Ensure the SELinux mode is enforcing" in violations
-	not "1.3.1.4: not met — Ensure the SELinux mode is not disabled" in violations
+	"1.3.1.5: not met — the SELinux mode must be enforcing" in violations
+	not "1.3.1.4: not met — the SELinux mode must stay in effect" in violations
 }
 
 test_1_6_1_6_unconfined_services if {
@@ -62,19 +62,19 @@ test_1_6_1_6_unconfined_services if {
 
 test_1_6_1_7_setroubleshoot_installed if {
 	violations := selinux.violations with input as {"selinux": {"setroubleshoot_installed": true}}
-	"1.3.1.8: not met — Ensure SETroubleshoot is not installed" in violations
+	"1.3.1.8: not met — SETroubleshoot must not be present" in violations
 }
 
 test_1_6_1_8_mcstrans_installed if {
 	violations := selinux.violations with input as {"selinux": {"mcstrans_installed": true}}
-	"1.3.1.7: not met — Ensure the MCS Translation Service (mcstrans) is not installed" in violations
+	"1.3.1.7: not met — the MCS Translation Service (mcstrans) must not be present" in violations
 }
 
 # the mapper does not copy the configured mode into selinux; ansible_selinux.config_mode is read instead
 test_config_mode_from_ansible_selinux if {
 	inp := {"selinux": {"mode": "enforcing"}, "ansible_facts": {"ansible_selinux": {"config_mode": "permissive"}}}
 	violations := selinux.violations with input as inp
-	"1.3.1.5: not met — Ensure the SELinux mode is enforcing" in violations
+	"1.3.1.5: not met — the SELinux mode must be enforcing" in violations
 	count([m | some m in violations; startswith(m, "1.3.1.4: ")]) == 0
 }
 

@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 1.7.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM login banner is configured
+# GDM login banner must be explicitly configured
 default e_1_7_1 := false
 
 e_1_7_1 if {
@@ -219,13 +219,13 @@ p_1_7_1 if {
 
 violations contains "1.7.1: evidence missing — initial_setup.gdm_installed/gdm_banner_configured/gdm_banner_override_allowed not collected" if not e_1_7_1
 
-violations contains "1.7.1: not met — Ensure GDM login banner is configured" if {
+violations contains "1.7.1: not met — GDM login banner must be explicitly configured" if {
 	e_1_7_1
 	not p_1_7_1
 }
 
 # 1.7.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM disable-user-list is configured
+# GDM disable-user-list must be explicitly configured
 default e_1_7_2 := false
 
 e_1_7_2 if {
@@ -252,13 +252,13 @@ p_1_7_2 if {
 
 violations contains "1.7.2: evidence missing — initial_setup.gdm_installed/gdm_disable_user_list/gdm_disable_user_list_override_allowed not collected" if not e_1_7_2
 
-violations contains "1.7.2: not met — Ensure GDM disable-user-list is configured" if {
+violations contains "1.7.2: not met — GDM disable-user-list must be explicitly configured" if {
 	e_1_7_2
 	not p_1_7_2
 }
 
 # 1.7.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM screen lock is configured
+# GDM screen lock must be explicitly configured
 default e_1_7_3 := false
 
 e_1_7_3 if {
@@ -289,13 +289,13 @@ p_1_7_3 if {
 
 violations contains "1.7.3: evidence missing — initial_setup.gdm_installed/gdm_idle_delay/gdm_lock_delay/gdm_lock_override_allowed not collected" if not e_1_7_3
 
-violations contains "1.7.3: not met — Ensure GDM screen lock is configured" if {
+violations contains "1.7.3: not met — GDM screen lock must be explicitly configured" if {
 	e_1_7_3
 	not p_1_7_3
 }
 
 # 1.7.4 (Automated; Level 1 - Server, Level 2 - Workstation)
-# Ensure GDM automount is configured
+# GDM automount must be explicitly configured
 default e_1_7_4 := false
 
 e_1_7_4 if {
@@ -324,13 +324,13 @@ p_1_7_4 if {
 
 violations contains "1.7.4: evidence missing — initial_setup.gdm_installed/gdm_automount_disabled/gdm_automount_open_disabled/gdm_automount_override_allowed not collected" if not e_1_7_4
 
-violations contains "1.7.4: not met — Ensure GDM automount is configured" if {
+violations contains "1.7.4: not met — GDM automount must be explicitly configured" if {
 	e_1_7_4
 	not p_1_7_4
 }
 
 # 1.7.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM autorun-never is configured
+# GDM autorun-never must be explicitly configured
 default e_1_7_5 := false
 
 e_1_7_5 if {
@@ -357,13 +357,13 @@ p_1_7_5 if {
 
 violations contains "1.7.5: evidence missing — initial_setup.gdm_installed/gdm_autorun_never_enabled/gdm_autorun_override_allowed not collected" if not e_1_7_5
 
-violations contains "1.7.5: not met — Ensure GDM autorun-never is configured" if {
+violations contains "1.7.5: not met — GDM autorun-never must be explicitly configured" if {
 	e_1_7_5
 	not p_1_7_5
 }
 
 # 1.7.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure XDMCP is not enabled
+# XDMCP must stay off
 default e_1_7_6 := false
 
 e_1_7_6 if {
@@ -388,13 +388,13 @@ p_1_7_6 if {
 
 violations contains "1.7.6: evidence missing — initial_setup.gdm_installed/gdm_xdmcp_enabled not collected" if not e_1_7_6
 
-violations contains "1.7.6: not met — Ensure XDMCP is not enabled" if {
+violations contains "1.7.6: not met — XDMCP must stay off" if {
 	e_1_7_6
 	not p_1_7_6
 }
 
 # 1.7.7 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure Xwayland is configured
+# Xwayland must be explicitly configured
 default e_1_7_7 := false
 
 e_1_7_7 if {
@@ -419,7 +419,7 @@ p_1_7_7 if {
 
 violations contains "1.7.7: evidence missing — initial_setup.gdm_installed/gdm_wayland_enabled not collected" if not e_1_7_7
 
-violations contains "1.7.7: not met — Ensure Xwayland is configured" if {
+violations contains "1.7.7: not met — Xwayland must be explicitly configured" if {
 	e_1_7_7
 	not p_1_7_7
 }

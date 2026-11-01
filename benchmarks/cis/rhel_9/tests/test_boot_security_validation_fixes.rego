@@ -50,10 +50,10 @@ test_boot_v2_single_user_auth_decides_rescue_and_emergency if {
 	base := json.remove(good, ["/boot_security/rescue_auth_required", "/boot_security/emergency_auth_required"])
 	data.cis_rhel9.boot_security.compliant with input as json.patch(base, [{"op": "add", "path": "/boot_security/single_user_auth_required", "value": true}])
 	vs := data.cis_rhel9.boot_security.violations with input as json.patch(base, [{"op": "add", "path": "/boot_security/single_user_auth_required", "value": false}])
-	"1.4.3: not met — Ensure authentication is required when booting into rescue mode" in vs
-	"1.4.4: not met — Ensure authentication is required when booting into emergency mode" in vs
+	"1.4.3: not met — authentication must be required when booting into rescue mode" in vs
+	"1.4.4: not met — authentication must be required when booting into emergency mode" in vs
 	vs2 := data.cis_rhel9.boot_security.violations with input as json.patch(good, [{"op": "add", "path": "/boot_security/single_user_auth_required", "value": true}, {"op": "replace", "path": "/boot_security/rescue_auth_required", "value": false}])
-	"1.4.3: not met — Ensure authentication is required when booting into rescue mode" in vs2
+	"1.4.3: not met — authentication must be required when booting into rescue mode" in vs2
 }
 
 # v2.0.0 boot_security sysctl fields carry the running value when the analysis list lacks the parameter
@@ -63,13 +63,13 @@ test_boot_v2_sysctl_alias_used_only_without_analysis_entry if {
 	vs := data.cis_rhel9.boot_security.violations with input as json.patch(base, [{"op": "add", "path": "/boot_security/aslr_value", "value": "2"}])
 	count([v | some v in vs; startswith(v, "1.5.6: ")]) == 0
 	vs2 := data.cis_rhel9.boot_security.violations with input as json.patch(base, [{"op": "add", "path": "/boot_security/aslr_value", "value": "0"}])
-	"1.5.6: not met — Ensure kernel.randomize_va_space is configured" in vs2
+	"1.5.6: not met — kernel.randomize_va_space must be explicitly configured" in vs2
 }
 
 # 1.4.5: the boot entries' args win; /etc/default/grub (v2.0.0 bootloader.grub_config) is read only without them
 test_boot_v2_grub_config_decides_confirm_spawn_without_kernel_args if {
 	base := json.remove(good, ["/boot_security/kernel_args"])
 	vs := data.cis_rhel9.boot_security.violations with input as object.union(base, {"bootloader": {"grub_config": "GRUB_CMDLINE_LINUX=\"systemd.confirm_spawn=1\""}})
-	"1.4.5: not met — Ensure systemd ability to spawn an interactive boot process is disabled" in vs
+	"1.4.5: not met — systemd ability to spawn an interactive boot process must be turned off" in vs
 	data.cis_rhel9.boot_security.compliant with input as object.union(base, {"bootloader": {"grub_config": "GRUB_CMDLINE_LINUX=\"quiet\""}})
 }

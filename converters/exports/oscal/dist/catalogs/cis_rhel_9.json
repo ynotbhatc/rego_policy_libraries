@@ -248,7 +248,7 @@
        {
         "id": "cis_rhel_9-6.2.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure auditd packages are installed"
+        "prose": "not met — auditd packages must be present"
        }
       ],
       "class": "security"
@@ -286,7 +286,7 @@
        {
         "id": "cis_rhel_9-6.2.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure auditing for processes that start prior to auditd is enabled"
+        "prose": "not met — auditing for processes that start prior to auditd must be turned on"
        }
       ],
       "class": "security"
@@ -324,7 +324,7 @@
        {
         "id": "cis_rhel_9-6.2.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit_backlog_limit is configured"
+        "prose": "not met — audit_backlog_limit must be explicitly configured"
        }
       ],
       "class": "security"
@@ -362,7 +362,7 @@
        {
         "id": "cis_rhel_9-6.2.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure auditd service is enabled and active"
+        "prose": "not met — auditd service must be turned on and active"
        }
       ],
       "class": "security"
@@ -400,7 +400,7 @@
        {
         "id": "cis_rhel_9-6.2.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit log storage size is configured"
+        "prose": "not met — audit log storage size must be explicitly configured"
        }
       ],
       "class": "security"
@@ -438,7 +438,7 @@
        {
         "id": "cis_rhel_9-6.2.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit logs are not automatically deleted"
+        "prose": "not met — audit logs must be not automatically deleted"
        }
       ],
       "class": "security"
@@ -476,7 +476,7 @@
        {
         "id": "cis_rhel_9-6.2.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system is disabled when audit logs are full"
+        "prose": "not met — system must be turned off when audit logs are full"
        }
       ],
       "class": "security"
@@ -514,7 +514,7 @@
        {
         "id": "cis_rhel_9-6.2.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system warns when audit logs are low on space"
+        "prose": "not met — system warns when audit logs must be low on space"
        }
       ],
       "class": "security"
@@ -552,7 +552,7 @@
        {
         "id": "cis_rhel_9-6.2.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure modification of the /etc/sudoers file is collected"
+        "prose": "not met — an audit rule must record modification of the /etc/sudoers file"
        }
       ],
       "class": "security"
@@ -590,7 +590,7 @@
        {
         "id": "cis_rhel_9-6.2.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure actions as another user are always logged"
+        "prose": "not met — actions as another user must be always logged"
        }
       ],
       "class": "security"
@@ -628,7 +628,7 @@
        {
         "id": "cis_rhel_9-6.2.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify the sudo log file are collected"
+        "prose": "not met — an audit rule must record events that modify the sudo log file"
        }
       ],
       "class": "security"
@@ -666,7 +666,7 @@
        {
         "id": "cis_rhel_9-6.2.3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify date and time information are collected"
+        "prose": "not met — an audit rule must record events that modify date and time information"
        }
       ],
       "class": "security"
@@ -704,7 +704,7 @@
        {
         "id": "cis_rhel_9-6.2.3.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify sethostname and setdomainname are collected"
+        "prose": "not met — an audit rule must record events that modify sethostname and setdomainname"
        }
       ],
       "class": "security"
@@ -742,7 +742,7 @@
        {
         "id": "cis_rhel_9-6.2.3.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/issue and /etc/issue.net are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/issue and /etc/issue.net"
        }
       ],
       "class": "security"
@@ -780,7 +780,7 @@
        {
         "id": "cis_rhel_9-6.2.3.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/hosts and /etc/hostname are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/hosts and /etc/hostname"
        }
       ],
       "class": "security"
@@ -818,7 +818,7 @@
        {
         "id": "cis_rhel_9-6.2.3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/sysconfig/network and /etc/NetworkManager/system-connections/ are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/sysconfig/network and /etc/NetworkManager/system-connections/"
        }
       ],
       "class": "security"
@@ -856,7 +856,7 @@
        {
         "id": "cis_rhel_9-6.2.3.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/NetworkManager directory are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/NetworkManager directory"
        }
       ],
       "class": "security"
@@ -894,7 +894,7 @@
        {
         "id": "cis_rhel_9-6.2.3.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure use of privileged commands are collected"
+        "prose": "not met — an audit rule must record use of privileged commands"
        }
       ],
       "class": "security"
@@ -932,7 +932,7 @@
        {
         "id": "cis_rhel_9-6.2.3.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure unsuccessful file access attempts are collected"
+        "prose": "not met — an audit rule must record unsuccessful file access attempts"
        }
       ],
       "class": "security"
@@ -970,7 +970,7 @@
        {
         "id": "cis_rhel_9-6.2.3.12_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/group information are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/group information"
        }
       ],
       "class": "security"
@@ -1008,7 +1008,7 @@
        {
         "id": "cis_rhel_9-6.2.3.13_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/passwd information are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/passwd information"
        }
       ],
       "class": "security"
@@ -1046,7 +1046,7 @@
        {
         "id": "cis_rhel_9-6.2.3.14_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/shadow and /etc/gshadow are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/shadow and /etc/gshadow"
        }
       ],
       "class": "security"
@@ -1084,7 +1084,7 @@
        {
         "id": "cis_rhel_9-6.2.3.15_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/security/opasswd are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/security/opasswd"
        }
       ],
       "class": "security"
@@ -1122,7 +1122,7 @@
        {
         "id": "cis_rhel_9-6.2.3.16_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/nsswitch.conf file are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/nsswitch.conf file"
        }
       ],
       "class": "security"
@@ -1160,7 +1160,7 @@
        {
         "id": "cis_rhel_9-6.2.3.17_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify /etc/pam.conf and /etc/pam.d/ information are collected"
+        "prose": "not met — an audit rule must record events that modify /etc/pam.conf and /etc/pam.d/ information"
        }
       ],
       "class": "security"
@@ -1198,7 +1198,7 @@
        {
         "id": "cis_rhel_9-6.2.3.18_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure discretionary access control permission modification events chmod,fchmod,fchmodat are collected"
+        "prose": "not met — an audit rule must record discretionary access control permission modification events chmod,fchmod,fchmodat"
        }
       ],
       "class": "security"
@@ -1236,7 +1236,7 @@
        {
         "id": "cis_rhel_9-6.2.3.19_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure discretionary access control permission modification events chown,fchown,lchown,fchownat are collected"
+        "prose": "not met — an audit rule must record discretionary access control permission modification events chown,fchown,lchown,fchownat"
        }
       ],
       "class": "security"
@@ -1274,7 +1274,7 @@
        {
         "id": "cis_rhel_9-6.2.3.20_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected"
+        "prose": "not met — checked condition — discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected"
        }
       ],
       "class": "security"
@@ -1312,7 +1312,7 @@
        {
         "id": "cis_rhel_9-6.2.3.21_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure successful file system mounts are collected"
+        "prose": "not met — an audit rule must record successful file system mounts"
        }
       ],
       "class": "security"
@@ -1350,7 +1350,7 @@
        {
         "id": "cis_rhel_9-6.2.3.22_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure session initiation information is collected"
+        "prose": "not met — an audit rule must record session initiation information"
        }
       ],
       "class": "security"
@@ -1388,7 +1388,7 @@
        {
         "id": "cis_rhel_9-6.2.3.23_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure login and logout events are collected"
+        "prose": "not met — an audit rule must record login and logout events"
        }
       ],
       "class": "security"
@@ -1426,7 +1426,7 @@
        {
         "id": "cis_rhel_9-6.2.3.24_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure unlink file deletion events by users are collected"
+        "prose": "not met — an audit rule must record unlink file deletion events by users"
        }
       ],
       "class": "security"
@@ -1464,7 +1464,7 @@
        {
         "id": "cis_rhel_9-6.2.3.25_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rename file deletion events by users are collected"
+        "prose": "not met — an audit rule must record rename file deletion events by users"
        }
       ],
       "class": "security"
@@ -1502,7 +1502,7 @@
        {
         "id": "cis_rhel_9-6.2.3.26_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure events that modify the system's Mandatory Access Controls are collected"
+        "prose": "not met — an audit rule must record events that modify the system's Mandatory Access Controls"
        }
       ],
       "class": "security"
@@ -1540,7 +1540,7 @@
        {
         "id": "cis_rhel_9-6.2.3.27_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure successful and unsuccessful attempts to use the chcon command are collected"
+        "prose": "not met — an audit rule must record successful and unsuccessful attempts to use the chcon command"
        }
       ],
       "class": "security"
@@ -1578,7 +1578,7 @@
        {
         "id": "cis_rhel_9-6.2.3.28_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure successful and unsuccessful attempts to use the setfacl command are collected"
+        "prose": "not met — an audit rule must record successful and unsuccessful attempts to use the setfacl command"
        }
       ],
       "class": "security"
@@ -1616,7 +1616,7 @@
        {
         "id": "cis_rhel_9-6.2.3.29_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure successful and unsuccessful attempts to use the chacl command are collected"
+        "prose": "not met — an audit rule must record successful and unsuccessful attempts to use the chacl command"
        }
       ],
       "class": "security"
@@ -1654,7 +1654,7 @@
        {
         "id": "cis_rhel_9-6.2.3.30_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure successful and unsuccessful attempts to use the usermod command are collected"
+        "prose": "not met — an audit rule must record successful and unsuccessful attempts to use the usermod command"
        }
       ],
       "class": "security"
@@ -1692,7 +1692,7 @@
        {
         "id": "cis_rhel_9-6.2.3.31_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel module loading unloading and modification is collected"
+        "prose": "not met — an audit rule must record kernel module loading unloading and modification"
        }
       ],
       "class": "security"
@@ -1730,7 +1730,7 @@
        {
         "id": "cis_rhel_9-6.2.3.32_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel \"init_module\" and \"finit_module\" loading unloading and modification is collected"
+        "prose": "not met — an audit rule must record kernel \"init_module\" and \"finit_module\" loading unloading and modification"
        }
       ],
       "class": "security"
@@ -1768,7 +1768,7 @@
        {
         "id": "cis_rhel_9-6.2.3.33_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel \"delete_module\" loading unloading and modification is collected"
+        "prose": "not met — an audit rule must record kernel \"delete_module\" loading unloading and modification"
        }
       ],
       "class": "security"
@@ -1806,7 +1806,7 @@
        {
         "id": "cis_rhel_9-6.2.3.34_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the audit configuration is loaded regardless of errors"
+        "prose": "not met — the audit configuration must be loaded regardless of errors"
        }
       ],
       "class": "security"
@@ -1844,7 +1844,7 @@
        {
         "id": "cis_rhel_9-6.2.3.35_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the audit configuration is immutable"
+        "prose": "not met — the audit configuration must be immutable"
        }
       ],
       "class": "security"
@@ -1882,7 +1882,7 @@
        {
         "id": "cis_rhel_9-6.2.3.36_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the running and on disk configuration is the same"
+        "prose": "not met — the running and on disk configuration must be the same"
        }
       ],
       "class": "security"
@@ -1920,7 +1920,7 @@
        {
         "id": "cis_rhel_9-6.2.4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the audit log file directory mode is configured"
+        "prose": "not met — the audit log file directory mode must be explicitly configured"
        }
       ],
       "class": "security"
@@ -1958,7 +1958,7 @@
        {
         "id": "cis_rhel_9-6.2.4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit log files mode is configured"
+        "prose": "not met — audit log files mode must be explicitly configured"
        }
       ],
       "class": "security"
@@ -1996,7 +1996,7 @@
        {
         "id": "cis_rhel_9-6.2.4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit log files owner is configured"
+        "prose": "not met — audit log files owner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2034,7 +2034,7 @@
        {
         "id": "cis_rhel_9-6.2.4.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit log files group owner is configured"
+        "prose": "not met — audit log files group owner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2072,7 +2072,7 @@
        {
         "id": "cis_rhel_9-6.2.4.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit configuration files mode is configured"
+        "prose": "not met — audit configuration files mode must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2110,7 +2110,7 @@
        {
         "id": "cis_rhel_9-6.2.4.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit configuration files owner is configured"
+        "prose": "not met — audit configuration files owner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2148,7 +2148,7 @@
        {
         "id": "cis_rhel_9-6.2.4.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit configuration files group owner is configured"
+        "prose": "not met — audit configuration files group owner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2186,7 +2186,7 @@
        {
         "id": "cis_rhel_9-6.2.4.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit tools mode is configured"
+        "prose": "not met — audit tools mode must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2224,7 +2224,7 @@
        {
         "id": "cis_rhel_9-6.2.4.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit tools owner is configured"
+        "prose": "not met — audit tools owner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2262,7 +2262,7 @@
        {
         "id": "cis_rhel_9-6.2.4.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure audit tools group owner is configured"
+        "prose": "not met — audit tools group owner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2642,7 +2642,7 @@
        {
         "id": "cis_rhel_9-1.4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure bootloader password is set"
+        "prose": "not met — bootloader password must be set"
        }
       ],
       "class": "security"
@@ -2680,7 +2680,7 @@
        {
         "id": "cis_rhel_9-1.4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to bootloader config is configured"
+        "prose": "not met — access to bootloader config must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2718,7 +2718,7 @@
        {
         "id": "cis_rhel_9-1.4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure authentication is required when booting into rescue mode"
+        "prose": "not met — authentication must be required when booting into rescue mode"
        }
       ],
       "class": "security"
@@ -2756,7 +2756,7 @@
        {
         "id": "cis_rhel_9-1.4.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure authentication is required when booting into emergency mode"
+        "prose": "not met — authentication must be required when booting into emergency mode"
        }
       ],
       "class": "security"
@@ -2794,7 +2794,7 @@
        {
         "id": "cis_rhel_9-1.4.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure systemd ability to spawn an interactive boot process is disabled"
+        "prose": "not met — systemd ability to spawn an interactive boot process must be turned off"
        }
       ],
       "class": "security"
@@ -2832,7 +2832,7 @@
        {
         "id": "cis_rhel_9-1.5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure fs.protected_hardlinks is configured"
+        "prose": "not met — fs.protected_hardlinks must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2870,7 +2870,7 @@
        {
         "id": "cis_rhel_9-1.5.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure fs.protected_symlinks is configured"
+        "prose": "not met — fs.protected_symlinks must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2908,7 +2908,7 @@
        {
         "id": "cis_rhel_9-1.5.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure fs.suid_dumpable is configured"
+        "prose": "not met — fs.suid_dumpable must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2946,7 +2946,7 @@
        {
         "id": "cis_rhel_9-1.5.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel.dmesg_restrict is configured"
+        "prose": "not met — kernel.dmesg_restrict must be explicitly configured"
        }
       ],
       "class": "security"
@@ -2984,7 +2984,7 @@
        {
         "id": "cis_rhel_9-1.5.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel.kptr_restrict is configured"
+        "prose": "not met — kernel.kptr_restrict must be explicitly configured"
        }
       ],
       "class": "security"
@@ -3022,7 +3022,7 @@
        {
         "id": "cis_rhel_9-1.5.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel.randomize_va_space is configured"
+        "prose": "not met — kernel.randomize_va_space must be explicitly configured"
        }
       ],
       "class": "security"
@@ -3060,7 +3060,7 @@
        {
         "id": "cis_rhel_9-1.5.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure kernel.yama.ptrace_scope is configured"
+        "prose": "not met — kernel.yama.ptrace_scope must be explicitly configured"
        }
       ],
       "class": "security"
@@ -3098,7 +3098,7 @@
        {
         "id": "cis_rhel_9-1.5.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure core file size is configured"
+        "prose": "not met — core file size must be explicitly configured"
        }
       ],
       "class": "security"
@@ -3136,7 +3136,7 @@
        {
         "id": "cis_rhel_9-1.5.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure systemd-coredump ProcessSizeMax is configured"
+        "prose": "not met — systemd-coredump ProcessSizeMax must be explicitly configured"
        }
       ],
       "class": "security"
@@ -3174,7 +3174,7 @@
        {
         "id": "cis_rhel_9-1.5.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure systemd-coredump Storage is configured"
+        "prose": "not met — systemd-coredump Storage must be explicitly configured"
        }
       ],
       "class": "security"
@@ -3212,7 +3212,7 @@
        {
         "id": "cis_rhel_9-6.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure AIDE is installed"
+        "prose": "not met — AIDE must be present"
        }
       ],
       "class": "security"
@@ -3250,7 +3250,7 @@
        {
         "id": "cis_rhel_9-6.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure filesystem integrity is regularly checked"
+        "prose": "not met — filesystem integrity must be regularly checked"
        }
       ],
       "class": "security"
@@ -3288,7 +3288,7 @@
        {
         "id": "cis_rhel_9-6.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure cryptographic mechanisms are used to protect the integrity of audit tools"
+        "prose": "not met — cryptographic mechanisms must be used to protect the integrity of audit tools"
        }
       ],
       "class": "security"
@@ -3326,7 +3326,7 @@
        {
         "id": "cis_rhel_9-6.3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure report_url is configured"
+        "prose": "not met — report_url must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4051,7 +4051,7 @@
        {
         "id": "cis_rhel_9-2.4.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure cron daemon is enabled and active"
+        "prose": "not met — cron daemon must be turned on and active"
        }
       ],
       "class": "security"
@@ -4089,7 +4089,7 @@
        {
         "id": "cis_rhel_9-2.4.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/crontab is configured"
+        "prose": "not met — access to /etc/crontab must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4127,7 +4127,7 @@
        {
         "id": "cis_rhel_9-2.4.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/cron.hourly is configured"
+        "prose": "not met — access to /etc/cron.hourly must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4165,7 +4165,7 @@
        {
         "id": "cis_rhel_9-2.4.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/cron.daily is configured"
+        "prose": "not met — access to /etc/cron.daily must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4203,7 +4203,7 @@
        {
         "id": "cis_rhel_9-2.4.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/cron.weekly is configured"
+        "prose": "not met — access to /etc/cron.weekly must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4241,7 +4241,7 @@
        {
         "id": "cis_rhel_9-2.4.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/cron.monthly is configured"
+        "prose": "not met — access to /etc/cron.monthly must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4279,7 +4279,7 @@
        {
         "id": "cis_rhel_9-2.4.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/cron.yearly is configured"
+        "prose": "not met — access to /etc/cron.yearly must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4317,7 +4317,7 @@
        {
         "id": "cis_rhel_9-2.4.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/cron.d is configured"
+        "prose": "not met — access to /etc/cron.d must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4355,7 +4355,7 @@
        {
         "id": "cis_rhel_9-2.4.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to crontab is configured"
+        "prose": "not met — access to crontab must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4393,7 +4393,7 @@
        {
         "id": "cis_rhel_9-2.4.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to at is configured"
+        "prose": "not met — access to at must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4455,7 +4455,7 @@
        {
         "id": "cis_rhel_9-7.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/passwd is configured"
+        "prose": "not met — access to /etc/passwd must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4493,7 +4493,7 @@
        {
         "id": "cis_rhel_9-7.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/passwd- is configured"
+        "prose": "not met — access to /etc/passwd- must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4531,7 +4531,7 @@
        {
         "id": "cis_rhel_9-7.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/group is configured"
+        "prose": "not met — access to /etc/group must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4569,7 +4569,7 @@
        {
         "id": "cis_rhel_9-7.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/group- is configured"
+        "prose": "not met — access to /etc/group- must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4607,7 +4607,7 @@
        {
         "id": "cis_rhel_9-7.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/shadow is configured"
+        "prose": "not met — access to /etc/shadow must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4645,7 +4645,7 @@
        {
         "id": "cis_rhel_9-7.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/shadow- is configured"
+        "prose": "not met — access to /etc/shadow- must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4683,7 +4683,7 @@
        {
         "id": "cis_rhel_9-7.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/gshadow is configured"
+        "prose": "not met — access to /etc/gshadow must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4721,7 +4721,7 @@
        {
         "id": "cis_rhel_9-7.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/gshadow- is configured"
+        "prose": "not met — access to /etc/gshadow- must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4759,7 +4759,7 @@
        {
         "id": "cis_rhel_9-7.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/shells is configured"
+        "prose": "not met — access to /etc/shells must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4797,7 +4797,7 @@
        {
         "id": "cis_rhel_9-7.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/security/opasswd is configured"
+        "prose": "not met — access to /etc/security/opasswd must be explicitly configured"
        }
       ],
       "class": "security"
@@ -4835,7 +4835,7 @@
        {
         "id": "cis_rhel_9-7.1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure world writable files and directories are secured"
+        "prose": "not met — world writable files and directories must be secured"
        }
       ],
       "class": "security"
@@ -4873,14 +4873,14 @@
        {
         "id": "cis_rhel_9-7.1.12_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure no files or directories without an owner and a group exist"
+        "prose": "not met — checked condition — no files or directories without an owner and a group exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-7.1.13",
-      "title": "manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (Ensure SUID and SGID files are reviewed)",
+      "title": "manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (SUID and SGID files must be reviewed)",
       "props": [
        {
         "name": "label",
@@ -4906,7 +4906,7 @@
        {
         "id": "cis_rhel_9-7.1.13_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (Ensure SUID and SGID files are reviewed)"
+        "prose": "manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (SUID and SGID files must be reviewed)"
        }
       ],
       "class": "security"
@@ -4968,7 +4968,7 @@
        {
         "id": "cis_rhel_9-1.1.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure cramfs kernel module is not available"
+        "prose": "not met — cramfs kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5006,7 +5006,7 @@
        {
         "id": "cis_rhel_9-1.1.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure freevxfs kernel module is not available"
+        "prose": "not met — freevxfs kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5044,7 +5044,7 @@
        {
         "id": "cis_rhel_9-1.1.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure hfs kernel module is not available"
+        "prose": "not met — hfs kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5082,7 +5082,7 @@
        {
         "id": "cis_rhel_9-1.1.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure hfsplus kernel module is not available"
+        "prose": "not met — hfsplus kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5120,7 +5120,7 @@
        {
         "id": "cis_rhel_9-1.1.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure jffs2 kernel module is not available"
+        "prose": "not met — jffs2 kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5158,7 +5158,7 @@
        {
         "id": "cis_rhel_9-1.1.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure overlay kernel module is not available"
+        "prose": "not met — overlay kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5196,7 +5196,7 @@
        {
         "id": "cis_rhel_9-1.1.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure squashfs kernel module is not available"
+        "prose": "not met — squashfs kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5234,7 +5234,7 @@
        {
         "id": "cis_rhel_9-1.1.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure udf kernel module is not available"
+        "prose": "not met — udf kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5272,7 +5272,7 @@
        {
         "id": "cis_rhel_9-1.1.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewire-core kernel module is not available"
+        "prose": "not met — firewire-core kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -5310,14 +5310,14 @@
        {
         "id": "cis_rhel_9-1.1.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure usb-storage kernel module is not available"
+        "prose": "not met — usb-storage kernel module must be blocked from loading"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-1.1.1.11",
-      "title": "manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (Ensure unused filesystems kernel modules are not available)",
+      "title": "manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (unused filesystems kernel modules must be not available)",
       "props": [
        {
         "name": "label",
@@ -5343,7 +5343,7 @@
        {
         "id": "cis_rhel_9-1.1.1.11_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (Ensure unused filesystems kernel modules are not available)"
+        "prose": "manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (unused filesystems kernel modules must be not available)"
        }
       ],
       "class": "security"
@@ -5381,7 +5381,7 @@
        {
         "id": "cis_rhel_9-1.1.2.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure /tmp is tmpfs or a separate partition"
+        "prose": "not met — /tmp must be tmpfs or a separate partition"
        }
       ],
       "class": "security"
@@ -5419,7 +5419,7 @@
        {
         "id": "cis_rhel_9-1.1.2.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /tmp partition"
+        "prose": "not met — /tmp must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -5457,7 +5457,7 @@
        {
         "id": "cis_rhel_9-1.1.2.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /tmp partition"
+        "prose": "not met — /tmp must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -5495,7 +5495,7 @@
        {
         "id": "cis_rhel_9-1.1.2.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure noexec option set on /tmp partition"
+        "prose": "not met — /tmp must be mounted with the noexec option"
        }
       ],
       "class": "security"
@@ -5533,7 +5533,7 @@
        {
         "id": "cis_rhel_9-1.1.2.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure /dev/shm is tmpfs or a separate partition"
+        "prose": "not met — /dev/shm must be tmpfs or a separate partition"
        }
       ],
       "class": "security"
@@ -5571,7 +5571,7 @@
        {
         "id": "cis_rhel_9-1.1.2.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /dev/shm partition"
+        "prose": "not met — /dev/shm must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -5609,7 +5609,7 @@
        {
         "id": "cis_rhel_9-1.1.2.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /dev/shm partition"
+        "prose": "not met — /dev/shm must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -5647,7 +5647,7 @@
        {
         "id": "cis_rhel_9-1.1.2.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure noexec option set on /dev/shm partition"
+        "prose": "not met — /dev/shm must be mounted with the noexec option"
        }
       ],
       "class": "security"
@@ -5685,7 +5685,7 @@
        {
         "id": "cis_rhel_9-1.1.2.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure separate partition exists for /home"
+        "prose": "not met — /home must be its own filesystem"
        }
       ],
       "class": "security"
@@ -5723,7 +5723,7 @@
        {
         "id": "cis_rhel_9-1.1.2.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /home partition"
+        "prose": "not met — /home must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -5761,7 +5761,7 @@
        {
         "id": "cis_rhel_9-1.1.2.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /home partition"
+        "prose": "not met — /home must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -5799,7 +5799,7 @@
        {
         "id": "cis_rhel_9-1.1.2.4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure separate partition exists for /var"
+        "prose": "not met — /var must be its own filesystem"
        }
       ],
       "class": "security"
@@ -5837,7 +5837,7 @@
        {
         "id": "cis_rhel_9-1.1.2.4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /var partition"
+        "prose": "not met — /var must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -5875,7 +5875,7 @@
        {
         "id": "cis_rhel_9-1.1.2.4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /var partition"
+        "prose": "not met — /var must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -5913,7 +5913,7 @@
        {
         "id": "cis_rhel_9-1.1.2.5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure separate partition exists for /var/tmp"
+        "prose": "not met — /var/tmp must be its own filesystem"
        }
       ],
       "class": "security"
@@ -5951,7 +5951,7 @@
        {
         "id": "cis_rhel_9-1.1.2.5.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /var/tmp partition"
+        "prose": "not met — /var/tmp must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -5989,7 +5989,7 @@
        {
         "id": "cis_rhel_9-1.1.2.5.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /var/tmp partition"
+        "prose": "not met — /var/tmp must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -6027,7 +6027,7 @@
        {
         "id": "cis_rhel_9-1.1.2.5.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure noexec option set on /var/tmp partition"
+        "prose": "not met — /var/tmp must be mounted with the noexec option"
        }
       ],
       "class": "security"
@@ -6065,7 +6065,7 @@
        {
         "id": "cis_rhel_9-1.1.2.6.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure separate partition exists for /var/log"
+        "prose": "not met — /var/log must be its own filesystem"
        }
       ],
       "class": "security"
@@ -6103,7 +6103,7 @@
        {
         "id": "cis_rhel_9-1.1.2.6.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /var/log partition"
+        "prose": "not met — /var/log must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -6141,7 +6141,7 @@
        {
         "id": "cis_rhel_9-1.1.2.6.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /var/log partition"
+        "prose": "not met — /var/log must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -6179,7 +6179,7 @@
        {
         "id": "cis_rhel_9-1.1.2.6.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure noexec option set on /var/log partition"
+        "prose": "not met — /var/log must be mounted with the noexec option"
        }
       ],
       "class": "security"
@@ -6217,7 +6217,7 @@
        {
         "id": "cis_rhel_9-1.1.2.7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure separate partition exists for /var/log/audit"
+        "prose": "not met — /var/log/audit must be its own filesystem"
        }
       ],
       "class": "security"
@@ -6255,7 +6255,7 @@
        {
         "id": "cis_rhel_9-1.1.2.7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nodev option set on /var/log/audit partition"
+        "prose": "not met — /var/log/audit must be mounted with the nodev option"
        }
       ],
       "class": "security"
@@ -6293,7 +6293,7 @@
        {
         "id": "cis_rhel_9-1.1.2.7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nosuid option set on /var/log/audit partition"
+        "prose": "not met — /var/log/audit must be mounted with the nosuid option"
        }
       ],
       "class": "security"
@@ -6331,7 +6331,7 @@
        {
         "id": "cis_rhel_9-1.1.2.7.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure noexec option set on /var/log/audit partition"
+        "prose": "not met — /var/log/audit must be mounted with the noexec option"
        }
       ],
       "class": "security"
@@ -6362,7 +6362,7 @@
     "controls": [
      {
       "id": "cis_rhel_9-1.2.1.1",
-      "title": "manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (Ensure GPG keys are configured)",
+      "title": "manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (GPG keys must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -6388,7 +6388,7 @@
        {
         "id": "cis_rhel_9-1.2.1.1_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (Ensure GPG keys are configured)"
+        "prose": "manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (GPG keys must be explicitly configured)"
        }
       ],
       "class": "security"
@@ -6426,7 +6426,7 @@
        {
         "id": "cis_rhel_9-1.2.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure gpgcheck is configured"
+        "prose": "not met — gpgcheck must be explicitly configured"
        }
       ],
       "class": "security"
@@ -6464,14 +6464,14 @@
        {
         "id": "cis_rhel_9-1.2.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure repo_gpgcheck is configured"
+        "prose": "not met — repo_gpgcheck must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-1.2.1.4",
-      "title": "manual review not attested — set attest.repositories_reviewed to true once reviewed (Ensure package manager repositories are configured)",
+      "title": "manual review not attested — set attest.repositories_reviewed to true once reviewed (package manager repositories must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -6497,7 +6497,7 @@
        {
         "id": "cis_rhel_9-1.2.1.4_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.repositories_reviewed to true once reviewed (Ensure package manager repositories are configured)"
+        "prose": "manual review not attested — set attest.repositories_reviewed to true once reviewed (package manager repositories must be explicitly configured)"
        }
       ],
       "class": "security"
@@ -6535,14 +6535,14 @@
        {
         "id": "cis_rhel_9-1.2.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure weak dependencies are configured"
+        "prose": "not met — weak dependencies must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-1.2.2.1",
-      "title": "manual review not attested — set attest.updates_installed to true once reviewed (Ensure updates, patches, and additional security software are installed)",
+      "title": "manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)",
       "props": [
        {
         "name": "label",
@@ -6568,7 +6568,7 @@
        {
         "id": "cis_rhel_9-1.2.2.1_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.updates_installed to true once reviewed (Ensure updates, patches, and additional security software are installed)"
+        "prose": "manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)"
        }
       ],
       "class": "security"
@@ -6606,7 +6606,7 @@
        {
         "id": "cis_rhel_9-1.6.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system wide crypto policy is not legacy"
+        "prose": "not met — system wide crypto policy must be not legacy"
        }
       ],
       "class": "security"
@@ -6644,7 +6644,7 @@
        {
         "id": "cis_rhel_9-1.6.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system wide crypto policy disables sha1 hash and signature support"
+        "prose": "not met — checked condition — system wide crypto policy disables sha1 hash and signature support"
        }
       ],
       "class": "security"
@@ -6682,7 +6682,7 @@
        {
         "id": "cis_rhel_9-1.6.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system wide crypto policy macs are configured"
+        "prose": "not met — system wide crypto policy macs must be explicitly configured"
        }
       ],
       "class": "security"
@@ -6720,14 +6720,14 @@
        {
         "id": "cis_rhel_9-1.6.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system wide crypto policy disables cbc for ssh"
+        "prose": "not met — checked condition — system wide crypto policy disables cbc for ssh"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-1.6.5",
-      "title": "manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables chacha20-poly1305 for ssh)",
+      "title": "manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (checked condition — system wide crypto policy disables chacha20-poly1305 for ssh)",
       "props": [
        {
         "name": "label",
@@ -6753,14 +6753,14 @@
        {
         "id": "cis_rhel_9-1.6.5_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables chacha20-poly1305 for ssh)"
+        "prose": "manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (checked condition — system wide crypto policy disables chacha20-poly1305 for ssh)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-1.6.6",
-      "title": "manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables EtM for ssh)",
+      "title": "manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (checked condition — system wide crypto policy disables EtM for ssh)",
       "props": [
        {
         "name": "label",
@@ -6786,7 +6786,7 @@
        {
         "id": "cis_rhel_9-1.6.6_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables EtM for ssh)"
+        "prose": "manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (checked condition — system wide crypto policy disables EtM for ssh)"
        }
       ],
       "class": "security"
@@ -6824,7 +6824,7 @@
        {
         "id": "cis_rhel_9-1.6.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system wide crypto policy enables post-quantum algorithms"
+        "prose": "not met — checked condition — system wide crypto policy enables post-quantum algorithms"
        }
       ],
       "class": "security"
@@ -6862,7 +6862,7 @@
        {
         "id": "cis_rhel_9-1.7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure /etc/motd is configured"
+        "prose": "not met — /etc/motd must be explicitly configured"
        }
       ],
       "class": "security"
@@ -6900,7 +6900,7 @@
        {
         "id": "cis_rhel_9-1.7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure /etc/issue is configured"
+        "prose": "not met — /etc/issue must be explicitly configured"
        }
       ],
       "class": "security"
@@ -6938,7 +6938,7 @@
        {
         "id": "cis_rhel_9-1.7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure /etc/issue.net is configured"
+        "prose": "not met — /etc/issue.net must be explicitly configured"
        }
       ],
       "class": "security"
@@ -6976,7 +6976,7 @@
        {
         "id": "cis_rhel_9-1.7.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/motd is configured"
+        "prose": "not met — access to /etc/motd must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7014,7 +7014,7 @@
        {
         "id": "cis_rhel_9-1.7.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/issue is configured"
+        "prose": "not met — access to /etc/issue must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7052,7 +7052,7 @@
        {
         "id": "cis_rhel_9-1.7.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/issue.net is configured"
+        "prose": "not met — access to /etc/issue.net must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7090,7 +7090,7 @@
        {
         "id": "cis_rhel_9-1.8.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure GDM login banner is configured"
+        "prose": "not met — GDM login banner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7128,7 +7128,7 @@
        {
         "id": "cis_rhel_9-1.8.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure GDM disable-user-list is configured"
+        "prose": "not met — GDM disable-user-list must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7166,7 +7166,7 @@
        {
         "id": "cis_rhel_9-1.8.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure GDM screen lock is configured"
+        "prose": "not met — GDM screen lock must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7204,7 +7204,7 @@
        {
         "id": "cis_rhel_9-1.8.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure GDM automount is configured"
+        "prose": "not met — GDM automount must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7242,7 +7242,7 @@
        {
         "id": "cis_rhel_9-1.8.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure GDM autorun-never is configured"
+        "prose": "not met — GDM autorun-never must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7280,7 +7280,7 @@
        {
         "id": "cis_rhel_9-1.8.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure XDMCP is not enabled"
+        "prose": "not met — XDMCP must stay off"
        }
       ],
       "class": "security"
@@ -7318,7 +7318,7 @@
        {
         "id": "cis_rhel_9-1.8.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure Wayland is configured"
+        "prose": "not met — Wayland must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7437,7 +7437,7 @@
        {
         "id": "cis_rhel_9-6.1.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure journald service is active"
+        "prose": "not met — journald service must be active"
        }
       ],
       "class": "security"
@@ -7475,7 +7475,7 @@
        {
         "id": "cis_rhel_9-6.1.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure systemd-journal-remote is not in use"
+        "prose": "not met — systemd-journal-remote must not be running"
        }
       ],
       "class": "security"
@@ -7513,14 +7513,14 @@
        {
         "id": "cis_rhel_9-6.1.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure journald is configured to send logs to rsyslog"
+        "prose": "not met — journald must be explicitly configured to send logs to rsyslog"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.1.4",
-      "title": "manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (Ensure journald log file rotation is configured)",
+      "title": "manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (journald log file rotation must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -7546,14 +7546,14 @@
        {
         "id": "cis_rhel_9-6.1.1.4_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (Ensure journald log file rotation is configured)"
+        "prose": "manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (journald log file rotation must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.1.5",
-      "title": "manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (Ensure journald log file access is configured)",
+      "title": "manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (journald log file access must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -7579,7 +7579,7 @@
        {
         "id": "cis_rhel_9-6.1.1.5_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (Ensure journald log file access is configured)"
+        "prose": "manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (journald log file access must be explicitly configured)"
        }
       ],
       "class": "security"
@@ -7617,7 +7617,7 @@
        {
         "id": "cis_rhel_9-6.1.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rsyslog is installed"
+        "prose": "not met — rsyslog must be present"
        }
       ],
       "class": "security"
@@ -7655,7 +7655,7 @@
        {
         "id": "cis_rhel_9-6.1.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rsyslog service is enabled and active"
+        "prose": "not met — rsyslog service must be turned on and active"
        }
       ],
       "class": "security"
@@ -7693,7 +7693,7 @@
        {
         "id": "cis_rhel_9-6.1.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rsyslog log file creation mode is configured"
+        "prose": "not met — rsyslog log file creation mode must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7731,7 +7731,7 @@
        {
         "id": "cis_rhel_9-6.1.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to rsyslog configuration files is configured"
+        "prose": "not met — access to rsyslog configuration files must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7769,7 +7769,7 @@
        {
         "id": "cis_rhel_9-6.1.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to the /etc/rsyslog.d directory is configured"
+        "prose": "not met — access to the /etc/rsyslog.d directory must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7807,7 +7807,7 @@
        {
         "id": "cis_rhel_9-6.1.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to the rsyslog work directory is configured"
+        "prose": "not met — access to the rsyslog work directory must be explicitly configured"
        }
       ],
       "class": "security"
@@ -7845,14 +7845,14 @@
        {
         "id": "cis_rhel_9-6.1.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rsyslog is not configured as a log server"
+        "prose": "not met — rsyslog must be left unconfigured as a log server"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.2.8",
-      "title": "manual review not attested — set attest.rsyslog_logging_rules_reviewed to true once reviewed (Ensure rsyslog logging rules are configured)",
+      "title": "manual review not attested — set attest.rsyslog_logging_rules_reviewed to true once reviewed (rsyslog logging rules must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -7878,14 +7878,14 @@
        {
         "id": "cis_rhel_9-6.1.2.8_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.rsyslog_logging_rules_reviewed to true once reviewed (Ensure rsyslog logging rules are configured)"
+        "prose": "manual review not attested — set attest.rsyslog_logging_rules_reviewed to true once reviewed (rsyslog logging rules must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.2.9",
-      "title": "manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (Ensure rsyslog is configured to send logs to a remote log host)",
+      "title": "manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (rsyslog must be explicitly configured to send logs to a remote log host)",
       "props": [
        {
         "name": "label",
@@ -7911,7 +7911,7 @@
        {
         "id": "cis_rhel_9-6.1.2.9_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (Ensure rsyslog is configured to send logs to a remote log host)"
+        "prose": "manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (rsyslog must be explicitly configured to send logs to a remote log host)"
        }
       ],
       "class": "security"
@@ -7949,7 +7949,7 @@
        {
         "id": "cis_rhel_9-6.1.2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure a rsyslog TLS network stream driver is installed"
+        "prose": "not met — a rsyslog TLS network stream driver must be present"
        }
       ],
       "class": "security"
@@ -7987,14 +7987,14 @@
        {
         "id": "cis_rhel_9-6.1.2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rsyslog network forwarding uses TLS"
+        "prose": "not met — checked condition — rsyslog network forwarding uses TLS"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.2.12",
-      "title": "manual review not attested — set attest.rsyslog_tls_ca_configured to true once reviewed (Ensure rsyslog TLS CA certificate is configured)",
+      "title": "manual review not attested — set attest.rsyslog_tls_ca_configured to true once reviewed (rsyslog TLS CA certificate must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -8020,14 +8020,14 @@
        {
         "id": "cis_rhel_9-6.1.2.12_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.rsyslog_tls_ca_configured to true once reviewed (Ensure rsyslog TLS CA certificate is configured)"
+        "prose": "manual review not attested — set attest.rsyslog_tls_ca_configured to true once reviewed (rsyslog TLS CA certificate must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.2.13",
-      "title": "manual review not attested — set attest.rsyslog_tls_client_cert_configured to true once reviewed (Ensure rsyslog TLS client certificate is configured)",
+      "title": "manual review not attested — set attest.rsyslog_tls_client_cert_configured to true once reviewed (rsyslog TLS client certificate must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -8053,14 +8053,14 @@
        {
         "id": "cis_rhel_9-6.1.2.13_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.rsyslog_tls_client_cert_configured to true once reviewed (Ensure rsyslog TLS client certificate is configured)"
+        "prose": "manual review not attested — set attest.rsyslog_tls_client_cert_configured to true once reviewed (rsyslog TLS client certificate must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-6.1.2.14",
-      "title": "manual review not attested — set attest.logrotate_reviewed to true once reviewed (Ensure logrotate is configured)",
+      "title": "manual review not attested — set attest.logrotate_reviewed to true once reviewed (logrotate must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -8086,7 +8086,7 @@
        {
         "id": "cis_rhel_9-6.1.2.14_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.logrotate_reviewed to true once reviewed (Ensure logrotate is configured)"
+        "prose": "manual review not attested — set attest.logrotate_reviewed to true once reviewed (logrotate must be explicitly configured)"
        }
       ],
       "class": "security"
@@ -8124,7 +8124,7 @@
        {
         "id": "cis_rhel_9-6.1.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to all logfiles has been configured"
+        "prose": "not met — access to all logfiles must have been configured"
        }
       ],
       "class": "security"
@@ -8155,7 +8155,7 @@
     "controls": [
      {
       "id": "cis_rhel_9-3.1.1",
-      "title": "manual review not attested — set attest.ipv6_status_identified to true once reviewed (Ensure IPv6 status is identified)",
+      "title": "manual review not attested — set attest.ipv6_status_identified to true once reviewed (IPv6 status must be identified)",
       "props": [
        {
         "name": "label",
@@ -8181,7 +8181,7 @@
        {
         "id": "cis_rhel_9-3.1.1_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.ipv6_status_identified to true once reviewed (Ensure IPv6 status is identified)"
+        "prose": "manual review not attested — set attest.ipv6_status_identified to true once reviewed (IPv6 status must be identified)"
        }
       ],
       "class": "security"
@@ -8219,7 +8219,7 @@
        {
         "id": "cis_rhel_9-3.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure wireless interfaces are not available"
+        "prose": "not met — wireless interfaces must be not available"
        }
       ],
       "class": "security"
@@ -8257,7 +8257,7 @@
        {
         "id": "cis_rhel_9-3.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure bluetooth services are not in use"
+        "prose": "not met — bluetooth services must not be running"
        }
       ],
       "class": "security"
@@ -8295,7 +8295,7 @@
        {
         "id": "cis_rhel_9-3.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure dccp kernel module is not available"
+        "prose": "not met — dccp kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -8333,7 +8333,7 @@
        {
         "id": "cis_rhel_9-3.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure tipc kernel module is not available"
+        "prose": "not met — tipc kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -8371,7 +8371,7 @@
        {
         "id": "cis_rhel_9-3.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rds kernel module is not available"
+        "prose": "not met — rds kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -8409,7 +8409,7 @@
        {
         "id": "cis_rhel_9-3.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sctp kernel module is not available"
+        "prose": "not met — sctp kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -8447,7 +8447,7 @@
        {
         "id": "cis_rhel_9-3.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure atm kernel module is not available"
+        "prose": "not met — atm kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -8485,7 +8485,7 @@
        {
         "id": "cis_rhel_9-3.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure can kernel module is not available"
+        "prose": "not met — can kernel module must be blocked from loading"
        }
       ],
       "class": "security"
@@ -8523,7 +8523,7 @@
        {
         "id": "cis_rhel_9-3.3.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.ip_forward is configured"
+        "prose": "not met — net.ipv4.ip_forward must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8561,7 +8561,7 @@
        {
         "id": "cis_rhel_9-3.3.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.forwarding is configured"
+        "prose": "not met — net.ipv4.conf.all.forwarding must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8599,7 +8599,7 @@
        {
         "id": "cis_rhel_9-3.3.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.forwarding is configured"
+        "prose": "not met — net.ipv4.conf.default.forwarding must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8637,7 +8637,7 @@
        {
         "id": "cis_rhel_9-3.3.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.send_redirects is configured"
+        "prose": "not met — net.ipv4.conf.all.send_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8675,7 +8675,7 @@
        {
         "id": "cis_rhel_9-3.3.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.send_redirects is configured"
+        "prose": "not met — net.ipv4.conf.default.send_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8713,7 +8713,7 @@
        {
         "id": "cis_rhel_9-3.3.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.icmp_ignore_bogus_error_responses is configured"
+        "prose": "not met — net.ipv4.icmp_ignore_bogus_error_responses must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8751,7 +8751,7 @@
        {
         "id": "cis_rhel_9-3.3.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.icmp_echo_ignore_broadcasts is configured"
+        "prose": "not met — net.ipv4.icmp_echo_ignore_broadcasts must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8789,7 +8789,7 @@
        {
         "id": "cis_rhel_9-3.3.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.accept_redirects is configured"
+        "prose": "not met — net.ipv4.conf.all.accept_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8827,7 +8827,7 @@
        {
         "id": "cis_rhel_9-3.3.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.accept_redirects is configured"
+        "prose": "not met — net.ipv4.conf.default.accept_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8865,7 +8865,7 @@
        {
         "id": "cis_rhel_9-3.3.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.secure_redirects is configured"
+        "prose": "not met — net.ipv4.conf.all.secure_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8903,7 +8903,7 @@
        {
         "id": "cis_rhel_9-3.3.1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.secure_redirects is configured"
+        "prose": "not met — net.ipv4.conf.default.secure_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8941,7 +8941,7 @@
        {
         "id": "cis_rhel_9-3.3.1.12_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.rp_filter is configured"
+        "prose": "not met — net.ipv4.conf.all.rp_filter must be explicitly configured"
        }
       ],
       "class": "security"
@@ -8979,7 +8979,7 @@
        {
         "id": "cis_rhel_9-3.3.1.13_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.rp_filter is configured"
+        "prose": "not met — net.ipv4.conf.default.rp_filter must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9017,7 +9017,7 @@
        {
         "id": "cis_rhel_9-3.3.1.14_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.accept_source_route is configured"
+        "prose": "not met — net.ipv4.conf.all.accept_source_route must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9055,7 +9055,7 @@
        {
         "id": "cis_rhel_9-3.3.1.15_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.accept_source_route is configured"
+        "prose": "not met — net.ipv4.conf.default.accept_source_route must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9093,7 +9093,7 @@
        {
         "id": "cis_rhel_9-3.3.1.16_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.log_martians is configured"
+        "prose": "not met — net.ipv4.conf.all.log_martians must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9131,7 +9131,7 @@
        {
         "id": "cis_rhel_9-3.3.1.17_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.log_martians is configured"
+        "prose": "not met — net.ipv4.conf.default.log_martians must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9169,7 +9169,7 @@
        {
         "id": "cis_rhel_9-3.3.1.18_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.tcp_syncookies is configured"
+        "prose": "not met — net.ipv4.tcp_syncookies must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9207,7 +9207,7 @@
        {
         "id": "cis_rhel_9-3.3.1.19_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.all.route_localnet is configured"
+        "prose": "not met — net.ipv4.conf.all.route_localnet must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9245,7 +9245,7 @@
        {
         "id": "cis_rhel_9-3.3.1.20_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv4.conf.default.route_localnet is configured"
+        "prose": "not met — net.ipv4.conf.default.route_localnet must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9283,7 +9283,7 @@
        {
         "id": "cis_rhel_9-3.3.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.all.forwarding is configured"
+        "prose": "not met — net.ipv6.conf.all.forwarding must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9321,7 +9321,7 @@
        {
         "id": "cis_rhel_9-3.3.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.default.forwarding is configured"
+        "prose": "not met — net.ipv6.conf.default.forwarding must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9359,7 +9359,7 @@
        {
         "id": "cis_rhel_9-3.3.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.all.accept_redirects is configured"
+        "prose": "not met — net.ipv6.conf.all.accept_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9397,7 +9397,7 @@
        {
         "id": "cis_rhel_9-3.3.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.default.accept_redirects is configured"
+        "prose": "not met — net.ipv6.conf.default.accept_redirects must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9435,7 +9435,7 @@
        {
         "id": "cis_rhel_9-3.3.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.all.accept_source_route is configured"
+        "prose": "not met — net.ipv6.conf.all.accept_source_route must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9473,7 +9473,7 @@
        {
         "id": "cis_rhel_9-3.3.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.default.accept_source_route is configured"
+        "prose": "not met — net.ipv6.conf.default.accept_source_route must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9511,7 +9511,7 @@
        {
         "id": "cis_rhel_9-3.3.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.all.accept_ra is configured"
+        "prose": "not met — net.ipv6.conf.all.accept_ra must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9549,7 +9549,7 @@
        {
         "id": "cis_rhel_9-3.3.2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure net.ipv6.conf.default.accept_ra is configured"
+        "prose": "not met — net.ipv6.conf.default.accept_ra must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9587,7 +9587,7 @@
        {
         "id": "cis_rhel_9-4.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewalld is installed"
+        "prose": "not met — firewalld must be present"
        }
       ],
       "class": "security"
@@ -9625,7 +9625,7 @@
        {
         "id": "cis_rhel_9-4.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewalld backend is configured"
+        "prose": "not met — firewalld backend must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9663,7 +9663,7 @@
        {
         "id": "cis_rhel_9-4.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewalld.service is configured"
+        "prose": "not met — firewalld.service must be explicitly configured"
        }
       ],
       "class": "security"
@@ -9701,14 +9701,14 @@
        {
         "id": "cis_rhel_9-4.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewalld active zone target is configured"
+        "prose": "not met — firewalld active zone target must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-4.1.5",
-      "title": "manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (Ensure firewalld loopback traffic is configured)",
+      "title": "manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (firewalld loopback traffic must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -9734,14 +9734,14 @@
        {
         "id": "cis_rhel_9-4.1.5_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (Ensure firewalld loopback traffic is configured)"
+        "prose": "manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (firewalld loopback traffic must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-4.1.6",
-      "title": "manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (Ensure firewalld loopback source address traffic is configured)",
+      "title": "manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (firewalld loopback source address traffic must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -9767,14 +9767,14 @@
        {
         "id": "cis_rhel_9-4.1.6_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (Ensure firewalld loopback source address traffic is configured)"
+        "prose": "manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (firewalld loopback source address traffic must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-4.1.7",
-      "title": "manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (Ensure firewalld services and ports are configured)",
+      "title": "manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (firewalld services and ports must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -9800,14 +9800,14 @@
        {
         "id": "cis_rhel_9-4.1.7_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (Ensure firewalld services and ports are configured)"
+        "prose": "manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (firewalld services and ports must be explicitly configured)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-4.1.8",
-      "title": "manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (Ensure firewalld default zone is set to drop)",
+      "title": "manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (required value of firewalld default zone is drop)",
       "props": [
        {
         "name": "label",
@@ -9833,7 +9833,7 @@
        {
         "id": "cis_rhel_9-4.1.8_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (Ensure firewalld default zone is set to drop)"
+        "prose": "manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (required value of firewalld default zone is drop)"
        }
       ],
       "class": "security"
@@ -9871,7 +9871,7 @@
        {
         "id": "cis_rhel_9-4.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure conflicting firewall utilities are not in use with firewalld"
+        "prose": "not met — conflicting firewall utilities must be not in use with firewalld"
        }
       ],
       "class": "security"
@@ -9909,7 +9909,7 @@
        {
         "id": "cis_rhel_9-4.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewalld logs denied packets"
+        "prose": "not met — checked condition — firewalld logs denied packets"
        }
       ],
       "class": "security"
@@ -9947,7 +9947,7 @@
        {
         "id": "cis_rhel_9-4.1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure firewalld blocks ICMP timestamp requests and replies"
+        "prose": "not met — checked condition — firewalld blocks ICMP timestamp requests and replies"
        }
       ],
       "class": "security"
@@ -10009,7 +10009,7 @@
        {
         "id": "cis_rhel_9-5.3.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure latest version of pam is installed"
+        "prose": "not met — latest version of pam must be present"
        }
       ],
       "class": "security"
@@ -10047,7 +10047,7 @@
        {
         "id": "cis_rhel_9-5.3.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure latest version of authselect is installed"
+        "prose": "not met — latest version of authselect must be present"
        }
       ],
       "class": "security"
@@ -10085,7 +10085,7 @@
        {
         "id": "cis_rhel_9-5.3.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure latest version of libpwquality is installed"
+        "prose": "not met — latest version of libpwquality must be present"
        }
       ],
       "class": "security"
@@ -10123,7 +10123,7 @@
        {
         "id": "cis_rhel_9-5.3.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure PAM is managed by an active authselect profile"
+        "prose": "not met — PAM must be managed by an active authselect profile"
        }
       ],
       "class": "security"
@@ -10161,7 +10161,7 @@
        {
         "id": "cis_rhel_9-5.3.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_faillock module is enabled"
+        "prose": "not met — pam_faillock module must be turned on"
        }
       ],
       "class": "security"
@@ -10199,7 +10199,7 @@
        {
         "id": "cis_rhel_9-5.3.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_pwquality module is enabled"
+        "prose": "not met — pam_pwquality module must be turned on"
        }
       ],
       "class": "security"
@@ -10237,7 +10237,7 @@
        {
         "id": "cis_rhel_9-5.3.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_pwhistory module is enabled"
+        "prose": "not met — pam_pwhistory module must be turned on"
        }
       ],
       "class": "security"
@@ -10275,7 +10275,7 @@
        {
         "id": "cis_rhel_9-5.3.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_unix module is enabled"
+        "prose": "not met — pam_unix module must be turned on"
        }
       ],
       "class": "security"
@@ -10313,7 +10313,7 @@
        {
         "id": "cis_rhel_9-5.3.3.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password failed attempts lockout is configured"
+        "prose": "not met — password failed attempts lockout must be explicitly configured"
        }
       ],
       "class": "security"
@@ -10351,7 +10351,7 @@
        {
         "id": "cis_rhel_9-5.3.3.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password unlock time is configured"
+        "prose": "not met — password unlock time must be explicitly configured"
        }
       ],
       "class": "security"
@@ -10389,7 +10389,7 @@
        {
         "id": "cis_rhel_9-5.3.3.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password failed attempts lockout includes root account"
+        "prose": "not met — checked condition — password failed attempts lockout includes root account"
        }
       ],
       "class": "security"
@@ -10427,7 +10427,7 @@
        {
         "id": "cis_rhel_9-5.3.3.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password number of changed characters is configured"
+        "prose": "not met — password number of changed characters must be explicitly configured"
        }
       ],
       "class": "security"
@@ -10465,14 +10465,14 @@
        {
         "id": "cis_rhel_9-5.3.3.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password length is configured"
+        "prose": "not met — password length must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-5.3.3.2.3",
-      "title": "manual review not attested — set attest.password_complexity_reviewed to true once reviewed (Ensure password complexity is configured)",
+      "title": "manual review not attested — set attest.password_complexity_reviewed to true once reviewed (password complexity must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -10498,7 +10498,7 @@
        {
         "id": "cis_rhel_9-5.3.3.2.3_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.password_complexity_reviewed to true once reviewed (Ensure password complexity is configured)"
+        "prose": "manual review not attested — set attest.password_complexity_reviewed to true once reviewed (password complexity must be explicitly configured)"
        }
       ],
       "class": "security"
@@ -10536,7 +10536,7 @@
        {
         "id": "cis_rhel_9-5.3.3.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password same consecutive characters is configured"
+        "prose": "not met — password same consecutive characters must be explicitly configured"
        }
       ],
       "class": "security"
@@ -10574,7 +10574,7 @@
        {
         "id": "cis_rhel_9-5.3.3.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password maximum sequential characters is configured"
+        "prose": "not met — password maximum sequential characters must be explicitly configured"
        }
       ],
       "class": "security"
@@ -10612,7 +10612,7 @@
        {
         "id": "cis_rhel_9-5.3.3.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password dictionary check is enabled"
+        "prose": "not met — password dictionary check must be turned on"
        }
       ],
       "class": "security"
@@ -10650,7 +10650,7 @@
        {
         "id": "cis_rhel_9-5.3.3.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password quality is enforced for the root user"
+        "prose": "not met — password quality must be enforced for the root user"
        }
       ],
       "class": "security"
@@ -10688,7 +10688,7 @@
        {
         "id": "cis_rhel_9-5.3.3.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password history remember is configured"
+        "prose": "not met — password history remember must be explicitly configured"
        }
       ],
       "class": "security"
@@ -10726,7 +10726,7 @@
        {
         "id": "cis_rhel_9-5.3.3.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password history is enforced for the root user"
+        "prose": "not met — password history must be enforced for the root user"
        }
       ],
       "class": "security"
@@ -10764,7 +10764,7 @@
        {
         "id": "cis_rhel_9-5.3.3.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_pwhistory includes use_authtok"
+        "prose": "not met — checked condition — pam_pwhistory includes use_authtok"
        }
       ],
       "class": "security"
@@ -10802,7 +10802,7 @@
        {
         "id": "cis_rhel_9-5.3.3.4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_unix does not include nullok"
+        "prose": "not met — checked condition — pam_unix does not include nullok"
        }
       ],
       "class": "security"
@@ -10840,7 +10840,7 @@
        {
         "id": "cis_rhel_9-5.3.3.4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_unix does not include remember"
+        "prose": "not met — checked condition — pam_unix does not include remember"
        }
       ],
       "class": "security"
@@ -10878,7 +10878,7 @@
        {
         "id": "cis_rhel_9-5.3.3.4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_unix includes a strong password hashing algorithm"
+        "prose": "not met — checked condition — pam_unix includes a strong password hashing algorithm"
        }
       ],
       "class": "security"
@@ -10916,7 +10916,7 @@
        {
         "id": "cis_rhel_9-5.3.3.4.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure pam_unix includes use_authtok"
+        "prose": "not met — checked condition — pam_unix includes use_authtok"
        }
       ],
       "class": "security"
@@ -10954,14 +10954,14 @@
        {
         "id": "cis_rhel_9-5.4.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password expiration is configured"
+        "prose": "not met — password expiration must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-5.4.1.2",
-      "title": "manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (Ensure minimum password days is configured)",
+      "title": "manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (minimum password days must be explicitly configured)",
       "props": [
        {
         "name": "label",
@@ -10987,7 +10987,7 @@
        {
         "id": "cis_rhel_9-5.4.1.2_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (Ensure minimum password days is configured)"
+        "prose": "manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (minimum password days must be explicitly configured)"
        }
       ],
       "class": "security"
@@ -11025,7 +11025,7 @@
        {
         "id": "cis_rhel_9-5.4.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure password expiration warning days is configured"
+        "prose": "not met — password expiration warning days must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11063,7 +11063,7 @@
        {
         "id": "cis_rhel_9-5.4.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure strong password hashing algorithm is configured"
+        "prose": "not met — strong password hashing algorithm must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11101,7 +11101,7 @@
        {
         "id": "cis_rhel_9-5.4.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure inactive password lock is configured"
+        "prose": "not met — inactive password lock must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11139,7 +11139,7 @@
        {
         "id": "cis_rhel_9-5.4.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure all users last password change date is in the past"
+        "prose": "not met — all users last password change date must be in the past"
        }
       ],
       "class": "security"
@@ -11177,7 +11177,7 @@
        {
         "id": "cis_rhel_9-5.4.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure root is the only UID 0 account"
+        "prose": "not met — uid 0 must belong only to root"
        }
       ],
       "class": "security"
@@ -11215,7 +11215,7 @@
        {
         "id": "cis_rhel_9-5.4.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure root is the only GID 0 account"
+        "prose": "not met — root must be the only GID 0 account"
        }
       ],
       "class": "security"
@@ -11253,7 +11253,7 @@
        {
         "id": "cis_rhel_9-5.4.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure group root is the only GID 0 group"
+        "prose": "not met — group root must be the only GID 0 group"
        }
       ],
       "class": "security"
@@ -11291,7 +11291,7 @@
        {
         "id": "cis_rhel_9-5.4.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure root account access is controlled"
+        "prose": "not met — root account access must be controlled"
        }
       ],
       "class": "security"
@@ -11329,7 +11329,7 @@
        {
         "id": "cis_rhel_9-5.4.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure root path integrity"
+        "prose": "not met — checked condition — root path integrity"
        }
       ],
       "class": "security"
@@ -11367,7 +11367,7 @@
        {
         "id": "cis_rhel_9-5.4.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure root user umask is configured"
+        "prose": "not met — root user umask must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11405,7 +11405,7 @@
        {
         "id": "cis_rhel_9-5.4.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure system accounts do not have a valid login shell"
+        "prose": "not met — system accounts do not must have a valid login shell"
        }
       ],
       "class": "security"
@@ -11443,7 +11443,7 @@
        {
         "id": "cis_rhel_9-5.4.2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure accounts without a valid login shell are locked"
+        "prose": "not met — accounts without a valid login shell must be locked"
        }
       ],
       "class": "security"
@@ -11481,7 +11481,7 @@
        {
         "id": "cis_rhel_9-5.4.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure nologin is not listed in /etc/shells"
+        "prose": "not met — nologin must be not listed in /etc/shells"
        }
       ],
       "class": "security"
@@ -11519,7 +11519,7 @@
        {
         "id": "cis_rhel_9-5.4.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure default user shell timeout is configured"
+        "prose": "not met — default user shell timeout must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11557,7 +11557,7 @@
        {
         "id": "cis_rhel_9-5.4.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure default user umask is configured in /etc/login.defs"
+        "prose": "not met — default user umask must be explicitly configured in /etc/login.defs"
        }
       ],
       "class": "security"
@@ -11595,7 +11595,7 @@
        {
         "id": "cis_rhel_9-5.4.3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure default user umask is configured"
+        "prose": "not met — default user umask must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11657,7 +11657,7 @@
        {
         "id": "cis_rhel_9-1.3.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure SELinux is installed"
+        "prose": "not met — SELinux must be present"
        }
       ],
       "class": "security"
@@ -11695,7 +11695,7 @@
        {
         "id": "cis_rhel_9-1.3.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure SELinux is not disabled in bootloader configuration"
+        "prose": "not met — SELinux must stay in effect in bootloader configuration"
        }
       ],
       "class": "security"
@@ -11733,7 +11733,7 @@
        {
         "id": "cis_rhel_9-1.3.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure SELinux policy is configured"
+        "prose": "not met — SELinux policy must be explicitly configured"
        }
       ],
       "class": "security"
@@ -11771,7 +11771,7 @@
        {
         "id": "cis_rhel_9-1.3.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the SELinux mode is not disabled"
+        "prose": "not met — the SELinux mode must stay in effect"
        }
       ],
       "class": "security"
@@ -11809,14 +11809,14 @@
        {
         "id": "cis_rhel_9-1.3.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the SELinux mode is enforcing"
+        "prose": "not met — the SELinux mode must be enforcing"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-1.3.1.6",
-      "title": "manual review not attested — set attest.no_unconfined_services to true once reviewed (Ensure no unconfined services exist)",
+      "title": "manual review not attested — set attest.no_unconfined_services to true once reviewed (checked condition — no unconfined services exist)",
       "props": [
        {
         "name": "label",
@@ -11842,7 +11842,7 @@
        {
         "id": "cis_rhel_9-1.3.1.6_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.no_unconfined_services to true once reviewed (Ensure no unconfined services exist)"
+        "prose": "manual review not attested — set attest.no_unconfined_services to true once reviewed (checked condition — no unconfined services exist)"
        }
       ],
       "class": "security"
@@ -11880,7 +11880,7 @@
        {
         "id": "cis_rhel_9-1.3.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure the MCS Translation Service (mcstrans) is not installed"
+        "prose": "not met — the MCS Translation Service (mcstrans) must not be present"
        }
       ],
       "class": "security"
@@ -11918,7 +11918,7 @@
        {
         "id": "cis_rhel_9-1.3.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure SETroubleshoot is not installed"
+        "prose": "not met — SETroubleshoot must not be present"
        }
       ],
       "class": "security"
@@ -11980,7 +11980,7 @@
        {
         "id": "cis_rhel_9-2.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure autofs services are not in use"
+        "prose": "not met — autofs services must not be running"
        }
       ],
       "class": "security"
@@ -12018,7 +12018,7 @@
        {
         "id": "cis_rhel_9-2.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure avahi daemon services are not in use"
+        "prose": "not met — avahi daemon services must not be running"
        }
       ],
       "class": "security"
@@ -12056,7 +12056,7 @@
        {
         "id": "cis_rhel_9-2.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure cockpit web services are not in use"
+        "prose": "not met — cockpit web services must not be running"
        }
       ],
       "class": "security"
@@ -12094,7 +12094,7 @@
        {
         "id": "cis_rhel_9-2.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure dhcp server services are not in use"
+        "prose": "not met — dhcp server services must not be running"
        }
       ],
       "class": "security"
@@ -12132,7 +12132,7 @@
        {
         "id": "cis_rhel_9-2.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure dns server services are not in use"
+        "prose": "not met — dns server services must not be running"
        }
       ],
       "class": "security"
@@ -12170,7 +12170,7 @@
        {
         "id": "cis_rhel_9-2.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure dnsmasq services are not in use"
+        "prose": "not met — dnsmasq services must not be running"
        }
       ],
       "class": "security"
@@ -12208,7 +12208,7 @@
        {
         "id": "cis_rhel_9-2.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure samba file server services are not in use"
+        "prose": "not met — samba file server services must not be running"
        }
       ],
       "class": "security"
@@ -12246,7 +12246,7 @@
        {
         "id": "cis_rhel_9-2.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure ftp server services are not in use"
+        "prose": "not met — ftp server services must not be running"
        }
       ],
       "class": "security"
@@ -12284,7 +12284,7 @@
        {
         "id": "cis_rhel_9-2.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure message access server services are not in use"
+        "prose": "not met — message access server services must not be running"
        }
       ],
       "class": "security"
@@ -12322,7 +12322,7 @@
        {
         "id": "cis_rhel_9-2.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure network file system services are not in use"
+        "prose": "not met — network file system services must not be running"
        }
       ],
       "class": "security"
@@ -12360,7 +12360,7 @@
        {
         "id": "cis_rhel_9-2.1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure print server services are not in use"
+        "prose": "not met — print server services must not be running"
        }
       ],
       "class": "security"
@@ -12398,7 +12398,7 @@
        {
         "id": "cis_rhel_9-2.1.12_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rpcbind services are not in use"
+        "prose": "not met — rpcbind services must not be running"
        }
       ],
       "class": "security"
@@ -12436,7 +12436,7 @@
        {
         "id": "cis_rhel_9-2.1.13_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure rsync services are not in use"
+        "prose": "not met — rsync services must not be running"
        }
       ],
       "class": "security"
@@ -12474,7 +12474,7 @@
        {
         "id": "cis_rhel_9-2.1.14_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure snmp services are not in use"
+        "prose": "not met — snmp services must not be running"
        }
       ],
       "class": "security"
@@ -12512,7 +12512,7 @@
        {
         "id": "cis_rhel_9-2.1.15_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure telnet server services are not in use"
+        "prose": "not met — telnet server services must not be running"
        }
       ],
       "class": "security"
@@ -12550,7 +12550,7 @@
        {
         "id": "cis_rhel_9-2.1.16_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure tftp server services are not in use"
+        "prose": "not met — tftp server services must not be running"
        }
       ],
       "class": "security"
@@ -12588,7 +12588,7 @@
        {
         "id": "cis_rhel_9-2.1.17_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure web proxy server services are not in use"
+        "prose": "not met — web proxy server services must not be running"
        }
       ],
       "class": "security"
@@ -12626,7 +12626,7 @@
        {
         "id": "cis_rhel_9-2.1.18_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure web server services are not in use"
+        "prose": "not met — web server services must not be running"
        }
       ],
       "class": "security"
@@ -12664,7 +12664,7 @@
        {
         "id": "cis_rhel_9-2.1.19_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure mail transfer agents are configured for local-only mode"
+        "prose": "not met — mail transfer agents must be explicitly configured for local-only mode"
        }
       ],
       "class": "security"
@@ -12702,7 +12702,7 @@
        {
         "id": "cis_rhel_9-2.1.20_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure a graphical user interface is not in use"
+        "prose": "not met — a graphical user interface must not be running"
        }
       ],
       "class": "security"
@@ -12740,7 +12740,7 @@
        {
         "id": "cis_rhel_9-2.1.21_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure X window server services are not in use"
+        "prose": "not met — X window server services must not be running"
        }
       ],
       "class": "security"
@@ -12778,14 +12778,14 @@
        {
         "id": "cis_rhel_9-2.1.22_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure Xwayland is not in use"
+        "prose": "not met — Xwayland must not be running"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_rhel_9-2.1.23",
-      "title": "manual review not attested — set attest.listening_services_approved to true once reviewed (Ensure only approved services are listening on a network interface)",
+      "title": "manual review not attested — set attest.listening_services_approved to true once reviewed (only approved services must be listening on a network interface)",
       "props": [
        {
         "name": "label",
@@ -12811,7 +12811,7 @@
        {
         "id": "cis_rhel_9-2.1.23_stmt",
         "name": "statement",
-        "prose": "manual review not attested — set attest.listening_services_approved to true once reviewed (Ensure only approved services are listening on a network interface)"
+        "prose": "manual review not attested — set attest.listening_services_approved to true once reviewed (only approved services must be listening on a network interface)"
        }
       ],
       "class": "security"
@@ -12849,7 +12849,7 @@
        {
         "id": "cis_rhel_9-2.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure ftp client is not installed"
+        "prose": "not met — ftp client must not be present"
        }
       ],
       "class": "security"
@@ -12887,7 +12887,7 @@
        {
         "id": "cis_rhel_9-2.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure ldap client is not installed"
+        "prose": "not met — ldap client must not be present"
        }
       ],
       "class": "security"
@@ -12925,7 +12925,7 @@
        {
         "id": "cis_rhel_9-2.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure telnet client is not installed"
+        "prose": "not met — telnet client must not be present"
        }
       ],
       "class": "security"
@@ -12963,7 +12963,7 @@
        {
         "id": "cis_rhel_9-2.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure tftp client is not installed"
+        "prose": "not met — tftp client must not be present"
        }
       ],
       "class": "security"
@@ -13001,7 +13001,7 @@
        {
         "id": "cis_rhel_9-2.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure time synchronization is in use"
+        "prose": "not met — time synchronization must be in use"
        }
       ],
       "class": "security"
@@ -13039,7 +13039,7 @@
        {
         "id": "cis_rhel_9-2.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure chrony is configured"
+        "prose": "not met — chrony must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13077,7 +13077,7 @@
        {
         "id": "cis_rhel_9-2.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure chrony is not run as the root user"
+        "prose": "not met — chrony must be not run as the root user"
        }
       ],
       "class": "security"
@@ -13139,7 +13139,7 @@
        {
         "id": "cis_rhel_9-5.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/ssh/sshd_config is configured"
+        "prose": "not met — access to /etc/ssh/sshd_config must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13177,7 +13177,7 @@
        {
         "id": "cis_rhel_9-5.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to /etc/ssh/sshd_config.d/ directory is configured"
+        "prose": "not met — access to /etc/ssh/sshd_config.d/ directory must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13215,7 +13215,7 @@
        {
         "id": "cis_rhel_9-5.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to SSH private host key files is configured"
+        "prose": "not met — access to SSH private host key files must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13253,7 +13253,7 @@
        {
         "id": "cis_rhel_9-5.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to SSH public host key files is configured"
+        "prose": "not met — access to SSH public host key files must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13291,7 +13291,7 @@
        {
         "id": "cis_rhel_9-5.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd Ciphers are configured"
+        "prose": "not met — sshd Ciphers must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13329,7 +13329,7 @@
        {
         "id": "cis_rhel_9-5.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd KexAlgorithms is configured"
+        "prose": "not met — sshd KexAlgorithms must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13367,7 +13367,7 @@
        {
         "id": "cis_rhel_9-5.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd MACs are configured"
+        "prose": "not met — sshd MACs must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13405,7 +13405,7 @@
        {
         "id": "cis_rhel_9-5.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd access is configured"
+        "prose": "not met — sshd access must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13443,7 +13443,7 @@
        {
         "id": "cis_rhel_9-5.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd Banner is configured"
+        "prose": "not met — sshd Banner must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13481,7 +13481,7 @@
        {
         "id": "cis_rhel_9-5.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured"
+        "prose": "not met — sshd ClientAliveInterval and ClientAliveCountMax must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13519,7 +13519,7 @@
        {
         "id": "cis_rhel_9-5.1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd DisableForwarding is enabled"
+        "prose": "not met — sshd DisableForwarding must be turned on"
        }
       ],
       "class": "security"
@@ -13557,7 +13557,7 @@
        {
         "id": "cis_rhel_9-5.1.12_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd GSSAPIAuthentication is disabled"
+        "prose": "not met — sshd GSSAPIAuthentication must be turned off"
        }
       ],
       "class": "security"
@@ -13595,7 +13595,7 @@
        {
         "id": "cis_rhel_9-5.1.13_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd HostbasedAuthentication is disabled"
+        "prose": "not met — sshd HostbasedAuthentication must be turned off"
        }
       ],
       "class": "security"
@@ -13633,7 +13633,7 @@
        {
         "id": "cis_rhel_9-5.1.14_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd IgnoreRhosts is enabled"
+        "prose": "not met — sshd IgnoreRhosts must be turned on"
        }
       ],
       "class": "security"
@@ -13671,7 +13671,7 @@
        {
         "id": "cis_rhel_9-5.1.15_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd LoginGraceTime is configured"
+        "prose": "not met — sshd LoginGraceTime must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13709,7 +13709,7 @@
        {
         "id": "cis_rhel_9-5.1.16_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd LogLevel is configured"
+        "prose": "not met — sshd LogLevel must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13747,7 +13747,7 @@
        {
         "id": "cis_rhel_9-5.1.17_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd MaxAuthTries is configured"
+        "prose": "not met — sshd MaxAuthTries must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13785,7 +13785,7 @@
        {
         "id": "cis_rhel_9-5.1.18_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd MaxStartups is configured"
+        "prose": "not met — sshd MaxStartups must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13823,7 +13823,7 @@
        {
         "id": "cis_rhel_9-5.1.19_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd MaxSessions is configured"
+        "prose": "not met — sshd MaxSessions must be explicitly configured"
        }
       ],
       "class": "security"
@@ -13861,7 +13861,7 @@
        {
         "id": "cis_rhel_9-5.1.20_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd PermitEmptyPasswords is disabled"
+        "prose": "not met — sshd PermitEmptyPasswords must be turned off"
        }
       ],
       "class": "security"
@@ -13899,7 +13899,7 @@
        {
         "id": "cis_rhel_9-5.1.21_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd PermitRootLogin is disabled"
+        "prose": "not met — sshd PermitRootLogin must be turned off"
        }
       ],
       "class": "security"
@@ -13937,7 +13937,7 @@
        {
         "id": "cis_rhel_9-5.1.22_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd PermitUserEnvironment is disabled"
+        "prose": "not met — sshd PermitUserEnvironment must be turned off"
        }
       ],
       "class": "security"
@@ -13975,7 +13975,7 @@
        {
         "id": "cis_rhel_9-5.1.23_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sshd UsePAM is enabled"
+        "prose": "not met — sshd UsePAM must be turned on"
        }
       ],
       "class": "security"
@@ -14332,7 +14332,7 @@
        {
         "id": "cis_rhel_9-5.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo is installed"
+        "prose": "not met — sudo must be present"
        }
       ],
       "class": "security"
@@ -14370,7 +14370,7 @@
        {
         "id": "cis_rhel_9-5.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access on sudoers configuration files is configured"
+        "prose": "not met — access on sudoers configuration files must be explicitly configured"
        }
       ],
       "class": "security"
@@ -14408,7 +14408,7 @@
        {
         "id": "cis_rhel_9-5.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access on the /etc/sudoers.d directory is configured"
+        "prose": "not met — access on the /etc/sudoers.d directory must be explicitly configured"
        }
       ],
       "class": "security"
@@ -14446,7 +14446,7 @@
        {
         "id": "cis_rhel_9-5.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo commands use pty"
+        "prose": "not met — sudo commands must allocate a pseudo-terminal"
        }
       ],
       "class": "security"
@@ -14484,7 +14484,7 @@
        {
         "id": "cis_rhel_9-5.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo log file exists"
+        "prose": "not met — a log file for sudo must exist"
        }
       ],
       "class": "security"
@@ -14522,7 +14522,7 @@
        {
         "id": "cis_rhel_9-5.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure users must provide password for escalation"
+        "prose": "not met — checked condition — users must provide password for escalation"
        }
       ],
       "class": "security"
@@ -14560,7 +14560,7 @@
        {
         "id": "cis_rhel_9-5.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure re-authentication for privilege escalation is not disabled globally"
+        "prose": "not met — re-authentication for privilege escalation must stay in effect globally"
        }
       ],
       "class": "security"
@@ -14598,7 +14598,7 @@
        {
         "id": "cis_rhel_9-5.2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo pwfeedback is configured"
+        "prose": "not met — sudo pwfeedback must be explicitly configured"
        }
       ],
       "class": "security"
@@ -14636,7 +14636,7 @@
        {
         "id": "cis_rhel_9-5.2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo visiblepw is configured"
+        "prose": "not met — sudo visiblepw must be explicitly configured"
        }
       ],
       "class": "security"
@@ -14674,7 +14674,7 @@
        {
         "id": "cis_rhel_9-5.2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo timestamp_timeout is configured"
+        "prose": "not met — sudo timestamp_timeout must be explicitly configured"
        }
       ],
       "class": "security"
@@ -14712,7 +14712,7 @@
        {
         "id": "cis_rhel_9-5.2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure sudo timestamp_type is configured"
+        "prose": "not met — sudo timestamp_type must be explicitly configured"
        }
       ],
       "class": "security"
@@ -14750,7 +14750,7 @@
        {
         "id": "cis_rhel_9-5.2.12_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure access to the su command is restricted"
+        "prose": "not met — access to the su command must be restricted"
        }
       ],
       "class": "security"
@@ -14812,7 +14812,7 @@
        {
         "id": "cis_rhel_9-7.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure accounts in /etc/passwd use shadowed passwords"
+        "prose": "not met — password hashes must be stored outside /etc/passwd"
        }
       ],
       "class": "security"
@@ -14850,7 +14850,7 @@
        {
         "id": "cis_rhel_9-7.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure /etc/shadow password fields are not empty"
+        "prose": "not met — password fields in /etc/shadow must be populated"
        }
       ],
       "class": "security"
@@ -14888,7 +14888,7 @@
        {
         "id": "cis_rhel_9-7.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure all groups in /etc/passwd exist in /etc/group"
+        "prose": "not met — every group named in /etc/passwd must also exist in /etc/group"
        }
       ],
       "class": "security"
@@ -14926,7 +14926,7 @@
        {
         "id": "cis_rhel_9-7.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure no duplicate UIDs exist"
+        "prose": "not met — the local account database must not contain duplicate UIDs"
        }
       ],
       "class": "security"
@@ -14964,7 +14964,7 @@
        {
         "id": "cis_rhel_9-7.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure no duplicate GIDs exist"
+        "prose": "not met — the local account database must not contain duplicate GIDs"
        }
       ],
       "class": "security"
@@ -15002,7 +15002,7 @@
        {
         "id": "cis_rhel_9-7.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure no duplicate user names exist"
+        "prose": "not met — the local account database must not contain duplicate user names"
        }
       ],
       "class": "security"
@@ -15040,7 +15040,7 @@
        {
         "id": "cis_rhel_9-7.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure no duplicate group names exist"
+        "prose": "not met — the local account database must not contain duplicate group names"
        }
       ],
       "class": "security"
@@ -15078,7 +15078,7 @@
        {
         "id": "cis_rhel_9-7.2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure local interactive user home directories are configured"
+        "prose": "not met — local interactive user home directories must be explicitly configured"
        }
       ],
       "class": "security"
@@ -15116,7 +15116,7 @@
        {
         "id": "cis_rhel_9-7.2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "not met — Ensure local interactive user dot files access is configured"
+        "prose": "not met — local interactive user dot files access must be explicitly configured"
        }
       ],
       "class": "security"

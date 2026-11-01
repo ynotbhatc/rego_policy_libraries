@@ -19,7 +19,7 @@ package cis_mcp_server.data_protection_privacy
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 6: Data Protection and Privacy.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,9 +30,9 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"6.1": {"section": 6, "level": "L1", "assessment": "Manual", "title": "Ensure model context is minimized and MIME handling is honored"},
-	"6.2": {"section": 6, "level": "L1", "assessment": "Automated", "title": "Ensure tokens and keys are protected in clients and servers"},
-	"6.3": {"section": 6, "level": "L1", "assessment": "Manual", "title": "Ensure outbound proxy and DNS controls are applied for resource fetchers"},
+	"6.1": {"section": 6, "level": "L1", "assessment": "Manual", "title": "model context must be minimized and MIME handling is honored"},
+	"6.2": {"section": 6, "level": "L1", "assessment": "Automated", "title": "tokens and keys must be protected in clients and servers"},
+	"6.3": {"section": 6, "level": "L1", "assessment": "Manual", "title": "outbound proxy and DNS controls must be applied for resource fetchers"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

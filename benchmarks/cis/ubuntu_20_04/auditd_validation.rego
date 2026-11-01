@@ -64,14 +64,14 @@ permission_violations contains msg if {
 	msg := "CIS 4.1.4.1: evidence missing — auditd.log_permissions not collected"
 }
 
-# CIS 4.1.1.1: Ensure audit is installed
+# CIS 4.1.1.1: audit must be present
 service_violations contains msg if {
 	not input.packages["auditd"]
 	not input.packages["audit"]
 	msg := "CIS 4.1.1.1: auditd package not installed"
 }
 
-# CIS 4.1.1.2: Ensure auditd service is enabled and running
+# CIS 4.1.1.2: auditd service must be turned on and running
 service_violations contains msg if {
 	service := input.services["auditd.service"]
 	service.status != "enabled"
@@ -84,25 +84,25 @@ service_violations contains msg if {
 	msg := "CIS 4.1.1.2: auditd service not running"
 }
 
-# CIS 4.1.1.3: Ensure auditing for processes prior to auditd
+# CIS 4.1.1.3: checked condition — auditing for processes prior to auditd
 config_violations contains msg if {
 	not contains(input.bootloader.grub_config, "audit=1")
 	msg := "CIS 4.1.1.3: audit=1 not set in bootloader configuration"
 }
 
-# CIS 4.1.1.4: Ensure audit_backlog_limit is sufficient
+# CIS 4.1.1.4: audit_backlog_limit must be sufficient
 config_violations contains msg if {
 	not contains(input.bootloader.grub_config, "audit_backlog_limit")
 	msg := "CIS 4.1.1.4: audit_backlog_limit not configured (should be 8192 or higher)"
 }
 
-# CIS 4.1.2.1: Ensure audit log storage size is configured
+# CIS 4.1.2.1: audit log storage size must be explicitly configured
 config_violations contains msg if {
 	not contains(input.auditd.config, "max_log_file")
 	msg := "CIS 4.1.2.1: max_log_file not configured in auditd.conf"
 }
 
-# CIS 4.1.2.2: Ensure audit logs are not automatically deleted
+# CIS 4.1.2.2: audit logs must be not automatically deleted
 config_violations contains msg if {
 	contains(input.auditd.config, "max_log_file_action = delete")
 	msg := "CIS 4.1.2.2: max_log_file_action set to delete (logs will be deleted)"
@@ -113,7 +113,7 @@ config_violations contains msg if {
 	msg := "CIS 4.1.2.2: max_log_file_action set to ignore (no action on full logs)"
 }
 
-# CIS 4.1.2.3: Ensure system is disabled when audit logs are full
+# CIS 4.1.2.3: system must be turned off when audit logs are full
 config_violations contains msg if {
 	not contains(input.auditd.config, "space_left_action = email")
 	not contains(input.auditd.config, "space_left_action = exec")

@@ -211,17 +211,17 @@ sha1_in_certs_off if not conf_last(input.crypto_policy.current_pol_raw, "sha1_in
 sha1_in_certs_off if num(conf_last(input.crypto_policy.current_pol_raw, "sha1_in_certs")) == 0
 
 # 1.2.1.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure GPG keys are configured
+# GPG keys must be explicitly configured
 default p_1_2_1_1 := false
 
 p_1_2_1_1 if {
 	input.attest.gpg_keys_reviewed == true
 }
 
-violations contains "1.2.1.1: manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (Ensure GPG keys are configured)" if not p_1_2_1_1
+violations contains "1.2.1.1: manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (GPG keys must be explicitly configured)" if not p_1_2_1_1
 
 # 1.2.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure gpgcheck is configured
+# gpgcheck must be explicitly configured
 default e_1_2_1_2 := false
 
 e_1_2_1_2 if {
@@ -239,13 +239,13 @@ p_1_2_1_2 if {
 
 violations contains "1.2.1.2: evidence missing — initial_setup.global_gpgcheck_enabled/repos_without_gpgcheck/enabled_repos not collected" if not e_1_2_1_2
 
-violations contains "1.2.1.2: not met — Ensure gpgcheck is configured" if {
+violations contains "1.2.1.2: not met — gpgcheck must be explicitly configured" if {
 	e_1_2_1_2
 	not p_1_2_1_2
 }
 
 # 1.2.1.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure repo_gpgcheck is configured
+# repo_gpgcheck must be explicitly configured
 default e_1_2_1_3 := false
 
 e_1_2_1_3 if {
@@ -261,23 +261,23 @@ p_1_2_1_3 if {
 
 violations contains "1.2.1.3: evidence missing — initial_setup.dnf_conf_raw not collected" if not e_1_2_1_3
 
-violations contains "1.2.1.3: not met — Ensure repo_gpgcheck is configured" if {
+violations contains "1.2.1.3: not met — repo_gpgcheck must be explicitly configured" if {
 	e_1_2_1_3
 	not p_1_2_1_3
 }
 
 # 1.2.1.4 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure package manager repositories are configured
+# package manager repositories must be explicitly configured
 default p_1_2_1_4 := false
 
 p_1_2_1_4 if {
 	input.attest.repositories_reviewed == true
 }
 
-violations contains "1.2.1.4: manual review not attested — set attest.repositories_reviewed to true once reviewed (Ensure package manager repositories are configured)" if not p_1_2_1_4
+violations contains "1.2.1.4: manual review not attested — set attest.repositories_reviewed to true once reviewed (package manager repositories must be explicitly configured)" if not p_1_2_1_4
 
 # 1.2.1.5 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure weak dependencies are configured
+# weak dependencies must be explicitly configured
 default e_1_2_1_5 := false
 
 e_1_2_1_5 if {
@@ -293,23 +293,23 @@ p_1_2_1_5 if {
 
 violations contains "1.2.1.5: evidence missing — initial_setup.dnf_conf_raw not collected" if not e_1_2_1_5
 
-violations contains "1.2.1.5: not met — Ensure weak dependencies are configured" if {
+violations contains "1.2.1.5: not met — weak dependencies must be explicitly configured" if {
 	e_1_2_1_5
 	not p_1_2_1_5
 }
 
 # 1.2.2.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure updates, patches, and additional security software are installed
+# updates, patches, and additional security software must be present
 default p_1_2_2_1 := false
 
 p_1_2_2_1 if {
 	input.attest.updates_installed == true
 }
 
-violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (Ensure updates, patches, and additional security software are installed)" if not p_1_2_2_1
+violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)" if not p_1_2_2_1
 
 # 1.6.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy is not legacy
+# system wide crypto policy must be not legacy
 default e_1_6_1 := false
 
 e_1_6_1 if {
@@ -324,13 +324,13 @@ p_1_6_1 if {
 
 violations contains "1.6.1: evidence missing — initial_setup.crypto_policy not collected" if not e_1_6_1
 
-violations contains "1.6.1: not met — Ensure system wide crypto policy is not legacy" if {
+violations contains "1.6.1: not met — system wide crypto policy must be not legacy" if {
 	e_1_6_1
 	not p_1_6_1
 }
 
 # 1.6.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables sha1 hash and signature support
+# checked condition — system wide crypto policy disables sha1 hash and signature support
 default e_1_6_2 := false
 
 e_1_6_2 if {
@@ -346,13 +346,13 @@ p_1_6_2 if {
 
 violations contains "1.6.2: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_2
 
-violations contains "1.6.2: not met — Ensure system wide crypto policy disables sha1 hash and signature support" if {
+violations contains "1.6.2: not met — checked condition — system wide crypto policy disables sha1 hash and signature support" if {
 	e_1_6_2
 	not p_1_6_2
 }
 
 # 1.6.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy macs are configured
+# system wide crypto policy macs must be explicitly configured
 default e_1_6_3 := false
 
 e_1_6_3 if {
@@ -367,13 +367,13 @@ p_1_6_3 if {
 
 violations contains "1.6.3: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_3
 
-violations contains "1.6.3: not met — Ensure system wide crypto policy macs are configured" if {
+violations contains "1.6.3: not met — system wide crypto policy macs must be explicitly configured" if {
 	e_1_6_3
 	not p_1_6_3
 }
 
 # 1.6.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables cbc for ssh
+# checked condition — system wide crypto policy disables cbc for ssh
 default e_1_6_4 := false
 
 e_1_6_4 if {
@@ -389,33 +389,33 @@ p_1_6_4 if {
 
 violations contains "1.6.4: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_4
 
-violations contains "1.6.4: not met — Ensure system wide crypto policy disables cbc for ssh" if {
+violations contains "1.6.4: not met — checked condition — system wide crypto policy disables cbc for ssh" if {
 	e_1_6_4
 	not p_1_6_4
 }
 
 # 1.6.5 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables chacha20-poly1305 for ssh
+# checked condition — system wide crypto policy disables chacha20-poly1305 for ssh
 default p_1_6_5 := false
 
 p_1_6_5 if {
 	input.attest.crypto_policy_chacha20_ssh_reviewed == true
 }
 
-violations contains "1.6.5: manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables chacha20-poly1305 for ssh)" if not p_1_6_5
+violations contains "1.6.5: manual review not attested — set attest.crypto_policy_chacha20_ssh_reviewed to true once reviewed (checked condition — system wide crypto policy disables chacha20-poly1305 for ssh)" if not p_1_6_5
 
 # 1.6.6 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables EtM for ssh
+# checked condition — system wide crypto policy disables EtM for ssh
 default p_1_6_6 := false
 
 p_1_6_6 if {
 	input.attest.crypto_policy_etm_ssh_reviewed == true
 }
 
-violations contains "1.6.6: manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (Ensure system wide crypto policy disables EtM for ssh)" if not p_1_6_6
+violations contains "1.6.6: manual review not attested — set attest.crypto_policy_etm_ssh_reviewed to true once reviewed (checked condition — system wide crypto policy disables EtM for ssh)" if not p_1_6_6
 
 # 1.6.7 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure system wide crypto policy enables post-quantum algorithms
+# checked condition — system wide crypto policy enables post-quantum algorithms
 default e_1_6_7 := false
 
 e_1_6_7 if {
@@ -440,13 +440,13 @@ p_1_6_7 if {
 
 violations contains "1.6.7: evidence missing — crypto_policy.pq_module_available/initial_setup.crypto_policy not collected" if not e_1_6_7
 
-violations contains "1.6.7: not met — Ensure system wide crypto policy enables post-quantum algorithms" if {
+violations contains "1.6.7: not met — checked condition — system wide crypto policy enables post-quantum algorithms" if {
 	e_1_6_7
 	not p_1_6_7
 }
 
 # 1.7.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/motd is configured
+# /etc/motd must be explicitly configured
 default e_1_7_1 := false
 
 e_1_7_1 if {
@@ -471,13 +471,13 @@ p_1_7_1 if {
 
 violations contains "1.7.1: evidence missing — initial_setup.motd_exists/motd_contains_sensitive_info not collected" if not e_1_7_1
 
-violations contains "1.7.1: not met — Ensure /etc/motd is configured" if {
+violations contains "1.7.1: not met — /etc/motd must be explicitly configured" if {
 	e_1_7_1
 	not p_1_7_1
 }
 
 # 1.7.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/issue is configured
+# /etc/issue must be explicitly configured
 default e_1_7_2 := false
 
 e_1_7_2 if {
@@ -498,13 +498,13 @@ p_1_7_2 if {
 
 violations contains "1.7.2: evidence missing — initial_setup.issue_exists/issue_contains_sensitive_info not collected" if not e_1_7_2
 
-violations contains "1.7.2: not met — Ensure /etc/issue is configured" if {
+violations contains "1.7.2: not met — /etc/issue must be explicitly configured" if {
 	e_1_7_2
 	not p_1_7_2
 }
 
 # 1.7.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/issue.net is configured
+# /etc/issue.net must be explicitly configured
 default e_1_7_3 := false
 
 e_1_7_3 if {
@@ -525,13 +525,13 @@ p_1_7_3 if {
 
 violations contains "1.7.3: evidence missing — initial_setup.issue_net_exists/issue_net_contains_sensitive_info not collected" if not e_1_7_3
 
-violations contains "1.7.3: not met — Ensure /etc/issue.net is configured" if {
+violations contains "1.7.3: not met — /etc/issue.net must be explicitly configured" if {
 	e_1_7_3
 	not p_1_7_3
 }
 
 # 1.7.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/motd is configured
+# access to /etc/motd must be explicitly configured
 default e_1_7_4 := false
 
 e_1_7_4 if {
@@ -560,13 +560,13 @@ p_1_7_4 if {
 
 violations contains "1.7.4: evidence missing — initial_setup.motd_mode/initial_setup.motd_owner/initial_setup.motd_group/initial_setup.motd_exists not collected" if not e_1_7_4
 
-violations contains "1.7.4: not met — Ensure access to /etc/motd is configured" if {
+violations contains "1.7.4: not met — access to /etc/motd must be explicitly configured" if {
 	e_1_7_4
 	not p_1_7_4
 }
 
 # 1.7.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/issue is configured
+# access to /etc/issue must be explicitly configured
 default e_1_7_5 := false
 
 e_1_7_5 if {
@@ -591,13 +591,13 @@ p_1_7_5 if {
 
 violations contains "1.7.5: evidence missing — initial_setup.issue_mode/initial_setup.issue_owner/initial_setup.issue_group/initial_setup.issue_exists not collected" if not e_1_7_5
 
-violations contains "1.7.5: not met — Ensure access to /etc/issue is configured" if {
+violations contains "1.7.5: not met — access to /etc/issue must be explicitly configured" if {
 	e_1_7_5
 	not p_1_7_5
 }
 
 # 1.7.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/issue.net is configured
+# access to /etc/issue.net must be explicitly configured
 default e_1_7_6 := false
 
 e_1_7_6 if {
@@ -622,13 +622,13 @@ p_1_7_6 if {
 
 violations contains "1.7.6: evidence missing — initial_setup.issue_net_mode/initial_setup.issue_net_owner/initial_setup.issue_net_group/initial_setup.issue_net_exists not collected" if not e_1_7_6
 
-violations contains "1.7.6: not met — Ensure access to /etc/issue.net is configured" if {
+violations contains "1.7.6: not met — access to /etc/issue.net must be explicitly configured" if {
 	e_1_7_6
 	not p_1_7_6
 }
 
 # 1.8.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM login banner is configured
+# GDM login banner must be explicitly configured
 default e_1_8_1 := false
 
 e_1_8_1 if {
@@ -655,13 +655,13 @@ p_1_8_1 if {
 
 violations contains "1.8.1: evidence missing — initial_setup.gdm_installed/gdm_banner_configured/gdm_banner_override_allowed not collected" if not e_1_8_1
 
-violations contains "1.8.1: not met — Ensure GDM login banner is configured" if {
+violations contains "1.8.1: not met — GDM login banner must be explicitly configured" if {
 	e_1_8_1
 	not p_1_8_1
 }
 
 # 1.8.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM disable-user-list is configured
+# GDM disable-user-list must be explicitly configured
 default e_1_8_2 := false
 
 e_1_8_2 if {
@@ -688,13 +688,13 @@ p_1_8_2 if {
 
 violations contains "1.8.2: evidence missing — initial_setup.gdm_installed/gdm_disable_user_list/gdm_disable_user_list_override_allowed not collected" if not e_1_8_2
 
-violations contains "1.8.2: not met — Ensure GDM disable-user-list is configured" if {
+violations contains "1.8.2: not met — GDM disable-user-list must be explicitly configured" if {
 	e_1_8_2
 	not p_1_8_2
 }
 
 # 1.8.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM screen lock is configured
+# GDM screen lock must be explicitly configured
 default e_1_8_3 := false
 
 e_1_8_3 if {
@@ -725,13 +725,13 @@ p_1_8_3 if {
 
 violations contains "1.8.3: evidence missing — initial_setup.gdm_installed/gdm_idle_delay/gdm_lock_delay/gdm_lock_override_allowed not collected" if not e_1_8_3
 
-violations contains "1.8.3: not met — Ensure GDM screen lock is configured" if {
+violations contains "1.8.3: not met — GDM screen lock must be explicitly configured" if {
 	e_1_8_3
 	not p_1_8_3
 }
 
 # 1.8.4 (Automated; Level 1 - Server, Level 2 - Workstation)
-# Ensure GDM automount is configured
+# GDM automount must be explicitly configured
 default e_1_8_4 := false
 
 e_1_8_4 if {
@@ -760,13 +760,13 @@ p_1_8_4 if {
 
 violations contains "1.8.4: evidence missing — initial_setup.gdm_installed/gdm_automount_disabled/gdm_automount_open_disabled/gdm_automount_override_allowed not collected" if not e_1_8_4
 
-violations contains "1.8.4: not met — Ensure GDM automount is configured" if {
+violations contains "1.8.4: not met — GDM automount must be explicitly configured" if {
 	e_1_8_4
 	not p_1_8_4
 }
 
 # 1.8.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure GDM autorun-never is configured
+# GDM autorun-never must be explicitly configured
 default e_1_8_5 := false
 
 e_1_8_5 if {
@@ -793,13 +793,13 @@ p_1_8_5 if {
 
 violations contains "1.8.5: evidence missing — initial_setup.gdm_installed/gdm_autorun_never_enabled/gdm_autorun_override_allowed not collected" if not e_1_8_5
 
-violations contains "1.8.5: not met — Ensure GDM autorun-never is configured" if {
+violations contains "1.8.5: not met — GDM autorun-never must be explicitly configured" if {
 	e_1_8_5
 	not p_1_8_5
 }
 
 # 1.8.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure XDMCP is not enabled
+# XDMCP must stay off
 default e_1_8_6 := false
 
 e_1_8_6 if {
@@ -824,13 +824,13 @@ p_1_8_6 if {
 
 violations contains "1.8.6: evidence missing — initial_setup.gdm_installed/gdm_xdmcp_enabled not collected" if not e_1_8_6
 
-violations contains "1.8.6: not met — Ensure XDMCP is not enabled" if {
+violations contains "1.8.6: not met — XDMCP must stay off" if {
 	e_1_8_6
 	not p_1_8_6
 }
 
 # 1.8.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure Wayland is configured
+# Wayland must be explicitly configured
 default e_1_8_7 := false
 
 e_1_8_7 if {
@@ -855,7 +855,7 @@ p_1_8_7 if {
 
 violations contains "1.8.7: evidence missing — initial_setup.gdm_installed/gdm_wayland_disabled not collected" if not e_1_8_7
 
-violations contains "1.8.7: not met — Ensure Wayland is configured" if {
+violations contains "1.8.7: not met — Wayland must be explicitly configured" if {
 	e_1_8_7
 	not p_1_8_7
 }

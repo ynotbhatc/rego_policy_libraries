@@ -21,7 +21,7 @@ package cis_nginx_1_20
 
 # CIS NGINX Benchmark v3.1.0
 # The package name (cis_nginx_1_20) is kept so existing callers keep working; it no longer refers to NGINX 1.20.
-# 44 recommendations, every one in the benchmark; ids, titles, levels, profiles and assessment status read from the
+# 44 recommendations, every one in the benchmark; ids, levels, profiles and assessment status read from the
 # CIS workbook. Every recommendation in v3.1.0 is assessed "Manual" by CIS.
 # - 39 of them are decided from collected configuration facts, because the audit is a directive or
 #   value comparison (the cis.oracle_26ai precedent): 1.1.1, 1.2.2, 2.2.1, 2.2.2, 2.2.3, 2.3.1, 2.3.2, 2.3.3, 2.4.1, 2.4.2, 2.4.3, 2.4.4, 2.5.1, 2.5.2, 2.5.3, 2.5.4, 3.1, 3.2, 3.3, 3.4, 4.1.1, 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.6, 4.1.7, 4.1.8, 4.1.9, 4.1.10, 4.1.11, 4.1.12, 5.1.2, 5.2.1, 5.2.2, 5.2.3, 5.3.1, 5.3.2, 5.3.3.
@@ -286,7 +286,7 @@ _v_installation contains "1.1.1: evidence missing — nginx.version not collecte
 	not e_1_1_1
 }
 
-_v_installation contains "1.1.1: Ensure NGINX is installed" if {
+_v_installation contains "1.1.1: NGINX must be present" if {
 	_applies("1.1.1")
 	e_1_1_1
 	not r_1_1_1
@@ -299,7 +299,7 @@ r_1_2_1 if {
 	input.nginx.attest.package_repositories_reviewed == true
 }
 
-_v_installation contains "1.2.1: Ensure package manager repositories are properly configured (manual review not attested)" if {
+_v_installation contains "1.2.1: package manager repositories must match the approved configuration (manual review not attested)" if {
 	_applies("1.2.1")
 	not r_1_2_1
 }
@@ -322,7 +322,7 @@ _v_installation contains "1.2.2: evidence missing — nginx.package.update_avail
 	not e_1_2_2
 }
 
-_v_installation contains "1.2.2: Ensure the latest software package is installed" if {
+_v_installation contains "1.2.2: the latest software package must be present" if {
 	_applies("1.2.2")
 	e_1_2_2
 	not r_1_2_2
@@ -335,7 +335,7 @@ r_2_1_1 if {
 	input.nginx.attest.dynamic_modules_reviewed == true
 }
 
-_v_modules contains "2.1.1: Ensure only required dynamic modules are loaded (manual review not attested)" if {
+_v_modules contains "2.1.1: only required dynamic modules must be loaded (manual review not attested)" if {
 	_applies("2.1.1")
 	not r_2_1_1
 }
@@ -364,7 +364,7 @@ _v_configuration contains "2.2.1: evidence missing — nginx.user.{name,uid,grou
 	not e_2_2_1
 }
 
-_v_configuration contains "2.2.1: Ensure that NGINX is run using a non-privileged, dedicated service account" if {
+_v_configuration contains "2.2.1: NGINX must be run using a non-privileged, dedicated service account" if {
 	_applies("2.2.1")
 	e_2_2_1
 	not r_2_2_1
@@ -388,7 +388,7 @@ _v_configuration contains "2.2.2: evidence missing — nginx.user.password_locke
 	not e_2_2_2
 }
 
-_v_configuration contains "2.2.2: Ensure the NGINX service account is locked" if {
+_v_configuration contains "2.2.2: the NGINX service account must be locked" if {
 	_applies("2.2.2")
 	e_2_2_2
 	not r_2_2_2
@@ -412,7 +412,7 @@ _v_configuration contains "2.2.3: evidence missing — nginx.user.shell not coll
 	not e_2_2_3
 }
 
-_v_configuration contains "2.2.3: Ensure the NGINX service account has an invalid shell" if {
+_v_configuration contains "2.2.3: the NGINX service account must use a non-login shell" if {
 	_applies("2.2.3")
 	e_2_2_3
 	not r_2_2_3
@@ -436,7 +436,7 @@ _v_configuration contains "2.3.1: evidence missing — nginx.files.not_root_owne
 	not e_2_3_1
 }
 
-_v_configuration contains "2.3.1: Ensure NGINX directories and files are owned by root" if {
+_v_configuration contains "2.3.1: NGINX directories and files must be owned by root" if {
 	_applies("2.3.1")
 	e_2_3_1
 	not r_2_3_1
@@ -464,7 +464,7 @@ _v_configuration contains "2.3.2: evidence missing — nginx.files.{dir_modes,fi
 	not e_2_3_2
 }
 
-_v_configuration contains "2.3.2: Ensure access to NGINX directories and files is restricted" if {
+_v_configuration contains "2.3.2: access to NGINX directories and files must be restricted" if {
 	_applies("2.3.2")
 	e_2_3_2
 	not r_2_3_2
@@ -493,7 +493,7 @@ _v_configuration contains "2.3.3: evidence missing — nginx.pid_file.{owner,gro
 	not e_2_3_3
 }
 
-_v_configuration contains "2.3.3: Ensure the NGINX process ID (PID) file is secured" if {
+_v_configuration contains "2.3.3: the NGINX process ID (PID) file must be secured" if {
 	_applies("2.3.3")
 	e_2_3_3
 	not r_2_3_3
@@ -518,7 +518,7 @@ _v_configuration contains "2.4.1: evidence missing — nginx.listen_ports not co
 	not e_2_4_1
 }
 
-_v_configuration contains "2.4.1: Ensure NGINX only listens for network connections on authorized ports" if {
+_v_configuration contains "2.4.1: checked condition — NGINX only listens for network connections on authorized ports" if {
 	_applies("2.4.1")
 	e_2_4_1
 	not r_2_4_1
@@ -547,7 +547,7 @@ _v_configuration contains "2.4.2: evidence missing — nginx.default_server not 
 	not e_2_4_2
 }
 
-_v_configuration contains "2.4.2: Ensure requests for unknown host names are rejected" if {
+_v_configuration contains "2.4.2: requests for unknown host names must be rejected" if {
 	_applies("2.4.2")
 	e_2_4_2
 	not r_2_4_2
@@ -571,7 +571,7 @@ _v_configuration contains "2.4.3: evidence missing — nginx.directives not coll
 	not e_2_4_3
 }
 
-_v_configuration contains "2.4.3: Ensure keepalive_timeout is 10 seconds or less, but not 0" if {
+_v_configuration contains "2.4.3: keepalive_timeout must be 10 seconds or less, but not 0" if {
 	_applies("2.4.3")
 	e_2_4_3
 	not r_2_4_3
@@ -595,7 +595,7 @@ _v_configuration contains "2.4.4: evidence missing — nginx.directives not coll
 	not e_2_4_4
 }
 
-_v_configuration contains "2.4.4: Ensure send_timeout is set to 10 seconds or less, but not 0" if {
+_v_configuration contains "2.4.4: required value of send_timeout is 10 seconds or less, but not 0" if {
 	_applies("2.4.4")
 	e_2_4_4
 	not r_2_4_4
@@ -621,7 +621,7 @@ _v_configuration contains "2.5.1: evidence missing — nginx.directives not coll
 	not e_2_5_1
 }
 
-_v_configuration contains "2.5.1: Ensure server_tokens directive is set to `off`" if {
+_v_configuration contains "2.5.1: required value of server_tokens directive is `off`" if {
 	_applies("2.5.1")
 	e_2_5_1
 	not r_2_5_1
@@ -645,7 +645,7 @@ _v_configuration contains "2.5.2: evidence missing — nginx.probe.error_page_me
 	not e_2_5_2
 }
 
-_v_configuration contains "2.5.2: Ensure default error and index.html pages do not reference NGINX" if {
+_v_configuration contains "2.5.2: checked condition — default error and index.html pages do not reference NGINX" if {
 	_applies("2.5.2")
 	e_2_5_2
 	not r_2_5_2
@@ -669,7 +669,7 @@ _v_configuration contains "2.5.3: evidence missing — nginx.hidden_files_denied
 	not e_2_5_3
 }
 
-_v_configuration contains "2.5.3: Ensure hidden file serving is disabled" if {
+_v_configuration contains "2.5.3: hidden file serving must be turned off" if {
 	_applies("2.5.3")
 	e_2_5_3
 	not r_2_5_3
@@ -695,7 +695,7 @@ _v_configuration contains "2.5.4: evidence missing — nginx.directives not coll
 	not e_2_5_4
 }
 
-_v_configuration contains "2.5.4: Ensure the NGINX reverse proxy does not enable information disclosure" if {
+_v_configuration contains "2.5.4: checked condition — the NGINX reverse proxy does not enable information disclosure" if {
 	_applies("2.5.4")
 	e_2_5_4
 	not r_2_5_4
@@ -726,7 +726,7 @@ _v_logging contains "3.1: evidence missing — nginx.directives not collected" i
 	not e_3_1
 }
 
-_v_logging contains "3.1: Ensure detailed logging is enabled" if {
+_v_logging contains "3.1: detailed logging must be turned on" if {
 	_applies("3.1")
 	e_3_1
 	not r_3_1
@@ -755,7 +755,7 @@ _v_logging contains "3.2: evidence missing — nginx.directives / nginx.access_l
 	not e_3_2
 }
 
-_v_logging contains "3.2: Ensure access logging is enabled" if {
+_v_logging contains "3.2: access logging must be turned on" if {
 	_applies("3.2")
 	e_3_2
 	not r_3_2
@@ -781,7 +781,7 @@ _v_logging contains "3.3: evidence missing — nginx.directives not collected" i
 	not e_3_3
 }
 
-_v_logging contains "3.3: Ensure error logging is enabled and set to the info logging level" if {
+_v_logging contains "3.3: error logging must be turned on and set to the info logging level" if {
 	_applies("3.3")
 	e_3_3
 	not r_3_3
@@ -807,7 +807,7 @@ _v_logging contains "3.4: evidence missing — nginx.directives not collected" i
 	not e_3_4
 }
 
-_v_logging contains "3.4: Ensure proxies pass source IP information" if {
+_v_logging contains "3.4: checked condition — proxies pass source IP information" if {
 	_applies("3.4")
 	e_3_4
 	not r_3_4
@@ -832,7 +832,7 @@ _v_ssl_tls contains "4.1.1: evidence missing — nginx.servers not collected" if
 	not e_4_1_1
 }
 
-_v_ssl_tls contains "4.1.1: Ensure HTTP is redirected to HTTPS" if {
+_v_ssl_tls contains "4.1.1: HTTP must be redirected to HTTPS" if {
 	_applies("4.1.1")
 	e_4_1_1
 	not r_4_1_1
@@ -857,7 +857,7 @@ _v_ssl_tls contains "4.1.2: evidence missing — nginx.certificates not collecte
 	not e_4_1_2
 }
 
-_v_ssl_tls contains "4.1.2: Ensure a trusted certificate and trust chain is installed" if {
+_v_ssl_tls contains "4.1.2: a trusted certificate and trust chain must be present" if {
 	_applies("4.1.2")
 	e_4_1_2
 	not r_4_1_2
@@ -882,7 +882,7 @@ _v_ssl_tls contains "4.1.3: evidence missing — nginx.private_keys not collecte
 	not e_4_1_3
 }
 
-_v_ssl_tls contains "4.1.3: Ensure private key permissions are restricted" if {
+_v_ssl_tls contains "4.1.3: private key permissions must be restricted" if {
 	_applies("4.1.3")
 	e_4_1_3
 	not r_4_1_3
@@ -907,7 +907,7 @@ _v_ssl_tls contains "4.1.4: evidence missing — nginx.directives not collected"
 	not e_4_1_4
 }
 
-_v_ssl_tls contains "4.1.4: Ensure only modern TLS protocols are used" if {
+_v_ssl_tls contains "4.1.4: only modern TLS protocols must be used" if {
 	_applies("4.1.4")
 	e_4_1_4
 	not r_4_1_4
@@ -931,7 +931,7 @@ _v_ssl_tls contains "4.1.5: evidence missing — nginx.directives not collected"
 	not e_4_1_5
 }
 
-_v_ssl_tls contains "4.1.5: Disable weak ciphers" if {
+_v_ssl_tls contains "4.1.5: weak ciphers must be turned off" if {
 	_applies("4.1.5")
 	e_4_1_5
 	not r_4_1_5
@@ -959,7 +959,7 @@ _v_ssl_tls contains "4.1.6: evidence missing — nginx.directives not collected"
 	not e_4_1_6
 }
 
-_v_ssl_tls contains "4.1.6: Ensure awareness of TLS 1.3 new Diffie-Hellman parameters" if {
+_v_ssl_tls contains "4.1.6: checked condition — awareness of TLS 1.3 new Diffie-Hellman parameters" if {
 	_applies("4.1.6")
 	e_4_1_6
 	not r_4_1_6
@@ -986,7 +986,7 @@ _v_ssl_tls contains "4.1.7: evidence missing — nginx.directives not collected"
 	not e_4_1_7
 }
 
-_v_ssl_tls contains "4.1.7: Ensure Online Certificate Status Protocol (OCSP) stapling is enabled" if {
+_v_ssl_tls contains "4.1.7: Online Certificate Status Protocol (OCSP) stapling must be turned on" if {
 	_applies("4.1.7")
 	e_4_1_7
 	not r_4_1_7
@@ -1011,7 +1011,7 @@ _v_ssl_tls contains "4.1.8: evidence missing — nginx.directives not collected"
 	not e_4_1_8
 }
 
-_v_ssl_tls contains "4.1.8: Ensure HTTP Strict Transport Security (HSTS) is enabled" if {
+_v_ssl_tls contains "4.1.8: HTTP Strict Transport Security (HSTS) must be turned on" if {
 	_applies("4.1.8")
 	e_4_1_8
 	not r_4_1_8
@@ -1036,7 +1036,7 @@ _v_ssl_tls contains "4.1.9: evidence missing — nginx.directives not collected"
 	not e_4_1_9
 }
 
-_v_ssl_tls contains "4.1.9: Ensure upstream server traffic is authenticated with a client certificate" if {
+_v_ssl_tls contains "4.1.9: upstream server traffic must be authenticated with a client certificate" if {
 	_applies("4.1.9")
 	e_4_1_9
 	not r_4_1_9
@@ -1062,7 +1062,7 @@ _v_ssl_tls contains "4.1.10: evidence missing — nginx.directives not collected
 	not e_4_1_10
 }
 
-_v_ssl_tls contains "4.1.10: Ensure the upstream traffic server certificate is trusted" if {
+_v_ssl_tls contains "4.1.10: the upstream traffic server certificate must be trusted" if {
 	_applies("4.1.10")
 	e_4_1_10
 	not r_4_1_10
@@ -1086,7 +1086,7 @@ _v_ssl_tls contains "4.1.11: evidence missing — nginx.directives not collected
 	not e_4_1_11
 }
 
-_v_ssl_tls contains "4.1.11: Ensure Secure Session Resumption is Enabled" if {
+_v_ssl_tls contains "4.1.11: Secure Session Resumption must be turned on" if {
 	_applies("4.1.11")
 	e_4_1_11
 	not r_4_1_11
@@ -1114,7 +1114,7 @@ _v_ssl_tls contains "4.1.12: evidence missing — nginx.directives not collected
 	not e_4_1_12
 }
 
-_v_ssl_tls contains "4.1.12: Ensure HTTP/3.0 is used" if {
+_v_ssl_tls contains "4.1.12: HTTP/3.0 must be used" if {
 	_applies("4.1.12")
 	e_4_1_12
 	not r_4_1_12
@@ -1127,7 +1127,7 @@ r_5_1_1 if {
 	input.nginx.attest.ip_allow_deny_reviewed == true
 }
 
-_v_access_control contains "5.1.1: Ensure allow and deny filters limit access to specific IP addresses (manual review not attested)" if {
+_v_access_control contains "5.1.1: checked condition — allow and deny filters limit access to specific IP addresses (manual review not attested)" if {
 	_applies("5.1.1")
 	not r_5_1_1
 }
@@ -1154,7 +1154,7 @@ _v_access_control contains "5.1.2: evidence missing — nginx.directives not col
 	not e_5_1_2
 }
 
-_v_access_control contains "5.1.2: Ensure only approved HTTP methods are allowed" if {
+_v_access_control contains "5.1.2: only approved HTTP methods must be allowed" if {
 	_applies("5.1.2")
 	e_5_1_2
 	not r_5_1_2
@@ -1179,7 +1179,7 @@ _v_performance contains "5.2.1: evidence missing — nginx.directives not collec
 	not e_5_2_1
 }
 
-_v_performance contains "5.2.1: Ensure timeout values for reading the client header and body are set correctly" if {
+_v_performance contains "5.2.1: timeout values for reading the client header and body must match the approved value" if {
 	_applies("5.2.1")
 	e_5_2_1
 	not r_5_2_1
@@ -1203,7 +1203,7 @@ _v_performance contains "5.2.2: evidence missing — nginx.directives not collec
 	not e_5_2_2
 }
 
-_v_performance contains "5.2.2: Ensure the maximum request body size is set correctly" if {
+_v_performance contains "5.2.2: the maximum request body size must match the approved value" if {
 	_applies("5.2.2")
 	e_5_2_2
 	not r_5_2_2
@@ -1231,7 +1231,7 @@ _v_performance contains "5.2.3: evidence missing — nginx.directives not collec
 	not e_5_2_3
 }
 
-_v_performance contains "5.2.3: Ensure the maximum buffer size for URIs is defined" if {
+_v_performance contains "5.2.3: the maximum buffer size for URIs must be defined" if {
 	_applies("5.2.3")
 	e_5_2_3
 	not r_5_2_3
@@ -1244,7 +1244,7 @@ r_5_2_4 if {
 	input.nginx.attest.connection_limits_reviewed == true
 }
 
-_v_performance contains "5.2.4: Ensure the number of connections per IP address is limited (manual review not attested)" if {
+_v_performance contains "5.2.4: the number of connections per IP address must be limited to named principals (manual review not attested)" if {
 	_applies("5.2.4")
 	not r_5_2_4
 }
@@ -1256,7 +1256,7 @@ r_5_2_5 if {
 	input.nginx.attest.rate_limits_reviewed == true
 }
 
-_v_performance contains "5.2.5: Ensure rate limits by IP address are set (manual review not attested)" if {
+_v_performance contains "5.2.5: rate limits by IP address must be set (manual review not attested)" if {
 	_applies("5.2.5")
 	not r_5_2_5
 }
@@ -1282,7 +1282,7 @@ _v_access_control contains "5.3.1: evidence missing — nginx.directives not col
 	not e_5_3_1
 }
 
-_v_access_control contains "5.3.1: Ensure X-Content-Type-Options header is configured and enabled" if {
+_v_access_control contains "5.3.1: X-Content-Type-Options header must be explicitly configured and enabled" if {
 	_applies("5.3.1")
 	e_5_3_1
 	not r_5_3_1
@@ -1307,7 +1307,7 @@ _v_access_control contains "5.3.2: evidence missing — nginx.directives not col
 	not e_5_3_2
 }
 
-_v_access_control contains "5.3.2: Ensure that Content Security Policy (CSP) is enabled and configured properly" if {
+_v_access_control contains "5.3.2: Content Security Policy (CSP) must be turned on and configured properly" if {
 	_applies("5.3.2")
 	e_5_3_2
 	not r_5_3_2
@@ -1334,7 +1334,7 @@ _v_access_control contains "5.3.3: evidence missing — nginx.directives not col
 	not e_5_3_3
 }
 
-_v_access_control contains "5.3.3: Ensure the Referrer Policy is enabled and configured properly" if {
+_v_access_control contains "5.3.3: the Referrer Policy must be turned on and configured properly" if {
 	_applies("5.3.3")
 	e_5_3_3
 	not r_5_3_3
@@ -1343,7 +1343,7 @@ _v_access_control contains "5.3.3: Ensure the Referrer Policy is enabled and con
 # Every recommendation in the benchmark: title, level, assessment status, CIS profiles, roles it applies to.
 recommendations := {
 	"1.1.1": {
-		"title": "Ensure NGINX is installed",
+		"title": "NGINX must be present",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1360,7 +1360,7 @@ recommendations := {
 		"section": "installation"
 	},
 	"1.2.1": {
-		"title": "Ensure package manager repositories are properly configured",
+		"title": "package manager repositories must match the approved configuration",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1377,7 +1377,7 @@ recommendations := {
 		"section": "installation"
 	},
 	"1.2.2": {
-		"title": "Ensure the latest software package is installed",
+		"title": "the latest software package must be present",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1394,7 +1394,7 @@ recommendations := {
 		"section": "installation"
 	},
 	"2.1.1": {
-		"title": "Ensure only required dynamic modules are loaded",
+		"title": "only required dynamic modules must be loaded",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1411,7 +1411,7 @@ recommendations := {
 		"section": "modules"
 	},
 	"2.2.1": {
-		"title": "Ensure that NGINX is run using a non-privileged, dedicated service account",
+		"title": "NGINX must be run using a non-privileged, dedicated service account",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1428,7 +1428,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.2.2": {
-		"title": "Ensure the NGINX service account is locked",
+		"title": "the NGINX service account must be locked",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1445,7 +1445,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.2.3": {
-		"title": "Ensure the NGINX service account has an invalid shell",
+		"title": "the NGINX service account must use a non-login shell",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1462,7 +1462,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.3.1": {
-		"title": "Ensure NGINX directories and files are owned by root",
+		"title": "NGINX directories and files must be owned by root",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1479,7 +1479,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.3.2": {
-		"title": "Ensure access to NGINX directories and files is restricted",
+		"title": "access to NGINX directories and files must be restricted",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1496,7 +1496,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.3.3": {
-		"title": "Ensure the NGINX process ID (PID) file is secured",
+		"title": "the NGINX process ID (PID) file must be secured",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1513,7 +1513,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.4.1": {
-		"title": "Ensure NGINX only listens for network connections on authorized ports",
+		"title": "checked condition — NGINX only listens for network connections on authorized ports",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1530,7 +1530,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.4.2": {
-		"title": "Ensure requests for unknown host names are rejected",
+		"title": "requests for unknown host names must be rejected",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1547,7 +1547,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.4.3": {
-		"title": "Ensure keepalive_timeout is 10 seconds or less, but not 0",
+		"title": "keepalive_timeout must be 10 seconds or less, but not 0",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1564,7 +1564,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.4.4": {
-		"title": "Ensure send_timeout is set to 10 seconds or less, but not 0",
+		"title": "required value of send_timeout is 10 seconds or less, but not 0",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1581,7 +1581,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.5.1": {
-		"title": "Ensure server_tokens directive is set to `off`",
+		"title": "required value of server_tokens directive is `off`",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1598,7 +1598,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.5.2": {
-		"title": "Ensure default error and index.html pages do not reference NGINX",
+		"title": "checked condition — default error and index.html pages do not reference NGINX",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1615,7 +1615,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.5.3": {
-		"title": "Ensure hidden file serving is disabled",
+		"title": "hidden file serving must be turned off",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1632,7 +1632,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"2.5.4": {
-		"title": "Ensure the NGINX reverse proxy does not enable information disclosure",
+		"title": "checked condition — the NGINX reverse proxy does not enable information disclosure",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1647,7 +1647,7 @@ recommendations := {
 		"section": "configuration"
 	},
 	"3.1": {
-		"title": "Ensure detailed logging is enabled",
+		"title": "detailed logging must be turned on",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1664,7 +1664,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"3.2": {
-		"title": "Ensure access logging is enabled",
+		"title": "access logging must be turned on",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1681,7 +1681,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"3.3": {
-		"title": "Ensure error logging is enabled and set to the info logging level",
+		"title": "error logging must be turned on and set to the info logging level",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1698,7 +1698,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"3.4": {
-		"title": "Ensure proxies pass source IP information",
+		"title": "checked condition — proxies pass source IP information",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1713,7 +1713,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"4.1.1": {
-		"title": "Ensure HTTP is redirected to HTTPS",
+		"title": "HTTP must be redirected to HTTPS",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1730,7 +1730,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.2": {
-		"title": "Ensure a trusted certificate and trust chain is installed",
+		"title": "a trusted certificate and trust chain must be present",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1747,7 +1747,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.3": {
-		"title": "Ensure private key permissions are restricted",
+		"title": "private key permissions must be restricted",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1764,7 +1764,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.4": {
-		"title": "Ensure only modern TLS protocols are used",
+		"title": "only modern TLS protocols must be used",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1781,7 +1781,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.5": {
-		"title": "Disable weak ciphers",
+		"title": "weak ciphers must be turned off",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1798,7 +1798,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.6": {
-		"title": "Ensure awareness of TLS 1.3 new Diffie-Hellman parameters",
+		"title": "checked condition — awareness of TLS 1.3 new Diffie-Hellman parameters",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1815,7 +1815,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.7": {
-		"title": "Ensure Online Certificate Status Protocol (OCSP) stapling is enabled",
+		"title": "Online Certificate Status Protocol (OCSP) stapling must be turned on",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1832,7 +1832,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.8": {
-		"title": "Ensure HTTP Strict Transport Security (HSTS) is enabled",
+		"title": "HTTP Strict Transport Security (HSTS) must be turned on",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1849,7 +1849,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.9": {
-		"title": "Ensure upstream server traffic is authenticated with a client certificate",
+		"title": "upstream server traffic must be authenticated with a client certificate",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1864,7 +1864,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.10": {
-		"title": "Ensure the upstream traffic server certificate is trusted",
+		"title": "the upstream traffic server certificate must be trusted",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -1879,7 +1879,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.11": {
-		"title": "Ensure Secure Session Resumption is Enabled",
+		"title": "Secure Session Resumption must be turned on",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1896,7 +1896,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"4.1.12": {
-		"title": "Ensure HTTP/3.0 is used",
+		"title": "HTTP/3.0 must be used",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -1909,7 +1909,7 @@ recommendations := {
 		"section": "ssl_tls"
 	},
 	"5.1.1": {
-		"title": "Ensure allow and deny filters limit access to specific IP addresses",
+		"title": "checked condition — allow and deny filters limit access to specific IP addresses",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -1926,7 +1926,7 @@ recommendations := {
 		"section": "access_control"
 	},
 	"5.1.2": {
-		"title": "Ensure only approved HTTP methods are allowed",
+		"title": "only approved HTTP methods must be allowed",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1943,7 +1943,7 @@ recommendations := {
 		"section": "access_control"
 	},
 	"5.2.1": {
-		"title": "Ensure timeout values for reading the client header and body are set correctly",
+		"title": "timeout values for reading the client header and body must match the approved value",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1960,7 +1960,7 @@ recommendations := {
 		"section": "performance"
 	},
 	"5.2.2": {
-		"title": "Ensure the maximum request body size is set correctly",
+		"title": "the maximum request body size must match the approved value",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1977,7 +1977,7 @@ recommendations := {
 		"section": "performance"
 	},
 	"5.2.3": {
-		"title": "Ensure the maximum buffer size for URIs is defined",
+		"title": "the maximum buffer size for URIs must be defined",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1994,7 +1994,7 @@ recommendations := {
 		"section": "performance"
 	},
 	"5.2.4": {
-		"title": "Ensure the number of connections per IP address is limited",
+		"title": "the number of connections per IP address must be limited to named principals",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -2011,7 +2011,7 @@ recommendations := {
 		"section": "performance"
 	},
 	"5.2.5": {
-		"title": "Ensure rate limits by IP address are set",
+		"title": "rate limits by IP address must be set",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -2028,7 +2028,7 @@ recommendations := {
 		"section": "performance"
 	},
 	"5.3.1": {
-		"title": "Ensure X-Content-Type-Options header is configured and enabled",
+		"title": "X-Content-Type-Options header must be explicitly configured and enabled",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -2041,7 +2041,7 @@ recommendations := {
 		"section": "access_control"
 	},
 	"5.3.2": {
-		"title": "Ensure that Content Security Policy (CSP) is enabled and configured properly",
+		"title": "Content Security Policy (CSP) must be turned on and configured properly",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -2054,7 +2054,7 @@ recommendations := {
 		"section": "access_control"
 	},
 	"5.3.3": {
-		"title": "Ensure the Referrer Policy is enabled and configured properly",
+		"title": "the Referrer Policy must be turned on and configured properly",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [

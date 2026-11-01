@@ -21,6 +21,6 @@ test_logging_filecreatemode_0644_flagged if {
 }
 
 test_logging_filecreatemode_missing_flagged if {
-	"6.1.2.3: not met — Ensure rsyslog log file creation mode is configured" in rs({"rsyslog": {"installed": true, "logging_rules_count": 3}})
+	"6.1.2.3: not met — rsyslog log file creation mode must be explicitly configured" in rs({"rsyslog": {"installed": true, "logging_rules_count": 3}})
 	"6.1.2.3: evidence missing — rsyslog.installed/file_create_mode not collected" in rs({"rsyslog": {"logging_rules_count": 3}})
 }

@@ -1,11 +1,15 @@
 # CIS module generators
 
-Generators that build a CIS benchmark module from the benchmark's own text. The
-PDFs are CIS-licensed and are not committed; each script reads a `pdftotext -layout`
-extraction supplied on the command line, verifies the recommendation ids and
-titles it finds against its hand-authored logic table (a recommendation without
-logic, or logic without a recommendation, aborts), and emits the module and its
-tests.
+Generators that build a CIS benchmark module from a workbook or text extraction the
+operator supplies locally. Those files are CIS-licensed and are not committed.
+Each script checks recommendation ids (and, where noted, a keyword of the
+workbook title) against its hand-authored logic table, then emits the module
+and its tests.
+
+Emitted wording is original. `neutralize.py` rewrites a workbook title into a
+short description of the check before anything is written. The benchmark
+sentence is not copied into the module, the tests, or the committed keyword
+digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 
 - `gen_oracle_db_23ai.py <23ai.txt>` — CIS Oracle Database 23ai Benchmark v1.0.0,
   all 87 recommendations. Logic is written from each recommendation's audit SQL:
@@ -17,7 +21,7 @@ tests.
 
 - `gen_oracle_db_26ai.py <workbook.xlsx>` — CIS Oracle Database 26ai Benchmark v1.0.0,
   all 94 recommendations (81 Automated, 13 Manual), from the CIS workbook (needs
-  openpyxl). Ids, titles, Automated/Manual status and the three Level 1 profiles
+  openpyxl). Ids, Automated/Manual status and the three Level 1 profiles
   (RDBMS; RDBMS on Linux / Windows host) are read from the workbook; the logic table
   carries over the 23ai logic plus the seven new recommendations. Automated checks
   fail closed with an "evidence missing" message per recommendation, and the

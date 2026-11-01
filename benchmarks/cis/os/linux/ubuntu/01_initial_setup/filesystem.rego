@@ -27,7 +27,7 @@ as_set(v) := {x | some x in v} if is_array(v)
 
 as_set(v) := {x | some x in regex.split(`[\s,]+`, v); x != ""} if is_string(v)
 
-# CIS 1.1.1.1 - Ensure mounting of cramfs filesystems is disabled
+# CIS 1.1.1.1 - mounting of cramfs filesystems must be turned off
 default cramfs_disabled := false
 
 cramfs_disabled if {
@@ -36,7 +36,7 @@ cramfs_disabled if {
     "cramfs" in as_set(input.blacklisted_modules)
 }
 
-# CIS 1.1.1.2 - Ensure mounting of freevxfs filesystems is disabled
+# CIS 1.1.1.2 - mounting of freevxfs filesystems must be turned off
 default freevxfs_disabled := false
 
 freevxfs_disabled if {
@@ -45,7 +45,7 @@ freevxfs_disabled if {
     "freevxfs" in as_set(input.blacklisted_modules)
 }
 
-# CIS 1.1.1.3 - Ensure mounting of jffs2 filesystems is disabled
+# CIS 1.1.1.3 - mounting of jffs2 filesystems must be turned off
 default jffs2_disabled := false
 
 jffs2_disabled if {
@@ -54,7 +54,7 @@ jffs2_disabled if {
     "jffs2" in as_set(input.blacklisted_modules)
 }
 
-# CIS 1.1.1.4 - Ensure mounting of hfs filesystems is disabled
+# CIS 1.1.1.4 - mounting of hfs filesystems must be turned off
 default hfs_disabled := false
 
 hfs_disabled if {
@@ -63,7 +63,7 @@ hfs_disabled if {
     "hfs" in as_set(input.blacklisted_modules)
 }
 
-# CIS 1.1.1.5 - Ensure mounting of hfsplus filesystems is disabled
+# CIS 1.1.1.5 - mounting of hfsplus filesystems must be turned off
 default hfsplus_disabled := false
 
 hfsplus_disabled if {
@@ -72,7 +72,7 @@ hfsplus_disabled if {
     "hfsplus" in as_set(input.blacklisted_modules)
 }
 
-# CIS 1.1.1.6 - Ensure mounting of udf filesystems is disabled
+# CIS 1.1.1.6 - mounting of udf filesystems must be turned off
 default udf_disabled := false
 
 udf_disabled if {
@@ -81,7 +81,7 @@ udf_disabled if {
     "udf" in as_set(input.blacklisted_modules)
 }
 
-# CIS 1.1.2 - Ensure /tmp is configured
+# CIS 1.1.2 - /tmp must be explicitly configured
 default tmp_partition_configured := false
 
 tmp_partition_configured if {
@@ -89,28 +89,28 @@ tmp_partition_configured if {
     input.mounts["/tmp"].filesystem_type in ["tmpfs", "ext4", "xfs"]
 }
 
-# CIS 1.1.3 - Ensure nodev option set on /tmp partition
+# CIS 1.1.3 - /tmp must be mounted with the nodev option
 default tmp_nodev := false
 
 tmp_nodev if {
     "nodev" in as_set(input.mounts["/tmp"].options)
 }
 
-# CIS 1.1.4 - Ensure nosuid option set on /tmp partition
+# CIS 1.1.4 - /tmp must be mounted with the nosuid option
 default tmp_nosuid := false
 
 tmp_nosuid if {
     "nosuid" in as_set(input.mounts["/tmp"].options)
 }
 
-# CIS 1.1.5 - Ensure noexec option set on /tmp partition
+# CIS 1.1.5 - /tmp must be mounted with the noexec option
 default tmp_noexec := false
 
 tmp_noexec if {
     "noexec" in as_set(input.mounts["/tmp"].options)
 }
 
-# CIS 1.1.6 - Ensure separate partition exists for /var
+# CIS 1.1.6 - /var must be its own filesystem
 default var_partition_configured := false
 
 var_partition_configured if {
@@ -118,7 +118,7 @@ var_partition_configured if {
     input.mounts["/var"].device != input.mounts["/"].device
 }
 
-# CIS 1.1.7 - Ensure separate partition exists for /var/tmp
+# CIS 1.1.7 - /var/tmp must be its own filesystem
 default var_tmp_partition_configured := false
 
 var_tmp_partition_configured if {
@@ -126,28 +126,28 @@ var_tmp_partition_configured if {
     input.mounts["/var/tmp"].device != input.mounts["/var"].device
 }
 
-# CIS 1.1.8 - Ensure nodev option set on /var/tmp partition
+# CIS 1.1.8 - /var/tmp must be mounted with the nodev option
 default var_tmp_nodev := false
 
 var_tmp_nodev if {
     "nodev" in as_set(input.mounts["/var/tmp"].options)
 }
 
-# CIS 1.1.9 - Ensure nosuid option set on /var/tmp partition
+# CIS 1.1.9 - /var/tmp must be mounted with the nosuid option
 default var_tmp_nosuid := false
 
 var_tmp_nosuid if {
     "nosuid" in as_set(input.mounts["/var/tmp"].options)
 }
 
-# CIS 1.1.10 - Ensure noexec option set on /var/tmp partition
+# CIS 1.1.10 - /var/tmp must be mounted with the noexec option
 default var_tmp_noexec := false
 
 var_tmp_noexec if {
     "noexec" in as_set(input.mounts["/var/tmp"].options)
 }
 
-# CIS 1.1.11 - Ensure separate partition exists for /var/log
+# CIS 1.1.11 - /var/log must be its own filesystem
 default var_log_partition_configured := false
 
 var_log_partition_configured if {
@@ -155,7 +155,7 @@ var_log_partition_configured if {
     input.mounts["/var/log"].device != input.mounts["/var"].device
 }
 
-# CIS 1.1.12 - Ensure separate partition exists for /var/log/audit
+# CIS 1.1.12 - /var/log/audit must be its own filesystem
 default var_log_audit_partition_configured := false
 
 var_log_audit_partition_configured if {
@@ -163,7 +163,7 @@ var_log_audit_partition_configured if {
     input.mounts["/var/log/audit"].device != input.mounts["/var/log"].device
 }
 
-# CIS 1.1.13 - Ensure separate partition exists for /home
+# CIS 1.1.13 - /home must be its own filesystem
 default home_partition_configured := false
 
 home_partition_configured if {
@@ -171,35 +171,35 @@ home_partition_configured if {
     input.mounts["/home"].device != input.mounts["/"].device
 }
 
-# CIS 1.1.14 - Ensure nodev option set on /home partition
+# CIS 1.1.14 - /home must be mounted with the nodev option
 default home_nodev := false
 
 home_nodev if {
     "nodev" in as_set(input.mounts["/home"].options)
 }
 
-# CIS 1.1.15 - Ensure nodev option set on /dev/shm partition
+# CIS 1.1.15 - /dev/shm must be mounted with the nodev option
 default dev_shm_nodev := false
 
 dev_shm_nodev if {
     "nodev" in as_set(input.mounts["/dev/shm"].options)
 }
 
-# CIS 1.1.16 - Ensure nosuid option set on /dev/shm partition
+# CIS 1.1.16 - /dev/shm must be mounted with the nosuid option
 default dev_shm_nosuid := false
 
 dev_shm_nosuid if {
     "nosuid" in as_set(input.mounts["/dev/shm"].options)
 }
 
-# CIS 1.1.17 - Ensure noexec option set on /dev/shm partition
+# CIS 1.1.17 - /dev/shm must be mounted with the noexec option
 default dev_shm_noexec := false
 
 dev_shm_noexec if {
     "noexec" in as_set(input.mounts["/dev/shm"].options)
 }
 
-# CIS 1.1.18 - Ensure nodev option set on removable media partitions
+# CIS 1.1.18 - removable media partitions must be mounted with the nodev option
 default removable_media_nodev := false
 
 removable_media_nodev if {
@@ -208,7 +208,7 @@ removable_media_nodev if {
     }
 }
 
-# CIS 1.1.19 - Ensure nosuid option set on removable media partitions
+# CIS 1.1.19 - removable media partitions must be mounted with the nosuid option
 default removable_media_nosuid := false
 
 removable_media_nosuid if {
@@ -217,7 +217,7 @@ removable_media_nosuid if {
     }
 }
 
-# CIS 1.1.20 - Ensure noexec option set on removable media partitions
+# CIS 1.1.20 - removable media partitions must be mounted with the noexec option
 default removable_media_noexec := false
 
 removable_media_noexec if {
@@ -226,7 +226,7 @@ removable_media_noexec if {
     }
 }
 
-# CIS 1.1.21 - Ensure sticky bit is set on all world-writable directories
+# CIS 1.1.21 - sticky bit must be set on all world-writable directories
 default sticky_bit_set := false
 
 sticky_bit_set if {

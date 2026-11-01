@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 1.6.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/motd is configured
+# /etc/motd must be explicitly configured
 default e_1_6_1 := false
 
 e_1_6_1 if {
@@ -217,13 +217,13 @@ p_1_6_1 if {
 
 violations contains "1.6.1: evidence missing — initial_setup.motd_exists/motd_content not collected" if not e_1_6_1
 
-violations contains "1.6.1: not met — Ensure /etc/motd is configured" if {
+violations contains "1.6.1: not met — /etc/motd must be explicitly configured" if {
 	e_1_6_1
 	not p_1_6_1
 }
 
 # 1.6.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/issue is configured
+# /etc/issue must be explicitly configured
 default e_1_6_2 := false
 
 e_1_6_2 if {
@@ -244,13 +244,13 @@ p_1_6_2 if {
 
 violations contains "1.6.2: evidence missing — initial_setup.issue_exists/issue_content not collected" if not e_1_6_2
 
-violations contains "1.6.2: not met — Ensure /etc/issue is configured" if {
+violations contains "1.6.2: not met — /etc/issue must be explicitly configured" if {
 	e_1_6_2
 	not p_1_6_2
 }
 
 # 1.6.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/issue.net is configured
+# /etc/issue.net must be explicitly configured
 default e_1_6_3 := false
 
 e_1_6_3 if {
@@ -271,13 +271,13 @@ p_1_6_3 if {
 
 violations contains "1.6.3: evidence missing — initial_setup.issue_net_exists/issue_net_content not collected" if not e_1_6_3
 
-violations contains "1.6.3: not met — Ensure /etc/issue.net is configured" if {
+violations contains "1.6.3: not met — /etc/issue.net must be explicitly configured" if {
 	e_1_6_3
 	not p_1_6_3
 }
 
 # 1.6.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_motd is configured
+# pam_motd must be explicitly configured
 default e_1_6_4 := false
 
 e_1_6_4 if {
@@ -292,13 +292,13 @@ p_1_6_4 if {
 
 violations contains "1.6.4: evidence missing — initial_setup.pam_motd_files not collected" if not e_1_6_4
 
-violations contains "1.6.4: not met — Ensure pam_motd is configured" if {
+violations contains "1.6.4: not met — pam_motd must be explicitly configured" if {
 	e_1_6_4
 	not p_1_6_4
 }
 
 # 1.6.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd warning Banner is configured
+# sshd warning Banner must be explicitly configured
 default e_1_6_5 := false
 
 e_1_6_5 if {
@@ -323,13 +323,13 @@ p_1_6_5 if {
 
 violations contains "1.6.5: evidence missing — ssh.sshd_config_raw/ssh.banner_content not collected" if not e_1_6_5
 
-violations contains "1.6.5: not met — Ensure sshd warning Banner is configured" if {
+violations contains "1.6.5: not met — sshd warning Banner must be explicitly configured" if {
 	e_1_6_5
 	not p_1_6_5
 }
 
 # 1.6.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/motd is configured
+# access to /etc/motd must be explicitly configured
 default e_1_6_6 := false
 
 e_1_6_6 if {
@@ -358,13 +358,13 @@ p_1_6_6 if {
 
 violations contains "1.6.6: evidence missing — initial_setup.motd_mode/initial_setup.motd_owner/initial_setup.motd_group/initial_setup.motd_exists not collected" if not e_1_6_6
 
-violations contains "1.6.6: not met — Ensure access to /etc/motd is configured" if {
+violations contains "1.6.6: not met — access to /etc/motd must be explicitly configured" if {
 	e_1_6_6
 	not p_1_6_6
 }
 
 # 1.6.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/issue is configured
+# access to /etc/issue must be explicitly configured
 default e_1_6_7 := false
 
 e_1_6_7 if {
@@ -389,13 +389,13 @@ p_1_6_7 if {
 
 violations contains "1.6.7: evidence missing — initial_setup.issue_mode/initial_setup.issue_owner/initial_setup.issue_group/initial_setup.issue_exists not collected" if not e_1_6_7
 
-violations contains "1.6.7: not met — Ensure access to /etc/issue is configured" if {
+violations contains "1.6.7: not met — access to /etc/issue must be explicitly configured" if {
 	e_1_6_7
 	not p_1_6_7
 }
 
 # 1.6.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/issue.net is configured
+# access to /etc/issue.net must be explicitly configured
 default e_1_6_8 := false
 
 e_1_6_8 if {
@@ -420,13 +420,13 @@ p_1_6_8 if {
 
 violations contains "1.6.8: evidence missing — initial_setup.issue_net_mode/initial_setup.issue_net_owner/initial_setup.issue_net_group/initial_setup.issue_net_exists not collected" if not e_1_6_8
 
-violations contains "1.6.8: not met — Ensure access to /etc/issue.net is configured" if {
+violations contains "1.6.8: not met — access to /etc/issue.net must be explicitly configured" if {
 	e_1_6_8
 	not p_1_6_8
 }
 
 # 1.6.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to pam_motd file is configured
+# access to pam_motd file must be explicitly configured
 default e_1_6_9 := false
 
 e_1_6_9 if {
@@ -441,13 +441,13 @@ p_1_6_9 if {
 
 violations contains "1.6.9: evidence missing — initial_setup.pam_motd_file_permissions not collected" if not e_1_6_9
 
-violations contains "1.6.9: not met — Ensure access to pam_motd file is configured" if {
+violations contains "1.6.9: not met — access to pam_motd file must be explicitly configured" if {
 	e_1_6_9
 	not p_1_6_9
 }
 
 # 1.6.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to sshd warning banner is configured
+# access to sshd warning banner must be explicitly configured
 default e_1_6_10 := false
 
 e_1_6_10 if {
@@ -478,13 +478,13 @@ p_1_6_10 if {
 
 violations contains "1.6.10: evidence missing — ssh.banner_permissions not collected" if not e_1_6_10
 
-violations contains "1.6.10: not met — Ensure access to sshd warning banner is configured" if {
+violations contains "1.6.10: not met — access to sshd warning banner must be explicitly configured" if {
 	e_1_6_10
 	not p_1_6_10
 }
 
 # 1.6.11 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure update-notifier-motd.service is not in use
+# update-notifier-motd.service must not be running
 default e_1_6_11 := false
 
 e_1_6_11 if {
@@ -512,13 +512,13 @@ p_1_6_11 if {
 
 violations contains "1.6.11: evidence missing — packages[update-notifier-common] / services[update-notifier-motd.service] not collected" if not e_1_6_11
 
-violations contains "1.6.11: not met — Ensure update-notifier-motd.service is not in use" if {
+violations contains "1.6.11: not met — update-notifier-motd.service must not be running" if {
 	e_1_6_11
 	not p_1_6_11
 }
 
 # 1.6.12 (Automated; Level 1 - Server)
-# Ensure update-notifier-motd.timer is not in use
+# update-notifier-motd.timer must not be running
 default e_1_6_12 := false
 
 e_1_6_12 if {
@@ -546,7 +546,7 @@ p_1_6_12 if {
 
 violations contains "1.6.12: evidence missing — packages[update-notifier-common] / services[update-notifier-motd.timer] not collected" if not e_1_6_12
 
-violations contains "1.6.12: not met — Ensure update-notifier-motd.timer is not in use" if {
+violations contains "1.6.12: not met — update-notifier-motd.timer must not be running" if {
 	e_1_6_12
 	not p_1_6_12
 }

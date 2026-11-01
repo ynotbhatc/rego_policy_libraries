@@ -29,8 +29,8 @@ SECTION := {
 
 # One row per recommendation; lib.rego evaluates each row by its `kind`.
 controls := {
-	"5.1": {"msg": "CIS 5.1: Ensure 'Print Spooler (Spooler)' is set to 'Disabled' (DC only)", "profiles": ["L1_DC"], "kind": "reg", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Spooler", "name": "Start", "op": "eq", "value": 4},
-	"5.2": {"msg": "CIS 5.2: Ensure 'Print Spooler (Spooler)' is set to 'Disabled' (MS only)", "profiles": ["L2_MS"], "kind": "reg", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Spooler", "name": "Start", "op": "eq", "value": 4},
+	"5.1": {"msg": "CIS 5.1: required value of 'Print Spooler (Spooler)' is 'Disabled' (DC only)", "profiles": ["L1_DC"], "kind": "reg", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Spooler", "name": "Start", "op": "eq", "value": 4},
+	"5.2": {"msg": "CIS 5.2: required value of 'Print Spooler (Spooler)' is 'Disabled' (MS only)", "profiles": ["L2_MS"], "kind": "reg", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\Spooler", "name": "Start", "op": "eq", "value": 4},
 }
 
 compliance_report := lib.section_reports.system_services

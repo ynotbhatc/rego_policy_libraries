@@ -23,6 +23,8 @@ on:
       - '.github/workflows/publish-ghcr.yml'   # required check must run on publish-workflow PRs or they stay BLOCKED
       - 'scripts/check_cis_ids.py'
       - 'scripts/check_cis_coverage.py'
+      - 'scripts/check_cis_verbatim.py'
+      - 'scripts/cis_verbatim_allowlist.txt'
       - '**/data/cis_*_index.json'
       - 'docs/ENGINE_COMPATIBILITY.md'
   pull_request:
@@ -47,6 +49,8 @@ on:
       - '.github/workflows/publish-ghcr.yml'   # required check must run on publish-workflow PRs or they stay BLOCKED
       - 'scripts/check_cis_ids.py'
       - 'scripts/check_cis_coverage.py'
+      - 'scripts/check_cis_verbatim.py'
+      - 'scripts/cis_verbatim_allowlist.txt'
       - '**/data/cis_*_index.json'
       - 'docs/ENGINE_COMPATIBILITY.md'
 
@@ -208,6 +212,9 @@ jobs:
             echo "Either tests were deleted, or discovery regressed."
             exit 1
           fi
+
+      - name: Reject verbatim CIS recommendation titles
+        run: python3 scripts/check_cis_verbatim.py benchmarks/cis
 
       - name: Verify CIS control ids against the benchmark enumeration
         run: |

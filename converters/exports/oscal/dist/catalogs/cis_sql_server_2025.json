@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_sql_server_2025-1.1",
-      "title": "Ensure Latest SQL Server Cumulative and Security Updates are Installed (manual review not attested)",
+      "title": "Latest SQL Server Cumulative and Security Updates must be present (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -93,19 +93,19 @@
        {
         "id": "cis_sql_server_2025-1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Latest SQL Server Cumulative and Security Updates are Installed (manual review not attested)"
+        "prose": "Latest SQL Server Cumulative and Security Updates must be present (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Latest SQL Server Cumulative and Security Updates are Installed"
+        "prose": "Latest SQL Server Cumulative and Security Updates must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-1.2",
-      "title": "Ensure Single-Function Member Servers are Used (manual review not attested)",
+      "title": "Single-Function Member Servers must be Used (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -131,12 +131,12 @@
        {
         "id": "cis_sql_server_2025-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure Single-Function Member Servers are Used (manual review not attested)"
+        "prose": "Single-Function Member Servers must be Used (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Single-Function Member Servers are Used"
+        "prose": "Single-Function Member Servers must be Used"
        }
       ],
       "class": "security"
@@ -174,12 +174,12 @@
        {
         "id": "cis_sql_server_2025-2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Ad Hoc Distributed Queries' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Ad Hoc Distributed Queries' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Ad Hoc Distributed Queries' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Ad Hoc Distributed Queries' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -217,12 +217,12 @@
        {
         "id": "cis_sql_server_2025-2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CLR Enabled' Server Configuration Option is set to '0'"
+        "prose": "required value of 'CLR Enabled' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CLR Enabled' Server Configuration Option is set to '0'"
+        "prose": "required value of 'CLR Enabled' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -260,12 +260,12 @@
        {
         "id": "cis_sql_server_2025-2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Cross DB Ownership Chaining' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Cross DB Ownership Chaining' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Cross DB Ownership Chaining' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Cross DB Ownership Chaining' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -303,12 +303,12 @@
        {
         "id": "cis_sql_server_2025-2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Database Mail XPs' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Database Mail XPs' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Database Mail XPs' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Database Mail XPs' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -346,12 +346,12 @@
        {
         "id": "cis_sql_server_2025-2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Ole Automation Procedures' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Ole Automation Procedures' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Ole Automation Procedures' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Ole Automation Procedures' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -389,12 +389,12 @@
        {
         "id": "cis_sql_server_2025-2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Remote Access' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Remote Access' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Remote Access' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Remote Access' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -432,12 +432,12 @@
        {
         "id": "cis_sql_server_2025-2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Remote Admin Connections' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Remote Admin Connections' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Remote Admin Connections' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Remote Admin Connections' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -475,12 +475,12 @@
        {
         "id": "cis_sql_server_2025-2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Scan For Startup Procs' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Scan For Startup Procs' Server Configuration Option is '0'"
        },
        {
         "id": "cis_sql_server_2025-2.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Scan For Startup Procs' Server Configuration Option is set to '0'"
+        "prose": "required value of 'Scan For Startup Procs' Server Configuration Option is '0'"
        }
       ],
       "class": "security"
@@ -518,19 +518,19 @@
        {
         "id": "cis_sql_server_2025-2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Trustworthy' Database Property is set to 'Off'"
+        "prose": "required value of 'Trustworthy' Database Property is 'Off'"
        },
        {
         "id": "cis_sql_server_2025-2.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Trustworthy' Database Property is set to 'Off'"
+        "prose": "required value of 'Trustworthy' Database Property is 'Off'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-2.10",
-      "title": "Ensure Unnecessary SQL Server Protocols are set to 'Disabled' (manual review not attested)",
+      "title": "Unnecessary SQL Server Protocols must be set to 'Disabled' (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -556,12 +556,12 @@
        {
         "id": "cis_sql_server_2025-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure Unnecessary SQL Server Protocols are set to 'Disabled' (manual review not attested)"
+        "prose": "Unnecessary SQL Server Protocols must be set to 'Disabled' (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Unnecessary SQL Server Protocols are set to 'Disabled'"
+        "prose": "Unnecessary SQL Server Protocols must be set to 'Disabled'"
        }
       ],
       "class": "security"
@@ -599,12 +599,12 @@
        {
         "id": "cis_sql_server_2025-2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SQL Server is configured to use non-standard ports"
+        "prose": "SQL Server must be explicitly configured to use non-standard ports"
        },
        {
         "id": "cis_sql_server_2025-2.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SQL Server is configured to use non-standard ports"
+        "prose": "SQL Server must be explicitly configured to use non-standard ports"
        }
       ],
       "class": "security"
@@ -642,12 +642,12 @@
        {
         "id": "cis_sql_server_2025-2.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Hide Instance' option is set to 'Yes' for Production SQL Server instances"
+        "prose": "required value of 'Hide Instance' option is 'Yes' for Production SQL Server instances"
        },
        {
         "id": "cis_sql_server_2025-2.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Hide Instance' option is set to 'Yes' for Production SQL Server instances"
+        "prose": "required value of 'Hide Instance' option is 'Yes' for Production SQL Server instances"
        }
       ],
       "class": "security"
@@ -685,12 +685,12 @@
        {
         "id": "cis_sql_server_2025-2.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the 'sa' Login Account is set to 'Disabled'"
+        "prose": "required value of the 'sa' Login Account is 'Disabled'"
        },
        {
         "id": "cis_sql_server_2025-2.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the 'sa' Login Account is set to 'Disabled'"
+        "prose": "required value of the 'sa' Login Account is 'Disabled'"
        }
       ],
       "class": "security"
@@ -728,12 +728,12 @@
        {
         "id": "cis_sql_server_2025-2.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the 'sa' Login Account has been renamed"
+        "prose": "the 'sa' Login Account must have been renamed"
        },
        {
         "id": "cis_sql_server_2025-2.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the 'sa' Login Account has been renamed"
+        "prose": "the 'sa' Login Account must have been renamed"
        }
       ],
       "class": "security"
@@ -771,12 +771,12 @@
        {
         "id": "cis_sql_server_2025-2.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'AUTO_CLOSE' is set to 'OFF' on contained databases"
+        "prose": "required value of 'AUTO_CLOSE' is 'OFF' on contained databases"
        },
        {
         "id": "cis_sql_server_2025-2.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'AUTO_CLOSE' is set to 'OFF' on contained databases"
+        "prose": "required value of 'AUTO_CLOSE' is 'OFF' on contained databases"
        }
       ],
       "class": "security"
@@ -814,12 +814,12 @@
        {
         "id": "cis_sql_server_2025-2.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure no login exists with the name 'sa'"
+        "prose": "checked condition — no login exists with the name 'sa'"
        },
        {
         "id": "cis_sql_server_2025-2.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure no login exists with the name 'sa'"
+        "prose": "checked condition — no login exists with the name 'sa'"
        }
       ],
       "class": "security"
@@ -857,12 +857,12 @@
        {
         "id": "cis_sql_server_2025-2.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'clr strict security' Server Configuration Option is set to '1'"
+        "prose": "required value of 'clr strict security' Server Configuration Option is '1'"
        },
        {
         "id": "cis_sql_server_2025-2.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'clr strict security' Server Configuration Option is set to '1'"
+        "prose": "required value of 'clr strict security' Server Configuration Option is '1'"
        }
       ],
       "class": "security"
@@ -900,12 +900,12 @@
        {
         "id": "cis_sql_server_2025-3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Server Authentication' Property is set to 'Windows Authentication Mode'"
+        "prose": "required value of 'Server Authentication' Property is 'Windows Authentication Mode'"
        },
        {
         "id": "cis_sql_server_2025-3.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Server Authentication' Property is set to 'Windows Authentication Mode'"
+        "prose": "required value of 'Server Authentication' Property is 'Windows Authentication Mode'"
        }
       ],
       "class": "security"
@@ -943,12 +943,12 @@
        {
         "id": "cis_sql_server_2025-3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure CONNECT permissions on the 'guest' user is Revoked within all SQL Server databases"
+        "prose": "CONNECT permissions on the 'guest' user must be Revoked within all SQL Server databases"
        },
        {
         "id": "cis_sql_server_2025-3.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure CONNECT permissions on the 'guest' user is Revoked within all SQL Server databases"
+        "prose": "CONNECT permissions on the 'guest' user must be Revoked within all SQL Server databases"
        }
       ],
       "class": "security"
@@ -986,12 +986,12 @@
        {
         "id": "cis_sql_server_2025-3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Orphaned Users' are Dropped From SQL Server Databases"
+        "prose": "'Orphaned Users' must be removed from SQL Server Databases"
        },
        {
         "id": "cis_sql_server_2025-3.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Orphaned Users' are Dropped From SQL Server Databases"
+        "prose": "'Orphaned Users' must be removed from SQL Server Databases"
        }
       ],
       "class": "security"
@@ -1029,19 +1029,19 @@
        {
         "id": "cis_sql_server_2025-3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SQL Authentication is not used in contained databases"
+        "prose": "SQL Authentication must be not used in contained databases"
        },
        {
         "id": "cis_sql_server_2025-3.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure SQL Authentication is not used in contained databases"
+        "prose": "SQL Authentication must be not used in contained databases"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-3.5",
-      "title": "Ensure the SQL Server’s MSSQL Service Account is Not an Administrator (manual review not attested)",
+      "title": "the SQL Server's MSSQL Service Account must be Not an Administrator (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1067,19 +1067,19 @@
        {
         "id": "cis_sql_server_2025-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure the SQL Server’s MSSQL Service Account is Not an Administrator (manual review not attested)"
+        "prose": "the SQL Server's MSSQL Service Account must be Not an Administrator (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-3.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the SQL Server’s MSSQL Service Account is Not an Administrator"
+        "prose": "the SQL Server's MSSQL Service Account must be Not an Administrator"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-3.6",
-      "title": "Ensure the SQL Server’s SQLAgent Service Account is Not an Administrator (manual review not attested)",
+      "title": "the SQL Server's SQLAgent Service Account must be Not an Administrator (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1105,19 +1105,19 @@
        {
         "id": "cis_sql_server_2025-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure the SQL Server’s SQLAgent Service Account is Not an Administrator (manual review not attested)"
+        "prose": "the SQL Server's SQLAgent Service Account must be Not an Administrator (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-3.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the SQL Server’s SQLAgent Service Account is Not an Administrator"
+        "prose": "the SQL Server's SQLAgent Service Account must be Not an Administrator"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-3.7",
-      "title": "Ensure the SQL Server’s Full-Text Service Account is Not an Administrator (manual review not attested)",
+      "title": "the SQL Server's Full-Text Service Account must be Not an Administrator (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1143,12 +1143,12 @@
        {
         "id": "cis_sql_server_2025-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure the SQL Server’s Full-Text Service Account is Not an Administrator (manual review not attested)"
+        "prose": "the SQL Server's Full-Text Service Account must be Not an Administrator (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-3.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the SQL Server’s Full-Text Service Account is Not an Administrator"
+        "prose": "the SQL Server's Full-Text Service Account must be Not an Administrator"
        }
       ],
       "class": "security"
@@ -1186,12 +1186,12 @@
        {
         "id": "cis_sql_server_2025-3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure only the default permissions specified by Microsoft are granted to the public server role"
+        "prose": "only the default permissions specified by Microsoft must be granted to the public server role"
        },
        {
         "id": "cis_sql_server_2025-3.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure only the default permissions specified by Microsoft are granted to the public server role"
+        "prose": "only the default permissions specified by Microsoft must be granted to the public server role"
        }
       ],
       "class": "security"
@@ -1229,12 +1229,12 @@
        {
         "id": "cis_sql_server_2025-3.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Windows BUILTIN groups are not SQL Logins"
+        "prose": "Windows BUILTIN groups must be not SQL Logins"
        },
        {
         "id": "cis_sql_server_2025-3.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Windows BUILTIN groups are not SQL Logins"
+        "prose": "Windows BUILTIN groups must be not SQL Logins"
        }
       ],
       "class": "security"
@@ -1272,12 +1272,12 @@
        {
         "id": "cis_sql_server_2025-3.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Windows local groups are not SQL Logins"
+        "prose": "Windows local groups must be not SQL Logins"
        },
        {
         "id": "cis_sql_server_2025-3.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Windows local groups are not SQL Logins"
+        "prose": "Windows local groups must be not SQL Logins"
        }
       ],
       "class": "security"
@@ -1315,19 +1315,19 @@
        {
         "id": "cis_sql_server_2025-3.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the public role in the msdb database is not granted access to SQL Agent proxies"
+        "prose": "the public role in the msdb database must be not granted access to SQL Agent proxies"
        },
        {
         "id": "cis_sql_server_2025-3.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the public role in the msdb database is not granted access to SQL Agent proxies"
+        "prose": "the public role in the msdb database must be not granted access to SQL Agent proxies"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-3.12",
-      "title": "Ensure the 'SYSADMIN' Role is Limited to Administrative or Built-in Accounts (manual review not attested)",
+      "title": "the 'SYSADMIN' Role must be Limited to Administrative or Built-in Accounts (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1353,12 +1353,12 @@
        {
         "id": "cis_sql_server_2025-3.12_stmt",
         "name": "statement",
-        "prose": "Ensure the 'SYSADMIN' Role is Limited to Administrative or Built-in Accounts (manual review not attested)"
+        "prose": "the 'SYSADMIN' Role must be Limited to Administrative or Built-in Accounts (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-3.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the 'SYSADMIN' Role is Limited to Administrative or Built-in Accounts"
+        "prose": "the 'SYSADMIN' Role must be Limited to Administrative or Built-in Accounts"
        }
       ],
       "class": "security"
@@ -1396,19 +1396,19 @@
        {
         "id": "cis_sql_server_2025-3.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure no admin role membership in MSDB database"
+        "prose": "checked condition — no admin role membership in MSDB database"
        },
        {
         "id": "cis_sql_server_2025-3.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure no admin role membership in MSDB database"
+        "prose": "checked condition — no admin role membership in MSDB database"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-3.14",
-      "title": "Ensure 'Control Server' permission is not granted (manual review not attested)",
+      "title": "permission 'Control Server' permission must not be granted (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1434,19 +1434,19 @@
        {
         "id": "cis_sql_server_2025-3.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'Control Server' permission is not granted (manual review not attested)"
+        "prose": "permission 'Control Server' permission must not be granted (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-3.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Control Server' permission is not granted"
+        "prose": "permission 'Control Server' permission must not be granted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-3.15",
-      "title": "Ensure access to 'sp_invoke_external_rest_endpoint' is limited to trusted accounts only (manual review not attested)",
+      "title": "access to 'sp_invoke_external_rest_endpoint' must be limited to trusted accounts only (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1472,19 +1472,19 @@
        {
         "id": "cis_sql_server_2025-3.15_stmt",
         "name": "statement",
-        "prose": "Ensure access to 'sp_invoke_external_rest_endpoint' is limited to trusted accounts only (manual review not attested)"
+        "prose": "access to 'sp_invoke_external_rest_endpoint' must be limited to trusted accounts only (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-3.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure access to 'sp_invoke_external_rest_endpoint' is limited to trusted accounts only"
+        "prose": "access to 'sp_invoke_external_rest_endpoint' must be limited to trusted accounts only"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-4.1",
-      "title": "Ensure 'MUST_CHANGE' Option is set to 'ON' for All SQL Authenticated Logins (manual review not attested)",
+      "title": "required value of 'MUST_CHANGE' Option is 'ON' for All SQL Authenticated Logins (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1510,12 +1510,12 @@
        {
         "id": "cis_sql_server_2025-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'MUST_CHANGE' Option is set to 'ON' for All SQL Authenticated Logins (manual review not attested)"
+        "prose": "required value of 'MUST_CHANGE' Option is 'ON' for All SQL Authenticated Logins (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'MUST_CHANGE' Option is set to 'ON' for All SQL Authenticated Logins"
+        "prose": "required value of 'MUST_CHANGE' Option is 'ON' for All SQL Authenticated Logins"
        }
       ],
       "class": "security"
@@ -1553,12 +1553,12 @@
        {
         "id": "cis_sql_server_2025-4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CHECK_EXPIRATION' Option is set to 'ON' for All SQL Authenticated Logins Within the Sysadmin Role"
+        "prose": "required value of 'CHECK_EXPIRATION' Option is 'ON' for All SQL Authenticated Logins Within the Sysadmin Role"
        },
        {
         "id": "cis_sql_server_2025-4.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CHECK_EXPIRATION' Option is set to 'ON' for All SQL Authenticated Logins Within the Sysadmin Role"
+        "prose": "required value of 'CHECK_EXPIRATION' Option is 'ON' for All SQL Authenticated Logins Within the Sysadmin Role"
        }
       ],
       "class": "security"
@@ -1596,12 +1596,12 @@
        {
         "id": "cis_sql_server_2025-4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CHECK_POLICY' Option is set to 'ON' for All SQL Authenticated Logins"
+        "prose": "required value of 'CHECK_POLICY' Option is 'ON' for All SQL Authenticated Logins"
        },
        {
         "id": "cis_sql_server_2025-4.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CHECK_POLICY' Option is set to 'ON' for All SQL Authenticated Logins"
+        "prose": "required value of 'CHECK_POLICY' Option is 'ON' for All SQL Authenticated Logins"
        }
       ],
       "class": "security"
@@ -1639,12 +1639,12 @@
        {
         "id": "cis_sql_server_2025-5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Maximum number of error log files' is set to greater than or equal to '12'"
+        "prose": "required value of 'Maximum number of error log files' is greater than or equal to '12'"
        },
        {
         "id": "cis_sql_server_2025-5.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Maximum number of error log files' is set to greater than or equal to '12'"
+        "prose": "required value of 'Maximum number of error log files' is greater than or equal to '12'"
        }
       ],
       "class": "security"
@@ -1682,12 +1682,12 @@
        {
         "id": "cis_sql_server_2025-5.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Default Trace Enabled' Server Configuration Option is set to '1'"
+        "prose": "required value of 'Default Trace Enabled' Server Configuration Option is '1'"
        },
        {
         "id": "cis_sql_server_2025-5.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Default Trace Enabled' Server Configuration Option is set to '1'"
+        "prose": "required value of 'Default Trace Enabled' Server Configuration Option is '1'"
        }
       ],
       "class": "security"
@@ -1725,12 +1725,12 @@
        {
         "id": "cis_sql_server_2025-5.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Login Auditing' is set to 'failed logins'"
+        "prose": "required value of 'Login Auditing' is 'failed logins'"
        },
        {
         "id": "cis_sql_server_2025-5.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Login Auditing' is set to 'failed logins'"
+        "prose": "required value of 'Login Auditing' is 'failed logins'"
        }
       ],
       "class": "security"
@@ -1768,19 +1768,19 @@
        {
         "id": "cis_sql_server_2025-5.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQL Server Audit' is set to capture both 'failed' and 'successful logins'"
+        "prose": "required value of 'SQL Server Audit' is capture both 'failed' and 'successful logins'"
        },
        {
         "id": "cis_sql_server_2025-5.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQL Server Audit' is set to capture both 'failed' and 'successful logins'"
+        "prose": "required value of 'SQL Server Audit' is capture both 'failed' and 'successful logins'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-6.1",
-      "title": "Ensure Database and Application User Input is Sanitized (manual review not attested)",
+      "title": "Database and Application User Input must be Sanitized (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1806,12 +1806,12 @@
        {
         "id": "cis_sql_server_2025-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure Database and Application User Input is Sanitized (manual review not attested)"
+        "prose": "Database and Application User Input must be Sanitized (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-6.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Database and Application User Input is Sanitized"
+        "prose": "Database and Application User Input must be Sanitized"
        }
       ],
       "class": "security"
@@ -1849,12 +1849,12 @@
        {
         "id": "cis_sql_server_2025-6.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CLR Assembly Permission Set' is set to 'SAFE_ACCESS' for All CLR Assemblies"
+        "prose": "required value of 'CLR Assembly Permission Set' is 'SAFE_ACCESS' for All CLR Assemblies"
        },
        {
         "id": "cis_sql_server_2025-6.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CLR Assembly Permission Set' is set to 'SAFE_ACCESS' for All CLR Assemblies"
+        "prose": "required value of 'CLR Assembly Permission Set' is 'SAFE_ACCESS' for All CLR Assemblies"
        }
       ],
       "class": "security"
@@ -1892,12 +1892,12 @@
        {
         "id": "cis_sql_server_2025-7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'Symmetric Key encryption algorithm' is set to 'AES_128' or higher in non-system databases"
+        "prose": "required value of 'Symmetric Key encryption algorithm' is 'AES_128' or higher in non-system databases"
        },
        {
         "id": "cis_sql_server_2025-7.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'Symmetric Key encryption algorithm' is set to 'AES_128' or higher in non-system databases"
+        "prose": "required value of 'Symmetric Key encryption algorithm' is 'AES_128' or higher in non-system databases"
        }
       ],
       "class": "security"
@@ -1935,12 +1935,12 @@
        {
         "id": "cis_sql_server_2025-7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Asymmetric Key Size is set to 'greater than or equal to 2048' in non-system databases"
+        "prose": "required value of Asymmetric Key Size is 'greater than or equal to 2048' in non-system databases"
        },
        {
         "id": "cis_sql_server_2025-7.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Asymmetric Key Size is set to 'greater than or equal to 2048' in non-system databases"
+        "prose": "required value of Asymmetric Key Size is 'greater than or equal to 2048' in non-system databases"
        }
       ],
       "class": "security"
@@ -1978,12 +1978,12 @@
        {
         "id": "cis_sql_server_2025-7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Database Backups are Encrypted"
+        "prose": "Database Backups must be Encrypted"
        },
        {
         "id": "cis_sql_server_2025-7.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Database Backups are Encrypted"
+        "prose": "Database Backups must be Encrypted"
        }
       ],
       "class": "security"
@@ -2021,12 +2021,12 @@
        {
         "id": "cis_sql_server_2025-7.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Network Encryption is Configured and Enabled"
+        "prose": "Network Encryption must be explicitly configured and Enabled"
        },
        {
         "id": "cis_sql_server_2025-7.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Network Encryption is Configured and Enabled"
+        "prose": "Network Encryption must be explicitly configured and Enabled"
        }
       ],
       "class": "security"
@@ -2064,19 +2064,19 @@
        {
         "id": "cis_sql_server_2025-7.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Databases are Encrypted with TDE"
+        "prose": "Databases must be encrypted with TDE"
        },
        {
         "id": "cis_sql_server_2025-7.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Databases are Encrypted with TDE"
+        "prose": "Databases must be encrypted with TDE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_sql_server_2025-8.1",
-      "title": "Ensure 'SQL Server Browser Service' is configured correctly (manual review not attested)",
+      "title": "'SQL Server Browser Service' must match the approved configuration (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -2102,12 +2102,12 @@
        {
         "id": "cis_sql_server_2025-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'SQL Server Browser Service' is configured correctly (manual review not attested)"
+        "prose": "'SQL Server Browser Service' must match the approved configuration (manual review not attested)"
        },
        {
         "id": "cis_sql_server_2025-8.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQL Server Browser Service' is configured correctly"
+        "prose": "'SQL Server Browser Service' must match the approved configuration"
        }
       ],
       "class": "security"

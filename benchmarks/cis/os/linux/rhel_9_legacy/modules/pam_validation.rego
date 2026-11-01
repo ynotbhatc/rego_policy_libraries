@@ -43,7 +43,7 @@ octal(s) := n if {
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
 # =============================================================================
-# CIS 5.2.1 - Ensure password creation requirements are configured
+# CIS 5.2.1 - password creation requirements must be explicitly configured
 # =============================================================================
 
 validate_pwquality_minlen if {
@@ -68,7 +68,7 @@ validate_pwquality_complexity if {
 
 violations contains {
     "control_id": "5.2.1",
-    "title": "Ensure password creation requirements are configured",
+    "title": "password creation requirements must be explicitly configured",
     "severity": "high",
     "description": "Password complexity requirements should be enforced",
     "status": "fail",
@@ -87,7 +87,7 @@ violations contains {
 
 violations contains {
     "control_id": "5.2.1",
-    "title": "Ensure password creation requirements are configured",
+    "title": "password creation requirements must be explicitly configured",
     "severity": "high",
     "description": "Password complexity requirements should be enforced",
     "status": "fail",
@@ -105,7 +105,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.2 - Ensure lockout for failed password attempts is configured
+# CIS 5.2.2 - lockout for failed password attempts must be explicitly configured
 # =============================================================================
 
 validate_faillock_deny if {
@@ -119,7 +119,7 @@ validate_faillock_unlock_time if {
 
 violations contains {
     "control_id": "5.2.2",
-    "title": "Ensure lockout for failed password attempts is configured",
+    "title": "lockout for failed password attempts must be explicitly configured",
     "severity": "high",
     "description": "Account lockout should be configured to prevent brute force attacks",
     "status": "fail",
@@ -134,7 +134,7 @@ violations contains {
 
 violations contains {
     "control_id": "5.2.2",
-    "title": "Ensure lockout for failed password attempts is configured",
+    "title": "lockout for failed password attempts must be explicitly configured",
     "severity": "high",
     "description": "Account lockout unlock time should be at least 15 minutes (900 seconds)",
     "status": "fail",
@@ -146,7 +146,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.3 - Ensure password reuse is limited
+# CIS 5.2.3 - password reuse must be limited to named principals
 # =============================================================================
 
 validate_password_remember if {
@@ -155,7 +155,7 @@ validate_password_remember if {
 
 violations contains {
     "control_id": "5.2.3",
-    "title": "Ensure password reuse is limited",
+    "title": "password reuse must be limited to named principals",
     "severity": "medium",
     "description": "Password history should prevent reuse of recent passwords",
     "status": "fail",
@@ -166,7 +166,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.4 - Ensure password hashing algorithm is SHA-512 or yescrypt
+# CIS 5.2.4 - password hashing algorithm must be SHA-512 or yescrypt
 # =============================================================================
 
 validate_password_hashing if {
@@ -175,7 +175,7 @@ validate_password_hashing if {
 
 violations contains {
     "control_id": "5.2.4",
-    "title": "Ensure password hashing algorithm is SHA-512 or yescrypt",
+    "title": "password hashing algorithm must be SHA-512 or yescrypt",
     "severity": "high",
     "description": "Password hashing should use strong algorithms (SHA-512 or yescrypt)",
     "status": "fail",
@@ -186,7 +186,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.5 - Ensure all current passwords use the configured hashing algorithm
+# CIS 5.2.5 - checked condition — all current passwords use the configured hashing algorithm
 # =============================================================================
 
 validate_all_passwords_hashed_correctly if {
@@ -195,7 +195,7 @@ validate_all_passwords_hashed_correctly if {
 
 violations contains {
     "control_id": "5.2.5",
-    "title": "Ensure all current passwords use the configured hashing algorithm",
+    "title": "checked condition — all current passwords use the configured hashing algorithm",
     "severity": "medium",
     "description": "All user passwords should use the configured strong hashing algorithm",
     "status": "fail",
@@ -206,7 +206,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.6 - Ensure password minimum age is configured
+# CIS 5.2.6 - password minimum age must be explicitly configured
 # =============================================================================
 
 validate_pass_min_days if {
@@ -215,7 +215,7 @@ validate_pass_min_days if {
 
 violations contains {
     "control_id": "5.2.6",
-    "title": "Ensure password minimum age is configured",
+    "title": "password minimum age must be explicitly configured",
     "severity": "medium",
     "description": "Minimum password age should be at least 1 day",
     "status": "fail",
@@ -226,7 +226,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.7 - Ensure password maximum age is configured
+# CIS 5.2.7 - password maximum age must be explicitly configured
 # =============================================================================
 
 validate_pass_max_days if {
@@ -236,7 +236,7 @@ validate_pass_max_days if {
 
 violations contains {
     "control_id": "5.2.7",
-    "title": "Ensure password maximum age is configured",
+    "title": "password maximum age must be explicitly configured",
     "severity": "medium",
     "description": "Maximum password age should be 365 days or less",
     "status": "fail",
@@ -247,7 +247,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.8 - Ensure password expiration warning days is configured
+# CIS 5.2.8 - password expiration warning days must be explicitly configured
 # =============================================================================
 
 validate_pass_warn_age if {
@@ -256,7 +256,7 @@ validate_pass_warn_age if {
 
 violations contains {
     "control_id": "5.2.8",
-    "title": "Ensure password expiration warning days is configured",
+    "title": "password expiration warning days must be explicitly configured",
     "severity": "low",
     "description": "Users should receive warning at least 7 days before password expiration",
     "status": "fail",
@@ -267,7 +267,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.9 - Ensure inactive password lock is configured
+# CIS 5.2.9 - inactive password lock must be explicitly configured
 # =============================================================================
 
 validate_inactive_lock if {
@@ -277,7 +277,7 @@ validate_inactive_lock if {
 
 violations contains {
     "control_id": "5.2.9",
-    "title": "Ensure inactive password lock is configured",
+    "title": "inactive password lock must be explicitly configured",
     "severity": "medium",
     "description": "Accounts should be locked after password expiration period",
     "status": "fail",
@@ -288,7 +288,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.10 - Ensure all users last password change date is in the past
+# CIS 5.2.10 - all users last password change date must be in the past
 # =============================================================================
 
 validate_password_change_dates if {
@@ -297,7 +297,7 @@ validate_password_change_dates if {
 
 violations contains {
     "control_id": "5.2.10",
-    "title": "Ensure all users last password change date is in the past",
+    "title": "all users last password change date must be in the past",
     "severity": "medium",
     "description": "No user should have a future password change date",
     "status": "fail",
@@ -308,7 +308,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.11 - Ensure system accounts are secured
+# CIS 5.2.11 - system accounts must be secured
 # =============================================================================
 
 validate_system_accounts_secured if {
@@ -317,7 +317,7 @@ validate_system_accounts_secured if {
 
 violations contains {
     "control_id": "5.2.11",
-    "title": "Ensure system accounts are secured",
+    "title": "system accounts must be secured",
     "severity": "high",
     "description": "System accounts should not have valid login shells",
     "status": "fail",
@@ -328,7 +328,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.12 - Ensure default user shell timeout is configured
+# CIS 5.2.12 - default user shell timeout must be explicitly configured
 # =============================================================================
 
 validate_shell_timeout if {
@@ -338,7 +338,7 @@ validate_shell_timeout if {
 
 violations contains {
     "control_id": "5.2.12",
-    "title": "Ensure default user shell timeout is configured",
+    "title": "default user shell timeout must be explicitly configured",
     "severity": "medium",
     "description": "Shell timeout should be configured to automatically logout idle sessions",
     "status": "fail",
@@ -349,7 +349,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.13 - Ensure default group for the root account is GID 0
+# CIS 5.2.13 - default group for the root account must be GID 0
 # =============================================================================
 
 validate_root_gid if {
@@ -358,7 +358,7 @@ validate_root_gid if {
 
 violations contains {
     "control_id": "5.2.13",
-    "title": "Ensure default group for the root account is GID 0",
+    "title": "default group for the root account must be GID 0",
     "severity": "high",
     "description": "The root account should have GID 0",
     "status": "fail",
@@ -369,7 +369,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.14 - Ensure default user umask is configured
+# CIS 5.2.14 - default user umask must be explicitly configured
 # =============================================================================
 
 validate_umask if {
@@ -379,7 +379,7 @@ validate_umask if {
 
 violations contains {
     "control_id": "5.2.14",
-    "title": "Ensure default user umask is configured",
+    "title": "default user umask must be explicitly configured",
     "severity": "medium",
     "description": "Default umask should be 027 or more restrictive",
     "status": "fail",
@@ -390,7 +390,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.2.15 - Ensure user accounts are locked after 35 days of inactivity
+# CIS 5.2.15 - user accounts must be locked after 35 days of inactivity
 # =============================================================================
 
 validate_users_inactivity_lock if {
@@ -399,7 +399,7 @@ validate_users_inactivity_lock if {
 
 violations contains {
     "control_id": "5.2.16",
-    "title": "Ensure user accounts are locked after 35 days of inactivity",
+    "title": "user accounts must be locked after 35 days of inactivity",
     "severity": "medium",
     "description": "User accounts should be automatically locked after inactivity period",
     "status": "fail",

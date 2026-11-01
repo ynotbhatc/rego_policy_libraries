@@ -246,7 +246,7 @@
    {
     "id": "cis_ubuntu_24_04-auditd_validation",
     "class": "rego-module",
-    "title": "CIS 4.1.1.1: Ensure audit is installed",
+    "title": "CIS 4.1.1.1: audit must be present",
     "props": [
      {
       "name": "rego-package",
@@ -1176,7 +1176,7 @@
    {
     "id": "cis_ubuntu_24_04-cron_validation",
     "class": "rego-module",
-    "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
+    "title": "CIS 5.1.1: cron daemon must be turned on and running",
     "props": [
      {
       "name": "rego-package",
@@ -5469,7 +5469,7 @@
    {
     "id": "cis_ubuntu_24_04-pam_validation",
     "class": "rego-module",
-    "title": "CIS 5.4.1: Ensure password creation requirements are configured (pwquality)",
+    "title": "CIS 5.4.1: password creation requirements must be explicitly configured (pwquality)",
     "props": [
      {
       "name": "rego-package",
@@ -7207,7 +7207,7 @@
    {
     "id": "cis_ubuntu_24_04-sudo_validation",
     "class": "rego-module",
-    "title": "CIS 5.3.1: Ensure sudo is installed",
+    "title": "CIS 5.3.1: sudo must be present",
     "props": [
      {
       "name": "rego-package",
@@ -7543,7 +7543,7 @@
    {
     "id": "cis_ubuntu_24_04-user_group_validation",
     "class": "rego-module",
-    "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
+    "title": "CIS 6.2.1: password hashes must be stored outside /etc/passwd",
     "props": [
      {
       "name": "rego-package",
@@ -8182,7 +8182,7 @@
     },
     {
      "uuid": "52465949-6698-5f25-8d95-b27bcb5a16c1",
-     "title": "CIS 4.1.1.1: Ensure audit is installed",
+     "title": "CIS 4.1.1.1: audit must be present",
      "props": [
       {
        "name": "rego-package",
@@ -8233,7 +8233,7 @@
     },
     {
      "uuid": "a5af59ea-5390-5b80-b33d-346c8fa1990d",
-     "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
+     "title": "CIS 5.1.1: cron daemon must be turned on and running",
      "props": [
       {
        "name": "rego-package",
@@ -8352,7 +8352,7 @@
     },
     {
      "uuid": "15cb2e9a-a68a-5e40-8ec6-5172ce5d1041",
-     "title": "CIS 5.4.1: Ensure password creation requirements are configured (pwquality)",
+     "title": "CIS 5.4.1: password creation requirements must be explicitly configured (pwquality)",
      "props": [
       {
        "name": "rego-package",
@@ -8403,7 +8403,7 @@
     },
     {
      "uuid": "75d2dad1-9770-5c58-8104-9ebff714e202",
-     "title": "CIS 5.3.1: Ensure sudo is installed",
+     "title": "CIS 5.3.1: sudo must be present",
      "props": [
       {
        "name": "rego-package",
@@ -8420,7 +8420,7 @@
     },
     {
      "uuid": "4a7deea1-400b-51f8-833f-3b1fdce0d379",
-     "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
+     "title": "CIS 6.2.1: password hashes must be stored outside /etc/passwd",
      "props": [
       {
        "name": "rego-package",

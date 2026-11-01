@@ -78,30 +78,30 @@ cfg_lines := [trim_space(l) | some l in split(input.cisco_config, "\n")] if is_s
 # CIS Cisco IOS Benchmark
 # Network Device Security Configuration
 
-# CIS 1.1.1 - Ensure 'aaa new-model' is configured
+# CIS 1.1.1 - 'aaa new-model' must be explicitly configured
 aaa_new_model_configured if {
     "aaa new-model" in cfg_lines
 }
 
-# CIS 1.1.2 - Ensure 'aaa authentication login default group' is configured
+# CIS 1.1.2 - 'aaa authentication login default group' must be explicitly configured
 aaa_authentication_configured if {
     some line in cfg_lines
     startswith(line, "aaa authentication login default group")
 }
 
-# CIS 1.1.3 - Ensure 'aaa authorization exec default group' is configured
+# CIS 1.1.3 - 'aaa authorization exec default group' must be explicitly configured
 aaa_authorization_configured if {
     some line in cfg_lines
     startswith(line, "aaa authorization exec default group")
 }
 
-# CIS 1.1.4 - Ensure 'aaa accounting exec default start-stop group' is configured
+# CIS 1.1.4 - 'aaa accounting exec default start-stop group' must be explicitly configured
 aaa_accounting_configured if {
     some line in cfg_lines
     startswith(line, "aaa accounting exec default start-stop group")
 }
 
-# CIS 1.2.1 - Ensure 'username secret' is configured for all local users
+# CIS 1.2.1 - 'username secret' must be explicitly configured for all local users
 local_users_secret_configured if {
     every user in input.local_users {
         startswith(user.config, "username")
@@ -109,7 +109,7 @@ local_users_secret_configured if {
     }
 }
 
-# CIS 1.2.2 - Ensure 'username privilege 15' is not configured for local users
+# CIS 1.2.2 - 'username privilege 15' must be left unconfigured for local users
 local_users_not_privilege_15 if {
     count([
         user | user := input.local_users[_]; 
@@ -117,13 +117,13 @@ local_users_not_privilege_15 if {
     ]) == 0
 }
 
-# CIS 1.3.1 - Ensure 'enable secret' is configured
+# CIS 1.3.1 - 'enable secret' must be explicitly configured
 enable_secret_configured if {
     some line in cfg_lines
     startswith(line, "enable secret")
 }
 
-# CIS 1.3.2 - Ensure 'enable password' is not configured
+# CIS 1.3.2 - 'enable password' must be left unconfigured
 enable_password_not_configured if {
     count([
         line | line := cfg_lines[_]; 
@@ -131,152 +131,152 @@ enable_password_not_configured if {
     ]) == 0
 }
 
-# CIS 1.3.3 - Ensure 'service password-encryption' is configured
+# CIS 1.3.3 - 'service password-encryption' must be explicitly configured
 service_password_encryption if {
     "service password-encryption" in cfg_lines
 }
 
-# CIS 1.4.1 - Ensure 'banner motd' is configured
+# CIS 1.4.1 - 'banner motd' must be explicitly configured
 banner_motd_configured if {
     some line in cfg_lines
     startswith(line, "banner motd")
 }
 
-# CIS 1.4.2 - Ensure 'banner login' is configured  
+# CIS 1.4.2 - 'banner login' must be explicitly configured
 banner_login_configured if {
     some line in cfg_lines
     startswith(line, "banner login")
 }
 
-# CIS 1.4.3 - Ensure 'banner exec' is configured
+# CIS 1.4.3 - 'banner exec' must be explicitly configured
 banner_exec_configured if {
     some line in cfg_lines
     startswith(line, "banner exec")
 }
 
-# CIS 2.1.1 - Ensure 'no ip source-route' is configured
+# CIS 2.1.1 - 'no ip source-route' must be explicitly configured
 ip_source_route_disabled if {
     "no ip source-route" in cfg_lines
 }
 
-# CIS 2.1.2 - Ensure 'no ip proxy-arp' is configured on all interfaces
+# CIS 2.1.2 - 'no ip proxy-arp' must be explicitly configured on all interfaces
 ip_proxy_arp_disabled if {
     every interface in input.interfaces {
         contains(interface.config, "no ip proxy-arp")
     }
 }
 
-# CIS 2.1.3 - Ensure 'no ip unreachables' is configured on all interfaces
+# CIS 2.1.3 - 'no ip unreachables' must be explicitly configured on all interfaces
 ip_unreachables_disabled if {
     every interface in input.interfaces {
         contains(interface.config, "no ip unreachables")
     }
 }
 
-# CIS 2.1.4 - Ensure 'no ip mask-reply' is configured on all interfaces
+# CIS 2.1.4 - 'no ip mask-reply' must be explicitly configured on all interfaces
 ip_mask_reply_disabled if {
     every interface in input.interfaces {
         contains(interface.config, "no ip mask-reply")
     }
 }
 
-# CIS 2.1.5 - Ensure 'no ip redirects' is configured on all interfaces
+# CIS 2.1.5 - 'no ip redirects' must be explicitly configured on all interfaces
 ip_redirects_disabled if {
     every interface in input.interfaces {
         contains(interface.config, "no ip redirects")
     }
 }
 
-# CIS 2.1.6 - Ensure 'no ip directed-broadcast' is configured on all interfaces
+# CIS 2.1.6 - 'no ip directed-broadcast' must be explicitly configured on all interfaces
 ip_directed_broadcast_disabled if {
     every interface in input.interfaces {
         contains(interface.config, "no ip directed-broadcast")
     }
 }
 
-# CIS 2.2.1 - Ensure 'no service pad' is configured
+# CIS 2.2.1 - 'no service pad' must be explicitly configured
 service_pad_disabled if {
     "no service pad" in cfg_lines
 }
 
-# CIS 2.2.2 - Ensure 'no service finger' is configured
+# CIS 2.2.2 - 'no service finger' must be explicitly configured
 service_finger_disabled if {
     "no service finger" in cfg_lines
 }
 
-# CIS 2.2.3 - Ensure 'no service udp-small-servers' is configured
+# CIS 2.2.3 - 'no service udp-small-servers' must be explicitly configured
 udp_small_servers_disabled if {
     "no service udp-small-servers" in cfg_lines
 }
 
-# CIS 2.2.4 - Ensure 'no service tcp-small-servers' is configured
+# CIS 2.2.4 - 'no service tcp-small-servers' must be explicitly configured
 tcp_small_servers_disabled if {
     "no service tcp-small-servers" in cfg_lines
 }
 
-# CIS 2.2.5 - Ensure 'no cdp run' is configured if CDP is not required
+# CIS 2.2.5 - 'no cdp run' must be explicitly configured if CDP is not required
 cdp_disabled if {
     "no cdp run" in cfg_lines
 }
 
-# CIS 2.2.6 - Ensure 'no lldp run' is configured if LLDP is not required
+# CIS 2.2.6 - 'no lldp run' must be explicitly configured if LLDP is not required
 lldp_disabled if {
     "no lldp run" in cfg_lines
 }
 
-# CIS 2.3.1 - Ensure 'logging on' is configured
+# CIS 2.3.1 - 'logging on' must be explicitly configured
 logging_enabled if {
     "logging on" in cfg_lines
 }
 
-# CIS 2.3.2 - Ensure 'logging buffered' is configured with appropriate size
+# CIS 2.3.2 - 'logging buffered' must be explicitly configured with appropriate size
 logging_buffered_configured if {
     some line in cfg_lines
     startswith(line, "logging buffered")
 }
 
-# CIS 2.3.3 - Ensure 'logging console critical' is configured
+# CIS 2.3.3 - 'logging console critical' must be explicitly configured
 logging_console_configured if {
     some line in cfg_lines
     regex.match(`^logging console (critical|alerts|emergencies)\b`, line)
 }
 
-# CIS 2.3.4 - Ensure 'logging host' is configured
+# CIS 2.3.4 - 'logging host' must be explicitly configured
 logging_host_configured if {
     some line in cfg_lines
     startswith(line, "logging host")
 }
 
-# CIS 2.3.5 - Ensure 'logging trap informational' is configured
+# CIS 2.3.5 - 'logging trap informational' must be explicitly configured
 logging_trap_configured if {
     some line in cfg_lines
     regex.match(`^logging trap (informational|warnings|notifications|errors|critical|alerts|emergencies)\b`, line)
 }
 
-# CIS 2.4.1 - Ensure 'ntp authenticate' is configured
+# CIS 2.4.1 - 'ntp authenticate' must be explicitly configured
 ntp_authenticate_configured if {
     "ntp authenticate" in cfg_lines
 }
 
-# CIS 2.4.2 - Ensure 'ntp authentication-key' is configured
+# CIS 2.4.2 - 'ntp authentication-key' must be explicitly configured
 ntp_authentication_key_configured if {
     some line in cfg_lines
     startswith(line, "ntp authentication-key")
 }
 
-# CIS 2.4.3 - Ensure 'ntp trusted-key' is configured
+# CIS 2.4.3 - 'ntp trusted-key' must be explicitly configured
 ntp_trusted_key_configured if {
     some line in cfg_lines
     startswith(line, "ntp trusted-key")
 }
 
-# CIS 2.4.4 - Ensure 'ntp server' is configured
+# CIS 2.4.4 - 'ntp server' must be explicitly configured
 ntp_server_configured if {
     some line in cfg_lines
     startswith(line, "ntp server")
 }
 
-# CIS 2.5.1 - Ensure 'access-list' is configured for vty lines
+# CIS 2.5.1 - 'access-list' must be explicitly configured for vty lines
 vty_access_list_configured if {
     some line in cfg_lines
     startswith(line, "line vty")
@@ -285,25 +285,25 @@ vty_access_list_configured if {
     startswith(vty_line, "access-class")
 }
 
-# CIS 2.5.2 - Ensure 'exec-timeout' is configured for vty lines
+# CIS 2.5.2 - 'exec-timeout' must be explicitly configured for vty lines
 vty_exec_timeout_configured if {
     some vty_line in input.vty_config
     startswith(vty_line, "exec-timeout")
     not contains(vty_line, "exec-timeout 0 0")
 }
 
-# CIS 2.5.3 - Ensure 'transport input ssh' is configured for vty lines
+# CIS 2.5.3 - 'transport input ssh' must be explicitly configured for vty lines
 vty_transport_ssh_only if {
     some vty_line in input.vty_config
     vty_line == "transport input ssh"
 }
 
-# CIS 2.6.1 - Ensure 'ip ssh version 2' is configured
+# CIS 2.6.1 - 'ip ssh version 2' must be explicitly configured
 ssh_version_2_configured if {
     "ip ssh version 2" in cfg_lines
 }
 
-# CIS 2.6.2 - Ensure 'ip ssh time-out' is configured to 60 seconds or less
+# CIS 2.6.2 - 'ip ssh time-out' must be explicitly configured to 60 seconds or less
 ssh_timeout_configured if {
     some line in cfg_lines
     startswith(line, "ip ssh time-out")
@@ -312,7 +312,7 @@ ssh_timeout_configured if {
     timeout_value <= 60
 }
 
-# CIS 2.6.3 - Ensure 'ip ssh authentication-retries' is configured to 3 or less
+# CIS 2.6.3 - 'ip ssh authentication-retries' must be explicitly configured to 3 or less
 ssh_auth_retries_configured if {
     some line in cfg_lines
     startswith(line, "ip ssh authentication-retries")
@@ -321,12 +321,12 @@ ssh_auth_retries_configured if {
     retry_value <= 3
 }
 
-# CIS 3.1.1 - Ensure 'no service config' is configured
+# CIS 3.1.1 - 'no service config' must be explicitly configured
 service_config_disabled if {
     "no service config" in cfg_lines
 }
 
-# CIS 3.1.2 - Ensure 'boot network' is not configured
+# CIS 3.1.2 - 'boot network' must be left unconfigured
 boot_network_not_configured if {
     count([
         line | line := cfg_lines[_]; 
@@ -334,19 +334,19 @@ boot_network_not_configured if {
     ]) == 0
 }
 
-# CIS 3.2.1 - Ensure 'service timestamps debug datetime' is configured
+# CIS 3.2.1 - 'service timestamps debug datetime' must be explicitly configured
 service_timestamps_debug_configured if {
     some line in cfg_lines
     regex.match(`^service timestamps debug datetime\b`, line)
 }
 
-# CIS 3.2.2 - Ensure 'service timestamps log datetime' is configured
+# CIS 3.2.2 - 'service timestamps log datetime' must be explicitly configured
 service_timestamps_log_configured if {
     some line in cfg_lines
     regex.match(`^service timestamps log datetime\b`, line)
 }
 
-# CIS 3.3.1 - Ensure 'file privilege' is configured
+# CIS 3.3.1 - 'file privilege' must be explicitly configured
 file_privilege_configured if {
     some line in cfg_lines
     startswith(line, "file privilege")

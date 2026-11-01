@@ -76,7 +76,7 @@ support_role_exists if {
 
 # Section 2: Storage
 storage_violations := [
-    "2.1.1: Ensure S3 bucket access logging is enabled on the CloudTrail S3 bucket" |
+    "2.1.1: S3 bucket access logging must be turned on for the CloudTrail S3 bucket" |
     bucket := input.s3_buckets[_]
     bucket.is_cloudtrail_bucket == true
     not bucket.access_logging_enabled
@@ -90,7 +90,7 @@ storage_violations := [
 
 # Section 3: Logging
 logging_violations := [
-    "3.1: Ensure CloudTrail is enabled in all regions" |
+    "3.1: CloudTrail must be turned on in all regions" |
     not input.cloudtrail.multi_region_enabled
 ]
 
@@ -114,21 +114,21 @@ monitoring_violations := [
 
 # Controls 4.1-4.15: each needs a log metric filter plus an alarm on its metric.
 monitoring_controls := [
-    {"msg": "4.1: Ensure a log metric filter and alarm exist for unauthorized API calls", "ok": unauthorized_api_calls_alarm_exists},
-    {"msg": "4.2: Ensure a log metric filter and alarm exist for console sign-in without MFA", "ok": console_signin_without_mfa_alarm_exists},
-    {"msg": "4.3: Ensure a log metric filter and alarm exist for usage of the root account", "ok": root_account_usage_alarm_exists},
-    {"msg": "4.4: Ensure a log metric filter and alarm exist for IAM policy changes", "ok": iam_policy_changes_alarm_exists},
-    {"msg": "4.5: Ensure a log metric filter and alarm exist for CloudTrail configuration changes", "ok": cloudtrail_config_changes_alarm_exists},
-    {"msg": "4.6: Ensure a log metric filter and alarm exist for console authentication failures", "ok": console_auth_failures_alarm_exists},
-    {"msg": "4.7: Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys", "ok": cmk_deletion_alarm_exists},
-    {"msg": "4.8: Ensure a log metric filter and alarm exist for S3 bucket policy changes", "ok": s3_bucket_policy_changes_alarm_exists},
-    {"msg": "4.9: Ensure a log metric filter and alarm exist for AWS Config configuration changes", "ok": config_changes_alarm_exists},
-    {"msg": "4.10: Ensure a log metric filter and alarm exist for security group changes", "ok": security_group_changes_alarm_exists},
-    {"msg": "4.11: Ensure a log metric filter and alarm exist for changes to Network ACLs", "ok": nacl_changes_alarm_exists},
-    {"msg": "4.12: Ensure a log metric filter and alarm exist for changes to network gateways", "ok": network_gateway_changes_alarm_exists},
-    {"msg": "4.13: Ensure a log metric filter and alarm exist for route table changes", "ok": route_table_changes_alarm_exists},
-    {"msg": "4.14: Ensure a log metric filter and alarm exist for VPC changes", "ok": vpc_changes_alarm_exists},
-    {"msg": "4.15: Ensure a log metric filter and alarm exist for AWS Organizations changes", "ok": organizations_changes_alarm_exists},
+    {"msg": "4.1: checked condition — a log metric filter and alarm exist for unauthorized API calls", "ok": unauthorized_api_calls_alarm_exists},
+    {"msg": "4.2: checked condition — a log metric filter and alarm exist for console sign-in without MFA", "ok": console_signin_without_mfa_alarm_exists},
+    {"msg": "4.3: checked condition — a log metric filter and alarm exist for usage of the root account", "ok": root_account_usage_alarm_exists},
+    {"msg": "4.4: checked condition — a log metric filter and alarm exist for IAM policy changes", "ok": iam_policy_changes_alarm_exists},
+    {"msg": "4.5: checked condition — a log metric filter and alarm exist for CloudTrail configuration changes", "ok": cloudtrail_config_changes_alarm_exists},
+    {"msg": "4.6: checked condition — a log metric filter and alarm exist for console authentication failures", "ok": console_auth_failures_alarm_exists},
+    {"msg": "4.7: checked condition — a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys", "ok": cmk_deletion_alarm_exists},
+    {"msg": "4.8: checked condition — a log metric filter and alarm exist for S3 bucket policy changes", "ok": s3_bucket_policy_changes_alarm_exists},
+    {"msg": "4.9: checked condition — a log metric filter and alarm exist for AWS Config configuration changes", "ok": config_changes_alarm_exists},
+    {"msg": "4.10: checked condition — a log metric filter and alarm exist for security group changes", "ok": security_group_changes_alarm_exists},
+    {"msg": "4.11: checked condition — a log metric filter and alarm exist for changes to Network ACLs", "ok": nacl_changes_alarm_exists},
+    {"msg": "4.12: checked condition — a log metric filter and alarm exist for changes to network gateways", "ok": network_gateway_changes_alarm_exists},
+    {"msg": "4.13: checked condition — a log metric filter and alarm exist for route table changes", "ok": route_table_changes_alarm_exists},
+    {"msg": "4.14: checked condition — a log metric filter and alarm exist for VPC changes", "ok": vpc_changes_alarm_exists},
+    {"msg": "4.15: checked condition — a log metric filter and alarm exist for AWS Organizations changes", "ok": organizations_changes_alarm_exists},
 ]
 
 default unauthorized_api_calls_alarm_exists := false
@@ -296,7 +296,7 @@ organizations_changes_alarm_exists if {
 
 # Section 5: Networking
 networking_violations := [
-    "5.1: Ensure no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports" |
+    "5.1: checked condition — no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports" |
     nacl := input.network_acls[_]
     entry := nacl.entries[_]
     entry.rule_action == "allow"

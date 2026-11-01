@@ -53,14 +53,14 @@ ssh_config_lines := lines if {
     ]
 }
 
-# CIS 5.1.1 - Ensure cron daemon is enabled
+# CIS 5.1.1 - cron daemon must be turned on
 default cron_enabled := false
 
 cron_enabled if {
     input.services["cron"].enabled == true
 }
 
-# CIS 5.1.2 - Ensure permissions on /etc/crontab are configured
+# CIS 5.1.2 - owner, group, and mode of /etc/crontab must be tightened
 default crontab_permissions := false
 
 crontab_permissions if {
@@ -69,7 +69,7 @@ crontab_permissions if {
     input.file_permissions["/etc/crontab"].group == "root"
 }
 
-# CIS 5.1.3 - Ensure permissions on /etc/cron.hourly are configured
+# CIS 5.1.3 - owner, group, and mode of /etc/cron.hourly must be tightened
 default cron_hourly_permissions := false
 
 cron_hourly_permissions if {
@@ -78,7 +78,7 @@ cron_hourly_permissions if {
     input.file_permissions["/etc/cron.hourly"].group == "root"
 }
 
-# CIS 5.1.4 - Ensure permissions on /etc/cron.daily are configured
+# CIS 5.1.4 - owner, group, and mode of /etc/cron.daily must be tightened
 default cron_daily_permissions := false
 
 cron_daily_permissions if {
@@ -87,7 +87,7 @@ cron_daily_permissions if {
     input.file_permissions["/etc/cron.daily"].group == "root"
 }
 
-# CIS 5.1.5 - Ensure permissions on /etc/cron.weekly are configured
+# CIS 5.1.5 - owner, group, and mode of /etc/cron.weekly must be tightened
 default cron_weekly_permissions := false
 
 cron_weekly_permissions if {
@@ -96,7 +96,7 @@ cron_weekly_permissions if {
     input.file_permissions["/etc/cron.weekly"].group == "root"
 }
 
-# CIS 5.1.6 - Ensure permissions on /etc/cron.monthly are configured
+# CIS 5.1.6 - owner, group, and mode of /etc/cron.monthly must be tightened
 default cron_monthly_permissions := false
 
 cron_monthly_permissions if {
@@ -105,7 +105,7 @@ cron_monthly_permissions if {
     input.file_permissions["/etc/cron.monthly"].group == "root"
 }
 
-# CIS 5.2.1 - Ensure permissions on /etc/ssh/sshd_config are configured
+# CIS 5.2.1 - owner, group, and mode of /etc/ssh/sshd_config must be tightened
 default sshd_config_permissions := false
 
 sshd_config_permissions if {
@@ -114,7 +114,7 @@ sshd_config_permissions if {
     input.file_permissions["/etc/ssh/sshd_config"].group == "root"
 }
 
-# CIS 5.2.2 - Ensure SSH access is limited
+# CIS 5.2.2 - SSH access must be limited to named principals
 default ssh_access_limited := false
 
 ssh_access_limited if {
@@ -134,7 +134,7 @@ ssh_access_limited if {
     count([x | x := ssh_config_lines[_]; startswith(x, "DenyGroups")]) > 0
 }
 
-# CIS 5.2.3 - Ensure permissions on SSH private host key files are configured
+# CIS 5.2.3 - owner, group, and mode of SSH private host key files must be tightened
 default ssh_private_key_permissions := false
 
 ssh_private_key_permissions if {
@@ -146,7 +146,7 @@ ssh_private_key_permissions if {
     }
 }
 
-# CIS 5.2.4 - Ensure permissions on SSH public host key files are configured
+# CIS 5.2.4 - owner, group, and mode of SSH public host key files must be tightened
 default ssh_public_key_permissions := false
 
 ssh_public_key_permissions if {
@@ -158,7 +158,7 @@ ssh_public_key_permissions if {
     }
 }
 
-# CIS 5.2.5 - Ensure SSH LogLevel is appropriate
+# CIS 5.2.5 - SSH LogLevel must use an approved value
 default ssh_loglevel_appropriate := false
 
 ssh_loglevel_appropriate if {
@@ -169,14 +169,14 @@ ssh_loglevel_appropriate if {
     "LogLevel VERBOSE" in ssh_config_lines
 }
 
-# CIS 5.2.6 - Ensure SSH X11 forwarding is disabled
+# CIS 5.2.6 - SSH X11 forwarding must be turned off
 default ssh_x11_forwarding_disabled := false
 
 ssh_x11_forwarding_disabled if {
     "X11Forwarding no" in ssh_config_lines
 }
 
-# CIS 5.2.7 - Ensure SSH MaxAuthTries is set to 4 or less
+# CIS 5.2.7 - required value of SSH MaxAuthTries is 4 or less
 default ssh_maxauthtries_limited := false
 
 ssh_maxauthtries_limited if {
@@ -187,42 +187,42 @@ ssh_maxauthtries_limited if {
     auth_tries <= 4
 }
 
-# CIS 5.2.8 - Ensure SSH IgnoreRhosts is enabled
+# CIS 5.2.8 - SSH IgnoreRhosts must be turned on
 default ssh_ignorerhosts_enabled := false
 
 ssh_ignorerhosts_enabled if {
     "IgnoreRhosts yes" in ssh_config_lines
 }
 
-# CIS 5.2.9 - Ensure SSH HostbasedAuthentication is disabled
+# CIS 5.2.9 - SSH HostbasedAuthentication must be turned off
 default ssh_hostbased_auth_disabled := false
 
 ssh_hostbased_auth_disabled if {
     "HostbasedAuthentication no" in ssh_config_lines
 }
 
-# CIS 5.2.10 - Ensure SSH root login is disabled
+# CIS 5.2.10 - SSH root login must be turned off
 default ssh_root_login_disabled := false
 
 ssh_root_login_disabled if {
     "PermitRootLogin no" in ssh_config_lines
 }
 
-# CIS 5.2.11 - Ensure SSH PermitEmptyPasswords is disabled
+# CIS 5.2.11 - SSH PermitEmptyPasswords must be turned off
 default ssh_empty_passwords_disabled := false
 
 ssh_empty_passwords_disabled if {
     "PermitEmptyPasswords no" in ssh_config_lines
 }
 
-# CIS 5.2.12 - Ensure SSH PermitUserEnvironment is disabled
+# CIS 5.2.12 - SSH PermitUserEnvironment must be turned off
 default ssh_user_environment_disabled := false
 
 ssh_user_environment_disabled if {
     "PermitUserEnvironment no" in ssh_config_lines
 }
 
-# CIS 5.2.13 - Ensure SSH Idle Timeout Interval is configured
+# CIS 5.2.13 - SSH Idle Timeout Interval must be explicitly configured
 default ssh_idle_timeout_configured := false
 
 ssh_idle_timeout_configured if {
@@ -238,7 +238,7 @@ ssh_idle_timeout_configured if {
     count_max <= 3
 }
 
-# CIS 5.2.14 - Ensure SSH LoginGraceTime is set to one minute or less
+# CIS 5.2.14 - required value of SSH LoginGraceTime is one minute or less
 default ssh_login_grace_time_limited := false
 
 ssh_login_grace_time_limited if {
@@ -249,7 +249,7 @@ ssh_login_grace_time_limited if {
     grace_time <= 60
 }
 
-# CIS 5.2.15 - Ensure SSH warning banner is configured
+# CIS 5.2.15 - SSH warning banner must be explicitly configured
 default ssh_banner_configured := false
 
 ssh_banner_configured if {
@@ -259,21 +259,21 @@ ssh_banner_configured if {
     split(line, " ")[1] != "none"
 }
 
-# CIS 5.2.16 - Ensure SSH PAM is enabled
+# CIS 5.2.16 - SSH PAM must be turned on
 default ssh_pam_enabled := false
 
 ssh_pam_enabled if {
     "UsePAM yes" in ssh_config_lines
 }
 
-# CIS 5.2.17 - Ensure SSH AllowTcpForwarding is disabled
+# CIS 5.2.17 - SSH AllowTcpForwarding must be turned off
 default ssh_tcp_forwarding_disabled := false
 
 ssh_tcp_forwarding_disabled if {
     "AllowTcpForwarding no" in ssh_config_lines
 }
 
-# CIS 5.2.18 - Ensure SSH MaxStartups is configured
+# CIS 5.2.18 - SSH MaxStartups must be explicitly configured
 default ssh_max_startups_configured := false
 
 ssh_max_startups_configured if {
@@ -292,7 +292,7 @@ ssh_max_startups_configured if {
     to_number(m[0][1]) <= 10
 }
 
-# CIS 5.2.19 - Ensure SSH MaxSessions is limited
+# CIS 5.2.19 - SSH MaxSessions must be limited to named principals
 default ssh_max_sessions_limited := false
 
 ssh_max_sessions_limited if {
@@ -303,7 +303,7 @@ ssh_max_sessions_limited if {
     sessions <= 10
 }
 
-# CIS 5.2.20 - Ensure system-wide crypto policy is not over-ridden
+# CIS 5.2.20 - system-wide crypto policy must be not over-ridden
 default ssh_crypto_policy_not_overridden := false
 
 ssh_crypto_policy_not_overridden if {

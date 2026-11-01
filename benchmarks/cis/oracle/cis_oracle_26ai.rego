@@ -20,7 +20,7 @@
 package cis.oracle_26ai
 
 # CIS Oracle Database 26ai Benchmark v1.0.0 (CIS renamed the Oracle Database 23ai benchmark to 26ai; supersedes cis.oracle_23ai).
-# 94 recommendations (81 Automated, 13 Manual), every one in the benchmark; ids, titles,
+# 94 recommendations (81 Automated, 13 Manual), every one in the benchmark; ids,
 # status and profiles read from the CIS workbook and the logic written from each audit procedure
 # (tools/cis_generators/gen_oracle_db_26ai.py). All recommendations are Level 1.
 # Profiles: 78 are 'Level 1 - RDBMS'; the 16 host-file recommendations (2.1, 2.2)
@@ -137,7 +137,7 @@ violations contains "1.1: evidence missing — oracle.patches.latest_cpu_applied
 	not e_1_1
 }
 
-violations contains "1.1: Ensure That Appropriate Version/Patches For Oracle Software Are Installed" if {
+violations contains "1.1: Appropriate Version/Patches For Oracle Software must be present" if {
 	e_1_1
 	not r_1_1
 }
@@ -157,7 +157,7 @@ violations contains "2.1.1: evidence missing — oracle.listener.extproc_configu
 	not e_2_1_1
 }
 
-violations contains "2.1.1: Ensure 'extproc' Is Not Present In 'listener.ora'" if {
+violations contains "2.1.1: 'listener.ora' must not contain 'extproc'" if {
 	e_2_1_1
 	not r_2_1_1
 }
@@ -178,7 +178,7 @@ violations contains "2.1.2: evidence missing — oracle.listener_ora not collect
 	not e_2_1_2
 }
 
-violations contains "2.1.2: Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly" if {
+violations contains "2.1.2: 'ACCEPT_MD5_CERTS' must match the approved configuration" if {
 	e_2_1_2
 	not r_2_1_2
 }
@@ -199,7 +199,7 @@ violations contains "2.1.3: evidence missing — oracle.listener_ora not collect
 	not e_2_1_3
 }
 
-violations contains "2.1.3: Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly" if {
+violations contains "2.1.3: 'ACCEPT_SHA1_CERTS' must match the approved configuration" if {
 	e_2_1_3
 	not r_2_1_3
 }
@@ -220,7 +220,7 @@ violations contains "2.1.4: evidence missing — oracle.listener_ora not collect
 	not e_2_1_4
 }
 
-violations contains "2.1.4: Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set." if {
+violations contains "2.1.4: 'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset" if {
 	e_2_1_4
 	not r_2_1_4
 }
@@ -241,7 +241,7 @@ violations contains "2.2.1: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_1
 }
 
-violations contains "2.2.1: Ensure 'ACCEPT_MD5_CERTS' Is NOT SET" if {
+violations contains "2.2.1: 'ACCEPT_MD5_CERTS' must be unset" if {
 	e_2_2_1
 	not r_2_2_1
 }
@@ -262,7 +262,7 @@ violations contains "2.2.2: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_2
 }
 
-violations contains "2.2.2: Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set" if {
+violations contains "2.2.2: 'ACCEPT_SHA1_CERTS' must be unset" if {
 	e_2_2_2
 	not r_2_2_2
 }
@@ -283,7 +283,7 @@ violations contains "2.2.3: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_3
 }
 
-violations contains "2.2.3: Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set" if {
+violations contains "2.2.3: 'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset" if {
 	e_2_2_3
 	not r_2_2_3
 }
@@ -304,7 +304,7 @@ violations contains "2.2.4: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_4
 }
 
-violations contains "2.2.4: Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a" if {
+violations contains "2.2.4: required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' is 12a" if {
 	e_2_2_4
 	not r_2_2_4
 }
@@ -325,7 +325,7 @@ violations contains "2.2.5: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_5
 }
 
-violations contains "2.2.5: Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a" if {
+violations contains "2.2.5: required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' is 12a" if {
 	e_2_2_5
 	not r_2_2_5
 }
@@ -346,7 +346,7 @@ violations contains "2.2.6: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_6
 }
 
-violations contains "2.2.6: Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'" if {
+violations contains "2.2.6: required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQUIRED'" if {
 	e_2_2_6
 	not r_2_2_6
 }
@@ -367,7 +367,7 @@ violations contains "2.2.7: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_7
 }
 
-violations contains "2.2.7: Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'" if {
+violations contains "2.2.7: required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQUIRED'" if {
 	e_2_2_7
 	not r_2_2_7
 }
@@ -388,7 +388,7 @@ violations contains "2.2.8: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_8
 }
 
-violations contains "2.2.8: Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'" if {
+violations contains "2.2.8: required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' is 'AES256'" if {
 	e_2_2_8
 	not r_2_2_8
 }
@@ -409,7 +409,7 @@ violations contains "2.2.9: evidence missing — oracle.sqlnet not collected" if
 	not e_2_2_9
 }
 
-violations contains "2.2.9: Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256" if {
+violations contains "2.2.9: required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' is AES256" if {
 	e_2_2_9
 	not r_2_2_9
 }
@@ -430,7 +430,7 @@ violations contains "2.2.10: evidence missing — oracle.sqlnet not collected" i
 	not e_2_2_10
 }
 
-violations contains "2.2.10: Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'" if {
+violations contains "2.2.10: required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' is 'REQUIRED'" if {
 	e_2_2_10
 	not r_2_2_10
 }
@@ -451,7 +451,7 @@ violations contains "2.2.11: evidence missing — oracle.sqlnet not collected" i
 	not e_2_2_11
 }
 
-violations contains "2.2.11: Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'" if {
+violations contains "2.2.11: required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' is 'REQUIRED'" if {
 	e_2_2_11
 	not r_2_2_11
 }
@@ -472,7 +472,7 @@ violations contains "2.2.12: evidence missing — oracle.sqlnet not collected" i
 	not e_2_2_12
 }
 
-violations contains "2.2.12: Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'" if {
+violations contains "2.2.12: required value of 'SSL_CERT_REVOCATION' is 'REQUIRED'" if {
 	e_2_2_12
 	not r_2_2_12
 }
@@ -493,7 +493,7 @@ violations contains "2.3.1: evidence missing — oracle.parameters not collected
 	not e_2_3_1
 }
 
-violations contains "2.3.1: Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'" if {
+violations contains "2.3.1: 'BACKGROUND_CORE_DUMP' must not be 'Full'" if {
 	e_2_3_1
 	not r_2_3_1
 }
@@ -514,7 +514,7 @@ violations contains "2.3.2: evidence missing — oracle.parameters not collected
 	not e_2_3_2
 }
 
-violations contains "2.3.2: Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'" if {
+violations contains "2.3.2: 'SHADOW_CORE_DUMP' must not be 'Full'" if {
 	e_2_3_2
 	not r_2_3_2
 }
@@ -534,7 +534,7 @@ violations contains "2.3.3: evidence missing — oracle.parameters.mle_prog_lang
 	not e_2_3_3
 }
 
-violations contains "2.3.3: Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'" if {
+violations contains "2.3.3: required value of 'MLE_PROG_LANGUAGES' is 'OFF'" if {
 	e_2_3_3
 	not r_2_3_3
 }
@@ -554,7 +554,7 @@ violations contains "2.3.4: evidence missing — oracle.parameters.allow_group_a
 	not e_2_3_4
 }
 
-violations contains "2.3.4: Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`" if {
+violations contains "2.3.4: required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FALSE`" if {
 	e_2_3_4
 	not r_2_3_4
 }
@@ -565,7 +565,7 @@ r_2_3_5 if {
 	input.oracle.attest.underscore_parameters_reviewed == true
 }
 
-violations contains "2.3.5: Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values (manual review not attested)" if {
+violations contains "2.3.5: Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review (manual review not attested)" if {
 	not r_2_3_5
 }
 
@@ -584,7 +584,7 @@ violations contains "2.3.6: evidence missing — oracle.parameters.os_roles not 
 	not e_2_3_6
 }
 
-violations contains "2.3.6: Ensure 'OS_ROLES' Is Set To 'FALSE'" if {
+violations contains "2.3.6: required value of 'OS_ROLES' is 'FALSE'" if {
 	e_2_3_6
 	not r_2_3_6
 }
@@ -604,7 +604,7 @@ violations contains "2.3.7: evidence missing — oracle.parameters.remote_os_rol
 	not e_2_3_7
 }
 
-violations contains "2.3.7: Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'" if {
+violations contains "2.3.7: required value of 'REMOTE_OS_ROLES' is 'FALSE'" if {
 	e_2_3_7
 	not r_2_3_7
 }
@@ -624,7 +624,7 @@ violations contains "2.3.8: evidence missing — oracle.parameters.sec_max_faile
 	not e_2_3_8
 }
 
-violations contains "2.3.8: Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less" if {
+violations contains "2.3.8: required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is '3' Or Less" if {
 	e_2_3_8
 	not r_2_3_8
 }
@@ -644,7 +644,7 @@ violations contains "2.3.9: evidence missing — oracle.parameters.sec_protocol_
 	not e_2_3_9
 }
 
-violations contains "2.3.9: Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'" if {
+violations contains "2.3.9: required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' is '(DROP,3)'" if {
 	e_2_3_9
 	not r_2_3_9
 }
@@ -664,7 +664,7 @@ violations contains "2.3.10: evidence missing — oracle.parameters.sec_protocol
 	not e_2_3_10
 }
 
-violations contains "2.3.10: Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'" if {
+violations contains "2.3.10: required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION' is 'LOG'" if {
 	e_2_3_10
 	not r_2_3_10
 }
@@ -684,7 +684,7 @@ violations contains "2.3.11: evidence missing — oracle.parameters.sec_return_s
 	not e_2_3_11
 }
 
-violations contains "2.3.11: Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'" if {
+violations contains "2.3.11: required value of 'SEC_RETURN_SERVER_RELEASE_BANNER' is 'FALSE'" if {
 	e_2_3_11
 	not r_2_3_11
 }
@@ -704,7 +704,7 @@ violations contains "2.3.12: evidence missing — oracle.parameters.remote_login
 	not e_2_3_12
 }
 
-violations contains "2.3.12: Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'" if {
+violations contains "2.3.12: required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'NONE'" if {
 	e_2_3_12
 	not r_2_3_12
 }
@@ -725,7 +725,7 @@ violations contains "2.3.13: evidence missing — oracle.parameters not collecte
 	not e_2_3_13
 }
 
-violations contains "2.3.13: Ensure 'REMOTE_LISTENER' Is Empty" if {
+violations contains "2.3.13: 'REMOTE_LISTENER' must be blank" if {
 	e_2_3_13
 	not r_2_3_13
 }
@@ -745,7 +745,7 @@ violations contains "2.3.14: evidence missing — oracle.parameters.resource_lim
 	not e_2_3_14
 }
 
-violations contains "2.3.14: Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'" if {
+violations contains "2.3.14: required value of 'RESOURCE_LIMIT' is 'TRUE'" if {
 	e_2_3_14
 	not r_2_3_14
 }
@@ -766,7 +766,7 @@ violations contains "3.1: evidence missing — oracle.profiles not collected" if
 	not e_3_1
 }
 
-violations contains "3.1: Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'" if {
+violations contains "3.1: 'FAILED_LOGIN_ATTEMPTS' must be at most '5'" if {
 	e_3_1
 	not r_3_1
 }
@@ -787,7 +787,7 @@ violations contains "3.2: evidence missing — oracle.profiles not collected" if
 	not e_3_2
 }
 
-violations contains "3.2: Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'" if {
+violations contains "3.2: 'PASSWORD_LOCK_TIME' must be at least '1'" if {
 	e_3_2
 	not r_3_2
 }
@@ -808,7 +808,7 @@ violations contains "3.3: evidence missing — oracle.profiles not collected" if
 	not e_3_3
 }
 
-violations contains "3.3: Ensure 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' Is Less Than Or Equal To '365'" if {
+violations contains "3.3: 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at most '365'" if {
 	e_3_3
 	not r_3_3
 }
@@ -829,7 +829,7 @@ violations contains "3.4: evidence missing — oracle.profiles not collected" if
 	not e_3_4
 }
 
-violations contains "3.4: Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'" if {
+violations contains "3.4: required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'" if {
 	e_3_4
 	not r_3_4
 }
@@ -850,7 +850,7 @@ violations contains "3.5: evidence missing — oracle.profiles not collected" if
 	not e_3_5
 }
 
-violations contains "3.5: Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles" if {
+violations contains "3.5: 'PASSWORD_VERIFY_FUNCTION' must be set for All Profiles" if {
 	e_3_5
 	not r_3_5
 }
@@ -861,7 +861,7 @@ r_3_6 if {
 	input.oracle.attest.password_verify_function_meets_cis == true
 }
 
-violations contains "3.6: Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly (manual review not attested)" if {
+violations contains "3.6: 'PASSWORD_VERIFY_FUNCTION' must match the approved configuration (manual review not attested)" if {
 	not r_3_6
 }
 
@@ -881,7 +881,7 @@ violations contains "3.7: evidence missing — oracle.profiles not collected" if
 	not e_3_7
 }
 
-violations contains "3.7: Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'" if {
+violations contains "3.7: required value of 'PASSWORD_ROLLOVER_TIME' is '0'" if {
 	e_3_7
 	not r_3_7
 }
@@ -902,7 +902,7 @@ violations contains "3.8: evidence missing — oracle.profiles not collected" if
 	not e_3_8
 }
 
-violations contains "3.8: Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'" if {
+violations contains "3.8: 'INACTIVE_ACCOUNT_TIME' must be at most '120'" if {
 	e_3_8
 	not r_3_8
 }
@@ -922,7 +922,7 @@ violations contains "4.1: evidence missing — oracle.users_with_default_passwor
 	not e_4_1
 }
 
-violations contains "4.1: Ensure All Default Passwords Are Changed" if {
+violations contains "4.1: All Default Passwords must be Changed" if {
 	e_4_1
 	not r_4_1
 }
@@ -942,7 +942,7 @@ violations contains "4.2: evidence missing — oracle.custom_oracle_maintained_u
 	not e_4_2
 }
 
-violations contains "4.2: Ensure No Custom 'ORACLE_MAINTAINED' Users Exist" if {
+violations contains "4.2: checked condition — No Custom 'ORACLE_MAINTAINED' Users Exist" if {
 	e_4_2
 	not r_4_2
 }
@@ -953,7 +953,7 @@ r_4_3 if {
 	input.oracle.attest.ras_users_reviewed == true
 }
 
-violations contains "4.3: Review The Users Created Through Real Application Security (manual review not attested)" if {
+violations contains "4.3: The Users Created Through Real Application Security requires a recorded review (manual review not attested)" if {
 	not r_4_3
 }
 
@@ -972,7 +972,7 @@ violations contains "4.4: evidence missing — oracle.users_with_old_password_ve
 	not e_4_4
 }
 
-violations contains "4.4: Ensure Old Password Versions Are Not Used" if {
+violations contains "4.4: Old Password Versions must be Not Used" if {
 	e_4_4
 	not r_4_4
 }
@@ -992,7 +992,7 @@ violations contains "4.5: evidence missing — oracle.password_file_format not c
 	not e_4_5
 }
 
-violations contains "4.5: Ensure The Latest Version of The Password File Is Used" if {
+violations contains "4.5: The Latest Version of The Password File must be Used" if {
 	e_4_5
 	not r_4_5
 }
@@ -1012,7 +1012,7 @@ violations contains "4.6: evidence missing — oracle.pwfile_users_not_on_all_in
 	not e_4_6
 }
 
-violations contains "4.6: Ensure That Users In Different RAC Instances Are Identical In PW Files" if {
+violations contains "4.6: Users In Different RAC Instances must be Identical In PW Files" if {
 	e_4_6
 	not r_4_6
 }
@@ -1032,7 +1032,7 @@ violations contains "4.7: evidence missing — oracle.public_db_links not collec
 	not e_4_7
 }
 
-violations contains "4.7: Ensure No Public Database Links Exist" if {
+violations contains "4.7: checked condition — No Public Database Links Exist" if {
 	e_4_7
 	not r_4_7
 }
@@ -1052,7 +1052,7 @@ violations contains "4.8: evidence missing — oracle.db_links_with_legacy_passw
 	not e_4_8
 }
 
-violations contains "4.8: Ensure That Database Link Passwords Are Using The Latest Encryption" if {
+violations contains "4.8: Database Link Passwords must be Using The Latest Encryption" if {
 	e_4_8
 	not r_4_8
 }
@@ -1072,7 +1072,7 @@ violations contains "5.1: evidence missing — oracle.audit.unaudited_system_act
 	not e_5_1
 }
 
-violations contains "5.1: Ensure All Auditable System Actions Commands Are Audited" if {
+violations contains "5.1: All Auditable System Actions Commands must be Audited" if {
 	e_5_1
 	not r_5_1
 }
@@ -1092,7 +1092,7 @@ violations contains "5.2: evidence missing — oracle.audit.enabled_options not 
 	not e_5_2
 }
 
-violations contains "5.2: Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled" if {
+violations contains "5.2: the 'LOGON' AND 'LOGOFF' Actions Audit must be turned on" if {
 	e_5_2
 	not r_5_2
 }
@@ -1112,7 +1112,7 @@ violations contains "5.3: evidence missing — oracle.audit.audited_packages not
 	not e_5_3
 }
 
-violations contains "5.3: Ensure Critical Packages Are Audited" if {
+violations contains "5.3: Critical Packages must be Audited" if {
 	e_5_3
 	not r_5_3
 }
@@ -1132,7 +1132,7 @@ violations contains "5.4: evidence missing — oracle.audit.enabled_options not 
 	not e_5_4
 }
 
-violations contains "5.4: Ensure All Export Activities Are Audited" if {
+violations contains "5.4: All Export Activities must be Audited" if {
 	e_5_4
 	not r_5_4
 }
@@ -1152,7 +1152,7 @@ violations contains "5.5: evidence missing — oracle.audit.all_actions_audited_
 	not e_5_5
 }
 
-violations contains "5.5: Ensure The Use Of SYS* Privileges Is Audited" if {
+violations contains "5.5: The Use Of SYS* Privileges must be Audited" if {
 	e_5_5
 	not r_5_5
 }
@@ -1172,7 +1172,7 @@ violations contains "6.1.1: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_1
 }
 
-violations contains "6.1.1: Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'" if {
+violations contains "6.1.1: '%ANY%' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_1
 	not r_6_1_1
 }
@@ -1192,7 +1192,7 @@ violations contains "6.1.2: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_2
 }
 
-violations contains "6.1.2: Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'" if {
+violations contains "6.1.2: Admin Privileges must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_2
 	not r_6_1_2
 }
@@ -1213,7 +1213,7 @@ violations contains "6.1.3: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_3
 }
 
-violations contains "6.1.3: Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.3: 'IMPORT' And 'EXPORT' 'FULL DATABASE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_3
 	not r_6_1_3
 }
@@ -1233,7 +1233,7 @@ violations contains "6.1.4: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_4
 }
 
-violations contains "6.1.4: Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.4: 'CREATE EXTERNAL JOB' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_4
 	not r_6_1_4
 }
@@ -1253,7 +1253,7 @@ violations contains "6.1.5: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_5
 }
 
-violations contains "6.1.5: Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.5: 'BECOME USER' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_5
 	not r_6_1_5
 }
@@ -1273,7 +1273,7 @@ violations contains "6.1.6: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_6
 }
 
-violations contains "6.1.6: Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.6: 'TEXT DATASTORE ACCESS' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_6
 	not r_6_1_6
 }
@@ -1295,7 +1295,7 @@ violations contains "6.1.7: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_7
 }
 
-violations contains "6.1.7: Ensure 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.7: 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_7
 	not r_6_1_7
 }
@@ -1315,7 +1315,7 @@ violations contains "6.1.8: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_8
 }
 
-violations contains "6.1.8: Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.8: 'LOGMINING' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_8
 	not r_6_1_8
 }
@@ -1335,7 +1335,7 @@ violations contains "6.1.9: evidence missing — oracle.grants.sys_privs not col
 	not e_6_1_9
 }
 
-violations contains "6.1.9: Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.9: 'ALTER SYSTEM' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_9
 	not r_6_1_9
 }
@@ -1355,7 +1355,7 @@ violations contains "6.1.10: evidence missing — oracle.grants.sys_privs not co
 	not e_6_1_10
 }
 
-violations contains "6.1.10: Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.1.10: 'CREATE LIBRARY' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_10
 	not r_6_1_10
 }
@@ -1375,7 +1375,7 @@ violations contains "6.1.11: evidence missing — oracle.grants.sys_privs not co
 	not e_6_1_11
 }
 
-violations contains "6.1.11: Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'" if {
+violations contains "6.1.11: All `SYSTEM` Privileges must be removed from unauthorized 'GRANTEE'" if {
 	e_6_1_11
 	not r_6_1_11
 }
@@ -1395,7 +1395,7 @@ violations contains "6.2.1: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_1
 }
 
-violations contains "6.2.1: Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'" if {
+violations contains "6.2.1: 'DBA' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_1
 	not r_6_2_1
 }
@@ -1415,7 +1415,7 @@ violations contains "6.2.2: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_2
 }
 
-violations contains "6.2.2: Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.2: 'EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_2
 	not r_6_2_2
 }
@@ -1435,7 +1435,7 @@ violations contains "6.2.3: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_3
 }
 
-violations contains "6.2.3: Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.3: 'IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_3
 	not r_6_2_3
 }
@@ -1455,7 +1455,7 @@ violations contains "6.2.4: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_4
 }
 
-violations contains "6.2.4: Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.4: 'DATAPUMP_EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_4
 	not r_6_2_4
 }
@@ -1475,7 +1475,7 @@ violations contains "6.2.5: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_5
 }
 
-violations contains "6.2.5: Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.5: 'DATAPUMP_IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_5
 	not r_6_2_5
 }
@@ -1495,7 +1495,7 @@ violations contains "6.2.6: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_6
 }
 
-violations contains "6.2.6: Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.6: 'DV_ADMIN' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_6
 	not r_6_2_6
 }
@@ -1515,7 +1515,7 @@ violations contains "6.2.7: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_7
 }
 
-violations contains "6.2.7: Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.7: 'DV_AUDIT_CLEANUP' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_7
 	not r_6_2_7
 }
@@ -1535,7 +1535,7 @@ violations contains "6.2.8: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_8
 }
 
-violations contains "6.2.8: Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.8: 'OLAP_DBA' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_8
 	not r_6_2_8
 }
@@ -1555,7 +1555,7 @@ violations contains "6.2.9: evidence missing — oracle.grants.role_privs not co
 	not e_6_2_9
 }
 
-violations contains "6.2.9: Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.9: 'LBAC_DBA' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_9
 	not r_6_2_9
 }
@@ -1575,7 +1575,7 @@ violations contains "6.2.10: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_10
 }
 
-violations contains "6.2.10: Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.10: 'JAVA_ADMIN' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_10
 	not r_6_2_10
 }
@@ -1595,7 +1595,7 @@ violations contains "6.2.11: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_11
 }
 
-violations contains "6.2.11: Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.11: 'JAVASYSPRIVS' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_11
 	not r_6_2_11
 }
@@ -1615,7 +1615,7 @@ violations contains "6.2.12: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_12
 }
 
-violations contains "6.2.12: Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.12: 'LOGSTDBY_ADMINISTRATOR' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_12
 	not r_6_2_12
 }
@@ -1635,7 +1635,7 @@ violations contains "6.2.13: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_13
 }
 
-violations contains "6.2.13: Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.13: 'SQL_FIREWALL_ADMIN' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_13
 	not r_6_2_13
 }
@@ -1655,7 +1655,7 @@ violations contains "6.2.14: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_14
 }
 
-violations contains "6.2.14: Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.14: 'MAINTPLAN_APP' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_14
 	not r_6_2_14
 }
@@ -1675,7 +1675,7 @@ violations contains "6.2.15: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_15
 }
 
-violations contains "6.2.15: Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.15: 'JAVADEBUGPRIV' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_15
 	not r_6_2_15
 }
@@ -1695,7 +1695,7 @@ violations contains "6.2.16: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_16
 }
 
-violations contains "6.2.16: Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.16: 'DV_PATCH_ADMIN' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_16
 	not r_6_2_16
 }
@@ -1715,7 +1715,7 @@ violations contains "6.2.17: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_17
 }
 
-violations contains "6.2.17: Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.17: 'DV_POLICY_OWNER' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_17
 	not r_6_2_17
 }
@@ -1735,7 +1735,7 @@ violations contains "6.2.18: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_18
 }
 
-violations contains "6.2.18: Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.18: AUDIT_ADMIN' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_18
 	not r_6_2_18
 }
@@ -1755,7 +1755,7 @@ violations contains "6.2.19: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_19
 }
 
-violations contains "6.2.19: Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.19: 'AUDIT_VIEWER' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_19
 	not r_6_2_19
 }
@@ -1775,7 +1775,7 @@ violations contains "6.2.20: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_20
 }
 
-violations contains "6.2.20: Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.20: 'PDB_DBA' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_20
 	not r_6_2_20
 }
@@ -1795,7 +1795,7 @@ violations contains "6.2.21: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_21
 }
 
-violations contains "6.2.21: Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'" if {
+violations contains "6.2.21: 'SELECT_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_21
 	not r_6_2_21
 }
@@ -1815,7 +1815,7 @@ violations contains "6.2.22: evidence missing — oracle.grants.role_privs not c
 	not e_6_2_22
 }
 
-violations contains "6.2.22: Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'" if {
+violations contains "6.2.22: 'EXECUTE_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'" if {
 	e_6_2_22
 	not r_6_2_22
 }
@@ -1826,7 +1826,7 @@ r_6_3_1 if {
 	input.oracle.attest.schema_privileges_reviewed == true
 }
 
-violations contains "6.3.1: Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges (manual review not attested)" if {
+violations contains "6.3.1: 'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set (manual review not attested)" if {
 	not r_6_3_1
 }
 
@@ -1845,7 +1845,7 @@ violations contains "6.4.1: evidence missing — oracle.grants.tab_privs not col
 	not e_6_4_1
 }
 
-violations contains "6.4.1: Ensure 'ALL' Is Revoked On 'Sensitive' Tables" if {
+violations contains "6.4.1: 'ALL' must be revoked on 'Sensitive' Tables" if {
 	e_6_4_1
 	not r_6_4_1
 }
@@ -1856,7 +1856,7 @@ r_6_5_1 if {
 	input.oracle.attest.column_privileges_reviewed == true
 }
 
-violations contains "6.5.1: Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE' (manual review not attested)" if {
+violations contains "6.5.1: 'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE' (manual review not attested)" if {
 	not r_6_5_1
 }
 
@@ -1866,7 +1866,7 @@ r_6_6_1 if {
 	input.oracle.attest.proxy_user_privileges_reviewed == true
 }
 
-violations contains "6.6.1: Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)" if {
+violations contains "6.6.1: Proxy User Privileges must be removed from unauthorized 'GRANTEE' (manual review not attested)" if {
 	not r_6_6_1
 }
 
@@ -1876,7 +1876,7 @@ r_6_7_1 if {
 	input.oracle.attest.custom_java_privileges_reviewed == true
 }
 
-violations contains "6.7.1: Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)" if {
+violations contains "6.7.1: Custom Java Privileges must be removed from unauthorized 'GRANTEE' (manual review not attested)" if {
 	not r_6_7_1
 }
 
@@ -1886,7 +1886,7 @@ r_6_8_1 if {
 	input.oracle.attest.directory_object_access_reviewed == true
 }
 
-violations contains "6.8.1: Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’ (manual review not attested)" if {
+violations contains "6.8.1: Directory Object Access must be removed from unauthorized 'GRANTEE' (manual review not attested)" if {
 	not r_6_8_1
 }
 
@@ -1896,7 +1896,7 @@ r_6_8_2 if {
 	input.oracle.attest.directory_object_privileges_reviewed == true
 }
 
-violations contains "6.8.2: Review Directory Objects Privileges (manual review not attested)" if {
+violations contains "6.8.2: Directory Objects Privileges requires a recorded review (manual review not attested)" if {
 	not r_6_8_2
 }
 
@@ -1906,7 +1906,7 @@ r_6_8_3 if {
 	input.oracle.attest.external_table_preprocessors_reviewed == true
 }
 
-violations contains "6.8.3: Review External Tables With Preprocessor (manual review not attested)" if {
+violations contains "6.8.3: External Tables With Preprocessor requires a recorded review (manual review not attested)" if {
 	not r_6_8_3
 }
 
@@ -1916,7 +1916,7 @@ r_6_8_4 if {
 	input.oracle.attest.external_tables_reviewed == true
 }
 
-violations contains "6.8.4: Review External Tables (manual review not attested)" if {
+violations contains "6.8.4: External Tables requires a recorded review (manual review not attested)" if {
 	not r_6_8_4
 }
 
@@ -1936,7 +1936,7 @@ sections := {
 # id -> CIS title, level, Automated/Manual status and the workbook profiles it belongs to
 recommendations := {
  "1.1": {
-  "title": "Ensure That Appropriate Version/Patches For Oracle Software Are Installed",
+  "title": "Appropriate Version/Patches For Oracle Software must be present",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -1944,7 +1944,7 @@ recommendations := {
   ]
  },
  "2.1.1": {
-  "title": "Ensure 'extproc' Is Not Present In 'listener.ora'",
+  "title": "'listener.ora' must not contain 'extproc'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -1953,7 +1953,7 @@ recommendations := {
   ]
  },
  "2.1.2": {
-  "title": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly",
+  "title": "'ACCEPT_MD5_CERTS' must match the approved configuration",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -1962,7 +1962,7 @@ recommendations := {
   ]
  },
  "2.1.3": {
-  "title": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly",
+  "title": "'ACCEPT_SHA1_CERTS' must match the approved configuration",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -1971,7 +1971,7 @@ recommendations := {
   ]
  },
  "2.1.4": {
-  "title": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set.",
+  "title": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -1980,7 +1980,7 @@ recommendations := {
   ]
  },
  "2.2.1": {
-  "title": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET",
+  "title": "'ACCEPT_MD5_CERTS' must be unset",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -1989,7 +1989,7 @@ recommendations := {
   ]
  },
  "2.2.2": {
-  "title": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set",
+  "title": "'ACCEPT_SHA1_CERTS' must be unset",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -1998,7 +1998,7 @@ recommendations := {
   ]
  },
  "2.2.3": {
-  "title": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set",
+  "title": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2007,7 +2007,7 @@ recommendations := {
   ]
  },
  "2.2.4": {
-  "title": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a",
+  "title": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' is 12a",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2016,7 +2016,7 @@ recommendations := {
   ]
  },
  "2.2.5": {
-  "title": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a",
+  "title": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' is 12a",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2025,7 +2025,7 @@ recommendations := {
   ]
  },
  "2.2.6": {
-  "title": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'",
+  "title": "required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQUIRED'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2034,7 +2034,7 @@ recommendations := {
   ]
  },
  "2.2.7": {
-  "title": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'",
+  "title": "required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQUIRED'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2043,7 +2043,7 @@ recommendations := {
   ]
  },
  "2.2.8": {
-  "title": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'",
+  "title": "required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' is 'AES256'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2052,7 +2052,7 @@ recommendations := {
   ]
  },
  "2.2.9": {
-  "title": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256",
+  "title": "required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' is AES256",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2061,7 +2061,7 @@ recommendations := {
   ]
  },
  "2.2.10": {
-  "title": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'",
+  "title": "required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' is 'REQUIRED'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2070,7 +2070,7 @@ recommendations := {
   ]
  },
  "2.2.11": {
-  "title": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'",
+  "title": "required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' is 'REQUIRED'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2079,7 +2079,7 @@ recommendations := {
   ]
  },
  "2.2.12": {
-  "title": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'",
+  "title": "required value of 'SSL_CERT_REVOCATION' is 'REQUIRED'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2088,7 +2088,7 @@ recommendations := {
   ]
  },
  "2.3.1": {
-  "title": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'",
+  "title": "'BACKGROUND_CORE_DUMP' must not be 'Full'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2096,7 +2096,7 @@ recommendations := {
   ]
  },
  "2.3.2": {
-  "title": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'",
+  "title": "'SHADOW_CORE_DUMP' must not be 'Full'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2104,7 +2104,7 @@ recommendations := {
   ]
  },
  "2.3.3": {
-  "title": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'",
+  "title": "required value of 'MLE_PROG_LANGUAGES' is 'OFF'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2112,7 +2112,7 @@ recommendations := {
   ]
  },
  "2.3.4": {
-  "title": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`",
+  "title": "required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FALSE`",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2120,7 +2120,7 @@ recommendations := {
   ]
  },
  "2.3.5": {
-  "title": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values",
+  "title": "Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2128,7 +2128,7 @@ recommendations := {
   ]
  },
  "2.3.6": {
-  "title": "Ensure 'OS_ROLES' Is Set To 'FALSE'",
+  "title": "required value of 'OS_ROLES' is 'FALSE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2136,7 +2136,7 @@ recommendations := {
   ]
  },
  "2.3.7": {
-  "title": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'",
+  "title": "required value of 'REMOTE_OS_ROLES' is 'FALSE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2144,7 +2144,7 @@ recommendations := {
   ]
  },
  "2.3.8": {
-  "title": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less",
+  "title": "required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is '3' Or Less",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2152,7 +2152,7 @@ recommendations := {
   ]
  },
  "2.3.9": {
-  "title": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'",
+  "title": "required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' is '(DROP,3)'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2160,7 +2160,7 @@ recommendations := {
   ]
  },
  "2.3.10": {
-  "title": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'",
+  "title": "required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION' is 'LOG'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2168,7 +2168,7 @@ recommendations := {
   ]
  },
  "2.3.11": {
-  "title": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'",
+  "title": "required value of 'SEC_RETURN_SERVER_RELEASE_BANNER' is 'FALSE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2176,7 +2176,7 @@ recommendations := {
   ]
  },
  "2.3.12": {
-  "title": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'",
+  "title": "required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'NONE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2184,7 +2184,7 @@ recommendations := {
   ]
  },
  "2.3.13": {
-  "title": "Ensure 'REMOTE_LISTENER' Is Empty",
+  "title": "'REMOTE_LISTENER' must be blank",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2192,7 +2192,7 @@ recommendations := {
   ]
  },
  "2.3.14": {
-  "title": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'",
+  "title": "required value of 'RESOURCE_LIMIT' is 'TRUE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2200,7 +2200,7 @@ recommendations := {
   ]
  },
  "3.1": {
-  "title": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'",
+  "title": "'FAILED_LOGIN_ATTEMPTS' must be at most '5'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2208,7 +2208,7 @@ recommendations := {
   ]
  },
  "3.2": {
-  "title": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'",
+  "title": "'PASSWORD_LOCK_TIME' must be at least '1'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2216,7 +2216,7 @@ recommendations := {
   ]
  },
  "3.3": {
-  "title": "Ensure 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' Is Less Than Or Equal To '365'",
+  "title": "'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at most '365'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2224,7 +2224,7 @@ recommendations := {
   ]
  },
  "3.4": {
-  "title": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'",
+  "title": "required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2232,7 +2232,7 @@ recommendations := {
   ]
  },
  "3.5": {
-  "title": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles",
+  "title": "'PASSWORD_VERIFY_FUNCTION' must be set for All Profiles",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2240,7 +2240,7 @@ recommendations := {
   ]
  },
  "3.6": {
-  "title": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly",
+  "title": "'PASSWORD_VERIFY_FUNCTION' must match the approved configuration",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2248,7 +2248,7 @@ recommendations := {
   ]
  },
  "3.7": {
-  "title": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'",
+  "title": "required value of 'PASSWORD_ROLLOVER_TIME' is '0'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2256,7 +2256,7 @@ recommendations := {
   ]
  },
  "3.8": {
-  "title": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'",
+  "title": "'INACTIVE_ACCOUNT_TIME' must be at most '120'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2264,7 +2264,7 @@ recommendations := {
   ]
  },
  "4.1": {
-  "title": "Ensure All Default Passwords Are Changed",
+  "title": "All Default Passwords must be Changed",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2272,7 +2272,7 @@ recommendations := {
   ]
  },
  "4.2": {
-  "title": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist",
+  "title": "checked condition — No Custom 'ORACLE_MAINTAINED' Users Exist",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2280,7 +2280,7 @@ recommendations := {
   ]
  },
  "4.3": {
-  "title": "Review The Users Created Through Real Application Security",
+  "title": "The Users Created Through Real Application Security requires a recorded review",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2288,7 +2288,7 @@ recommendations := {
   ]
  },
  "4.4": {
-  "title": "Ensure Old Password Versions Are Not Used",
+  "title": "Old Password Versions must be Not Used",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2296,7 +2296,7 @@ recommendations := {
   ]
  },
  "4.5": {
-  "title": "Ensure The Latest Version of The Password File Is Used",
+  "title": "The Latest Version of The Password File must be Used",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2304,7 +2304,7 @@ recommendations := {
   ]
  },
  "4.6": {
-  "title": "Ensure That Users In Different RAC Instances Are Identical In PW Files",
+  "title": "Users In Different RAC Instances must be Identical In PW Files",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2312,7 +2312,7 @@ recommendations := {
   ]
  },
  "4.7": {
-  "title": "Ensure No Public Database Links Exist",
+  "title": "checked condition — No Public Database Links Exist",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2320,7 +2320,7 @@ recommendations := {
   ]
  },
  "4.8": {
-  "title": "Ensure That Database Link Passwords Are Using The Latest Encryption",
+  "title": "Database Link Passwords must be Using The Latest Encryption",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2328,7 +2328,7 @@ recommendations := {
   ]
  },
  "5.1": {
-  "title": "Ensure All Auditable System Actions Commands Are Audited",
+  "title": "All Auditable System Actions Commands must be Audited",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2336,7 +2336,7 @@ recommendations := {
   ]
  },
  "5.2": {
-  "title": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled",
+  "title": "the 'LOGON' AND 'LOGOFF' Actions Audit must be turned on",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2344,7 +2344,7 @@ recommendations := {
   ]
  },
  "5.3": {
-  "title": "Ensure Critical Packages Are Audited",
+  "title": "Critical Packages must be Audited",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2352,7 +2352,7 @@ recommendations := {
   ]
  },
  "5.4": {
-  "title": "Ensure All Export Activities Are Audited",
+  "title": "All Export Activities must be Audited",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2360,7 +2360,7 @@ recommendations := {
   ]
  },
  "5.5": {
-  "title": "Ensure The Use Of SYS* Privileges Is Audited",
+  "title": "The Use Of SYS* Privileges must be Audited",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2368,7 +2368,7 @@ recommendations := {
   ]
  },
  "6.1.1": {
-  "title": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'",
+  "title": "'%ANY%' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2376,7 +2376,7 @@ recommendations := {
   ]
  },
  "6.1.2": {
-  "title": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'",
+  "title": "Admin Privileges must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2384,7 +2384,7 @@ recommendations := {
   ]
  },
  "6.1.3": {
-  "title": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'IMPORT' And 'EXPORT' 'FULL DATABASE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2392,7 +2392,7 @@ recommendations := {
   ]
  },
  "6.1.4": {
-  "title": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'CREATE EXTERNAL JOB' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2400,7 +2400,7 @@ recommendations := {
   ]
  },
  "6.1.5": {
-  "title": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'BECOME USER' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2408,7 +2408,7 @@ recommendations := {
   ]
  },
  "6.1.6": {
-  "title": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'TEXT DATASTORE ACCESS' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2416,7 +2416,7 @@ recommendations := {
   ]
  },
  "6.1.7": {
-  "title": "Ensure 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2424,7 +2424,7 @@ recommendations := {
   ]
  },
  "6.1.8": {
-  "title": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'LOGMINING' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2432,7 +2432,7 @@ recommendations := {
   ]
  },
  "6.1.9": {
-  "title": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'ALTER SYSTEM' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2440,7 +2440,7 @@ recommendations := {
   ]
  },
  "6.1.10": {
-  "title": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'CREATE LIBRARY' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2448,7 +2448,7 @@ recommendations := {
   ]
  },
  "6.1.11": {
-  "title": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'",
+  "title": "All `SYSTEM` Privileges must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2456,7 +2456,7 @@ recommendations := {
   ]
  },
  "6.2.1": {
-  "title": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'",
+  "title": "'DBA' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2464,7 +2464,7 @@ recommendations := {
   ]
  },
  "6.2.2": {
-  "title": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2472,7 +2472,7 @@ recommendations := {
   ]
  },
  "6.2.3": {
-  "title": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2480,7 +2480,7 @@ recommendations := {
   ]
  },
  "6.2.4": {
-  "title": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'DATAPUMP_EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2488,7 +2488,7 @@ recommendations := {
   ]
  },
  "6.2.5": {
-  "title": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'DATAPUMP_IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2496,7 +2496,7 @@ recommendations := {
   ]
  },
  "6.2.6": {
-  "title": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'DV_ADMIN' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2504,7 +2504,7 @@ recommendations := {
   ]
  },
  "6.2.7": {
-  "title": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'DV_AUDIT_CLEANUP' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2512,7 +2512,7 @@ recommendations := {
   ]
  },
  "6.2.8": {
-  "title": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'OLAP_DBA' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2520,7 +2520,7 @@ recommendations := {
   ]
  },
  "6.2.9": {
-  "title": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'LBAC_DBA' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2528,7 +2528,7 @@ recommendations := {
   ]
  },
  "6.2.10": {
-  "title": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'JAVA_ADMIN' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2536,7 +2536,7 @@ recommendations := {
   ]
  },
  "6.2.11": {
-  "title": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'JAVASYSPRIVS' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2544,7 +2544,7 @@ recommendations := {
   ]
  },
  "6.2.12": {
-  "title": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'LOGSTDBY_ADMINISTRATOR' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2552,7 +2552,7 @@ recommendations := {
   ]
  },
  "6.2.13": {
-  "title": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'SQL_FIREWALL_ADMIN' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2560,7 +2560,7 @@ recommendations := {
   ]
  },
  "6.2.14": {
-  "title": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'MAINTPLAN_APP' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2568,7 +2568,7 @@ recommendations := {
   ]
  },
  "6.2.15": {
-  "title": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'JAVADEBUGPRIV' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2576,7 +2576,7 @@ recommendations := {
   ]
  },
  "6.2.16": {
-  "title": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'DV_PATCH_ADMIN' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2584,7 +2584,7 @@ recommendations := {
   ]
  },
  "6.2.17": {
-  "title": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'DV_POLICY_OWNER' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2592,7 +2592,7 @@ recommendations := {
   ]
  },
  "6.2.18": {
-  "title": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "AUDIT_ADMIN' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2600,7 +2600,7 @@ recommendations := {
   ]
  },
  "6.2.19": {
-  "title": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'AUDIT_VIEWER' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2608,7 +2608,7 @@ recommendations := {
   ]
  },
  "6.2.20": {
-  "title": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'PDB_DBA' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2616,7 +2616,7 @@ recommendations := {
   ]
  },
  "6.2.21": {
-  "title": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'",
+  "title": "'SELECT_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2624,7 +2624,7 @@ recommendations := {
   ]
  },
  "6.2.22": {
-  "title": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'",
+  "title": "'EXECUTE_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2632,7 +2632,7 @@ recommendations := {
   ]
  },
  "6.3.1": {
-  "title": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges",
+  "title": "'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2640,7 +2640,7 @@ recommendations := {
   ]
  },
  "6.4.1": {
-  "title": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables",
+  "title": "'ALL' must be revoked on 'Sensitive' Tables",
   "level": 1,
   "assessment": "Automated",
   "profiles": [
@@ -2648,7 +2648,7 @@ recommendations := {
   ]
  },
  "6.5.1": {
-  "title": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE'",
+  "title": "'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2656,7 +2656,7 @@ recommendations := {
   ]
  },
  "6.6.1": {
-  "title": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE'",
+  "title": "Proxy User Privileges must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2664,7 +2664,7 @@ recommendations := {
   ]
  },
  "6.7.1": {
-  "title": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE'",
+  "title": "Custom Java Privileges must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2672,7 +2672,7 @@ recommendations := {
   ]
  },
  "6.8.1": {
-  "title": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’",
+  "title": "Directory Object Access must be removed from unauthorized 'GRANTEE'",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2680,7 +2680,7 @@ recommendations := {
   ]
  },
  "6.8.2": {
-  "title": "Review Directory Objects Privileges",
+  "title": "Directory Objects Privileges requires a recorded review",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2688,7 +2688,7 @@ recommendations := {
   ]
  },
  "6.8.3": {
-  "title": "Review External Tables With Preprocessor",
+  "title": "External Tables With Preprocessor requires a recorded review",
   "level": 1,
   "assessment": "Manual",
   "profiles": [
@@ -2696,7 +2696,7 @@ recommendations := {
   ]
  },
  "6.8.4": {
-  "title": "Review External Tables",
+  "title": "External Tables requires a recorded review",
   "level": 1,
   "assessment": "Manual",
   "profiles": [

@@ -218,7 +218,7 @@ ssh_cipher_has(x) if {
 }
 
 # 1.6.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure crypto-policies-scripts package is installed
+# crypto-policies-scripts package must be present
 default e_1_6_1 := false
 
 e_1_6_1 if {
@@ -233,13 +233,13 @@ p_1_6_1 if {
 
 violations contains "1.6.1: evidence missing — packages.crypto-policies-scripts not collected" if not e_1_6_1
 
-violations contains "1.6.1: not met — Ensure crypto-policies-scripts package is installed" if {
+violations contains "1.6.1: not met — crypto-policies-scripts package must be present" if {
 	e_1_6_1
 	not p_1_6_1
 }
 
 # 1.6.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy is not legacy
+# system wide crypto policy must be not legacy
 default e_1_6_2 := false
 
 e_1_6_2 if {
@@ -254,13 +254,13 @@ p_1_6_2 if {
 
 violations contains "1.6.2: evidence missing — initial_setup.crypto_policy not collected" if not e_1_6_2
 
-violations contains "1.6.2: not met — Ensure system wide crypto policy is not legacy" if {
+violations contains "1.6.2: not met — system wide crypto policy must be not legacy" if {
 	e_1_6_2
 	not p_1_6_2
 }
 
 # 1.6.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy is not set in sshd configuration
+# system wide crypto policy must be not set in sshd configuration
 default e_1_6_3 := false
 
 e_1_6_3 if {
@@ -283,13 +283,13 @@ p_1_6_3 if {
 
 violations contains "1.6.3: evidence missing — crypto_policy.sysconfig_ssh_raw/sysconfig_ssh_exists not collected" if not e_1_6_3
 
-violations contains "1.6.3: not met — Ensure system wide crypto policy is not set in sshd configuration" if {
+violations contains "1.6.3: not met — system wide crypto policy must be not set in sshd configuration" if {
 	e_1_6_3
 	not p_1_6_3
 }
 
 # 1.6.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables sha1 hash and signature support
+# checked condition — system wide crypto policy disables sha1 hash and signature support
 default e_1_6_4 := false
 
 e_1_6_4 if {
@@ -305,13 +305,13 @@ p_1_6_4 if {
 
 violations contains "1.6.4: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_4
 
-violations contains "1.6.4: not met — Ensure system wide crypto policy disables sha1 hash and signature support" if {
+violations contains "1.6.4: not met — checked condition — system wide crypto policy disables sha1 hash and signature support" if {
 	e_1_6_4
 	not p_1_6_4
 }
 
 # 1.6.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy macs are configured
+# system wide crypto policy macs must be explicitly configured
 default e_1_6_5 := false
 
 e_1_6_5 if {
@@ -326,13 +326,13 @@ p_1_6_5 if {
 
 violations contains "1.6.5: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_5
 
-violations contains "1.6.5: not met — Ensure system wide crypto policy macs are configured" if {
+violations contains "1.6.5: not met — system wide crypto policy macs must be explicitly configured" if {
 	e_1_6_5
 	not p_1_6_5
 }
 
 # 1.6.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables cbc for ssh
+# checked condition — system wide crypto policy disables cbc for ssh
 default e_1_6_6 := false
 
 e_1_6_6 if {
@@ -347,13 +347,13 @@ p_1_6_6 if {
 
 violations contains "1.6.6: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_6
 
-violations contains "1.6.6: not met — Ensure system wide crypto policy disables cbc for ssh" if {
+violations contains "1.6.6: not met — checked condition — system wide crypto policy disables cbc for ssh" if {
 	e_1_6_6
 	not p_1_6_6
 }
 
 # 1.6.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system wide crypto policy disables chacha20-poly1305 for ssh
+# checked condition — system wide crypto policy disables chacha20-poly1305 for ssh
 default e_1_6_7 := false
 
 e_1_6_7 if {
@@ -368,7 +368,7 @@ p_1_6_7 if {
 
 violations contains "1.6.7: evidence missing — crypto_policy.current_pol_raw not collected" if not e_1_6_7
 
-violations contains "1.6.7: not met — Ensure system wide crypto policy disables chacha20-poly1305 for ssh" if {
+violations contains "1.6.7: not met — checked condition — system wide crypto policy disables chacha20-poly1305 for ssh" if {
 	e_1_6_7
 	not p_1_6_7
 }

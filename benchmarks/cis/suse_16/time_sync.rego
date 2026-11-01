@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 2.3.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is configured
+# chrony must be explicitly configured
 default e_2_3_1_1 := false
 
 e_2_3_1_1 if {
@@ -212,13 +212,13 @@ p_2_3_1_1 if {
 
 violations contains "2.3.1.1: evidence missing — chronyd.servers_configured/pools_configured not collected" if not e_2_3_1_1
 
-violations contains "2.3.1.1: not met — Ensure chrony is configured" if {
+violations contains "2.3.1.1: not met — chrony must be explicitly configured" if {
 	e_2_3_1_1
 	not p_2_3_1_1
 }
 
 # 2.3.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is enabled and running
+# chrony must be turned on and running
 default e_2_3_1_2 := false
 
 e_2_3_1_2 if {
@@ -235,7 +235,7 @@ p_2_3_1_2 if {
 
 violations contains "2.3.1.2: evidence missing — chronyd.service_enabled/service_active not collected" if not e_2_3_1_2
 
-violations contains "2.3.1.2: not met — Ensure chrony is enabled and running" if {
+violations contains "2.3.1.2: not met — chrony must be turned on and running" if {
 	e_2_3_1_2
 	not p_2_3_1_2
 }

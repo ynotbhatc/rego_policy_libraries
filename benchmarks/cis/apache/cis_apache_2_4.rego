@@ -148,18 +148,18 @@ compliance_report := {
 # Section 1: Planning the Installation and Deployment
 installation_violations := [v |
 	arrays := [
-		["1.1: Ensure Apache Is Installed From Source" | not apache_installed_from_source],
-		["1.2: Ensure the Apache Web Server Runs as a Non-Root User" | not apache_runs_non_root],
-		["1.3: Ensure the Apache User Account Has an Invalid Shell" | not apache_user_invalid_shell],
-		["1.4: Ensure the Apache User Account Is Locked" | not apache_user_locked],
-		["1.5: Ensure Apache Directories and Files Are Owned by Root" | not apache_files_owned_by_root],
-		["1.6: Ensure the Apache User Account Has a Non-privileged Home Directory" | not apache_user_home_non_privileged],
-		["1.7: Ensure the Core Dump Directory Is Secured" | not core_dump_directory_secured],
-		["1.8: Ensure the Pid File Is Secured" | not pid_file_secured],
-		["1.9: Ensure the ScoreBoard File Is Secured" | not scoreboard_file_secured],
-		["1.10: Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted" | not group_write_access_restricted],
-		["1.11: Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted" | not docroot_group_write_restricted],
-		["1.12: Ensure the HTTP Request Methods Are Restricted" | not http_methods_restricted]
+		["1.1: Apache must be Installed From Source" | not apache_installed_from_source],
+		["1.2: checked condition — the Apache Web Server Runs as a Non-Root User" | not apache_runs_non_root],
+		["1.3: the Apache User Account must use a non-login shell" | not apache_user_invalid_shell],
+		["1.4: the Apache User Account must be locked" | not apache_user_locked],
+		["1.5: Apache Directories and Files must be Owned by Root" | not apache_files_owned_by_root],
+		["1.6: the Apache User Account must have a Non-privileged Home Directory" | not apache_user_home_non_privileged],
+		["1.7: the Core Dump Directory must be Secured" | not core_dump_directory_secured],
+		["1.8: the Pid File must be Secured" | not pid_file_secured],
+		["1.9: the ScoreBoard File must be Secured" | not scoreboard_file_secured],
+		["1.10: Group Write Access for the Apache Directories and Files must be Properly Restricted" | not group_write_access_restricted],
+		["1.11: Group Write Access for the Document Root Directories and Files must be Properly Restricted" | not docroot_group_write_restricted],
+		["1.12: the HTTP Request Methods must be Restricted" | not http_methods_restricted]
 	]
 	v := arrays[_][_]
 ]
@@ -250,24 +250,24 @@ http_methods_restricted if {
 # Section 2: Minimize Apache Modules
 minimize_modules_violations := [v |
 	arrays := [
-		["2.1: Ensure Only Necessary Authentication and Authorization Modules Are Enabled" | not auth_modules_minimal],
-		["2.2: Ensure the Log Config Module Is Enabled" | not log_config_module_enabled],
-		["2.3: Ensure the WebDAV Modules Are Disabled" | not webdav_modules_disabled],
-		["2.4: Ensure the Status Module Is Disabled" | not status_module_disabled],
-		["2.5: Ensure the Autoindex Module Is Disabled" | not autoindex_module_disabled],
-		["2.6: Ensure the Proxy Modules Are Disabled" | not proxy_modules_disabled],
-		["2.7: Ensure the User Directories Module Is Disabled" | not user_directories_module_disabled],
-		["2.8: Ensure the Info Module Is Disabled" | not info_module_disabled],
-		["2.9: Ensure the Rewrite Module Is Enabled Only If Necessary" | not rewrite_module_controlled],
-		["2.10: Ensure the CGI Modules Are Disabled" | not cgi_modules_disabled],
-		["2.11: Ensure the Include Module Is Disabled" | not include_module_disabled],
-		["2.12: Ensure the HTTP TRACE Method Is Disabled" | not trace_method_disabled],
-		["2.13: Ensure the Negotiation Module Is Disabled" | not negotiation_module_disabled],
-		["2.14: Ensure the MIME Magic Module Is Disabled" | not mime_magic_module_disabled],
-		["2.15: Ensure the Expires Module Is Enabled" | not expires_module_enabled],
-		["2.16: Ensure the Headers Module Is Enabled" | not headers_module_enabled],
-		["2.17: Ensure the SSL Module Is Enabled" | not ssl_module_enabled],
-		["2.18: Ensure Only Required Modules Are Loaded" | not only_required_modules_loaded]
+		["2.1: Only Necessary Authentication and Authorization Modules must be turned on" | not auth_modules_minimal],
+		["2.2: the Log Config Module must be turned on" | not log_config_module_enabled],
+		["2.3: the WebDAV Modules must be turned off" | not webdav_modules_disabled],
+		["2.4: the Status Module must be turned off" | not status_module_disabled],
+		["2.5: the Autoindex Module must be turned off" | not autoindex_module_disabled],
+		["2.6: the Proxy Modules must be turned off" | not proxy_modules_disabled],
+		["2.7: the User Directories Module must be turned off" | not user_directories_module_disabled],
+		["2.8: the Info Module must be turned off" | not info_module_disabled],
+		["2.9: the Rewrite Module must be turned on Only If Necessary" | not rewrite_module_controlled],
+		["2.10: the CGI Modules must be turned off" | not cgi_modules_disabled],
+		["2.11: the Include Module must be turned off" | not include_module_disabled],
+		["2.12: the HTTP TRACE Method must be turned off" | not trace_method_disabled],
+		["2.13: the Negotiation Module must be turned off" | not negotiation_module_disabled],
+		["2.14: the MIME Magic Module must be turned off" | not mime_magic_module_disabled],
+		["2.15: the Expires Module must be turned on" | not expires_module_enabled],
+		["2.16: the Headers Module must be turned on" | not headers_module_enabled],
+		["2.17: the SSL Module must be turned on" | not ssl_module_enabled],
+		["2.18: Only Required Modules must be Loaded" | not only_required_modules_loaded]
 	]
 	v := arrays[_][_]
 ]
@@ -388,30 +388,30 @@ only_required_modules_loaded if {
 # Section 3: Principles, Permissions, and Ownership
 principles_permissions_violations := [v |
 	arrays := [
-		["3.1: Ensure the Apache Web Server Runs as a Non-privileged User" | not apache_non_privileged_user],
-		["3.2: Ensure the Apache User Account Has a Non-privileged Home Directory" | not apache_home_non_privileged],
-		["3.3: Ensure the Apache User Account Has an Invalid Shell" | not apache_shell_invalid],
-		["3.4: Ensure Apache Directories and Files Are Owned by Root" | not apache_owned_by_root],
-		["3.5: Ensure Group Ownership of Apache Directories and Files" | not apache_group_ownership_correct],
-		["3.6: Ensure Other Write Access on Apache Directories and Files Is Restricted" | not other_write_access_restricted],
-		["3.7: Ensure the Core Dump Directory Is Secured" | not core_dump_secured],
-		["3.8: Ensure the Lock File Is Secured" | not lock_file_secured],
-		["3.9: Ensure the Pid File Is Secured" | not pid_file_secured_perms],
-		["3.10: Ensure the ScoreBoard File Is Secured" | not scoreboard_secured],
-		["3.11: Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted" | not apache_group_write_restricted],
-		["3.12: Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted" | not docroot_group_write_properly_restricted],
-		["3.13: Ensure Access to OS Root Directory Is Denied by Default" | not os_root_access_denied],
-		["3.14: Ensure Appropriate Directory Permissions on Document Root" | not docroot_permissions_appropriate],
-		["3.15: Ensure Operations on Files Are Limited to Serving" | not file_operations_limited],
-		["3.16: Ensure Default Web Content Is Removed" | not default_content_removed],
-		["3.17: Ensure Access to .ht* Files Is Restricted" | not htaccess_files_restricted],
-		["3.18: Ensure Directory Browsing Is Disabled" | not directory_browsing_disabled],
-		["3.19: Ensure Options for Files Are Restricted" | not file_options_restricted],
-		["3.20: Ensure Access to Inappropriate File Extensions Is Restricted" | not inappropriate_extensions_restricted],
-		["3.21: Ensure Default CGI Content printenv Script Is Removed" | not printenv_script_removed],
-		["3.22: Ensure Default CGI Content test-cgi Script Is Removed" | not apache_test_cgi_script_removed],
-		["3.23: Ensure Default CGI Content handlers Script Is Removed" | not handlers_script_removed],
-		["3.24: Ensure the Test PHP Script Is Removed" | not apache_test_php_removed]
+		["3.1: checked condition — the Apache Web Server Runs as a Non-privileged User" | not apache_non_privileged_user],
+		["3.2: the Apache User Account must have a Non-privileged Home Directory" | not apache_home_non_privileged],
+		["3.3: the Apache User Account must use a non-login shell" | not apache_shell_invalid],
+		["3.4: Apache Directories and Files must be Owned by Root" | not apache_owned_by_root],
+		["3.5: checked condition — Group Ownership of Apache Directories and Files" | not apache_group_ownership_correct],
+		["3.6: Other Write Access on Apache Directories and Files must be Restricted" | not other_write_access_restricted],
+		["3.7: the Core Dump Directory must be Secured" | not core_dump_secured],
+		["3.8: the Lock File must be Secured" | not lock_file_secured],
+		["3.9: the Pid File must be Secured" | not pid_file_secured_perms],
+		["3.10: the ScoreBoard File must be Secured" | not scoreboard_secured],
+		["3.11: Group Write Access for the Apache Directories and Files must be Properly Restricted" | not apache_group_write_restricted],
+		["3.12: Group Write Access for the Document Root Directories and Files must be Properly Restricted" | not docroot_group_write_properly_restricted],
+		["3.13: Access to OS Root Directory must be Denied by Default" | not os_root_access_denied],
+		["3.14: checked condition — Appropriate Directory Permissions on Document Root" | not docroot_permissions_appropriate],
+		["3.15: Operations on Files must be Limited to Serving" | not file_operations_limited],
+		["3.16: Default Web Content must be Removed" | not default_content_removed],
+		["3.17: Access to .ht* Files must be Restricted" | not htaccess_files_restricted],
+		["3.18: Directory Browsing must be turned off" | not directory_browsing_disabled],
+		["3.19: Options for Files must be Restricted" | not file_options_restricted],
+		["3.20: Access to Inappropriate File Extensions must be Restricted" | not inappropriate_extensions_restricted],
+		["3.21: Default CGI Content printenv Script must be Removed" | not printenv_script_removed],
+		["3.22: Default CGI Content test-cgi Script must be Removed" | not apache_test_cgi_script_removed],
+		["3.23: Default CGI Content handlers Script must be Removed" | not handlers_script_removed],
+		["3.24: the Test PHP Script must be Removed" | not apache_test_php_removed]
 	]
 	v := arrays[_][_]
 ]
@@ -578,34 +578,34 @@ apache_test_php_removed if {
 # Section 4: Access Control
 access_control_violations := [v |
 	arrays := [
-		["4.1: Ensure Access to OS Root Directory Is Denied by Default" | not root_directory_denied],
-		["4.2: Ensure Appropriate Directory Permissions on Document Root" | not document_root_permissions],
-		["4.3: Ensure OverRide Is Disabled for Document Root" | not override_disabled_docroot],
-		["4.4: Ensure Default HTML Content Is Removed" | not default_html_removed],
-		["4.5: Ensure the Default CGI Content Is Removed" | not default_cgi_removed],
-		["4.6: Ensure Access to .ht* Files Is Restricted" | not ht_files_restricted],
-		["4.7: Ensure HTTP Request Methods Are Restricted" | not request_methods_restricted],
-		["4.8: Ensure the HTTP TRACE Method Is Disabled" | not trace_disabled],
-		["4.9: Ensure Old Backup and Include Files Are Removed" | not backup_files_removed],
-		["4.10: Ensure Access to Inappropriate File Extensions Is Restricted" | not file_extensions_restricted],
-		["4.11: Ensure IP-based Access Control Is Implemented" | not ip_access_control_implemented],
-		["4.12: Ensure mod_authz_core Is Used for Authorization" | not authz_core_used],
-		["4.13: Ensure the Require Directive Is Used" | not require_directive_used],
-		["4.14: Ensure Require all denied Is Set for Sensitive Directories" | not sensitive_dirs_denied],
-		["4.15: Ensure Options for Files Are Restricted" | not options_files_restricted],
-		["4.16: Ensure Directory Browsing Is Disabled" | not directory_browsing_restricted],
-		["4.17: Ensure Server Side Includes Are Disabled" | not ssi_disabled],
-		["4.18: Ensure CGI Execution Is Disabled" | not cgi_execution_disabled],
-		["4.19: Ensure FollowSymLinks Is Disabled" | not follow_symlinks_disabled],
-		["4.20: Ensure Access Control Lists Are Implemented" | not access_control_lists_implemented],
-		["4.21: Ensure Authentication Is Required for Administrative Areas" | not admin_auth_required],
-		["4.22: Ensure Strong Password Policy Is Enforced" | not strong_password_policy],
-		["4.23: Ensure Session Management Is Secure" | not session_management_secure],
-		["4.24: Ensure Error Pages Don't Reveal Sensitive Information" | not error_pages_secure],
-		["4.25: Ensure File Upload Restrictions Are in Place" | not file_upload_restricted],
-		["4.26: Ensure Request Size Limits Are Configured" | not request_size_limits],
-		["4.27: Ensure Timeout Values Are Properly Set" | not timeout_values_set],
-		["4.28: Ensure Access Logs Capture Required Information" | not access_logs_comprehensive]
+		["4.1: Access to OS Root Directory must be Denied by Default" | not root_directory_denied],
+		["4.2: checked condition — Appropriate Directory Permissions on Document Root" | not document_root_permissions],
+		["4.3: OverRide must be turned off for Document Root" | not override_disabled_docroot],
+		["4.4: Default HTML Content must be Removed" | not default_html_removed],
+		["4.5: the Default CGI Content must be Removed" | not default_cgi_removed],
+		["4.6: Access to .ht* Files must be Restricted" | not ht_files_restricted],
+		["4.7: HTTP Request Methods must be Restricted" | not request_methods_restricted],
+		["4.8: the HTTP TRACE Method must be turned off" | not trace_disabled],
+		["4.9: Old Backup and Include Files must be Removed" | not backup_files_removed],
+		["4.10: Access to Inappropriate File Extensions must be Restricted" | not file_extensions_restricted],
+		["4.11: IP-based Access Control must be Implemented" | not ip_access_control_implemented],
+		["4.12: mod_authz_core must be Used for Authorization" | not authz_core_used],
+		["4.13: the Require Directive must be Used" | not require_directive_used],
+		["4.14: Require all denied must be set for Sensitive Directories" | not sensitive_dirs_denied],
+		["4.15: Options for Files must be Restricted" | not options_files_restricted],
+		["4.16: Directory Browsing must be turned off" | not directory_browsing_restricted],
+		["4.17: Server Side Includes must be turned off" | not ssi_disabled],
+		["4.18: CGI Execution must be turned off" | not cgi_execution_disabled],
+		["4.19: FollowSymLinks must be turned off" | not follow_symlinks_disabled],
+		["4.20: Access Control Lists must be Implemented" | not access_control_lists_implemented],
+		["4.21: Authentication must be Required for Administrative Areas" | not admin_auth_required],
+		["4.22: Strong Password Policy must be Enforced" | not strong_password_policy],
+		["4.23: Session Management must be Secure" | not session_management_secure],
+		["4.24: checked condition — Error Pages Don't Reveal Sensitive Information" | not error_pages_secure],
+		["4.25: File Upload Restrictions must be in Place" | not file_upload_restricted],
+		["4.26: Request Size Limits must be explicitly configured" | not request_size_limits],
+		["4.27: Timeout Values must be Properly Set" | not timeout_values_set],
+		["4.28: checked condition — Access Logs Capture Required Information" | not access_logs_comprehensive]
 	]
 	v := arrays[_][_]
 ]
@@ -819,28 +819,28 @@ access_logs_comprehensive if {
 # Section 5: Minimize Features, Content and Options
 minimize_features_violations := [v |
 	arrays := [
-		["5.1: Ensure mod_setenvif Is Enabled" | not setenvif_enabled],
-		["5.2: Ensure mod_headers Is Enabled" | not headers_enabled],
-		["5.3: Ensure Security Related Headers Are Added" | not security_headers_added],
-		["5.4: Ensure Server Tokens Directive Is Configured" | not server_tokens_configured],
-		["5.5: Ensure Server Signature Directive Is Configured" | not server_signature_configured],
-		["5.6: Ensure All Default Apache Content Is Removed" | not default_apache_content_removed],
-		["5.7: Ensure the Default Welcome Page Is Removed" | not welcome_page_removed],
-		["5.8: Ensure Default Error Pages Do Not Reference the Server" | not error_pages_dont_reference_server],
-		["5.9: Ensure Default CGI Content printenv Script Is Removed" | not printenv_removed],
-		["5.10: Ensure Default CGI Content test-cgi Script Is Removed" | not apache_test_cgi_removed],
-		["5.11: Ensure Test PHP Script Is Removed" | not apache_test_php_script_removed],
-		["5.12: Ensure the HTTP TRACE Method Is Disabled" | not http_trace_disabled],
-		["5.13: Ensure mod_include Is Disabled" | not include_disabled],
-		["5.14: Ensure mod_cgi Is Disabled" | not cgi_disabled],
-		["5.15: Ensure mod_cgid Is Disabled" | not cgid_disabled],
-		["5.16: Ensure mod_negotiation Is Disabled" | not negotiation_disabled],
-		["5.17: Ensure mod_autoindex Is Disabled" | not autoindex_disabled],
-		["5.18: Ensure mod_status Is Disabled" | not status_disabled],
-		["5.19: Ensure mod_info Is Disabled" | not info_disabled],
-		["5.20: Ensure mod_userdir Is Disabled" | not userdir_disabled],
-		["5.21: Ensure mod_rewrite Logging Is Enabled If Used" | not rewrite_logging_enabled],
-		["5.22: Ensure Unnecessary File Extensions Are Blocked" | not unnecessary_extensions_blocked]
+		["5.1: mod_setenvif must be turned on" | not setenvif_enabled],
+		["5.2: mod_headers must be turned on" | not headers_enabled],
+		["5.3: Security Related Headers must be Added" | not security_headers_added],
+		["5.4: Server Tokens Directive must be explicitly configured" | not server_tokens_configured],
+		["5.5: Server Signature Directive must be explicitly configured" | not server_signature_configured],
+		["5.6: All Default Apache Content must be Removed" | not default_apache_content_removed],
+		["5.7: the Default Welcome Page must be Removed" | not welcome_page_removed],
+		["5.8: checked condition — Default Error Pages Do Not Reference the Server" | not error_pages_dont_reference_server],
+		["5.9: Default CGI Content printenv Script must be Removed" | not printenv_removed],
+		["5.10: Default CGI Content test-cgi Script must be Removed" | not apache_test_cgi_removed],
+		["5.11: Test PHP Script must be Removed" | not apache_test_php_script_removed],
+		["5.12: the HTTP TRACE Method must be turned off" | not http_trace_disabled],
+		["5.13: mod_include must be turned off" | not include_disabled],
+		["5.14: mod_cgi must be turned off" | not cgi_disabled],
+		["5.15: mod_cgid must be turned off" | not cgid_disabled],
+		["5.16: mod_negotiation must be turned off" | not negotiation_disabled],
+		["5.17: mod_autoindex must be turned off" | not autoindex_disabled],
+		["5.18: mod_status must be turned off" | not status_disabled],
+		["5.19: mod_info must be turned off" | not info_disabled],
+		["5.20: mod_userdir must be turned off" | not userdir_disabled],
+		["5.21: mod_rewrite Logging must be turned on If Used" | not rewrite_logging_enabled],
+		["5.22: Unnecessary File Extensions must be Blocked" | not unnecessary_extensions_blocked]
 	]
 	v := arrays[_][_]
 ]
@@ -982,22 +982,22 @@ unnecessary_extensions_blocked if {
 # Section 6: SSL/TLS Configuration
 ssl_tls_violations := [v |
 	arrays := [
-		["6.1: Ensure mod_ssl Is Enabled" | not mod_ssl_enabled],
-		["6.2: Ensure a Valid Trusted Certificate Is Installed" | not valid_certificate_installed],
-		["6.3: Ensure the Server's Private Key Is Protected" | not private_key_protected],
-		["6.4: Ensure Insecure SSL Renegotiation Is Not Enabled" | not insecure_renegotiation_disabled],
-		["6.5: Ensure Weak SSL/TLS Ciphers Are Disabled" | not weak_ciphers_disabled],
-		["6.6: Ensure Insecure SSL/TLS Protocols Are Disabled" | not insecure_protocols_disabled],
-		["6.7: Ensure SSL Compression Is Disabled" | not ssl_compression_disabled],
-		["6.8: Ensure Medium Strength SSL/TLS Ciphers Are Disabled" | not medium_ciphers_disabled],
-		["6.9: Ensure All Web Content Is Accessed via HTTPS" | not all_content_https],
-		["6.10: Ensure OCSP Stapling Is Enabled" | not ocsp_stapling_enabled],
-		["6.11: Ensure HTTP Strict Transport Security Is Enabled" | not hsts_enabled],
-		["6.12: Ensure Only Cipher Suites That Provide Authentication Are Enabled" | not authenticated_ciphers_only],
-		["6.13: Ensure Only Cipher Suites That Provide Encryption Are Enabled" | not encryption_ciphers_only],
-		["6.14: Ensure HTTP Public Key Pinning Is Considered" | not hpkp_considered],
-		["6.15: Ensure the TLS 1.3 Protocol Is Enabled" | not tls_13_enabled],
-		["6.16: Ensure SSL Session Configuration Is Secure" | not ssl_session_secure]
+		["6.1: mod_ssl must be turned on" | not mod_ssl_enabled],
+		["6.2: a Valid Trusted Certificate must be present" | not valid_certificate_installed],
+		["6.3: the Server's Private Key must be Protected" | not private_key_protected],
+		["6.4: Insecure SSL Renegotiation must stay off" | not insecure_renegotiation_disabled],
+		["6.5: Weak SSL/TLS Ciphers must be turned off" | not weak_ciphers_disabled],
+		["6.6: Insecure SSL/TLS Protocols must be turned off" | not insecure_protocols_disabled],
+		["6.7: SSL Compression must be turned off" | not ssl_compression_disabled],
+		["6.8: Medium Strength SSL/TLS Ciphers must be turned off" | not medium_ciphers_disabled],
+		["6.9: All Web Content must be Accessed via HTTPS" | not all_content_https],
+		["6.10: OCSP Stapling must be turned on" | not ocsp_stapling_enabled],
+		["6.11: HTTP Strict Transport Security must be turned on" | not hsts_enabled],
+		["6.12: Only Cipher Suites That Provide Authentication must be turned on" | not authenticated_ciphers_only],
+		["6.13: Only Cipher Suites That Provide Encryption must be turned on" | not encryption_ciphers_only],
+		["6.14: HTTP Public Key Pinning must be Considered" | not hpkp_considered],
+		["6.15: the TLS 1.3 Protocol must be turned on" | not tls_13_enabled],
+		["6.16: SSL Session Configuration must be Secure" | not ssl_session_secure]
 	]
 	v := arrays[_][_]
 ]
@@ -1066,7 +1066,7 @@ ssl_compression_disabled if {
 medium_ciphers_disabled if {
 	ssl_config := input.apache.config.ssl
 	cipher_suite := ssl_config.cipher_suite
-	# Ensure only HIGH security ciphers are used
+	# only HIGH security ciphers must be used
 	contains(cipher_suite, "HIGH")
 	not contains(cipher_suite, "MEDIUM")
 	not contains(cipher_suite, "LOW")
@@ -1095,7 +1095,7 @@ hsts_enabled if {
 authenticated_ciphers_only if {
 	ssl_config := input.apache.config.ssl
 	cipher_suite := ssl_config.cipher_suite
-	# Ensure no anonymous ciphers
+	# checked condition — no anonymous ciphers
 	not contains(cipher_suite, "aNULL")
 	not contains(cipher_suite, "ADH")
 }
@@ -1103,7 +1103,7 @@ authenticated_ciphers_only if {
 encryption_ciphers_only if {
 	ssl_config := input.apache.config.ssl
 	cipher_suite := ssl_config.cipher_suite
-	# Ensure no null encryption ciphers
+	# checked condition — no null encryption ciphers
 	not contains(cipher_suite, "eNULL")
 	not contains(cipher_suite, "NULL")
 }
@@ -1136,20 +1136,20 @@ ssl_session_secure if {
 # Section 7: Information Disclosure
 information_disclosure_violations := [v |
 	arrays := [
-		["7.1: Ensure ServerTokens Is Set to 'Prod' or 'ProductOnly'" | not server_tokens_prod],
-		["7.2: Ensure ServerSignature Is Not Enabled" | not server_signature_off],
-		["7.3: Ensure All Default Apache Content Is Removed" | not all_default_content_removed],
-		["7.4: Ensure ETag Response Header Fields Do Not Include Inodes" | not etag_inodes_removed],
-		["7.5: Ensure the Banner Is Modified" | not banner_modified],
-		["7.6: Ensure Error Response Pages Do Not Disclose Information" | not error_pages_no_disclosure],
-		["7.7: Ensure Debug Information Is Not Enabled" | not debug_info_disabled],
-		["7.8: Ensure Application Specific Headers Are Removed" | not app_headers_removed],
-		["7.9: Ensure HTTP Response Headers Don't Expose Apache Version" | not apache_version_hidden],
-		["7.10: Ensure Request Debugging Is Disabled" | not request_debugging_disabled],
-		["7.11: Ensure Directory Listing Headers Are Suppressed" | not directory_listing_headers_suppressed],
-		["7.12: Ensure Server Status Information Is Not Accessible" | not server_status_not_accessible],
-		["7.13: Ensure Server Information Is Not Accessible" | not server_info_not_accessible],
-		["7.14: Ensure Filesystem Information Is Not Disclosed" | not filesystem_info_not_disclosed]
+		["7.1: required value of ServerTokens is 'Prod' or 'ProductOnly'" | not server_tokens_prod],
+		["7.2: ServerSignature must stay off" | not server_signature_off],
+		["7.3: All Default Apache Content must be Removed" | not all_default_content_removed],
+		["7.4: checked condition — ETag Response Header Fields Do Not Include Inodes" | not etag_inodes_removed],
+		["7.5: the Banner must be Modified" | not banner_modified],
+		["7.6: checked condition — Error Response Pages Do Not Disclose Information" | not error_pages_no_disclosure],
+		["7.7: Debug Information must stay off" | not debug_info_disabled],
+		["7.8: Application Specific Headers must be Removed" | not app_headers_removed],
+		["7.9: checked condition — HTTP Response Headers Don't Expose Apache Version" | not apache_version_hidden],
+		["7.10: Request Debugging must be turned off" | not request_debugging_disabled],
+		["7.11: Directory Listing Headers must be Suppressed" | not directory_listing_headers_suppressed],
+		["7.12: Server Status Information must be Not Accessible" | not server_status_not_accessible],
+		["7.13: Server Information must be Not Accessible" | not server_info_not_accessible],
+		["7.14: Filesystem Information must be Not Disclosed" | not filesystem_info_not_disclosed]
 	]
 	v := arrays[_][_]
 ]
@@ -1240,7 +1240,7 @@ server_info_not_accessible if {
 
 filesystem_info_not_disclosed if {
 	directory_config := input.apache.config.directory_access
-	# Ensure sensitive directories are not browsable
+	# sensitive directories must be not browsable
 	sensitive_dirs := ["/etc", "/var", "/usr", "/tmp"]
 	disclosed_dirs := [dir | dir := sensitive_dirs[_]; 
 		has_opt(directory_config[dir], "Indexes")]
@@ -1250,14 +1250,14 @@ filesystem_info_not_disclosed if {
 # Section 8: Logging and Monitoring
 logging_violations := [v |
 	arrays := [
-		["8.1: Ensure mod_log_config Is Enabled" | not log_config_enabled],
-		["8.2: Ensure a Logging Policy Exists" | not logging_policy_exists],
-		["8.3: Ensure the Error Log Filename and Location Are Configured Correctly" | not error_log_configured],
-		["8.4: Ensure the Access Log Filename and Location Are Configured Correctly" | not access_log_configured],
-		["8.5: Ensure Appropriate Log Level Is Set" | not log_level_appropriate],
-		["8.6: Ensure Log Storage and Rotation Policy Is in Place" | not log_rotation_policy],
-		["8.7: Ensure Log Files Are Properly Secured" | not log_files_secured],
-		["8.8: Ensure Non-Printable ASCII Characters Are Escaped in Logs" | not non_printable_escaped]
+		["8.1: mod_log_config must be turned on" | not log_config_enabled],
+		["8.2: checked condition — a Logging Policy Exists" | not logging_policy_exists],
+		["8.3: the Error Log Filename and Location must match the approved configuration" | not error_log_configured],
+		["8.4: the Access Log Filename and Location must match the approved configuration" | not access_log_configured],
+		["8.5: Appropriate Log Level must be Set" | not log_level_appropriate],
+		["8.6: Log Storage and Rotation Policy must be in Place" | not log_rotation_policy],
+		["8.7: Log Files must be Properly Secured" | not log_files_secured],
+		["8.8: Non-Printable ASCII Characters must be Escaped in Logs" | not non_printable_escaped]
 	]
 	v := arrays[_][_]
 ]

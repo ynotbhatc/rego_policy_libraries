@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-3.1.1",
-      "title": "Ensure stdio server credentials are sourced from the environment or OS credential store",
+      "title": "stdio server credentials must be sourced from the environment or OS credential store",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_mcp_server-3.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure stdio server credentials are sourced from the environment or OS credential store"
+        "prose": "stdio server credentials must be sourced from the environment or OS credential store"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.1.2",
-      "title": "Ensure OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers",
+      "title": "OIDC/OAuth 2.1 or short-lived API tokens must be used for remote servers",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_mcp_server-3.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers"
+        "prose": "OIDC/OAuth 2.1 or short-lived API tokens must be used for remote servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.2.1",
-      "title": "Ensure per-tool authorization policies are enforced",
+      "title": "per-tool authorization policies must be enforced",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_mcp_server-3.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure per-tool authorization policies are enforced"
+        "prose": "per-tool authorization policies must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.2.2",
-      "title": "Ensure token passthrough to downstream APIs is forbidden",
+      "title": "token passthrough to downstream APIs must be forbidden",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_mcp_server-3.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure token passthrough to downstream APIs is forbidden"
+        "prose": "token passthrough to downstream APIs must be forbidden"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.2.3",
-      "title": "Ensure server-provided tool annotations are not relied upon for authorization or HITL gating decisions",
+      "title": "server-provided tool annotations must be not relied upon for authorization or HITL gating decisions",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_mcp_server-3.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure server-provided tool annotations are not relied upon for authorization or HITL gating decisions"
+        "prose": "server-provided tool annotations must be not relied upon for authorization or HITL gating decisions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.1",
-      "title": "Ensure OAuth tokens are audience-bound to the MCP server using Resource Indicators",
+      "title": "OAuth tokens must be audience-bound to the MCP server using Resource Indicators",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_mcp_server-3.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure OAuth tokens are audience-bound to the MCP server using Resource Indicators"
+        "prose": "OAuth tokens must be audience-bound to the MCP server using Resource Indicators"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.2",
-      "title": "Ensure OAuth discovery metadata is served over TLS and validated against the approved authorization server list",
+      "title": "OAuth discovery metadata must be served over TLS and validated against the approved authorization server list",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_mcp_server-3.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure OAuth discovery metadata is served over TLS and validated against the approved authorization server list"
+        "prose": "OAuth discovery metadata must be served over TLS and validated against the approved authorization server list"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.3",
-      "title": "Ensure shared downstream service account identities are prohibited across multiple MCP tools or servers",
+      "title": "shared downstream service account identities must be prohibited across multiple MCP tools or servers",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_mcp_server-3.3.3_stmt",
         "name": "statement",
-        "prose": "Ensure shared downstream service account identities are prohibited across multiple MCP tools or servers"
+        "prose": "shared downstream service account identities must be prohibited across multiple MCP tools or servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.4",
-      "title": "Ensure OAuth scopes are minimized and elevated progressively",
+      "title": "OAuth scopes must be minimized and elevated progressively",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_mcp_server-3.3.4_stmt",
         "name": "statement",
-        "prose": "Ensure OAuth scopes are minimized and elevated progressively"
+        "prose": "OAuth scopes must be minimized and elevated progressively"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-3.3.5",
-      "title": "Ensure confused-deputy safeguards are applied for static OAuth client IDs",
+      "title": "confused-deputy safeguards must be applied for static OAuth client IDs",
       "props": [
        {
         "name": "label",
@@ -390,7 +390,7 @@
        {
         "id": "cis_mcp_server-3.3.5_stmt",
         "name": "statement",
-        "prose": "Ensure confused-deputy safeguards are applied for static OAuth client IDs"
+        "prose": "confused-deputy safeguards must be applied for static OAuth client IDs"
        }
       ],
       "class": "security"
@@ -520,7 +520,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-4.1.1",
-      "title": "Ensure per-tool consent or pre-approved allowlists are required",
+      "title": "per-tool consent or pre-approved allowlists must be required",
       "props": [
        {
         "name": "label",
@@ -546,14 +546,14 @@
        {
         "id": "cis_mcp_server-4.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure per-tool consent or pre-approved allowlists are required"
+        "prose": "per-tool consent or pre-approved allowlists must be required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.2",
-      "title": "Ensure project-scoped MCP server definitions are not enabled or executed without explicit user approval",
+      "title": "project-scoped MCP server definitions must be not enabled or executed without explicit user approval",
       "props": [
        {
         "name": "label",
@@ -579,14 +579,14 @@
        {
         "id": "cis_mcp_server-4.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure project-scoped MCP server definitions are not enabled or executed without explicit user approval"
+        "prose": "project-scoped MCP server definitions must be not enabled or executed without explicit user approval"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.3",
-      "title": "Ensure Elicitation requests are consented, redacted, and identity-bound",
+      "title": "Elicitation requests must be consented, redacted, and identity-bound",
       "props": [
        {
         "name": "label",
@@ -612,14 +612,14 @@
        {
         "id": "cis_mcp_server-4.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure Elicitation requests are consented, redacted, and identity-bound"
+        "prose": "Elicitation requests must be consented, redacted, and identity-bound"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.4",
-      "title": "Ensure Sampling consent and redaction controls are implemented where Sampling is in use",
+      "title": "Sampling consent and redaction controls must be implemented where Sampling is in use",
       "props": [
        {
         "name": "label",
@@ -645,14 +645,14 @@
        {
         "id": "cis_mcp_server-4.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure Sampling consent and redaction controls are implemented where Sampling is in use"
+        "prose": "Sampling consent and redaction controls must be implemented where Sampling is in use"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.1.5",
-      "title": "Ensure a human can deny tool invocations and sensitive or high-impact operations require confirmation",
+      "title": "checked condition — a human can deny tool invocations and sensitive or high-impact operations require confirmation",
       "props": [
        {
         "name": "label",
@@ -678,14 +678,14 @@
        {
         "id": "cis_mcp_server-4.1.5_stmt",
         "name": "statement",
-        "prose": "Ensure a human can deny tool invocations and sensitive or high-impact operations require confirmation"
+        "prose": "checked condition — a human can deny tool invocations and sensitive or high-impact operations require confirmation"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.2.1",
-      "title": "Ensure filesystem scope is restricted to least privilege and enforced by OS-level controls",
+      "title": "filesystem scope must be restricted to least privilege and enforced by OS-level controls",
       "props": [
        {
         "name": "label",
@@ -711,14 +711,14 @@
        {
         "id": "cis_mcp_server-4.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure filesystem scope is restricted to least privilege and enforced by OS-level controls"
+        "prose": "filesystem scope must be restricted to least privilege and enforced by OS-level controls"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.2.2",
-      "title": "Ensure MCP stdio server subprocess environment is restricted to the minimum required variables",
+      "title": "MCP stdio server subprocess environment must be restricted to the minimum required variables",
       "props": [
        {
         "name": "label",
@@ -744,14 +744,14 @@
        {
         "id": "cis_mcp_server-4.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure MCP stdio server subprocess environment is restricted to the minimum required variables"
+        "prose": "MCP stdio server subprocess environment must be restricted to the minimum required variables"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.2.3",
-      "title": "Ensure untrusted Resource URIs are not directly dereferenced outside MCP without scheme and destination policy",
+      "title": "untrusted Resource URIs must be not directly dereferenced outside MCP without scheme and destination policy",
       "props": [
        {
         "name": "label",
@@ -777,14 +777,14 @@
        {
         "id": "cis_mcp_server-4.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure untrusted Resource URIs are not directly dereferenced outside MCP without scheme and destination policy"
+        "prose": "untrusted Resource URIs must be not directly dereferenced outside MCP without scheme and destination policy"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.3.1",
-      "title": "Ensure MCP Apps content is rendered in sandboxed isolation with Content Security Policy enforced from declared metadata",
+      "title": "MCP Apps content must be rendered in sandboxed isolation with Content Security Policy enforced from declared metadata",
       "props": [
        {
         "name": "label",
@@ -810,14 +810,14 @@
        {
         "id": "cis_mcp_server-4.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure MCP Apps content is rendered in sandboxed isolation with Content Security Policy enforced from declared metadata"
+        "prose": "MCP Apps content must be rendered in sandboxed isolation with Content Security Policy enforced from declared metadata"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-4.3.2",
-      "title": "Ensure MCP Apps permission requests default-deny, all app-to-host messages are logged, and high-risk channels are consented",
+      "title": "MCP Apps permission requests default-deny, all app-to-host messages must be logged, and high-risk channels are consented",
       "props": [
        {
         "name": "label",
@@ -843,7 +843,7 @@
        {
         "id": "cis_mcp_server-4.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure MCP Apps permission requests default-deny, all app-to-host messages are logged, and high-risk channels are consented"
+        "prose": "MCP Apps permission requests default-deny, all app-to-host messages must be logged, and high-risk channels are consented"
        }
       ],
       "class": "security"
@@ -973,7 +973,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-6.1",
-      "title": "Ensure model context is minimized and MIME handling is honored",
+      "title": "model context must be minimized and MIME handling is honored",
       "props": [
        {
         "name": "label",
@@ -999,14 +999,14 @@
        {
         "id": "cis_mcp_server-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure model context is minimized and MIME handling is honored"
+        "prose": "model context must be minimized and MIME handling is honored"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-6.2",
-      "title": "Ensure tokens and keys are protected in clients and servers",
+      "title": "tokens and keys must be protected in clients and servers",
       "props": [
        {
         "name": "label",
@@ -1032,14 +1032,14 @@
        {
         "id": "cis_mcp_server-6.2_stmt",
         "name": "statement",
-        "prose": "Ensure tokens and keys are protected in clients and servers"
+        "prose": "tokens and keys must be protected in clients and servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-6.3",
-      "title": "Ensure outbound proxy and DNS controls are applied for resource fetchers",
+      "title": "outbound proxy and DNS controls must be applied for resource fetchers",
       "props": [
        {
         "name": "label",
@@ -1065,7 +1065,7 @@
        {
         "id": "cis_mcp_server-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure outbound proxy and DNS controls are applied for resource fetchers"
+        "prose": "outbound proxy and DNS controls must be applied for resource fetchers"
        }
       ],
       "class": "security"
@@ -1195,7 +1195,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-1.1",
-      "title": "Ensure MCP protocol version is pinned and logged",
+      "title": "MCP protocol version must be pinned and logged",
       "props": [
        {
         "name": "label",
@@ -1221,14 +1221,14 @@
        {
         "id": "cis_mcp_server-1.1_stmt",
         "name": "statement",
-        "prose": "Ensure MCP protocol version is pinned and logged"
+        "prose": "MCP protocol version must be pinned and logged"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-1.2",
-      "title": "Ensure server capability baseline is established and documented",
+      "title": "server capability baseline must be established and documented",
       "props": [
        {
         "name": "label",
@@ -1254,14 +1254,14 @@
        {
         "id": "cis_mcp_server-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure server capability baseline is established and documented"
+        "prose": "server capability baseline must be established and documented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-1.3",
-      "title": "Ensure newly advertised server capabilities are re-validated before invocation",
+      "title": "newly advertised server capabilities must be re-validated before invocation",
       "props": [
        {
         "name": "label",
@@ -1287,14 +1287,14 @@
        {
         "id": "cis_mcp_server-1.3_stmt",
         "name": "statement",
-        "prose": "Ensure newly advertised server capabilities are re-validated before invocation"
+        "prose": "newly advertised server capabilities must be re-validated before invocation"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-1.4",
-      "title": "Ensure MCP client and server identity metadata is captured and validated against the asset inventory",
+      "title": "MCP client and server identity metadata must be captured and validated against the asset inventory",
       "props": [
        {
         "name": "label",
@@ -1320,7 +1320,7 @@
        {
         "id": "cis_mcp_server-1.4_stmt",
         "name": "statement",
-        "prose": "Ensure MCP client and server identity metadata is captured and validated against the asset inventory"
+        "prose": "MCP client and server identity metadata must be captured and validated against the asset inventory"
        }
       ],
       "class": "security"
@@ -1450,7 +1450,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-9.1",
-      "title": "Ensure remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied",
+      "title": "checked condition — remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied",
       "props": [
        {
         "name": "label",
@@ -1476,14 +1476,14 @@
        {
         "id": "cis_mcp_server-9.1_stmt",
         "name": "statement",
-        "prose": "Ensure remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied"
+        "prose": "checked condition — remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-9.2",
-      "title": "Ensure the MCP server process is confined to its working set by OS-level kernel-enforced controls",
+      "title": "the MCP server process must be confined to its working set by OS-level kernel-enforced controls",
       "props": [
        {
         "name": "label",
@@ -1509,14 +1509,14 @@
        {
         "id": "cis_mcp_server-9.2_stmt",
         "name": "statement",
-        "prose": "Ensure the MCP server process is confined to its working set by OS-level kernel-enforced controls"
+        "prose": "the MCP server process must be confined to its working set by OS-level kernel-enforced controls"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-9.3",
-      "title": "Ensure local stdio MCP servers run under least-privilege identities with sandbox or container isolation",
+      "title": "checked condition — local stdio MCP servers run under least-privilege identities with sandbox or container isolation",
       "props": [
        {
         "name": "label",
@@ -1542,7 +1542,7 @@
        {
         "id": "cis_mcp_server-9.3_stmt",
         "name": "statement",
-        "prose": "Ensure local stdio MCP servers run under least-privilege identities with sandbox or container isolation"
+        "prose": "checked condition — local stdio MCP servers run under least-privilege identities with sandbox or container isolation"
        }
       ],
       "class": "security"
@@ -1672,7 +1672,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-7.1.1",
-      "title": "Ensure lifecycle and invocation metadata is recorded",
+      "title": "lifecycle and invocation metadata must be recorded",
       "props": [
        {
         "name": "label",
@@ -1698,14 +1698,14 @@
        {
         "id": "cis_mcp_server-7.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure lifecycle and invocation metadata is recorded"
+        "prose": "lifecycle and invocation metadata must be recorded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.1.2",
-      "title": "Ensure non-null JSON-RPC request IDs are enforced and included in audit logs",
+      "title": "non-null JSON-RPC request IDs must be enforced and included in audit logs",
       "props": [
        {
         "name": "label",
@@ -1731,14 +1731,14 @@
        {
         "id": "cis_mcp_server-7.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure non-null JSON-RPC request IDs are enforced and included in audit logs"
+        "prose": "non-null JSON-RPC request IDs must be enforced and included in audit logs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.1.3",
-      "title": "Ensure MCP audit records carry accurate, monotonic timestamps",
+      "title": "checked condition — MCP audit records carry accurate, monotonic timestamps",
       "props": [
        {
         "name": "label",
@@ -1764,14 +1764,14 @@
        {
         "id": "cis_mcp_server-7.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure MCP audit records carry accurate, monotonic timestamps"
+        "prose": "checked condition — MCP audit records carry accurate, monotonic timestamps"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.2.1",
-      "title": "Ensure alerts are generated on audience and issuer validation failures",
+      "title": "alerts must be generated on audience and issuer validation failures",
       "props": [
        {
         "name": "label",
@@ -1797,14 +1797,14 @@
        {
         "id": "cis_mcp_server-7.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure alerts are generated on audience and issuer validation failures"
+        "prose": "alerts must be generated on audience and issuer validation failures"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-7.2.2",
-      "title": "Ensure notifications/cancelled and notifications/progress messages are monitored for behavioral anomalies",
+      "title": "notifications/cancelled and notifications/progress messages must be monitored for behavioral anomalies",
       "props": [
        {
         "name": "label",
@@ -1830,7 +1830,7 @@
        {
         "id": "cis_mcp_server-7.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure notifications/cancelled and notifications/progress messages are monitored for behavioral anomalies"
+        "prose": "notifications/cancelled and notifications/progress messages must be monitored for behavioral anomalies"
        }
       ],
       "class": "security"
@@ -1960,7 +1960,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-10.1",
-      "title": "Ensure safe, static resources are cached with freshness limits and per-user data is never shared-cached",
+      "title": "safe, static resources must be cached with freshness limits and per-user data is never shared-cached",
       "props": [
        {
         "name": "label",
@@ -1986,14 +1986,14 @@
        {
         "id": "cis_mcp_server-10.1_stmt",
         "name": "statement",
-        "prose": "Ensure safe, static resources are cached with freshness limits and per-user data is never shared-cached"
+        "prose": "safe, static resources must be cached with freshness limits and per-user data is never shared-cached"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-10.2",
-      "title": "Ensure request and response body size limits, token budgets, and per-principal quotas are enforced",
+      "title": "request and response body size limits, token budgets, and per-principal quotas must be enforced",
       "props": [
        {
         "name": "label",
@@ -2019,7 +2019,7 @@
        {
         "id": "cis_mcp_server-10.2_stmt",
         "name": "statement",
-        "prose": "Ensure request and response body size limits, token budgets, and per-principal quotas are enforced"
+        "prose": "request and response body size limits, token budgets, and per-principal quotas must be enforced"
        }
       ],
       "class": "security"
@@ -2149,7 +2149,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-5.1.1",
-      "title": "Ensure tool schemas and argument types are validated",
+      "title": "tool schemas and argument types must be validated",
       "props": [
        {
         "name": "label",
@@ -2175,14 +2175,14 @@
        {
         "id": "cis_mcp_server-5.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure tool schemas and argument types are validated"
+        "prose": "tool schemas and argument types must be validated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.1.2",
-      "title": "Ensure resource templates with explicit URI patterns and MIME types are used",
+      "title": "resource templates with explicit URI patterns and MIME types must be used",
       "props": [
        {
         "name": "label",
@@ -2208,14 +2208,14 @@
        {
         "id": "cis_mcp_server-5.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure resource templates with explicit URI patterns and MIME types are used"
+        "prose": "resource templates with explicit URI patterns and MIME types must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.1.3",
-      "title": "Ensure prompt templates declare and validate their arguments",
+      "title": "checked condition — prompt templates declare and validate their arguments",
       "props": [
        {
         "name": "label",
@@ -2241,14 +2241,14 @@
        {
         "id": "cis_mcp_server-5.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure prompt templates declare and validate their arguments"
+        "prose": "checked condition — prompt templates declare and validate their arguments"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.2.1",
-      "title": "Ensure listChanged notifications are rate-limited to prevent client flooding",
+      "title": "listChanged notifications must be rate-limited to prevent client flooding",
       "props": [
        {
         "name": "label",
@@ -2274,14 +2274,14 @@
        {
         "id": "cis_mcp_server-5.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure listChanged notifications are rate-limited to prevent client flooding"
+        "prose": "listChanged notifications must be rate-limited to prevent client flooding"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.2.2",
-      "title": "Ensure sessions are not used as authentication and, where present, are bound to user identity",
+      "title": "sessions must be not used as authentication and, where present, are bound to user identity",
       "props": [
        {
         "name": "label",
@@ -2307,14 +2307,14 @@
        {
         "id": "cis_mcp_server-5.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure sessions are not used as authentication and, where present, are bound to user identity"
+        "prose": "sessions must be not used as authentication and, where present, are bound to user identity"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.2.3",
-      "title": "Ensure legacy Streamable HTTP session and stream-resumption mechanisms are disabled",
+      "title": "legacy Streamable HTTP session and stream-resumption mechanisms must be turned off",
       "props": [
        {
         "name": "label",
@@ -2340,14 +2340,14 @@
        {
         "id": "cis_mcp_server-5.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure legacy Streamable HTTP session and stream-resumption mechanisms are disabled"
+        "prose": "legacy Streamable HTTP session and stream-resumption mechanisms must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.3.1",
-      "title": "Ensure logs are separated from the protocol stream in stdio mode",
+      "title": "logs must be separated from the protocol stream in stdio mode",
       "props": [
        {
         "name": "label",
@@ -2373,14 +2373,14 @@
        {
         "id": "cis_mcp_server-5.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure logs are separated from the protocol stream in stdio mode"
+        "prose": "logs must be separated from the protocol stream in stdio mode"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.4.1",
-      "title": "Ensure path traversal and arbitrary filesystem access are prevented",
+      "title": "path traversal and arbitrary filesystem access must be prevented",
       "props": [
        {
         "name": "label",
@@ -2406,14 +2406,14 @@
        {
         "id": "cis_mcp_server-5.4.1_stmt",
         "name": "statement",
-        "prose": "Ensure path traversal and arbitrary filesystem access are prevented"
+        "prose": "path traversal and arbitrary filesystem access must be prevented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.5.1",
-      "title": "Ensure authorization, scope, and expiry controls are enforced on MCP Tasks",
+      "title": "authorization, scope, and expiry controls must be enforced on MCP Tasks",
       "props": [
        {
         "name": "label",
@@ -2439,14 +2439,14 @@
        {
         "id": "cis_mcp_server-5.5.1_stmt",
         "name": "statement",
-        "prose": "Ensure authorization, scope, and expiry controls are enforced on MCP Tasks"
+        "prose": "authorization, scope, and expiry controls must be enforced on MCP Tasks"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-5.6.1",
-      "title": "Ensure idempotency keys are required for side-effecting tool calls and duplicate side effects are prevented",
+      "title": "idempotency keys must be required for side-effecting tool calls and duplicate side effects are prevented",
       "props": [
        {
         "name": "label",
@@ -2472,7 +2472,7 @@
        {
         "id": "cis_mcp_server-5.6.1_stmt",
         "name": "statement",
-        "prose": "Ensure idempotency keys are required for side-effecting tool calls and duplicate side effects are prevented"
+        "prose": "idempotency keys must be required for side-effecting tool calls and duplicate side effects are prevented"
        }
       ],
       "class": "security"
@@ -2602,7 +2602,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-8.1",
-      "title": "Ensure third-party MCP servers and connectors are vetted and allowlists are enforced",
+      "title": "third-party MCP servers and connectors must be vetted and allowlists are enforced",
       "props": [
        {
         "name": "label",
@@ -2628,14 +2628,14 @@
        {
         "id": "cis_mcp_server-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure third-party MCP servers and connectors are vetted and allowlists are enforced"
+        "prose": "third-party MCP servers and connectors must be vetted and allowlists are enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-8.2",
-      "title": "Ensure third-party MCP servers are pinned to a verified content hash and re-vetted before updates",
+      "title": "third-party MCP servers must be pinned to a verified content hash and re-vetted before updates",
       "props": [
        {
         "name": "label",
@@ -2661,14 +2661,14 @@
        {
         "id": "cis_mcp_server-8.2_stmt",
         "name": "statement",
-        "prose": "Ensure third-party MCP servers are pinned to a verified content hash and re-vetted before updates"
+        "prose": "third-party MCP servers must be pinned to a verified content hash and re-vetted before updates"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-8.3",
-      "title": "Ensure third-party MCP server artifacts are served exclusively from an internal private mirror",
+      "title": "third-party MCP server artifacts must be served exclusively from an internal private mirror",
       "props": [
        {
         "name": "label",
@@ -2694,7 +2694,7 @@
        {
         "id": "cis_mcp_server-8.3_stmt",
         "name": "statement",
-        "prose": "Ensure third-party MCP server artifacts are served exclusively from an internal private mirror"
+        "prose": "third-party MCP server artifacts must be served exclusively from an internal private mirror"
        }
       ],
       "class": "security"
@@ -2824,7 +2824,7 @@
     "controls": [
      {
       "id": "cis_mcp_server-2.1",
-      "title": "Ensure stdio is preferred for local, single-user servers",
+      "title": "stdio must be preferred for local, single-user servers",
       "props": [
        {
         "name": "label",
@@ -2850,14 +2850,14 @@
        {
         "id": "cis_mcp_server-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure stdio is preferred for local, single-user servers"
+        "prose": "stdio must be preferred for local, single-user servers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.2",
-      "title": "Ensure TLS is required for HTTP and plaintext is disallowed",
+      "title": "TLS must be required for HTTP and plaintext is disallowed",
       "props": [
        {
         "name": "label",
@@ -2883,14 +2883,14 @@
        {
         "id": "cis_mcp_server-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure TLS is required for HTTP and plaintext is disallowed"
+        "prose": "TLS must be required for HTTP and plaintext is disallowed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.3",
-      "title": "Ensure authentication propagates through proxies to request-scoped SSE responses",
+      "title": "checked condition — authentication propagates through proxies to request-scoped SSE responses",
       "props": [
        {
         "name": "label",
@@ -2916,14 +2916,14 @@
        {
         "id": "cis_mcp_server-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure authentication propagates through proxies to request-scoped SSE responses"
+        "prose": "checked condition — authentication propagates through proxies to request-scoped SSE responses"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.4",
-      "title": "Ensure required MCP request metadata headers are present and consistent with the request body",
+      "title": "required MCP request metadata headers must be present and consistent with the request body",
       "props": [
        {
         "name": "label",
@@ -2949,14 +2949,14 @@
        {
         "id": "cis_mcp_server-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure required MCP request metadata headers are present and consistent with the request body"
+        "prose": "required MCP request metadata headers must be present and consistent with the request body"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mcp_server-2.5",
-      "title": "Ensure Origin header is validated on all Streamable HTTP requests to prevent DNS rebinding attacks",
+      "title": "Origin header must be validated on all Streamable HTTP requests to prevent DNS rebinding attacks",
       "props": [
        {
         "name": "label",
@@ -2982,7 +2982,7 @@
        {
         "id": "cis_mcp_server-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure Origin header is validated on all Streamable HTTP requests to prevent DNS rebinding attacks"
+        "prose": "Origin header must be validated on all Streamable HTTP requests to prevent DNS rebinding attacks"
        }
       ],
       "class": "security"

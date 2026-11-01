@@ -19,7 +19,7 @@ package cis_mcp_server.isolation_execution_safety
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 9: Isolation and Execution Safety.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,9 +30,9 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"9.1": {"section": 9, "level": "L2", "assessment": "Manual", "title": "Ensure remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied"},
-	"9.2": {"section": 9, "level": "L1", "assessment": "Automated", "title": "Ensure the MCP server process is confined to its working set by OS-level kernel-enforced controls"},
-	"9.3": {"section": 9, "level": "L2", "assessment": "Manual", "title": "Ensure local stdio MCP servers run under least-privilege identities with sandbox or container isolation"},
+	"9.1": {"section": 9, "level": "L2", "assessment": "Manual", "title": "checked condition — remote MCP servers run in containers or VMs with least privilege and gateway ingress controls applied"},
+	"9.2": {"section": 9, "level": "L1", "assessment": "Automated", "title": "the MCP server process must be confined to its working set by OS-level kernel-enforced controls"},
+	"9.3": {"section": 9, "level": "L2", "assessment": "Manual", "title": "checked condition — local stdio MCP servers run under least-privilege identities with sandbox or container isolation"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

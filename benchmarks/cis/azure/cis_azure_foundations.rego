@@ -46,7 +46,7 @@ violations := [v |
 
 # Section 1: Identity and Access Management
 identity_access_violations := [
-    "1.1: Ensure that multi-factor authentication is enabled for all privileged users" |
+    "1.1: multi-factor authentication must be turned on for all privileged users" |
     user := input.aad_users[_]
     user.privileged == true
     not user.mfa_enabled
@@ -83,7 +83,7 @@ resource_lock_admin_role_exists if {
 
 # Section 2: Microsoft Defender for Cloud
 security_center_violations := [
-    "2.1: Ensure that Microsoft Defender for Cloud is set to 'On' for Servers" |
+    "2.1: required value of Microsoft Defender for Cloud is 'On' for Servers" |
     plan := input.defender_plans[_]
     plan.resource_type == "VirtualMachines"
     plan.pricing_tier != "Standard"
@@ -105,7 +105,7 @@ security_center_violations := [
 
 # Section 3: Storage Accounts
 storage_violations := [
-    "3.1: Ensure that 'Secure transfer required' is set to 'Enabled'" |
+    "3.1: required value of 'Secure transfer required' is 'Enabled'" |
     account := input.storage_accounts[_]
     account.https_traffic_only_enabled != true
 ]
@@ -129,7 +129,7 @@ critical_data_storage(account) if {
 
 # Section 4: Database Services
 database_violations := [
-    "4.1: Ensure that 'Auditing' is set to 'On' for SQL servers" |
+    "4.1: required value of 'Auditing' is 'On' for SQL servers" |
     server := input.sql_servers[_]
     not server.auditing_enabled
 ]
@@ -152,7 +152,7 @@ database_violations := [
 
 # Section 5: Logging and Monitoring
 logging_violations := [
-    "5.1: Ensure that a 'Diagnostic Setting' exists for Subscription Activity Logs" |
+    "5.1: checked condition — a 'Diagnostic Setting' exists for Subscription Activity Logs" |
     not input.activity_log_diagnostic_setting.enabled
 ]
 
@@ -162,7 +162,7 @@ logging_violations := [
 
 # Section 6: Networking
 networking_violations := [
-    "6.1: Ensure that RDP access is restricted from the internet" |
+    "6.1: RDP access must be restricted from the internet" |
     nsg := input.network_security_groups[_]
     rule := nsg.security_rules[_]
     rule.direction == "Inbound"
@@ -178,7 +178,7 @@ networking_violations := [
 
 # Section 7: Virtual Machines
 virtual_machines_violations := [
-    "7.1: Ensure Virtual Machines are utilizing Managed Disks" |
+    "7.1: Virtual Machines must be utilizing Managed Disks" |
     vm := input.virtual_machines[_]
     disk := vm.storage_profile.os_disk
     not disk.managed_disk
@@ -192,7 +192,7 @@ virtual_machines_violations := [
 
 # Section 8: Key Vault
 key_vault_violations := [
-    "8.1: Ensure that the expiration date is set on all keys" |
+    "8.1: the expiration date must be set on all keys" |
     vault := input.key_vaults[_]
     key := vault.keys[_]
     not key.expiration_date
@@ -206,7 +206,7 @@ key_vault_violations := [
 
 # Section 9: AppService
 app_service_violations := [
-    "9.1: Ensure App Service Authentication is set on Azure App Service" |
+    "9.1: App Service Authentication must be set on Azure App Service" |
     app := input.app_services[_]
     not app.authentication_enabled
 ]

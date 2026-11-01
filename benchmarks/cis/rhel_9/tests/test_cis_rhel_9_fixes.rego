@@ -22,17 +22,17 @@ test_rhel9_compliant_is_false_not_undefined_on_failure if {
 
 test_rhel9_crond_stopped_but_enabled_is_violation if {
 	i := json.patch(good, [{"op": "replace", "path": "/ansible_facts/ansible_services/crond/state", "value": "stopped"}])
-	"5.1.1: Ensure cron daemon is enabled and running" in data.cis.rhel_9.violations with input as i
+	"5.1.1: cron daemon must be turned on and running" in data.cis.rhel_9.violations with input as i
 }
 
 test_rhel9_crond_running_but_disabled_is_violation if {
 	i := json.patch(good, [{"op": "replace", "path": "/ansible_facts/ansible_services/crond/enabled", "value": false}])
-	"5.1.1: Ensure cron daemon is enabled and running" in data.cis.rhel_9.violations with input as i
+	"5.1.1: cron daemon must be turned on and running" in data.cis.rhel_9.violations with input as i
 }
 
 test_rhel9_crond_missing_is_violation if {
 	i := json.remove(good, ["/ansible_facts/ansible_services"])
-	"5.1.1: Ensure cron daemon is enabled and running" in data.cis.rhel_9.violations with input as i
+	"5.1.1: cron daemon must be turned on and running" in data.cis.rhel_9.violations with input as i
 }
 
 test_rhel9_missing_package_inventory_is_violation if {

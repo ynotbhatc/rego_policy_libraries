@@ -5,54 +5,54 @@ package cis.rhel9.test
 
 import rego.v1
 
-# CIS 1.1.1.1 - Ensure mounting of cramfs filesystems is disabled
+# CIS 1.1.1.1 - mounting of cramfs filesystems must be turned off
 cramfs_disabled if {
     not input.modules["cramfs"].loaded
 }
 
-# CIS 1.1.1.2 - Ensure mounting of freevxfs filesystems is disabled
+# CIS 1.1.1.2 - mounting of freevxfs filesystems must be turned off
 freevxfs_disabled if {
     not input.modules["freevxfs"].loaded
 }
 
-# CIS 1.1.1.3 - Ensure mounting of jffs2 filesystems is disabled
+# CIS 1.1.1.3 - mounting of jffs2 filesystems must be turned off
 jffs2_disabled if {
     not input.modules["jffs2"].loaded
 }
 
-# CIS 1.1.1.4 - Ensure mounting of hfs filesystems is disabled
+# CIS 1.1.1.4 - mounting of hfs filesystems must be turned off
 hfs_disabled if {
     not input.modules["hfs"].loaded
 }
 
-# CIS 5.2.1 - Ensure permissions on /etc/ssh/sshd_config are configured
+# CIS 5.2.1 - owner, group, and mode of /etc/ssh/sshd_config must be tightened
 sshd_config_perms if {
     input.files["/etc/ssh/sshd_config"].mode == "0600"
     input.files["/etc/ssh/sshd_config"].owner == "root"
     input.files["/etc/ssh/sshd_config"].group == "root"
 }
 
-# CIS 5.2.4 - Ensure SSH X11 forwarding is disabled
+# CIS 5.2.4 - SSH X11 forwarding must be turned off
 ssh_x11_disabled if {
     input.ssh_config.X11Forwarding == "no"
 }
 
-# CIS 5.2.5 - Ensure SSH MaxAuthTries is set to 4 or less
+# CIS 5.2.5 - required value of SSH MaxAuthTries is 4 or less
 ssh_max_auth_tries if {
     to_number(input.ssh_config.MaxAuthTries) <= 4
 }
 
-# CIS 5.2.7 - Ensure SSH root login is disabled
+# CIS 5.2.7 - SSH root login must be turned off
 ssh_root_login_disabled if {
     input.ssh_config.PermitRootLogin == "no"
 }
 
-# CIS 5.2.12 - Ensure SSH PermitUserEnvironment is disabled
+# CIS 5.2.12 - SSH PermitUserEnvironment must be turned off
 ssh_user_env_disabled if {
     input.ssh_config.PermitUserEnvironment == "no"
 }
 
-# CIS 5.2.15 - Ensure SSH warning banner is configured
+# CIS 5.2.15 - SSH warning banner must be explicitly configured
 ssh_banner_configured if {
     input.ssh_config.Banner != ""
     input.ssh_config.Banner != "none"

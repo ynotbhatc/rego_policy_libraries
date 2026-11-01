@@ -22,7 +22,7 @@ import rego.v1
 # Validates SSH daemon configuration for secure remote access
 
 # =============================================================================
-# CIS 5.1.1 - Ensure permissions on /etc/ssh/sshd_config are configured
+# CIS 5.1.1 - owner, group, and mode of /etc/ssh/sshd_config must be tightened
 # =============================================================================
 
 validate_sshd_config_permissions if {
@@ -34,7 +34,7 @@ validate_sshd_config_permissions if {
 
 violations contains {
     "control_id": "5.1.1",
-    "title": "Ensure permissions on /etc/ssh/sshd_config are configured",
+    "title": "owner, group, and mode of /etc/ssh/sshd_config must be tightened",
     "severity": "high",
     "description": "The /etc/ssh/sshd_config file must be owned by root and have mode 0600",
     "status": "fail",
@@ -49,7 +49,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.2 - Ensure permissions on SSH private host key files are configured
+# CIS 5.1.2 - owner, group, and mode of SSH private host key files must be tightened
 # =============================================================================
 
 validate_ssh_private_key_permissions(key) if {
@@ -60,7 +60,7 @@ validate_ssh_private_key_permissions(key) if {
 
 violations contains {
     "control_id": "5.1.2",
-    "title": "Ensure permissions on SSH private host key files are configured",
+    "title": "owner, group, and mode of SSH private host key files must be tightened",
     "severity": "critical",
     "description": "SSH private host keys must be protected with mode 0600 and owned by root",
     "status": "fail",
@@ -77,7 +77,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.3 - Ensure permissions on SSH public host key files are configured
+# CIS 5.1.3 - owner, group, and mode of SSH public host key files must be tightened
 # =============================================================================
 
 validate_ssh_public_key_permissions(key) if {
@@ -88,7 +88,7 @@ validate_ssh_public_key_permissions(key) if {
 
 violations contains {
     "control_id": "5.1.3",
-    "title": "Ensure permissions on SSH public host key files are configured",
+    "title": "owner, group, and mode of SSH public host key files must be tightened",
     "severity": "medium",
     "description": "SSH public host keys should have mode 0644 and be owned by root",
     "status": "fail",
@@ -105,7 +105,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.4 - Ensure SSH access is limited
+# CIS 5.1.4 - SSH access must be limited to named principals
 # =============================================================================
 
 validate_ssh_access_limited if {
@@ -126,7 +126,7 @@ validate_ssh_access_limited if {
 
 violations contains {
     "control_id": "5.1.4",
-    "title": "Ensure SSH access is limited",
+    "title": "SSH access must be limited to named principals",
     "severity": "high",
     "description": "SSH access should be limited using AllowUsers, AllowGroups, DenyUsers, or DenyGroups",
     "status": "fail",
@@ -137,7 +137,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.5 - Ensure SSH LogLevel is appropriate
+# CIS 5.1.5 - SSH LogLevel must use an approved value
 # =============================================================================
 
 validate_ssh_loglevel if {
@@ -146,7 +146,7 @@ validate_ssh_loglevel if {
 
 violations contains {
     "control_id": "5.1.5",
-    "title": "Ensure SSH LogLevel is appropriate",
+    "title": "SSH LogLevel must use an approved value",
     "severity": "medium",
     "description": "SSH LogLevel should be set to INFO or VERBOSE for adequate logging",
     "status": "fail",
@@ -157,7 +157,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.6 - Ensure SSH PAM is enabled
+# CIS 5.1.6 - SSH PAM must be turned on
 # =============================================================================
 
 validate_ssh_pam_enabled if {
@@ -166,7 +166,7 @@ validate_ssh_pam_enabled if {
 
 violations contains {
     "control_id": "5.1.6",
-    "title": "Ensure SSH PAM is enabled",
+    "title": "SSH PAM must be turned on",
     "severity": "high",
     "description": "SSH should use PAM for additional authentication and session management",
     "status": "fail",
@@ -177,7 +177,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.7 - Ensure SSH root login is disabled
+# CIS 5.1.7 - SSH root login must be turned off
 # =============================================================================
 
 validate_ssh_root_login_disabled if {
@@ -186,7 +186,7 @@ validate_ssh_root_login_disabled if {
 
 violations contains {
     "control_id": "5.1.7",
-    "title": "Ensure SSH root login is disabled",
+    "title": "SSH root login must be turned off",
     "severity": "critical",
     "description": "Direct root login via SSH should be disabled",
     "status": "fail",
@@ -197,7 +197,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.8 - Ensure SSH HostbasedAuthentication is disabled
+# CIS 5.1.8 - SSH HostbasedAuthentication must be turned off
 # =============================================================================
 
 validate_ssh_hostbased_disabled if {
@@ -206,7 +206,7 @@ validate_ssh_hostbased_disabled if {
 
 violations contains {
     "control_id": "5.1.8",
-    "title": "Ensure SSH HostbasedAuthentication is disabled",
+    "title": "SSH HostbasedAuthentication must be turned off",
     "severity": "high",
     "description": "SSH host-based authentication should be disabled",
     "status": "fail",
@@ -217,7 +217,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.9 - Ensure SSH PermitEmptyPasswords is disabled
+# CIS 5.1.9 - SSH PermitEmptyPasswords must be turned off
 # =============================================================================
 
 validate_ssh_empty_passwords_disabled if {
@@ -226,7 +226,7 @@ validate_ssh_empty_passwords_disabled if {
 
 violations contains {
     "control_id": "5.1.9",
-    "title": "Ensure SSH PermitEmptyPasswords is disabled",
+    "title": "SSH PermitEmptyPasswords must be turned off",
     "severity": "critical",
     "description": "SSH should not permit empty passwords",
     "status": "fail",
@@ -237,7 +237,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.10 - Ensure SSH PermitUserEnvironment is disabled
+# CIS 5.1.10 - SSH PermitUserEnvironment must be turned off
 # =============================================================================
 
 validate_ssh_user_environment_disabled if {
@@ -246,7 +246,7 @@ validate_ssh_user_environment_disabled if {
 
 violations contains {
     "control_id": "5.1.10",
-    "title": "Ensure SSH PermitUserEnvironment is disabled",
+    "title": "SSH PermitUserEnvironment must be turned off",
     "severity": "high",
     "description": "SSH should not permit user environment variables",
     "status": "fail",
@@ -257,7 +257,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.11 - Ensure SSH IgnoreRhosts is enabled
+# CIS 5.1.11 - SSH IgnoreRhosts must be turned on
 # =============================================================================
 
 validate_ssh_ignore_rhosts if {
@@ -266,7 +266,7 @@ validate_ssh_ignore_rhosts if {
 
 violations contains {
     "control_id": "5.1.11",
-    "title": "Ensure SSH IgnoreRhosts is enabled",
+    "title": "SSH IgnoreRhosts must be turned on",
     "severity": "high",
     "description": "SSH should ignore .rhosts and .shosts files",
     "status": "fail",
@@ -277,7 +277,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.12 - Ensure SSH X11 forwarding is disabled
+# CIS 5.1.12 - SSH X11 forwarding must be turned off
 # =============================================================================
 
 validate_ssh_x11_forwarding_disabled if {
@@ -286,7 +286,7 @@ validate_ssh_x11_forwarding_disabled if {
 
 violations contains {
     "control_id": "5.1.12",
-    "title": "Ensure SSH X11 forwarding is disabled",
+    "title": "SSH X11 forwarding must be turned off",
     "severity": "medium",
     "description": "SSH X11 forwarding should be disabled unless specifically required",
     "status": "fail",
@@ -297,7 +297,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.13 - Ensure only strong ciphers are used
+# CIS 5.1.13 - only strong ciphers must be used
 # =============================================================================
 
 # Algorithm directives arrive as a list or as the comma-separated sshd value.
@@ -329,7 +329,7 @@ validate_ssh_strong_ciphers if {
 
 violations contains {
     "control_id": "5.1.13",
-    "title": "Ensure only strong ciphers are used",
+    "title": "only strong ciphers must be used",
     "severity": "high",
     "description": "SSH should only use strong encryption ciphers",
     "status": "fail",
@@ -340,7 +340,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.14 - Ensure only strong MAC algorithms are used
+# CIS 5.1.14 - only strong MAC algorithms must be used
 # =============================================================================
 
 weak_macs := [
@@ -369,7 +369,7 @@ validate_ssh_strong_macs if {
 
 violations contains {
     "control_id": "5.1.14",
-    "title": "Ensure only strong MAC algorithms are used",
+    "title": "only strong MAC algorithms must be used",
     "severity": "high",
     "description": "SSH should only use strong MAC algorithms",
     "status": "fail",
@@ -380,7 +380,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.15 - Ensure only strong Key Exchange algorithms are used
+# CIS 5.1.15 - only strong Key Exchange algorithms must be used
 # =============================================================================
 
 weak_kex := [
@@ -400,7 +400,7 @@ validate_ssh_strong_kex if {
 
 violations contains {
     "control_id": "5.1.15",
-    "title": "Ensure only strong Key Exchange algorithms are used",
+    "title": "only strong Key Exchange algorithms must be used",
     "severity": "high",
     "description": "SSH should only use strong key exchange algorithms",
     "status": "fail",
@@ -411,7 +411,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.16 - Ensure SSH Idle Timeout Interval is configured
+# CIS 5.1.16 - SSH Idle Timeout Interval must be explicitly configured
 # =============================================================================
 
 validate_ssh_idle_timeout if {
@@ -422,7 +422,7 @@ validate_ssh_idle_timeout if {
 
 violations contains {
     "control_id": "5.1.16",
-    "title": "Ensure SSH Idle Timeout Interval is configured",
+    "title": "SSH Idle Timeout Interval must be explicitly configured",
     "severity": "medium",
     "description": "SSH idle timeout should be configured to automatically disconnect idle sessions",
     "status": "fail",
@@ -436,7 +436,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.17 - Ensure SSH LoginGraceTime is set to one minute or less
+# CIS 5.1.17 - required value of SSH LoginGraceTime is one minute or less
 # =============================================================================
 
 validate_ssh_login_grace_time if {
@@ -446,7 +446,7 @@ validate_ssh_login_grace_time if {
 
 violations contains {
     "control_id": "5.1.17",
-    "title": "Ensure SSH LoginGraceTime is set to one minute or less",
+    "title": "required value of SSH LoginGraceTime is one minute or less",
     "severity": "medium",
     "description": "SSH LoginGraceTime should be limited to reduce connection resource usage",
     "status": "fail",
@@ -457,7 +457,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.18 - Ensure SSH warning banner is configured
+# CIS 5.1.18 - SSH warning banner must be explicitly configured
 # =============================================================================
 
 validate_ssh_banner if {
@@ -467,7 +467,7 @@ validate_ssh_banner if {
 
 violations contains {
     "control_id": "5.1.18",
-    "title": "Ensure SSH warning banner is configured",
+    "title": "SSH warning banner must be explicitly configured",
     "severity": "low",
     "description": "SSH should display a warning banner before authentication",
     "status": "fail",
@@ -478,7 +478,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.19 - Ensure SSH MaxAuthTries is set to 4 or less
+# CIS 5.1.19 - required value of SSH MaxAuthTries is 4 or less
 # =============================================================================
 
 validate_ssh_max_auth_tries if {
@@ -488,7 +488,7 @@ validate_ssh_max_auth_tries if {
 
 violations contains {
     "control_id": "5.1.19",
-    "title": "Ensure SSH MaxAuthTries is set to 4 or less",
+    "title": "required value of SSH MaxAuthTries is 4 or less",
     "severity": "medium",
     "description": "SSH should limit authentication attempts to prevent brute force attacks",
     "status": "fail",
@@ -499,7 +499,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.20 - Ensure SSH MaxStartups is configured
+# CIS 5.1.20 - SSH MaxStartups must be explicitly configured
 # =============================================================================
 
 validate_ssh_max_startups if {
@@ -510,7 +510,7 @@ validate_ssh_max_startups if {
 
 violations contains {
     "control_id": "5.1.20",
-    "title": "Ensure SSH MaxStartups is configured",
+    "title": "SSH MaxStartups must be explicitly configured",
     "severity": "medium",
     "description": "SSH MaxStartups should be configured to limit concurrent unauthenticated connections",
     "status": "fail",
@@ -521,7 +521,7 @@ violations contains {
 }
 
 # =============================================================================
-# CIS 5.1.21 - Ensure SSH MaxSessions is limited
+# CIS 5.1.21 - SSH MaxSessions must be limited to named principals
 # =============================================================================
 
 validate_ssh_max_sessions if {
@@ -531,7 +531,7 @@ validate_ssh_max_sessions if {
 
 violations contains {
     "control_id": "5.1.21",
-    "title": "Ensure SSH MaxSessions is limited",
+    "title": "SSH MaxSessions must be limited to named principals",
     "severity": "low",
     "description": "SSH should limit the number of concurrent sessions per connection",
     "status": "fail",

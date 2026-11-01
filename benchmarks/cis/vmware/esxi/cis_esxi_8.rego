@@ -51,26 +51,26 @@ compliant if {
 
 host_configuration_violations := [msg |
 	msgs := [
-		{"msg": "1.1 Ensure ESXi host is configured with appropriate time synchronization", "condition": host_time_sync_configured},
-		{"msg": "1.2 Ensure ESXi host SSH service is configured securely", "condition": host_ssh_service_secure},
-		{"msg": "1.3 Ensure ESXi host firewall is configured appropriately", "condition": host_firewall_configured},
-		{"msg": "1.4 Ensure ESXi host certificate management is configured securely", "condition": host_certificate_management_secure},
-		{"msg": "1.5 Ensure ESXi host password policies are enforced", "condition": host_password_policies_enforced},
-		{"msg": "1.6 Ensure ESXi host account lockout policies are configured", "condition": host_account_lockout_configured},
-		{"msg": "1.7 Ensure ESXi host session timeout is configured appropriately", "condition": host_session_timeout_configured},
-		{"msg": "1.8 Ensure ESXi host console access is properly secured", "condition": host_console_access_secured},
-		{"msg": "1.9 Ensure ESXi host SNMP configuration is secure", "condition": host_snmp_configuration_secure},
-		{"msg": "1.10 Ensure ESXi host syslog is configured appropriately", "condition": host_syslog_configured},
-		{"msg": "1.11 Ensure ESXi host kernel modules are restricted", "condition": host_kernel_modules_restricted},
-		{"msg": "1.12 Ensure ESXi host hypervisor scheduler is configured securely", "condition": host_hypervisor_scheduler_secure},
-		{"msg": "1.13 Ensure ESXi host memory management is configured securely", "condition": host_memory_management_secure},
-		{"msg": "1.14 Ensure ESXi host CPU resource management is configured", "condition": host_cpu_management_configured},
-		{"msg": "1.15 Ensure ESXi host power management is configured appropriately", "condition": host_power_management_configured},
-		{"msg": "1.16 Ensure ESXi host hardware monitoring is configured", "condition": host_hardware_monitoring_configured},
-		{"msg": "1.17 Ensure ESXi host update and patch management is configured", "condition": host_patch_management_configured},
-		{"msg": "1.18 Ensure ESXi host backup and recovery procedures are in place", "condition": host_backup_procedures_configured},
-		{"msg": "1.19 Ensure ESXi host disaster recovery is configured", "condition": host_disaster_recovery_configured},
-		{"msg": "1.20 Ensure ESXi host compliance monitoring is enabled", "condition": host_compliance_monitoring_enabled}
+		{"msg": "1.1 ESXi host must be explicitly configured with appropriate time synchronization", "condition": host_time_sync_configured},
+		{"msg": "1.2 ESXi host SSH service must be explicitly configured securely", "condition": host_ssh_service_secure},
+		{"msg": "1.3 ESXi host firewall must be explicitly configured appropriately", "condition": host_firewall_configured},
+		{"msg": "1.4 ESXi host certificate management must be explicitly configured securely", "condition": host_certificate_management_secure},
+		{"msg": "1.5 ESXi host password policies must be enforced", "condition": host_password_policies_enforced},
+		{"msg": "1.6 ESXi host account lockout policies must be explicitly configured", "condition": host_account_lockout_configured},
+		{"msg": "1.7 ESXi host session timeout must be explicitly configured appropriately", "condition": host_session_timeout_configured},
+		{"msg": "1.8 ESXi host console access must be properly secured", "condition": host_console_access_secured},
+		{"msg": "1.9 ESXi host SNMP configuration must be secure", "condition": host_snmp_configuration_secure},
+		{"msg": "1.10 ESXi host syslog must be explicitly configured appropriately", "condition": host_syslog_configured},
+		{"msg": "1.11 ESXi host kernel modules must be restricted", "condition": host_kernel_modules_restricted},
+		{"msg": "1.12 ESXi host hypervisor scheduler must be explicitly configured securely", "condition": host_hypervisor_scheduler_secure},
+		{"msg": "1.13 ESXi host memory management must be explicitly configured securely", "condition": host_memory_management_secure},
+		{"msg": "1.14 ESXi host CPU resource management must be explicitly configured", "condition": host_cpu_management_configured},
+		{"msg": "1.15 ESXi host power management must be explicitly configured appropriately", "condition": host_power_management_configured},
+		{"msg": "1.16 ESXi host hardware monitoring must be explicitly configured", "condition": host_hardware_monitoring_configured},
+		{"msg": "1.17 ESXi host update and patch management must be explicitly configured", "condition": host_patch_management_configured},
+		{"msg": "1.18 ESXi host backup and recovery procedures must be in place", "condition": host_backup_procedures_configured},
+		{"msg": "1.19 ESXi host disaster recovery must be explicitly configured", "condition": host_disaster_recovery_configured},
+		{"msg": "1.20 ESXi host compliance monitoring must be turned on", "condition": host_compliance_monitoring_enabled}
 	]
 	m := msgs[_]
 	not m.condition
@@ -79,20 +79,20 @@ host_configuration_violations := [msg |
 
 network_security_violations := [msg |
 	msgs := [
-		{"msg": "2.1 Ensure network redundancy is configured for critical traffic", "condition": network_redundancy_configured},
-		{"msg": "2.2 Ensure network security policies are implemented", "condition": network_security_policies_implemented},
-		{"msg": "2.3 Ensure VLAN configuration follows security best practices", "condition": vlan_configuration_secure},
-		{"msg": "2.4 Ensure virtual switch security policies are configured", "condition": vswitch_security_policies_configured},
-		{"msg": "2.5 Ensure port group security policies are configured", "condition": portgroup_security_policies_configured},
-		{"msg": "2.6 Ensure network I/O control is configured appropriately", "condition": network_io_control_configured},
-		{"msg": "2.7 Ensure network traffic shaping is configured", "condition": network_traffic_shaping_configured},
-		{"msg": "2.8 Ensure network security and monitoring is configured", "condition": network_security_monitoring_configured},
-		{"msg": "2.9 Ensure network access control is properly configured", "condition": network_access_control_configured},
-		{"msg": "2.10 Ensure network encryption is enabled where appropriate", "condition": network_encryption_enabled},
-		{"msg": "2.11 Ensure network segmentation is properly implemented", "condition": network_segmentation_implemented},
-		{"msg": "2.12 Ensure virtual networking security features are enabled", "condition": virtual_networking_security_enabled},
-		{"msg": "2.13 Ensure network intrusion detection is configured", "condition": network_intrusion_detection_configured},
-		{"msg": "2.14 Ensure network performance monitoring is configured", "condition": network_performance_monitoring_configured}
+		{"msg": "2.1 network redundancy must be explicitly configured for critical traffic", "condition": network_redundancy_configured},
+		{"msg": "2.2 network security policies must be implemented", "condition": network_security_policies_implemented},
+		{"msg": "2.3 checked condition — VLAN configuration follows security best practices", "condition": vlan_configuration_secure},
+		{"msg": "2.4 virtual switch security policies must be explicitly configured", "condition": vswitch_security_policies_configured},
+		{"msg": "2.5 port group security policies must be explicitly configured", "condition": portgroup_security_policies_configured},
+		{"msg": "2.6 network I/O control must be explicitly configured appropriately", "condition": network_io_control_configured},
+		{"msg": "2.7 network traffic shaping must be explicitly configured", "condition": network_traffic_shaping_configured},
+		{"msg": "2.8 network security and monitoring must be explicitly configured", "condition": network_security_monitoring_configured},
+		{"msg": "2.9 network access control must match the approved configuration", "condition": network_access_control_configured},
+		{"msg": "2.10 network encryption must be turned on where appropriate", "condition": network_encryption_enabled},
+		{"msg": "2.11 network segmentation must be properly implemented", "condition": network_segmentation_implemented},
+		{"msg": "2.12 virtual networking security features must be turned on", "condition": virtual_networking_security_enabled},
+		{"msg": "2.13 network intrusion detection must be explicitly configured", "condition": network_intrusion_detection_configured},
+		{"msg": "2.14 network performance monitoring must be explicitly configured", "condition": network_performance_monitoring_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -101,16 +101,16 @@ network_security_violations := [msg |
 
 storage_security_violations := [msg |
 	msgs := [
-		{"msg": "3.1 Ensure storage access control is properly configured", "condition": storage_access_control_configured},
-		{"msg": "3.2 Ensure storage encryption is enabled where appropriate", "condition": storage_encryption_enabled},
-		{"msg": "3.3 Ensure storage multipathing is configured securely", "condition": storage_multipathing_secure},
-		{"msg": "3.4 Ensure storage performance monitoring is configured", "condition": storage_performance_monitoring_configured},
-		{"msg": "3.5 Ensure storage backup and recovery procedures are in place", "condition": storage_backup_procedures_configured},
-		{"msg": "3.6 Ensure storage array integration is secure", "condition": storage_array_integration_secure},
-		{"msg": "3.7 Ensure storage I/O control is configured appropriately", "condition": storage_io_control_configured},
-		{"msg": "3.8 Ensure storage security policies are implemented", "condition": storage_security_policies_implemented},
-		{"msg": "3.9 Ensure storage audit logging is enabled", "condition": storage_audit_logging_enabled},
-		{"msg": "3.10 Ensure storage compliance monitoring is configured", "condition": storage_compliance_monitoring_configured}
+		{"msg": "3.1 storage access control must match the approved configuration", "condition": storage_access_control_configured},
+		{"msg": "3.2 storage encryption must be turned on where appropriate", "condition": storage_encryption_enabled},
+		{"msg": "3.3 storage multipathing must be explicitly configured securely", "condition": storage_multipathing_secure},
+		{"msg": "3.4 storage performance monitoring must be explicitly configured", "condition": storage_performance_monitoring_configured},
+		{"msg": "3.5 storage backup and recovery procedures must be in place", "condition": storage_backup_procedures_configured},
+		{"msg": "3.6 storage array integration must be secure", "condition": storage_array_integration_secure},
+		{"msg": "3.7 storage I/O control must be explicitly configured appropriately", "condition": storage_io_control_configured},
+		{"msg": "3.8 storage security policies must be implemented", "condition": storage_security_policies_implemented},
+		{"msg": "3.9 storage audit logging must be turned on", "condition": storage_audit_logging_enabled},
+		{"msg": "3.10 storage compliance monitoring must be explicitly configured", "condition": storage_compliance_monitoring_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -119,20 +119,20 @@ storage_security_violations := [msg |
 
 vm_security_violations := [msg |
 	msgs := [
-		{"msg": "4.1 Ensure VM configuration security is enforced", "condition": vm_configuration_security_enforced},
-		{"msg": "4.2 Ensure VM resource allocation is properly controlled", "condition": vm_resource_allocation_controlled},
-		{"msg": "4.3 Ensure VM security policies are implemented", "condition": vm_security_policies_implemented},
-		{"msg": "4.4 Ensure VM network security is configured", "condition": vm_network_security_configured},
-		{"msg": "4.5 Ensure VM storage security is configured", "condition": vm_storage_security_configured},
-		{"msg": "4.6 Ensure VM access control is properly configured", "condition": vm_access_control_configured},
-		{"msg": "4.7 Ensure VM monitoring and logging is configured", "condition": vm_monitoring_logging_configured},
-		{"msg": "4.8 Ensure VM backup and recovery procedures are in place", "condition": vm_backup_procedures_configured},
-		{"msg": "4.9 Ensure VM compliance monitoring is enabled", "condition": vm_compliance_monitoring_enabled},
-		{"msg": "4.10 Ensure VM security scanning is configured", "condition": vm_security_scanning_configured},
-		{"msg": "4.11 Ensure VM vulnerability management is implemented", "condition": vm_vulnerability_management_implemented},
-		{"msg": "4.12 Ensure VM patch management is configured", "condition": vm_patch_management_configured},
-		{"msg": "4.13 Ensure VM antivirus and anti-malware protection is configured", "condition": vm_antivirus_protection_configured},
-		{"msg": "4.14 Ensure VM data loss prevention is configured", "condition": vm_data_loss_prevention_configured}
+		{"msg": "4.1 VM configuration security must be enforced", "condition": vm_configuration_security_enforced},
+		{"msg": "4.2 VM resource allocation must be properly controlled", "condition": vm_resource_allocation_controlled},
+		{"msg": "4.3 VM security policies must be implemented", "condition": vm_security_policies_implemented},
+		{"msg": "4.4 VM network security must be explicitly configured", "condition": vm_network_security_configured},
+		{"msg": "4.5 VM storage security must be explicitly configured", "condition": vm_storage_security_configured},
+		{"msg": "4.6 VM access control must match the approved configuration", "condition": vm_access_control_configured},
+		{"msg": "4.7 VM monitoring and logging must be explicitly configured", "condition": vm_monitoring_logging_configured},
+		{"msg": "4.8 VM backup and recovery procedures must be in place", "condition": vm_backup_procedures_configured},
+		{"msg": "4.9 VM compliance monitoring must be turned on", "condition": vm_compliance_monitoring_enabled},
+		{"msg": "4.10 VM security scanning must be explicitly configured", "condition": vm_security_scanning_configured},
+		{"msg": "4.11 VM vulnerability management must be implemented", "condition": vm_vulnerability_management_implemented},
+		{"msg": "4.12 VM patch management must be explicitly configured", "condition": vm_patch_management_configured},
+		{"msg": "4.13 VM antivirus and anti-malware protection must be explicitly configured", "condition": vm_antivirus_protection_configured},
+		{"msg": "4.14 VM data loss prevention must be explicitly configured", "condition": vm_data_loss_prevention_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -141,16 +141,16 @@ vm_security_violations := [msg |
 
 access_control_violations := [msg |
 	msgs := [
-		{"msg": "5.1 Ensure role-based access control is implemented", "condition": rbac_implemented},
-		{"msg": "5.2 Ensure user account management is properly configured", "condition": user_account_management_configured},
-		{"msg": "5.3 Ensure service account management is secure", "condition": service_account_management_secure},
-		{"msg": "5.4 Ensure privileged access management is implemented", "condition": privileged_access_management_implemented},
-		{"msg": "5.5 Ensure authentication mechanisms are secure", "condition": authentication_mechanisms_secure},
-		{"msg": "5.6 Ensure authorization policies are properly configured", "condition": authorization_policies_configured},
-		{"msg": "5.7 Ensure access review procedures are in place", "condition": access_review_procedures_configured},
-		{"msg": "5.8 Ensure access provisioning and deprovisioning is automated", "condition": access_provisioning_automated},
-		{"msg": "5.9 Ensure access monitoring and alerting is configured", "condition": access_monitoring_configured},
-		{"msg": "5.10 Ensure emergency access procedures are documented", "condition": emergency_access_procedures_documented}
+		{"msg": "5.1 role-based access control must be implemented", "condition": rbac_implemented},
+		{"msg": "5.2 user account management must match the approved configuration", "condition": user_account_management_configured},
+		{"msg": "5.3 service account management must be secure", "condition": service_account_management_secure},
+		{"msg": "5.4 privileged access management must be implemented", "condition": privileged_access_management_implemented},
+		{"msg": "5.5 authentication mechanisms must be secure", "condition": authentication_mechanisms_secure},
+		{"msg": "5.6 authorization policies must match the approved configuration", "condition": authorization_policies_configured},
+		{"msg": "5.7 access review procedures must be in place", "condition": access_review_procedures_configured},
+		{"msg": "5.8 access provisioning and deprovisioning must be automated", "condition": access_provisioning_automated},
+		{"msg": "5.9 access monitoring and alerting must be explicitly configured", "condition": access_monitoring_configured},
+		{"msg": "5.10 emergency access procedures must be documented", "condition": emergency_access_procedures_documented}
 	]
 	m := msgs[_]
 	not m.condition
@@ -159,16 +159,16 @@ access_control_violations := [msg |
 
 logging_audit_violations := [msg |
 	msgs := [
-		{"msg": "6.1 Ensure comprehensive audit logging is enabled", "condition": comprehensive_audit_logging_enabled},
-		{"msg": "6.2 Ensure log forwarding is configured securely", "condition": log_forwarding_configured_securely},
-		{"msg": "6.3 Ensure log retention policies are implemented", "condition": log_retention_policies_implemented},
-		{"msg": "6.4 Ensure log monitoring and alerting is configured", "condition": log_monitoring_alerting_configured},
-		{"msg": "6.5 Ensure log integrity protection is enabled", "condition": log_integrity_protection_enabled},
-		{"msg": "6.6 Ensure security event correlation is configured", "condition": security_event_correlation_configured},
-		{"msg": "6.7 Ensure incident response procedures are documented", "condition": incident_response_procedures_documented},
-		{"msg": "6.8 Ensure forensic analysis capabilities are available", "condition": forensic_analysis_capabilities_available},
-		{"msg": "6.9 Ensure compliance reporting is automated", "condition": compliance_reporting_automated},
-		{"msg": "6.10 Ensure audit trail review procedures are in place", "condition": audit_trail_review_procedures_configured}
+		{"msg": "6.1 comprehensive audit logging must be turned on", "condition": comprehensive_audit_logging_enabled},
+		{"msg": "6.2 log forwarding must be explicitly configured securely", "condition": log_forwarding_configured_securely},
+		{"msg": "6.3 log retention policies must be implemented", "condition": log_retention_policies_implemented},
+		{"msg": "6.4 log monitoring and alerting must be explicitly configured", "condition": log_monitoring_alerting_configured},
+		{"msg": "6.5 log integrity protection must be turned on", "condition": log_integrity_protection_enabled},
+		{"msg": "6.6 security event correlation must be explicitly configured", "condition": security_event_correlation_configured},
+		{"msg": "6.7 incident response procedures must be documented", "condition": incident_response_procedures_documented},
+		{"msg": "6.8 forensic analysis capabilities must be available", "condition": forensic_analysis_capabilities_available},
+		{"msg": "6.9 compliance reporting must be automated", "condition": compliance_reporting_automated},
+		{"msg": "6.10 audit trail review procedures must be in place", "condition": audit_trail_review_procedures_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -177,16 +177,16 @@ logging_audit_violations := [msg |
 
 system_hardening_violations := [msg |
 	msgs := [
-		{"msg": "7.1 Ensure system hardening standards are applied", "condition": system_hardening_standards_applied},
-		{"msg": "7.2 Ensure security patches are applied timely", "condition": security_patches_applied_timely},
-		{"msg": "7.3 Ensure vulnerability scanning is configured", "condition": vulnerability_scanning_configured},
-		{"msg": "7.4 Ensure penetration testing is performed regularly", "condition": penetration_testing_performed_regularly},
-		{"msg": "7.5 Ensure security baseline compliance is monitored", "condition": security_baseline_compliance_monitored},
-		{"msg": "7.6 Ensure configuration drift detection is enabled", "condition": configuration_drift_detection_enabled},
-		{"msg": "7.7 Ensure security automation is implemented", "condition": security_automation_implemented},
-		{"msg": "7.8 Ensure threat intelligence integration is configured", "condition": threat_intelligence_integration_configured},
-		{"msg": "7.9 Ensure security metrics and KPIs are tracked", "condition": security_metrics_kpis_tracked},
-		{"msg": "7.10 Ensure continuous security improvement processes are in place", "condition": continuous_security_improvement_processes_configured}
+		{"msg": "7.1 system hardening standards must be applied", "condition": system_hardening_standards_applied},
+		{"msg": "7.2 security patches must be applied timely", "condition": security_patches_applied_timely},
+		{"msg": "7.3 vulnerability scanning must be explicitly configured", "condition": vulnerability_scanning_configured},
+		{"msg": "7.4 penetration testing must be performed regularly", "condition": penetration_testing_performed_regularly},
+		{"msg": "7.5 security baseline compliance must be monitored", "condition": security_baseline_compliance_monitored},
+		{"msg": "7.6 configuration drift detection must be turned on", "condition": configuration_drift_detection_enabled},
+		{"msg": "7.7 security automation must be implemented", "condition": security_automation_implemented},
+		{"msg": "7.8 threat intelligence integration must be explicitly configured", "condition": threat_intelligence_integration_configured},
+		{"msg": "7.9 security metrics and KPIs must be tracked", "condition": security_metrics_kpis_tracked},
+		{"msg": "7.10 continuous security improvement processes must be in place", "condition": continuous_security_improvement_processes_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -195,14 +195,14 @@ system_hardening_violations := [msg |
 
 compliance_monitoring_violations := [msg |
 	msgs := [
-		{"msg": "8.1 Ensure compliance framework alignment is documented", "condition": compliance_framework_alignment_documented},
-		{"msg": "8.2 Ensure regulatory compliance monitoring is configured", "condition": regulatory_compliance_monitoring_configured},
-		{"msg": "8.3 Ensure compliance reporting is automated", "condition": compliance_reporting_automated_comprehensive},
-		{"msg": "8.4 Ensure compliance audit trails are maintained", "condition": compliance_audit_trails_maintained},
-		{"msg": "8.5 Ensure compliance exception management is implemented", "condition": compliance_exception_management_implemented},
-		{"msg": "8.6 Ensure compliance training and awareness programs are in place", "condition": compliance_training_awareness_programs_configured},
-		{"msg": "8.7 Ensure compliance risk assessment is performed regularly", "condition": compliance_risk_assessment_performed_regularly},
-		{"msg": "8.8 Ensure compliance governance processes are documented", "condition": compliance_governance_processes_documented}
+		{"msg": "8.1 compliance framework alignment must be documented", "condition": compliance_framework_alignment_documented},
+		{"msg": "8.2 regulatory compliance monitoring must be explicitly configured", "condition": regulatory_compliance_monitoring_configured},
+		{"msg": "8.3 compliance reporting must be automated", "condition": compliance_reporting_automated_comprehensive},
+		{"msg": "8.4 compliance audit trails must be maintained", "condition": compliance_audit_trails_maintained},
+		{"msg": "8.5 compliance exception management must be implemented", "condition": compliance_exception_management_implemented},
+		{"msg": "8.6 compliance training and awareness programs must be in place", "condition": compliance_training_awareness_programs_configured},
+		{"msg": "8.7 compliance risk assessment must be performed regularly", "condition": compliance_risk_assessment_performed_regularly},
+		{"msg": "8.8 compliance governance processes must be documented", "condition": compliance_governance_processes_documented}
 	]
 	m := msgs[_]
 	not m.condition

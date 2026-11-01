@@ -196,7 +196,7 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 ]
 
 # 7.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure accounts in /etc/passwd use shadowed passwords
+# password hashes must be stored outside /etc/passwd
 default e_7_2_1 := false
 
 e_7_2_1 if {
@@ -211,13 +211,13 @@ p_7_2_1 if {
 
 violations contains "7.2.1: evidence missing — user_group.users_without_shadow not collected" if not e_7_2_1
 
-violations contains "7.2.1: not met — Ensure accounts in /etc/passwd use shadowed passwords" if {
+violations contains "7.2.1: not met — password hashes must be stored outside /etc/passwd" if {
 	e_7_2_1
 	not p_7_2_1
 }
 
 # 7.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /etc/shadow password fields are not empty
+# password fields in /etc/shadow must be populated
 default e_7_2_2 := false
 
 e_7_2_2 if {
@@ -232,13 +232,13 @@ p_7_2_2 if {
 
 violations contains "7.2.2: evidence missing — user_group.users_with_empty_password not collected" if not e_7_2_2
 
-violations contains "7.2.2: not met — Ensure /etc/shadow password fields are not empty" if {
+violations contains "7.2.2: not met — password fields in /etc/shadow must be populated" if {
 	e_7_2_2
 	not p_7_2_2
 }
 
 # 7.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure all groups in /etc/passwd exist in /etc/group
+# every group named in /etc/passwd must also exist in /etc/group
 default e_7_2_3 := false
 
 e_7_2_3 if {
@@ -253,13 +253,13 @@ p_7_2_3 if {
 
 violations contains "7.2.3: evidence missing — user_group.passwd_groups_not_in_group_file not collected" if not e_7_2_3
 
-violations contains "7.2.3: not met — Ensure all groups in /etc/passwd exist in /etc/group" if {
+violations contains "7.2.3: not met — every group named in /etc/passwd must also exist in /etc/group" if {
 	e_7_2_3
 	not p_7_2_3
 }
 
 # 7.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure no duplicate UIDs exist
+# the local account database must not contain duplicate UIDs
 default e_7_2_4 := false
 
 e_7_2_4 if {
@@ -274,13 +274,13 @@ p_7_2_4 if {
 
 violations contains "7.2.4: evidence missing — user_group.duplicate_uids not collected" if not e_7_2_4
 
-violations contains "7.2.4: not met — Ensure no duplicate UIDs exist" if {
+violations contains "7.2.4: not met — the local account database must not contain duplicate UIDs" if {
 	e_7_2_4
 	not p_7_2_4
 }
 
 # 7.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure no duplicate GIDs exist
+# the local account database must not contain duplicate GIDs
 default e_7_2_5 := false
 
 e_7_2_5 if {
@@ -295,13 +295,13 @@ p_7_2_5 if {
 
 violations contains "7.2.5: evidence missing — user_group.duplicate_gids not collected" if not e_7_2_5
 
-violations contains "7.2.5: not met — Ensure no duplicate GIDs exist" if {
+violations contains "7.2.5: not met — the local account database must not contain duplicate GIDs" if {
 	e_7_2_5
 	not p_7_2_5
 }
 
 # 7.2.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure no duplicate user names exist
+# the local account database must not contain duplicate user names
 default e_7_2_6 := false
 
 e_7_2_6 if {
@@ -316,13 +316,13 @@ p_7_2_6 if {
 
 violations contains "7.2.6: evidence missing — user_group.duplicate_usernames not collected" if not e_7_2_6
 
-violations contains "7.2.6: not met — Ensure no duplicate user names exist" if {
+violations contains "7.2.6: not met — the local account database must not contain duplicate user names" if {
 	e_7_2_6
 	not p_7_2_6
 }
 
 # 7.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure no duplicate group names exist
+# the local account database must not contain duplicate group names
 default e_7_2_7 := false
 
 e_7_2_7 if {
@@ -337,13 +337,13 @@ p_7_2_7 if {
 
 violations contains "7.2.7: evidence missing — user_group.duplicate_groupnames not collected" if not e_7_2_7
 
-violations contains "7.2.7: not met — Ensure no duplicate group names exist" if {
+violations contains "7.2.7: not met — the local account database must not contain duplicate group names" if {
 	e_7_2_7
 	not p_7_2_7
 }
 
 # 7.2.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure local interactive user home directories are configured
+# local interactive user home directories must be explicitly configured
 default e_7_2_8 := false
 
 e_7_2_8 if {
@@ -362,13 +362,13 @@ p_7_2_8 if {
 
 violations contains "7.2.8: evidence missing — user_group.users_without_home_directory/users_not_owning_home/home_dirs_too_permissive not collected" if not e_7_2_8
 
-violations contains "7.2.8: not met — Ensure local interactive user home directories are configured" if {
+violations contains "7.2.8: not met — local interactive user home directories must be explicitly configured" if {
 	e_7_2_8
 	not p_7_2_8
 }
 
 # 7.2.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure local interactive user dot files access is configured
+# local interactive user dot files access must be explicitly configured
 default e_7_2_9 := false
 
 e_7_2_9 if {
@@ -389,7 +389,7 @@ p_7_2_9 if {
 
 violations contains "7.2.9: evidence missing — user_group.users_with_netrc/users_with_forward/users_with_rhosts/dotfiles_group_or_world_writable not collected" if not e_7_2_9
 
-violations contains "7.2.9: not met — Ensure local interactive user dot files access is configured" if {
+violations contains "7.2.9: not met — local interactive user dot files access must be explicitly configured" if {
 	e_7_2_9
 	not p_7_2_9
 }

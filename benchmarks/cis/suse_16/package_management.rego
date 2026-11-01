@@ -192,17 +192,17 @@ valid_shells := {s |
 }
 
 # 1.2.1.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure GPG keys are configured
+# GPG keys must be explicitly configured
 default p_1_2_1_1 := false
 
 p_1_2_1_1 if {
 	input.attest.gpg_keys_reviewed == true
 }
 
-violations contains "1.2.1.1: manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (Ensure GPG keys are configured)" if not p_1_2_1_1
+violations contains "1.2.1.1: manual review not attested — set attest.gpg_keys_reviewed to true once reviewed (GPG keys must be explicitly configured)" if not p_1_2_1_1
 
 # 1.2.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure gpgcheck is configured
+# gpgcheck must be explicitly configured
 default e_1_2_1_2 := false
 
 e_1_2_1_2 if {
@@ -219,33 +219,33 @@ p_1_2_1_2 if {
 
 violations contains "1.2.1.2: evidence missing — initial_setup.global_gpgcheck_enabled/repos_without_gpgcheck not collected" if not e_1_2_1_2
 
-violations contains "1.2.1.2: not met — Ensure gpgcheck is configured" if {
+violations contains "1.2.1.2: not met — gpgcheck must be explicitly configured" if {
 	e_1_2_1_2
 	not p_1_2_1_2
 }
 
 # 1.2.1.3 (Manual; Level 2 - Server, Level 2 - Workstation)
-# Ensure repo_gpgcheck is configured
+# repo_gpgcheck must be explicitly configured
 default p_1_2_1_3 := false
 
 p_1_2_1_3 if {
 	input.attest.repo_gpgcheck_reviewed == true
 }
 
-violations contains "1.2.1.3: manual review not attested — set attest.repo_gpgcheck_reviewed to true once reviewed (Ensure repo_gpgcheck is configured)" if not p_1_2_1_3
+violations contains "1.2.1.3: manual review not attested — set attest.repo_gpgcheck_reviewed to true once reviewed (repo_gpgcheck must be explicitly configured)" if not p_1_2_1_3
 
 # 1.2.1.4 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure package manager repositories are configured
+# package manager repositories must be explicitly configured
 default p_1_2_1_4 := false
 
 p_1_2_1_4 if {
 	input.attest.repositories_reviewed == true
 }
 
-violations contains "1.2.1.4: manual review not attested — set attest.repositories_reviewed to true once reviewed (Ensure package manager repositories are configured)" if not p_1_2_1_4
+violations contains "1.2.1.4: manual review not attested — set attest.repositories_reviewed to true once reviewed (package manager repositories must be explicitly configured)" if not p_1_2_1_4
 
 # 1.2.1.5 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure weak dependencies are configured
+# weak dependencies must be explicitly configured
 default e_1_2_1_5 := false
 
 e_1_2_1_5 if {
@@ -260,17 +260,17 @@ p_1_2_1_5 if {
 
 violations contains "1.2.1.5: evidence missing — initial_setup.zypper_solver_only_requires not collected" if not e_1_2_1_5
 
-violations contains "1.2.1.5: not met — Ensure weak dependencies are configured" if {
+violations contains "1.2.1.5: not met — weak dependencies must be explicitly configured" if {
 	e_1_2_1_5
 	not p_1_2_1_5
 }
 
 # 1.2.2.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure updates, patches, and additional security software are installed
+# updates, patches, and additional security software must be present
 default p_1_2_2_1 := false
 
 p_1_2_2_1 if {
 	input.attest.updates_installed == true
 }
 
-violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (Ensure updates, patches, and additional security software are installed)" if not p_1_2_2_1
+violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)" if not p_1_2_2_1

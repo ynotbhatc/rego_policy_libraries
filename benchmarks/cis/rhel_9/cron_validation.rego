@@ -196,7 +196,7 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 ]
 
 # 2.4.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure cron daemon is enabled and active
+# cron daemon must be turned on and active
 default e_2_4_1_1 := false
 
 e_2_4_1_1 if {
@@ -213,13 +213,13 @@ p_2_4_1_1 if {
 
 violations contains "2.4.1.1: evidence missing — cron.crond_enabled/crond_running not collected" if not e_2_4_1_1
 
-violations contains "2.4.1.1: not met — Ensure cron daemon is enabled and active" if {
+violations contains "2.4.1.1: not met — cron daemon must be turned on and active" if {
 	e_2_4_1_1
 	not p_2_4_1_1
 }
 
 # 2.4.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/crontab is configured
+# access to /etc/crontab must be explicitly configured
 default e_2_4_1_2 := false
 
 e_2_4_1_2 if {
@@ -238,13 +238,13 @@ p_2_4_1_2 if {
 
 violations contains "2.4.1.2: evidence missing — cron.crontab_mode/cron.crontab_owner/cron.crontab_group not collected" if not e_2_4_1_2
 
-violations contains "2.4.1.2: not met — Ensure access to /etc/crontab is configured" if {
+violations contains "2.4.1.2: not met — access to /etc/crontab must be explicitly configured" if {
 	e_2_4_1_2
 	not p_2_4_1_2
 }
 
 # 2.4.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/cron.hourly is configured
+# access to /etc/cron.hourly must be explicitly configured
 default e_2_4_1_3 := false
 
 e_2_4_1_3 if {
@@ -263,13 +263,13 @@ p_2_4_1_3 if {
 
 violations contains "2.4.1.3: evidence missing — cron.cron_hourly_mode/cron.cron_hourly_owner/cron.cron_hourly_group not collected" if not e_2_4_1_3
 
-violations contains "2.4.1.3: not met — Ensure access to /etc/cron.hourly is configured" if {
+violations contains "2.4.1.3: not met — access to /etc/cron.hourly must be explicitly configured" if {
 	e_2_4_1_3
 	not p_2_4_1_3
 }
 
 # 2.4.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/cron.daily is configured
+# access to /etc/cron.daily must be explicitly configured
 default e_2_4_1_4 := false
 
 e_2_4_1_4 if {
@@ -288,13 +288,13 @@ p_2_4_1_4 if {
 
 violations contains "2.4.1.4: evidence missing — cron.cron_daily_mode/cron.cron_daily_owner/cron.cron_daily_group not collected" if not e_2_4_1_4
 
-violations contains "2.4.1.4: not met — Ensure access to /etc/cron.daily is configured" if {
+violations contains "2.4.1.4: not met — access to /etc/cron.daily must be explicitly configured" if {
 	e_2_4_1_4
 	not p_2_4_1_4
 }
 
 # 2.4.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/cron.weekly is configured
+# access to /etc/cron.weekly must be explicitly configured
 default e_2_4_1_5 := false
 
 e_2_4_1_5 if {
@@ -313,13 +313,13 @@ p_2_4_1_5 if {
 
 violations contains "2.4.1.5: evidence missing — cron.cron_weekly_mode/cron.cron_weekly_owner/cron.cron_weekly_group not collected" if not e_2_4_1_5
 
-violations contains "2.4.1.5: not met — Ensure access to /etc/cron.weekly is configured" if {
+violations contains "2.4.1.5: not met — access to /etc/cron.weekly must be explicitly configured" if {
 	e_2_4_1_5
 	not p_2_4_1_5
 }
 
 # 2.4.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/cron.monthly is configured
+# access to /etc/cron.monthly must be explicitly configured
 default e_2_4_1_6 := false
 
 e_2_4_1_6 if {
@@ -338,13 +338,13 @@ p_2_4_1_6 if {
 
 violations contains "2.4.1.6: evidence missing — cron.cron_monthly_mode/cron.cron_monthly_owner/cron.cron_monthly_group not collected" if not e_2_4_1_6
 
-violations contains "2.4.1.6: not met — Ensure access to /etc/cron.monthly is configured" if {
+violations contains "2.4.1.6: not met — access to /etc/cron.monthly must be explicitly configured" if {
 	e_2_4_1_6
 	not p_2_4_1_6
 }
 
 # 2.4.1.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/cron.yearly is configured
+# access to /etc/cron.yearly must be explicitly configured
 default e_2_4_1_7 := false
 
 e_2_4_1_7 if {
@@ -371,13 +371,13 @@ p_2_4_1_7 if {
 
 violations contains "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists not collected" if not e_2_4_1_7
 
-violations contains "2.4.1.7: not met — Ensure access to /etc/cron.yearly is configured" if {
+violations contains "2.4.1.7: not met — access to /etc/cron.yearly must be explicitly configured" if {
 	e_2_4_1_7
 	not p_2_4_1_7
 }
 
 # 2.4.1.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/cron.d is configured
+# access to /etc/cron.d must be explicitly configured
 default e_2_4_1_8 := false
 
 e_2_4_1_8 if {
@@ -396,13 +396,13 @@ p_2_4_1_8 if {
 
 violations contains "2.4.1.8: evidence missing — cron.cron_d_mode/cron.cron_d_owner/cron.cron_d_group not collected" if not e_2_4_1_8
 
-violations contains "2.4.1.8: not met — Ensure access to /etc/cron.d is configured" if {
+violations contains "2.4.1.8: not met — access to /etc/cron.d must be explicitly configured" if {
 	e_2_4_1_8
 	not p_2_4_1_8
 }
 
 # 2.4.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to crontab is configured
+# access to crontab must be explicitly configured
 default e_2_4_1_9 := false
 
 e_2_4_1_9 if {
@@ -468,13 +468,13 @@ p_2_4_1_9 if {
 
 violations contains "2.4.1.9: evidence missing — cron.cron_allow_*/cron_deny_* (or packages.cronie) not collected" if not e_2_4_1_9
 
-violations contains "2.4.1.9: not met — Ensure access to crontab is configured" if {
+violations contains "2.4.1.9: not met — access to crontab must be explicitly configured" if {
 	e_2_4_1_9
 	not p_2_4_1_9
 }
 
 # 2.4.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to at is configured
+# access to at must be explicitly configured
 default e_2_4_2_1 := false
 
 e_2_4_2_1 if {
@@ -540,7 +540,7 @@ p_2_4_2_1 if {
 
 violations contains "2.4.2.1: evidence missing — cron.at_allow_*/at_deny_* (or packages.at) not collected" if not e_2_4_2_1
 
-violations contains "2.4.2.1: not met — Ensure access to at is configured" if {
+violations contains "2.4.2.1: not met — access to at must be explicitly configured" if {
 	e_2_4_2_1
 	not p_2_4_2_1
 }

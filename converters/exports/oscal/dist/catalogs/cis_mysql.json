@@ -331,7 +331,7 @@
      },
      {
       "id": "cis_mysql-2.1",
-      "title": "Ensure 'local_infile' Is Disabled",
+      "title": "'local_infile' must be turned off",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_mysql-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'local_infile' Is Disabled"
+        "prose": "'local_infile' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.2",
-      "title": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'",
+      "title": "'mysqld' must be Not Started with '--skip-grant-tables'",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_mysql-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'"
+        "prose": "'mysqld' must be Not Started with '--skip-grant-tables'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.3",
-      "title": "Ensure 'mysqld' Is Not Started with '--skip-networking'",
+      "title": "'mysqld' must be Not Started with '--skip-networking'",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "cis_mysql-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysqld' Is Not Started with '--skip-networking'"
+        "prose": "'mysqld' must be Not Started with '--skip-networking'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.4",
-      "title": "Ensure 'mysqld' Is Not Started with '--skip-show-database'",
+      "title": "'mysqld' must be Not Started with '--skip-show-database'",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "cis_mysql-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysqld' Is Not Started with '--skip-show-database'"
+        "prose": "'mysqld' must be Not Started with '--skip-show-database'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.5",
-      "title": "Ensure 'symbolic-links' Is Disabled",
+      "title": "'symbolic-links' must be turned off",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "cis_mysql-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'symbolic-links' Is Disabled"
+        "prose": "'symbolic-links' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.6",
-      "title": "Ensure 'secure_file_priv' Is Not Empty",
+      "title": "'secure_file_priv' must be Not Empty",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "cis_mysql-2.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'secure_file_priv' Is Not Empty"
+        "prose": "'secure_file_priv' must be Not Empty"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.7",
-      "title": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES'",
+      "title": "checked condition — 'sql_mode' Contains 'STRICT_TRANS_TABLES'",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "cis_mysql-2.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES'"
+        "prose": "checked condition — 'sql_mode' Contains 'STRICT_TRANS_TABLES'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.8",
-      "title": "Ensure 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'",
+      "title": "checked condition — 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "cis_mysql-2.8_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'"
+        "prose": "checked condition — 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.9",
-      "title": "Ensure 'sql_mode' Contains 'NO_AUTO_CREATE_USER'",
+      "title": "checked condition — 'sql_mode' Contains 'NO_AUTO_CREATE_USER'",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "cis_mysql-2.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'NO_AUTO_CREATE_USER'"
+        "prose": "checked condition — 'sql_mode' Contains 'NO_AUTO_CREATE_USER'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.10",
-      "title": "Ensure 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'",
+      "title": "checked condition — 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "cis_mysql-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'"
+        "prose": "checked condition — 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.11",
-      "title": "Ensure 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'",
+      "title": "checked condition — 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "cis_mysql-2.11_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'"
+        "prose": "checked condition — 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.12",
-      "title": "Ensure 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'",
+      "title": "checked condition — 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "cis_mysql-2.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'"
+        "prose": "checked condition — 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.13",
-      "title": "Ensure Password Complexity Is In Place",
+      "title": "Password Complexity must be In Place",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "cis_mysql-2.13_stmt",
         "name": "statement",
-        "prose": "Ensure Password Complexity Is In Place"
+        "prose": "Password Complexity must be In Place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.14",
-      "title": "Ensure Password Reuse Is Limited",
+      "title": "Password Reuse must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "cis_mysql-2.14_stmt",
         "name": "statement",
-        "prose": "Ensure Password Reuse Is Limited"
+        "prose": "Password Reuse must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.15",
-      "title": "Ensure Password Expiration Is Less Than Or Equal To 90 Days",
+      "title": "Password Expiration must be at most 90 Days",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "cis_mysql-2.15_stmt",
         "name": "statement",
-        "prose": "Ensure Password Expiration Is Less Than Or Equal To 90 Days"
+        "prose": "Password Expiration must be at most 90 Days"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.16",
-      "title": "Ensure 'default_password_lifetime' Is Less Than Or Equal To 90",
+      "title": "'default_password_lifetime' must be at most 90",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "cis_mysql-2.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'default_password_lifetime' Is Less Than Or Equal To 90"
+        "prose": "'default_password_lifetime' must be at most 90"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.17",
-      "title": "Ensure 'validate_password_length' Is Configured",
+      "title": "'validate_password_length' must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "cis_mysql-2.17_stmt",
         "name": "statement",
-        "prose": "Ensure 'validate_password_length' Is Configured"
+        "prose": "'validate_password_length' must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.18",
-      "title": "Ensure 'validate_password_mixed_case_count' Is Configured",
+      "title": "'validate_password_mixed_case_count' must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "cis_mysql-2.18_stmt",
         "name": "statement",
-        "prose": "Ensure 'validate_password_mixed_case_count' Is Configured"
+        "prose": "'validate_password_mixed_case_count' must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.19",
-      "title": "Ensure 'validate_password_number_count' Is Configured",
+      "title": "'validate_password_number_count' must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "cis_mysql-2.19_stmt",
         "name": "statement",
-        "prose": "Ensure 'validate_password_number_count' Is Configured"
+        "prose": "'validate_password_number_count' must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.20",
-      "title": "Ensure 'validate_password_special_char_count' Is Configured",
+      "title": "'validate_password_special_char_count' must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "cis_mysql-2.20_stmt",
         "name": "statement",
-        "prose": "Ensure 'validate_password_special_char_count' Is Configured"
+        "prose": "'validate_password_special_char_count' must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.21",
-      "title": "Ensure No Wildcards In User Hostnames",
+      "title": "checked condition — No Wildcards In User Hostnames",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "cis_mysql-2.21_stmt",
         "name": "statement",
-        "prose": "Ensure No Wildcards In User Hostnames"
+        "prose": "checked condition — No Wildcards In User Hostnames"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-2.22",
-      "title": "Ensure No Anonymous Accounts Exist",
+      "title": "checked condition — No Anonymous Accounts Exist",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "cis_mysql-2.22_stmt",
         "name": "statement",
-        "prose": "Ensure No Anonymous Accounts Exist"
+        "prose": "checked condition — No Anonymous Accounts Exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.1",
-      "title": "Ensure 'datadir' Has Appropriate Permissions",
+      "title": "owner and mode of 'datadir' must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "cis_mysql-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'datadir' Has Appropriate Permissions"
+        "prose": "owner and mode of 'datadir' must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.2",
-      "title": "Ensure 'log_bin_basename' Files Have Appropriate Permissions",
+      "title": "'log_bin_basename' Files must have Appropriate Permissions",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1116,14 @@
        {
         "id": "cis_mysql-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_bin_basename' Files Have Appropriate Permissions"
+        "prose": "'log_bin_basename' Files must have Appropriate Permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.3",
-      "title": "Ensure 'log_error' Has Appropriate Permissions",
+      "title": "owner and mode of 'log_error' must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1149,14 @@
        {
         "id": "cis_mysql-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_error' Has Appropriate Permissions"
+        "prose": "owner and mode of 'log_error' must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.4",
-      "title": "Ensure 'slow_query_log' Has Appropriate Permissions",
+      "title": "owner and mode of 'slow_query_log' must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1182,14 @@
        {
         "id": "cis_mysql-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'slow_query_log' Has Appropriate Permissions"
+        "prose": "owner and mode of 'slow_query_log' must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.5",
-      "title": "Ensure 'relay_log_basename' Files Have Appropriate Permissions",
+      "title": "'relay_log_basename' Files must have Appropriate Permissions",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1215,14 @@
        {
         "id": "cis_mysql-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'relay_log_basename' Files Have Appropriate Permissions"
+        "prose": "'relay_log_basename' Files must have Appropriate Permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.6",
-      "title": "Ensure 'general_log_file' Has Appropriate Permissions",
+      "title": "owner and mode of 'general_log_file' must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1248,14 @@
        {
         "id": "cis_mysql-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'general_log_file' Has Appropriate Permissions"
+        "prose": "owner and mode of 'general_log_file' must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.7",
-      "title": "Ensure SSL Key Files Have Appropriate Permissions",
+      "title": "SSL Key Files must have Appropriate Permissions",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1281,14 @@
        {
         "id": "cis_mysql-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure SSL Key Files Have Appropriate Permissions"
+        "prose": "SSL Key Files must have Appropriate Permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.8",
-      "title": "Ensure SSL Certificate Files Have Appropriate Permissions",
+      "title": "SSL Certificate Files must have Appropriate Permissions",
       "props": [
        {
         "name": "label",
@@ -1314,14 +1314,14 @@
        {
         "id": "cis_mysql-3.8_stmt",
         "name": "statement",
-        "prose": "Ensure SSL Certificate Files Have Appropriate Permissions"
+        "prose": "SSL Certificate Files must have Appropriate Permissions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.9",
-      "title": "Ensure 'plugin_dir' Has Appropriate Permissions",
+      "title": "owner and mode of 'plugin_dir' must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1347,14 +1347,14 @@
        {
         "id": "cis_mysql-3.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'plugin_dir' Has Appropriate Permissions"
+        "prose": "owner and mode of 'plugin_dir' must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.10",
-      "title": "Ensure 'mysql' Directory Has Appropriate Permissions",
+      "title": "owner and mode of 'mysql' Directory must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1380,14 +1380,14 @@
        {
         "id": "cis_mysql-3.10_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysql' Directory Has Appropriate Permissions"
+        "prose": "owner and mode of 'mysql' Directory must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.11",
-      "title": "Ensure 'mysql' Binary Has Appropriate Permissions",
+      "title": "owner and mode of 'mysql' Binary must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1413,14 +1413,14 @@
        {
         "id": "cis_mysql-3.11_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysql' Binary Has Appropriate Permissions"
+        "prose": "owner and mode of 'mysql' Binary must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-3.12",
-      "title": "Ensure 'mysqld' Binary Has Appropriate Permissions",
+      "title": "owner and mode of 'mysqld' Binary must be restrictive",
       "props": [
        {
         "name": "label",
@@ -1446,14 +1446,14 @@
        {
         "id": "cis_mysql-3.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysqld' Binary Has Appropriate Permissions"
+        "prose": "owner and mode of 'mysqld' Binary must be restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.1",
-      "title": "Ensure Latest Security Patches Are Applied",
+      "title": "Latest Security Patches must be Applied",
       "props": [
        {
         "name": "label",
@@ -1479,14 +1479,14 @@
        {
         "id": "cis_mysql-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure Latest Security Patches Are Applied"
+        "prose": "Latest Security Patches must be Applied"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.2",
-      "title": "Ensure the 'test' Database Is Not Installed",
+      "title": "the 'test' Database must not be present",
       "props": [
        {
         "name": "label",
@@ -1512,14 +1512,14 @@
        {
         "id": "cis_mysql-4.2_stmt",
         "name": "statement",
-        "prose": "Ensure the 'test' Database Is Not Installed"
+        "prose": "the 'test' Database must not be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.3",
-      "title": "Ensure 'old_passwords' Is Not Used",
+      "title": "'old_passwords' must be Not Used",
       "props": [
        {
         "name": "label",
@@ -1545,14 +1545,14 @@
        {
         "id": "cis_mysql-4.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'old_passwords' Is Not Used"
+        "prose": "'old_passwords' must be Not Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.4",
-      "title": "Ensure 'safe-user-create' Is Enabled",
+      "title": "'safe-user-create' must be turned on",
       "props": [
        {
         "name": "label",
@@ -1578,14 +1578,14 @@
        {
         "id": "cis_mysql-4.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'safe-user-create' Is Enabled"
+        "prose": "'safe-user-create' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.5",
-      "title": "Ensure 'skip-symbolic-links' Is Enabled",
+      "title": "'skip-symbolic-links' must be turned on",
       "props": [
        {
         "name": "label",
@@ -1611,14 +1611,14 @@
        {
         "id": "cis_mysql-4.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'skip-symbolic-links' Is Enabled"
+        "prose": "'skip-symbolic-links' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.6",
-      "title": "Ensure 'secure-auth' Is Enabled",
+      "title": "'secure-auth' must be turned on",
       "props": [
        {
         "name": "label",
@@ -1644,14 +1644,14 @@
        {
         "id": "cis_mysql-4.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'secure-auth' Is Enabled"
+        "prose": "'secure-auth' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.7",
-      "title": "Ensure 'skip-show-database' Is Enabled",
+      "title": "'skip-show-database' must be turned on",
       "props": [
        {
         "name": "label",
@@ -1677,14 +1677,14 @@
        {
         "id": "cis_mysql-4.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'skip-show-database' Is Enabled"
+        "prose": "'skip-show-database' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.8",
-      "title": "Ensure 'local-infile' Is Disabled",
+      "title": "'local-infile' must be turned off",
       "props": [
        {
         "name": "label",
@@ -1710,14 +1710,14 @@
        {
         "id": "cis_mysql-4.8_stmt",
         "name": "statement",
-        "prose": "Ensure 'local-infile' Is Disabled"
+        "prose": "'local-infile' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.9",
-      "title": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'",
+      "title": "'mysqld' must be Not Started with '--skip-grant-tables'",
       "props": [
        {
         "name": "label",
@@ -1743,14 +1743,14 @@
        {
         "id": "cis_mysql-4.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'mysqld' Is Not Started with '--skip-grant-tables'"
+        "prose": "'mysqld' must be Not Started with '--skip-grant-tables'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.10",
-      "title": "Ensure MySQL Is Run Under a Sandbox",
+      "title": "MySQL must be Run Under a Sandbox",
       "props": [
        {
         "name": "label",
@@ -1776,14 +1776,14 @@
        {
         "id": "cis_mysql-4.10_stmt",
         "name": "statement",
-        "prose": "Ensure MySQL Is Run Under a Sandbox"
+        "prose": "MySQL must be Run Under a Sandbox"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.11",
-      "title": "Ensure 'allow-suspicious-udfs' Is Set to 'FALSE'",
+      "title": "required value of 'allow-suspicious-udfs' is 'FALSE'",
       "props": [
        {
         "name": "label",
@@ -1809,14 +1809,14 @@
        {
         "id": "cis_mysql-4.11_stmt",
         "name": "statement",
-        "prose": "Ensure 'allow-suspicious-udfs' Is Set to 'FALSE'"
+        "prose": "required value of 'allow-suspicious-udfs' is 'FALSE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.12",
-      "title": "Ensure 'automatic_sp_privileges' Is Disabled",
+      "title": "'automatic_sp_privileges' must be turned off",
       "props": [
        {
         "name": "label",
@@ -1842,14 +1842,14 @@
        {
         "id": "cis_mysql-4.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'automatic_sp_privileges' Is Disabled"
+        "prose": "'automatic_sp_privileges' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.13",
-      "title": "Ensure SQL_MODE Contains 'STRICT_TRANS_TABLES'",
+      "title": "checked condition — SQL_MODE Contains 'STRICT_TRANS_TABLES'",
       "props": [
        {
         "name": "label",
@@ -1875,14 +1875,14 @@
        {
         "id": "cis_mysql-4.13_stmt",
         "name": "statement",
-        "prose": "Ensure SQL_MODE Contains 'STRICT_TRANS_TABLES'"
+        "prose": "checked condition — SQL_MODE Contains 'STRICT_TRANS_TABLES'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.14",
-      "title": "Ensure 'log-raw' Is Disabled",
+      "title": "'log-raw' must be turned off",
       "props": [
        {
         "name": "label",
@@ -1908,14 +1908,14 @@
        {
         "id": "cis_mysql-4.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'log-raw' Is Disabled"
+        "prose": "'log-raw' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.15",
-      "title": "Ensure 'password_lifetime' Is Less Than Or Equal To 90",
+      "title": "'password_lifetime' must be at most 90",
       "props": [
        {
         "name": "label",
@@ -1941,14 +1941,14 @@
        {
         "id": "cis_mysql-4.15_stmt",
         "name": "statement",
-        "prose": "Ensure 'password_lifetime' Is Less Than Or Equal To 90"
+        "prose": "'password_lifetime' must be at most 90"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.16",
-      "title": "Ensure 'password_reuse_interval' Is Greater Than Or Equal To 365",
+      "title": "'password_reuse_interval' must be at least 365",
       "props": [
        {
         "name": "label",
@@ -1974,14 +1974,14 @@
        {
         "id": "cis_mysql-4.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'password_reuse_interval' Is Greater Than Or Equal To 365"
+        "prose": "'password_reuse_interval' must be at least 365"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.17",
-      "title": "Ensure 'password_require_current' Is Enabled",
+      "title": "'password_require_current' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2007,14 +2007,14 @@
        {
         "id": "cis_mysql-4.17_stmt",
         "name": "statement",
-        "prose": "Ensure 'password_require_current' Is Enabled"
+        "prose": "'password_require_current' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.18",
-      "title": "Ensure 'default_table_encryption' Is Set to 'ON'",
+      "title": "required value of 'default_table_encryption' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -2040,14 +2040,14 @@
        {
         "id": "cis_mysql-4.18_stmt",
         "name": "statement",
-        "prose": "Ensure 'default_table_encryption' Is Set to 'ON'"
+        "prose": "required value of 'default_table_encryption' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.19",
-      "title": "Ensure 'table_encryption_privilege_check' Is Set to 'ON'",
+      "title": "required value of 'table_encryption_privilege_check' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -2073,14 +2073,14 @@
        {
         "id": "cis_mysql-4.19_stmt",
         "name": "statement",
-        "prose": "Ensure 'table_encryption_privilege_check' Is Set to 'ON'"
+        "prose": "required value of 'table_encryption_privilege_check' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.20",
-      "title": "Ensure 'audit_log_policy' Is Set to 'ALL'",
+      "title": "required value of 'audit_log_policy' is 'ALL'",
       "props": [
        {
         "name": "label",
@@ -2106,14 +2106,14 @@
        {
         "id": "cis_mysql-4.20_stmt",
         "name": "statement",
-        "prose": "Ensure 'audit_log_policy' Is Set to 'ALL'"
+        "prose": "required value of 'audit_log_policy' is 'ALL'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.21",
-      "title": "Ensure 'audit_log_rotate_on_size' Is Configured",
+      "title": "'audit_log_rotate_on_size' must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2139,14 +2139,14 @@
        {
         "id": "cis_mysql-4.21_stmt",
         "name": "statement",
-        "prose": "Ensure 'audit_log_rotate_on_size' Is Configured"
+        "prose": "'audit_log_rotate_on_size' must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.22",
-      "title": "Ensure 'audit_log_format' Is Set to 'JSON'",
+      "title": "required value of 'audit_log_format' is 'JSON'",
       "props": [
        {
         "name": "label",
@@ -2172,14 +2172,14 @@
        {
         "id": "cis_mysql-4.22_stmt",
         "name": "statement",
-        "prose": "Ensure 'audit_log_format' Is Set to 'JSON'"
+        "prose": "required value of 'audit_log_format' is 'JSON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.23",
-      "title": "Ensure 'binlog_encryption' Is Enabled",
+      "title": "'binlog_encryption' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2205,14 +2205,14 @@
        {
         "id": "cis_mysql-4.23_stmt",
         "name": "statement",
-        "prose": "Ensure 'binlog_encryption' Is Enabled"
+        "prose": "'binlog_encryption' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.24",
-      "title": "Ensure 'binlog_row_image' Is Set to 'FULL'",
+      "title": "required value of 'binlog_row_image' is 'FULL'",
       "props": [
        {
         "name": "label",
@@ -2238,14 +2238,14 @@
        {
         "id": "cis_mysql-4.24_stmt",
         "name": "statement",
-        "prose": "Ensure 'binlog_row_image' Is Set to 'FULL'"
+        "prose": "required value of 'binlog_row_image' is 'FULL'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.25",
-      "title": "Ensure 'log_slave_updates' Is Enabled",
+      "title": "'log_slave_updates' must be turned on",
       "props": [
        {
         "name": "label",
@@ -2271,14 +2271,14 @@
        {
         "id": "cis_mysql-4.25_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_slave_updates' Is Enabled"
+        "prose": "'log_slave_updates' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.26",
-      "title": "Ensure 'master_info_repository' Is Set to 'TABLE'",
+      "title": "required value of 'master_info_repository' is 'TABLE'",
       "props": [
        {
         "name": "label",
@@ -2304,14 +2304,14 @@
        {
         "id": "cis_mysql-4.26_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_info_repository' Is Set to 'TABLE'"
+        "prose": "required value of 'master_info_repository' is 'TABLE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.27",
-      "title": "Ensure 'relay_log_info_repository' Is Set to 'TABLE'",
+      "title": "required value of 'relay_log_info_repository' is 'TABLE'",
       "props": [
        {
         "name": "label",
@@ -2337,14 +2337,14 @@
        {
         "id": "cis_mysql-4.27_stmt",
         "name": "statement",
-        "prose": "Ensure 'relay_log_info_repository' Is Set to 'TABLE'"
+        "prose": "required value of 'relay_log_info_repository' is 'TABLE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-4.28",
-      "title": "Ensure Binary and Relay Logs Are Encrypted",
+      "title": "Binary and Relay Logs must be Encrypted",
       "props": [
        {
         "name": "label",
@@ -2370,14 +2370,14 @@
        {
         "id": "cis_mysql-4.28_stmt",
         "name": "statement",
-        "prose": "Ensure Binary and Relay Logs Are Encrypted"
+        "prose": "Binary and Relay Logs must be Encrypted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.1",
-      "title": "Ensure Only Administrative Users Have Full Database Access",
+      "title": "Only Administrative Users must have Full Database Access",
       "props": [
        {
         "name": "label",
@@ -2403,14 +2403,14 @@
        {
         "id": "cis_mysql-5.1_stmt",
         "name": "statement",
-        "prose": "Ensure Only Administrative Users Have Full Database Access"
+        "prose": "Only Administrative Users must have Full Database Access"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.2",
-      "title": "Ensure 'file_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'file_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2436,14 +2436,14 @@
        {
         "id": "cis_mysql-5.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'file_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'file_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.3",
-      "title": "Ensure 'process_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'process_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2469,14 +2469,14 @@
        {
         "id": "cis_mysql-5.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'process_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'process_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.4",
-      "title": "Ensure 'super_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'super_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2502,14 +2502,14 @@
        {
         "id": "cis_mysql-5.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'super_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'super_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.5",
-      "title": "Ensure 'shutdown_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'shutdown_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2535,14 +2535,14 @@
        {
         "id": "cis_mysql-5.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'shutdown_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'shutdown_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.6",
-      "title": "Ensure 'create_user_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'create_user_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2568,14 +2568,14 @@
        {
         "id": "cis_mysql-5.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'create_user_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'create_user_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.7",
-      "title": "Ensure 'grant_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'grant_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2601,14 +2601,14 @@
        {
         "id": "cis_mysql-5.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'grant_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'grant_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.8",
-      "title": "Ensure 'repl_slave_priv' Is Not Set to 'Y' for Non-Administrative Users",
+      "title": "'repl_slave_priv' must not be 'Y' for Non-Administrative Users",
       "props": [
        {
         "name": "label",
@@ -2634,14 +2634,14 @@
        {
         "id": "cis_mysql-5.8_stmt",
         "name": "statement",
-        "prose": "Ensure 'repl_slave_priv' Is Not Set to 'Y' for Non-Administrative Users"
+        "prose": "'repl_slave_priv' must not be 'Y' for Non-Administrative Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.9",
-      "title": "Ensure DML/DDL Grants Are Limited to Specific Databases and Users",
+      "title": "DML/DDL Grants must be Limited to Specific Databases and Users",
       "props": [
        {
         "name": "label",
@@ -2667,14 +2667,14 @@
        {
         "id": "cis_mysql-5.9_stmt",
         "name": "statement",
-        "prose": "Ensure DML/DDL Grants Are Limited to Specific Databases and Users"
+        "prose": "DML/DDL Grants must be Limited to Specific Databases and Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.10",
-      "title": "Ensure No Users Have Wildcard Hostnames",
+      "title": "No Users must have Wildcard Hostnames",
       "props": [
        {
         "name": "label",
@@ -2700,14 +2700,14 @@
        {
         "id": "cis_mysql-5.10_stmt",
         "name": "statement",
-        "prose": "Ensure No Users Have Wildcard Hostnames"
+        "prose": "No Users must have Wildcard Hostnames"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.11",
-      "title": "Ensure No Anonymous Accounts Exist",
+      "title": "checked condition — No Anonymous Accounts Exist",
       "props": [
        {
         "name": "label",
@@ -2733,14 +2733,14 @@
        {
         "id": "cis_mysql-5.11_stmt",
         "name": "statement",
-        "prose": "Ensure No Anonymous Accounts Exist"
+        "prose": "checked condition — No Anonymous Accounts Exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.12",
-      "title": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users",
+      "title": "checked condition — 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users",
       "props": [
        {
         "name": "label",
@@ -2766,14 +2766,14 @@
        {
         "id": "cis_mysql-5.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users"
+        "prose": "checked condition — 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.13",
-      "title": "Ensure MySQL Users' Passwords Are Strong",
+      "title": "MySQL Users' Passwords must be Strong",
       "props": [
        {
         "name": "label",
@@ -2799,14 +2799,14 @@
        {
         "id": "cis_mysql-5.13_stmt",
         "name": "statement",
-        "prose": "Ensure MySQL Users' Passwords Are Strong"
+        "prose": "MySQL Users' Passwords must be Strong"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.14",
-      "title": "Ensure No Users Have Empty Passwords",
+      "title": "No Users must have Empty Passwords",
       "props": [
        {
         "name": "label",
@@ -2832,14 +2832,14 @@
        {
         "id": "cis_mysql-5.14_stmt",
         "name": "statement",
-        "prose": "Ensure No Users Have Empty Passwords"
+        "prose": "No Users must have Empty Passwords"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.15",
-      "title": "Ensure No Duplicate MySQL User Accounts Exist",
+      "title": "the local account database must not contain duplicate MySQL User Accounts",
       "props": [
        {
         "name": "label",
@@ -2865,14 +2865,14 @@
        {
         "id": "cis_mysql-5.15_stmt",
         "name": "statement",
-        "prose": "Ensure No Duplicate MySQL User Accounts Exist"
+        "prose": "the local account database must not contain duplicate MySQL User Accounts"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.16",
-      "title": "Ensure Password Expiration Is Set For All Users",
+      "title": "Password Expiration must be set for All Users",
       "props": [
        {
         "name": "label",
@@ -2898,14 +2898,14 @@
        {
         "id": "cis_mysql-5.16_stmt",
         "name": "statement",
-        "prose": "Ensure Password Expiration Is Set For All Users"
+        "prose": "Password Expiration must be set for All Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.17",
-      "title": "Ensure All Users Are Assigned to Appropriate Roles",
+      "title": "All Users must be Assigned to Appropriate Roles",
       "props": [
        {
         "name": "label",
@@ -2931,14 +2931,14 @@
        {
         "id": "cis_mysql-5.17_stmt",
         "name": "statement",
-        "prose": "Ensure All Users Are Assigned to Appropriate Roles"
+        "prose": "All Users must be Assigned to Appropriate Roles"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-5.18",
-      "title": "Ensure Administrative Users Are Separated From Application Users",
+      "title": "Administrative Users must be Separated From Application Users",
       "props": [
        {
         "name": "label",
@@ -2964,14 +2964,14 @@
        {
         "id": "cis_mysql-5.18_stmt",
         "name": "statement",
-        "prose": "Ensure Administrative Users Are Separated From Application Users"
+        "prose": "Administrative Users must be Separated From Application Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.1",
-      "title": "Ensure 'log_error' Is Not Empty",
+      "title": "'log_error' must be Not Empty",
       "props": [
        {
         "name": "label",
@@ -2997,14 +2997,14 @@
        {
         "id": "cis_mysql-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_error' Is Not Empty"
+        "prose": "'log_error' must be Not Empty"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.2",
-      "title": "Ensure Log Files Are Stored on a Non-System Partition",
+      "title": "Log Files must be Stored on a Non-System Partition",
       "props": [
        {
         "name": "label",
@@ -3030,14 +3030,14 @@
        {
         "id": "cis_mysql-6.2_stmt",
         "name": "statement",
-        "prose": "Ensure Log Files Are Stored on a Non-System Partition"
+        "prose": "Log Files must be Stored on a Non-System Partition"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.3",
-      "title": "Ensure 'log_error_verbosity' Is Not Set to '1'",
+      "title": "'log_error_verbosity' must not be '1'",
       "props": [
        {
         "name": "label",
@@ -3063,14 +3063,14 @@
        {
         "id": "cis_mysql-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_error_verbosity' Is Not Set to '1'"
+        "prose": "'log_error_verbosity' must not be '1'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.4",
-      "title": "Ensure 'log_warnings' Is Set to '2'",
+      "title": "required value of 'log_warnings' is '2'",
       "props": [
        {
         "name": "label",
@@ -3096,14 +3096,14 @@
        {
         "id": "cis_mysql-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_warnings' Is Set to '2'"
+        "prose": "required value of 'log_warnings' is '2'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.5",
-      "title": "Ensure 'log_raw' Is Set to 'OFF'",
+      "title": "required value of 'log_raw' is 'OFF'",
       "props": [
        {
         "name": "label",
@@ -3129,14 +3129,14 @@
        {
         "id": "cis_mysql-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_raw' Is Set to 'OFF'"
+        "prose": "required value of 'log_raw' is 'OFF'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.6",
-      "title": "Ensure audit_log_policy Is Set to log logins",
+      "title": "required value of audit_log_policy is log logins",
       "props": [
        {
         "name": "label",
@@ -3162,14 +3162,14 @@
        {
         "id": "cis_mysql-6.6_stmt",
         "name": "statement",
-        "prose": "Ensure audit_log_policy Is Set to log logins"
+        "prose": "required value of audit_log_policy is log logins"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.7",
-      "title": "Ensure audit_log_connection_policy Is Not Set to 'NONE'",
+      "title": "audit_log_connection_policy must not be 'NONE'",
       "props": [
        {
         "name": "label",
@@ -3195,14 +3195,14 @@
        {
         "id": "cis_mysql-6.7_stmt",
         "name": "statement",
-        "prose": "Ensure audit_log_connection_policy Is Not Set to 'NONE'"
+        "prose": "audit_log_connection_policy must not be 'NONE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.8",
-      "title": "Ensure audit_log_exclude_accounts Is Configured Correctly",
+      "title": "audit_log_exclude_accounts must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -3228,14 +3228,14 @@
        {
         "id": "cis_mysql-6.8_stmt",
         "name": "statement",
-        "prose": "Ensure audit_log_exclude_accounts Is Configured Correctly"
+        "prose": "audit_log_exclude_accounts must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.9",
-      "title": "Ensure audit_log_include_accounts Is Configured Correctly",
+      "title": "audit_log_include_accounts must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -3261,14 +3261,14 @@
        {
         "id": "cis_mysql-6.9_stmt",
         "name": "statement",
-        "prose": "Ensure audit_log_include_accounts Is Configured Correctly"
+        "prose": "audit_log_include_accounts must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.10",
-      "title": "Ensure Logs Are Rotated",
+      "title": "Logs must be Rotated",
       "props": [
        {
         "name": "label",
@@ -3294,14 +3294,14 @@
        {
         "id": "cis_mysql-6.10_stmt",
         "name": "statement",
-        "prose": "Ensure Logs Are Rotated"
+        "prose": "Logs must be Rotated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.11",
-      "title": "Ensure Log Files Are Not Stored in '/tmp'",
+      "title": "Log Files must be Not Stored in '/tmp'",
       "props": [
        {
         "name": "label",
@@ -3327,14 +3327,14 @@
        {
         "id": "cis_mysql-6.11_stmt",
         "name": "statement",
-        "prose": "Ensure Log Files Are Not Stored in '/tmp'"
+        "prose": "Log Files must be Not Stored in '/tmp'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.12",
-      "title": "Ensure 'general_log_file' Is Set to a Non-Default Location",
+      "title": "required value of 'general_log_file' is a Non-Default Location",
       "props": [
        {
         "name": "label",
@@ -3360,14 +3360,14 @@
        {
         "id": "cis_mysql-6.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'general_log_file' Is Set to a Non-Default Location"
+        "prose": "required value of 'general_log_file' is a Non-Default Location"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.13",
-      "title": "Ensure 'general_log' Is Disabled",
+      "title": "'general_log' must be turned off",
       "props": [
        {
         "name": "label",
@@ -3393,14 +3393,14 @@
        {
         "id": "cis_mysql-6.13_stmt",
         "name": "statement",
-        "prose": "Ensure 'general_log' Is Disabled"
+        "prose": "'general_log' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.14",
-      "title": "Ensure 'slow_query_log' Is Enabled",
+      "title": "'slow_query_log' must be turned on",
       "props": [
        {
         "name": "label",
@@ -3426,14 +3426,14 @@
        {
         "id": "cis_mysql-6.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'slow_query_log' Is Enabled"
+        "prose": "'slow_query_log' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.15",
-      "title": "Ensure 'slow_query_log_file' Is Set",
+      "title": "'slow_query_log_file' must be populated",
       "props": [
        {
         "name": "label",
@@ -3459,14 +3459,14 @@
        {
         "id": "cis_mysql-6.15_stmt",
         "name": "statement",
-        "prose": "Ensure 'slow_query_log_file' Is Set"
+        "prose": "'slow_query_log_file' must be populated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.16",
-      "title": "Ensure 'long_query_time' Is Set to 10 or Less",
+      "title": "required value of 'long_query_time' is 10 or Less",
       "props": [
        {
         "name": "label",
@@ -3492,14 +3492,14 @@
        {
         "id": "cis_mysql-6.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'long_query_time' Is Set to 10 or Less"
+        "prose": "required value of 'long_query_time' is 10 or Less"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.17",
-      "title": "Ensure 'log_queries_not_using_indexes' Is Enabled",
+      "title": "'log_queries_not_using_indexes' must be turned on",
       "props": [
        {
         "name": "label",
@@ -3525,14 +3525,14 @@
        {
         "id": "cis_mysql-6.17_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_queries_not_using_indexes' Is Enabled"
+        "prose": "'log_queries_not_using_indexes' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.18",
-      "title": "Ensure 'log_throttle_queries_not_using_indexes' Is Set to 0",
+      "title": "required value of 'log_throttle_queries_not_using_indexes' is 0",
       "props": [
        {
         "name": "label",
@@ -3558,14 +3558,14 @@
        {
         "id": "cis_mysql-6.18_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_throttle_queries_not_using_indexes' Is Set to 0"
+        "prose": "required value of 'log_throttle_queries_not_using_indexes' is 0"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.19",
-      "title": "Ensure Binary Logging Is Enabled",
+      "title": "Binary Logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -3591,14 +3591,14 @@
        {
         "id": "cis_mysql-6.19_stmt",
         "name": "statement",
-        "prose": "Ensure Binary Logging Is Enabled"
+        "prose": "Binary Logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.20",
-      "title": "Ensure 'binlog_format' Is Set to 'ROW'",
+      "title": "required value of 'binlog_format' is 'ROW'",
       "props": [
        {
         "name": "label",
@@ -3624,14 +3624,14 @@
        {
         "id": "cis_mysql-6.20_stmt",
         "name": "statement",
-        "prose": "Ensure 'binlog_format' Is Set to 'ROW'"
+        "prose": "required value of 'binlog_format' is 'ROW'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.21",
-      "title": "Ensure 'sync_binlog' Is Set to 1",
+      "title": "required value of 'sync_binlog' is 1",
       "props": [
        {
         "name": "label",
@@ -3657,14 +3657,14 @@
        {
         "id": "cis_mysql-6.21_stmt",
         "name": "statement",
-        "prose": "Ensure 'sync_binlog' Is Set to 1"
+        "prose": "required value of 'sync_binlog' is 1"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.22",
-      "title": "Ensure 'expire_logs_days' Is Set to 30 or Less",
+      "title": "required value of 'expire_logs_days' is 30 or Less",
       "props": [
        {
         "name": "label",
@@ -3690,14 +3690,14 @@
        {
         "id": "cis_mysql-6.22_stmt",
         "name": "statement",
-        "prose": "Ensure 'expire_logs_days' Is Set to 30 or Less"
+        "prose": "required value of 'expire_logs_days' is 30 or Less"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.23",
-      "title": "Ensure 'max_binlog_size' Is Set",
+      "title": "'max_binlog_size' must be populated",
       "props": [
        {
         "name": "label",
@@ -3723,14 +3723,14 @@
        {
         "id": "cis_mysql-6.23_stmt",
         "name": "statement",
-        "prose": "Ensure 'max_binlog_size' Is Set"
+        "prose": "'max_binlog_size' must be populated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-6.24",
-      "title": "Ensure audit plugin Is Active",
+      "title": "audit plugin must be Active",
       "props": [
        {
         "name": "label",
@@ -3756,14 +3756,14 @@
        {
         "id": "cis_mysql-6.24_stmt",
         "name": "statement",
-        "prose": "Ensure audit plugin Is Active"
+        "prose": "audit plugin must be Active"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.1",
-      "title": "Ensure Password Validation Plugin Is Installed and Active",
+      "title": "Password Validation Plugin must be Installed and Active",
       "props": [
        {
         "name": "label",
@@ -3789,14 +3789,14 @@
        {
         "id": "cis_mysql-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure Password Validation Plugin Is Installed and Active"
+        "prose": "Password Validation Plugin must be Installed and Active"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.2",
-      "title": "Ensure Password Complexity Is Configured",
+      "title": "Password Complexity must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3822,14 +3822,14 @@
        {
         "id": "cis_mysql-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure Password Complexity Is Configured"
+        "prose": "Password Complexity must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.3",
-      "title": "Ensure Password Policy Is in Force",
+      "title": "Password Policy must be in Force",
       "props": [
        {
         "name": "label",
@@ -3855,14 +3855,14 @@
        {
         "id": "cis_mysql-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure Password Policy Is in Force"
+        "prose": "Password Policy must be in Force"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.4",
-      "title": "Ensure Password Reuse Is Limited",
+      "title": "Password Reuse must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -3888,14 +3888,14 @@
        {
         "id": "cis_mysql-7.4_stmt",
         "name": "statement",
-        "prose": "Ensure Password Reuse Is Limited"
+        "prose": "Password Reuse must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.5",
-      "title": "Ensure Password Expiration Is in Force",
+      "title": "Password Expiration must be in Force",
       "props": [
        {
         "name": "label",
@@ -3921,14 +3921,14 @@
        {
         "id": "cis_mysql-7.5_stmt",
         "name": "statement",
-        "prose": "Ensure Password Expiration Is in Force"
+        "prose": "Password Expiration must be in Force"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.6",
-      "title": "Ensure MySQL Passwords Are Not Stored in History",
+      "title": "MySQL Passwords must be Not Stored in History",
       "props": [
        {
         "name": "label",
@@ -3954,14 +3954,14 @@
        {
         "id": "cis_mysql-7.6_stmt",
         "name": "statement",
-        "prose": "Ensure MySQL Passwords Are Not Stored in History"
+        "prose": "MySQL Passwords must be Not Stored in History"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.7",
-      "title": "Ensure No Users Have Wildcard Hostnames",
+      "title": "No Users must have Wildcard Hostnames",
       "props": [
        {
         "name": "label",
@@ -3987,14 +3987,14 @@
        {
         "id": "cis_mysql-7.7_stmt",
         "name": "statement",
-        "prose": "Ensure No Users Have Wildcard Hostnames"
+        "prose": "No Users must have Wildcard Hostnames"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.8",
-      "title": "Ensure No Anonymous Accounts Exist",
+      "title": "checked condition — No Anonymous Accounts Exist",
       "props": [
        {
         "name": "label",
@@ -4020,14 +4020,14 @@
        {
         "id": "cis_mysql-7.8_stmt",
         "name": "statement",
-        "prose": "Ensure No Anonymous Accounts Exist"
+        "prose": "checked condition — No Anonymous Accounts Exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.9",
-      "title": "Ensure All Users Are Assigned to Roles",
+      "title": "All Users must be Assigned to Roles",
       "props": [
        {
         "name": "label",
@@ -4053,14 +4053,14 @@
        {
         "id": "cis_mysql-7.9_stmt",
         "name": "statement",
-        "prose": "Ensure All Users Are Assigned to Roles"
+        "prose": "All Users must be Assigned to Roles"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.10",
-      "title": "Ensure Default Roles Are Set for All Users",
+      "title": "Default Roles must be Set for All Users",
       "props": [
        {
         "name": "label",
@@ -4086,14 +4086,14 @@
        {
         "id": "cis_mysql-7.10_stmt",
         "name": "statement",
-        "prose": "Ensure Default Roles Are Set for All Users"
+        "prose": "Default Roles must be Set for All Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.11",
-      "title": "Ensure Password Lifetime Is Set",
+      "title": "Password Lifetime must be Set",
       "props": [
        {
         "name": "label",
@@ -4119,14 +4119,14 @@
        {
         "id": "cis_mysql-7.11_stmt",
         "name": "statement",
-        "prose": "Ensure Password Lifetime Is Set"
+        "prose": "Password Lifetime must be Set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.12",
-      "title": "Ensure Account Locking Is Configured",
+      "title": "Account Locking must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4152,14 +4152,14 @@
        {
         "id": "cis_mysql-7.12_stmt",
         "name": "statement",
-        "prose": "Ensure Account Locking Is Configured"
+        "prose": "Account Locking must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.13",
-      "title": "Ensure 'default_authentication_plugin' Is Set",
+      "title": "'default_authentication_plugin' must be populated",
       "props": [
        {
         "name": "label",
@@ -4185,14 +4185,14 @@
        {
         "id": "cis_mysql-7.13_stmt",
         "name": "statement",
-        "prose": "Ensure 'default_authentication_plugin' Is Set"
+        "prose": "'default_authentication_plugin' must be populated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.14",
-      "title": "Ensure SHA256 Password Authentication Plugin Is Used",
+      "title": "SHA256 Password Authentication Plugin must be Used",
       "props": [
        {
         "name": "label",
@@ -4218,14 +4218,14 @@
        {
         "id": "cis_mysql-7.14_stmt",
         "name": "statement",
-        "prose": "Ensure SHA256 Password Authentication Plugin Is Used"
+        "prose": "SHA256 Password Authentication Plugin must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.15",
-      "title": "Ensure Caching SHA2 Authentication Plugin Is Used",
+      "title": "Caching SHA2 Authentication Plugin must be Used",
       "props": [
        {
         "name": "label",
@@ -4251,14 +4251,14 @@
        {
         "id": "cis_mysql-7.15_stmt",
         "name": "statement",
-        "prose": "Ensure Caching SHA2 Authentication Plugin Is Used"
+        "prose": "Caching SHA2 Authentication Plugin must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-7.16",
-      "title": "Ensure Connection Control Plugin Is Installed and Active",
+      "title": "Connection Control Plugin must be Installed and Active",
       "props": [
        {
         "name": "label",
@@ -4284,14 +4284,14 @@
        {
         "id": "cis_mysql-7.16_stmt",
         "name": "statement",
-        "prose": "Ensure Connection Control Plugin Is Installed and Active"
+        "prose": "Connection Control Plugin must be Installed and Active"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.1",
-      "title": "Ensure 'bind_address' Is Set to a Specific Interface",
+      "title": "required value of 'bind_address' is a Specific Interface",
       "props": [
        {
         "name": "label",
@@ -4317,14 +4317,14 @@
        {
         "id": "cis_mysql-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'bind_address' Is Set to a Specific Interface"
+        "prose": "required value of 'bind_address' is a Specific Interface"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.2",
-      "title": "Ensure 'port' Is Set to a Non-Default Value",
+      "title": "required value of 'port' is a Non-Default Value",
       "props": [
        {
         "name": "label",
@@ -4350,14 +4350,14 @@
        {
         "id": "cis_mysql-8.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'port' Is Set to a Non-Default Value"
+        "prose": "required value of 'port' is a Non-Default Value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.3",
-      "title": "Ensure 'skip_networking' Is Disabled",
+      "title": "'skip_networking' must be turned off",
       "props": [
        {
         "name": "label",
@@ -4383,14 +4383,14 @@
        {
         "id": "cis_mysql-8.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'skip_networking' Is Disabled"
+        "prose": "'skip_networking' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.4",
-      "title": "Ensure 'skip_name_resolve' Is Enabled",
+      "title": "'skip_name_resolve' must be turned on",
       "props": [
        {
         "name": "label",
@@ -4416,14 +4416,14 @@
        {
         "id": "cis_mysql-8.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'skip_name_resolve' Is Enabled"
+        "prose": "'skip_name_resolve' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.5",
-      "title": "Ensure SSL Is Configured and Enabled",
+      "title": "SSL must be explicitly configured and Enabled",
       "props": [
        {
         "name": "label",
@@ -4449,14 +4449,14 @@
        {
         "id": "cis_mysql-8.5_stmt",
         "name": "statement",
-        "prose": "Ensure SSL Is Configured and Enabled"
+        "prose": "SSL must be explicitly configured and Enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.6",
-      "title": "Ensure 'ssl_type' Is Set to 'ANY', 'X509', or 'SPECIFIED' for All Users",
+      "title": "required value of 'ssl_type' is 'ANY', 'X509', or 'SPECIFIED' for All Users",
       "props": [
        {
         "name": "label",
@@ -4482,14 +4482,14 @@
        {
         "id": "cis_mysql-8.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'ssl_type' Is Set to 'ANY', 'X509', or 'SPECIFIED' for All Users"
+        "prose": "required value of 'ssl_type' is 'ANY', 'X509', or 'SPECIFIED' for All Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.7",
-      "title": "Ensure Certificates Are Valid",
+      "title": "Certificates must be Valid",
       "props": [
        {
         "name": "label",
@@ -4515,14 +4515,14 @@
        {
         "id": "cis_mysql-8.7_stmt",
         "name": "statement",
-        "prose": "Ensure Certificates Are Valid"
+        "prose": "Certificates must be Valid"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.8",
-      "title": "Ensure SSL Certificates Use Strong Cryptographic Algorithms",
+      "title": "checked condition — SSL Certificates Use Strong Cryptographic Algorithms",
       "props": [
        {
         "name": "label",
@@ -4548,14 +4548,14 @@
        {
         "id": "cis_mysql-8.8_stmt",
         "name": "statement",
-        "prose": "Ensure SSL Certificates Use Strong Cryptographic Algorithms"
+        "prose": "checked condition — SSL Certificates Use Strong Cryptographic Algorithms"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.9",
-      "title": "Ensure 'require_secure_transport' Is Enabled",
+      "title": "'require_secure_transport' must be turned on",
       "props": [
        {
         "name": "label",
@@ -4581,14 +4581,14 @@
        {
         "id": "cis_mysql-8.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'require_secure_transport' Is Enabled"
+        "prose": "'require_secure_transport' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.10",
-      "title": "Ensure 'tls_version' Contains Secure TLS Versions",
+      "title": "checked condition — 'tls_version' Contains Secure TLS Versions",
       "props": [
        {
         "name": "label",
@@ -4614,14 +4614,14 @@
        {
         "id": "cis_mysql-8.10_stmt",
         "name": "statement",
-        "prose": "Ensure 'tls_version' Contains Secure TLS Versions"
+        "prose": "checked condition — 'tls_version' Contains Secure TLS Versions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.11",
-      "title": "Ensure 'ssl_cipher' Is Configured with Secure Ciphers",
+      "title": "'ssl_cipher' must be explicitly configured with Secure Ciphers",
       "props": [
        {
         "name": "label",
@@ -4647,14 +4647,14 @@
        {
         "id": "cis_mysql-8.11_stmt",
         "name": "statement",
-        "prose": "Ensure 'ssl_cipher' Is Configured with Secure Ciphers"
+        "prose": "'ssl_cipher' must be explicitly configured with Secure Ciphers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.12",
-      "title": "Ensure Connection Limits Are Set",
+      "title": "Connection Limits must be Set",
       "props": [
        {
         "name": "label",
@@ -4680,14 +4680,14 @@
        {
         "id": "cis_mysql-8.12_stmt",
         "name": "statement",
-        "prose": "Ensure Connection Limits Are Set"
+        "prose": "Connection Limits must be Set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.13",
-      "title": "Ensure 'connect_timeout' Is Set to 10 or Less",
+      "title": "required value of 'connect_timeout' is 10 or Less",
       "props": [
        {
         "name": "label",
@@ -4713,14 +4713,14 @@
        {
         "id": "cis_mysql-8.13_stmt",
         "name": "statement",
-        "prose": "Ensure 'connect_timeout' Is Set to 10 or Less"
+        "prose": "required value of 'connect_timeout' is 10 or Less"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-8.14",
-      "title": "Ensure 'interactive_timeout' and 'wait_timeout' Are Set",
+      "title": "'interactive_timeout' and 'wait_timeout' must be Set",
       "props": [
        {
         "name": "label",
@@ -4746,14 +4746,14 @@
        {
         "id": "cis_mysql-8.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'interactive_timeout' and 'wait_timeout' Are Set"
+        "prose": "'interactive_timeout' and 'wait_timeout' must be Set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.1",
-      "title": "Ensure Replication Traffic Is Secured",
+      "title": "Replication Traffic must be Secured",
       "props": [
        {
         "name": "label",
@@ -4779,14 +4779,14 @@
        {
         "id": "cis_mysql-9.1_stmt",
         "name": "statement",
-        "prose": "Ensure Replication Traffic Is Secured"
+        "prose": "Replication Traffic must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.2",
-      "title": "Ensure 'master_ssl_verify_server_cert' Is Set to 'ON'",
+      "title": "required value of 'master_ssl_verify_server_cert' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -4812,14 +4812,14 @@
        {
         "id": "cis_mysql-9.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_verify_server_cert' Is Set to 'ON'"
+        "prose": "required value of 'master_ssl_verify_server_cert' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.3",
-      "title": "Ensure 'master_ssl_ca' Is Set on Slaves",
+      "title": "'master_ssl_ca' must be Set on Slaves",
       "props": [
        {
         "name": "label",
@@ -4845,14 +4845,14 @@
        {
         "id": "cis_mysql-9.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_ca' Is Set on Slaves"
+        "prose": "'master_ssl_ca' must be Set on Slaves"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.4",
-      "title": "Ensure 'master_ssl_capath' Is Set on Slaves",
+      "title": "'master_ssl_capath' must be Set on Slaves",
       "props": [
        {
         "name": "label",
@@ -4878,14 +4878,14 @@
        {
         "id": "cis_mysql-9.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_capath' Is Set on Slaves"
+        "prose": "'master_ssl_capath' must be Set on Slaves"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.5",
-      "title": "Ensure 'master_ssl_cert' Is Set on Slaves",
+      "title": "'master_ssl_cert' must be Set on Slaves",
       "props": [
        {
         "name": "label",
@@ -4911,14 +4911,14 @@
        {
         "id": "cis_mysql-9.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_cert' Is Set on Slaves"
+        "prose": "'master_ssl_cert' must be Set on Slaves"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.6",
-      "title": "Ensure 'master_ssl_key' Is Set on Slaves",
+      "title": "'master_ssl_key' must be Set on Slaves",
       "props": [
        {
         "name": "label",
@@ -4944,14 +4944,14 @@
        {
         "id": "cis_mysql-9.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_key' Is Set on Slaves"
+        "prose": "'master_ssl_key' must be Set on Slaves"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.7",
-      "title": "Ensure 'master_ssl_crl' Is Set on Slaves",
+      "title": "'master_ssl_crl' must be Set on Slaves",
       "props": [
        {
         "name": "label",
@@ -4977,14 +4977,14 @@
        {
         "id": "cis_mysql-9.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_crl' Is Set on Slaves"
+        "prose": "'master_ssl_crl' must be Set on Slaves"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.8",
-      "title": "Ensure 'master_ssl_crlpath' Is Set on Slaves",
+      "title": "'master_ssl_crlpath' must be Set on Slaves",
       "props": [
        {
         "name": "label",
@@ -5010,14 +5010,14 @@
        {
         "id": "cis_mysql-9.8_stmt",
         "name": "statement",
-        "prose": "Ensure 'master_ssl_crlpath' Is Set on Slaves"
+        "prose": "'master_ssl_crlpath' must be Set on Slaves"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.9",
-      "title": "Ensure 'slave_ssl_verify_server_cert' Is Set to 'ON'",
+      "title": "required value of 'slave_ssl_verify_server_cert' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -5043,14 +5043,14 @@
        {
         "id": "cis_mysql-9.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'slave_ssl_verify_server_cert' Is Set to 'ON'"
+        "prose": "required value of 'slave_ssl_verify_server_cert' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.10",
-      "title": "Ensure Replication User Has Limited Privileges",
+      "title": "Replication User must have Limited Privileges",
       "props": [
        {
         "name": "label",
@@ -5076,14 +5076,14 @@
        {
         "id": "cis_mysql-9.10_stmt",
         "name": "statement",
-        "prose": "Ensure Replication User Has Limited Privileges"
+        "prose": "Replication User must have Limited Privileges"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.11",
-      "title": "Ensure 'log_slave_updates' Is Enabled",
+      "title": "'log_slave_updates' must be turned on",
       "props": [
        {
         "name": "label",
@@ -5109,14 +5109,14 @@
        {
         "id": "cis_mysql-9.11_stmt",
         "name": "statement",
-        "prose": "Ensure 'log_slave_updates' Is Enabled"
+        "prose": "'log_slave_updates' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.12",
-      "title": "Ensure 'slave_compressed_protocol' Is Disabled",
+      "title": "'slave_compressed_protocol' must be turned off",
       "props": [
        {
         "name": "label",
@@ -5142,14 +5142,14 @@
        {
         "id": "cis_mysql-9.12_stmt",
         "name": "statement",
-        "prose": "Ensure 'slave_compressed_protocol' Is Disabled"
+        "prose": "'slave_compressed_protocol' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.13",
-      "title": "Ensure 'gtid_mode' Is Enabled",
+      "title": "'gtid_mode' must be turned on",
       "props": [
        {
         "name": "label",
@@ -5175,14 +5175,14 @@
        {
         "id": "cis_mysql-9.13_stmt",
         "name": "statement",
-        "prose": "Ensure 'gtid_mode' Is Enabled"
+        "prose": "'gtid_mode' must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_mysql-9.14",
-      "title": "Ensure 'enforce_gtid_consistency' Is Enabled",
+      "title": "'enforce_gtid_consistency' must be turned on",
       "props": [
        {
         "name": "label",
@@ -5208,7 +5208,7 @@
        {
         "id": "cis_mysql-9.14_stmt",
         "name": "statement",
-        "prose": "Ensure 'enforce_gtid_consistency' Is Enabled"
+        "prose": "'enforce_gtid_consistency' must be turned on"
        }
       ],
       "class": "security"

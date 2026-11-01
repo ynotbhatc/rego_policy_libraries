@@ -50,7 +50,7 @@ sections := {
 section_keys := {"1": "eos_services", "2": "device_access", "3": "routing_protocols"}
 
 controls := {
-	"1.1.1.1": {"title": "Ensure the Management VRF Exists", "level": 1, "attest": "mgmt_vrf_exists"},
+	"1.1.1.1": {"title": "checked condition — the Management VRF Exists", "level": 1, "attest": "mgmt_vrf_exists"},
 	"1.1.2": {"title": "Control Plane ACL", "level": 1, "attest": "control_plane_acl_applied"},
 	"1.1.3": {"title": "Control Plane Policy Map", "level": 1, "attest": "control_plane_policy_map_applied"},
 	"1.1.4": {"title": "Network Time Protocol", "level": 1, "attest": "ntp_configured"},
@@ -74,7 +74,7 @@ controls := {
 	"2.6.2": {"title": "Set Idle Timeout for SSH to 10 Minutes or Less", "level": 1, "attest": "ssh_idle_timeout"},
 	"2.6.3": {"title": "Remove cryptographically weak algorithms", "level": 2, "attest": "ssh_weak_algorithms_removed"},
 	"2.7.1": {"title": "Limit SNMP Access To Management VRF", "level": 1, "attest": "snmp_restricted_to_mgmt_vrf"},
-	"2.7.2": {"title": "Ensure SNMP Community", "level": 1, "attest": "snmp_community_hardened"},
+	"2.7.2": {"title": "checked condition — SNMP Community", "level": 1, "attest": "snmp_community_hardened"},
 	"2.7.3": {"title": "Use SNMPv3 Instead of Earlier Versions", "level": 1, "attest": "snmpv3_only"},
 	"2.8": {"title": "Telnet access", "level": 1, "attest": "telnet_disabled"},
 	"2.9": {"title": "API access using https", "level": 2, "attest": "api_https_only"},

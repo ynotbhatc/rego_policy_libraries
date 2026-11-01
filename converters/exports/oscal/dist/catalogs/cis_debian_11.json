@@ -246,7 +246,7 @@
    {
     "id": "cis_debian_11-auditd_validation",
     "class": "rego-module",
-    "title": "CIS 4.1.1.1: Ensure audit is installed",
+    "title": "CIS 4.1.1.1: audit must be present",
     "props": [
      {
       "name": "rego-package",
@@ -1209,7 +1209,7 @@
    {
     "id": "cis_debian_11-cron_validation",
     "class": "rego-module",
-    "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
+    "title": "CIS 5.1.1: cron daemon must be turned on and running",
     "props": [
      {
       "name": "rego-package",
@@ -6113,7 +6113,7 @@
    {
     "id": "cis_debian_11-user_group_validation",
     "class": "rego-module",
-    "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
+    "title": "CIS 6.2.1: password hashes must be stored outside /etc/passwd",
     "props": [
      {
       "name": "rego-package",
@@ -6752,7 +6752,7 @@
     },
     {
      "uuid": "edc23466-cd75-5ec7-b503-7e88ec0e55e2",
-     "title": "CIS 4.1.1.1: Ensure audit is installed",
+     "title": "CIS 4.1.1.1: audit must be present",
      "props": [
       {
        "name": "rego-package",
@@ -6803,7 +6803,7 @@
     },
     {
      "uuid": "77bdb395-24fa-58d1-b6a5-9adc3ba6780d",
-     "title": "CIS 5.1.1: Ensure cron daemon is enabled and running",
+     "title": "CIS 5.1.1: cron daemon must be turned on and running",
      "props": [
       {
        "name": "rego-package",
@@ -6973,7 +6973,7 @@
     },
     {
      "uuid": "5f8cc494-4ab5-5248-8d5d-b10178662b14",
-     "title": "CIS 6.2.1: Ensure accounts in /etc/passwd use shadowed passwords",
+     "title": "CIS 6.2.1: password hashes must be stored outside /etc/passwd",
      "props": [
       {
        "name": "rego-package",

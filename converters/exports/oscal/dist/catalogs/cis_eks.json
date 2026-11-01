@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_eks-2.1.1",
-      "title": "Enable EKS control plane logging",
+      "title": "EKS control plane logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_eks-2.1.1_stmt",
         "name": "statement",
-        "prose": "Enable EKS control plane logging"
+        "prose": "EKS control plane logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.1.1",
-      "title": "Ensure that the kubeconfig file permissions are set to 644 or more restrictive",
+      "title": "the kubeconfig file permissions must be set to 644 or more restrictive",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_eks-3.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure that the kubeconfig file permissions are set to 644 or more restrictive"
+        "prose": "the kubeconfig file permissions must be set to 644 or more restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.1.2",
-      "title": "Ensure that the kubeconfig file ownership is set to root:root",
+      "title": "required value of the kubeconfig file ownership is root:root",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_eks-3.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure that the kubeconfig file ownership is set to root:root"
+        "prose": "required value of the kubeconfig file ownership is root:root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.1.3",
-      "title": "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive",
+      "title": "the kubelet configuration file must have permissions set to 644 or more restrictive",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_eks-3.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure that the kubelet configuration file has permissions set to 644 or more restrictive"
+        "prose": "the kubelet configuration file must have permissions set to 644 or more restrictive"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.1.4",
-      "title": "Ensure that the kubelet configuration file ownership is set to root:root",
+      "title": "required value of the kubelet configuration file ownership is root:root",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_eks-3.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure that the kubelet configuration file ownership is set to root:root"
+        "prose": "required value of the kubelet configuration file ownership is root:root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.1",
-      "title": "Ensure kubelet anonymous authentication is disabled",
+      "title": "kubelet anonymous authentication must be turned off",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_eks-3.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure kubelet anonymous authentication is disabled"
+        "prose": "kubelet anonymous authentication must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.2",
-      "title": "Ensure kubelet authorization mode is set to Webhook",
+      "title": "required value of kubelet authorization mode is Webhook",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_eks-3.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure kubelet authorization mode is set to Webhook"
+        "prose": "required value of kubelet authorization mode is Webhook"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.3",
-      "title": "Ensure the kubelet X.509 client CA file is configured",
+      "title": "the kubelet X.509 client CA file must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_eks-3.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure the kubelet X.509 client CA file is configured"
+        "prose": "the kubelet X.509 client CA file must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.4",
-      "title": "Ensure the kubelet read-only port is disabled",
+      "title": "the kubelet read-only port must be turned off",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_eks-3.2.4_stmt",
         "name": "statement",
-        "prose": "Ensure the kubelet read-only port is disabled"
+        "prose": "the kubelet read-only port must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.5",
-      "title": "Ensure the kubelet iptables utility chains are enabled",
+      "title": "the kubelet iptables utility chains must be turned on",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_eks-3.2.5_stmt",
         "name": "statement",
-        "prose": "Ensure the kubelet iptables utility chains are enabled"
+        "prose": "the kubelet iptables utility chains must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.6",
-      "title": "Ensure the kubelet event recording QPS is set to an appropriate value",
+      "title": "required value of the kubelet event recording QPS is an appropriate value",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "cis_eks-3.2.6_stmt",
         "name": "statement",
-        "prose": "Ensure the kubelet event recording QPS is set to an appropriate value"
+        "prose": "required value of the kubelet event recording QPS is an appropriate value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.7",
-      "title": "Ensure the kubelet client certificate rotation is enabled",
+      "title": "the kubelet client certificate rotation must be turned on",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "cis_eks-3.2.7_stmt",
         "name": "statement",
-        "prose": "Ensure the kubelet client certificate rotation is enabled"
+        "prose": "the kubelet client certificate rotation must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-3.2.8",
-      "title": "Ensure serverTLSBootstrap and RotateKubeletServerCertificate are enabled",
+      "title": "serverTLSBootstrap and RotateKubeletServerCertificate must be turned on",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "cis_eks-3.2.8_stmt",
         "name": "statement",
-        "prose": "Ensure serverTLSBootstrap and RotateKubeletServerCertificate are enabled"
+        "prose": "serverTLSBootstrap and RotateKubeletServerCertificate must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.1",
-      "title": "Ensure that the cluster-admin role is only used where required",
+      "title": "the cluster-admin role must be only used where required",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "cis_eks-4.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure that the cluster-admin role is only used where required"
+        "prose": "the cluster-admin role must be only used where required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.10",
-      "title": "Minimize access to the proxy sub-resource of nodes",
+      "title": "access to the proxy sub-resource of nodes must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "cis_eks-4.1.10_stmt",
         "name": "statement",
-        "prose": "Minimize access to the proxy sub-resource of nodes"
+        "prose": "access to the proxy sub-resource of nodes must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.11",
-      "title": "Minimize access to webhook configuration objects",
+      "title": "access to webhook configuration objects must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "cis_eks-4.1.11_stmt",
         "name": "statement",
-        "prose": "Minimize access to webhook configuration objects"
+        "prose": "access to webhook configuration objects must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.12",
-      "title": "Minimize access to the service account token creation",
+      "title": "access to the service account token creation must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "cis_eks-4.1.12_stmt",
         "name": "statement",
-        "prose": "Minimize access to the service account token creation"
+        "prose": "access to the service account token creation must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.2",
-      "title": "Ensure access to Secrets is minimized and granted only where required",
+      "title": "access to Secrets must be minimized and granted only where required",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "cis_eks-4.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure access to Secrets is minimized and granted only where required"
+        "prose": "access to Secrets must be minimized and granted only where required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.3",
-      "title": "Minimize wildcard use in Roles and ClusterRoles",
+      "title": "wildcard use in Roles and ClusterRoles must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "cis_eks-4.1.3_stmt",
         "name": "statement",
-        "prose": "Minimize wildcard use in Roles and ClusterRoles"
+        "prose": "wildcard use in Roles and ClusterRoles must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.4",
-      "title": "Minimize access to create pods",
+      "title": "access to create pods must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "cis_eks-4.1.4_stmt",
         "name": "statement",
-        "prose": "Minimize access to create pods"
+        "prose": "access to create pods must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.5",
-      "title": "Ensure that default service accounts are not actively used.",
+      "title": "default service accounts must be not actively used",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "cis_eks-4.1.5_stmt",
         "name": "statement",
-        "prose": "Ensure that default service accounts are not actively used."
+        "prose": "default service accounts must be not actively used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.6",
-      "title": "Ensure that Service Account Tokens are only mounted where necessary",
+      "title": "Service Account Tokens must be only mounted where necessary",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "cis_eks-4.1.6_stmt",
         "name": "statement",
-        "prose": "Ensure that Service Account Tokens are only mounted where necessary"
+        "prose": "Service Account Tokens must be only mounted where necessary"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.7",
-      "title": "Standardize EKS cluster access by using access entries, policies, and scoped permissions",
+      "title": "EKS cluster access by using access entries, policies, and scoped permissions must follow one approved pattern",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "cis_eks-4.1.7_stmt",
         "name": "statement",
-        "prose": "Standardize EKS cluster access by using access entries, policies, and scoped permissions"
+        "prose": "EKS cluster access by using access entries, policies, and scoped permissions must follow one approved pattern"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.8",
-      "title": "Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster",
+      "title": "use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster must be limited",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "cis_eks-4.1.8_stmt",
         "name": "statement",
-        "prose": "Limit use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster"
+        "prose": "use of the Bind, Impersonate and Escalate permissions in the Kubernetes cluster must be limited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.1.9",
-      "title": "Minimize access to create persistent volumes",
+      "title": "access to create persistent volumes must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "cis_eks-4.1.9_stmt",
         "name": "statement",
-        "prose": "Minimize access to create persistent volumes"
+        "prose": "access to create persistent volumes must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.2.1",
-      "title": "Minimize the admission of privileged containers",
+      "title": "admission of privileged containers must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "cis_eks-4.2.1_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of privileged containers"
+        "prose": "admission of privileged containers must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.2.2",
-      "title": "Minimize the admission of containers wishing to share the host process ID namespace",
+      "title": "admission of containers wishing to share the host process ID namespace must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "cis_eks-4.2.2_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers wishing to share the host process ID namespace"
+        "prose": "admission of containers wishing to share the host process ID namespace must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.2.3",
-      "title": "Minimize the admission of containers wishing to share the host IPC namespace",
+      "title": "admission of containers wishing to share the host IPC namespace must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "cis_eks-4.2.3_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers wishing to share the host IPC namespace"
+        "prose": "admission of containers wishing to share the host IPC namespace must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.2.4",
-      "title": "Minimize the admission of containers wishing to share the host network namespace",
+      "title": "admission of containers wishing to share the host network namespace must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "cis_eks-4.2.4_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers wishing to share the host network namespace"
+        "prose": "admission of containers wishing to share the host network namespace must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.2.5",
-      "title": "Minimize the admission of containers with allowPrivilegeEscalation",
+      "title": "admission of containers with allowPrivilegeEscalation must be held to the smallest scope the platform allows",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "cis_eks-4.2.5_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers with allowPrivilegeEscalation"
+        "prose": "admission of containers with allowPrivilegeEscalation must be held to the smallest scope the platform allows"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.3.1",
-      "title": "Ensure VPC CNI network policy support is enabled",
+      "title": "VPC CNI network policy support must be turned on",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "cis_eks-4.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure VPC CNI network policy support is enabled"
+        "prose": "VPC CNI network policy support must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.3.2",
-      "title": "Ensure required workloads are covered by Kubernetes network policies",
+      "title": "required workloads must be covered by Kubernetes network policies",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1116,14 @@
        {
         "id": "cis_eks-4.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure required workloads are covered by Kubernetes network policies"
+        "prose": "required workloads must be covered by Kubernetes network policies"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.4.1",
-      "title": "Prefer exposing secrets as mounted files rather than environment variables",
+      "title": "exposing secrets as mounted files rather than environment variables is the approach this check requires",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1149,14 @@
        {
         "id": "cis_eks-4.4.1_stmt",
         "name": "statement",
-        "prose": "Prefer exposing secrets as mounted files rather than environment variables"
+        "prose": "exposing secrets as mounted files rather than environment variables is the approach this check requires"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.4.2",
-      "title": "Consider external secret storage",
+      "title": "external secret storage must be evaluated and the decision recorded",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1182,14 @@
        {
         "id": "cis_eks-4.4.2_stmt",
         "name": "statement",
-        "prose": "Consider external secret storage"
+        "prose": "external secret storage must be evaluated and the decision recorded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.5.1",
-      "title": "Create administrative boundaries between resources using namespaces",
+      "title": "administrative boundaries between resources using namespaces must exist",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1215,14 @@
        {
         "id": "cis_eks-4.5.1_stmt",
         "name": "statement",
-        "prose": "Create administrative boundaries between resources using namespaces"
+        "prose": "administrative boundaries between resources using namespaces must exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-4.5.2",
-      "title": "The default namespace should not be used",
+      "title": "default namespace must not be used",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1248,14 @@
        {
         "id": "cis_eks-4.5.2_stmt",
         "name": "statement",
-        "prose": "The default namespace should not be used"
+        "prose": "default namespace must not be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.1.1",
-      "title": "Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider",
+      "title": "checked condition — Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1281,14 @@
        {
         "id": "cis_eks-5.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider"
+        "prose": "checked condition — Image Vulnerability Scanning using Amazon ECR image scanning or a third party provider"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.1.2",
-      "title": "Ensure least-privilege access is enforced for Amazon ECR repositories used by EKS workloads",
+      "title": "least-privilege access must be enforced for Amazon ECR repositories used by EKS workloads",
       "props": [
        {
         "name": "label",
@@ -1314,14 +1314,14 @@
        {
         "id": "cis_eks-5.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure least-privilege access is enforced for Amazon ECR repositories used by EKS workloads"
+        "prose": "least-privilege access must be enforced for Amazon ECR repositories used by EKS workloads"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.1.3",
-      "title": "Restrict ECR access for EKS runtime identities to pull-only permissions",
+      "title": "ECR access for EKS runtime identities to pull-only permissions must be restricted",
       "props": [
        {
         "name": "label",
@@ -1347,14 +1347,14 @@
        {
         "id": "cis_eks-5.1.3_stmt",
         "name": "statement",
-        "prose": "Restrict ECR access for EKS runtime identities to pull-only permissions"
+        "prose": "ECR access for EKS runtime identities to pull-only permissions must be restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.1.4",
-      "title": "Allow only approved container registries for images used by EKS workloads",
+      "title": "only approved container registries for images used by EKS workloads may be permitted",
       "props": [
        {
         "name": "label",
@@ -1380,14 +1380,14 @@
        {
         "id": "cis_eks-5.1.4_stmt",
         "name": "statement",
-        "prose": "Allow only approved container registries for images used by EKS workloads"
+        "prose": "only approved container registries for images used by EKS workloads may be permitted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.2.1",
-      "title": "Prefer using dedicated EKS Service Accounts",
+      "title": "using dedicated EKS Service Accounts is the approach this check requires",
       "props": [
        {
         "name": "label",
@@ -1413,14 +1413,14 @@
        {
         "id": "cis_eks-5.2.1_stmt",
         "name": "statement",
-        "prose": "Prefer using dedicated EKS Service Accounts"
+        "prose": "using dedicated EKS Service Accounts is the approach this check requires"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.3.1",
-      "title": "Use customer managed KMS keys for EKS envelope encryption of Kubernetes secrets",
+      "title": "customer managed KMS keys for EKS envelope encryption of Kubernetes secrets is required",
       "props": [
        {
         "name": "label",
@@ -1446,14 +1446,14 @@
        {
         "id": "cis_eks-5.3.1_stmt",
         "name": "statement",
-        "prose": "Use customer managed KMS keys for EKS envelope encryption of Kubernetes secrets"
+        "prose": "customer managed KMS keys for EKS envelope encryption of Kubernetes secrets is required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.4.1",
-      "title": "Restrict EKS control plane endpoint access with private access and public CIDR allowlists",
+      "title": "EKS control plane endpoint access with private access and public CIDR allowlists must be restricted",
       "props": [
        {
         "name": "label",
@@ -1479,14 +1479,14 @@
        {
         "id": "cis_eks-5.4.1_stmt",
         "name": "statement",
-        "prose": "Restrict EKS control plane endpoint access with private access and public CIDR allowlists"
+        "prose": "EKS control plane endpoint access with private access and public CIDR allowlists must be restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.4.2",
-      "title": "Enable private-only EKS control plane access and disable the public endpoint",
+      "title": "private-only EKS control plane access and disable the public endpoint must be turned on",
       "props": [
        {
         "name": "label",
@@ -1512,14 +1512,14 @@
        {
         "id": "cis_eks-5.4.2_stmt",
         "name": "statement",
-        "prose": "Enable private-only EKS control plane access and disable the public endpoint"
+        "prose": "private-only EKS control plane access and disable the public endpoint must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.4.3",
-      "title": "Ensure clusters are created with Private Nodes",
+      "title": "clusters must be created with Private Nodes",
       "props": [
        {
         "name": "label",
@@ -1545,14 +1545,14 @@
        {
         "id": "cis_eks-5.4.3_stmt",
         "name": "statement",
-        "prose": "Ensure clusters are created with Private Nodes"
+        "prose": "clusters must be created with Private Nodes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.4.4",
-      "title": "Use TLS certificates on EKS load balancer listeners for encrypted client connections",
+      "title": "TLS certificates on EKS load balancer listeners for encrypted client connections is required",
       "props": [
        {
         "name": "label",
@@ -1578,14 +1578,14 @@
        {
         "id": "cis_eks-5.4.4_stmt",
         "name": "statement",
-        "prose": "Use TLS certificates on EKS load balancer listeners for encrypted client connections"
+        "prose": "TLS certificates on EKS load balancer listeners for encrypted client connections is required"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_eks-5.5.1",
-      "title": "Use EKS access entries to manage IAM principal access to Kubernetes",
+      "title": "EKS access entries to manage IAM principal access to Kubernetes is required",
       "props": [
        {
         "name": "label",
@@ -1611,7 +1611,7 @@
        {
         "id": "cis_eks-5.5.1_stmt",
         "name": "statement",
-        "prose": "Use EKS access entries to manage IAM principal access to Kubernetes"
+        "prose": "EKS access entries to manage IAM principal access to Kubernetes is required"
        }
       ],
       "class": "security"

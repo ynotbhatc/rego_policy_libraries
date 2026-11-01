@@ -202,7 +202,7 @@ ufw_default(dir) := lower(m[1]) if {
 ufw_forward_policy_drop if upper(conf_last(input.ufw.default_raw, "DEFAULT_FORWARD_POLICY")) == "DROP"
 
 # 4.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure ufw is installed
+# ufw must be present
 default e_4_1_1 := false
 
 e_4_1_1 if {
@@ -217,13 +217,13 @@ p_4_1_1 if {
 
 violations contains "4.1.1: evidence missing — packages.ufw not collected" if not e_4_1_1
 
-violations contains "4.1.1: not met — Ensure ufw is installed" if {
+violations contains "4.1.1: not met — ufw must be present" if {
 	e_4_1_1
 	not p_4_1_1
 }
 
 # 4.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure ufw service is configured
+# ufw service must be explicitly configured
 default e_4_1_2 := false
 
 e_4_1_2 if {
@@ -240,13 +240,13 @@ p_4_1_2 if {
 
 violations contains "4.1.2: evidence missing — services[ufw.service]/ufw.status_verbose not collected" if not e_4_1_2
 
-violations contains "4.1.2: not met — Ensure ufw service is configured" if {
+violations contains "4.1.2: not met — ufw service must be explicitly configured" if {
 	e_4_1_2
 	not p_4_1_2
 }
 
 # 4.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure ufw incoming default is configured
+# ufw incoming default must be explicitly configured
 default e_4_1_3 := false
 
 e_4_1_3 if {
@@ -261,13 +261,13 @@ p_4_1_3 if {
 
 violations contains "4.1.3: evidence missing — ufw.status_verbose not collected" if not e_4_1_3
 
-violations contains "4.1.3: not met — Ensure ufw incoming default is configured" if {
+violations contains "4.1.3: not met — ufw incoming default must be explicitly configured" if {
 	e_4_1_3
 	not p_4_1_3
 }
 
 # 4.1.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure ufw outgoing default is configured
+# ufw outgoing default must be explicitly configured
 default e_4_1_4 := false
 
 e_4_1_4 if {
@@ -282,13 +282,13 @@ p_4_1_4 if {
 
 violations contains "4.1.4: evidence missing — ufw.status_verbose not collected" if not e_4_1_4
 
-violations contains "4.1.4: not met — Ensure ufw outgoing default is configured" if {
+violations contains "4.1.4: not met — ufw outgoing default must be explicitly configured" if {
 	e_4_1_4
 	not p_4_1_4
 }
 
 # 4.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure ufw routed default is configured
+# ufw routed default must be explicitly configured
 default e_4_1_5 := false
 
 e_4_1_5 if {
@@ -308,7 +308,7 @@ p_4_1_5 if {
 
 violations contains "4.1.5: evidence missing — ufw.status_verbose/ufw.default_raw not collected" if not e_4_1_5
 
-violations contains "4.1.5: not met — Ensure ufw routed default is configured" if {
+violations contains "4.1.5: not met — ufw routed default must be explicitly configured" if {
 	e_4_1_5
 	not p_4_1_5
 }

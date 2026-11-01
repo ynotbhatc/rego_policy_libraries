@@ -71,7 +71,7 @@ violations contains msg if {
     msg := "CIS 5.4.1: pwquality package not installed"
 }
 
-# CIS 5.4.1: Ensure password creation requirements are configured
+# CIS 5.4.1: password creation requirements must be explicitly configured
 violations contains msg if {
     pwquality_configured
     not pwquality_config.minlen
@@ -102,7 +102,7 @@ violations contains msg if {
     msg := sprintf("CIS 5.4.1.2: Password minclass is %s, should be 4", [pwquality_config.minclass])
 }
 
-# CIS 5.4.2: Ensure lockout for failed password attempts is configured
+# CIS 5.4.2: lockout for failed password attempts must be explicitly configured
 violations contains msg if {
     not check_pam_file("system_auth", "pam_faillock.so")
     not check_pam_file("password_auth", "pam_faillock.so")
@@ -121,7 +121,7 @@ violations contains msg if {
     msg := "CIS 5.4.2: Account lockout time (unlock_time) not configured"
 }
 
-# CIS 5.4.3: Ensure password reuse is limited
+# CIS 5.4.3: password reuse must be limited to named principals
 violations contains msg if {
     not check_pam_file("system_auth", "remember=")
     not check_pam_file("password_auth", "remember=")
@@ -141,7 +141,7 @@ violations contains msg if {
     msg := sprintf("CIS 5.4.3: Password remember value is %d, should be 5 or more", [remember_value])
 }
 
-# CIS 5.4.4: Ensure password hashing algorithm is SHA-512 or yescrypt
+# CIS 5.4.4: password hashing algorithm must be SHA-512 or yescrypt
 violations contains msg if {
     not check_pam_file("system_auth", "sha512")
     not check_pam_file("system_auth", "yescrypt")
@@ -152,28 +152,28 @@ violations contains msg if {
 
 # CIS 5.5: User Accounts and Environment
 
-# CIS 5.5.1: Ensure minimum days between password changes is configured
+# CIS 5.5.1: minimum days between password changes must be explicitly configured
 violations contains msg if {
     input.pam.pass_min_days
     to_number(input.pam.pass_min_days) < 1
     msg := sprintf("CIS 5.5.1.1: PASS_MIN_DAYS is %s, should be 1 or more", [input.pam.pass_min_days])
 }
 
-# CIS 5.5.2: Ensure password expiration is 365 days or less
+# CIS 5.5.2: password expiration must be 365 days or less
 violations contains msg if {
     input.pam.pass_max_days
     to_number(input.pam.pass_max_days) > 365
     msg := sprintf("CIS 5.5.1.2: PASS_MAX_DAYS is %s, should be 365 or less", [input.pam.pass_max_days])
 }
 
-# CIS 5.5.3: Ensure password expiration warning days is 7 or more
+# CIS 5.5.3: password expiration warning days must be 7 or more
 violations contains msg if {
     input.pam.pass_warn_age
     to_number(input.pam.pass_warn_age) < 7
     msg := sprintf("CIS 5.5.1.3: PASS_WARN_AGE is %s, should be 7 or more", [input.pam.pass_warn_age])
 }
 
-# CIS 5.5.4: Ensure inactive password lock is 30 days or less
+# CIS 5.5.4: inactive password lock must be 30 days or less
 violations contains msg if {
     input.pam.inactive_days
     to_number(input.pam.inactive_days) > 30
@@ -192,19 +192,19 @@ violations contains msg if {
     msg := "CIS 5.5.1.4: Inactive password lock not configured"
 }
 
-# CIS 5.5.5: Ensure all users last password change date is in the past
+# CIS 5.5.5: all users last password change date must be in the past
 violations contains msg if {
     some user in input.pam.users_with_future_password_change
     msg := sprintf("CIS 5.5.1.5: User %s has password change date in the future", [user])
 }
 
-# CIS 5.5.2: Ensure system accounts are secured
+# CIS 5.5.2: system accounts must be secured
 violations contains msg if {
     some account in input.pam.system_accounts_with_login_shell
     msg := sprintf("CIS 5.5.2: System account %s has a login shell", [account])
 }
 
-# CIS 5.5.3: Ensure default group for root is GID 0
+# CIS 5.5.3: default group for root must be GID 0
 violations contains msg if {
     input.pam.root_gid
     to_number(input.pam.root_gid) != 0
@@ -214,7 +214,7 @@ violations contains msg if {
 # 027 octal is 23: the umask must mask at least every bit 027 masks. Unparsable values fail.
 umask_restrictive(u) if bits.and(octal(u), 23) == 23
 
-# CIS 5.5.4: Ensure default user umask is 027 or more restrictive
+# CIS 5.5.4: default user umask must be 027 or more restrictive
 violations contains msg if {
     input.pam.default_umask
     not umask_restrictive(input.pam.default_umask)
@@ -226,7 +226,7 @@ violations contains msg if {
     msg := "CIS 5.5.4: Default umask not configured"
 }
 
-# CIS 5.5.5: Ensure default user shell timeout is configured
+# CIS 5.5.5: default user shell timeout must be explicitly configured
 violations contains msg if {
     input.pam.tmout
     to_number(input.pam.tmout) > 900

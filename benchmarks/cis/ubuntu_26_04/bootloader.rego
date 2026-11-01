@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 1.4.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure bootloader password is set
+# bootloader password must be set
 default e_1_4_1 := false
 
 e_1_4_1 if {
@@ -209,13 +209,13 @@ p_1_4_1 if {
 
 violations contains "1.4.1: evidence missing — boot_security.grub_password_set/grub_password_hashed not collected" if not e_1_4_1
 
-violations contains "1.4.1: not met — Ensure bootloader password is set" if {
+violations contains "1.4.1: not met — bootloader password must be set" if {
 	e_1_4_1
 	not p_1_4_1
 }
 
 # 1.4.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to bootloader config is configured
+# access to bootloader config must be explicitly configured
 default e_1_4_2 := false
 
 e_1_4_2 if {
@@ -234,7 +234,7 @@ p_1_4_2 if {
 
 violations contains "1.4.2: evidence missing — boot_security.grub_cfg_mode/boot_security.grub_cfg_owner/boot_security.grub_cfg_group not collected" if not e_1_4_2
 
-violations contains "1.4.2: not met — Ensure access to bootloader config is configured" if {
+violations contains "1.4.2: not met — access to bootloader config must be explicitly configured" if {
 	e_1_4_2
 	not p_1_4_2
 }

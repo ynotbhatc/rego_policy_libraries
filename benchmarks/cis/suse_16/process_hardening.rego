@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 1.5.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure fs.protected_hardlinks is configured
+# fs.protected_hardlinks must be explicitly configured
 default e_1_5_1 := false
 
 e_1_5_1 if {
@@ -209,13 +209,13 @@ p_1_5_1 if {
 
 violations contains "1.5.1: evidence missing — sysctl/sysctl_persisted[fs.protected_hardlinks] not collected" if not e_1_5_1
 
-violations contains "1.5.1: not met — Ensure fs.protected_hardlinks is configured" if {
+violations contains "1.5.1: not met — fs.protected_hardlinks must be explicitly configured" if {
 	e_1_5_1
 	not p_1_5_1
 }
 
 # 1.5.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure fs.protected_symlinks is configured
+# fs.protected_symlinks must be explicitly configured
 default e_1_5_2 := false
 
 e_1_5_2 if {
@@ -232,13 +232,13 @@ p_1_5_2 if {
 
 violations contains "1.5.2: evidence missing — sysctl/sysctl_persisted[fs.protected_symlinks] not collected" if not e_1_5_2
 
-violations contains "1.5.2: not met — Ensure fs.protected_symlinks is configured" if {
+violations contains "1.5.2: not met — fs.protected_symlinks must be explicitly configured" if {
 	e_1_5_2
 	not p_1_5_2
 }
 
 # 1.5.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure fs.suid_dumpable is configured
+# fs.suid_dumpable must be explicitly configured
 default e_1_5_3 := false
 
 e_1_5_3 if {
@@ -255,13 +255,13 @@ p_1_5_3 if {
 
 violations contains "1.5.3: evidence missing — sysctl/sysctl_persisted[fs.suid_dumpable] not collected" if not e_1_5_3
 
-violations contains "1.5.3: not met — Ensure fs.suid_dumpable is configured" if {
+violations contains "1.5.3: not met — fs.suid_dumpable must be explicitly configured" if {
 	e_1_5_3
 	not p_1_5_3
 }
 
 # 1.5.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.dmesg_restrict is configured
+# kernel.dmesg_restrict must be explicitly configured
 default e_1_5_4 := false
 
 e_1_5_4 if {
@@ -278,13 +278,13 @@ p_1_5_4 if {
 
 violations contains "1.5.4: evidence missing — sysctl/sysctl_persisted[kernel.dmesg_restrict] not collected" if not e_1_5_4
 
-violations contains "1.5.4: not met — Ensure kernel.dmesg_restrict is configured" if {
+violations contains "1.5.4: not met — kernel.dmesg_restrict must be explicitly configured" if {
 	e_1_5_4
 	not p_1_5_4
 }
 
 # 1.5.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.kptr_restrict is configured
+# kernel.kptr_restrict must be explicitly configured
 default e_1_5_5 := false
 
 e_1_5_5 if {
@@ -301,13 +301,13 @@ p_1_5_5 if {
 
 violations contains "1.5.5: evidence missing — sysctl/sysctl_persisted[kernel.kptr_restrict] not collected" if not e_1_5_5
 
-violations contains "1.5.5: not met — Ensure kernel.kptr_restrict is configured" if {
+violations contains "1.5.5: not met — kernel.kptr_restrict must be explicitly configured" if {
 	e_1_5_5
 	not p_1_5_5
 }
 
 # 1.5.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.randomize_va_space is configured
+# kernel.randomize_va_space must be explicitly configured
 default e_1_5_6 := false
 
 e_1_5_6 if {
@@ -324,13 +324,13 @@ p_1_5_6 if {
 
 violations contains "1.5.6: evidence missing — sysctl/sysctl_persisted[kernel.randomize_va_space] not collected" if not e_1_5_6
 
-violations contains "1.5.6: not met — Ensure kernel.randomize_va_space is configured" if {
+violations contains "1.5.6: not met — kernel.randomize_va_space must be explicitly configured" if {
 	e_1_5_6
 	not p_1_5_6
 }
 
 # 1.5.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.yama.ptrace_scope is configured
+# kernel.yama.ptrace_scope must be explicitly configured
 default e_1_5_7 := false
 
 e_1_5_7 if {
@@ -347,13 +347,13 @@ p_1_5_7 if {
 
 violations contains "1.5.7: evidence missing — sysctl/sysctl_persisted[kernel.yama.ptrace_scope] not collected" if not e_1_5_7
 
-violations contains "1.5.7: not met — Ensure kernel.yama.ptrace_scope is configured" if {
+violations contains "1.5.7: not met — kernel.yama.ptrace_scope must be explicitly configured" if {
 	e_1_5_7
 	not p_1_5_7
 }
 
 # 1.5.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-coredump ProcessSizeMax is configured
+# systemd-coredump ProcessSizeMax must be explicitly configured
 default e_1_5_8 := false
 
 e_1_5_8 if {
@@ -368,13 +368,13 @@ p_1_5_8 if {
 
 violations contains "1.5.8: evidence missing — boot_security.systemd_coredump_process_size_max not collected" if not e_1_5_8
 
-violations contains "1.5.8: not met — Ensure systemd-coredump ProcessSizeMax is configured" if {
+violations contains "1.5.8: not met — systemd-coredump ProcessSizeMax must be explicitly configured" if {
 	e_1_5_8
 	not p_1_5_8
 }
 
 # 1.5.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-coredump Storage is configured
+# systemd-coredump Storage must be explicitly configured
 default e_1_5_9 := false
 
 e_1_5_9 if {
@@ -389,7 +389,7 @@ p_1_5_9 if {
 
 violations contains "1.5.9: evidence missing — boot_security.systemd_coredump_storage not collected" if not e_1_5_9
 
-violations contains "1.5.9: not met — Ensure systemd-coredump Storage is configured" if {
+violations contains "1.5.9: not met — systemd-coredump Storage must be explicitly configured" if {
 	e_1_5_9
 	not p_1_5_9
 }

@@ -17,12 +17,12 @@ These policies validate Oracle Database 19c configurations against the CIS Oracl
 **Controls Covered**: 5+
 
 ### Section 2.1: Listener Configuration (Module: `listener_configuration`)
-- **CIS 2.1.1**: Ensure 'EXTPROC' is not present in listener.ora
-- **CIS 2.1.2**: Ensure 'ADMIN_RESTRICTIONS' is set to 'ON'
-- **CIS 2.1.3**: Ensure listener logging is configured
-- **CIS 2.1.4**: Ensure listener is not using default port
-- **CIS 2.1.5**: Ensure listener security settings
-- **CIS 2.1.6**: Ensure VALID_NODE_CHECKING is enabled
+- **CIS 2.1.1**: listener.ora must not contain 'EXTPROC'
+- **CIS 2.1.2**: required value of 'ADMIN_RESTRICTIONS' is 'ON'
+- **CIS 2.1.3**: listener logging must be explicitly configured
+- **CIS 2.1.4**: listener must be not using default port
+- **CIS 2.1.5**: checked condition — listener security settings
+- **CIS 2.1.6**: VALID_NODE_CHECKING must be turned on
 - Listener file permissions
 
 **Controls Covered**: 10+

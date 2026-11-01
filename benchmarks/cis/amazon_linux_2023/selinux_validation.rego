@@ -32,13 +32,13 @@ selinux_enforcing if {
     input.selinux.mode == "enforcing"
 }
 
-# CIS 1.6.1.1: Ensure SELinux is installed
+# CIS 1.6.1.1: SELinux must be present
 violations contains msg if {
     not input.selinux.installed
     msg := "CIS 1.6.1.1: SELinux (libselinux) not installed"
 }
 
-# CIS 1.6.1.2: Ensure SELinux is not disabled in bootloader configuration
+# CIS 1.6.1.2: SELinux must stay in effect in bootloader configuration
 violations contains msg if {
     input.selinux.installed
     contains(input.selinux.grub_cmdline, "selinux=0")
@@ -51,7 +51,7 @@ violations contains msg if {
     msg := "CIS 1.6.1.2: SELinux enforcing is disabled in bootloader configuration (enforcing=0)"
 }
 
-# CIS 1.6.1.3: Ensure SELinux policy is configured
+# CIS 1.6.1.3: SELinux policy must be explicitly configured
 violations contains msg if {
     input.selinux.installed
     not input.selinux.policy
@@ -65,7 +65,7 @@ violations contains msg if {
     msg := sprintf("CIS 1.6.1.3: SELinux policy is %s, should be 'targeted' or 'mls'", [input.selinux.policy])
 }
 
-# CIS 1.6.1.4: Ensure the SELinux mode is enforcing or permissive
+# CIS 1.6.1.4: the SELinux mode must be enforcing or permissive
 violations contains msg if {
     input.selinux.installed
     not selinux_enabled
@@ -79,7 +79,7 @@ violations contains msg if {
     msg := "CIS 1.6.1.4: SELinux mode is disabled"
 }
 
-# CIS 1.6.1.5: Ensure the SELinux mode is enforcing
+# CIS 1.6.1.5: the SELinux mode must be enforcing
 violations contains msg if {
     input.selinux.installed
     selinux_enabled
@@ -87,7 +87,7 @@ violations contains msg if {
     msg := sprintf("CIS 1.6.1.5: SELinux mode is %s, should be enforcing", [input.selinux.mode])
 }
 
-# CIS 1.6.1.6: Ensure no unconfined services exist
+# CIS 1.6.1.6: checked condition — no unconfined services exist
 violations contains msg if {
     input.selinux.installed
     selinux_enabled
@@ -96,13 +96,13 @@ violations contains msg if {
         [count(input.selinux.unconfined_services), concat(", ", input.selinux.unconfined_services)])
 }
 
-# CIS 1.6.1.7: Ensure SETroubleshoot is not installed
+# CIS 1.6.1.7: SETroubleshoot must not be present
 violations contains msg if {
     input.selinux.setroubleshoot_installed
     msg := "CIS 1.6.1.7: SETroubleshoot is installed - should be removed on production systems"
 }
 
-# CIS 1.6.1.8: Ensure the MCS Translation Service (mcstrans) is not installed
+# CIS 1.6.1.8: the MCS Translation Service (mcstrans) must not be present
 violations contains msg if {
     input.selinux.mcstrans_installed
     msg := "CIS 1.6.1.8: MCS Translation Service (mcstrans) is installed - should be removed"

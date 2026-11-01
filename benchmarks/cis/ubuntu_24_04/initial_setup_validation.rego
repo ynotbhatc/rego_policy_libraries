@@ -28,7 +28,7 @@ compliant if {
 
 # CIS 1.2: Configure Software Updates (Ubuntu uses apt)
 
-# CIS 1.2.1: Ensure package manager repositories are configured
+# CIS 1.2.1: package manager repositories must be explicitly configured
 violations contains "CIS 1.2.1: evidence missing — enabled_repos not collected" if {
 	not input.initial_setup.enabled_repos
 }
@@ -42,7 +42,7 @@ violations contains msg if {
 	msg := "CIS 1.2.1: No apt package repositories are enabled"
 }
 
-# CIS 1.2.2: Ensure APT GPG keys are configured
+# CIS 1.2.2: APT GPG keys must be explicitly configured
 violations contains msg if {
 	count(input.initial_setup.gpg_keys) == 0
 	msg := "CIS 1.2.2: No GPG keys configured for apt package verification"

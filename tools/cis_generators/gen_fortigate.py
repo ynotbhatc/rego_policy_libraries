@@ -318,7 +318,7 @@ package cis_fortinet_fortigate
 # Rewritten 2026-10-20 from the CIS workbook. The previous module claimed "Fortinet FortiGate Benchmark v1.3.0"; its 8
 # control ids do not match the FortiGate 7.4.x numbering (e.g. its 1.1 checked the admin GUI TLS version, which is
 # 7.4.x 2.1.10; 7.4.x 1.1 is the DNS server).
-# {len(C)} recommendations ({n_auto} Automated, {len(C) - n_auto} Manual), every one in the benchmark; ids, titles, levels
+# {len(C)} recommendations ({n_auto} Automated, {len(C) - n_auto} Manual), every one in the benchmark; ids, levels
 # and assessment status read from the workbook. All levels are evaluated; `recommendations` lists each id's level.
 # Automated checks fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
 # Manual recommendations with a decidable configuration fact are checked like Automated ones:
