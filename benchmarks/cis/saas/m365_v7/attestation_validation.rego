@@ -96,7 +96,11 @@ UNRESOLVED := {
 # digest -- CIS titles are not reproduced verbatim (see README).
 #
 #   "<id>": {"subject": "...", "collector": "the call that would close it"}
-NOT_IMPLEMENTED := {}
+#
+# Empty today. Built with object.union rather than the literal `{}`: OPA >= 1.22 types a literal empty object as having no members and rejects every
+# iteration or index over it as an undefined ref, so the module fails to compile when
+# loaded on its own (scripts/check_per_file_load.py).
+NOT_IMPLEMENTED := object.union({}, {})
 
 attestations := object.get(input, "attestations", [])
 

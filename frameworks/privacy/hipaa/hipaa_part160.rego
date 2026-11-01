@@ -106,10 +106,14 @@ out_of_scope := {
 	"160.500-160.552": "Subpart E - procedures for hearings before an ALJ (respondent's procedural rights and the conduct of hearings)",
 }
 
-# No fact checks exist for these paragraphs: every row is attested.
-fact_basis := {}
+# No fact checks exist for these paragraphs: every row is attested. Built with
+# object.union rather than a literal `{}`: OPA >= 1.22 types a literal empty
+# object as having no keys and rejects every `fact_basis[id]` below as an
+# undefined ref, so the module fails to compile when it is loaded on its own
+# (scripts/check_per_file_load.py). The value is still the empty object.
+fact_basis := object.union({}, {})
 
-_fact_pass := set()
+_fact_pass := {id | some id, _ in fact_basis}
 
 # -----------------------------------------------------------------------------
 # Evaluation (fail-closed). Shared shape across the CFR-keyed HIPAA modules.

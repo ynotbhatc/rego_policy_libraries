@@ -54,7 +54,11 @@ _ev := e if {
 
 # Manual recommendations whose CIS scope has several components take a
 # structured attestation (every listed part true); a bare `true` is not enough.
-_parts := {}
+# This section has none. Built with object.union rather than a literal `{}`:
+# OPA >= 1.22 types a literal empty object as having no keys and rejects every
+# `_parts[id]` below as an undefined ref, so the module fails to compile when
+# it is loaded on its own (scripts/check_per_file_load.py).
+_parts := object.union({}, {})
 
 attested(id) if {
 	requirements[id].assessment == "Manual"
