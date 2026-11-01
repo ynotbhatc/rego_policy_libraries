@@ -565,11 +565,11 @@ git add policies && git commit -m "Update policy library"
 
 ## Requirements
 
-- [Open Policy Agent](https://www.openpolicyagent.org/) v0.60+, or
+- [Open Policy Agent](https://www.openpolicyagent.org/) or
   [Enterprise OPA (EOPA)](https://www.styra.com/enterprise-opa/) — the policies use only
   standard Rego and built-ins, so either runtime works
 - All policies use `import rego.v1` (Rego v1 syntax)
-- Continuously tested against OPA v1.10.0 in CI (pinned in `.github/workflows/opa-test.yml`)
+- Continuously tested in CI against OPA v1.10.0 and v1.22.0 (the newest stable release as of 2026-11-01). The matrix is in `.github/workflows/opa-test.yml`; both versions must pass the same strict check and the same test suite. v1.10.0 remains the floor the published bundle is built with.
 - Other Rego engines are not supported: rego-cpp / regopy 1.5.2 fails to load some policies and reaches different decisions on others — see [docs/ENGINE_COMPATIBILITY.md](docs/ENGINE_COMPATIBILITY.md)
 - No other dependencies — no sidecar, no data documents, no external services. Policies are
   pure functions of their input and perform no I/O (no `http.send`).
